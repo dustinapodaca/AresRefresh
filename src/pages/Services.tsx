@@ -210,7 +210,7 @@ function WhyStages() {
   return (
     <section className="relative isolate overflow-hidden bg-ink text-paper">
       <div className="absolute inset-0 -z-[2] bg-ink">
-        <img src="/images/why-stages-bg.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <img src="/images/why-stages-bg.jpg" alt="" className="absolute inset-0 h-full w-full object-cover max-[460px]:object-[calc(50%+100px)_50%]" />
       </div>
       <div className="pointer-events-none absolute inset-0 -z-[1] bg-[linear-gradient(180deg,rgba(31,31,31,0.55)_0%,rgba(31,31,31,0.35)_50%,rgba(31,31,31,0.7)_100%),linear-gradient(90deg,rgba(31,31,31,0.55)_0%,rgba(31,31,31,0.2)_60%,rgba(31,31,31,0.4)_100%)]" />
       <Spacer />

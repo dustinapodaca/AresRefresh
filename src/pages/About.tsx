@@ -126,7 +126,7 @@ export default function About() {
               <p className="mb-6 max-w-[54ch] text-[18px] text-ink-2">
                 From unarmed professionals to armed personnel in restricted federal areas, our guards are as approachable as they are disciplined — trained to read a room as carefully as a post order, and to carry themselves accordingly.
               </p>
-              <ul className="m-0 flex list-none flex-col gap-3.5 p-0">
+              <ul className="m-0 flex list-none flex-col p-0">
                 {[
                   { big: '100%', lbl: 'Background-Checked & Licensed', sub: 'licenses & certifications current at time of post' },
                   { big: '24/7', lbl: 'Shift Coverage · Federal & Commercial', sub: 'multi-jurisdiction rotation with supervisor on call' },

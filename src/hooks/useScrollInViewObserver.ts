@@ -21,22 +21,43 @@ export function useScrollInViewObserver() {
     if (typeof IntersectionObserver === 'undefined') return;
     const targets = document.querySelectorAll<HTMLElement>('[data-scroll-active]');
     if (!targets.length) return;
-    const io = new IntersectionObserver(
+
+    // Hover-mirror observer (center detection): fires only when the element
+    // is inside the middle 10% of the viewport, so hover-equivalent styles
+    // turn on/off as the card passes the optical center.
+    const centerIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            el.setAttribute('data-in-view', 'true');
-            // One-way reveals: latch on, then stop observing.
-            if (el.hasAttribute('data-scroll-once')) io.unobserve(el);
-          } else {
-            el.setAttribute('data-in-view', 'false');
-          }
+          entry.target.setAttribute('data-in-view', entry.isIntersecting ? 'true' : 'false');
         });
       },
       { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
     );
-    targets.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    // Reveal observer (early trigger): fires when the element's top enters
+    // the bottom ~70% of the viewport — used for one-way reveals so the
+    // animation starts as the section is becoming visible rather than
+    // waiting until the user has already scrolled halfway through it.
+    const revealIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute('data-in-view', 'true');
+            revealIo.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -25% 0px', threshold: 0 },
+    );
+
+    targets.forEach((el) => {
+      if (el.hasAttribute('data-scroll-once')) revealIo.observe(el);
+      else centerIo.observe(el);
+    });
+
+    return () => {
+      centerIo.disconnect();
+      revealIo.disconnect();
+    };
   }, []);
 }

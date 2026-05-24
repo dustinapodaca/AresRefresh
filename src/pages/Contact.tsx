@@ -2,8 +2,10 @@ import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 export default function Contact() {
+  useScrollInViewObserver();
   const [status, setStatus] = useState<string | null>(null);
 
   function submit(e: FormEvent<HTMLFormElement>) {
@@ -164,7 +166,7 @@ function Field({ id, label, children }: { id: string; label: string; children: R
 function QCard({ href, h, big, p, icon }: { href?: string; h: string; big: string; p: string; icon: React.ReactNode }) {
   const Tag: any = href ? 'a' : 'div';
   return (
-    <Tag href={href} className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+    <Tag href={href} data-scroll-active data-in-view="false" className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] max-[460px]:data-[in-view=true]:-translate-y-0.5 max-[460px]:data-[in-view=true]:border-ink max-[460px]:data-[in-view=true]:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper">
         {icon}
       </div>
