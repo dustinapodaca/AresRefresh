@@ -135,9 +135,9 @@ export default function Header() {
                   `translate-y-0` on the closed branch so each transition
                   has explicit endpoints in both directions. */}
               <span className="relative block h-4 w-6">
-                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0 translate-y-0 rotate-0'}`} />
-                <span className={`absolute left-0 right-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-current transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'}`} />
-                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0 translate-y-0 rotate-0'}`} />
+                <span className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0 translate-y-0 rotate-0'}`} />
+                <span className={`absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-current transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'}`} />
+                <span className={`absolute left-0 right-0 h-[2px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0 translate-y-0 rotate-0'}`} />
               </span>
             </button>
           </div>
