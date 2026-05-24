@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
