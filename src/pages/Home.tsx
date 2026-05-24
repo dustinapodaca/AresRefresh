@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 const SERVICE_CARDS = [
   {
@@ -27,6 +28,8 @@ const SERVICE_CARDS = [
 ];
 
 export default function Home() {
+  useScrollInViewObserver();
+
   return (
     <main>
       {/* Hero */}
@@ -134,12 +137,12 @@ export default function Home() {
                 ),
               },
             ].map((b, i) => (
-              <div key={i} className="group flex flex-col gap-4 reveal-d1">
+              <div key={i} data-scroll-active data-in-view="false" className="group flex flex-col gap-4 reveal-d1">
                 {/* Icon + header wrapper:
                      - default (>=461px): stacked column (icon on top, header below)
                      - <=460px: row-reverse with the icon shrunk and pushed to the right */}
                 <div className="flex flex-col gap-4 max-[460px]:flex-row-reverse max-[460px]:items-center max-[460px]:justify-between max-[460px]:gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-mid max-[460px]:h-12 max-[460px]:w-12 max-[460px]:shrink-0">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-mid max-[460px]:group-data-[in-view=true]:bg-mid max-[460px]:h-12 max-[460px]:w-12 max-[460px]:shrink-0">
                     {b.svg}
                   </div>
                   <h3 className="m-0 text-[22px] font-semibold text-ink">{b.h}</h3>
@@ -202,7 +205,9 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
-              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0"
+              data-scroll-active
+              data-in-view="false"
+              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper transition-all duration-300 max-[460px]:aspect-[2/3] max-[460px]:min-h-0 max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.45)]"
             >
               <div className="absolute inset-0 -z-10">
                 {c.slot.src

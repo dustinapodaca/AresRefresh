@@ -39,7 +39,7 @@ export default function Contact() {
       <section>
         <Spacer />
         <div className="container-ares">
-          <div className="grid items-stretch gap-12 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2">
             {/* Map card */}
             <div className="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-line bg-paper-2 shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
               <iframe

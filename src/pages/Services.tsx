@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 const CARDS = [
   {
@@ -55,6 +56,8 @@ const LIFECYCLE = [
 ];
 
 export default function Services() {
+  useScrollInViewObserver();
+
   return (
     <main>
       <PageHeading title="Services & Process" slotId="cap-heading-bg" sub="Precise, reliable security solutions for any environment — built on superior detail, outstanding communication, and technical proposals that set the standard." />
@@ -79,12 +82,14 @@ export default function Services() {
             {CARDS.map((c, i) => (
               <article
                 key={c.n}
-                className="group relative isolate flex min-h-[360px] flex-col justify-between overflow-hidden rounded-[2rem] bg-ink p-9 text-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)] reveal-d1"
+                data-scroll-active
+                data-in-view="false"
+                className="group relative isolate flex min-h-[360px] flex-col justify-between overflow-hidden rounded-[2rem] bg-ink p-9 text-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)] reveal-d1 max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)]"
                 style={{ animationDelay: `${i * 0.05}s` }}
               >
                 <div className="absolute inset-0 -z-10 bg-ink">
                   {(c as any).src
-                    ? <img src={(c as any).src} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.65] transition-opacity duration-[350ms] group-hover:opacity-80" />
+                    ? <img src={(c as any).src} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.65] transition-opacity duration-[350ms] group-hover:opacity-80 max-[460px]:group-data-[in-view=true]:opacity-80" />
                     : <ImageSlot id={`matrix-${i + 1}`} placeholder={`Photo for ${c.title}`} fill />}
                 </div>
                 <div className="absolute inset-0 -z-[5] bg-gradient-to-b from-ink/25 via-ink/55 to-ink/[0.92]" />
@@ -129,7 +134,7 @@ export default function Services() {
 
           <div className="grid overflow-hidden rounded-2xl border border-line bg-paper md:grid-cols-4">
             {LIFECYCLE.map((step, i) => (
-              <div key={step.n} className={`relative flex flex-col items-center gap-4 p-8 text-center transition-colors duration-300 hover:border-ink ${i < LIFECYCLE.length - 1 ? 'md:border-r border-line' : ''} ${i < LIFECYCLE.length - 1 ? 'border-b md:border-b-0' : ''}`}>
+              <div key={step.n} data-scroll-active data-in-view="false" className={`relative flex flex-col items-center gap-4 p-8 text-center transition-colors duration-300 hover:border-ink max-[460px]:data-[in-view=true]:border-ink ${i < LIFECYCLE.length - 1 ? 'md:border-r border-line' : ''} ${i < LIFECYCLE.length - 1 ? 'border-b md:border-b-0' : ''}`}>
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-[18px] font-bold text-paper">{step.n}</div>
                 <h4 className="m-0 text-[18px] font-bold uppercase tracking-tight text-ink">{step.h}</h4>
                 <div className="text-[11px] uppercase tracking-[0.15em] text-mid">{step.micro}</div>
@@ -369,7 +374,7 @@ function Accordion({ n, title, lead, body, isFirst, isLast, open, onToggle }: { 
 
 function PageHeading({ title, sub, slotId }: { title: string; sub?: string; slotId: string }) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink pt-[370px] pb-[185px] text-paper">
+    <section className="relative isolate overflow-hidden bg-ink pt-[370px] pb-[185px] text-paper max-[460px]:pt-[278px] max-[460px]:pb-[140px]">
       <div className="hero-gradient absolute inset-0 -z-10">
         <img src="/images/capabilities-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-bottom" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.6)_40%,rgba(31,31,31,0.2)_100%),linear-gradient(180deg,rgba(31,31,31,0.4)_0%,rgba(31,31,31,0.15)_50%,rgba(31,31,31,0.55)_100%)]" />

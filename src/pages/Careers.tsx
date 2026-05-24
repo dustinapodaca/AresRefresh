@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 const ROLES = [
   {
@@ -40,10 +41,12 @@ const BENEFITS: { h: string; p: string; icon: React.ReactNode }[] = [
 ];
 
 export default function Careers() {
+  useScrollInViewObserver();
+
   return (
     <main className="font-sans">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ink pt-[280px] pb-[140px] text-paper">
+      <section className="relative isolate overflow-hidden bg-ink pt-[280px] pb-[140px] text-paper max-[460px]:pt-[210px] max-[460px]:pb-[105px]">
         <div className="hero-gradient absolute inset-0 -z-10">
           <img src="/images/careers-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.55)_45%,rgba(31,31,31,0.3)_100%),linear-gradient(180deg,rgba(31,31,31,0.4)_0%,rgba(31,31,31,0.15)_50%,rgba(31,31,31,0.55)_100%)]" />
@@ -133,7 +136,7 @@ export default function Careers() {
           </h2>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {BENEFITS.map((b) => (
-              <article key={b.h} className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+              <article key={b.h} data-scroll-active data-in-view="false" className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:border-ink max-[460px]:data-[in-view=true]:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper">
                   {b.icon}
                 </div>
@@ -164,7 +167,7 @@ export default function Careers() {
 
           <div className="flex flex-col gap-4">
             {ROLES.map((r) => (
-              <article key={r.n} className="grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:translate-x-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] lg:grid-cols-[80px_1fr_auto] lg:gap-x-6 lg:gap-y-2">
+              <article key={r.n} data-scroll-active data-in-view="false" className="grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:translate-x-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] max-[460px]:data-[in-view=true]:translate-x-1 max-[460px]:data-[in-view=true]:border-ink max-[460px]:data-[in-view=true]:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] lg:grid-cols-[80px_1fr_auto] lg:gap-x-6 lg:gap-y-2">
                 {/* Number — top-left on mobile, col 1 row 1 on desktop */}
                 <div className="text-[36px] font-bold leading-none tracking-tight text-ink lg:col-start-1 lg:row-start-1">{r.n}</div>
 

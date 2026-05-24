@@ -148,6 +148,16 @@
   }
   .arrow-btn-on-light:hover { @apply bg-ink text-paper border-ink; }
 
+  /* Form field input — referenced from Contact.tsx and now actually defined.
+     Without this rule, native inputs fall back to a browser-default
+     `size=20` natural width (~240–300px), which makes the contact form
+     wider than the mobile viewport. */
+  .field-input {
+    @apply block w-full min-w-0 rounded-xl border border-line bg-paper px-4 py-3
+           text-[15px] text-ink placeholder:text-mid focus:border-ink focus:outline-none
+           focus:ring-2 focus:ring-ink/10;
+  }
+
   /* Glass pill / tag */
   .pill-glass {
     @apply inline-flex items-center whitespace-nowrap rounded-full border border-ink/15 bg-white/40

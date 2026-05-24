@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 export default function About() {
+  useScrollInViewObserver();
+
   return (
     <main>
       <PageHeading title="About Us" subtitle="Founded in compliance. Built for the long post. A woman-owned, employee-focused firm rooted in public-sector standards and carried into every commercial engagement." crumbs={[{ to: '/', label: 'Home' }, { label: 'About' }]} slotId="about-heading-bg" />
@@ -66,7 +69,7 @@ export default function About() {
                   instead of pinning to the far right of the card. On wider
                   viewports the text track uses `max-content`, keeping it on a
                   single line with brackets adjacent. */}
-              <h3 className="relative inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper/65 grid-cols-[auto_max-content_auto]">
+              <h3 className="relative inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper/65 grid-cols-[auto_max-content_auto] max-[460px]:self-center">
                 <span aria-hidden className="opacity-50">[</span>
                 <span>CAPABILITY STATEMENT</span>
                 <span aria-hidden className="opacity-50">]</span>
@@ -152,7 +155,7 @@ export default function About() {
 
 function InvertCard({ label, title, body, tags, icon }: { label: string; title: string; body: string; tags: string[]; icon: React.ReactNode }) {
   return (
-    <article className="group relative flex flex-col gap-4 rounded-2xl border border-line bg-paper p-10 text-ink-2 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+    <article data-scroll-active data-in-view="false" className="group relative flex flex-col gap-4 rounded-2xl border border-line bg-paper p-10 text-ink-2 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] max-[460px]:data-[in-view=true]:-translate-y-[3px] max-[460px]:data-[in-view=true]:border-ink max-[460px]:data-[in-view=true]:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
       <div className="absolute right-8 top-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-mid">{label}</div>
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper">
         {icon}

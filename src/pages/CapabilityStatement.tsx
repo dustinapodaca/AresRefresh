@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 // ---- Data ----
 const CAPS = [
@@ -57,6 +58,7 @@ const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f4416aee82
 // ---- Scoped page styles (kept in lockstep with hi-fi/capability-statement.html) ----
 const CS_STYLES = `
 .cs_hero{padding:300px 0 160px;position:relative;isolation:isolate;overflow:hidden;background:var(--color-ink);color:var(--color-paper)}
+@media (max-width:460px){.cs_hero{padding:225px 0 120px}}
 .cs_hero .bg{position:absolute;inset:0;z-index:-2}
 .cs_hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .cs_hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(31,31,31,.35) 0%,rgba(31,31,31,.15) 35%,rgba(31,31,31,.75) 100%),linear-gradient(90deg,rgba(31,31,31,.55) 0%,rgba(31,31,31,.2) 55%,rgba(31,31,31,0) 80%)}
@@ -90,6 +92,7 @@ const CS_STYLES = `
 @media (max-width:560px){.cs_cap_grid{grid-template-columns:1fr}}
 .cs_cap_item{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
 .cs_cap_item:hover{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.2)}
+@media (max-width:460px){.cs_cap_item[data-in-view="true"]{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.2)}}
 .cs_cap_num{font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--color-mid)}
 .cs_cap_title{font-size:20px;font-weight:600;color:var(--color-ink);letter-spacing:-.01em;line-height:1.2;margin:0}
 .cs_cap_body{font-size:14px;color:var(--color-ink-2);line-height:1.55;margin:0}
@@ -102,6 +105,7 @@ const CS_STYLES = `
 @media (max-width:680px){.pp_grid{grid-template-columns:1fr}}
 .pp_card{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
 .pp_card:hover{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.18)}
+@media (max-width:460px){.pp_card[data-in-view="true"]{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.18)}}
 .pp_card_top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--color-line)}
 .pp_card_n{font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--color-mid)}
 .pp_card_status{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--color-ink);padding:5px 12px;border:1px solid var(--color-line);border-radius:999px;background:var(--color-paper-2);white-space:nowrap}
@@ -158,7 +162,16 @@ const CS_STYLES = `
 .cc_logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
 @media (max-width:768px){.cc_logos{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:460px){.cc_logos{gap:12px}}
-.cc_logo{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:160px;min-width:0;transition:border-color .25s ease,transform .25s ease}
+/* Stagger reveal: each .cc_logo starts hidden + offset; when the parent
+   .cc_logos passes the viewport-center the observer flips its
+   data-in-view attribute to "true", and the cards transition in with
+   200ms delays cascading left→right (GSA → WOSB → WBENC → SBA). */
+.cc_logo{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:160px;min-width:0;opacity:0;transform:translateY(16px);transition:opacity 600ms ease-out,transform 600ms ease-out,border-color .25s ease}
+.cc_logos[data-in-view="true"] .cc_logo{opacity:1;transform:translateY(0)}
+.cc_logos .cc_logo:nth-child(1){transition-delay:0ms,0ms,0s}
+.cc_logos .cc_logo:nth-child(2){transition-delay:200ms,200ms,0s}
+.cc_logos .cc_logo:nth-child(3){transition-delay:400ms,400ms,0s}
+.cc_logos .cc_logo:nth-child(4){transition-delay:600ms,600ms,0s}
 @media (max-width:460px){.cc_logo{padding:18px 12px;gap:12px;min-height:140px}}
 .cc_logo:hover{border-color:var(--color-ink);transform:translateY(-2px)}
 .cc_logo img{max-width:120px;max-height:64px;width:100%;height:auto;object-fit:contain;flex-shrink:0}
@@ -215,6 +228,8 @@ const CS_STYLES = `
 `;
 
 export default function CapabilityStatement() {
+  useScrollInViewObserver();
+
   return (
     <main className="overflow-x-hidden font-sans">
       <style>{CS_STYLES}</style>
@@ -310,7 +325,7 @@ export default function CapabilityStatement() {
           </div>
           <div className="cs_cap_grid">
             {CAPS.map((c) => (
-              <article key={c.n} className="cs_cap_item">
+              <article key={c.n} data-scroll-active data-in-view="false" className="cs_cap_item">
                 <span className="cs_cap_num">{c.n}</span>
                 <h3 className="cs_cap_title">{c.t}</h3>
                 <p className="cs_cap_body">{c.p}</p>
@@ -339,7 +354,7 @@ export default function CapabilityStatement() {
           </div>
           <div className="pp_grid">
             {PERF.map((p) => (
-              <article key={p.n} className="pp_card">
+              <article key={p.n} data-scroll-active data-in-view="false" className="pp_card">
                 <div className="pp_card_top">
                   <span className="pp_card_n">{p.n}</span>
                   <span className="pp_card_status active">Active</span>
@@ -374,7 +389,7 @@ export default function CapabilityStatement() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {DIFFS.map((d) => (
-              <article key={d.l} className="relative flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+              <article key={d.l} data-scroll-active data-in-view="false" className="relative flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)] max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:border-ink max-[460px]:data-[in-view=true]:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
                 <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid max-[460px]:pr-12">{d.l}</div>
                 {/* Icon disc: default flex-flow at >460px (stacks under the kicker),
                     absolute top-right + slightly smaller at <=460px. */}
@@ -459,7 +474,7 @@ export default function CapabilityStatement() {
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">↓ All data matches<br />SAM.gov registration</p>
           </div>
 
-          <div className="cc_logos">
+          <div className="cc_logos" data-scroll-active data-scroll-once data-in-view="false">
             <div className="cc_logo">
               <img src="/images/cert-gsa.png" alt="GSA Contract Holder" />
               <div>

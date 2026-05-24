@@ -131,15 +131,20 @@ export default function Header() {
           open ? 'pointer-events-auto' : 'pointer-events-none',
         ].join(' ')}
       >
-        {/* Inner content wrapper — fades up from below while the drawer panel
-            unfolds top→down. Small delay so the fade lags slightly behind the
-            clip-path reveal, creating a layered "drop then settle" feel. */}
+        {/* Inner content wrapper — on open, fades up from below while the
+            drawer panel unfolds top→down (small delay so the fade lags the
+            clip-path reveal slightly). On close, opacity fades out over the
+            same duration as the panel retract, but the transform jumps back
+            to its starting offset only AFTER the panel has fully clipped
+            closed — so the user never sees the content "drop" mid-close. */}
         <div
-          className={`transition-[opacity,transform] duration-[450ms] ease-out ${
-            open
-              ? 'translate-y-0 opacity-100 delay-150'
-              : 'translate-y-4 opacity-0 delay-0'
-          }`}
+          style={{
+            opacity: open ? 1 : 0,
+            transform: open ? 'translateY(0)' : 'translateY(16px)',
+            transition: open
+              ? 'opacity 450ms ease-out 150ms, transform 450ms ease-out 150ms'
+              : 'opacity 450ms ease-out 0ms, transform 0s ease-out 450ms',
+          }}
         >
           <ul className="m-0 flex w-full list-none flex-col gap-0 p-0">
             {NAV.map((item) => (
