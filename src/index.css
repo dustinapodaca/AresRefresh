@@ -226,7 +226,11 @@
    - When the grid is hovered: the default-active card collapses, and
      only the currently-hovered card expands.
    - Result: only ONE card is ever expanded — About Us on load, then
-     whichever card the cursor is over. */
+     whichever card the cursor is over.
+   - The hover transitions are gated behind `@media (hover: hover)` so
+     touch devices (phones, tablets) don't get a momentary "shrink"
+     when the user taps inside a card — that produced the bug where
+     About Us briefly retracted when you pressed any card body. */
 .service-grid {
   display: flex;
   gap: 20px;
@@ -236,19 +240,19 @@
   min-width: 0;
   transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* Default-open card */
+/* Default-open card — applied at every viewport that still uses the
+   row layout, regardless of hover capability. */
 .service-grid > *[data-active='true'] {
   flex: 2.4 1 0;
 }
-/* As soon as anything in the grid is hovered, the default-open card retracts —
-   UNLESS it's the one being hovered (otherwise specificity beats the *:hover rule
-   and About stays collapsed when you move back to it). */
-.service-grid:hover > *[data-active='true']:not(:hover) {
-  flex: 1 1 0;
-}
-/* Hovered card expands */
-.service-grid > *:hover {
-  flex: 2.4 1 0;
+/* Hover-driven retract/expand — mouse-capable devices only. */
+@media (hover: hover) {
+  .service-grid:hover > *[data-active='true']:not(:hover) {
+    flex: 1 1 0;
+  }
+  .service-grid > *:hover {
+    flex: 2.4 1 0;
+  }
 }
 @media (max-width: 991px) {
   .service-grid { flex-direction: column; }

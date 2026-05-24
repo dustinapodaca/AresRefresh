@@ -50,8 +50,9 @@ export default function Header() {
       />
       <div className="container-ares">
         <div className="flex items-center justify-between gap-6 py-5 lg:grid lg:grid-cols-[1fr_auto_1fr]">
-          {/* Brand — logo mark only, larger, white */}
-          <Link to="/" aria-label="Ares Security home" className="flex items-center text-paper">
+          {/* Brand — logo mark only, larger, white. Closes the mobile drawer
+              when tapped (parity with the nav links' onClick handlers). */}
+          <Link to="/" onClick={() => setOpen(false)} aria-label="Ares Security home" className="flex items-center text-paper">
             <span
               className="block"
               style={{
@@ -101,10 +102,17 @@ export default function Header() {
               className="relative ml-1 flex h-11 w-11 items-center justify-center text-paper transition-opacity hover:opacity-75 lg:hidden"
               onClick={() => setOpen((o) => !o)}
             >
+              {/* The top/bottom lines change BOTH a position (top/bottom) AND
+                  a transform on toggle. Using `transition-all` so position
+                  and rotate tween together — `transition-transform` alone
+                  left the position change as an instant jump, which made
+                  the close animation look broken. Defined `rotate-0` /
+                  `translate-y-0` on the closed branch so each transition
+                  has explicit endpoints in both directions. */}
               <span className="relative block h-4 w-6">
-                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-transform duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'}`} />
-                <span className={`absolute left-0 right-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-current transition-[opacity,transform] duration-200 ${open ? 'scale-x-0 opacity-0' : 'opacity-100'}`} />
-                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-transform duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'}`} />
+                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0 translate-y-0 rotate-0'}`} />
+                <span className={`absolute left-0 right-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-current transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'scale-x-0 opacity-0' : 'scale-x-100 opacity-100'}`} />
+                <span className={`absolute left-0 right-0 h-[1.5px] bg-current transition-all duration-300 ease-[cubic-bezier(0.45,0,0.55,1)] ${open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0 translate-y-0 rotate-0'}`} />
               </span>
             </button>
           </div>
