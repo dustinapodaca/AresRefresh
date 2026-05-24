@@ -7,6 +7,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Prefetch hero + high-impact section photos at low priority. By the
+         time the user navigates from Home to About/Services/etc. these are
+         already warm in the HTTP cache, so the hero (and major section
+         photos below it) renders without a pop-in. `prefetch` is fired
+         after the initial render so it doesn't compete with anything
+         critical to first paint. -->
+    <!-- Page heros -->
+    <link rel="prefetch" as="image" href="/images/hero6.jpg" />
+    <link rel="prefetch" as="image" href="/images/about-hero.jpg" />
+    <link rel="prefetch" as="image" href="/images/capabilities-hero.jpg" />
+    <link rel="prefetch" as="image" href="/images/careers-hero.jpg" />
+    <link rel="prefetch" as="image" href="/images/contact-hero.jpg" />
+    <link rel="prefetch" as="image" href="/images/capability-hero.jpg" />
+    <!-- Home — Explore cards + section backgrounds -->
+    <link rel="prefetch" as="image" href="/images/backbone-officer.jpg" />
+    <link rel="prefetch" as="image" href="/images/woman-owned-bg.jpg" />
+    <link rel="prefetch" as="image" href="/images/about-sunset.jpg" />
+    <link rel="prefetch" as="image" href="/images/capabilities-card.jpg" />
+    <link rel="prefetch" as="image" href="/images/careers-team.jpg" />
+    <!-- About — section photos -->
+    <link rel="prefetch" as="image" href="/images/mission-vehicle.jpg" />
+    <link rel="prefetch" as="image" href="/images/officer-portrait.jpg" />
+    <link rel="prefetch" as="image" href="/images/cap-cta-bg.jpg" />
+    <!-- Services — section backgrounds + Personnel in Action banner -->
+    <link rel="prefetch" as="image" href="/images/why-stages-bg.jpg" />
+    <link rel="prefetch" as="image" href="/images/about-banner.jpg" />
+    <!-- Careers — section photos -->
+    <link rel="prefetch" as="image" href="/images/careers-philosophy.jpg" />
+    <link rel="prefetch" as="image" href="/images/careers-apply.jpg" />
+
     <title>Ares Security — Public-Sector Compliance · Commercial Reliability</title>
   </head>
   <body>
