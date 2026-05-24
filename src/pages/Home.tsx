@@ -205,9 +205,7 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
-              data-scroll-active
-              data-in-view="false"
-              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper transition-all duration-300 max-[460px]:aspect-[2/3] max-[460px]:min-h-0 max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.45)]"
+              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0"
             >
               <div className="absolute inset-0 -z-10">
                 {c.slot.src

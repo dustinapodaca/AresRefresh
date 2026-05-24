@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import Socials from './Socials';
 
 const NAV = [
@@ -13,6 +13,7 @@ const NAV = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const SCROLL_THRESHOLD = 20;
@@ -22,12 +23,23 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll while drawer is open
+  // Lock background scrolling while the mobile drawer is open. Need to
+  // pin BOTH html and body — setting overflow:hidden on body alone isn't
+  // enough because our global CSS already puts overflow-x: hidden on html,
+  // which leaves vertical scrolling owned by the html element. Saving and
+  // restoring the previous inline values so we don't stomp anyone else's.
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = prev; };
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtml = html.style.overflow;
+    const prevBody = body.style.overflow;
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    return () => {
+      html.style.overflow = prevHtml;
+      body.style.overflow = prevBody;
+    };
   }, [open]);
 
   // Glass is engaged whenever the user has scrolled OR the mobile drawer is
@@ -51,8 +63,21 @@ export default function Header() {
       <div className="container-ares">
         <div className="flex items-center justify-between gap-6 py-5 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           {/* Brand — logo mark only, larger, white. Closes the mobile drawer
-              when tapped (parity with the nav links' onClick handlers). */}
-          <Link to="/" onClick={() => setOpen(false)} aria-label="Ares Security home" className="flex items-center text-paper">
+              when tapped (parity with the nav links' onClick handlers). If
+              we're already on the home route, scroll to the top — otherwise
+              React Router treats the click as a no-op and nothing happens
+              visually. */}
+          <Link
+            to="/"
+            onClick={() => {
+              setOpen(false);
+              if (pathname === '/') {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+              }
+            }}
+            aria-label="Ares Security home"
+            className="flex items-center text-paper"
+          >
             <span
               className="block"
               style={{
