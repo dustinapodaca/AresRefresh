@@ -103,7 +103,7 @@ export default function Careers() {
         <Spacer />
         <div className="container-ares">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
-            <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] bg-paper-2">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] bg-paper-2 lg:aspect-auto lg:min-h-[520px]">
               <img src="/images/careers-philosophy.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div>

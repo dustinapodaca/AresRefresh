@@ -142,7 +142,7 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto lg:min-h-[560px]">
               <img src="/images/officer-portrait.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center top' }} />
             </div>
           </div>
