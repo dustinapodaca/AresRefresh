@@ -158,7 +158,11 @@ export default function Services() {
             <img src="/images/about-banner.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/85" />
             <div className="absolute inset-x-12 bottom-12 text-paper">
-              <h3 className="brackets-title mb-3 text-paper">PERSONNEL IN ACTION</h3>
+              <h3 className="relative mb-3 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                <span>PERSONNEL IN ACTION</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <h2 className="max-w-[24ch] text-display-md text-paper">Discipline · Vigilance · Professionalism in the Field</h2>
             </div>
           </div>
@@ -376,7 +380,7 @@ function PageHeading({ title, sub, slotId }: { title: string; sub?: string; slot
           <li className="text-paper/40">/</li>
           <li className="text-paper">Services & Process</li>
         </ol>
-        <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: '84px', lineHeight: 0.92, letterSpacing: '-0.06em' }}>{title}</h1>
+        <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>{title}</h1>
         {sub && <p className="reveal-d2 mt-6 max-w-[60ch] text-[20px] text-paper/75">{sub}</p>}
       </div>
     </section>

@@ -5,24 +5,26 @@ export default function About() {
     <main>
       <PageHeading title="About Us" subtitle="Founded in compliance. Built for the long post. A woman-owned, employee-focused firm rooted in public-sector standards and carried into every commercial engagement." crumbs={[{ to: '/', label: 'Home' }, { label: 'About' }]} slotId="about-heading-bg" />
 
-      {/* Credentials Strip */}
+      {/* Credentials Strip — at <=460px switches to a 2x2 grid with explicit
+          ordering (Row 1: GSA, Women Owned · Row 2: SBA, WBENC). Above 460px
+          stays as the single-row flex layout with separators. */}
       <section aria-label="Certifications and contract vehicles" className="py-20">
         <div className="container-ares">
-          <ul role="list" className="m-0 flex list-none flex-wrap items-center justify-center gap-x-[clamp(28px,5vw,64px)] gap-y-[18px] p-0 sm:flex-nowrap">
-            <li className="flex max-w-[260px] flex-none items-center justify-center">
-              <img src="/images/cert-gsa.png" alt="GSA Schedule Holder" className="block h-12 w-auto max-w-full object-contain sm:h-[62px]" />
+          <ul role="list" className="m-0 flex list-none flex-wrap items-center justify-center gap-x-[clamp(28px,5vw,64px)] gap-y-[18px] p-0 max-[460px]:grid max-[460px]:grid-cols-4 max-[460px]:gap-x-2 max-[460px]:gap-y-0 sm:flex-nowrap">
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-1 max-[460px]:min-h-12 max-[460px]:max-w-full">
+              <img src="/images/cert-gsa-blue.png" alt="GSA Schedule Holder" className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]" />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
-            <li className="flex max-w-[260px] flex-none items-center justify-center">
-              <img src="/images/cert-wosb.png" alt="SBA WOSB Certified" className="block h-11 w-auto max-w-full object-contain sm:h-14" />
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-3 max-[460px]:min-h-12 max-[460px]:max-w-full">
+              <img src="/images/cert-wosb.png" alt="SBA WOSB Certified" className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-12 sm:h-14" />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
-            <li className="flex max-w-[260px] flex-none items-center justify-center">
-              <img src="/images/cert-women-owned.png" alt="Women Owned" className="block h-12 w-auto max-w-full object-contain sm:h-[62px]" />
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-2 max-[460px]:min-h-12 max-[460px]:max-w-full">
+              <img src="/images/cert-women-owned.png" alt="Women Owned" className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]" />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
-            <li className="flex max-w-[260px] flex-none items-center justify-center">
-              <img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" className="block h-11 w-auto max-w-full object-contain sm:h-14" />
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-4 max-[460px]:min-h-12 max-[460px]:max-w-full">
+              <img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-14" />
             </li>
           </ul>
         </div>
@@ -57,7 +59,18 @@ export default function About() {
             <div className="relative isolate flex flex-col justify-between gap-12 overflow-hidden rounded-2xl bg-ink p-12 text-paper">
               <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/cap-cta-bg.jpg')" }} />
               <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: 'linear-gradient(180deg, rgba(31,31,31,.55) 0%, rgba(31,31,31,.35) 50%, rgba(31,31,31,.7) 100%), linear-gradient(90deg, rgba(31,31,31,.55) 0%, rgba(31,31,31,.2) 60%, rgba(31,31,31,.4) 100%)' }} />
-              <h3 className="brackets-title relative text-paper/65">CAPABILITY STATEMENT</h3>
+              {/* inline-grid with explicit columns so the text track sizes to its
+                  longest word on mobile (`min-content`). That way when the text
+                  wraps, the closing "]" sits at the text track's right edge —
+                  vertically centered against both lines via `items-center` —
+                  instead of pinning to the far right of the card. On wider
+                  viewports the text track uses `max-content`, keeping it on a
+                  single line with brackets adjacent. */}
+              <h3 className="relative inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper/65 grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                <span>CAPABILITY STATEMENT</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <div className="relative flex flex-col items-stretch gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
                 <div className="min-w-0 flex-1">
                   <h3 className="mb-4 text-[32px] text-paper lg:text-[48px]" style={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 1.02, textTransform: 'none' }}>
@@ -126,7 +139,7 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="relative min-h-[560px] overflow-hidden rounded-2xl bg-paper-2">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2">
               <img src="/images/officer-portrait.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center top' }} />
             </div>
           </div>
@@ -189,7 +202,7 @@ function PageHeading({ title, subtitle, crumbs, slotId }: { title: string; subti
             </li>
           ))}
         </ol>
-        <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: '84px', lineHeight: 0.92, letterSpacing: '-0.06em' }}>{title}</h1>
+        <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>{title}</h1>
         {subtitle && <p className="reveal-d2 mt-6 max-w-[60ch] text-[20px] text-paper/75">{subtitle}</p>}
       </div>
     </section>

@@ -25,14 +25,16 @@ const PERF = [
   { n: '03', agency: 'Multi-Sector · Retail · Commercial', t: 'Concurrent Multi-Site Engagements', ct: 'Multiple Concurrent', val: 'Available on request', period: '2022 — Present', metric: 'Zero unfilled shifts', rest: ' across all posts in the last 12 months — on-call coverage and proactive staffing prevent lapses.' },
 ];
 
-const CODES: Array<{ k: string; v: string; sub?: string }> = [
+const CODES: Array<{ k: React.ReactNode; v: string; sub?: string }> = [
   { k: 'UEI', v: 'XQXDN6E33SF4', sub: 'Unique Entity Identifier (SAM.gov)' },
   { k: 'CAGE Code', v: '9KL18', sub: 'Commercial & Government Entity' },
   { k: 'DUNS Number', v: '10-244-9635', sub: 'Legacy — UEI is the SAM identifier going forward' },
   { k: 'SAM Status', v: 'Active', sub: 'Through March 26, 2027' },
   { k: 'Primary NAICS', v: '561612', sub: 'Security Guards & Patrol Services' },
   { k: 'PSC Code', v: 'S206', sub: 'Guard Services' },
-  { k: 'Socioeconomic', v: 'Small Business · WOSB', sub: 'Small Business · Woman-Owned Small Business' },
+  // <br> is hidden by default and re-enabled only at <=460px so the label
+  // breaks as "SOCIO" / "ECONOMIC" on small phones but stays one line above.
+  { k: <>Socio<br className="hidden max-[460px]:inline" />economic</>, v: 'Small Business · WOSB', sub: 'Small Business · Woman-Owned Small Business' },
   { k: 'GSA Schedule', v: '#47QSMS25D009Q', sub: 'SIN 561612 · Security Services' },
   { k: 'SBA Set-Asides', v: 'WOSB Set-Aside Eligible', sub: 'Eligible for WOSB set-aside awards under NAICS 561612' },
   { k: 'Service Area', v: 'Greater Colorado Area', sub: 'Nationwide on request.' },
@@ -60,7 +62,7 @@ const CS_STYLES = `
 .cs_hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(31,31,31,.35) 0%,rgba(31,31,31,.15) 35%,rgba(31,31,31,.75) 100%),linear-gradient(90deg,rgba(31,31,31,.55) 0%,rgba(31,31,31,.2) 55%,rgba(31,31,31,0) 80%)}
 .cs_hero_kicker{display:inline-flex;gap:14px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.7);margin-bottom:28px}
 .cs_hero_kicker .dot{width:6px;height:6px;border-radius:999px;background:rgba(250,250,249,.4)}
-.cs_hero h1{font-size:clamp(48px,7vw,104px);font-weight:400;letter-spacing:-.06em;line-height:.92;color:var(--color-paper);margin:0 0 28px;text-transform:none}
+.cs_hero h1{font-size:clamp(48px,7vw,84px);font-weight:400;letter-spacing:-.06em;line-height:.92;color:var(--color-paper);margin:0 0 28px;text-transform:none}
 .cs_hero_value{font-size:clamp(20px,1.8vw,24px);font-weight:400;line-height:1.4;color:rgba(250,250,249,.82);max-width:62ch;margin:0 0 40px;letter-spacing:-.005em}
 .cs_hero_value b{color:var(--color-paper);font-weight:600}
 .cs_hero_value .cs_hero_creds{display:inline-block;margin-top:12px}
@@ -120,7 +122,7 @@ const CS_STYLES = `
 .cv_section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 90% 10%,rgba(124,120,118,.22),transparent 60%)}
 .cv_grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:stretch}
 @media (max-width:900px){.cv_grid{grid-template-columns:1fr}}
-.cv_card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:36px;-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);display:flex;flex-direction:column;gap:20px}
+.cv_card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:36px;-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);display:flex;flex-direction:column;gap:20px;min-width:0;overflow:hidden}
 .cv_card_head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(250,250,249,.16)}
 @media (max-width:640px){
   .cv_card_head{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px;row-gap:6px}
@@ -136,8 +138,9 @@ const CS_STYLES = `
 .cv_card .pill_active{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px;color:var(--color-paper);background:rgba(124,184,95,.18);border:1px solid rgba(124,184,95,.45);white-space:nowrap}
 .cv_card .pill_active::before{content:"";display:inline-block;width:6px;height:6px;border-radius:999px;background:#7CB85F;margin-right:8px;vertical-align:1px}
 .cv_meta{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 24px}
+.cv_meta > div{min-width:0}
 .cv_meta .k{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.55);margin-bottom:4px}
-.cv_meta .v{font-size:15px;font-weight:500;color:var(--color-paper);line-height:1.35;font-variant-numeric:tabular-nums;letter-spacing:-.005em}
+.cv_meta .v{font-size:15px;font-weight:500;color:var(--color-paper);line-height:1.35;font-variant-numeric:tabular-nums;letter-spacing:-.005em;overflow-wrap:anywhere}
 .cv_actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:8px}
 .cv_secondary{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;justify-content:center;min-height:100%}
 .cv_secondary h4{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.6);margin:0}
@@ -154,11 +157,13 @@ const CS_STYLES = `
 .cc_section{background:var(--color-paper-2)}
 .cc_logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
 @media (max-width:768px){.cc_logos{grid-template-columns:repeat(2,1fr)}}
-.cc_logo{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:160px;transition:border-color .25s ease,transform .25s ease}
+@media (max-width:460px){.cc_logos{gap:12px}}
+.cc_logo{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:160px;min-width:0;transition:border-color .25s ease,transform .25s ease}
+@media (max-width:460px){.cc_logo{padding:18px 12px;gap:12px;min-height:140px}}
 .cc_logo:hover{border-color:var(--color-ink);transform:translateY(-2px)}
-.cc_logo img{max-width:120px;max-height:64px;object-fit:contain;flex-shrink:0}
-.cc_logo_name{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--color-ink);text-align:center;line-height:1.3}
-.cc_logo_id{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--color-mid);text-align:center;font-variant-numeric:tabular-nums}
+.cc_logo img{max-width:120px;max-height:64px;width:100%;height:auto;object-fit:contain;flex-shrink:0}
+.cc_logo_name{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--color-ink);text-align:center;line-height:1.3;overflow-wrap:anywhere}
+.cc_logo_id{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--color-mid);text-align:center;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .cc_codes{background:var(--color-paper);border:1px solid var(--color-line);border-radius:24px;overflow:hidden}
 .cc_codes_head{padding:24px 32px;border-bottom:1px solid var(--color-line);background:#E5E4E1;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .cc_codes_head h3{font-size:18px;font-weight:600;color:var(--color-ink);letter-spacing:-.01em;margin:0}
@@ -211,7 +216,7 @@ const CS_STYLES = `
 
 export default function CapabilityStatement() {
   return (
-    <main className="font-sans">
+    <main className="overflow-x-hidden font-sans">
       <style>{CS_STYLES}</style>
 
       {/* 1. HERO */}
@@ -234,14 +239,17 @@ export default function CapabilityStatement() {
           </div>
           <h1 className="reveal-d2">Capability Statement</h1>
           <p className="cs_hero_value reveal-d3">
-            Federal-ready security guard and patrol services for commercial clients,<br />agencies, and prime contractors.<br /><b className="cs_hero_creds">GSA Schedule holder · SAM-registered · WOSB &amp; WBE certified.</b>
+            Federal-ready security guard and patrol services for commercial clients, agencies, and prime contractors.<br /><b className="cs_hero_creds">GSA Schedule holder · SAM-registered · WOSB &amp; WBE certified.</b>
           </p>
           <div className="cs_hero_ctas">
-            <a href={PDF_URL} className="btn btn-glass" download>
+            <a href={PDF_URL} className="btn btn-glass max-w-full max-[460px]:px-5 max-[460px]:py-3 max-[460px]:text-[12px]" download>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 8, verticalAlign: -3 }}>
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Download Capability Statement (PDF)
+              {/* Long label on >460px, compact "Download PDF" on small mobile so the
+                  button doesn't blow out of the hero. */}
+              <span className="max-[460px]:hidden">Download Capability Statement (PDF)</span>
+              <span className="hidden max-[460px]:inline">Download PDF</span>
             </a>
           </div>
           <div className="cs_hero_meta reveal-d4">
@@ -289,7 +297,13 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 01 · CORE COMPETENCIES</h3>
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                {/* <br> shows only on <=460px so "CORE COMPETENCIES" stays whole on
+                    a single second line instead of wrapping mid-phrase. */}
+                <span>SECTION 01 ·<br className="hidden max-[460px]:inline" /> CORE COMPETENCIES</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <h2 className="text-display-lg text-ink">WHAT <span className="font-light italic text-mid">WE DO</span></h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">↓ Six divisions<br />under one GSA vehicle</p>
@@ -314,7 +328,11 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 02 · PAST PERFORMANCE</h3>
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                <span>SECTION 02 ·<br className="hidden max-[460px]:inline" /> PAST PERFORMANCE</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <h2 className="text-display-lg text-ink">PROVEN <span className="font-light italic text-mid">RECORD</span></h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2">↓ Detailed references<br />available on request</p>
@@ -356,9 +374,11 @@ export default function CapabilityStatement() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {DIFFS.map((d) => (
-              <article key={d.l} className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid">{d.l}</div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper">{d.icon}</div>
+              <article key={d.l} className="relative flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-ink hover:shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid max-[460px]:pr-12">{d.l}</div>
+                {/* Icon disc: default flex-flow at >460px (stacks under the kicker),
+                    absolute top-right + slightly smaller at <=460px. */}
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper max-[460px]:absolute max-[460px]:right-6 max-[460px]:top-6 max-[460px]:h-10 max-[460px]:w-10">{d.icon}</div>
                 <h3 className="m-0 text-[22px] font-semibold leading-tight text-ink">{d.t}</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-ink-2">{d.p}</p>
               </article>
@@ -374,7 +394,11 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 grid items-end gap-8 md:grid-cols-2">
             <div>
-              <h3 className="brackets-title mb-4 text-paper/60 whitespace-nowrap">SECTION 04 · CONTRACT VEHICLES</h3>
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper/60 grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                <span>SECTION 04 ·<br className="hidden max-[460px]:inline" /> CONTRACT VEHICLES</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <h2 className="m-0 text-paper" style={{ fontSize: 'clamp(40px,4.6vw,64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.95, textTransform: 'none' }}>
                 How <em className="font-light italic text-light">to buy from us.</em>
               </h2>
@@ -425,7 +449,11 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 05 · CERTIFICATIONS &amp; CODES</h3>
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+                <span aria-hidden className="opacity-50">[</span>
+                <span>SECTION 05 ·<br className="hidden max-[460px]:inline" /> CERTIFICATIONS &amp; CODES</span>
+                <span aria-hidden className="opacity-50">]</span>
+              </h3>
               <h2 className="text-display-lg text-ink">CREDENTIALS <span className="font-light italic text-mid">ON THE RECORD</span></h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">↓ All data matches<br />SAM.gov registration</p>
@@ -468,8 +496,8 @@ export default function CapabilityStatement() {
               <span className="lbl">Confirmed against SAM.gov</span>
             </div>
             <div className="cc_table">
-              {CODES.map((c) => (
-                <div key={c.k} className="cc_row">
+              {CODES.map((c, i) => (
+                <div key={i} className="cc_row">
                   <div className="k">{c.k}</div>
                   <div className="v">{c.v}{c.sub && <small>{c.sub}</small>}</div>
                 </div>
@@ -521,11 +549,13 @@ export default function CapabilityStatement() {
               <h3 className="fct_head">Take this <em>capability statement</em> with you.</h3>
             </div>
             <div className="actions">
-              <a href={PDF_URL} className="btn btn-primary" download>
+              <a href={PDF_URL} className="btn btn-primary max-w-full max-[460px]:px-5 max-[460px]:py-3 max-[460px]:text-[12px]" download>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: 8, verticalAlign: -3 }}>
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                Download Capability Statement (PDF)
+                {/* Long label on >460px, compact "Download PDF" on small mobile. */}
+                <span className="max-[460px]:hidden">Download Capability Statement (PDF)</span>
+                <span className="hidden max-[460px]:inline">Download PDF</span>
               </a>
             </div>
           </div>

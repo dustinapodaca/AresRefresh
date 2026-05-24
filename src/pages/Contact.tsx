@@ -13,7 +13,7 @@ export default function Contact() {
   }
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       {/* Page heading */}
       <section className="relative isolate overflow-hidden bg-ink pt-[280px] pb-[140px] text-paper">
         <div className="hero-gradient absolute inset-0 -z-10">
@@ -26,7 +26,7 @@ export default function Contact() {
             <li className="text-paper/40">/</li>
             <li className="text-paper">Request a Quote</li>
           </ol>
-          <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: '84px', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
+          <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
             Request a Quote
           </h1>
           <p className="reveal-d2 mt-6 max-w-[60ch] text-[20px] text-paper/75">

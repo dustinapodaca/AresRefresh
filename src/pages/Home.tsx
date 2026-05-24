@@ -32,7 +32,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[920px]">
         <div className="hero-gradient absolute inset-0 -z-10">
-          <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover" style={{ objectPosition: 'center 60%' }} />
+          <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_60%] max-[460px]:object-[calc(50%-200px)_60%]" />
           <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.6)_40%,rgba(31,31,31,0.25)_100%),linear-gradient(180deg,rgba(31,31,31,0.35)_0%,rgba(31,31,31,0.25)_50%,rgba(31,31,31,0.6)_100%)] pointer-events-none" />
         </div>
         <div className="container-ares w-full">
@@ -41,7 +41,7 @@ export default function Home() {
               <img
                 src="/images/ares-text.svg"
                 alt="Ares Security"
-                className="reveal mb-8 block w-full max-w-[264px] opacity-95 lg:max-w-[330px]"
+                className="reveal mb-8 block w-full max-w-[264px] opacity-95 max-[460px]:max-w-[192px] lg:max-w-[330px]"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
               <h1
@@ -59,11 +59,11 @@ export default function Home() {
             {/* GSA contract card (frosted glass) — matches .hero_box recipe.
                 On mobile: sits in flow below the buttons (full width).
                 On lg+: floats absolute in the bottom-right corner. */}
-            <div className="reveal-d4 relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.04] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[26px] backdrop-saturate-[160%] lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]">
+            <div className="reveal-d4 relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.04] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[26px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]">
               <a href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES" target="_blank" rel="noopener noreferrer" className="arrow-btn absolute right-6 top-6" aria-label="View on GSA eLibrary">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M15.3846 0H0.615385C0.275692 0 0 0.275692 0 0.615385C0 0.955077 0.275692 1.23077 0.615385 1.23077H13.8988L0.180308 14.9495C-0.06 15.1898 -0.06 15.5794 0.180308 15.8197C0.300615 15.94 0.457846 16 0.615385 16C0.772923 16 0.930461 15.94 1.05046 15.8197L14.7692 2.10092V15.3846C14.7692 15.7243 15.0449 16 15.3846 16C15.7243 16 16 15.7243 16 15.3846V0.615385C16 0.275692 15.7243 0 15.3846 0Z" fill="currentColor" /></svg>
               </a>
-              <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" className="mb-[18px] block h-auto w-auto max-w-[240px]" />
+              <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" className="mb-[18px] block h-auto w-auto max-w-[240px] max-[460px]:max-w-[180px]" />
               <p className="text-[14px] leading-relaxed text-paper/70">
                 Contract #47QSMS25D009Q. Pre-negotiated federal pricing — agencies can award task orders without opening a new competition.
               </p>
@@ -135,10 +135,15 @@ export default function Home() {
               },
             ].map((b, i) => (
               <div key={i} className="group flex flex-col gap-4 reveal-d1">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-mid">
-                  {b.svg}
+                {/* Icon + header wrapper:
+                     - default (>=461px): stacked column (icon on top, header below)
+                     - <=460px: row-reverse with the icon shrunk and pushed to the right */}
+                <div className="flex flex-col gap-4 max-[460px]:flex-row-reverse max-[460px]:items-center max-[460px]:justify-between max-[460px]:gap-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-mid max-[460px]:h-12 max-[460px]:w-12 max-[460px]:shrink-0">
+                    {b.svg}
+                  </div>
+                  <h3 className="m-0 text-[22px] font-semibold text-ink">{b.h}</h3>
                 </div>
-                <h3 className="m-0 text-[22px] font-semibold text-ink">{b.h}</h3>
                 <p className="text-[17px] leading-relaxed text-ink-2">{b.p}</p>
               </div>
             ))}
@@ -188,7 +193,7 @@ export default function Home() {
         <SectionHeading
           kicker="Explore"
           title={<>Protection Built On <span className="font-light italic text-light">Trust</span>.</>}
-          titleSize="60px"
+          titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
         />
         <Spacer />
@@ -197,7 +202,7 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
-              className="group relative isolate overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper min-h-[580px] flex flex-col justify-between"
+              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0"
             >
               <div className="absolute inset-0 -z-10">
                 {c.slot.src

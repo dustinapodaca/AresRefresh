@@ -54,7 +54,7 @@ export default function Careers() {
             <li className="text-paper/40">/</li>
             <li className="text-paper">Careers</li>
           </ol>
-          <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: '84px', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
+          <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
             Join Our <span className="font-light italic text-light">Team.</span>
           </h1>
           <p className="reveal-d2 mt-6 max-w-[62ch] text-[20px] text-paper/75">
@@ -100,7 +100,7 @@ export default function Careers() {
         <Spacer />
         <div className="container-ares">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
-            <div className="relative min-h-[520px] overflow-hidden rounded-[2rem] bg-paper-2">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] bg-paper-2">
               <img src="/images/careers-philosophy.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div>

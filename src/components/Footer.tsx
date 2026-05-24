@@ -49,29 +49,36 @@ export default function Footer() {
           </FooterCol>
         </div>
 
-        {/* Creds pill */}
+        {/* Creds pill — at <=460px the grid is 2x2; explicit order swaps GSA and
+            Women Owned so the visual layout becomes:
+                Row 1: Women Owned | SBA
+                Row 2: GSA         | WBENC */}
         <ul className="footer_creds" role="list" aria-label="Certifications and contract vehicles">
-          <li className="footer_creds_item">
+          <li className="footer_creds_item max-[460px]:order-3">
             <img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" />
           </li>
           <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item">
+          <li className="footer_creds_item max-[460px]:order-2">
             <img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" />
           </li>
           <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item">
+          <li className="footer_creds_item max-[460px]:order-1">
             <img src="/images/cert-women-owned.png" alt="Women Owned" />
           </li>
           <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item">
+          <li className="footer_creds_item max-[460px]:order-4">
             <img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" />
           </li>
         </ul>
 
-        {/* Bottom bar */}
-        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 text-[12px] uppercase tracking-[0.14em]">
-          <span>© 2026 Ares Security LLC. All Rights Reserved.</span>
-          <ul className="flex gap-8 list-none m-0 p-0">
+        {/* Bottom bar — at <=460px stacks centered and breaks "All Rights Reserved."
+            onto its own line. Above 460px keeps the side-by-side layout. */}
+        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 text-[12px] uppercase tracking-[0.14em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
+          <span>
+            © 2026 Ares Security LLC.
+            <span className="ml-1 max-[460px]:ml-0 max-[460px]:block">All Rights Reserved.</span>
+          </span>
+          <ul className="flex gap-8 list-none m-0 p-0 max-[460px]:justify-center">
             <li><a href="#">Privacy</a></li>
             <li><a href="#">Terms</a></li>
             <li><a href="#">Accessibility</a></li>

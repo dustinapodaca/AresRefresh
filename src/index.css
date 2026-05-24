@@ -54,11 +54,22 @@
    Base — body / typography defaults
    ============================================================ */
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* No horizontal scroll, anywhere. `clip` is the modern preference but
+       some mobile browsers (especially older Safari) only fully honor
+       `hidden`. Using `hidden` on both html and body covers every case;
+       it does turn html into a containing block but the header is
+       `position: fixed` relative to viewport regardless, so no visual
+       regression. */
+    overflow-x: hidden;
+  }
   body {
     @apply m-0 bg-paper text-ink-2 font-sans antialiased;
     font-size: 16px;
     line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply text-ink m-0 font-semibold leading-tight tracking-tight;
@@ -139,7 +150,7 @@
 
   /* Glass pill / tag */
   .pill-glass {
-    @apply inline-flex items-center rounded-full border border-ink/15 bg-white/40
+    @apply inline-flex items-center whitespace-nowrap rounded-full border border-ink/15 bg-white/40
            px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-2
            backdrop-blur-md backdrop-saturate-150 transition-all duration-200
            shadow-[inset_0_1px_0_rgba(255,255,255,0.7)];
@@ -345,7 +356,16 @@ image-slot[data-fill='true'] {
   .site_footer.is-dark .footer_creds_sep { display: none; }
   /* Each cell self-centers and lets the logo render at a more legible size. */
   .site_footer.is-dark .footer_creds_item { flex: none; min-height: 44px; }
-  .site_footer.is-dark .footer_creds_item img { height: 36px; max-width: 100%; }
+  /* max-height + height:auto so wide logos (e.g. GSA) scale proportionally
+     when they hit the cell-width cap, instead of getting squished by an
+     explicit `height` combined with `max-width: 100%`. */
+  .site_footer.is-dark .footer_creds_item img {
+    max-height: 36px;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
 }
 
 /* Bottom bar */
