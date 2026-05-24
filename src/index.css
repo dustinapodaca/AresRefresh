@@ -1,0 +1,354 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   ARES — Tailwind v4 theme (Moonstone palette + Inter)
+   ============================================================ */
+@theme {
+  --color-ink: #1f1f1f;
+  --color-ink-2: #545353;
+  --color-mid: #7c7876;
+  --color-light: #a4a6a8;
+  --color-pale: #cbcdd0;
+  --color-paper: #fafaf9;
+  --color-paper-2: #f2f2f1;
+  --color-line: #d8d8d6;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-xl: 1.25rem; /* 20px */
+  --radius-2xl: 2rem;   /* 32px */
+
+  --container-7xl: 1320px;
+
+  /* Custom display sizes (used like text-display-xl) */
+  --text-display-2xl: clamp(56px, 9vw, 124px);
+  --text-display-2xl--line-height: 0.92;
+  --text-display-2xl--letter-spacing: -0.025em;
+
+  --text-display-xl: clamp(40px, 6vw, 80px);
+  --text-display-xl--line-height: 1;
+  --text-display-xl--letter-spacing: -0.02em;
+
+  --text-display-lg: clamp(34px, 4.4vw, 56px);
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.015em;
+
+  --text-display-md: clamp(28px, 3.2vw, 40px);
+  --text-display-md--line-height: 1.1;
+  --text-display-md--letter-spacing: -0.01em;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.6s ease forwards;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+/* ============================================================
+   Base — body / typography defaults
+   ============================================================ */
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply m-0 bg-paper text-ink-2 font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink m-0 font-semibold leading-tight tracking-tight;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { @apply text-ink; }
+  p { margin: 0; }
+  :focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+}
+
+/* ============================================================
+   Components — patterns that span multiple Tailwind utilities
+   ============================================================ */
+@layer components {
+  /* Container */
+  .container-ares { @apply mx-auto w-full max-w-[1320px] px-7; }
+
+  /* Brackets title — small all-caps section label */
+  .brackets-title {
+    @apply inline-flex items-center gap-2.5 text-[13px] font-medium uppercase tracking-[0.22em];
+  }
+  .brackets-title::before { content: '['; opacity: 0.5; }
+  .brackets-title::after  { content: ']'; opacity: 0.5; }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-[18px]
+           text-[14px] font-semibold uppercase tracking-[0.06em]
+           border-[1.5px] border-transparent transition-all duration-300 whitespace-nowrap;
+  }
+  .btn-sm { @apply px-5 py-3 text-[12px]; }
+  .btn-primary { @apply bg-ink text-paper border-ink hover:bg-paper hover:text-ink; }
+  .btn-outline { @apply bg-transparent text-ink border-ink hover:bg-ink hover:text-paper; }
+  .btn-white { @apply bg-paper text-ink border-paper hover:bg-transparent hover:text-paper hover:border-paper; }
+  .btn-outline-white { @apply bg-transparent text-paper border-paper hover:bg-paper hover:text-ink; }
+  /* Frosted-glass button on dark / image backgrounds — matches the .hero_box
+     card recipe exactly (blur 26 / sat 160 / bg .10 / border white .22). NO
+     transform, isolation, or will-change: those create compositing layers in
+     Chrome/Safari that cause `backdrop-filter` to sample its own layer
+     instead of the page behind it (resulting in a flat translucent fill
+     with no actual blur). */
+  .btn-glass {
+    background: rgba(255,255,255,0.04);
+    -webkit-backdrop-filter: blur(26px) saturate(160%);
+    backdrop-filter: blur(26px) saturate(160%);
+    border: 1.5px solid rgba(255,255,255,0.20);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.16),
+      0 12px 30px -10px rgba(0,0,0,0.25);
+    color: var(--color-paper);
+  }
+  .btn-glass:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.36);
+    color: var(--color-paper);
+  }
+
+  /* Frosted-glass circular arrow button — matches .btn-glass translucency
+     so the home Explore card arrows feel like the same surface. */
+  .arrow-btn {
+    @apply relative z-[3] inline-flex h-14 w-14 flex-shrink-0 items-center justify-center
+           rounded-full border border-white/20 text-paper
+           bg-white/[0.04] backdrop-blur-[26px] backdrop-saturate-[160%]
+           shadow-[0_12px_30px_-10px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.16)]
+           transition-[transform,background,border-color] duration-300;
+  }
+  .arrow-btn:hover {
+    transform: rotate(-45deg);
+    @apply bg-white/85 text-ink border-white/60;
+  }
+  .arrow-btn svg { @apply h-[18px] w-[18px]; }
+  .arrow-btn-lg { @apply h-[72px] w-[72px]; }
+  .arrow-btn-on-light {
+    @apply bg-ink/[0.06] border-ink/[0.12] text-ink
+           shadow-[0_12px_30px_-10px_rgba(31,31,31,0.15),inset_0_1px_0_rgba(255,255,255,0.6)];
+  }
+  .arrow-btn-on-light:hover { @apply bg-ink text-paper border-ink; }
+
+  /* Glass pill / tag */
+  .pill-glass {
+    @apply inline-flex items-center rounded-full border border-ink/15 bg-white/40
+           px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-2
+           backdrop-blur-md backdrop-saturate-150 transition-all duration-200
+           shadow-[inset_0_1px_0_rgba(255,255,255,0.7)];
+  }
+  .pill-glass-dark {
+    @apply border-white/28 bg-white/10 text-paper
+           shadow-[inset_0_1px_0_rgba(255,255,255,0.15)];
+  }
+  .pill-glass-armed {
+    @apply border-ink/40 bg-ink/85 text-paper
+           shadow-[inset_0_1px_0_rgba(255,255,255,0.12)];
+  }
+
+  /* Brand glyph — circle masked with Ares logo */
+  .brand-glyph {
+    @apply relative flex h-9 w-9 flex-shrink-0 items-center justify-center
+           rounded-full bg-ink text-paper;
+  }
+  .brand-glyph::before {
+    content: '';
+    @apply absolute inset-0;
+    background-color: currentColor;
+    -webkit-mask: url('/ares-logo.svg') no-repeat center / 52% 52%;
+            mask: url('/ares-logo.svg') no-repeat center / 52% 52%;
+  }
+
+  /* Image slot wrapper (filled to container) */
+  .image-slot-fill {
+    @apply absolute inset-0 h-full w-full;
+  }
+
+  /* Reveal animation — applied to elements that should fade up on mount */
+  .reveal { animation: var(--animate-fade-up); }
+  .reveal-d1 { animation: var(--animate-fade-up); animation-delay: 0.08s; opacity: 0; }
+  .reveal-d2 { animation: var(--animate-fade-up); animation-delay: 0.16s; opacity: 0; }
+  .reveal-d3 { animation: var(--animate-fade-up); animation-delay: 0.24s; opacity: 0; }
+  .reveal-d4 { animation: var(--animate-fade-up); animation-delay: 0.32s; opacity: 0; }
+}
+
+/* ============================================================
+   Utilities that need raw CSS (custom backgrounds, masks, etc.)
+   ============================================================ */
+.hero-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4'><circle cx='1' cy='1' r='.5' fill='%23ffffff' opacity='.06'/></svg>");
+  background-size: 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Hero gradient stack — kept as raw CSS for layered radial gradients */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(124, 120, 118, 0.5), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(164, 166, 168, 0.25), transparent 60%),
+    linear-gradient(180deg, #2a2929 0%, #1f1f1f 100%);
+}
+
+/* Service card hover-expand (LeafLife-style accordion of cards)
+   - Default: card with [data-active='true'] is expanded.
+   - When the grid is hovered: the default-active card collapses, and
+     only the currently-hovered card expands.
+   - Result: only ONE card is ever expanded — About Us on load, then
+     whichever card the cursor is over. */
+.service-grid {
+  display: flex;
+  gap: 20px;
+}
+.service-grid > * {
+  flex: 1 1 0;
+  min-width: 0;
+  transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Default-open card */
+.service-grid > *[data-active='true'] {
+  flex: 2.4 1 0;
+}
+/* As soon as anything in the grid is hovered, the default-open card retracts —
+   UNLESS it's the one being hovered (otherwise specificity beats the *:hover rule
+   and About stays collapsed when you move back to it). */
+.service-grid:hover > *[data-active='true']:not(:hover) {
+  flex: 1 1 0;
+}
+/* Hovered card expands */
+.service-grid > *:hover {
+  flex: 2.4 1 0;
+}
+@media (max-width: 991px) {
+  .service-grid { flex-direction: column; }
+  .service-grid > *,
+  .service-grid > *[data-active='true'],
+  .service-grid:hover > *[data-active='true'],
+  .service-grid > *:hover { flex: 1 1 auto; }
+}
+
+/* Image slot — make filled by default when it's the background of a card */
+image-slot { display: block; }
+image-slot[data-fill='true'] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Woman-Owned section title — bump right on desktop */
+.woman_owned_title { padding-left: 48px; }
+@media (max-width: 991px) {
+  .woman_owned_title { padding-left: 0; }
+}
+
+/* About — "CRAFTING reliable security INTO PRECISION" heading: bump on mobile */
+@media (max-width: 640px) {
+  .crafting_h { font-size: 34px !important; line-height: 1.05; }
+}
+
+
+/* ============================================================
+   DARK FOOTER  (.site_footer.is-dark) — matches hi-fi
+   ============================================================ */
+.site_footer.is-dark {
+  position: relative;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Background image layer — sits behind the gradient overlay */
+.site_footer.is-dark .image_bg {
+  position: absolute; inset: 0; z-index: -2;
+  background: var(--color-ink) url('/images/footer-bg.jpg') center/cover no-repeat;
+  opacity: 0.55;
+}
+/* Dark gradient overlay (matches hi-fi .site_footer.is-dark::before) */
+.site_footer.is-dark::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(120deg, rgba(31,31,31,.94) 0%, rgba(31,31,31,.7) 55%, rgba(31,31,31,.92) 100%);
+}
+
+/* Footer brand block */
+.footer_brand p { font-size: 15px; color: rgba(250,250,249,.72); line-height: 1.5; margin: 0; }
+.footer_brand_top { display: flex; align-items: center; gap: 18px; }
+.footer_brand_top .glyph {
+  width: 44px; height: 44px;
+  background: transparent; color: var(--color-paper);
+  flex-shrink: 0; position: relative; display: block;
+}
+.footer_brand_top .glyph::before {
+  content: ""; position: absolute; inset: 0;
+  background-color: currentColor;
+  -webkit-mask: url("/ares-logo.svg") no-repeat center / 100% 100%;
+  mask: url("/ares-logo.svg") no-repeat center / 100% 100%;
+}
+.footer_brand_top .wordmark { display: block; height: 32px; width: auto; filter: invert(1) brightness(1.1); }
+.footer_brand_top .sep { display: block; width: 1px; height: 36px; background: rgba(255,255,255,.2); flex-shrink: 0; }
+.footer_brand_top .est {
+  font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--color-paper); line-height: 1.15;
+}
+
+/* Column menus */
+.site_footer.is-dark .footer_col h5 { color: var(--color-paper); border-color: rgba(255,255,255,.15); }
+.site_footer.is-dark .footer_menu a { color: rgba(250,250,249,.7); }
+.site_footer.is-dark .footer_menu a:hover { color: var(--color-paper); }
+.site_footer.is-dark .socials a { color: rgba(250,250,249,.65); }
+.site_footer.is-dark .socials a:hover { color: var(--color-paper); }
+
+/* Credentials strip — frosted pill */
+.footer_creds {
+  list-style: none; margin: 24px 0 28px; padding: 24px 28px;
+  display: flex; align-items: center; gap: 24px;
+  background: rgba(255,255,255,.04);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+}
+.footer_creds_item { flex: 1 1 0; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.footer_creds_item img { display: block; height: 38px; width: auto; max-width: 100%; filter: grayscale(1) brightness(0) invert(1); opacity: .72; }
+.footer_creds_item img[src*="cert-gsa-footer"] { filter: none; opacity: .9; }
+.footer_creds_sep { flex: 0 0 auto; height: 36px; width: 1px; background: rgba(255,255,255,.22); display: block; }
+
+@media (max-width: 991px) {
+  .site_footer.is-dark .footer_creds { padding: 12px 32px; margin: 16px 0 24px; gap: 18px; }
+  .footer_creds_item img { height: 32px; }
+  .footer_creds_sep { height: 28px; }
+}
+@media (max-width: 640px) {
+  /* Reflow the four cert logos into a 2x2 grid so they have room to breathe
+     instead of getting crushed into a single squeezed row. */
+  .site_footer.is-dark .footer_creds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 20px;
+    padding: 22px 24px;
+    border-radius: 20px;
+  }
+  /* Separators don't fit a 2x2 layout — hide them. */
+  .site_footer.is-dark .footer_creds_sep { display: none; }
+  /* Each cell self-centers and lets the logo render at a more legible size. */
+  .site_footer.is-dark .footer_creds_item { flex: none; min-height: 44px; }
+  .site_footer.is-dark .footer_creds_item img { height: 36px; max-width: 100%; }
+}
+
+/* Bottom bar */
+.site_footer.is-dark .footer_bottom { color: rgba(250,250,249,.55); border-top: 0; }
+.site_footer.is-dark .footer_bottom a { color: rgba(250,250,249,.6); }
+.site_footer.is-dark .footer_bottom a:hover { color: var(--color-paper); }
