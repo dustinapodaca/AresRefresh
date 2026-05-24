@@ -229,15 +229,16 @@
 }
 
 /* Service card hover-expand (LeafLife-style accordion of cards)
-   - Default: card with [data-active='true'] is expanded.
-   - When the grid is hovered: the default-active card collapses, and
-     only the currently-hovered card expands.
-   - Result: only ONE card is ever expanded — About Us on load, then
-     whichever card the cursor is over.
-   - The hover transitions are gated behind `@media (hover: hover)` so
-     touch devices (phones, tablets) don't get a momentary "shrink"
-     when the user taps inside a card — that produced the bug where
-     About Us briefly retracted when you pressed any card body. */
+   - The whole accordion (default-active expand + hover retract/expand)
+     is gated behind `(min-width: 992px) and (hover: hover)`. Both must
+     hold, so neither a small viewport nor a touch device can ever fire
+     these rules — even if the browser reports (hover: hover) for the
+     device (which Samsung's S Pen-equipped phones can do).
+   - At mobile / tablet column widths, the @media (max-width: 991px)
+     block flips the grid to a column and explicitly resets every
+     flex value to `1 1 auto` so card heights are content/aspect-driven
+     instead of basis-0 grow shares (which collapsed About Us to a
+     thin strip on phones). */
 .service-grid {
   display: flex;
   gap: 20px;
@@ -247,16 +248,17 @@
   min-width: 0;
   transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* Default-open card — applied at every viewport that still uses the
-   row layout, regardless of hover capability. */
-.service-grid > *[data-active='true'] {
-  flex: 2.4 1 0;
-}
-/* Hover-driven retract/expand — mouse-capable devices only. */
-@media (hover: hover) {
+@media (min-width: 992px) and (hover: hover) {
+  /* Default-open card */
+  .service-grid > *[data-active='true'] {
+    flex: 2.4 1 0;
+  }
+  /* When anything in the grid is hovered, the default-active card retracts
+     unless it's the one being hovered. */
   .service-grid:hover > *[data-active='true']:not(:hover) {
     flex: 1 1 0;
   }
+  /* Hovered card expands */
   .service-grid > *:hover {
     flex: 2.4 1 0;
   }
