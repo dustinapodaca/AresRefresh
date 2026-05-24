@@ -44,13 +44,26 @@ export default function Contact() {
           <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2">
             {/* Map card */}
             <div className="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-line bg-paper-2 shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
+              {/* The iframe is intentionally rendered 50px larger than its
+                  container on every side; the parent's overflow:hidden then
+                  clips out the corners where Google's embed controls live —
+                  the "View larger map" link top-left, the layer/Satellite
+                  toggle bottom-left, and the fullscreen button bottom-right.
+                  The visible map slice is still centered on the requested
+                  lat/lng. */}
               <iframe
                 title="Ares Security service area map"
-                src="https://maps.google.com/maps?q=39.5%2C-104.95&t=&z=8&ie=UTF8&iwloc=near&output=embed"
+                src="https://maps.google.com/maps?ll=39.2%2C-104.95&t=&z=8&ie=UTF8&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 h-full w-full border-0"
-                style={{ filter: 'grayscale(0.55) contrast(0.95)' }}
+                className="absolute border-0"
+                style={{
+                  top: '-50px',
+                  left: '-50px',
+                  width: 'calc(100% + 100px)',
+                  height: 'calc(100% + 100px)',
+                  filter: 'grayscale(0.55) contrast(0.95)',
+                }}
               />
               <div className="absolute left-6 top-6 flex max-w-[240px] flex-col gap-1.5 rounded-xl border border-line bg-paper p-4 shadow-[0_12px_30px_-16px_rgba(31,31,31,0.18)]">
                 <h4 className="m-0 text-[14px] font-bold tracking-tight text-ink">Ares Security LLC</h4>
