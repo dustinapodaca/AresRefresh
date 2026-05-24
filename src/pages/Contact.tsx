@@ -46,7 +46,7 @@ export default function Contact() {
             <div className="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-line bg-paper-2 shadow-[0_24px_60px_-28px_rgba(31,31,31,0.18)]">
               <iframe
                 title="Ares Security service area map"
-                src="https://maps.google.com/maps?q=38.9%2C-104.8&t=&z=8&ie=UTF8&iwloc=near&output=embed"
+                src="https://maps.google.com/maps?q=39.5%2C-104.95&t=&z=8&ie=UTF8&iwloc=near&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 h-full w-full border-0"

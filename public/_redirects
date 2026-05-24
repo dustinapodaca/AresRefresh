@@ -1,0 +1,5 @@
+# SPA fallback — React Router owns all routes on the client. Tell Netlify
+# to serve index.html (with a 200, NOT a 301/302) for any path that
+# doesn't match a static file in the build. Without this, refreshing on
+# a deep route like /services returns Netlify's 404 page.
+/*    /index.html   200
