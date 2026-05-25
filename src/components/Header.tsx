@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import Socials from './Socials';
 
@@ -13,11 +13,46 @@ const NAV = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Picks the chrome's transition mode:
+  //   true  → clip-path slide (drawer open/close at top, route change)
+  //   false → opacity fade (scroll engagement, default)
+  // Set by triggerSlide() and reset by scroll-driven changes.
+  const [useSlide, setUseSlide] = useState(false);
   const { pathname } = useLocation();
+
+  // Lock window — when set, swallows any scroll-driven attempt to flip
+  // useSlide back to false. Needed because ScrollToTop on route change
+  // fires a synthetic scroll right after triggerSlide() — without this
+  // guard, that scroll would pre-empt the slide we just queued.
+  const slideLockedUntilRef = useRef(0);
+  const triggerSlide = () => {
+    slideLockedUntilRef.current = Date.now() + 500;
+    setUseSlide(true);
+  };
+
+  // Route change → next chrome change uses slide. Skip the first render
+  // so landing directly on a deep route doesn't queue an animation
+  // against an already-correct initial state.
+  const isFirstMount = useRef(true);
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    triggerSlide();
+  }, [pathname]);
 
   useEffect(() => {
     const SCROLL_THRESHOLD = 20;
-    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    const onScroll = () => {
+      const next = window.scrollY > SCROLL_THRESHOLD;
+      setScrolled((prev) => {
+        if (prev !== next && Date.now() > slideLockedUntilRef.current) {
+          setUseSlide(false);
+        }
+        return next;
+      });
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -42,16 +77,15 @@ export default function Header() {
     };
   }, [open]);
 
-  // Glass is engaged whenever the user has scrolled OR the mobile drawer is
-  // open. Two distinct entrance motions:
-  //   - Drawer OPEN (mobile only): clip-path RISES from the bottom edge so
-  //     the fog-glass slides up to meet the drawer dropping down.
-  //   - Everything else (scroll, drawer close, route change): plain opacity
-  //     fade — no slide.
-  // The clip-path is held at inset(0) any time the surface is visible OR
-  // fading out, and only retracts to inset(100% 0 0 0) AFTER a fade-out
-  // completes, so the next drawer open has a starting position to slide
-  // from. The transition string switches based on the source of the change.
+  // Glass is engaged whenever the user has scrolled OR the mobile drawer
+  // is open. The transition between hidden ↔ visible switches based on
+  // useSlide:
+  //   - useSlide=true  → clip-path slide (rises from / retracts to the
+  //     bottom edge). Used for drawer toggles and route changes.
+  //   - useSlide=false → opacity fade. Used for scroll engagement.
+  // Opacity follows along in slide mode: snap-on when becoming visible
+  // (so the slide-up reveal reads) and snap-off only after the slide
+  // completes (so the slide-down reads through to the end).
   const glassActive = scrolled || open;
 
   return (
@@ -62,8 +96,8 @@ export default function Header() {
           opacity: glassActive ? 1 : 0,
           clipPath: glassActive ? 'inset(0 0 0 0)' : 'inset(100% 0 0 0)',
           WebkitClipPath: glassActive ? 'inset(0 0 0 0)' : 'inset(100% 0 0 0)',
-          transition: open
-            ? 'clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0ms'
+          transition: useSlide
+            ? `clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0ms ${glassActive ? '0ms' : '400ms'}`
             : `opacity 300ms ease-out, clip-path 0ms ${glassActive ? '0ms' : '300ms'}, -webkit-clip-path 0ms ${glassActive ? '0ms' : '300ms'}`,
         }}
         className="pointer-events-none absolute inset-0 -z-10 border-b border-white/10 bg-ink/55 backdrop-blur-2xl backdrop-saturate-150"
@@ -78,6 +112,7 @@ export default function Header() {
           <Link
             to="/"
             onClick={() => {
+              triggerSlide();
               setOpen(false);
               if (pathname === '/') {
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -133,7 +168,10 @@ export default function Header() {
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               className="relative ml-1 flex h-11 w-11 items-center justify-center text-paper transition-opacity hover:opacity-75 lg:hidden"
-              onClick={() => setOpen((o) => !o)}
+              onClick={() => {
+                triggerSlide();
+                setOpen((o) => !o);
+              }}
             >
               {/* The top/bottom lines change BOTH a position (top/bottom) AND
                   a transform on toggle. Using `transition-all` so position
@@ -193,7 +231,10 @@ export default function Header() {
                 <NavLink
                   to={item.to}
                   end={item.end}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    triggerSlide();
+                    setOpen(false);
+                  }}
                   className="block py-4 text-[26px] font-normal leading-none tracking-[-0.04em] text-paper"
                 >
                   {item.label}
@@ -204,7 +245,10 @@ export default function Header() {
           <div className="mt-7 flex justify-center">
             <Link
               to="/contact"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                triggerSlide();
+                setOpen(false);
+              }}
               className="inline-flex items-center rounded-full border-[1.5px] border-paper bg-paper px-7 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-transparent hover:text-paper"
             >
               Request a Quote
