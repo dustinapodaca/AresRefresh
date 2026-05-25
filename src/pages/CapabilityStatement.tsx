@@ -225,6 +225,29 @@ const CS_STYLES = `
 .cs_spacer_md{height:70px}
 .cs_spacer_sm{height:64px}
 @media (max-width:991px){.cs_spacer_lg{height:70px}.cs_spacer_md{height:50px}.cs_spacer_sm{height:50px}}
+
+/* Section 04 status-dot pulse — fires once when the Contract Vehicles
+   grid scrolls into view (cv_grid carries data-reveal="none", which the
+   observer flips to data-revealed="true" without animating the grid
+   itself). Three keyframes: a plain green pulse for the .pill_active
+   dot which has no resting ring, and ring-preserving variants for the
+   .v_dot.green / .v_dot.amber lights which already carry a 3px
+   resting halo. */
+@keyframes cs_pulse_green {
+  0% { box-shadow: 0 0 0 0 rgba(124,184,95,.55); }
+  100% { box-shadow: 0 0 0 14px rgba(124,184,95,0); }
+}
+@keyframes cs_pulse_vdot_green {
+  0% { box-shadow: 0 0 0 3px rgba(124,184,95,.18), 0 0 0 0 rgba(124,184,95,.55); }
+  100% { box-shadow: 0 0 0 3px rgba(124,184,95,.18), 0 0 0 14px rgba(124,184,95,0); }
+}
+@keyframes cs_pulse_vdot_amber {
+  0% { box-shadow: 0 0 0 3px rgba(242,184,75,.18), 0 0 0 0 rgba(242,184,75,.55); }
+  100% { box-shadow: 0 0 0 3px rgba(242,184,75,.18), 0 0 0 14px rgba(242,184,75,0); }
+}
+.cv_grid[data-revealed="true"] .pill_active::before { animation: cs_pulse_green 1.4s ease-out; }
+.cv_grid[data-revealed="true"] .v_dot.green { animation: cs_pulse_vdot_green 1.4s ease-out; }
+.cv_grid[data-revealed="true"] .v_dot.amber { animation: cs_pulse_vdot_amber 1.4s ease-out; }
 `;
 
 export default function CapabilityStatement() {
@@ -312,16 +335,16 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
                 <span aria-hidden className="opacity-50">[</span>
                 {/* <br> shows only on <=460px so "CORE COMPETENCIES" stays whole on
                     a single second line instead of wrapping mid-phrase. */}
                 <span>SECTION 01 ·<br className="hidden max-[460px]:inline" /> CORE COMPETENCIES</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink">WHAT <span className="font-light italic text-mid">WE DO</span></h2>
+              <h2 className="text-display-lg text-ink" data-reveal="up">WHAT <span className="font-light italic text-mid">WE DO</span></h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">↓ Six divisions<br />under one GSA vehicle</p>
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">↓ Six divisions<br />under one GSA vehicle</p>
           </div>
           <div className="cs_cap_grid">
             {CAPS.map((c) => (
@@ -343,14 +366,14 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
                 <span aria-hidden className="opacity-50">[</span>
                 <span>SECTION 02 ·<br className="hidden max-[460px]:inline" /> PAST PERFORMANCE</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink">PROVEN <span className="font-light italic text-mid">RECORD</span></h2>
+              <h2 className="text-display-lg text-ink" data-reveal="up">PROVEN <span className="font-light italic text-mid">RECORD</span></h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2">↓ Detailed references<br />available on request</p>
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2" data-reveal="right">↓ Detailed references<br />available on request</p>
           </div>
           <div className="pp_grid">
             {PERF.map((p) => (
@@ -384,8 +407,8 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
         <div className="container-ares">
           <div className="mb-12">
-            <h3 className="brackets-title mb-4">SECTION 03 · DIFFERENTIATION</h3>
-            <h2 className="text-display-lg text-ink">WHY <span className="font-light italic text-mid">ARES</span></h2>
+            <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · DIFFERENTIATION</h3>
+            <h2 className="text-display-lg text-ink" data-reveal="up">WHY <span className="font-light italic text-mid">ARES</span></h2>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {DIFFS.map((d) => (
@@ -420,7 +443,7 @@ export default function CapabilityStatement() {
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-paper/60">↓ Pre-negotiated pricing<br />award without re-compete</p>
           </div>
-          <div className="cv_grid">
+          <div className="cv_grid" data-reveal="none">
             <div className="cv_card">
               <div className="cv_card_head">
                 <div>
@@ -464,14 +487,14 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]">
+              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
                 <span aria-hidden className="opacity-50">[</span>
                 <span>SECTION 05 ·<br className="hidden max-[460px]:inline" /> CERTIFICATIONS &amp; CODES</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink">CREDENTIALS <span className="font-light italic text-mid">ON THE RECORD</span></h2>
+              <h2 className="text-display-lg text-ink" data-reveal="up">CREDENTIALS <span className="font-light italic text-mid">ON THE RECORD</span></h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">↓ All data matches<br />SAM.gov registration</p>
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">↓ All data matches<br />SAM.gov registration</p>
           </div>
 
           <div className="cc_logos" data-scroll-active data-scroll-once data-in-view="false">
@@ -526,7 +549,7 @@ export default function CapabilityStatement() {
       {/* 8. POINT OF CONTACT */}
       <section className="poc_section" data-section="poc">
         <div className="container-ares">
-          <div className="poc_card">
+          <div className="poc_card" data-reveal="up">
             <div className="poc_grid">
               <div className="poc_lead">
                 <h3 className="brackets-title mb-4 text-paper/65">POINT OF CONTACT</h3>
@@ -558,7 +581,7 @@ export default function CapabilityStatement() {
       {/* 9. FOOTER CTA */}
       <section className="cs_footcta" data-section="footcta">
         <div className="container-ares">
-          <div className="cs_footcta_card">
+          <div className="cs_footcta_card" data-reveal="up">
             <div>
               <h3 className="brackets-title mb-3" style={{ fontSize: 11, letterSpacing: '0.22em', fontWeight: 600 }}>DOWNLOAD</h3>
               <h3 className="fct_head">Take this <em>capability statement</em> with you.</h3>

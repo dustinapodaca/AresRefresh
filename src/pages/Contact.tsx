@@ -97,7 +97,7 @@ export default function Contact() {
             </div>
 
             {/* Form */}
-            <form onSubmit={submit} className="flex flex-col gap-6 rounded-[2rem] border border-line bg-paper p-10">
+            <form onSubmit={submit} data-reveal="up" className="flex flex-col gap-6 rounded-[2rem] border border-line bg-paper p-10">
               <div className="flex flex-col gap-2.5 border-b border-line pb-5">
                 <h3 className="brackets-title">CONTACT US</h3>
                 <h2 className="text-[clamp(28px,3vw,40px)] font-bold tracking-tight text-ink">

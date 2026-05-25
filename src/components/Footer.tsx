@@ -1,9 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Socials from './Socials';
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  // Pages whose last section "docks" a CTA card halfway into the footer
+  // use the `is-extended` modifier — see .site_footer.is-extended in
+  // index.css. The page's bottom section uses a matching negative
+  // margin so the card's lower half slides over the footer's extended
+  // top padding. Listed explicitly so we don't unintentionally extend
+  // the footer on routes that don't dock a card.
+  const extended = pathname === '/services' || pathname === '/careers';
+
   return (
-    <footer className="site_footer is-dark has-bg-image">
+    <footer className={`site_footer is-dark has-bg-image${extended ? ' is-extended' : ''}`}>
       <div className="image_bg" aria-hidden="true" />
       <div className="container-ares">
         <div className="footer_row grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">

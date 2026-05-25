@@ -54,7 +54,7 @@ export default function Home() {
                 Protection Built<br />On{' '}
                 <span className="font-light italic text-light">Principle.</span>
               </h1>
-              <p className="reveal-d2 mb-9 max-w-[570px] text-[20px] leading-snug text-paper/75">
+              <p className="mb-9 max-w-[570px] text-[20px] leading-snug text-paper/75">
                 Bridging the gap between public-sector compliance and commercial reliability — a woman-owned, employee-focused firm delivering consistent results across every environment.
               </p>
             </div>
@@ -79,13 +79,14 @@ export default function Home() {
       <Section>
         <SectionHeading
           title={<>We Are <span className="font-light italic text-light">Reliable</span> In Every Way</>}
-          right={<Link to="/about" className="btn btn-primary">About Ares</Link>}
+          right={<Link to="/about" className="btn btn-primary" data-reveal="right">About Ares</Link>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
+          titleReveal="up"
         />
         <Spacer />
         <div className="grid items-end gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-pale">
+          <div data-reveal="left" className="relative aspect-[3/4] overflow-hidden rounded-xl bg-pale">
             <img src="/images/backbone-officer.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-top" />
           </div>
           <div className="grid gap-y-12 gap-x-10 sm:grid-cols-2">
@@ -137,7 +138,12 @@ export default function Home() {
                 ),
               },
             ].map((b, i) => (
-              <div key={i} data-scroll-active data-in-view="false" className="group flex flex-col gap-4 reveal-d1">
+              <div
+                key={i}
+                data-scroll-active
+                data-in-view="false"
+                className="group flex flex-col gap-4"
+              >
                 {/* Icon + header wrapper:
                      - default (>=461px): stacked column (icon on top, header below)
                      - <=460px: row-reverse with the icon shrunk and pushed to the right */}
@@ -198,6 +204,8 @@ export default function Home() {
           title={<>Protection Built On <span className="font-light italic text-light">Trust</span>.</>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
+          kickerReveal="up"
+          titleReveal="up"
         />
         <Spacer />
         <div className="service-grid">
@@ -205,7 +213,7 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
-              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0"
+              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0 lg:min-h-[600px]"
             >
               <div className="absolute inset-0 -z-10">
                 {c.slot.src
@@ -237,13 +245,22 @@ export default function Home() {
 
       {/* Testimonial */}
       <Section className="bg-paper-2">
-        <div className="text-center"><h3 className="brackets-title">TESTIMONIAL</h3></div>
+        <div className="text-center">
+          <h3 className="brackets-title" data-reveal="down">TESTIMONIAL</h3>
+        </div>
         <Spacer />
         <div className="mx-auto max-w-3xl text-center">
-          <blockquote className="m-0 mb-10 text-ink font-semibold" style={{ fontSize: 'clamp(24px, 3vw, 36px)', lineHeight: 1.3, letterSpacing: '-0.005em' }}>
+          <blockquote
+            data-reveal="up"
+            className="m-0 mb-10 text-ink font-semibold"
+            style={{ fontSize: 'clamp(24px, 3vw, 36px)', lineHeight: 1.3, letterSpacing: '-0.005em' }}
+          >
             "Ares arrived <span style={{ background: 'linear-gradient(180deg, transparent 60%, var(--color-pale) 60%)' }}>prepared</span>. Their documentation was cleaner than the incumbent's from day one, and their team was inside the <span style={{ background: 'linear-gradient(180deg, transparent 60%, var(--color-pale) 60%)' }}>badge cycle</span> before most contractors finish onboarding."
           </blockquote>
-          <div>
+          <div
+            data-reveal="up"
+            style={{ ['--reveal-delay' as string]: '160ms' } as React.CSSProperties}
+          >
             <h4 className="mb-1 text-[14px] font-bold uppercase tracking-[0.14em] text-ink">Contracting Officer</h4>
             <p className="text-[14px] tracking-[0.04em] text-mid">USAF · Buckley Space Force Base</p>
           </div>
@@ -276,19 +293,28 @@ function SectionHeading({
   right,
   titleSize,
   titleStyle,
+  titleReveal,
+  kickerReveal,
 }: {
   kicker?: string;
   title: React.ReactNode;
   right?: React.ReactNode;
   titleSize?: string;
   titleStyle?: React.CSSProperties;
+  titleReveal?: 'up' | 'down' | 'left' | 'right';
+  kickerReveal?: 'up' | 'down' | 'left' | 'right';
 }) {
   return (
     <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
       <div>
-        {kicker && <h3 className="brackets-title mb-3">{kicker}</h3>}
+        {kicker && (
+          <h3 className="brackets-title mb-3" data-reveal={kickerReveal}>
+            {kicker}
+          </h3>
+        )}
         <h2
           className="m-0 text-ink"
+          data-reveal={titleReveal}
           style={titleSize ? { fontSize: titleSize, lineHeight: 1, ...(titleStyle || {}) } : titleStyle}
         >
           {title}

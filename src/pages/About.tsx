@@ -15,19 +15,43 @@ export default function About() {
         <div className="container-ares">
           <ul role="list" className="m-0 flex list-none flex-wrap items-center justify-center gap-x-[clamp(28px,5vw,64px)] gap-y-[18px] p-0 max-[460px]:grid max-[460px]:grid-cols-4 max-[460px]:gap-x-2 max-[460px]:gap-y-0 sm:flex-nowrap">
             <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-1 max-[460px]:min-h-12 max-[460px]:max-w-full">
-              <img src="/images/cert-gsa-blue.png" alt="GSA Schedule Holder" className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]" />
+              <img
+                src="/images/cert-gsa-blue.png"
+                alt="GSA Schedule Holder"
+                data-reveal="left"
+                style={{ ['--reveal-delay' as string]: '0ms' } as React.CSSProperties}
+                className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]"
+              />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
             <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-3 max-[460px]:min-h-12 max-[460px]:max-w-full">
-              <img src="/images/cert-wosb.png" alt="SBA WOSB Certified" className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-12 sm:h-14" />
+              <img
+                src="/images/cert-wosb.png"
+                alt="SBA WOSB Certified"
+                data-reveal="left"
+                style={{ ['--reveal-delay' as string]: '150ms' } as React.CSSProperties}
+                className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-12 sm:h-14"
+              />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
             <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-2 max-[460px]:min-h-12 max-[460px]:max-w-full">
-              <img src="/images/cert-women-owned.png" alt="Women Owned" className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]" />
+              <img
+                src="/images/cert-women-owned.png"
+                alt="Women Owned"
+                data-reveal="left"
+                style={{ ['--reveal-delay' as string]: '300ms' } as React.CSSProperties}
+                className="block h-12 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-[62px]"
+              />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
             <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-4 max-[460px]:min-h-12 max-[460px]:max-w-full">
-              <img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-14" />
+              <img
+                src="/images/cert-wbenc.png"
+                alt="Certified WBENC Women's Business Enterprise"
+                data-reveal="left"
+                style={{ ['--reveal-delay' as string]: '450ms' } as React.CSSProperties}
+                className="block h-11 w-auto max-w-full object-contain max-[460px]:h-auto max-[460px]:max-h-10 sm:h-14"
+              />
             </li>
           </ul>
         </div>
@@ -38,8 +62,8 @@ export default function About() {
         <div className="container-ares">
           <div className="grid gap-10 lg:grid-cols-3">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 01 · MISSION</h3>
-              <h2 className="text-display-md text-ink crafting_h">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · MISSION</h3>
+              <h2 className="text-display-md text-ink crafting_h" data-reveal="up">
                 CRAFTING<br />
                 <span className="font-light italic text-mid">reliable security</span><br />
                 INTO PRECISION
@@ -56,10 +80,10 @@ export default function About() {
           <Spacer h="64" />
 
           <div className="grid items-stretch gap-8 lg:grid-cols-[1fr_1.6fr]">
-            <div className="relative min-h-[380px] overflow-hidden rounded-2xl bg-paper-2">
+            <div data-reveal="left" className="relative min-h-[380px] overflow-hidden rounded-2xl bg-paper-2">
               <img src="/images/mission-vehicle.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-bottom" />
             </div>
-            <div className="relative isolate flex flex-col justify-between gap-12 overflow-hidden rounded-2xl bg-ink p-12 text-paper">
+            <div data-reveal="right" className="relative isolate flex flex-col justify-between gap-12 overflow-hidden rounded-2xl bg-ink p-12 text-paper">
               <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/cap-cta-bg.jpg')" }} />
               <div aria-hidden className="pointer-events-none absolute inset-0 -z-10" style={{ background: 'linear-gradient(180deg, rgba(31,31,31,.55) 0%, rgba(31,31,31,.35) 50%, rgba(31,31,31,.7) 100%), linear-gradient(90deg, rgba(31,31,31,.55) 0%, rgba(31,31,31,.2) 60%, rgba(31,31,31,.4) 100%)' }} />
               {/* inline-grid with explicit columns so the text track sizes to its
@@ -93,8 +117,8 @@ export default function About() {
       <section className="bg-paper-2">
         <Spacer />
         <div className="container-ares">
-          <h3 className="brackets-title mb-4">SECTION 02 · DIFFERENTIATION</h3>
-          <h2 className="text-display-lg mb-12 text-ink">
+          <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · DIFFERENTIATION</h3>
+          <h2 className="text-display-lg mb-12 text-ink" data-reveal="up">
             THREE REASONS THE <span className="font-light italic text-mid">RECORD</span> HOLDS
           </h2>
 
@@ -119,8 +143,8 @@ export default function About() {
         <div className="container-ares">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 03 · PEOPLE</h3>
-              <h2 className="mb-6 text-display-lg text-ink">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · PEOPLE</h3>
+              <h2 className="mb-6 text-display-lg text-ink" data-reveal="up">
                 THE BACKBONE <span className="font-light italic text-mid">of Ares</span>
               </h2>
               <p className="mb-6 max-w-[54ch] text-[18px] text-ink-2">
@@ -142,7 +166,7 @@ export default function About() {
                 ))}
               </ul>
             </div>
-            <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto lg:min-h-[560px]">
+            <div data-reveal="right" className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto lg:min-h-[560px]">
               <img src="/images/officer-portrait.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center top' }} />
             </div>
           </div>

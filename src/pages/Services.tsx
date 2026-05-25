@@ -68,12 +68,12 @@ export default function Services() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 01 · MATRIX</h3>
-              <h2 className="text-display-lg text-ink">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · MATRIX</h3>
+              <h2 className="text-display-lg text-ink" data-reveal="up">
                 THE ARES <span className="font-light italic text-mid">SERVICE</span> MATRIX
               </h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">
               ↳ What we ship<br />&nbsp;&nbsp;&nbsp;What the client gets
             </p>
           </div>
@@ -84,8 +84,7 @@ export default function Services() {
                 key={c.n}
                 data-scroll-active
                 data-in-view="false"
-                className="group relative isolate flex min-h-[360px] flex-col justify-between overflow-hidden rounded-[2rem] bg-ink p-9 text-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)] reveal-d1 max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)]"
-                style={{ animationDelay: `${i * 0.05}s` }}
+                className="group relative isolate flex min-h-[360px] flex-col justify-between overflow-hidden rounded-[2rem] bg-ink p-9 text-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)] max-[460px]:data-[in-view=true]:-translate-y-1 max-[460px]:data-[in-view=true]:shadow-[0_32px_64px_-24px_rgba(31,31,31,0.35)]"
               >
                 <div className="absolute inset-0 -z-10 bg-ink">
                   {(c as any).src
@@ -122,25 +121,52 @@ export default function Services() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 02 · LIFECYCLE</h3>
-              <h2 className="text-display-lg text-ink">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · LIFECYCLE</h3>
+              <h2 className="text-display-lg text-ink" data-reveal="up">
                 FOUR <span className="font-light italic text-mid">STAGES</span> TO DEPLOYMENT
               </h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">
               ↳ Every engagement<br />moves through these four stages
             </p>
           </div>
 
           <div className="grid overflow-hidden rounded-2xl border border-line bg-paper md:grid-cols-4">
-            {LIFECYCLE.map((step, i) => (
-              <div key={step.n} data-scroll-active data-in-view="false" className={`relative flex flex-col items-center gap-4 p-8 text-center transition-colors duration-300 hover:border-ink max-[460px]:data-[in-view=true]:border-ink ${i < LIFECYCLE.length - 1 ? 'md:border-r border-line' : ''} ${i < LIFECYCLE.length - 1 ? 'border-b md:border-b-0' : ''}`}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-[18px] font-bold text-paper">{step.n}</div>
-                <h4 className="m-0 text-[18px] font-bold uppercase tracking-tight text-ink">{step.h}</h4>
-                <div className="text-[11px] uppercase tracking-[0.15em] text-mid">{step.micro}</div>
-                <p className="text-[14px] leading-snug text-ink-2">{step.p}</p>
-              </div>
-            ))}
+            {LIFECYCLE.map((step, i) => {
+              const hasArrow = i < LIFECYCLE.length - 1;
+              return (
+                <div
+                  key={step.n}
+                  data-scroll-active
+                  data-in-view="false"
+                  className={`group relative flex flex-col items-center gap-4 p-8 text-center transition-[border-color,box-shadow] duration-200 ease-out hover:border-ink max-[460px]:data-[in-view=true]:border-ink ${hasArrow ? 'border-b md:border-b-0 md:border-r border-line md:hover:shadow-[inset_-1px_0_0_var(--color-ink)]' : ''}`}
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-[18px] font-bold text-paper">{step.n}</div>
+                  <h4 className="m-0 text-[18px] font-bold uppercase tracking-tight text-ink">{step.h}</h4>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-mid">{step.micro}</div>
+                  <p className="text-[14px] leading-snug text-ink-2">{step.p}</p>
+
+                  {/* Connector arrow sitting on the divider between this
+                      step and the next (desktop only). Default state is an
+                      outlined disc with a thin dark arrow; on hover of THIS
+                      step the disc fills black with a white arrow, in sync
+                      with the right-border highlight to its left. The
+                      transform `translate-x-1/2` parks it exactly on the
+                      divider line so it visually straddles the seam. */}
+                  {hasArrow && (
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute right-0 top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-line bg-paper text-ink transition-colors duration-200 ease-out group-hover:border-ink group-hover:bg-ink group-hover:text-paper md:flex"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 6h6" />
+                        <path d="M6 3l3 3-3 3" />
+                      </svg>
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <div className="mt-4 flex justify-between border-t border-dashed border-line pt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-mid gap-3">
@@ -155,15 +181,23 @@ export default function Services() {
       {/* Why Our Four-Stage Process Matters */}
       <WhyStages />
 
-      {/* Personnel in Action banner (moved from About) */}
-      <section className="relative py-20">
-        <div className="absolute inset-x-0 bottom-0 z-0 h-1/2 bg-paper-2" />
+      {/* Personnel in Action banner — Services-only "docked CTA" treatment.
+          The Footer below uses `is-extended` (see Footer.tsx + index.css)
+          to grow ~290px of top headroom. This section slides its CTA
+          card halfway into that headroom via -mb-[290px]; z-10 keeps
+          the card stacked above the footer's image/gradient layers so
+          the docked half reads as resting ON the footer. Section bg
+          isn't painted — the real footer is what shows behind the
+          docked half, not a duplicate. The match works on every
+          viewport since -mb and +pt are equal and opposite, so the
+          dock effect applies on mobile too. */}
+      <section className="relative z-10 py-20 -mb-[290px]">
         <div className="container-ares relative z-10">
-          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] bg-ink shadow-[0_40px_80px_-32px_rgba(31,31,31,0.5),0_8px_24px_-8px_rgba(31,31,31,0.25)]">
+          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] bg-ink shadow-[0_40px_80px_-32px_rgba(31,31,31,0.5),0_8px_24px_-8px_rgba(31,31,31,0.25)]" data-reveal="up">
             <img src="/images/about-banner.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/85" />
             <div className="absolute inset-x-12 bottom-12 text-paper">
-              <h3 className="relative mb-3 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper grid-cols-[auto_max-content_auto]">
+              <h3 className="relative mb-3 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper grid-cols-[auto_max-content_auto] max-[460px]:grid max-[460px]:w-fit max-[460px]:mx-auto">
                 <span aria-hidden className="opacity-50">[</span>
                 <span>PERSONNEL IN ACTION</span>
                 <span aria-hidden className="opacity-50">]</span>

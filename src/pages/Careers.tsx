@@ -103,12 +103,12 @@ export default function Careers() {
         <Spacer />
         <div className="container-ares">
           <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
-            <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] bg-paper-2 lg:aspect-auto lg:min-h-[520px]">
+            <div data-reveal="left" className="relative aspect-[2/3] overflow-hidden rounded-[2rem] bg-paper-2 lg:aspect-auto lg:min-h-[520px]">
               <img src="/images/careers-philosophy.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div>
-              <h3 className="brackets-title mb-4">SECTION 01 · PHILOSOPHY</h3>
-              <h2 className="mb-6 max-w-[14ch] text-display-lg text-ink">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · PHILOSOPHY</h3>
+              <h2 className="mb-6 max-w-[14ch] text-display-lg text-ink" data-reveal="up">
                 YOU GROW <span className="font-light italic text-mid">with us.</span>
               </h2>
               <p className="mb-6 max-w-[54ch] text-[18px] text-ink-2">
@@ -130,8 +130,8 @@ export default function Careers() {
       <section className="bg-paper-2">
         <Spacer />
         <div className="container-ares">
-          <h3 className="brackets-title mb-4">SECTION 02 · WHY ARES</h3>
-          <h2 className="mb-12 text-display-lg text-ink">
+          <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · WHY ARES</h3>
+          <h2 className="mb-12 text-display-lg text-ink" data-reveal="up">
             FOUR REASONS PEOPLE <span className="font-light italic text-mid">STAY.</span>
           </h2>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -155,12 +155,12 @@ export default function Careers() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4">SECTION 03 · ARES ROLES</h3>
-              <h2 className="text-display-lg text-ink">
+              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · ARES ROLES</h3>
+              <h2 className="text-display-lg text-ink" data-reveal="up">
                 WHO WE <span className="font-light italic text-mid">HIRE.</span>
               </h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid">
+            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">
               ↳ Colorado Springs<br />Denver · Pueblo
             </p>
           </div>
@@ -190,11 +190,16 @@ export default function Careers() {
         <Spacer />
       </section>
 
-      {/* Apply CTA card */}
-      <section id="apply" className="relative pt-10 pb-[120px]">
-        <div className="absolute inset-x-0 bottom-0 z-0 h-1/2 bg-paper-2" />
+      {/* Apply CTA card — "docked CTA" treatment, same pattern as the
+          Personnel banner on /services. The Footer below uses
+          `is-extended` (see Footer.tsx + index.css) to grow ~290px of
+          top headroom; this section slides its CTA card's lower half
+          over that headroom via -mb-[290px]. z-10 keeps the card
+          stacked above the footer's image/gradient layers. No section
+          bg — the real footer is what shows behind the docked half. */}
+      <section id="apply" className="relative z-10 pt-10 pb-[120px] -mb-[290px]">
         <div className="container-ares">
-          <div className="relative z-10 min-h-[480px] overflow-hidden rounded-[2rem] bg-ink shadow-[0_40px_80px_-32px_rgba(31,31,31,0.45),0_16px_32px_-16px_rgba(31,31,31,0.25)] lg:aspect-[16/8]">
+          <div className="relative z-10 min-h-[480px] overflow-hidden rounded-[2rem] bg-ink shadow-[0_40px_80px_-32px_rgba(31,31,31,0.45),0_16px_32px_-16px_rgba(31,31,31,0.25)] lg:aspect-[16/8]" data-reveal="up">
             <div className="absolute inset-0 -z-10">
               <img src="/images/careers-apply.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             </div>

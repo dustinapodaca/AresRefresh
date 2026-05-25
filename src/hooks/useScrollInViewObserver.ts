@@ -19,8 +19,9 @@ import { useEffect } from 'react';
 export function useScrollInViewObserver() {
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return;
-    const targets = document.querySelectorAll<HTMLElement>('[data-scroll-active]');
-    if (!targets.length) return;
+    const hoverTargets = document.querySelectorAll<HTMLElement>('[data-scroll-active]');
+    const revealTargets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    if (!hoverTargets.length && !revealTargets.length) return;
 
     // Hover-mirror observer (center detection): fires only when the element
     // is inside the middle 10% of the viewport, so hover-equivalent styles
@@ -50,14 +51,67 @@ export function useScrollInViewObserver() {
       { rootMargin: '0px 0px -25% 0px', threshold: 0 },
     );
 
-    targets.forEach((el) => {
+    // Directional reveal observer — sets `data-revealed="true"` once when
+    // the element scrolls into view. Uses its OWN attribute so it can
+    // coexist on the same element as the hover-mirror data-in-view state
+    // (e.g. the four feature cards in the "We Are Reliable" section use
+    // both: scroll-into-view fade-up + hover-mirror icon color flip).
+    //
+    // rootMargin shrinks the bottom of the root by 15% so elements
+    // scrolling up from below have to be a bit inside the viewport before
+    // reveal fires — otherwise reveals trigger on a one-pixel sliver and
+    // are mostly done by the time the user actually looks at the section.
+    // Elements already in the viewport on mount bypass this entirely via
+    // the synchronous rect check below.
+    const revealOnceIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute('data-revealed', 'true');
+            revealOnceIo.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -15% 0px', threshold: 0 },
+    );
+
+    hoverTargets.forEach((el) => {
       if (el.hasAttribute('data-scroll-once')) revealIo.observe(el);
       else centerIo.observe(el);
+    });
+    // Belt-and-suspenders: synchronously detect anything that's already in
+    // the viewport at registration time. The IO's own initial callback is
+    // async; on some browsers / first paints it can lag a frame, leaving
+    // a brief flash of invisible content. A direct rect check eliminates
+    // that gap. Anything OFF-screen is handed to the observer as normal.
+    //
+    // On-mount reveals are delayed ~400ms so they animate AFTER the hero
+    // (which uses the .reveal/.reveal-d1/.reveal-d2 mount classes) has
+    // started. Without this delay everything competes at t=0 and the
+    // hero's stagger gets visually flattened. The delay is sync-only —
+    // observer-triggered reveals (scrolling content into view later)
+    // still fire immediately.
+    const ON_MOUNT_REVEAL_DELAY_MS = 400;
+    const viewportH = window.innerHeight;
+    const timers: number[] = [];
+    revealTargets.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inViewportNow = rect.top < viewportH && rect.bottom > 0;
+      if (inViewportNow) {
+        const t = window.setTimeout(() => {
+          el.setAttribute('data-revealed', 'true');
+        }, ON_MOUNT_REVEAL_DELAY_MS);
+        timers.push(t);
+      } else {
+        revealOnceIo.observe(el);
+      }
     });
 
     return () => {
       centerIo.disconnect();
       revealIo.disconnect();
+      revealOnceIo.disconnect();
+      timers.forEach((t) => clearTimeout(t));
     };
   }, []);
 }

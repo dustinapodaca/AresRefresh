@@ -37,7 +37,7 @@
   --text-display-md--line-height: 1.1;
   --text-display-md--letter-spacing: -0.01em;
 
-  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-up: fade-up 2.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fade-in: fade-in 0.6s ease forwards;
 
   @keyframes fade-up {
@@ -205,6 +205,42 @@
   .reveal-d2 { animation: var(--animate-fade-up); animation-delay: 0.16s; opacity: 0; }
   .reveal-d3 { animation: var(--animate-fade-up); animation-delay: 0.24s; opacity: 0; }
   .reveal-d4 { animation: var(--animate-fade-up); animation-delay: 0.32s; opacity: 0; }
+
+  /* Scroll-triggered directional reveals — modeled on LeafLife's WOW.js
+     fadeInUp/Down/Left/Right pattern. The observer (useScrollInViewObserver)
+     sets `data-revealed="true"` the first time the element scrolls into
+     view; CSS interpolates the offset + opacity to settle in place.
+     One-shot: never reverts. `--reveal-delay` lets neighbors stagger via
+     inline style on each child. Kept on a SEPARATE attribute from
+     `data-in-view` so cards using both (hover-mirror + reveal) don't
+     fight each other for state. */
+  [data-reveal] {
+    --reveal-delay: 0ms;
+    opacity: 0;
+    transition:
+      opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+      transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay);
+    will-change: opacity, transform;
+  }
+  [data-reveal="up"]    { transform: translate3d(0, 32px, 0); }
+  [data-reveal="down"]  { transform: translate3d(0, -32px, 0); }
+  [data-reveal="left"]  { transform: translate3d(-40px, 0, 0); }
+  [data-reveal="right"] { transform: translate3d(40px, 0, 0); }
+  /* No-op marker: still gets observed and gets `data-revealed` flipped
+     when it enters view, but stays visible and static itself. Used as a
+     parent flag whose `[data-revealed="true"]` state triggers child
+     animations via descendant CSS — e.g. the status-dot pulses in
+     Capability Statement section 04. Placed after the directional
+     variants so its opacity/transform values win the cascade. */
+  [data-reveal="none"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* ============================================================
@@ -261,6 +297,25 @@
   /* Hovered card expands */
   .service-grid > *:hover {
     flex: 2.4 1 0;
+  }
+  /* Card title scales in lockstep with the accordion: whichever card is
+     "open" (default-active or hovered) grows its h2 to 1.75x. Origin set
+     to the bottom-left so the title expands up into the empty space
+     above it without pushing the body copy below. Same easing as the
+     flex transition so motion reads as one gesture. */
+  .service-grid > * h2 {
+    transform-origin: left bottom;
+    transform: scale(1);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .service-grid > *[data-active='true'] h2 {
+    transform: scale(1.75);
+  }
+  .service-grid:hover > *[data-active='true']:not(:hover) h2 {
+    transform: scale(1);
+  }
+  .service-grid > *:hover h2 {
+    transform: scale(1.75);
   }
 }
 @media (max-width: 991px) {
@@ -395,3 +450,13 @@ image-slot[data-fill='true'] {
 .site_footer.is-dark .footer_bottom { color: rgba(250,250,249,.55); border-top: 0; }
 .site_footer.is-dark .footer_bottom a { color: rgba(250,250,249,.6); }
 .site_footer.is-dark .footer_bottom a:hover { color: var(--color-paper); }
+
+/* Extended dark footer — on pages that "dock" their last CTA card
+   halfway into the footer (currently /services and /careers), the
+   footer gains ~290px of top headroom. The page's last <section>
+   uses a matching -mb-[290px] so its CTA card's lower half slides
+   over that headroom while the footer's content stays at the same
+   screen Y as on every other page. Applies on every viewport. */
+.site_footer.is-extended .footer_row {
+  padding-top: 370px;
+}
