@@ -43,10 +43,15 @@ export default function Header() {
   }, [open]);
 
   // Glass is engaged whenever the user has scrolled OR the mobile drawer is
-  // open. Instead of cross-fading the colors, we animate a clip-path inset
-  // so the fog-glass surface RISES from the bottom edge of the header up,
-  // matching how the drawer panel drops down — two opposing motions that
-  // meet in the middle.
+  // open. Two distinct entrance motions:
+  //   - Drawer OPEN (mobile only): clip-path RISES from the bottom edge so
+  //     the fog-glass slides up to meet the drawer dropping down.
+  //   - Everything else (scroll, drawer close, route change): plain opacity
+  //     fade — no slide.
+  // The clip-path is held at inset(0) any time the surface is visible OR
+  // fading out, and only retracts to inset(100% 0 0 0) AFTER a fade-out
+  // completes, so the next drawer open has a starting position to slide
+  // from. The transition string switches based on the source of the change.
   const glassActive = scrolled || open;
 
   return (
@@ -54,9 +59,12 @@ export default function Header() {
       <div
         aria-hidden
         style={{
+          opacity: glassActive ? 1 : 0,
           clipPath: glassActive ? 'inset(0 0 0 0)' : 'inset(100% 0 0 0)',
           WebkitClipPath: glassActive ? 'inset(0 0 0 0)' : 'inset(100% 0 0 0)',
-          transition: 'clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1)',
+          transition: open
+            ? 'clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0ms'
+            : `opacity 300ms ease-out, clip-path 0ms ${glassActive ? '0ms' : '300ms'}, -webkit-clip-path 0ms ${glassActive ? '0ms' : '300ms'}`,
         }}
         className="pointer-events-none absolute inset-0 -z-10 border-b border-white/10 bg-ink/55 backdrop-blur-2xl backdrop-saturate-150"
       />
