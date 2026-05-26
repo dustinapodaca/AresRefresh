@@ -58,13 +58,13 @@ export function useScrollInViewObserver() {
     // (e.g. the four feature cards in the "We Are Reliable" section use
     // both: scroll-into-view fade-up + hover-mirror icon color flip).
     //
-    // Bottom 10% EXPANSION so reveals fire while the element is still
-    // ~10% of the viewport height below the visible area — anticipatory
-    // trigger. By the time the user scrolls the element into view, the
-    // 1.4s fade-up has had a chance to play during the scroll rather
-    // than starting cold once the element is already visible. Elements
-    // already in the viewport on mount bypass this via the rect check
-    // below.
+    // Trigger fires the moment any pixel of the element crosses the
+    // bottom edge of the viewport — neither anticipatory (positive
+    // bottom margin pre-fires too early, GSA hero card already animated
+    // by the time you scroll to it) nor delayed (negative bottom margin
+    // waits until the element is inside, section tops feel empty). 0
+    // is the happy medium. Elements already in the viewport on mount
+    // bypass this via the rect check below.
     const revealOnceIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -74,7 +74,7 @@ export function useScrollInViewObserver() {
           }
         });
       },
-      { rootMargin: '0px 0px 10% 0px', threshold: 0 },
+      { rootMargin: '0px', threshold: 0 },
     );
 
     hoverTargets.forEach((el) => {
