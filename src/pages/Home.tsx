@@ -30,6 +30,20 @@ const SERVICE_CARDS = [
 export default function Home() {
   useScrollInViewObserver();
 
+  // GSA hero card animation strategy depends on whether it's in view on
+  // first paint. At lg+ the card is absolutely positioned in the bottom-
+  // right of the hero (visible on load), so the mount-based reveal-d4
+  // animation runs while the user is looking at it. Below lg the card
+  // flows beneath the buttons and is typically below the fold on mobile;
+  // there the mount animation would finish before the user scrolls down,
+  // so we switch to a scroll-triggered data-reveal="up" that fires when
+  // the card is 10% inside the viewport (per the revealOnceIo rule).
+  // Snapshot at first render via useState initializer so the initial
+  // markup is correct on the first paint (a useEffect-driven check would
+  // miss the first render and let the reveal-d4 fire prematurely).
+  const isLgUp = typeof window !== 'undefined'
+    && window.matchMedia('(min-width: 1024px)').matches;
+
   return (
     <main>
       {/* Hero */}
@@ -62,7 +76,10 @@ export default function Home() {
             {/* GSA contract card (frosted glass) — matches .hero_box recipe.
                 On mobile: sits in flow below the buttons (full width).
                 On lg+: floats absolute in the bottom-right corner. */}
-            <div className="reveal-d4 relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.04] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[26px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]">
+            <div
+              className={`${isLgUp ? 'reveal-d4 ' : ''}relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.04] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[26px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
+              data-reveal={isLgUp ? undefined : 'up'}
+            >
               <a href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES" target="_blank" rel="noopener noreferrer" className="arrow-btn absolute right-6 top-6" aria-label="View on GSA eLibrary">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M15.3846 0H0.615385C0.275692 0 0 0.275692 0 0.615385C0 0.955077 0.275692 1.23077 0.615385 1.23077H13.8988L0.180308 14.9495C-0.06 15.1898 -0.06 15.5794 0.180308 15.8197C0.300615 15.94 0.457846 16 0.615385 16C0.772923 16 0.930461 15.94 1.05046 15.8197L14.7692 2.10092V15.3846C14.7692 15.7243 15.0449 16 15.3846 16C15.7243 16 16 15.7243 16 15.3846V0.615385C16 0.275692 15.7243 0 15.3846 0Z" fill="currentColor" /></svg>
               </a>

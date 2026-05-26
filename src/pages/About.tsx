@@ -24,7 +24,7 @@ export default function About() {
               />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
-            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-3 max-[460px]:min-h-12 max-[460px]:max-w-full">
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-2 max-[460px]:min-h-12 max-[460px]:max-w-full">
               <img
                 src="/images/cert-wosb.png"
                 alt="SBA WOSB Certified"
@@ -34,7 +34,7 @@ export default function About() {
               />
             </li>
             <li aria-hidden className="hidden h-12 w-px flex-none bg-line sm:block" />
-            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-2 max-[460px]:min-h-12 max-[460px]:max-w-full">
+            <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-3 max-[460px]:min-h-12 max-[460px]:max-w-full">
               <img
                 src="/images/cert-women-owned.png"
                 alt="Women Owned"

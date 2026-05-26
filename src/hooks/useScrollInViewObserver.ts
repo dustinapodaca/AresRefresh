@@ -25,7 +25,9 @@ export function useScrollInViewObserver() {
 
     // Hover-mirror observer (center detection): fires only when the element
     // is inside the middle 10% of the viewport, so hover-equivalent styles
-    // turn on/off as the card passes the optical center.
+    // turn on/off as the card passes the optical center. Always center-
+    // triggered per user direction — card hover behavior should wait for
+    // the card to reach the optical center regardless of viewport size.
     const centerIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,10 +37,9 @@ export function useScrollInViewObserver() {
       { rootMargin: '-45% 0px -45% 0px', threshold: 0 },
     );
 
-    // Reveal observer (early trigger): fires when the element's top enters
-    // the bottom ~70% of the viewport — used for one-way reveals so the
-    // animation starts as the section is becoming visible rather than
-    // waiting until the user has already scrolled halfway through it.
+    // Reveal observer (one-way) for `data-scroll-once` markers — used by
+    // the Capability Statement cert-logo cascade. Bottom 15% shrink so
+    // the cascade fires once the row is clearly visible.
     const revealIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -48,7 +49,7 @@ export function useScrollInViewObserver() {
           }
         });
       },
-      { rootMargin: '0px 0px -25% 0px', threshold: 0 },
+      { rootMargin: '0px 0px -15% 0px', threshold: 0 },
     );
 
     // Directional reveal observer — sets `data-revealed="true"` once when
@@ -57,12 +58,10 @@ export function useScrollInViewObserver() {
     // (e.g. the four feature cards in the "We Are Reliable" section use
     // both: scroll-into-view fade-up + hover-mirror icon color flip).
     //
-    // rootMargin shrinks the bottom of the root by 15% so elements
-    // scrolling up from below have to be a bit inside the viewport before
-    // reveal fires — otherwise reveals trigger on a one-pixel sliver and
-    // are mostly done by the time the user actually looks at the section.
-    // Elements already in the viewport on mount bypass this entirely via
-    // the synchronous rect check below.
+    // Bottom 10% shrink so reveals fire shortly after the element enters
+    // the viewport — not on a one-pixel sliver, and not so deep that
+    // section tops sit empty as the user scrolls. Elements already in
+    // the viewport on mount bypass this via the rect check below.
     const revealOnceIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -72,7 +71,7 @@ export function useScrollInViewObserver() {
           }
         });
       },
-      { rootMargin: '0px 0px -15% 0px', threshold: 0 },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0 },
     );
 
     hoverTargets.forEach((el) => {
