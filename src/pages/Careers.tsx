@@ -197,7 +197,7 @@ export default function Careers() {
           over that headroom via -mb-[290px]. z-10 keeps the card
           stacked above the footer's image/gradient layers. No section
           bg — the real footer is what shows behind the docked half. */}
-      <section id="apply" className="relative z-10 pt-10 pb-[120px] -mb-[290px]">
+      <section id="apply" className="relative z-10 pt-10 pb-[120px] -mb-[290px] scroll-mt-[16vh]">
         <div className="container-ares">
           <div className="relative z-10 min-h-[480px] overflow-hidden rounded-[2rem] bg-ink shadow-[0_40px_80px_-32px_rgba(31,31,31,0.45),0_16px_32px_-16px_rgba(31,31,31,0.25)] lg:aspect-[16/8]" data-reveal="up">
             <div className="absolute inset-0 -z-10">
@@ -217,7 +217,7 @@ export default function Careers() {
 
             <div className="absolute inset-x-6 bottom-6 flex flex-col items-start gap-4 sm:inset-x-12 sm:bottom-12 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
               <h2 className="m-0 font-normal text-paper" style={{ fontSize: 'clamp(24px, 7vw, 80px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
-                We Grow <em className="italic font-light text-pale">Together.</em><br />Apply Now.
+                We Grow <em className="italic font-light text-pale">Together.</em><br />Send Us Your Resume<br />To Apply Now.
               </h2>
               <a href="mailto:careers@aressecurity.co" className="btn btn-glass max-w-full px-5 py-3 text-[12px] normal-case tracking-normal sm:px-8 sm:py-[18px] sm:text-[14px]">careers@aressecurity.co</a>
             </div>
