@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[920px]">
+      <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[1060px]">
         <div className="hero-gradient absolute inset-0 -z-10">
           <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_60%] max-[460px]:object-[calc(50%-200px)_60%]" />
           <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.6)_40%,rgba(31,31,31,0.25)_100%),linear-gradient(180deg,rgba(31,31,31,0.35)_0%,rgba(31,31,31,0.25)_50%,rgba(31,31,31,0.6)_100%)] pointer-events-none" />
@@ -63,7 +63,7 @@ export default function Home() {
               />
               <h1
                 className="reveal-d1 mb-7 text-paper font-normal"
-                style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}
+                style={{ fontSize: 'clamp(48px, 7vw, 92px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}
               >
                 Protection Built<br />On{' '}
                 <span className="font-light italic text-light">Principle.</span>
@@ -77,14 +77,14 @@ export default function Home() {
                 On mobile: sits in flow below the buttons (full width).
                 On lg+: floats absolute in the bottom-right corner. */}
             <div
-              className={`${isLgUp ? 'reveal-d4 ' : ''}relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.04] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[26px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
+              className={`${isLgUp ? 'reveal-d4 ' : ''}relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.06] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[16px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
               data-reveal={isLgUp ? undefined : 'up'}
             >
               <a href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES" target="_blank" rel="noopener noreferrer" className="arrow-btn absolute right-6 top-6" aria-label="View on GSA eLibrary">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M15.3846 0H0.615385C0.275692 0 0 0.275692 0 0.615385C0 0.955077 0.275692 1.23077 0.615385 1.23077H13.8988L0.180308 14.9495C-0.06 15.1898 -0.06 15.5794 0.180308 15.8197C0.300615 15.94 0.457846 16 0.615385 16C0.772923 16 0.930461 15.94 1.05046 15.8197L14.7692 2.10092V15.3846C14.7692 15.7243 15.0449 16 15.3846 16C15.7243 16 16 15.7243 16 15.3846V0.615385C16 0.275692 15.7243 0 15.3846 0Z" fill="currentColor" /></svg>
               </a>
               <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" className="mb-[18px] block h-auto w-auto max-w-[240px] max-[460px]:max-w-[180px]" />
-              <p className="text-[14px] leading-relaxed text-paper/70">
+              <p className="text-[14px] leading-relaxed text-paper/70 lg:text-[16px]">
                 Contract #47QSMS25D009Q. Pre-negotiated federal pricing — agencies can award task orders without opening a new competition.
               </p>
             </div>
