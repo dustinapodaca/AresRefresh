@@ -230,14 +230,14 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
-              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0 lg:min-h-[600px]"
+              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0 lg:min-h-[664px]"
             >
               <div className="absolute inset-0 -z-10">
                 {c.slot.src
                   ? <img src={c.slot.src} alt="" className="absolute inset-0 h-full w-full object-cover" />
                   : <ImageSlot id={c.slot.id} placeholder={c.slot.placeholder} fill />}
               </div>
-              <div className="absolute inset-0 -z-[5] bg-gradient-to-b from-ink/0 via-ink/30 to-ink/85" />
+              <div className="svc-card-fade absolute inset-0 -z-[5] bg-gradient-to-b from-ink/0 via-ink/55 via-30% to-ink/90" />
 
               <div>
                 <div className="mb-6 flex flex-wrap gap-2">
@@ -247,10 +247,10 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative z-[2] pr-16 text-paper">
-                <h2 className="mb-3.5 text-[28px] font-bold uppercase leading-[1.05] tracking-tight text-paper">
+                <h2 className="mb-3.5 text-[32px] font-medium leading-[1.05] tracking-[-0.06em] text-paper">
                   {c.title}
                 </h2>
-                <p className="text-[15px] leading-relaxed text-paper/85">
+                <p className="text-[16px] leading-relaxed text-paper/85">
                   {c.body}
                 </p>
               </div>

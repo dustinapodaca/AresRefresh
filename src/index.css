@@ -282,7 +282,7 @@
 .service-grid > * {
   flex: 1 1 0;
   min-width: 0;
-  transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: flex 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (min-width: 992px) and (hover: hover) {
   /* Default-open card */
@@ -316,6 +316,39 @@
   }
   .service-grid > *:hover h2 {
     transform: scale(1.75);
+  }
+  /* Dark gradient overlay on the background image: at rest it sits
+     a bit higher up the card (via-40% + via-ink/40 in the JSX) to
+     keep the text legible. On the active/hovered card we drop its
+     opacity so more of the photo shows through — gradient is the
+     same shape, just less intense. Same 450ms easing as the flex
+     and h2 scale so all three changes feel like one motion. */
+  .service-grid > * .svc-card-fade {
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .service-grid > *[data-active='true'] .svc-card-fade,
+  .service-grid > *:hover .svc-card-fade {
+    opacity: 0.4;
+  }
+  .service-grid:hover > *[data-active='true']:not(:hover) .svc-card-fade {
+    opacity: 1;
+  }
+  /* Body copy under the card title scales 16px → 18px on the active
+     card, in lockstep with the h2 transform-scale and the flex
+     expansion. Same easing/duration as the h2 rule so the two read
+     as one coordinated change. */
+  .service-grid > * p {
+    font-size: 16px;
+    transition: font-size 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .service-grid > *[data-active='true'] p {
+    font-size: 18px;
+  }
+  .service-grid:hover > *[data-active='true']:not(:hover) p {
+    font-size: 16px;
+  }
+  .service-grid > *:hover p {
+    font-size: 18px;
   }
 }
 @media (max-width: 991px) {
