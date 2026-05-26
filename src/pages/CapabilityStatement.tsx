@@ -226,11 +226,14 @@ const CS_STYLES = `
 .cs_spacer_sm{height:64px}
 @media (max-width:991px){.cs_spacer_lg{height:70px}.cs_spacer_md{height:50px}.cs_spacer_sm{height:50px}}
 
-/* Section 04 status-dot pulse — fires once when the Contract Vehicles
-   grid scrolls into view (cv_grid carries data-reveal="none", which the
-   observer flips to data-revealed="true" without animating the grid
-   itself). Three keyframes: a plain green pulse for the .pill_active
-   dot which has no resting ring, and ring-preserving variants for the
+/* Section 04 status-dot pulse — fires once when each subcard scrolls
+   into view. .cv_card and .cv_secondary carry their OWN data-reveal
+   markers (instead of one on cv_grid) so mobile, where the secondary
+   list stacks below the primary card, doesn't fire its pulses early
+   while it's still off-screen. The observer flips data-revealed="true"
+   on each card independently when that card reaches the viewport.
+   Three keyframes: a plain green pulse for the .pill_active dot which
+   has no resting ring, and ring-preserving variants for the
    .v_dot.green / .v_dot.amber lights which already carry a 3px
    resting halo. */
 @keyframes cs_pulse_green {
@@ -245,9 +248,9 @@ const CS_STYLES = `
   0% { box-shadow: 0 0 0 3px rgba(242,184,75,.18), 0 0 0 0 rgba(242,184,75,.55); }
   100% { box-shadow: 0 0 0 3px rgba(242,184,75,.18), 0 0 0 14px rgba(242,184,75,0); }
 }
-.cv_grid[data-revealed="true"] .pill_active::before { animation: cs_pulse_green 1.4s ease-out; }
-.cv_grid[data-revealed="true"] .v_dot.green { animation: cs_pulse_vdot_green 1.4s ease-out; }
-.cv_grid[data-revealed="true"] .v_dot.amber { animation: cs_pulse_vdot_amber 1.4s ease-out; }
+.cv_card[data-revealed="true"] .pill_active::before { animation: cs_pulse_green 1.4s ease-out; }
+.cv_secondary[data-revealed="true"] .v_dot.green { animation: cs_pulse_vdot_green 1.4s ease-out; }
+.cv_secondary[data-revealed="true"] .v_dot.amber { animation: cs_pulse_vdot_amber 1.4s ease-out; }
 `;
 
 export default function CapabilityStatement() {
@@ -443,8 +446,8 @@ export default function CapabilityStatement() {
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-paper/60">↓ Pre-negotiated pricing<br />award without re-compete</p>
           </div>
-          <div className="cv_grid" data-reveal="none">
-            <div className="cv_card">
+          <div className="cv_grid">
+            <div className="cv_card" data-reveal="none">
               <div className="cv_card_head">
                 <div>
                   <span className="cv_card_kicker">Primary Vehicle</span>
@@ -466,7 +469,7 @@ export default function CapabilityStatement() {
               </div>
             </div>
 
-            <div className="cv_secondary">
+            <div className="cv_secondary" data-reveal="none">
               <h4>Additional Procurement Paths</h4>
               <ul>
                 <li><span>Open Market · FAR 13</span><span>Available</span><i className="v_dot green" /></li>

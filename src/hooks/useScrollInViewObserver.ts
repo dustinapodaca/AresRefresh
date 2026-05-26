@@ -38,8 +38,8 @@ export function useScrollInViewObserver() {
     );
 
     // Reveal observer (one-way) for `data-scroll-once` markers — used by
-    // the Capability Statement cert-logo cascade. Bottom 15% shrink so
-    // the cascade fires once the row is clearly visible.
+    // the Capability Statement cert-logo cascade. Bottom 10% shrink so
+    // the cascade fires once the row is just inside the viewport.
     const revealIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -49,7 +49,7 @@ export function useScrollInViewObserver() {
           }
         });
       },
-      { rootMargin: '0px 0px -15% 0px', threshold: 0 },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0 },
     );
 
     // Directional reveal observer — sets `data-revealed="true"` once when
@@ -58,10 +58,10 @@ export function useScrollInViewObserver() {
     // (e.g. the four feature cards in the "We Are Reliable" section use
     // both: scroll-into-view fade-up + hover-mirror icon color flip).
     //
-    // Bottom 10% shrink so reveals fire shortly after the element enters
-    // the viewport — not on a one-pixel sliver, and not so deep that
-    // section tops sit empty as the user scrolls. Elements already in
-    // the viewport on mount bypass this via the rect check below.
+    // Bottom 5% shrink so reveals fire just as the element enters the
+    // viewport — close enough to feel responsive while still avoiding a
+    // one-pixel sliver trigger. Elements already in the viewport on
+    // mount bypass this via the rect check below.
     const revealOnceIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -71,7 +71,7 @@ export function useScrollInViewObserver() {
           }
         });
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0 },
+      { rootMargin: '0px 0px -5% 0px', threshold: 0 },
     );
 
     hoverTargets.forEach((el) => {
