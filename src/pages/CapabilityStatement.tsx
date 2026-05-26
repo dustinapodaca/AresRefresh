@@ -537,7 +537,7 @@ export default function CapabilityStatement() {
 
           <div className="cc_logos" data-scroll-active data-scroll-once data-in-view="false">
             <div className="cc_logo">
-              <img src="/images/cert-gsa.png" alt="GSA Contract Holder" />
+              <img src="/images/cert-gsa-blue.png" alt="GSA Contract Holder" />
               <div>
                 <div className="cc_logo_name">GSA Schedule Holder</div>
                 <div className="cc_logo_id">#47QSMS25D009Q</div>
