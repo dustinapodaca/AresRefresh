@@ -20,12 +20,6 @@ const DIFFS = [
     icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18M8 14h4"/></svg> },
 ];
 
-const PERF = [
-  { n: '01', agency: 'U.S. Space Force · Buckley SFB', t: 'Unarmed Security Escort Services', ct: 'Federal Service Contract', val: 'Available on request', period: 'Ongoing · Multi-Year', metric: 'Zero compliance findings', rest: ' and zero security incidents on cleared escort post — DoW vetting and documentation maintained current at all times.' },
-  { n: '02', agency: 'Regulated Industry · Confidential', t: 'High-Stakes Compliance Operations', ct: 'Armed Coverage', val: 'Available on request', period: 'Multi-Year · Ongoing', metric: '99% staffing reliability', rest: ' over multiple years in a high-cash, high-liability environment — zero incidents and no compliance issues to date.' },
-  { n: '03', agency: 'Multi-Sector · Retail · Commercial', t: 'Concurrent Multi-Site Engagements', ct: 'Multiple Concurrent', val: 'Available on request', period: '2022 — Present', metric: 'Zero unfilled shifts', rest: ' across all posts in the last 12 months — on-call coverage and proactive staffing prevent lapses.' },
-];
-
 const CODES: Array<{ k: React.ReactNode; v: string; sub?: string }> = [
   { k: 'UEI', v: 'XQXDN6E33SF4', sub: 'Unique Entity Identifier (SAM.gov)' },
   { k: 'CAGE Code', v: '9KL18', sub: 'Commercial & Government Entity' },
@@ -100,27 +94,70 @@ const CS_STYLES = `
 .cs_cap_keys span{font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--color-mid);background:var(--color-paper-2);border:1px solid var(--color-line);border-radius:999px;padding:4px 10px;white-space:nowrap}
 
 .pp_section{background:#E5E4E1}
-.pp_grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:1100px){.pp_grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:680px){.pp_grid{grid-template-columns:1fr}}
-.pp_card{background:var(--color-paper);border:1px solid var(--color-line);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
-.pp_card:hover{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.18)}
-@media (max-width:460px){.pp_card[data-in-view="true"]{border-color:var(--color-ink);transform:translateY(-3px);box-shadow:0 24px 48px -24px rgba(31,31,31,.18)}}
-.pp_card_top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--color-line)}
-.pp_card_n{font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--color-mid)}
-.pp_card_status{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--color-ink);padding:5px 12px;border:1px solid var(--color-line);border-radius:999px;background:var(--color-paper-2);white-space:nowrap}
-.pp_card_status.active{background:var(--color-ink);color:var(--color-paper);border-color:var(--color-ink)}
-.pp_card_status.active::before{content:"";display:inline-block;width:6px;height:6px;border-radius:999px;background:#7CB85F;margin-right:8px;vertical-align:1px;box-shadow:0 0 0 2px rgba(124,184,95,.25)}
-.pp_card h4{font-size:22px;font-weight:600;color:var(--color-ink);letter-spacing:-.01em;line-height:1.2;margin:0}
-.pp_card .pp_agency{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--color-mid)}
-.pp_meta_grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:18px 0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
-.pp_meta_grid > div{display:flex;flex-direction:column;justify-content:space-between}
-.pp_meta_grid .k{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--color-mid);margin-bottom:4px}
-.pp_meta_grid .v{font-size:13px;font-weight:600;color:var(--color-ink);line-height:1.3;font-variant-numeric:tabular-nums}
-.pp_outcome{display:flex;gap:12px;align-items:flex-start;background:var(--color-paper-2);border-radius:12px;padding:14px 16px}
-.pp_outcome svg{flex-shrink:0;margin-top:2px;color:var(--color-ink)}
-.pp_outcome p{font-size:14px;color:var(--color-ink);line-height:1.45;margin:0}
-.pp_outcome p b{font-weight:700}
+/* Past Performance — 5-logo trust grid sitting FLAT on the section
+   background (no outer card). All separator lines use BORDERS rather
+   than pseudo-element backgrounds because borders are pixel-snapped
+   by browsers; pseudo backgrounds at fractional pixel positions
+   (column boundaries in a 3-fr grid divide to thirds, which rarely
+   land on whole pixels) get anti-aliased to half-density and read
+   thinner than crisp lines. With borders, every separator renders at
+   the same true 1px thickness regardless of column count or viewport
+   width. Color --color-mid matches the italic "RECORD" in the title.
+   Top row: 3 cols. Bottom row: 2 cols. */
+.pp_logos_top{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--color-mid)}
+.pp_logos_bottom{display:grid;grid-template-columns:repeat(2,1fr)}
+.pp_logo{box-sizing:border-box;position:relative;display:flex;align-items:center;justify-content:center;padding:80px 56px;min-height:200px;min-width:0}
+.pp_logos_top .pp_logo:not(:last-child),
+.pp_logos_bottom .pp_logo:not(:last-child){border-right:1px solid var(--color-mid)}
+/* Gap before/after the horizontal divider is created by masking the
+   top and bottom of each vertical border with strips of section-bg
+   color. 2px wide centered on the border so antialias on either side
+   is fully covered. */
+.pp_logos_top .pp_logo:not(:last-child)::before,
+.pp_logos_top .pp_logo:not(:last-child)::after,
+.pp_logos_bottom .pp_logo:not(:last-child)::before,
+.pp_logos_bottom .pp_logo:not(:last-child)::after{
+  content:"";position:absolute;right:-1px;width:2px;height:54px;background:#E5E4E1;pointer-events:none;
+}
+.pp_logos_top .pp_logo:not(:last-child)::before,
+.pp_logos_bottom .pp_logo:not(:last-child)::before{top:0}
+.pp_logos_top .pp_logo:not(:last-child)::after,
+.pp_logos_bottom .pp_logo:not(:last-child)::after{bottom:0}
+/* Seal/badge logos read by height (they're roughly square). Wordmark
+   logos like Natural Grocers read by width — a single max-height
+   would let the wordmark stretch to 350px+ wide and dominate the
+   row. Apply a tighter max-width AND a lower max-height to the
+   Natural Grocers logo so the visual area roughly matches the seals
+   (~130px circle ≈ 220×70 wordmark). Other logos use the default
+   height-driven scaling. */
+.pp_logo img{max-width:100%;max-height:130px;width:auto;height:auto;object-fit:contain}
+.pp_logo img[src*="natural-grocers"]{max-width:220px;max-height:72px}
+@media (max-width:768px){
+  .pp_logo{padding:36px 18px;min-height:140px}
+  .pp_logo img{max-height:90px}
+  .pp_logo img[src*="natural-grocers"]{max-width:170px;max-height:56px}
+  .pp_logos_top .pp_logo:not(:last-child)::before,
+  .pp_logos_top .pp_logo:not(:last-child)::after,
+  .pp_logos_bottom .pp_logo:not(:last-child)::before,
+  .pp_logos_bottom .pp_logo:not(:last-child)::after{height:36px}
+  /* Lines are slightly thinner on mobile — on high-DPI phone screens
+     0.5px CSS = 1 device pixel, which renders as a true 1-physical-
+     pixel hairline. Smaller cells make a full 1px CSS line read
+     heavier than the desktop version; halving it restores the visual
+     weight balance. */
+  .pp_logos_top{border-bottom-width:0.5px}
+  .pp_logos_top .pp_logo:not(:last-child),
+  .pp_logos_bottom .pp_logo:not(:last-child){border-right-width:0.5px}
+}
+@media (max-width:460px){
+  .pp_logo{padding:22px 8px;min-height:104px}
+  .pp_logo img{max-height:64px}
+  .pp_logo img[src*="natural-grocers"]{max-width:130px;max-height:42px}
+  .pp_logos_top .pp_logo:not(:last-child)::before,
+  .pp_logos_top .pp_logo:not(:last-child)::after,
+  .pp_logos_bottom .pp_logo:not(:last-child)::before,
+  .pp_logos_bottom .pp_logo:not(:last-child)::after{height:26px}
+}
 
 .cv_section{background:var(--color-ink);color:var(--color-paper);position:relative;overflow:hidden;isolation:isolate}
 .cv_section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 90% 10%,rgba(124,120,118,.22),transparent 60%)}
@@ -378,28 +415,26 @@ export default function CapabilityStatement() {
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2" data-reveal="right">↓ Detailed references<br />available on request</p>
           </div>
-          <div className="pp_grid">
-            {PERF.map((p) => (
-              <article key={p.n} data-scroll-active data-in-view="false" className="pp_card">
-                <div className="pp_card_top">
-                  <span className="pp_card_n">{p.n}</span>
-                  <span className="pp_card_status active">Active</span>
-                </div>
-                <div>
-                  <div className="pp_agency">{p.agency}</div>
-                  <h4 style={{ marginTop: 6 }}>{p.t}</h4>
-                </div>
-                <div className="pp_meta_grid">
-                  <div><div className="k">Contract Type</div><div className="v">{p.ct}</div></div>
-                  <div><div className="k">Value</div><div className="v">{p.val}</div></div>
-                  <div><div className="k">Period</div><div className="v">{p.period}</div></div>
-                </div>
-                <div className="pp_outcome">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <p><b>{p.metric}</b>{p.rest}</p>
-                </div>
-              </article>
-            ))}
+          <div className="pp_logos">
+            <div className="pp_logos_top">
+              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '0ms' } as React.CSSProperties}>
+                <img src="/images/client-airforce.png" alt="U.S. Air Force" />
+              </div>
+              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '120ms' } as React.CSSProperties}>
+                <img src="/images/client-spaceforce.png" alt="U.S. Space Force" />
+              </div>
+              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '240ms' } as React.CSSProperties}>
+                <img src="/images/client-pps.png" alt="PPS" />
+              </div>
+            </div>
+            <div className="pp_logos_bottom">
+              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '360ms' } as React.CSSProperties}>
+                <img src="/images/client-army-corps.png" alt="U.S. Army Corps of Engineers" />
+              </div>
+              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '480ms' } as React.CSSProperties}>
+                <img src="/images/client-natural-grocers.png" alt="Natural Grocers" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="cs_spacer_lg" />
