@@ -28,10 +28,27 @@ export function useScrollInViewObserver() {
     // turn on/off as the card passes the optical center. Always center-
     // triggered per user direction — card hover behavior should wait for
     // the card to reach the optical center regardless of viewport size.
+    //
+    // Elements that opt-in via `data-scroll-group="<id>"` are mutually
+    // exclusive: when one in the group becomes "in-view," siblings in
+    // the same group are forced to "false." Useful for tightly-spaced
+    // sibling cards (lifecycle steps on mobile) where the 10% center
+    // band can briefly contain two cards at once, otherwise lighting
+    // up two connector arrows simultaneously.
     const centerIo = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.setAttribute('data-in-view', entry.isIntersecting ? 'true' : 'false');
+          const el = entry.target as HTMLElement;
+          const group = el.dataset.scrollGroup;
+          if (group && entry.isIntersecting) {
+            document
+              .querySelectorAll<HTMLElement>(`[data-scroll-group="${group}"]`)
+              .forEach((sibling) => {
+                sibling.setAttribute('data-in-view', sibling === el ? 'true' : 'false');
+              });
+          } else {
+            el.setAttribute('data-in-view', entry.isIntersecting ? 'true' : 'false');
+          }
         });
       },
       { rootMargin: '-45% 0px -45% 0px', threshold: 0 },

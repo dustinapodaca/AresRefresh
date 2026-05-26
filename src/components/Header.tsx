@@ -26,6 +26,14 @@ export default function Header() {
   // guard, that scroll would pre-empt the slide we just queued.
   const slideLockedUntilRef = useRef(0);
   const triggerSlide = () => {
+    // Desktop (lg+) doesn't have a drawer and doesn't dock content
+    // into the chrome the way mobile does, so a slide motion on route
+    // change reads as too dramatic for a hover-driven nav. Skip the
+    // slide entirely on lg+ — useSlide stays false, the chrome
+    // continues to fade in/out with scroll only. Mobile keeps the
+    // slide behavior we landed on (drawer open/close + route change).
+    if (typeof window !== 'undefined'
+      && window.matchMedia('(min-width: 1024px)').matches) return;
     slideLockedUntilRef.current = Date.now() + 500;
     setUseSlide(true);
   };
