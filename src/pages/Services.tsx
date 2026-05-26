@@ -140,7 +140,7 @@ export default function Services() {
                   data-scroll-active
                   data-scroll-group="lifecycle"
                   data-in-view="false"
-                  className={`group relative flex items-start gap-5 p-8 text-left transition-[border-color,box-shadow] duration-200 ease-out hover:border-ink max-[460px]:data-[in-view=true]:border-ink md:flex-col md:items-center md:gap-4 md:text-center ${hasArrow ? 'border-b md:border-b-0 md:border-r border-line md:hover:shadow-[inset_-1px_0_0_var(--color-ink)]' : ''}`}
+                  className={`group relative flex items-start gap-5 p-8 text-left transition-[border-color,box-shadow] duration-200 ease-out md:hover:border-ink max-[460px]:data-[in-view=true]:border-ink md:flex-col md:items-center md:gap-4 md:text-center ${hasArrow ? 'border-b md:border-b-0 md:border-r border-line md:hover:shadow-[inset_-1px_0_0_var(--color-ink)]' : ''}`}
                 >
                   {/* Number badge: pinned left of the content stack on
                       mobile (flex-row), back on top above the centered
@@ -183,7 +183,7 @@ export default function Services() {
                       </span>
                       <span
                         aria-hidden
-                        className="pointer-events-none absolute bottom-0 right-6 z-10 flex h-8 w-8 translate-y-1/2 items-center justify-center rounded-full border border-ink bg-paper text-ink transition-colors duration-200 ease-out group-hover:bg-mid group-hover:text-paper max-[460px]:group-data-[in-view=true]:bg-mid max-[460px]:group-data-[in-view=true]:text-paper md:hidden"
+                        className="pointer-events-none absolute bottom-0 right-6 z-10 flex h-8 w-8 translate-y-1/2 items-center justify-center rounded-full border border-ink bg-paper text-ink transition-colors duration-200 ease-out max-[460px]:group-data-[in-view=true]:bg-mid max-[460px]:group-data-[in-view=true]:text-paper md:hidden"
                       >
                         <svg width="20" height="20" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M6 3v6" />
