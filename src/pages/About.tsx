@@ -13,7 +13,7 @@ export default function About() {
           stays as the single-row flex layout with separators. */}
       <section aria-label="Certifications and contract vehicles" className="py-20">
         <div className="container-ares">
-          <ul role="list" className="m-0 flex list-none flex-wrap items-center justify-center gap-x-[clamp(28px,5vw,64px)] gap-y-[18px] p-0 max-[460px]:grid max-[460px]:grid-cols-4 max-[460px]:gap-x-2 max-[460px]:gap-y-0 sm:flex-nowrap">
+          <ul role="list" className="m-0 flex list-none flex-wrap items-center justify-center gap-x-[clamp(28px,5vw,64px)] gap-y-[18px] p-0 max-[460px]:flex-nowrap max-[460px]:justify-evenly max-[460px]:gap-x-0 sm:flex-nowrap">
             <li className="flex max-w-[260px] flex-none items-center justify-center max-[460px]:order-1 max-[460px]:min-h-12 max-[460px]:max-w-full">
               <img
                 src="/images/cert-gsa-blue.png"
