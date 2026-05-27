@@ -230,6 +230,8 @@ export default function Home() {
             <article
               key={c.to}
               data-active={i === 0 ? 'true' : 'false'}
+              data-scroll-active
+              data-in-view="false"
               className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0 lg:min-h-[664px]"
             >
               <div className="absolute inset-0 -z-10">

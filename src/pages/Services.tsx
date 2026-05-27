@@ -88,10 +88,10 @@ export default function Services() {
               >
                 <div className="absolute inset-0 -z-10 bg-ink">
                   {(c as any).src
-                    ? <img src={(c as any).src} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.65] transition-opacity duration-[350ms] group-hover:opacity-80 max-[460px]:group-data-[in-view=true]:opacity-80" />
+                    ? <img src={(c as any).src} alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.65]" />
                     : <ImageSlot id={`matrix-${i + 1}`} placeholder={`Photo for ${c.title}`} fill />}
                 </div>
-                <div className="absolute inset-0 -z-[5] bg-gradient-to-b from-ink/25 via-ink/55 to-ink/[0.92]" />
+                <div className="svc-card-fade absolute inset-0 -z-[5] bg-gradient-to-b from-ink/25 via-ink/55 to-ink/[0.92]" />
 
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="flex flex-1 flex-wrap gap-1.5 min-w-0">

@@ -445,17 +445,17 @@
   .service-grid > *:hover h2 {
     transform: scale(1.75);
   }
-  /* Dark gradient overlay on the background image: at rest it sits
-     a bit higher up the card (via-40% + via-ink/40 in the JSX) to
-     keep the text legible. On the active/hovered card we drop its
-     opacity so more of the photo shows through — gradient is the
-     same shape, just less intense. Same 450ms easing as the flex
-     and h2 scale so all three changes feel like one motion. */
-  .service-grid > * .svc-card-fade {
-    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Dark gradient overlay on the background image: drops opacity to
+     0.4 on the active/hovered card so more of the photo shows
+     through. Trigger is generic ([data-scroll-active]:hover) so
+     this works on any card with a .svc-card-fade child, not just
+     the Home .service-grid accordion. The two .service-grid-
+     specific rules below preserve the accordion's default-active
+     state and its retract-when-grid-hovered behavior. */
+  [data-scroll-active]:hover .svc-card-fade {
+    opacity: 0.4;
   }
-  .service-grid > *[data-active='true'] .svc-card-fade,
-  .service-grid > *:hover .svc-card-fade {
+  .service-grid > *[data-active='true'] .svc-card-fade {
     opacity: 0.4;
   }
   .service-grid:hover > *[data-active='true']:not(:hover) .svc-card-fade {
@@ -485,6 +485,25 @@
   .service-grid > *[data-active='true'],
   .service-grid:hover > *[data-active='true'],
   .service-grid > *:hover { flex: 1 1 auto; }
+  /* Mobile: when a card scrolls into the viewport's optical center
+     (centerIo sets data-in-view="true"), drop the gradient overlay
+     so the photo brightens — same effect the desktop hover state
+     produces, but triggered by scroll position instead of pointer.
+     Generic [data-scroll-active] trigger so this fires on Home
+     Explore cards AND Services Matrix cards (and any future cards
+     opted in with `data-scroll-active` + `.svc-card-fade`). */
+  [data-scroll-active][data-in-view='true'] .svc-card-fade {
+    opacity: 0.4;
+  }
+}
+/* Gradient overlay transition lives outside the media queries and
+   scoped just to .svc-card-fade itself (not .service-grid > *) so
+   it applies wherever the class is used — Home Explore accordion
+   cards AND Services Matrix cards. Without this generic scope the
+   Services Matrix gradient would snap instantly because it isn't
+   inside .service-grid. */
+.svc-card-fade {
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Image slot — make filled by default when it's the background of a card */
