@@ -287,7 +287,7 @@ function WhyStages() {
 
         <div className="grid items-stretch gap-8 lg:grid-cols-[1fr_1.15fr]">
           {/* Left: translucent fog-glass panel over the section background */}
-          <div className="relative flex flex-col justify-end overflow-hidden rounded-3xl border border-white/[0.18] bg-white/[0.08] p-12 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-2xl backdrop-saturate-150">
+          <div className="glass-card relative flex flex-col justify-end overflow-hidden rounded-3xl p-12 text-paper">
             <div>
               <div className="mb-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-paper/60">Our Approach</div>
               <p className="m-0 text-paper font-normal" style={{ fontSize: 'clamp(22px, 2.4vw, 28px)', lineHeight: 1.25, letterSpacing: '-0.015em' }}>

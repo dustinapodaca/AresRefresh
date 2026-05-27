@@ -112,10 +112,10 @@
      instead of the page behind it (resulting in a flat translucent fill
      with no actual blur). */
   .btn-glass {
+    position: relative;
     background: rgba(255,255,255,0.04);
     -webkit-backdrop-filter: blur(26px) saturate(160%);
     backdrop-filter: blur(26px) saturate(160%);
-    border: 1.5px solid rgba(255,255,255,0.20);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.16),
       0 12px 30px -10px rgba(0,0,0,0.25);
@@ -123,18 +123,21 @@
   }
   .btn-glass:hover {
     background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.36);
     color: var(--color-paper);
   }
 
-  /* Frosted-glass circular arrow button — matches .btn-glass translucency
-     so the home Explore card arrows feel like the same surface. */
+  /* Frosted-glass circular arrow button — frost values match .glass-card
+     (bg-white/6%, blur 16, saturate 160). The dual-gradient pseudo rim
+     is applied via the shared `:not(.arrow-btn-on-light)` selector
+     below so the dark/glass variant gets bright TL/BR corners and dark
+     BL/TR corners just like .glass-card. The .arrow-btn-on-light
+     variant (for light backgrounds) keeps its own static border. */
   .arrow-btn {
     @apply relative z-[3] inline-flex h-14 w-14 flex-shrink-0 items-center justify-center
-           rounded-full border border-white/20 text-paper
-           bg-white/[0.04] backdrop-blur-[26px] backdrop-saturate-[160%]
+           rounded-full text-paper
+           bg-white/[0.06] backdrop-blur-[16px] backdrop-saturate-[160%]
            shadow-[0_12px_30px_-10px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.16)]
-           transition-[transform,background,border-color] duration-300;
+           transition-[transform,background] duration-300;
   }
   /* Hover styles gated behind @media (hover: hover) so iOS Safari and
      other touch-only browsers don't treat the button as "hoverable" —
@@ -144,7 +147,7 @@
   @media (hover: hover) {
     .arrow-btn:hover {
       transform: rotate(-45deg);
-      @apply bg-white/85 text-ink border-white/60;
+      @apply bg-white/85 text-ink;
     }
     .arrow-btn-on-light:hover { @apply bg-ink text-paper border-ink; }
   }
@@ -167,17 +170,17 @@
 
   /* Glass pill / tag */
   .pill-glass {
-    @apply inline-flex items-center whitespace-nowrap rounded-full border border-ink/15 bg-white/40
+    @apply relative inline-flex items-center whitespace-nowrap rounded-full bg-white/40
            px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-2
            backdrop-blur-md backdrop-saturate-150 transition-all duration-200
            shadow-[inset_0_1px_0_rgba(255,255,255,0.7)];
   }
   .pill-glass-dark {
-    @apply border-white/28 bg-white/10 text-paper
+    @apply bg-white/10 text-paper
            shadow-[inset_0_1px_0_rgba(255,255,255,0.15)];
   }
   .pill-glass-armed {
-    @apply border-ink/40 bg-ink/85 text-paper
+    @apply bg-ink/85 text-paper
            shadow-[inset_0_1px_0_rgba(255,255,255,0.12)];
   }
 
@@ -241,6 +244,131 @@
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+/* ============================================================
+   Refractive glass card — gives the GSA hero card a "light-
+   catching" border that reads as real glass rather than a flat
+   1px outlined surface (compare premium fintech cards: United
+   MileagePlus Explorer, Apple Card promo art, etc.).
+
+   Technique:
+   - ::before pseudo with a multi-stop diagonal gradient as its
+     background.
+   - mask-composite (XOR / exclude) carves out the inner content
+     area, leaving only a 1px ring of the gradient visible — a
+     gradient BORDER, not a gradient fill.
+   - Multi-layer inset shadows reinforce the top edge as a bright
+     catch-light highlight; bottom edge gets a subtler dim line.
+   - Layered drop shadows lift the card off the page.
+   ============================================================ */
+/* NOTE: deliberately NO `position` declaration here. The host
+   element (GSA card) is `relative` on mobile and `lg:absolute` on
+   desktop via Tailwind utilities; setting position on .glass-card
+   would override the lg:absolute and pull the card out of its
+   bottom-right floating position on desktop. */
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow:
+    /* Layered drop shadow — long-soft for elevation, tighter for grounding */
+    0 32px 64px -24px rgba(0, 0, 0, 0.5),
+    0 12px 32px -12px rgba(0, 0, 0, 0.3),
+    /* Top edge: bright catch-light */
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    /* Bottom edge: subtle dim finish */
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    /* Side edges: very subtle vertical highlights */
+    inset 1px 0 0 rgba(255, 255, 255, 0.12),
+    inset -1px 0 0 rgba(255, 255, 255, 0.1);
+}
+/* Shared rim treatment — bright TL/BR corners. Applies to .glass-card
+   plus the other glass-style elements (.btn-glass, .pill-glass family,
+   .cv_card, and the default-variant .arrow-btn) so they all get the
+   same light-catching corner highlights. Excludes .arrow-btn-on-light
+   since that variant lives on light backgrounds with its own border. */
+.glass-card::before,
+.btn-glass::before,
+.pill-glass::before,
+.cv_card::before,
+.cv_secondary::before,
+.arrow-btn:not(.arrow-btn-on-light)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* BRIGHT corners only — top-left (0%) and bottom-right (100%).
+     A 135° gradient's 0% stop ALWAYS projects exactly to the
+     top-left corner of any rectangle, and 100% to the bottom-right
+     corner, regardless of aspect ratio. So no matter how the
+     card's W:H changes, the bright caught-light always sits
+     precisely at those two corners. Middle stops are transparent
+     so this gradient doesn't interfere with the dark corners
+     painted by ::after. */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.25) 15%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.25) 85%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+/* Second accent stroke — a counter-diagonal that picks up the
+   OTHER two corners (top-right and bottom-left). Combined with
+   the primary 135deg gradient, all four corners now catch light
+   with varying intensity, which is what gives premium fintech
+   cards their lively rim feel. */
+/* Shared rim treatment — dark BL/TR corners. Complement to ::before. */
+.glass-card::after,
+.btn-glass::after,
+.pill-glass::after,
+.cv_card::after,
+.cv_secondary::after,
+.arrow-btn:not(.arrow-btn-on-light)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  /* DARK corners only — bottom-left (0%) and top-right (100%).
+     A 45° gradient's 0% stop ALWAYS projects exactly to the
+     bottom-left corner and 100% to the top-right corner of any
+     rectangle, regardless of aspect ratio. So this gradient
+     paints shadow on exactly those two corners, complementary
+     to ::before's bright corners. Normal alpha compositing
+     (no mix-blend-mode) so the rgba(0,0,0,...) stops actually
+     darken the rim. */
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.14) 15%,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.14) 85%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* ============================================================

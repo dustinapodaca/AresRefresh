@@ -77,7 +77,7 @@ export default function Home() {
                 On mobile: sits in flow below the buttons (full width).
                 On lg+: floats absolute in the bottom-right corner. */}
             <div
-              className={`${isLgUp ? 'reveal-d4 ' : ''}relative mt-[92px] w-full rounded-3xl border border-white/[0.20] bg-white/[0.06] px-[52px] py-10 text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur-[16px] backdrop-saturate-[160%] max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
+              className={`${isLgUp ? 'reveal-d4 ' : ''}glass-card relative mt-[92px] w-full rounded-3xl px-[52px] py-10 text-paper max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
               data-reveal={isLgUp ? undefined : 'up'}
             >
               <a href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES" target="_blank" rel="noopener noreferrer" className="arrow-btn absolute right-6 top-6" aria-label="View on GSA eLibrary">

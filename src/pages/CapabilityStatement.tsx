@@ -163,7 +163,7 @@ const CS_STYLES = `
 .cv_section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 90% 10%,rgba(124,120,118,.22),transparent 60%)}
 .cv_grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:stretch}
 @media (max-width:900px){.cv_grid{grid-template-columns:1fr}}
-.cv_card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:36px;-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);display:flex;flex-direction:column;gap:20px;min-width:0;overflow:hidden}
+.cv_card{position:relative;background:rgba(255,255,255,.06);border-radius:20px;padding:36px;-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);display:flex;flex-direction:column;gap:20px;min-width:0;overflow:hidden}
 .cv_card_head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(250,250,249,.16)}
 @media (max-width:640px){
   .cv_card_head{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px;row-gap:6px}
@@ -183,7 +183,7 @@ const CS_STYLES = `
 .cv_meta .k{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.55);margin-bottom:4px}
 .cv_meta .v{font-size:15px;font-weight:500;color:var(--color-paper);line-height:1.35;font-variant-numeric:tabular-nums;letter-spacing:-.005em;overflow-wrap:anywhere}
 .cv_actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:8px}
-.cv_secondary{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;justify-content:center;min-height:100%}
+.cv_secondary{position:relative;background:rgba(255,255,255,.04);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;justify-content:center;min-height:100%}
 .cv_secondary h4{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.6);margin:0}
 .cv_secondary ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .cv_secondary li{font-size:14px;color:var(--color-paper);font-weight:500;display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-top:1px solid rgba(250,250,249,.1)}
