@@ -382,7 +382,13 @@ export default function CapabilityStatement() {
                 <span>SECTION 01 ·<br className="hidden max-[460px]:inline" /> CORE COMPETENCIES</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">WHAT <span className="font-light italic text-mid">WE DO</span></h2>
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                What <span className="font-light italic text-mid">We Do</span>
+              </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">↓ Six divisions<br />under one GSA vehicle</p>
           </div>
@@ -411,7 +417,13 @@ export default function CapabilityStatement() {
                 <span>SECTION 02 ·<br className="hidden max-[460px]:inline" /> PAST PERFORMANCE</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">PROVEN <span className="font-light italic text-mid">RECORD</span></h2>
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                Proven <span className="font-light italic text-mid">Record</span>
+              </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2" data-reveal="right">↓ Detailed references<br />available on request</p>
           </div>
@@ -446,7 +458,13 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12">
             <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · DIFFERENTIATION</h3>
-            <h2 className="text-display-lg text-ink" data-reveal="up">WHY <span className="font-light italic text-mid">ARES</span></h2>
+            <h2
+              className="text-ink"
+              style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+              data-reveal="up"
+            >
+              Why <span className="font-light italic text-mid">Ares</span>
+            </h2>
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {DIFFS.map((d) => (
@@ -476,7 +494,7 @@ export default function CapabilityStatement() {
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
               <h2 className="m-0 text-paper" style={{ fontSize: 'clamp(40px,4.6vw,64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.95, textTransform: 'none' }}>
-                How <em className="font-light italic text-light">to buy from us.</em>
+                How <em className="font-light italic text-light">To Buy From Us</em>
               </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-paper/60">↓ Pre-negotiated pricing<br />award without re-compete</p>
@@ -530,7 +548,13 @@ export default function CapabilityStatement() {
                 <span>SECTION 05 ·<br className="hidden max-[460px]:inline" /> CERTIFICATIONS &amp; CODES</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">CREDENTIALS <span className="font-light italic text-mid">ON THE RECORD</span></h2>
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                Credentials <span className="font-light italic text-mid">On The Record</span>
+              </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">↓ All data matches<br />SAM.gov registration</p>
           </div>

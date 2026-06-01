@@ -58,7 +58,7 @@ export default function Careers() {
             <li className="text-paper">Careers</li>
           </ol>
           <h1 className="reveal-d1 m-0 font-normal text-paper" style={{ fontSize: 'clamp(48px, 7vw, 84px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
-            Join Our <span className="font-light italic text-light">Team.</span>
+            Join Our <span className="font-light italic text-light">Team</span>
           </h1>
           <p className="reveal-d2 mt-6 max-w-[62ch] text-[20px] text-paper/75">
             Disciplined work, fair pay, real career growth. At Ares, you're more than a security guard — you're part of a team that runs to a federal standard and treats its people that way.
@@ -108,8 +108,12 @@ export default function Careers() {
             </div>
             <div>
               <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · PHILOSOPHY</h3>
-              <h2 className="mb-6 max-w-[14ch] text-display-lg text-ink" data-reveal="up">
-                YOU GROW <span className="font-light italic text-mid">with us.</span>
+              <h2
+                className="mb-6 max-w-[14ch] text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                You Grow <span className="font-light italic text-mid">With Us</span>
               </h2>
               <p className="mb-6 max-w-[54ch] text-[18px] text-ink-2">
                 Our philosophy is simple — the well-being of our employees is most important to us. We believe that happy and healthy employees are the foundation of a great company, and that balance between work, play, and rest is a must.
@@ -131,8 +135,12 @@ export default function Careers() {
         <Spacer />
         <div className="container-ares">
           <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · WHY ARES</h3>
-          <h2 className="mb-12 text-display-lg text-ink" data-reveal="up">
-            FOUR REASONS PEOPLE <span className="font-light italic text-mid">STAY.</span>
+          <h2
+            className="mb-12 text-ink"
+            style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+            data-reveal="up"
+          >
+            Four Reasons People <span className="font-light italic text-mid">Stay</span>
           </h2>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {BENEFITS.map((b) => (
@@ -156,8 +164,12 @@ export default function Careers() {
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
               <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · ARES ROLES</h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">
-                WHO WE <span className="font-light italic text-mid">HIRE.</span>
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                Who We <span className="font-light italic text-mid">Hire</span>
               </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">

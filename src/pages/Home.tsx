@@ -66,7 +66,7 @@ export default function Home() {
                 style={{ fontSize: 'clamp(48px, 7vw, 92px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}
               >
                 Protection Built<br />On{' '}
-                <span className="font-light italic text-light">Principle.</span>
+                <span className="font-light italic text-light">Principle</span>
               </h1>
               <p className="mb-9 max-w-[570px] text-[20px] leading-snug text-paper/75">
                 Bridging the gap between public-sector compliance and commercial reliability — a woman-owned, employee-focused firm delivering consistent results across every environment.
@@ -95,7 +95,7 @@ export default function Home() {
       {/* We Are Different */}
       <Section>
         <SectionHeading
-          title={<>We Are <span className="font-light italic text-light">Reliable</span> In Every Way</>}
+          title={<>We Are <span className="font-light italic text-light">Reliable</span> in Every Way</>}
           right={<Link to="/about" className="btn btn-primary" data-reveal="right">About Ares</Link>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
@@ -189,7 +189,7 @@ export default function Home() {
               Woman-<br />
               <em className="font-light italic text-light">Owned.</em><br />
               Reliability-<br />
-              <em className="font-light italic text-light">Driven.</em>
+              <em className="font-light italic text-light">Driven</em>
             </h2>
             <div>
               <Block label="Why It Matters">
@@ -218,7 +218,7 @@ export default function Home() {
       <Section>
         <SectionHeading
           kicker="Explore"
-          title={<>Protection Built On <span className="font-light italic text-light">Trust</span>.</>}
+          title={<>Protection Built on <span className="font-light italic text-light">Trust</span></>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
           kickerReveal="up"
@@ -242,21 +242,21 @@ export default function Home() {
               <div className="svc-card-fade absolute inset-0 -z-[5] bg-gradient-to-b from-ink/0 via-ink/55 via-30% to-ink/90" />
 
               <div>
-                <div className="mb-6 flex flex-wrap gap-2">
+                <div className="mb-6 flex flex-wrap gap-2 pr-16">
                   {c.tags.map((t) => (
                     <span key={t} className="pill-glass pill-glass-dark">{t}</span>
                   ))}
                 </div>
               </div>
-              <div className="relative z-[2] pr-16 text-paper">
-                <h2 className="mb-3.5 text-[32px] font-medium leading-[1.05] tracking-[-0.06em] text-paper">
+              <div className="relative z-[2] text-paper">
+                <h2 className="mb-3.5 text-[32px] font-bold uppercase leading-[1.05] tracking-tight text-paper">
                   {c.title}
                 </h2>
                 <p className="text-[16px] leading-relaxed text-paper/85">
                   {c.body}
                 </p>
               </div>
-              <ArrowBtn to={c.to} className="absolute bottom-6 right-6" ariaLabel={`Open ${c.title}`} />
+              <ArrowBtn to={c.to} className="absolute right-6 top-6" ariaLabel={`Open ${c.title}`} />
             </article>
           ))}
         </div>

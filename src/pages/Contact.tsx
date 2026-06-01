@@ -100,8 +100,11 @@ export default function Contact() {
             <form onSubmit={submit} data-reveal="up" className="flex flex-col gap-6 rounded-[2rem] border border-line bg-paper p-10">
               <div className="flex flex-col gap-2.5 border-b border-line pb-5">
                 <h3 className="brackets-title">CONTACT US</h3>
-                <h2 className="text-[clamp(28px,3vw,40px)] font-bold tracking-tight text-ink">
-                  How can we <span className="font-light italic text-mid">help you?</span>
+                <h2
+                  className="text-ink"
+                  style={{ fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.95, textTransform: 'none' }}
+                >
+                  How Can We <span className="font-light italic text-mid">Help You?</span>
                 </h2>
                 <p className="text-[15px] text-ink-2">Fill out the form and we'll get back to you within one business day. For urgent procurement timelines, call us directly.</p>
               </div>

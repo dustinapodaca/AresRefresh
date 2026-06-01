@@ -69,8 +69,12 @@ export default function Services() {
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
               <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · MATRIX</h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">
-                THE ARES <span className="font-light italic text-mid">SERVICE</span> MATRIX
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                The Ares <span className="font-light italic text-mid">Service</span> Matrix
               </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">
@@ -122,8 +126,12 @@ export default function Services() {
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
               <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · LIFECYCLE</h3>
-              <h2 className="text-display-lg text-ink" data-reveal="up">
-                FOUR <span className="font-light italic text-mid">STAGES</span> TO DEPLOYMENT
+              <h2
+                className="text-ink"
+                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                Four <span className="font-light italic text-mid">Stages</span> to Deployment
               </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">
@@ -230,7 +238,12 @@ export default function Services() {
                 <span>PERSONNEL IN ACTION</span>
                 <span aria-hidden className="opacity-50">]</span>
               </h3>
-              <h2 className="max-w-[24ch] text-display-md text-paper">Discipline · Vigilance · Professionalism in the Field</h2>
+              <h2
+                className="max-w-[24ch] text-paper"
+                style={{ fontSize: 'clamp(34px, 4.4vw, 56px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.95, textTransform: 'none' }}
+              >
+                Discipline · Vigilance · <span className="font-light italic text-light">Professionalism</span> in the Field
+              </h2>
             </div>
           </div>
         </div>
@@ -280,7 +293,7 @@ function WhyStages() {
         {/* Top heading like LeafLife FAQ */}
         <div className="mb-14 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
           <h2 className="m-0 text-paper font-normal" style={{ fontSize: 'clamp(40px, 10vw, 72px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
-            Why Our Process <em className="font-light italic text-light">Matters.</em>
+            Why Our Process <em className="font-light italic text-light">Matters</em>
           </h2>
           <h3 className="brackets-title text-paper/60">HOW IT WORKS</h3>
         </div>
