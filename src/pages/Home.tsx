@@ -49,7 +49,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[1060px]">
         <div className="hero-gradient absolute inset-0 -z-10">
-          <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_60%] max-[460px]:object-[calc(50%-200px)_60%]" />
+          <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_60%] max-[460px]:object-[calc(50%+190px)_60%] max-[460px]:scale-[1.2]" />
           <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.6)_40%,rgba(31,31,31,0.25)_100%),linear-gradient(180deg,rgba(31,31,31,0.35)_0%,rgba(31,31,31,0.25)_50%,rgba(31,31,31,0.6)_100%)] pointer-events-none" />
         </div>
         <div className="container-ares w-full">
