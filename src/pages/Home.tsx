@@ -95,7 +95,7 @@ export default function Home() {
       {/* We Are Different */}
       <Section>
         <SectionHeading
-          title={<>We Are <span className="font-light italic text-light">Reliable</span> in Every Way</>}
+          title={<>We Are <span className="font-light italic text-light">Reliable</span> In Every Way</>}
           right={<Link to="/about" className="btn btn-primary" data-reveal="right">About Ares</Link>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
@@ -187,7 +187,7 @@ export default function Home() {
           <div className="grid items-start gap-20 lg:grid-cols-[1.2fr_1fr]">
             <h2 className="m-0 text-paper font-normal woman_owned_title" style={{ fontSize: 'clamp(46px, 5vw, 76px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
               Woman-<br />
-              <em className="font-light italic text-light">Owned.</em><br />
+              <em className="font-light italic text-light">Owned</em><br />
               Reliability-<br />
               <em className="font-light italic text-light">Driven</em>
             </h2>
@@ -217,11 +217,9 @@ export default function Home() {
       {/* Services (3 hover-expand cards) */}
       <Section>
         <SectionHeading
-          kicker="Explore"
-          title={<>Protection Built on <span className="font-light italic text-light">Trust</span></>}
+          title={<>Protection Built On <span className="font-light italic text-light">Trust</span></>}
           titleSize="clamp(44px, 8vw, 60px)"
           titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
-          kickerReveal="up"
           titleReveal="up"
         />
         <Spacer />

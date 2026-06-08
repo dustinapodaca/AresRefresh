@@ -79,7 +79,7 @@ const CS_STYLES = `
 .qf_item .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--color-mid)}
 .qf_item .v{font-size:clamp(18px,1.8vw,24px);font-weight:600;color:var(--color-ink);letter-spacing:-.015em;line-height:1.05;font-variant-numeric:tabular-nums;word-break:break-word}
 .qf_item .sub{font-size:12px;color:var(--color-mid);margin-top:2px;line-height:1.35}
-@media (max-width:900px){.qf_bar{grid-template-columns:repeat(2,1fr)}.qf_item{padding:22px 20px}.qf_item:first-child,.qf_item:nth-child(odd){border-left:0}.qf_item:nth-child(3),.qf_item:nth-child(4){border-top:1px solid var(--color-line)}}
+@media (max-width:900px){.qf_bar{grid-template-columns:repeat(2,1fr)}.qf_item{padding:22px 20px}.qf_item:first-child,.qf_item:nth-child(odd){border-left:0}.qf_item:nth-child(3),.qf_item:nth-child(4){border-top:1px solid var(--color-line)}.qf_item.qf_emphasis{border-right:0}}
 
 .cs_cap_grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media (max-width:900px){.cs_cap_grid{grid-template-columns:repeat(2,1fr)}}

@@ -202,7 +202,7 @@ function AboutDifferentiation() {
           style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.92, textTransform: 'none' }}
           data-reveal="up"
         >
-          Raising the <span className="font-light italic text-mid">Bar</span>
+          Raising The <span className="font-light italic text-mid">Bar</span>
         </h2>
         <p className="mb-14 max-w-[72ch] text-[21px] leading-snug text-ink-2">
           The security industry runs on the same recurring failures — clients dropped after the contract is signed, officers underpaid and underprepared. We built Ares to refuse those compromises. These eight commitments are what that refusal looks like, day to day.
