@@ -1,17 +1,71 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
+/* Friendly labels for the inquiry-type dropdown. The form's `subject`
+   field stores a short slug ("federal", "commercial", …) but Web3Forms
+   uses the `subject` field as the literal email-subject line, so we
+   swap the slug for one of these labels right before posting. */
+const SUBJECT_LABEL: Record<string, string> = {
+  federal: 'Federal Division (Cleared Ops · GSA)',
+  commercial: 'Commercial & Retail Security',
+  industrial: 'Industrial & Logistics',
+  armed: 'Armed Asset Protection / High-Cash',
+  capability: 'Capability Statement Request',
+  other: 'General Inquiry',
+};
+
 export default function Contact() {
   useScrollInViewObserver();
-  const [status, setStatus] = useState<string | null>(null);
+  const [status, setStatus] = useState<{ text: string; ok: boolean } | null>(null);
+  const [sending, setSending] = useState(false);
 
-  function submit(e: FormEvent<HTMLFormElement>) {
+  async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("✓ Inquiry received. We'll respond within one business day to the email you provided.");
-    (e.currentTarget as HTMLFormElement).reset();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    // Honeypot — real users can't see the field; bots fill it.
+    if (fd.get('botcheck')) return;
+
+    const key = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!key) {
+      setStatus({ text: '✗ Form not configured. Please email contact@aressecurity.co directly.', ok: false });
+      return;
+    }
+
+    fd.append('access_key', key);
+
+    // Rewrite `subject` from internal slug → human-readable email subject.
+    const slug = String(fd.get('subject') || '');
+    fd.set('subject', `Ares Inquiry — ${SUBJECT_LABEL[slug] || 'General Inquiry'}`);
+
+    // So replying from the inbox goes back to the inquirer, not Web3Forms.
+    const email = String(fd.get('email') || '');
+    if (email) fd.append('replyTo', email);
+
+    // Friendly "from" display name in the notification email.
+    const name = String(fd.get('name') || '');
+    if (name) fd.append('from_name', `Ares Quote — ${name}`);
+
+    setSending(true);
+    setStatus(null);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (data.success) {
+        setStatus({ text: "Message sent — we'll respond within one business day to the email you provided.", ok: true });
+        form.reset();
+      } else {
+        setStatus({ text: 'Failed to send message, please try again or email us directly at: contact@aressecurity.co', ok: false });
+      }
+    } catch {
+      setStatus({ text: 'Failed to send message, please try again or email us directly at: contact@aressecurity.co', ok: false });
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -62,8 +116,19 @@ export default function Contact() {
                   left: '-50px',
                   width: 'calc(100% + 100px)',
                   height: 'calc(100% + 100px)',
-                  filter: 'grayscale(0.55) contrast(0.95)',
+                  filter: 'grayscale(1) contrast(1.25) brightness(1)',
                 }}
+              />
+              {/* Theme tint: warm-grey wash multiplied over the desaturated
+                  basemap so the map matches the About §02 "Raising the
+                  Bar" background (#E5E4E1). pointer-events:none keeps
+                  the iframe interactive underneath. mix-blend:multiply
+                  applies the brand color without flattening contrast,
+                  so road and label legibility survive. */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{ background: '#E5E4E1', mixBlendMode: 'multiply', opacity: 0.55 }}
               />
               <div className="absolute left-6 top-6 flex max-w-[240px] flex-col gap-1.5 rounded-xl border border-line bg-paper p-4 shadow-[0_12px_30px_-16px_rgba(31,31,31,0.18)]">
                 <h4 className="m-0 text-[14px] font-bold tracking-tight text-ink">Ares Security LLC</h4>
@@ -134,16 +199,27 @@ export default function Contact() {
                 <textarea id="qf-message" name="message" required placeholder="Site, shift pattern, deadline, and any compliance considerations." className="field-input min-h-[140px] resize-y" />
               </Field>
 
-              {status && (
-                <div className="rounded-xl border border-line bg-mid/10 px-4 py-3.5 text-[14px] font-medium text-ink" role="status" aria-live="polite">
-                  {status}
-                </div>
-              )}
+              {/* Honeypot — hidden from sighted users and tab order, but bots
+                  filling every input will tick this and the submit handler
+                  will silently bail. Web3Forms recommends the `botcheck`
+                  name specifically. */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[5000px] h-0 w-0 opacity-0"
+              />
 
               <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
                 <p className="max-w-[36ch] text-[12px] text-mid"><b className="font-semibold text-ink">Discretion guaranteed.</b> Inquiries reviewed by leadership only.</p>
-                <button type="submit" className="inline-flex items-center gap-3 rounded-full bg-ink px-9 py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-paper transition-all hover:-translate-y-0.5 hover:bg-mid">
-                  Send Inquiry
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="inline-flex items-center gap-3 rounded-full bg-ink px-9 py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-paper transition-all hover:-translate-y-0.5 hover:bg-mid disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-ink"
+                >
+                  {sending ? 'Sending…' : 'Send Inquiry'}
                   <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none"><path d="M15.3846 0H0.615385C0.275692 0 0 0.275692 0 0.615385C0 0.955077 0.275692 1.23077 0.615385 1.23077H13.8988L0.180308 14.9495C-0.06 15.1898 -0.06 15.5794 0.180308 15.8197C0.300615 15.94 0.457846 16 0.615385 16C0.772923 16 0.930461 15.94 1.05046 15.8197L14.7692 2.10092V15.3846C14.7692 15.7243 15.0449 16 15.3846 16C15.7243 16 16 15.7243 16 15.3846V0.615385C16 0.275692 15.7243 0 15.3846 0Z" fill="currentColor" /></svg>
                 </button>
               </div>
@@ -166,6 +242,13 @@ export default function Contact() {
         <Spacer />
       </section>
 
+      {status && (
+        <Toast
+          text={status.text}
+          ok={status.ok}
+          onDismiss={() => setStatus(null)}
+        />
+      )}
     </main>
   );
 }
@@ -194,3 +277,65 @@ function QCard({ href, h, big, p, icon }: { href?: string; h: string; big: strin
 }
 
 function Spacer() { return <div className="h-25" />; }
+
+/* Toast — fixed-position notification used for form submit feedback.
+   Matches the old site's pattern: dark ink card pinned top-right, an
+   icon disc on the left (red+! for error, emerald+✓ for success), the
+   message body, a dismiss button, and a colored progress bar along
+   the bottom that drains over TOAST_MS. Auto-dismiss fires when the
+   bar finishes; clicking × dismisses immediately. */
+const TOAST_MS = 6000;
+
+function Toast({ text, ok, onDismiss }: { text: string; ok: boolean; onDismiss: () => void }) {
+  // Re-arm the timer whenever the message text changes — a back-to-back
+  // submit (e.g. error, then a successful retry) should give the user
+  // the full read time on the second toast, not finish on the first
+  // toast's leftover clock.
+  useEffect(() => {
+    const t = setTimeout(onDismiss, TOAST_MS);
+    return () => clearTimeout(t);
+  }, [onDismiss, text]);
+
+  const barClass = ok ? 'bg-emerald-500' : 'bg-orange-500';
+  const iconClass = ok ? 'bg-emerald-500' : 'bg-red-500';
+
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      style={{ animation: 'toast-enter 0.32s cubic-bezier(0.16, 1, 0.3, 1) both' }}
+      className="fixed right-4 top-4 z-[60] flex w-[360px] max-w-[calc(100vw-32px)] overflow-hidden rounded-xl bg-ink text-paper shadow-[0_24px_60px_-16px_rgba(0,0,0,0.5)] sm:right-6 sm:top-6"
+    >
+      <div className="flex flex-1 items-start gap-3 px-4 pb-5 pt-4 pr-2">
+        <span className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full ${iconClass}`}>
+          {ok ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-paper">
+              <path d="M5 12l4.5 4.5L19 7" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-paper">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 5h2v6h-2V7zm0 8h2v2h-2v-2z" />
+            </svg>
+          )}
+        </span>
+        <p className="m-0 flex-1 text-[14px] leading-snug text-paper">{text}</p>
+        <button
+          type="button"
+          onClick={onDismiss}
+          aria-label="Dismiss"
+          className="-mr-1 flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded text-paper/60 hover:text-paper"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      {/* Progress bar — drains from full to empty over TOAST_MS. */}
+      <span
+        aria-hidden
+        style={{ animation: `toast-shrink ${TOAST_MS}ms linear forwards` }}
+        className={`absolute bottom-0 left-0 h-[3px] w-full ${barClass}`}
+      />
+    </div>
+  );
+}

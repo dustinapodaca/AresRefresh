@@ -68,7 +68,6 @@ export default function Services() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · MATRIX</h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -125,7 +124,6 @@ export default function Services() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · LIFECYCLE</h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}

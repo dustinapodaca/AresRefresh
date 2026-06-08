@@ -88,7 +88,6 @@ export default function About() {
         <div className="container-ares">
           <div className="grid gap-10 lg:grid-cols-3">
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · MISSION</h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -152,7 +151,6 @@ export default function About() {
         <div className="container-ares">
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · PEOPLE</h3>
               <h2
                 className="mb-6 text-ink"
                 style={{ fontSize: 'clamp(34px, 4.4vw, 56px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.95, textTransform: 'none' }}
@@ -199,7 +197,6 @@ function AboutDifferentiation() {
     <section className="bg-[#E5E4E1]" aria-label="Differentiation and values">
       <Spacer />
       <div className="container-ares">
-        <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · DIFFERENTIATION & VALUES</h3>
         <h2
           className="mb-8 text-ink"
           style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.92, textTransform: 'none' }}
@@ -238,12 +235,16 @@ function AboutDifferentiation() {
             </ValGroup>
           </div>
 
-          {/* 8-cube commitments grid */}
-          <div className="flex flex-col">
+          {/* 8-cube commitments grid — desktop only. Hidden below lg
+              so the section reads as narrative + supporting visual
+              grid on wide screens, narrative-only on mobile/tablet
+              (avoids the cards getting squeezed and the text
+              breaking awkwardly). */}
+          <div className="hidden flex-col lg:flex">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-mid">
               Our values, in practice
             </p>
-            <div className="grid flex-1 gap-3 sm:grid-cols-2 lg:[grid-template-rows:repeat(4,minmax(0,1fr))]">
+            <div className="grid flex-1 grid-cols-2 gap-3 lg:[grid-template-rows:repeat(4,minmax(0,1fr))]">
               {VALUES.map((v) => (
                 <div
                   key={v.n}

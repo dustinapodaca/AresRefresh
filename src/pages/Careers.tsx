@@ -107,7 +107,6 @@ export default function Careers() {
               <img src="/images/careers-philosophy.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 01 · PHILOSOPHY</h3>
               <h2
                 className="mb-6 max-w-[14ch] text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -134,7 +133,6 @@ export default function Careers() {
       <section className="bg-paper-2">
         <Spacer />
         <div className="container-ares">
-          <h3 className="brackets-title mb-4" data-reveal="up">SECTION 02 · WHY ARES</h3>
           <h2
             className="mb-12 text-ink"
             style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -163,7 +161,6 @@ export default function Careers() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · ARES ROLES</h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}

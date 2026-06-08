@@ -375,13 +375,6 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
-                <span aria-hidden className="opacity-50">[</span>
-                {/* <br> shows only on <=460px so "CORE COMPETENCIES" stays whole on
-                    a single second line instead of wrapping mid-phrase. */}
-                <span>SECTION 01 ·<br className="hidden max-[460px]:inline" /> CORE COMPETENCIES</span>
-                <span aria-hidden className="opacity-50">]</span>
-              </h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -412,11 +405,6 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
-                <span aria-hidden className="opacity-50">[</span>
-                <span>SECTION 02 ·<br className="hidden max-[460px]:inline" /> PAST PERFORMANCE</span>
-                <span aria-hidden className="opacity-50">]</span>
-              </h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -457,7 +445,6 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
         <div className="container-ares">
           <div className="mb-12">
-            <h3 className="brackets-title mb-4" data-reveal="up">SECTION 03 · DIFFERENTIATION</h3>
             <h2
               className="text-ink"
               style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
@@ -488,11 +475,6 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 grid items-end gap-8 md:grid-cols-2">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] text-paper/60 grid-cols-[auto_max-content_auto]">
-                <span aria-hidden className="opacity-50">[</span>
-                <span>SECTION 04 ·<br className="hidden max-[460px]:inline" /> CONTRACT VEHICLES</span>
-                <span aria-hidden className="opacity-50">]</span>
-              </h3>
               <h2 className="m-0 text-paper" style={{ fontSize: 'clamp(40px,4.6vw,64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.95, textTransform: 'none' }}>
                 How <em className="font-light italic text-light">To Buy From Us</em>
               </h2>
@@ -543,11 +525,6 @@ export default function CapabilityStatement() {
         <div className="container-ares">
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
             <div>
-              <h3 className="relative mb-4 inline-grid items-center gap-2.5 self-start text-[13px] font-medium uppercase tracking-[0.22em] grid-cols-[auto_max-content_auto]" data-reveal="up">
-                <span aria-hidden className="opacity-50">[</span>
-                <span>SECTION 05 ·<br className="hidden max-[460px]:inline" /> CERTIFICATIONS &amp; CODES</span>
-                <span aria-hidden className="opacity-50">]</span>
-              </h3>
               <h2
                 className="text-ink"
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
