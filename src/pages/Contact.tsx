@@ -116,19 +116,7 @@ export default function Contact() {
                   left: '-50px',
                   width: 'calc(100% + 100px)',
                   height: 'calc(100% + 100px)',
-                  filter: 'grayscale(1) contrast(1.25) brightness(1)',
                 }}
-              />
-              {/* Theme tint: warm-grey wash multiplied over the desaturated
-                  basemap so the map matches the About §02 "Raising the
-                  Bar" background (#E5E4E1). pointer-events:none keeps
-                  the iframe interactive underneath. mix-blend:multiply
-                  applies the brand color without flattening contrast,
-                  so road and label legibility survive. */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0"
-                style={{ background: '#E5E4E1', mixBlendMode: 'multiply', opacity: 0.55 }}
               />
               <div className="absolute left-6 top-6 flex max-w-[240px] flex-col gap-1.5 rounded-xl border border-line bg-paper p-4 shadow-[0_12px_30px_-16px_rgba(31,31,31,0.18)]">
                 <h4 className="m-0 text-[14px] font-bold tracking-tight text-ink">Ares Security LLC</h4>
@@ -162,7 +150,7 @@ export default function Contact() {
             </div>
 
             {/* Form */}
-            <form onSubmit={submit} data-reveal="up" className="flex flex-col gap-6 rounded-[2rem] border border-line bg-paper p-10">
+            <form onSubmit={submit} data-reveal="up" className="flex flex-col gap-6 rounded-[2rem] border border-line bg-paper px-5 py-10">
               <div className="flex flex-col gap-2.5 border-b border-line pb-5">
                 <h3 className="brackets-title">CONTACT US</h3>
                 <h2
@@ -212,8 +200,8 @@ export default function Contact() {
                 className="absolute -left-[5000px] h-0 w-0 opacity-0"
               />
 
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                <p className="max-w-[36ch] text-[12px] text-mid"><b className="font-semibold text-ink">Discretion guaranteed.</b> Inquiries reviewed by leadership only.</p>
+              <div className="flex flex-col items-center gap-4 pt-2">
+                <p className="max-w-[36ch] text-center text-[12px] text-mid"><b className="font-semibold text-ink">Discretion guaranteed.</b> Inquiries reviewed by leadership only.</p>
                 <button
                   type="submit"
                   disabled={sending}

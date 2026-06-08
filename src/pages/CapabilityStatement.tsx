@@ -476,7 +476,13 @@ export default function CapabilityStatement() {
           <div className="mb-12 grid items-end gap-8 md:grid-cols-2">
             <div>
               <h2 className="m-0 text-paper" style={{ fontSize: 'clamp(40px,4.6vw,64px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 0.95, textTransform: 'none' }}>
-                How <em className="font-light italic text-light">To Buy From Us</em>
+                How{' '}
+                <em
+                  className="font-light italic text-light"
+                  style={{ marginLeft: '-0.06em' }}
+                >
+                  To Buy<br className="md:hidden" /> From Us
+                </em>
               </h2>
             </div>
             <p className="text-right text-[14px] uppercase tracking-[0.14em] text-paper/60">↓ Pre-negotiated pricing<br />award without re-compete</p>
