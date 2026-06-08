@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import Socials from './Socials';
 
 const NAV = [
   { to: '/', label: 'Home', end: true },
@@ -250,7 +249,11 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className="mt-7 flex justify-center">
+          {/* Bumped mt from mt-7 → mt-14 + added mb-6 so the button
+              sits roughly where the socials row used to begin, and
+              the drawer keeps most of the vertical space it had
+              before the socials were removed. */}
+          <div className="mt-14 mb-6 flex justify-center">
             <Link
               to="/contact"
               onClick={() => {
@@ -262,7 +265,6 @@ export default function Header() {
               Request a Quote
             </Link>
           </div>
-          <Socials variant="dark" className="mt-7 justify-center" />
         </div>
       </nav>
     </header>

@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import Socials from './Socials';
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -51,9 +50,6 @@ export default function Footer() {
             </li>
             <li>
               <a href="mailto:contact@aressecurity.co" className="text-[13px] tracking-[0.02em] normal-case">contact@aressecurity.co</a>
-            </li>
-            <li className="mt-4 pt-0">
-              <Socials variant="dark" />
             </li>
           </FooterCol>
         </div>
