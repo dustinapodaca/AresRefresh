@@ -3,12 +3,12 @@ import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 
 // ---- Data ----
 const CAPS = [
-  { n: '01', t: 'Government & Cleared Operations', p: 'Federal facilities, military bases, courthouses, and state agencies. Cleared security escorts at Buckley Space Force Base.', keys: ['TS/SCI Cleared', 'DoW Vetted', 'Escort Services'] },
-  { n: '02', t: 'Airport & Transportation Security', p: 'Perimeter, passenger-area, baggage, and cargo coverage for aviation and transportation hubs — uniformed and plainclothes, 24/7.', keys: ['Aviation', 'Cargo', '24/7'] },
-  { n: '03', t: 'Commercial & High-Traffic Security', p: 'Retail, banks, hotels, malls, and grocery. Visible deterrence and loss-prevention without disrupting the customer experience.', keys: ['Loss Prevention', 'Banking', 'Hospitality'] },
-  { n: '04', t: 'Industrial, Logistics & Construction', p: 'Posted guards, mobile patrol, perimeter and yard security, and auditable checkpoint logs for warehouses, sites, and critical infrastructure.', keys: ['Mobile Patrol', 'Perimeter', 'Critical Infrastructure'] },
-  { n: '05', t: 'Specialized & Armed Protection', p: 'Licensed, firearms-compliant officers for cash-handling, regulated, and high-liability environments — insurable risk reduction.', keys: ['Armed', 'Cash-Handling', 'Data Centers'] },
-  { n: '06', t: 'Institutional & Community Security', p: 'Hospitals, schools, museums, places of worship, residential and retirement communities — trust-based, calm presence.', keys: ['Healthcare', 'Education', 'Residential'] },
+  { t: 'Armed Physical Security', p: 'Licensed, firearms-qualified officers for fixed posts in cash-handling, regulated, and high-liability environments — insurable risk reduction.', keys: ['Armed', 'Cash-Handling', 'Regulated'] },
+  { t: 'Unarmed Physical Security', p: 'Uniformed and plainclothes officers providing visible deterrence, lobby coverage, and access oversight for facilities and campuses, 24/7.', keys: ['Uniformed', 'Lobby / Campus', '24/7'] },
+  { t: 'Patrol Services', p: 'Foot and mobile patrol with documented checkpoints and auditable logs across single sites and multi-property portfolios.', keys: ['Foot Patrol', 'Mobile Patrol', 'Checkpoint Logs'] },
+  { t: 'Access Control', p: 'Entry screening, credential verification, visitor management, and perimeter control for facilities, sites, and critical infrastructure.', keys: ['Screening', 'Credentialing', 'Perimeter'] },
+  { t: 'Patrol Vehicle Security', p: 'Marked-vehicle patrol, alarm response, and after-hours property checks with GPS-verified routes and time-stamped reporting.', keys: ['Marked Vehicle', 'Alarm Response', 'GPS-Verified'] },
+  { t: 'Event & Emergency Response', p: 'Crowd management, incident response, and emergency coordination for events, institutions, and community venues — a calm, trained presence.', keys: ['Crowd Management', 'Incident Response', 'Events'] },
 ];
 
 const DIFFS = [
@@ -37,15 +37,7 @@ const CODES: Array<{ k: React.ReactNode; v: string; sub?: string }> = [
   { k: 'Local License — Colorado Springs', v: '#0850744L', sub: 'Certified training provider · City of Colorado Springs' },
 ];
 
-const POC: Array<{ k: string; v: React.ReactNode }> = [
-  { k: 'Direct Phone', v: <a href="tel:+17196963966">719-696-3966</a> },
-  { k: 'Email', v: <a href="mailto:contact@aressecurity.co" style={{ textTransform: 'none' }}>contact@aressecurity.co</a> },
-  { k: 'Office', v: 'Colorado Springs, CO 80906' },
-  { k: 'Service Area', v: 'Greater Colorado Area' },
-  { k: 'Hours', v: '24/7 Operations · M–F Office' },
-];
-
-const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
+const PDF_URL ='/files/Ares-Security-Capability-Statement-2026.pdf';
 const GSA_ELIB = 'https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES';
 const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f4416aee823f55dc5fa09/view';
 
@@ -64,9 +56,6 @@ const CS_STYLES = `
 .cs_hero_value .cs_hero_creds{display:inline-block;margin-top:12px}
 .cs_hero_ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 /* Hero glass CTA inherits the shared .btn-glass recipe from index.css */
-.cs_hero_meta{margin-top:48px;padding-top:24px;border-top:1px solid rgba(250,250,249,.15);display:flex;flex-wrap:wrap;gap:48px}
-.cs_hero_meta_item .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.5);margin-bottom:6px}
-.cs_hero_meta_item .v{font-size:15px;color:var(--color-paper);font-weight:500;letter-spacing:-.005em;font-variant-numeric:tabular-nums}
 
 .qf_section{background:var(--color-paper);position:relative}
 .qf_bar{position:relative;z-index:2;background:var(--color-paper);border:1px solid var(--color-line);border-radius:24px;box-shadow:0 32px 64px -32px rgba(31,31,31,.2);overflow:hidden;display:grid;grid-template-columns:repeat(4,1fr)}
@@ -92,72 +81,6 @@ const CS_STYLES = `
 .cs_cap_body{font-size:14px;color:var(--color-ink-2);line-height:1.55;margin:0}
 .cs_cap_keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
 .cs_cap_keys span{font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--color-mid);background:var(--color-paper-2);border:1px solid var(--color-line);border-radius:999px;padding:4px 10px;white-space:nowrap}
-
-.pp_section{background:#E5E4E1}
-/* Past Performance — 5-logo trust grid sitting FLAT on the section
-   background (no outer card). All separator lines use BORDERS rather
-   than pseudo-element backgrounds because borders are pixel-snapped
-   by browsers; pseudo backgrounds at fractional pixel positions
-   (column boundaries in a 3-fr grid divide to thirds, which rarely
-   land on whole pixels) get anti-aliased to half-density and read
-   thinner than crisp lines. With borders, every separator renders at
-   the same true 1px thickness regardless of column count or viewport
-   width. Color --color-mid matches the italic "RECORD" in the title.
-   Top row: 3 cols. Bottom row: 2 cols. */
-.pp_logos_top{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--color-mid)}
-.pp_logos_bottom{display:grid;grid-template-columns:repeat(2,1fr)}
-.pp_logo{box-sizing:border-box;position:relative;display:flex;align-items:center;justify-content:center;padding:80px 56px;min-height:200px;min-width:0}
-.pp_logos_top .pp_logo:not(:last-child),
-.pp_logos_bottom .pp_logo:not(:last-child){border-right:1px solid var(--color-mid)}
-/* Gap before/after the horizontal divider is created by masking the
-   top and bottom of each vertical border with strips of section-bg
-   color. 2px wide centered on the border so antialias on either side
-   is fully covered. */
-.pp_logos_top .pp_logo:not(:last-child)::before,
-.pp_logos_top .pp_logo:not(:last-child)::after,
-.pp_logos_bottom .pp_logo:not(:last-child)::before,
-.pp_logos_bottom .pp_logo:not(:last-child)::after{
-  content:"";position:absolute;right:-1px;width:2px;height:54px;background:#E5E4E1;pointer-events:none;
-}
-.pp_logos_top .pp_logo:not(:last-child)::before,
-.pp_logos_bottom .pp_logo:not(:last-child)::before{top:0}
-.pp_logos_top .pp_logo:not(:last-child)::after,
-.pp_logos_bottom .pp_logo:not(:last-child)::after{bottom:0}
-/* Seal/badge logos read by height (they're roughly square). Wordmark
-   logos like Natural Grocers read by width — a single max-height
-   would let the wordmark stretch to 350px+ wide and dominate the
-   row. Apply a tighter max-width AND a lower max-height to the
-   Natural Grocers logo so the visual area roughly matches the seals
-   (~130px circle ≈ 220×70 wordmark). Other logos use the default
-   height-driven scaling. */
-.pp_logo img{max-width:100%;max-height:130px;width:auto;height:auto;object-fit:contain}
-.pp_logo img[src*="natural-grocers"]{max-width:220px;max-height:72px}
-@media (max-width:768px){
-  .pp_logo{padding:36px 18px;min-height:140px}
-  .pp_logo img{max-height:90px}
-  .pp_logo img[src*="natural-grocers"]{max-width:170px;max-height:56px}
-  .pp_logos_top .pp_logo:not(:last-child)::before,
-  .pp_logos_top .pp_logo:not(:last-child)::after,
-  .pp_logos_bottom .pp_logo:not(:last-child)::before,
-  .pp_logos_bottom .pp_logo:not(:last-child)::after{height:36px}
-  /* Lines are slightly thinner on mobile — on high-DPI phone screens
-     0.5px CSS = 1 device pixel, which renders as a true 1-physical-
-     pixel hairline. Smaller cells make a full 1px CSS line read
-     heavier than the desktop version; halving it restores the visual
-     weight balance. */
-  .pp_logos_top{border-bottom-width:0.5px}
-  .pp_logos_top .pp_logo:not(:last-child),
-  .pp_logos_bottom .pp_logo:not(:last-child){border-right-width:0.5px}
-}
-@media (max-width:460px){
-  .pp_logo{padding:22px 8px;min-height:104px}
-  .pp_logo img{max-height:64px}
-  .pp_logo img[src*="natural-grocers"]{max-width:130px;max-height:42px}
-  .pp_logos_top .pp_logo:not(:last-child)::before,
-  .pp_logos_top .pp_logo:not(:last-child)::after,
-  .pp_logos_bottom .pp_logo:not(:last-child)::before,
-  .pp_logos_bottom .pp_logo:not(:last-child)::after{height:26px}
-}
 
 .cv_section{background:var(--color-ink);color:var(--color-paper);position:relative;overflow:hidden;isolation:isolate}
 .cv_section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 90% 10%,rgba(124,120,118,.22),transparent 60%)}
@@ -226,32 +149,8 @@ const CS_STYLES = `
 .cc_row .v small{display:block;font-size:12px;font-weight:400;color:var(--color-mid);letter-spacing:0;margin-top:3px;text-transform:none;font-variant-numeric:normal}
 @media (min-width:769px){.cc_row:nth-child(1),.cc_row:nth-child(2){border-top:0}.cc_row:nth-child(odd){border-right:1px solid var(--color-line)}}
 
-.poc_section{position:relative;padding:80px 0;background:var(--color-paper)}
-.poc_card{position:relative;border-radius:24px;overflow:hidden;isolation:isolate;background:var(--color-ink);color:var(--color-paper);padding:64px;box-shadow:0 40px 80px -32px rgba(31,31,31,.5),0 8px 24px -8px rgba(31,31,31,.25)}
-.poc_card::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:url('/images/cap-cta-bg.jpg') center/cover no-repeat}
-.poc_card::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(31,31,31,.55) 0%,rgba(31,31,31,.35) 50%,rgba(31,31,31,.7) 100%),linear-gradient(90deg,rgba(31,31,31,.55) 0%,rgba(31,31,31,.2) 60%,rgba(31,31,31,.4) 100%)}
-.poc_grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.poc_lead h3.poc_head{font-size:clamp(32px,4vw,52px);font-weight:400;letter-spacing:-.06em;line-height:1.02;color:var(--color-paper);margin:0 0 16px;text-transform:none}
-.poc_lead h3.poc_head em{font-style:italic;font-weight:300;color:var(--color-light)}
-.poc_lead p{font-size:17px;color:rgba(250,250,249,.72);line-height:1.5;margin:0;max-width:48ch}
-.poc_person{display:flex;align-items:center;gap:18px}
-.poc_avatar{width:56px;height:56px;border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.04));-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:var(--color-paper);flex-shrink:0;position:relative}
-.poc_avatar::before{content:"";position:absolute;inset:0;background-color:currentColor;-webkit-mask:url('/ares-logo.svg') no-repeat calc(50% - 1px) calc(50% - 1px) / 54% 54%;mask:url('/ares-logo.svg') no-repeat calc(50% - 1px) calc(50% - 1px) / 54% 54%}
-.poc_person .name{font-size:18px;font-weight:600;color:var(--color-paper);line-height:1.2}
-.poc_person .title{font-size:13px;color:rgba(250,250,249,.65);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
-.poc_details{display:flex;flex-direction:column;margin-top:28px}
-.poc_detail{display:flex;justify-content:space-between;gap:24px;padding:16px 0;border-top:1px solid rgba(250,250,249,.16)}
-.poc_detail:first-child{border-top:0;padding-top:0}
-.poc_detail .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,250,249,.55)}
-.poc_detail .v{font-size:16px;font-weight:500;color:var(--color-paper);letter-spacing:-.005em;text-align:right}
-.poc_detail .v a{color:var(--color-paper);text-decoration:none;border-bottom:1px solid rgba(250,250,249,.3)}
-.poc_detail .v a:hover{border-bottom-color:var(--color-paper)}
-.poc_ctas{position:relative;margin-top:24px;padding-top:20px;border-top:1px solid rgba(250,250,249,.16);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-@media (max-width:900px){.poc_card{padding:40px 32px}.poc_grid{grid-template-columns:1fr;gap:32px}.poc_detail .v{text-align:right}}
-@media (max-width:640px){.poc_card{padding:32px 24px}.poc_ctas{gap:10px;flex-wrap:nowrap}.poc_ctas .btn{flex:1 1 0;min-width:0;padding:14px 12px;font-size:11px;letter-spacing:.06em;justify-content:center;text-align:center;white-space:nowrap}}
-
-.cs_footcta{position:relative;padding:0 0 100px;background:var(--color-paper)}
-.cs_footcta_card{position:relative;border-radius:24px;overflow:hidden;background:var(--color-paper-2);border:1px solid var(--color-line);padding:40px 56px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.cs_footcta{position:relative;padding:0 0 100px;background:var(--color-paper-2)}
+.cs_footcta_card{position:relative;border-radius:24px;overflow:hidden;background:var(--color-paper);border:1px solid var(--color-line);padding:40px 56px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
 .cs_footcta_card .fct_head{font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:-.05em;line-height:1.05;color:var(--color-ink);margin:0;text-transform:none}
 .cs_footcta_card .fct_head em{font-style:italic;font-weight:300;color:var(--color-mid)}
 .cs_footcta_card .actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;flex-shrink:0}
@@ -317,7 +216,7 @@ export default function CapabilityStatement() {
           </div>
           <h1 className="reveal-d2">Capability Statement</h1>
           <p className="cs_hero_value reveal-d3">
-            Federal-ready security guard and patrol services for commercial clients, agencies, and prime contractors.<br /><b className="cs_hero_creds">GSA Schedule holder · SAM-registered · WOSB &amp; WBE certified.</b>
+            Colorado-based security guard and patrol services for commercial clients, agencies, and prime contractors.<br /><b className="cs_hero_creds">GSA Schedule holder · SAM-registered · WOSB &amp; WBE certified.</b>
           </p>
           <div className="cs_hero_ctas">
             <a href={PDF_URL} className="btn btn-glass max-w-full max-[460px]:px-5 max-[460px]:py-3 max-[460px]:text-[12px]" download>
@@ -329,12 +228,6 @@ export default function CapabilityStatement() {
               <span className="max-[460px]:hidden">Download Capability Statement (PDF)</span>
               <span className="hidden max-[460px]:inline">Download PDF</span>
             </a>
-          </div>
-          <div className="cs_hero_meta reveal-d4">
-            <div className="cs_hero_meta_item"><div className="k">Issued</div><div className="v">April 2026</div></div>
-            <div className="cs_hero_meta_item"><div className="k">Entity Registered</div><div className="v">May 17, 2023</div></div>
-            <div className="cs_hero_meta_item"><div className="k">SAM Status</div><div className="v">Active · Through Mar 26, 2027</div></div>
-            <div className="cs_hero_meta_item"><div className="k">Service Area</div><div className="v">Based in Colorado</div></div>
           </div>
         </div>
       </section>
@@ -380,15 +273,13 @@ export default function CapabilityStatement() {
                 style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
                 data-reveal="up"
               >
-                What <span className="font-light italic text-mid">We Do</span>
+                Core <span className="font-light italic text-mid">Competencies</span>
               </h2>
             </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-mid" data-reveal="right">↓ Six divisions<br />under one GSA vehicle</p>
           </div>
           <div className="cs_cap_grid">
             {CAPS.map((c) => (
-              <article key={c.n} data-scroll-active data-in-view="false" className="cs_cap_item">
-                <span className="cs_cap_num">{c.n}</span>
+              <article key={c.t} data-scroll-active data-in-view="false" className="cs_cap_item">
                 <h3 className="cs_cap_title">{c.t}</h3>
                 <p className="cs_cap_body">{c.p}</p>
                 <div className="cs_cap_keys">{c.keys.map((k) => <span key={k}>{k}</span>)}</div>
@@ -399,49 +290,8 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
       </section>
 
-      {/* 4. PAST PERFORMANCE */}
-      <section className="pp_section" data-section="performance">
-        <div className="cs_spacer_lg" />
-        <div className="container-ares">
-          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6">
-            <div>
-              <h2
-                className="text-ink"
-                style={{ fontSize: 'clamp(40px, 6vw, 60px)', fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92, textTransform: 'none' }}
-                data-reveal="up"
-              >
-                Proven <span className="font-light italic text-mid">Record</span>
-              </h2>
-            </div>
-            <p className="text-right text-[14px] uppercase tracking-[0.14em] text-ink-2" data-reveal="right">↓ Detailed references<br />available on request</p>
-          </div>
-          <div className="pp_logos">
-            <div className="pp_logos_top">
-              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '0ms' } as React.CSSProperties}>
-                <img src="/images/client-airforce.png" alt="U.S. Air Force" />
-              </div>
-              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '120ms' } as React.CSSProperties}>
-                <img src="/images/client-spaceforce.png" alt="U.S. Space Force" />
-              </div>
-              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '240ms' } as React.CSSProperties}>
-                <img src="/images/client-pps.png" alt="PPS" />
-              </div>
-            </div>
-            <div className="pp_logos_bottom">
-              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '360ms' } as React.CSSProperties}>
-                <img src="/images/client-army-corps.png" alt="U.S. Army Corps of Engineers" />
-              </div>
-              <div className="pp_logo" data-reveal="up" style={{ ['--reveal-delay' as string]: '480ms' } as React.CSSProperties}>
-                <img src="/images/client-natural-grocers.png" alt="Natural Grocers" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="cs_spacer_lg" />
-      </section>
-
-      {/* 5. DIFFERENTIATORS */}
-      <section data-section="differentiators">
+      {/* 4. DIFFERENTIATORS */}
+      <section className="bg-[#E5E4E1]" data-section="differentiators">
         <div className="cs_spacer_lg" />
         <div className="container-ares">
           <div className="mb-12">
@@ -469,7 +319,7 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
       </section>
 
-      {/* 6. CONTRACT VEHICLES */}
+      {/* 5. CONTRACT VEHICLES */}
       <section className="cv_section" data-section="vehicles">
         <div className="cs_spacer_lg" />
         <div className="container-ares">
@@ -525,7 +375,7 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
       </section>
 
-      {/* 7. CERTIFICATIONS & CODES */}
+      {/* 6. CERTIFICATIONS & CODES */}
       <section className="cc_section" data-section="certifications">
         <div className="cs_spacer_lg" />
         <div className="container-ares">
@@ -591,39 +441,7 @@ export default function CapabilityStatement() {
         <div className="cs_spacer_lg" />
       </section>
 
-      {/* 8. POINT OF CONTACT */}
-      <section className="poc_section" data-section="poc">
-        <div className="container-ares">
-          <div className="poc_card" data-reveal="up">
-            <div className="poc_grid">
-              <div className="poc_lead">
-                <h3 className="brackets-title mb-4 text-paper/65">POINT OF CONTACT</h3>
-                <h3 className="poc_head">Schedule a briefing.<br /><em>We look forward to doing business with you.</em></h3>
-                <p>For procurement timelines, capability statement copies, or scoped proposals — reach Ares leadership directly.</p>
-              </div>
-              <div>
-                <div className="poc_person">
-                  <div className="poc_avatar" aria-hidden="true" />
-                  <div>
-                    <div className="name">Ares Leadership Team</div>
-                    <div className="title">Contract Administrator</div>
-                  </div>
-                </div>
-                <div className="poc_details">
-                  {POC.map((d) => (
-                    <div key={d.k} className="poc_detail">
-                      <span className="k">{d.k}</span>
-                      <span className="v">{d.v}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. FOOTER CTA */}
+      {/* 7. FOOTER CTA */}
       <section className="cs_footcta" data-section="footcta">
         <div className="container-ares">
           <div className="cs_footcta_card" data-reveal="up">

@@ -18,6 +18,9 @@ dist/
 .idea/
 .vscode/
 
+# Local pre-edit source backups (prior versions live in git history)
+.backups/
+
 # Logs
 *.log
 npm-debug.log*

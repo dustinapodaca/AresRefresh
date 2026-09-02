@@ -5,8 +5,8 @@ const NAV = [
   { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/capability-statement', label: 'Capability Statement' },
   { to: '/careers', label: 'Careers' },
+  { to: '/capability-statement', label: 'Capability Statement' },
 ];
 
 export default function Header() {
