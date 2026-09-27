@@ -112,39 +112,6 @@
     </script>
   </head>
   <body>
-    <!-- Refraction filter for .glass-card-figma (Figma Glass: Refraction 62,
-         Depth 100). CSS has no refraction property, so the backdrop is warped
-         with two chained feDisplacementMap passes.
-
-         Each pass uses a gradient map whose UNUSED channel is held at 128
-         (= zero displacement), so the horizontal pass moves pixels only on X
-         and the vertical pass only on Y.
-
-         Each map is a FULL linear ramp (0 -> 255), which means displacement is
-         zero at the centre and grows to +/- scale/2 at the edges in opposite
-         directions. That stretches the backdrop outward like a magnifying lens
-         and produces the large smooth lobes the Figma render shows. An
-         edge-banded map instead confines the warp to a thin border, which
-         reads as a hard rim rather than as glass.
-
-         Chromium-only: Safari and Firefox ignore url() in backdrop-filter and
-         fall back to the plain frost defined in index.css. -->
-    <svg width="0" height="0" aria-hidden="true" focusable="false"
-         style="position:absolute;width:0;height:0;overflow:hidden">
-      <filter id="ares-glass-refraction" x="0" y="0" width="100%" height="100%"
-              color-interpolation-filters="sRGB">
-        <!-- X map: R ramps 0->255 across the outer 8% bands, G pinned to 128 -->
-        <feImage preserveAspectRatio="none" result="mapX"
-          href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='460' height='234'&gt;&lt;defs&gt;&lt;linearGradient id='x' x1='0' y1='0' x2='1' y2='0'&gt;&lt;stop offset='0' stop-color='rgb(0,128,128)'/&gt;&lt;stop offset='1' stop-color='rgb(255,128,128)'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='460' height='234' fill='url(%23x)'/&gt;&lt;/svg&gt;" />
-        <feDisplacementMap in="SourceGraphic" in2="mapX" scale="52"
-                           xChannelSelector="R" yChannelSelector="G" result="warpX" />
-        <!-- Y map: G ramps 0->255 across the outer 15% bands, R pinned to 128 -->
-        <feImage preserveAspectRatio="none" result="mapY"
-          href="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='460' height='234'&gt;&lt;defs&gt;&lt;linearGradient id='y' x1='0' y1='0' x2='0' y2='1'&gt;&lt;stop offset='0' stop-color='rgb(128,0,128)'/&gt;&lt;stop offset='1' stop-color='rgb(128,255,128)'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='460' height='234' fill='url(%23y)'/&gt;&lt;/svg&gt;" />
-        <feDisplacementMap in="warpX" in2="mapY" scale="52"
-                           xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-    </svg>
     <div id="root"></div>
     <script type="module" src="/image-slot.js"></script>
     <script type="module" src="/src/main.tsx"></script>
