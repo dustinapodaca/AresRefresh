@@ -1,5 +1,3 @@
-import type { Config, Context } from '@netlify/edge-functions';
-
 /**
  * Sends `X-Robots-Tag: noindex, nofollow` for any request served from a
  * *.netlify.app hostname, so the preview, deploy previews and branch
@@ -15,8 +13,16 @@ import type { Config, Context } from '@netlify/edge-functions';
  * match and get no header, with no code change and nothing to remember to
  * remove. The .netlify.app host keeps the header, which is harmless once
  * that host 301s to the domain.
+ *
+ * Types are declared inline rather than imported from
+ * "@netlify/edge-functions" on purpose: the bare specifier resolves only
+ * through Netlify's injected import map, which makes the function
+ * unloadable in local tooling. Only `context.next()` is used, so a
+ * structural type costs nothing and keeps this runnable everywhere.
  */
-export default async (request: Request, context: Context) => {
+type EdgeContext = { next: () => Promise<Response> };
+
+export default async (request: Request, context: EdgeContext): Promise<Response> => {
   const response = await context.next();
   const { hostname } = new URL(request.url);
 
@@ -27,10 +33,16 @@ export default async (request: Request, context: Context) => {
   return response;
 };
 
-// Hashed JS/CSS bundles don't need the header, so skip them to keep edge
-// invocations down. Images and /files/*.pdf stay covered, so the preview
-// copy of the capability statement PDF isn't indexed either.
-export const config: Config = {
+// Declarative routing, current Netlify API. Hashed JS/CSS bundles don't need
+// the header, so they're excluded to keep edge invocations down; images and
+// /files/*.pdf stay covered so the preview PDF isn't indexed either.
+//
+// NOTE: netlify-cli 12.x (installed locally) predates both this config-export
+// form and `excludedPath` in netlify.toml, so `netlify dev` cannot load this
+// function. That is a stale-CLI limitation, not a defect — verify the header
+// on the deploy preview with:
+//   curl -sI https://aressecurity.netlify.app/ | grep -i x-robots-tag
+export const config = {
   path: '/*',
   excludedPath: ['/assets/*'],
 };

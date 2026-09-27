@@ -30,3 +30,6 @@ pnpm-debug.log*
 
 # Puppeteer browser download
 .cache/
+
+# Local Netlify folder
+.netlify

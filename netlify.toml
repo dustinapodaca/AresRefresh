@@ -14,3 +14,4 @@
 # no-op until aressecurity.co is the primary domain - see the plugin.
 [[plugins]]
   package = "/netlify/plugins/indexnow"
+
