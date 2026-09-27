@@ -214,22 +214,19 @@ export default function Services() {
         <Spacer />
       </section>
 
-      {/* Why Our Four-Stage Process Matters */}
-      <WhyStages />
-
       {/* Service areas — slim crawlable band linking the location pages so
-          they are reachable from /services as well as the footer. Kept to a
-          single hairline-bounded row: it is a navigation aid, not a section,
-          so it uses a plain label rather than an <h2> and does not compete
-          with the real content above it. */}
+          they are reachable from /services as well as the footer. Sits above
+          the four-stage process section. It is a navigation aid rather than a
+          content section, so it uses a plain label instead of an <h2> and does
+          not compete in the page's heading outline. */}
       <section className="border-y border-line bg-paper-2">
-        <div className="container-ares flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-8">
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid">Service areas</span>
-            <span className="text-[17px] text-ink">
-              Where we <span className="font-light italic text-mid">work</span>
-            </span>
-          </div>
+        <div className="container-ares flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-9">
+          <span
+            className="text-ink"
+            style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05 }}
+          >
+            Where we <span className="font-light italic text-mid">work</span>
+          </span>
           <ul className="m-0 flex list-none flex-wrap items-center gap-x-7 gap-y-2 p-0">
             {[
               { to: '/locations/colorado-springs', label: 'Colorado Springs' },
@@ -249,6 +246,9 @@ export default function Services() {
           </ul>
         </div>
       </section>
+
+      {/* Why Our Four-Stage Process Matters */}
+      <WhyStages />
 
       {/* Personnel in Action banner — Services-only "docked CTA" treatment.
           The Footer below uses `is-extended` (see Footer.tsx + index.css)
