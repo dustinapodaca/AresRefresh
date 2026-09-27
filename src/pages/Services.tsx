@@ -120,6 +120,41 @@ export default function Services() {
         <Spacer />
       </section>
 
+      {/* Service areas — slim crawlable band linking the location pages so
+          they are reachable from /services as well as the footer. Sits above
+          the Four Stages to Deployment section. It is a navigation aid rather than a
+          content section, so it uses a plain label instead of an <h2> and does
+          not compete in the page's heading outline. Top border only: the
+          Four Stages section below shares this paper-2 fill, so a bottom
+          hairline would read as a stray line inside one continuous block. */}
+      <section className="border-t border-line bg-paper-2">
+        <div className="container-ares flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-9">
+          <span
+            className="text-ink"
+            style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05 }}
+          >
+            Where we <span className="font-light italic text-mid">work</span>
+          </span>
+          <ul className="m-0 flex list-none flex-wrap items-center gap-x-7 gap-y-2 p-0">
+            {[
+              { to: '/locations/colorado-springs', label: 'Colorado Springs' },
+              { to: '/locations/denver', label: 'Denver' },
+              { to: '/locations/pueblo', label: 'Pueblo' },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  className="group inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-ink transition-colors hover:text-mid"
+                >
+                  {l.label}
+                  <span aria-hidden="true" className="text-mid transition-transform group-hover:translate-x-0.5">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Lifecycle */}
       <section className="bg-paper-2">
         <Spacer />
@@ -212,39 +247,6 @@ export default function Services() {
           </div>
         </div>
         <Spacer />
-      </section>
-
-      {/* Service areas — slim crawlable band linking the location pages so
-          they are reachable from /services as well as the footer. Sits above
-          the four-stage process section. It is a navigation aid rather than a
-          content section, so it uses a plain label instead of an <h2> and does
-          not compete in the page's heading outline. */}
-      <section className="border-y border-line bg-paper-2">
-        <div className="container-ares flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-9">
-          <span
-            className="text-ink"
-            style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05 }}
-          >
-            Where we <span className="font-light italic text-mid">work</span>
-          </span>
-          <ul className="m-0 flex list-none flex-wrap items-center gap-x-7 gap-y-2 p-0">
-            {[
-              { to: '/locations/colorado-springs', label: 'Colorado Springs' },
-              { to: '/locations/denver', label: 'Denver' },
-              { to: '/locations/pueblo', label: 'Pueblo' },
-            ].map((l) => (
-              <li key={l.to}>
-                <Link
-                  to={l.to}
-                  className="group inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-ink transition-colors hover:text-mid"
-                >
-                  {l.label}
-                  <span aria-hidden="true" className="text-mid transition-transform group-hover:translate-x-0.5">→</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       {/* Why Our Four-Stage Process Matters */}
