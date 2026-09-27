@@ -1,5 +1,20 @@
-# SPA fallback — React Router owns all routes on the client. Tell Netlify
-# to serve index.html (with a 200, NOT a 301/302) for any path that
-# doesn't match a static file in the build. Without this, refreshing on
-# a deep route like /services returns Netlify's 404 page.
-/*    /index.html   200
+# ======================================================================
+# CUTOVER DAY ONLY - DO NOT UNCOMMENT BEFORE CUTOVER
+# Uncomment ONLY after aressecurity.co is attached to this Netlify site
+# as the PRIMARY domain AND Netlify shows the SSL certificate as issued.
+# If this is active before then, it sends every preview visitor to the
+# old server that still answers on aressecurity.co.
+# ----------------------------------------------------------------------
+# https://aressecurity.netlify.app/*   https://aressecurity.co/:splat   301!
+# ======================================================================
+
+# Every route is prerendered to a flat file by scripts/prerender.mjs
+# (dist/about.html, dist/services/armed-security.html, ...), and Netlify
+# serves those directly with a 200. No per-route rewrite is needed.
+#
+# The old `/*  /index.html  200` SPA fallback has been REMOVED on purpose:
+# it returned a 200 copy of Home for every mistyped URL, which is a soft
+# 404 and produced unlimited duplicate content.
+
+# Anything genuinely unmatched: real 404 status, prerendered 404 page.
+/*    /404.html    404

@@ -1,0 +1,11 @@
+# Production robots.txt. This file ships as-is through the domain cutover.
+#
+# Deliberately NOT "Disallow: /" to hide the Netlify preview: this file goes
+# to production, and a disallowed URL cannot show crawlers its noindex tag.
+# The preview host is kept out of search results by an X-Robots-Tag header
+# scoped to *.netlify.app — see netlify/edge-functions/noindex-netlify-host.ts
+
+User-agent: *
+Allow: /
+
+Sitemap: https://aressecurity.co/sitemap.xml

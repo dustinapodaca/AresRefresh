@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Puppeteer (used by scripts/prerender.mjs) needs a modern Node, and
+  # pinning it stops a Netlify default bump from changing build output.
+  NODE_VERSION = "20"
+  # Keep Chromium inside the repo so Netlify's build cache retains it
+  # between deploys instead of re-downloading on every build.
+  PUPPETEER_CACHE_DIR = "/opt/build/repo/.cache/puppeteer"
+
+# IndexNow ping on successful production deploys. Self-gates to a
+# no-op until aressecurity.co is the primary domain - see the plugin.
+[[plugins]]
+  package = "/netlify/plugins/indexnow"
