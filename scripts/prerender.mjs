@@ -34,7 +34,7 @@ const PORT = 4183;
 const { routes } = JSON.parse(readFileSync(join(root, 'src/seo/routes.json'), 'utf8'));
 const paths = Object.keys(routes);
 
-/** '/' -> dist/index.html ; '/services/armed-security' -> dist/services/armed-security.html */
+/** '/' -> dist/index.html ; '/locations/denver' -> dist/locations/denver.html */
 function outFile(p) {
   return p === '/' ? join(distDir, 'index.html') : join(distDir, `${p.replace(/^\//, '')}.html`);
 }

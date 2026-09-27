@@ -9,7 +9,7 @@
 # ======================================================================
 
 # Every route is prerendered to a flat file by scripts/prerender.mjs
-# (dist/about.html, dist/services/armed-security.html, ...), and Netlify
+# (dist/about.html, dist/locations/denver.html, ...), and Netlify
 # serves those directly with a 200. No per-route rewrite is needed.
 #
 # The old `/*  /index.html  200` SPA fallback has been REMOVED on purpose:
