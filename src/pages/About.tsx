@@ -110,7 +110,7 @@ export default function About() {
 
           <div className="grid items-stretch gap-8 lg:grid-cols-[1fr_1.6fr]">
             <div data-reveal="left" className="relative min-h-[380px] overflow-hidden rounded-2xl bg-paper-2">
-              <img src="/images/mission-vehicle.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-bottom" />
+              <img src="/images/mission-vehicle.jpg" alt="Two white Ares Security marked patrol vehicles parked on a road outside a multi-story residential building" className="absolute inset-0 h-full w-full object-cover object-bottom" />
             </div>
             <div data-reveal="right" className="relative isolate flex flex-col justify-between gap-12 overflow-hidden rounded-2xl bg-ink p-12 text-paper">
               <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/cap-cta-bg.jpg')" }} />
@@ -176,7 +176,7 @@ export default function About() {
               </ul>
             </div>
             <div data-reveal="right" className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto lg:min-h-[560px]">
-              <img src="/images/officer-portrait.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center top' }} />
+              <img src="/images/officer-portrait.jpg" alt="Ares Security officer in a black Ares Security polo standing with arms crossed, smiling, outside a building" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center top' }} />
             </div>
           </div>
         </div>

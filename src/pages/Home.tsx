@@ -106,7 +106,7 @@ export default function Home() {
         <Spacer />
         <div className="grid items-end gap-12 lg:grid-cols-[1fr_1.6fr]">
           <div data-reveal="left" className="relative aspect-[3/4] overflow-hidden rounded-xl bg-pale">
-            <img src="/images/backbone-officer.jpg" alt="" className="absolute inset-0 h-full w-full object-cover object-top" />
+            <img src="/images/backbone-officer.jpg" alt="Smiling Ares Security officer in a black Ares Security polo shirt, standing against a brick wall" className="absolute inset-0 h-full w-full object-cover object-top" />
           </div>
           <div className="grid gap-y-12 gap-x-10 sm:grid-cols-2">
             {[
