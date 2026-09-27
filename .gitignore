@@ -33,3 +33,6 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Local Figma desktop MCP endpoint (machine-specific)
+.mcp.json
