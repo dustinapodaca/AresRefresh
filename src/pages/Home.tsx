@@ -209,7 +209,7 @@ export default function Home() {
               <div className="mt-12 flex flex-wrap gap-12 border-t border-white/[0.18] pt-8">
                 <Meta label="WOSB" value="#WOSB250470" />
                 <Meta label="WBENC" value="#WBE2303571" />
-                <Meta label="Founded" value="2022 · Colorado Springs, CO" />
+                <Meta label="Founded" value="2021 · Colorado Springs, CO" />
               </div>
             </div>
           </div>

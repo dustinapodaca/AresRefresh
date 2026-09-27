@@ -23,7 +23,7 @@ export default function Footer() {
               <span className="sep" />
               <span className="est flex flex-col">
                 <span>EST.</span>
-                <span>2022</span>
+                <span>2021</span>
               </span>
             </Link>
             <p>Public-sector compliance. Commercial reliability. A woman-owned, employee-focused firm delivering consistent results across every environment.</p>

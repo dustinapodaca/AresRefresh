@@ -7,7 +7,7 @@ export default function Brand() {
       <span>
         <b className="font-bold">ARES SECURITY</b>
         <span className="block text-[11px] font-normal leading-none tracking-[0.18em] text-mid">
-          LLC · EST. 2022
+          LLC · EST. 2021
         </span>
       </span>
     </Link>
