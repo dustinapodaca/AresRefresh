@@ -124,10 +124,10 @@ export default function Services() {
           they are reachable from /services as well as the footer. Sits above
           the Four Stages to Deployment section. It is a navigation aid rather than a
           content section, so it uses a plain label instead of an <h2> and does
-          not compete in the page's heading outline. Top border only: the
-          Four Stages section below shares this paper-2 fill, so a bottom
-          hairline would read as a stray line inside one continuous block. */}
-      <section className="border-t border-line bg-paper-2">
+          not compete in the page's heading outline. Bordered top AND bottom
+          so the band reads as its own strip, even though the Four Stages
+          section below shares its paper-2 fill. */}
+      <section className="border-y border-line bg-paper-2">
         <div className="container-ares flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-9">
           <span
             className="text-ink"
