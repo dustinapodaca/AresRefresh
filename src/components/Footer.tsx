@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className={`site_footer is-dark has-bg-image${extended ? ' is-extended' : ''}`}>
       <div className="image_bg" aria-hidden="true" />
       <div className="container-ares">
-        <div className="footer_row grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="footer_row grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           {/* Brand block */}
           <div className="footer_brand flex max-w-[520px] flex-col gap-6">
             <Link to="/" className="footer_brand_top flex items-center gap-[18px]" aria-label="Ares Security home">
@@ -34,6 +34,14 @@ export default function Footer() {
             <FooterLink to="/about">About</FooterLink>
             <FooterLink to="/services">Services</FooterLink>
             <FooterLink to="/careers">Careers</FooterLink>
+          </FooterCol>
+
+          {/* Service areas — crawlable links to the location pages so they
+              are reachable from every page, not just from /services. */}
+          <FooterCol title="Service Areas">
+            <FooterLink to="/locations/colorado-springs">Colorado Springs</FooterLink>
+            <FooterLink to="/locations/denver">Denver</FooterLink>
+            <FooterLink to="/locations/pueblo">Pueblo</FooterLink>
           </FooterCol>
 
           {/* Contracting */}

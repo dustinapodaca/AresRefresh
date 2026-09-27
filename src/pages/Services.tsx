@@ -217,6 +217,77 @@ export default function Services() {
       {/* Why Our Four-Stage Process Matters */}
       <WhyStages />
 
+      {/* Service detail + service areas — crawlable entry points into the
+          dedicated service and location pages so neither set is orphaned.
+          The sector cards above are organised by environment; these are
+          organised by the service itself and by where we work. */}
+      <section className="bg-paper-2">
+        <div className="container-ares py-[90px] max-[991px]:py-[64px]">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid" data-reveal="up">Services in detail</div>
+              <h2
+                className="mt-4 mb-7 text-ink"
+                style={{ fontSize: 'clamp(28px, 3.2vw, 40px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 1.02, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                What we <span className="font-light italic text-mid">staff</span>
+              </h2>
+              <ul className="m-0 flex list-none flex-col p-0" data-reveal="up">
+                {[
+                  { to: '/services/armed-security', label: 'Armed Security Officers' },
+                  { to: '/services/unarmed-security', label: 'Unarmed Security Officers' },
+                  { to: '/services/mobile-patrol', label: 'Foot & Mobile Patrol' },
+                  { to: '/services/event-security', label: 'Event & Surge Coverage' },
+                  { to: '/services/escort-security', label: 'Escort Security Officers' },
+                ].map((l) => (
+                  <li key={l.to} className="border-t border-line last:border-b">
+                    <Link
+                      to={l.to}
+                      className="group flex items-center justify-between gap-4 py-4 text-[17px] text-ink transition-colors hover:text-mid"
+                    >
+                      {l.label}
+                      <span aria-hidden="true" className="text-mid transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-mid" data-reveal="up">Service areas</div>
+              <h2
+                className="mt-4 mb-7 text-ink"
+                style={{ fontSize: 'clamp(28px, 3.2vw, 40px)', fontWeight: 400, letterSpacing: '-0.05em', lineHeight: 1.02, textTransform: 'none' }}
+                data-reveal="up"
+              >
+                Where we <span className="font-light italic text-mid">work</span>
+              </h2>
+              <ul className="m-0 flex list-none flex-col p-0" data-reveal="up">
+                {[
+                  { to: '/locations/colorado-springs', label: 'Colorado Springs' },
+                  { to: '/locations/denver', label: 'Denver' },
+                  { to: '/locations/pueblo', label: 'Pueblo' },
+                ].map((l) => (
+                  <li key={l.to} className="border-t border-line last:border-b">
+                    <Link
+                      to={l.to}
+                      className="group flex items-center justify-between gap-4 py-4 text-[17px] text-ink transition-colors hover:text-mid"
+                    >
+                      {l.label}
+                      <span aria-hidden="true" className="text-mid transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {/* COPY-REVIEW */}
+              <p className="mt-6 mb-0 text-[15px] leading-relaxed text-ink-2">
+                Headquartered in Colorado Springs, serving the Front Range. Nationwide on request.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Personnel in Action banner — Services-only "docked CTA" treatment.
           The Footer below uses `is-extended` (see Footer.tsx + index.css)
           to grow ~290px of top headroom. This section slides its CTA
