@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 const ROLES = [
   {
@@ -45,6 +46,7 @@ export default function Careers() {
 
   return (
     <main className="font-sans">
+      <Seo path="/careers" />
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink pt-[280px] pb-[140px] text-paper max-[460px]:pt-[210px] max-[460px]:pb-[105px]">
         <div className="hero-gradient absolute inset-0 -z-10">

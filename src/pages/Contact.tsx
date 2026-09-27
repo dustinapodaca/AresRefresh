@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 /* Friendly labels for the inquiry-type dropdown. The form's `subject`
    field stores a short slug ("federal", "commercial", …) but Web3Forms
@@ -70,6 +71,7 @@ export default function Contact() {
 
   return (
     <main className="overflow-x-hidden">
+      <Seo path="/contact" />
       {/* Page heading */}
       <section className="relative isolate overflow-hidden bg-ink pt-[280px] pb-[140px] text-paper">
         <div className="hero-gradient absolute inset-0 -z-10">

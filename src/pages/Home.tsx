@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import ArrowBtn from '../components/ArrowBtn';
 import ImageSlot from '../components/ImageSlot';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 const SERVICE_CARDS = [
   {
@@ -46,6 +47,7 @@ export default function Home() {
 
   return (
     <main>
+      <Seo path="/" />
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[1060px]">
         <div className="hero-gradient absolute inset-0 -z-10">

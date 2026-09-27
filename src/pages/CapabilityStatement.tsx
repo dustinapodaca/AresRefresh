@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 // ---- Data ----
 const CAPS = [
@@ -194,6 +195,7 @@ export default function CapabilityStatement() {
 
   return (
     <main className="overflow-x-hidden font-sans">
+      <Seo path="/capability-statement" />
       <style>{CS_STYLES}</style>
 
       {/* 1. HERO */}

@@ -8,45 +8,108 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Prefetch hero + high-impact section photos at low priority. By the
-         time the user navigates from Home to About/Services/etc. these are
-         already warm in the HTTP cache, so the hero (and major section
-         photos below it) renders without a pop-in. `prefetch` is fired
-         after the initial render so it doesn't compete with anything
-         critical to first paint. -->
-    <!-- Page heros -->
-    <link rel="prefetch" as="image" href="/images/hero6.jpg" />
-    <link rel="prefetch" as="image" href="/images/about-hero.jpg" />
-    <link rel="prefetch" as="image" href="/images/capabilities-hero.jpg" />
-    <link rel="prefetch" as="image" href="/images/careers-hero.jpg" />
-    <link rel="prefetch" as="image" href="/images/contact-hero.jpg" />
-    <link rel="prefetch" as="image" href="/images/capability-hero.jpg" />
-    <!-- Home — Explore cards + section backgrounds -->
-    <link rel="prefetch" as="image" href="/images/backbone-officer.jpg" />
-    <link rel="prefetch" as="image" href="/images/woman-owned-bg.jpg" />
-    <link rel="prefetch" as="image" href="/images/about-sunset.jpg" />
-    <link rel="prefetch" as="image" href="/images/capabilities-card.jpg" />
-    <link rel="prefetch" as="image" href="/images/careers-team.jpg" />
-    <!-- About — section photos -->
-    <link rel="prefetch" as="image" href="/images/mission-vehicle.jpg" />
-    <link rel="prefetch" as="image" href="/images/officer-portrait.jpg" />
-    <link rel="prefetch" as="image" href="/images/cap-cta-bg.jpg" />
-    <!-- About — credential strip icons. Warming these prevents the pop-in
-         the user noticed when first landing on /about; they're four small
-         PNGs but each is its own request and they sit right above the
-         fold. -->
-    <link rel="prefetch" as="image" href="/images/cert-gsa-blue.png" />
-    <link rel="prefetch" as="image" href="/images/cert-wosb.png" />
-    <link rel="prefetch" as="image" href="/images/cert-women-owned.png" />
-    <link rel="prefetch" as="image" href="/images/cert-wbenc.png" />
-    <!-- Services — section backgrounds + Personnel in Action banner -->
-    <link rel="prefetch" as="image" href="/images/why-stages-bg.jpg" />
-    <link rel="prefetch" as="image" href="/images/about-banner.jpg" />
-    <!-- Careers — section photos -->
-    <link rel="prefetch" as="image" href="/images/careers-philosophy.jpg" />
-    <link rel="prefetch" as="image" href="/images/careers-apply.jpg" />
+    <!-- Image loading strategy
+         ----------------------
+         This file used to carry 22 `rel="prefetch" as="image"` links, which
+         speculatively pulled ~10 MB on EVERY page load regardless of where
+         the visitor actually went. That competed with the LCP image for
+         bandwidth and was punishing on mobile.
 
-    <title>Ares Security — Public-Sector Compliance · Commercial Reliability</title>
+         Replaced by a route-aware preload: each route declares its own hero
+         in src/seo/routes.json (`preloadImage`), and <Seo> emits a single
+         `rel="preload" as="image" fetchpriority="high"` for just that image.
+         One right image instead of twenty-two speculative ones. -->
+
+    <!-- Default head tags. Helmet replaces these per route; `data-rh="true"`
+         marks the ones it manages so we never end up with duplicates in the
+         prerendered HTML. The <title> needs no marker (Helmet updates it in
+         place). Values here mirror the Home route in src/seo/routes.json. -->
+    <title>Security Guard Services in Colorado Springs | Ares Security</title>
+    <meta
+      data-rh="true"
+      name="description"
+      content="Woman-owned WOSB and WBENC security firm in Colorado Springs. Armed and unarmed officers, patrol, and access control across Denver and Pueblo. GSA MAS holder."
+    />
+
+    <!-- Site-wide structured data. Organization + LocalBusiness only; no
+         ratings or reviews, and no geo/openingHours until the exact Google
+         Business Profile values are confirmed. Page-level Service and
+         BreadcrumbList nodes are emitted per route by <Seo>. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://aressecurity.co/#organization",
+            "name": "Ares Security LLC",
+            "legalName": "ARES SECURITY LLC",
+            "alternateName": "Ares Security",
+            "url": "https://aressecurity.co",
+            "logo": "https://aressecurity.co/ares-logo.png",
+            "email": "contact@aressecurity.co",
+            "telephone": "+1-719-696-3966",
+            "foundingDate": "2021",
+            "naics": "561612",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "413 Westmark Ave",
+              "addressLocality": "Colorado Springs",
+              "addressRegion": "CO",
+              "postalCode": "80906",
+              "addressCountry": "US"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/aressecurity",
+              "https://www.indeed.com/cmp/Ares-Security-1"
+            ]
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://aressecurity.co/#localbusiness",
+            "name": "Ares Security LLC",
+            "url": "https://aressecurity.co",
+            "image": "https://aressecurity.co/images/capabilities-hero.jpg",
+            "logo": "https://aressecurity.co/ares-logo.png",
+            "description": "Woman-owned, WOSB- and WBENC-certified security firm in Colorado Springs providing armed and unarmed security officers, patrol, access control, and event security across Colorado Springs, Denver, and Pueblo.",
+            "telephone": "+1-719-696-3966",
+            "email": "contact@aressecurity.co",
+            "foundingDate": "2021",
+            "naics": "561612",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "413 Westmark Ave",
+              "addressLocality": "Colorado Springs",
+              "addressRegion": "CO",
+              "postalCode": "80906",
+              "addressCountry": "US"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Colorado Springs", "containedInPlace": { "@type": "State", "name": "Colorado" } },
+              { "@type": "City", "name": "Denver", "containedInPlace": { "@type": "State", "name": "Colorado" } },
+              { "@type": "City", "name": "Pueblo", "containedInPlace": { "@type": "State", "name": "Colorado" } }
+            ],
+            "parentOrganization": { "@id": "https://aressecurity.co/#organization" },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Security services",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Armed security officers", "url": "https://aressecurity.co/services/armed-security" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unarmed security officers", "url": "https://aressecurity.co/services/unarmed-security" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Foot and mobile patrol", "url": "https://aressecurity.co/services/mobile-patrol" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Access control and visitor management" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event security and surge coverage", "url": "https://aressecurity.co/services/event-security" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Escort officers", "url": "https://aressecurity.co/services/escort-security" } }
+              ]
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/aressecurity",
+              "https://www.indeed.com/cmp/Ares-Security-1"
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 const CARDS = [
   {
@@ -60,6 +61,7 @@ export default function Services() {
 
   return (
     <main>
+      <Seo path="/services" />
       <PageHeading title="Services & Process" slotId="cap-heading-bg" sub="Precise, reliable security solutions for any environment — built on superior detail, outstanding communication, and technical proposals that set the standard." />
 
       {/* Matrix cards */}

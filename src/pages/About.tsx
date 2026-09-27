@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
+import Seo from '../seo/Seo';
 
 /* Section 02 "Differentiation & Values" — the eight commitments that
    distinguish Ares from the recurring failures of the industry. First
@@ -32,6 +33,7 @@ export default function About() {
 
   return (
     <main>
+      <Seo path="/about" />
       <PageHeading title="About Us" subtitle="Founded in compliance. Built for the long post. A woman-owned, employee-focused firm rooted in public-sector standards and carried into every commercial engagement." crumbs={[{ to: '/', label: 'Home' }, { label: 'About' }]} slotId="about-heading-bg" />
 
       {/* Credentials Strip — at <=460px switches to a 2x2 grid with explicit
