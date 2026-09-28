@@ -17,7 +17,7 @@ export default function NotFound() {
             className="mt-5 mb-0 font-normal text-paper"
             style={{ fontSize: 'clamp(40px, 6vw, 72px)', lineHeight: 0.94, letterSpacing: '-0.06em' }}
           >
-            Page <span className="font-light italic text-light">not found.</span>
+            Page <span className="font-light italic text-light">Not Found.</span>
           </h1>
           <p className="mt-6 max-w-[54ch] text-[18px] text-paper/75">
             That page does not exist, or it has moved. Everything below is still where it should be.

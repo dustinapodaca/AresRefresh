@@ -133,7 +133,7 @@ export default function Services() {
             className="text-ink"
             style={{ fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05 }}
           >
-            Where we <span className="font-light italic text-mid">work</span>
+            Where We <span className="font-light italic text-mid">Work</span>
           </span>
           <ul className="m-0 flex list-none flex-wrap items-center gap-x-7 gap-y-2 p-0">
             {[
