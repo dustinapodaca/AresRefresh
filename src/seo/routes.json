@@ -4,8 +4,8 @@
   "ogImageAlt": "Ares Security LLC, woman-owned security firm in Colorado Springs, Colorado",
   "routes": {
     "/": {
-      "title": "Security Guard Services in Colorado Springs | Ares Security",
-      "description": "Woman-owned WOSB and WBENC security firm in Colorado Springs. Armed and unarmed officers, patrol, and access control across Denver and Pueblo. GSA MAS holder.",
+      "title": "Colorado Security Guard & Patrol Services | Ares Security",
+      "description": "Woman-owned WOSB and WBENC security firm serving Colorado. Armed and unarmed officers, patrol and access control in Colorado Springs, Denver and Pueblo.",
       "preloadImage": "/images/hero6.jpg"
     },
     "/about": {
