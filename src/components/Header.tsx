@@ -84,8 +84,8 @@ export default function Header() {
     };
   }, [open]);
 
-  // Glass is engaged whenever the user has scrolled OR the mobile drawer
-  // is open. The transition between hidden ↔ visible switches based on
+  // The solid bar is engaged whenever the user has scrolled OR the mobile
+  // drawer is open. The transition between hidden ↔ visible switches based on
   // useSlide:
   //   - useSlide=true  → clip-path slide (rises from / retracts to the
   //     bottom edge). Used for drawer toggles and route changes.
@@ -107,7 +107,7 @@ export default function Header() {
             ? `clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path 400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 0ms ${glassActive ? '0ms' : '400ms'}`
             : `opacity 300ms ease-out, clip-path 0ms ${glassActive ? '0ms' : '300ms'}, -webkit-clip-path 0ms ${glassActive ? '0ms' : '300ms'}`,
         }}
-        className="pointer-events-none absolute inset-0 -z-10 border-b border-white/10 bg-ink/55 backdrop-blur-2xl backdrop-saturate-150"
+        className="pointer-events-none absolute inset-0 -z-10 border-b border-hairline bg-canvas"
       />
       <div className="container-ares">
         <div className="flex items-center justify-between gap-6 py-5 lg:grid lg:grid-cols-[1fr_auto_1fr]">
@@ -148,8 +148,8 @@ export default function Header() {
                     to={item.to}
                     end={item.end}
                     className={({ isActive }) =>
-                      `relative inline-block py-1.5 text-[13px] font-semibold uppercase tracking-[0.14em] text-paper ` +
-                      `after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:bg-paper after:transition-[right] after:duration-300 ` +
+                      `relative inline-block py-1.5 text-[14px] font-normal tracking-[-0.01em] text-paper ` +
+                      `after:absolute after:bottom-0 after:left-0 after:h-px after:bg-paper after:transition-[right] after:duration-300 ` +
                       (isActive ? 'after:right-0' : 'after:right-full hover:after:right-0')
                     }
                   >
@@ -164,7 +164,7 @@ export default function Header() {
             {/* Request a Quote — solid white with dark text (desktop only) */}
             <Link
               to="/contact"
-              className="hidden items-center rounded-full border-[1.5px] border-paper bg-paper px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-ink transition-colors hover:bg-transparent hover:text-paper lg:inline-flex"
+              className="hidden h-10 items-center rounded-full border border-white bg-white px-5 text-[14px] text-canvas transition-colors hover:bg-white/85 hover:text-canvas lg:inline-flex"
             >
               Request a Quote
             </Link>
@@ -201,8 +201,8 @@ export default function Header() {
           The panel sits in its final spot just below the header and uses
           clip-path to mask itself. Closed = clipped flat into the nav;
           open = clip retracts to reveal the menu emerging from the bar.
-          Background matches the scrolled nav fog-glass so it reads as
-          the same continuous surface. */}
+          Background matches the scrolled nav bar so it reads as the
+          same continuous surface. */}
       <nav
         aria-hidden={!open}
         style={{
@@ -213,7 +213,7 @@ export default function Header() {
         }}
         className={[
           'absolute left-0 right-0 top-full flex flex-col px-8 pt-9 pb-10 lg:hidden',
-          'bg-ink/55 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/[0.08]',
+          'bg-canvas border-b border-hairline',
           open ? 'pointer-events-auto' : 'pointer-events-none',
         ].join(' ')}
       >
@@ -234,7 +234,7 @@ export default function Header() {
         >
           <ul className="m-0 flex w-full list-none flex-col gap-0 p-0">
             {NAV.map((item) => (
-              <li key={item.to} className="border-b border-white/[0.12]">
+              <li key={item.to} className="border-b border-hairline">
                 <NavLink
                   to={item.to}
                   end={item.end}
@@ -260,7 +260,7 @@ export default function Header() {
                 triggerSlide();
                 setOpen(false);
               }}
-              className="inline-flex items-center rounded-full border-[1.5px] border-paper bg-paper px-7 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-transparent hover:text-paper"
+              className="inline-flex h-11 items-center rounded-full border border-white bg-white px-7 text-[14px] text-canvas transition-colors hover:bg-white/85 hover:text-canvas"
             >
               Request a Quote
             </Link>

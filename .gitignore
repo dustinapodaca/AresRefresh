@@ -36,3 +36,6 @@ pnpm-debug.log*
 
 # Local Figma desktop MCP endpoint (machine-specific)
 .mcp.json
+
+# Playwright MCP screenshots, snapshots and console logs
+.playwright-mcp/

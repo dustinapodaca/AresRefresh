@@ -11,8 +11,7 @@ export default function Footer() {
   const extended = pathname === '/services' || pathname === '/careers';
 
   return (
-    <footer className={`site_footer is-dark has-bg-image${extended ? ' is-extended' : ''}`}>
-      <div className="image_bg" aria-hidden="true" />
+    <footer className={`site_footer is-dark${extended ? ' is-extended' : ''}`}>
       <div className="container-ares">
         <div className="footer_row grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
           {/* Brand block */}
@@ -26,7 +25,7 @@ export default function Footer() {
                 <span>2021</span>
               </span>
             </Link>
-            <p>Public-sector compliance. Commercial reliability. A woman-owned, employee-focused firm delivering consistent results across every environment.</p>
+            <p>Security guards for federal and commercial sites. Minority woman-owned, serving Colorado Springs, Denver, and Pueblo since 2021.</p>
           </div>
 
           {/* Navigate */}
@@ -54,10 +53,10 @@ export default function Footer() {
           {/* Contact */}
           <FooterCol title="Contact">
             <li>
-              <a href="tel:+17196963966" className="text-[13px] uppercase tracking-[0.06em]">719-696-3966</a>
+              <a href="tel:+17196963966" className="font-mono text-[14px]">719-696-3966</a>
             </li>
             <li>
-              <a href="mailto:contact@aressecurity.co" className="text-[13px] tracking-[0.02em] normal-case">contact@aressecurity.co</a>
+              <a href="mailto:contact@aressecurity.co" className="text-[14px]">contact@aressecurity.co</a>
             </li>
           </FooterCol>
         </div>
@@ -86,7 +85,7 @@ export default function Footer() {
 
         {/* Bottom bar — at <=460px stacks centered and breaks "All Rights Reserved."
             onto its own line. Above 460px keeps the side-by-side layout. */}
-        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 text-[12px] uppercase tracking-[0.14em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
+        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 font-mono text-[12px] uppercase tracking-[0.1em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
           <span>
             © 2026 Ares Security LLC.
             <span className="ml-1 max-[460px]:ml-0 max-[460px]:block">All Rights Reserved.</span>
@@ -105,7 +104,7 @@ export default function Footer() {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="footer_col">
-      <h5 className="m-0 mb-6 pb-1.5 border-b border-white/15 text-[13px] font-semibold uppercase tracking-[0.18em]">
+      <h5 className="m-0 mb-6 pb-1.5 border-b font-mono text-[12px] font-normal uppercase tracking-[0.1em]">
         {title}
       </h5>
       <ul className="footer_menu list-none m-0 p-0 flex flex-col gap-3">
@@ -116,7 +115,7 @@ function FooterCol({ title, children }: { title: string; children: React.ReactNo
 }
 
 function FooterLink({ to, href, children }: { to?: string; href?: string; children: React.ReactNode }) {
-  const cls = 'text-[13px] uppercase tracking-[0.06em] transition-colors';
+  const cls = 'text-[14px] transition-colors';
   if (to) return <li><Link to={to} className={cls}>{children}</Link></li>;
   const external = !!href && /^https?:\/\//.test(href);
   return (

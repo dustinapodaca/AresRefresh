@@ -1,363 +1,343 @@
 import { Link } from 'react-router-dom';
-import ArrowBtn from '../components/ArrowBtn';
-import ImageSlot from '../components/ImageSlot';
-import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 import Seo from '../seo/Seo';
 
-const SERVICE_CARDS = [
+// Home, dark only, built on Vercel's Geist system in its dark theme:
+// a centered hero with the page's only color (a mesh glow over the muted
+// photo), then a code-block band for the contractor record, a hairline
+// feature grid, coverage, template cards, a customer quote, and a centered
+// call-to-action band. Marketing CTAs are pills; small chrome is 6px; cards
+// are 12-16px with a 1px hairline and no shadow.
+// Every link sets its own text color: the base `a:hover` rule paints ink,
+// which would vanish on this canvas.
+
+const GSA_ELIBRARY_URL =
+  'https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES';
+
+const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal';
+const PILL_PRIMARY = `inline-flex h-12 items-center justify-center gap-2 rounded-full bg-heading px-6 text-[16px] font-medium text-canvas hover:bg-white hover:text-canvas ${FOCUS}`;
+const PILL_SECONDARY = `inline-flex h-12 items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 text-[16px] font-medium text-heading hover:border-white/25 hover:text-heading ${FOCUS}`;
+const EYEBROW = 'font-mono text-[12px] font-medium uppercase leading-4 text-mute';
+const CARD = 'rounded-[12px] border border-hairline bg-card';
+
+const HEADING_LG: React.CSSProperties = { fontSize: 'clamp(28px, 2.6vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.04em' };
+
+type RecordRow = { k: string; v: string; href?: string };
+// Every value already appears on the Capability Statement page or in the
+// approved Home copy.
+const RECORD: RecordRow[] = [
+  { k: 'GSA MAS contract', v: '47QSMS25D009Q', href: GSA_ELIBRARY_URL },
+  { k: 'SIN', v: '561612' },
+  { k: 'UEI', v: 'XQXDN6E33SF4' },
+  { k: 'CAGE code', v: '9KL18' },
+  { k: 'Primary NAICS', v: '561612' },
+  { k: 'WOSB', v: 'WOSB250470' },
+  { k: 'WBENC', v: 'WBE2303571' },
+  { k: 'Ownership', v: 'Minority woman-owned' },
+  { k: 'Founded', v: '2021, Colorado Springs, CO' },
+];
+
+const PRACTICES = [
+  {
+    h: 'Planned before the contract',
+    p: 'We learn your site, operations, and risks before anything is signed, so the plan fits how your facility runs.',
+  },
+  {
+    h: 'Clean documentation',
+    p: 'Proposals, post orders, and reports are written to the standard of a technical submittal.',
+  },
+  {
+    h: 'A direct line',
+    p: 'Regular updates and direct access to the people managing your account.',
+  },
+];
+
+// Division names match the Services page exactly.
+const DIVISIONS = [
+  'Government Security Personnel',
+  'Airport & Transportation Security',
+  'Commercial & High-Traffic Security',
+  'Industrial, Logistics & Construction',
+  'Specialized & Armed Protection',
+  'Institutional & Community Security',
+];
+
+const AREAS = [
+  { to: '/locations/colorado-springs', label: 'Colorado Springs' },
+  { to: '/locations/denver', label: 'Denver' },
+  { to: '/locations/pueblo', label: 'Pueblo' },
+];
+
+const TEMPLATES = [
   {
     to: '/about',
-    title: 'About Us',
-    body: 'Our journey, our principles, the capability statement that backs us, and the people who bring reliable security to every environment we serve.',
-    tags: ['Mission', 'WOSB', 'Veteran-Led'],
-    slot: { id: 'svc-1', src: '/images/about-sunset.jpg', placeholder: '' },
+    title: 'About Ares',
+    body: 'Our story, our principles, and the people behind every post.',
+    src: '/images/about-security.jpg',
+    alt: 'Two Ares Security officers seen from behind, Security printed across their shirts',
+    w: 1408,
+    h: 736,
   },
   {
     to: '/services',
     title: 'Services',
-    body: 'Six service divisions across federal, commercial, industrial, and specialized sectors. Documented, audit-ready, and ready for procurement.',
-    tags: ['Federal', 'Commercial', 'Specialized'],
-    slot: { id: 'svc-2', src: '/images/capabilities-card.jpg', placeholder: '' },
+    body: 'Six service divisions across federal, commercial, industrial, and specialized sites.',
+    src: '/images/mission-vehicle.jpg',
+    alt: 'Two Ares Security patrol vehicles parked on a residential street',
+    w: 750,
+    h: 842,
   },
   {
     to: '/careers',
     title: 'Careers',
-    body: 'Join the team. Five open positions across armed, unarmed, cleared, and office roles — paid training, veteran-friendly leadership, real growth paths.',
-    tags: ['Armed', 'Unarmed', 'Cleared'],
-    slot: { id: 'svc-3', src: '/images/careers-team.jpg', placeholder: '' },
+    body: 'Armed, unarmed, cleared, and office roles with paid training. Veterans are encouraged to apply.',
+    src: '/images/careers-philosophy.jpg',
+    alt: 'The Ares Security team in uniform at an indoor firing range',
+    w: 1184,
+    h: 880,
   },
 ];
 
 export default function Home() {
-  useScrollInViewObserver();
-
-  // GSA hero card animation strategy depends on whether it's in view on
-  // first paint. At lg+ the card is absolutely positioned in the bottom-
-  // right of the hero (visible on load), so the mount-based reveal-d4
-  // animation runs while the user is looking at it. Below lg the card
-  // flows beneath the buttons and is typically below the fold on mobile;
-  // there the mount animation would finish before the user scrolls down,
-  // so we switch to a scroll-triggered data-reveal="up" that fires when
-  // the card is 10% inside the viewport (per the revealOnceIo rule).
-  // Snapshot at first render via useState initializer so the initial
-  // markup is correct on the first paint (a useEffect-driven check would
-  // miss the first render and let the reveal-d4 fire prematurely).
-  const isLgUp = typeof window !== 'undefined'
-    && window.matchMedia('(min-width: 1024px)').matches;
-
   return (
-    <main>
+    <main className="bg-canvas font-geist text-body">
       <Seo path="/" />
-      {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ink text-paper lg:min-h-[1060px]">
-        <div className="hero-gradient absolute inset-0 -z-10">
-          <img src="/images/hero6.jpg" alt="" className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_60%] max-[460px]:object-[calc(50%+190px)_60%] max-[460px]:scale-[1.2]" />
-          <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(31,31,31,0.85)_0%,rgba(31,31,31,0.6)_40%,rgba(31,31,31,0.25)_100%),linear-gradient(180deg,rgba(31,31,31,0.35)_0%,rgba(31,31,31,0.25)_50%,rgba(31,31,31,0.6)_100%)] pointer-events-none" />
-        </div>
-        <div className="container-ares w-full">
-          <div className="relative grid gap-0 pt-[220px] pb-28 lg:gap-12 lg:pb-64">
-            <div className="max-w-[980px]">
-              <img
-                src="/images/ares-text.svg"
-                alt="Ares Security"
-                className="reveal mb-8 block w-full max-w-[264px] opacity-95 max-[460px]:max-w-[192px] lg:max-w-[330px]"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
-              <h1
-                className="reveal-d1 mb-7 text-paper font-normal"
-                style={{ fontSize: 'clamp(48px, 7vw, 92px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}
-              >
-                Protection Built<br />On{' '}
-                <span className="font-light italic text-light">Principle</span>
-              </h1>
-              <p className="mb-9 max-w-[570px] text-[20px] leading-snug text-paper/75">
-                Bridging the gap between public-sector compliance and commercial reliability — a woman-owned, employee-focused firm delivering consistent results across every environment.
-              </p>
-            </div>
 
-            {/* GSA contract card (frosted glass) — matches .hero_box recipe.
-                On mobile: sits in flow below the buttons (full width).
-                On lg+: floats absolute in the bottom-right corner. */}
-            <div
-              className={`${isLgUp ? 'reveal-d4 ' : ''}glass-card relative mt-[92px] w-full rounded-3xl px-[52px] py-10 text-paper max-[460px]:pl-8 max-[460px]:pr-6 max-[460px]:py-8 lg:absolute lg:bottom-[60px] lg:right-7 lg:mt-0 lg:w-[460px] lg:max-w-[calc(100vw-3rem)]`}
-              data-reveal={isLgUp ? undefined : 'up'}
-            >
-              <a href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES" target="_blank" rel="noopener noreferrer" className="arrow-btn absolute right-6 top-6" aria-label="View on GSA eLibrary">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M15.3846 0H0.615385C0.275692 0 0 0.275692 0 0.615385C0 0.955077 0.275692 1.23077 0.615385 1.23077H13.8988L0.180308 14.9495C-0.06 15.1898 -0.06 15.5794 0.180308 15.8197C0.300615 15.94 0.457846 16 0.615385 16C0.772923 16 0.930461 15.94 1.05046 15.8197L14.7692 2.10092V15.3846C14.7692 15.7243 15.0449 16 15.3846 16C15.7243 16 16 15.7243 16 15.3846V0.615385C16 0.275692 15.7243 0 15.3846 0Z" fill="currentColor" /></svg>
-              </a>
-              <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" className="mb-[18px] block h-auto w-auto max-w-[240px] max-[460px]:max-w-[180px]" />
-              <p className="text-[14px] leading-relaxed text-paper/70 lg:text-[16px]">
-                Contract #47QSMS25D009Q. Pre-negotiated federal pricing — agencies can award task orders without opening a new competition.
-              </p>
+      {/* Hero: centered, full viewport, the page's one color */}
+      <section className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <img
+            src="/images/hero6.webp"
+            alt=""
+            width={1920}
+            height={1280}
+            className="h-full w-full object-cover object-[center_60%] opacity-30"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: [
+                'radial-gradient(38% 42% at 34% 30%, rgba(0,124,240,0.30) 0%, rgba(0,124,240,0) 70%)',
+                'radial-gradient(34% 40% at 66% 26%, rgba(0,223,216,0.16) 0%, rgba(0,223,216,0) 70%)',
+                'radial-gradient(30% 36% at 52% 14%, rgba(121,40,202,0.18) 0%, rgba(121,40,202,0) 70%)',
+                'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.65) 60%, #0a0a0a 100%)',
+              ].join(', '),
+            }}
+          />
+        </div>
+        <div className="container-ares flex flex-1 flex-col items-center justify-center pt-32 pb-20 text-center lg:pt-36">
+          <a
+            href={GSA_ELIBRARY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex h-9 items-center gap-2 rounded-[64px] border border-hairline bg-card/80 px-4 text-[14px] text-heading hover:border-white/25 hover:text-heading ${FOCUS}`}
+          >
+            <span className="font-mono text-[13px]">GSA MAS 47QSMS25D009Q</span>
+            <span aria-hidden="true" className="text-mute">↗</span>
+            <span className="sr-only">(opens GSA eLibrary in a new tab)</span>
+          </a>
+          <h1
+            className="mx-auto mt-8 max-w-[18ch] font-semibold text-balance text-heading"
+            style={{ fontSize: 'clamp(44px, 6vw, 84px)', lineHeight: 1, letterSpacing: '-0.05em' }}
+          >
+            Security guards for federal and commercial sites.
+          </h1>
+          <p className="mx-auto mt-7 max-w-[36rem] text-[18px] leading-7 text-body">
+            A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
+            <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Code-block band: the contractor record */}
+      <section>
+        <div className="container-ares grid gap-12 pb-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-20 lg:pb-32">
+          <div>
+            <h2 className="font-semibold text-balance text-heading" style={HEADING_LG}>Everything you need to verify us.</h2>
+            <p className="mt-4 max-w-[32rem] text-[16px] leading-6">
+              Pre-negotiated federal pricing on the GSA schedule. Agencies can award task orders without opening a new competition.
+            </p>
+            <Link to="/capability-statement" className={`mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal hover:text-heading ${FOCUS}`}>
+              Read the capability statement <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <div className={`overflow-hidden ${CARD}`}>
+            <div className="flex items-center justify-between border-b border-hairline px-5 py-3">
+              <span className="font-mono text-[13px] text-heading">Ares Security LLC</span>
+              <span className={EYEBROW}>Contractor record</span>
+            </div>
+            <dl className="m-0 px-5 py-4 font-mono text-[14px] leading-7">
+              {RECORD.map((row) => (
+                <div key={row.k} className="grid py-1 sm:grid-cols-[18ch_minmax(0,1fr)] sm:gap-4 sm:py-0">
+                  <dt className="text-mute">{row.k}</dt>
+                  <dd className="m-0 text-heading">
+                    {row.href ? (
+                      <a href={row.href} target="_blank" rel="noopener noreferrer" className={`text-signal hover:text-heading ${FOCUS}`}>
+                        {row.v}
+                        <span aria-hidden="true" className="ml-1 font-geist">↗</span>
+                        <span className="sr-only"> (opens GSA eLibrary in a new tab)</span>
+                      </a>
+                    ) : (
+                      row.v
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* Hairline feature grid: how a post is staffed */}
+      <section className="border-t border-hairline">
+        <div className="container-ares py-24 lg:py-32">
+          <h2 className="max-w-[24ch] font-semibold text-heading" style={HEADING_LG}>How we staff a post</h2>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-hairline bg-hairline lg:grid-cols-3">
+            {/* Lead card: the differentiator, with a staff photo */}
+            <div className="grid bg-card sm:grid-cols-2 lg:col-span-2">
+              <div className="flex flex-col justify-between p-6 lg:p-8">
+                <p className={EYEBROW}>Site training</p>
+                <div className="mt-10">
+                  <h3 className="text-[20px] font-semibold leading-7 tracking-[-0.02em] text-heading">
+                    Trained on site by leadership
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-6">
+                    Before their first shift, every officer is trained on your post by a leader who has worked that exact post.
+                  </p>
+                </div>
+              </div>
+              <div className="aspect-[4/3] border-t border-hairline sm:aspect-auto sm:border-t-0 sm:border-l">
+                <img
+                  src="/images/officer-portrait.jpg"
+                  alt="Ares Security officer in a black Ares polo with a badge on a lanyard, arms crossed, smiling"
+                  width={992}
+                  height={1040}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-[center_25%]"
+                />
+              </div>
+            </div>
+            {/* Metric card */}
+            <div className="flex flex-col justify-between bg-card p-6 lg:p-8">
+              <p className={EYEBROW}>Performance</p>
+              <div className="mt-10">
+                <p className="font-semibold text-heading" style={{ fontSize: 'clamp(56px, 6vw, 84px)', lineHeight: 1, letterSpacing: '-0.05em' }}>
+                  &lt;1%
+                </p>
+                <p className="mt-3 text-[15px] leading-6">Missed shifts since 2021. On-call scheduling is standard in every contract.</p>
+              </div>
+            </div>
+            {PRACTICES.map((item) => (
+              <div key={item.h} className="bg-card p-6 lg:p-8">
+                <h3 className="text-[20px] font-semibold leading-7 tracking-[-0.02em] text-heading">{item.h}</h3>
+                <p className="mt-2 text-[15px] leading-6">{item.p}</p>
+              </div>
+            ))}
+            {/* Full-width row: veterans */}
+            <div className="flex flex-col gap-2 bg-card p-6 sm:flex-row sm:items-baseline sm:justify-between lg:col-span-3 lg:px-8">
+              <h3 className="text-[16px] font-semibold tracking-[-0.01em] text-heading">Veterans in leadership</h3>
+              <p className="text-[15px] leading-6">Veteran supervisors on staff, and our NRA firearms instructor is a veteran.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* We Are Different */}
-      <Section>
-        <SectionHeading
-          title={<>We Are <span className="font-light italic text-light">Reliable</span> In Every Way</>}
-          right={<Link to="/about" className="btn btn-primary" data-reveal="right">About Ares</Link>}
-          titleSize="clamp(44px, 8vw, 60px)"
-          titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
-          titleReveal="up"
-        />
-        <Spacer />
-        <div className="grid items-end gap-12 lg:grid-cols-[1fr_1.6fr]">
-          <div data-reveal="left" className="relative aspect-[3/4] overflow-hidden rounded-xl bg-pale">
-            <img src="/images/backbone-officer.jpg" alt="Smiling Ares Security officer in a black Ares Security polo shirt, standing against a brick wall" className="absolute inset-0 h-full w-full object-cover object-top" />
+      {/* Coverage: divisions as a hairline grid, areas as category pills */}
+      <section className="border-t border-hairline">
+        <div className="container-ares py-24 lg:py-32">
+          <h2 className="font-semibold text-heading" style={HEADING_LG}>Services and service areas</h2>
+          <ul className="m-0 mt-12 grid list-none gap-px overflow-hidden rounded-[12px] border border-hairline bg-hairline p-0 sm:grid-cols-2 lg:grid-cols-3">
+            {DIVISIONS.map((d) => (
+              <li key={d} className="bg-card px-6 py-5 text-[16px] font-medium tracking-[-0.01em] text-heading">{d}</li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={`mr-2 ${EYEBROW}`}>Where we work</span>
+              {AREAS.map((a) => (
+                <Link
+                  key={a.to}
+                  to={a.to}
+                  className={`inline-flex h-10 items-center gap-2 rounded-[64px] border border-hairline bg-card px-4 text-[14px] font-medium text-heading hover:border-white/25 hover:text-heading ${FOCUS}`}
+                >
+                  {a.label} <span aria-hidden="true" className="text-mute">→</span>
+                </Link>
+              ))}
+            </div>
+            <Link to="/services" className={`text-[14px] font-medium text-signal hover:text-heading ${FOCUS}`}>
+              All services <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <div className="grid gap-y-12 gap-x-10 sm:grid-cols-2">
-            {[
-              {
-                h: 'Thorough Planning',
-                p: 'We take the time to fully understand your site, operations, and risks before anything is signed. This upfront work prevents surprises and delivers a solution that actually fits the way your facility runs.',
-                svg: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="5" y="4" width="14" height="17" rx="2" />
-                    <path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1" />
-                    <path d="M8.5 12l2 2 4-4.5" />
-                    <path d="M9 17.5h6" />
-                  </svg>
-                ),
-              },
-              {
-                h: 'Technical Excellence & Precision',
-                p: 'Our proposals, post orders, and documentation are consistently praised for their clarity and detail. We treat every deliverable with the same care our clients expect from top-tier technical submittals.',
-                svg: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="9" />
-                    <circle cx="12" cy="12" r="4.5" />
-                    <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
-                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-                  </svg>
-                ),
-              },
-              {
-                h: 'Responsive Communication',
-                p: 'You’ll always know what’s happening. We provide timely updates, direct access to the team managing your account, and professional reporting that keeps everyone aligned.',
-                svg: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12a8 8 0 0 1-12 6.9L3.5 20.5 5 15.5A8 8 0 1 1 21 12z" />
-                    <path d="M8.5 10.5h7" />
-                    <path d="M8.5 13.8h4.5" />
-                  </svg>
-                ),
-              },
-              {
-                h: 'Leadership Site Training',
-                p: 'Every guard receives hands-on, site-specific training from a member of our leadership team who has personally worked that exact post — so your protection is prepared from the very first shift.',
-                svg: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 9.5l10-5 10 5-10 5-10-5z" />
-                    <path d="M6.5 11.7v4.6c0 1.6 2.7 2.9 5.5 2.9s5.5-1.3 5.5-2.9v-4.6" />
-                    <path d="M20.5 10.2v5.3" />
-                  </svg>
-                ),
-              },
-            ].map((b, i) => (
-              <div
-                key={i}
-                data-scroll-active
-                data-in-view="false"
-                className="group flex flex-col gap-4"
+        </div>
+      </section>
+
+      {/* Template cards */}
+      <section className="border-t border-hairline">
+        <div className="container-ares py-24 lg:py-32">
+          <h2 className="font-semibold text-heading" style={HEADING_LG}>Get to know Ares</h2>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {TEMPLATES.map((t) => (
+              <Link
+                key={t.to}
+                to={t.to}
+                className={`group flex flex-col overflow-hidden text-heading hover:border-white/25 hover:text-heading ${CARD} ${FOCUS}`}
               >
-                {/* Icon + header wrapper:
-                     - default (>=461px): stacked column (icon on top, header below)
-                     - <=460px: row-reverse with the icon shrunk and pushed to the right */}
-                <div className="flex flex-col gap-4 max-[460px]:flex-row-reverse max-[460px]:items-center max-[460px]:justify-between max-[460px]:gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-mid max-[460px]:group-data-[in-view=true]:bg-mid max-[460px]:h-12 max-[460px]:w-12 max-[460px]:shrink-0">
-                    {b.svg}
-                  </div>
-                  <h3 className="m-0 text-[22px] font-semibold text-ink">{b.h}</h3>
+                <div className="aspect-[16/10] overflow-hidden border-b border-hairline">
+                  <img src={t.src} alt={t.alt} width={t.w} height={t.h} loading="lazy" className="h-full w-full object-cover" />
                 </div>
-                <p className="text-[17px] leading-relaxed text-ink-2">{b.p}</p>
-              </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-[16px] font-semibold tracking-[-0.01em] text-heading">{t.title}</h3>
+                    <span aria-hidden="true" className="text-mute group-hover:text-heading">→</span>
+                  </div>
+                  <p className="mt-2 text-[14px] leading-5">{t.body}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Woman-Owned showcase */}
-      <section className="relative isolate flex items-center overflow-hidden bg-ink pt-[105px] pb-[75px] text-paper min-h-[585px]">
-        <div className="absolute inset-0 -z-10">
-          <img src="/images/woman-owned-bg.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, rgba(31,31,31,.9) 0%, rgba(31,31,31,.55) 60%, rgba(31,31,31,.85) 100%)' }} />
-        </div>
-        <div className="container-ares">
-          <div className="grid items-start gap-20 lg:grid-cols-[1.2fr_1fr]">
-            <h2 className="m-0 text-paper font-normal woman_owned_title" style={{ fontSize: 'clamp(46px, 5vw, 76px)', lineHeight: 0.92, letterSpacing: '-0.06em' }}>
-              Woman-<br />
-              <em className="font-light italic text-light">Owned</em><br />
-              Reliability-<br />
-              <em className="font-light italic text-light">Driven</em>
-            </h2>
-            <div>
-              <Block label="Why It Matters">
-                <p className="max-w-[46ch] text-[18px] font-medium leading-snug text-paper">
-                  A WOSB- and WBENC-certified firm. On-call scheduling is standard in every contract, and we have maintained less than 1% missed shifts since our inception. This level of reliability supports clean audits and consistent performance on every engagement.
-                </p>
-              </Block>
-              <Block label="Recognitions">
-                <ul className="m-0 flex list-none flex-col gap-2 p-0">
-                  {['WOSB Certified Small Business', "WBENC Women's Business Enterprise", 'Veteran-Focused Leadership & Training', 'WOSB Set-Aside Eligible · GSA #47QSMS25D009Q'].map((s) => (
-                    <li key={s} className="relative pl-5 text-[18px] font-medium text-paper before:absolute before:left-0 before:top-[0.65em] before:h-[1.5px] before:w-2 before:bg-paper">{s}</li>
-                  ))}
-                </ul>
-              </Block>
-              <div className="mt-12 flex flex-wrap gap-12 border-t border-white/[0.18] pt-8">
-                <Meta label="WOSB" value="#WOSB250470" />
-                <Meta label="WBENC" value="#WBE2303571" />
-                <Meta label="Founded" value="2021 · Colorado Springs, CO" />
-              </div>
-            </div>
-          </div>
+      {/* Customer quote (placeholder, shortened) */}
+      <section className="border-t border-hairline">
+        <div className="container-ares py-24 lg:py-32">
+          <figure className="m-0 mx-auto max-w-3xl rounded-[16px] border border-hairline bg-card p-8 sm:p-12">
+            <blockquote className="m-0">
+              <p
+                className="font-medium text-heading"
+                style={{ fontSize: 'clamp(22px, 2.2vw, 30px)', lineHeight: 1.3, letterSpacing: '-0.02em' }}
+              >
+                “Ares arrived prepared. Their documentation was cleaner than the incumbent’s from day one.”
+              </p>
+            </blockquote>
+            <figcaption className="mt-8 flex flex-col gap-1 border-t border-hairline pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <span className="text-[14px] font-semibold text-heading">Contracting Officer</span>
+              <span className="font-mono text-[13px] text-mute">USAF · Buckley Space Force Base</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* Services (3 hover-expand cards) */}
-      <Section>
-        <SectionHeading
-          title={<>Protection Built On <span className="font-light italic text-light">Trust</span></>}
-          titleSize="clamp(44px, 8vw, 60px)"
-          titleStyle={{ fontWeight: 400, letterSpacing: '-0.06em', lineHeight: 0.92 }}
-          titleReveal="up"
-        />
-        <Spacer />
-        <div className="service-grid">
-          {SERVICE_CARDS.map((c, i) => (
-            <article
-              key={c.to}
-              data-active={i === 0 ? 'true' : 'false'}
-              data-scroll-active
-              data-in-view="false"
-              className="group relative isolate flex min-h-[580px] flex-col justify-between overflow-hidden rounded-2xl border border-line bg-ink p-8 text-paper max-[460px]:aspect-[2/3] max-[460px]:min-h-0 lg:min-h-[664px]"
-            >
-              <div className="absolute inset-0 -z-10">
-                {c.slot.src
-                  ? <img src={c.slot.src} alt="" className="absolute inset-0 h-full w-full object-cover" />
-                  : <ImageSlot id={c.slot.id} placeholder={c.slot.placeholder} fill />}
-              </div>
-              <div className="svc-card-fade absolute inset-0 -z-[5] bg-gradient-to-b from-ink/0 via-ink/55 via-30% to-ink/90" />
-
-              <div>
-                <div className="mb-6 flex flex-wrap gap-2 pr-16">
-                  {c.tags.map((t) => (
-                    <span key={t} className="pill-glass pill-glass-dark">{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="relative z-[2] text-paper">
-                <h2 className="mb-3.5 text-[32px] font-bold uppercase leading-[1.05] tracking-tight text-paper">
-                  {c.title}
-                </h2>
-                <p className="text-[16px] leading-relaxed text-paper/85">
-                  {c.body}
-                </p>
-              </div>
-              <ArrowBtn to={c.to} className="absolute right-6 top-6" ariaLabel={`Open ${c.title}`} />
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      {/* Testimonial */}
-      <Section className="bg-paper-2">
-        <div className="text-center">
-          <h3 className="brackets-title" data-reveal="down">TESTIMONIAL</h3>
-        </div>
-        <Spacer />
-        <div className="mx-auto max-w-3xl text-center">
-          <blockquote
-            data-reveal="up"
-            className="m-0 mb-10 text-ink font-semibold"
-            style={{ fontSize: 'clamp(24px, 3vw, 36px)', lineHeight: 1.3, letterSpacing: '-0.005em' }}
+      {/* Call-to-action band */}
+      <section className="border-t border-hairline">
+        <div className="container-ares py-24 text-center lg:py-32">
+          <h2
+            className="font-semibold text-balance text-heading"
+            style={{ fontSize: 'clamp(36px, 4.4vw, 60px)', lineHeight: 1.02, letterSpacing: '-0.05em' }}
           >
-            "Ares arrived <span style={{ background: 'linear-gradient(180deg, transparent 60%, var(--color-pale) 60%)' }}>prepared</span>. Their documentation was cleaner than the incumbent's from day one, and their team was inside the <span style={{ background: 'linear-gradient(180deg, transparent 60%, var(--color-pale) 60%)' }}>badge cycle</span> before most contractors finish onboarding."
-          </blockquote>
-          <div
-            data-reveal="up"
-            style={{ ['--reveal-delay' as string]: '160ms' } as React.CSSProperties}
-          >
-            <h4 className="mb-1 text-[14px] font-bold uppercase tracking-[0.14em] text-ink">Contracting Officer</h4>
-            <p className="text-[14px] tracking-[0.04em] text-mid">USAF · Buckley Space Force Base</p>
+            Tell us about your site.
+          </h2>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
+            <a href="tel:+17196963966" className={`${PILL_SECONDARY} font-mono`}>719-696-3966</a>
           </div>
+          <a href="mailto:contact@aressecurity.co" className={`mt-6 inline-block text-[15px] text-mute hover:text-heading ${FOCUS}`}>
+            contact@aressecurity.co
+          </a>
         </div>
-      </Section>
+      </section>
     </main>
-  );
-}
-
-// ============ Local helpers ============
-
-function Section({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return (
-    <section className={`${className} relative`}>
-      <Spacer h="100" />
-      <div className="container-ares">{children}</div>
-      <Spacer h="100" />
-    </section>
-  );
-}
-
-function Spacer({ h = '64' }: { h?: '100' | '70' | '64' | '50' | '32' }) {
-  const map = { '100': 'h-25', '70': 'h-[70px]', '64': 'h-16', '50': 'h-[50px]', '32': 'h-8' } as const;
-  return <div className={map[h]} />;
-}
-
-function SectionHeading({
-  kicker,
-  title,
-  right,
-  titleSize,
-  titleStyle,
-  titleReveal,
-  kickerReveal,
-}: {
-  kicker?: string;
-  title: React.ReactNode;
-  right?: React.ReactNode;
-  titleSize?: string;
-  titleStyle?: React.CSSProperties;
-  titleReveal?: 'up' | 'down' | 'left' | 'right';
-  kickerReveal?: 'up' | 'down' | 'left' | 'right';
-}) {
-  return (
-    <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
-      <div>
-        {kicker && (
-          <h3 className="brackets-title mb-3" data-reveal={kickerReveal}>
-            {kicker}
-          </h3>
-        )}
-        <h2
-          className="m-0 text-ink"
-          data-reveal={titleReveal}
-          style={titleSize ? { fontSize: titleSize, lineHeight: 1, ...(titleStyle || {}) } : titleStyle}
-        >
-          {title}
-        </h2>
-      </div>
-      {right && <div>{right}</div>}
-    </div>
-  );
-}
-
-function Block({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-8 last:mb-0">
-      <div className="mb-2.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-paper/55">{label}</div>
-      {children}
-    </div>
-  );
-}
-
-function Meta({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-paper/50">{label}</span>
-      <span className="text-[18px] font-bold text-paper tracking-tight">{value}</span>
-    </div>
   );
 }
