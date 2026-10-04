@@ -13,22 +13,22 @@
   --color-paper-2: #f2f2f1;
   --color-line: #d8d8d6;
 
-  /* Dark canvas (Home, shared Header/Footer). Vercel's Geist system in
-     its dark theme: one canvas, a one-step card lift, a hairline that
-     carries all structure, a three-step text ladder, and one link blue. */
-  --color-canvas: #0a0a0a;
-  --color-card: #111111;
+  /* Dark canvas (Home). Pass 2 tokens from the Framer design analysis:
+     near-black canvas, two surface lifts, one hairline, one muted ink,
+     and a single blue signal reserved for links and focus. */
+  --color-canvas: #090909;
+  --color-surface-1: #141414;
+  --color-surface-2: #1c1c1c;
   --color-hairline: #262626;
-  --color-heading: #ededed;
-  --color-body: #a1a1a1;
-  --color-mute: #8f8f8f;
-  --color-signal: #52a8ff;
+  --color-ink-muted: #999999;
+  --color-signal: #0099ff;
+  /* Aliases the shared Header/Footer read (restyled after Pass 2) */
+  --color-card: #141414;
+  --color-mute: #999999;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  /* Home display/body face (Geist), falling back to the site's Inter */
-  --font-geist: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
-  /* Identifiers, labels, and measured figures (contract numbers, UEI) */
-  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* Identifiers and measured figures (contract numbers, UEI, <1%) */
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --radius-xl: 1.25rem; /* 20px */
   --radius-2xl: 2rem;   /* 32px */

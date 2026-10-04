@@ -1,42 +1,49 @@
 import { Link } from 'react-router-dom';
 import Seo from '../seo/Seo';
 
-// Home, dark only, built on Vercel's Geist system in its dark theme:
-// a centered hero with the page's only color (a mesh glow over the muted
-// photo), then a code-block band for the contractor record, a hairline
-// feature grid, coverage, template cards, a customer quote, and a centered
-// call-to-action band. Marketing CTAs are pills; small chrome is 6px; cards
-// are 12-16px with a 1px hairline and no shadow.
-// Every link sets its own text color: the base `a:hover` rule paints ink,
-// which would vanish on this canvas.
-
 const GSA_ELIBRARY_URL =
   'https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES';
 
+// Dark canvas system for Home, adapted from the Framer design analysis:
+// near-black canvas, charcoal surface lifts, white display type with hard
+// negative tracking, white pill CTAs, and one blue signal for links/focus.
+// Every link sets its own text color: the base `a:hover` rule paints ink,
+// which would vanish on this canvas.
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal';
-const PILL_PRIMARY = `inline-flex h-12 items-center justify-center gap-2 rounded-full bg-heading px-6 text-[16px] font-medium text-canvas hover:bg-white hover:text-canvas ${FOCUS}`;
-const PILL_SECONDARY = `inline-flex h-12 items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 text-[16px] font-medium text-heading hover:border-white/25 hover:text-heading ${FOCUS}`;
-const EYEBROW = 'font-mono text-[12px] font-medium uppercase leading-4 text-mute';
-const CARD = 'rounded-[12px] border border-hairline bg-card';
+const BTN_PRIMARY = `inline-flex h-11 items-center justify-center rounded-full bg-white px-5 text-[14px] font-medium tracking-[-0.01em] text-canvas hover:bg-pale hover:text-canvas ${FOCUS}`;
+const BTN_SECONDARY = `inline-flex h-11 items-center justify-center rounded-full bg-surface-2 px-5 text-[14px] font-medium tracking-[-0.01em] text-white hover:bg-hairline hover:text-white ${FOCUS}`;
 
-const HEADING_LG: React.CSSProperties = { fontSize: 'clamp(28px, 2.6vw, 36px)', lineHeight: 1.15, letterSpacing: '-0.04em' };
+const DISPLAY_XL: React.CSSProperties = { fontSize: 'clamp(38px, 6vw, 88px)', lineHeight: 0.96, letterSpacing: '-0.05em' };
+const DISPLAY_LG: React.CSSProperties = { fontSize: 'clamp(36px, 4.3vw, 62px)', lineHeight: 1, letterSpacing: '-0.045em' };
 
-type RecordRow = { k: string; v: string; href?: string };
-// Every value already appears on the Capability Statement page or in the
-// approved Home copy.
-const RECORD: RecordRow[] = [
-  { k: 'GSA MAS contract', v: '47QSMS25D009Q', href: GSA_ELIBRARY_URL },
-  { k: 'SIN', v: '561612' },
-  { k: 'UEI', v: 'XQXDN6E33SF4' },
-  { k: 'CAGE code', v: '9KL18' },
-  { k: 'Primary NAICS', v: '561612' },
-  { k: 'WOSB', v: 'WOSB250470' },
-  { k: 'WBENC', v: 'WBE2303571' },
+// Every value here already appears on the Capability Statement page or in
+// the previous Home copy. Mono = an identifier, set as data, not prose.
+type SpecRow = { k: string; v: string; sub?: string; mono?: boolean; href?: string };
+
+const CONTRACT: SpecRow[] = [
+  { k: 'GSA MAS contract', v: '47QSMS25D009Q', mono: true, href: GSA_ELIBRARY_URL },
+  { k: 'SIN', v: '561612', mono: true, sub: 'Security Services' },
+  { k: 'Ordering', v: 'Pre-negotiated pricing. Agencies can award task orders without a new competition.' },
+];
+
+const REGISTRATION: SpecRow[] = [
+  { k: 'UEI', v: 'XQXDN6E33SF4', mono: true },
+  { k: 'CAGE code', v: '9KL18', mono: true },
+  { k: 'Primary NAICS', v: '561612', mono: true, sub: 'Security Guards & Patrol Services' },
+];
+
+const OWNERSHIP: SpecRow[] = [
   { k: 'Ownership', v: 'Minority woman-owned' },
-  { k: 'Founded', v: '2021, Colorado Springs, CO' },
+  { k: 'WOSB certification', v: 'WOSB250470', mono: true, sub: 'Set-aside eligible' },
+  { k: 'WBENC certification', v: 'WBE2303571', mono: true },
+  { k: 'Founded', v: '2021', mono: true, sub: 'Colorado Springs, CO' },
 ];
 
 const PRACTICES = [
+  {
+    h: 'Trained on site by leadership',
+    p: 'Before their first shift, every officer is trained on your post by a leader who has worked that exact post.',
+  },
   {
     h: 'Planned before the contract',
     p: 'We learn your site, operations, and risks before anything is signed, so the plan fits how your facility runs.',
@@ -67,277 +74,241 @@ const AREAS = [
   { to: '/locations/pueblo', label: 'Pueblo' },
 ];
 
-const TEMPLATES = [
-  {
-    to: '/about',
-    title: 'About Ares',
-    body: 'Our story, our principles, and the people behind every post.',
-    src: '/images/about-security.jpg',
-    alt: 'Two Ares Security officers seen from behind, Security printed across their shirts',
-    w: 1408,
-    h: 736,
-  },
-  {
-    to: '/services',
-    title: 'Services',
-    body: 'Six service divisions across federal, commercial, industrial, and specialized sites.',
-    src: '/images/mission-vehicle.jpg',
-    alt: 'Two Ares Security patrol vehicles parked on a residential street',
-    w: 750,
-    h: 842,
-  },
-  {
-    to: '/careers',
-    title: 'Careers',
-    body: 'Armed, unarmed, cleared, and office roles with paid training. Veterans are encouraged to apply.',
-    src: '/images/careers-philosophy.jpg',
-    alt: 'The Ares Security team in uniform at an indoor firing range',
-    w: 1184,
-    h: 880,
-  },
-];
-
 export default function Home() {
   return (
-    <main className="bg-canvas font-geist text-body">
+    <main
+      className="bg-canvas text-ink-muted"
+      style={{ fontFeatureSettings: '"cv01", "cv05", "cv09", "cv11", "ss03"' }}
+    >
       <Seo path="/" />
 
-      {/* Hero: centered, full viewport, the page's one color */}
-      <section className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-          <img
-            src="/images/hero6.webp"
-            alt=""
-            width={1920}
-            height={1280}
-            className="h-full w-full object-cover object-[center_60%] opacity-30"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: [
-                'radial-gradient(38% 42% at 34% 30%, rgba(0,124,240,0.30) 0%, rgba(0,124,240,0) 70%)',
-                'radial-gradient(34% 40% at 66% 26%, rgba(0,223,216,0.16) 0%, rgba(0,223,216,0) 70%)',
-                'radial-gradient(30% 36% at 52% 14%, rgba(121,40,202,0.18) 0%, rgba(121,40,202,0) 70%)',
-                'linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.65) 60%, #0a0a0a 100%)',
-              ].join(', '),
-            }}
-          />
-        </div>
-        <div className="container-ares flex flex-1 flex-col items-center justify-center pt-32 pb-20 text-center lg:pt-36">
-          <a
-            href={GSA_ELIBRARY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex h-9 items-center gap-2 rounded-[64px] border border-hairline bg-card/80 px-4 text-[14px] text-heading hover:border-white/25 hover:text-heading ${FOCUS}`}
-          >
-            <span className="font-mono text-[13px]">GSA MAS 47QSMS25D009Q</span>
-            <span aria-hidden="true" className="text-mute">↗</span>
-            <span className="sr-only">(opens GSA eLibrary in a new tab)</span>
-          </a>
-          <h1
-            className="mx-auto mt-8 max-w-[18ch] font-semibold text-balance text-heading"
-            style={{ fontSize: 'clamp(44px, 6vw, 84px)', lineHeight: 1, letterSpacing: '-0.05em' }}
-          >
+      {/* Hero */}
+      <section>
+        <div className="container-ares pt-36 lg:pt-44">
+          <h1 className="font-semibold text-balance text-white" style={DISPLAY_XL}>
             Security guards for federal and commercial sites.
           </h1>
-          <p className="mx-auto mt-7 max-w-[36rem] text-[18px] leading-7 text-body">
-            A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
-            <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Code-block band: the contractor record */}
-      <section>
-        <div className="container-ares grid gap-12 pb-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-20 lg:pb-32">
-          <div>
-            <h2 className="font-semibold text-balance text-heading" style={HEADING_LG}>Everything you need to verify us.</h2>
-            <p className="mt-4 max-w-[32rem] text-[16px] leading-6">
-              Pre-negotiated federal pricing on the GSA schedule. Agencies can award task orders without opening a new competition.
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <p className="max-w-[34rem] text-[19px] leading-[1.45] tracking-[-0.01em]">
+              A minority woman-owned GSA schedule holder serving Colorado Springs, Denver, and Pueblo since 2021.
             </p>
-            <Link to="/capability-statement" className={`mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-signal hover:text-heading ${FOCUS}`}>
-              Read the capability statement <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-          <div className={`overflow-hidden ${CARD}`}>
-            <div className="flex items-center justify-between border-b border-hairline px-5 py-3">
-              <span className="font-mono text-[13px] text-heading">Ares Security LLC</span>
-              <span className={EYEBROW}>Contractor record</span>
+            <div className="flex flex-wrap gap-2.5">
+              <Link to="/contact" className={BTN_PRIMARY}>Request a Quote</Link>
+              <Link to="/capability-statement" className={BTN_SECONDARY}>Capability Statement</Link>
             </div>
-            <dl className="m-0 px-5 py-4 font-mono text-[14px] leading-7">
-              {RECORD.map((row) => (
-                <div key={row.k} className="grid py-1 sm:grid-cols-[18ch_minmax(0,1fr)] sm:gap-4 sm:py-0">
-                  <dt className="text-mute">{row.k}</dt>
-                  <dd className="m-0 text-heading">
-                    {row.href ? (
-                      <a href={row.href} target="_blank" rel="noopener noreferrer" className={`text-signal hover:text-heading ${FOCUS}`}>
-                        {row.v}
-                        <span aria-hidden="true" className="ml-1 font-geist">↗</span>
-                        <span className="sr-only"> (opens GSA eLibrary in a new tab)</span>
-                      </a>
-                    ) : (
-                      row.v
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          </div>
+          <div className="mt-14 aspect-[4/3] overflow-hidden rounded-[20px] bg-surface-1 sm:aspect-[21/8]">
+            <img
+              src="/images/hero-steel-wide.webp"
+              alt=""
+              width={1680}
+              height={640}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* Hairline feature grid: how a post is staffed */}
-      <section className="border-t border-hairline">
+      {/* Spec sheet: bento of four cards, Performance as the one spotlight */}
+      <section>
         <div className="container-ares py-24 lg:py-32">
-          <h2 className="max-w-[24ch] font-semibold text-heading" style={HEADING_LG}>How we staff a post</h2>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-hairline bg-hairline lg:grid-cols-3">
-            {/* Lead card: the differentiator, with a staff photo */}
-            <div className="grid bg-card sm:grid-cols-2 lg:col-span-2">
-              <div className="flex flex-col justify-between p-6 lg:p-8">
-                <p className={EYEBROW}>Site training</p>
-                <div className="mt-10">
-                  <h3 className="text-[20px] font-semibold leading-7 tracking-[-0.02em] text-heading">
-                    Trained on site by leadership
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-6">
-                    Before their first shift, every officer is trained on your post by a leader who has worked that exact post.
-                  </p>
+          <h2 className="max-w-[18ch] font-semibold text-white" style={DISPLAY_LG}>Everything you need to verify us.</h2>
+          <div className="mt-14 grid gap-4 lg:grid-cols-3">
+            <SpecCard title="Contract vehicle" rows={CONTRACT} />
+            <SpecCard title="Federal registration" rows={REGISTRATION} />
+
+            <div
+              className="relative flex flex-col justify-between overflow-hidden rounded-[20px] p-7 lg:row-span-2 lg:p-8"
+              style={{
+                background:
+                  'radial-gradient(120% 85% at 90% 0%, rgba(0,153,255,0.5) 0%, rgba(0,153,255,0) 58%), linear-gradient(180deg, #0f2236 0%, #0b1119 100%)',
+              }}
+            >
+              <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-white">Performance</h3>
+              <dl className="m-0 mt-10 lg:mt-0">
+                <dt className="text-[13px] text-white/70">Missed shifts</dt>
+                <dd className="m-0 mt-2 font-mono text-[96px] leading-[0.9] tracking-[-0.06em] text-white lg:text-[120px]">&lt;1%</dd>
+                <dd className="m-0 mt-3 text-[15px] text-white/70">Since founding in 2021</dd>
+              </dl>
+              <dl className="m-0 mt-10 grid gap-5 border-t border-white/15 pt-6">
+                <div>
+                  <dt className="text-[13px] text-white/70">On-call coverage</dt>
+                  <dd className="m-0 mt-1 text-[16px] text-white">Standard in every contract</dd>
                 </div>
-              </div>
-              <div className="aspect-[4/3] border-t border-hairline sm:aspect-auto sm:border-t-0 sm:border-l">
-                <img
-                  src="/images/officer-portrait.jpg"
-                  alt="Ares Security officer in a black Ares polo with a badge on a lanyard, arms crossed, smiling"
-                  width={992}
-                  height={1040}
-                  loading="lazy"
-                  className="h-full w-full object-cover object-[center_25%]"
-                />
-              </div>
+                <div>
+                  <dt className="text-[13px] text-white/70">Veterans</dt>
+                  <dd className="m-0 mt-1 text-[16px] text-white">Supervisors and NRA firearms instructor</dd>
+                </div>
+              </dl>
             </div>
-            {/* Metric card */}
-            <div className="flex flex-col justify-between bg-card p-6 lg:p-8">
-              <p className={EYEBROW}>Performance</p>
-              <div className="mt-10">
-                <p className="font-semibold text-heading" style={{ fontSize: 'clamp(56px, 6vw, 84px)', lineHeight: 1, letterSpacing: '-0.05em' }}>
-                  &lt;1%
-                </p>
-                <p className="mt-3 text-[15px] leading-6">Missed shifts since 2021. On-call scheduling is standard in every contract.</p>
-              </div>
-            </div>
-            {PRACTICES.map((item) => (
-              <div key={item.h} className="bg-card p-6 lg:p-8">
-                <h3 className="text-[20px] font-semibold leading-7 tracking-[-0.02em] text-heading">{item.h}</h3>
-                <p className="mt-2 text-[15px] leading-6">{item.p}</p>
-              </div>
-            ))}
-            {/* Full-width row: veterans */}
-            <div className="flex flex-col gap-2 bg-card p-6 sm:flex-row sm:items-baseline sm:justify-between lg:col-span-3 lg:px-8">
-              <h3 className="text-[16px] font-semibold tracking-[-0.01em] text-heading">Veterans in leadership</h3>
-              <p className="text-[15px] leading-6">Veteran supervisors on staff, and our NRA firearms instructor is a veteran.</p>
-            </div>
+
+            <SpecCard title="Ownership and certification" rows={OWNERSHIP} wide />
           </div>
         </div>
       </section>
 
-      {/* Coverage: divisions as a hairline grid, areas as category pills */}
-      <section className="border-t border-hairline">
-        <div className="container-ares py-24 lg:py-32">
-          <h2 className="font-semibold text-heading" style={HEADING_LG}>Services and service areas</h2>
-          <ul className="m-0 mt-12 grid list-none gap-px overflow-hidden rounded-[12px] border border-hairline bg-hairline p-0 sm:grid-cols-2 lg:grid-cols-3">
-            {DIVISIONS.map((d) => (
-              <li key={d} className="bg-card px-6 py-5 text-[16px] font-medium tracking-[-0.01em] text-heading">{d}</li>
-            ))}
-          </ul>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className={`mr-2 ${EYEBROW}`}>Where we work</span>
-              {AREAS.map((a) => (
-                <Link
-                  key={a.to}
-                  to={a.to}
-                  className={`inline-flex h-10 items-center gap-2 rounded-[64px] border border-hairline bg-card px-4 text-[14px] font-medium text-heading hover:border-white/25 hover:text-heading ${FOCUS}`}
-                >
-                  {a.label} <span aria-hidden="true" className="text-mute">→</span>
-                </Link>
-              ))}
-            </div>
-            <Link to="/services" className={`text-[14px] font-medium text-signal hover:text-heading ${FOCUS}`}>
-              All services <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Template cards */}
-      <section className="border-t border-hairline">
-        <div className="container-ares py-24 lg:py-32">
-          <h2 className="font-semibold text-heading" style={HEADING_LG}>Get to know Ares</h2>
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {TEMPLATES.map((t) => (
-              <Link
-                key={t.to}
-                to={t.to}
-                className={`group flex flex-col overflow-hidden text-heading hover:border-white/25 hover:text-heading ${CARD} ${FOCUS}`}
-              >
-                <div className="aspect-[16/10] overflow-hidden border-b border-hairline">
-                  <img src={t.src} alt={t.alt} width={t.w} height={t.h} loading="lazy" className="h-full w-full object-cover" />
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-[16px] font-semibold tracking-[-0.01em] text-heading">{t.title}</h3>
-                    <span aria-hidden="true" className="text-mute group-hover:text-heading">→</span>
-                  </div>
-                  <p className="mt-2 text-[14px] leading-5">{t.body}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Customer quote (placeholder, shortened) */}
-      <section className="border-t border-hairline">
-        <div className="container-ares py-24 lg:py-32">
-          <figure className="m-0 mx-auto max-w-3xl rounded-[16px] border border-hairline bg-card p-8 sm:p-12">
-            <blockquote className="m-0">
-              <p
-                className="font-medium text-heading"
-                style={{ fontSize: 'clamp(22px, 2.2vw, 30px)', lineHeight: 1.3, letterSpacing: '-0.02em' }}
-              >
-                “Ares arrived prepared. Their documentation was cleaner than the incumbent’s from day one.”
+      {/* Testimonial */}
+      <section>
+        <div className="container-ares">
+          <figure className="m-0 border-t border-hairline py-24 lg:py-32">
+            <blockquote
+              className="m-0 max-w-[34ch] font-medium text-white lg:-indent-[0.4em]"
+              style={{ fontSize: 'clamp(28px, 3.6vw, 52px)', lineHeight: 1.12, letterSpacing: '-0.035em' }}
+            >
+              <p>
+                “Ares arrived prepared. Their documentation was cleaner than the incumbent’s from day one, and their team was inside the badge cycle before most contractors finish onboarding.”
               </p>
             </blockquote>
-            <figcaption className="mt-8 flex flex-col gap-1 border-t border-hairline pt-5 sm:flex-row sm:items-center sm:justify-between">
-              <span className="text-[14px] font-semibold text-heading">Contracting Officer</span>
-              <span className="font-mono text-[13px] text-mute">USAF · Buckley Space Force Base</span>
+            <figcaption className="mt-10 flex flex-wrap gap-x-3 gap-y-1 text-[15px]">
+              <span className="font-semibold text-white">Contracting Officer</span>
+              <span>USAF · Buckley Space Force Base</span>
             </figcaption>
           </figure>
         </div>
       </section>
 
-      {/* Call-to-action band */}
-      <section className="border-t border-hairline">
-        <div className="container-ares py-24 text-center lg:py-32">
-          <h2
-            className="font-semibold text-balance text-heading"
-            style={{ fontSize: 'clamp(36px, 4.4vw, 60px)', lineHeight: 1.02, letterSpacing: '-0.05em' }}
-          >
-            Tell us about your site.
-          </h2>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
-            <a href="tel:+17196963966" className={`${PILL_SECONDARY} font-mono`}>719-696-3966</a>
+      {/* How we staff a post */}
+      <section>
+        <div className="container-ares pb-24 lg:pb-32">
+          <h2 className="font-semibold text-white" style={DISPLAY_LG}>How we staff a post</h2>
+          <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+            <div className="aspect-[4/3] overflow-hidden rounded-[20px] bg-surface-1 lg:aspect-[5/6]">
+              <img
+                src="/images/backbone-officer.jpg"
+                alt="Smiling Ares Security officer in a black Ares Security polo shirt, standing against a brick wall"
+                width={733}
+                height={900}
+                loading="lazy"
+                className="h-full w-full object-cover object-[center_20%]"
+              />
+            </div>
+            <ul className="m-0 list-none p-0">
+            {PRACTICES.map((item) => (
+                <li key={item.h} className="border-t border-hairline py-8 last:pb-0">
+                  <h3 className="text-[22px] font-semibold tracking-[-0.025em] text-white">{item.h}</h3>
+                  <p className="mt-2 max-w-[44ch] text-[16px] leading-[1.5]">{item.p}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <a href="mailto:contact@aressecurity.co" className={`mt-6 inline-block text-[15px] text-mute hover:text-heading ${FOCUS}`}>
-            contact@aressecurity.co
-          </a>
+        </div>
+      </section>
+
+      {/* Services and service areas */}
+      <section className="bg-surface-1">
+        <div className="container-ares py-24 lg:py-32">
+          <h2 className="font-semibold text-white" style={DISPLAY_LG}>Services and service areas</h2>
+
+          <h3 className="mt-14 text-[15px] font-semibold tracking-[-0.01em] text-white">Service divisions</h3>
+          <ul className="m-0 mt-5 flex list-none flex-wrap gap-2.5 p-0">
+            {DIVISIONS.map((d) => (
+              <li key={d} className="rounded-full bg-surface-2 px-4 py-2.5 text-[15px] tracking-[-0.01em] text-white">{d}</li>
+            ))}
+          </ul>
+          <Link to="/services" className={`mt-6 inline-flex items-center gap-1.5 text-[15px] font-medium text-signal hover:text-white ${FOCUS}`}>
+            All services <span aria-hidden="true">→</span>
+          </Link>
+
+          <h3 className="mt-16 text-[15px] font-semibold tracking-[-0.01em] text-white">Where we work</h3>
+          <ul className="m-0 mt-5 grid list-none gap-4 p-0 sm:grid-cols-3">
+            {AREAS.map((a) => (
+              <li key={a.to}>
+                <Link
+                  to={a.to}
+                  className={`group flex items-center justify-between rounded-[20px] bg-surface-2 p-6 text-white hover:bg-hairline hover:text-white sm:min-h-[168px] sm:flex-col sm:items-stretch sm:p-7 ${FOCUS}`}
+                >
+                  <span className="text-[26px] font-semibold tracking-[-0.03em]">{a.label}</span>
+                  <span
+                    aria-hidden="true"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-canvas text-[16px] text-white sm:self-end"
+                  >
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Careers */}
+      <section>
+        <div className="container-ares py-24 lg:py-32">
+          <div className="grid overflow-hidden rounded-[30px] bg-surface-1 lg:grid-cols-2">
+            <div className="aspect-[4/3] lg:aspect-auto">
+              <img
+                src="/images/careers-team.jpg"
+                alt="Officer in a Security shirt training at an indoor firing range"
+                width={1184}
+                height={880}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-16">
+              <h2 className="font-semibold text-white" style={DISPLAY_LG}>Now hiring officers</h2>
+              <p className="mt-5 max-w-[34rem] text-[17px] leading-[1.5]">
+                Armed, unarmed, cleared, and office roles, with paid training and real room to grow. Veterans are encouraged to apply.
+              </p>
+              <div className="mt-8">
+                <Link to="/careers" className={BTN_PRIMARY}>See Open Roles</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section>
+        <div className="container-ares">
+          <div className="border-t border-hairline py-24 lg:py-32">
+            <h2 className="font-semibold text-balance text-white" style={DISPLAY_XL}>Tell us about your site.</h2>
+            <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-6">
+              <a href="tel:+17196963966" className={`font-mono text-[28px] tracking-[-0.02em] text-white hover:text-white sm:text-[34px] ${FOCUS}`}>
+                719-696-3966
+              </a>
+              <a href="mailto:contact@aressecurity.co" className={`text-[17px] text-ink-muted hover:text-white ${FOCUS}`}>
+                contact@aressecurity.co
+              </a>
+              <Link to="/contact" className={BTN_PRIMARY}>Request a Quote</Link>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+  );
+}
+
+function SpecCard({ title, rows, wide = false }: { title: string; rows: SpecRow[]; wide?: boolean }) {
+  return (
+    <div className={`rounded-[20px] bg-surface-1 p-7 lg:p-8 ${wide ? 'lg:col-span-2' : ''}`}>
+      <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-white">{title}</h3>
+      <dl className={`m-0 mt-7 grid gap-6 ${wide ? 'sm:grid-cols-2 lg:grid-cols-4' : ''}`}>
+        {rows.map((row) => (
+          <div key={row.k}>
+            <dt className="text-[13px]">{row.k}</dt>
+            <dd
+              className={`m-0 mt-1.5 ${row.mono ? 'font-mono text-[17px] tracking-[0.01em]' : 'text-[16px] leading-snug tracking-[-0.01em]'} text-white`}
+            >
+              {row.href ? (
+                <a
+                  href={row.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-signal hover:text-white ${FOCUS}`}
+                >
+                  {row.v}
+                  <span aria-hidden="true" className="ml-1.5 font-sans">↗</span>
+                  <span className="sr-only"> (opens GSA eLibrary in a new tab)</span>
+                </a>
+              ) : (
+                row.v
+              )}
+            </dd>
+            {row.sub && <dd className="m-0 mt-1 text-[13px]">{row.sub}</dd>}
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }
