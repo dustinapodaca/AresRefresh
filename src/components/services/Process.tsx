@@ -1,4 +1,5 @@
-import { useRef, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import Arrow from '../Arrow';
 import { STAGES } from './data';
 
 // 02 Process, set as a schedule chart: one axis from pre-contract to operational, and
@@ -6,14 +7,77 @@ import { STAGES } from './data';
 // row under a process meter that fills as the row is swiped.
 export default function Process() {
   const rowRef = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(0);
 
+  const offsetOf = (row: HTMLElement, i: number) => {
+    const slide = row.children[i] as HTMLElement | undefined;
+    return slide ? slide.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft) : 0;
+  };
   const goTo = (i: number) => {
     const row = rowRef.current;
-    const slide = row?.children[i] as HTMLElement | undefined;
-    if (!row || !slide) return;
-    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    row.scrollTo({ left: slide.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: smooth ? 'smooth' : 'auto' });
+    if (!row) return;
+    row.scrollTo({ left: offsetOf(row, i), behavior: reducedMotion() ? 'auto' : 'smooth' });
   };
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+
+    // Which stage is in front: the last one whose start the row has reached.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const max = row.scrollWidth - row.clientWidth;
+        let i = 0;
+        for (let k = 1; k < STAGES.length; k++) if (row.scrollLeft >= Math.min(offsetOf(row, k), max) - 8) i = k;
+        setActive(i);
+      });
+    };
+    row.addEventListener('scroll', onScroll, { passive: true });
+
+    // A one-time nudge when the row first comes into view, so it reads as swipeable:
+    // it slides a little toward the next stage and settles back. Swipe row only, never
+    // under reduced motion, and not once the reader has touched it.
+    let touched = false;
+    const markTouched = () => (touched = true);
+    row.addEventListener('pointerdown', markTouched, { once: true });
+    let timer = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        if (touched || reducedMotion() || row.scrollWidth <= row.clientWidth || row.scrollLeft > 0) return;
+        // The row snaps, so the slides move instead of the scroll position.
+        timer = window.setTimeout(() => {
+          if (touched) return;
+          Array.from(row.children).forEach((slide) =>
+            slide.animate(
+              [
+                { transform: 'translateX(0)', easing: 'cubic-bezier(0.23, 1, 0.32, 1)' },
+                { transform: 'translateX(-44px)', offset: 0.4, easing: 'cubic-bezier(0.77, 0, 0.175, 1)' },
+                { transform: 'translateX(0)' },
+              ],
+              { duration: 900 },
+            ),
+          );
+        }, 250);
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(row);
+
+    return () => {
+      row.removeEventListener('scroll', onScroll);
+      row.removeEventListener('pointerdown', markTouched);
+      io.disconnect();
+      window.clearTimeout(timer);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const last = active >= STAGES.length - 1;
 
   return (
     <section id="process" className="ds-svc-process" aria-labelledby="process-title">
@@ -67,9 +131,18 @@ export default function Process() {
             </li>
           ))}
         </ol>
+        {/* Swipe row only: says the row moves, and moves it. */}
+        <button type="button" className="ds-link ds-svc-next" onClick={() => goTo(last ? 0 : active + 1)}>
+          {last ? 'Back to the first stage' : 'Next stage'}
+          <Arrow />
+        </button>
       </div>
 
       <p className="ds-lead ds-handoff">The same four stages run at every post, in every city we cover.</p>
     </section>
   );
+}
+
+function reducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }

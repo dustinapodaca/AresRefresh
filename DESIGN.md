@@ -349,7 +349,10 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   slides on phones and 62% on tablets, so the next one peeks), under a process meter:
   stage numbers 01 to 04 over a hairline split into quarters with ticks, the phase labels
   beneath, and a 3px ink fill tied to the swipe position (from one quarter to full). Each
-  number turns ink as its stage is reached; tapping a number swipes to it. The per-stage
+  number turns ink as its stage is reached; tapping a number swipes to it. Two swipe cues:
+  a one-time nudge when the row first comes into view (the slides slide 44px toward the
+  next stage and settle back, 900ms; skipped under reduced motion or once touched), and a
+  quiet "Next stage" link under the row ("Back to the first stage" on the last). The per-stage
   bars step aside there. The meter is a position indicator, so it stays on under reduced
   motion.
 - **Areas:** the Denver skyline as a wide plate in the column (21:9, 16:10 on phones) with

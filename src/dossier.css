@@ -1259,6 +1259,7 @@ html.ds-vt .ds-header::before {
    fill tied to the swipe position, and each stage number lighting as it is reached.
    Tapping a number swipes to that stage. */
 .ds-svc-meter { display: none; }
+.ds-svc-next { display: none; }
 @media (max-width: 1023px) {
   .ds-svc-gantt { timeline-scope: --ds-svc-swipe; }
   .ds-svc-meter { display: block; }
@@ -1326,6 +1327,16 @@ html.ds-vt .ds-header::before {
   /* The meter carries position here, so the per-stage bar steps aside. */
   .ds-svc-bar { display: none; }
   .ds-svc-stage-body .ds-body { margin-top: 4px; }
+  .ds-svc-next {
+    display: inline-flex;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .ds-svc-next:active .ds-arrow { transform: translateX(3px); }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .ds-svc-stage { flex-basis: 62%; }
