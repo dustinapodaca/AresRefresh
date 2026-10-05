@@ -315,9 +315,14 @@ body:has(.ds-page) {
 }
 .ds-certs img { display: block; height: 32px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
+/* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
 @media (max-width: 559px) {
-  .ds-certs { display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 24px 36px; }
+  .ds-certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+  .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs li + li::before { display: none; }
+  .ds-certs li:nth-child(odd) { border-right: 1px solid var(--ds-rule-strong); }
+  .ds-certs li:nth-child(-n + 2) { border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs img { height: 30px; max-width: 100%; }
 }
 
 .ds-legal {
