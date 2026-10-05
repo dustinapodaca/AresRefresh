@@ -1,8 +1,10 @@
 # Ares Security site
 
-Product context lives in PRODUCT.md. The design system for this branch
-(redesign-b-fresh) is DESIGN.md at the repo root once written; until then, there is no
-design reference.
+Product context lives in PRODUCT.md. The design system below (written for the
+clean-slate redesign on redesign-b-fresh, 2026-10-04) is the single design authority for
+UI work.
+
+@DESIGN.md
 
 _archive/ is historical; never use it as design reference.
 

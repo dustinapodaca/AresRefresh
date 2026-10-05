@@ -48,9 +48,11 @@ saved so any of them can be revisited. Full details: `_archive/design-passes/VER
 | **v08** | **Flow pass + owner tweaks (Option A)** | `git checkout home-v08-framer-flow-final` |
 | v09 | Mobbin refinement (rejected) | `git checkout home-v09-mobbin-refine` |
 | v10 | Mobbin redesign (rejected) | `git checkout home-v10-mobbin-redesign` |
+| **v11** | **Clean slate: "The Dossier" (new DESIGN.md, Mobbin board, new nav and footer)** | `git checkout home-v11-dossier` (branch `redesign-b-fresh`) |
 
 To view a version: check out its tag, then `npm run dev`. To return to the current work:
-`git checkout redesign-b-fresh`. The next version from the fresh pass will be **v11**.
+`git checkout redesign-b-fresh`. Clean-slate docs: `DESIGN.md`, `docs/home-content.md`,
+`docs/inspiration.md`, `docs/concepts.md`, `docs/copy-changes.md`.
 
 ## Project layout
 

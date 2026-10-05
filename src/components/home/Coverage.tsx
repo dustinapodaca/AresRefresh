@@ -1,0 +1,69 @@
+import { Link } from 'react-router-dom';
+import Arrow from '../Arrow';
+
+const CITIES = [
+  { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
+  { to: '/locations/denver', name: 'Denver', note: 'Service area' },
+  { to: '/locations/pueblo', name: 'Pueblo', note: 'Service area' },
+];
+
+const DIVISIONS = [
+  'Government Security Personnel',
+  'Airport & Transportation Security',
+  'Commercial & High-Traffic Security',
+  'Industrial, Logistics & Construction',
+  'Specialized & Armed Protection',
+  'Institutional & Community Security',
+];
+
+export default function Coverage() {
+  return (
+    <section id="coverage" className="ds-coverage" aria-labelledby="coverage-title">
+      <div className="ds-coverage-head">
+        <h2 id="coverage-title" className="ds-display-lg">
+          Where we work.
+        </h2>
+        <p className="ds-body">
+          Armed, unarmed, and cleared officers for federal, commercial, industrial, and
+          institutional sites, from our base in Colorado Springs.
+        </p>
+      </div>
+
+      <ul className="ds-cities">
+        {CITIES.map((c) => (
+          <li key={c.to}>
+            <Link to={c.to} className="ds-city">
+              <span className="ds-display-lg">{c.name}</span>
+              <span className="ds-small">{c.note}</span>
+              <Arrow size={24} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="ds-divisions">
+        <h3 className="ds-title">Six service divisions</h3>
+        <div>
+          <ul>
+            {DIVISIONS.map((d) => (
+              <li key={d}>{d}</li>
+            ))}
+          </ul>
+          <Link to="/services" className="ds-link">
+            See all services
+            <Arrow />
+          </Link>
+        </div>
+      </div>
+
+      <p className="ds-lead ds-handoff">
+        Every one of those posts is staffed by officers we trained on site.
+      </p>
+
+      {/* Full bleed. Starts here and ends under the opening of 04 Careers. */}
+      <div className="ds-bleed" aria-hidden="true">
+        <img src="/images/about-security.jpg" alt="" loading="lazy" decoding="async" />
+      </div>
+    </section>
+  );
+}

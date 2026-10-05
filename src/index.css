@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './dossier.css';
 
 /* ============================================================
    ARES — Tailwind v4 theme (Moonstone palette + Inter)
@@ -14,6 +15,21 @@
   --color-line: #d8d8d6;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Dossier system (DESIGN.md, clean-slate redesign 2026-10-04). Separate names so
+     pages not yet restyled keep the legacy Moonstone tokens above. */
+  --color-canvas: #0a0b0d;
+  --color-fg: #eef0f2;
+  --color-fg-muted: #9aa0a8;
+  --color-fg-faint: #7d838c;
+  --color-rule: #1d2025;
+  --color-rule-strong: #2c3037;
+  --color-rust: #bc6f40;
+  --color-rust-deep: #8b4920;
+
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-text: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-data: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   --radius-xl: 1.25rem; /* 20px */
   --radius-2xl: 2rem;   /* 32px */

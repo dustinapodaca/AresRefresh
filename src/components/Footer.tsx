@@ -1,97 +1,104 @@
 import { Link, useLocation } from 'react-router-dom';
+import Arrow from './Arrow';
+import { GSA_ELIBRARY } from './home/links';
+
+// "Get to know Ares": order and wording set by the owner (About Us, Services, Careers).
+const INDEX = [
+  {
+    to: '/about',
+    title: 'About Us',
+    body: 'Our journey, our principles, the capability statement that backs us, and the people who bring reliable security to every environment we serve.',
+  },
+  {
+    to: '/services',
+    title: 'Services',
+    body: 'Six service divisions across federal, commercial, industrial, and specialized sectors. Documented, audit-ready, and ready for procurement.',
+  },
+  {
+    to: '/careers',
+    title: 'Careers',
+    body: 'Join the team. Armed, unarmed, cleared, and office roles, with paid training and real growth paths.',
+  },
+];
 
 export default function Footer() {
   const { pathname } = useLocation();
-  // Pages whose last section "docks" a CTA card halfway into the footer
-  // use the `is-extended` modifier — see .site_footer.is-extended in
-  // index.css. The page's bottom section uses a matching negative
-  // margin so the card's lower half slides over the footer's extended
-  // top padding. Listed explicitly so we don't unintentionally extend
-  // the footer on routes that don't dock a card.
+  // /services and /careers dock a CTA card ~290px into the footer's top edge.
   const extended = pathname === '/services' || pathname === '/careers';
 
   return (
-    <footer className={`site_footer is-dark has-bg-image${extended ? ' is-extended' : ''}`}>
-      <div className="image_bg" aria-hidden="true" />
-      <div className="container-ares">
-        <div className="footer_row grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
-          {/* Brand block */}
-          <div className="footer_brand flex max-w-[520px] flex-col gap-6">
-            <Link to="/" className="footer_brand_top flex items-center gap-[18px]" aria-label="Ares Security home">
-              <span className="glyph" aria-hidden="true" />
-              <img className="wordmark" src="/images/ares-text.svg" alt="Ares Security" />
-              <span className="sep" />
-              <span className="est flex flex-col">
-                <span>EST.</span>
-                <span>2021</span>
-              </span>
+    <footer className="ds ds-footer" data-extended={extended}>
+      <div className="ds-container">
+        <nav aria-labelledby="footer-index-title">
+          <h2 id="footer-index-title" className="ds-index-title">
+            Get to know Ares
+          </h2>
+          <ul className="ds-index">
+            {INDEX.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to} className="ds-row-link">
+                  <span className="ds-display-md">{item.title}</span>
+                  <span className="ds-small">{item.body}</span>
+                  <Arrow size={22} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="ds-footer-cols">
+          <div>
+            <Link to="/" className="ds-brand" aria-label="Ares Security home" style={{ marginRight: 0 }}>
+              <span className="ds-mark" aria-hidden="true" />
+              <span className="ds-wordmark" aria-hidden="true" />
             </Link>
-            <p>Public-sector compliance. Commercial reliability. A woman-owned, employee-focused firm delivering consistent results across every environment.</p>
+            <p className="ds-small" style={{ marginTop: 18, maxWidth: '34ch' }}>
+              A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado
+              Springs.
+            </p>
           </div>
 
-          {/* Navigate */}
-          <FooterCol title="Navigate">
-            <FooterLink to="/about">About</FooterLink>
-            <FooterLink to="/services">Services</FooterLink>
-            <FooterLink to="/careers">Careers</FooterLink>
-          </FooterCol>
+          <div>
+            <h2>Service areas</h2>
+            <ul>
+              <li><Link to="/locations/colorado-springs">Colorado Springs</Link></li>
+              <li><Link to="/locations/denver">Denver</Link></li>
+              <li><Link to="/locations/pueblo">Pueblo</Link></li>
+            </ul>
+          </div>
 
-          {/* Service areas — crawlable links to the location pages so they
-              are reachable from every page, not just from /services. */}
-          <FooterCol title="Service Areas">
-            <FooterLink to="/locations/colorado-springs">Colorado Springs</FooterLink>
-            <FooterLink to="/locations/denver">Denver</FooterLink>
-            <FooterLink to="/locations/pueblo">Pueblo</FooterLink>
-          </FooterCol>
+          <div>
+            <h2>Contracting</h2>
+            <ul>
+              <li>
+                <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
+                  GSA 47QSMS25D009Q
+                </a>
+              </li>
+              <li><Link to="/capability-statement">Capability Statement</Link></li>
+              <li><Link to="/contact">Request a quote</Link></li>
+            </ul>
+          </div>
 
-          {/* Contracting */}
-          <FooterCol title="Contracting">
-            <FooterLink href="https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES">GSA #47QSMS25D009Q</FooterLink>
-            <FooterLink to="/capability-statement">Capability Statement</FooterLink>
-            <FooterLink to="/contact">Request a Quote</FooterLink>
-          </FooterCol>
-
-          {/* Contact */}
-          <FooterCol title="Contact">
-            <li>
-              <a href="tel:+17196963966" className="text-[13px] uppercase tracking-[0.06em]">719-696-3966</a>
-            </li>
-            <li>
-              <a href="mailto:contact@aressecurity.co" className="text-[13px] tracking-[0.02em] normal-case">contact@aressecurity.co</a>
-            </li>
-          </FooterCol>
+          <div>
+            <h2>Contact</h2>
+            <ul>
+              <li><a href="tel:+17196963966" className="ds-data">719-696-3966</a></li>
+              <li><a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a></li>
+            </ul>
+          </div>
         </div>
 
-        {/* Creds pill — at <=460px the grid is 2x2; explicit order swaps GSA and
-            Women Owned so the visual layout becomes:
-                Row 1: Women Owned | SBA
-                Row 2: GSA         | WBENC */}
-        <ul className="footer_creds" role="list" aria-label="Certifications and contract vehicles">
-          <li className="footer_creds_item max-[460px]:order-3">
-            <img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" />
-          </li>
-          <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item max-[460px]:order-2">
-            <img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" />
-          </li>
-          <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item max-[460px]:order-1">
-            <img src="/images/cert-women-owned.png" alt="Women Owned" />
-          </li>
-          <li className="footer_creds_sep" aria-hidden="true" />
-          <li className="footer_creds_item max-[460px]:order-4">
-            <img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" />
-          </li>
+        <ul className="ds-certs" aria-label="Certifications and contract vehicles">
+          <li><img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" loading="lazy" /></li>
+          <li><img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" loading="lazy" /></li>
+          <li><img src="/images/cert-women-owned.png" alt="Women Owned" loading="lazy" /></li>
+          <li><img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
         </ul>
 
-        {/* Bottom bar — at <=460px stacks centered and breaks "All Rights Reserved."
-            onto its own line. Above 460px keeps the side-by-side layout. */}
-        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 text-[12px] uppercase tracking-[0.14em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
-          <span>
-            © 2026 Ares Security LLC.
-            <span className="ml-1 max-[460px]:ml-0 max-[460px]:block">All Rights Reserved.</span>
-          </span>
-          <ul className="flex gap-8 list-none m-0 p-0 max-[460px]:justify-center">
+        <div className="ds-legal">
+          <span>© 2026 Ares Security LLC. All rights reserved.</span>
+          <ul>
             <li><a href="#">Privacy</a></li>
             <li><a href="#">Terms</a></li>
             <li><a href="#">Accessibility</a></li>
@@ -99,35 +106,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="footer_col">
-      <h5 className="m-0 mb-6 pb-1.5 border-b border-white/15 text-[13px] font-semibold uppercase tracking-[0.18em]">
-        {title}
-      </h5>
-      <ul className="footer_menu list-none m-0 p-0 flex flex-col gap-3">
-        {children}
-      </ul>
-    </div>
-  );
-}
-
-function FooterLink({ to, href, children }: { to?: string; href?: string; children: React.ReactNode }) {
-  const cls = 'text-[13px] uppercase tracking-[0.06em] transition-colors';
-  if (to) return <li><Link to={to} className={cls}>{children}</Link></li>;
-  const external = !!href && /^https?:\/\//.test(href);
-  return (
-    <li>
-      <a
-        href={href}
-        className={cls}
-        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      >
-        {children}
-      </a>
-    </li>
   );
 }
