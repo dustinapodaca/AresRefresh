@@ -812,8 +812,8 @@ body:has(.ds-page) {
   -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
-/* Mobile and tablet only; desktop goes straight from the hero to 01 Verify. */
-@media (min-width: 1024px) { .ds-strip { display: none; } }
+/* Phones only; tablet and desktop go straight from the hero to 01 Verify. */
+@media (min-width: 768px) { .ds-strip { display: none; } }
 .ds-strip-belt { display: flex; width: max-content; }
 .ds-strip-track { display: flex; align-items: center; gap: 72px; padding: 0 72px 0 0; margin: 0; list-style: none; }
 @media (min-width: 768px) { .ds-strip-track { gap: 112px; padding-right: 112px; } }

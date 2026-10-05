@@ -296,7 +296,7 @@ body, and the single rust horizon glow at the close.
   opacity, the floor that keeps dimmed body copy at AA contrast. On mobile it unpins into a plain sequence.
 
 ### Credential strip
-- Mobile and tablet only (hidden from 1024px). Between the hero and 01 Verify: the four
+- Phones only (hidden from 768px). Between the hero and 01 Verify: the four
   certification marks only, no text, with wide
   spacing (72px mobile, 112px desktop). No rules above or below; the edges fade out with
   a mask. Moves slowly (60s loop), pauses on hover, and holds still and becomes swipeable
