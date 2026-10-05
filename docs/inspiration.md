@@ -1,4 +1,4 @@
-# Home refinement: inspiration board
+# Home redesign: inspiration board
 
 Mobbin references for the second Home refinement pass (2026-10-04). Rule: take
 **patterns, not pixels**. No brand's look, imagery, or copy is reused. Where a reference
@@ -34,6 +34,26 @@ panel, 4 to 6 motion moments.
 | 11 | [Steep, Customer quote](https://mobbin.com/sites/sections/0c2b53c7-4f79-43e1-bea1-7704507fecc6) | Large editorial quote with a single small attribution line and open space around it | 02 Staffing, testimonial | Quote stays large and left-aligned (DESIGN.md layout), with more air above than below so it reads as a pause between data and steps. |
 
 | 12 | [Framer, feature columns](https://mobbin.com/sites/sections/56089a60-4bb9-4c69-b7df-12b4312d24e2) (owner asked to search Framer) | Card-less columns: title, two lines of body, one inline text link, and every standalone text link in the same signal color | "Get to know Ares" panels, Coverage | Small standalone links (panel CTAs, "All services", the capability statement row) all take signal blue with the authored arrow; large typographic city rows stay white because they act as headings. |
+
+## From board to system (DESIGN.md v2)
+
+The board replaced the Framer-derived system (archived at
+`.claude/design-passes/framer-system/DESIGN.md`). What each reference became:
+
+| Reference | Became in DESIGN.md v2 | Where on Home |
+|---|---|---|
+| Atlas (frame, Thesis) | Warm charcoal canvas `#121110`; a visible 4-column frame (220px index + 3) with full-height lines; square photos inside the frame | Every section; lines continue over the hero and Pikes Peak photos |
+| Superpower | Proof strip along the hero's bottom edge; square annotation markers with uppercase Plex Mono labels; warm off-white ink `#f3f0ea` | Hero strip (GSA mark, MAS number, WOSB/WBENC, founded); markers on the staff photo |
+| Giga | Warm horizon glow at the bottom of a dark field | Bronze glow behind the contact glass |
+| Locomotive (awards, work index), basement.studio | Ledger columns locked to the frame; giant type separated by rules | Verify ledger (group / item / number); city rows at up to 124px |
+| Samara, Runway | One line threading numbered steps, filling with progress | Staffing steps ride the frame line; bronze fill |
+| Attio, Steep | Quote beside a narrow attribution column | Testimonial, with the "<1%" figure hanging into it |
+| Nite Riot | Full-bleed dark photo as a transition ground | Pikes Peak photo between Coverage and Company |
+| Framer | One color for every standalone link; card-less columns | Bronze links; company panels one per frame column |
+
+Flow principles kept from the owner's brief: one continuous surface (no bands or
+section dividers), the rail thread, proof as a ledger, cross-boundary elements, varied
+rhythm, copy hand-offs, and scroll-driven continuity.
 
 ## Considered and set aside
 
