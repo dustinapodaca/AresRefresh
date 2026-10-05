@@ -79,7 +79,7 @@ typography:
     letterSpacing: "-0.01em"
   mark:
     fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
-    fontSize: "12px"
+    fontSize: "14px rail, 12px running head and footer"
     fontWeight: 400
     letterSpacing: "0.02em (footer column titles: uppercase, 0.1em)"
 rounded:
@@ -232,7 +232,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   01 Verify to 05 Contact. Marks: `01 Verify`, `02 Staffing`, `03 Coverage`,
-  `04 Careers`, `05 Contact`, in mono at 12px.
+  `04 Careers`, `05 Contact`, in mono at 14px.
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
 - These are the only section numbers on the page. Section numbers never appear above

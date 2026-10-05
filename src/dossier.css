@@ -476,9 +476,9 @@ body:has(.ds-page) {
 .ds-rail a {
   display: flex;
   gap: 10px;
-  padding: 7px 0;
+  padding: 8px 0;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
   color: var(--ds-fg-faint);
