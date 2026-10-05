@@ -622,7 +622,7 @@ body:has(.ds-page) {
 /* Mobile: the quote sits to the right, right-aligned (it lives in the right-hand columns
    on desktop); the hero's GSA line is centered, its text left-aligned. */
 @media (max-width: 767px) {
-  .ds-proof-close .ds-quote { margin-left: auto; max-width: 86%; text-align: right; }
+  .ds-proof-close .ds-quote { margin-left: auto; max-width: 95%; text-align: right; }
   .ds-quote blockquote p { text-indent: 0; }
   .ds-hero-gsa { justify-content: center; margin-inline: auto; text-align: left; }
 }
