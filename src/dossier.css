@@ -691,7 +691,7 @@ body:has(.ds-page) {
   height: clamp(22rem, 66svh, 46rem);
   overflow: clip;
 }
-.ds-bleed img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% 35%; filter: brightness(0.85); }
+.ds-bleed img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 59% 35%; filter: brightness(0.85); }
 @media (min-width: 768px) { .ds-bleed img { object-position: 50% 35%; } }
 .ds-bleed::after {
   content: '';
