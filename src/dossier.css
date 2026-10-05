@@ -940,7 +940,6 @@ body:has(.ds-page) {
 /* ---------- Opening: headline, then the street band ---------- */
 .ds-svc-open { position: relative; isolation: isolate; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
 .ds-svc-open-head { display: grid; gap: 24px; }
-.ds-svc-open-side .ds-actions { margin-top: 28px; }
 @media (min-width: 1024px) {
   .ds-svc-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
   .ds-svc-open-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
