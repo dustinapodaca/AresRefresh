@@ -337,8 +337,10 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   ledger row, each site type as a row with one plain line). Desktop opened: the photo
   fills the left side top to bottom (10px radius, unmasked) beside the detail. Phones and
   tablets opened: the photo keeps its 22rem framing at the top and the detail continues
-  below the fade. One open at a time. Detail is always in the HTML (`hidden` until
-  opened).
+  below the fade. Each card opens and closes on its own (opening one never closes
+  another, so the page never shifts under the tapped card). During the morph the header
+  and running head sit on their own layers above the cards, the bar solid for those
+  300ms. Detail is always in the HTML (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the

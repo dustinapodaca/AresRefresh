@@ -13,39 +13,35 @@ type ViewTransitionDoc = Document & {
 // others make room. Morphs with the View Transitions API; snaps where it isn't supported
 // or the reader prefers reduced motion.
 export default function Divisions() {
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [openIds, setOpenIds] = useState<ReadonlySet<string>>(() => new Set());
 
-  const reveal = useCallback((id: string | null) => {
-    if (!id) return;
-    const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top;
-    if (top < 120 || top > window.innerHeight * 0.55) {
-      el.scrollIntoView({ block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
-    }
-  }, []);
-
-  const setOpen = useCallback(
-    (next: string | null) => {
+  // Each card opens and closes on its own; opening one never closes another, so nothing
+  // above the tapped card changes height and the page never has to scroll under it.
+  const toggleCard = useCallback(
+    (id: string) => {
+      const next = new Set(openIds);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       const doc = document as ViewTransitionDoc;
-      const apply = () => flushSync(() => setOpenId(next));
-      if (doc.startViewTransition && !prefersReducedMotion()) {
-        // Only the cards that change state crossfade their text; the rest just glide.
-        const changing = [openId, next]
-          .map((id) => (id ? document.getElementById(id) : null))
-          .filter((el): el is HTMLElement => Boolean(el));
-        changing.forEach((el) => (el.dataset.morph = 'true'));
-        const done = () => {
-          changing.forEach((el) => delete el.dataset.morph);
-          reveal(next);
-        };
-        doc.startViewTransition(apply).finished.then(done, done);
-      } else {
-        apply();
-        reveal(next);
+      if (!doc.startViewTransition || prefersReducedMotion()) {
+        setOpenIds(next);
+        return;
       }
+      // Only the card that changes state crossfades its text; the rest just glide.
+      const card = document.getElementById(id);
+      if (card) card.dataset.morph = 'true';
+      const root = document.documentElement;
+      const apply = () => {
+        root.classList.add('ds-vt');
+        flushSync(() => setOpenIds(next));
+      };
+      const done = () => {
+        root.classList.remove('ds-vt');
+        if (card) delete card.dataset.morph;
+      };
+      doc.startViewTransition(apply).finished.then(done, done);
     },
-    [openId, reveal],
+    [openIds],
   );
 
   return (
@@ -60,9 +56,9 @@ export default function Divisions() {
 
       <div className="ds-svc-grid">
         {DIVISIONS.map((d, i) => {
-          const open = openId === d.id;
+          const open = openIds.has(d.id);
           const panelId = `${d.id}-detail`;
-          const toggle = () => setOpen(open ? null : d.id);
+          const toggle = () => toggleCard(d.id);
           return (
             <article
               key={d.id}

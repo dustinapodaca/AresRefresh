@@ -1007,6 +1007,9 @@ body:has(.ds-page) {
   view-transition-class: svc-card;
 }
 .ds-svc-card[data-open='true'] { background: #13161b; grid-column: 1 / -1; }
+/* An open card is never the scroll anchor, so when it closes the browser keeps the card
+   being opened in place instead. */
+.ds-svc-card[data-open='true'] { overflow-anchor: none; }
 .ds-svc-card-media {
   position: absolute;
   z-index: -1;
@@ -1155,6 +1158,30 @@ body:has(.ds-page) {
   .ds-svc-card[data-open='true'] .ds-svc-title { font-size: 26px; }
 }
 .ds-svc-divisions .ds-handoff { margin-top: var(--ds-beat-tight); }
+
+/* The morph is drawn in a layer over the page. The fixed header and running head get
+   layers of their own that hold still on top, so no card glides over the nav. A captured
+   layer can't blur what is behind it, so the bar goes solid (as with the menu open) for
+   the 300ms. The
+   page itself snaps to its new state underneath; only the cards animate. */
+/* Named only while a morph runs: a named element can't blur what is behind it, so a
+   permanent name would switch off the nav's frosted glass. */
+html.ds-vt .ds-header { view-transition-name: ds-header; }
+html.ds-vt .ds-runhead { view-transition-name: ds-runhead; }
+html.ds-vt .ds-header::before {
+  background: var(--ds-canvas);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: none;
+}
+::view-transition-group(ds-header),
+::view-transition-group(ds-runhead) { animation: none; z-index: 2; }
+::view-transition-old(ds-header),
+::view-transition-old(ds-runhead) { display: none; }
+::view-transition-new(ds-header),
+::view-transition-new(ds-runhead) { animation: none; }
+::view-transition-old(root) { display: none; }
+::view-transition-new(root) { animation: none; }
 
 /* The open/close morph (View Transitions). Cards and photos glide to their new boxes on
    the drawer curve; photos crop rather than stretch; text never scales: the old copy
