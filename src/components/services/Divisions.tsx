@@ -7,15 +7,10 @@ import { DIVISIONS } from './data';
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
 
-// Desktop bento (owner reference, 2026-10-05): six columns, two cards to a row, widths
-// alternating wide and narrow, then halves. When a card opens it takes its whole row;
-// the cards from its row on re-pair in the same rhythm, and a last group of three sits
-// as thirds, so the grid never leaves a hole.
-const ROW_SPANS = [
-  [4, 2],
-  [2, 4],
-  [3, 3],
-];
+// Desktop grid (owner reference, 2026-10-05; equal cards by owner request): six
+// columns, two equal cards to a row. When a card opens it takes its whole row and the
+// cards from its row on re-pair beneath it; a last odd card sits at half width.
+const ROW_SPANS = [[3, 3]];
 type Slot = { order: number; span: number; corners: string };
 
 function bento(openId: string | null): Map<string, Slot> {
@@ -26,12 +21,8 @@ function bento(openId: string | null): Map<string, Slot> {
     let r = from;
     for (let k = 0; k < list.length; ) {
       const left = list.length - k;
-      if (left === 3) {
-        rows.push(list.slice(k).map((id) => ({ id, span: 2 })));
-        break;
-      }
       if (left === 1) {
-        rows.push([{ id: list[k], span: 6 }]);
+        rows.push([{ id: list[k], span: 3 }]);
         break;
       }
       const [a, b] = ROW_SPANS[r % ROW_SPANS.length];

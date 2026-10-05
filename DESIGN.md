@@ -327,17 +327,17 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
-  one exception to "no card containers", and with the nav the only glass). Desktop: a
-  six-column bento, two cards to a row, spans 4+2, 2+4, 3+3; inner corners 10px and the
-  grid's four outer corners 28px so the set reads as one plate. Tablet: two equal
-  columns; phones: one. Each card: near-black fill (`#050607`), a white/10% edge and a
+  one exception to "no card containers", and with the nav the only glass). Desktop and
+  tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were
+  dropped); inner corners 10px and the grid's outer corners 28px on desktop, so the set
+  reads as one plate. Phones: one column. Each card: near-black fill (`#050607`), a white/10% edge and a
   faint inner light from below (drawn on top), the photo across the top (growing to
   fill when a row-mate is taller, slight 1.03 zoom on hover), and a frosted panel
   (24px blur over a dark tint) riding up over the photo's foot with the number beside
   the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
   The + (or the photo) opens one card at a time: it takes its row's full width (its
-  row-mate moves down; on desktop the cards after it re-pair in the same rhythm, a last
-  group of three as thirds), the + turns into an x, and the detail appears under the
+  row-mate moves down and the cards after it re-pair beneath; a last odd card sits at
+  half width), the + turns into an x, and the detail appears under the
   description (Government's GSA ledger row, then each site type with one plain line).
   Desktop opened: photo left (5/12) top to bottom, detail right on plain card fill.
   Phones: the opened card glides to just under the nav and running head. Detail is
