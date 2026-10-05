@@ -204,7 +204,7 @@ export default function Home() {
           alt=""
           width={1920}
           height={1280}
-          className="flow-hero-photo absolute inset-0 -z-10 h-full w-full object-cover object-[center_60%] [filter:brightness(0.62)] [mask-image:linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.18)_12%,rgba(0,0,0,0.5)_32%,rgba(0,0,0,0.9)_52%,#000_64%,rgba(0,0,0,0.7)_82%,transparent_100%)]"
+          className="flow-hero-photo absolute inset-0 -z-10 h-full w-full object-cover object-[center_60%] [filter:brightness(0.6)] [mask-image:linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.06)_14%,rgba(0,0,0,0.28)_34%,rgba(0,0,0,0.7)_54%,#000_68%,rgba(0,0,0,0.7)_84%,transparent_100%)]"
         />
         <div className="container-ares pt-36 pb-[38vh] lg:pt-44 lg:pb-[52vh]">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
@@ -223,16 +223,16 @@ export default function Home() {
               href={GSA_ELIBRARY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flow-link group flex flex-col items-start gap-3 self-start text-white hover:text-white lg:mt-3 lg:items-end ${FOCUS}`}
+              className={`flow-link group flex flex-col items-start gap-3 self-start rounded-[15px] border border-white/10 bg-canvas/75 px-5 py-4 text-white hover:border-white/25 hover:text-white lg:mt-3 lg:px-6 lg:py-5 ${FOCUS}`}
             >
               <img
                 src="/images/gsa-contract-holder.png"
                 alt="GSA Contract Holder"
                 width={576}
                 height={138}
-                className="block h-auto w-[200px] lg:w-[240px]"
+                className="block h-auto w-[190px] lg:w-[220px]"
               />
-              <span className="inline-flex items-center gap-1.5 font-mono text-[14px] tracking-[0.01em] tabular-nums">
+              <span className="inline-flex items-center gap-1.5 border-t border-white/10 pt-3 font-mono text-[14px] tracking-[0.01em] tabular-nums">
                 <span className="text-white/70">GSA MAS</span> 47QSMS25D009Q
                 <Arrow diag className="h-3.5 w-3.5" />
               </span>

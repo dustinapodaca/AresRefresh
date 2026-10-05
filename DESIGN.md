@@ -13,6 +13,8 @@ colors:
   surface-2: "#1c1c1c"      # pressed/hover lift on secondary pill
   hairline: "#262626"       # every rule, table row, and image edge
   signal: "#0099ff"         # links, focus rings, selection only; never a fill
+  bronze: "#8d5321"         # sampled from the hero's copper glass; atmosphere only
+  bronze-light: "#c47f45"   # sunlit bronze highlight; glows on the canvas
 
 typography:
   display-xl:   { fontFamily: Inter, fontSize: "clamp(44px, 6.4vw, 92px)", fontWeight: 600, lineHeight: 0.98, letterSpacing: "-0.045em" }
@@ -63,7 +65,7 @@ What is Ares's own:
 - **Photography instead of gradient spotlight cards.** Framer's magenta/violet/orange
   spotlight cards are retired: they read startup-playful for a federal contractor. Real
   staff photography, darkened into the canvas, does the atmospheric work. The close uses
-  a monochrome light field (white/gray blooms, edgeless) with one glass panel.
+  a dark field lit in bronze (from the hero's copper glass) with one glass panel.
   No patrol-vehicle photography on Home (owner).
 - **The Ares mark** (`/ares-logo.svg`) and wordmark (`/images/ares-text.svg`) always
   render white on the canvas. No other brand color exists.
@@ -77,7 +79,10 @@ What is Ares's own:
 - **Surface 1 / 2 (`#141414` / `#1c1c1c`)** exist for the secondary pill and its pressed
   state. Avoid them as section or card fills.
 - **Signal `#0099ff`** marks links, focus rings, and text selection. Never a background
-  or button fill. One chromatic accent, total.
+  or button fill.
+- **Bronze `#8d5321` / bronze-light `#c47f45`** is the atmospheric accent, sampled from the
+  copper glass in the hero photograph. It lights the Contact field behind the glass panel.
+  Use it as light, never as a flat fill, and keep it to glows.
 
 ## Typography
 
