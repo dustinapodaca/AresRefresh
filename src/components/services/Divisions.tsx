@@ -7,6 +7,62 @@ import { DIVISIONS } from './data';
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
 
+// Desktop bento (owner reference, 2026-10-05): six columns, two cards to a row, widths
+// alternating wide and narrow, then halves. When a card opens it takes its whole row;
+// the cards from its row on re-pair in the same rhythm, and a last group of three sits
+// as thirds, so the grid never leaves a hole.
+const ROW_SPANS = [
+  [4, 2],
+  [2, 4],
+  [3, 3],
+];
+type Slot = { order: number; span: number; corners: string };
+
+function bento(openId: string | null): Map<string, Slot> {
+  const ids = DIVISIONS.map((d) => d.id);
+  const openAt = openId ? ids.indexOf(openId) : -1;
+  const rows: { id: string; span: number }[][] = [];
+  const pair = (list: string[], from: number) => {
+    let r = from;
+    for (let k = 0; k < list.length; ) {
+      const left = list.length - k;
+      if (left === 3) {
+        rows.push(list.slice(k).map((id) => ({ id, span: 2 })));
+        break;
+      }
+      if (left === 1) {
+        rows.push([{ id: list[k], span: 6 }]);
+        break;
+      }
+      const [a, b] = ROW_SPANS[r % ROW_SPANS.length];
+      rows.push([{ id: list[k], span: a }, { id: list[k + 1], span: b }]);
+      k += 2;
+      r += 1;
+    }
+  };
+  if (openAt < 0) {
+    pair(ids, 0);
+  } else {
+    const rowStart = openAt - (openAt % 2);
+    pair(ids.slice(0, rowStart), 0);
+    rows.push([{ id: ids[openAt], span: 6 }]);
+    pair(ids.slice(rowStart).filter((id) => id !== openId), rowStart / 2);
+  }
+  const slots = new Map<string, Slot>();
+  let order = 0;
+  rows.forEach((row, r) => {
+    row.forEach((cell, c) => {
+      const corners: string[] = [];
+      if (r === 0 && c === 0) corners.push('tl');
+      if (r === 0 && c === row.length - 1) corners.push('tr');
+      if (r === rows.length - 1 && c === 0) corners.push('bl');
+      if (r === rows.length - 1 && c === row.length - 1) corners.push('br');
+      slots.set(cell.id, { order: order++, span: cell.span, corners: corners.join(' ') });
+    });
+  });
+  return slots;
+}
+
 // 01 Divisions: six containers in two columns (owner request: a Framer look). The + opens
 // one in place; one is open at a time. The motion is a FLIP on the real cards: measure,
 // change state, measure again, then play each card from where it was to where it is.
@@ -45,12 +101,18 @@ export default function Divisions() {
         if (!grows && Math.abs(dx) < 1 && Math.abs(dy) < 1) continue;
         const from: Keyframe = { transform: `translate(${dx}px, ${dy}px)` };
         const to: Keyframe = { transform: 'translate(0, 0)' };
-        if (grows) {
-          // The opening card starts at its old size and opens out to the new one.
+        // A card that grows (the opening one, or one widening in the bento reflow) starts
+        // clipped to its old size and opens out; it never scales, so text never stretches.
+        const widens = b.width > a.width + 1 || b.height > a.height + 1;
+        if (grows || widens) {
           const r = Math.max(0, b.width - a.width);
           const btm = Math.max(0, b.height - a.height);
           from.clipPath = `inset(0 ${r}px ${btm}px 0 round 18px)`;
           to.clipPath = 'inset(0 0 0 0 round 18px)';
+          if (!grows) {
+            from.clipPath = from.clipPath.replace('round 18px', 'round 10px');
+            to.clipPath = 'inset(0 0 0 0 round 10px)';
+          }
         }
         const anim = card.animate([from, to], { duration: DURATION, easing: EASE });
         if (card === opened) {
@@ -63,6 +125,8 @@ export default function Divisions() {
     },
     [openId],
   );
+
+  const slots = bento(openId);
 
   return (
     <section id="divisions" className="ds-svc-divisions" aria-labelledby="divisions-title">
@@ -86,14 +150,11 @@ export default function Divisions() {
               className="ds-svc-card"
               data-open={open}
               data-col={i % 2 ? 'right' : 'left'}
+              data-corner={slots.get(d.id)?.corners || undefined}
               aria-labelledby={`${d.id}-title`}
-              style={{ '--o': i * 2 } as CSSProperties}
+              style={{ '--o': i * 2, '--lo': slots.get(d.id)?.order, '--span': slots.get(d.id)?.span } as CSSProperties}
             >
-              <div
-                className="ds-svc-card-media"
-                onClick={toggle}
-                aria-hidden="true"
-              >
+              <div className="ds-svc-card-media" onClick={toggle} aria-hidden="true">
                 {/* Stock photographs, not Ares sites, so they carry no exhibit caption. */}
                 <img
                   src={d.photo.src}
@@ -106,6 +167,8 @@ export default function Divisions() {
                 />
               </div>
 
+              {/* Over the photo's foot, a frosted panel (owner reference) carries the name and
+                  the one-line description; the detail opens beneath it. */}
               <div className="ds-svc-card-text">
                 <h3 id={`${d.id}-title`} className="ds-svc-card-head">
                   <button type="button" aria-expanded={open} aria-controls={panelId} onClick={toggle}>
@@ -117,18 +180,10 @@ export default function Divisions() {
                     </span>
                   </button>
                 </h3>
-
-                {!open && (
-                  <ul className="ds-svc-covers" aria-label={`${d.title} covers`}>
-                    {d.covers.map((c) => (
-                      <li key={c.name}>{c.name}</li>
-                    ))}
-                  </ul>
-                )}
+                <p className="ds-svc-desc">{d.body}</p>
 
                 {/* Always in the document (and the prerendered HTML); hidden until opened. */}
                 <div id={panelId} className="ds-svc-detail" hidden={!open}>
-                  <p className="ds-body">{d.body}</p>
                   {d.id === 'government' && (
                     <dl className="ds-svc-proof">
                       <dt>GSA Multiple Award Schedule</dt>
@@ -141,7 +196,7 @@ export default function Divisions() {
                       </dd>
                     </dl>
                   )}
-                  <ul className="ds-svc-items">
+                  <ul className="ds-svc-items" aria-label={`Where ${d.title} posts officers`}>
                     {d.covers.map((c) => (
                       <li key={c.name}>
                         <span className="ds-svc-item-name">{c.name}</span>

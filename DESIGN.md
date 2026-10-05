@@ -326,20 +326,22 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   bottom edge (street level; on phones scaled up from the bottom so the street still shows), masked into the canvas at both ends, graded down, drifting
   slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
-- **Divisions as containers that open in place** (owner request, 2026-10-05; the one
-  exception to "no card containers"): two columns of Framer-style containers (one on
-  phones). Fill `#111317`, a 1px white/6% inset edge, 18px radius. The photo always
-  covers the card's full height: closed, it fills the whole card and dissolves into the
-  fill with a mask (solid to 28%, gone by 76%), with the number, title, a round + (36px,
-  white/20% ring over a little card fill), and the coverage list at the foot. All cards
-  start closed. The + (or the photo) opens one in place: it spans both columns, the +
-  turns into an x on an ink disc, and the detail appears (description, Government's GSA
-  ledger row, each site type as a row with one plain line). Desktop opened: the photo
-  fills the left side top to bottom (10px radius, unmasked) beside the detail. Phones and
-  tablets opened: the photo keeps its 22rem framing at the top and the detail continues
-  below the fade. One card is open at a time. In two columns an opened card keeps its row: a
-  right-hand card moves ahead of its row-mate, which drops beneath it. On phones the opened card glides to the
-  top of the screen, just under the nav and running head. Detail is always in the HTML (`hidden` until opened).
+- **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
+  one exception to "no card containers", and with the nav the only glass). Desktop: a
+  six-column bento, two cards to a row, spans 4+2, 2+4, 3+3; inner corners 10px and the
+  grid's four outer corners 28px so the set reads as one plate. Tablet: two equal
+  columns; phones: one. Each card: near-black fill (`#050607`), a white/10% edge and a
+  faint inner light from below (drawn on top), the photo across the top (growing to
+  fill when a row-mate is taller, slight 1.03 zoom on hover), and a frosted panel
+  (24px blur over a dark tint) riding up over the photo's foot with the number beside
+  the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
+  The + (or the photo) opens one card at a time: it takes its row's full width (its
+  row-mate moves down; on desktop the cards after it re-pair in the same rhythm, a last
+  group of three as thirds), the + turns into an x, and the detail appears under the
+  description (Government's GSA ledger row, then each site type with one plain line).
+  Desktop opened: photo left (5/12) top to bottom, detail right on plain card fill.
+  Phones: the opened card glides to just under the nav and running head. Detail is
+  always in the HTML (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
@@ -412,10 +414,10 @@ Few, fast, and crisp. Four to six moments per page.
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
 - **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
   the stage bars draw along the axis; the Denver photo settles inside its frame. The
-  division containers open with a FLIP on the real cards (320ms, drawer curve
-  `cubic-bezier(0.32, 0.72, 0, 1)`): every card glides from where it was to where it is,
-  and the opening card grows out of its old size with a clip-path while riding above the
-  others. The cards stay in the page, under the fixed nav, so the nav keeps its glass.
+  division cards open with a FLIP on the real cards (320ms, drawer curve
+  `cubic-bezier(0.32, 0.72, 0, 1)`): every card glides from where it was to where it is;
+  a card that grows opens out of its old size with a clip-path (never a scale, so text
+  never stretches), the opening one riding above the others. The cards stay in the page, under the fixed nav, so the nav keeps its glass.
   The + rotates into an x (220ms). Under reduced motion it opens instantly. Plus the index and city
   arrow nudges.
 - **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single

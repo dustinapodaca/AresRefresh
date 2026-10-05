@@ -170,3 +170,7 @@ certifications. Source: `src/components/services/data.ts`.
 | Residential & retirement | Consistent officers residents can get to know. | Stage 3 (consistent from the first shift) |
 
 Also: the Divisions intro gains "Open one to see where we post." (N, explains the +).
+
+## Division cards as a bento (2026-10-05)
+
+Closed cards now show each division's one-line description (the body) instead of the list of site types; the site types remain in the opened card, each with its line. No wording changed.
