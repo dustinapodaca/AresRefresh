@@ -13,7 +13,7 @@ is the same everywhere: the git tag, the folder here, and how we talk about it.
 
 ## Versions
 
-| # | Name | Runnable tag (`git checkout <tag>`) | Archive folder here | Notes |
+| # | Name | Runnable tag (`git checkout <tag>`) | Archive folder (`_archive/design-passes/`) | Notes |
 |---|---|---|---|---|
 | v00 | Original Home | `home-v00-original` | none | The starting point, on `seo` |
 | v01 | Light, Apple-style | none | `v01-light-apple/` | Code + screenshot only |

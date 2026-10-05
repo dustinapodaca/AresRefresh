@@ -68,11 +68,12 @@ statement PDF exists at /capability-statement *(site)*.
   wordmark `/images/ares-text.svg` *(site)*.
 - Voice: plain, precise, natural. Never AI-sounding copy, no em-dashes, no slogans
   *(owner)*. Not luxury, not startup-playful *(brief)*.
-- Visual direction: **open** for the redesign-b-fresh pass (owner, 2026-10-04: start fresh
-  from the original Home, and redesign the nav and footer with it; the chosen style then
-  rolls out to the rest of the site). Earlier passes were dark only with a Framer-style
-  DESIGN.md and a spec-sheet treatment of contract numbers in a monospace face; that work
-  is saved as Option A (branch redesign-a-framer, tag home-v08-framer-flow-final) and is reference, not a constraint.
+- Visual direction: defined by DESIGN.md (clean-slate redesign of Home, nav, and footer,
+  started 2026-10-04 from the original Home; the chosen style then rolls out site-wide).
+  Brief: dark, clean, modern, sharp, close to Apple-level polish, reading as a serious
+  federal contractor (precise, documented, credible). Not luxury, not startup-playful.
+  Signature: proof presented like a spec sheet *(brief)*. Earlier passes live in
+  `_archive/` and are not design reference.
 
 ## Evidence on Hand
 

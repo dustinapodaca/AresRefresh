@@ -23,7 +23,7 @@ npm run preview  # serve the production build
 
 The Home page is being redesigned first; the chosen style then rolls out to the rest of
 the site. Every iteration is numbered in the order it was made (all on 2026-10-04) and
-saved so any of them can be revisited. Full details: `.claude/design-passes/VERSIONS.md`.
+saved so any of them can be revisited. Full details: `_archive/design-passes/VERSIONS.md`.
 
 **Branches (where work happens)**
 
@@ -38,10 +38,10 @@ saved so any of them can be revisited. Full details: `.claude/design-passes/VERS
 | # | Version | How to see it |
 |---|---|---|
 | v00 | Original Home | `git checkout home-v00-original` |
-| v01 | Light, Apple-style | Screenshot + code in `.claude/design-passes/v01-light-apple/` |
+| v01 | Light, Apple-style | Screenshot + code in `_archive/design-passes/v01-light-apple/` |
 | v02 | Framer dark | Same as v06 |
-| v03 / v03b | xAI dark (new layout / original layout) | Screenshot + code in `.claude/design-passes/` |
-| v04 / v04b | Own blend (steel hero / skyscraper hero) | Screenshot + code in `.claude/design-passes/` |
+| v03 / v03b | xAI dark (new layout / original layout) | Screenshot + code in `_archive/design-passes/` |
+| v04 / v04b | Own blend (steel hero / skyscraper hero) | Screenshot + code in `_archive/design-passes/` |
 | v05 | Vercel dark | `git checkout home-v05-vercel` |
 | v06 | Framer dark, restored as the flow base | `git checkout home-v06-framer` |
 | v07 | First continuous long-form flow pass | `git checkout home-v07-framer-flow` |
