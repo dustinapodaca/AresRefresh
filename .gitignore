@@ -36,3 +36,12 @@ pnpm-debug.log*
 
 # Local Figma desktop MCP endpoint (machine-specific)
 .mcp.json
+
+# Playwright MCP screenshots, snapshots and console logs
+.playwright-mcp/
+
+# Impeccable: machine-local hook manifest, local config/cache, and its downloaded binary
+.claude/settings.local.json
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.claude/skills/impeccable/scripts/bin/
