@@ -337,10 +337,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   ledger row, each site type as a row with one plain line). Desktop opened: the photo
   fills the left side top to bottom (10px radius, unmasked) beside the detail. Phones and
   tablets opened: the photo keeps its 22rem framing at the top and the detail continues
-  below the fade. Each card opens and closes on its own (opening one never closes
-  another, so the page never shifts under the tapped card). During the morph the header
-  and running head sit on their own layers above the cards, the bar solid for those
-  300ms. Detail is always in the HTML (`hidden` until opened).
+  below the fade. One card is open at a time. On phones the opened card glides to the
+  top of the screen, just under the nav and running head. Detail is always in the HTML (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
@@ -413,11 +411,11 @@ Few, fast, and crisp. Four to six moments per page.
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
 - **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
   the stage bars draw along the axis; the Denver photo settles inside its frame. The
-  division containers open with a View Transitions morph (300ms, drawer curve
-  `cubic-bezier(0.32, 0.72, 0, 1)`): containers and photos glide to their new boxes,
-  photos crop rather than stretch, and only the opening container's text crossfades
-  (out 120ms, in 180ms after 110ms). The + rotates into an x (220ms). Under reduced
-  motion, or without View Transitions, it opens instantly. Plus the index and city
+  division containers open with a FLIP on the real cards (320ms, drawer curve
+  `cubic-bezier(0.32, 0.72, 0, 1)`): every card glides from where it was to where it is,
+  and the opening card grows out of its old size with a clip-path while riding above the
+  others. The cards stay in the page, under the fixed nav, so the nav keeps its glass.
+  The + rotates into an x (220ms). Under reduced motion it opens instantly. Plus the index and city
   arrow nudges.
 - **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single
   soft pulse ring on the HQ dot, I-25 drawing itself as the map enters, and the swipe

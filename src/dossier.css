@@ -1007,7 +1007,6 @@ body:has(.ds-page) {
   background: #111317;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
   transition: background-color 180ms var(--ds-ease);
-  view-transition-class: svc-card;
 }
 .ds-svc-card[data-open='true'] { background: #13161b; grid-column: 1 / -1; }
 /* An open card is never the scroll anchor, so when it closes the browser keeps the card
@@ -1020,7 +1019,6 @@ body:has(.ds-page) {
   overflow: clip;
   border-radius: 18px;
   cursor: pointer;
-  view-transition-class: svc-media;
   /* A mask, not an overlay: the photo dissolves into the card fill behind the text. */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 76%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 28%, transparent 76%);
@@ -1038,11 +1036,10 @@ body:has(.ds-page) {
   transition: filter 220ms var(--ds-ease);
 }
 .ds-svc-card[data-open='true'] .ds-svc-card-media img { filter: saturate(0.9) brightness(0.92); }
-.ds-svc-card-text { padding: 6px 10px 12px; view-transition-class: svc-text; }
+.ds-svc-card-text { padding: 6px 10px 12px; }
 /* Opened below desktop: the text starts under the photo's fade. */
 .ds-svc-card[data-open='true'] .ds-svc-card-text { padding-top: 11rem; }
 @media (min-width: 768px) { .ds-svc-card[data-open='true'] .ds-svc-card-text { padding-top: 14rem; } }
-.ds-svc-card[data-morph] .ds-svc-card-text { view-transition-class: svc-text svc-morph; }
 .ds-svc-card-head { margin: 0; }
 .ds-svc-card-head button {
   display: grid;
@@ -1162,51 +1159,9 @@ body:has(.ds-page) {
 }
 .ds-svc-divisions .ds-handoff { margin-top: var(--ds-beat-tight); }
 
-/* The morph is drawn in a layer over the page. The fixed header and running head get
-   layers of their own that hold still on top, so no card glides over the nav. A captured
-   layer can't blur what is behind it, so the bar goes solid (as with the menu open) for
-   the 300ms. The
-   page itself snaps to its new state underneath; only the cards animate. */
-/* Named only while a morph runs: a named element can't blur what is behind it, so a
-   permanent name would switch off the nav's frosted glass. */
-html.ds-vt .ds-header { view-transition-name: ds-header; }
-html.ds-vt .ds-runhead { view-transition-name: ds-runhead; }
-html.ds-vt .ds-header::before {
-  background: var(--ds-canvas);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  transition: none;
-}
-::view-transition-group(ds-header),
-::view-transition-group(ds-runhead) { animation: none; z-index: 2; }
-::view-transition-old(ds-header),
-::view-transition-old(ds-runhead) { display: none; }
-::view-transition-new(ds-header),
-::view-transition-new(ds-runhead) { animation: none; }
-::view-transition-old(root) { display: none; }
-::view-transition-new(root) { animation: none; }
-
-/* The open/close morph (View Transitions). Cards and photos glide to their new boxes on
-   the drawer curve; photos crop rather than stretch; text never scales: the old copy
-   fades out fast and the new copy fades in once the box has mostly arrived. */
-::view-transition-group(*.svc-card),
-::view-transition-group(*.svc-media),
-::view-transition-group(*.svc-text) {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
-}
-::view-transition-group(*.svc-media) { overflow: clip; border-radius: 10px; }
-::view-transition-old(*.svc-media),
-::view-transition-new(*.svc-media) { height: 100%; object-fit: cover; }
-::view-transition-group(*.svc-morph) { overflow: clip; }
-::view-transition-old(*.svc-morph),
-::view-transition-new(*.svc-morph) { width: auto; height: auto; object-fit: none; object-position: left top; }
-::view-transition-old(*.svc-morph) { animation: ds-vt-out 120ms var(--ds-ease) both; }
-::view-transition-new(*.svc-morph) { animation: ds-vt-in 180ms var(--ds-ease) 110ms both; }
-@keyframes ds-vt-out { to { opacity: 0; } }
-@keyframes ds-vt-in { from { opacity: 0; transform: translateY(6px); } }
-::view-transition-old(*.svc-card),
-::view-transition-new(*.svc-card) { width: 100%; height: 100%; }
+/* The open/close motion is a FLIP on the real cards (Divisions.tsx), not a View
+   Transition: the cards stay in the page, under the fixed nav, so the nav keeps its
+   frosted glass throughout and nothing can draw over it. */
 
 /* ---------- 02 Process: a schedule chart ---------- */
 .ds-svc-process { padding-top: var(--ds-beat-open); }

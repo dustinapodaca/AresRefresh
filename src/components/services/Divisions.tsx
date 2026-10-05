@@ -1,47 +1,67 @@
-import { useCallback, useState, type CSSProperties } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DIVISIONS } from './data';
 
-type ViewTransitionDoc = Document & {
-  startViewTransition?: (update: () => void) => { finished: Promise<void> };
-};
+const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
+const DURATION = 320;
 
 // 01 Divisions: six containers in two columns (owner request: a Framer look). The + opens
-// one in place: it grows to the full width, its photo opens up beside the detail, and the
-// others make room. Morphs with the View Transitions API; snaps where it isn't supported
-// or the reader prefers reduced motion.
+// one in place; one is open at a time. The motion is a FLIP on the real cards: measure,
+// change state, measure again, then play each card from where it was to where it is.
+// The cards never leave the page, so they pass under the fixed nav and its glass.
+// On phones the opened card also slides to the top, just under the nav and running head.
 export default function Divisions() {
-  const [openIds, setOpenIds] = useState<ReadonlySet<string>>(() => new Set());
+  const [openId, setOpenId] = useState<string | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  // Each card opens and closes on its own; opening one never closes another, so nothing
-  // above the tapped card changes height and the page never has to scroll under it.
   const toggleCard = useCallback(
     (id: string) => {
-      const next = new Set(openIds);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      const doc = document as ViewTransitionDoc;
-      if (!doc.startViewTransition || prefersReducedMotion()) {
-        setOpenIds(next);
-        return;
+      const next = openId === id ? null : id;
+      const grid = gridRef.current;
+      const cards = grid ? (Array.from(grid.children) as HTMLElement[]) : [];
+      const first = new Map(cards.map((c) => [c, c.getBoundingClientRect()]));
+
+      flushSync(() => setOpenId(next));
+
+      // Phones: bring the opened card to the top, below the nav and running head. Done
+      // instantly here; the FLIP below turns it into one glide from where it was.
+      const opened = next ? document.getElementById(next) : null;
+      if (opened && window.matchMedia('(max-width: 767px)').matches) {
+        const floor = parseFloat(getComputedStyle(opened).scrollMarginTop) || 120;
+        window.scrollBy({ top: opened.getBoundingClientRect().top - floor, behavior: 'instant' as ScrollBehavior });
       }
-      // Only the card that changes state crossfades its text; the rest just glide.
-      const card = document.getElementById(id);
-      if (card) card.dataset.morph = 'true';
-      const root = document.documentElement;
-      const apply = () => {
-        root.classList.add('ds-vt');
-        flushSync(() => setOpenIds(next));
-      };
-      const done = () => {
-        root.classList.remove('ds-vt');
-        if (card) delete card.dataset.morph;
-      };
-      doc.startViewTransition(apply).finished.then(done, done);
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      for (const card of cards) {
+        const a = first.get(card);
+        const b = card.getBoundingClientRect();
+        if (!a) continue;
+        const dx = a.left - b.left;
+        const dy = a.top - b.top;
+        const grows = card === opened && (b.width > a.width + 1 || b.height > a.height + 1);
+        if (!grows && Math.abs(dx) < 1 && Math.abs(dy) < 1) continue;
+        const from: Keyframe = { transform: `translate(${dx}px, ${dy}px)` };
+        const to: Keyframe = { transform: 'translate(0, 0)' };
+        if (grows) {
+          // The opening card starts at its old size and opens out to the new one.
+          const r = Math.max(0, b.width - a.width);
+          const btm = Math.max(0, b.height - a.height);
+          from.clipPath = `inset(0 ${r}px ${btm}px 0 round 18px)`;
+          to.clipPath = 'inset(0 0 0 0 round 18px)';
+        }
+        const anim = card.animate([from, to], { duration: DURATION, easing: EASE });
+        if (card === opened) {
+          // The opening card rides above the others as they make room.
+          card.style.zIndex = '1';
+          const reset = () => card.style.removeProperty('z-index');
+          anim.finished.then(reset, reset);
+        }
+      }
     },
-    [openIds],
+    [openId],
   );
 
   return (
@@ -54,9 +74,9 @@ export default function Divisions() {
         someone from our leadership who has worked it. Open one to see where we post.
       </p>
 
-      <div className="ds-svc-grid">
+      <div className="ds-svc-grid" ref={gridRef}>
         {DIVISIONS.map((d, i) => {
-          const open = openIds.has(d.id);
+          const open = openId === d.id;
           const panelId = `${d.id}-detail`;
           const toggle = () => toggleCard(d.id);
           return (
@@ -66,13 +86,11 @@ export default function Divisions() {
               className="ds-svc-card"
               data-open={open}
               aria-labelledby={`${d.id}-title`}
-              style={{ viewTransitionName: `svc-${d.id}` } as CSSProperties}
             >
               <div
                 className="ds-svc-card-media"
                 onClick={toggle}
                 aria-hidden="true"
-                style={{ viewTransitionName: `svc-${d.id}-media` } as CSSProperties}
               >
                 {/* Stock photographs, not Ares sites, so they carry no exhibit caption. */}
                 <img
@@ -86,7 +104,7 @@ export default function Divisions() {
                 />
               </div>
 
-              <div className="ds-svc-card-text" style={{ viewTransitionName: `svc-${d.id}-text` } as CSSProperties}>
+              <div className="ds-svc-card-text">
                 <h3 id={`${d.id}-title`} className="ds-svc-card-head">
                   <button type="button" aria-expanded={open} aria-controls={panelId} onClick={toggle}>
                     <span className="ds-data ds-svc-n" aria-hidden="true">{d.n}</span>
