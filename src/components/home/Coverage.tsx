@@ -11,7 +11,7 @@ const CITIES = [
 const DIVISIONS = [
   'Government Security Personnel',
   'Airport & Transportation Security',
-  'Commercial & High-Traffic Security',
+  'Commercial & High\u2011Traffic Security', // non-breaking hyphen keeps "High-Traffic" together
   'Industrial, Logistics & Construction',
   'Specialized & Armed Protection',
   'Institutional & Community Security',

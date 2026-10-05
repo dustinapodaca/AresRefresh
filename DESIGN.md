@@ -283,7 +283,8 @@ body, and the single rust horizon glow at the close.
 ### Typographic lists
 - **City list:** each city at display-lg on its own row between hairlines, a link to its
   location page, with an arrow that nudges 4px on hover.
-- **Division list:** two columns of Inter 17px / 500 in ink, 1px hairline under each item.
+- **Division list:** two columns at every width (Inter 17px / 500 in ink; 15px on phones),
+  1px hairline under each item.
 
 ### Pull quote
 - Inter 500 at display-md size, ink, set across up to 10 columns with hanging punctuation. The
