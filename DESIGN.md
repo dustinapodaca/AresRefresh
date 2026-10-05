@@ -54,14 +54,18 @@ single blue reserved for links and focus.
 
 What is Ares's own:
 - **Proof as a ledger.** Contract, registration, and certification numbers live in one
-  document-style table: hairline rows, a quiet label column, values in IBM Plex Mono with
-  tabular numerals. Never a grid of tiles.
+  document-style table grouped as Contract vehicle / Federal registration / Ownership and
+  certification / Documents. The group name sits once in a left column, a white/20% rule
+  opens each group, hairline rows sit within it, and values are IBM Plex Mono with tabular
+  numerals. The last row links the capability statement. Never a grid of tiles.
 - **Measured figures, not slogans.** "<1%" missed shifts is set in mono at figure scale
   with its source period beside it.
 - **A running document rail.** Home carries a thin margin rail with section reference
-  marks (01 Verify, 02 Staffing, 03 Coverage, 04 Careers, 05 Contact) that tracks the
-  reader, like a technical spec. The marks carry real wayfinding, which is why numbers
-  are allowed here and nowhere else.
+  marks (01 Verify, 02 Staffing, 03 Coverage, 04 Company, 05 Contact) that tracks the
+  reader, like a technical spec. On desktop its hairline runs the full height of the
+  document as a frame line, with reading progress drawn along it. The marks carry real
+  wayfinding, which is why numbers are allowed here and in the staffing steps (01 to 04,
+  a real sequence), and nowhere else.
 - **Photography instead of gradient spotlight cards.** Framer's magenta/violet/orange
   spotlight cards are retired: they read startup-playful for a federal contractor. Real
   staff photography, darkened into the canvas, does the atmospheric work. The close uses
@@ -123,6 +127,8 @@ shadows. Hairlines carry structure.
 - Photos inside the column: 15px radius with a hairline edge. Full-bleed photos: square
   edges, faded into the canvas top and bottom.
 - Icons: authored SVG arrows (1.5px stroke, round caps). No Unicode glyphs as icons.
+- Links: small standalone text links (ledger, panel CTAs, "All services") are signal blue
+  with an arrow; large typographic link rows (the cities) stay white.
 
 ## Motion
 
@@ -135,7 +141,7 @@ Four to six moments per page, all fast and crisp. No bounce.
 - Scroll-driven effects use CSS `animation-timeline` inside
   `@supports (animation-timeline: view())`. The default, unsupported, and
   `prefers-reduced-motion: reduce` states are static and fully visible.
-- Content is never hidden while scrolling. The lowest opacity any text reaches is 0.62.
+- Content is never hidden while scrolling. The lowest opacity any text reaches is 0.72.
 
 ## Browser surfaces
 

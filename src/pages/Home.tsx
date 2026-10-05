@@ -28,23 +28,45 @@ const SECTIONS = [
   { id: 'verify', n: '01', label: 'Verify' },
   { id: 'staffing', n: '02', label: 'Staffing' },
   { id: 'coverage', n: '03', label: 'Coverage' },
-  { id: 'careers', n: '04', label: 'Careers' },
+  { id: 'careers', n: '04', label: 'Company' },
   { id: 'contact', n: '05', label: 'Contact' },
 ];
 
-// The ledger. Every value already appears on the Capability Statement page
-// or in the approved Home copy.
-type LedgerRow = { k: string; v: string; note?: string; href?: string; mono?: boolean };
-const LEDGER: LedgerRow[] = [
-  { k: 'GSA MAS contract', v: '47QSMS25D009Q', note: 'Pre-negotiated pricing. Task orders without a new competition.', href: GSA_ELIBRARY_URL, mono: true },
-  { k: 'SIN', v: '561612', note: 'Security Services', mono: true },
-  { k: 'UEI', v: 'XQXDN6E33SF4', note: 'Unique Entity Identifier, SAM.gov', mono: true },
-  { k: 'CAGE code', v: '9KL18', note: 'Commercial and Government Entity', mono: true },
-  { k: 'Primary NAICS', v: '561612', note: 'Security Guards & Patrol Services', mono: true },
-  { k: 'WOSB certification', v: 'WOSB250470', note: 'Set-aside eligible', mono: true },
-  { k: 'WBENC certification', v: 'WBE2303571', note: "Women's Business Enterprise", mono: true },
-  { k: 'Ownership', v: 'Minority woman-owned' },
-  { k: 'Founded', v: '2021', note: 'Colorado Springs, CO', mono: true },
+// The ledger, grouped the way a contracting officer checks a vendor. Every
+// value already appears on the Capability Statement page or in the approved
+// Home copy. The last group puts the capability statement inside the proof.
+type LedgerRow = { k: string; v: string; note?: string; href?: string; internal?: boolean; mono?: boolean };
+const LEDGER_GROUPS: { title: string; rows: LedgerRow[] }[] = [
+  {
+    title: 'Contract vehicle',
+    rows: [
+      { k: 'GSA MAS contract', v: '47QSMS25D009Q', note: 'Pre-negotiated pricing. Task orders without a new competition.', href: GSA_ELIBRARY_URL, mono: true },
+      { k: 'SIN', v: '561612', note: 'Security Services', mono: true },
+    ],
+  },
+  {
+    title: 'Federal registration',
+    rows: [
+      { k: 'UEI', v: 'XQXDN6E33SF4', note: 'Unique Entity Identifier, SAM.gov', mono: true },
+      { k: 'CAGE code', v: '9KL18', note: 'Commercial and Government Entity', mono: true },
+      { k: 'Primary NAICS', v: '561612', note: 'Security Guards & Patrol Services', mono: true },
+    ],
+  },
+  {
+    title: 'Ownership and certification',
+    rows: [
+      { k: 'Ownership', v: 'Minority woman-owned', note: 'WOSB and WBENC certified' },
+      { k: 'WOSB certification', v: 'WOSB250470', note: 'Set-aside eligible', mono: true },
+      { k: 'WBENC certification', v: 'WBE2303571', note: "Women's Business Enterprise", mono: true },
+      { k: 'Founded', v: '2021', note: 'Colorado Springs, CO', mono: true },
+    ],
+  },
+  {
+    title: 'Documents',
+    rows: [
+      { k: 'Capability statement', v: 'Read the statement', note: 'Every number above, on one page', href: '/capability-statement', internal: true },
+    ],
+  },
 ];
 
 const STEPS = [
@@ -82,7 +104,7 @@ const DIVISIONS = [
   'Institutional & Community Security',
 ];
 
-// "Get to know Ares": Pass 3-final's three photo panels, in its order and
+// "Get to know Ares" (rail: 04 Company): Pass 3-final's three photo panels, in its order and
 // wording (About Us, Services, Careers; wide lead first), opened up for the
 // flow: no card fills, image edge plus type only.
 const PANELS = [
@@ -197,7 +219,7 @@ export default function Home() {
               <h1 className="max-w-[17ch] font-semibold text-balance text-white" style={DISPLAY_XL}>
                 Security guards for federal and commercial sites.
               </h1>
-              <p className="mt-8 max-w-[34rem] text-[18px] leading-[1.5] tracking-[-0.01em] text-white/80">
+              <p className="mt-8 max-w-[34rem] text-[18px] leading-[1.5] tracking-[-0.01em] text-white">
                 A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
               </p>
             </div>
@@ -231,11 +253,13 @@ export default function Home() {
           aria-label="Page sections"
           className={`pointer-events-none absolute inset-0 z-20 hidden transition-opacity duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] lg:block ${docVisible ? 'opacity-100' : 'opacity-0'}`}
         >
-          <div className="container-ares h-full">
+          <div className="container-ares relative h-full">
+            {/* The frame line: one hairline through the whole document, with
+                the reading progress drawn along it */}
+            <span aria-hidden="true" className="absolute top-0 bottom-0 left-7 w-px bg-hairline" />
+            <span aria-hidden="true" className="flow-rail-fill absolute top-0 bottom-0 left-7 w-px bg-white/70" />
             <div className="pointer-events-auto sticky top-32 w-[160px]">
               <div className="relative pl-5">
-                <span aria-hidden="true" className="absolute top-0 left-0 h-full w-px bg-hairline" />
-                <span aria-hidden="true" className="flow-rail-fill absolute top-0 left-0 h-full w-px bg-white" />
                 <ol className="m-0 flex list-none flex-col gap-3.5 p-0">
                   {SECTIONS.map((s) => (
                     <li key={s.id}>
@@ -282,54 +306,74 @@ export default function Home() {
                 Contract, registration, and certification numbers in one place. The GSA contract number links to the government’s own listing.
               </p>
 
-              <table className="mt-12 w-full border-collapse border-t border-hairline text-left max-sm:block">
+              <table className="mt-12 w-full border-collapse text-left max-sm:block">
                 <caption className="sr-only">Ares Security contract, registration, and certification record</caption>
-                <thead className="max-sm:sr-only">
-                  <tr className="flow-ledger-row">
-                    <th scope="col" className="py-3 pr-6 font-mono text-[12px] font-normal text-ink-muted">Item</th>
-                    <th scope="col" className="py-3 pr-6 font-mono text-[12px] font-normal text-ink-muted">Number</th>
-                    <th scope="col" className="py-3 font-mono text-[12px] font-normal text-ink-muted max-md:sr-only">Detail</th>
+                <thead className="max-lg:sr-only">
+                  <tr>
+                    <th scope="col" className="w-[22%] pb-3 pr-6 font-mono text-[12px] font-normal text-ink-muted">Group</th>
+                    <th scope="col" className="w-[20%] pb-3 pr-6 font-mono text-[12px] font-normal text-ink-muted">Item</th>
+                    <th scope="col" className="w-[24%] pb-3 pr-6 font-mono text-[12px] font-normal text-ink-muted">Number</th>
+                    <th scope="col" className="pb-3 font-mono text-[12px] font-normal text-ink-muted">Detail</th>
                   </tr>
                 </thead>
-                <tbody className="max-sm:block">
-                  {LEDGER.map((row) => (
-                    <tr key={row.k} className="flow-ledger-row max-sm:grid max-sm:gap-1 max-sm:py-4">
-                      <th scope="row" className="w-[28%] py-4 pr-6 align-baseline text-[15px] font-normal text-ink-muted max-sm:w-auto max-sm:p-0">
-                        {row.k}
-                      </th>
-                      <td className={`py-4 pr-6 align-baseline text-white max-sm:p-0 ${row.mono ? 'font-mono text-[16px] tracking-[0.01em] tabular-nums' : 'text-[16px]'}`}>
-                        {row.href ? (
-                          <a
-                            href={row.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flow-link inline-flex items-center gap-1.5 text-signal hover:text-white ${FOCUS}`}
+                {LEDGER_GROUPS.map((group) => (
+                  <tbody key={group.title} className="border-t border-white/20 max-sm:block">
+                    {group.rows.map((row, i) => (
+                      <tr key={row.k} className="flow-ledger-row max-sm:grid max-sm:gap-1 max-sm:py-4">
+                        {i === 0 && (
+                          <th
+                            scope="rowgroup"
+                            rowSpan={group.rows.length}
+                            className="py-4 pr-6 align-top text-[15px] font-medium text-white max-lg:hidden"
                           >
-                            {row.v}
-                            <Arrow diag className="h-3.5 w-3.5" />
-                            <span className="sr-only"> (opens GSA eLibrary in a new tab)</span>
-                          </a>
-                        ) : (
-                          row.v
+                            {group.title}
+                          </th>
                         )}
-                      </td>
-                      <td className="py-4 align-baseline text-[14px] leading-[1.45] text-ink-muted max-md:hidden max-sm:block max-sm:p-0">
-                        {row.note}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                        <th scope="row" className="py-4 pr-6 align-baseline text-[15px] font-normal text-ink-muted max-sm:p-0">
+                          {i === 0 && (
+                            <span className="mb-2 block text-[13px] font-medium text-white lg:hidden">{group.title}</span>
+                          )}
+                          {row.k}
+                        </th>
+                        <td className={`py-4 pr-6 align-baseline text-white max-sm:p-0 ${row.mono ? 'font-mono text-[16px] tracking-[0.01em] tabular-nums' : 'text-[16px]'}`}>
+                          {row.href && row.internal ? (
+                            <Link to={row.href} className={`flow-link inline-flex items-center gap-1.5 text-signal hover:text-white ${FOCUS}`}>
+                              {row.v}
+                              <Arrow className="h-3.5 w-3.5" />
+                            </Link>
+                          ) : row.href ? (
+                            <a
+                              href={row.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flow-link inline-flex items-center gap-1.5 text-signal hover:text-white ${FOCUS}`}
+                            >
+                              {row.v}
+                              <Arrow diag className="h-3.5 w-3.5" />
+                              <span className="sr-only"> (opens GSA eLibrary in a new tab)</span>
+                            </a>
+                          ) : (
+                            row.v
+                          )}
+                        </td>
+                        <td className="py-4 align-baseline text-[14px] leading-[1.45] text-ink-muted max-md:hidden max-sm:block max-sm:p-0">
+                          {row.note}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                ))}
               </table>
 
-              {/* The measured figure; its lower half sits beside the quote below */}
+              {/* The measured figure with its caption on the same baseline */}
               <div className="mt-20 grid gap-6 lg:mt-28 lg:grid-cols-12 lg:items-end">
                 <p
-                  className="font-mono font-normal text-white tabular-nums lg:col-span-6 lg:-mb-44"
+                  className="font-mono font-normal text-white tabular-nums lg:col-span-6"
                   style={{ fontSize: 'clamp(96px, 15vw, 220px)', lineHeight: 0.85, letterSpacing: '-0.06em' }}
                 >
                   &lt;1%
                 </p>
-                <div className="lg:col-span-6 lg:pb-3">
+                <div className="lg:col-span-6 lg:pb-2">
                   <p className="text-[18px] leading-[1.45] text-white">Missed shifts since 2021.</p>
                   <p className="mt-1 text-[16px] leading-[1.5]">On-call scheduling is standard in every contract.</p>
                   <p className="mt-8 max-w-[26ch] text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white">
@@ -342,22 +386,22 @@ export default function Home() {
         </section>
 
         {/* 02 Staffing: open quote, then the pinned photo and advancing steps */}
-        <section id="staffing" className="relative scroll-mt-32 pt-16 lg:pt-14">
+        <section id="staffing" className="relative scroll-mt-32 pt-28 lg:pt-40">
           <div className={CONTENT}>
             <div>
-              <figure className="m-0 lg:ml-[50%]">
-                <blockquote className="m-0">
+              <figure className="m-0 grid gap-6 lg:grid-cols-12 lg:gap-10">
+                <blockquote className="m-0 lg:order-2 lg:col-span-9">
                   <p className="font-medium text-white lg:-indent-[0.4em]" style={DISPLAY_MD}>
                     “Ares arrived prepared. Their documentation was cleaner than the incumbent’s from day one.”
                   </p>
                 </blockquote>
-                <figcaption className="mt-6 font-mono text-[12px] leading-5">
-                  <span className="text-white">Contracting Officer</span>
+                <figcaption className="border-t border-hairline pt-4 text-[14px] leading-5 lg:order-1 lg:col-span-3">
+                  <span className="font-medium text-white">Contracting Officer</span>
                   <span className="block">USAF · Buckley Space Force Base</span>
                 </figcaption>
               </figure>
 
-              <h2 className="mt-32 max-w-[20ch] font-semibold text-balance text-white lg:mt-48" style={DISPLAY_LG}>
+              <h2 className="mt-24 max-w-[20ch] font-semibold text-balance text-white lg:mt-32" style={DISPLAY_LG}>
                 Every officer is trained on your post by a leader who has worked it.
               </h2>
 
@@ -375,13 +419,26 @@ export default function Home() {
                   </div>
                 </div>
                 <div>
-                  <ol className="m-0 list-none p-0">
-                    {STEPS.map((step) => (
+                  {/* Steps on one line: the line fills as the reader moves
+                      through them (CSS scroll timeline, static when off) */}
+                  <ol className="flow-steps relative m-0 list-none p-0 pl-8 lg:pl-10">
+                    <span aria-hidden="true" className="absolute top-3 bottom-3 left-[3px] w-px bg-hairline" />
+                    <span aria-hidden="true" className="flow-steps-fill absolute top-3 bottom-3 left-[3px] w-px bg-white" />
+                    {STEPS.map((step, i) => (
                       <li
                         key={step.h}
-                        className="flow-step border-t border-hairline py-9 lg:flex lg:min-h-[34vh] lg:flex-col lg:justify-center lg:py-12"
+                        className="flow-step py-7 lg:flex lg:min-h-[22vh] lg:flex-col lg:justify-center lg:py-8"
                       >
-                        <h3 className="text-[24px] leading-[1.25] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">{step.h}</h3>
+                        <h3 className="relative text-[24px] leading-[1.25] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-[0.5em] left-[-33px] h-[7px] w-[7px] -translate-y-1/2 rounded-full border border-white/50 bg-canvas lg:left-[-41px]"
+                          />
+                          <span className="mr-3 font-mono text-[14px] font-normal tracking-normal text-ink-muted tabular-nums lg:text-[15px]">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          {step.h}
+                        </h3>
                         <p className="mt-3 max-w-[40ch] text-[17px] leading-[1.55]">{step.p}</p>
                       </li>
                     ))}
@@ -392,7 +449,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="mt-20 max-w-[30ch] text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:mt-28">
+              <p className="mt-20 max-w-[24ch] font-medium text-white lg:mt-28 lg:ml-auto lg:mr-[8%]" style={DISPLAY_MD}>
                 We staff posts like this in three metro areas, across six kinds of sites.
               </p>
             </div>
@@ -434,16 +491,25 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-
-              <p className="mt-16 max-w-[30ch] text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:mt-20">
-                Get to know the company behind those posts.
-              </p>
             </div>
+          </div>
+
+          {/* Full-bleed photograph closing Coverage (inside the section so the
+              rail never loses its place); the next headline crosses its lower edge */}
+          <div aria-hidden="true" className="relative mt-24 h-[46vh] min-h-[300px] overflow-clip lg:mt-32 lg:h-[64vh]">
+            <img
+              src="/images/about-hero.jpg"
+              alt=""
+              width={2400}
+              height={1600}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-[center_55%] [filter:brightness(0.6)_saturate(0.85)] [mask-image:linear-gradient(180deg,transparent_0%,#000_28%,rgba(0,0,0,0.75)_70%,transparent_100%)]"
+            />
           </div>
         </section>
 
-        {/* 04 Careers: "Get to know Ares" panels */}
-        <section id="careers" className="relative scroll-mt-32 pt-24 lg:pt-32">
+        {/* 04 Company: "Get to know Ares" panels */}
+        <section id="careers" className="relative z-10 -mt-[12vh] scroll-mt-32 lg:-mt-[18vh]">
           <div className={CONTENT}>
             <div>
               <h2 className="font-semibold text-white" style={DISPLAY_LG}>Get to know Ares</h2>
@@ -460,14 +526,14 @@ export default function Home() {
                       {p.title}
                     </h3>
                     <p className="mt-2 max-w-[44ch] text-[16px] leading-[1.55] text-ink-muted">{p.body}</p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[15px] font-medium text-white">
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-[15px] font-medium text-signal group-hover:text-white">
                       {p.cta} <Arrow className="h-4 w-4" />
                     </span>
                   </Link>
                 ))}
               </div>
 
-              <p className="mt-20 max-w-[30ch] text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:mt-24">
+              <p className="mt-20 max-w-[30ch] border-l border-white/20 pl-5 text-[20px] leading-[1.35] font-medium tracking-[-0.015em] text-white lg:mt-24">
                 Every quote starts with a conversation about your site.
               </p>
             </div>

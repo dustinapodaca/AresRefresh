@@ -798,6 +798,8 @@ html[data-surface='dark'] body {
 
 /* Rail progress fill: hidden unless scroll timelines exist */
 .flow-rail-fill { transform: scaleY(0); transform-origin: top; }
+/* Staffing step line: fully drawn by default (static fallback) */
+.flow-steps-fill { transform-origin: top; }
 .flow-progress-fill { transform: scaleX(0); transform-origin: left; }
 
 @supports (animation-timeline: view()) {
@@ -821,6 +823,13 @@ html[data-surface='dark'] body {
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
+    /* Staffing step line fills as the reader moves through the steps */
+    .flow-steps { view-timeline: --steps block; }
+    .flow-steps-fill {
+      animation: flow-steps-draw linear both;
+      animation-timeline: --steps;
+      animation-range: cover 20% cover 75%;
+    }
     /* Staffing step headings brighten as they pass the pinned photo
        (desktop only). Body copy never dims, so it always meets AA. */
     @media (min-width: 1024px) {
@@ -835,14 +844,15 @@ html[data-surface='dark'] body {
 }
 
 @keyframes flow-fill-y { to { transform: scaleY(1); } }
+@keyframes flow-steps-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes flow-fill-x { to { transform: scaleX(1); } }
 @keyframes flow-recede {
   from { transform: scale(1); opacity: 1; }
   to   { transform: scale(1.06); opacity: 0.55; }
 }
 @keyframes flow-focus {
-  0%   { opacity: 0.62; }
+  0%   { opacity: 0.72; }
   38%  { opacity: 1; }
   62%  { opacity: 1; }
-  100% { opacity: 0.62; }
+  100% { opacity: 0.72; }
 }
