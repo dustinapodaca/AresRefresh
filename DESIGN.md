@@ -182,8 +182,8 @@ sizes are unchanged.
 - **Display: Inter Tight 600**, very tight (-0.05em at display-xl and the city list,
   -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
   to 1.15. Reduce size before loosening tracking.
-  - display-xl: the hero headline (two lines on desktop, running over the photo's faded
-    edge) and the Contact headline.
+  - display-xl: the hero headline (two lines on desktop, set over the full-bleed photo)
+    and the Contact headline.
   - display-lg: section headlines (Verify, Staffing, Careers).
   - display-md: the Coverage headline.
   - city: the three city rows.
@@ -219,8 +219,8 @@ sizes are unchanged.
 - **Copy hand-offs:** each section ends on a line that sets up the next headline, so the
   headlines read as one argument.
 - **Cross-boundary elements:**
-  - The hero photograph starts beside the headline and runs down past the hero, ending
-    under the opening of 01 Verify.
+  - The hero photograph fills the hero edge to edge (from 900px) and runs down past it,
+    ending under the opening of 01 Verify.
   - The measured figure, top-aligned with its note, hangs down past it into the quote's
     rows.
   - A full-bleed photograph starts under the end of 03 Coverage and ends under the start
@@ -254,8 +254,10 @@ body, and the single rust horizon glow at the close.
   caption line beneath when the photo documents something.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero photo:** square edges, bleeds off the right edge of the viewport, faded into the
-  canvas on its left and bottom edges.
+- **Hero photo:** square edges, full bleed behind the hero copy on desktop and tablet
+  (owner request, 2026-10-05), graded darker and shaded from the left so the copy reads,
+  faded into the canvas at the bottom with a mask. On phones it sits above the copy, full
+  width, faded at the bottom.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
   division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal

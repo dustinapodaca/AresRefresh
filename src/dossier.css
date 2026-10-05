@@ -452,23 +452,25 @@ body:has(.ds-page) {
     display: flex;
     align-items: flex-end;
   }
+  /* Full bleed: the whole photograph sits behind the hero and runs past it, ending under
+     the opening of 01 Verify. */
   .ds-hero-photo {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 56vw;
+    inset: 0;
     height: auto;
-    /* Runs past the hero and ends under the opening of 01 Verify. */
     bottom: calc(-1 * clamp(10rem, 26vh, 17rem));
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 42%);
+    mask-image: linear-gradient(to top, transparent 0%, #000 42%);
   }
-  .ds-hero-photo {
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 52%), linear-gradient(to top, transparent 0%, #000 50%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0%, #000 52%), linear-gradient(to top, transparent 0%, #000 50%);
-    mask-composite: intersect;
+  .ds-hero-photo img {
+    object-position: 50% 50%;
+    filter: saturate(0.85) brightness(0.62) contrast(1.06);
   }
+  /* Shade, not a band: darkens the sky behind the copy and under the nav, with no edge. */
   .ds-hero-photo::after {
-    background: linear-gradient(to bottom, rgb(10 11 13 / 0.65) 0%, rgb(10 11 13 / 0) 26%);
+    background:
+      linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0) 24%),
+      linear-gradient(to right, rgb(10 11 13 / 0.82) 0%, rgb(10 11 13 / 0.6) 40%, rgb(10 11 13 / 0) 72%);
   }
   /* The headline runs wide (two lines at desktop, as in v10) over the photo's faded edge. */
   .ds-hero-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); padding-bottom: clamp(3rem, 9vh, 6rem); }
