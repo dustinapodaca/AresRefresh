@@ -320,6 +320,8 @@ body:has(.ds-page) {
 }
 .ds-certs img { display: block; height: 32px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
+/* The WBENC mark has fine print that blurs at 32px; give it a little more room and ink. */
+.ds-certs img[src*='cert-wbenc'] { height: 38px; opacity: 0.85; }
 /* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
 @media (max-width: 559px) {
   .ds-certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
@@ -328,6 +330,7 @@ body:has(.ds-page) {
   .ds-certs li:nth-child(odd) { border-right: 1px solid var(--ds-rule-strong); }
   .ds-certs li:nth-child(-n + 2) { border-bottom: 1px solid var(--ds-rule-strong); }
   .ds-certs img { height: 30px; max-width: 100%; }
+  .ds-certs img[src*='cert-wbenc'] { height: 36px; }
 }
 
 .ds-legal {
