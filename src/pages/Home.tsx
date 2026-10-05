@@ -82,20 +82,10 @@ const DIVISIONS = [
   'Institutional & Community Security',
 ];
 
-// "Get to know Ares": Pass 3-final's three photo panels (wide lead first),
-// opened up for the flow: no card fills, image edge plus type only.
+// "Get to know Ares": Pass 3-final's three photo panels, in its order and
+// wording (About Us, Services, Careers; wide lead first), opened up for the
+// flow: no card fills, image edge plus type only.
 const PANELS = [
-  {
-    to: '/careers',
-    title: 'Now hiring officers',
-    body: 'Armed, unarmed, cleared, and office roles, with paid training and real room to grow. Veterans are encouraged to apply.',
-    cta: 'See Open Roles',
-    src: '/images/careers-team.jpg',
-    alt: 'Officer in a Security shirt training at an indoor firing range',
-    w: 1184,
-    h: 880,
-    lead: true,
-  },
   {
     to: '/about',
     title: 'About Us',
@@ -105,7 +95,7 @@ const PANELS = [
     alt: 'Denver skyline at sunset with the Front Range behind it',
     w: 1400,
     h: 805,
-    lead: false,
+    lead: true,
   },
   {
     to: '/services',
@@ -116,6 +106,17 @@ const PANELS = [
     alt: 'Two Ares Security officers seen from behind, Security printed across their shirts',
     w: 1408,
     h: 736,
+    lead: false,
+  },
+  {
+    to: '/careers',
+    title: 'Careers',
+    body: 'Armed, unarmed, cleared, and office roles with paid training. Veterans are encouraged to apply.',
+    cta: 'See Open Roles',
+    src: '/images/careers-team.jpg',
+    alt: 'Officer in a Security shirt training at an indoor firing range',
+    w: 1184,
+    h: 880,
     lead: false,
   },
 ];
