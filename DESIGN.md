@@ -62,7 +62,9 @@ What is Ares's own:
   are allowed here and nowhere else.
 - **Photography instead of gradient spotlight cards.** Framer's magenta/violet/orange
   spotlight cards are retired: they read startup-playful for a federal contractor. Real
-  staff and patrol photography, darkened into the canvas, does the atmospheric work.
+  staff photography, darkened into the canvas, does the atmospheric work. The close uses
+  a monochrome light field (white/gray blooms, edgeless) with one glass panel.
+  No patrol-vehicle photography on Home (owner).
 - **The Ares mark** (`/ares-logo.svg`) and wordmark (`/images/ares-text.svg`) always
   render white on the canvas. No other brand color exists.
 
@@ -142,7 +144,8 @@ the palette. The page sets `color-scheme: dark` so native controls match.
 
 **Don't**
 - Don't add a light mode, background bands, or boxed card grids.
-- Don't use gradient spotlight cards, glass, gradient text, or glow shadows.
+- Don't use gradient spotlight cards, gradient text, or glow shadows. Glass appears once, on the
+  Contact panel over the monochrome light field (owner request, 2026-10-04); nowhere else.
 - Don't use signal blue as a fill.
 - Don't invent statistics, clients, quotes, or response times. Don't show client logos
   (removed by the owner on 2026-09-01).

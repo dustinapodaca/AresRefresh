@@ -4,8 +4,9 @@ import Seo from '../seo/Seo';
 
 // Home as one continuous dark document (DESIGN.md). Pass 2's Framer world,
 // re-flowed: no background bands or card grids; sections hand off through
-// their closing lines; a document rail tracks the reader; two full-bleed
-// photographs span section turns; scroll-driven motion lives in index.css
+// their closing lines; a document rail tracks the reader; the hero photo
+// runs under the nav and into the ledger; Contact closes on a monochrome
+// light field with one glass panel; scroll-driven motion lives in index.css
 // under "HOME FLOW" and is static by default.
 // Every link sets its own text color: the base `a:hover` rule paints ink,
 // which would vanish on this canvas.
@@ -110,10 +111,10 @@ const PANELS = [
     title: 'Services',
     body: 'Six service divisions across federal, commercial, industrial, and specialized sites.',
     cta: 'View Services',
-    src: '/images/mission-vehicle.jpg',
-    alt: 'Two Ares Security patrol vehicles parked on a residential street',
-    w: 750,
-    h: 842,
+    src: '/images/about-security.jpg',
+    alt: 'Two Ares Security officers seen from behind, Security printed across their shirts',
+    w: 1408,
+    h: 736,
     lead: false,
   },
 ];
@@ -194,30 +195,50 @@ export default function Home() {
     >
       <Seo path="/" />
 
-      {/* Hero: the poster, then the photograph bleeding into the canvas */}
-      <section className="relative">
-        <div className="container-ares pt-36 lg:pt-44">
-          <h1 className="max-w-[17ch] font-semibold text-balance text-white" style={DISPLAY_XL}>
-            Security guards for federal and commercial sites.
-          </h1>
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-            <p className="max-w-[34rem] text-[18px] leading-[1.5] tracking-[-0.01em]">
-              A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
-            </p>
-            <div className="flex flex-wrap gap-2.5">
-              <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
-              <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
+      {/* Hero: the photograph runs to the top of the page under the nav,
+          with a black gradient coming down from the bar; the GSA contract
+          mark balances the headline. */}
+      <section className="relative isolate overflow-clip">
+        <img
+          src="/images/hero6.webp"
+          alt=""
+          width={1920}
+          height={1280}
+          className="flow-hero-photo absolute inset-0 -z-10 h-full w-full object-cover object-[center_60%] [filter:brightness(0.62)] [mask-image:linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.18)_12%,rgba(0,0,0,0.5)_32%,rgba(0,0,0,0.9)_52%,#000_64%,rgba(0,0,0,0.7)_82%,transparent_100%)]"
+        />
+        <div className="container-ares pt-36 pb-[38vh] lg:pt-44 lg:pb-[52vh]">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+            <div>
+              <h1 className="max-w-[17ch] font-semibold text-balance text-white" style={DISPLAY_XL}>
+                Security guards for federal and commercial sites.
+              </h1>
+              <p className="mt-8 max-w-[34rem] text-[18px] leading-[1.5] tracking-[-0.01em] text-white/80">
+                A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
+              </p>
+              <div className="mt-9">
+                <Link to="/capability-statement" className={PILL_PRIMARY}>Capability Statement</Link>
+              </div>
             </div>
+            <a
+              href={GSA_ELIBRARY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flow-link group flex flex-col items-start gap-3 self-start text-white hover:text-white lg:mt-3 lg:items-end ${FOCUS}`}
+            >
+              <img
+                src="/images/gsa-contract-holder.png"
+                alt="GSA Contract Holder"
+                width={576}
+                height={138}
+                className="block h-auto w-[200px] lg:w-[240px]"
+              />
+              <span className="inline-flex items-center gap-1.5 font-mono text-[14px] tracking-[0.01em] tabular-nums">
+                <span className="text-white/70">GSA MAS</span> 47QSMS25D009Q
+                <Arrow diag className="h-3.5 w-3.5" />
+              </span>
+              <span className="sr-only">(opens GSA eLibrary in a new tab)</span>
+            </a>
           </div>
-        </div>
-        <div className="relative mt-16 h-[52vh] min-h-[340px] overflow-clip lg:mt-20 lg:h-[74vh]">
-          <img
-            src="/images/hero6.webp"
-            alt=""
-            width={1920}
-            height={1280}
-            className="flow-hero-photo absolute inset-0 h-full w-full object-cover object-[center_55%] [filter:brightness(0.78)] [mask-image:linear-gradient(180deg,transparent_0%,#000_26%,rgba(0,0,0,0.62)_66%,transparent_100%)]"
-          />
         </div>
       </section>
 
@@ -269,7 +290,7 @@ export default function Home() {
         </div>
 
         {/* 01 Verify: the ledger rises over the hero photograph */}
-        <section id="verify" className="relative z-10 -mt-[20vh] scroll-mt-32 lg:-mt-[30vh]">
+        <section id="verify" className="relative z-10 -mt-[16vh] scroll-mt-32 lg:-mt-[24vh]">
           <div className={CONTENT}>
             <div>
               <h2 className="max-w-[18ch] font-semibold text-white" style={DISPLAY_LG}>
@@ -448,7 +469,7 @@ export default function Home() {
                 {PANELS.map((p) => (
                   <Link key={p.to} to={p.to} className={`flow-link group flex flex-col text-white hover:text-white ${FOCUS}`}>
                     <div className="h-60 overflow-hidden rounded-[15px] border border-hairline lg:h-80">
-                      <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="h-full w-full object-cover object-[center_70%]" />
+                      <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" className="h-full w-full object-cover" />
                     </div>
                     <h3
                       className="mt-6 font-semibold text-white"
@@ -471,39 +492,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Full-bleed photograph spanning the turn into 05 Contact */}
-        <div className="relative mt-20 h-[44vh] min-h-[280px] overflow-clip lg:mt-28 lg:h-[64vh]">
-          <img
-            src="/images/about-security.jpg"
-            alt=""
-            width={1408}
-            height={736}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover object-[center_40%] [filter:brightness(0.7)] [mask-image:linear-gradient(180deg,transparent_0%,#000_30%,rgba(0,0,0,0.55)_66%,transparent_100%)]"
-          />
-        </div>
-
-        {/* 05 Contact: the headline overlaps the photograph's lower edge */}
-        <section id="contact" className="relative z-10 -mt-[14vh] scroll-mt-32 pb-28 lg:-mt-[22vh] lg:pb-40">
+        {/* 05 Contact: monochrome light field with a glass panel; the
+            headline rises out of the field's top edge */}
+        <section id="contact" className="relative isolate scroll-mt-32 pt-28 pb-28 lg:pt-40 lg:pb-40">
+          <div aria-hidden="true" className="flow-field pointer-events-none absolute inset-x-0 top-0 bottom-0 -z-10" />
           <div className={CONTENT}>
             <div>
               <h2 className="max-w-[14ch] font-semibold text-balance text-white" style={DISPLAY_XL}>
                 Tell us about your site.
               </h2>
-              <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-6">
-                <a
-                  href="tel:+17196963966"
-                  className={`font-mono text-[30px] tracking-[-0.01em] text-white tabular-nums hover:text-white sm:text-[40px] ${FOCUS}`}
-                >
-                  719-696-3966
-                </a>
-                <a href="mailto:contact@aressecurity.co" className={`text-[17px] text-ink-muted hover:text-white ${FOCUS}`}>
-                  contact@aressecurity.co
-                </a>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-2.5">
-                <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
-                <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
+              <div className="flow-glass mt-12 grid gap-8 rounded-[20px] p-7 sm:p-10 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:p-12">
+                <div>
+                  <a
+                    href="tel:+17196963966"
+                    className={`block font-mono text-[30px] tracking-[-0.01em] text-white tabular-nums hover:text-white sm:text-[44px] ${FOCUS}`}
+                  >
+                    719-696-3966
+                  </a>
+                  <a href="mailto:contact@aressecurity.co" className={`mt-2 inline-block text-[17px] text-white/70 hover:text-white ${FOCUS}`}>
+                    contact@aressecurity.co
+                  </a>
+                </div>
+                <div className="flex flex-wrap gap-2.5">
+                  <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
+                  <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
+                </div>
               </div>
             </div>
           </div>
