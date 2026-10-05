@@ -199,7 +199,8 @@ underline turns ink. There is no link blue.
 - **Cross-boundary elements:**
   - The hero photograph starts beside the headline and runs down past the hero, ending
     under the opening of 01 Verify.
-  - The measured figure hangs out of the ledger's bottom edge into the quote's space.
+  - The measured figure, top-aligned with its note, hangs down past it into the quote's
+    rows.
   - A full-bleed photograph starts under the end of 03 Coverage and ends under the start
     of 04 Careers.
 - **Mobile (below 768px):** single column, gutters 20px, the rail becomes the running
