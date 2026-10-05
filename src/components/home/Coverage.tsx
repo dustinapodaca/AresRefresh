@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
+import CoverageMap from './CoverageMap';
 
 const CITIES = [
   { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
@@ -27,6 +28,7 @@ export default function Coverage() {
           Armed, unarmed, and cleared officers for federal, commercial, industrial, and
           institutional sites, from our base in Colorado Springs.
         </p>
+        <CoverageMap />
       </div>
 
       <ul className="ds-cities">

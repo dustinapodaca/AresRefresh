@@ -137,3 +137,40 @@ Giga voice), glassy nav capsules, gradient art (Windsurf).
 - Ares section: 04 Careers.
 - Adaptation: the same restraint, with the full-bleed officers photo crossing into the
   section from above.
+
+---
+
+## Round 2: breaking up mobile (2026-10-04)
+
+The owner flagged that mobile read as one long column of text. These references show
+how other sites pace a long page on a phone.
+
+### 16. Twingate: locations as a dot field
+- Link: https://mobbin.com/sites/sections/303ead57-170c-494b-b0c9-64d37d4a1643
+- Pattern: a dark dotted globe with lit points for each location, beside a short headline.
+- Ares section: 03 Coverage.
+- Adaptation: Colorado drawn to scale on a dot grid, the three cities plotted from real
+  coordinates along I-25, HQ lit in rust.
+
+### 17. Phantom Studios: a map that carries the story
+- Link: https://mobbin.com/sites/sections/43468821-60e3-4252-8232-d026a30a8f3c
+- Pattern: the map is the section's main visual, with only a few labels on it.
+- Ares section: 03 Coverage.
+- Adaptation: labels limited to the three city names, HQ, and I-25.
+
+### 18. Metalab and Surfshark: a row you swipe
+- Links: https://mobbin.com/sites/sections/0e8d32d7-31d3-4f9c-be54-5ab77950ca30 ,
+  https://mobbin.com/sites/sections/5e379948-ff36-4e47-9d19-a6b938dff5e7
+- Pattern: content in a horizontal row that peeks past the edge and invites a swipe.
+- Ares section: 02 Staffing on mobile.
+- Adaptation: the four habits as slides with large mono numerals and a progress bar that
+  fills as you swipe.
+
+### 19. Intercom, Origin, Loom: a credential strip between sections
+- Links: https://mobbin.com/sites/sections/514d540d-1c04-4b5c-85a4-cd6932ceec95 ,
+  https://mobbin.com/sites/sections/21f8dcc4-112a-4cbd-96e9-79057ff0c23e ,
+  https://mobbin.com/sites/sections/2d64f5d7-6e68-41b6-9837-40ad2f04d204
+- Pattern: a quiet row of marks between two content sections.
+- Ares section: between the hero and 01 Verify.
+- Adaptation: Ares's own certification marks and plain facts (no client logos, which the
+  owner removed), moving slowly.

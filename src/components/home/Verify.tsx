@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from './useMediaQuery';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY, SAM_GOV } from './links';
 
@@ -60,7 +62,45 @@ const GROUPS: { title: string; rows: Row[] }[] = [
   },
 ];
 
+// On mobile each ledger group folds behind a tappable row so the section isn't a wall of
+// numbers; the four key identifiers above stay visible. On desktop groups are always open.
+function LedgerGroup({
+  title,
+  count,
+  desktop,
+  children,
+}: {
+  title: string;
+  count: number;
+  desktop: boolean;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <details
+      className="ds-ledger-group"
+      open={desktop || open}
+      onToggle={(e) => !desktop && setOpen(e.currentTarget.open)}
+    >
+      <summary
+        tabIndex={desktop ? -1 : undefined}
+        onClick={desktop ? (e) => e.preventDefault() : undefined}
+      >
+        <h3 className="ds-title">{title}</h3>
+        <span className="ds-ledger-count">
+          {count} entries
+          <svg className="ds-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 6l4 4 4-4" />
+          </svg>
+        </span>
+      </summary>
+      {children}
+    </details>
+  );
+}
+
 export default function Verify() {
+  const desktop = useMediaQuery('(min-width: 768px)');
   return (
     <section id="verify" className="ds-verify" aria-labelledby="verify-title">
       <div className="ds-verify-head">
@@ -84,8 +124,7 @@ export default function Verify() {
 
       <div className="ds-ledger">
         {GROUPS.map((g) => (
-          <div className="ds-ledger-group" key={g.title}>
-            <h3 className="ds-title">{g.title}</h3>
+          <LedgerGroup key={g.title} title={g.title} count={g.rows.length} desktop={desktop}>
             <dl>
               {g.rows.map((r) => (
                 <div className="ds-ledger-row" key={r.label}>
@@ -110,7 +149,7 @@ export default function Verify() {
                 </div>
               ))}
             </dl>
-          </div>
+          </LedgerGroup>
         ))}
         <p className="ds-ledger-foot">
           <Link to="/capability-statement" className="ds-link">

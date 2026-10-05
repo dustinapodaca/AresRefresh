@@ -1,5 +1,6 @@
 import Seo from '../seo/Seo';
 import Hero from '../components/home/Hero';
+import CredentialStrip from '../components/home/CredentialStrip';
 import DocRail from '../components/home/DocRail';
 import Verify from '../components/home/Verify';
 import Staffing from '../components/home/Staffing';
@@ -14,6 +15,7 @@ export default function Home() {
     <main className="ds ds-page">
       <Seo path="/" />
       <Hero />
+      <CredentialStrip />
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
           <Verify />

@@ -534,7 +534,31 @@ body:has(.ds-page) {
 
 .ds-ledger { margin-top: var(--ds-beat-tight); }
 .ds-ledger-group + .ds-ledger-group { margin-top: 48px; }
-.ds-ledger-group h3 { padding-bottom: 14px; border-bottom: 1px solid var(--ds-rule-strong); }
+.ds-ledger-group summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ds-rule-strong);
+  list-style: none;
+  cursor: pointer;
+}
+.ds-ledger-group summary::-webkit-details-marker { display: none; }
+.ds-ledger-count { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ds-fg-faint); white-space: nowrap; }
+.ds-chevron { transition: transform 180ms var(--ds-ease); }
+.ds-ledger-group[open] .ds-chevron { transform: rotate(180deg); }
+@media (max-width: 767px) {
+  /* Folded groups read as three tappable rows. */
+  .ds-ledger-group + .ds-ledger-group { margin-top: 0; }
+  .ds-ledger-group summary { padding: 18px 0; border-bottom-color: var(--ds-rule); }
+  .ds-ledger-group[open] summary { border-bottom-color: var(--ds-rule-strong); }
+  .ds-ledger-group[open] { padding-bottom: 28px; }
+}
+@media (min-width: 768px) {
+  .ds-ledger-count { display: none; }
+  .ds-ledger-group summary { cursor: default; }
+}
 .ds-ledger dl { margin: 0; }
 .ds-ledger-row {
   position: relative;
@@ -581,6 +605,7 @@ body:has(.ds-page) {
   margin: 0;
   font-variant-numeric: tabular-nums;
 }
+@media (max-width: 767px) { .ds-figure-num { font-size: 36vw; } }
 .ds-figure-note p + p { margin-top: 10px; }
 .ds-figure-note .ds-title { font-size: 18px; line-height: 1.45; font-weight: 400; letter-spacing: 0; }
 .ds-quote { margin: var(--ds-beat-tight) 0 0; }
@@ -630,7 +655,7 @@ body:has(.ds-page) {
     top: calc(var(--ds-header) + 48px);
   }
   .ds-staffing-media .ds-plate img { aspect-ratio: 733 / 900; max-height: calc(100svh - var(--ds-header) - 96px); }
-  .ds-steps { grid-column: 7 / span 6; }
+  .ds-steps-wrap { grid-column: 7 / span 6; }
   .ds-steps li { min-height: 28svh; padding: 40px 0; }
   .ds-staffing-body .ds-handoff { grid-column: 7 / span 6; margin-top: 0; }
 }
@@ -639,9 +664,10 @@ body:has(.ds-page) {
 .ds-coverage { padding-top: var(--ds-beat); }
 .ds-coverage-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
-  .ds-coverage-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-coverage-head h2 { grid-column: 1 / span 6; }
-  .ds-coverage-head p { grid-column: 7 / span 6; }
+  .ds-coverage-head { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr; column-gap: 24px; row-gap: 20px; align-items: start; }
+  .ds-coverage-head h2 { grid-column: 1 / span 6; grid-row: 1; }
+  .ds-coverage-head p { grid-column: 1 / span 5; grid-row: 2; align-self: start; }
+  .ds-coverage-head .ds-map { grid-column: 7 / span 6; grid-row: 1 / span 2; margin: 0; }
 }
 .ds-cities { list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
 .ds-cities li { border-top: 1px solid var(--ds-rule); }
@@ -767,6 +793,66 @@ body:has(.ds-page) {
   .ds-pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* ---------- Credential strip (between the hero and 01 Verify) ---------- */
+.ds-strip {
+  position: relative;
+  z-index: 1;
+  overflow: clip;
+  padding-block: 28px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.ds-strip-belt { display: flex; width: max-content; }
+.ds-strip-track { display: flex; align-items: center; gap: 48px; padding: 0 48px 0 0; margin: 0; list-style: none; }
+.ds-strip-track li { flex: none; display: flex; align-items: center; }
+.ds-strip-track img { display: block; height: 28px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
+.ds-strip-track img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
+.ds-strip-track span { font-size: 14px; color: var(--ds-fg-muted); white-space: nowrap; }
+
+/* ---------- Coverage map ---------- */
+.ds-map { margin: 12px 0 0; }
+.ds-map svg { display: block; width: 100%; height: auto; }
+.ds-map-label { font-family: var(--ds-text); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
+.ds-map-label-faint { font-family: var(--ds-data); font-size: 16px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.ds-map-ring { opacity: 0.6; transform-box: fill-box; transform-origin: center; }
+@media (min-width: 1024px) {
+  .ds-map-label { font-size: 15px; }
+  .ds-map-label-faint { font-size: 11px; }
+}
+
+/* ---------- Staffing steps as a swipe row (below 1024px) ---------- */
+.ds-steps-wrap { min-width: 0; }
+.ds-step-n { display: none; }
+.ds-steps-meta { display: none; }
+@media (max-width: 1023px) {
+  .ds-staffing-body { timeline-scope: --ds-steps; }
+  .ds-steps {
+    display: flex;
+    gap: 16px;
+    margin-inline: calc(-1 * var(--ds-gutter));
+    padding-inline: var(--ds-gutter);
+    scroll-padding-inline: var(--ds-gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-timeline: --ds-steps inline;
+    scrollbar-width: none;
+  }
+  .ds-steps::-webkit-scrollbar { display: none; }
+  .ds-steps li,
+  .ds-steps li:first-child {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--ds-rule-strong);
+  }
+  .ds-step-n { display: block; margin-bottom: 18px; font-size: 40px; line-height: 1; letter-spacing: -0.04em; color: var(--ds-fg); }
+  .ds-steps-meta { display: flex; align-items: center; gap: 16px; margin-top: 28px; }
+  .ds-steps-meta .ds-data { font-size: 12px; color: var(--ds-fg-faint); }
+  .ds-steps-bar { position: relative; flex: 1; height: 1px; background: var(--ds-rule-strong); overflow: hidden; }
+  .ds-steps-bar span { display: none; position: absolute; inset: 0; background: var(--ds-fg); transform-origin: left; }
+}
+
 /* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
@@ -777,6 +863,10 @@ body:has(.ds-page) {
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-settle { from { transform: translateY(32px); } to { transform: translateY(0); } }
+@keyframes ds-marquee { to { transform: translateX(-50%); } }
+@keyframes ds-ring { from { transform: scale(1); opacity: 0.6; } to { transform: scale(2.2); opacity: 0; } }
+@keyframes ds-route { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
 @keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
 /* Floor of 0.8 keeps dimmed body copy above 4.5:1 on the canvas (AA). */
 @keyframes ds-step {
@@ -816,8 +906,23 @@ body:has(.ds-page) {
       animation-range: cover 0% cover 100%;
     }
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .ds-map-route {
+      stroke-dasharray: 1;
+      animation: ds-route linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 50%;
+    }
+  }
   /* Progress fills are position indicators, not motion; they stay on under
      reduced motion because they move only as fast as the reader scrolls. */
+  @media (max-width: 1023px) {
+    .ds-steps-bar span {
+      display: block;
+      animation: ds-bar linear both;
+      animation-timeline: --ds-steps;
+    }
+  }
   .ds-rail-fill {
     display: block;
     animation: ds-fill-y linear both;
@@ -832,7 +937,18 @@ body:has(.ds-page) {
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .ds-strip-belt { animation: ds-marquee 50s linear infinite; }
+  .ds-map-ring { animation: ds-ring 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-strip:hover .ds-strip-belt { animation-play-state: paused; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /* The strip holds still and can be swiped instead; the loop copy is dropped. */
+  .ds-strip { overflow-x: auto; scrollbar-width: none; }
+  .ds-strip-track[aria-hidden] { display: none; }
   .ds-header,
   .ds-sheet,
   .ds-header[data-open='true'] .ds-sheet,

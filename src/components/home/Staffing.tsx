@@ -45,14 +45,24 @@ export default function Staffing() {
           </figure>
         </div>
 
-        <ol className="ds-steps">
-          {STEPS.map((s) => (
+        {/* Below 1024px the steps become a swipe row; the bar fills as it scrolls. */}
+        <div className="ds-steps-wrap">
+        <ol className="ds-steps" tabIndex={0} aria-label="Four habits">
+          {STEPS.map((s, i) => (
             <li key={s.title}>
+              <span className="ds-data ds-step-n" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
               <h3 className="ds-title">{s.title}</h3>
               <p className="ds-body">{s.body}</p>
             </li>
           ))}
         </ol>
+        <div className="ds-steps-meta" aria-hidden="true">
+          <span className="ds-steps-bar"><span /></span>
+          <span className="ds-data">Swipe</span>
+        </div>
+        </div>
       </div>
     </section>
   );

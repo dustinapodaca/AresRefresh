@@ -295,6 +295,27 @@ body, and the single rust horizon glow at the close.
   scroll in the right half. The active step reads at full ink; the rest rest at 0.8
   opacity, the floor that keeps dimmed body copy at AA contrast. On mobile it unpins into a plain sequence.
 
+### Credential strip
+- Between the hero and 01 Verify: the four certification marks alternating with short
+  facts (minority woman-owned; armed, unarmed, and cleared officers; founded 2021;
+  Colorado Springs, Denver, Pueblo). No rules above or below; the edges fade out with a
+  mask. Moves slowly (50s loop), pauses on hover, and holds still and becomes swipeable
+  under reduced motion.
+
+### Coverage map
+- An authored SVG of Colorado to scale (37°N to 41°N, 102.05°W to 109.05°W) on a faint dot
+  grid, with Denver, Colorado Springs, and Pueblo plotted from real coordinates and
+  Interstate 25 traced through them. Colorado Springs is marked in rust as HQ with one
+  soft rust glow. Sits beside the Coverage headline on desktop, under it on mobile.
+
+### Mobile breaks (below 1024px unless noted)
+- **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
+  each with a large mono numeral, and a hairline progress bar that fills as the row
+  scrolls. Desktop keeps the pinned passage.
+- **Ledger groups fold** (below 768px) behind tappable rows showing the group name, the
+  entry count, and a chevron. The four key identifiers stay visible above them.
+- **The figure grows** to 36vw so it reads as a visual, not a line of text.
+
 ### Header
 - Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
   Ares mark and wordmark in white. Right: nav links (Inter 14px / 400, ink muted, ink when
@@ -326,7 +347,11 @@ Few, fast, and crisp. Four to six moments per page.
   already there); staffing steps brighten as they cross the middle of the viewport
   (desktop); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
-- **Position indicators** (the rail fill and the running-head progress line) are tied
+- **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single
+  soft pulse ring on the HQ dot, I-25 drawing itself as the map enters, and the swipe
+  row's progress bar. The two loops are ambient and stop under reduced motion.
+- **Position indicators** (the rail fill, the running-head progress line, and the swipe
+  row's bar) are tied
   to scroll position and stay on under reduced motion; they move only as fast as the
   reader scrolls.
 - Photographs dissolve into the canvas with CSS masks, never with overlay gradients that
