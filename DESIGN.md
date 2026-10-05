@@ -13,8 +13,8 @@ colors:
   surface-2: "#1c1c1c"      # pressed/hover lift on secondary pill
   hairline: "#262626"       # every rule, table row, and image edge
   signal: "#0099ff"         # links, focus rings, selection only; never a fill
-  bronze: "#8a3f1f"         # deep rust, from the hero's copper glass; atmosphere only
-  bronze-light: "#b5603a"   # lit rust highlight; glows on the canvas
+  bronze: "#8b4920"         # deep rust, from the hero's copper glass; atmosphere only
+  bronze-light: "#bc6f40"   # lit rust highlight; glows on the canvas
 
 typography:
   display-xl:   { fontFamily: Inter, fontSize: "clamp(44px, 6.4vw, 92px)", fontWeight: 600, lineHeight: 0.98, letterSpacing: "-0.045em" }
@@ -80,7 +80,7 @@ What is Ares's own:
   state. Avoid them as section or card fills.
 - **Signal `#0099ff`** marks links, focus rings, and text selection. Never a background
   or button fill.
-- **Bronze `#8a3f1f` / bronze-light `#b5603a`** (deep rust) is the atmospheric accent,
+- **Bronze `#8b4920` / bronze-light `#bc6f40`** (deep rust) is the atmospheric accent,
   sampled from the copper glass in the hero photograph and nudged toward red. It lights the Contact field behind the glass panel.
   Use it as light, never as a flat fill, and keep it to glows.
 
