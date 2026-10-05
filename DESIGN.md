@@ -315,7 +315,7 @@ body, and the single rust horizon glow at the close.
   scrolls. Desktop keeps the pinned passage.
 - **Ledger groups fold** (below 768px) behind tappable rows showing the group name, the
   entry count, and a chevron. The four key identifiers stay visible above them.
-- **The figure grows** to 30vw so it reads as a visual, not a line of text.
+- **The figure grows** to 26vw so it reads as a visual, not a line of text.
 - **The pull quote sits right** (flush to the right edge, right-aligned), echoing the
   desktop layout where it lives in the right-hand columns. **The hero's GSA line is
   centered** on the screen, with its label and contract link left-aligned.
