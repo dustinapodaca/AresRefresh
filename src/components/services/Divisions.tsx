@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type CSSProperties } from 'react';
+import { useCallback, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -47,17 +47,6 @@ export default function Divisions() {
     },
     [openId, reveal],
   );
-
-  // The opening index links to #government and so on: arriving on one opens it.
-  useEffect(() => {
-    const fromHash = () => {
-      const id = window.location.hash.slice(1);
-      if (DIVISIONS.some((d) => d.id === id)) setOpenId(id);
-    };
-    fromHash();
-    window.addEventListener('hashchange', fromHash);
-    return () => window.removeEventListener('hashchange', fromHash);
-  }, []);
 
   return (
     <section id="divisions" className="ds-svc-divisions" aria-labelledby="divisions-title">

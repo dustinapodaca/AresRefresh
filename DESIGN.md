@@ -328,15 +328,17 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   division containers start a short scroll below.
 - **Divisions as containers that open in place** (owner request, 2026-10-05; the one
   exception to "no card containers"): two columns of Framer-style containers (one on
-  phones). Fill `#111317`, a 1px white/6% inset edge, 18px radius, 8px padding, the
-  photo inset at 10px radius (concentric). Closed: photo (2:1), number beside the title,
-  a round + button (36px, white/16% ring), coverage as a muted middle-dot list. The +
-  (or the photo) opens the container in place: it spans both columns, the + turns into
-  an x on an ink disc, and the detail appears (description, Government's GSA ledger
-  row, and each site type as a row with one plain line). Desktop lays the opened
-  container side by side: the photo (4:5, sticky) left, detail right. Opening one closes
-  any other; the index links open their division. Detail is always in the HTML
-  (`hidden` until opened).
+  phones). Fill `#111317`, a 1px white/6% inset edge, 18px radius. The photo always
+  covers the card's full height: closed, it fills the whole card and dissolves into the
+  fill with a mask (solid to 28%, gone by 76%), with the number, title, a round + (36px,
+  white/20% ring over a little card fill), and the coverage list at the foot. All cards
+  start closed. The + (or the photo) opens one in place: it spans both columns, the +
+  turns into an x on an ink disc, and the detail appears (description, Government's GSA
+  ledger row, each site type as a row with one plain line). Desktop opened: the photo
+  fills the left side top to bottom (10px radius, unmasked) beside the detail. Phones and
+  tablets opened: the photo keeps its 22rem framing at the top and the detail continues
+  below the fade. One open at a time. Detail is always in the HTML (`hidden` until
+  opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
