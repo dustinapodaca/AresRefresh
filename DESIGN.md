@@ -327,7 +327,7 @@ body, and the single rust horizon glow at the close.
 - Fixed, 92px desktop / 76px mobile. Transparent over the page at the top (the hero photo
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black
   glass bar fades in (200ms): canvas at 55% over a 20px blur, with a faint white hairline.
-  The mobile running head uses the same glass. With the mobile menu open the bar is solid.
+  The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
   Owner request (2026-10-04); this is the only glass on the site.
 - Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
   centered (Home, About, Services, Careers, Capability Statement; Inter 14px / 400, white,
@@ -386,8 +386,7 @@ Few, fast, and crisp. Four to six moments per page.
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services.
-- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar and running head
-  (owner request).
+- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar (owner request).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and
