@@ -68,11 +68,11 @@ statement PDF exists at /capability-statement *(site)*.
   wordmark `/images/ares-text.svg` *(site)*.
 - Voice: plain, precise, natural. Never AI-sounding copy, no em-dashes, no slogans
   *(owner)*. Not luxury, not startup-playful *(brief)*.
-- Visual direction: **open** for the home-redesign-b pass (owner, 2026-10-04: start fresh
+- Visual direction: **open** for the redesign-b-fresh pass (owner, 2026-10-04: start fresh
   from the original Home, and redesign the nav and footer with it; the chosen style then
   rolls out to the rest of the site). Earlier passes were dark only with a Framer-style
   DESIGN.md and a spec-sheet treatment of contract numbers in a monospace face; that work
-  is saved as option-a-flow and is reference, not a constraint.
+  is saved as Option A (branch redesign-a-framer, tag home-v08-framer-flow-final) and is reference, not a constraint.
 
 ## Evidence on Hand
 
