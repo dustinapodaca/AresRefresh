@@ -92,14 +92,14 @@ export default function Header() {
               <li>
                 <NavLink to="/" end className="ds-sheet-link">
                   Home
-                  <Arrow size={20} />
+                  <Arrow size={18} />
                 </NavLink>
               </li>
               {NAV.map((item) => (
                 <li key={item.to}>
                   <NavLink to={item.to} className="ds-sheet-link">
                     {item.label}
-                    <Arrow size={20} />
+                    <Arrow size={18} />
                   </NavLink>
                 </li>
               ))}
