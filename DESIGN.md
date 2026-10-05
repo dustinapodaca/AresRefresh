@@ -269,6 +269,8 @@ body, and the single rust horizon glow at the close.
 - **Quiet:** text in ink with the standard underline and an arrow; no box. Used for every
   secondary action (call, download, view on eLibrary).
 - Press: `scale(0.98)` over 140ms. Mobile stacks run full width.
+- **Pill (nav and menu only):** the v08 pill, white, full radius, hover `#e9e9e9`, presses to
+  `scale(0.97)`. Buttons on the page stay rectangular.
 
 ### Ledger (the proof table)
 - A `<dl>`-style table on hairline rows. Three columns on desktop: label (Inter,
@@ -321,11 +323,16 @@ body, and the single rust horizon glow at the close.
   centered** on the screen, with its label and contract link left-aligned.
 
 ### Header
-- Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
-  Ares mark alone in white (44px desktop, 32px mobile; no wordmark). Right: nav links (Inter 14px / 400, ink muted, ink when
-  current), the phone number in mono (wide screens only), and the primary button.
-- Mobile: the mark, plus a "Menu" button with two lines. The menu is a solid
-  canvas sheet with links at display-md on hairline rows and the contact block below.
+- Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
+- Fixed, 92px desktop / 76px mobile. Transparent over the page at the top (the hero photo
+  runs up behind it, darkened at the top edge); a solid canvas bar with a hairline fades
+  in (200ms) once the page scrolls or the mobile menu opens.
+- Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
+  centered (Home, About, Services, Careers, Capability Statement; Inter 14px / 400, white,
+  with a 1px underline that draws in on hover and stays under the current page), and a
+  white pill "Request a Quote" with an arrow on the right. No phone number in the bar.
+- Mobile: the mark (44px) and a three-line menu icon that turns into an X. The menu is a
+  solid canvas sheet with 20px links on hairline rows, the phone and email, and the pill.
 
 ### Footer
 - Same canvas, no top rule. Columns for the company (About Us, Services, Careers),
@@ -386,6 +393,6 @@ Few, fast, and crisp. Four to six moments per page.
 - **Bracketed eyebrows:** no `[ LABEL ]`, no tracked uppercase kickers above headings.
 - **Icon-circle grids:** no rows of icons in circles or squares with captions.
 - **Uniform spacing:** no single repeated section padding; every gap is chosen.
-- No pills, no gradient text, no glow shadows, no blue accent, no bounce or elastic
+- No pills outside the nav (the v08 pill is the one exception), no gradient text, no glow shadows, no blue accent, no bounce or elastic
   easing, no entrance that starts from opacity 0.
 - No invented statistics, clients, logos, quotes, staff counts, or response times.
