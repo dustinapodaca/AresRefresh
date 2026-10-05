@@ -45,7 +45,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
       { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
     ],
-    photo: { src: '/images/matrix-airport.jpg', width: 1200, height: 627 },
+    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
   },
   {
     id: 'commercial',
