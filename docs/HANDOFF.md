@@ -7,7 +7,7 @@ Last updated: 2026-10-04 (end of day). Read this first when starting a new chat.
 - **Repo:** `/Users/dustinapodaca/Code/git/AresClaude/ares-security/project/react`
   (origin `github.com/dustinapodaca/AresRefresh`). Open Claude Code **on this folder**
   (not on AresClaude/), or the project skills and Playwright MCP won't load.
-- **Branch:** `redesign-b-fresh`. HEAD is `724efba`, pushed. Tag `home-v11-dossier` points
+- **Branch:** `redesign-b-fresh`. HEAD is `228c121` (this note; last UI commit `724efba`), pushed. Tag `home-v11-dossier` points
   at the same commit (pushed with `--force` because it moves with each refinement).
 - **What's done:** a clean-slate Home, plus a restyled Header and Footer (both site-wide),
   built from a new DESIGN.md. The owner has been refining it item by item and is happy with
