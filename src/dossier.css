@@ -616,6 +616,13 @@ body:has(.ds-page) {
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 767px) { .ds-figure-num { font-size: 30vw; } }
+/* Mobile: the quote and the hero's GSA line sit to the right, right-aligned, echoing the
+   desktop layout where both live in the right-hand columns. */
+@media (max-width: 767px) {
+  .ds-proof-close .ds-quote { margin-left: auto; max-width: 86%; text-align: right; }
+  .ds-quote blockquote p { text-indent: 0; }
+  .ds-hero-gsa { justify-content: flex-end; margin-left: auto; text-align: right; }
+}
 .ds-figure-note p + p { margin-top: 10px; }
 .ds-figure-note .ds-title { font-size: 18px; line-height: 1.45; font-weight: 400; letter-spacing: 0; }
 .ds-quote { margin: var(--ds-beat-tight) 0 0; }

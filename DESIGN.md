@@ -315,6 +315,8 @@ body, and the single rust horizon glow at the close.
 - **Ledger groups fold** (below 768px) behind tappable rows showing the group name, the
   entry count, and a chevron. The four key identifiers stay visible above them.
 - **The figure grows** to 30vw so it reads as a visual, not a line of text.
+- **The pull quote and the hero's GSA line sit right** (flush to the right edge,
+  right-aligned), echoing the desktop layout where both live in the right-hand columns.
 
 ### Header
 - Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
