@@ -238,6 +238,10 @@ line.
 - Playwright MCP can only write inside the project or `.playwright-mcp/` (gitignored).
   Vite hot reload can briefly serve stale CSS; re-shoot if a screenshot doesn't reflect an
   edit.
+- **Netlify build:** `npm run build` now runs `puppeteer browsers install chrome` before the
+  prerender (commit `20ab703`). Netlify restores node_modules from cache, which skips
+  Puppeteer's own Chrome download, and the browser cache wasn't kept, so prerender failed
+  with "Could not find Chrome". The install step is a no-op when Chrome is cached.
 - Exactly one `<h1>` per page (`check:seo` enforces this). Header and footer use no h1.
 - The Impeccable detector:
   `.claude/skills/impeccable/scripts/impeccable detect --json src/pages/Home.tsx src/components/home src/components/Header.tsx src/components/Footer.tsx`
