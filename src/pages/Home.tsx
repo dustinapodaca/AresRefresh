@@ -199,9 +199,6 @@ export default function Home() {
               <p className="mt-8 max-w-[34rem] text-[18px] leading-[1.5] tracking-[-0.01em] text-white/80">
                 A minority woman-owned, employee-focused firm serving Colorado Springs, Denver, and Pueblo since 2021.
               </p>
-              <div className="mt-9">
-                <Link to="/capability-statement" className={PILL_PRIMARY}>Capability Statement</Link>
-              </div>
             </div>
             <a
               href={GSA_ELIBRARY_URL}
