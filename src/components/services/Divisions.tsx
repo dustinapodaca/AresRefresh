@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -85,7 +85,9 @@ export default function Divisions() {
               id={d.id}
               className="ds-svc-card"
               data-open={open}
+              data-col={i % 2 ? 'right' : 'left'}
               aria-labelledby={`${d.id}-title`}
+              style={{ '--o': i * 2 } as CSSProperties}
             >
               <div
                 className="ds-svc-card-media"

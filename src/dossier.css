@@ -1133,6 +1133,10 @@ body:has(.ds-page) {
 
 @media (min-width: 768px) {
   .ds-svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  /* Two columns: a right-hand card opens in its own row; its left-hand row-mate moves
+     down beneath it, rather than the opened card dropping to the next row. */
+  .ds-svc-card { order: var(--o); }
+  .ds-svc-card[data-open='true'][data-col='right'] { order: calc(var(--o) - 3); }
   .ds-svc-card-head button { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: 8px; }
   .ds-svc-covers,
   .ds-svc-detail { margin-left: calc(2.25rem + 8px); }

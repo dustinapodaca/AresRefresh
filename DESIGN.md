@@ -337,7 +337,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   ledger row, each site type as a row with one plain line). Desktop opened: the photo
   fills the left side top to bottom (10px radius, unmasked) beside the detail. Phones and
   tablets opened: the photo keeps its 22rem framing at the top and the detail continues
-  below the fade. One card is open at a time. On phones the opened card glides to the
+  below the fade. One card is open at a time. In two columns an opened card keeps its row: a
+  right-hand card moves ahead of its row-mate, which drops beneath it. On phones the opened card glides to the
   top of the screen, just under the nav and running head. Detail is always in the HTML (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
