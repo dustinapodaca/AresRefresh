@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
 
+export type Mark = { id: string; n: string; label: string };
+
 // The running document marks. These are the only section numbers on the page.
-export const MARKS = [
+// Home uses these; other pages pass their own.
+export const MARKS: readonly Mark[] = [
   { id: 'verify', n: '01', label: 'Verify' },
   { id: 'staffing', n: '02', label: 'Staffing' },
   { id: 'coverage', n: '03', label: 'Coverage' },
   { id: 'careers', n: '04', label: 'Careers' },
   { id: 'contact', n: '05', label: 'Contact' },
-] as const;
+];
 
 // The current section is the last one whose top has passed 35% of the viewport.
 // Null while the reader is still in the hero.
-function useActiveSection() {
+function useActiveSection(marks: readonly Mark[]) {
   const [active, setActive] = useState<string | null>(null);
   useEffect(() => {
     let frame = 0;
@@ -19,7 +22,7 @@ function useActiveSection() {
       frame = 0;
       const line = window.innerHeight * 0.35;
       let current: string | null = null;
-      for (const m of MARKS) {
+      for (const m of marks) {
         const el = document.getElementById(m.id);
         if (el && el.getBoundingClientRect().top <= line) current = m.id;
       }
@@ -36,13 +39,14 @@ function useActiveSection() {
       window.removeEventListener('resize', onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [marks]);
   return active;
 }
 
-export default function DocRail() {
-  const active = useActiveSection();
-  const current = MARKS.find((m) => m.id === active);
+export default function DocRail({ marks = MARKS }: { marks?: readonly Mark[] }) {
+  const active = useActiveSection(marks);
+  const current = marks.find((m) => m.id === active);
+  const total = String(marks.length).padStart(2, '0');
 
   return (
     <>
@@ -51,7 +55,7 @@ export default function DocRail() {
           <div className="ds-rail-inner">
             <span className="ds-rail-fill" aria-hidden="true" />
             <ol>
-              {MARKS.map((m) => (
+              {marks.map((m) => (
                 <li key={m.id}>
                   <a href={`#${m.id}`} aria-current={active === m.id ? 'location' : undefined}>
                     <span>{m.n}</span>
@@ -68,7 +72,7 @@ export default function DocRail() {
       <div className="ds-runhead" data-visible={Boolean(current)} aria-hidden="true">
         <div className="ds-container">
           <span>{current ? current.label : ''}</span>
-          <span>{current ? `${current.n} / 05` : ''}</span>
+          <span>{current ? `${current.n} / ${total}` : ''}</span>
         </div>
         <span className="ds-runhead-fill" />
       </div>

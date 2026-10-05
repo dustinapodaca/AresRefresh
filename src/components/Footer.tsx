@@ -3,8 +3,8 @@ import { GSA_ELIBRARY } from './home/links';
 
 export default function Footer() {
   const { pathname } = useLocation();
-  // /services and /careers dock a CTA card ~290px into the footer's top edge.
-  const extended = pathname === '/services' || pathname === '/careers';
+  // /careers docks a CTA card ~290px into the footer's top edge.
+  const extended = pathname === '/careers';
 
   return (
     <footer className="ds ds-footer" data-extended={extended}>

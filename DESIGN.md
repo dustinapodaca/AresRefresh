@@ -231,15 +231,17 @@ sizes are unchanged.
 ### The document rail
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
-  01 Verify to 05 Contact. Marks: `01 Verify`, `02 Staffing`, `03 Coverage`,
-  `04 Careers`, `05 Contact`, in mono at 14px.
+  the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
+  `01 Verify`, `02 Staffing`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
+  `01 Divisions`, `02 Process`, `03 Areas`, `04 Contact`.
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
 - These are the only section numbers on the page. Section numbers never appear above
   headlines.
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the
-  current mark (`02 Staffing`) left and a 1px progress line along its bottom edge. It
-  appears once 01 Verify reaches the top and is solid canvas, not glass.
+  current mark (`02 Staffing`) left, its count (`02 / 05`) right, and a 1px progress line
+  along its bottom edge. It appears once the first section reaches the top and is solid
+  canvas, not glass.
 
 ## Elevation & Depth
 
@@ -251,7 +253,9 @@ body, and the single rust horizon glow at the close.
 
 - **Controls:** 2px corners. Buttons are rectangles, never pills or circles.
 - **Photos inside the column:** 4px corners, a 1px hairline edge (inset), and a mono
-  caption line beneath when the photo documents something.
+  caption line beneath when the photo documents something. Stock photographs (the
+  Services division photos) carry no caption and are graded down
+  (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
 - **Hero photo:** square edges, full bleed behind the hero copy on desktop and tablet
@@ -313,6 +317,28 @@ body, and the single rust horizon glow at the close.
   Interstate 25 traced through them. Colorado Springs is marked in rust as HQ with one
   soft rust glow. Sits beside the Coverage headline on desktop, under it on mobile.
 
+### Services page ("The Schedule", 2026-10-05)
+- **Opening (cover page):** no photo. Headline (display-xl) and lead on the left (7
+  columns), a numbered index of the six divisions on the right (4 columns): mono number,
+  Inter 15px / 500 title, and an arrow on hairline rows, each a jump link to its entry.
+  Below 1024px the index sits under the copy.
+- **Division entries:** one per division, opened by a hairline rule that draws in from
+  the left. Desktop: the photo plate in 5 columns (3:2) and the copy in 6, with the plate
+  alternating sides entry to entry and a different gap for every entry. The mono number
+  hangs beside the title on its baseline (never above it), and the body and a
+  two-column "Covers" list line up with the title. Government's GSA contract is a
+  one-row ledger (label, mono value, eLibrary link). Tablet: plate 16:9 above the copy;
+  phones: plate 2:1 and tighter gaps. The source photos are as small as 640px, so plates
+  never run wider than five columns.
+- **Process (the pinned moment):** on desktop the headline and reason hold still
+  (sticky) in columns 1 to 5 while four stages scroll in columns 7 to 12 on a vertical
+  hairline track with 9px square markers. Each stage: the mono number hanging beside an
+  Inter 600 title, a faint Inter scope line under it, then the body. The track fills to the middle of the screen and a
+  marker fills once its stage reaches the middle; stages brighten from 0.8 like the
+  Staffing steps. All text is always visible; nothing folds.
+- **Areas and close:** the Home city list, a hand-off line, then the Denver skyline
+  (`about-banner.jpg`) full bleed, with the Contact close pulled up over its lower fade.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row
@@ -342,7 +368,8 @@ body, and the single rust horizon glow at the close.
 - Same canvas, no top rule. Columns for the company (About Us, Services, Careers),
   service areas, contracting (mono), and contact (mono), then the certification marks
   separated by thin vertical lines and a small legal line. The large "Get to know Ares"
-  index was removed by the owner (2026-10-04).
+  index was removed by the owner (2026-10-04). Only /careers still extends the footer's
+  top padding for a docked card; /services no longer docks one (2026-10-05).
 
 ## Motion
 
@@ -362,6 +389,10 @@ Few, fast, and crisp. Four to six moments per page.
   already there); staffing steps brighten as they cross the middle of the viewport
   (desktop); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
+- **Allowed moments on Services (2026-10-05):** entry rules draw from left to right;
+  each division photo settles from 106% to 100% inside its plate as it enters; the
+  process track and markers fill with scroll; stages brighten (desktop); the Denver
+  photograph opens like Home's full bleed. Plus the index arrow nudge.
 - **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single
   soft pulse ring on the HQ dot, I-25 drawing itself as the map enters, and the swipe
   row's progress bar. The two loops are ambient and stop under reduced motion.

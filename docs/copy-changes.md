@@ -84,3 +84,54 @@ the owner, **N** new framing copy written for the new structure.
 | "GSA #47QSMS25D009Q" | "GSA 47QSMS25D009Q" | Mono value, no symbol |
 | "© 2026 Ares Security LLC. All Rights Reserved." | "© 2026 Ares Security LLC. All rights reserved." | Sentence case |
 | "Get to know Ares" index (About Us, Services, Careers rows with descriptions) | Removed by the owner (2026-10-04); replaced by a plain "Company" column: About Us, Services, Careers | O |
+
+---
+
+# Copy changes (Services, "The Schedule", 2026-10-05)
+
+From `docs/services-content.md` to the new Services page. Facts are unchanged. Same
+reason codes as above.
+
+## Opening
+| Was | Now | Why |
+|---|---|---|
+| Breadcrumb "Home / Services & Process" | Removed (the nav marks the current page) | N |
+| H1 "Services & Process" | "Security officers for six kinds of sites." | N (names the offer and the six divisions below) |
+| "Precise, reliable security solutions for any environment — built on superior detail, outstanding communication, and technical proposals that set the standard." | "Armed, unarmed, and cleared officers for federal, commercial, industrial, and institutional sites in Colorado Springs, Denver, and Pueblo. Find the division closest to your site." | E, S, H (sets up the divisions) |
+| (none) | "Request a quote" button, "Call 719-696-3966", and a numbered index of the six divisions | N |
+
+## 01 Divisions
+| Was | Now | Why |
+|---|---|---|
+| "The Ares Service Matrix" / "What we ship / What the client gets" | "What each division covers." + "Every division is staffed the same way: each officer is trained on your post by someone from our leadership who has worked it." | S, N (the training fact is from PRODUCT.md) |
+| Government: "…DoW-vetted officers — GSA Schedule #47QSMS25D009Q for streamlined procurement, no new competition required." | "Lawful, immediate access to federal and state facilities, with DoW-vetted officers. Agencies can order through our GSA Schedule without opening a new competition." + a ledger row "GSA Multiple Award Schedule / 47QSMS25D009Q / View on GSA eLibrary" | E; the contract number moved to a row you can verify |
+| Airport: "…with professional 24/7 uniformed and plainclothes coverage." | "…with uniformed and plainclothes coverage around the clock." | S |
+| Commercial: "Visible deterrence and loss-prevention that scales…protecting revenue and customer experience." | "Visible deterrence and loss prevention that scales…protecting revenue and the customer experience." | Grammar |
+| Industrial: "24/7 posted guards, mobile patrols, perimeter security, and auditable checkpoint logs." | "Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit." | Plain language |
+| Community: "Tailored, trust-based security for sensitive and community environments where calm presence matters most." | "Trust-based security for sensitive and community settings, where a calm presence matters most." | S (stacked adjectives) |
+| Pill tags (e.g. "Military Bases", "TS/SCI Cleared") | Same items under "Covers", sentence case | Pills are not allowed outside the nav |
+| (none) | Hand-off "Whichever division fits your site, the work starts the same way." | H |
+
+## 02 Process
+| Was | Now | Why |
+|---|---|---|
+| "Four Stages to Deployment" / "Every engagement moves through these four stages" | "Four stages, from site walk to first shift." | S |
+| "Why Our Process Matters" / "How it works" / "Our approach" | Merged into the process section; headings removed | Duplicate section |
+| "Every site is different. Every shift pattern, threat profile, and compliance requirement is unique. Our four-stage process exists because protection that holds up under scrutiny can't be rushed, copied from another contract, or trusted to a stranger on day one." | "Every site has its own shift pattern, threat profile, and compliance requirements. The four stages exist because protection that holds up under scrutiny can't be rushed, copied from another contract, or trusted to a stranger on day one." | S (the two-beat opener read as a slogan) |
+| Stage leads ("We invest time upfront so you don't pay for surprises later.", "Full regulatory alignment from day one.", "Site-specific training by leadership — never a new guard without it.", "Seamless go-live with zero coverage gaps.") | Removed; each stage is its title, scope line, and body | S (taglines; the bodies carry the same facts) |
+| Stage short lines ("We walk the site, document risk, and brief command structure…", etc.) | Removed; the full stage text is shown instead | Duplicate content (the two old sections told the same four stages twice) |
+| Micro labels "Scope · Risk · Site Walk", "Regs · Clearances · SOPs" | "Scope · Risk · Site walk", "Regulations · Clearances · SOPs" | Sentence case; abbreviation spelled out |
+| Phase labels "Pre-Contract / Contract Execution / Operational" | Removed | They spanned a horizontal row; on the vertical track their stage mapping would be a guess |
+| 1: "By walking the site and mapping risks with your team before any contract is signed, we identify vulnerabilities early and build a solution that fits your exact operational needs — preventing costly gaps or changes down the road." | "We walk the site and map risks with your team before any contract is signed. That finds vulnerabilities early and gives you a plan that fits how your site actually runs, without costly gaps or changes down the road." | E, plain language |
+| 2: "We cross-reference every regulation, clearance, and SOP against your specific facility — federal, state, or commercial. This eliminates compliance risk and gives you complete audit confidence from the moment we go live." | "We check every regulation, clearance, and SOP against your facility, whether it is federal, state, or commercial. That removes compliance risk and gives you audit confidence from the moment we go live." | E |
+| 3: "…They learn the unique nuances, entry points, client expectations, and daily rhythms so your protection is consistent and professional from the very first shift." | "…They learn the entry points, client expectations, and daily rhythm of the site, so your coverage is consistent from the first shift." | E, S |
+| 4: "We deploy with full staffing levels and a robust on-call system so there are never lapses — not even for a single shift. Real-time quality assurance, daily reporting, and immediate leadership support ensure smooth operations and total peace of mind." | "We deploy at full staffing with an on-call system behind every post, so a shift is never left open. Real-time quality checks, daily reporting, and immediate support from leadership keep operations running smoothly." | E, S ("total peace of mind" dropped) |
+| (none) | Hand-off "The same four stages run at every post, in every city we cover." | H |
+
+## 03 Areas and close
+| Was | Now | Why |
+|---|---|---|
+| "Where We Work" band with uppercase city links | "Where we work." + the three city rows from Home (Headquarters / Service area) | Same links, Dossier list style |
+| (none) | Hand-off "Wherever your site is, the first step is a quote request or a call." | H |
+| "Personnel in Action" / "Discipline · Vigilance · Professionalism in the Field" banner | Removed; its Denver photo now runs full bleed into the close | S (slogan, bracketed eyebrow) |
+| (none) | The Home close: "Request a quote, or call us.", phone, email, base, buttons | Reused |

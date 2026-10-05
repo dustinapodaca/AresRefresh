@@ -12,7 +12,11 @@ Last updated: 2026-10-04 (end of day). Read this first when starting a new chat.
 - **What's done:** a clean-slate Home, plus a restyled Header and Footer (both site-wide),
   built from a new DESIGN.md. The owner has been refining it item by item and is happy with
   the direction.
-- **Not done yet:** rolling this style out to the other pages (About, Services, Careers,
+- **Services is done** (2026-10-05, Concept A "The Schedule"): see docs/services-content.md,
+  docs/services-inspiration.md, docs/services-concepts.md, `src/components/services/`, the
+  SERVICES block in `src/dossier.css`, and the Services section of DESIGN.md. DocRail now
+  takes per-page `marks`.
+- **Not done yet:** rolling this style out to the remaining pages (About, Careers,
   Contact, Capability Statement, the three location pages, 404). They still use the old
   light "Moonstone" styles under the new dark header and footer.
 - **Live site branches** (`main`, `seo`, `edit`) are untouched.

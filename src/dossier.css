@@ -327,7 +327,7 @@ body:has(.ds-page) {
   padding-top: var(--ds-beat-tight);
   padding-bottom: 28px;
 }
-/* /services and /careers dock a card ~290px into the footer (see those pages). */
+/* /careers docks a card ~290px into the footer (see that page). */
 .ds-footer[data-extended='true'] { padding-top: calc(290px + var(--ds-beat-tight)); }
 .ds-footer-cols {
   display: grid;
@@ -397,9 +397,11 @@ body:has(.ds-page) {
   color: var(--ds-fg-muted);
   font-family: var(--ds-text);
 }
-.ds-page section[id] { scroll-margin-top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
+.ds-page section[id],
+.ds-page article[id] { scroll-margin-top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
 @media (min-width: 1200px) {
-  .ds-page section[id] { scroll-margin-top: calc(var(--ds-header) + 24px); }
+  .ds-page section[id],
+  .ds-page article[id] { scroll-margin-top: calc(var(--ds-header) + 24px); }
 }
 
 /* ---------- Hero ---------- */
@@ -923,6 +925,222 @@ body:has(.ds-page) {
 }
 
 /* ============================================================
+   SERVICES ("The Schedule", docs/services-concepts.md)
+   ============================================================ */
+
+/* ---------- Opening: headline left, the contents (six divisions) right ---------- */
+.ds-svc-open { padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+.ds-svc-open-grid { display: grid; gap: var(--ds-beat-tight); }
+.ds-svc-open-copy .ds-lead { margin-top: 24px; }
+.ds-svc-open-copy .ds-actions { margin-top: 32px; }
+.ds-svc-index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-svc-index li { border-bottom: 1px solid var(--ds-rule); }
+.ds-svc-index a {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ds-fg);
+}
+.ds-svc-index a:hover { color: var(--ds-fg); }
+.ds-svc-index .ds-data { font-size: 13px; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+.ds-svc-index .ds-arrow { color: var(--ds-fg-faint); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-svc-index a:hover .ds-data,
+  .ds-svc-index a:hover .ds-arrow { color: var(--ds-fg); }
+  .ds-svc-index a:hover .ds-arrow { transform: translateX(3px); }
+}
+@media (min-width: 1024px) {
+  .ds-svc-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  /* The index's top rule sits level with the headline's cap height. */
+  .ds-svc-open-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-svc-open-copy { grid-column: 1 / span 6; }
+  .ds-svc-index { grid-column: 7 / span 6; margin-top: 0.6rem; }
+}
+@media (min-width: 1200px) {
+  .ds-svc-open-copy { grid-column: 1 / span 7; }
+  .ds-svc-index { grid-column: 9 / span 4; }
+}
+
+/* ---------- 01 Divisions ---------- */
+.ds-svc-divisions { padding-top: var(--ds-beat); }
+.ds-svc-head { display: grid; gap: 20px; }
+@media (min-width: 1024px) {
+  .ds-svc-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-svc-head h2 { grid-column: 1 / span 6; }
+  .ds-svc-head p { grid-column: 7 / span 6; }
+}
+.ds-svc-entries { margin-top: var(--ds-beat-tight); }
+.ds-svc-entry {
+  position: relative;
+  view-timeline: --ds-entry block;
+  display: grid;
+  gap: 24px;
+  padding: 20px 0 40px;
+}
+/* The entry's rule draws in from the left as it arrives (the text is already there). */
+.ds-svc-entry::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ds-rule);
+  transform-origin: left;
+}
+.ds-svc-plate { overflow: clip; border-radius: 4px; }
+.ds-svc-plate img {
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  /* Stock photographs graded down to sit on the canvas with the rest of the file. */
+  filter: saturate(0.78) brightness(0.84) contrast(1.04);
+}
+.ds-svc-title-row { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); align-items: baseline; gap: 0 6px; }
+@media (min-width: 768px) { .ds-svc-title-row { grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0 8px; } }
+/* From tablet up the number hangs in its own column and the text below lines up with
+   the title; on phones the text keeps the full width. */
+@media (min-width: 768px) {
+  .ds-svc-entry-copy > :not(.ds-svc-title-row),
+  .ds-svc-stage > :not(.ds-svc-title-row, .ds-svc-marker) { margin-left: calc(2.25rem + 8px); }
+}
+.ds-svc-n { font-size: 13px; color: var(--ds-fg-faint); }
+.ds-svc-title {
+  margin: 0;
+  font-family: var(--ds-text);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ds-fg);
+  text-wrap: balance;
+}
+.ds-svc-entry-copy .ds-body { margin-top: 14px; }
+/* Government's one proof, set as a ledger row: label, mono value, verification route. */
+.ds-svc-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin: 22px 0 0;
+  padding: 14px 0;
+  border-block: 1px solid var(--ds-rule);
+}
+.ds-svc-proof dt { grid-column: 1 / -1; font-size: 14px; color: var(--ds-fg-muted); }
+.ds-svc-proof dd { margin: 0; }
+.ds-svc-proof dd.ds-data { font-size: 17px; }
+.ds-svc-proof .ds-link { font-size: 14px; justify-self: end; }
+.ds-svc-covers { margin-top: 28px; }
+.ds-svc-covers h4 { margin: 0 0 4px; font-size: 13px; font-weight: 400; color: var(--ds-fg-faint); }
+.ds-svc-covers ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ds-svc-covers li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--ds-rule);
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ds-fg);
+}
+@media (min-width: 768px) {
+  .ds-svc-covers ul { column-gap: 24px; }
+  .ds-svc-entry { padding: 28px 0 48px; }
+  .ds-svc-plate img { aspect-ratio: 16 / 9; }
+}
+@media (min-width: 1024px) {
+  .ds-svc-entry { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-svc-plate { grid-column: 1 / span 5; grid-row: 1; }
+  .ds-svc-plate img { aspect-ratio: 3 / 2; }
+  .ds-svc-entry-copy { grid-column: 7 / span 6; grid-row: 1; }
+  /* Plates alternate sides so the six entries read as a run, not a stamp. */
+  .ds-svc-entry:nth-child(even) .ds-svc-plate { grid-column: 8 / span 5; }
+  .ds-svc-entry:nth-child(even) .ds-svc-entry-copy { grid-column: 1 / span 6; }
+  /* Every gap is chosen: no two neighbouring entries share one. */
+  .ds-svc-entry:nth-child(1) { padding: 36px 0 72px; }
+  .ds-svc-entry:nth-child(2) { padding: 32px 0 56px; }
+  .ds-svc-entry:nth-child(3) { padding: 40px 0 88px; }
+  .ds-svc-entry:nth-child(4) { padding: 28px 0 64px; }
+  .ds-svc-entry:nth-child(5) { padding: 44px 0 72px; }
+  .ds-svc-entry:nth-child(6) { padding: 32px 0 56px; }
+  .ds-svc-title { font-size: 28px; }
+}
+.ds-svc-divisions .ds-handoff { margin-top: var(--ds-beat-tight); }
+
+/* ---------- 02 Process (the pinned moment) ---------- */
+.ds-svc-process { padding-top: var(--ds-beat-open); }
+.ds-svc-process-head .ds-lead { margin-top: 24px; }
+.ds-svc-process-grid { display: grid; gap: var(--ds-beat-tight); }
+.ds-svc-track { position: relative; view-timeline: --ds-track block; padding-left: 36px; }
+/* The track and its fill run from the first marker to the last. */
+.ds-svc-track::before,
+.ds-svc-track-fill {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: var(--ds-rule-strong);
+}
+.ds-svc-track-fill { display: none; background: var(--ds-fg-faint); transform-origin: top; }
+.ds-svc-stages { list-style: none; margin: 0; padding: 0; }
+.ds-svc-stage { position: relative; view-timeline: --ds-stage block; padding-bottom: 48px; }
+.ds-svc-stage:last-child { padding-bottom: 0; }
+.ds-svc-marker {
+  position: absolute;
+  left: -36px;
+  top: 10px;
+  width: 9px;
+  height: 9px;
+  background: var(--ds-canvas);
+  box-shadow: inset 0 0 0 1px var(--ds-fg-faint);
+}
+.ds-svc-stage-title {
+  margin: 0;
+  font-family: var(--ds-text);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ds-fg);
+}
+.ds-svc-stage-tags { margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); }
+.ds-svc-stage .ds-body { margin-top: 14px; font-size: 17px; }
+.ds-svc-process .ds-handoff { margin-top: var(--ds-beat-tight); }
+@media (min-width: 1024px) {
+  .ds-svc-process-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .ds-svc-process-head { grid-column: 1 / span 5; }
+  /* The headline and the reason hold still while the stages scroll past. */
+  .ds-svc-process-pin { position: sticky; top: calc(var(--ds-header) + 48px); }
+  .ds-svc-track { grid-column: 7 / span 6; }
+  .ds-svc-stage { min-height: 34svh; padding-bottom: 64px; }
+  .ds-svc-stage-title { font-size: 28px; }
+  .ds-svc-marker { top: 13px; }
+}
+
+/* ---------- 03 Areas, the Denver photograph, and the close ---------- */
+.ds-svc-areas { padding-top: var(--ds-beat); }
+.ds-svc-areas .ds-handoff { margin-top: var(--ds-beat-tight); }
+.ds-svc-bleed { margin-right: 0; margin-bottom: 0; margin-top: var(--ds-beat-tight); }
+.ds-svc-bleed img { object-position: 50% 58%; }
+.ds-svc .ds-contact {
+  z-index: 1;
+  margin-top: calc(-1 * clamp(7rem, 20svh, 12rem));
+  padding-top: 0;
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
@@ -937,6 +1155,8 @@ body:has(.ds-page) {
 @keyframes ds-route { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
 @keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes ds-plate { from { transform: scale(1.06); } to { transform: scale(1); } }
+@keyframes ds-mark-on { from { background: var(--ds-canvas); } to { background: var(--ds-fg); } }
 /* Floor of 0.8 keeps dimmed body copy above 4.5:1 on the canvas (AA). */
 @keyframes ds-step {
   0%   { opacity: 0.8; }
@@ -966,6 +1186,24 @@ body:has(.ds-page) {
       animation: ds-open linear both;
       animation-timeline: --ds-bleed;
       animation-range: entry 0% contain 0%;
+    }
+    /* Services: entry rules draw in; each plate's photo settles inside its frame. */
+    .ds-svc-entry::before {
+      animation: ds-draw linear both;
+      animation-timeline: --ds-entry;
+      animation-range: entry 0% entry 60%;
+    }
+    .ds-svc-plate img {
+      animation: ds-plate linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+    .ds-svc-stage > :not(.ds-svc-marker) {
+      animation: ds-step linear both;
+      animation-timeline: --ds-stage;
+      animation-range: cover 0% cover 100%;
     }
   }
   @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
@@ -1004,6 +1242,19 @@ body:has(.ds-page) {
     animation-timeline: --ds-doc;
     animation-range: contain 0% contain 100%;
   }
+  /* Services process: the track fills to the middle of the screen, and each marker
+     fills once its stage reaches the middle. Position, not motion. */
+  .ds-svc-track-fill {
+    display: block;
+    animation: ds-fill-y linear both;
+    animation-timeline: --ds-track;
+    animation-range: cover 50vh cover calc(100% - 50vh);
+  }
+  .ds-svc-marker {
+    animation: ds-mark-on linear both;
+    animation-timeline: view();
+    animation-range: cover 50vh cover calc(50vh + 1px);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1025,6 +1276,9 @@ body:has(.ds-page) {
   .ds-runhead,
   .ds-rail a::before,
   .ds-arrow,
-  .ds-btn { transition-duration: 0s; }
-  .ds-btn:active { transform: none; }
+  .ds-btn,
+  .ds-svc-index .ds-arrow,
+  .ds-svc-index .ds-data { transition-duration: 0s; }
+  .ds-btn:active,
+  .ds-svc-index a:hover .ds-arrow { transform: none; }
 }
