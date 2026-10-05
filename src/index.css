@@ -595,13 +595,10 @@ image-slot[data-fill='true'] {
 .site_footer.is-dark .socials a { color: rgba(250,250,249,.65); }
 .site_footer.is-dark .socials a:hover { color: var(--color-paper); }
 
-/* Credentials strip — hairline card */
+/* Credentials strip — logos on the canvas, hairline separators only */
 .footer_creds {
-  list-style: none; margin: 24px 0 28px; padding: 24px 28px;
+  list-style: none; margin: 24px 0 28px; padding: 24px 0;
   display: flex; align-items: center; gap: 24px;
-  background: var(--color-card);
-  border: 1px solid var(--color-hairline);
-  border-radius: 8px;
 }
 .footer_creds_item { flex: 1 1 0; display: flex; align-items: center; justify-content: center; min-width: 0; }
 .footer_creds_item img { display: block; height: 38px; width: auto; max-width: 100%; filter: grayscale(1) brightness(0) invert(1); opacity: .72; }
@@ -609,7 +606,7 @@ image-slot[data-fill='true'] {
 .footer_creds_sep { flex: 0 0 auto; height: 36px; width: 1px; background: var(--color-hairline); display: block; }
 
 @media (max-width: 991px) {
-  .site_footer.is-dark .footer_creds { padding: 12px 32px; margin: 16px 0 24px; gap: 18px; }
+  .site_footer.is-dark .footer_creds { padding: 12px 0; margin: 16px 0 24px; gap: 18px; }
   .footer_creds_item img { height: 32px; }
   .footer_creds_sep { height: 28px; }
 }
@@ -619,15 +616,30 @@ image-slot[data-fill='true'] {
   .site_footer.is-dark .footer_creds {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 16px;
-    row-gap: 20px;
-    padding: 22px 24px;
-    border-radius: 8px;
+    gap: 0;
+    padding: 0;
+    position: relative;
   }
-  /* Separators don't fit a 2x2 layout — hide them. */
+  /* A centered cross between the four cells: the 2x2 version of the
+     desktop separators. Drawn on the container so it never touches the
+     outer edges. */
+  .site_footer.is-dark .footer_creds::before,
+  .site_footer.is-dark .footer_creds::after {
+    content: '';
+    position: absolute;
+    background: var(--color-hairline);
+    pointer-events: none;
+  }
+  .site_footer.is-dark .footer_creds::before { left: 50%; top: 14px; bottom: 14px; width: 1px; }
+  .site_footer.is-dark .footer_creds::after { top: 50%; left: 12px; right: 12px; height: 1px; }
+  /* The inline separators don't fit a 2x2 layout; the grid gaps replace them. */
   .site_footer.is-dark .footer_creds_sep { display: none; }
   /* Each cell self-centers and lets the logo render at a more legible size. */
-  .site_footer.is-dark .footer_creds_item { flex: none; min-height: 44px; }
+  .site_footer.is-dark .footer_creds_item {
+    flex: none;
+    min-height: 44px;
+    padding: 20px 12px;
+  }
   /* max-height + height:auto so wide logos (e.g. GSA) scale proportionally
      when they hit the cell-width cap, instead of getting squished by an
      explicit `height` combined with `max-width: 100%`. */
