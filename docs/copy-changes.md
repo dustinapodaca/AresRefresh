@@ -134,3 +134,39 @@ reason codes as above.
 | "Where We Work" band with uppercase city links | "Where we post officers." + a three-city strip (Headquarters / Service area) under the Denver photo, captioned "Denver and the Front Range" | Same links; H |
 | "Personnel in Action" / "Discipline · Vigilance · Professionalism in the Field" banner | Removed; its Denver photo moved to Areas | S (slogan, bracketed eyebrow) |
 | (none) | Close "Tell us about your site." / "We start with a walk of your site, before anything is signed." + phone, email, quote button, capability statement | N, from stage 1 (the site walk comes before any contract) |
+
+## Division detail lines (DRAFT, 2026-10-05, owner to review)
+
+Written for the open-in-place containers, one line per site type, from facts already on
+the site (division bodies, the four stages, PRODUCT.md). No new numbers, clients, or
+certifications. Source: `src/components/services/data.ts`.
+
+| Site type | Draft line | Built from |
+|---|---|---|
+| Military bases | DoW-vetted officers, each trained on the post by a member of our leadership who has worked it. | Government body; stage 3 |
+| Courthouses | Uniformed officers for entrances and public areas, working to the court's post orders. | Stage 3 (post orders); Airport body (uniformed) |
+| Federal buildings | Agencies can order through our GSA Schedule without opening a new competition. | Government body |
+| State agencies | The same staffing, training, and on-call standard as our federal posts. | Stages 3, 4 |
+| TS/SCI cleared | Cleared officers for posts that require a clearance, matched during compliance mapping. | Stage 2; **confirm TS/SCI** |
+| Airports | Perimeter, passenger-area, baggage, and cargo coverage around the clock. | Airport body |
+| Transportation hubs | Uniformed or plainclothes officers, depending on what the site needs. | Airport body |
+| Aviation facilities | Perimeter protection and cargo-area coverage, staffed on every shift. | Airport body; stage 4 |
+| Retail | Visible deterrence and loss prevention on the sales floor. | Commercial body |
+| Banks | Officers for cash-handling and high-liability settings. | Specialized body |
+| Hotels | A presence that protects guests without getting in the way of their stay. | Commercial body (customer experience) |
+| Malls | Coverage that scales with foot traffic across shared spaces. | Commercial body |
+| Grocery | Loss prevention that protects revenue and the customer experience. | Commercial body |
+| Industrial sites | Posted guards around the clock, with checkpoint logs you can audit. | Industrial body |
+| Warehouses | Mobile patrols and perimeter security for buildings and yards. | Industrial body |
+| Construction | Perimeter security and mobile patrols while the site is being built. | Industrial body |
+| Critical infrastructure | Posted guards and auditable checkpoint logs where access must be documented. | Industrial body |
+| Armed asset protection | Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor. | Specialized body; PRODUCT.md (veteran NRA instructor). **Confirm the instructor qualifies armed officers** |
+| High-risk environments | Armed officers for regulated or high-liability sites. | Specialized body |
+| Data centers | Access control and checkpoint logs for controlled areas. | Industrial body (checkpoint logs); **confirm access control is offered** (it is in the /services SEO description) |
+| Hospitals | A calm presence at entrances and in public areas. | Community body |
+| Schools | Officers trained on the campus, its entry points, and its daily rhythm. | Stage 3 |
+| Museums | Officers for galleries and public areas, briefed on the building and its entry points. | Stage 3 |
+| Places of worship | A calm, respectful presence during services and events. | Community body; **confirm event coverage** (event security is in the /services SEO description) |
+| Residential & retirement | Consistent officers residents can get to know. | Stage 3 (consistent from the first shift) |
+
+Also: the Divisions intro gains "Open one to see where we post." (N, explains the +).

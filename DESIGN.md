@@ -321,16 +321,21 @@ body, and the single rust horizon glow at the close.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead and actions beside it, then
-  the street photograph (`capabilities-hero.jpg`) as a full-bleed band (masked into the
-  canvas at both ends, graded down, drifting slightly as it leaves). The six-division index
-  (mono number, Inter 15px / 500, arrow, on hairline-strong tops) sits over the band's
-  lower fade: three columns on desktop, two on tablet, one on phones.
-- **Divisions as a schedule of services:** one ruled row per division, like contract line
-  items. Desktop columns: name (4) with the number hanging beside it on the baseline and
-  the coverage as a muted middle-dot list beneath; description (4), where Government adds
-  its GSA ledger row; the photo (4, 3:2) as a small exhibit. Tablet: name and description
-  left, photo right. Phones: photo (2:1) first. Plates stay small because the source
-  files are as small as 640px.
+  the street photograph (`capabilities-hero.jpg`) as a full-bleed band anchored to its
+  bottom edge (street level), masked into the canvas at both ends, graded down, drifting
+  slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
+  division containers start a short scroll below.
+- **Divisions as containers that open in place** (owner request, 2026-10-05; the one
+  exception to "no card containers"): two columns of Framer-style containers (one on
+  phones). Fill `#111317`, a 1px white/6% inset edge, 18px radius, 8px padding, the
+  photo inset at 10px radius (concentric). Closed: photo (2:1), number beside the title,
+  a round + button (36px, white/16% ring), coverage as a muted middle-dot list. The +
+  (or the photo) opens the container in place: it spans both columns, the + turns into
+  an x on an ink disc, and the detail appears (description, Government's GSA ledger
+  row, and each site type as a row with one plain line). Desktop lays the opened
+  container side by side: the photo (4:5, sticky) left, detail right. Opening one closes
+  any other; the index links open their division. Detail is always in the HTML
+  (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
@@ -392,8 +397,13 @@ Few, fast, and crisp. Four to six moments per page.
   (desktop); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
 - **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
-  line-item rules draw from left to right; each photo settles from 106% to 100% inside
-  its frame; the stage bars draw along the axis. Plus the index and city arrow nudges.
+  the stage bars draw along the axis; the Denver photo settles inside its frame. The
+  division containers open with a View Transitions morph (300ms, drawer curve
+  `cubic-bezier(0.32, 0.72, 0, 1)`): containers and photos glide to their new boxes,
+  photos crop rather than stretch, and only the opening container's text crossfades
+  (out 120ms, in 180ms after 110ms). The + rotates into an x (220ms). Under reduced
+  motion, or without View Transitions, it opens instantly. Plus the index and city
+  arrow nudges.
 - **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single
   soft pulse ring on the HQ dot, I-25 drawing itself as the map enters, and the swipe
   row's progress bar. The two loops are ambient and stop under reduced motion.

@@ -937,7 +937,7 @@ body:has(.ds-page) {
 @media (min-width: 768px) { .ds-svc-title-row { grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0 8px; } }
 .ds-svc-intro { margin-top: 20px; }
 
-/* ---------- Opening: headline, the street band, the contents over its fade ---------- */
+/* ---------- Opening: headline, then the street band ---------- */
 .ds-svc-open { position: relative; isolation: isolate; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
 .ds-svc-open-head { display: grid; gap: 24px; }
 .ds-svc-open-side .ds-actions { margin-top: 28px; }
@@ -969,111 +969,181 @@ body:has(.ds-page) {
   object-position: 50% 100%;
   filter: saturate(0.85) brightness(0.74);
 }
-.ds-svc-index { position: relative; margin-top: calc(-1 * clamp(3.5rem, 10svh, 6rem)); }
-.ds-svc-index ol { display: grid; list-style: none; margin: 0; padding: 0; }
-/* Translucent white, not the canvas hairline: these rules sit on the photograph. */
-.ds-svc-index li { border-top: 1px solid rgb(255 255 255 / 0.2); }
-.ds-svc-index a {
+/* ---------- 01 Divisions: Framer-style containers that open in place ----------
+   Owner request (2026-10-05): two columns of containers with a + that opens each one.
+   The only filled containers on the site. A step lighter than the canvas, a faint white
+   edge, 18px outer radius; the photo is inset with a concentric 10px radius. */
+.ds-svc-divisions { padding-top: var(--ds-beat-tight); }
+.ds-svc-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: var(--ds-beat-tight);
+  /* An opened card spans the row; the next card moves up to fill the gap. */
+  grid-auto-flow: row dense;
+}
+.ds-svc-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  padding: 8px;
+  border-radius: 18px;
+  background: #111317;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  transition: background-color 180ms var(--ds-ease);
+  view-transition-class: svc-card;
+}
+.ds-svc-card[data-open='true'] { background: #13161b; grid-column: 1 / -1; }
+.ds-svc-card-media {
+  position: relative;
+  overflow: clip;
+  border-radius: 10px;
+  cursor: pointer;
+  view-transition-class: svc-media;
+}
+.ds-svc-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  /* Stock photographs graded down to sit on the canvas with the rest of the file. */
+  filter: saturate(0.78) brightness(0.84) contrast(1.04);
+  transition: filter 220ms var(--ds-ease);
+}
+.ds-svc-card[data-open='true'] .ds-svc-card-media img { filter: saturate(0.9) brightness(0.92); }
+.ds-svc-card-text { padding: 6px 10px 12px; view-transition-class: svc-text; }
+.ds-svc-card[data-morph] .ds-svc-card-text { view-transition-class: svc-text svc-morph; }
+.ds-svc-card-head { margin: 0; }
+.ds-svc-card-head button {
   display: grid;
   grid-template-columns: 1.75rem minmax(0, 1fr) auto;
   align-items: center;
   gap: 6px;
-  min-height: 48px;
+  width: 100%;
   padding: 12px 0;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--ds-fg);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.ds-svc-index a:hover { color: var(--ds-fg); }
-.ds-svc-index .ds-data { font-size: 13px; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
-.ds-svc-index .ds-arrow { color: var(--ds-fg-faint); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
-@media (hover: hover) and (pointer: fine) {
-  .ds-svc-index a:hover .ds-data,
-  .ds-svc-index a:hover .ds-arrow { color: var(--ds-fg); }
-  .ds-svc-index a:hover .ds-arrow { transform: translateX(3px); }
-}
-@media (min-width: 768px) {
-  .ds-svc-index ol { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-svc-index a { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: 8px; padding: 16px 0; }
-}
-@media (min-width: 1024px) {
-  .ds-svc-index ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-/* ---------- 01 Divisions: a schedule of services ---------- */
-.ds-svc-divisions { padding-top: var(--ds-beat); }
-.ds-svc-schedule { margin-top: var(--ds-beat-tight); border-bottom: 1px solid var(--ds-rule); }
-.ds-svc-row {
-  position: relative;
-  view-timeline: --ds-svc-row block;
-  display: grid;
-  gap: 16px;
-  padding: 24px 0 32px;
-}
-/* Each line item's rule draws in from the left as it arrives (the text is already there). */
-.ds-svc-row::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--ds-rule);
-  transform-origin: left;
-}
-.ds-svc-row:first-child::before { background: var(--ds-rule-strong); }
+.ds-svc-card-head .ds-svc-n { align-self: baseline; padding-top: 0.35em; }
 .ds-svc-title {
-  margin: 0;
   font-family: var(--ds-text);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--ds-fg);
   text-wrap: balance;
+}
+/* The + turns into an x: two strokes, the vertical one rotates to 45deg and the
+   horizontal to -45deg. The disc fills with ink when the card is open. */
+.ds-svc-plus {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16);
+  color: var(--ds-fg);
+  transition: background-color 200ms var(--ds-ease), color 200ms var(--ds-ease), box-shadow 200ms var(--ds-ease), transform 140ms var(--ds-ease);
+}
+.ds-svc-plus span {
+  position: absolute;
+  width: 12px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 220ms var(--ds-ease);
+}
+.ds-svc-plus span:last-child { transform: rotate(90deg); }
+.ds-svc-card[data-open='true'] .ds-svc-plus { background: var(--ds-fg); color: var(--ds-canvas); box-shadow: none; }
+.ds-svc-card[data-open='true'] .ds-svc-plus span:first-child { transform: rotate(45deg); }
+.ds-svc-card[data-open='true'] .ds-svc-plus span:last-child { transform: rotate(135deg); }
+.ds-svc-card-head button:active .ds-svc-plus { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-svc-card:not([data-open='true']):hover { background: #15181d; }
+  .ds-svc-card-head button:hover .ds-svc-plus { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.34); }
 }
 .ds-svc-covers {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 10px 0 0;
+  margin: 2px 0 0;
   padding: 0;
   font-size: 14px;
   line-height: 1.6;
   color: var(--ds-fg-muted);
 }
 .ds-svc-covers li:not(:last-child)::after { content: '\00b7'; margin: 0 8px; color: var(--ds-fg-faint); }
+
+.ds-svc-detail[hidden] { display: none; }
+.ds-svc-card[data-open='true'] .ds-svc-card-media img { aspect-ratio: 3 / 2; }
+.ds-svc-detail .ds-body { margin-top: 4px; }
 /* Government's one proof, set as a ledger row: label, mono value, verification route. */
-.ds-svc-proof { margin: 20px 0 0; padding: 14px 0; border-block: 1px solid var(--ds-rule); }
+.ds-svc-proof { margin: 20px 0 0; padding: 14px 0; border-block: 1px solid rgb(255 255 255 / 0.08); }
 .ds-svc-proof dt { font-size: 14px; color: var(--ds-fg-muted); }
 .ds-svc-proof dd { margin: 4px 0 0; }
 .ds-svc-proof dd.ds-data { font-size: 17px; }
 .ds-svc-proof .ds-link { font-size: 14px; }
-.ds-svc-thumb { order: -1; overflow: clip; border-radius: 4px; }
-.ds-svc-thumb img {
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
-  /* Stock photographs graded down to sit on the canvas with the rest of the file. */
-  filter: saturate(0.78) brightness(0.84) contrast(1.04);
+/* Each site type as a ledger row: its name, then one plain line. */
+.ds-svc-items { list-style: none; margin: 20px 0 0; padding: 0; }
+.ds-svc-items li {
+  display: grid;
+  gap: 2px;
+  padding: 12px 0;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
 }
+.ds-svc-item-name { font-size: 15px; font-weight: 500; color: var(--ds-fg); }
+.ds-svc-item-detail { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); }
+/* After Government's proof row the list continues on the same rule, not a second one. */
+.ds-svc-proof + .ds-svc-items { margin-top: 0; }
+.ds-svc-proof + .ds-svc-items li:first-child { border-top: 0; }
+
 @media (min-width: 768px) {
-  .ds-svc-row { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 14px; align-items: start; padding: 28px 0 36px; }
-  .ds-svc-row-name { grid-column: 1 / span 7; grid-row: 1; }
-  .ds-svc-row-body { grid-column: 1 / span 7; grid-row: 2; }
-  .ds-svc-thumb { order: 0; grid-column: 8 / span 5; grid-row: 1 / span 2; }
-  .ds-svc-thumb img { aspect-ratio: 3 / 2; }
+  .ds-svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .ds-svc-card-head button { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: 8px; }
   .ds-svc-covers,
-  .ds-svc-row-body { margin-left: calc(2.25rem + 8px); }
+  .ds-svc-detail { margin-left: calc(2.25rem + 8px); }
+  .ds-svc-card[data-open='true'] .ds-svc-card-media img { aspect-ratio: 21 / 9; }
+  .ds-svc-items li { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
 }
+/* Desktop: the opened card lays out side by side, the photo opening up on the left. */
 @media (min-width: 1024px) {
-  .ds-svc-row-name { grid-column: 1 / span 4; }
-  .ds-svc-row-body { grid-column: 5 / span 4; grid-row: 1; margin-left: 0; padding-top: 4px; }
-  .ds-svc-thumb { grid-column: 9 / span 4; grid-row: 1; }
-  .ds-svc-title { font-size: 24px; }
+  .ds-svc-card[data-open='true'] { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 8px; }
+  /* The photo holds still beside the detail as it scrolls, at a size the 640px
+     source files can carry. */
+  .ds-svc-card[data-open='true'] .ds-svc-card-media { align-self: start; position: sticky; top: calc(var(--ds-header) + 16px); }
+  .ds-svc-card[data-open='true'] .ds-svc-card-media img { aspect-ratio: 4 / 5; }
+  .ds-svc-card[data-open='true'] .ds-svc-card-text { padding: 10px 20px 20px; }
+  .ds-svc-card[data-open='true'] .ds-svc-title { font-size: 26px; }
 }
 .ds-svc-divisions .ds-handoff { margin-top: var(--ds-beat-tight); }
+
+/* The open/close morph (View Transitions). Cards and photos glide to their new boxes on
+   the drawer curve; photos crop rather than stretch; text never scales: the old copy
+   fades out fast and the new copy fades in once the box has mostly arrived. */
+::view-transition-group(*.svc-card),
+::view-transition-group(*.svc-media),
+::view-transition-group(*.svc-text) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+::view-transition-group(*.svc-media) { overflow: clip; border-radius: 10px; }
+::view-transition-old(*.svc-media),
+::view-transition-new(*.svc-media) { height: 100%; object-fit: cover; }
+::view-transition-group(*.svc-morph) { overflow: clip; }
+::view-transition-old(*.svc-morph),
+::view-transition-new(*.svc-morph) { width: auto; height: auto; object-fit: none; object-position: left top; }
+::view-transition-old(*.svc-morph) { animation: ds-vt-out 120ms var(--ds-ease) both; }
+::view-transition-new(*.svc-morph) { animation: ds-vt-in 180ms var(--ds-ease) 110ms both; }
+@keyframes ds-vt-out { to { opacity: 0; } }
+@keyframes ds-vt-in { from { opacity: 0; transform: translateY(6px); } }
+::view-transition-old(*.svc-card),
+::view-transition-new(*.svc-card) { width: 100%; height: 100%; }
 
 /* ---------- 02 Process: a schedule chart ---------- */
 .ds-svc-process { padding-top: var(--ds-beat-open); }
@@ -1232,19 +1302,13 @@ body:has(.ds-page) {
       animation-timeline: --ds-bleed;
       animation-range: entry 0% contain 0%;
     }
-    /* Services: the band drifts as the opening leaves; line-item rules and stage bars
-       draw in; photos settle inside their frames. */
+    /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
+       photo settles inside its frame. */
     .ds-svc-band img {
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    .ds-svc-row::before {
-      animation: ds-draw linear both;
-      animation-timeline: --ds-svc-row;
-      animation-range: entry 0% entry 60%;
-    }
-    .ds-svc-thumb img,
     .ds-svc-pano img {
       animation: ds-plate linear both;
       animation-timeline: view();
@@ -1314,10 +1378,11 @@ body:has(.ds-page) {
   .ds-rail a::before,
   .ds-arrow,
   .ds-btn,
-  .ds-svc-index .ds-arrow,
-  .ds-svc-index .ds-data,
+  .ds-svc-plus,
+  .ds-svc-plus span,
+  .ds-svc-card,
   .ds-svc-cities .ds-arrow { transition-duration: 0s; }
   .ds-btn:active,
-  .ds-svc-index a:hover .ds-arrow,
+  .ds-svc-card-head button:active .ds-svc-plus,
   .ds-svc-cities a:hover .ds-arrow { transform: none; }
 }

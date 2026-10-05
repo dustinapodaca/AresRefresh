@@ -14,7 +14,9 @@ export type Division = {
   n: string;
   title: string;
   body: string;
-  covers: string[];
+  // Each site type with one plain line. DRAFT copy (2026-10-05), built only from facts
+  // already on the site; owner to review (docs/copy-changes.md).
+  covers: { name: string; detail: string }[];
   photo: { src: string; width: number; height: number; position?: string };
 };
 
@@ -24,7 +26,13 @@ export const DIVISIONS: Division[] = [
     n: '01',
     title: 'Government Security Personnel',
     body: 'Lawful, immediate access to federal and state facilities, with DoW\u2011vetted officers. Agencies can order through our GSA Schedule without opening a new competition.',
-    covers: ['Military bases', 'Courthouses', 'Federal buildings', 'State agencies', 'TS/SCI cleared'],
+    covers: [
+      { name: 'Military bases', detail: 'DoW\u2011vetted officers, each trained on the post by a member of our leadership who has worked it.' },
+      { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
+      { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
+      { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
+      { name: 'TS/SCI cleared', detail: 'Cleared officers for posts that require a clearance, matched during compliance mapping.' },
+    ],
     photo: { src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%' },
   },
   {
@@ -32,7 +40,11 @@ export const DIVISIONS: Division[] = [
     n: '02',
     title: 'Airport & Transportation Security',
     body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
-    covers: ['Airports', 'Transportation hubs', 'Aviation facilities'],
+    covers: [
+      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
+      { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
+      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
+    ],
     photo: { src: '/images/matrix-airport.jpg', width: 1200, height: 627 },
   },
   {
@@ -40,7 +52,13 @@ export const DIVISIONS: Division[] = [
     n: '03',
     title: 'Commercial & High‑Traffic Security',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
-    covers: ['Retail', 'Banks', 'Hotels', 'Malls', 'Grocery'],
+    covers: [
+      { name: 'Retail', detail: 'Visible deterrence and loss prevention on the sales floor.' },
+      { name: 'Banks', detail: 'Officers for cash-handling and high-liability settings.' },
+      { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
+      { name: 'Malls', detail: 'Coverage that scales with foot traffic across shared spaces.' },
+      { name: 'Grocery', detail: 'Loss prevention that protects revenue and the customer experience.' },
+    ],
     photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
   },
   {
@@ -48,7 +66,12 @@ export const DIVISIONS: Division[] = [
     n: '04',
     title: 'Industrial, Logistics & Construction',
     body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
-    covers: ['Industrial sites', 'Warehouses', 'Construction', 'Critical infrastructure'],
+    covers: [
+      { name: 'Industrial sites', detail: 'Posted guards around the clock, with checkpoint logs you can audit.' },
+      { name: 'Warehouses', detail: 'Mobile patrols and perimeter security for buildings and yards.' },
+      { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
+      { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
+    ],
     photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
   },
   {
@@ -56,7 +79,11 @@ export const DIVISIONS: Division[] = [
     n: '05',
     title: 'Specialized & Armed Protection',
     body: 'Licensed, firearms-compliant officers for cash-handling, regulated, or high-liability sites.',
-    covers: ['Armed asset protection', 'High-risk environments', 'Data centers'],
+    covers: [
+      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
+      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
+      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas.' },
+    ],
     photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
   },
   {
@@ -64,7 +91,13 @@ export const DIVISIONS: Division[] = [
     n: '06',
     title: 'Institutional & Community Security',
     body: 'Trust-based security for sensitive and community settings, where a calm presence matters most.',
-    covers: ['Hospitals', 'Schools', 'Museums', 'Places of worship', 'Residential & retirement'],
+    covers: [
+      { name: 'Hospitals', detail: 'A calm presence at entrances and in public areas.' },
+      { name: 'Schools', detail: 'Officers trained on the campus, its entry points, and its daily rhythm.' },
+      { name: 'Museums', detail: 'Officers for galleries and public areas, briefed on the building and its entry points.' },
+      { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
+      { name: 'Residential & retirement', detail: 'Consistent officers residents can get to know.' },
+    ],
     photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
   },
 ];

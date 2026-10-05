@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
-import { DIVISIONS } from './data';
 
-// The cover of the file: headline and lead, then the street photograph as a wide band,
-// with the contents (six divisions) laid over its lower fade.
+// The cover of the file: headline and lead, then the street photograph as a wide band
+// fading into the canvas. The divisions follow directly below.
 export default function Opening() {
   return (
     <section className="ds-svc-open" aria-labelledby="services-title">
@@ -32,20 +31,6 @@ export default function Opening() {
       <div className="ds-svc-band" aria-hidden="true">
         <img src="/images/capabilities-hero.jpg" alt="" width={2255} height={1864} decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
-
-      <nav className="ds-container ds-svc-index" aria-label="Service divisions">
-        <ol>
-          {DIVISIONS.map((d) => (
-            <li key={d.id}>
-              <a href={`#${d.id}`}>
-                <span className="ds-data">{d.n}</span>
-                <span>{d.title}</span>
-                <Arrow size={14} />
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
     </section>
   );
 }
