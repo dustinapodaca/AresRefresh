@@ -27,8 +27,8 @@
   --color-rust: #bc6f40;
   --color-rust-deep: #8b4920;
 
-  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-text: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-text: 'Inter', system-ui, -apple-system, sans-serif;
   --font-data: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   --radius-xl: 1.25rem; /* 20px */

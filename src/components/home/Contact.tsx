@@ -4,7 +4,7 @@ import Arrow from '../Arrow';
 export default function Contact() {
   return (
     <section id="contact" className="ds-contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" className="ds-display-lg">
+      <h2 id="contact-title" className="ds-display-xl">
         Request a quote, or call us.
       </h2>
       <a href="tel:+17196963966" className="ds-phone">

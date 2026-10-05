@@ -30,14 +30,14 @@ export default function Footer() {
     <footer className="ds ds-footer" data-extended={extended}>
       <div className="ds-container">
         <nav aria-labelledby="footer-index-title">
-          <h2 id="footer-index-title" className="ds-index-title">
+          <h2 id="footer-index-title" className="ds-display-lg ds-index-title">
             Get to know Ares
           </h2>
           <ul className="ds-index">
             {INDEX.map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="ds-row-link">
-                  <span className="ds-display-md">{item.title}</span>
+                  <span className="ds-row-title">{item.title}</span>
                   <span className="ds-small">{item.body}</span>
                   <Arrow size={22} />
                 </Link>

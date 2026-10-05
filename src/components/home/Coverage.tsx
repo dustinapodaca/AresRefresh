@@ -20,10 +20,10 @@ export default function Coverage() {
   return (
     <section id="coverage" className="ds-coverage" aria-labelledby="coverage-title">
       <div className="ds-coverage-head">
-        <h2 id="coverage-title" className="ds-display-lg">
+        <h2 id="coverage-title" className="ds-display-md">
           Where we work.
         </h2>
-        <p className="ds-body">
+        <p className="ds-lead">
           Armed, unarmed, and cleared officers for federal, commercial, industrial, and
           institutional sites, from our base in Colorado Springs.
         </p>
@@ -33,7 +33,7 @@ export default function Coverage() {
         {CITIES.map((c) => (
           <li key={c.to}>
             <Link to={c.to} className="ds-city">
-              <span className="ds-display-lg">{c.name}</span>
+              <span className="ds-city-name">{c.name}</span>
               <span className="ds-small">{c.note}</span>
               <Arrow size={24} />
             </Link>

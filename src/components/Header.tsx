@@ -91,14 +91,14 @@ export default function Header() {
           <nav aria-label="Menu">
             <ul>
               <li>
-                <NavLink to="/" end className="ds-sheet-link ds-display-md">
+                <NavLink to="/" end className="ds-sheet-link">
                   Home
                   <Arrow size={20} />
                 </NavLink>
               </li>
               {NAV.map((item) => (
                 <li key={item.to}>
-                  <NavLink to={item.to} className="ds-sheet-link ds-display-md">
+                  <NavLink to={item.to} className="ds-sheet-link">
                     {item.label}
                     <Arrow size={20} />
                   </NavLink>

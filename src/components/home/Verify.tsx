@@ -67,7 +67,7 @@ export default function Verify() {
         <h2 id="verify-title" className="ds-display-lg">
           Verify us before you call.
         </h2>
-        <p className="ds-body">
+        <p className="ds-lead">
           Every number below is public. Check it on GSA eLibrary or SAM.gov, or download the
           capability statement that lists them all.
         </p>
@@ -139,7 +139,8 @@ export default function Verify() {
             </p>
           </blockquote>
           <figcaption className="ds-small">
-            Contracting Officer, USAF · Buckley Space Force Base
+            <span>Contracting Officer</span>
+            <span>USAF · Buckley Space Force Base</span>
           </figcaption>
         </figure>
       </div>

@@ -11,67 +11,77 @@ colors:
   rust: "#bc6f40"
   rust-deep: "#8b4920"
 typography:
+  # Typography adopted from v10 (tag home-v10-mobbin-redesign), owner request 2026-10-04.
   display-xl:
-    fontFamily: "Archivo, 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 6.4vw, 5.75rem)"
+    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontSize: "clamp(44px, 7.6vw, 116px)"
     fontWeight: 600
-    lineHeight: 0.96
-    letterSpacing: "-0.035em"
-    fontVariation: "'wdth' 108"
+    lineHeight: 0.94
+    letterSpacing: "-0.05em"
   display-lg:
-    fontFamily: "Archivo, 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(2.25rem, 4.6vw, 4.25rem)"
+    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontSize: "clamp(34px, 4.2vw, 60px)"
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: "-0.04em"
+  display-md:
+    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontSize: "clamp(26px, 2.6vw, 38px)"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.03em"
+  city:
+    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontSize: "clamp(36px, 8.2vw, 124px)"
     fontWeight: 600
     lineHeight: 1
-    letterSpacing: "-0.03em"
-    fontVariation: "'wdth' 108"
-  display-md:
-    fontFamily: "Archivo, 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(1.75rem, 3vw, 2.75rem)"
-    fontWeight: 600
-    lineHeight: 1.06
-    letterSpacing: "-0.022em"
-    fontVariation: "'wdth' 104"
+    letterSpacing: "-0.05em"
   title:
-    fontFamily: "Archivo, 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "1.375rem"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "22px (steps 24px, 28px desktop; footer index 24px)"
     fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: "-0.012em"
+    lineHeight: 1.25
+    letterSpacing: "-0.02em"
   lead:
-    fontFamily: "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(1.125rem, 1.6vw, 1.3125rem)"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "18px"
     fontWeight: 400
     lineHeight: 1.5
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "1.0625rem"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "16px (steps 17px)"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.55
+    fontFeature: "'cv01', 'cv05', 'cv09', 'cv11', 'ss03'"
   small:
-    fontFamily: "'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.875rem"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "14px (labels 13px)"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.45
   data:
     fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
-    fontSize: "0.9375rem"
-    fontWeight: 500
+    fontSize: "15px, 18px desktop (ledger values 17px)"
+    fontWeight: 400
     lineHeight: 1.4
+    letterSpacing: "0.01em"
     fontFeature: "'tnum' 1, 'zero' 1"
   figure:
     fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
-    fontSize: "clamp(5.5rem, 15vw, 12.5rem)"
-    fontWeight: 500
+    fontSize: "clamp(96px, 15vw, 220px)"
+    fontWeight: 400
     lineHeight: 0.85
     letterSpacing: "-0.06em"
-    fontFeature: "'tnum' 1"
+  phone:
+    fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
+    fontSize: "30px, 44px from 640px"
+    fontWeight: 400
+    letterSpacing: "-0.01em"
   mark:
     fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 500
-    lineHeight: 1.2
-    letterSpacing: "0.02em"
+    fontSize: "12px"
+    fontWeight: 400
+    letterSpacing: "0.02em (footer column titles: uppercase, 0.1em)"
 rounded:
   none: "0px"
   hair: "2px"
@@ -135,7 +145,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 
 **Key Characteristics:**
 - One blue-black canvas from header to footer. No bands, no fills, no dividers.
-- Three faces with fixed jobs: Archivo states, Plex Sans explains, Plex Mono proves.
+- Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
 - A running document rail (01 Verify to 05 Contact) on desktop; a running head on mobile.
 - Uneven rhythm on purpose: dense, open, image, tight.
@@ -164,22 +174,32 @@ underline turns ink. There is no link blue.
 
 ## Typography
 
-- **Display: Archivo** at weight 600 with the width axis opened slightly (`wdth` 104 to
-  108). Its squared, engineered shapes read as built rather than styled. Tracking
-  tightens as size grows (-0.022em at display-md, -0.035em at display-xl). Sentence
-  case always; no all-caps headlines.
-- **Text: IBM Plex Sans** at 400 and 500. Body 17px / 1.6, measure 52 to 68ch. Lead
-  paragraphs 18 to 21px.
-- **Data: IBM Plex Mono** at 500 with tabular, slashed-zero numerals. Used for contract,
-  registration, and certification numbers; phone numbers; the measured figure; and rail
-  marks. Mono is never used for prose, headings, buttons, or labels.
-- **Figure:** the one measured statistic ("<1%" missed shifts) is set in mono at figure
-  scale with its period ("since 2021") and its condition beside it.
-- **Labels** (ledger label column, contact pair labels) are Plex Sans 14px in ink muted,
-  sentence case. No tracked uppercase labels, no eyebrows or kickers above headings, no
-  bracketed section titles.
-- Font loading: Google Fonts, `display=swap`, Archivo (variable `wdth,wght`), IBM Plex Sans
-  (400, 500), IBM Plex Mono (400, 500).
+Adopted from v10 (tag `home-v10-mobbin-redesign`) at the owner's request on 2026-10-04;
+only the type came over, not that version's layout or colors.
+
+- **Display: Inter Tight 600**, very tight (-0.05em at display-xl and the city list,
+  -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
+  to 1.15. Reduce size before loosening tracking.
+  - display-xl: the hero headline (two lines on desktop, running over the photo's faded
+    edge) and the Contact headline.
+  - display-lg: section headlines (Verify, Staffing, Careers) and "Get to know Ares".
+  - display-md: the Coverage headline.
+  - city: the three city rows.
+- **Text: Inter** with `cv01 cv05 cv09 cv11 ss03`.
+  - Sub-heads (ledger groups, staffing steps, divisions heading, footer index rows) are
+    Inter 600 at 22 to 28px, -0.02em.
+  - The pull quote is Inter 500 at display-md size.
+  - Lead and intro paragraphs 18px; body 16px (steps 17px); labels 13 to 15px.
+  - Hand-off lines 20px / 500. Links 15px / 500. Nav 14px / 400; buttons 14px / 500.
+- **Data: IBM Plex Mono 400** with tabular, slashed-zero numerals: identifiers, phone
+  numbers, the measured figure, rail marks, and the footer's column titles and legal
+  line (uppercase only for the column titles). Never prose or headings.
+- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 15vw, 220px), top-aligned with its note.
+- **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
+  the size.
+- No eyebrows or kickers above headings. No bracketed labels.
+- Font loading: Google Fonts, `display=swap`: Inter (300 to 800), Inter Tight (500, 600),
+  IBM Plex Mono (400, 500).
 
 ## Layout
 
@@ -242,18 +262,18 @@ body, and the single rust horizon glow at the close.
 ## Components
 
 ### Buttons
-- **Primary:** ink fill, canvas text, 48px tall (40px in the header), 2px corners, Plex
-  Sans 15px / 500. Hover lightens to pure white. Only "Request a quote" carries an arrow.
+- **Primary:** ink fill, canvas text, 48px tall (40px in the header), 2px corners, Inter
+  14px / 500. Hover lightens to pure white. Only "Request a quote" carries an arrow.
 - **Quiet:** text in ink with the standard underline and an arrow; no box. Used for every
   secondary action (call, download, view on eLibrary).
 - Press: `scale(0.98)` over 140ms. Mobile stacks run full width.
 
 ### Ledger (the proof table)
-- A `<dl>`-style table on hairline rows. Three columns on desktop: label (Plex Sans,
+- A `<dl>`-style table on hairline rows. Three columns on desktop: label (Inter,
   ink muted, 3 cols), value (Plex Mono, ink, 5 cols), verification route (quiet link,
   right-aligned, remaining cols).
 - Rows are grouped (Contract vehicle, Registration, Certification); each group opens with
-  its name in Archivo `title` on a hairline-strong rule.
+  its name in the Inter `title` style on a hairline-strong rule.
 - Opens with a key row of four identifiers (GSA contract, UEI, CAGE, NAICS) as large mono
   values with labels beneath.
 - On mobile each row stacks: label, value, link.
@@ -261,11 +281,11 @@ body, and the single rust horizon glow at the close.
 ### Typographic lists
 - **City list:** each city at display-lg on its own row between hairlines, a link to its
   location page, with an arrow that nudges 4px on hover.
-- **Division list:** two columns of Plex Sans in ink muted, 1px hairline under each item.
+- **Division list:** two columns of Inter 17px / 500 in ink, 1px hairline under each item.
 
 ### Pull quote
-- Archivo display-md, ink, set across up to 10 columns with hanging punctuation. The
-  attribution sits beneath in Plex Sans small, ink muted. No avatar, no card, no quote
+- Inter 500 at display-md size, ink, set across up to 10 columns with hanging punctuation. The
+  attribution sits beneath in Inter small: role in ink, base in ink muted. No avatar, no card, no quote
   icon.
 
 ### Pinned passage (Staffing)
@@ -275,7 +295,7 @@ body, and the single rust horizon glow at the close.
 
 ### Header
 - Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
-  Ares mark and wordmark in white. Right: nav links (Plex Sans 15px, ink muted, ink when
+  Ares mark and wordmark in white. Right: nav links (Inter 14px / 400, ink muted, ink when
   current), the phone number in mono (wide screens only), and the primary button.
 - Mobile: mark and wordmark, plus a "Menu" button with two lines. The menu is a solid
   canvas sheet with links at display-md on hairline rows and the contact block below.
