@@ -223,14 +223,14 @@ export default function Home() {
               href={GSA_ELIBRARY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flow-link group flex flex-col items-start gap-3 self-start rounded-[15px] border border-white/10 bg-canvas/75 px-5 py-4 text-white hover:border-white/25 hover:text-white lg:mt-3 lg:px-6 lg:py-5 ${FOCUS}`}
+              className={`flow-link group flex w-fit flex-col items-start gap-3 self-start justify-self-center rounded-[15px] border border-white/10 bg-canvas/75 px-6 py-5 text-white hover:border-white/25 hover:text-white lg:mt-3 lg:justify-self-end ${FOCUS}`}
             >
               <img
                 src="/images/gsa-contract-holder.png"
                 alt="GSA Contract Holder"
                 width={576}
                 height={138}
-                className="block h-auto w-[190px] lg:w-[220px]"
+                className="block h-auto w-[220px]"
               />
               <span className="inline-flex items-center gap-1.5 border-t border-white/10 pt-3 font-mono text-[14px] tracking-[0.01em] tabular-nums">
                 <span className="text-white/70">GSA MAS</span> 47QSMS25D009Q
