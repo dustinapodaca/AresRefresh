@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/sitemap.mjs",
+    "build": "tsc -b && vite build && puppeteer browsers install chrome && node scripts/prerender.mjs && node scripts/sitemap.mjs",
     "build:nossg": "tsc -b && vite build && node scripts/sitemap.mjs",
     "prerender": "node scripts/prerender.mjs",
     "sitemap": "node scripts/sitemap.mjs",
