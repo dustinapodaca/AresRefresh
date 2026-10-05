@@ -615,7 +615,7 @@ body:has(.ds-page) {
   margin: 0;
   font-variant-numeric: tabular-nums;
 }
-@media (max-width: 767px) { .ds-figure-num { font-size: 36vw; } }
+@media (max-width: 767px) { .ds-figure-num { font-size: 30vw; } }
 .ds-figure-note p + p { margin-top: 10px; }
 .ds-figure-note .ds-title { font-size: 18px; line-height: 1.45; font-weight: 400; letter-spacing: 0; }
 .ds-quote { margin: var(--ds-beat-tight) 0 0; }

@@ -314,7 +314,7 @@ body, and the single rust horizon glow at the close.
   scrolls. Desktop keeps the pinned passage.
 - **Ledger groups fold** (below 768px) behind tappable rows showing the group name, the
   entry count, and a chevron. The four key identifiers stay visible above them.
-- **The figure grows** to 36vw so it reads as a visual, not a line of text.
+- **The figure grows** to 30vw so it reads as a visual, not a line of text.
 
 ### Header
 - Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
