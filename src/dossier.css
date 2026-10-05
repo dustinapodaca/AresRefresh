@@ -968,6 +968,16 @@ body:has(.ds-page) {
   object-position: 50% 100%;
   filter: saturate(0.85) brightness(0.74);
 }
+/* Phones: the band is nearly square, so the whole photo would fit and its street level
+   would fall into the fade. Scale it up from the bottom edge instead, as on desktop, and
+   keep the bottom solid for longer. */
+@media (max-width: 767px) {
+  .ds-svc-band {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 80%, transparent 100%);
+  }
+  .ds-svc-band img { height: 230%; }
+}
 /* ---------- 01 Divisions: Framer-style containers that open in place ----------
    Owner request (2026-10-05): two columns of containers with a + that opens each one.
    The only filled containers on the site. A step lighter than the canvas, a faint white

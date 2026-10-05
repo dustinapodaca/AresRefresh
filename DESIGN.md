@@ -323,7 +323,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05), then
   the street photograph (`capabilities-hero.jpg`) as a full-bleed band anchored to its
-  bottom edge (street level), masked into the canvas at both ends, graded down, drifting
+  bottom edge (street level; on phones scaled up from the bottom so the street still shows), masked into the canvas at both ends, graded down, drifting
   slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **Divisions as containers that open in place** (owner request, 2026-10-05; the one
