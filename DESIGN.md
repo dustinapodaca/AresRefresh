@@ -318,9 +318,9 @@ body, and the single rust horizon glow at the close.
 
 ### Header
 - Fixed, 64px, solid canvas. A hairline appears beneath once the page scrolls. Left: the
-  Ares mark and wordmark in white. Right: nav links (Inter 14px / 400, ink muted, ink when
+  Ares mark alone in white (44px desktop, 32px mobile; no wordmark). Right: nav links (Inter 14px / 400, ink muted, ink when
   current), the phone number in mono (wide screens only), and the primary button.
-- Mobile: mark and wordmark, plus a "Menu" button with two lines. The menu is a solid
+- Mobile: the mark, plus a "Menu" button with two lines. The menu is a solid
   canvas sheet with links at display-md on hairline rows and the contact block below.
 
 ### Footer

@@ -48,7 +48,6 @@ export default function Header() {
       <div className="ds-container ds-header-row">
         <Link to="/" onClick={onBrand} className="ds-brand" aria-label="Ares Security home">
           <span className="ds-mark" aria-hidden="true" />
-          <span className="ds-wordmark" aria-hidden="true" />
         </Link>
 
         <nav className="ds-nav" aria-label="Primary">

@@ -176,6 +176,11 @@ body:has(.ds-page) {
   -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
   mask: url(/ares-logo.svg) center / contain no-repeat;
 }
+/* Nav: the mark alone (aspect 407.7 x 425.9), larger on desktop. */
+.ds-header .ds-mark { width: 31px; height: 32px; }
+@media (min-width: 1024px) {
+  .ds-header .ds-mark { width: 42px; height: 44px; }
+}
 .ds-wordmark {
   display: block;
   width: 82px;
