@@ -38,7 +38,7 @@ typography:
     letterSpacing: "-0.05em"
   title:
     fontFamily: "Inter, system-ui, sans-serif"
-    fontSize: "22px (steps 24px, 28px desktop; footer index 24px)"
+    fontSize: "22px (steps 24px, 28px desktop)"
     fontWeight: 600
     lineHeight: 1.25
     letterSpacing: "-0.02em"
@@ -184,11 +184,11 @@ sizes are unchanged.
   to 1.15. Reduce size before loosening tracking.
   - display-xl: the hero headline (two lines on desktop, running over the photo's faded
     edge) and the Contact headline.
-  - display-lg: section headlines (Verify, Staffing, Careers) and "Get to know Ares".
+  - display-lg: section headlines (Verify, Staffing, Careers).
   - display-md: the Coverage headline.
   - city: the three city rows.
 - **Text: Inter** with `cv01 cv05 cv09 cv11 ss03`.
-  - Sub-heads (ledger groups, staffing steps, divisions heading, footer index rows) are
+  - Sub-heads (ledger groups, staffing steps, divisions heading) are
     Inter 600 at 22 to 28px, -0.02em.
   - The pull quote is Inter 500 at display-md size.
   - Lead and intro paragraphs 18px; body 16px (steps 17px); labels 13 to 15px.
@@ -257,7 +257,7 @@ body, and the single rust horizon glow at the close.
 - **Hero photo:** square edges, bleeds off the right edge of the viewport, faded into the
   canvas on its left and bottom edges.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
-  footer index rows). A rule is never used to separate one section from the next.
+  division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal
   links, `↗` for external verification links. No icon sets, no icon circles.
 
@@ -303,10 +303,10 @@ body, and the single rust horizon glow at the close.
   canvas sheet with links at display-md on hairline rows and the contact block below.
 
 ### Footer
-- Same canvas, no top rule. Opens with the "About Us / Services / Careers" index (in that
-  order and wording) as display rows. Then columns for service areas, contracting
-  (mono), and contact (mono), the certification marks separated by thin vertical lines,
-  and a small legal line.
+- Same canvas, no top rule. Columns for the company (About Us, Services, Careers),
+  service areas, contracting (mono), and contact (mono), then the certification marks
+  separated by thin vertical lines and a small legal line. The large "Get to know Ares"
+  index was removed by the owner (2026-10-04).
 
 ## Motion
 

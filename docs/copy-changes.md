@@ -83,3 +83,4 @@ the owner, **N** new framing copy written for the new structure.
 | Column titles "Navigate", "Service Areas", "Contracting", "Contact" | "Service areas", "Contracting", "Contact" (Navigate folded into the index) | Sentence case |
 | "GSA #47QSMS25D009Q" | "GSA 47QSMS25D009Q" | Mono value, no symbol |
 | "© 2026 Ares Security LLC. All Rights Reserved." | "© 2026 Ares Security LLC. All rights reserved." | Sentence case |
+| "Get to know Ares" index (About Us, Services, Careers rows with descriptions) | Removed by the owner (2026-10-04); replaced by a plain "Company" column: About Us, Services, Careers | O |

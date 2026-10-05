@@ -1,25 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
-
-// "Get to know Ares": order and wording set by the owner (About Us, Services, Careers).
-const INDEX = [
-  {
-    to: '/about',
-    title: 'About Us',
-    body: 'Our journey, our principles, the capability statement that backs us, and the people who bring reliable security to every environment we serve.',
-  },
-  {
-    to: '/services',
-    title: 'Services',
-    body: 'Six service divisions across federal, commercial, industrial, and specialized sectors. Documented, audit-ready, and ready for procurement.',
-  },
-  {
-    to: '/careers',
-    title: 'Careers',
-    body: 'Join the team. Armed, unarmed, cleared, and office roles, with paid training and real growth paths.',
-  },
-];
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -29,23 +9,6 @@ export default function Footer() {
   return (
     <footer className="ds ds-footer" data-extended={extended}>
       <div className="ds-container">
-        <nav aria-labelledby="footer-index-title">
-          <h2 id="footer-index-title" className="ds-display-lg ds-index-title">
-            Get to know Ares
-          </h2>
-          <ul className="ds-index">
-            {INDEX.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="ds-row-link">
-                  <span className="ds-row-title">{item.title}</span>
-                  <span className="ds-small">{item.body}</span>
-                  <Arrow size={22} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         <div className="ds-footer-cols">
           <div>
             <Link to="/" className="ds-brand" aria-label="Ares Security home" style={{ marginRight: 0 }}>
@@ -56,6 +19,15 @@ export default function Footer() {
               A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado
               Springs.
             </p>
+          </div>
+
+          <div>
+            <h2>Company</h2>
+            <ul>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
+            </ul>
           </div>
 
           <div>
