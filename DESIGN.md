@@ -14,7 +14,7 @@ typography:
   # Typography adopted from v10 (tag home-v10-mobbin-redesign), owner request 2026-10-04.
   display-xl:
     fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
-    fontSize: "clamp(44px, 7.6vw, 116px)"
+    fontSize: "clamp(44px, 6vw, 88px)"
     fontWeight: 600
     lineHeight: 0.94
     letterSpacing: "-0.05em"
@@ -32,7 +32,7 @@ typography:
     letterSpacing: "-0.03em"
   city:
     fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
-    fontSize: "clamp(36px, 8.2vw, 124px)"
+    fontSize: "clamp(36px, 6vw, 88px)"
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.05em"
@@ -68,7 +68,7 @@ typography:
     fontFeature: "'tnum' 1, 'zero' 1"
   figure:
     fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
-    fontSize: "clamp(96px, 15vw, 220px)"
+    fontSize: "clamp(96px, 11vw, 160px)"
     fontWeight: 400
     lineHeight: 0.85
     letterSpacing: "-0.06em"
@@ -175,7 +175,9 @@ underline turns ink. There is no link blue.
 ## Typography
 
 Adopted from v10 (tag `home-v10-mobbin-redesign`) at the owner's request on 2026-10-04;
-only the type came over, not that version's layout or colors.
+only the type came over, not that version's layout or colors. The hero and Contact
+headlines, the figure, and the city list were then scaled down on desktop (owner); mobile
+sizes are unchanged.
 
 - **Display: Inter Tight 600**, very tight (-0.05em at display-xl and the city list,
   -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
@@ -194,7 +196,7 @@ only the type came over, not that version's layout or colors.
 - **Data: IBM Plex Mono 400** with tabular, slashed-zero numerals: identifiers, phone
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
-- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 15vw, 220px), top-aligned with its note.
+- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 11vw, 160px), top-aligned with its note.
 - **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
   the size.
 - No eyebrows or kickers above headings. No bracketed labels.
