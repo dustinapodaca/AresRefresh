@@ -170,16 +170,6 @@ export default function Header() {
               Request a Quote <FlowArrow className="h-3.5 w-3.5" />
             </Link>
 
-            {/* Request a Quote — compact pill on mobile so the primary action
-                is visible without opening the menu (hidden while the drawer,
-                which has its own, is open) */}
-            <Link
-              to="/contact"
-              className={`pill pill-md pill-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal lg:hidden ${open ? 'invisible' : ''}`}
-            >
-              Request a Quote
-            </Link>
-
             {/* Hamburger — just three lines, no circle, morphs into X. */}
             <button
               type="button"

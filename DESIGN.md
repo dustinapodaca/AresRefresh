@@ -1,140 +1,159 @@
 ---
-version: 2
-name: Ares Security — field document system
-description: "Ares Security's web design system, derived from the Mobbin research in docs/inspiration.md (Atlas, Superpower, Giga, Locomotive, basement.studio, Nite Riot, Samara, Attio, Framer). The page is a technical document on a warm charcoal canvas: a visible frame of full-height column lines carries the reading rail, proof is set as ledgers whose columns are the frame's columns, photographs sit square inside the frame, and a single bronze accent (sampled from the hero's copper glass) marks progress, annotations, and links. Replaces the Framer-derived system (archived at .claude/design-passes/framer-system/DESIGN.md)."
+version: 1
+name: Ares Security — dark document system
+description: "Ares Security's web design system. Adapted from the Framer design analysis (archived at .claude/design-passes/pass-2/DESIGN-framer.md) and fitted to the Ares brand: a near-black canvas, white display type with hard negative tracking, white pill CTAs, one blue signal for links and focus, and IBM Plex Mono for every contract number, certification, and measured figure, so proof reads like a spec sheet. Home is one continuous long-form document, not a stack of components."
 
 colors:
-  canvas: "#121110"        # warm charcoal (Atlas), the one page surface
-  surface: "#1a1917"       # glass fallback, rare lift
-  hairline: "#2c2a27"      # frame lines, ledger rules, image edges
-  ink: "#f3f0ea"           # warm off-white (Superpower), headings and values
-  ink-muted: "#a29d95"     # the only secondary text tone
-  bronze: "#8b4920"        # deep rust; glows only
-  bronze-light: "#d08a5a"  # the accent: links, focus, active rail mark, progress, markers
+  primary: "#ffffff"        # pill CTAs, display type, emphasized body
+  on-primary: "#090909"
+  ink: "#ffffff"
+  ink-muted: "#999999"      # the only secondary text tone (binary hierarchy)
+  canvas: "#090909"         # the one page surface, edge to edge
+  surface-1: "#141414"      # rare lifted surface (glass fallback)
+  surface-2: "#1c1c1c"      # pressed/hover lift on secondary pill
+  hairline: "#262626"       # every rule, table row, and image edge
+  signal: "#0099ff"         # links, focus rings, selection only; never a fill
+  bronze: "#8b4920"         # deep rust, from the hero's copper glass; atmosphere only
+  bronze-light: "#bc6f40"   # lit rust highlight; glows on the canvas
 
 typography:
-  display:      { fontFamily: "Inter Tight", fontWeight: 600, letterSpacing: "-0.035em", lineHeight: 0.96 }
-  display-xxl:  { fontSize: "clamp(44px, 7.6vw, 116px)" }
-  display-lg:   { fontSize: "clamp(34px, 4.2vw, 60px)" }
-  display-md:   { fontSize: "clamp(26px, 2.6vw, 38px)", fontWeight: 500 }
-  body:         { fontFamily: Inter, fontSize: 16px-18px, lineHeight: 1.5 }
-  data:         { fontFamily: "IBM Plex Mono", fontSize: 15px-18px, fontVariantNumeric: tabular-nums }
-  annotation:   { fontFamily: "IBM Plex Mono", fontSize: 11px, letterSpacing: "0.08em", textTransform: uppercase }
-
-frame:
-  columns: "220px repeat(3, 1fr)"   # index column (rail) + three content columns
-  container: 1320px, 28px gutters
-  lines: "1px hairline at every column boundary, full document height, desktop only"
+  display-xl:   { fontFamily: Inter, fontSize: "clamp(44px, 6.4vw, 92px)", fontWeight: 600, lineHeight: 0.98, letterSpacing: "-0.045em" }
+  display-lg:   { fontFamily: Inter, fontSize: "clamp(34px, 4.2vw, 60px)", fontWeight: 600, lineHeight: 1.02, letterSpacing: "-0.04em" }
+  display-md:   { fontFamily: Inter, fontSize: "clamp(26px, 2.6vw, 38px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.03em" }
+  headline:     { fontFamily: Inter, fontSize: 22px, fontWeight: 600, lineHeight: 1.25, letterSpacing: "-0.02em" }
+  body-lg:      { fontFamily: Inter, fontSize: 18px, fontWeight: 400, lineHeight: 1.5, letterSpacing: "-0.01em" }
+  body:         { fontFamily: Inter, fontSize: 16px, fontWeight: 400, lineHeight: 1.55 }
+  caption:      { fontFamily: Inter, fontSize: 13px, fontWeight: 500, lineHeight: 1.3 }
+  button:       { fontFamily: Inter, fontSize: 15px, fontWeight: 500, lineHeight: 1, letterSpacing: "-0.01em" }
+  data:         { fontFamily: "IBM Plex Mono", fontSize: 15px, fontWeight: 400, lineHeight: 1.4, letterSpacing: "0.01em", fontVariantNumeric: tabular-nums }
+  data-figure:  { fontFamily: "IBM Plex Mono", fontSize: "clamp(96px, 15vw, 220px)", fontWeight: 400, lineHeight: 0.85, letterSpacing: "-0.06em" }
+  rail:         { fontFamily: "IBM Plex Mono", fontSize: 12px, fontWeight: 400, lineHeight: 1.3, letterSpacing: "0.02em" }
 
 rounded:
-  photo: 0px        # photographs are square, set inside the frame
-  button: 9999px    # pills (owner-approved), the only rounded control
-  glass: 16px       # the one glass panel at the close
+  image: 15px      # photographs that sit inside the column
+  pill: 9999px     # every button
+  bleed: 0px       # full-bleed photographs
 
 spacing:
   base: 4px
-  cell: 28px        # content sits 28px off every frame line
-  beat-tight: 48px
-  beat: 96px
-  beat-open: 160px
+  beat-tight: 48px     # between related beats inside a section
+  beat: 96px           # default section turn
+  beat-open: 160px     # chapter turns and the open quote
 ---
 
 ## Overview
 
-Ares sells to people who verify before they call. The page reads like a field document:
-a warm charcoal sheet ruled by a visible frame, numbers set as data, photographs pinned
-inside the frame, and one bronze accent that marks where you are and what you can act on.
+Ares sells to people who verify before they call: federal contracting officers,
+facility managers, procurement teams. The site behaves like the documents they already
+trust. One near-black canvas runs from the header to the footer. White display type
+states the argument; a monospace face carries every number that can be checked.
 
-The system comes from patterns, not brands (see `docs/inspiration.md`):
-- **Atlas:** full-height frame lines through every section; square photos inside them;
-  a warm charcoal canvas instead of pure black.
-- **Superpower:** a full-bleed photograph with proof along the bottom edge, square
-  annotation markers with small uppercase labels, a warm off-white for type.
-- **Giga:** a warm horizon glow at the bottom of a dark field.
-- **Locomotive / basement.studio:** dense ledgers whose columns line up, giant type
-  separated by rules.
-- **Samara:** one line threading numbered steps.
-- **Attio:** a pull quote beside a narrow attribution column.
-- **Framer:** card-less columns, one color for every standalone link.
+What came from Framer: the canvas and surface values, the white pill as the only primary
+CTA shape, display type pulled tight, Inter's character variants in body type, and a
+single blue reserved for links and focus.
 
-## The flow principles (non-negotiable)
-
-1. **One continuous surface.** Canvas from header to footer. No background bands, no
-   section dividers, almost no cards. Group with type, spacing, and hairlines.
-2. **A thread through the page.** The frame's first line carries the reading rail
-   (01 Verify, 02 Staffing, 03 Coverage, 04 Company, 05 Contact); its progress fills in
-   bronze. On mobile the thread is a slim bar under the header.
-3. **Proof as a ledger.** One document table, columns locked to the frame, thin rules,
-   mono numbers. Cities are a typographic list, divisions are frame cells, never boxes.
-4. **Elements cross boundaries.** The hero photograph runs under the opening of the
-   ledger; the measured figure hangs into the quote; a full-bleed photograph spans the
-   turn into the company section with the next headline crossing its edge.
-5. **Varied rhythm.** Dense data, open quote, pinned narrative, giant list, full-bleed
-   image, tight panels, glow. Spacing is deliberately uneven.
-6. **Copy hands off.** Each section's last line sets up the next headline: who we are →
-   proof → how we staff → where → join us → contact.
-7. **Scroll-driven continuity.** One or two pinned moments (the staff photo holds while
-   the steps advance). CSS `animation-timeline` only, static by default.
+What is Ares's own:
+- **Proof as a ledger.** Contract, registration, and certification numbers live in one
+  document-style table: hairline rows, a quiet label column, values in IBM Plex Mono with
+  tabular numerals. Never a grid of tiles.
+- **Measured figures, not slogans.** "<1%" missed shifts is set in mono at figure scale
+  with its source period beside it.
+- **A running document rail.** Home carries a thin margin rail with section reference
+  marks (01 Verify, 02 Staffing, 03 Coverage, 04 Careers, 05 Contact) that tracks the
+  reader, like a technical spec. The marks carry real wayfinding, which is why numbers
+  are allowed here and nowhere else.
+- **Photography instead of gradient spotlight cards.** Framer's magenta/violet/orange
+  spotlight cards are retired: they read startup-playful for a federal contractor. Real
+  staff photography, darkened into the canvas, does the atmospheric work. The close uses
+  a dark field lit in bronze (from the hero's copper glass) with one glass panel.
+  No patrol-vehicle photography on Home (owner).
+- **The Ares mark** (`/ares-logo.svg`) and wordmark (`/images/ares-text.svg`) always
+  render white on the canvas. No other brand color exists.
 
 ## Colors
 
-- **Canvas `#121110`** is the only surface. Dark only.
-- **Ink `#f3f0ea` / muted `#a29d95`**: the whole text hierarchy.
-- **Hairline `#2c2a27`**: frame lines, ledger rules, image edges.
-- **Bronze-light `#d08a5a`** is the single accent: links, focus rings, the active rail
-  mark, progress fills, annotation markers. 5:1 on canvas. Never a fill for large areas.
-- **Bronze `#8b4920`** appears only as light (the horizon glow behind the close).
-- No blue. No other hue.
+- **Canvas `#090909`** is the only page surface. No background bands, no light
+  interludes, no section fills. Dark only.
+- **Ink `#ffffff` / Ink muted `#999999`** is the whole text hierarchy. No third gray.
+- **Hairline `#262626`** draws every rule, table row, and image edge.
+- **Surface 1 / 2 (`#141414` / `#1c1c1c`)** are rare lifts (the glass panel's solid
+  fallback). Avoid them as section or card fills.
+- **Signal `#0099ff`** marks links, focus rings, and text selection. Never a background
+  or button fill.
+- **Bronze `#8b4920` / bronze-light `#bc6f40`** (deep rust) is the atmospheric accent,
+  sampled from the copper glass in the hero photograph and nudged toward red. It lights the Contact field as a low horizon glow rising behind the glass panel.
+  Use it as light, never as a flat fill, and keep it to glows.
 
 ## Typography
 
-- **Display: Inter Tight 600**, tight tracking (-0.035em), leading 0.96 to 1.05.
-  Reduce size before loosening tracking.
-- **Body: Inter**, with `cv01 cv05 cv09 cv11 ss03`. Measure 45 to 65ch.
-- **Data: IBM Plex Mono**, tabular numerals: identifiers, phone, figures, rail marks,
-  step numbers.
-- **Annotation: Plex Mono 11px uppercase, +0.08em**, used only for markers pinned on
-  photographs and frame labels. Never above a heading (no eyebrows or kickers).
+- **Display:** Inter 600 (Framer's GT Walsheim substitute) with tracking that tightens
+  as size grows: -0.045em at display-xl, -0.04em at display-lg, -0.03em at display-md.
+  Reduce size before loosening tracking. Never exceed ~6rem.
+- **Body:** Inter with `cv01 cv05 cv09 cv11 ss03` enabled. Measure 50–70ch.
+- **Data (IBM Plex Mono):** contract and certification numbers, federal identifiers,
+  phone numbers, measured figures, and rail marks. Tabular numerals. Mono is for data
+  only, never as a "technical" costume on prose or headings.
+- No eyebrows or kickers above headings. Headings carry their own weight.
 
 ## Layout
 
-- **The frame:** `220px | 1fr | 1fr | 1fr` inside a 1320px container. Content cells sit
-  28px off each line. The index column holds the rail; headings and content start at the
-  second column. Desktop shows the lines; mobile drops them and keeps the bar.
-- **Hero:** full viewport. The photograph sits under the nav with a black gradient from
-  the bar, the headline spans the frame, the subtext sits in columns 3 and 4, and a
-  proof strip along the bottom edge is split by the frame lines.
-- **Ledger:** group, item (with detail beneath), number: one per frame column.
-- **Photographs:** square edges, hairline border inside the column; full-bleed images
-  fade into the canvas and keep the frame lines drawn over them.
+- **One continuous page.** Sections hand off: each section's closing line sets up the
+  next headline, so the headlines read as one argument.
+- **Group with type, spacing, and hairlines, not boxes.** Cards only where a photo and its
+  caption form one link (the "Get to know Ares" panels), and even then without fills.
+- **Varied rhythm.** Dense data → open quote → full-bleed photo → tight list. Section
+  spacing is deliberately uneven (`beat-tight` / `beat` / `beat-open`).
+- **Cross-boundary elements.** Full-bleed photographs span the turn between two
+  sections, and display type or figures overlap a section's edge.
+- **Container:** 1320px max, 28px gutters. On desktop the content column sits right of
+  the 180px rail.
+
+## Elevation & depth
+
+Flat. Depth comes from photography fading into the canvas and from type scale, not from
+shadows. Hairlines carry structure.
 
 ## Shapes
 
-- Buttons: full pill (`.pill`), 14px / 500. White primary, flat canvas secondary with a
-  lit hairline edge. Only "Request a Quote" carries an arrow.
-- Glass: once, the contact panel over the bronze glow, 16px radius, solid fallback.
-- Markers: a 7px square outline plus an annotation label on a canvas/80 backing.
+- Buttons: full pill, `.pill` in index.css. 14px / 500 / -0.01em. Heights: 40px (nav),
+  44px (page). Primary is white (hover `#e9e9e9`). Secondary is flat black (canvas) with a
+  lit hairline edge (inset top highlight + 1px white/10% ring), never a charcoal fill or an
+  outlined ghost. Every pill presses to 0.97. Only "Request a Quote" carries an arrow,
+  which nudges 3px on hover. Stacked pills on mobile run full width.
+- Photos inside the column: 15px radius with a hairline edge. Full-bleed photos: square
+  edges, faded into the canvas top and bottom.
+- Icons: authored SVG arrows (1.5px stroke, round caps). No Unicode glyphs as icons.
 
-## Motion (4 to 6 moments)
+## Motion
 
-- Rail progress (bronze) along the first frame line.
-- Hero photograph recedes as the ledger rises over it.
-- Step line fills in bronze along the frame line while the staff photo is pinned.
-- Step headings brighten as they pass (floor 0.72).
-- Press (`scale(0.97)`, 160ms) and arrow nudges (hover-capable pointers only).
-- Easing `cubic-bezier(0.23, 1, 0.32, 1)`; linear for scroll-linked progress. Everything
-  is static under `prefers-reduced-motion: reduce` or without scroll timelines.
+Four to six moments per page, all fast and crisp. No bounce.
+
+- Easing: `cubic-bezier(0.23, 1, 0.32, 1)` for state and feedback; linear for
+  scroll-linked progress.
+- Feedback: pills press to `scale(0.97)` over 160ms; link arrows nudge 3px on hover
+  (hover-capable pointers only).
+- Scroll-driven effects use CSS `animation-timeline` inside
+  `@supports (animation-timeline: view())`. The default, unsupported, and
+  `prefers-reduced-motion: reduce` states are static and fully visible.
+- Content is never hidden while scrolling. The lowest opacity any text reaches is 0.62.
+
+## Browser surfaces
+
+Selection uses signal at 35% alpha. Scrollbars, caret, and focus rings are themed from
+the palette. The page sets `color-scheme: dark` so native controls match.
 
 ## Do's and don'ts
 
 **Do**
-- Keep every fact exact: GSA MAS 47QSMS25D009Q, SIN/NAICS 561612, UEI XQXDN6E33SF4,
-  CAGE 9KL18, WOSB250470, WBE2303571, founded 2021 in Colorado Springs, 719-696-3966.
+- Keep every fact exact: GSA MAS 47QSMS25D009Q, SIN/NAICS 561612, UEI XQXDN6E33SF4, CAGE
+  9KL18, WOSB250470, WBE2303571, founded 2021 in Colorado Springs, 719-696-3966.
 - Write plain, natural copy. No em-dashes. No slogans.
-- Pair proof with a way to verify it.
+- Pair every proof element with a way to verify it (the GSA number links to eLibrary).
 
 **Don't**
-- No light mode, background bands, section dividers, or card grids.
-- No gradient text, glow shadows, or decorative glass (one panel only).
-- No invented statistics, clients, quotes, or response times. No client logos.
-- No patrol-vehicle photography on Home.
+- Don't add a light mode, background bands, or boxed card grids.
+- Don't use gradient spotlight cards, gradient text, or glow shadows. Glass appears once, on the
+  Contact panel over the monochrome light field (owner request, 2026-10-04); nowhere else.
+- Don't use signal blue as a fill.
+- Don't invent statistics, clients, quotes, or response times. Don't show client logos
+  (removed by the owner on 2026-09-01).

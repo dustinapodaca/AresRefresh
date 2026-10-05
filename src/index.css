@@ -13,24 +13,25 @@
   --color-paper-2: #f2f2f1;
   --color-line: #d8d8d6;
 
-  /* Field document system (DESIGN.md v2, from the Mobbin research):
-     warm charcoal canvas, one hairline, warm off-white ink, one muted
-     tone, and bronze as the single accent. `signal` keeps its name for
-     the shared header/footer but is now bronze-light. */
-  --color-canvas: #121110;
-  --color-surface-1: #1a1917;
-  --color-surface-2: #22201e;
-  --color-hairline: #2c2a27;
-  --color-ink-muted: #a29d95;
-  --color-signal: #d08a5a;
-  --color-paper-ink: #f3f0ea;
-  /* Aliases the shared Header/Footer read */
-  --color-card: #1a1917;
-  --color-mute: #a29d95;
+  /* Dark canvas (Home). Pass 2 tokens from the Framer design analysis:
+     near-black canvas, two surface lifts, one hairline, one muted ink,
+     and a single blue signal reserved for links and focus. */
+  --color-canvas: #090909;
+  --color-surface-1: #141414;
+  --color-surface-2: #1c1c1c;
+  --color-hairline: #262626;
+  --color-ink-muted: #999999;
+  --color-signal: #0099ff;
+  /* Bronze (deep rust): sampled from the copper glass in the hero
+     photograph (hero6), shifted slightly toward red at the owner's request.
+     bronze-light is its lit highlight, used for glows on the canvas. */
+  --color-bronze: #8b4920;
+  --color-bronze-light: #bc6f40;
+  /* Aliases the shared Header/Footer read (restyled after Pass 2) */
+  --color-card: #141414;
+  --color-mute: #999999;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  /* Display face (DESIGN.md v2) */
-  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
   /* Identifiers and measured figures (contract numbers, UEI, <1%) */
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -738,7 +739,7 @@ html[data-surface='dark'] {
   scrollbar-color: #3a3a3a var(--color-canvas);
 }
 html[data-surface='dark'] ::selection {
-  background: rgb(208 138 90 / 0.4);
+  background: rgb(0 153 255 / 0.35);
   color: #fff;
 }
 html[data-surface='dark'] body {
@@ -777,14 +778,6 @@ html[data-surface='dark'] body {
   .flow-glass { background: var(--color-surface-1); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
-/* Annotation marker label (DESIGN.md: annotation type) */
-.flow-annotation {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 /* Arrow nudge on links (pill arrows: see .pill in the components layer);
    hover-capable pointers only */
 .flow-arrow {
@@ -805,8 +798,6 @@ html[data-surface='dark'] body {
 
 /* Rail progress fill: hidden unless scroll timelines exist */
 .flow-rail-fill { transform: scaleY(0); transform-origin: top; }
-/* Staffing step line: fully drawn by default (static fallback) */
-.flow-steps-fill { transform-origin: top; }
 .flow-progress-fill { transform: scaleX(0); transform-origin: left; }
 
 @supports (animation-timeline: view()) {
@@ -830,13 +821,6 @@ html[data-surface='dark'] body {
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    /* Staffing step line fills as the reader moves through the steps */
-    .flow-steps { view-timeline: --steps block; }
-    .flow-steps-fill {
-      animation: flow-steps-draw linear both;
-      animation-timeline: --steps;
-      animation-range: cover 20% cover 75%;
-    }
     /* Staffing step headings brighten as they pass the pinned photo
        (desktop only). Body copy never dims, so it always meets AA. */
     @media (min-width: 1024px) {
@@ -851,15 +835,14 @@ html[data-surface='dark'] body {
 }
 
 @keyframes flow-fill-y { to { transform: scaleY(1); } }
-@keyframes flow-steps-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes flow-fill-x { to { transform: scaleX(1); } }
 @keyframes flow-recede {
   from { transform: scale(1); opacity: 1; }
   to   { transform: scale(1.06); opacity: 0.55; }
 }
 @keyframes flow-focus {
-  0%   { opacity: 0.72; }
+  0%   { opacity: 0.62; }
   38%  { opacity: 1; }
   62%  { opacity: 1; }
-  100% { opacity: 0.72; }
+  100% { opacity: 0.62; }
 }
