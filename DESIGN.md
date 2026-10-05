@@ -345,6 +345,13 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
   body. The bars draw in as each row arrives. No pinned passage on this page.
+  Below 1024px (owner, 2026-10-05) the stages become a swipe row (scroll snap, 84%
+  slides on phones and 62% on tablets, so the next one peeks), under a process meter:
+  stage numbers 01 to 04 over a hairline split into quarters with ticks, the phase labels
+  beneath, and a 3px ink fill tied to the swipe position (from one quarter to full). Each
+  number turns ink as its stage is reached; tapping a number swipes to it. The per-stage
+  bars step aside there. The meter is a position indicator, so it stays on under reduced
+  motion.
 - **Areas:** the Denver skyline as a wide plate in the column (21:9, 16:10 on phones) with
   a mono caption (it documents a real place), then the three cities as a three-column
   strip (Inter Tight 600, 24 to 32px) with arrows.

@@ -1,9 +1,20 @@
-import type { CSSProperties } from 'react';
+import { useRef, type CSSProperties } from 'react';
 import { STAGES } from './data';
 
 // 02 Process, set as a schedule chart: one axis from pre-contract to operational, and
-// each stage's bar one step further along it.
+// each stage's bar one step further along it. Below 1024px the stages become a swipe
+// row under a process meter that fills as the row is swiped.
 export default function Process() {
+  const rowRef = useRef<HTMLOListElement>(null);
+
+  const goTo = (i: number) => {
+    const row = rowRef.current;
+    const slide = row?.children[i] as HTMLElement | undefined;
+    if (!row || !slide) return;
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    row.scrollTo({ left: slide.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft), behavior: smooth ? 'smooth' : 'auto' });
+  };
+
   return (
     <section id="process" className="ds-svc-process" aria-labelledby="process-title">
       <h2 id="process-title" className="ds-display-lg">
@@ -16,12 +27,28 @@ export default function Process() {
       </p>
 
       <div className="ds-svc-gantt">
+        {/* Phones and tablets: the meter. Four quarters on a hairline, the ink fill tied to
+            the swipe position, each number lighting as its stage is reached. */}
+        <div className="ds-svc-meter">
+          <ol className="ds-svc-meter-nums">
+            {STAGES.map((s, i) => (
+              <li key={s.n} style={{ '--i': i } as CSSProperties}>
+                <button type="button" className="ds-data" onClick={() => goTo(i)} aria-label={`Stage ${i + 1}: ${s.title}`}>
+                  {s.n}
+                </button>
+              </li>
+            ))}
+          </ol>
+          <span className="ds-svc-meter-track" aria-hidden="true">
+            <span />
+          </span>
+        </div>
         <p className="ds-data ds-svc-axis" aria-hidden="true">
           <span>Pre-contract</span>
           <span>Contract execution</span>
           <span>Operational</span>
         </p>
-        <ol className="ds-svc-stages">
+        <ol className="ds-svc-stages" ref={rowRef}>
           {STAGES.map((s, i) => (
             <li key={s.n} className="ds-svc-stage" style={{ '--i': i } as CSSProperties}>
               <div className="ds-svc-stage-name">

@@ -913,6 +913,9 @@ body:has(.ds-page) {
   .ds-steps li,
   .ds-steps li:first-child {
     flex: 0 0 84%;
+    /* Slides share the tallest one's height; keep each one's rows packed at the top. */
+    align-content: start;
+    gap: 12px;
     scroll-snap-align: start;
     padding: 20px 0 0;
     border-top: 1px solid var(--ds-rule-strong);
@@ -1250,6 +1253,99 @@ html.ds-vt .ds-header::before {
   .ds-svc-stage-title { font-size: 24px; }
 }
 .ds-svc-process .ds-handoff { margin-top: var(--ds-beat-tight); }
+
+/* Phones and tablets: the stages become a swipe row under a process meter. The meter is
+   the chart's axis turned into a position indicator: four quarters on a hairline, an ink
+   fill tied to the swipe position, and each stage number lighting as it is reached.
+   Tapping a number swipes to that stage. */
+.ds-svc-meter { display: none; }
+@media (max-width: 1023px) {
+  .ds-svc-gantt { timeline-scope: --ds-svc-swipe; }
+  .ds-svc-meter { display: block; }
+  .ds-svc-meter-nums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+  .ds-svc-meter-nums button {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 0 6px;
+    border: 0;
+    background: none;
+    font-size: 13px;
+    text-align: left;
+    color: var(--ds-fg-muted);
+    cursor: pointer;
+  }
+  .ds-svc-meter-nums li:first-child button { color: var(--ds-fg); }
+  /* The track: a hairline with ticks at the stage boundaries. */
+  .ds-svc-meter-track {
+    position: relative;
+    display: block;
+    height: 9px;
+    background:
+      linear-gradient(var(--ds-rule-strong), var(--ds-rule-strong)) center / 100% 1px no-repeat,
+      linear-gradient(var(--ds-rule-strong), var(--ds-rule-strong)) 25% 0 / 1px 100% no-repeat,
+      linear-gradient(var(--ds-rule-strong), var(--ds-rule-strong)) 50% 0 / 1px 100% no-repeat,
+      linear-gradient(var(--ds-rule-strong), var(--ds-rule-strong)) 75% 0 / 1px 100% no-repeat;
+  }
+  .ds-svc-meter-track span {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3px;
+    height: 3px;
+    background: var(--ds-fg);
+    transform-origin: left;
+  }
+  .ds-svc-axis { margin: 10px 0 0; font-size: 11px; }
+
+  .ds-svc-stages {
+    display: flex;
+    gap: 16px;
+    margin: 28px calc(-1 * var(--ds-gutter)) 0;
+    padding: 0 var(--ds-gutter);
+    scroll-padding-inline: var(--ds-gutter);
+    border-top: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-timeline: --ds-svc-swipe inline;
+    scrollbar-width: none;
+  }
+  .ds-svc-stages::-webkit-scrollbar { display: none; }
+  .ds-svc-stage {
+    flex: 0 0 84%;
+    /* Slides share the tallest one's height; keep each one's rows packed at the top. */
+    align-content: start;
+    gap: 12px;
+    scroll-snap-align: start;
+    padding: 20px 0 4px;
+    border-top: 1px solid var(--ds-rule-strong);
+    border-bottom: 0;
+  }
+  /* The meter carries position here, so the per-stage bar steps aside. */
+  .ds-svc-bar { display: none; }
+  .ds-svc-stage-body .ds-body { margin-top: 4px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ds-svc-stage { flex-basis: 62%; }
+}
+@keyframes ds-num-on { from { color: var(--ds-fg-muted); } to { color: var(--ds-fg); } }
+/* Position indicators: tied to the swipe, so they stay on under reduced motion. */
+@supports (animation-timeline: scroll()) {
+  @media (max-width: 1023px) {
+    .ds-svc-meter-track span {
+      display: block;
+      animation: ds-bar linear both;
+      animation-timeline: --ds-svc-swipe;
+    }
+    .ds-svc-meter-nums li:not(:first-child) button {
+      animation: ds-num-on linear both;
+      animation-timeline: --ds-svc-swipe;
+      animation-range: calc(var(--i) * 33.33% - 6%) calc(var(--i) * 33.33%);
+    }
+  }
+}
 
 /* ---------- 03 Areas: a wide Colorado plate, the cities beneath ---------- */
 .ds-svc-areas { padding-top: var(--ds-beat); }
