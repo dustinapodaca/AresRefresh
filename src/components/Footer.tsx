@@ -85,10 +85,10 @@ export default function Footer() {
 
         {/* Bottom bar — at <=460px stacks centered and breaks "All Rights Reserved."
             onto its own line. Above 460px keeps the side-by-side layout. */}
-        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 font-mono text-[12px] uppercase tracking-[0.1em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
+        <div className="footer_bottom flex flex-wrap items-center justify-between gap-3 py-6 font-mono text-[12px] tracking-[0.02em] max-[460px]:flex-col max-[460px]:items-center max-[460px]:justify-center max-[460px]:gap-4 max-[460px]:text-center">
           <span>
             © 2026 Ares Security LLC.
-            <span className="ml-1 max-[460px]:ml-0 max-[460px]:block">All Rights Reserved.</span>
+            <span className="ml-1 max-[460px]:ml-0 max-[460px]:block">All rights reserved.</span>
           </span>
           <ul className="flex gap-8 list-none m-0 p-0 max-[460px]:justify-center">
             <li><a href="#">Privacy</a></li>
@@ -104,9 +104,9 @@ export default function Footer() {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="footer_col">
-      <h5 className="m-0 mb-6 pb-1.5 border-b font-mono text-[12px] font-normal uppercase tracking-[0.1em]">
+      <h2 className="m-0 mb-6 pb-1.5 border-b font-mono text-[12px] font-normal uppercase tracking-[0.1em]">
         {title}
-      </h5>
+      </h2>
       <ul className="footer_menu list-none m-0 p-0 flex flex-col gap-3">
         {children}
       </ul>

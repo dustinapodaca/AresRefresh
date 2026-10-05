@@ -86,6 +86,12 @@
     overflow-x: hidden;
     position: relative;
   }
+  /* `clip` blocks horizontal scroll like `hidden` but does not turn html/body
+     into scroll containers, so position: sticky and scroll-driven animations
+     keep working. Browsers without `clip` keep the `hidden` declarations above. */
+  @supports (overflow-x: clip) {
+    html, body { overflow-x: clip; }
+  }
   h1, h2, h3, h4, h5, h6 {
     @apply text-ink m-0 font-semibold leading-tight tracking-tight;
   }
@@ -578,7 +584,7 @@ image-slot[data-fill='true'] {
 }
 
 /* Column menus */
-.site_footer.is-dark .footer_col h5 { color: var(--color-mute); border-color: var(--color-hairline); }
+.site_footer.is-dark .footer_col h2 { color: var(--color-mute); border-color: var(--color-hairline); }
 .site_footer.is-dark .footer_menu a { color: rgba(250,250,249,.7); }
 .site_footer.is-dark .footer_menu a:hover { color: var(--color-paper); }
 .site_footer.is-dark .socials a { color: rgba(250,250,249,.65); }
@@ -657,4 +663,97 @@ image-slot[data-fill='true'] {
 @keyframes toast-shrink {
   from { width: 100%; }
   to   { width: 0%; }
+}
+
+/* ============================================================
+   HOME FLOW — continuous dark document (see DESIGN.md)
+   Every effect here is additive: the default, unsupported and
+   reduced-motion states are static and fully visible.
+   ============================================================ */
+
+/* Browser surfaces while Home is mounted (Home sets data-surface) */
+html[data-surface='dark'] {
+  color-scheme: dark;
+  background: var(--color-canvas);
+  scrollbar-color: #3a3a3a var(--color-canvas);
+}
+html[data-surface='dark'] ::selection {
+  background: rgb(0 153 255 / 0.35);
+  color: #fff;
+}
+html[data-surface='dark'] body {
+  background: var(--color-canvas);
+  caret-color: var(--color-signal);
+}
+
+/* Press feedback for pills; arrow nudge only on hover-capable pointers */
+.flow-press {
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms ease;
+}
+.flow-press:active { transform: scale(0.97); }
+.flow-arrow {
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .flow-link:hover .flow-arrow { transform: translateX(3px); }
+  .flow-link:hover .flow-arrow-diag { transform: translate(2px, -2px); }
+}
+
+/* Ledger rows: a 1px hairline under each row (static by design). */
+.flow-ledger-row {
+  background-image: linear-gradient(var(--color-hairline), var(--color-hairline));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 1px;
+}
+
+/* Rail progress fill: hidden unless scroll timelines exist */
+.flow-rail-fill { transform: scaleY(0); transform-origin: top; }
+.flow-progress-fill { transform: scaleX(0); transform-origin: left; }
+
+@supports (animation-timeline: view()) {
+  .flow-doc { view-timeline: --flow block; }
+
+  .flow-rail-fill {
+    animation: flow-fill-y linear both;
+    animation-timeline: --flow;
+    animation-range: contain 0% contain 100%;
+  }
+  .flow-progress-fill {
+    animation: flow-fill-x linear both;
+    animation-timeline: --flow;
+    animation-range: contain 0% contain 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Hero photo recedes as the ledger rises over it */
+    .flow-hero-photo {
+      animation: flow-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+    /* Staffing step headings brighten as they pass the pinned photo
+       (desktop only). Body copy never dims, so it always meets AA. */
+    @media (min-width: 1024px) {
+      .flow-step { view-timeline: --step block; }
+      .flow-step h3 {
+        animation: flow-focus linear both;
+        animation-timeline: --step;
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+}
+
+@keyframes flow-fill-y { to { transform: scaleY(1); } }
+@keyframes flow-fill-x { to { transform: scaleX(1); } }
+@keyframes flow-recede {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1.06); opacity: 0.55; }
+}
+@keyframes flow-focus {
+  0%   { opacity: 0.62; }
+  38%  { opacity: 1; }
+  62%  { opacity: 1; }
+  100% { opacity: 0.62; }
 }
