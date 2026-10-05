@@ -49,3 +49,19 @@ size the files can carry, and its index-first opening gives Services its own ent
 while staying in the same document. A horizontal four-column process (B) also squeezes
 60-word stage bodies into 250px columns; A's vertical track reads at full measure and
 gives the page its one pinned moment.
+
+## Revision after owner review (2026-10-05)
+
+Owner: keep some form of the hero image, and the first build read as almost identical to
+Home. Changes, keeping the system and making each structure come from Services content:
+
+- Opening: the old street photograph returns as a full-bleed band under the headline, with
+  the division index over its lower fade (Home puts its photo behind the headline).
+- Divisions: from alternating photo-and-text entries to a schedule of services, one ruled
+  line item per division with a small photo exhibit (Home has no such table).
+- Process: from a pinned passage (too close to Home's Staffing) to a schedule chart on a
+  pre-contract-to-operational axis, which also restores the old page's phase labels.
+- Areas: from Home's giant city rows and full-bleed photo to a captioned wide plate and a
+  three-city strip.
+- Close: from Home's close to "Tell us about your site.", headline left, phone and actions
+  right.

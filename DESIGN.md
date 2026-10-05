@@ -318,26 +318,28 @@ body, and the single rust horizon glow at the close.
   soft rust glow. Sits beside the Coverage headline on desktop, under it on mobile.
 
 ### Services page ("The Schedule", 2026-10-05)
-- **Opening (cover page):** no photo. Headline (display-xl) and lead on the left (7
-  columns), a numbered index of the six divisions on the right (4 columns): mono number,
-  Inter 15px / 500 title, and an arrow on hairline rows, each a jump link to its entry.
-  Below 1024px the index sits under the copy.
-- **Division entries:** one per division, opened by a hairline rule that draws in from
-  the left. Desktop: the photo plate in 5 columns (3:2) and the copy in 6, with the plate
-  alternating sides entry to entry and a different gap for every entry. The mono number
-  hangs beside the title on its baseline (never above it), and the body and a
-  two-column "Covers" list line up with the title. Government's GSA contract is a
-  one-row ledger (label, mono value, eLibrary link). Tablet: plate 16:9 above the copy;
-  phones: plate 2:1 and tighter gaps. The source photos are as small as 640px, so plates
-  never run wider than five columns.
-- **Process (the pinned moment):** on desktop the headline and reason hold still
-  (sticky) in columns 1 to 5 while four stages scroll in columns 7 to 12 on a vertical
-  hairline track with 9px square markers. Each stage: the mono number hanging beside an
-  Inter 600 title, a faint Inter scope line under it, then the body. The track fills to the middle of the screen and a
-  marker fills once its stage reaches the middle; stages brighten from 0.8 like the
-  Staffing steps. All text is always visible; nothing folds.
-- **Areas and close:** the Home city list, a hand-off line, then the Denver skyline
-  (`about-banner.jpg`) full bleed, with the Contact close pulled up over its lower fade.
+Same system as Home, its own structures (owner: "similar but unique to the page
+contents"). Nothing on Services repeats a Home layout except the rail and the footer.
+- **Opening:** headline (display-xl, 7 columns) with the lead and actions beside it, then
+  the street photograph (`capabilities-hero.jpg`) as a full-bleed band (masked into the
+  canvas at both ends, graded down, drifting slightly as it leaves). The six-division index
+  (mono number, Inter 15px / 500, arrow, on hairline-strong tops) sits over the band's
+  lower fade: three columns on desktop, two on tablet, one on phones.
+- **Divisions as a schedule of services:** one ruled row per division, like contract line
+  items. Desktop columns: name (4) with the number hanging beside it on the baseline and
+  the coverage as a muted middle-dot list beneath; description (4), where Government adds
+  its GSA ledger row; the photo (4, 3:2) as a small exhibit. Tablet: name and description
+  left, photo right. Phones: photo (2:1) first. Plates stay small because the source
+  files are as small as 640px.
+- **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
+  Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
+  hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
+  body. The bars draw in as each row arrives. No pinned passage on this page.
+- **Areas:** the Denver skyline as a wide plate in the column (21:9, 16:10 on phones) with
+  a mono caption (it documents a real place), then the three cities as a three-column
+  strip (Inter Tight 600, 24 to 32px) with arrows.
+- **Close:** "Tell us about your site." (display-lg) left, the phone (mono), email, and
+  actions stacked right, over the rust light set behind the phone.
 
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
@@ -389,10 +391,9 @@ Few, fast, and crisp. Four to six moments per page.
   already there); staffing steps brighten as they cross the middle of the viewport
   (desktop); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
-- **Allowed moments on Services (2026-10-05):** entry rules draw from left to right;
-  each division photo settles from 106% to 100% inside its plate as it enters; the
-  process track and markers fill with scroll; stages brighten (desktop); the Denver
-  photograph opens like Home's full bleed. Plus the index arrow nudge.
+- **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
+  line-item rules draw from left to right; each photo settles from 106% to 100% inside
+  its frame; the stage bars draw along the axis. Plus the index and city arrow nudges.
 - **Added for mobile pacing (2026-10-04):** the credential strip's slow loop, a single
   soft pulse ring on the HQ dot, I-25 drawing itself as the map enters, and the swipe
   row's progress bar. The two loops are ambient and stop under reduced motion.

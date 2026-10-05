@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { DIVISIONS } from './data';
 
-// The cover page of the file: headline and lead on the left, the contents (six
-// divisions) on the right. No photo; the divisions below carry the imagery.
+// The cover of the file: headline and lead, then the street photograph as a wide band,
+// with the contents (six divisions) laid over its lower fade.
 export default function Opening() {
   return (
     <section className="ds-svc-open" aria-labelledby="services-title">
-      <div className="ds-container ds-svc-open-grid">
-        <div className="ds-svc-open-copy">
-          <h1 id="services-title" className="ds-display-xl">
-            Security officers for six kinds of sites.
-          </h1>
+      <div className="ds-container ds-svc-open-head">
+        <h1 id="services-title" className="ds-display-xl">
+          Security officers for six kinds of sites.
+        </h1>
+        <div className="ds-svc-open-side">
           <p className="ds-lead">
             Armed, unarmed, and cleared officers for federal, commercial, industrial, and
             institutional sites in Colorado Springs, Denver, and Pueblo. Find the division
@@ -27,21 +27,25 @@ export default function Opening() {
             </a>
           </div>
         </div>
-
-        <nav className="ds-svc-index" aria-label="Service divisions">
-          <ol>
-            {DIVISIONS.map((d) => (
-              <li key={d.id}>
-                <a href={`#${d.id}`}>
-                  <span className="ds-data">{d.n}</span>
-                  <span>{d.title}</span>
-                  <Arrow size={14} />
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
       </div>
+
+      <div className="ds-svc-band" aria-hidden="true">
+        <img src="/images/capabilities-hero.jpg" alt="" width={2255} height={1864} decoding="async" {...{ fetchpriority: 'high' }} />
+      </div>
+
+      <nav className="ds-container ds-svc-index" aria-label="Service divisions">
+        <ol>
+          {DIVISIONS.map((d) => (
+            <li key={d.id}>
+              <a href={`#${d.id}`}>
+                <span className="ds-data">{d.n}</span>
+                <span>{d.title}</span>
+                <Arrow size={14} />
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
     </section>
   );
 }

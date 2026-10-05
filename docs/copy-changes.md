@@ -109,7 +109,7 @@ reason codes as above.
 | Commercial: "Visible deterrence and loss-prevention that scales…protecting revenue and customer experience." | "Visible deterrence and loss prevention that scales…protecting revenue and the customer experience." | Grammar |
 | Industrial: "24/7 posted guards, mobile patrols, perimeter security, and auditable checkpoint logs." | "Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit." | Plain language |
 | Community: "Tailored, trust-based security for sensitive and community environments where calm presence matters most." | "Trust-based security for sensitive and community settings, where a calm presence matters most." | S (stacked adjectives) |
-| Pill tags (e.g. "Military Bases", "TS/SCI Cleared") | Same items under "Covers", sentence case | Pills are not allowed outside the nav |
+| Pill tags (e.g. "Military Bases", "TS/SCI Cleared") | Same items as a middle-dot list under each division name, sentence case | Pills are not allowed outside the nav |
 | (none) | Hand-off "Whichever division fits your site, the work starts the same way." | H |
 
 ## 02 Process
@@ -121,7 +121,7 @@ reason codes as above.
 | Stage leads ("We invest time upfront so you don't pay for surprises later.", "Full regulatory alignment from day one.", "Site-specific training by leadership — never a new guard without it.", "Seamless go-live with zero coverage gaps.") | Removed; each stage is its title, scope line, and body | S (taglines; the bodies carry the same facts) |
 | Stage short lines ("We walk the site, document risk, and brief command structure…", etc.) | Removed; the full stage text is shown instead | Duplicate content (the two old sections told the same four stages twice) |
 | Micro labels "Scope · Risk · Site Walk", "Regs · Clearances · SOPs" | "Scope · Risk · Site walk", "Regulations · Clearances · SOPs" | Sentence case; abbreviation spelled out |
-| Phase labels "Pre-Contract / Contract Execution / Operational" | Removed | They spanned a horizontal row; on the vertical track their stage mapping would be a guess |
+| Phase labels "← Pre-Contract / Contract Execution / Operational →" | "Pre-contract / Contract execution / Operational" as the schedule chart's axis | Sentence case; same continuum as the old row |
 | 1: "By walking the site and mapping risks with your team before any contract is signed, we identify vulnerabilities early and build a solution that fits your exact operational needs — preventing costly gaps or changes down the road." | "We walk the site and map risks with your team before any contract is signed. That finds vulnerabilities early and gives you a plan that fits how your site actually runs, without costly gaps or changes down the road." | E, plain language |
 | 2: "We cross-reference every regulation, clearance, and SOP against your specific facility — federal, state, or commercial. This eliminates compliance risk and gives you complete audit confidence from the moment we go live." | "We check every regulation, clearance, and SOP against your facility, whether it is federal, state, or commercial. That removes compliance risk and gives you audit confidence from the moment we go live." | E |
 | 3: "…They learn the unique nuances, entry points, client expectations, and daily rhythms so your protection is consistent and professional from the very first shift." | "…They learn the entry points, client expectations, and daily rhythm of the site, so your coverage is consistent from the first shift." | E, S |
@@ -131,7 +131,6 @@ reason codes as above.
 ## 03 Areas and close
 | Was | Now | Why |
 |---|---|---|
-| "Where We Work" band with uppercase city links | "Where we work." + the three city rows from Home (Headquarters / Service area) | Same links, Dossier list style |
-| (none) | Hand-off "Wherever your site is, the first step is a quote request or a call." | H |
-| "Personnel in Action" / "Discipline · Vigilance · Professionalism in the Field" banner | Removed; its Denver photo now runs full bleed into the close | S (slogan, bracketed eyebrow) |
-| (none) | The Home close: "Request a quote, or call us.", phone, email, base, buttons | Reused |
+| "Where We Work" band with uppercase city links | "Where we post officers." + a three-city strip (Headquarters / Service area) under the Denver photo, captioned "Denver and the Front Range" | Same links; H |
+| "Personnel in Action" / "Discipline · Vigilance · Professionalism in the Field" banner | Removed; its Denver photo moved to Areas | S (slogan, bracketed eyebrow) |
+| (none) | Close "Tell us about your site." / "We start with a walk of your site, before anything is signed." + phone, email, quote button, capability statement | N, from stage 1 (the site walk comes before any contract) |
