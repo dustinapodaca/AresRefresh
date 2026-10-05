@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../seo/Seo';
+import Arrow from '../components/FlowArrow';
 
 // Home as one continuous dark document (DESIGN.md). Pass 2's Framer world,
 // re-flowed: no background bands or card grids; sections hand off through
@@ -15,8 +16,8 @@ const GSA_ELIBRARY_URL =
   'https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QSMS25D009Q&contractorName=ARES+SECURITY+LLC&executeQuery=YES';
 
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal';
-const PILL_PRIMARY = `flow-press inline-flex h-11 items-center justify-center rounded-full bg-white px-5 text-[15px] font-medium tracking-[-0.01em] text-canvas hover:bg-pale hover:text-canvas ${FOCUS}`;
-const PILL_SECONDARY = `flow-press inline-flex h-11 items-center justify-center rounded-full bg-surface-1 px-5 text-[15px] font-medium tracking-[-0.01em] text-white hover:bg-surface-2 hover:text-white ${FOCUS}`;
+const PILL_PRIMARY = `pill pill-lg pill-primary ${FOCUS}`;
+const PILL_SECONDARY = `pill pill-lg pill-secondary ${FOCUS}`;
 const CONTENT = 'container-ares lg:[&>*]:ml-[220px]';
 
 const DISPLAY_XL: React.CSSProperties = { fontSize: 'clamp(40px, 6.4vw, 92px)', lineHeight: 0.98, letterSpacing: '-0.045em' };
@@ -118,23 +119,6 @@ const PANELS = [
     lead: false,
   },
 ];
-
-function Arrow({ diag = false, className = '' }: { diag?: boolean; className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={`flow-arrow ${diag ? 'flow-arrow-diag' : ''} shrink-0 ${className}`}
-    >
-      {diag ? <path d="M5 11 11 5M6.5 5H11v4.5" /> : <path d="M3 8h10M9 4l4 4-4 4" />}
-    </svg>
-  );
-}
 
 export default function Home() {
   const docRef = useRef<HTMLDivElement>(null);
@@ -513,8 +497,10 @@ export default function Home() {
                     contact@aressecurity.co
                   </a>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
-                  <Link to="/contact" className={PILL_PRIMARY}>Request a Quote</Link>
+                <div className="grid gap-2.5 sm:flex sm:flex-wrap">
+                  <Link to="/contact" className={PILL_PRIMARY}>
+                    Request a Quote <Arrow className="h-4 w-4" />
+                  </Link>
                   <Link to="/capability-statement" className={PILL_SECONDARY}>Capability Statement</Link>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import FlowArrow from './FlowArrow';
 
 const NAV = [
   { to: '/', label: 'Home', end: true },
@@ -161,12 +162,12 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center justify-end gap-4">
-            {/* Request a Quote — solid white with dark text (desktop only) */}
+            {/* Request a Quote — primary pill (desktop only) */}
             <Link
               to="/contact"
-              className="hidden h-10 items-center rounded-full border border-white bg-white px-5 text-[14px] text-canvas transition-colors hover:bg-white/85 hover:text-canvas lg:inline-flex"
+              className="pill pill-md pill-primary hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal lg:inline-flex"
             >
-              Request a Quote
+              Request a Quote <FlowArrow className="h-3.5 w-3.5" />
             </Link>
 
             {/* Hamburger — just three lines, no circle, morphs into X. */}
@@ -260,9 +261,9 @@ export default function Header() {
                 triggerSlide();
                 setOpen(false);
               }}
-              className="inline-flex h-11 items-center rounded-full border border-white bg-white px-7 text-[14px] text-canvas transition-colors hover:bg-white/85 hover:text-canvas"
+              className="pill pill-lg pill-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal"
             >
-              Request a Quote
+              Request a Quote <FlowArrow className="h-4 w-4" />
             </Link>
           </div>
         </div>

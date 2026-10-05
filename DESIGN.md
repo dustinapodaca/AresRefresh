@@ -9,7 +9,7 @@ colors:
   ink: "#ffffff"
   ink-muted: "#999999"      # the only secondary text tone (binary hierarchy)
   canvas: "#090909"         # the one page surface, edge to edge
-  surface-1: "#141414"      # secondary pill, rare lifted surface
+  surface-1: "#141414"      # rare lifted surface (glass fallback)
   surface-2: "#1c1c1c"      # pressed/hover lift on secondary pill
   hairline: "#262626"       # every rule, table row, and image edge
   signal: "#0099ff"         # links, focus rings, selection only; never a fill
@@ -76,8 +76,8 @@ What is Ares's own:
   interludes, no section fills. Dark only.
 - **Ink `#ffffff` / Ink muted `#999999`** is the whole text hierarchy. No third gray.
 - **Hairline `#262626`** draws every rule, table row, and image edge.
-- **Surface 1 / 2 (`#141414` / `#1c1c1c`)** exist for the secondary pill and its pressed
-  state. Avoid them as section or card fills.
+- **Surface 1 / 2 (`#141414` / `#1c1c1c`)** are rare lifts (the glass panel's solid
+  fallback). Avoid them as section or card fills.
 - **Signal `#0099ff`** marks links, focus rings, and text selection. Never a background
   or button fill.
 - **Bronze `#8b4920` / bronze-light `#bc6f40`** (deep rust) is the atmospheric accent,
@@ -115,8 +115,11 @@ shadows. Hairlines carry structure.
 
 ## Shapes
 
-- Buttons: full pill. Primary is white on canvas; secondary is surface-1 with white text.
-  Minimum 44px tall.
+- Buttons: full pill, `.pill` in index.css. 14px / 500 / -0.01em. Heights: 40px (nav),
+  44px (page). Primary is white (hover `#e9e9e9`). Secondary is flat black (canvas) with a
+  lit hairline edge (inset top highlight + 1px white/10% ring), never a charcoal fill or an
+  outlined ghost. Every pill presses to 0.97. Only "Request a Quote" carries an arrow,
+  which nudges 3px on hover. Stacked pills on mobile run full width.
 - Photos inside the column: 15px radius with a hairline edge. Full-bleed photos: square
   edges, faded into the canvas top and bottom.
 - Icons: authored SVG arrows (1.5px stroke, round caps). No Unicode glyphs as icons.
