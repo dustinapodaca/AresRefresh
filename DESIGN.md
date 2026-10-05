@@ -81,7 +81,7 @@ What is Ares's own:
 - **Signal `#0099ff`** marks links, focus rings, and text selection. Never a background
   or button fill.
 - **Bronze `#8b4920` / bronze-light `#bc6f40`** (deep rust) is the atmospheric accent,
-  sampled from the copper glass in the hero photograph and nudged toward red. It lights the Contact field behind the glass panel.
+  sampled from the copper glass in the hero photograph and nudged toward red. It lights the Contact field as a low horizon glow rising behind the glass panel.
   Use it as light, never as a flat fill, and keep it to glows.
 
 ## Typography

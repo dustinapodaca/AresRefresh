@@ -691,17 +691,19 @@ html[data-surface='dark'] body {
   caret-color: var(--color-signal);
 }
 
-/* Contact light field: a dark field lit by the bronze of the hero's copper
-   glass, with one cool white highlight so it stays monochrome-led. Faded at
-   the top and bottom so it has no edges. */
+/* Contact light field: a bronze horizon. Light rises from below the
+   glass panel like the last of a sunset, with a denser core under the
+   panel and one faint cool highlight up top. Faded at the top and bottom
+   so it has no edges. (Previous version, a side-lit field, is in git at
+   32d51a6.) */
 .flow-field {
   background:
-    radial-gradient(38% 46% at 24% 62%, rgb(188 111 64 / 0.16), transparent 70%),
-    radial-gradient(55% 60% at 30% 70%, rgb(139 73 32 / 0.18), transparent 72%),
-    radial-gradient(34% 44% at 80% 38%, rgb(255 255 255 / 0.09), transparent 72%),
-    radial-gradient(60% 40% at 60% 96%, rgb(188 111 64 / 0.055), transparent 70%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+    radial-gradient(46% 30% at 50% 74%, rgb(139 73 32 / 0.22), transparent 72%),
+    radial-gradient(85% 55% at 50% 96%, rgb(188 111 64 / 0.14), transparent 70%),
+    linear-gradient(180deg, transparent 50%, rgb(139 73 32 / 0.05) 78%, transparent 100%),
+    radial-gradient(28% 32% at 86% 18%, rgb(255 255 255 / 0.045), transparent 70%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 34%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 34%, #000 88%, transparent 100%);
 }
 /* The one glass surface on Home: frosted over the light field, with a
    bright top edge. Solid fallback when transparency is reduced or
