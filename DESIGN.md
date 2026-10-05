@@ -296,10 +296,9 @@ body, and the single rust horizon glow at the close.
   opacity, the floor that keeps dimmed body copy at AA contrast. On mobile it unpins into a plain sequence.
 
 ### Credential strip
-- Between the hero and 01 Verify: the four certification marks alternating with short
-  facts (minority woman-owned; armed, unarmed, and cleared officers; founded 2021;
-  Colorado Springs, Denver, Pueblo). No rules above or below; the edges fade out with a
-  mask. Moves slowly (50s loop), pauses on hover, and holds still and becomes swipeable
+- Between the hero and 01 Verify: the four certification marks only, no text, with wide
+  spacing (72px mobile, 112px desktop). No rules above or below; the edges fade out with
+  a mask. Moves slowly (60s loop), pauses on hover, and holds still and becomes swipeable
   under reduced motion.
 
 ### Coverage map

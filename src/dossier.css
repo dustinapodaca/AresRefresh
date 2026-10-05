@@ -813,11 +813,11 @@ body:has(.ds-page) {
   mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
 .ds-strip-belt { display: flex; width: max-content; }
-.ds-strip-track { display: flex; align-items: center; gap: 48px; padding: 0 48px 0 0; margin: 0; list-style: none; }
+.ds-strip-track { display: flex; align-items: center; gap: 72px; padding: 0 72px 0 0; margin: 0; list-style: none; }
+@media (min-width: 768px) { .ds-strip-track { gap: 112px; padding-right: 112px; } }
 .ds-strip-track li { flex: none; display: flex; align-items: center; }
 .ds-strip-track img { display: block; height: 28px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
 .ds-strip-track img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
-.ds-strip-track span { font-size: 14px; color: var(--ds-fg-muted); white-space: nowrap; }
 
 /* ---------- Coverage map ---------- */
 .ds-map { margin: 12px 0 0; }
@@ -948,7 +948,7 @@ body:has(.ds-page) {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ds-strip-belt { animation: ds-marquee 50s linear infinite; }
+  .ds-strip-belt { animation: ds-marquee 60s linear infinite; }
   .ds-map-ring { animation: ds-ring 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
 }
 @media (hover: hover) and (pointer: fine) {
