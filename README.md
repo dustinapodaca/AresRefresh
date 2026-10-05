@@ -19,6 +19,39 @@ npm run build    # production build → dist/
 npm run preview  # serve the production build
 ```
 
+## Home redesign versions (work in progress)
+
+The Home page is being redesigned first; the chosen style then rolls out to the rest of
+the site. Every iteration is numbered in the order it was made (all on 2026-10-04) and
+saved so any of them can be revisited. Full details: `.claude/design-passes/VERSIONS.md`.
+
+**Branches (where work happens)**
+
+| Branch | What it is |
+|---|---|
+| `redesign-b-fresh` | Current work: a fresh redesign started from the original Home (v00), nav and footer included |
+| `redesign-a-framer` | **Option A**, the best option so far (same content as v08) |
+| `main`, `seo`, `edit` | Live site branches, untouched by the redesign |
+
+**Versions (frozen snapshots, in timeline order)**
+
+| # | Version | How to see it |
+|---|---|---|
+| v00 | Original Home | `git checkout home-v00-original` |
+| v01 | Light, Apple-style | Screenshot + code in `.claude/design-passes/v01-light-apple/` |
+| v02 | Framer dark | Same as v06 |
+| v03 / v03b | xAI dark (new layout / original layout) | Screenshot + code in `.claude/design-passes/` |
+| v04 / v04b | Own blend (steel hero / skyscraper hero) | Screenshot + code in `.claude/design-passes/` |
+| v05 | Vercel dark | `git checkout home-v05-vercel` |
+| v06 | Framer dark, restored as the flow base | `git checkout home-v06-framer` |
+| v07 | First continuous long-form flow pass | `git checkout home-v07-framer-flow` |
+| **v08** | **Flow pass + owner tweaks (Option A)** | `git checkout home-v08-framer-flow-final` |
+| v09 | Mobbin refinement (rejected) | `git checkout home-v09-mobbin-refine` |
+| v10 | Mobbin redesign (rejected) | `git checkout home-v10-mobbin-redesign` |
+
+To view a version: check out its tag, then `npm run dev`. To return to the current work:
+`git checkout redesign-b-fresh`. The next version from the fresh pass will be **v11**.
+
 ## Project layout
 
 ```
