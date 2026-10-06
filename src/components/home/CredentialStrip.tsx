@@ -6,7 +6,9 @@ const MARKS = [
   { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
   { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
-  { src: '/images/cert-denver-mwbe.webp', alt: 'Denver Economic Development & Opportunity M/WBE and SBE certified' },
+  { src: '/images/cert-denver-edo.webp', alt: 'Denver Economic Development & Opportunity' },
+  { src: '/images/cert-co-diverse.webp', alt: 'Colorado Verified Diverse Business' },
+  { src: '/images/cert-co-small.webp', alt: 'Colorado Verified Small Business' },
 ];
 const REPEAT = 3;
 

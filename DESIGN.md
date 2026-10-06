@@ -318,8 +318,9 @@ body, and the single rust horizon glow at the close.
 
 ### Credential strip
 - Phones only (hidden from 768px). Between the hero and 01 Verify: the
-  certification marks only (GSA, SBA, Women Owned, WBENC, and Denver M/WBE SBE, added
-  2026-10-05 as a WebP at 38px tall), no text, with wide
+  certification marks only (GSA, SBA, Women Owned, WBENC, Denver Economic Development &
+  Opportunity, Colorado Verified Diverse Business, Colorado Verified Small Business; the
+  last three added 2026-10-05 as WebPs at 32 to 36px tall), no text, with wide
   spacing (72px mobile, 112px desktop). No rules above or below; the edges fade out with
   a mask. Moves slowly (60s loop), pauses on hover, and holds still and becomes swipeable
   under reduced motion.
