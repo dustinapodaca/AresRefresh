@@ -366,7 +366,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05), then
   the copper-glass tower photograph (`hero6.jpg`, the former Home hero; owner 2026-10-05) as a full-bleed band anchored to its
-  bottom edge (on phones scaled up from the bottom), masked into the canvas at both ends, graded down, drifting
+  bottom edge, set 100px down inside the band (owner, 2026-10-06; on phones scaled up from the bottom), masked into the canvas at both ends, graded down, drifting
   slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the

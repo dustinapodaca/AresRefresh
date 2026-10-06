@@ -1233,7 +1233,7 @@ body:has(.ds-page) {
   position: relative;
   z-index: -1;
   height: clamp(15rem, 38svh, 28rem);
-  margin-top: calc(var(--ds-beat-tight) + 132px); /* 132px lower (owner, 2026-10-06) */
+  margin-top: var(--ds-beat-tight);
   overflow: clip;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
@@ -1241,11 +1241,12 @@ body:has(.ds-page) {
 .ds-svc-band img {
   position: absolute;
   inset-inline: 0;
-  /* Anchored to the photo's bottom edge (street level); the extra height sits above
-     for the drift as the opening leaves. */
-  bottom: 0;
+  /* Anchored to the photo's bottom edge (street level), set 100px down inside the band
+     (owner, 2026-10-06); the extra height sits above for the drift as the opening
+     leaves. */
+  bottom: -100px;
   width: 100%;
-  height: 116%;
+  height: calc(116% + 100px);
   object-fit: cover;
   object-position: 50% 100%;
   filter: saturate(0.85) brightness(0.74);
