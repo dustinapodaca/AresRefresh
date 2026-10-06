@@ -568,8 +568,8 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   17 to 22s; still under reduced motion). The letters are lit from below: ink at the top
   warming to amber (#f1c49a to #e2925a) at the foot. Their lower third sinks under a band
   of dark glass (canvas at 55% over a 22px blur, a white/10% top edge) that holds the
-  legal row: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
-  Static, no pointer tracking (a pointer-led wordmark light was tried and removed,
+  legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado Springs,
+  Colorado", Privacy, Terms, Accessibility. Static, no pointer tracking (a pointer-led wordmark light was tried and removed,
   2026-10-05). The large "Get to know Ares" index was removed earlier (2026-10-04).
 
 ## Motion

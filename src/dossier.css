@@ -507,10 +507,10 @@ body:has(.ds-page) {
   font-family: var(--ds-data);
   font-size: 12px;
   letter-spacing: 0.02em;
-  color: var(--ds-fg-muted);
+  color: #c4c8ce; /* lighter than ink muted so it reads on the lit glass */
 }
 .ds-legal ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-.ds-legal a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-legal a { color: #c4c8ce; transition: color 180ms var(--ds-ease); }
 .ds-legal a:hover { color: var(--ds-fg); }
 /* The light drifts slowly side to side (ambient; still under reduced motion). */
 @media (prefers-reduced-motion: no-preference) {
