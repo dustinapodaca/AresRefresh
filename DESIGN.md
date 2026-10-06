@@ -364,10 +364,14 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05), then
-  the copper-glass tower photograph (`hero6.jpg`, the former Home hero; owner 2026-10-05) as a full-bleed band anchored to its
-  bottom edge, set 100px down inside the band (owner, 2026-10-06; on phones scaled up from the bottom), masked into the canvas at both ends, graded down, drifting
-  slightly as it leaves. No division index in the opening (owner, 2026-10-05): the
+  2026-10-05). The copper-glass tower photograph (`hero6.jpg`, the former Home hero)
+  fills the whole opening from the top of the page, behind the nav, like the other heroes
+  (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
+  only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
+  55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
+  where the crisp photo begins (`clamp(15rem, 38svh, 28rem)` above the opening's foot).
+  The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
+  point, 6:1 or better at every width). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
@@ -536,8 +540,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black
   glass bar fades in (200ms): canvas at 55% over a 20px blur, with a faint white hairline.
   The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
-  Owner request (2026-10-04); with the footer's closing band (2026-10-06), the only glass
-  outside the Services cards.
+  Owner request (2026-10-04); with the footer's closing band and the Services opening
+  (2026-10-06), the only glass outside the Services cards.
 - Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
   centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
   below 1024px), white,
@@ -635,8 +639,8 @@ Few, fast, and crisp. Four to six moments per page.
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services.
-- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar and the footer's
-  closing band (owner requests).
+- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
+  closing band, and the Services opening (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and

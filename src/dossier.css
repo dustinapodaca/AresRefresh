@@ -1228,39 +1228,48 @@ body:has(.ds-page) {
   .ds-svc-open-head h1 { grid-column: 1 / span 7; }
   .ds-svc-open-side { grid-column: 8 / span 5; }
 }
-/* Full bleed, faded into the canvas at both ends with a mask. */
-.ds-svc-band {
-  position: relative;
-  z-index: -1;
-  height: clamp(15rem, 38svh, 28rem);
-  margin-top: var(--ds-beat-tight);
+/* The photograph fills the whole opening from the top of the page (behind the nav), faded
+   into the canvas only at the bottom. Dark glass covers it from the top down to the band,
+   so the headline and lead read on the glass and the photo is crisp below its edge
+   (owner, 2026-10-06; the footer's glass, turned over). */
+.ds-svc-open { --svc-band: clamp(15rem, 38svh, 28rem); }
+.ds-svc-open-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
   overflow: clip;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
+  mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
 }
-.ds-svc-band img {
+.ds-svc-open-photo img {
   position: absolute;
   inset-inline: 0;
-  /* Anchored to the photo's bottom edge (street level), set 100px down inside the band
-     (owner, 2026-10-06); the extra height sits above for the drift as the opening
-     leaves. */
-  bottom: -100px;
+  /* Anchored to the photo's bottom edge (street level); the extra height sits above
+     for the drift as the opening leaves. */
+  bottom: 0;
   width: 100%;
-  height: calc(116% + 100px);
+  height: 112%;
   object-fit: cover;
   object-position: 50% 100%;
   filter: saturate(0.85) brightness(0.74);
 }
-/* Phones: the band is nearly square, so the whole photo would fit and its street level
-   would fall into the fade. Scale it up from the bottom edge instead, as on desktop, and
-   keep the bottom solid for longer. */
-@media (max-width: 767px) {
-  .ds-svc-band {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 80%, transparent 100%);
-  }
-  .ds-svc-band img { height: 230%; }
+.ds-svc-open-glass {
+  position: absolute;
+  inset: 0 0 var(--svc-band);
+  z-index: -1;
+  background: rgb(10 11 13 / 0.55);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
+.ds-svc-band { height: var(--svc-band); margin-top: var(--ds-beat-tight); }
+/* On the glass the lead takes the footer's lighter grey; phones and tablets get a darker
+   tint, since the sky sits behind the copy there (AA held at the brightest point). */
+.ds-svc-open-side .ds-lead { color: #c4c8ce; }
+@media (max-width: 1023px) {
+  .ds-svc-open-glass { background: rgb(10 11 13 / 0.68); }
+}
+
 /* ---------- 01 Divisions: a bento of division cards that open in place ----------
    Owner requests (2026-10-05): containers with a + that opens each one in place, then a
    bento grid after a reference the owner supplied. The only filled containers on the
@@ -2672,7 +2681,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
-    .ds-svc-band img {
+    .ds-svc-open-photo img {
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
