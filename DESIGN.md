@@ -502,7 +502,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   while the four reasons scroll past. Halfway down (the third reason) it crossfades from
   the team to the officer at the range (260ms), and the caption follows. No pan or zoom
   (owner, 2026-10-05: camera moves were too much). The reason in view reads ink with a
-  rust number; the rest rest at 0.8. Roles hands straight to this section (its hand-off
+  rust number (on phones it lights in the middle of the open area below the photo); the
+  rest rest at 0.8. Roles hands straight to this section (its hand-off
   line was removed by the owner).
 - **04 Apply (the close):** "Send us your résumé." with the careers email large in mono over
   the rust light.

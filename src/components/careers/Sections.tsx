@@ -55,13 +55,21 @@ export function Why() {
   const [active, setActive] = useState(-1);
   const items = useRef<(HTMLLIElement | null)[]>([]);
 
-  // The reason in view is the last one whose top has passed the middle of the viewport;
+  // The reason in view is the last one whose top has passed the line below;
   // above the first it is none, so scrolling back up returns to the team photo.
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
-      const line = window.innerHeight / 2;
+      // Desktop: the middle of the viewport. Below 1024px the photo sits over the top of
+      // the screen, so the line is the middle of the open area beneath it.
+      let line = window.innerHeight / 2;
+      const lens = document.querySelector<HTMLElement>('.ds-cr-lens');
+      if (lens && window.matchMedia('(max-width: 1023px)').matches) {
+        // Where the photo ends once it is stuck, so the first reason waits for it too.
+        const stuckBottom = parseFloat(getComputedStyle(lens).top) + lens.offsetHeight;
+        line = (stuckBottom + window.innerHeight) / 2;
+      }
       let next = -1;
       items.current.forEach((el, i) => {
         if (el && el.getBoundingClientRect().top <= line) next = i;
