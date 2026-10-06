@@ -1747,7 +1747,7 @@ body:has(.ds-page) {
   .ds-ab-portrait { grid-column: 1 / span 5; position: sticky; top: calc(var(--ds-header) + 48px); }
   .ds-ab-portrait img { aspect-ratio: 992 / 1040; }
   .ds-ab-people-copy { grid-column: 7 / span 6; }
-  .ds-ab-traits li { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 20px 0; }
+  .ds-ab-traits li { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 20px; align-items: center; padding: 20px 0; }
 }
 
 /* ---------- 04 Statement (the close) ---------- */
