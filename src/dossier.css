@@ -1180,7 +1180,18 @@ body:has(.ds-page) {
   .ds-svc-card[data-open='true'] .ds-svc-card-media img { position: absolute; inset: 0; }
   /* The sharper crop sits over the wide photo and shows only while the card is open. */
   .ds-svc-card-media .ds-svc-photo-sharp { display: block; position: absolute; inset: 0; opacity: 0; }
-  .ds-svc-card[data-open='true'] .ds-svc-photo-sharp { opacity: 1; }
+  /* Opened, it runs most of the panel's height, not all of it, so the square photo is
+     cropped less (filling the tall panel cut the flag at both sides); it is panned
+     right to keep the pole and fades at its foot into the card fill. */
+  .ds-svc-card[data-open='true'] .ds-svc-photo-sharp {
+    opacity: 1;
+    inset: 0 0 auto 0;
+    height: 85%;
+    object-position: 66% 50%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent);
+  }
+  .ds-svc-card[data-open='true'] .ds-svc-card-media:has(.ds-svc-photo-sharp) img:not(.ds-svc-photo-sharp) { opacity: 0; }
   .ds-svc-card[data-open='true'] .ds-svc-card-text {
     margin-top: 0;
     padding: 18px 32px 32px;
