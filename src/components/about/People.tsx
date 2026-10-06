@@ -28,6 +28,11 @@ export default function People() {
             </li>
           ))}
         </ul>
+        {/* Phones: the swipe meter, as on the Home staffing row. */}
+        <div className="ds-steps-meta ds-ab-traits-meta" aria-hidden="true">
+          <span className="ds-steps-bar"><span /></span>
+          <span className="ds-data">Swipe</span>
+        </div>
       </div>
     </section>
   );

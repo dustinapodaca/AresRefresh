@@ -1577,17 +1577,25 @@ body:has(.ds-page) {
 /* Phones: the five traits swipe sideways (72% slides, the next one peeks) instead of
    stacking, like the staffing and process rows. */
 @media (max-width: 767px) {
+  .ds-ab-people-copy { timeline-scope: --ds-ab-traits; }
   .ds-ab-traits {
     display: flex;
     gap: 14px;
     margin-inline: calc(-1 * var(--ds-gutter));
     padding: 0 var(--ds-gutter);
     scroll-padding-inline: var(--ds-gutter);
+    /* Sideways only: no vertical scroll inside the row, and a vertical swipe on it
+       scrolls the page. */
     overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
     scroll-snap-type: x mandatory;
+    scroll-timeline: --ds-ab-traits inline;
     scrollbar-width: none;
   }
+  .ds-ab-traits-meta { display: flex; }
   .ds-ab-traits::-webkit-scrollbar { display: none; }
   .ds-ab-traits li,
   .ds-ab-traits li:last-child {
@@ -1601,6 +1609,8 @@ body:has(.ds-page) {
   }
   .ds-ab-trait { font-size: 28px; }
 }
+/* The meter belongs to the phone swipe row only. */
+@media (min-width: 768px) { .ds-steps-meta.ds-ab-traits-meta { display: none; } }
 @media (min-width: 1024px) {
   .ds-ab-people { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-ab-portrait { grid-column: 1 / span 5; position: sticky; top: calc(var(--ds-header) + 48px); }
@@ -1745,6 +1755,13 @@ body:has(.ds-page) {
       display: block;
       animation: ds-bar linear both;
       animation-timeline: --ds-steps;
+    }
+  }
+  @media (max-width: 767px) {
+    .ds-ab-traits-meta .ds-steps-bar span {
+      display: block;
+      animation: ds-bar linear both;
+      animation-timeline: --ds-ab-traits;
     }
   }
   .ds-rail-fill {

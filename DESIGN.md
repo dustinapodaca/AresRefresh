@@ -391,7 +391,7 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 St
   line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
   underline (240ms), one list at a time.
 - **03 People:** the officer portrait (sticky on desktop) beside the five traits set in
-  Inter Tight at 26 to 38px, each with one line. Phones: the traits swipe (72% slides).
+  Inter Tight at 26 to 38px, each with one line. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
 - **04 Statement (the close):** page 1 of the real capability statement
   (`capability-page1.webp`) as a plate that settles flat as it scrolls in
   (perspective tilt to none, scroll-driven), beside view and download links, the quote
