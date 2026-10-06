@@ -73,9 +73,10 @@ its own desktop section navigator (see "Rails" below).
     facts: veteran supervisors, a veteran NRA firearms instructor, veterans encouraged to
     apply.
   - **Ares does not hire for office roles.**
-  - **No FCL yet** (2026-10-06): Ares cannot sponsor or obtain clearances. Never write
-    "cleared officers/roles" or "clearance-eligible"; say "who already hold an active
-    clearance".
+  - **No FCL yet** (2026-10-06): Ares cannot sponsor clearances. Keep copy general (no
+    "cleared officers/roles", no "clearance-eligible"). Clearance appears only where it
+    matters: the Careers escort role, the Services Government card, the Capability
+    restricted-area card ("For posts that need a clearance, we staff officers who hold one.").
   - **Ares does not do badging** (2026-10-06). Restricted-area experience is stated
     without naming the base ("federal facilities").
   - **"Growth beyond the post" / career growth paths are not true yet.** Don't claim them.

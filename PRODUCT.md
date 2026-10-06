@@ -19,8 +19,7 @@ web
 - **Facility managers** *(brief)* at commercial, industrial, and institutional sites who
   need dependable coverage and a responsive point of contact.
 - **Procurement teams** *(brief)* assembling vendor files and comparing contractors.
-- Secondary: **job seekers** applying for armed and unarmed roles, and escort roles for people who already hold an
-  active clearance (no office roles; owner, 2026-10-05)
+- Secondary: **job seekers** applying for armed and unarmed roles (no office roles; owner, 2026-10-05)
   *(site: /careers)*.
 
 ## Product Purpose

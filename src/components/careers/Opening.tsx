@@ -23,8 +23,8 @@ export default function Opening() {
           Join the team.
         </h1>
         <p className="ds-lead">
-          We hire armed and unarmed officers, and escorts who already hold an active clearance,
-          with paid training and schedules you can plan a life around.
+          We hire armed and unarmed officers, with paid training and schedules you can plan a
+          life around.
         </p>
         <div className="ds-actions">
           <a href="#roles" className="ds-btn ds-btn-primary">

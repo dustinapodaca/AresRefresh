@@ -67,7 +67,7 @@ export const CAPABILITIES: Capability[] = [
       { name: 'Credential verification', detail: 'IDs, badges, and access lists checked at every entry point.' },
       { name: 'Visitor screening', detail: 'Sign-in, ID checks, and a visitor log you can audit.' },
       { name: 'Gate, dock, and lobby control', detail: 'People, vehicles, and deliveries checked against your post orders before they enter.' },
-      { name: 'Restricted-area escort', detail: 'Escort officers for restricted areas, including escorts who already hold an active TS/SCI clearance.' },
+      { name: 'Restricted-area escort', detail: 'Escort officers for restricted and controlled areas.' },
     ],
   },
   {
@@ -115,8 +115,8 @@ export type Differentiator = { title: string; body: string; proof: string; href?
 export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
-    body: 'Our officers stand restricted posts at federal facilities, including escort duty by officers who already hold an active TS/SCI clearance. We work to the escort and documentation rules high-compliance sites require, and our post orders and reports are written for contracting officers.',
-    proof: 'Federal facilities · DoW-vetted · TS/SCI holders',
+    body: 'Our officers stand restricted posts at federal facilities and work to the escort and documentation rules those sites require. For posts that need a clearance, we staff officers who hold one.',
+    proof: 'Federal facilities · DoW-vetted',
   },
   {
     title: 'Four-stage deployment',

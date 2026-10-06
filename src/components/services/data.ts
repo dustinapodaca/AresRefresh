@@ -34,7 +34,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
       { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
       { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
-      { name: 'Clearance-required posts', detail: 'Officers who already hold an active clearance, matched to the post during compliance mapping.' },
+      { name: 'Clearance-required posts', detail: 'For posts that need a clearance, we staff officers who hold one.' },
     ],
     photo: {
       src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
@@ -120,8 +120,8 @@ export const STAGES: Stage[] = [
   {
     n: '02',
     title: 'Compliance mapping',
-    covers: 'Regulations · Clearance rules · SOPs',
-    body: 'We check every regulation, clearance requirement, and SOP against your facility, whether it is federal, state, or commercial. That removes compliance risk and gives you audit confidence from the moment we go live.',
+    covers: 'Regulations · Access rules · SOPs',
+    body: 'We check every regulation, access requirement, and SOP against your facility, whether it is federal, state, or commercial. That removes compliance risk and gives you audit confidence from the moment we go live.',
   },
   {
     n: '03',

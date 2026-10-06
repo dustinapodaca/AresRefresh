@@ -393,3 +393,15 @@ hold" an active clearance, and nothing implies sponsorship.
 | Careers, TS Cleared Security Escort | "An active clearance, or the ability to obtain one, is required." | "You must already hold an active TS clearance." |
 | Denver (old page) | "Armed, unarmed and clearance-eligible officers" | "Armed and unarmed officers" |
 | Colorado Springs (old page) | "Armed, unarmed and clearance-eligible officers are all available" / "Facility clearance in process. Clearance-eligible hiring." | "Armed and unarmed officers are both available" / removed |
+
+### Second pass (2026-10-06, owner): general wording, clearance only where it matters
+
+| Where | Now |
+|---|---|
+| Home, 04 Careers | "We hire armed and unarmed officers, with paid training." |
+| Careers opening | "We hire armed and unarmed officers, with paid training and schedules you can plan a life around." |
+| Careers, TS Cleared Security Escort | "Restricted-access escort coverage for federal facilities. Requires an active TS clearance." |
+| Services, Government card | "Clearance-required posts: For posts that need a clearance, we staff officers who hold one." |
+| Capability, Access Control | "Restricted-area escort: Escort officers for restricted and controlled areas." |
+| Capability, Why Ares | "Our officers stand restricted posts at federal facilities and work to the escort and documentation rules those sites require. For posts that need a clearance, we staff officers who hold one." / proof "Federal facilities · DoW-vetted" |
+| Services, 02 Compliance mapping | "Regulations · Access rules · SOPs" / "every regulation, access requirement, and SOP" |

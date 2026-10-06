@@ -10,7 +10,7 @@ export default function Careers() {
             Join the people who staff them.
           </h2>
           <p className="ds-body">
-            We hire armed and unarmed officers, and escorts who already hold an active clearance, with paid training. Our supervisors include veterans, and our NRA firearms instructor is a
+            We hire armed and unarmed officers, with paid training. Our supervisors include veterans, and our NRA firearms instructor is a
             veteran. Veterans are encouraged to apply.
           </p>
           <Link to="/careers" className="ds-link">
