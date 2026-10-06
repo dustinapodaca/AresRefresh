@@ -1964,6 +1964,9 @@ body:has(.ds-page) {
 @media (max-width: 899px) {
   .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
 }
+/* "Capability Statement." on one line (owner, 2026-10-06); it runs a few px past the
+   7-column copy column at 1440, into open space. Phones keep two lines at the shared size. */
+@media (min-width: 640px) { .ds-cs-hero-copy h1 { white-space: nowrap; } }
 .ds-cs-hero-copy .ds-lead { margin-top: 20px; max-width: 44ch; }
 .ds-cs-hero-copy .ds-actions { margin-top: 28px; }
 .ds-cs-spec { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 24px 0 0; font-size: 12px; color: var(--ds-fg-faint); }
