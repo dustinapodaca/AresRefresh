@@ -399,6 +399,38 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 St
   (perspective tilt to none, scroll-driven), beside view and download links, the quote
   button, and the phone, over the closing rust light.
 
+### Capability Statement page ("The Statement, Served", 2026-10-05)
+The most important page after Home; it must stand out like Home. Concept and Mobbin
+board: docs/capability-concepts.md. Every piece of the old page's content carries over.
+Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
+- **Hero:** the owner-supplied glass-panels light (`hero-panels.webp`, within the
+  approved light-in-image exception) full bleed, black from the left. "Capability
+  statement." at display-xl, the offer, the credential line, a white "Download the PDF"
+  button with an authored download icon, a quiet "Request a quote", and a mono spec line
+  (company, NAICS, 1 page, PDF, 2.1 MB, 2026). Beside it, page 1 of the real statement
+  (`capability-page1.webp`) floats in the light at a 3D tilt; it rises 28px once on load,
+  straightens on hover, and straightens and lifts as the hero scrolls away. Phones: the
+  document floats above the copy. Under the hero, the four quick facts as Home's key row
+  with notes and the SAM.gov route.
+- **Capabilities:** six ruled entries (number beside the title, body, keys as a mono
+  middle-dot line), three columns on desktop, two on tablet. Phones: each folds to its
+  name and keys; the h3 holds a disclosure button (aria-expanded) so headings stay
+  navigable. Prerendered open; folded before paint on phones; reopened if the screen
+  grows past phone width.
+- **Why Ares:** three columns (mono number beside an Inter Tight title, body, then the
+  area as a mono line beneath; never above the heading). Phones: a
+  swipe row with the Home meter.
+- **How to buy:** the GSA MAS as a spec block (title, mono status "● Active", spec rows,
+  eLibrary route) beside the four procurement paths with mono status (13px, sentence
+  case) and the set-aside note. Active and available take a filled ink dot; "on
+  request" a faint ring.
+- **Credentials:** seven marks on hairlines in a fixed 48px logo slot (white
+  silhouettes; the GSA plate and the SBA WOSB badge in their own colors), each with its
+  number where one is published; then the full code listing as a two-column ledger.
+  Phones: the listing folds behind a disclosure button in its h3, with the entry count.
+- **Download (the close):** the PDF thumbnail beside "Take this capability statement
+  with you.", Download, Open in a new tab, quote, and phone, over the closing rust light.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row

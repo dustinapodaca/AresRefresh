@@ -193,3 +193,29 @@ From `docs/about-content.md`. Facts unchanged; about 1,100 words down to about 4
 | Traits (Diverse, Experienced, Composed, Cleared, Compassionate) | Unchanged | |
 | "[ CAPABILITY STATEMENT ]" / "Procurement-Ready Company Overview" / "Core competencies, certifications, past performance…" / "View Statement" | "Everything above, on one page." + "Our capability statement lists our identifiers, certifications, licenses, and contract vehicles in the format procurement teams use." + "View the capability statement", "Download the PDF", quote, phone | Bracketed eyebrow removed; "past performance" dropped (no past-performance list is published) |
 | Breadcrumb "Home / About" | Removed | The nav marks the page |
+
+---
+
+# Copy changes (Capability Statement, "The Statement, Served", 2026-10-05)
+
+All content carries over (owner rule). Changes are limited to the site's standing rules
+and to the new hero.
+
+| Was | Now | Why |
+|---|---|---|
+| Breadcrumb; kicker "Ares Security LLC · NAICS 561612 · Security Guard & Patrol Services" | Removed as a kicker; the same facts sit in a mono spec line under the buttons ("Ares Security LLC · NAICS 561612 · 1 page · PDF · 2.1 MB · 2026") | No eyebrows above headings |
+| H1 "Capability Statement" | "Capability statement." | Sentence case, matching the site |
+| "GSA Schedule holder · SAM-registered · WOSB & WBE certified." | "GSA Schedule holder · SAM-registered · WOSB and WBE certified" | Unchanged facts |
+| "Download Capability Statement (PDF)" | "Download the PDF" (+ "Request a quote") | Shorter; fits phones |
+| Quick fact "Business Size / Set-Aside: WOSB Set-Aside Eligible" | "Set-aside: WOSB eligible" | Shorter label; same fact |
+| Competency bodies ending "— insurable risk reduction." and "— a calm, trained presence." | ", for insurable risk reduction." and ", with a calm, trained presence." | E |
+| Competency titles and keys in Title Case | Sentence case | Matching the site |
+| "Cleared, Licensed, Veteran-Led" + "…current at time of post — no liability gaps. Leadership cadence drawn from military discipline." | "Cleared, licensed, and supervised on post" + "…current at time of post, with no liability gaps. Our supervisors include veterans." | F: PRODUCT.md, never "veteran-led" (the owner is not a veteran); "our supervisors include veterans" is the confirmed fact, worded as on Careers |
+| "Technical Audit → Compliance Mapping → Guard Training → Deployment." | "Technical audit, compliance mapping, guard training, deployment." | Plain text |
+| "…built for contracting officers — not boilerplate." | "…built for contracting officers, not boilerplate." | E |
+| "How To Buy From Us" / "↓ Pre-negotiated pricing award without re-compete" | "How to buy from us." / "Pre-negotiated pricing, and award without a re-compete." | Bracketless, no arrow kicker |
+| "Period of Performance: 5-Year · Optional Extensions" | "5-year · optional extensions" | Sentence case |
+| "Credentials On The Record" / "↓ All data matches SAM.gov registration" | "Credentials on the record." / "All data matches our SAM.gov registration." | Same |
+| (four marks) | Seven marks: adds Denver M/WBE · SBE certified (B2G vendor 21353671, from the PDF), Colorado Verified Diverse Business, Colorado Verified Small Business | Owner-supplied logos (2026-10-05) |
+| "DUNS: Legacy — UEI is the SAM identifier going forward" | "Legacy. UEI is the SAM identifier going forward" | E |
+| "[ DOWNLOAD ] Take this capability statement with you." | "Take this capability statement with you." + Download, Open the PDF (new tab), quote, phone | Bracketed eyebrow removed |
