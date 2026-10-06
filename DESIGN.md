@@ -558,7 +558,7 @@ per city. No rail, no close, no photo, no section numbers.
 
 ### 404 ("The Search Light", 2026-10-06)
 Owner request: modern, clean, a glass panel over an aurora. Concept: docs/notfound-concepts.md.
-- The first screen only: a giant "404" (Inter Tight 600, up to 380px, -0.05em) over a slow
+- The first screen only: a giant "404" (Inter Tight 600, up to 330px, -0.05em) over a slow
   rust and amber aurora (the footer's glow, pooled behind the numerals) and soft conic
   beams from above that sway ±9deg over 16s, like a search light. The light fades out before
   the footer. Ambient; still under reduced motion.

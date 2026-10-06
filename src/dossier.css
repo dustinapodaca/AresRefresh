@@ -2801,7 +2801,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   margin: 0;
   font-family: var(--ds-display);
   font-weight: 600;
-  font-size: clamp(150px, 38vw, 380px);
+  font-size: clamp(132px, 34vw, 330px);
   line-height: 0.8;
   letter-spacing: -0.05em;
   color: var(--ds-fg);
@@ -2810,7 +2810,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* The glass card rides up over the numerals' foot, so they blur beneath it; the text starts
    below that frosted strip, never on it (as in the footer's band). */
 .ds-nf-card {
-  --nf-sink: clamp(34px, 8vw, 104px);
+  --nf-sink: clamp(30px, 7vw, 90px);
   position: relative;
   width: min(100%, 680px);
   margin-top: calc(-1 * var(--nf-sink));
