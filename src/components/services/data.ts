@@ -28,9 +28,9 @@ export const DIVISIONS: Division[] = [
     id: 'government',
     n: '01',
     title: 'Government Security Personnel',
-    body: 'Lawful, immediate access to federal and state facilities, with DoW\u2011vetted officers. Agencies can order through our GSA Schedule without opening a new competition.',
+    body: 'Lawful, immediate access to federal and state facilities, with veterans on our staff. Agencies can order through our GSA Schedule without opening a new competition.',
     covers: [
-      { name: 'Military bases', detail: 'DoW\u2011vetted officers, each trained on the post by a member of our leadership who has worked it.' },
+      { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
       { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
       { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
       { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },

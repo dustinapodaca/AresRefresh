@@ -432,3 +432,12 @@ hold" an active clearance, and nothing implies sponsorship.
 | Services, Government card, Restricted areas | "Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces." |
 | Careers, TS Cleared Security Escort | "Escort and access control inside restricted areas on military installations. Requires an active TS clearance." |
 | Capability, Why Ares proof line (2026-10-06, owner) | "Restricted areas · Military installations · Veteran staff" (was "DoW-vetted") |
+
+## Owner backlog pass (2026-10-06)
+
+| Where | Was | Now |
+|---|---|---|
+| Capability, Why Ares 04 | "Rated 4.8 by our own officers" / "Our officers rate Ares 4.8..." | "Rated 4.8 by our own employees" / "Our employees rate Ares 4.8..." (matches Careers and PRODUCT.md) |
+| Capability, Why Ares 03 proof | "16 of 18 criteria · questionnaires on request" | "16 of 18 criteria" |
+| Services, Government card | "...with DoW-vetted officers." | "...with veterans on our staff." |
+| Services, Government card, Military bases | "DoW-vetted officers, each trained on the post by..." | "Officers trained on the post by..." |

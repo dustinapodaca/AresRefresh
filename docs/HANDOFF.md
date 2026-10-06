@@ -89,23 +89,27 @@ its own desktop section navigator (see "Rails" below).
 
 ## Waiting on the owner
 
-- **`src/seo/routes.json` edits** (off limits, need a yes):
-  - `/careers` description says "real growth paths" (not true yet).
-  - `/contact` description says "We respond within one business day" (response times are
-    never stated).
-  - Services and Capability Statement `preloadImage` lines are stale (point at old hero
-    images).
-- Capability Statement still says "Rated 4.8 by our own officers"; Careers now says
-  "employees" (matches PRODUCT.md). Offer to align.
-- The "+ / x" buttons on the Services and Capability cards are the last round controls
-  (the owner asked for squarer corners everywhere). Offered to square them; no answer.
-- Draft copy the owner should review (logged in `docs/copy-changes.md`): the included-
-  service lines on Services and Capability cards; TS/SCI confirmation; "questionnaires on
-  request".
-- The footer's Registration column shows a fixed date (SAM through March 26, 2027): update
-  on renewal.
+- **SEO and final copy come last** (2026-10-06): `src/seo/routes.json` (off limits) is
+  refined once everything else is done, so it fits the final content. The owner of Ares
+  (she) will also go through the site and give her own copy changes before then. Known
+  items for that pass: `/careers` says "real growth paths" (not true yet); `/contact`
+  says "We respond within one business day" (never state response times); Services and
+  Capability `preloadImage` lines point at old hero images.
+- **SAM.gov date** in the footer (Through March 26, 2027) is fixed text. Proposed: fetch
+  it at build time from the SAM.gov Entity API (needs a free SAM.gov API key as a Netlify
+  env var, and a touch to `scripts/`, which needs a yes), falling back to the fixed date.
+- **Google Business profile link** for the footer (the Google link opens a Maps search
+  for now).
+- **Capability statement PDF:** check it for "cleared", Buckley, and badging.
+- Draft copy still to review (in `docs/copy-changes.md`): the included-service lines on
+  the Services and Capability cards.
 - Unused files that could be deleted if the owner agrees: `public/images/careers-apply.jpg`
-  (stock), `ares-text-pyramid.svg`, old hero options.
+  (stock) and old hero options.
+
+Resolved 2026-10-06: Indeed rating now "employees" everywhere; "questionnaires on
+request" removed; the round + / x discs replaced by corner ticks; `ares-text-pyramid.svg`
+deleted; "DoW-vetted" removed (Capability proof says "Veteran staff"; Services says
+"with veterans on our staff").
 
 ## Files that matter
 

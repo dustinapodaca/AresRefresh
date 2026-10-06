@@ -44,7 +44,6 @@ Performance section was removed from the capability statement page.
 | `client-olgoonik.png` | 15 KB | orphaned |
 | `gsa-logo.png` | 12 KB | superseded by `cert-gsa-*` |
 | `cert-gsa.png` | 5 KB | superseded |
-| `ares-text-pyramid.svg` | 3 KB | unused |
 
 **Keep these somewhere else** (an archive folder outside `public/`) if you
 may want the client logos back — the capability-statement PDF may still

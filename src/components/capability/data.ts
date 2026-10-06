@@ -126,11 +126,11 @@ export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Rated Exceptional by clients',
     body: 'Clients rate Ares Exceptional on 16 of 18 criteria across multi-year contracts, including quality of services, overall performance, and repeat business, over 2+ years of monitored performance.',
-    proof: '16 of 18 criteria · questionnaires on request',
+    proof: '16 of 18 criteria',
   },
   {
-    title: 'Rated 4.8 by our own officers',
-    body: 'Our officers rate Ares 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.',
+    title: 'Rated 4.8 by our own employees',
+    body: 'Our employees rate Ares 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.',
     proof: '4.8 / 5 on Indeed',
     href: 'https://www.indeed.com/cmp/Ares-Security-1/reviews',
   },

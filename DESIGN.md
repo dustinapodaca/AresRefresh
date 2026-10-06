@@ -341,7 +341,9 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
 - The one exception to "no card containers", "no glow shadows", and "no icon circles":
   the division cards on Services and the competency cards on the Capability Statement.
   Near-black fill, a white/8 to 10% inset edge, a faint inner light from below, 4px
-  corners like the photos (owner, 2026-10-05; were 14 to 18px), and a 36px circular + that turns to an x on an ink disc. Nowhere else.
+  corners like the photos (owner, 2026-10-05; were 14 to 18px), and a + that turns to an x. The + has no disc or box (owner, 2026-10-06): a 12px +
+  (1.5px strokes) inside four 7px corner ticks on a 36px target, like crop marks on a spec
+  sheet; the ticks tighten in on hover (180ms) and turn ink when the card is open. Nowhere else.
 
 ### Credential strip
 - Phones only (hidden from 768px). Between the hero and 01 Verify: the
