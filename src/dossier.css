@@ -312,14 +312,14 @@ body:has(.ds-page) {
 }
 
 /* ---------- Footer ---------- */
+/* Owner, 2026-10-06 (Mobbin: Retool, Railway, Windsurf, Opacity). The one place besides
+   the nav with glass, and the one CSS light: the rust aurora under the closing wordmark. */
 .ds-footer {
   background: var(--ds-canvas);
   color: var(--ds-fg-muted);
   font-family: var(--ds-text);
   padding-top: var(--ds-beat);
-  padding-bottom: 32px;
 }
-/* Top: the mark and the company line set large (left), the quote, phone, and email (right). */
 /* The mark, a hairline, and the ARES / SECURITY text logo (ares-text.svg). */
 /* Proportions from the owner's lockup: the text logo nearly the mark's height, the rule a
    little taller than both, an even gap either side. */
@@ -346,49 +346,55 @@ body:has(.ds-page) {
   color: var(--ds-fg);
   text-wrap: balance;
 }
-.ds-ft-act { display: grid; justify-items: start; gap: 16px; align-content: start; }
-.ds-ft-act ul { display: grid; gap: 8px; list-style: none; margin: 8px 0 0; padding: 0; }
-.ds-ft-act a.ds-data { font-size: 14px; color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
-.ds-ft-act a.ds-data:hover { color: var(--ds-fg); }
+/* Right of the statement: the phone, the email, and the three profiles (set small: the
+   close above carries the phone large). */
+.ds-ft-reach { display: grid; justify-items: start; align-content: end; gap: 10px; }
+.ds-ft-phone, .ds-ft-email { font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
+.ds-ft-email { color: var(--ds-fg-muted); }
+.ds-ft-phone:hover, .ds-ft-email:hover { color: #fff; }
+.ds-ft-profiles { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; margin: 14px 0 0; padding: 0; }
+.ds-ft-profiles a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ds-fg-muted);
+  transition: color 180ms var(--ds-ease);
+}
+.ds-ft-profiles a:hover { color: var(--ds-fg); }
 @media (min-width: 1024px) {
   .ds-ft-top { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-ft-intro { grid-column: 1 / span 7; }
-  .ds-ft-act { grid-column: 10 / span 3; }
-}
-@media (max-width: 767px) {
-  .ds-ft-act .ds-btn { width: 100%; }
-  .ds-ft-act { justify-items: stretch; }
+  .ds-ft-reach { grid-column: 10 / span 3; }
 }
 
-.ds-footer-cols {
-  display: grid;
-  gap: 40px 24px;
-  padding-top: 40px;
-  border-top: 1px solid var(--ds-rule);
-}
-.ds-footer-cols h2 { font-family: var(--ds-data); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg); margin: 0 0 14px; }
+/* Columns (Retool): each opens on a vertical hairline, the links set larger in ink. */
+.ds-footer-cols { display: grid; gap: 40px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ds-footer-cols > div { padding-left: 20px; border-left: 1px solid var(--ds-rule-strong); }
+.ds-footer-cols h2 { font-family: var(--ds-data); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg-faint); margin: 0 0 18px; }
 .ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.ds-footer-cols a { color: var(--ds-fg-muted); font-size: 15px; transition: color 180ms var(--ds-ease); }
-.ds-footer-cols a:hover { color: var(--ds-fg); }
-.ds-footer-cols a.ds-data { font-size: 14px; color: var(--ds-fg-muted); }
-.ds-footer-cols a.ds-data:hover { color: var(--ds-fg); }
+.ds-footer-cols a { color: var(--ds-fg); font-size: 18px; letter-spacing: -0.01em; transition: color 180ms var(--ds-ease); }
+.ds-footer-cols a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
+.ds-footer-cols a.ds-data { font-size: 15px; letter-spacing: 0; color: var(--ds-fg); }
 /* Contracting: label and mono value on each line. */
 .ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
 .ds-ft-ids li > span:first-child { min-width: 4.5em; font-size: 14px; color: var(--ds-fg-faint); }
-.ds-ft-ids .ds-data { font-size: 14px; color: var(--ds-fg-muted); }
+.ds-ft-ids .ds-data { font-size: 15px; color: var(--ds-fg-muted); }
 /* Registration: SAM.gov as a live status, with the green light from the Capability
    Statement (Resend's status line on Mobbin). */
-.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 15px; color: var(--ds-fg); }
+.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; letter-spacing: -0.01em; color: var(--ds-fg); }
 .ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
-.ds-ft-status-note { margin: 6px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-ft-status-note { margin: 8px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
 .ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
 /* Phones: an even 2x2. The identifiers stack (label over value) to fit a half column. */
-.ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 639px) {
+  .ds-footer-cols > div { padding-left: 14px; }
+  .ds-footer-cols a { font-size: 16px; }
+  .ds-ft-status { font-size: 16px; }
   .ds-ft-ids li { flex-direction: column; gap: 2px; }
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
+  .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
 }
-@media (min-width: 640px) { .ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .ds-certs {
@@ -423,22 +429,98 @@ body:has(.ds-page) {
   .ds-certs img[src*='cert-wbenc'] { height: 36px; }
 }
 
+/* The close of every page: the ARES letters of the text logo across the container over a slow rust and
+   amber light rising from the bottom edge (Windsurf, Opacity), its foot under a band of
+   dark glass (Railway) that holds the legal row. */
+.ds-ft-stage {
+  --ft-sink: min(80px, 5.6vw); /* how far the wordmark runs under the glass (about a third) */
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  margin-top: var(--ds-beat-tight);
+  padding-top: clamp(40px, 7vw, 112px);
+}
+.ds-ft-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* Windsurf's fan, in the rust light: soft beams rising from below the center. */
+  background: conic-gradient(
+    from -62deg at 50% 124%,
+    transparent 0deg,
+    rgb(214 122 62 / 0.5) 9deg, transparent 18deg,
+    transparent 24deg, rgb(248 178 108 / 0.42) 33deg, transparent 42deg,
+    transparent 50deg, rgb(255 230 204 / 0.4) 58deg, transparent 66deg,
+    transparent 70deg, rgb(248 178 108 / 0.4) 78deg, transparent 87deg,
+    transparent 94deg, rgb(214 122 62 / 0.48) 104deg, transparent 113deg,
+    transparent 124deg
+  );
+  -webkit-mask: linear-gradient(to top, #000 20%, transparent 92%);
+  mask: linear-gradient(to top, #000 20%, transparent 92%);
+}
+.ds-ft-aurora::before,
+.ds-ft-aurora::after {
+  content: '';
+  position: absolute;
+  inset: 0 -10%;
+  filter: blur(28px);
+  will-change: transform;
+}
+.ds-ft-aurora::before {
+  background:
+    radial-gradient(62% 96% at 50% 112%, rgb(214 122 62 / 0.95), transparent 70%),
+    radial-gradient(34% 80% at 16% 108%, rgb(188 111 64 / 0.85), transparent 70%),
+    radial-gradient(34% 80% at 86% 110%, rgb(170 92 46 / 0.8), transparent 70%);
+}
+.ds-ft-aurora::after {
+  background:
+    radial-gradient(22% 50% at 44% 112%, rgb(255 238 218 / 0.95), transparent 70%),
+    radial-gradient(30% 66% at 62% 112%, rgb(248 178 108 / 0.85), transparent 70%),
+    radial-gradient(18% 40% at 26% 112%, rgb(248 178 108 / 0.6), transparent 70%);
+  mix-blend-mode: screen;
+}
+.ds-ft-giant {
+  /* Only the ARES letters (the top 105.4 of the logo's 174.87 units). */
+  aspect-ratio: 576 / 105.4;
+  width: 100%;
+  /* Lit from the glow below: ink at the top, warming toward the glass. */
+  background: linear-gradient(to bottom, var(--ds-fg) 22%, #f1c49a 66%, #e2925a 100%);
+  -webkit-mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
+  mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
+}
+.ds-ft-glass {
+  position: relative;
+  margin-top: calc(-1 * var(--ft-sink));
+  padding-top: calc(var(--ft-sink) + 28px);
+  background: rgb(10 11 13 / 0.32);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
 .ds-legal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px 28px;
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid var(--ds-rule);
+  padding-bottom: 32px;
   font-family: var(--ds-data);
   font-size: 12px;
   letter-spacing: 0.02em;
-  color: var(--ds-fg-faint);
+  color: var(--ds-fg-muted);
 }
 .ds-legal ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-.ds-legal a { color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+.ds-legal a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
 .ds-legal a:hover { color: var(--ds-fg); }
+/* The light drifts slowly side to side (ambient; still under reduced motion). */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-ft-aurora::before { animation: ds-ft-drift 22s ease-in-out infinite alternate; }
+  .ds-ft-aurora::after { animation: ds-ft-drift 17s ease-in-out -6s infinite alternate-reverse; }
+}
+@keyframes ds-ft-drift {
+  from { transform: translate3d(-4%, 0, 0); }
+  to { transform: translate3d(4%, -3%, 0); }
+}
 
 /* ============================================================
    HOME

@@ -182,7 +182,9 @@ sizes are unchanged.
 - **Display: Inter Tight 600**, very tight (-0.05em at display-xl and the city list,
   -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
   to 1.15. Reduce size before loosening tracking.
-  - display-xl: the hero headline (two lines on desktop, set over the full-bleed photo)
+  - display-xl: the hero headline (two lines on desktop, set over the full-bleed photo;
+    on Home the quote button and call link under the lead show below 1024px only, since
+    the nav carries the quote button from there up; owner, 2026-10-06)
     and the Contact headline.
   - display-lg: section headlines (Verify, Staffing, Careers).
   - display-md: the Coverage headline.
@@ -266,7 +268,8 @@ sizes are unchanged.
 
 Flat. No shadows, no blur, no glass, no tonal card lifts. Depth comes from three sources
 only: photographs that fade into the canvas, the scale gap between display type and
-body, and the single rust horizon glow at the close.
+body, and the single rust horizon glow at the close. The footer's closing stage (owner,
+2026-10-06) is the one place with a CSS light and glass at the end of every page.
 
 ## Shapes
 
@@ -529,7 +532,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black
   glass bar fades in (200ms): canvas at 55% over a 20px blur, with a faint white hairline.
   The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
-  Owner request (2026-10-04); this is the only glass on the site.
+  Owner request (2026-10-04); with the footer's closing band (2026-10-06), the only glass
+  outside the Services cards.
 - Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
   centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
   below 1024px), white,
@@ -540,23 +544,32 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   primary button.
 
 ### Footer
-Redesigned 2026-10-05 (owner; Mobbin board: Attio's action column, Resend's status
-light, Cosmos's statement beside the mark). Same canvas, no top rule, a `beat` above it.
+Redesigned 2026-10-06 (owner; Mobbin: Retool's ruled columns, Railway's wordmark under
+glass, Windsurf's beams, Opacity's light). A bigger footer with no quote button (the nav
+and each page's close carry it). Same canvas, no top rule, a `beat` above it.
 - **Top:** the Ares lockup (the mark at 52px, a 60px rule at ink 50%, and the ARES /
   SECURITY text logo at 44px, 28px apart; owner's reference), the company line set large
-  under it (Inter Tight 500, 26 to
-  36px, ink, balanced, about 24ch) in 7 columns; on the right (3 columns, bottom-aligned)
-  "Have a site to cover?", the primary "Request a quote" button, and the phone and email
-  in mono. Phones: stacked, the button full width.
-- **Columns** under a hairline: Company (About Us, Services, Careers, Capability
-  Statement); Service areas; Contracting as label and mono value (GSA MAS 47QSMS25D009Q
-  linking to eLibrary, UEI, CAGE); Registration as a live status: the green light
-  (#7cb85f, from the Capability Statement) and "Active on SAM.gov", "Through March 26,
-  2027", and a Verify route. Four equal columns on desktop; an even 2x2 on phones, the
+  under it (Inter Tight 500, 26 to 36px, ink, balanced, about 24ch) in 7 columns; on the
+  right (3 columns, bottom-aligned) the phone and email in mono at 15px (small: the close
+  above carries the phone large), then the profiles as quiet external links: LinkedIn,
+  Google (Business), Indeed. These are the only social profiles. Phones: stacked.
+- **Columns** (Retool): each opens on a 1px vertical hairline (hairline strong), a mono
+  uppercase title in ink faint, links in Inter 18px ink (16px on phones). Company (About
+  Us, Services, Careers, Capability Statement); Service areas; Contracting as label and
+  mono value (GSA MAS 47QSMS25D009Q linking to eLibrary, UEI, CAGE); Registration as a
+  live status: the green light (#7cb85f) and "Active on SAM.gov", "Through March 26,
+  2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
   identifiers stacked label over value.
-- Then the certification marks separated by thin vertical lines, and the legal row on a
-  hairline: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
-- A closing giant wordmark with a pointer-led light was tried and removed (owner,
+- Then the certification marks separated by thin vertical lines.
+- **The closing stage** (owner request: "aurora or gradient or opacity or glass"): the ARES
+  letters of the text logo across the full container (only the letters, not SECURITY),
+  over a slow rust and amber light rising from the bottom edge (soft radial glows, a
+  white-hot core, and a faint conic fan of beams, all blurred, drifting side to side over
+  17 to 22s; still under reduced motion). The letters are lit from below: ink at the top
+  warming to amber (#f1c49a to #e2925a) at the foot. Their lower third sinks under a band
+  of dark glass (canvas at 32% over a 22px blur, a white/10% top edge) that holds the
+  legal row: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
+  Static, no pointer tracking (a pointer-led wordmark light was tried and removed,
   2026-10-05). The large "Get to know Ares" index was removed earlier (2026-10-04).
 
 ## Motion
@@ -611,7 +624,8 @@ Few, fast, and crisp. Four to six moments per page.
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services.
-- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar (owner request).
+- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar and the footer's
+  closing band (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and

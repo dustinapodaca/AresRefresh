@@ -3,10 +3,20 @@ import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
 import { SAM_VERIFY } from './capability/data';
 
-// The footer (Mobbin board, 2026-10-05: Attio's action column, Resend's status light,
-// Cosmos's statement beside the mark). The company line set large with the mark, the
-// quote, phone, and email beside it; then the columns, with the SAM.gov registration as
-// a live status; then the certification marks and the legal row.
+// The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
+// glass, Windsurf's and Opacity's light). No quote button: every page's close and the nav
+// carry it. The mark and the company line with the phone, email, and profiles beside them;
+// the columns; the certification marks; then the ARES wordmark set large over a slow rust
+// light, its foot under a band of dark glass that holds the legal row.
+
+// LinkedIn and Indeed match the sameAs links in index.html. The Google Business profile
+// link is not on file yet, so this opens the Maps search for the business.
+const PROFILES = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/aressecurity' },
+  { label: 'Google', href: 'https://www.google.com/maps/search/?api=1&query=Ares+Security+LLC+Colorado+Springs' },
+  { label: 'Indeed', href: 'https://www.indeed.com/cmp/Ares-Security-1' },
+];
+
 export default function Footer() {
   return (
     <footer className="ds ds-footer">
@@ -24,15 +34,18 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="ds-ft-act">
-            <p className="ds-small">Have a site to cover?</p>
-            <Link to="/contact" className="ds-btn ds-btn-primary">
-              Request a quote
-              <Arrow />
-            </Link>
-            <ul>
-              <li><a href="tel:+17196963966" className="ds-data">719-696-3966</a></li>
-              <li><a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a></li>
+          <div className="ds-ft-reach">
+            <a href="tel:+17196963966" className="ds-data ds-ft-phone">719-696-3966</a>
+            <a href="mailto:contact@aressecurity.co" className="ds-data ds-ft-email">contact@aressecurity.co</a>
+            <ul className="ds-ft-profiles" aria-label="Ares Security elsewhere">
+              {PROFILES.map((p) => (
+                <li key={p.label}>
+                  <a href={p.href} target="_blank" rel="noopener noreferrer">
+                    {p.label}
+                    <Arrow external size={12} />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -95,15 +108,25 @@ export default function Footer() {
           <li><img src="/images/cert-women-owned.png" alt="Women Owned" loading="lazy" /></li>
           <li><img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
         </ul>
+      </div>
 
-        <div className="ds-legal">
-          <span>© 2026 Ares Security LLC. All rights reserved.</span>
-          <span>Colorado Springs, Colorado</span>
-          <ul>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Accessibility</a></li>
-          </ul>
+      <div className="ds-ft-stage">
+        <div className="ds-ft-aurora" aria-hidden="true" />
+        <div className="ds-container">
+          <div className="ds-ft-giant" aria-hidden="true" />
+        </div>
+        <div className="ds-ft-glass">
+          <div className="ds-container">
+            <div className="ds-legal">
+              <span>© 2026 Ares Security LLC. All rights reserved.</span>
+              <span>Colorado Springs, Colorado</span>
+              <ul>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Accessibility</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
