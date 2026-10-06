@@ -1717,6 +1717,28 @@ body:has(.ds-page) {
 .ds-cs-spec span:not(:last-child)::after { content: '\00b7'; margin: 0 10px; }
 /* .ds-keyrow resets margin and padding after .ds-container; restore both here. */
 .ds-cs-facts { position: relative; margin-top: var(--ds-beat-tight); margin-inline: auto; padding-inline: var(--ds-gutter); }
+/* The key row sits on one hairline that runs the full width of the page, over a band of
+   frosted dark glass that fades out downward (owner request, 2026-10-05, after the
+   Services cards), so the codes read clearly over the lit panels. */
+.ds-cs-facts { isolation: isolate; }
+.ds-cs-facts::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: -24px;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+  background: linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0.35) 55%, rgb(10 11 13 / 0) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  pointer-events: none;
+}
+.ds-keyrow.ds-cs-facts li { padding-top: 22px; border-top: 0; }
 .ds-cs-fact-note { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--ds-fg-muted); }
 .ds-cs-verify { margin-top: 10px; font-size: 13px; gap: 4px; }
 @media (min-width: 900px) {

@@ -410,8 +410,9 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). Beside it, page 1 of the real statement
   (`capability-page1.webp`) floats in the light at a 3D tilt; it rises 28px once on load,
   straightens on hover, and straightens and lifts as the hero scrolls away. Below 900px the
-  document is hidden (owner) and the copy starts low in the light. Under the hero, the four quick facts as Home's key row
-  with notes and the SAM.gov route.
+  document is hidden (owner) and the copy starts low in the light. Under the hero, the four quick facts with notes and the SAM.gov route sit on one
+  full-width hairline over a band of frosted dark glass (22px blur over a dark tint) that
+  fades out downward (owner, 2026-10-05).
 - **Capabilities:** six ruled entries (number beside the title, body, keys as a mono
   middle-dot line), three columns on desktop, two on tablet. Phones: each folds to its
   name and keys; the h3 holds a disclosure button (aria-expanded) so headings stay
