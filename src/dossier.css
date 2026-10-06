@@ -1491,7 +1491,8 @@ body:has(.ds-page) {
 .ds-ab-facts dt { font-size: 14px; color: var(--ds-fg-muted); }
 .ds-ab-facts dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
 .ds-ab-facts dd.ds-data { font-size: 16px; }
-.ds-ab-vehicles img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 75%; }
+/* Phones and tablets: anchored to the photo's bottom edge, so the vehicles lead. */
+.ds-ab-vehicles img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 100%; }
 @media (min-width: 768px) {
   .ds-ab-facts div { grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: 20px; align-items: baseline; }
 }
