@@ -253,6 +253,13 @@ questionnaires on request; card lines now say who each service is for; patrol's 
 patrol" include replaced by "Checkpoint logs" (vehicle patrol is its own card); Why Ares
 lead "Four reasons, each with its source."
 
+## Capability Statement hero, shorter (2026-10-05, owner)
+
+| Was | Now | Why |
+|---|---|---|
+| "Armed, unarmed, and cleared security officers for federal agencies, prime contractors, and commercial sites across Colorado. Every identifier you need to vet us is below and in the one-page PDF." | "Armed and unarmed security officers for federal agencies, prime contractors, and commercial sites across Colorado. Every identifier is below and in the PDF." | Owner: drop "cleared", more succinct |
+| "GSA Schedule holder · SAM-registered · WOSB and WBE certified" | Removed | Repeats the quick facts directly beneath (WOSB, WBE, UEI with its SAM.gov route), How to buy (GSA), and Credentials |
+
 ## Capability statement PDF updated (2026-10-05)
 
 The owner's updated PDF (adds Pueblo license #26422) replaces `public/files/Ares-Security-Capability-Statement-2026.pdf` (same URL); the page-one preview `capability-page1.webp` was regenerated from it; the code listing gains "Local license, Pueblo · 26422" (13 entries).

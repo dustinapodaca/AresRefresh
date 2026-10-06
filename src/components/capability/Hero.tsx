@@ -11,7 +11,7 @@ export function DownloadIcon({ size = 16 }: { size?: number }) {
 }
 
 // The hero: the owner's glass-panels light full bleed, black from the left; the headline,
-// the offer, the credential line, and the download. Under it, the four quick facts on a
+// the offer, and the download. Under it, the four quick facts on a
 // full-width line over a frosted fade.
 export default function Hero() {
   return (
@@ -26,11 +26,9 @@ export default function Hero() {
             Capability Statement.
           </h1>
           <p className="ds-lead">
-            Armed, unarmed, and cleared security officers for federal agencies, prime contractors,
-            and commercial sites across Colorado. Every identifier you need to vet us is below and
-            in the one-page PDF.
+            Armed and unarmed security officers for federal agencies, prime contractors, and
+            commercial sites across Colorado. Every identifier is below and in the PDF.
           </p>
-          <p className="ds-cs-hero-creds">GSA Schedule holder · SAM-registered · WOSB and WBE certified</p>
           <div className="ds-actions">
             <a href={PDF_URL} className="ds-btn ds-btn-primary" download>
               <DownloadIcon />

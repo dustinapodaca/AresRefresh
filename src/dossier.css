@@ -1707,7 +1707,6 @@ body:has(.ds-page) {
   .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
 }
 .ds-cs-hero-copy .ds-lead { margin-top: 20px; max-width: 44ch; }
-.ds-cs-hero-creds { margin: 14px 0 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
 .ds-cs-hero-copy .ds-actions { margin-top: 28px; }
 .ds-cs-spec { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 24px 0 0; font-size: 12px; color: var(--ds-fg-faint); }
 .ds-cs-spec span:not(:last-child)::after { content: '\00b7'; margin: 0 10px; }
