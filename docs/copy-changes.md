@@ -300,3 +300,6 @@ your OK) still says "We respond within one business day."
 
 Same day (owner): "Capability statement request" option and the "Buying through GSA?"
 block removed; the subject options are the six divisions and "Something else".
+
+About trait (2026-10-05, owner): "Compassionate" → "Courteous" (same line). The word was
+long enough to crowd the line beside it.

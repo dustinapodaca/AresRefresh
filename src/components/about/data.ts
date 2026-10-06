@@ -47,7 +47,7 @@ export const TRAITS: Commitment[] = [
   { name: 'Experienced', line: 'Seasoned officers who have stood the hard posts before.' },
   { name: 'Composed', line: 'Calm and clear when a situation turns.' },
   { name: 'Cleared', line: 'Background-checked and licensed before they reach your post.' },
-  { name: 'Compassionate', line: 'Approachable people who treat clients and the public with respect.' },
+  { name: 'Courteous', line: 'Approachable people who treat clients and the public with respect.' },
 ];
 
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
