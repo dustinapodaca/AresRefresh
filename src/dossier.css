@@ -1703,21 +1703,11 @@ body:has(.ds-page) {
 .ds-ab-traits { list-style: none; margin: 32px 0 0; padding: 0; }
 .ds-ab-traits li { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid var(--ds-rule); }
 .ds-ab-traits li:last-child { border-bottom: 1px solid var(--ds-rule); }
-/* ALERT: the initials large down the left (Grain's GROWTH values on Mobbin), the word
-   beside each in the sub-head style, its line beneath. */
-.ds-ab-trait-letter {
-  font-family: var(--ds-display);
-  font-weight: 600;
-  font-size: clamp(44px, 4.4vw, 64px);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  color: var(--ds-fg);
-}
-.ds-ab-trait-text { display: grid; gap: 4px; min-width: 0; }
-.ds-ab-trait { font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
+/* Word over line: each trait large at full width, its line beneath (owner, 2026-10-05). */
+.ds-ab-trait { font-family: var(--ds-display); font-weight: 600; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.05; letter-spacing: -0.035em; color: var(--ds-fg); }
 .ds-ab-trait-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 46ch; }
 @media (min-width: 768px) {
-  .ds-ab-traits li { grid-template-columns: 4.5rem minmax(0, 1fr); column-gap: 16px; align-items: center; padding: 20px 0; }
+  .ds-ab-traits li { gap: 6px; padding: 20px 0; }
 }
 /* Phones: the five traits swipe sideways (72% slides, the next one peeks) instead of
    stacking, like the staffing and process rows. */
@@ -1752,7 +1742,7 @@ body:has(.ds-page) {
     border-top: 1px solid var(--ds-rule-strong);
     border-bottom: 0;
   }
-  .ds-ab-traits li .ds-ab-trait-letter { margin-bottom: 10px; }
+  .ds-ab-trait { font-size: 28px; }
 }
 /* The meter belongs to the phone swipe row only. */
 @media (min-width: 768px) { .ds-steps-meta.ds-ab-traits-meta { display: none; } }

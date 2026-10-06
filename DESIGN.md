@@ -420,9 +420,9 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 St
   line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
   underline (240ms), one list at a time.
 - **03 People:** the officer portrait (sticky on desktop) beside the five traits, whose
-  initials read ALERT (owner, 2026-10-05): each initial in Inter Tight 600 at 44 to 64px
-  in a narrow column down the left, the word beside it in the sub-head style (Inter 600,
-  20 to 24px) with its line beneath. Phones: the letter above the word in each slide. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
+  initials read ALERT (owner, 2026-10-05; a column of large initials was tried and
+  dropped as too much). Each word in Inter Tight 600 at 28 to 38px, full width, its line
+  beneath. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
 - **04 Statement (the close):** page 1 of the real capability statement
   (`capability-page1.webp`) as a plate that settles flat as it scrolls in
   (perspective tilt to none, scroll-driven), beside view and download links, the quote
