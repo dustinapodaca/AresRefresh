@@ -9,6 +9,10 @@ export const SERVICE_MARKS: readonly Mark[] = [
   { id: 'contact', n: '04', label: 'Contact' },
 ];
 
+// `sharp`: a tighter, higher-resolution crop of the same photo, shown only in the tall
+// panel of an opened card on desktop; the closed card keeps the wider framing.
+type Photo = { src: string; width: number; height: number; position?: string };
+
 export type Division = {
   id: string;
   n: string;
@@ -17,7 +21,7 @@ export type Division = {
   // Each site type with one plain line. DRAFT copy (2026-10-05), built only from facts
   // already on the site; owner to review (docs/copy-changes.md).
   covers: { name: string; detail: string }[];
-  photo: { src: string; width: number; height: number; position?: string };
+  photo: { src: string; width: number; height: number; position?: string; sharp?: Photo };
 };
 
 export const DIVISIONS: Division[] = [
@@ -33,7 +37,10 @@ export const DIVISIONS: Division[] = [
       { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
       { name: 'TS/SCI cleared', detail: 'Cleared officers for posts that require a clearance, matched during compliance mapping.' },
     ],
-    photo: { src: '/images/matrix-government.webp', width: 862, height: 862, position: '50% 50%' },
+    photo: {
+      src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
+      sharp: { src: '/images/matrix-government.webp', width: 862, height: 862 },
+    },
   },
   {
     id: 'airport',

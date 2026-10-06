@@ -1048,6 +1048,7 @@ body:has(.ds-page) {
   filter: saturate(0.82) brightness(0.86) contrast(1.04);
   transition: transform 300ms var(--ds-ease);
 }
+.ds-svc-card-media .ds-svc-photo-sharp { display: none; }
 /* The frosted panel rides up over the photo's foot. */
 .ds-svc-card-text {
   position: relative;
@@ -1177,6 +1178,9 @@ body:has(.ds-page) {
   .ds-svc-card[data-open='true'] { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-column: 1 / -1; }
   .ds-svc-card[data-open='true'] .ds-svc-card-media { position: relative; z-index: 0; height: auto; min-height: 460px; }
   .ds-svc-card[data-open='true'] .ds-svc-card-media img { position: absolute; inset: 0; }
+  /* The sharper crop sits over the wide photo and shows only while the card is open. */
+  .ds-svc-card-media .ds-svc-photo-sharp { display: block; position: absolute; inset: 0; opacity: 0; }
+  .ds-svc-card[data-open='true'] .ds-svc-photo-sharp { opacity: 1; }
   .ds-svc-card[data-open='true'] .ds-svc-card-text {
     margin-top: 0;
     padding: 18px 32px 32px;

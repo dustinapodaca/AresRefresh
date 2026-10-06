@@ -156,6 +156,17 @@ export default function Divisions() {
                   decoding="async"
                   style={d.photo.position ? { objectPosition: d.photo.position } : undefined}
                 />
+                {d.photo.sharp && (
+                  <img
+                    className="ds-svc-photo-sharp"
+                    src={d.photo.sharp.src}
+                    alt=""
+                    width={d.photo.sharp.width}
+                    height={d.photo.sharp.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
               </div>
 
               {/* Over the photo's foot, a frosted panel (owner reference) carries the name and
