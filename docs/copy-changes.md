@@ -298,3 +298,5 @@ Inventory: docs/contact-content.md. Concept: docs/contact-concepts.md.
 **Owner follow-up:** the route's SEO description (`src/seo/routes.json`, off limits without
 your OK) still says "We respond within one business day."
 
+Same day (owner): "Capability statement request" option and the "Buying through GSA?"
+block removed; the subject options are the six divisions and "Something else".

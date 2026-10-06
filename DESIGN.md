@@ -471,13 +471,14 @@ docs/contact-concepts.md.
   "Request a quote." and the lead low on it.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a
   hairline-strong rule. "What needs covering?" is a required radio group of the six
-  divisions, the capability statement, and something else, as rows on hairlines in two
+  divisions and something else, as rows on hairlines in two
   columns (16px ring in ink faint; checked fills ink with a canvas dot). Fields: label
   above (13px, ink muted, "Optional" in ink faint), a 48px filled field (#0e1013, white/16%
   edge, 2px corners, 16px text so phones don't zoom). Errors are amber (#f2b84b) once the
   reader has tried to send, with a line under the radio group. Then the primary button,
-  the discretion line, and an inline status (aria-live) with the green or amber light;
-  then the GSA contract as a ledger row with its eLibrary and capability statement routes.
+  the discretion line, and an inline status (aria-live) with the green or amber light.
+  On desktop the message box grows so the form ends level with the map (owner,
+  2026-10-05).
 - **The contact column (5 columns, from column 8):** "Rather talk?" with the phone in
   mono (30 to 40px) over the rust light, the email; "What happens next" as three ruled
   steps; the Colorado coverage map from Home. Phones: the intake first, then this column.

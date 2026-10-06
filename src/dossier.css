@@ -2149,15 +2149,19 @@ body:has(.ds-page) {
 }
 
 /* ---------- The intake (form) and the contact column ---------- */
+.ds-qt-form { display: grid; gap: 48px; min-width: 0; }
 .ds-qt-body { display: grid; gap: var(--ds-beat-tight); padding-block: var(--ds-beat-tight) var(--ds-beat); }
-.ds-qt-main { display: grid; gap: var(--ds-beat-tight); min-width: 0; }
 @media (min-width: 1024px) {
-  .ds-qt-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-qt-main { grid-column: 1 / span 6; }
+  .ds-qt-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .ds-qt-form { grid-column: 1 / span 6; }
   .ds-qt-side { grid-column: 8 / span 5; }
+  /* The message box takes up the slack, so the form ends level with the map. */
+  .ds-qt-form { display: flex; flex-direction: column; }
+  .ds-qt-part-grow,
+  .ds-qt-part-grow .ds-qt-field { display: flex; flex-direction: column; flex: 1; }
+  .ds-qt-part-grow textarea.ds-qt-input { flex: 1; }
 }
 
-.ds-qt-form { display: grid; gap: 48px; min-width: 0; }
 .ds-qt-part { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ds-qt-part legend {
   display: block;
@@ -2255,6 +2259,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-qt-send strong { font-weight: 600; color: var(--ds-fg); }
 .ds-qt-send .ds-btn:disabled { opacity: 0.6; cursor: progress; }
 .ds-qt-status { display: flex; align-items: center; gap: 10px; flex-basis: 100%; margin: 0; font-size: 15px; line-height: 1.45; color: var(--ds-fg); }
+/* Empty, it stays in the page (so it is announced when filled) but takes no room. */
+.ds-qt-status:empty { margin-top: -16px; }
 .ds-qt-status[data-ok]::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; }
 .ds-qt-status[data-ok='true']::before { background: #7cb85f; box-shadow: 0 0 0 4px rgb(124 184 95 / 0.16); }
 .ds-qt-status[data-ok='false']::before { background: #f2b84b; box-shadow: 0 0 0 4px rgb(242 184 75 / 0.16); }
@@ -2302,15 +2308,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-qt-next li > .ds-data { padding-top: 2px; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-qt-next-name { margin: 0 0 2px; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
 .ds-qt-where .ds-map { margin-top: 20px; }
-/* The GSA route as a ledger row: label, mono value, verification links. */
-.ds-qt-gsa-row { display: grid; gap: 6px 24px; margin-top: 16px; padding: 18px 0; border-block: 1px solid var(--ds-rule); }
-.ds-qt-gsa-n { margin: 0; font-size: 20px; color: var(--ds-fg); }
-.ds-qt-gsa-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 8px; }
-@media (min-width: 640px) {
-  .ds-qt-gsa-row { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; }
-  .ds-qt-gsa-row .ds-small { grid-column: 1 / -1; }
-  .ds-qt-gsa-links { margin-top: 0; justify-content: flex-end; }
-}
 
 /* ============================================================
    Scroll-driven motion. Static and fully visible by default, when

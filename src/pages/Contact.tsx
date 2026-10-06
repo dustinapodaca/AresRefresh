@@ -1,14 +1,12 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Arrow from '../components/Arrow';
 import CoverageMap from '../components/home/CoverageMap';
-import { GSA_ELIBRARY } from '../components/home/links';
 import Seo from '../seo/Seo';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
 
-// What needs covering: the six Services divisions, the capability statement, and other.
+// What needs covering: the six Services divisions and other.
 // Web3Forms uses `subject` as the email's subject line, so the slug is swapped for the
 // label right before posting.
 const NEEDS: { slug: string; label: string }[] = [
@@ -18,7 +16,6 @@ const NEEDS: { slug: string; label: string }[] = [
   { slug: 'industrial', label: 'Industrial, Logistics & Construction' },
   { slug: 'specialized', label: 'Specialized & Armed Protection' },
   { slug: 'community', label: 'Institutional & Community Security' },
-  { slug: 'capability', label: 'Capability statement request' },
   { slug: 'other', label: 'Something else' },
 ];
 const LABEL = Object.fromEntries(NEEDS.map((n) => [n.slug, n.label]));
@@ -111,91 +108,72 @@ export default function Contact() {
       </section>
 
       <div className="ds-container ds-qt-body">
-        <div className="ds-qt-main">
-          <form className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
-            <fieldset className="ds-qt-part">
-              <legend>What needs covering?</legend>
-              <div className="ds-qt-needs">
-                {NEEDS.map((n) => (
-                  <label key={n.slug} className="ds-qt-need">
-                    <input type="radio" name="subject" value={n.slug} required aria-describedby="qf-need-err" />
-                    <span className="ds-qt-dot" aria-hidden="true" />
-                    <span>{n.label}</span>
-                  </label>
-                ))}
-              </div>
-              <p id="qf-need-err" className="ds-qt-err">
-                Choose what needs covering.
-              </p>
-            </fieldset>
+        <form className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
+          <fieldset className="ds-qt-part">
+            <legend>What needs covering?</legend>
+            <div className="ds-qt-needs">
+              {NEEDS.map((n) => (
+                <label key={n.slug} className="ds-qt-need">
+                  <input type="radio" name="subject" value={n.slug} required aria-describedby="qf-need-err" />
+                  <span className="ds-qt-dot" aria-hidden="true" />
+                  <span>{n.label}</span>
+                </label>
+              ))}
+            </div>
+            <p id="qf-need-err" className="ds-qt-err">
+              Choose what needs covering.
+            </p>
+          </fieldset>
 
-            <fieldset className="ds-qt-part">
-              <legend>About the site</legend>
-              <Field id="qf-message" label="Message">
-                <textarea
-                  id="qf-message"
-                  name="message"
-                  required
-                  rows={6}
-                  placeholder="Site, shift pattern, deadline, and any compliance considerations."
-                  className="ds-qt-input"
-                />
+          <fieldset className="ds-qt-part ds-qt-part-grow">
+            <legend>About the site</legend>
+            <Field id="qf-message" label="Message">
+              <textarea
+                id="qf-message"
+                name="message"
+                required
+                rows={6}
+                placeholder="Site, shift pattern, deadline, and any compliance considerations."
+                className="ds-qt-input"
+              />
+            </Field>
+          </fieldset>
+
+          <fieldset className="ds-qt-part">
+            <legend>How to reach you</legend>
+            <div className="ds-qt-fields">
+              <Field id="qf-name" label="Name">
+                <input id="qf-name" name="name" type="text" required autoComplete="name" placeholder="Jane Smith" className="ds-qt-input" />
               </Field>
-            </fieldset>
-
-            <fieldset className="ds-qt-part">
-              <legend>How to reach you</legend>
-              <div className="ds-qt-fields">
-                <Field id="qf-name" label="Name">
-                  <input id="qf-name" name="name" type="text" required autoComplete="name" placeholder="Jane Smith" className="ds-qt-input" />
-                </Field>
-                <Field id="qf-email" label="Email">
-                  <input id="qf-email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" className="ds-qt-input" />
-                </Field>
-                <Field id="qf-org" label="Organization" optional>
-                  <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
-                </Field>
-                <Field id="qf-phone" label="Phone" optional>
-                  <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
-                </Field>
-              </div>
-            </fieldset>
-
-            {/* Honeypot: hidden from sighted users and the tab order; bots that fill every
-                input tick it and the submit handler bails. Web3Forms recommends the name. */}
-            <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="ds-qt-trap" />
-
-            <div className="ds-qt-send">
-              <button type="submit" className="ds-btn ds-btn-primary" disabled={sending}>
-                {sending ? 'Sending…' : 'Send request'}
-                {!sending && <Arrow />}
-              </button>
-              <p className="ds-small">
-                <strong>Discretion guaranteed.</strong> Requests are read by leadership only.
-              </p>
-              <p className="ds-qt-status" role="status" aria-live="polite" data-ok={status?.done ? String(status.ok) : undefined}>
-                {status?.text}
-              </p>
+              <Field id="qf-email" label="Email">
+                <input id="qf-email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" className="ds-qt-input" />
+              </Field>
+              <Field id="qf-org" label="Organization" optional>
+                <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
+              </Field>
+              <Field id="qf-phone" label="Phone" optional>
+                <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
+              </Field>
             </div>
-          </form>
-          <div className="ds-qt-gsa">
-            <h2 className="ds-qt-sub">Buying through GSA?</h2>
-            <div className="ds-qt-gsa-row">
-              <p className="ds-small">GSA Multiple Award Schedule</p>
-              <p className="ds-data ds-qt-gsa-n">47QSMS25D009Q</p>
-              <div className="ds-qt-gsa-links">
-                <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-link">
-                  View on GSA eLibrary
-                  <Arrow external size={12} />
-                </a>
-                <Link to="/capability-statement" className="ds-link">
-                  Capability statement
-                  <Arrow size={14} />
-                </Link>
-              </div>
-            </div>
+          </fieldset>
+
+          {/* Honeypot: hidden from sighted users and the tab order; bots that fill every
+              input tick it and the submit handler bails. Web3Forms recommends the name. */}
+          <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="ds-qt-trap" />
+
+          <div className="ds-qt-send">
+            <button type="submit" className="ds-btn ds-btn-primary" disabled={sending}>
+              {sending ? 'Sending…' : 'Send request'}
+              {!sending && <Arrow />}
+            </button>
+            <p className="ds-small">
+              <strong>Discretion guaranteed.</strong> Requests are read by leadership only.
+            </p>
+            <p className="ds-qt-status" role="status" aria-live="polite" data-ok={status?.done ? String(status.ok) : undefined}>
+              {status?.text}
+            </p>
           </div>
-        </div>
+        </form>
 
         <aside className="ds-qt-side" aria-label="Other ways to reach us">
           <div className="ds-qt-talk">
