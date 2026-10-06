@@ -385,9 +385,9 @@ body:has(.ds-page) {
    container, faint ink with a hairline outline. On desktop the pointer carries a soft
    light (white to rust) across it. */
 .ds-footer-mark { display: block; width: 100%; height: auto; margin-top: var(--ds-beat-tight); overflow: visible; }
-.ds-footer-mark-base path { fill: rgb(238 240 242 / 0.05); stroke: rgb(238 240 242 / 0.24); stroke-width: 0.22; }
+.ds-footer-mark-base path { fill: rgb(238 240 242 / 0.05); stroke: rgb(238 240 242 / 0.24); stroke-width: 0.45; }
 .ds-footer-mark-lit { opacity: 0; transition: opacity 220ms var(--ds-ease); }
-.ds-footer-mark-lit path { fill: url(#ds-footer-light); stroke: url(#ds-footer-light); stroke-width: 0.22; }
+.ds-footer-mark-lit path { fill: url(#ds-footer-light); stroke: url(#ds-footer-light); stroke-width: 0.45; }
 .ds-footer-mark[data-lit] .ds-footer-mark-lit { opacity: 1; }
 @media not ((hover: hover) and (pointer: fine)) {
   .ds-footer-mark-lit { display: none; }
@@ -2376,7 +2376,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       stroke-dasharray: 1;
       animation: ds-footer-draw linear both;
       animation-timeline: view();
-      animation-range: entry 10% cover 55%;
+      /* Done once it is fully on screen: the page ends here, so it can scroll no further. */
+      animation-range: entry 0% entry 100%;
     }
     .ds-svc-pano img {
       animation: ds-plate linear both;

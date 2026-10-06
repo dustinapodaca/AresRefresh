@@ -518,8 +518,8 @@ docs/contact-concepts.md.
 - Same canvas, no top rule. Columns for the company (the Ares mark and one line; About
   Us, Services, Careers), service areas, contracting (mono), and contact (mono), then the
   certification marks separated by thin vertical lines and a small legal line.
-- **Closing wordmark (owner, 2026-10-05):** the stacked ARES / SECURITY lockup
-  (`ares-text-pyramid.svg`, the A without a crossbar) across the full container under the
+- **Closing wordmark (owner, 2026-10-05):** the ARES / SECURITY wordmark
+  (`ares-text.svg`) across the full container under the
   legal line, white at 5% with a 1px outline at 24% that draws in as the footer scrolls
   into view (scroll-driven; static otherwise). On desktop with a mouse, a soft light
   follows the pointer across it: white at the center, rust at 70%, then gone, like a
