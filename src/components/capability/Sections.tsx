@@ -104,8 +104,10 @@ export function Capabilities() {
       const from: Keyframe = { transform: `translate(${dx}px, ${dy}px)` };
       const to: Keyframe = { transform: 'translate(0, 0)' };
       if (grows) {
-        from.clipPath = `inset(0 ${Math.max(0, b.width - a.width)}px ${Math.max(0, b.height - a.height)}px 0 round 14px)`;
-        to.clipPath = 'inset(0 0 0 0 round 14px)';
+        // The card's own corner, so the clip matches the card it lands on.
+        const round = getComputedStyle(card).borderTopLeftRadius;
+        from.clipPath = `inset(0 ${Math.max(0, b.width - a.width)}px ${Math.max(0, b.height - a.height)}px 0 round ${round})`;
+        to.clipPath = `inset(0 0 0 0 round ${round})`;
       }
       const anim = card.animate([from, to], { duration: 320, easing: EASE });
       if (card === opened) {

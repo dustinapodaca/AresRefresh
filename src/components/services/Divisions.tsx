@@ -99,12 +99,11 @@ export default function Divisions() {
         if (grows || widens) {
           const r = Math.max(0, b.width - a.width);
           const btm = Math.max(0, b.height - a.height);
-          from.clipPath = `inset(0 ${r}px ${btm}px 0 round 18px)`;
-          to.clipPath = 'inset(0 0 0 0 round 18px)';
-          if (!grows) {
-            from.clipPath = from.clipPath.replace('round 18px', 'round 10px');
-            to.clipPath = 'inset(0 0 0 0 round 10px)';
-          }
+          // The card's own corner (read, not repeated here), so the clip never shows a
+          // different radius from the card it lands on.
+          const round = getComputedStyle(card).borderTopLeftRadius;
+          from.clipPath = `inset(0 ${r}px ${btm}px 0 round ${round})`;
+          to.clipPath = `inset(0 0 0 0 round ${round})`;
         }
         const anim = card.animate([from, to], { duration: DURATION, easing: EASE });
         if (card === opened) {
