@@ -17,7 +17,7 @@ export default function Opening() {
       </div>
 
       <div className="ds-svc-band" aria-hidden="true">
-        <img src="/images/capabilities-hero.jpg" alt="" width={2255} height={1864} decoding="async" {...{ fetchpriority: 'high' }} />
+        <img src="/images/hero6.jpg" alt="" width={2400} height={1600} decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
     </section>
   );
