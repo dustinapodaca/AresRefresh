@@ -2806,6 +2806,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   letter-spacing: -0.05em;
   color: var(--ds-fg);
   user-select: none;
+  /* Raised 12px off the card (owner, 2026-10-06); the card stays where it was. */
+  transform: translateY(-12px);
 }
 /* The glass card rides up over the numerals' foot, so they blur beneath it; the text starts
    below that frosted strip, never on it (as in the footer's band). */
