@@ -37,8 +37,25 @@ served. To use one, copy it into `public/images/` and reference it from the page
 | `hero-b2.jpg` | Home hero, or the Services strip | The same massif with no city, buildings, or lights; copper horizon over dark forest | Favorite (2026-10-05). Previewed in both heroes; not yet placed |
 | `hero-c.jpg` | Section background (Contact, Careers) | Glass-and-steel facade at night, a few warm-lit floors | Spare |
 
-All four: 2400x1600, generated 2026-10-05 with a screenshot of the Home hero as the
-style reference.
+### Round 2: aurora and architecture (the Framer/Vercel look)
+
+The same prompt base, plus soft aurora gradient light in the site's own colors: copper
+and amber with deep steel-teal. No purple, no neon, no bright blue.
+
+| File | What it shows | Notes |
+|---|---|---|
+| `hero-d.jpg` | Dark glass tower corner from below, copper and teal aurora ribbons across the sky | Strongest "corporate". The tower's edge sits right of the headline |
+| `hero-e.jpg` | Steel facade fins in perspective, backlit by a copper glow fading to teal | Most abstract and architectural; reads as precision. Good for Services |
+| `hero-f.jpg` | Mountain massif under a copper and teal aurora, wilderness only | Colorado plus modern; the most dramatic |
+| `hero-g.jpg` | Translucent frosted glass panels in layered depth, lit copper and teal | Most "tech product"; reads as a shield or vault. Strong on mobile |
+
+All files: 2400x1600, generated 2026-10-05 with a screenshot of the Home hero as the
+style reference. Round 2 previews used `saturate(1) brightness(0.95)` and
+`object-position: 50% 40%` (phones `76% 40%`).
+
+**Design note:** decorative gradients are outside DESIGN.md today ("no gradients for
+decoration"). Placing a round 2 image means recording it there as an owner-approved
+exception, as was done for the division cards.
 
 ## Placing one
 

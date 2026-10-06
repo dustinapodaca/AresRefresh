@@ -1,0 +1,11 @@
+{
+  "prompt": "Hero image for the website of a modern security firm that protects federal and commercial sites. The look is sleek, current, and technical, like the hero art on Vercel or Framer: a near-black blue-black field (#0a0b0d) with soft aurora-like gradient light, smooth and diffused, no hard edges, no banding. Palette: copper and amber (#bc6f40, #8b4920) with deep steel-teal and slate; no purple, no neon pink, no bright blue. Calm, precise, premium, serious, never playful.\nComposition: wide 3:2 landscape. The left 45 percent stays very dark and nearly empty for white headline text; the subject and most of the light sit in the right half. The bottom 30 percent falls to near-black so it fades into the page. Photoreal render quality, fine grain, no text, no logos, no people, no signage, no watermarks.\nSubject: the sharp vertical edge of a dark glass office tower seen from below, its facade a precise grid, catching a soft aurora of copper and steel-teal light that ribbons across the night sky behind it like a long-exposure glow.\n",
+  "createdAt": "2026-10-06T00:47:15.696Z",
+  "tool": "impeccable generate-image",
+  "model": "gpt-image-2.5-flare",
+  "background": "opaque",
+  "outputFormat": "png",
+  "refs": [
+    ".impeccable/gen/ref-home-hero.png"
+  ]
+}
