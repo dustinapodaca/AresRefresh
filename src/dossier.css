@@ -2449,7 +2449,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-cr-apply { justify-self: end; }
 }
 
-/* ---------- 02 Why people stay: the frame as a camera ---------- */
+/* ---------- 02 Why people stay: one photo, switching halfway ---------- */
 .ds-cr-why { padding-top: var(--ds-beat-tight); }
 .ds-cr-why-intro { display: grid; gap: 20px; }
 .ds-cr-why-text { display: grid; gap: 16px; }
@@ -2474,13 +2474,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   object-fit: cover;
   filter: saturate(0.88) brightness(0.9);
   transition: opacity 260ms var(--ds-ease);
-}
-/* The camera move: zoom about a focal point. Interruptible (a transition), so a fast
-   scroll retargets from wherever the frame is. */
-.ds-cr-lens img[data-shot='team'] {
-  transform-origin: var(--fx, 50%) var(--fy, 50%);
-  transform: scale(var(--z, 1));
-  transition: transform 300ms var(--ds-ease), transform-origin 300ms var(--ds-ease), opacity 260ms var(--ds-ease);
 }
 .ds-cr-lens img[data-shot='officer'] { object-position: 60% 62%; opacity: 0; }
 .ds-cr-lens[data-src='officer'] img[data-shot='officer'] { opacity: 1; }
@@ -2508,7 +2501,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-cr-reasons h3 { margin: 0 0 6px; font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
 .ds-cr-reasons .ds-small { max-width: 46ch; }
 @media (min-width: 1024px) {
-  .ds-cr-why-intro { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-cr-why-intro { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-cr-why-intro h2 { grid-column: 1 / span 5; }
   .ds-cr-why-text { grid-column: 7 / span 6; }
   .ds-cr-lens-wrap { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }

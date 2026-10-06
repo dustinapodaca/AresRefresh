@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Arrow from '../Arrow';
 import { CAREERS_EMAIL, INDEED_REVIEWS, REASONS, ROLES, applyHref } from './data';
 
@@ -39,43 +39,49 @@ export function Roles() {
           </div>
         ))}
       </div>
-      <p className="ds-handoff">Why officers stay once they join.</p>
     </section>
   );
 }
 
-// 02 Why people stay: one frame works like a camera. It holds still while the four
-// reasons scroll past; as each reaches the middle of the screen the frame drifts slightly
-// toward a different group of the team photo (owner: toned down), and cuts to the officer at the range for
-// training. Crops frame groups, never a single person, so no reason is pinned on anyone.
-type Shot = { src: 'team' | 'officer'; x: number; y: number; z: number; caption: string };
-const SHOTS: Shot[] = [
-  { src: 'team', x: 70, y: 45, z: 1.12, caption: 'The Ares team at the range' },
-  { src: 'team', x: 30, y: 45, z: 1.12, caption: 'The Ares team at the range' },
-  { src: 'team', x: 50, y: 50, z: 1, caption: 'The Ares team at the range' },
-  { src: 'officer', x: 50, y: 50, z: 1, caption: 'An Ares officer at the range' },
-];
+// 02 Why people stay: one photo holds still while the four reasons scroll past. Halfway
+// down (the third reason) it switches from the team to the officer at the range (owner:
+// no camera moves).
+const SHOTS = [
+  { src: 'team', caption: 'The Ares team at the range' },
+  { src: 'officer', caption: 'An Ares officer at the range' },
+] as const;
 
 export function Why() {
   const [active, setActive] = useState(-1);
   const items = useRef<(HTMLLIElement | null)[]>([]);
 
-  // The reason crossing the middle of the viewport is the one in frame.
+  // The reason in view is the last one whose top has passed the middle of the viewport;
+  // above the first it is none, so scrolling back up returns to the team photo.
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i));
-        }
-      },
-      { rootMargin: '-50% 0px -50% 0px' },
-    );
-    items.current.forEach((el) => el && io.observe(el));
-    return () => io.disconnect();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const line = window.innerHeight / 2;
+      let next = -1;
+      items.current.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top <= line) next = i;
+      });
+      setActive(next);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
-  const shot = active >= 0 ? SHOTS[active] : { ...SHOTS[2], caption: SHOTS[2].caption };
-  const lens = { '--fx': `${shot.x}%`, '--fy': `${shot.y}%`, '--z': shot.z } as CSSProperties;
+  const shot = SHOTS[active >= 2 ? 1 : 0];
 
   return (
     <section id="why" className="ds-cr-why" aria-labelledby="why-title">
@@ -101,7 +107,7 @@ export function Why() {
       </div>
 
       <div className="ds-cr-lens-wrap">
-        <figure className="ds-cr-lens" data-src={shot.src} style={lens} aria-hidden="true">
+        <figure className="ds-cr-lens" data-src={shot.src} aria-hidden="true">
           <div className="ds-cr-lens-frame">
             <img src="/images/careers-philosophy.jpg" alt="" width={1184} height={880} loading="lazy" decoding="async" data-shot="team" />
             <img src="/images/careers-team.jpg" alt="" width={1184} height={880} loading="lazy" decoding="async" data-shot="officer" />

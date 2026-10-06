@@ -353,3 +353,4 @@ work, so we plan for a real balance between work and rest. As the company grows,
 people to grow with it." The "You are more than a guard here." sentence dropped. The hand-off
 "If that sounds like your kind of team, write to us." now ends Why people stay.
 
+Careers (owner, same day): "Why officers stay once they join." removed.

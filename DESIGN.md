@@ -497,16 +497,13 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   location, and an Apply route that opens an email with the role in the
   subject. Column heads in mono on desktop (visually hidden but announced below 1024px);
   rows stack on phones. No type column: the title names it.
-- **02 Why people stay (the frame as a camera; owner asked for something new, 2026-10-05):**
-  the headline with the Indeed rating and the well-being paragraph beside it, then one
-  photo frame that holds still (sticky; under the running head on phones) while the four
-  reasons scroll past. As each reason crosses the middle of the viewport the frame drifts
-  slightly toward a different group of the team photo (1.12 zoom at most, 300ms,
-  interruptible; toned down by the owner), and cuts
-  to the officer at the range for "Paid training and renewals"; the caption follows the
-  shot. Crops frame groups, never one person. The reason in frame reads ink with a rust
-  number; the rest rest at 0.8. Replaces the separate officer plate and "People first."
-  section (no photo follows another photo).
+- **02 Why people stay:** the headline with the Indeed rating and the well-being paragraph
+  beside it, then one photo that holds still (sticky; under the running head on phones)
+  while the four reasons scroll past. Halfway down (the third reason) it crossfades from
+  the team to the officer at the range (260ms), and the caption follows. No pan or zoom
+  (owner, 2026-10-05: camera moves were too much). The reason in view reads ink with a
+  rust number; the rest rest at 0.8. Roles hands straight to this section (its hand-off
+  line was removed by the owner).
 - **04 Apply (the close):** "Send us your résumé." with the careers email large in mono over
   the rust light.
 - **Rail (`list`):** the section names in Inter, dimmed, the current one in ink with a 6px
