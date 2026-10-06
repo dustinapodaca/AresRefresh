@@ -186,7 +186,7 @@ sizes are unchanged.
     and the Contact headline.
   - display-lg: section headlines (Verify, Staffing, Careers).
   - display-md: the Coverage headline.
-  - city: the three city rows.
+  - city: the three city rows (smaller on desktop, owner 2026-10-05).
 - **Text: Inter** with `cv01 cv05 cv09 cv11 ss03`.
   - Sub-heads (ledger groups, staffing steps, divisions heading) are
     Inter 600 at 22 to 28px, -0.02em.
