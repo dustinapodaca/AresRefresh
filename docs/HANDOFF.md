@@ -13,7 +13,8 @@ Last updated: 2026-10-05 (end of day). **Read this first when starting a new cha
   Quote (`/contact`), Careers, the three location pages ("The Local File", 2026-10-06:
   one component in `src/components/locations/`, one record per city in `data.ts`), plus
   the site-wide Header and Footer. Work after 2026-10-05 is committed locally, not pushed.
-- **Not done yet:** the 404 (old light "Moonstone" styles). **Likely next task.**
+- **All pages are on the Dossier system** (the 404, "The Search Light", 2026-10-06, was the
+  last). Next: the owner's copy review, then the SEO pass (routes.json) at the end.
 - **Live site branches** (`main`, `seo`, `edit`) are untouched.
 
 ## How to resume
@@ -221,8 +222,8 @@ async (page) => {
 
 ## Next steps
 
-1. **The 404**, with the same process. Then the Denver M/WBE and SBE certifications if
-   the owner confirms them.
+1. The owner's copy review (she will go through the site), then the SEO pass. Add the
+   Denver M/WBE and SBE certifications if the owner confirms them.
 2. Resolve the "Waiting on the owner" items above.
 3. Older, still pending: `ASSET-OPTIMIZATION.md` not executed (`public/images` is large);
    `npm audit` shows 18 vulnerabilities; footer Privacy / Terms / Accessibility links are

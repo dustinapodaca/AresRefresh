@@ -556,6 +556,21 @@ per city. No rail, no close, no photo, no section numbers.
   a second ring pulses out twice from the city's ring, which stays. Reduced motion: drawn
   and still.
 
+### 404 ("The Search Light", 2026-10-06)
+Owner request: modern, clean, a glass panel over an aurora. Concept: docs/notfound-concepts.md.
+- The first screen only: a giant "404" (Inter Tight 600, up to 380px, -0.05em) over a slow
+  rust and amber aurora (the footer's glow, pooled behind the numerals) and soft conic
+  beams from above that sway ±9deg over 16s, like a search light. The light fades out before
+  the footer. Ambient; still under reduced motion.
+- A dark glass card (canvas at 55% over a 22px blur, a white/10% edge, 4px corners, up to
+  680px) rides up over the numerals' foot so they blur beneath it; the text starts below
+  that frosted strip, never on it. Inside: "Page not found." (display-lg), one line of
+  help, the address that was not found in mono ("No page at /…", filled in after
+  hydration; the static 404.html reads "No page at this address"), four routes on
+  white/10% hairlines (Home, Services, Capability Statement, Request a quote; two columns
+  from 640px, arrows nudge on hover), and "Or call 719-696-3966". Text on the glass is ink
+  or #c4c8ce (7:1 or better at the brightest point). The site's only glass card.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row
@@ -674,7 +689,7 @@ Few, fast, and crisp. Four to six moments per page.
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services.
 - **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
-  closing band, and the Services opening (owner requests).
+  closing band, the Services opening, and the 404 card (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and

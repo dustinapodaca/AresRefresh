@@ -2740,6 +2740,121 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 
 /* ============================================================
+   404 ("The Search Light", docs/notfound-concepts.md)
+   A giant 404 over a slow rust aurora with beams sweeping from above; a dark glass card
+   over the numerals' foot carries the way back (owner request, 2026-10-06; with the nav,
+   the footer band, and the Services opening, the site's glass).
+   ============================================================ */
+.ds-nf-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--ds-header) + 40px) 0 var(--ds-beat-tight);
+}
+.ds-nf-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* Fades out before the page's foot so the footer starts on plain canvas. */
+  -webkit-mask: linear-gradient(to bottom, #000 62%, transparent 100%);
+  mask: linear-gradient(to bottom, #000 62%, transparent 100%);
+}
+/* The glow: rust and amber pooled behind the numerals, a warm white core. */
+.ds-nf-aurora::before {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(38% 34% at 50% 52%, rgb(214 122 62 / 0.55), transparent 72%),
+    radial-gradient(26% 26% at 38% 58%, rgb(139 73 32 / 0.7), transparent 72%),
+    radial-gradient(24% 24% at 63% 47%, rgb(248 178 108 / 0.38), transparent 72%),
+    radial-gradient(12% 12% at 52% 50%, rgb(255 236 214 / 0.35), transparent 70%);
+  filter: blur(30px);
+  will-change: transform;
+}
+/* The search light: soft beams from above the page, swaying slowly. */
+.ds-nf-aurora::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -30%;
+  width: 160%;
+  height: 130%;
+  margin-left: -80%;
+  transform-origin: 50% 0;
+  background: conic-gradient(
+    from 155deg at 50% 0,
+    transparent 0deg,
+    rgb(248 178 108 / 0.16) 8deg, transparent 16deg,
+    transparent 20deg, rgb(255 230 204 / 0.14) 26deg, transparent 33deg,
+    transparent 38deg, rgb(214 122 62 / 0.16) 46deg, transparent 54deg
+  );
+  filter: blur(14px);
+  will-change: transform;
+}
+.ds-nf-inner { position: relative; display: grid; justify-items: center; width: 100%; }
+.ds-nf-code {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(150px, 38vw, 380px);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: var(--ds-fg);
+  user-select: none;
+}
+/* The glass card rides up over the numerals' foot, so they blur beneath it; the text starts
+   below that frosted strip, never on it (as in the footer's band). */
+.ds-nf-card {
+  --nf-sink: clamp(34px, 8vw, 104px);
+  position: relative;
+  width: min(100%, 680px);
+  margin-top: calc(-1 * var(--nf-sink));
+  padding: clamp(24px, 4vw, 40px);
+  padding-top: calc(var(--nf-sink) + clamp(16px, 2.4vw, 28px));
+  background: rgb(10 11 13 / 0.55);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 4px;
+}
+.ds-nf-lead { margin: 16px 0 0; font-size: 17px; line-height: 1.55; color: #c4c8ce; max-width: 46ch; text-wrap: pretty; }
+.ds-nf-path { margin: 20px 0 0; font-size: 13px; color: #c4c8ce; overflow-wrap: anywhere; }
+.ds-nf-path span { color: var(--ds-fg); }
+.ds-nf-routes { display: grid; list-style: none; margin: 28px 0 0; padding: 0; column-gap: 24px; }
+.ds-nf-routes li { border-top: 1px solid rgb(255 255 255 / 0.1); }
+.ds-nf-routes a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 0 16px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ds-fg);
+}
+.ds-nf-routes .ds-arrow { color: #c4c8ce; }
+.ds-nf-call { margin: 24px 0 0; font-size: 15px; color: #c4c8ce; }
+@media (min-width: 640px) { .ds-nf-routes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (hover: hover) and (pointer: fine) {
+  .ds-nf-routes a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
+}
+/* Ambient: the light drifts and the beams sway (still under reduced motion). */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-nf-aurora::before { animation: ds-ft-drift 20s ease-in-out infinite alternate; }
+  .ds-nf-aurora::after { animation: ds-nf-sweep 16s ease-in-out infinite alternate; }
+}
+@keyframes ds-nf-sweep {
+  from { transform: rotate(-9deg); }
+  to { transform: rotate(9deg); }
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.

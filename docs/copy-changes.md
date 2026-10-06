@@ -480,3 +480,15 @@ Source: docs/locations-content.md. Colorado Springs first; Denver and Pueblo fol
 | Sections "Reliability", "Site types", "Standing" | "Licensed in Pueblo." (Merchant patrol and security license 26422, through the Pueblo Police Department, with "Request a copy"; licensed and bonded; armed and unarmed training provider approved by Pueblo PD; armed endorsements; office, "Headquarters, 45 minutes north on I-25") | No public lookup, so a copy by email |
 | (site bullets) | "Sites we are ready to staff here." Industrial and energy sites; Construction sites; City and county facilities; Campuses and institutions; Apartment and residential properties; Commercial property and retail | Sales notes, framed as ready to staff |
 | CTA "...within one business day" | Removed; routes on | No response times |
+
+---
+
+# Copy changes (404, "The Search Light", 2026-10-06)
+
+| Was | Now | Why |
+|---|---|---|
+| Kicker "Error 404" | Removed; the giant "404" carries it (decorative, hidden from screen readers) | No kickers |
+| H1 "Page *Not Found.*" (italic accent) | "Page not found." | No italic accent words |
+| "That page does not exist, or it has moved. Everything below is still where it should be." | "The link may be old, or the address mistyped. Everything else is where it should be." | Plainer, says what likely happened |
+| (none) | "No page at /…" (the address that was not found) | Shows the reader what they typed |
+| Buttons Home, Services, Request a Quote | Routes Home, Services, Capability Statement, Request a quote; "Or call 719-696-3966" | Links, not a row of buttons; the phone for anyone who would rather talk |

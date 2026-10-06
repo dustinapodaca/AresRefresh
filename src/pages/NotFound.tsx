@@ -1,31 +1,61 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../seo/Seo';
+import Arrow from '../components/Arrow';
 
 /**
  * Real 404. Netlify serves the prerendered dist/404.html with a 404 status
  * (see public/_redirects), which replaces the old `/* -> /index.html 200`
  * rule that turned every mistyped URL into a soft 404 duplicate of Home.
+ *
+ * "The Search Light" (docs/notfound-concepts.md, owner 2026-10-06): a giant 404 over a
+ * slow rust aurora, with a dark glass card over its foot carrying the way back.
  */
+const ROUTES = [
+  { to: '/', label: 'Home' },
+  { to: '/services', label: 'Services' },
+  { to: '/capability-statement', label: 'Capability Statement' },
+  { to: '/contact', label: 'Request a quote' },
+];
+
 export default function NotFound() {
+  // The address that was not found, filled in after hydration so the prerendered HTML and
+  // the first client render match. The prerender visits a sentinel URL to build 404.html;
+  // that one (and /404 itself) never shows.
+  const [path, setPath] = useState('');
+  useEffect(() => {
+    const { pathname } = window.location;
+    if (pathname !== '/404' && !pathname.startsWith('/__prerender')) setPath(pathname);
+  }, []);
+
   return (
-    <main className="font-sans">
+    <main className="ds ds-page ds-nf">
       <Seo path="/404" noindex />
-      <section className="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-ink pt-[240px] pb-[120px] text-paper max-[460px]:pt-[190px] max-[460px]:pb-[90px]">
-        <div className="container-ares">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-paper/55">Error 404</div>
-          <h1
-            className="mt-5 mb-0 font-normal text-paper"
-            style={{ fontSize: 'clamp(40px, 6vw, 72px)', lineHeight: 0.94, letterSpacing: '-0.06em' }}
-          >
-            Page <span className="font-light italic text-light">Not Found.</span>
-          </h1>
-          <p className="mt-6 max-w-[54ch] text-[18px] text-paper/75">
-            That page does not exist, or it has moved. Everything below is still where it should be.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/" className="btn btn-white">Home</Link>
-            <Link to="/services" className="btn btn-outline-white">Services</Link>
-            <Link to="/contact" className="btn btn-outline-white">Request a Quote</Link>
+      <section className="ds-nf-stage" aria-labelledby="nf-title">
+        <div className="ds-nf-aurora" aria-hidden="true" />
+        <div className="ds-container ds-nf-inner">
+          <p className="ds-nf-code" aria-hidden="true">404</p>
+          <div className="ds-nf-card">
+            <h1 id="nf-title" className="ds-display-lg">Page not found.</h1>
+            <p className="ds-nf-lead">
+              The link may be old, or the address mistyped. Everything else is where it should be.
+            </p>
+            <p className="ds-data ds-nf-path">
+              {path ? <>No page at <span>{path}</span></> : 'No page at this address'}
+            </p>
+            <ul className="ds-nf-routes">
+              {ROUTES.map((r) => (
+                <li key={r.to}>
+                  <Link to={r.to}>
+                    {r.label}
+                    <Arrow size={16} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="ds-nf-call">
+              Or call <a href="tel:+17196963966" className="ds-link ds-data">719-696-3966</a>
+            </p>
           </div>
         </div>
       </section>
