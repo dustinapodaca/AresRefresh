@@ -33,7 +33,7 @@ export const DIVISIONS: Division[] = [
       { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
       { name: 'TS/SCI cleared', detail: 'Cleared officers for posts that require a clearance, matched during compliance mapping.' },
     ],
-    photo: { src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%' },
+    photo: { src: '/images/matrix-government.webp', width: 862, height: 862, position: '50% 50%' },
   },
   {
     id: 'airport',
