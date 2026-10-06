@@ -18,7 +18,8 @@ export type LicenseRow = {
   label: string;
   value: string;
   mono?: boolean;
-  route?: { label: string; href: string } | { note: string };
+  /** Links (external ones open the issuing city's record) or a plain note. */
+  route?: { links: { label: string; href: string; external?: boolean }[] } | { note: string };
 };
 
 export type Sector = { name: string; division: string; divisionId: string };
@@ -62,7 +63,18 @@ export const COLORADO_SPRINGS: LocationFile = {
       label: 'Contract Security Agency license',
       value: '0850744L',
       mono: true,
-      route: { label: 'Request a copy', href: copyRequest('Colorado Springs', '0850744L') },
+      route: {
+        links: [
+          // The city's public license record (Accela). It shows little beyond status, so a
+          // copy of the license stays one email away.
+          {
+            label: 'Verify',
+            href: 'https://aca-prod.accela.com/COSPRINGS/Cap/CapDetail.aspx?Module=Licensing&TabName=Licensing&capID1=REC21&capID2=00000&capID3=008D0&agencyCode=COSPRINGS&IsToShowInspection=',
+            external: true,
+          },
+          { label: 'Request a copy', href: copyRequest('Colorado Springs', '0850744L') },
+        ],
+      },
     },
     { label: 'Status', value: 'Licensed and bonded for armed and unarmed security' },
     { label: 'Training provider', value: 'Armed and unarmed, approved by the City of Colorado Springs' },

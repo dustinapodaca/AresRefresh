@@ -2675,6 +2675,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-license { padding-top: var(--ds-beat); }
 .ds-loc-license-head { display: grid; gap: 20px; }
 .ds-loc-ledger { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-loc-routes-inline { display: inline-flex; flex-wrap: wrap; gap: 6px 20px; }
 @media (min-width: 1024px) {
   .ds-loc-license-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-loc-license-head h2 { grid-column: 1 / span 6; }

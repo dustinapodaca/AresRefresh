@@ -54,11 +54,20 @@ export default function LocationPage({ file }: { file: LocationFile }) {
                 <dd className={r.mono ? 'ds-data' : 'ds-note'}>{r.value}</dd>
                 {r.route && (
                   <dd className="ds-ledger-route">
-                    {'href' in r.route ? (
-                      <a href={r.route.href} className="ds-link">
-                        {r.route.label}
-                        <Arrow size={14} />
-                      </a>
+                    {'links' in r.route ? (
+                      <span className="ds-loc-routes-inline">
+                        {r.route.links.map((l) => (
+                          <a
+                            key={l.label}
+                            href={l.href}
+                            className="ds-link"
+                            {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                          >
+                            {l.label}
+                            <Arrow external={l.external} size={14} />
+                          </a>
+                        ))}
+                      </span>
                     ) : (
                       <span className="ds-small">{r.route.note}</span>
                     )}
