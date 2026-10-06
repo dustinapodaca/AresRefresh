@@ -21,7 +21,7 @@ export default function Services() {
           <Areas />
           <Close />
         </div>
-        <DocRail marks={SERVICE_MARKS} />
+        <DocRail marks={SERVICE_MARKS} variant="dock" />
       </div>
     </main>
   );

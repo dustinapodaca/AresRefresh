@@ -21,7 +21,7 @@ export default function About() {
           <People />
           <Statement />
         </div>
-        <DocRail marks={ABOUT_MARKS} />
+        <DocRail marks={ABOUT_MARKS} variant="counter" />
       </div>
     </main>
   );

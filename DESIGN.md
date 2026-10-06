@@ -239,6 +239,21 @@ sizes are unchanged.
   ink and gains a 12px rust tick on the track. Marks are links to their section.
 - These are the only section numbers on the page. Section numbers never appear above
   headlines.
+- **One form per page (owner, 2026-10-05).** Same marks, links, active section, and
+  running head everywhere; each redesigned page draws the desktop rail its own way, all
+  flat, typographic, and on the canvas (references: Linear's edge minimap, Intercom's
+  dimmed list, Raw Materials' status line, Shupatto's counter). `DocRail variant=`:
+  - `rail` (Home): the track and rust tick above.
+  - `dock` (Services): a 44px bar fixed at the bottom center (solid canvas, hairline-strong
+    edge, 2px corners) with the current mark left, a 44px segment per section filling
+    with the reading position (like the page's stage meter), and `02 / 04` right. Slides
+    up once the first section is reached, away once the footer is in view.
+  - `counter` (About): the section number in Plex Mono at 72px, rolling up into place
+    (260ms) when it changes, `/ 04` beside it, the name beneath, and a 24px bar per
+    section to jump with.
+  - `ticks` (Capability Statement): a column of 1px dashes, one per ~360px of each section
+    (3 to 9, the first longer); dashes already read turn ink muted and the current one is
+    the rust tick. Only the current label shows at rest; all show on hover or focus.
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the
   current mark (`02 Staffing`) left, its count (`02 / 05`) right, and a 1px progress line
   along its bottom edge. It appears once the first section reaches the top and is solid

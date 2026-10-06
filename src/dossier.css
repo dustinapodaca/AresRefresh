@@ -543,6 +543,111 @@ body:has(.ds-page) {
 .ds-rail a[aria-current='location'] { color: var(--ds-fg); }
 .ds-rail a[aria-current='location']::before { transform: scaleX(1); }
 
+/* ----- Rail variants (desktop, 1200px and up). See DocRail.tsx. ----- */
+/* The rust tick belongs to the plain rail only. */
+.ds-rail:not([data-variant='rail']) a::before { content: none; }
+
+/* ticks (Capability Statement): dashes sized to each section, Linear-style. Read dashes
+   turn muted ink, the current one is the rust tick; labels show on hover or focus, the
+   current one always. */
+.ds-rail[data-variant='ticks'] .ds-rail-nav { top: calc(50vh - 160px); }
+.ds-tk { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ds-tk a { display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: 14px; align-items: start; padding: 2px 0; }
+.ds-tk-dashes { display: grid; gap: 6px; padding-top: 6px; }
+.ds-tk-dashes span {
+  display: block;
+  width: 12px;
+  height: 1px;
+  background: var(--ds-rule-strong);
+  transform-origin: left;
+  transition: background-color 180ms var(--ds-ease), transform 180ms var(--ds-ease);
+}
+.ds-tk-dashes span:first-child { width: 20px; }
+.ds-tk-dashes span[data-lit] { background: var(--ds-fg-muted); }
+.ds-tk-dashes span[data-now] { background: var(--ds-rust); transform: scaleX(1.6); }
+.ds-tk-dashes span:first-child[data-now] { transform: none; }
+.ds-tk-label {
+  font-family: var(--ds-data);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ds-fg-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 180ms var(--ds-ease), transform 180ms var(--ds-ease), color 180ms var(--ds-ease);
+}
+.ds-tk-label span { color: var(--ds-fg-faint); }
+.ds-tk:hover .ds-tk-label,
+.ds-tk:focus-within .ds-tk-label,
+.ds-tk a[aria-current='location'] .ds-tk-label { opacity: 1; transform: none; }
+.ds-tk a[aria-current='location'] .ds-tk-label,
+.ds-tk a:hover .ds-tk-label { color: var(--ds-fg); }
+
+/* counter (About): the section number set large, rolling up to the next. */
+.ds-count { display: grid; }
+.ds-count-head { display: flex; align-items: flex-start; gap: 8px; margin: 0; }
+.ds-count-n {
+  display: block;
+  height: 1em;
+  overflow: clip;
+  font-family: var(--ds-data);
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums slashed-zero;
+  color: var(--ds-fg);
+}
+.ds-count-n span { display: block; animation: ds-count-roll 260ms var(--ds-ease) both; }
+@keyframes ds-count-roll { from { transform: translateY(70%); } to { transform: none; } }
+.ds-count-total { padding-top: 6px; font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-faint); }
+.ds-count-label { margin: 14px 0 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
+.ds-count[data-idle] .ds-count-n,
+.ds-count[data-idle] .ds-count-label { color: var(--ds-fg-faint); }
+.ds-count-bars { list-style: none; display: flex; gap: 6px; margin: 18px 0 0; padding: 0; }
+.ds-count-bars a { display: block; padding: 10px 0; }
+.ds-count-bars a span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ds-rule-strong);
+  transition: background-color 180ms var(--ds-ease);
+}
+.ds-count-bars a:hover span { background: var(--ds-fg-faint); }
+.ds-count-bars a[aria-current='location'] span { background: var(--ds-fg); }
+
+/* dock (Services): a bar fixed at the bottom center, a segment per section, like the
+   page's stage meter. Solid canvas; slides up once the first section is reached and away
+   once the footer is in view. The rail column stays, so the page keeps its layout. */
+.ds-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 44px;
+  padding: 0 18px;
+  background: var(--ds-canvas);
+  border: 1px solid var(--ds-rule-strong);
+  border-radius: 2px;
+  transform: translate(-50%, calc(100% + 32px));
+  visibility: hidden;
+  transition: transform 220ms var(--ds-ease), visibility 0s linear 220ms;
+}
+.ds-dock[data-visible] { transform: translate(-50%, 0); visibility: visible; transition: transform 220ms var(--ds-ease), visibility 0s; }
+.ds-dock-label,
+.ds-dock-count { font-family: var(--ds-data); font-size: 12px; font-weight: 500; white-space: nowrap; }
+.ds-dock-label { min-width: 9.5em; color: var(--ds-fg); }
+.ds-dock-label span,
+.ds-dock-count { color: var(--ds-fg-faint); }
+.ds-dock ol { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+.ds-dock a { display: block; padding: 10px 0; }
+.ds-dock a > span { display: block; position: relative; width: 44px; height: 2px; overflow: clip; background: var(--ds-rule-strong); }
+.ds-dock a > span > span { position: absolute; inset: 0; background: var(--ds-fg); transform-origin: left; transition: transform 120ms linear; }
+.ds-dock a:hover > span { background: var(--ds-fg-faint); }
+
 .ds-runhead {
   position: fixed;
   top: var(--ds-header);
@@ -2146,6 +2251,10 @@ body:has(.ds-page) {
   .ds-menu-icon span,
   .ds-runhead,
   .ds-rail a::before,
+  .ds-tk-dashes span,
+  .ds-tk-label,
+  .ds-dock,
+  .ds-dock a > span > span,
   .ds-arrow,
   .ds-btn,
   .ds-svc-plus,
@@ -2157,6 +2266,7 @@ body:has(.ds-page) {
   .ds-svc-card,
   .ds-svc-cities .ds-arrow { transition-duration: 0s; }
   .ds-ab-commit-group[data-active='true'] { animation: none; }
+  .ds-count-n span { animation: none; }
   .ds-btn:active,
   .ds-svc-card-head button:active .ds-svc-plus,
   .ds-svc-cities a:hover .ds-arrow { transform: none; }

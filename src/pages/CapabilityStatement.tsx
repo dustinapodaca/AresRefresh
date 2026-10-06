@@ -19,7 +19,7 @@ export default function CapabilityStatement() {
           <Credentials />
           <Download />
         </div>
-        <DocRail marks={CAP_MARKS} />
+        <DocRail marks={CAP_MARKS} variant="ticks" />
       </div>
     </main>
   );

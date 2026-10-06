@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react';
 
 export type Mark = { id: string; n: string; label: string };
 
+// How the desktop rail is drawn. Every page shares the marks, the active section, and the
+// mobile running head; each redesigned page has its own form (DESIGN.md, "The document rail").
+//  rail     Home: mono marks on a track with the rust tick.
+//  ticks    Capability Statement: a column of dashes sized to each section; read dashes
+//           light, the current one is rust, labels show on hover.
+//  dock     Services: a bar fixed at the bottom center, a segment per section filling as
+//           you read, like the page's own stage meter.
+//  counter  About: the section number large, rolling to the next, with its name and bars.
+export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter';
+
 // The running document marks. These are the only section numbers on the page.
 // Home uses these; other pages pass their own.
 export const MARKS: readonly Mark[] = [
@@ -12,21 +22,45 @@ export const MARKS: readonly Mark[] = [
   { id: 'contact', n: '05', label: 'Contact' },
 ];
 
+// Progress through the current section is kept in 40 steps, so the forms that show it
+// re-render a few dozen times per section rather than every frame.
+const STEPS = 40;
+
+type Reading = { active: string | null; progress: number; ended: boolean; heights: number[] };
+
 // The current section is the last one whose top has passed 35% of the viewport.
-// Null while the reader is still in the hero.
-function useActiveSection(marks: readonly Mark[]) {
-  const [active, setActive] = useState<string | null>(null);
+// Null while the reader is still in the hero. `ended` is true once the document's end has
+// scrolled above the viewport's foot (the footer is in view).
+function useReading(marks: readonly Mark[]): Reading {
+  const [state, setState] = useState<Reading>({ active: null, progress: 0, ended: false, heights: [] });
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
       const line = window.innerHeight * 0.35;
       let current: string | null = null;
+      let progress = 0;
+      const heights: number[] = [];
       for (const m of marks) {
         const el = document.getElementById(m.id);
-        if (el && el.getBoundingClientRect().top <= line) current = m.id;
+        if (!el) {
+          heights.push(0);
+          continue;
+        }
+        const r = el.getBoundingClientRect();
+        heights.push(Math.round(r.height / 120));
+        if (r.top <= line) {
+          current = m.id;
+          progress = Math.round(Math.min(1, Math.max(0, (line - r.top) / r.height)) * STEPS) / STEPS;
+        }
       }
-      setActive(current);
+      const doc = document.querySelector('.ds-doc');
+      const ended = doc ? doc.getBoundingClientRect().bottom < window.innerHeight : false;
+      setState((s) =>
+        s.active === current && s.progress === progress && s.ended === ended && s.heights.join() === heights.join()
+          ? s
+          : { active: current, progress, ended, heights },
+      );
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -40,32 +74,110 @@ function useActiveSection(marks: readonly Mark[]) {
       if (frame) cancelAnimationFrame(frame);
     };
   }, [marks]);
-  return active;
+  return state;
 }
 
-export default function DocRail({ marks = MARKS }: { marks?: readonly Mark[] }) {
-  const active = useActiveSection(marks);
-  const current = marks.find((m) => m.id === active);
+export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: readonly Mark[]; variant?: RailVariant }) {
+  const { active, progress, ended, heights } = useReading(marks);
+  const index = marks.findIndex((m) => m.id === active);
+  const current = index >= 0 ? marks[index] : undefined;
   const total = String(marks.length).padStart(2, '0');
+  const here = (id: string) => (active === id ? ('location' as const) : undefined);
 
   return (
     <>
-      <aside className="ds-rail" aria-label="On this page">
-        <nav className="ds-rail-nav">
-          <div className="ds-rail-inner">
-            <span className="ds-rail-fill" aria-hidden="true" />
+      <aside className="ds-rail" data-variant={variant} aria-label="On this page">
+        {variant === 'rail' && (
+          <nav className="ds-rail-nav">
+            <div className="ds-rail-inner">
+              <span className="ds-rail-fill" aria-hidden="true" />
+              <ol>
+                {marks.map((m) => (
+                  <li key={m.id}>
+                    <a href={`#${m.id}`} aria-current={here(m.id)}>
+                      <span>{m.n}</span>
+                      <span>{m.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </nav>
+        )}
+
+        {variant === 'ticks' && (
+          <nav className="ds-rail-nav">
+            <ol className="ds-tk">
+              {marks.map((m, i) => {
+                // A dash per ~360px of section (3 to 9), so long sections read long.
+                const count = Math.min(9, Math.max(3, Math.round((heights[i] ?? 0) / 3)));
+                const lit = i < index ? count : i === index ? Math.max(1, Math.ceil(progress * count)) : 0;
+                return (
+                  <li key={m.id}>
+                    <a href={`#${m.id}`} aria-current={here(m.id)}>
+                      <span className="ds-tk-dashes" aria-hidden="true">
+                        {Array.from({ length: count }, (_, t) => (
+                          <span key={t} data-lit={t < lit || undefined} data-now={(i === index && t === lit - 1) || undefined} />
+                        ))}
+                      </span>
+                      <span className="ds-tk-label">
+                        <span>{m.n}</span> {m.label}
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        )}
+
+        {variant === 'counter' && (
+          <nav className="ds-rail-nav">
+            <div className="ds-count" data-idle={!current || undefined}>
+              <p className="ds-count-head" aria-hidden="true">
+                <span className="ds-count-n">
+                  {/* Keyed, so each new number rolls up into place. */}
+                  <span key={(current ?? marks[0]).n}>{(current ?? marks[0]).n}</span>
+                </span>
+                <span className="ds-count-total">/ {total}</span>
+              </p>
+              <p className="ds-count-label" aria-hidden="true">
+                {(current ?? marks[0]).label}
+              </p>
+              <ol className="ds-count-bars">
+                {marks.map((m) => (
+                  <li key={m.id}>
+                    <a href={`#${m.id}`} aria-current={here(m.id)} aria-label={`${m.n} ${m.label}`}>
+                      <span />
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </nav>
+        )}
+
+        {variant === 'dock' && (
+          <nav className="ds-dock" data-visible={(Boolean(current) && !ended) || undefined}>
+            <span className="ds-dock-label" aria-hidden="true">
+              <span>{current?.n}</span> {current?.label}
+            </span>
             <ol>
-              {marks.map((m) => (
+              {marks.map((m, i) => (
                 <li key={m.id}>
-                  <a href={`#${m.id}`} aria-current={active === m.id ? 'location' : undefined}>
-                    <span>{m.n}</span>
-                    <span>{m.label}</span>
+                  <a href={`#${m.id}`} aria-current={here(m.id)} aria-label={`${m.n} ${m.label}`}>
+                    <span>
+                      <span style={{ transform: `scaleX(${i < index ? 1 : i === index ? progress : 0})` }} />
+                    </span>
                   </a>
                 </li>
               ))}
             </ol>
-          </div>
-        </nav>
+            <span className="ds-dock-count" aria-hidden="true">
+              {current ? `${current.n} / ${total}` : ''}
+            </span>
+          </nav>
+        )}
       </aside>
 
       {/* Below 1200px the rail collapses into a running head under the header. */}
