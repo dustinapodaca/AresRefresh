@@ -416,7 +416,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 28%-to-0 tint, about
   26rem past the row) that fades out downward (owner, 2026-10-05).
-- **Capabilities (second pass, 2026-10-05):** six cards in the Services card language
+- **Capabilities (second pass, 2026-10-05):** six cards titled exactly as in the PDF in the Services card language
   without photos (#0e1013 fill, white/8% edge, faint light from below, 14px radius): mono
   number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
   (hidden on phones). Three columns on

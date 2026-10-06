@@ -256,3 +256,14 @@ lead "Four reasons, each with its source."
 ## Capability statement PDF updated (2026-10-05)
 
 The owner's updated PDF (adds Pueblo license #26422) replaces `public/files/Ares-Security-Capability-Statement-2026.pdf` (same URL); the page-one preview `capability-page1.webp` was regenerated from it; the code listing gains "Local license, Pueblo · 26422" (13 entries).
+
+## Competency titles match the PDF (2026-10-05, owner)
+
+Titles and lines now match the capability statement PDF exactly: Armed Physical Security,
+Unarmed Physical Security, Access Control, Patrol Vehicle Security, Event Security,
+Emergency Response. "Patrol services" is no longer its own card (foot patrol and fire watch
+moved under Unarmed; multi-property routes under Patrol Vehicle Security), and "Event &
+emergency response" became two cards. New DRAFT include lines for owner review: Passenger
+and public areas; Gate, dock, and lobby control (from the PDF line); Crowd management;
+Entry screening; Coordinated coverage; Public and private events; Rapid on-site response;
+Incident containment.
