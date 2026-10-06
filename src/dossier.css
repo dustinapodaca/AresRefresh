@@ -477,7 +477,7 @@ body:has(.ds-page) {
   .ds-hero-photo::after {
     background:
       linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0) 24%),
-      linear-gradient(to right, rgb(10 11 13 / 0.92) 0%, rgb(10 11 13 / 0.8) 42%, rgb(10 11 13 / 0) 74%);
+      linear-gradient(to right, rgb(10 11 13 / 1) 0%, rgb(10 11 13 / 0.94) 22%, rgb(10 11 13 / 0.7) 48%, rgb(10 11 13 / 0) 82%);
   }
   /* The headline runs wide (two lines at desktop, as in v10) over the photo's faded edge. */
   .ds-hero-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); padding-bottom: clamp(3rem, 9vh, 6rem); }
