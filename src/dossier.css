@@ -1403,6 +1403,254 @@ body:has(.ds-page) {
 }
 
 /* ============================================================
+   ABOUT ("The Company File", docs/about-concepts.md)
+   ============================================================ */
+
+/* ---------- Opening: Pikes Peak, the headline, the credential marks ---------- */
+.ds-ab-open { position: relative; isolation: isolate; }
+.ds-ab-hero {
+  position: relative;
+  z-index: -1;
+  margin: 0;
+  height: calc(52svh + var(--ds-header));
+  min-height: 360px;
+  overflow: clip;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 42%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 42%);
+}
+.ds-ab-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; filter: saturate(0.9) brightness(0.74); }
+/* The overcast sky is pale; a heavier shade from the top keeps it in the canvas. */
+.ds-ab-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(10 11 13 / 0.85) 0%, rgb(10 11 13 / 0.35) 40%, rgb(10 11 13 / 0) 62%); }
+/* The caption sits top right, under the nav, clear of the headline. */
+.ds-ab-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
+.ds-ab-open-copy { position: relative; margin-top: -6rem; }
+.ds-ab-open-copy h1 { max-width: 13em; }
+.ds-ab-open-copy .ds-lead { margin-top: 22px; max-width: 46ch; }
+@media (min-width: 900px) {
+  .ds-ab-open { display: flex; flex-direction: column; justify-content: flex-end; min-height: 94svh; }
+  .ds-ab-hero { position: absolute; inset: 0; height: auto; -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 40%); mask-image: linear-gradient(to top, transparent 0%, #000 40%); }
+  .ds-ab-hero img { object-position: 50% 60%; filter: saturate(0.9) brightness(0.72); }
+  .ds-ab-hero::after {
+    background:
+      linear-gradient(to bottom, rgb(10 11 13 / 0.88) 0%, rgb(10 11 13 / 0.4) 34%, rgb(10 11 13 / 0) 58%),
+      linear-gradient(to right, rgb(10 11 13 / 0.75) 0%, rgb(10 11 13 / 0.4) 45%, rgb(10 11 13 / 0) 70%);
+  }
+  .ds-ab-hero figcaption { top: calc(var(--ds-header) + 20px); }
+  .ds-ab-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+}
+
+/* The credential marks: each with its label and number, on a hairline that draws in. */
+.ds-ab-creds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 20px;
+  list-style: none;
+  margin-top: var(--ds-beat-tight);
+  margin-bottom: 0;
+  padding-block: 0;
+}
+.ds-ab-creds li { position: relative; display: grid; align-content: start; gap: 6px; padding-top: 18px; }
+.ds-ab-creds li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ds-rule-strong);
+  transform-origin: left;
+}
+.ds-ab-creds img { display: block; height: 30px; width: auto; max-width: 100%; margin-bottom: 8px; filter: grayscale(1) brightness(0) invert(1); opacity: 0.8; }
+.ds-ab-creds img[src*='cert-gsa-footer'] { filter: none; opacity: 0.95; }
+.ds-ab-creds img[data-tall] { height: 36px; margin-bottom: 2px; }
+.ds-ab-creds .ds-small { font-size: 13px; color: var(--ds-fg-muted); }
+.ds-ab-creds .ds-data { font-size: 13px; color: var(--ds-fg); }
+.ds-ab-creds .ds-link { font-size: 13px; gap: 4px; justify-self: start; }
+@media (min-width: 768px) {
+  .ds-ab-creds { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .ds-ab-creds img { height: 34px; }
+  .ds-ab-creds img[data-tall] { height: 40px; }
+}
+@media (min-width: 900px) {
+  .ds-ab-creds { margin-top: var(--ds-beat-tight); padding-bottom: 8px; }
+}
+/* The entrance (About.tsx sets data-anim, then data-in when the row is seen): marks rise
+   14px from 35% and their rules draw, one after another. Never from zero; without JS or
+   under reduced motion the row is simply there. */
+.ds-ab-creds[data-anim] li { transition: transform 420ms var(--ds-ease), opacity 420ms var(--ds-ease); transition-delay: calc(var(--i) * 80ms); }
+.ds-ab-creds[data-anim] li::before { transition: transform 520ms var(--ds-ease); transition-delay: calc(var(--i) * 80ms); }
+.ds-ab-creds[data-anim='ready'] li { transform: translateY(14px); opacity: 0.35; }
+.ds-ab-creds[data-anim='ready'] li::before { transform: scaleX(0.15); }
+
+/* ---------- 01 Company ---------- */
+.ds-ab-company { display: grid; gap: var(--ds-beat-tight); padding-top: var(--ds-beat); }
+.ds-ab-company-copy .ds-lead { margin-top: 20px; }
+.ds-ab-facts { margin: 36px 0 0; }
+.ds-ab-facts div { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--ds-rule); }
+.ds-ab-facts div:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-ab-facts dt { font-size: 14px; color: var(--ds-fg-muted); }
+.ds-ab-facts dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
+.ds-ab-facts dd.ds-data { font-size: 16px; }
+.ds-ab-vehicles img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 75%; }
+@media (min-width: 768px) {
+  .ds-ab-facts div { grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: 20px; align-items: baseline; }
+}
+@media (min-width: 1024px) {
+  .ds-ab-company { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-ab-company-copy { grid-column: 1 / span 7; }
+  .ds-ab-vehicles { grid-column: 9 / span 4; }
+  .ds-ab-vehicles img { aspect-ratio: 750 / 842; }
+}
+
+/* ---------- 02 Commitments ---------- */
+.ds-ab-commit { padding-top: var(--ds-beat-open); }
+.ds-ab-commit-head { display: grid; gap: 20px; }
+@media (min-width: 1024px) {
+  .ds-ab-commit-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-ab-commit-head h2 { grid-column: 1 / span 6; }
+  .ds-ab-commit-head p { grid-column: 7 / span 6; }
+}
+.ds-ab-commit-lists { display: grid; gap: 48px; margin-top: var(--ds-beat-tight); }
+.ds-ab-commit-group .ds-title { padding-bottom: 14px; border-bottom: 1px solid var(--ds-rule-strong); }
+.ds-ab-list { list-style: none; margin: 0; padding: 0; }
+.ds-ab-list li { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--ds-rule); }
+.ds-ab-list-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ds-fg); }
+.ds-ab-list-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); }
+.ds-ab-tabs { display: none; }
+@media (min-width: 768px) {
+  .ds-ab-commit-lists { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+@media (min-width: 1200px) {
+  .ds-ab-list li { grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
+}
+/* Phones: two tabs over one list at a time. */
+@media (max-width: 767px) {
+  .ds-ab-tabs {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: var(--ds-beat-tight);
+    border-bottom: 1px solid var(--ds-rule-strong);
+  }
+  .ds-ab-tabs button {
+    min-height: 48px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ds-fg-muted);
+    cursor: pointer;
+    transition: color 180ms var(--ds-ease);
+  }
+  .ds-ab-tabs button[aria-selected='true'] { color: var(--ds-fg); }
+  .ds-ab-tabs-bar {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 50%;
+    height: 2px;
+    background: var(--ds-fg);
+    transform: translateX(calc(var(--tab) * 100%));
+    transition: transform 240ms var(--ds-ease);
+  }
+  .ds-ab-commit-lists { margin-top: 4px; }
+  .ds-ab-commit-group .ds-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .ds-ab-commit-group[data-active='false'] { display: none; }
+  .ds-ab-commit-group[data-active='true'] { animation: ds-ab-panel 240ms var(--ds-ease); }
+}
+@keyframes ds-ab-panel { from { transform: translateX(10px); opacity: 0.6; } }
+
+/* ---------- 03 People ---------- */
+.ds-ab-people { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: var(--ds-beat); }
+/* The traits swipe row must not widen the column. */
+.ds-ab-people-copy { min-width: 0; }
+.ds-ab-portrait img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 22%; }
+.ds-ab-people-copy .ds-lead { margin-top: 16px; }
+.ds-ab-traits { list-style: none; margin: 32px 0 0; padding: 0; }
+.ds-ab-traits li { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid var(--ds-rule); }
+.ds-ab-traits li:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-ab-trait { font-family: var(--ds-display); font-weight: 600; font-size: clamp(26px, 2.8vw, 38px); line-height: 1.05; letter-spacing: -0.035em; color: var(--ds-fg); }
+.ds-ab-trait-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 46ch; }
+/* Phones: the five traits swipe sideways (72% slides, the next one peeks) instead of
+   stacking, like the staffing and process rows. */
+@media (max-width: 767px) {
+  .ds-ab-traits {
+    display: flex;
+    gap: 14px;
+    margin-inline: calc(-1 * var(--ds-gutter));
+    padding: 0 var(--ds-gutter);
+    scroll-padding-inline: var(--ds-gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .ds-ab-traits::-webkit-scrollbar { display: none; }
+  .ds-ab-traits li,
+  .ds-ab-traits li:last-child {
+    flex: 0 0 72%;
+    scroll-snap-align: start;
+    align-content: start;
+    gap: 8px;
+    padding: 18px 0 0;
+    border-top: 1px solid var(--ds-rule-strong);
+    border-bottom: 0;
+  }
+  .ds-ab-trait { font-size: 28px; }
+}
+@media (min-width: 1024px) {
+  .ds-ab-people { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-ab-portrait { grid-column: 1 / span 5; position: sticky; top: calc(var(--ds-header) + 48px); }
+  .ds-ab-portrait img { aspect-ratio: 992 / 1040; }
+  .ds-ab-people-copy { grid-column: 7 / span 6; }
+  .ds-ab-traits li { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 20px 0; }
+}
+
+/* ---------- 04 Statement (the close) ---------- */
+.ds-ab-statement {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 40px;
+  padding-top: var(--ds-beat-open);
+  padding-bottom: var(--ds-beat);
+}
+.ds-ab-statement::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--ds-edge));
+  width: 100vw;
+  background: radial-gradient(ellipse 44% 40% at 30% 62%, rgb(188 111 64 / 0.2) 0%, rgb(139 73 32 / 0.09) 50%, rgb(139 73 32 / 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
+  pointer-events: none;
+}
+.ds-ab-doc {
+  display: block;
+  justify-self: center;
+  width: min(56%, 260px);
+  view-timeline: --ds-ab-doc block;
+  transition: transform 220ms var(--ds-ease);
+}
+.ds-ab-doc img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-ab-doc:hover { transform: translateY(-4px); }
+}
+.ds-ab-statement-copy .ds-lead { margin-top: 20px; }
+.ds-ab-statement-links { display: grid; justify-items: start; gap: 10px; margin-top: 28px; }
+.ds-ab-statement-copy .ds-actions { margin-top: 32px; }
+@media (min-width: 1024px) {
+  .ds-ab-statement { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+  .ds-ab-doc { grid-column: 1 / span 4; width: 100%; max-width: 360px; justify-self: start; }
+  .ds-ab-statement-copy { grid-column: 6 / span 7; }
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
@@ -1418,6 +1666,7 @@ body:has(.ds-page) {
 @keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
 @keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes ds-plate { from { transform: scale(1.06); } to { transform: scale(1); } }
+@keyframes ds-ab-settle { from { transform: perspective(1400px) rotateX(14deg) translateY(28px); } to { transform: none; } }
 /* Floor of 0.8 keeps dimmed body copy above 4.5:1 on the canvas (AA). */
 @keyframes ds-step {
   0%   { opacity: 0.8; }
@@ -1454,6 +1703,13 @@ body:has(.ds-page) {
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
+    }
+    /* About: the capability statement page settles flat as it scrolls in. */
+    .ds-ab-doc img {
+      transform-origin: 50% 100%;
+      animation: ds-ab-settle linear both;
+      animation-timeline: --ds-ab-doc;
+      animation-range: entry 0% cover 40%;
     }
     .ds-svc-pano img {
       animation: ds-plate linear both;
@@ -1526,8 +1782,11 @@ body:has(.ds-page) {
   .ds-btn,
   .ds-svc-plus,
   .ds-svc-plus span,
+  .ds-ab-tabs-bar,
+  .ds-ab-doc,
   .ds-svc-card,
   .ds-svc-cities .ds-arrow { transition-duration: 0s; }
+  .ds-ab-commit-group[data-active='true'] { animation: none; }
   .ds-btn:active,
   .ds-svc-card-head button:active .ds-svc-plus,
   .ds-svc-cities a:hover .ds-arrow { transform: none; }

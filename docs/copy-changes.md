@@ -174,3 +174,22 @@ Also: the Divisions intro gains "Open one to see where we post." (N, explains th
 ## Division cards as a bento (2026-10-05)
 
 Closed cards now show each division's one-line description (the body) instead of the list of site types; the site types remain in the opened card, each with its line. No wording changed.
+
+---
+
+# Copy changes (About, "The Company File", 2026-10-05)
+
+From `docs/about-content.md`. Facts unchanged; about 1,100 words down to about 450.
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "About Us" + "Founded in compliance. Built for the long post. A woman-owned, employee-focused firm rooted in public-sector standards and carried into every commercial engagement." | "A Colorado Springs security firm built around its people." + "Ares Security is minority woman-owned and employee-focused. Founded in 2021 in Colorado Springs, we serve Denver and Pueblo too, and we hold every post, federal or commercial, to public-sector standards." | S (slogan triplet), F (minority), N |
+| Certification logos only | Each mark with its identifier (47QSMS25D009Q, WOSB250470, WBE2303571); "Minority woman-owned" under the Women Owned mark | Pair proof with a way to check it |
+| "Quality Over Quantity" + two paragraphs ("Reputation and character can't be bought…", "We're driven to deliver quality service…") | "Quality over quantity." + "We would rather staff fewer posts well than many posts thinly. That choice shapes everyone we hire, the training they get, and the standards they carry onto every site." | S, E; the two paragraphs said one thing |
+| (none) | Facts ledger: Established February 2021, Colorado Springs; Minority woman-owned; Licensed armed security and training provider in Denver, Colorado Springs, and Pueblo; Primary NAICS 561612 | From the capability statement |
+| "Raising The Bar" + intro + "Present Where It Counts" paragraph + "A Standard Worth Standing For" two paragraphs + eight values grid | "What we commit to." + "Two failures run through this industry: clients dropped once the contract is signed, and officers treated as interchangeable. We commit to the opposite on both sides." + four client commitments (Presence, Consistency, Reachability, Accountability) and four people commitments (Fair pay, Trained first, Livable schedules, Real support), one line each | The values grid restated the paragraphs; every line kept comes from them |
+| Values Professionalism, Advancement, Respect, Recognition | Removed | Professionalism duplicated "Cleared" in the traits; the other three had no supporting fact |
+| "The Backbone of Ares" + "We don't hire just anybody. A company is only as good as…" | "Who stands your post." + "We hire for character first, then train for the post." | S |
+| Traits (Diverse, Experienced, Composed, Cleared, Compassionate) | Unchanged | |
+| "[ CAPABILITY STATEMENT ]" / "Procurement-Ready Company Overview" / "Core competencies, certifications, past performance…" / "View Statement" | "Everything above, on one page." + "Our capability statement lists our identifiers, certifications, licenses, and contract vehicles in the format procurement teams use." + "View the capability statement", "Download the PDF", quote, phone | Bracketed eyebrow removed; "past performance" dropped (no past-performance list is published) |
+| Breadcrumb "Home / About" | Removed | The nav marks the page |

@@ -374,6 +374,29 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Close:** "Tell us about your site." (display-lg) left, the phone (mono), email, and
   actions stacked right, over the rust light set behind the phone.
 
+### About page ("The Company File", 2026-10-05)
+Home argues, Services schedules, About introduces. Concept and Mobbin board:
+docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 Statement.
+- **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
+  mono caption, top right under the nav) full bleed behind the headline, with a heavy
+  shade from the top so the overcast sky stays in the canvas. Under the copy, the four
+  certification marks on hairlines, each with its identifier in mono (GSA links to
+  eLibrary); a label shows only where the mark says less than we do ("Minority
+  woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
+  apart, once, when the row is seen (never from 0; static without JS or under reduced
+  motion).
+- **01 Company:** "Quality over quantity.", one paragraph, a facts ledger (established,
+  ownership, licenses, NAICS), and the patrol vehicles as a captioned plate.
+- **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
+  line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
+  underline (240ms), one list at a time.
+- **03 People:** the officer portrait (sticky on desktop) beside the five traits set in
+  Inter Tight at 26 to 38px, each with one line. Phones: the traits swipe (72% slides).
+- **04 Statement (the close):** page 1 of the real capability statement
+  (`capability-page1.webp`) as a plate that settles flat as it scrolls in
+  (perspective tilt to none, scroll-driven), beside view and download links, the quote
+  button, and the phone, over the closing rust light.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row
