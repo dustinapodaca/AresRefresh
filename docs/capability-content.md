@@ -81,7 +81,7 @@ change. Wording changes are limited to the site's standing rules (no em-dashes, 
   set-aside awards under NAICS 561612); Service Area Greater Colorado Area (Nationwide on
   request); Local License Denver #2021-BFN-0001984 (Certified training provider · City of
   Denver); Local License Colorado Springs #0850744L (Certified training provider · City of
-  Colorado Springs).
+  Colorado Springs); Local License Pueblo #26422 (added 2026-10-05 from the updated PDF).
 
 ## Closing download
 - "Download" / "Take this capability statement with you." / Download (PDF).

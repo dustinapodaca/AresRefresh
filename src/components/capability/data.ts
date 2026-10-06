@@ -174,4 +174,5 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
   { label: 'Service area', value: 'Greater Colorado Area', note: 'Nationwide on request' },
   { label: 'Local license, Denver', value: '2021-BFN-0001984', note: 'Certified training provider · City of Denver', mono: true },
   { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
+  { label: 'Local license, Pueblo', value: '26422', note: 'Armed security and training provider · City of Pueblo', mono: true },
 ];

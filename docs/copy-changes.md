@@ -252,3 +252,7 @@ officers" (no retention claim), with the Indeed reviews linked; "16 of 18" proof
 questionnaires on request; card lines now say who each service is for; patrol's "Mobile
 patrol" include replaced by "Checkpoint logs" (vehicle patrol is its own card); Why Ares
 lead "Four reasons, each with its source."
+
+## Capability statement PDF updated (2026-10-05)
+
+The owner's updated PDF (adds Pueblo license #26422) replaces `public/files/Ares-Security-Capability-Statement-2026.pdf` (same URL); the page-one preview `capability-page1.webp` was regenerated from it; the code listing gains "Local license, Pueblo · 26422" (13 entries).
