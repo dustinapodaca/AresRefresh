@@ -463,6 +463,25 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
 - **Download (the close):** the PDF thumbnail beside "Take this capability statement
   with you.", Download, Open in a new tab, quote, and phone, over the closing rust light.
 
+### Request a Quote page ("The Intake", 2026-10-05)
+A short form page, so no rail and no scroll effects (owner). Concept and Mobbin board:
+docs/contact-concepts.md.
+- **Opening:** Denver at sunset (`contact-hero.jpg`, captioned; the route's SEO preload)
+  as a band under the nav, shaded from the top and left and masked into the canvas, with
+  "Request a quote." and the lead low on it.
+- **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a
+  hairline-strong rule. "What needs covering?" is a required radio group of the six
+  divisions, the capability statement, and something else, as rows on hairlines in two
+  columns (16px ring in ink faint; checked fills ink with a canvas dot). Fields: label
+  above (13px, ink muted, "Optional" in ink faint), a 48px filled field (#0e1013, white/16%
+  edge, 2px corners, 16px text so phones don't zoom). Errors are amber (#f2b84b) once the
+  reader has tried to send, with a line under the radio group. Then the primary button,
+  the discretion line, and an inline status (aria-live) with the green or amber light;
+  then the GSA contract as a ledger row with its eLibrary and capability statement routes.
+- **The contact column (5 columns, from column 8):** "Rather talk?" with the phone in
+  mono (30 to 40px) over the rust light, the email; "What happens next" as three ruled
+  steps; the Colorado coverage map from Home. Phones: the intake first, then this column.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row

@@ -276,3 +276,25 @@ Entry screening; Coordinated coverage; Public and private events; Rapid on-site 
 Incident containment.
 
 - "Credentials on the record." became "Certifications and codes." (owner, 2026-10-05): names both parts of the section; the SAM.gov line beneath it stays.
+
+# Copy changes (Request a Quote, "The Intake", 2026-10-05)
+
+Inventory: docs/contact-content.md. Concept: docs/contact-concepts.md.
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "Request a Quote" | "Request a quote." | Sentence case, matching the site |
+| "…We'll respond within one business day with a scoped proposal — federal, commercial, or specialized." | "Send a site, a shift pattern, and a deadline. We will come back with a scoped proposal for federal, commercial, or specialized work." | PRODUCT.md: response times are never stated; no em-dash |
+| "[ CONTACT US ]" / "How Can We *Help You?*" / "Fill out the form and we'll get back to you within one business day. For urgent procurement timelines, call us directly." | Form parts "What needs covering?", "About the site", "How to reach you"; "Rather talk? For urgent procurement timelines or active contracts, call us directly." | No kickers or italic accents; no response time |
+| Subject options: Federal Division (Cleared Ops · GSA); Commercial & Retail Security; Industrial & Logistics; Armed Asset Protection / High-Cash; Request Capability Statement (PDF); Other inquiry | The six Services divisions by name, "Capability statement request", "Something else" | Match the Services page; email subjects now read "Ares Inquiry: <division>" |
+| "Ares Security LLC ★★★★ 4.0 (4)" | Removed | Unsourced rating (PRODUCT.md) |
+| Tiles: Email (inbox monitored business hours · response within 1 business day), Phone, Headquarters | Phone and email under "Rather talk?"; "Where we post officers: Headquartered in Colorado Springs, with officers in Denver and Pueblo." | No response time; no icon tiles |
+| (none) | "What happens next": Leadership reads it; We walk your site; You get a scoped proposal | Built from existing site facts (leadership-only review, the pre-contract site walk, scoped proposals) |
+| (none) | "Buying through GSA?" with the contract number, eLibrary, and the capability statement | Proof paired with its route |
+| "Discretion guaranteed. Inquiries reviewed by leadership only." | "Discretion guaranteed. Requests are read by leadership only." | Same fact |
+| "Send Inquiry" | "Send request" | Matches the page's verb |
+| Toast: "Message sent — we'll respond within one business day…" / "Failed to send message, please try again or email us directly at: …" / "✗ Form not configured…" | Inline: "Sent. We will reply to the email you gave us." / "That did not send. Please try again, or email contact@aressecurity.co." / "The form is not set up yet. Please email contact@aressecurity.co." | No response time or em-dash; inline and announced |
+
+**Owner follow-up:** the route's SEO description (`src/seo/routes.json`, off limits without
+your OK) still says "We respond within one business day."
+

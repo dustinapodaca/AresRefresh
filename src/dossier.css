@@ -2114,6 +2114,205 @@ body:has(.ds-page) {
 }
 
 /* ============================================================
+   REQUEST A QUOTE ("The Intake", docs/contact-concepts.md)
+   A short form page: no rail, no scroll effects.
+   ============================================================ */
+
+/* ---------- Opening: Denver at sunset, the headline low on it ---------- */
+.ds-qt-open { position: relative; isolation: isolate; }
+.ds-qt-hero {
+  position: relative;
+  z-index: -1;
+  margin: 0;
+  height: calc(30svh + var(--ds-header));
+  min-height: 280px;
+  overflow: clip;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 45%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 45%);
+}
+.ds-qt-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(0.9) brightness(0.8); }
+.ds-qt-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(10 11 13 / 0.8) 0%, rgb(10 11 13 / 0.3) 38%, rgb(10 11 13 / 0) 60%); }
+.ds-qt-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
+.ds-qt-open-copy { position: relative; margin-top: -4.5rem; }
+.ds-qt-open-copy .ds-lead { margin-top: 20px; }
+@media (min-width: 900px) {
+  .ds-qt-open { display: flex; flex-direction: column; justify-content: flex-end; min-height: 62svh; }
+  .ds-qt-hero { position: absolute; inset: 0; height: auto; }
+  .ds-qt-hero img { object-position: 50% 34%; }
+  .ds-qt-hero::after {
+    background:
+      linear-gradient(to bottom, rgb(10 11 13 / 0.85) 0%, rgb(10 11 13 / 0.3) 34%, rgb(10 11 13 / 0) 56%),
+      linear-gradient(to right, rgb(10 11 13 / 0.7) 0%, rgb(10 11 13 / 0.3) 45%, rgb(10 11 13 / 0) 70%);
+  }
+  .ds-qt-hero figcaption { top: calc(var(--ds-header) + 20px); }
+  .ds-qt-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+}
+
+/* ---------- The intake (form) and the contact column ---------- */
+.ds-qt-body { display: grid; gap: var(--ds-beat-tight); padding-block: var(--ds-beat-tight) var(--ds-beat); }
+.ds-qt-main { display: grid; gap: var(--ds-beat-tight); min-width: 0; }
+@media (min-width: 1024px) {
+  .ds-qt-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-qt-main { grid-column: 1 / span 6; }
+  .ds-qt-side { grid-column: 8 / span 5; }
+}
+
+.ds-qt-form { display: grid; gap: 48px; min-width: 0; }
+.ds-qt-part { min-width: 0; margin: 0; padding: 0; border: 0; }
+.ds-qt-part legend {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--ds-rule-strong);
+  font-size: clamp(22px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ds-fg);
+}
+
+/* 01: what needs covering, as radio rows. */
+.ds-qt-needs { display: grid; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) {
+  .ds-qt-needs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+.ds-qt-need {
+  position: relative;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ds-rule);
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ds-fg-muted);
+  cursor: pointer;
+  transition: color 180ms var(--ds-ease);
+}
+.ds-qt-need input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.ds-qt-dot {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--ds-fg-faint);
+  border-radius: 50%;
+  transition: background-color 180ms var(--ds-ease), border-color 180ms var(--ds-ease);
+}
+.ds-qt-dot::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ds-canvas);
+  transform: scale(0);
+  transition: transform 180ms var(--ds-ease);
+}
+.ds-qt-need:has(input:checked) { color: var(--ds-fg); }
+.ds-qt-need input:checked + .ds-qt-dot { background: var(--ds-fg); border-color: var(--ds-fg); }
+.ds-qt-need input:checked + .ds-qt-dot::after { transform: scale(1); }
+.ds-qt-need input:focus-visible + .ds-qt-dot { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
+/* The group's error: amber rings and a line that stays once the reader has tried to send. */
+.ds-qt-err { display: none; margin: 12px 0 0; font-size: 14px; color: #f2b84b; }
+.ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-err { display: block; }
+.ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-dot { border-color: #f2b84b; }
+@media (hover: hover) and (pointer: fine) {
+  .ds-qt-need:hover { color: var(--ds-fg); }
+  .ds-qt-need:hover .ds-qt-dot { border-color: var(--ds-fg-muted); }
+  .ds-qt-input:hover { border-color: rgb(255 255 255 / 0.26); }
+}
+
+/* 02 and 03: fields. Filled, hairline edged, 2px corners. */
+.ds-qt-fields { display: grid; gap: 20px; }
+@media (min-width: 640px) {
+  .ds-qt-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+}
+.ds-qt-field { display: grid; gap: 8px; min-width: 0; }
+.ds-qt-field label { font-size: 13px; font-weight: 500; color: var(--ds-fg-muted); }
+.ds-qt-field label span { margin-left: 6px; font-weight: 400; color: var(--ds-fg-faint); }
+.ds-qt-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 2px;
+  background: #0e1013;
+  color: var(--ds-fg);
+  font: 400 16px/1.4 var(--ds-text);
+  transition: border-color 180ms var(--ds-ease);
+}
+textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; line-height: 1.5; resize: vertical; }
+.ds-qt-input::placeholder { color: var(--ds-fg-faint); }
+.ds-qt-input:focus { border-color: rgb(255 255 255 / 0.32); }
+.ds-qt-input:user-invalid { border-color: rgb(242 184 75 / 0.55); }
+.ds-qt-trap { position: absolute; left: -5000px; width: 1px; height: 1px; opacity: 0; }
+
+/* Send: the button, the discretion line, and the status with its light. */
+.ds-qt-send { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.ds-qt-send .ds-small { max-width: 36ch; }
+.ds-qt-send strong { font-weight: 600; color: var(--ds-fg); }
+.ds-qt-send .ds-btn:disabled { opacity: 0.6; cursor: progress; }
+.ds-qt-status { display: flex; align-items: center; gap: 10px; flex-basis: 100%; margin: 0; font-size: 15px; line-height: 1.45; color: var(--ds-fg); }
+.ds-qt-status[data-ok]::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; }
+.ds-qt-status[data-ok='true']::before { background: #7cb85f; box-shadow: 0 0 0 4px rgb(124 184 95 / 0.16); }
+.ds-qt-status[data-ok='false']::before { background: #f2b84b; box-shadow: 0 0 0 4px rgb(242 184 75 / 0.16); }
+@media (max-width: 767px) {
+  .ds-qt-send .ds-btn { width: 100%; }
+}
+
+/* The contact column. */
+.ds-qt-side { display: grid; gap: 56px; align-content: start; min-width: 0; }
+.ds-qt-sub { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
+.ds-qt-talk { position: relative; isolation: isolate; }
+/* The rust light, set behind the phone as at the close of the other pages. */
+.ds-qt-talk::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -10%;
+  top: 10%;
+  bottom: -30%;
+  background: radial-gradient(closest-side, rgb(188 111 64 / 0.2), rgb(188 111 64 / 0));
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .ds-qt-talk::before { left: -10%; right: 0; }
+}
+.ds-qt-phone {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--ds-data);
+  font-size: clamp(30px, 3vw, 40px);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums slashed-zero;
+  color: var(--ds-fg);
+  text-decoration: underline;
+  text-decoration-color: var(--ds-rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 8px;
+  transition: text-decoration-color 180ms var(--ds-ease);
+}
+.ds-qt-phone:hover { text-decoration-color: var(--ds-fg); }
+.ds-qt-talk .ds-link { display: table; margin-top: 14px; font-size: 14px; }
+.ds-qt-next ol { list-style: none; margin: 16px 0 0; padding: 0; }
+.ds-qt-next li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--ds-rule); }
+.ds-qt-next li > .ds-data { padding-top: 2px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-qt-next-name { margin: 0 0 2px; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
+.ds-qt-where .ds-map { margin-top: 20px; }
+/* The GSA route as a ledger row: label, mono value, verification links. */
+.ds-qt-gsa-row { display: grid; gap: 6px 24px; margin-top: 16px; padding: 18px 0; border-block: 1px solid var(--ds-rule); }
+.ds-qt-gsa-n { margin: 0; font-size: 20px; color: var(--ds-fg); }
+.ds-qt-gsa-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 8px; }
+@media (min-width: 640px) {
+  .ds-qt-gsa-row { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; }
+  .ds-qt-gsa-row .ds-small { grid-column: 1 / -1; }
+  .ds-qt-gsa-links { margin-top: 0; justify-content: flex-end; }
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
@@ -2271,6 +2470,10 @@ body:has(.ds-page) {
   .ds-svc-cities .ds-arrow { transition-duration: 0s; }
   .ds-ab-commit-group[data-active='true'] { animation: none; }
   .ds-count-n span { animation: none; }
+  .ds-qt-dot,
+  .ds-qt-dot::after,
+  .ds-qt-need,
+  .ds-qt-input { transition-duration: 0s; }
   .ds-btn:active,
   .ds-svc-card-head button:active .ds-svc-plus,
   .ds-svc-cities a:hover .ds-arrow { transform: none; }
