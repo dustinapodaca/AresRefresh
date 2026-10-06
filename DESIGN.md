@@ -409,8 +409,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   button with an authored download icon, a quiet "Request a quote", and a mono spec line
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). Beside it, page 1 of the real statement
   (`capability-page1.webp`) floats in the light at a 3D tilt; it rises 28px once on load,
-  straightens on hover, and straightens and lifts as the hero scrolls away. Phones: the
-  document floats above the copy. Under the hero, the four quick facts as Home's key row
+  straightens on hover, and straightens and lifts as the hero scrolls away. Below 900px the
+  document is hidden (owner) and the copy starts low in the light. Under the hero, the four quick facts as Home's key row
   with notes and the SAM.gov route.
 - **Capabilities:** six ruled entries (number beside the title, body, keys as a mono
   middle-dot line), three columns on desktop, two on tablet. Phones: each folds to its
