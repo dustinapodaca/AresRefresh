@@ -345,3 +345,4 @@ Careers lead: "…with paid training and schedules you can plan a life around." 
 "…with paid training." (dropped "and real growth paths"). People first: "As the company
 grows, we want our people to grow with it." (stated as an aim).
 
+Careers (owner, same day): "What that looks like day to day." removed.

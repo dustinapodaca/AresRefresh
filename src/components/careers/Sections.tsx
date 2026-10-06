@@ -81,7 +81,6 @@ export function Why() {
             </li>
           ))}
         </ul>
-        <p className="ds-handoff">What that looks like day to day.</p>
       </div>
     </section>
   );

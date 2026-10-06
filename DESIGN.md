@@ -501,8 +501,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, How we work, Apply
   Indeed rating with its reviews link and four reasons on hairlines.
 - **03 How we work:** an Ares officer at the range as a 16:9 plate across nine columns
   (the photo is too small for full bleed; no settle scale), then "People first." and the
-  well-being paragraphs. Each section ends on a hand-off line; gaps run beat, tight,
-  beat, open.
+  well-being paragraphs. Roles and How we work end on hand-off lines (the owner dropped
+  the one after Why people stay); gaps run beat, tight, beat, open.
 - **04 Apply (the close):** "Send us your résumé." with the careers email large in mono over
   the rust light.
 - **Rail (`list`):** the section names in Inter, dimmed, the current one in ink with a 6px
