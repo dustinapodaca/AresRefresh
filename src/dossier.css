@@ -1176,6 +1176,149 @@ body:has(.ds-page) {
 }
 .ds-svc-divisions .ds-handoff { margin-top: var(--ds-beat-tight); }
 
+/* ---------- Divisions on phones: the deck (PROTOTYPE, owner trial 2026-10-05) ----------
+   A fanned stack after a stacked-carousel reference, toned down: 3.5deg tilt, no pills,
+   no overshoot. DivisionDeck.tsx paints each card's transform from one progress value. */
+.ds-svc-deck { display: none; }
+@media (max-width: 767px) {
+  .ds-svc-grid { display: none; }
+  .ds-svc-deck { display: block; margin-top: var(--ds-beat-tight); }
+}
+.ds-svc-deck-stage {
+  position: relative;
+  height: 23rem;
+  margin-inline: calc(-1 * var(--ds-gutter));
+  overflow: clip;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.ds-svc-deck-stage:active { cursor: grabbing; }
+.ds-svc-deck-stage:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: -4px; }
+.ds-svc-deck-card {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 15rem;
+  height: 20rem;
+  margin-left: -7.5rem;
+  overflow: clip;
+  border-radius: 18px;
+  background: #050607;
+  will-change: transform;
+  pointer-events: none;
+}
+.ds-svc-deck-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82) brightness(0.86) contrast(1.04);
+}
+/* Cards behind the front one dim with distance; the edge sits on top. */
+.ds-svc-deck-card::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: #050607;
+  opacity: var(--dim, 0);
+}
+.ds-svc-deck-card::after {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 -20px 60px -20px rgb(255 255 255 / 0.06);
+}
+/* The frosted foot, as on the desktop cards; its words show on the front card. */
+.ds-svc-deck-panel {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 4px;
+  padding: 14px 16px 16px;
+  background: linear-gradient(to bottom, rgb(5 6 7 / 0.35), rgb(5 6 7 / 0.72));
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ds-fg);
+}
+.ds-svc-deck-panel > * { opacity: var(--front, 1); }
+.ds-svc-deck-panel .ds-data { font-size: 12px; color: var(--ds-fg-muted); }
+
+.ds-svc-deck-controls { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; margin-top: 8px; }
+.ds-svc-deck-step {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 9999px;
+  background: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+  color: var(--ds-fg);
+  cursor: pointer;
+  transition: opacity 180ms var(--ds-ease), transform 140ms var(--ds-ease);
+}
+.ds-svc-deck-step:active { transform: scale(0.94); }
+.ds-svc-deck-step:disabled { opacity: 0.35; cursor: default; }
+.ds-svc-deck-prev { display: grid; transform: rotate(180deg); }
+.ds-svc-deck-meter ol { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.ds-svc-deck-meter button {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 0 4px;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  text-align: left;
+  color: var(--ds-fg-faint);
+  cursor: pointer;
+  transition: color 180ms var(--ds-ease);
+}
+.ds-svc-deck-meter button[data-on='true'] { color: var(--ds-fg); }
+.ds-svc-deck-track {
+  position: relative;
+  display: block;
+  height: 9px;
+  background: linear-gradient(var(--ds-rule-strong), var(--ds-rule-strong)) center / 100% 1px no-repeat;
+}
+.ds-svc-deck-track span { position: absolute; left: 0; right: 0; top: 3px; height: 3px; background: var(--ds-fg); transform-origin: left; }
+
+.ds-svc-deck-detail { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--ds-rule-strong); }
+.ds-svc-deck-name {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ds-fg);
+}
+.ds-svc-deck-name .ds-data { font-size: 13px; color: var(--ds-fg-faint); }
+.ds-svc-deck-detail .ds-body { margin-top: 12px; }
+@media (prefers-reduced-motion: no-preference) {
+  .ds-svc-deck-detail { animation: ds-deck-in 220ms var(--ds-ease) both; }
+}
+@keyframes ds-deck-in { from { opacity: 0.4; transform: translateY(6px); } }
+
 /* The open/close motion is a FLIP on the real cards (Divisions.tsx), not a View
    Transition: the cards stay in the page, under the fixed nav, so the nav keeps its
    frosted glass throughout and nothing can draw over it. */

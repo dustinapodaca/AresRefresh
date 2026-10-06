@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DIVISIONS } from './data';
+import DivisionDeck from './DivisionDeck';
 
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
@@ -201,6 +202,9 @@ export default function Divisions() {
           );
         })}
       </div>
+
+      {/* Phones: the deck prototype stands in for the grid. */}
+      <DivisionDeck />
 
       <p className="ds-lead ds-handoff">Whichever division fits your site, the work starts the same way.</p>
     </section>
