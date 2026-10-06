@@ -45,9 +45,6 @@ export const CITIES: City[] = [
 
 const city = (slug: City['slug']) => CITIES.find((c) => c.slug === slug)!;
 
-const copyRequest = (cityName: string, number: string) =>
-  `mailto:contact@aressecurity.co?subject=${encodeURIComponent(`License copy: ${cityName} ${number}`)}`;
-
 // Licensed and bonded; an armed and unarmed security provider and training provider in
 // all three cities (owner, 2026-10-06).
 export const COLORADO_SPRINGS: LocationFile = {
@@ -65,14 +62,12 @@ export const COLORADO_SPRINGS: LocationFile = {
       mono: true,
       route: {
         links: [
-          // The city's public license record (Accela). It shows little beyond status, so a
-          // copy of the license stays one email away.
+          // The city's public license record (Accela).
           {
             label: 'Verify',
             href: 'https://aca-prod.accela.com/COSPRINGS/Cap/CapDetail.aspx?Module=Licensing&TabName=Licensing&capID1=REC21&capID2=00000&capID3=008D0&agencyCode=COSPRINGS&IsToShowInspection=',
             external: true,
           },
-          { label: 'Request a copy', href: copyRequest('Colorado Springs', '0850744L') },
         ],
       },
     },

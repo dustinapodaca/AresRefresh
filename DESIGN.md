@@ -538,8 +538,7 @@ per city. No rail, no close, no photo, no section numbers.
   15px, the city 13 to 20px by plate width so it always ends inside the frame).
 - **Licensed in <city>:** Colorado has no statewide license; the city licenses security
   companies itself. The city's license as Home's ledger row (label, mono value, route):
-  license number with "Verify ↗" (the city's public record, where one exists; Colorado
-  Springs: Accela) and "Request a copy" (an email), status (licensed and bonded, armed and
+  license number with "Verify ↗" (the city's public record; Colorado Springs: Accela), status (licensed and bonded, armed and
   unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
 - **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
   (4 + 3), each column closed by a hairline; each row is
