@@ -25,7 +25,7 @@ export default function Coverage() {
           Where we work.
         </h2>
         <p className="ds-lead">
-          Armed, unarmed, and cleared officers for federal, commercial, industrial, and
+          Armed and unarmed officers for federal, commercial, industrial, and
           institutional sites, from our base in Colorado Springs.
         </p>
         <CoverageMap />

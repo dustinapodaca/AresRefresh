@@ -622,6 +622,9 @@ Few, fast, and crisp. Four to six moments per page.
 - Use real Ares and Colorado photography. No patrol-vehicle photos on Home.
 - Say "minority woman-owned". Veterans: veteran supervisors, a veteran NRA firearms
   instructor, veterans encouraged to apply. Never "veteran-led".
+- Clearances (owner, 2026-10-06): Ares has no facility clearance (FCL) yet and cannot
+  sponsor or obtain clearances. Never "cleared officers/roles" or "clearance-eligible"; say
+  officers or escorts "who already hold an active clearance".
 
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,

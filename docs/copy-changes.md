@@ -373,3 +373,23 @@ Careers (owner, same day): "Why officers stay once they join." removed.
 | Was | Now | Why |
 |---|---|---|
 | 04 Contact: "Tell us about your site." / "We start with a walk of your site, before anything is signed." / phone, email, "Request a quote", "Download the capability statement" | Removed; the page ends on the three cities | Owner: more succinct; the nav carries the quote and the footer the phone and email |
+
+## No FCL yet: clearance wording (2026-10-06, owner)
+
+Ares has no facility clearance and cannot clear officers. Copy now says officers "already
+hold" an active clearance, and nothing implies sponsorship.
+
+| Where | Was | Now |
+|---|---|---|
+| Home, 04 Careers | "We hire for armed, unarmed, and cleared roles, with paid training." | "We hire armed and unarmed officers, and escorts who already hold an active clearance, with paid training." |
+| Home, 03 Coverage lead | "Armed, unarmed, and cleared officers for..." | "Armed and unarmed officers for..." |
+| Services opening lead | "Armed, unarmed, and cleared officers for..." | "Armed and unarmed officers for..." |
+| Services, Government card | "TS/SCI cleared: Cleared officers for posts that require a clearance, matched during compliance mapping." | "Clearance-required posts: Officers who already hold an active clearance, matched to the post during compliance mapping." |
+| Services, 02 Compliance mapping | "Regulations · Clearances · SOPs" / "every regulation, clearance, and SOP" | "Regulations · Clearance rules · SOPs" / "every regulation, clearance requirement, and SOP" |
+| Capability, Access Control | "...including TS/SCI-cleared escorts." | "...including escorts who already hold an active TS/SCI clearance." |
+| Capability, Why Ares | "...including TS/SCI-cleared escort duty." / proof "TS/SCI escorts" | "...including escort duty by officers who already hold an active TS/SCI clearance." / proof "TS/SCI holders" |
+| About, Licensed | "Background-checked and cleared before they reach your post." | "Background-checked and state-licensed before they reach your post." |
+| Careers opening | "We hire for armed, unarmed, and cleared roles, with paid training and..." | "We hire armed and unarmed officers, and escorts who already hold an active clearance, with paid training and..." |
+| Careers, TS Cleared Security Escort | "An active clearance, or the ability to obtain one, is required." | "You must already hold an active TS clearance." |
+| Denver (old page) | "Armed, unarmed and clearance-eligible officers" | "Armed and unarmed officers" |
+| Colorado Springs (old page) | "Armed, unarmed and clearance-eligible officers are all available" / "Facility clearance in process. Clearance-eligible hiring." | "Armed and unarmed officers are both available" / removed |

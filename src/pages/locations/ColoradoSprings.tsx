@@ -32,7 +32,7 @@ export default function ColoradoSprings() {
           kicker: '02 · Coverage',
           heading: 'The posts we staff across the city.',
           body: [
-            'We cover fixed posts, gates, lobbies and visitor-control desks, plus foot and mobile patrol for properties that need presence rather than a stationary officer. Armed, unarmed and clearance-eligible officers are all available depending on what the site and its insurer require.',
+            'We cover fixed posts, gates, lobbies and visitor-control desks, plus foot and mobile patrol for properties that need presence rather than a stationary officer. Armed and unarmed officers are both available depending on what the site and its insurer require.',
             'Escort coverage is available for contractors, vendors and visitors who need to be accompanied while on site, and we take surge and event work when a property has a date that outgrows its normal staffing.',
           ],
           bullets: [
@@ -47,7 +47,7 @@ export default function ColoradoSprings() {
           heading: 'Audit-ready from the first shift.',
           body: [
             'Every post gets written post orders, site-specific training and records built to survive review. Licensing and firearms qualifications are current at time of post, and the paperwork behind that is available on request rather than assembled after the fact.',
-            'For public-sector buyers, our GSA Schedule and SAM registration mean the contracting path is already in place. Facility clearance in process. Clearance-eligible hiring.',
+            'For public-sector buyers, our GSA Schedule and SAM registration mean the contracting path is already in place.',
           ],
         },
       ]}

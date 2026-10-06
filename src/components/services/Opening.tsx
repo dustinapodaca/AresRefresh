@@ -9,7 +9,7 @@ export default function Opening() {
         </h1>
         <div className="ds-svc-open-side">
           <p className="ds-lead">
-            Armed, unarmed, and cleared officers for federal, commercial, industrial, and
+            Armed and unarmed officers for federal, commercial, industrial, and
             institutional sites in Colorado Springs, Denver, and Pueblo. Find the division
             closest to your site.
           </p>

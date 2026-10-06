@@ -24,7 +24,7 @@ export default function Denver() {
           bullets: [
             'Fixed post, gate, lobby and visitor-control coverage',
             'Foot and mobile patrol across multiple addresses',
-            'Armed, unarmed and clearance-eligible officers',
+            'Armed and unarmed officers',
           ],
         },
         {

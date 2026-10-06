@@ -19,13 +19,14 @@ web
 - **Facility managers** *(brief)* at commercial, industrial, and institutional sites who
   need dependable coverage and a responsive point of contact.
 - **Procurement teams** *(brief)* assembling vendor files and comparing contractors.
-- Secondary: **job seekers** applying for armed, unarmed, and cleared roles (no office roles; owner, 2026-10-05)
+- Secondary: **job seekers** applying for armed and unarmed roles, and escort roles for people who already hold an
+  active clearance (no office roles; owner, 2026-10-05)
   *(site: /careers)*.
 
 ## Product Purpose
 
-Ares Security LLC is a security services firm providing armed, unarmed, and cleared
-security officers *(brief)* to federal and commercial clients across Colorado
+Ares Security LLC is a security services firm providing armed and unarmed
+security officers *(brief; "cleared" dropped, owner 2026-10-06: Ares has no FCL yet)* to federal and commercial clients across Colorado
 Springs, Denver, and Pueblo *(brief, site)*. The website's job is to let a buyer
 verify the company fast and start a quote or a call. Success is a qualified quote
 request, phone call, or capability statement download.
