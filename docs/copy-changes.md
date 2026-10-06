@@ -303,3 +303,9 @@ block removed; the subject options are the six divisions and "Something else".
 
 About trait (2026-10-05, owner): "Compassionate" → "Courteous" (same line). The word was
 long enough to crowd the line beside it.
+
+About traits as ALERT (2026-10-05, owner): Diverse, Experienced, Composed, Cleared,
+Courteous → **A**pproachable, **L**icensed, **E**xperienced, **R**ooted, **T**empered, in
+that order. Lines kept with two trims: Approachable "People who treat clients and the
+public with respect." (was "Approachable people who…"); Licensed "Background-checked and
+cleared before they reach your post." (was "…and licensed…").

@@ -42,12 +42,14 @@ export const FOR_PEOPLE: Commitment[] = [
   { name: 'Real support', line: 'A chain of command on every shift. When you call, someone answers.' },
 ];
 
+// Five traits whose initials read ALERT, in that order (owner, 2026-10-05; were Diverse,
+// Experienced, Composed, Cleared, Courteous; lines kept, two words trimmed).
 export const TRAITS: Commitment[] = [
-  { name: 'Diverse', line: 'Backgrounds and perspectives that reflect the communities we protect.' },
+  { name: 'Approachable', line: 'People who treat clients and the public with respect.' },
+  { name: 'Licensed', line: 'Background-checked and cleared before they reach your post.' },
   { name: 'Experienced', line: 'Seasoned officers who have stood the hard posts before.' },
-  { name: 'Composed', line: 'Calm and clear when a situation turns.' },
-  { name: 'Cleared', line: 'Background-checked and licensed before they reach your post.' },
-  { name: 'Courteous', line: 'Approachable people who treat clients and the public with respect.' },
+  { name: 'Rooted', line: 'Backgrounds and perspectives that reflect the communities we protect.' },
+  { name: 'Tempered', line: 'Calm and clear when a situation turns.' },
 ];
 
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
