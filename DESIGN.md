@@ -286,6 +286,8 @@ body, and the single rust horizon glow at the close.
   its name in the Inter `title` style on a hairline-strong rule.
 - Opens with a key row of four identifiers (GSA contract, UEI, CAGE, NAICS) as large mono
   values with labels beneath.
+- Each group folds behind a tappable row (name, entry count, chevron) at every width,
+  closed by default; the key row above stays visible.
 - On mobile each row stacks: label, value, link.
 
 ### Typographic lists
@@ -366,8 +368,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row
   scrolls. Desktop keeps the pinned passage.
-- **Ledger groups fold** (below 768px) behind tappable rows showing the group name, the
-  entry count, and a chevron. The four key identifiers stay visible above them.
+- **Ledger groups fold** (at every width since 2026-10-05, owner request; first built
+  for phones) behind tappable rows showing the group name, the entry count, and a
+  chevron. The four key identifiers stay visible above them.
 - **The figure** is set at 22vw on phones.
 - **The pull quote sits right** (flush to the right edge, right-aligned), echoing the
   desktop layout where it lives in the right-hand columns. **The hero's GSA line is

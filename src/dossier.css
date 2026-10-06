@@ -592,7 +592,6 @@ body:has(.ds-page) {
 }
 
 .ds-ledger { margin-top: var(--ds-beat-tight); }
-.ds-ledger-group + .ds-ledger-group { margin-top: 48px; }
 .ds-ledger-group summary {
   display: flex;
   align-items: baseline;
@@ -604,19 +603,18 @@ body:has(.ds-page) {
   cursor: pointer;
 }
 .ds-ledger-group summary::-webkit-details-marker { display: none; }
-.ds-ledger-count { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ds-fg-faint); white-space: nowrap; }
+.ds-ledger-count { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ds-fg-faint); white-space: nowrap; transition: color 180ms var(--ds-ease); }
 .ds-chevron { transition: transform 180ms var(--ds-ease); }
 .ds-ledger-group[open] .ds-chevron { transform: rotate(180deg); }
-@media (max-width: 767px) {
-  /* Folded groups read as three tappable rows. */
-  .ds-ledger-group + .ds-ledger-group { margin-top: 0; }
-  .ds-ledger-group summary { padding: 18px 0; border-bottom-color: var(--ds-rule); }
-  .ds-ledger-group[open] summary { border-bottom-color: var(--ds-rule-strong); }
-  .ds-ledger-group[open] { padding-bottom: 28px; }
-}
+/* Folded groups read as three tappable rows, at every width. */
+.ds-ledger-group summary { padding: 18px 0; border-bottom-color: var(--ds-rule); }
+.ds-ledger-group[open] summary { border-bottom-color: var(--ds-rule-strong); }
+.ds-ledger-group[open] { padding-bottom: 28px; }
 @media (min-width: 768px) {
-  .ds-ledger-count { display: none; }
-  .ds-ledger-group summary { cursor: default; }
+  .ds-ledger-group summary { padding: 22px 0; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-ledger-group summary:hover .ds-ledger-count { color: var(--ds-fg); }
 }
 .ds-ledger dl { margin: 0; }
 .ds-ledger-row {

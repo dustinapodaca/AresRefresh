@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMediaQuery } from './useMediaQuery';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY, SAM_GOV } from './links';
 
@@ -62,30 +60,12 @@ const GROUPS: { title: string; rows: Row[] }[] = [
   },
 ];
 
-// On mobile each ledger group folds behind a tappable row so the section isn't a wall of
-// numbers; the four key identifiers above stay visible. On desktop groups are always open.
-function LedgerGroup({
-  title,
-  count,
-  desktop,
-  children,
-}: {
-  title: string;
-  count: number;
-  desktop: boolean;
-  children: React.ReactNode;
-}) {
-  const [open, setOpen] = useState(false);
+// Each ledger group folds behind a tappable row at every width (owner, 2026-10-05) so the
+// section isn't a wall of numbers; the four key identifiers above stay visible.
+function LedgerGroup({ title, count, children }: { title: string; count: number; children: React.ReactNode }) {
   return (
-    <details
-      className="ds-ledger-group"
-      open={desktop || open}
-      onToggle={(e) => !desktop && setOpen(e.currentTarget.open)}
-    >
-      <summary
-        tabIndex={desktop ? -1 : undefined}
-        onClick={desktop ? (e) => e.preventDefault() : undefined}
-      >
+    <details className="ds-ledger-group">
+      <summary>
         <h3 className="ds-title">{title}</h3>
         <span className="ds-ledger-count">
           {count} entries
@@ -100,7 +80,6 @@ function LedgerGroup({
 }
 
 export default function Verify() {
-  const desktop = useMediaQuery('(min-width: 768px)');
   return (
     <section id="verify" className="ds-verify" aria-labelledby="verify-title">
       <div className="ds-verify-head">
@@ -124,7 +103,7 @@ export default function Verify() {
 
       <div className="ds-ledger">
         {GROUPS.map((g) => (
-          <LedgerGroup key={g.title} title={g.title} count={g.rows.length} desktop={desktop}>
+          <LedgerGroup key={g.title} title={g.title} count={g.rows.length}>
             <dl>
               {g.rows.map((r) => (
                 <div className="ds-ledger-row" key={r.label}>
