@@ -281,7 +281,7 @@ export function Credentials() {
     <section id="credentials" className="ds-cs-creds" aria-labelledby="creds-title">
       <div className="ds-cs-head">
         <h2 id="creds-title" className="ds-display-lg">
-          Credentials on the record.
+          Certifications and codes.
         </h2>
         <p className="ds-lead">All data matches our SAM.gov registration.</p>
       </div>

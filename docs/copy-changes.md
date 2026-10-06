@@ -267,3 +267,5 @@ emergency response" became two cards. New DRAFT include lines for owner review: 
 and public areas; Gate, dock, and lobby control (from the PDF line); Crowd management;
 Entry screening; Coordinated coverage; Public and private events; Rapid on-site response;
 Incident containment.
+
+- "Credentials on the record." became "Certifications and codes." (owner, 2026-10-05): names both parts of the section; the SAM.gov line beneath it stays.

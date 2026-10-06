@@ -436,7 +436,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (#7cb85f) for active and available, amber (#f2b84b) for on request, each with a soft
   halo and one pulse outward when the section is first seen. These are the page's only
   functional colors.
-- **Credentials:** seven marks on hairlines in a fixed 48px logo slot (white
+- **Credentials ("Certifications and codes."):** seven marks on hairlines in a fixed 48px logo slot (white
   silhouettes; the GSA plate and the SBA WOSB badge in their own colors), each with its
   number where one is published; then the full code listing as a two-column ledger.
   Phones: the listing folds behind a disclosure button in its h3, with the entry count.
