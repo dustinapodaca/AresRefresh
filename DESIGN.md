@@ -438,7 +438,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   approved light-in-image exception) full bleed, cover, centered, black from the left. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
   quick facts and sections below carry it), a white "Download the PDF"
-  button with an authored download icon, a quiet "Request a quote", and a mono spec line
+  button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
+  it), and a mono spec line
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 28%-to-0 tint, about
   26rem past the row) that fades out downward (owner, 2026-10-05).

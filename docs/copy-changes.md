@@ -262,6 +262,7 @@ lead "Four reasons, each with its source."
 |---|---|---|
 | "Armed, unarmed, and cleared security officers for federal agencies, prime contractors, and commercial sites across Colorado. Every identifier you need to vet us is below and in the one-page PDF." | "Armed and unarmed security officers for federal agencies, prime contractors, and commercial sites across Colorado. Every identifier is below and in the PDF." | Owner: drop "cleared", more succinct |
 | "GSA Schedule holder · SAM-registered · WOSB and WBE certified" | Removed | Repeats the quick facts directly beneath (WOSB, WBE, UEI with its SAM.gov route), How to buy (GSA), and Credentials |
+| Quiet "Request a quote" link beside Download | Removed (owner, 2026-10-06) | The nav carries the quote; the close keeps its button |
 
 ## Capability statement PDF updated (2026-10-05)
 

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { PDF_URL, QUICK_FACTS, SAM_VERIFY } from './data';
 
@@ -34,10 +33,6 @@ export default function Hero() {
               <DownloadIcon />
               Download the PDF
             </a>
-            <Link to="/contact" className="ds-link">
-              Request a quote
-              <Arrow />
-            </Link>
           </div>
           <p className="ds-data ds-cs-spec">
             <span>Ares Security LLC</span>
