@@ -9,11 +9,12 @@ Last updated: 2026-10-05 (end of day). **Read this first when starting a new cha
   the project skills (Impeccable, Emil) and the Playwright MCP won't load.
 - **Branch:** `redesign-b-fresh`, pushed. Tag `home-v11-dossier` moves with every commit
   (force-pushed). Last pushed UI commit: `f49cfb6`. Netlify builds the branch.
-- **Done in the Dossier system (all pushed):** Home, Services, About, Capability
-  Statement, Request a Quote (`/contact`), Careers, plus the site-wide Header and Footer.
-- **Not done yet:** the three location pages (`/locations/colorado-springs`, `/denver`,
-  `/pueblo`) and the 404. They still use the old light "Moonstone" styles under the new
-  dark header and footer. **Likely next task.**
+- **Done in the Dossier system:** Home, Services, About, Capability Statement, Request a
+  Quote (`/contact`), Careers, the three location pages ("The Local File", 2026-10-06:
+  one component in `src/components/locations/`, one record per city in `data.ts`), plus
+  the site-wide Header and Footer. Work after 2026-10-05 is committed locally, not pushed.
+- **Not done yet:** the 404 (old light "Moonstone" styles). **Likely next task.** Denver's
+  license Verify link is coming from the owner (add it in `data.ts`).
 - **Live site branches** (`main`, `seo`, `edit`) are untouched.
 
 ## How to resume
@@ -221,8 +222,8 @@ async (page) => {
 
 ## Next steps
 
-1. **Location pages** (`/locations/colorado-springs`, `/denver`, `/pueblo`) and the
-   **404**, with the same seven-step process. Ask the owner which first.
+1. **The 404**, with the same process. Then Denver's Verify link when the owner sends it,
+   and the Denver M/WBE and SBE certifications if the owner confirms them.
 2. Resolve the "Waiting on the owner" items above.
 3. Older, still pending: `ASSET-OPTIMIZATION.md` not executed (`public/images` is large);
    `npm audit` shows 18 vulnerabilities; footer Privacy / Terms / Accessibility links are
