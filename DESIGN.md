@@ -571,6 +571,19 @@ Owner request: modern, clean, a glass panel over an aurora. Concept: docs/notfou
   from 640px, arrows nudge on hover), and "Or call 719-696-3966". Text on the glass is ink
   or #c4c8ce (7:1 or better at the brightest point). The site's only glass card.
 
+### Policies ("The Fine Print", 2026-10-06)
+Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms`,
+`/accessibility`. Concept: docs/legal-concepts.md. One layout, Read mode, no effects.
+- Desktop: a sticky side column (3 columns): the three documents on a 1px hairline-strong
+  track, the current one in ink with the rail's 12px rust tick; then "On this page" (13px
+  faint label, 14px links, the section in view in ink). The document in columns 5 to 11.
+  Phones: the documents as a row of links under the header (the current one underlined in
+  ink); no table of contents.
+- The document: title (display-lg, with a period), "Effective <date>" and "Ares Security
+  LLC" in mono 13px faint, an 18px intro, an at-a-glance ledger (Home's ledger row, label 3
+  and value 7 parts), then sections: Inter 600 20 to 24px sub-heads, 16px / 1.7 body in ink
+  muted at 68ch, strong in ink, lists with a 10px hairline marker.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row

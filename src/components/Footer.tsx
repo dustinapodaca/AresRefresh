@@ -121,9 +121,9 @@ export default function Footer() {
               <span>© 2026 Ares Security LLC. All rights reserved.</span>
               <span>Colorado Springs, Colorado</span>
               <ul>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Accessibility</a></li>
+                <li><Link to="/privacy">Privacy</Link></li>
+                <li><Link to="/terms">Terms</Link></li>
+                <li><Link to="/accessibility">Accessibility</Link></li>
               </ul>
             </div>
           </div>

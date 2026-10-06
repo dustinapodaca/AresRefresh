@@ -78,6 +78,18 @@
       ],
       "preloadImage": "/images/capability-hero.jpg"
     },
+    "/privacy": {
+      "title": "Privacy Policy | Ares Security",
+      "description": "How Ares Security handles what you share through our site, by email, or by phone. No cookies of our own, no trackers, and we never sell personal information."
+    },
+    "/terms": {
+      "title": "Terms of Use | Ares Security",
+      "description": "The terms for using aressecurity.co: the information on the site, quote requests, job listings, our content and marks, and Colorado governing law."
+    },
+    "/accessibility": {
+      "title": "Accessibility Statement | Ares Security",
+      "description": "Ares Security builds its website to WCAG 2.2 Level AA. What we have done, known limitations, and how to reach us if something on the site gets in your way."
+    },
     "/404": {
       "title": "Page Not Found | Ares Security",
       "description": "We couldn't find that page. Go to the Ares Security home page, see our services, or request a quote.",

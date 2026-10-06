@@ -2859,6 +2859,51 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 
 /* ============================================================
+   POLICIES ("The Fine Print", docs/legal-concepts.md)
+   Privacy, terms, and accessibility as documents in the file: a sticky side column that
+   switches documents and tracks the section in view (Stripe, Framer), an at-a-glance
+   ledger, then the full text at a reading measure. Read mode: no effects.
+   ============================================================ */
+.ds-lg-grid { display: grid; gap: 40px; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+.ds-lg-docs { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--ds-rule); overflow-x: auto; scrollbar-width: none; }
+.ds-lg-docs a { display: block; padding: 12px 0 13px; font-size: 15px; color: var(--ds-fg-muted); white-space: nowrap; transition: color 180ms var(--ds-ease); }
+.ds-lg-docs a[aria-current='page'] { color: var(--ds-fg); box-shadow: inset 0 -1px 0 var(--ds-fg); }
+.ds-lg-toc { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .ds-lg-docs a:hover, .ds-lg-toc a:hover { color: var(--ds-fg); }
+}
+@media (min-width: 1024px) {
+  .ds-lg-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-lg-side { grid-column: 1 / span 3; position: sticky; top: calc(var(--ds-header) + 32px); align-self: start; }
+  .ds-lg-doc { grid-column: 5 / span 7; }
+  /* The documents on a 1px track; the current one in ink with the rail's rust tick. */
+  .ds-lg-docs { display: grid; gap: 0; border-bottom: 0; border-left: 1px solid var(--ds-rule-strong); overflow: visible; }
+  .ds-lg-docs a { position: relative; padding: 7px 0 7px 18px; }
+  .ds-lg-docs a[aria-current='page'] { box-shadow: none; }
+  .ds-lg-docs a[aria-current='page']::before { content: ''; position: absolute; left: -1px; top: 50%; width: 12px; height: 1px; background: var(--ds-rust); }
+  .ds-lg-toc { display: block; margin-top: 36px; }
+  .ds-lg-toc-title { margin: 0 0 10px; font-size: 13px; color: var(--ds-fg-faint); }
+  .ds-lg-toc ul { display: grid; gap: 2px; list-style: none; margin: 0; padding: 0; }
+  .ds-lg-toc a { display: block; padding: 4px 0; font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+  .ds-lg-toc a[aria-current='location'] { color: var(--ds-fg); }
+}
+
+.ds-lg-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 18px 0 0; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-lg-intro p { margin: 20px 0 0; font-size: 18px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 56ch; text-wrap: pretty; }
+.ds-lg-glance { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
+@media (min-width: 768px) { .ds-lg-glance .ds-ledger-row { grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); } }
+
+.ds-lg-body { padding-bottom: var(--ds-beat-tight); }
+.ds-lg-body section { padding-top: 48px; }
+.ds-lg-body h2 { margin: 0 0 14px; font-family: var(--ds-text); font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-lg-body h3 { margin: 24px 0 10px; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--ds-fg); }
+.ds-lg-body p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; color: var(--ds-fg-muted); max-width: 68ch; text-wrap: pretty; }
+.ds-lg-body strong { font-weight: 500; color: var(--ds-fg); }
+.ds-lg-body ul { list-style: none; margin: 0 0 14px; padding: 0; max-width: 68ch; }
+.ds-lg-body li { position: relative; margin: 0 0 10px; padding-left: 22px; font-size: 16px; line-height: 1.65; color: var(--ds-fg-muted); }
+.ds-lg-body li::before { content: ''; position: absolute; left: 0; top: 0.82em; width: 10px; height: 1px; background: var(--ds-fg-faint); }
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.

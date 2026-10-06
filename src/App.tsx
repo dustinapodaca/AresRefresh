@@ -9,6 +9,9 @@ import CapabilityStatement from './pages/CapabilityStatement';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Accessibility from './pages/Accessibility';
 import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
@@ -30,6 +33,11 @@ export default function App() {
         <Route path="/locations/colorado-springs" element={<ColoradoSprings />} />
         <Route path="/locations/denver" element={<Denver />} />
         <Route path="/locations/pueblo" element={<Pueblo />} />
+
+        {/* Policies */}
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/accessibility" element={<Accessibility />} />
 
         {/* Catch-all: renders the 404 page for any unmatched path. */}
         <Route path="*" element={<NotFound />} />

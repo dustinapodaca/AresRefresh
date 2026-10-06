@@ -492,3 +492,11 @@ Source: docs/locations-content.md. Colorado Springs first; Denver and Pueblo fol
 | "That page does not exist, or it has moved. Everything below is still where it should be." | "The link may be old, or the address mistyped. Everything else is where it should be." | Plainer, says what likely happened |
 | (none) | "No page at /…" (the address that was not found) | Shows the reader what they typed |
 | Buttons Home, Services, Request a Quote | Routes Home, Services, Capability Statement, Request a quote; "Or call 719-696-3966" | Links, not a row of buttons; the phone for anyone who would rather talk |
+
+---
+
+# New pages (Policies, "The Fine Print", 2026-10-06)
+
+New copy, not changes: the privacy policy, terms of use, and accessibility statement are in
+`src/pages/Privacy.tsx`, `Terms.tsx`, and `Accessibility.tsx`. Footer links Privacy, Terms,
+Accessibility now go to them (were `#`). Drafts for the owner and counsel to review.

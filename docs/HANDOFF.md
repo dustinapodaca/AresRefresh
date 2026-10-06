@@ -13,6 +13,8 @@ Last updated: 2026-10-05 (end of day). **Read this first when starting a new cha
   Quote (`/contact`), Careers, the three location pages ("The Local File", 2026-10-06:
   one component in `src/components/locations/`, one record per city in `data.ts`), plus
   the site-wide Header and Footer. Work after 2026-10-05 is committed locally, not pushed.
+- **Policies added** (2026-10-06): `/privacy`, `/terms`, `/accessibility` (routes.json
+  entries added at the owner's request). Drafts: the owner should have counsel review.
 - **All pages are on the Dossier system** (the 404, "The Search Light", 2026-10-06, was the
   last). Next: the owner's copy review, then the SEO pass (routes.json) at the end.
 - **Live site branches** (`main`, `seo`, `edit`) are untouched.
