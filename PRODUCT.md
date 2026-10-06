@@ -58,6 +58,9 @@ statement PDF exists at /capability-statement *(site)*.
 - Federal identifiers *(site)*: UEI XQXDN6E33SF4, CAGE 9KL18, primary NAICS 561612.
 - Local licenses (armed security and training provider) *(capability statement PDF,
   2026)*: Denver #2021-BFN-0001984, Colorado Springs #0850744L, Pueblo #26422.
+  Licensed and bonded; armed and unarmed security provider and armed and unarmed
+  training provider in all three cities *(owner, 2026-10-06)*. Colorado has no statewide
+  security license; these cities license security companies themselves *(sales notes)*.
 - Founded 2021 in Colorado Springs, CO. Phone 719-696-3966. Email
   contact@aressecurity.co *(site)*.
 - Technical: Vite + React 18 + Tailwind v4, prerendered static pages with per-route SEO

@@ -441,3 +441,22 @@ hold" an active clearance, and nothing implies sponsorship.
 | Capability, Why Ares 03 proof | "16 of 18 criteria · questionnaires on request" | "16 of 18 criteria" |
 | Services, Government card | "...with DoW-vetted officers." | "...with veterans on our staff." |
 | Services, Government card, Military bases | "DoW-vetted officers, each trained on the post by..." | "Officers trained on the post by..." |
+
+---
+
+# Copy changes (Location pages, "The Local File", 2026-10-06)
+
+Source: docs/locations-content.md. Colorado Springs first; Denver and Pueblo follow.
+
+## Colorado Springs
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "Security Guards in *Colorado Springs*" (italic accent) | "Security guards in Colorado Springs." | Matches the search phrase; no italic accent words |
+| Lede: "Colorado Springs is our home office, not a branch..." | "Armed and unarmed security officers for sites across Colorado Springs and El Paso County, from the company headquartered here since 2021. Our leadership is based here and trains every officer on the post before their first shift." | Answers the search; facts from PRODUCT.md |
+| (none) | "Licensed in Colorado Springs." / "Colorado has no statewide security license. Colorado Springs licenses security companies itself, and Ares is licensed and bonded here as an armed and unarmed security provider. We are also an approved armed and unarmed training provider in the city, so our officers are trained here, by us." | New: the city license leads (sales notes; owner confirmed licensed and bonded, 2026-10-06) |
+| (none) | Ledger: Contract Security Agency license 0850744L (Request a copy); Status: Licensed and bonded for armed and unarmed security; Training provider: Armed and unarmed, approved by the City of Colorado Springs; Armed endorsements: From our NRA-certified firearms instructor, a veteran; Office: Colorado Springs, CO 80906, Headquarters since 2021 | Proof with a route (a copy by email) |
+| Sections "Local base", "Coverage", "Documentation" with bullets | "Sites we are ready to staff here." Defense contractors and military-adjacent sites; Data centers; Construction and industrial sites; Utilities and critical infrastructure; Commercial property and retail; Airport-area development; Campuses and institutions (each links to its Services division) | Owner: no Springs sites yet, so sites are framed as ready to staff, never current |
+| Four-stage process strip | Removed (Services carries it) | Succinct |
+| CTA "...We respond within one business day." | Removed; "Where to next." Services, Capability Statement, About Ares; "Also licensed in Denver and Pueblo." | No response times; the page hands off || License intro (finish review: it repeated the ledger) | "Colorado has no statewide security license. Colorado Springs licenses security companies itself, and these are ours here." | Succinct; the ledger rows carry licensed and bonded, armed and unarmed, and training provider |
+| "Where to next." heading | Screen readers only; the three routes end the page | Finish review: the heading competed with the routes |

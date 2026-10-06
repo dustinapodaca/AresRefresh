@@ -522,6 +522,37 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   dot that moves to it (220ms; instant under reduced motion).
 - The docked apply card and the footer's extra top padding on /careers were removed.
 
+### Location pages ("The Local File", 2026-10-06)
+SEO landing pages for "security guards in <city>": answer the search, show the city's own
+license, list the sites we are ready to staff there, then hand off. Concept and Mobbin
+board: docs/locations-concepts.md. One component (`src/components/locations/`), one record
+per city. No rail, no close, no photo, no section numbers.
+- **Opening:** the search phrase as the headline (display-xl, 7 columns) and a two-sentence
+  lead; the call link under it at every width, the quote button below 1024px only (the
+  nav carries it from there up). Beside it (5
+  columns; under it on phones) the Front Range drawn to scale (37.95 to 40.05°N, 106.2 to
+  103.6°W) on the dot grid: I-25, the page's city in rust with its glow and ring, the other
+  two cities faint, a local landmark (Colorado Springs: Pikes Peak, 14,115 ft), the city's
+  coordinates and a 25-mile scale bar in mono. The drawing is SVG; its words are HTML laid
+  over it from the same projection, in CSS pixels (faint 12px, landmark 14px, other cities
+  15px, the city 13 to 20px by plate width so it always ends inside the frame).
+- **Licensed in <city>:** Colorado has no statewide license; the city licenses security
+  companies itself. The city's license as Home's ledger row (label, mono value, route):
+  license number with "Request a copy" (an email), status (licensed and bonded, armed and
+  unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
+- **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
+  (4 + 3), each column closed by a hairline; each row is
+  the site type (Inter 17px / 500), its division beneath (13px faint), and an arrow that
+  nudges 4px on hover; it links to `/services#<division>` (ScrollToTop scrolls to the
+  anchor). Never phrased as current clients or posts.
+- **Where to next:** the page's ending, after a `beat-open`: three routes (Services,
+  Capability Statement, About Ares) in the Services city-strip style on hairline-strong
+  rules, then "Also licensed in Denver and Pueblo." Its heading is for screen readers
+  only.
+- **Motion:** one moment. I-25 draws down the map on load (1200ms, the standard ease), then
+  a second ring pulses out twice from the city's ring, which stays. Reduced motion: drawn
+  and still.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row

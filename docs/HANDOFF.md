@@ -73,6 +73,10 @@ its own desktop section navigator (see "Rails" below).
     facts: veteran supervisors, a veteran NRA firearms instructor, veterans encouraged to
     apply.
   - **Ares does not hire for office roles.**
+  - **Licensed and bonded** (2026-10-06): Ares is an armed and unarmed security provider
+    and an armed and unarmed training provider in all three cities (Colorado Springs,
+    Denver, Pueblo). No Colorado Springs sites yet: location pages list sites we are
+    ready to staff, never current clients.
   - **No FCL yet** (2026-10-06): Ares cannot sponsor clearances. Keep copy general (no
     "cleared officers/roles", no "clearance-eligible"). Lead with the restricted-area work
     (the RA on Buckley SFB, unnamed on the site), said succinctly for clients: access

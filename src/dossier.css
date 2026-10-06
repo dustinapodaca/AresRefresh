@@ -2636,6 +2636,105 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 
 /* ============================================================
+   LOCATIONS ("The Local File", docs/locations-concepts.md)
+   A search answered, the city's own license, the sites we are ready to staff, then the
+   way on into the site. No rail, no close, no photo: each city draws its own map.
+   ============================================================ */
+.ds-loc-open { padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+.ds-loc-open-grid { display: grid; gap: 48px; }
+.ds-loc-open-copy .ds-lead { margin-top: 24px; max-width: 46ch; }
+.ds-loc-actions { margin-top: 32px; }
+.ds-loc-map { position: relative; margin: 0; max-width: 560px; }
+.ds-loc-map svg { display: block; width: 100%; height: auto; }
+/* The map's words are HTML over the drawing, in CSS pixels, so they hold their size at
+   every plate width (faint text never under 12px). Each pin's left edge (or right edge,
+   with data-end) sits on its point; it is centered on the point vertically. */
+.ds-loc-pins { position: absolute; inset: 0; pointer-events: none; }
+.ds-loc-pin { position: absolute; transform: translateY(-50%); white-space: nowrap; line-height: 1; }
+.ds-loc-pin[data-end] { transform: translate(-100%, -50%); }
+.ds-loc-focus { font-family: var(--ds-text); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ds-fg); }
+/* The city's name grows with the plate so it always ends inside the frame. */
+@media (max-width: 359px) { .ds-loc-focus { font-size: 13px; letter-spacing: -0.02em; } }
+@media (min-width: 640px) { .ds-loc-focus { font-size: 17px; } }
+@media (min-width: 1280px) { .ds-loc-focus { font-size: 20px; } }
+.ds-loc-other { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg-muted); }
+.ds-loc-landmark { font-family: var(--ds-text); font-size: 14px; color: var(--ds-fg-muted); }
+.ds-loc-faint { font-family: var(--ds-data); font-size: 12px; letter-spacing: 0.08em; color: var(--ds-fg-faint); }
+.ds-loc-ring { opacity: 0.6; }
+.ds-loc-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+@media (min-width: 1024px) {
+  .ds-loc-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-loc-open-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+  .ds-loc-open-copy { grid-column: 1 / span 7; }
+  .ds-loc-map { grid-column: 8 / span 5; max-width: none; }
+  /* The nav carries the quote button here; the call link stays under the lead. */
+  .ds-loc-actions .ds-btn { display: none; }
+}
+
+/* Licensed here: the city's license as a ledger (Home's row, without the fold). */
+.ds-loc-license { padding-top: var(--ds-beat); }
+.ds-loc-license-head { display: grid; gap: 20px; }
+.ds-loc-ledger { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
+@media (min-width: 1024px) {
+  .ds-loc-license-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-loc-license-head h2 { grid-column: 1 / span 6; }
+  .ds-loc-license-head .ds-body { grid-column: 8 / span 5; }
+}
+
+/* Sites we are ready to staff: a ruled list, two columns from tablet; each row opens its
+   Services division. */
+.ds-loc-sectors { padding-top: var(--ds-beat-tight); }
+.ds-loc-sector-list { display: grid; list-style: none; margin: 28px 0 0; padding: 0; column-gap: 24px; }
+.ds-loc-sector-list li { border-top: 1px solid var(--ds-rule); }
+.ds-loc-sector-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 16px;
+  padding: 16px 0 17px;
+  color: var(--ds-fg);
+}
+.ds-loc-sector { font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
+.ds-loc-sector-list .ds-small { grid-column: 1; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-loc-sector-list .ds-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--ds-fg-muted); }
+/* Two columns from tablet, each read downward (4 + 3), each closed by a hairline. */
+.ds-loc-sector-list li:last-child { border-bottom: 1px solid var(--ds-rule); }
+@media (min-width: 768px) {
+  .ds-loc-sector-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(4, auto); align-content: start; }
+  .ds-loc-sector-list li:nth-child(4) { border-bottom: 1px solid var(--ds-rule); }
+}
+
+/* Where to next: the hand-off into the site, then the other two cities. The three large
+   routes are the page's ending; their heading is for screen readers. */
+.ds-loc-next { padding-top: var(--ds-beat-open); }
+.ds-loc-routes { display: grid; list-style: none; margin: 0; padding: 0; column-gap: 24px; }
+.ds-loc-routes li { border-top: 1px solid var(--ds-rule-strong); }
+.ds-loc-routes a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 18px 0 20px;
+  color: var(--ds-fg);
+}
+.ds-loc-route-title { font-family: var(--ds-display); font-weight: 600; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.03em; }
+.ds-loc-routes .ds-small { grid-column: 1; font-size: 14px; }
+.ds-loc-routes .ds-arrow { grid-column: 2; grid-row: 1 / span 2; }
+.ds-loc-also { margin: 28px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
+@media (min-width: 768px) { .ds-loc-routes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (hover: hover) and (pointer: fine) {
+  .ds-loc-sector-list a:hover .ds-arrow,
+  .ds-loc-routes a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
+}
+
+/* The page's one authored moment: I-25 draws itself down the Front Range, then the city's
+   ring pulses twice. The route is a line, not text; reduced motion shows it drawn. */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-loc-route { stroke-dasharray: 1; animation: ds-route 1200ms var(--ds-ease) 200ms both; }
+  .ds-loc-pulse { animation: ds-ring 1800ms var(--ds-ease) 1300ms 2 both; }
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
