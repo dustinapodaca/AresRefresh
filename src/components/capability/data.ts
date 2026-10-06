@@ -65,9 +65,9 @@ export const CAPABILITIES: Capability[] = [
     keys: ['Credentials', 'Screening', 'Escort'],
     includes: [
       { name: 'Credential verification', detail: 'IDs, badges, and access lists checked at every entry point.' },
-      { name: 'Visitor screening', detail: 'Sign-in, badging, and a visitor log you can audit.' },
+      { name: 'Visitor screening', detail: 'Sign-in, ID checks, and a visitor log you can audit.' },
       { name: 'Gate, dock, and lobby control', detail: 'People, vehicles, and deliveries checked against your post orders before they enter.' },
-      { name: 'Restricted-area escort', detail: 'Escort officers for restricted areas, including TS/SCI-cleared escorts at Buckley SFB.' },
+      { name: 'Restricted-area escort', detail: 'Escort officers for restricted areas, including TS/SCI-cleared escorts.' },
     ],
   },
   {
@@ -115,8 +115,8 @@ export type Differentiator = { title: string; body: string; proof: string; href?
 export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
-    body: 'Our officers stand restricted posts at Buckley Space Force Base, including TS/SCI-cleared escort duty. We work to the badging, escort, and documentation rules high-compliance sites require, and our post orders and reports are written for contracting officers.',
-    proof: 'Buckley SFB · DoW-vetted · TS/SCI escorts',
+    body: 'Our officers stand restricted posts at federal facilities, including TS/SCI-cleared escort duty. We work to the escort and documentation rules high-compliance sites require, and our post orders and reports are written for contracting officers.',
+    proof: 'Federal facilities · DoW-vetted · TS/SCI escorts',
   },
   {
     title: 'Four-stage deployment',

@@ -73,6 +73,8 @@ its own desktop section navigator (see "Rails" below).
     facts: veteran supervisors, a veteran NRA firearms instructor, veterans encouraged to
     apply.
   - **Ares does not hire for office roles.**
+  - **Ares does not do badging** (2026-10-06). Restricted-area experience is stated
+    without naming the base ("federal facilities").
   - **"Growth beyond the post" / career growth paths are not true yet.** Don't claim them.
     ("As the company grows, we want our people to grow with it." is the approved aim.)
   - Ratings: 4.8/5 on Indeed from employees; clients rate Exceptional on 16 of 18 criteria.

@@ -358,3 +358,12 @@ people to grow with it." The "You are more than a guard here." sentence dropped.
 "If that sounds like your kind of team, write to us." now ends Why people stay.
 
 Careers (owner, same day): "Why officers stay once they join." removed.
+
+## Restricted-area experience and badging (2026-10-06, owner)
+
+| Was | Now | Why |
+|---|---|---|
+| Why Ares: "Our officers stand restricted posts at Buckley Space Force Base, including TS/SCI-cleared escort duty. We work to the badging, escort, and documentation rules..." | "Our officers stand restricted posts at federal facilities, including TS/SCI-cleared escort duty. We work to the escort and documentation rules..." | Owner: less specific about where; Ares does not do badging |
+| Proof line "Buckley SFB · DoW-vetted · TS/SCI escorts" | "Federal facilities · DoW-vetted · TS/SCI escorts" | Same |
+| Access Control, Restricted-area escort: "...including TS/SCI-cleared escorts at Buckley SFB." | "...including TS/SCI-cleared escorts." | Same |
+| Access Control, Visitor screening: "Sign-in, badging, and a visitor log you can audit." | "Sign-in, ID checks, and a visitor log you can audit." | Ares does not do badging |
