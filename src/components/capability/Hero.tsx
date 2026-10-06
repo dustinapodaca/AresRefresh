@@ -11,8 +11,8 @@ export function DownloadIcon({ size = 16 }: { size?: number }) {
 }
 
 // The hero: the owner's glass-panels light full bleed, black from the left; the headline,
-// the offer, the credential line, and the download; page 1 of the real statement floating
-// in the light beside it. Under it, the four quick facts as a key row.
+// the offer, the credential line, and the download. Under it, the four quick facts on a
+// full-width line over a frosted fade.
 export default function Hero() {
   return (
     <section className="ds-cs-hero" aria-labelledby="cs-title">
@@ -48,10 +48,6 @@ export default function Hero() {
             <span>2026</span>
           </p>
         </div>
-
-        <a href={PDF_URL} className="ds-cs-doc" target="_blank" rel="noopener noreferrer" aria-label="Open the capability statement PDF (new tab)">
-          <img src="/images/capability-page1.webp" alt="Page one of the Ares Security capability statement" width={1000} height={1295} decoding="async" />
-        </a>
       </div>
 
       <ul className="ds-container ds-keyrow ds-cs-facts" aria-label="Quick facts">

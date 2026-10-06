@@ -1686,31 +1686,10 @@ body:has(.ds-page) {
 .ds-cs-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; filter: saturate(1) brightness(0.9); }
 .ds-cs-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(10 11 13 / 0.65) 0%, rgb(10 11 13 / 0) 26%, rgb(10 11 13 / 0) 44%, rgb(10 11 13 / 0.78) 70%); }
 .ds-cs-hero-grid { display: grid; gap: 28px; padding-top: calc(var(--ds-header) + 28px); }
-/* Phones (below 900px): no floating document (owner, 2026-10-05); the copy starts low in
-   the light so the panels show above the headline. */
+/* Phones (below 900px): the copy starts low in the light so the panels show above the
+   headline. */
 @media (max-width: 899px) {
-  .ds-cs-hero .ds-cs-doc { display: none; }
   .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
-}
-/* Phones: the document floats in the light first, then the copy beneath. */
-.ds-cs-doc {
-  order: -1;
-  justify-self: center;
-  display: block;
-  width: min(48%, 220px);
-  perspective: 1400px;
-}
-.ds-cs-doc img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.14);
-  transform: rotateY(-12deg) rotateX(5deg) rotateZ(1deg);
-  transition: transform 300ms var(--ds-ease);
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-cs-doc:hover img { transform: rotateY(-4deg) rotateX(2deg) translateY(-6px); }
 }
 .ds-cs-hero-copy .ds-lead { margin-top: 20px; max-width: 44ch; }
 .ds-cs-hero-creds { margin: 14px 0 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
@@ -1767,8 +1746,6 @@ body:has(.ds-page) {
   /* Keep the whole key row, including the SAM.gov route, above the fold at 900px tall. */
   .ds-cs-facts { margin-top: clamp(2rem, 5vh, 3.5rem); padding-bottom: 28px; }
   .ds-cs-hero-copy { grid-column: 1 / span 7; }
-  .ds-cs-doc { order: 0; grid-column: 9 / span 4; width: 100%; max-width: 380px; justify-self: end; }
-  .ds-cs-doc img { transform: rotateY(-16deg) rotateX(6deg) rotateZ(1.5deg); }
 }
 
 /* ---------- Shared section head ---------- */
@@ -2029,8 +2006,6 @@ body:has(.ds-page) {
 @keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
 @keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes ds-plate { from { transform: scale(1.06); } to { transform: scale(1); } }
-@keyframes ds-cs-doc-in { from { transform: translateY(28px); } }
-@keyframes ds-cs-doc-out { to { transform: translateY(-40px) rotateY(0deg) rotateX(0deg) rotateZ(0deg); } }
 @keyframes ds-ab-settle { from { transform: perspective(1400px) rotateX(14deg) translateY(28px); } to { transform: none; } }
 /* Floor of 0.8 keeps dimmed body copy above 4.5:1 on the canvas (AA). */
 @keyframes ds-step {
@@ -2066,12 +2041,6 @@ body:has(.ds-page) {
        photo settles inside its frame. */
     .ds-svc-band img {
       animation: ds-drift linear both;
-      animation-timeline: view();
-      animation-range: exit 0% exit 100%;
-    }
-    /* Capability statement: the document straightens and lifts as the hero leaves. */
-    .ds-cs-doc img {
-      animation: ds-cs-doc-out linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
@@ -2146,9 +2115,6 @@ body:has(.ds-page) {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Capability statement: the document rises into place once, on load (a move, never a
-     fade from nothing). */
-  .ds-cs-doc { animation: ds-cs-doc-in 900ms var(--ds-ease) 120ms both; }
   .ds-strip-belt { animation: ds-marquee 60s linear infinite; }
   .ds-map-ring { animation: ds-ring 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
 }
@@ -2172,7 +2138,6 @@ body:has(.ds-page) {
   .ds-svc-plus span,
   .ds-ab-tabs-bar,
   .ds-ab-doc,
-  .ds-cs-doc img,
   .ds-cs-thumb,
   .ds-cs-card,
   .ds-svc-card,
