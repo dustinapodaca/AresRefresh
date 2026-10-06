@@ -527,8 +527,8 @@ light, Cosmos's statement beside the mark). Same canvas, no top rule, a `beat` a
   Statement); Service areas; Contracting as label and mono value (GSA MAS 47QSMS25D009Q
   linking to eLibrary, UEI, CAGE); Registration as a live status: the green light
   (#7cb85f, from the Capability Statement) and "Active on SAM.gov", "Through March 26,
-  2027", and a Verify route. Four equal columns on desktop; two on phones with Contracting
-  and Registration full width.
+  2027", and a Verify route. Four equal columns on desktop; an even 2x2 on phones, the
+  identifiers stacked label over value.
 - Then the certification marks separated by thin vertical lines, and the legal row on a
   hairline: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
 - Only /careers extends the footer's top padding for a docked card.

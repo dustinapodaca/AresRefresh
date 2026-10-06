@@ -384,10 +384,11 @@ body:has(.ds-page) {
 .ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
 .ds-ft-status-note { margin: 6px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
 .ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
-/* Phones: Company and Service areas side by side; the identifiers and status full width. */
+/* Phones: an even 2x2. The identifiers stack (label over value) to fit a half column. */
 .ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 639px) {
-  .ds-footer-cols > div:nth-child(n + 3) { grid-column: 1 / -1; }
+  .ds-ft-ids li { flex-direction: column; gap: 2px; }
+  .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
 }
 @media (min-width: 640px) { .ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
