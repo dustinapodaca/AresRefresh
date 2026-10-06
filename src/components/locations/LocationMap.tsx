@@ -50,7 +50,15 @@ function Pin({ text, cls, px, py, dx = 0, end }: Label) {
   );
 }
 
-export default function LocationMap({ focus, landmarks = [] }: { focus: City; landmarks?: Landmark[] }) {
+export default function LocationMap({
+  focus,
+  landmarks = [],
+  focusSide = 'right',
+}: {
+  focus: City;
+  landmarks?: Landmark[];
+  focusSide?: 'left' | 'right';
+}) {
   const route = I25.map(([lat, lon], i) => `${i ? 'L' : 'M'}${x(lon).toFixed(1)} ${y(lat).toFixed(1)}`).join(' ');
   const others = CITIES.filter((c) => c.slug !== focus.slug);
   const fx = x(focus.coord.lon);
@@ -78,16 +86,21 @@ export default function LocationMap({ focus, landmarks = [] }: { focus: City; la
         <circle cx={fx} cy={fy} r="120" fill="url(#ds-loc-glow)" />
         <path className="ds-loc-route" d={route} pathLength={1} fill="none" stroke="#5a6069" strokeWidth="1.25" />
 
-        {landmarks.map((l) => (
-          <path
-            key={l.label}
-            d={`M${x(l.lon)} ${y(l.lat) - 7} L${x(l.lon) + 6.5} ${y(l.lat) + 5} L${x(l.lon) - 6.5} ${y(l.lat) + 5} Z`}
-            fill="none"
-            stroke="#7d838c"
-            strokeWidth="1.25"
-            strokeLinejoin="round"
-          />
-        ))}
+        {/* A peak is an open triangle; an airport an open square. */}
+        {landmarks.map((l) =>
+          l.kind === 'airport' ? (
+            <rect key={l.label} x={x(l.lon) - 4.5} y={y(l.lat) - 4.5} width="9" height="9" fill="none" stroke="#7d838c" strokeWidth="1.25" />
+          ) : (
+            <path
+              key={l.label}
+              d={`M${x(l.lon)} ${y(l.lat) - 7} L${x(l.lon) + 6.5} ${y(l.lat) + 5} L${x(l.lon) - 6.5} ${y(l.lat) + 5} Z`}
+              fill="none"
+              stroke="#7d838c"
+              strokeWidth="1.25"
+              strokeLinejoin="round"
+            />
+          ),
+        )}
 
         {others.map((c) => (
           <circle key={c.slug} cx={x(c.coord.lon)} cy={y(c.coord.lat)} r="4" fill="#9aa0a8" />
@@ -117,7 +130,7 @@ export default function LocationMap({ focus, landmarks = [] }: { focus: City; la
         {others.map((c) => (
           <Pin key={c.slug} text={c.name} cls="ds-loc-other" px={x(c.coord.lon)} py={y(c.coord.lat)} dx={12} />
         ))}
-        <Pin text={focus.name} cls="ds-loc-focus" px={fx} py={fy} dx={22} />
+        <Pin text={focus.name} cls="ds-loc-focus" px={fx} py={fy} dx={focusSide === 'left' ? -22 : 22} end={focusSide === 'left'} />
         <Pin text={`${fmt(focus.coord.lat, 'N', 'S')}  ${fmt(focus.coord.lon, 'E', 'W')}`} cls="ds-loc-faint" px={16} py={H - 22} />
         <Pin text="25 MI" cls="ds-loc-faint" px={W - 16} py={H - 36} end />
       </div>

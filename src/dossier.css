@@ -2654,12 +2654,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-pin[data-end] { transform: translate(-100%, -50%); }
 .ds-loc-focus { font-family: var(--ds-text); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ds-fg); }
 /* The city's name grows with the plate so it always ends inside the frame. */
-@media (max-width: 359px) { .ds-loc-focus { font-size: 13px; letter-spacing: -0.02em; } }
 @media (min-width: 640px) { .ds-loc-focus { font-size: 17px; } }
 @media (min-width: 1280px) { .ds-loc-focus { font-size: 20px; } }
 .ds-loc-other { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg-muted); }
 .ds-loc-landmark { font-family: var(--ds-text); font-size: 14px; color: var(--ds-fg-muted); }
 .ds-loc-faint { font-family: var(--ds-data); font-size: 12px; letter-spacing: 0.08em; color: var(--ds-fg-faint); }
+/* The narrowest phones (under 360px): both city names step down to stay inside the plate. */
+@media (max-width: 359px) {
+  .ds-loc-focus { font-size: 13px; letter-spacing: -0.02em; }
+  .ds-loc-other { font-size: 13px; }
+}
 .ds-loc-ring { opacity: 0.6; }
 .ds-loc-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
 @media (min-width: 1024px) {
@@ -2698,11 +2702,11 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-sector { font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
 .ds-loc-sector-list .ds-small { grid-column: 1; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-loc-sector-list .ds-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--ds-fg-muted); }
-/* Two columns from tablet, each read downward (4 + 3), each closed by a hairline. */
+/* Two columns from tablet, each read downward, each closed by a hairline. */
 .ds-loc-sector-list li:last-child { border-bottom: 1px solid var(--ds-rule); }
 @media (min-width: 768px) {
-  .ds-loc-sector-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(4, auto); align-content: start; }
-  .ds-loc-sector-list li:nth-child(4) { border-bottom: 1px solid var(--ds-rule); }
+  .ds-loc-sector-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(var(--rows, 4), auto); align-content: start; }
+  .ds-loc-sector-list li[data-col-end] { border-bottom: 1px solid var(--ds-rule); }
 }
 
 /* Where to next: the hand-off into the site, then the other two cities. The three large

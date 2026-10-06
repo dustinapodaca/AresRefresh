@@ -532,13 +532,16 @@ per city. No rail, no close, no photo, no section numbers.
   nav carries it from there up). Beside it (5
   columns; under it on phones) the Front Range drawn to scale (37.95 to 40.05°N, 106.2 to
   103.6°W) on the dot grid: I-25, the page's city in rust with its glow and ring, the other
-  two cities faint, a local landmark (Colorado Springs: Pikes Peak, 14,115 ft), the city's
+  two cities faint, a local landmark (Colorado Springs: Pikes Peak, 14,115 ft, an open
+  triangle; Denver: DEN, Pueblo: PUB, airports as open squares; Pueblo's name sits left of
+  its dot so the airport can sit right), the city's
   coordinates and a 25-mile scale bar in mono. The drawing is SVG; its words are HTML laid
   over it from the same projection, in CSS pixels (faint 12px, landmark 14px, other cities
   15px, the city 13 to 20px by plate width so it always ends inside the frame).
 - **Licensed in <city>:** Colorado has no statewide license; the city licenses security
   companies itself. The city's license as Home's ledger row (label, mono value, route):
-  license number with "Verify ↗" (the city's public record; Colorado Springs: Accela), status (licensed and bonded, armed and
+  license number with "Verify ↗" (the city's public record; Colorado Springs: Accela;
+  Denver: to come; Pueblo has none, so "Request a copy", an email), status (licensed and bonded, armed and
   unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
 - **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
   (4 + 3), each column closed by a hairline; each row is

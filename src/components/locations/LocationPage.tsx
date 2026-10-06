@@ -37,7 +37,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
               </a>
             </div>
           </div>
-          <LocationMap focus={file.city} landmarks={file.landmarks} />
+          <LocationMap focus={file.city} landmarks={file.landmarks} focusSide={file.focusSide} />
         </div>
       </section>
 
@@ -80,9 +80,10 @@ export default function LocationPage({ file }: { file: LocationFile }) {
 
         <section className="ds-loc-sectors" aria-labelledby="loc-sectors-title">
           <h2 id="loc-sectors-title" className="ds-display-md">{file.sectorsTitle}</h2>
-          <ul className="ds-loc-sector-list">
-            {file.sectors.map((s) => (
-              <li key={s.name}>
+          {/* Two columns read downward; the first column's last row closes with a rule. */}
+          <ul className="ds-loc-sector-list" style={{ ['--rows' as string]: Math.ceil(file.sectors.length / 2) }}>
+            {file.sectors.map((s, i) => (
+              <li key={s.name} data-col-end={i === Math.ceil(file.sectors.length / 2) - 1 || undefined}>
                 <Link to={`/services#${s.divisionId}`}>
                   <span className="ds-loc-sector">{s.name}</span>
                   <span className="ds-small">{s.division}</span>

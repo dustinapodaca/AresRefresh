@@ -460,3 +460,23 @@ Source: docs/locations-content.md. Colorado Springs first; Denver and Pueblo fol
 | Four-stage process strip | Removed (Services carries it) | Succinct |
 | CTA "...We respond within one business day." | Removed; "Where to next." Services, Capability Statement, About Ares; "Also licensed in Denver and Pueblo." | No response times; the page hands off || License intro (finish review: it repeated the ledger) | "Colorado has no statewide security license. Colorado Springs licenses security companies itself, and these are ours here." | Succinct; the ledger rows carry licensed and bonded, armed and unarmed, and training provider |
 | "Where to next." heading | Screen readers only; the three routes end the page | Finish review: the heading competed with the routes |
+
+## Denver
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "Security Guard Services in *Denver*" | "Security guards in Denver." | Search phrase; no italic accent |
+| Lede: "Denver work tends to arrive as a portfolio..." | "Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor. Our leadership trains every officer on the post before their first shift." | Greater Denver as one area (sales notes); Westminster and Glendale left out (licensed separately, not sorted yet) |
+| Sections "Multi-site", "Sectors", "Credentials" | "Licensed in Denver." (Private Security Employer license 2021-BFN-0001984; licensed and bonded; armed and unarmed eligible training provider; armed endorsements; office Colorado Springs, CO 80906, "Headquarters, an hour south on I-25") | City license leads; Verify link to come from the owner |
+| (sector bullets) | "Sites we are ready to staff here." Data centers and critical infrastructure; Airport-area sites and the DIA corridor; Construction, including data-center builds; Warehouses and logistics; Hospitals and healthcare; Parking and transportation; Public-sector facilities; Commercial property and corporate campuses | Sales notes, framed as ready to staff; no company names; M/WBE and SBE held until the owner confirms |
+| CTA "...within one business day" | Removed; routes on | No response times |
+
+## Pueblo
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "Security Guard Services in *Pueblo*" | "Security guards in Pueblo." | Search phrase |
+| Lede: "Pueblo sites are usually industrial before they are anything else..." | "Armed and unarmed security officers for sites across Pueblo and Pueblo County, from a company licensed here that trains its own officers. Our headquarters is up I-25 in Colorado Springs." | Sales notes angle: licensed locally, trains its own officers |
+| Sections "Reliability", "Site types", "Standing" | "Licensed in Pueblo." (Merchant patrol and security license 26422, through the Pueblo Police Department, with "Request a copy"; licensed and bonded; armed and unarmed training provider approved by Pueblo PD; armed endorsements; office, "Headquarters, 45 minutes north on I-25") | No public lookup, so a copy by email |
+| (site bullets) | "Sites we are ready to staff here." Industrial and energy sites; Construction sites; City and county facilities; Campuses and institutions; Apartment and residential properties; Commercial property and retail | Sales notes, framed as ready to staff |
+| CTA "...within one business day" | Removed; routes on | No response times |
