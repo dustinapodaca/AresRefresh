@@ -15,11 +15,12 @@ join, with the roles first and the reasons beside real Ares people.
   and the careers email.
 - **01 Roles:** the three roles as a table: role and line, type (mono), location, and an
   Apply route that opens an email with the role in the subject.
-- **02 Why people stay:** the team at the range beside the four reasons on hairlines, with
-  the officers' Indeed rating as its proof.
-- **03 How we work:** an Ares officer at the range as a wide plate in the column (the
-  photo is 1184px, too small for full bleed), settling as it enters; the well-being
-  paragraph under it.
+- **02 Why people stay:** one sticky frame works like a camera: as each of the four reasons
+  scrolls into the middle, the frame zooms and pans across the team photo to a different
+  group, and cuts to the officer at the range for training. The well-being paragraph sits
+  by the headline. (Revised 2026-10-05: the separate officer plate and "People first."
+  section read as photo after photo, and a big figure or a photo behind the close would
+  repeat Home.)
 - **04 Apply (the close):** "Send us your résumé." with the email large in mono over the
   rust light.
 - **Rail:** its own form, `list`: the section names in Inter, dimmed, the current one in

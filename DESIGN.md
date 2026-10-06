@@ -488,7 +488,7 @@ docs/contact-concepts.md.
 
 ### Careers page ("The Roster", 2026-10-05)
 Recruits: the roles first, the reasons beside real Ares people. Concept and Mobbin board:
-docs/careers-concepts.md. Rail marks: Roles, Why people stay, How we work, Apply.
+docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
 - **Opening:** the Colorado Springs skyline (`careers-hero.jpg`, captioned; the route's SEO
   preload) as a band, "Join the team." and the lead low on it, the primary "See open roles"
   and the careers email, then the Indeed rating as a small linked proof ("4.8 / 5 Rated by
@@ -497,12 +497,15 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, How we work, Apply
   location, and an Apply route that opens an email with the role in the
   subject. Column heads in mono on desktop (visually hidden but announced below 1024px);
   rows stack on phones. No type column: the title names it.
-- **02 Why people stay:** the team at the range (sticky on desktop, captioned) beside the
-  Indeed rating with its reviews link and four reasons on hairlines.
-- **03 How we work:** an Ares officer at the range as a 16:9 plate across nine columns
-  (the photo is too small for full bleed; no settle scale), then "People first." and the
-  well-being paragraphs. Roles and How we work end on hand-off lines (the owner dropped
-  the one after Why people stay); gaps run beat, tight, beat, open.
+- **02 Why people stay (the frame as a camera; owner asked for something new, 2026-10-05):**
+  the headline with the Indeed rating and the well-being paragraph beside it, then one
+  photo frame that holds still (sticky; under the running head on phones) while the four
+  reasons scroll past. As each reason crosses the middle of the viewport the frame zooms
+  and pans across the team photo to a different group (280ms, interruptible), and cuts
+  to the officer at the range for "Paid training and renewals"; the caption follows the
+  shot. Crops frame groups, never one person. The reason in frame reads ink with a rust
+  number; the rest rest at 0.8. Replaces the separate officer plate and "People first."
+  section (no photo follows another photo).
 - **04 Apply (the close):** "Send us your résumé." with the careers email large in mono over
   the rust light.
 - **Rail (`list`):** the section names in Inter, dimmed, the current one in ink with a 6px

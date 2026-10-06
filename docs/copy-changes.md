@@ -346,3 +346,10 @@ Careers lead: "…with paid training and schedules you can plan a life around." 
 grows, we want our people to grow with it." (stated as an aim).
 
 Careers (owner, same day): "What that looks like day to day." removed.
+
+Careers restructure (same day, owner): "People first." merged into Why people stay; its
+paragraphs become one: "The well-being of our people comes first. Healthy officers do better
+work, so we plan for a real balance between work and rest. As the company grows, we want our
+people to grow with it." The "You are more than a guard here." sentence dropped. The hand-off
+"If that sounds like your kind of team, write to us." now ends Why people stay.
+

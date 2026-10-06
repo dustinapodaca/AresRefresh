@@ -2449,39 +2449,73 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-cr-apply { justify-self: end; }
 }
 
-/* ---------- 02 Why people stay: the team beside the reasons ---------- */
-.ds-cr-why { display: grid; gap: 40px; padding-top: var(--ds-beat-tight); }
-.ds-cr-team img { aspect-ratio: 1184 / 880; object-fit: cover; }
-/* The hairline edge sits on the image frame, so the caption below stays outside it. */
-.ds-cr-team::after,
-.ds-cr-shot::after { content: none; }
-.ds-cr-team img { display: block; width: 100%; border-radius: 4px; }
-.ds-cr-shot-frame::after { content: ''; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); pointer-events: none; }
-.ds-cr-why-copy .ds-lead { margin-top: 16px; }
-.ds-cr-why-copy .ds-lead .ds-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
-.ds-cr-reasons { list-style: none; margin: 32px 0 0; padding: 0; }
-.ds-cr-reasons li { padding: 18px 0; border-top: 1px solid var(--ds-rule); }
-.ds-cr-reasons li:last-child { border-bottom: 1px solid var(--ds-rule); }
-.ds-cr-reasons h3 { margin: 0 0 6px; font-size: 18px; font-weight: 600; letter-spacing: -0.015em; color: var(--ds-fg); }
-@media (min-width: 1024px) {
-  .ds-cr-why { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-cr-team { grid-column: 1 / span 6; position: sticky; top: calc(var(--ds-header) + 48px); }
-  .ds-cr-why-copy { grid-column: 8 / span 5; }
+/* ---------- 02 Why people stay: the frame as a camera ---------- */
+.ds-cr-why { padding-top: var(--ds-beat-tight); }
+.ds-cr-why-intro { display: grid; gap: 20px; }
+.ds-cr-why-text { display: grid; gap: 16px; }
+.ds-cr-why-text .ds-lead .ds-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.ds-cr-lens-wrap { position: relative; display: grid; margin-top: var(--ds-beat-tight); }
+/* The frame holds still (sticky) while the reasons scroll past beneath or beside it. */
+.ds-cr-lens {
+  position: sticky;
+  z-index: 1;
+  top: calc(var(--ds-header) + var(--ds-runhead));
+  margin: 0;
+  padding: 12px 0 10px;
+  background: var(--ds-canvas);
 }
+.ds-cr-lens-frame { position: relative; overflow: clip; aspect-ratio: 16 / 10; border-radius: 4px; }
+.ds-cr-lens-frame::after { content: ''; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); pointer-events: none; }
+.ds-cr-lens img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88) brightness(0.9);
+  transition: opacity 260ms var(--ds-ease);
+}
+/* The camera move: zoom about a focal point. Interruptible (a transition), so a fast
+   scroll retargets from wherever the frame is. */
+.ds-cr-lens img[data-shot='team'] {
+  transform-origin: var(--fx, 50%) var(--fy, 50%);
+  transform: scale(var(--z, 1));
+  transition: transform 280ms cubic-bezier(0.23, 1, 0.32, 1), transform-origin 280ms cubic-bezier(0.23, 1, 0.32, 1), opacity 260ms var(--ds-ease);
+}
+.ds-cr-lens img[data-shot='officer'] { object-position: 60% 62%; opacity: 0; }
+.ds-cr-lens[data-src='officer'] img[data-shot='officer'] { opacity: 1; }
+.ds-cr-lens[data-src='officer'] img[data-shot='team'] { opacity: 0; }
+.ds-cr-lens .ds-caption { margin-top: 10px; }
 
-/* ---------- 03 How we work: a wide plate, then the paragraph ---------- */
-.ds-cr-work { padding-top: var(--ds-beat); }
-.ds-cr-shot-frame { position: relative; overflow: clip; border-radius: 4px; }
-.ds-cr-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 62% 40%; filter: brightness(0.9); border-radius: 4px; }
-@media (min-width: 768px) { .ds-cr-shot img { aspect-ratio: 16 / 9; object-position: 60% 62%; } }
-/* Nine of twelve columns, so the 1184px source is not stretched past its size. */
-@media (min-width: 1024px) { .ds-cr-shot { max-width: 75%; } }
-.ds-cr-work-copy { display: grid; gap: 24px; margin-top: var(--ds-beat-tight); }
-.ds-cr-work-body { display: grid; gap: 16px; }
+/* The reasons: each tall enough that one is in frame at a time; the one in frame reads
+   ink, the rest rest at 0.8 (the floor for dimmed copy). */
+.ds-cr-reasons { list-style: none; margin: 0; padding: 0; }
+.ds-cr-reasons li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 12px;
+  align-content: center;
+  min-height: 30svh;
+  padding: 24px 0;
+  border-top: 1px solid var(--ds-rule);
+  opacity: 0.8;
+  transition: opacity 180ms var(--ds-ease);
+}
+.ds-cr-reasons li:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-cr-reasons li[data-active] { opacity: 1; }
+.ds-cr-reasons li > .ds-data { padding-top: 6px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-cr-reasons li[data-active] > .ds-data { color: var(--ds-rust); }
+.ds-cr-reasons h3 { margin: 0 0 6px; font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
+.ds-cr-reasons .ds-small { max-width: 46ch; }
 @media (min-width: 1024px) {
-  .ds-cr-work-copy { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-cr-work-copy h2 { grid-column: 1 / span 5; }
-  .ds-cr-work-body { grid-column: 7 / span 6; }
+  .ds-cr-why-intro { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-cr-why-intro h2 { grid-column: 1 / span 5; }
+  .ds-cr-why-text { grid-column: 7 / span 6; }
+  .ds-cr-lens-wrap { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-cr-lens { grid-column: 1 / span 7; top: calc(50svh - 18rem); padding: 0; background: none; }
+  .ds-cr-lens-frame { aspect-ratio: 4 / 3; }
+  .ds-cr-reasons { grid-column: 9 / span 4; }
+  .ds-cr-reasons li { min-height: 46svh; }
 }
 
 /* ---------- 04 Apply: the close, the email over the rust light ---------- */
@@ -2682,6 +2716,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-ab-commit-group[data-active='true'] { animation: none; }
   .ds-count-n span { animation: none; }
   .ds-rl-dot { transition-duration: 0s; }
+  .ds-cr-lens img,
+  .ds-cr-reasons li { transition-duration: 0s; }
   .ds-qt-dot,
   .ds-qt-dot::after,
   .ds-qt-need,

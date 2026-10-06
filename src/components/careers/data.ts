@@ -6,8 +6,7 @@ import type { Mark } from '../home/DocRail';
 export const CAREER_MARKS: readonly Mark[] = [
   { id: 'roles', n: '01', label: 'Roles' },
   { id: 'why', n: '02', label: 'Why people stay' },
-  { id: 'work', n: '03', label: 'How we work' },
-  { id: 'apply', n: '04', label: 'Apply' },
+  { id: 'apply', n: '03', label: 'Apply' },
 ];
 
 export const CAREERS_EMAIL = 'careers@aressecurity.co';
