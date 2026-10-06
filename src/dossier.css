@@ -1233,7 +1233,7 @@ body:has(.ds-page) {
   position: relative;
   z-index: -1;
   height: clamp(15rem, 38svh, 28rem);
-  margin-top: calc(var(--ds-beat-tight) + 32px); /* 32px lower (owner, 2026-10-06) */
+  margin-top: calc(var(--ds-beat-tight) + 132px); /* 132px lower (owner, 2026-10-06) */
   overflow: clip;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 68%, transparent 100%);
