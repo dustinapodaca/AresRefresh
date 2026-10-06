@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="ds-container ds-cs-hero-grid">
         <div className="ds-cs-hero-copy">
           <h1 id="cs-title" className="ds-display-xl">
-            Capability statement.
+            Capability Statement.
           </h1>
           <p className="ds-lead">
             Armed, unarmed, and cleared security officers for federal agencies, prime contractors,
