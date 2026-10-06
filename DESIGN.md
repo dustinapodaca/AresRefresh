@@ -259,17 +259,17 @@ body, and the single rust horizon glow at the close.
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero image (Home):** `hero-panels.webp` (owner-supplied, 2026-10-05): rows of
-  rounded glass panels in perspective, lit amber and steel-teal on black. WebP, 2880px
-  wide, 54KB; the original is kept locally in `.impeccable/gen/hero-panels-source.png`.
-  It is the one owner-approved exception to "no gradients for decoration": the light
-  lives inside the image, never as a CSS gradient on the page. Full bleed from 900px,
-  positioned at 85% so the bright panels sit right of the copy, with a black shade from
-  left to right (solid canvas to 18%, 88% at 40%, 55% at 60%, clear by 88%) so the lead text stays readable.
-  Bottom masked into the canvas. Phones: above the copy at 76%. Light grade only. The
-  earlier generated option (`hero-glass.jpg`) and the copper-glass tower (`hero6.jpg`,
-  now the Services band) stay in public/images. The rust accent was sampled from the
-  copper-glass tower.
+- **Hero image (Home):** `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
+  panel with a glowing edge beside a sweep of amber and white light. Mirrored from the
+  source so the dark panel sits behind the copy and the light falls on the right. WebP,
+  2880px, quality 92 with sharp YUV (smooth gradients band at lower quality), 375KB; the
+  source is kept locally in `.impeccable/gen/hero-fold-source.jpg`. It is the one
+  owner-approved exception to "no gradients for decoration": the light lives inside the
+  image, never as a CSS gradient on the page. Full bleed from 900px at 50%, with a black
+  shade from the left (solid canvas to 18%, clear by 88%); masked into the canvas at the
+  bottom. Phones: above the copy at 80%. Earlier options (`hero-panels.webp`,
+  `hero-glass.jpg`) stay in public/images; the copper-glass tower (`hero6.jpg`) is now
+  the Services band and the source of the rust accent.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
   division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal
