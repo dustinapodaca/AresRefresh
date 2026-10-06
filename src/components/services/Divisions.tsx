@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DIVISIONS } from './data';
+import { glideUnderHeads } from '../glideUnderHeads';
 
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
@@ -76,8 +77,7 @@ export default function Divisions() {
       // instantly here; the FLIP below turns it into one glide from where it was.
       const opened = next ? document.getElementById(next) : null;
       if (opened && window.matchMedia('(max-width: 767px)').matches) {
-        const floor = parseFloat(getComputedStyle(opened).scrollMarginTop) || 120;
-        window.scrollBy({ top: opened.getBoundingClientRect().top - floor, behavior: 'instant' as ScrollBehavior });
+        glideUnderHeads(opened);
       }
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

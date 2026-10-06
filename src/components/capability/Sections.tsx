@@ -5,6 +5,7 @@ import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
 import { CAPABILITIES, CERTS, CODES, DIFFERENTIATORS, GSA_SPECS, PATHS, PDF_URL } from './data';
+import { glideUnderHeads } from '../glideUnderHeads';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
 const PHONE = '(max-width: 767px)';
@@ -89,8 +90,7 @@ export function Capabilities() {
     document.querySelector<HTMLButtonElement>(`#cap-${id} .ds-cs-card-head button`)?.focus({ preventScroll: true });
     const opened = next ? document.getElementById(`cap-${next}`) : null;
     if (opened && window.matchMedia(PHONE).matches) {
-      const floor = parseFloat(getComputedStyle(opened).scrollMarginTop) || 120;
-      window.scrollBy({ top: opened.getBoundingClientRect().top - floor, behavior: 'instant' as ScrollBehavior });
+      glideUnderHeads(opened);
     }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     for (const card of cards) {
