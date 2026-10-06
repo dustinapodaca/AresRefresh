@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -116,8 +116,25 @@ export function Why() {
 
 // 03 How to buy: the GSA MAS as a spec block with its status, beside the other paths.
 export function Buy() {
+  // The status lights pulse once, the first time the section is seen.
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        el.dataset.lit = 'true';
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section id="buy" className="ds-cs-buy" aria-labelledby="buy-title">
+    <section ref={ref} id="buy" className="ds-cs-buy" aria-labelledby="buy-title">
       <div className="ds-cs-head">
         <h2 id="buy-title" className="ds-display-lg">
           How to buy from us.

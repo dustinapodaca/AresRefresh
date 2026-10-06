@@ -404,7 +404,7 @@ The most important page after Home; it must stand out like Home. Concept and Mob
 board: docs/capability-concepts.md. Every piece of the old page's content carries over.
 Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
 - **Hero:** the owner-supplied glass-panels light (`hero-panels.webp`, within the
-  approved light-in-image exception) full bleed, black from the left. "Capability
+  approved light-in-image exception) full bleed, cover, centered, black from the left. "Capability
   statement." at display-xl, the offer, the credential line, a white "Download the PDF"
   button with an authored download icon, a quiet "Request a quote", and a mono spec line
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). Beside it, page 1 of the real statement
@@ -422,8 +422,10 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   swipe row with the Home meter.
 - **How to buy:** the GSA MAS as a spec block (title, mono status "● Active", spec rows,
   eLibrary route) beside the four procurement paths with mono status (13px, sentence
-  case) and the set-aside note. Active and available take a filled ink dot; "on
-  request" a faint ring.
+  case) and the set-aside note. Status lights kept from the old page (owner): green
+  (#7cb85f) for active and available, amber (#f2b84b) for on request, each with a soft
+  halo and one pulse outward when the section is first seen. These are the page's only
+  functional colors.
 - **Credentials:** seven marks on hairlines in a fixed 48px logo slot (white
   silhouettes; the GSA plate and the SBA WOSB badge in their own colors), each with its
   number where one is published; then the full code listing as a two-column ledger.
