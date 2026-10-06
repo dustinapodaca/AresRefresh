@@ -583,7 +583,7 @@ body:has(.ds-page) {
   margin-top: 44px;
   max-width: 30rem;
 }
-.ds-hero-gsa img { display: block; height: 30px; width: auto; }
+.ds-hero-gsa img { display: block; height: 34px; width: auto; }
 .ds-hero-gsa span { display: block; }
 .ds-hero-gsa .ds-link { font-size: 15px; }
 
@@ -619,6 +619,11 @@ body:has(.ds-page) {
   .ds-hero-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); padding-bottom: clamp(3rem, 9vh, 6rem); }
   .ds-hero-copy h1 { max-width: 10.6em; }
   .ds-hero-copy .ds-lead { max-width: 40ch; }
+}
+/* Desktop has no hero actions (the nav carries the quote), so the copy is lifted most of
+   the way back to where they held it (they were 80px). */
+@media (min-width: 1024px) {
+  .ds-hero-copy { padding-bottom: calc(clamp(3rem, 9vh, 6rem) + 56px); }
 }
 
 /* ---------- Document column + rail ---------- */
