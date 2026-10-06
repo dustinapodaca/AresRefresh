@@ -690,7 +690,7 @@ body:has(.ds-page) {
      note both start below that link, top-aligned. */
   .ds-proof-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; margin-top: -4.25rem; }
   .ds-ledger-foot { text-align: right; }
-  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: calc(5.25rem + 26px); }
+  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: calc(5.25rem + 18px); }
   .ds-figure-note { grid-column: 6 / span 6; grid-row: 1; padding-top: 6rem; }
   .ds-quote { grid-column: 6 / span 7; grid-row: 2; margin-top: var(--ds-beat-tight); }
 }
