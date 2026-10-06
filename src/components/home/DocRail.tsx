@@ -7,8 +7,8 @@ export type Mark = { id: string; n: string; label: string };
 //  rail     Home: mono marks on a track with the rust tick.
 //  ticks    Capability Statement: a column of dashes sized to each section; read dashes
 //           light, the current one is rust, labels show on hover.
-//  dock     Services: a bar fixed at the bottom center, a segment per section filling as
-//           you read, like the page's own stage meter.
+//  dock     Services: a bar fixed at the bottom center, a segment per section (all but
+//           the close) filling as you read, like the page's own stage meter.
 //  counter  About: the section number large, rolling to the next, with its name and bars.
 export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter';
 
@@ -82,6 +82,8 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
   const index = marks.findIndex((m) => m.id === active);
   const current = index >= 0 ? marks[index] : undefined;
   const total = String(marks.length).padStart(2, '0');
+  // The dock's mark holds at the last section before the close while it slides away.
+  const docked = index >= 0 ? marks[Math.min(index, marks.length - 2)] : undefined;
   const here = (id: string) => (active === id ? ('location' as const) : undefined);
 
   return (
@@ -157,13 +159,15 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
           </nav>
         )}
 
+        {/* The dock leaves on reaching the last section (the close), so it counts only the
+            sections before it. */}
         {variant === 'dock' && (
-          <nav className="ds-dock" data-visible={(Boolean(current) && !ended) || undefined}>
+          <nav className="ds-dock" data-visible={(Boolean(current) && !ended && index < marks.length - 1) || undefined}>
             <span className="ds-dock-label" aria-hidden="true">
-              <span>{current?.n}</span> {current?.label}
+              <span>{docked?.n}</span> {docked?.label}
             </span>
             <ol>
-              {marks.map((m, i) => (
+              {marks.slice(0, -1).map((m, i) => (
                 <li key={m.id}>
                   <a href={`#${m.id}`} aria-current={here(m.id)} aria-label={`${m.n} ${m.label}`}>
                     <span>
@@ -174,7 +178,7 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
               ))}
             </ol>
             <span className="ds-dock-count" aria-hidden="true">
-              {current ? `${current.n} / ${total}` : ''}
+              {docked ? `${docked.n} / ${String(marks.length - 1).padStart(2, '0')}` : ''}
             </span>
           </nav>
         )}
