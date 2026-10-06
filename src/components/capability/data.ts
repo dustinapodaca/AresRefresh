@@ -116,7 +116,7 @@ export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
     body: 'We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them.',
-    proof: 'Restricted areas · Military installations · DoW-vetted',
+    proof: 'Restricted areas · Military installations · Veteran staff',
   },
   {
     title: 'Four-stage deployment',

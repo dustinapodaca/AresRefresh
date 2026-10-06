@@ -431,3 +431,4 @@ hold" an active clearance, and nothing implies sponsorship.
 | Capability, Why Ares | "We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them." / proof "Restricted areas · Military installations · DoW-vetted" |
 | Services, Government card, Restricted areas | "Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces." |
 | Careers, TS Cleared Security Escort | "Escort and access control inside restricted areas on military installations. Requires an active TS clearance." |
+| Capability, Why Ares proof line (2026-10-06, owner) | "Restricted areas · Military installations · Veteran staff" (was "DoW-vetted") |
