@@ -316,14 +316,43 @@ body:has(.ds-page) {
   background: var(--ds-canvas);
   color: var(--ds-fg-muted);
   font-family: var(--ds-text);
-  padding-top: var(--ds-beat-tight);
-  padding-bottom: 28px;
+  padding-top: var(--ds-beat);
+  padding-bottom: 32px;
 }
 /* /careers docks a card ~290px into the footer (see that page). */
-.ds-footer[data-extended='true'] { padding-top: calc(290px + var(--ds-beat-tight)); }
+.ds-footer[data-extended='true'] { padding-top: calc(290px + var(--ds-beat)); }
+/* Top: the mark and the company line set large (left), the quote, phone, and email (right). */
+.ds-ft-top { display: grid; gap: 40px; padding-bottom: var(--ds-beat-tight); }
+.ds-ft-statement {
+  margin: 24px 0 0;
+  max-width: 24ch;
+  font-family: var(--ds-display);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--ds-fg);
+  text-wrap: balance;
+}
+.ds-ft-act { display: grid; justify-items: start; gap: 16px; align-content: start; }
+.ds-ft-act ul { display: grid; gap: 8px; list-style: none; margin: 8px 0 0; padding: 0; }
+.ds-ft-act a.ds-data { font-size: 14px; color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-ft-act a.ds-data:hover { color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  .ds-ft-top { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-ft-intro { grid-column: 1 / span 7; }
+  .ds-ft-act { grid-column: 10 / span 3; }
+}
+@media (max-width: 767px) {
+  .ds-ft-act .ds-btn { width: 100%; }
+  .ds-ft-act { justify-items: stretch; }
+}
+
 .ds-footer-cols {
   display: grid;
   gap: 40px 24px;
+  padding-top: 40px;
+  border-top: 1px solid var(--ds-rule);
 }
 .ds-footer-cols h2 { font-family: var(--ds-data); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg); margin: 0 0 14px; }
 .ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
@@ -331,8 +360,23 @@ body:has(.ds-page) {
 .ds-footer-cols a:hover { color: var(--ds-fg); }
 .ds-footer-cols a.ds-data { font-size: 14px; color: var(--ds-fg-muted); }
 .ds-footer-cols a.ds-data:hover { color: var(--ds-fg); }
+/* Contracting: label and mono value on each line. */
+.ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
+.ds-ft-ids li > span:first-child { min-width: 4.5em; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-ft-ids .ds-data { font-size: 14px; color: var(--ds-fg-muted); }
+/* Registration: SAM.gov as a live status, with the green light from the Capability
+   Statement (Resend's status line on Mobbin). */
+.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 15px; color: var(--ds-fg); }
+.ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
+.ds-ft-status-note { margin: 6px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
+/* Phones: Company and Service areas side by side; the identifiers and status full width. */
+.ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 639px) {
+  .ds-footer-cols > div:nth-child(n + 3) { grid-column: 1 / -1; }
+}
 @media (min-width: 640px) { .ds-footer-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .ds-certs {
   display: flex;
@@ -371,7 +415,9 @@ body:has(.ds-page) {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px 28px;
-  margin-top: 56px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ds-rule);
   font-family: var(--ds-data);
   font-size: 12px;
   letter-spacing: 0.02em;
@@ -380,18 +426,6 @@ body:has(.ds-page) {
 .ds-legal ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
 .ds-legal a { color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
 .ds-legal a:hover { color: var(--ds-fg); }
-
-/* The closing wordmark (FooterWordmark.tsx): the stacked ARES / SECURITY lockup across the
-   container, faint ink with a hairline outline. On desktop the pointer carries a soft
-   light (white to rust) across it. */
-.ds-footer-mark { display: block; width: 100%; height: auto; margin-top: var(--ds-beat-tight); overflow: visible; }
-.ds-footer-mark-base path { fill: rgb(238 240 242 / 0.05); stroke: rgb(238 240 242 / 0.24); stroke-width: 0.45; }
-.ds-footer-mark-lit { opacity: 0; transition: opacity 220ms var(--ds-ease); }
-.ds-footer-mark-lit path { fill: url(#ds-footer-light); stroke: url(#ds-footer-light); stroke-width: 0.45; }
-.ds-footer-mark[data-lit] .ds-footer-mark-lit { opacity: 1; }
-@media not ((hover: hover) and (pointer: fine)) {
-  .ds-footer-mark-lit { display: none; }
-}
 
 /* ============================================================
    HOME
@@ -2316,7 +2350,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    ============================================================ */
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes ds-footer-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-settle { from { transform: translateY(32px); } to { transform: translateY(0); } }
@@ -2370,14 +2403,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation: ds-ab-settle linear both;
       animation-timeline: --ds-ab-doc;
       animation-range: entry 0% cover 40%;
-    }
-    /* The footer wordmark's outline draws in as it arrives; its faint fill is already there. */
-    .ds-footer-mark-base path {
-      stroke-dasharray: 1;
-      animation: ds-footer-draw linear both;
-      animation-timeline: view();
-      /* Done once it is fully on screen: the page ends here, so it can scroll no further. */
-      animation-range: entry 0% entry 100%;
     }
     .ds-svc-pano img {
       animation: ds-plate linear both;

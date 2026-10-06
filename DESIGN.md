@@ -515,18 +515,23 @@ docs/contact-concepts.md.
   primary button.
 
 ### Footer
-- Same canvas, no top rule. Columns for the company (the Ares mark and one line; About
-  Us, Services, Careers), service areas, contracting (mono), and contact (mono), then the
-  certification marks separated by thin vertical lines and a small legal line.
-- **Closing wordmark (owner, 2026-10-05):** the ARES / SECURITY wordmark
-  (`ares-text.svg`) across the full container under the
-  legal line, white at 5% with a 1px outline at 24% that draws in as the footer scrolls
-  into view (scroll-driven; static otherwise). On desktop with a mouse, a soft light
-  follows the pointer across it: white at the center, rust at 70%, then gone, like a
-  flashlight on a sign (after a "hover footer" reference, in the house palette: no
-  gradient band, no blue, no icon set). Decorative and hidden from assistive tech. The large "Get to know Ares"
-  index was removed by the owner (2026-10-04). Only /careers still extends the footer's
-  top padding for a docked card; /services no longer docks one (2026-10-05).
+Redesigned 2026-10-05 (owner; Mobbin board: Attio's action column, Resend's status
+light, Cosmos's statement beside the mark). Same canvas, no top rule, a `beat` above it.
+- **Top:** the Ares mark with the company line set large beside it (Inter Tight 500, 26 to
+  36px, ink, balanced, about 24ch) in 7 columns; on the right (3 columns, bottom-aligned)
+  "Have a site to cover?", the primary "Request a quote" button, and the phone and email
+  in mono. Phones: stacked, the button full width.
+- **Columns** under a hairline: Company (About Us, Services, Careers, Capability
+  Statement); Service areas; Contracting as label and mono value (GSA MAS 47QSMS25D009Q
+  linking to eLibrary, UEI, CAGE); Registration as a live status: the green light
+  (#7cb85f, from the Capability Statement) and "Active on SAM.gov", "Through March 26,
+  2027", and a Verify route. Four equal columns on desktop; two on phones with Contracting
+  and Registration full width.
+- Then the certification marks separated by thin vertical lines, and the legal row on a
+  hairline: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
+- Only /careers extends the footer's top padding for a docked card.
+- A closing giant wordmark with a pointer-led light was tried and removed (owner,
+  2026-10-05). The large "Get to know Ares" index was removed earlier (2026-10-04).
 
 ## Motion
 
