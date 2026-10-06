@@ -16,7 +16,7 @@ export const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f44
 
 export const QUICK_FACTS: { label: string; value: string; note: string; verify?: boolean }[] = [
   { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services' },
-  { label: 'Set-aside', value: 'WOSB eligible', note: 'Woman-Owned Small Business · WBE certified' },
+  { label: 'Set-aside', value: 'WOSB eligible', note: 'Woman-Owned Small Business\nWBE certified' },
   { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity ID (SAM.gov)', verify: true },
   { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity' },
 ];
