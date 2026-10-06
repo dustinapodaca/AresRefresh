@@ -303,8 +303,8 @@ body, and the single rust horizon glow at the close.
 - **Quiet:** text in ink with the standard underline and an arrow; no box. Used for every
   secondary action (call, download, view on eLibrary).
 - Press: `scale(0.98)` over 140ms. Mobile stacks run full width.
-- **Pill (nav and menu only):** the v08 pill, white, full radius, hover `#e9e9e9`, presses to
-  `scale(0.97)`. Buttons on the page stay rectangular.
+- The nav and menu "Request a Quote" is the same primary button (2px corners; the v08
+  pill was retired by the owner, 2026-10-05). Nothing on the site is a pill.
 
 ### Ledger (the proof table)
 - A `<dl>`-style table on hairline rows. Three columns on desktop: label (Inter,
@@ -507,11 +507,13 @@ docs/contact-concepts.md.
   The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
   Owner request (2026-10-04); this is the only glass on the site.
 - Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
-  centered (Home, About, Services, Careers, Capability Statement; Inter 14px / 400, white,
+  centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
+  below 1024px), white,
   with a 1px underline that draws in on hover and stays under the current page), and a
-  white pill "Request a Quote" with an arrow on the right. No phone number in the bar.
+  primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
 - Mobile: the mark (44px) and a three-line menu icon that turns into an X. The menu is a
-  solid canvas sheet with 20px links on hairline rows, the phone and email, and the pill.
+  solid canvas sheet with 20px links on hairline rows, the phone and email, and the
+  primary button.
 
 ### Footer
 - Same canvas, no top rule. Columns for the company (About Us, Services, Careers),
@@ -581,6 +583,6 @@ Few, fast, and crisp. Four to six moments per page.
 - **Bracketed eyebrows:** no `[ LABEL ]`, no tracked uppercase kickers above headings.
 - **Icon-circle grids:** no rows of icons in circles or squares with captions.
 - **Uniform spacing:** no single repeated section padding; every gap is chosen.
-- No pills outside the nav (the v08 pill is the one exception), no gradient text, no glow shadows, no blue accent, no bounce or elastic
+- No pills anywhere, no gradient text, no glow shadows, no blue accent, no bounce or elastic
   easing, no entrance that starts from opacity 0.
 - No invented statistics, clients, logos, quotes, staff counts, or response times.

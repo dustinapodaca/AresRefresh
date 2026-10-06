@@ -66,7 +66,7 @@ export default function Header() {
         </nav>
 
         <div className="ds-header-actions">
-          <Link to="/contact" className="ds-btn ds-btn-primary ds-pill ds-header-cta">
+          <Link to="/contact" className="ds-btn ds-btn-primary ds-header-cta">
             Request a Quote
             <Arrow size={14} />
           </Link>
@@ -106,7 +106,7 @@ export default function Header() {
             <a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a>
           </div>
           <div className="ds-actions" style={{ marginTop: 32 }}>
-            <Link to="/contact" className="ds-btn ds-btn-primary ds-pill">
+            <Link to="/contact" className="ds-btn ds-btn-primary">
               Request a Quote
               <Arrow />
             </Link>
