@@ -230,3 +230,9 @@ async (page) => {
 3. Older, still pending: `ASSET-OPTIMIZATION.md` not executed (`public/images` is large);
    `npm audit` shows 18 vulnerabilities; footer Privacy / Terms / Accessibility links are
    `href="#"`; the Figma connector needs re-auth (claude.ai connector settings or `/mcp`).
+
+## Renewals
+
+- SAM renewal: change `SAM_ACTIVE_THROUGH` in `src/components/capability/data.ts` (the
+  footer and the Capability Statement read it), then rebuild. The footer copyright year is
+  automatic (build year).

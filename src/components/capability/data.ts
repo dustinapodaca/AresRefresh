@@ -14,6 +14,10 @@ export const CAP_MARKS: readonly Mark[] = [
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
 export const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f4416aee823f55dc5fa09/view';
 
+// SAM.gov registration end date. Update this one line when the registration renews (each
+// year); the footer and the Capability Statement both read it.
+export const SAM_ACTIVE_THROUGH = 'March 26, 2027';
+
 export const QUICK_FACTS: { label: string; value: string; note: string; verify?: boolean }[] = [
   { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services' },
   { label: 'Set-aside', value: 'WOSB eligible', note: 'Woman-Owned Small Business\nWBE certified' },
@@ -166,7 +170,7 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
   { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true },
   { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true },
   { label: 'DUNS number', value: '10-244-9635', note: 'Legacy. UEI is the SAM identifier going forward', mono: true },
-  { label: 'SAM status', value: 'Active', note: 'Through March 26, 2027' },
+  { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}` },
   { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services', mono: true },
   { label: 'PSC code', value: 'S206', note: 'Guard Services', mono: true },
   { label: 'Socioeconomic', value: 'Small Business · WOSB', note: 'Small Business · Woman-Owned Small Business' },

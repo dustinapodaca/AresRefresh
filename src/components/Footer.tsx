@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
-import { SAM_VERIFY } from './capability/data';
+import { SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
 
 // The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
 // glass, Windsurf's and Opacity's light). No quote button: every page's close and the nav
@@ -16,6 +16,10 @@ const PROFILES = [
   { label: 'Google', href: 'https://www.google.com/maps/search/?api=1&query=Ares+Security+LLC+Colorado+Springs' },
   { label: 'Indeed', href: 'https://www.indeed.com/cmp/Ares-Security-1' },
 ];
+
+// The copyright year is the year the site is built, so it rolls over with the first build
+// of each new year.
+const YEAR = new Date().getFullYear();
 
 export default function Footer() {
   return (
@@ -94,7 +98,7 @@ export default function Footer() {
               <span className="ds-ft-light" aria-hidden="true" />
               Active on SAM.gov
             </p>
-            <p className="ds-ft-status-note">Through March 26, 2027</p>
+            <p className="ds-ft-status-note">Through {SAM_ACTIVE_THROUGH}</p>
             <a href={SAM_VERIFY} target="_blank" rel="noopener noreferrer" className="ds-ft-verify">
               Verify
               <Arrow external size={12} />
@@ -118,7 +122,7 @@ export default function Footer() {
         <div className="ds-ft-glass">
           <div className="ds-container">
             <div className="ds-legal">
-              <span>© 2026 Ares Security LLC. All rights reserved.</span>
+              <span>© {YEAR} Ares Security LLC. All rights reserved.</span>
               <span>Colorado Springs, Colorado</span>
               <ul>
                 <li><Link to="/privacy">Privacy</Link></li>
