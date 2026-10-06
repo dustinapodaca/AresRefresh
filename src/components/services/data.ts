@@ -34,7 +34,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
       { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
       { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
-      { name: 'Clearance-required posts', detail: 'For posts that need a clearance, we staff officers who hold one.' },
+      { name: 'Restricted areas', detail: 'Cleared staff trained on the post check workers and vehicles in and out, escort them inside, and work daily with base security forces.' },
     ],
     photo: {
       src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',

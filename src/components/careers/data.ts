@@ -30,7 +30,7 @@ export const ROLES: Role[] = [
   },
   {
     title: 'TS Cleared Security Escort',
-    line: 'Restricted-access escort coverage for federal facilities. Requires an active TS clearance.',
+    line: 'Entry control and escort for a restricted area on a military installation, working with base security forces. Requires an active TS clearance.',
     where: 'Denver',
   },
 ];

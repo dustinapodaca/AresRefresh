@@ -405,3 +405,12 @@ hold" an active clearance, and nothing implies sponsorship.
 | Capability, Access Control | "Restricted-area escort: Escort officers for restricted and controlled areas." |
 | Capability, Why Ares | "Our officers stand restricted posts at federal facilities and work to the escort and documentation rules those sites require. For posts that need a clearance, we staff officers who hold one." / proof "Federal facilities · DoW-vetted" |
 | Services, 02 Compliance mapping | "Regulations · Access rules · SOPs" / "every regulation, access requirement, and SOP" |
+
+### Third pass (2026-10-06, owner): lead with the restricted-area work
+
+| Where | Now |
+|---|---|
+| Capability, Why Ares | "We run entry control for a restricted area on a military installation. Our officers check every worker in and out, escort and monitor them inside, inspect vehicles on entry and exit, and coordinate with base security forces every day. We wrote the post's SOP, and our cleared staff are trained on it before their first shift." / proof "Restricted area · Military installation · DoW-vetted" |
+| Capability, Access Control, Restricted-area escort | "Entry checks, escort, and monitoring for workers in restricted areas, with vehicles inspected on entry and exit." |
+| Services, Government card | "Restricted areas: Cleared staff trained on the post check workers and vehicles in and out, escort them inside, and work daily with base security forces." (was "Clearance-required posts") |
+| Careers, TS Cleared Security Escort | "Entry control and escort for a restricted area on a military installation, working with base security forces. Requires an active TS clearance." |

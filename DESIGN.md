@@ -624,9 +624,12 @@ Few, fast, and crisp. Four to six moments per page.
   instructor, veterans encouraged to apply. Never "veteran-led".
 - Clearances (owner, 2026-10-06): Ares has no facility clearance (FCL) yet and cannot
   sponsor clearances. Keep copy general: never "cleared officers/roles" or
-  "clearance-eligible". Clearance is mentioned only where it matters (the Careers escort
-  role's requirement, the Services Government card, the Capability restricted-area card),
-  as "For posts that need a clearance, we staff officers who hold one."
+  "clearance-eligible". Lead with the restricted-area work instead: entry control for a
+  restricted area on a military installation (not named), workers checked in and out,
+  escorted and monitored, vehicles inspected on entry and exit, daily coordination with
+  base security forces, and an SOP Ares wrote. "Cleared staff" appears lightly, as people
+  trained on the post (Services Government card, Capability restricted-area card); the
+  Careers escort role states its clearance requirement.
 
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
