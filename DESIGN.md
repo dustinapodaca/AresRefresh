@@ -413,7 +413,9 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 St
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
 - **01 Company:** "Quality over quantity.", one paragraph, a facts ledger (established,
-  ownership, licenses, NAICS), and the patrol vehicles as a captioned plate.
+  ownership, licenses, NAICS), and the patrol vehicles as a captioned plate (4:3,
+  anchored to the photo's bottom at every width, no frame edge so the caption is not
+  boxed; owner, 2026-10-05).
 - **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
   line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
   underline (240ms), one list at a time.

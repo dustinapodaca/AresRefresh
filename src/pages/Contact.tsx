@@ -94,7 +94,7 @@ export default function Contact() {
             decoding="async"
             {...{ fetchpriority: 'high' }}
           />
-          <figcaption className="ds-data">Denver, Colorado</figcaption>
+          <figcaption className="ds-caption">Denver, Colorado</figcaption>
         </figure>
         <div className="ds-container ds-qt-open-copy">
           <h1 id="qt-title" className="ds-display-xl">
