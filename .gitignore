@@ -45,3 +45,6 @@ pnpm-debug.log*
 .impeccable/config.local.json
 .impeccable/hook.cache.json
 .claude/skills/impeccable/scripts/bin/
+
+# Generated image options (only chosen images move to public/images)
+.impeccable/gen/

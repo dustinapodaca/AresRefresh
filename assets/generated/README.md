@@ -1,0 +1,49 @@
+# Generated images
+
+AI-generated image options, kept for later. Nothing here is on the site: `assets/` is not
+served. To use one, copy it into `public/images/` and reference it from the page.
+
+- **Tool:** `impeccable generate-image` (OpenAI `gpt-image-2.5-flare`). The key lives in
+  the user's Claude Code settings (`~/.claude/settings.json`, `env.OPENAI_API_KEY`), never
+  in this repo.
+- **Masters:** lossless PNGs stay local in `.impeccable/gen/` (gitignored). The files
+  here are JPEG copies at quality 82 plus each image's exact prompt (`.prompt.txt`) and
+  generation record (`.prompt.json`).
+- **Cost guide:** about 25 cents per high-quality 2400x1600 image (an estimate).
+
+## Rules for generating
+
+- **Use AI images for:** places, architecture, Colorado landscape, light and texture.
+- **Never generate:**
+  - people presented as Ares staff
+  - officers or uniforms
+  - branded vehicles
+  - client sites
+  - anything a buyer could read as a real Ares photo
+  
+  PRODUCT.md and DESIGN.md require real Ares photography and no invented claims.
+- **Never caption a generated scene as a real place.**
+- **Anchor the style:** pass a screenshot of the target page with `--ref` so the
+  palette matches: blue-black canvas, cool tones, one copper light.
+- **Leave room for type:** keep the side the text sits on quiet and dark, and let the
+  bottom fall to near-black so the image can fade into the page.
+
+## Catalog
+
+| File | Made for | What it shows | Status |
+|---|---|---|---|
+| `hero-a.jpg` | Home hero | Copper-glass tower at blue hour, mountains far right | Option; strongest tie to the copper-glass origin of the rust accent |
+| `hero-b.jpg` | Home hero | Pikes Peak-like massif at dusk with city lights below | Superseded by b2: the city is invented (it has a dome that isn't in Colorado Springs) |
+| `hero-b2.jpg` | Home hero, or the Services strip | The same massif with no city, buildings, or lights; copper horizon over dark forest | Favorite (2026-10-05). Previewed in both heroes; not yet placed |
+| `hero-c.jpg` | Section background (Contact, Careers) | Glass-and-steel facade at night, a few warm-lit floors | Spare |
+
+All four: 2400x1600, generated 2026-10-05 with a screenshot of the Home hero as the
+style reference.
+
+## Placing one
+
+- **Grade:** these images are already dark, so ease the page's darkening filter (the
+  previews used `saturate(0.95) brightness(0.92)` instead of the hero's `0.62`
+  brightness).
+- **Crop:** previews used `object-position: 50% 45%` on desktop and `74% 50%` on phones
+  (Home hero), and `60% 42%` for the Services strip.

@@ -1,0 +1,11 @@
+{
+  "prompt": "Photographic hero image for the website of a Colorado Springs security firm that serves federal and commercial sites. The reference image shows the site's look: a blue-black canvas (#0a0b0d), cool desaturated tones, one warm copper light source, calm and precise, never flashy. Match that color world; do not copy the reference's layout, text, or building.\nComposition: wide 3:2 landscape. The left 45 percent is quiet, dark, low-detail space where white headline text will sit; the subject sits in the right half. The bottom 30 percent falls off toward near-black so it can fade into the page. Photorealistic, shot on a full-frame camera, natural lens, fine grain, no HDR look, no lens flare, no people, no text, no logos, no signage, no vehicles with markings, no watermarks.\nSubject: a modern office tower clad in copper-bronze glass at blue hour, seen from street level looking up at an angle, the glass catching the last warm light while the sky behind it is deep blue-black. Clean architectural lines, a hint of the Front Range ridge far behind on the right.\n",
+  "createdAt": "2026-10-06T00:25:47.489Z",
+  "tool": "impeccable generate-image",
+  "model": "gpt-image-2.5-flare",
+  "background": "opaque",
+  "outputFormat": "png",
+  "refs": [
+    ".impeccable/gen/ref-home-hero.png"
+  ]
+}
