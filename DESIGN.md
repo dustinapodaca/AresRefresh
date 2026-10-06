@@ -265,7 +265,7 @@ body, and the single rust horizon glow at the close.
   It is the one owner-approved exception to "no gradients for decoration": the light
   lives inside the image, never as a CSS gradient on the page. Full bleed from 900px,
   positioned at 85% so the bright panels sit right of the copy, with a black shade from
-  left to right (solid canvas at the left edge, 94% at 22%, 70% at 48%, clear by 82%) so the lead text stays readable.
+  left to right (solid canvas to 18%, 88% at 40%, 55% at 60%, clear by 88%) so the lead text stays readable.
   Bottom masked into the canvas. Phones: above the copy at 76%. Light grade only. The
   earlier generated option (`hero-glass.jpg`) and the copper-glass tower (`hero6.jpg`,
   now the Services band) stay in public/images. The rust accent was sampled from the
