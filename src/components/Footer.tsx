@@ -17,8 +17,10 @@ export default function Footer() {
       <div className="ds-container">
         <div className="ds-ft-top">
           <div className="ds-ft-intro">
-            <Link to="/" className="ds-brand" aria-label="Ares Security home" style={{ marginRight: 0 }}>
+            <Link to="/" className="ds-brand ds-ft-brand" aria-label="Ares Security home">
               <span className="ds-mark" aria-hidden="true" />
+              <span className="ds-ft-divider" aria-hidden="true" />
+              <span className="ds-ft-wordmark" aria-hidden="true" />
             </Link>
             <p className="ds-ft-statement">
               A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado

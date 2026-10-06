@@ -517,7 +517,9 @@ docs/contact-concepts.md.
 ### Footer
 Redesigned 2026-10-05 (owner; Mobbin board: Attio's action column, Resend's status
 light, Cosmos's statement beside the mark). Same canvas, no top rule, a `beat` above it.
-- **Top:** the Ares mark with the company line set large beside it (Inter Tight 500, 26 to
+- **Top:** the Ares lockup (the mark at 52px, a 60px rule at ink 50%, and the ARES /
+  SECURITY text logo at 44px, 28px apart; owner's reference), the company line set large
+  under it (Inter Tight 500, 26 to
   36px, ink, balanced, about 24ch) in 7 columns; on the right (3 columns, bottom-aligned)
   "Have a site to cover?", the primary "Request a quote" button, and the phone and email
   in mono. Phones: stacked, the button full width.

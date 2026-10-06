@@ -322,6 +322,20 @@ body:has(.ds-page) {
 /* /careers docks a card ~290px into the footer (see that page). */
 .ds-footer[data-extended='true'] { padding-top: calc(290px + var(--ds-beat)); }
 /* Top: the mark and the company line set large (left), the quote, phone, and email (right). */
+/* The mark, a hairline, and the ARES / SECURITY text logo (ares-text.svg). */
+/* Proportions from the owner's lockup: the text logo nearly the mark's height, the rule a
+   little taller than both, an even gap either side. */
+.ds-ft-brand { display: inline-flex; align-items: center; gap: 28px; }
+.ds-ft-brand .ds-mark { width: 50px; height: 52px; }
+.ds-ft-divider { width: 1px; height: 60px; background: rgb(238 240 242 / 0.5); }
+.ds-ft-wordmark {
+  display: block;
+  width: 145px;
+  height: 44px;
+  background: var(--ds-fg);
+  -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
+  mask: url(/images/ares-text.svg) center / contain no-repeat;
+}
 .ds-ft-top { display: grid; gap: 40px; padding-bottom: var(--ds-beat-tight); }
 .ds-ft-statement {
   margin: 24px 0 0;
