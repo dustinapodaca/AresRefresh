@@ -378,7 +378,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   half width), the + turns into an x, and the detail appears under the
   description (Government's GSA ledger row, then each site type with one plain line).
   Desktop opened: photo left (5/12) top to bottom, detail right on plain card fill.
-  Phones: the opened card glides to just under the nav and running head. Detail is
+  At every width (owner, 2026-10-05) the opened card glides to just under the nav (and the
+  running head where it shows), one grid gap below it, so the card above is never seen. Detail is
   always in the HTML (`hidden` until opened).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
@@ -443,8 +444,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   spans its row and moves (in the DOM) to the start of it, so tab order matches; the
   closed cards after it widen to fill the last row (six-track grid on desktop). It lists
   four included services in
-  two columns (one on phones). FLIP motion as on Services; on phones the opened card
-  glides under the nav and running head. The h3 holds the disclosure button.
+  two columns (one on phones). FLIP motion as on Services; at every width the opened card
+  glides under the nav (and running head). The h3 holds the disclosure button.
 - **Why Ares (second pass):** four differentiators, each with a mono proof line:
   restricted-area experience, four-stage deployment, client rating, officer rating (the
   Indeed proof links to the reviews).

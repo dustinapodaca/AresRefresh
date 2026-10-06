@@ -73,10 +73,11 @@ export default function Divisions() {
 
       flushSync(() => setOpenId(next));
 
-      // Phones: bring the opened card to the top, below the nav and running head. Done
-      // instantly here; the FLIP below turns it into one glide from where it was.
+      // At every width, bring the opened card to the top, just under the nav (and the
+      // running head, where it shows). Done instantly here; the FLIP below turns it into
+      // one glide from where it was.
       const opened = next ? document.getElementById(next) : null;
-      if (opened && window.matchMedia('(max-width: 767px)').matches) {
+      if (opened) {
         glideUnderHeads(opened);
       }
 

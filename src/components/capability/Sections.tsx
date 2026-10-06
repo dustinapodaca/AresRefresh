@@ -36,7 +36,7 @@ function Chevron() {
 // 01 Capabilities: six cards (the Services card language, without photos). The + opens
 // a card in place: it takes its row's full width, keeps its row (row-mates move after
 // it), and lists what the service includes. One open at a time; a FLIP glides the rest.
-// Phones: the opened card glides to just under the nav and running head.
+// At every width the opened card glides to just under the nav (and running head).
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)';
 
 function useCols() {
@@ -89,7 +89,7 @@ export function Capabilities() {
     // React may have moved the card in the DOM; keep focus on its button.
     document.querySelector<HTMLButtonElement>(`#cap-${id} .ds-cs-card-head button`)?.focus({ preventScroll: true });
     const opened = next ? document.getElementById(`cap-${next}`) : null;
-    if (opened && window.matchMedia(PHONE).matches) {
+    if (opened) {
       glideUnderHeads(opened);
     }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
