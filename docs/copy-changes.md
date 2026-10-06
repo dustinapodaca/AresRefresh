@@ -367,3 +367,9 @@ Careers (owner, same day): "Why officers stay once they join." removed.
 | Proof line "Buckley SFB · DoW-vetted · TS/SCI escorts" | "Federal facilities · DoW-vetted · TS/SCI escorts" | Same |
 | Access Control, Restricted-area escort: "...including TS/SCI-cleared escorts at Buckley SFB." | "...including TS/SCI-cleared escorts." | Same |
 | Access Control, Visitor screening: "Sign-in, badging, and a visitor log you can audit." | "Sign-in, ID checks, and a visitor log you can audit." | Ares does not do badging |
+
+## Services close removed (2026-10-06, owner)
+
+| Was | Now | Why |
+|---|---|---|
+| 04 Contact: "Tell us about your site." / "We start with a walk of your site, before anything is signed." / phone, email, "Request a quote", "Download the capability statement" | Removed; the page ends on the three cities | Owner: more succinct; the nav carries the quote and the footer the phone and email |

@@ -4,7 +4,6 @@ import Opening from '../components/services/Opening';
 import Divisions from '../components/services/Divisions';
 import Process from '../components/services/Process';
 import Areas from '../components/services/Areas';
-import Close from '../components/services/Close';
 import { SERVICE_MARKS } from '../components/services/data';
 
 // Services: "The Schedule" (docs/services-concepts.md, Concept A). Design authority:
@@ -19,7 +18,6 @@ export default function Services() {
           <Divisions />
           <Process />
           <Areas />
-          <Close />
         </div>
         <DocRail marks={SERVICE_MARKS} variant="dock" />
       </div>

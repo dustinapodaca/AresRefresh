@@ -6,7 +6,6 @@ export const SERVICE_MARKS: readonly Mark[] = [
   { id: 'divisions', n: '01', label: 'Divisions' },
   { id: 'process', n: '02', label: 'Process' },
   { id: 'areas', n: '03', label: 'Areas' },
-  { id: 'contact', n: '04', label: 'Contact' },
 ];
 
 // `sharp`: a tighter, higher-resolution crop of the same photo, shown only in the tall

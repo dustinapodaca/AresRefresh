@@ -1643,43 +1643,6 @@ body:has(.ds-page) {
   .ds-svc-cities { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 }
 
-/* ---------- 04 Contact: headline left, phone and actions right ---------- */
-.ds-svc-close {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  gap: 36px;
-  padding-top: var(--ds-beat-open);
-  padding-bottom: var(--ds-beat);
-}
-/* The site's one closing light, set behind the phone on this page. */
-.ds-svc-close::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: calc(-1 * var(--ds-edge));
-  width: 100vw;
-  background: radial-gradient(ellipse 44% 40% at 62% 68%, rgb(188 111 64 / 0.22) 0%, rgb(139 73 32 / 0.1) 50%, rgb(139 73 32 / 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  pointer-events: none;
-}
-.ds-svc-close-copy .ds-lead { margin-top: 20px; }
-.ds-svc-close-side { display: grid; justify-items: start; gap: 14px; }
-.ds-svc-close-side .ds-phone { margin-top: 0; }
-.ds-svc-close-side .ds-actions { margin-top: 22px; }
-@media (max-width: 639px) {
-  .ds-svc-close-side { justify-items: stretch; }
-  .ds-svc-close-side > a { justify-self: start; }
-}
-@media (min-width: 1024px) {
-  .ds-svc-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-svc-close-copy { grid-column: 1 / span 6; }
-  .ds-svc-close-side { grid-column: 7 / span 6; }
-}
-
 /* ============================================================
    ABOUT ("The Company File", docs/about-concepts.md)
    ============================================================ */

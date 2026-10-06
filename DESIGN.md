@@ -236,7 +236,7 @@ sizes are unchanged.
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
   `01 Verify`, `02 Staffing`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
-  `01 Divisions`, `02 Process`, `03 Areas`, `04 Contact`.
+  `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
 - These are the only section numbers on the page. Section numbers never appear above
@@ -249,8 +249,8 @@ sizes are unchanged.
   - `dock` (Services): a 44px bar fixed at the bottom center (solid canvas, hairline-strong
     edge, 2px corners) with the current mark left, a 44px segment per section filling
     with the reading position (like the page's stage meter), and `02 / 03` right. Slides
-    up once the first section is reached and away on reaching the close, so it counts
-    only the sections before it (owner, 2026-10-05). With nothing
+    up once the first section is reached and away once the footer comes into view; it
+    counts every section (the close was removed, owner, 2026-10-06). With nothing
     on the side, Services drops the rail column: its sections run the full container,
     centered like the opening (owner, 2026-10-05).
   - `counter` (About): the section number in Plex Mono at 72px, rolling up into place
@@ -400,8 +400,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Areas:** the Denver skyline as a wide plate in the column (21:9, 16:10 on phones) with
   a mono caption (it documents a real place), then the three cities as a three-column
   strip (Inter Tight 600, 24 to 32px) with arrows.
-- **Close:** "Tell us about your site." (display-lg) left, the phone (mono), email, and
-  actions stacked right, over the rust light set behind the phone.
+- **No close** (owner, 2026-10-06): the page ends on the three cities and hands straight
+  to the footer; the nav carries the quote. ("Tell us about your site." with the phone,
+  email, and actions was removed.)
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
