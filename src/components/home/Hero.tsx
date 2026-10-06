@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 
@@ -21,15 +20,6 @@ export default function Hero() {
             serving Denver and Pueblo. We bridge public-sector compliance and commercial
             reliability, and every number on this page can be checked.
           </p>
-          <div className="ds-actions">
-            <Link to="/contact" className="ds-btn ds-btn-primary">
-              Request a quote
-              <Arrow />
-            </Link>
-            <a href="tel:+17196963966" className="ds-link">
-              Call <span className="ds-data">719-696-3966</span>
-            </a>
-          </div>
           <div className="ds-hero-gsa">
             <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" width={125} height={30} />
             <div>

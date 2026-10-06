@@ -12,6 +12,7 @@ the owner, **N** new framing copy written for the new structure.
 | "Bridging the gap between public-sector compliance and commercial reliability — a woman-owned, employee-focused firm delivering consistent results across every environment." | "Ares is a minority woman-owned, employee-focused security firm in Colorado Springs, serving Denver and Pueblo. We bridge public-sector compliance and commercial reliability, and every number on this page can be checked." | E, F (minority), H (sets up Verify). "claim" narrowed to "number" after critique: the quote and figure are not independently checkable |
 | (none) | "Call 719-696-3966" | N |
 | GSA image + "Contract #47QSMS25D009Q…" | "GSA Multiple Award Schedule / 47QSMS25D009Q" linked to eLibrary | Shortened; the full sentence moved to the ledger |
+| "Request a quote" button + "Call 719-696-3966" | (removed, 2026-10-06, owner) | More succinct: the nav carries the quote button, and the close carries the quote and the phone |
 
 ## 01 Verify (new section built from existing facts)
 | Was | Now | Why |

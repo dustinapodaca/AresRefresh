@@ -490,7 +490,6 @@ body:has(.ds-page) {
 }
 .ds-hero-copy { position: relative; margin-top: -7rem; padding-bottom: var(--ds-beat-tight); }
 .ds-hero-copy .ds-lead { margin-top: 24px; }
-.ds-hero-copy .ds-actions { margin-top: 32px; }
 .ds-hero-gsa {
   display: flex;
   align-items: center;
