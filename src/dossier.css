@@ -1118,7 +1118,7 @@ body:has(.ds-page) {
   display: flex;
   flex-direction: column;
   overflow: clip;
-  border-radius: 18px;
+  border-radius: 4px;
   background: #050607;
 }
 /* The edge and the faint light from below sit above the photo and the frosted panel, so
@@ -1270,11 +1270,7 @@ body:has(.ds-page) {
 @media (min-width: 1024px) {
   .ds-svc-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .ds-svc-card,
-  .ds-svc-card[data-open='true'][data-col='right'] { order: var(--lo); grid-column: span var(--span); border-radius: 10px; }
-  .ds-svc-card[data-corner~='tl'] { border-top-left-radius: 28px; }
-  .ds-svc-card[data-corner~='tr'] { border-top-right-radius: 28px; }
-  .ds-svc-card[data-corner~='bl'] { border-bottom-left-radius: 28px; }
-  .ds-svc-card[data-corner~='br'] { border-bottom-right-radius: 28px; }
+  .ds-svc-card[data-open='true'][data-col='right'] { order: var(--lo); grid-column: span var(--span); }
   .ds-svc-card-media { height: clamp(18rem, 23vw, 21rem); }
   .ds-svc-card-text { padding: 8px 28px 28px; }
   .ds-svc-title { font-size: 24px; }
@@ -1889,7 +1885,7 @@ body:has(.ds-page) {
 .ds-cs-card {
   position: relative;
   padding: 6px 20px 22px;
-  border-radius: 14px;
+  border-radius: 4px;
   background: #0e1013;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 -24px 60px -28px rgb(255 255 255 / 0.05);
   transition: background-color 180ms var(--ds-ease);

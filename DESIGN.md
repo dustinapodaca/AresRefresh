@@ -337,8 +337,8 @@ body, and the single rust horizon glow at the close.
 ### Expandable service cards (owner request, 2026-10-05)
 - The one exception to "no card containers", "no glow shadows", and "no icon circles":
   the division cards on Services and the competency cards on the Capability Statement.
-  Near-black fill, a white/8 to 10% inset edge, a faint inner light from below, 14 to 18px
-  radius, and a 36px circular + that turns to an x on an ink disc. Nowhere else.
+  Near-black fill, a white/8 to 10% inset edge, a faint inner light from below, 4px
+  corners like the photos (owner, 2026-10-05; were 14 to 18px), and a 36px circular + that turns to an x on an ink disc. Nowhere else.
 
 ### Credential strip
 - Phones only (hidden from 768px). Between the hero and 01 Verify: the
@@ -367,8 +367,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
   tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were
-  dropped); inner corners 10px and the grid's outer corners 28px on desktop, so the set
-  reads as one plate. Phones: one column. Each card: near-black fill (`#050607`), a white/10% edge and a
+  dropped); 4px corners on every card (the 10px / 28px plate corners were retired). Phones: one column. Each card: near-black fill (`#050607`), a white/10% edge and a
   faint inner light from below (drawn on top), the photo across the top (growing to
   fill when a row-mate is taller, slight 1.03 zoom on hover), and a frosted panel
   (24px blur over a dark tint) riding up over the photo's foot with the number beside
@@ -441,7 +440,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   full-width hairline over a long band of frost (22px blur, a light 28%-to-0 tint, about
   26rem past the row) that fades out downward (owner, 2026-10-05).
 - **Capabilities (second pass, 2026-10-05):** six cards titled exactly as in the PDF in the Services card language
-  without photos (#0e1013 fill, white/8% edge, faint light from below, 14px radius): mono
+  without photos (#0e1013 fill, white/8% edge, faint light from below, 4px corners): mono
   number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
   (hidden on phones). Three columns on
   desktop, two on tablet, one on phones. The + opens one card at a time in place: it
