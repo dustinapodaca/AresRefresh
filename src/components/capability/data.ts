@@ -21,58 +21,117 @@ export const QUICK_FACTS: { label: string; value: string; note: string; verify?:
   { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity' },
 ];
 
-export type Capability = { title: string; body: string; keys: string[] };
+// Six core competencies (from the capability statement PDF and the old page). Each card
+// opens to what the service includes. Lines marked DRAFT are new to the site (2026-10-05,
+// owner asked for fuller detail) and are logged in docs/copy-changes.md for review.
+export type Capability = {
+  id: string;
+  title: string;
+  line: string;
+  keys: string[];
+  includes: { name: string; detail: string }[];
+};
 
 export const CAPABILITIES: Capability[] = [
   {
+    id: 'armed',
     title: 'Armed physical security',
-    body: 'Licensed, firearms-qualified officers for fixed posts in cash-handling, regulated, and high-liability environments, for insurable risk reduction.',
+    line: 'For sites where an armed officer is required by policy, insurance, or risk.',
     keys: ['Armed', 'Cash-handling', 'Regulated'],
+    includes: [
+      { name: 'Fixed armed posts', detail: 'Officers on a set post every shift. Fewer than 1% missed shifts since 2021, with on-call scheduling in every contract.' },
+      { name: 'Cash-handling sites', detail: 'Banks, retail cash rooms, and other sites where money changes hands.' },
+      { name: 'Regulated and high-liability sites', detail: 'Posts with licensing, audit, or insurance requirements on who may stand them.' },
+      { name: 'Firearms qualification', detail: 'Licensed, firearms-qualified officers, trained by our veteran NRA firearms instructor and current at time of post.' },
+    ],
   },
   {
+    id: 'unarmed',
     title: 'Unarmed physical security',
-    body: 'Uniformed and plainclothes officers providing visible deterrence, lobby coverage, and access oversight for facilities and campuses, 24/7.',
-    keys: ['Uniformed', 'Lobby / campus', '24/7'],
+    line: 'Uniformed and plainclothes officers for lobbies, perimeters, and campuses, 24/7.',
+    keys: ['Uniformed', 'Plainclothes', '24/7'],
+    includes: [
+      { name: 'Lobby and front desk', detail: 'A visible first point of contact that screens and directs visitors.' },
+      { name: 'Campus and facility coverage', detail: 'Interior and perimeter coverage across one building or many.' },
+      { name: 'Plainclothes officers', detail: 'Discreet coverage where a uniform would change how a space feels.' },
+      { name: 'Loss prevention', detail: 'Visible deterrence that scales with foot traffic in retail and hospitality.' },
+    ],
   },
   {
+    id: 'patrol',
     title: 'Patrol services',
-    body: 'Foot and mobile patrol with documented checkpoints and auditable logs across single sites and multi-property portfolios.',
-    keys: ['Foot patrol', 'Mobile patrol', 'Checkpoint logs'],
+    line: 'Foot and mobile patrol with documented checkpoints across one site or a whole portfolio.',
+    keys: ['Foot', 'Mobile', 'Fire watch'],
+    includes: [
+      { name: 'Foot patrol', detail: 'Interior and grounds rounds on a set schedule, with every checkpoint logged.' },
+      { name: 'Checkpoint logs', detail: 'Documented checkpoints and auditable logs for every round.' },
+      { name: 'Fire watch', detail: 'Dedicated rounds when alarm or sprinkler systems are down, with time-stamped logs.' },
+      { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with reports per property.' },
+    ],
   },
   {
+    id: 'access',
     title: 'Access control',
-    body: 'Entry screening, credential verification, visitor management, and perimeter control for facilities, sites, and critical infrastructure.',
-    keys: ['Screening', 'Credentialing', 'Perimeter'],
+    line: 'Screening, credential checks, and visitor control at gates, docks, and lobbies.',
+    keys: ['Screening', 'Credentials', 'Escort'],
+    includes: [
+      { name: 'Entry screening', detail: 'People and bags checked against your post orders before they enter.' },
+      { name: 'Credential verification', detail: 'IDs, badges, and access lists checked at every entry point.' },
+      { name: 'Visitor management', detail: 'Sign-in, badging, and a visitor log you can audit.' },
+      { name: 'Restricted-area escort', detail: 'Escort officers for restricted areas, including TS/SCI-cleared escorts at Buckley SFB.' },
+    ],
   },
   {
+    id: 'vehicle',
     title: 'Patrol vehicle security',
-    body: 'Marked-vehicle patrol, alarm response, and after-hours property checks with GPS-verified routes and time-stamped reporting.',
-    keys: ['Marked vehicle', 'Alarm response', 'GPS-verified'],
+    line: 'For properties that need a visible presence and a fast response after hours.',
+    keys: ['Marked vehicles', 'Alarm response', 'GPS-verified'],
+    includes: [
+      { name: 'Marked-vehicle patrol', detail: 'Ares-marked vehicles as a visible deterrent on every pass.' },
+      { name: 'Alarm response', detail: 'An officer on site to check the property when an alarm trips.' },
+      { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
+      { name: 'Verified reporting', detail: 'GPS-verified routes and time-stamped reports for every visit.' },
+    ],
   },
   {
+    id: 'events',
     title: 'Event & emergency response',
-    body: 'Crowd management, incident response, and emergency coordination for events, institutions, and community venues, with a calm, trained presence.',
-    keys: ['Crowd management', 'Incident response', 'Events'],
+    line: 'For events, institutions, and venues that need trained people when a situation turns.',
+    keys: ['Events', 'Crowds', 'Incident response'],
+    includes: [
+      { name: 'Event security', detail: 'Crowd management, entry screening, and coordinated coverage for public and private events.' },
+      { name: 'Emergency response', detail: 'Rapid on-site response and incident containment.' },
+      { name: 'Coordination', detail: 'Officers who work alongside your staff and first responders during an incident.' },
+      { name: 'Post-incident reporting', detail: 'A written report of what happened and what was done.' },
+    ],
   },
 ];
 
-export type Differentiator = { area: string; title: string; body: string };
+// Why Ares: the capability statement's three differentiators, plus restricted-area
+// experience (owner, 2026-10-05). Each carries its proof.
+export type Differentiator = { title: string; body: string; proof: string; href?: string };
 
 export const DIFFERENTIATORS: Differentiator[] = [
   {
-    area: 'Methodology',
-    title: 'Four-stage deployment process',
-    body: 'Technical audit, compliance mapping, guard training, deployment. Repeatable, documented, and audit-ready on day one. Every officer is trained on-post by leadership before their first shift.',
+    title: 'Restricted-area experience',
+    body: 'Our officers stand restricted posts at Buckley Space Force Base, including TS/SCI-cleared escort duty. We work to the badging, escort, and documentation rules high-compliance sites require, and our post orders and reports are written for contracting officers.',
+    proof: 'Buckley SFB · DoW-vetted · TS/SCI escorts',
   },
   {
-    area: 'Team',
-    title: 'Cleared, licensed, and supervised on post',
-    body: 'DoW-vetted personnel, including TS/SCI-cleared escort officers at Buckley SFB. State licensing and firearms qualifications current at time of post, with no liability gaps. Our supervisors include veterans.',
+    title: 'Four-stage deployment',
+    body: 'Every engagement runs in four stages: technical audit, compliance mapping, guard training, and deployment. Every officer is trained on the post by a member of leadership who has worked it, before the first shift.',
+    proof: 'Trained on post by leadership',
   },
   {
-    area: 'Documentation',
-    title: 'Technical submittals to federal standard',
-    body: 'Proposals, post orders, briefings, and reporting built for contracting officers, not boilerplate. WOSB and WBE certified, GSA Schedule holder, SAM-registered through March 2027. Audit-ready records on request.',
+    title: 'Rated Exceptional by clients',
+    body: 'Clients rate Ares Exceptional on 16 of 18 criteria across multi-year contracts, including quality of services, overall performance, and repeat business, over 2+ years of monitored performance.',
+    proof: '16 of 18 criteria · questionnaires on request',
+  },
+  {
+    title: 'Rated 4.8 by our own officers',
+    body: 'Our officers rate Ares 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.',
+    proof: '4.8 / 5 on Indeed',
+    href: 'https://www.indeed.com/cmp/Ares-Security-1/reviews',
   },
 ];
 

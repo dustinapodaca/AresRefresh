@@ -316,6 +316,12 @@ body, and the single rust horizon glow at the close.
   scroll in the right half. The active step reads at full ink; the rest rest at 0.8
   opacity, the floor that keeps dimmed body copy at AA contrast. On mobile it unpins into a plain sequence.
 
+### Expandable service cards (owner request, 2026-10-05)
+- The one exception to "no card containers", "no glow shadows", and "no icon circles":
+  the division cards on Services and the competency cards on the Capability Statement.
+  Near-black fill, a white/8 to 10% inset edge, a faint inner light from below, 14 to 18px
+  radius, and a 36px circular + that turns to an x on an ink disc. Nowhere else.
+
 ### Credential strip
 - Phones only (hidden from 768px). Between the hero and 01 Verify: the
   certification marks only (GSA, SBA, Women Owned, WBENC, Denver Economic Development &
@@ -413,14 +419,20 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   document is hidden (owner) and the copy starts low in the light. Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 28%-to-0 tint, about
   26rem past the row) that fades out downward (owner, 2026-10-05).
-- **Capabilities:** six ruled entries (number beside the title, body, keys as a mono
-  middle-dot line), three columns on desktop, two on tablet. Phones: each folds to its
-  name and keys; the h3 holds a disclosure button (aria-expanded) so headings stay
-  navigable. Prerendered open; folded before paint on phones; reopened if the screen
-  grows past phone width.
-- **Why Ares:** three columns (mono number beside an Inter Tight title, body, then the
-  area as a mono line beneath; never above the heading). Phones: a
-  swipe row with the Home meter.
+- **Capabilities (second pass, 2026-10-05):** six cards in the Services card language
+  without photos (#0e1013 fill, white/8% edge, faint light from below, 14px radius): mono
+  number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
+  (hidden on phones). Three columns on
+  desktop, two on tablet, one on phones. The + opens one card at a time in place: it
+  spans its row and moves (in the DOM) to the start of it, so tab order matches; the
+  closed cards after it widen to fill the last row (six-track grid on desktop). It lists
+  four included services in
+  two columns (one on phones). FLIP motion as on Services; on phones the opened card
+  glides under the nav and running head. The h3 holds the disclosure button.
+- **Why Ares (second pass):** four differentiators, each with a mono proof line:
+  restricted-area experience, four-stage deployment, client rating, officer rating (the
+  Indeed proof links to the reviews).
+  2x2 on hairlines on desktop; a swipe row with the Home meter on phones.
 - **How to buy:** the GSA MAS as a spec block (title, mono status "● Active", spec rows,
   eLibrary route) beside the four procurement paths with mono status (13px, sentence
   case) and the set-aside note. Status lights kept from the old page (owner): green

@@ -219,3 +219,36 @@ and to the new hero.
 | (four marks) | Seven marks: adds Denver M/WBE · SBE certified (B2G vendor 21353671, from the PDF), Colorado Verified Diverse Business, Colorado Verified Small Business | Owner-supplied logos (2026-10-05) |
 | "DUNS: Legacy — UEI is the SAM identifier going forward" | "Legacy. UEI is the SAM identifier going forward" | E |
 | "[ DOWNLOAD ] Take this capability statement with you." | "Take this capability statement with you." + Download, Open the PDF (new tab), quote, phone | Bracketed eyebrow removed |
+
+## Capability Statement, second pass (2026-10-05)
+
+Owner brief: keep every identifier; make the hero, competencies, and Why Ares clearer and
+fuller.
+
+| Was | Now | Why |
+|---|---|---|
+| Hero lead "Colorado-based security guard and patrol services for commercial clients, agencies, and prime contractors." | "Armed, unarmed, and patrol security officers for agencies, prime contractors, and commercial sites across Colorado. Every identifier you need to vet us is on this page and in the one-page PDF." | Direct; says what the page is for |
+| Six competency rows (title, body, keys) | Six cards: title, one line, keys; opening a card lists four included services, one line each | Owner asked for more elaboration |
+| Why Ares: Four-stage deployment; Cleared, licensed, and supervised on post; Technical submittals | Restricted-area experience (new); Four-stage deployment; Rated exceptional by clients; Officers who stay | From the capability statement PDF's differentiators, plus the owner's restricted-area item. "Cleared/licensed" and "submittals" folded into restricted-area experience |
+
+**Sourced from the capability statement PDF:** "Exceptional on 16 of 18 criteria across
+multi-year contracts, including quality of services, overall performance, and repeat
+business, over 2+ years of monitored performance"; "Rated 4.8 out of 5 on Indeed.
+Management and work-life balance are the highest-scoring categories."
+
+**DRAFT included-service lines, new to the site (owner to review):** Lobby and front desk;
+Plainclothes officers (existing fact, new line); Fire watch (owner's example); Multi-property
+routes; After-hours checks (existing fact, new line); Coordination with staff and first
+responders; Fixed armed posts. Every other included line restates the old competency text,
+the PDF, or existing site facts (veteran NRA firearms instructor; Buckley SFB TS/SCI escorts;
+GPS-verified routes; post-incident reporting).
+
+Finish-review follow-ups (same day): hero lead now "Armed, unarmed, and cleared security
+officers for federal agencies, prime contractors, and commercial sites across Colorado.
+Every identifier you need to vet us is below and in the one-page PDF."; "no gaps in
+coverage" replaced with the real figure (fewer than 1% missed shifts since 2021, on-call
+scheduling in every contract); "Officers who stay" retitled "Rated 4.8 by our own
+officers" (no retention claim), with the Indeed reviews linked; "16 of 18" proof notes
+questionnaires on request; card lines now say who each service is for; patrol's "Mobile
+patrol" include replaced by "Checkpoint logs" (vehicle patrol is its own card); Why Ares
+lead "Four reasons, each with its source."

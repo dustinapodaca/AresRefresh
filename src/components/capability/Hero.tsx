@@ -26,8 +26,9 @@ export default function Hero() {
             Capability statement.
           </h1>
           <p className="ds-lead">
-            Colorado-based security guard and patrol services for commercial clients, agencies,
-            and prime contractors.
+            Armed, unarmed, and cleared security officers for federal agencies, prime contractors,
+            and commercial sites across Colorado. Every identifier you need to vet us is below and
+            in the one-page PDF.
           </p>
           <p className="ds-cs-hero-creds">GSA Schedule holder · SAM-registered · WOSB and WBE certified</p>
           <div className="ds-actions">

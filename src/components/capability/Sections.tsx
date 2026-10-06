@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -31,19 +32,89 @@ function Chevron() {
   );
 }
 
-// 01 Capabilities: six ruled entries, three columns on desktop. Phones: each folds to its
-// name and keys; the heading's button opens the description (a heading containing a
-// disclosure button, so screen readers keep the headings).
+// 01 Capabilities: six cards (the Services card language, without photos). The + opens
+// a card in place: it takes its row's full width, keeps its row (row-mates move after
+// it), and lists what the service includes. One open at a time; a FLIP glides the rest.
+// Phones: the opened card glides to just under the nav and running head.
+const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)';
+
+function useCols() {
+  const [cols, setCols] = useState(1);
+  useLayoutEffect(() => {
+    const wide = window.matchMedia('(min-width: 1024px)');
+    const mid = window.matchMedia('(min-width: 768px)');
+    const sync = () => setCols(wide.matches ? 3 : mid.matches ? 2 : 1);
+    sync();
+    wide.addEventListener('change', sync);
+    mid.addEventListener('change', sync);
+    return () => {
+      wide.removeEventListener('change', sync);
+      mid.removeEventListener('change', sync);
+    };
+  }, []);
+  return cols;
+}
+
 export function Capabilities() {
-  const phone = usePhone();
-  const [open, setOpen] = useState<ReadonlySet<number>>(() => new Set());
-  const toggle = (i: number) =>
-    setOpen((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
+  const [openId, setOpenId] = useState<string | null>(null);
+  const cols = useCols();
+  const gridRef = useRef<HTMLOListElement>(null);
+  // The open card moves (in the DOM, so tab order matches) to the start of its row; the
+  // closed cards after it widen as needed so the last row has no hole.
+  const openAt = openId ? CAPABILITIES.findIndex((c) => c.id === openId) : -1;
+  const list = CAPABILITIES.map((c, i) => ({ c, i }));
+  if (openAt >= 0) {
+    const rowStart = openAt - (openAt % cols);
+    const [opened] = list.splice(openAt, 1);
+    list.splice(rowStart, 0, opened);
+  }
+  const span = new Map<string, number>();
+  if (openAt >= 0 && cols > 1) {
+    const after = list.slice(list.findIndex((x) => x.c.id === openId) + 1);
+    const left = after.length % cols;
+    if (left) {
+      const tail = after.slice(after.length - left);
+      // 3 columns run on a 6-track grid (closed cards span 2): 2 left over span 3 each,
+      // 1 spans the row. 2 columns: 1 left over spans the row.
+      tail.forEach((x) => span.set(x.c.id, cols === 3 ? 6 / left : 2));
+    }
+  }
+
+  const toggle = (id: string) => {
+    const next = openId === id ? null : id;
+    const cards = gridRef.current ? (Array.from(gridRef.current.children) as HTMLElement[]) : [];
+    const first = new Map(cards.map((c) => [c, c.getBoundingClientRect()]));
+    flushSync(() => setOpenId(next));
+    // React may have moved the card in the DOM; keep focus on its button.
+    document.querySelector<HTMLButtonElement>(`#cap-${id} .ds-cs-card-head button`)?.focus({ preventScroll: true });
+    const opened = next ? document.getElementById(`cap-${next}`) : null;
+    if (opened && window.matchMedia(PHONE).matches) {
+      const floor = parseFloat(getComputedStyle(opened).scrollMarginTop) || 120;
+      window.scrollBy({ top: opened.getBoundingClientRect().top - floor, behavior: 'instant' as ScrollBehavior });
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    for (const card of cards) {
+      const a = first.get(card);
+      const b = card.getBoundingClientRect();
+      if (!a) continue;
+      const dx = a.left - b.left;
+      const dy = a.top - b.top;
+      const grows = b.width > a.width + 1 || b.height > a.height + 1;
+      if (!grows && Math.abs(dx) < 1 && Math.abs(dy) < 1) continue;
+      const from: Keyframe = { transform: `translate(${dx}px, ${dy}px)` };
+      const to: Keyframe = { transform: 'translate(0, 0)' };
+      if (grows) {
+        from.clipPath = `inset(0 ${Math.max(0, b.width - a.width)}px ${Math.max(0, b.height - a.height)}px 0 round 14px)`;
+        to.clipPath = 'inset(0 0 0 0 round 14px)';
+      }
+      const anim = card.animate([from, to], { duration: 320, easing: EASE });
+      if (card === opened) {
+        card.style.zIndex = '1';
+        const reset = () => card.style.removeProperty('z-index');
+        anim.finished.then(reset, reset);
+      }
+    }
+  };
 
   return (
     <section id="capabilities" className="ds-cs-caps" aria-labelledby="caps-title">
@@ -51,34 +122,35 @@ export function Capabilities() {
         <h2 id="caps-title" className="ds-display-lg">
           Core competencies.
         </h2>
-        <p className="ds-lead">Six services, each staffed by officers trained on your post before their first shift.</p>
+        <p className="ds-lead">Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.</p>
       </div>
-      <ol className="ds-cs-caps-list">
-        {CAPABILITIES.map((c, i) => {
-          const shown = !phone || open.has(i);
-          const bodyId = `cap-body-${i}`;
-          const inner = (
-            <>
-              <span className="ds-data ds-cs-n">{n2(i)}</span>
-              <span className="ds-cs-cap-title">{c.title}</span>
-              {phone && <Chevron />}
-            </>
-          );
+      <ol className="ds-cs-cards" ref={gridRef}>
+        {list.map(({ c, i }) => {
+          const open = openId === c.id;
+          const panel = `cap-${c.id}-includes`;
+          const w = span.get(c.id);
           return (
-            <li key={c.title} className="ds-cs-cap" data-open={shown}>
-              <h3 className="ds-cs-cap-head">
-                {phone ? (
-                  <button type="button" aria-expanded={shown} aria-controls={bodyId} onClick={() => toggle(i)}>
-                    {inner}
-                  </button>
-                ) : (
-                  <span>{inner}</span>
-                )}
+            <li key={c.id} id={`cap-${c.id}`} className="ds-cs-card" data-open={open} style={w ? { gridColumn: `span ${w}` } : undefined}>
+              <h3 className="ds-cs-card-head">
+                <button type="button" aria-expanded={open} aria-controls={panel} onClick={() => toggle(c.id)}>
+                  <span className="ds-data ds-cs-n" aria-hidden="true">{n2(i)}</span>
+                  <span className="ds-cs-card-title">{c.title}</span>
+                  <span className="ds-svc-plus" aria-hidden="true">
+                    <span />
+                    <span />
+                  </span>
+                </button>
               </h3>
-              <p id={bodyId} className="ds-cs-cap-body" hidden={!shown}>
-                {c.body}
-              </p>
+              <p className="ds-cs-card-line">{c.line}</p>
               <p className="ds-data ds-cs-keys">{c.keys.join(' · ')}</p>
+              <ul id={panel} className="ds-cs-includes" hidden={!open}>
+                {c.includes.map((x) => (
+                  <li key={x.name}>
+                    <span className="ds-cs-inc-name">{x.name}</span>
+                    <span className="ds-cs-inc-detail">{x.detail}</span>
+                  </li>
+                ))}
+              </ul>
             </li>
           );
         })}
@@ -87,13 +159,17 @@ export function Capabilities() {
   );
 }
 
-// 02 Why Ares: three differentiators. Phones: a swipe row with the Home meter.
+// 02 Why Ares: four differentiators, each with its proof line. Desktop: a 2x2 grid on
+// hairlines. Phones: a swipe row with the Home meter.
 export function Why() {
   return (
     <section id="why" className="ds-cs-why" aria-labelledby="why-title">
-      <h2 id="why-title" className="ds-display-lg">
-        Why Ares.
-      </h2>
+      <div className="ds-cs-head">
+        <h2 id="why-title" className="ds-display-lg">
+          Why Ares.
+        </h2>
+        <p className="ds-lead">Four reasons, each with its source.</p>
+      </div>
       <ol className="ds-cs-why-row">
         {DIFFERENTIATORS.map((d, i) => (
           <li key={d.title}>
@@ -102,7 +178,16 @@ export function Why() {
               <span>{d.title}</span>
             </h3>
             <p className="ds-body">{d.body}</p>
-            <p className="ds-data ds-cs-why-area">{d.area}</p>
+            <p className="ds-data ds-cs-why-proof">
+              {d.href ? (
+                <a href={d.href} target="_blank" rel="noopener noreferrer" className="ds-link ds-data">
+                  {d.proof}
+                  <Arrow external size={12} />
+                </a>
+              ) : (
+                d.proof
+              )}
+            </p>
           </li>
         ))}
       </ol>
