@@ -55,7 +55,12 @@ export default function Hero() {
           <li key={f.label}>
             <span className="ds-data">{f.value}</span>
             <span className="ds-small">{f.label}</span>
-            <span className="ds-cs-fact-note">{f.note}</span>
+            {/* Each line of a note is its own row, spaced like the label above it. */}
+            {f.note.split('\n').map((line) => (
+              <span key={line} className="ds-cs-fact-note">
+                {line}
+              </span>
+            ))}
             {f.verify && (
               <a href={SAM_VERIFY} target="_blank" rel="noopener noreferrer" className="ds-link ds-cs-verify">
                 Verify on SAM.gov
