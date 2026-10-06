@@ -486,6 +486,29 @@ docs/contact-concepts.md.
   mono (30 to 40px) over the rust light, the email; "What happens next" as three ruled
   steps; the Colorado coverage map from Home. Phones: the intake first, then this column.
 
+### Careers page ("The Roster", 2026-10-05)
+Recruits: the roles first, the reasons beside real Ares people. Concept and Mobbin board:
+docs/careers-concepts.md. Rail marks: Roles, Why people stay, How we work, Apply.
+- **Opening:** the Colorado Springs skyline (`careers-hero.jpg`, captioned; the route's SEO
+  preload) as a band, "Join the team." and the lead low on it, the primary "See open roles"
+  and the careers email, then the Indeed rating as a small linked proof ("4.8 / 5 Rated by
+  our employees on Indeed").
+- **01 Roles:** a quiet table on hairlines (Runway and Linear on Mobbin): role and line,
+  location, and an Apply route that opens an email with the role in the
+  subject. Column heads in mono on desktop (visually hidden but announced below 1024px);
+  rows stack on phones. No type column: the title names it.
+- **02 Why people stay:** the team at the range (sticky on desktop, captioned) beside the
+  Indeed rating with its reviews link and four reasons on hairlines.
+- **03 How we work:** an Ares officer at the range as a 16:9 plate across nine columns
+  (the photo is too small for full bleed; no settle scale), then "People first." and the
+  well-being paragraphs. Each section ends on a hand-off line; gaps run beat, tight,
+  beat, open.
+- **04 Apply (the close):** "Send us your résumé." with the careers email large in mono over
+  the rust light.
+- **Rail (`list`):** the section names in Inter, dimmed, the current one in ink with a 6px
+  dot that moves to it (220ms; instant under reduced motion).
+- The docked apply card and the footer's extra top padding on /careers were removed.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
   each with a large mono numeral, and a hairline progress bar that fills as the row
@@ -531,7 +554,6 @@ light, Cosmos's statement beside the mark). Same canvas, no top rule, a `beat` a
   identifiers stacked label over value.
 - Then the certification marks separated by thin vertical lines, and the legal row on a
   hairline: copyright, "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
-- Only /careers extends the footer's top padding for a docked card.
 - A closing giant wordmark with a pointer-led light was tried and removed (owner,
   2026-10-05). The large "Get to know Ares" index was removed earlier (2026-10-04).
 

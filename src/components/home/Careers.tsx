@@ -10,8 +10,7 @@ export default function Careers() {
             Join the people who staff them.
           </h2>
           <p className="ds-body">
-            We hire for armed, unarmed, cleared, and office roles, with paid training and real
-            growth paths. Our supervisors include veterans, and our NRA firearms instructor is a
+            We hire for armed, unarmed, and cleared roles, with paid training. Our supervisors include veterans, and our NRA firearms instructor is a
             veteran. Veterans are encouraged to apply.
           </p>
           <Link to="/careers" className="ds-link">

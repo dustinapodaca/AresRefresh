@@ -19,7 +19,7 @@ web
 - **Facility managers** *(brief)* at commercial, industrial, and institutional sites who
   need dependable coverage and a responsive point of contact.
 - **Procurement teams** *(brief)* assembling vendor files and comparing contractors.
-- Secondary: **job seekers** applying for armed, unarmed, cleared, and office roles
+- Secondary: **job seekers** applying for armed, unarmed, and cleared roles (no office roles; owner, 2026-10-05)
   *(site: /careers)*.
 
 ## Product Purpose

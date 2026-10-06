@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
 import { SAM_VERIFY } from './capability/data';
@@ -8,12 +8,8 @@ import { SAM_VERIFY } from './capability/data';
 // quote, phone, and email beside it; then the columns, with the SAM.gov registration as
 // a live status; then the certification marks and the legal row.
 export default function Footer() {
-  const { pathname } = useLocation();
-  // /careers docks a CTA card ~290px into the footer's top edge.
-  const extended = pathname === '/careers';
-
   return (
-    <footer className="ds ds-footer" data-extended={extended}>
+    <footer className="ds ds-footer">
       <div className="ds-container">
         <div className="ds-ft-top">
           <div className="ds-ft-intro">

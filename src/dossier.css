@@ -319,8 +319,6 @@ body:has(.ds-page) {
   padding-top: var(--ds-beat);
   padding-bottom: 32px;
 }
-/* /careers docks a card ~290px into the footer (see that page). */
-.ds-footer[data-extended='true'] { padding-top: calc(290px + var(--ds-beat)); }
 /* Top: the mark and the company line set large (left), the quote, phone, and email (right). */
 /* The mark, a hairline, and the ARES / SECURITY text logo (ares-text.svg). */
 /* Proportions from the owner's lockup: the text logo nearly the mark's height, the rule a
@@ -631,6 +629,26 @@ body:has(.ds-page) {
 .ds-tk a[aria-current='location'] .ds-tk-label { opacity: 1; transform: none; }
 .ds-tk a[aria-current='location'] .ds-tk-label,
 .ds-tk a:hover .ds-tk-label { color: var(--ds-fg); }
+
+/* list (Careers): the section names dimmed, the current one in ink with a dot that
+   moves to it. Rows are a fixed 32px so the dot can step by index. */
+.ds-rl-wrap { position: relative; padding-left: 18px; }
+.ds-rail .ds-rl { list-style: none; margin: 0; padding: 0; }
+.ds-rail .ds-rl a { display: flex; align-items: center; height: 32px; padding: 0; font-family: var(--ds-text); font-size: 14px; font-weight: 400; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+.ds-rail .ds-rl a:hover { color: var(--ds-fg-muted); }
+.ds-rail .ds-rl a[aria-current='location'] { color: var(--ds-fg); }
+.ds-rl-dot {
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ds-fg);
+  transform: translateY(calc(var(--i, 0) * 32px));
+  transition: transform 220ms var(--ds-ease), opacity 180ms var(--ds-ease);
+}
+.ds-rl-wrap[data-idle] .ds-rl-dot { opacity: 0; }
 
 /* counter (About): the section number set large, rolling up to the next. */
 .ds-count { display: grid; }
@@ -2359,6 +2377,153 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-qt-where .ds-map { margin-top: 20px; }
 
 /* ============================================================
+   CAREERS ("The Roster", docs/careers-concepts.md)
+   ============================================================ */
+
+/* ---------- Opening: Colorado Springs, the headline, the rating ---------- */
+.ds-cr-open { position: relative; isolation: isolate; }
+.ds-cr-hero {
+  position: relative;
+  z-index: -1;
+  margin: 0;
+  height: calc(32svh + var(--ds-header));
+  min-height: 300px;
+  overflow: clip;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 45%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 45%);
+}
+.ds-cr-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; filter: saturate(0.8) brightness(0.72); }
+.ds-cr-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(10 11 13 / 0.8) 0%, rgb(10 11 13 / 0.3) 38%, rgb(10 11 13 / 0) 60%); }
+.ds-cr-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
+.ds-cr-open-copy { position: relative; margin-top: -4.5rem; }
+.ds-cr-open-copy .ds-lead { margin-top: 20px; }
+.ds-cr-open-copy .ds-actions { margin-top: 28px; }
+.ds-cr-rating {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--ds-fg-muted);
+  transition: color 180ms var(--ds-ease);
+}
+.ds-cr-rating .ds-data { font-size: 15px; color: var(--ds-fg); }
+.ds-cr-rating:hover { color: var(--ds-fg); }
+@media (min-width: 900px) {
+  .ds-cr-open { display: flex; flex-direction: column; justify-content: flex-end; min-height: 72svh; }
+  .ds-cr-hero { position: absolute; inset: 0; height: auto; }
+  .ds-cr-hero::after {
+    background:
+      linear-gradient(to bottom, rgb(10 11 13 / 0.85) 0%, rgb(10 11 13 / 0.3) 34%, rgb(10 11 13 / 0) 56%),
+      linear-gradient(to right, rgb(10 11 13 / 0.75) 0%, rgb(10 11 13 / 0.35) 45%, rgb(10 11 13 / 0) 70%);
+  }
+  .ds-cr-hero figcaption { top: calc(var(--ds-header) + 20px); }
+  .ds-cr-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+}
+
+/* ---------- 01 Roles: a quiet table on hairlines ---------- */
+.ds-cr-roles { padding-top: var(--ds-beat); }
+.ds-cr-head .ds-lead { margin-top: 16px; }
+.ds-cr-table { margin-top: var(--ds-beat-tight); }
+.ds-cr-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 16px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--ds-rule);
+}
+.ds-cr-row:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-cr-row-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; border: 0; }
+.ds-cr-role { grid-column: 1 / -1; }
+.ds-cr-role h3 { margin: 0; font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
+.ds-cr-role .ds-small { margin-top: 6px; max-width: 56ch; }
+.ds-cr-where { font-size: 15px; color: var(--ds-fg-muted); }
+.ds-cr-apply { grid-column: 1 / -1; }
+.ds-cr-apply .ds-link { display: inline-flex; align-items: center; gap: 6px; }
+@media (min-width: 1024px) {
+  .ds-cr-row { grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) minmax(0, 1fr); column-gap: 24px; padding: 26px 0; }
+  .ds-cr-row-head { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; padding: 0 0 12px; border-top: 0; font-family: var(--ds-data); font-size: 12px; color: var(--ds-fg-faint); }
+  .ds-cr-role, .ds-cr-apply { grid-column: auto; }
+  .ds-cr-apply { justify-self: end; }
+}
+
+/* ---------- 02 Why people stay: the team beside the reasons ---------- */
+.ds-cr-why { display: grid; gap: 40px; padding-top: var(--ds-beat-tight); }
+.ds-cr-team img { aspect-ratio: 1184 / 880; object-fit: cover; }
+/* The hairline edge sits on the image frame, so the caption below stays outside it. */
+.ds-cr-team::after,
+.ds-cr-shot::after { content: none; }
+.ds-cr-team img { display: block; width: 100%; border-radius: 4px; }
+.ds-cr-shot-frame::after { content: ''; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); pointer-events: none; }
+.ds-cr-why-copy .ds-lead { margin-top: 16px; }
+.ds-cr-why-copy .ds-lead .ds-link { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.ds-cr-reasons { list-style: none; margin: 32px 0 0; padding: 0; }
+.ds-cr-reasons li { padding: 18px 0; border-top: 1px solid var(--ds-rule); }
+.ds-cr-reasons li:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-cr-reasons h3 { margin: 0 0 6px; font-size: 18px; font-weight: 600; letter-spacing: -0.015em; color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  .ds-cr-why { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-cr-team { grid-column: 1 / span 6; position: sticky; top: calc(var(--ds-header) + 48px); }
+  .ds-cr-why-copy { grid-column: 8 / span 5; }
+}
+
+/* ---------- 03 How we work: a wide plate, then the paragraph ---------- */
+.ds-cr-work { padding-top: var(--ds-beat); }
+.ds-cr-shot-frame { position: relative; overflow: clip; border-radius: 4px; }
+.ds-cr-shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 62% 40%; filter: brightness(0.9); border-radius: 4px; }
+@media (min-width: 768px) { .ds-cr-shot img { aspect-ratio: 16 / 9; object-position: 60% 62%; } }
+/* Nine of twelve columns, so the 1184px source is not stretched past its size. */
+@media (min-width: 1024px) { .ds-cr-shot { max-width: 75%; } }
+.ds-cr-work-copy { display: grid; gap: 24px; margin-top: var(--ds-beat-tight); }
+.ds-cr-work-body { display: grid; gap: 16px; }
+@media (min-width: 1024px) {
+  .ds-cr-work-copy { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-cr-work-copy h2 { grid-column: 1 / span 5; }
+  .ds-cr-work-body { grid-column: 7 / span 6; }
+}
+
+/* ---------- 04 Apply: the close, the email over the rust light ---------- */
+.ds-cr-apply-close {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 32px;
+  padding-top: var(--ds-beat-open);
+  padding-bottom: var(--ds-beat);
+}
+.ds-cr-apply-close::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--ds-edge));
+  width: 100vw;
+  background: radial-gradient(ellipse 44% 40% at 62% 68%, rgb(188 111 64 / 0.22) 0%, rgb(139 73 32 / 0.1) 50%, rgb(139 73 32 / 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
+  pointer-events: none;
+}
+.ds-cr-apply-copy .ds-lead { margin-top: 20px; }
+.ds-cr-apply-side { display: grid; justify-items: start; gap: 22px; min-width: 0; }
+.ds-cr-email { font-size: clamp(20px, 5.6vw, 34px); overflow-wrap: anywhere; }
+@media (max-width: 639px) {
+  .ds-cr-apply-side .ds-actions { justify-self: stretch; }
+  .ds-cr-apply-side .ds-actions .ds-btn { width: 100%; }
+}
+@media (max-width: 1023px) {
+  .ds-cr-apply .ds-link,
+  .ds-cr-open-copy .ds-actions .ds-link { padding-block: 12px; margin-block: -12px; }
+}
+@media (min-width: 1024px) {
+  .ds-cr-apply-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-cr-apply-copy { grid-column: 1 / span 6; }
+  .ds-cr-apply-side { grid-column: 7 / span 6; }
+}
+
+/* ============================================================
    Scroll-driven motion. Static and fully visible by default, when
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
@@ -2516,6 +2681,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-svc-cities .ds-arrow { transition-duration: 0s; }
   .ds-ab-commit-group[data-active='true'] { animation: none; }
   .ds-count-n span { animation: none; }
+  .ds-rl-dot { transition-duration: 0s; }
   .ds-qt-dot,
   .ds-qt-dot::after,
   .ds-qt-need,

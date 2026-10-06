@@ -309,3 +309,39 @@ Courteous → **A**pproachable, **L**icensed, **E**xperienced, **R**ooted, **T**
 that order. Lines kept with two trims: Approachable "People who treat clients and the
 public with respect." (was "Approachable people who…"); Licensed "Background-checked and
 cleared before they reach your post." (was "…and licensed…").
+
+# Copy changes (Careers, "The Roster", 2026-10-05)
+
+Inventory: docs/careers-content.md. Concept: docs/careers-concepts.md.
+
+| Was | Now | Why |
+|---|---|---|
+| H1 "Join Our *Team*" | "Join the team." | No italic accent word; sentence case |
+| "Disciplined work, fair pay, real career growth. At Ares, you're more than a security guard — you're part of a team that runs to a federal standard and treats its people that way." | "We hire for armed, unarmed, and cleared roles, with paid training and real growth paths." | Home's careers line; no em-dash; "fair pay" and "federal standard" unsourced |
+| Stats "4.8 Indeed Rating", "100% Licensed Officers", "VET Veteran-Friendly" | "4.8 / 5 Rated by our officers on Indeed" (linked) | The rating is sourced (PDF); the other two are an unsourced stat and a label |
+| "You Grow *With Us*" + two paragraphs | "People first." + "The well-being of our people comes first. Healthy officers do better work, so we plan for a real balance between work and rest." / "You are more than a guard here. As the company grows, you get room to try customer-facing, technical, overnight, and operational assignments that fit your skills." | Same facts, shorter; no em-dash |
+| "Four Reasons People *Stay*" | "Why people stay." + "Our officers rate Ares 4.8 out of 5 on Indeed, with management and work-life balance scoring highest." | Proof from the PDF |
+| Real Voice on Site / Growth Beyond the Post / Veteran-Friendly / Paid Training & Cert Renewals | A real voice on site / Growth beyond the post / Veterans welcome / Paid training and renewals | Sentence case; "Veteran-Friendly" line ("Military discipline carries weight here…") replaced by the confirmed veteran facts (PRODUCT.md) |
+| "Who We *Hire*" | "Open roles." + "Posts across Colorado Springs, Denver, and Pueblo." | No italic accent |
+| Role lines | Unchanged facts; "high-value" dropped from Armed; Cleared line made a full sentence | Plain copy |
+| "We Grow *Together.* Send Us Your Resume To Apply Now." | "Send us your résumé." + "Tell us the role and the city you want to work in." | No italic accent |
+| Apply links | Each role's Apply opens an email to careers@aressecurity.co with "Application: <role>" as the subject | Faster application |
+
+Office roles removed site-wide (2026-10-05, owner: Ares does not hire for office roles).
+Home careers and the Careers lead now read "We hire for armed, unarmed, and cleared roles,
+with paid training and real growth paths."; the Careers office-roles note and the old
+"Office & Field" tag are gone; PRODUCT.md updated.
+
+Careers finish review (same day): the rating reads "employees", as in PRODUCT.md ("Rated by
+our employees on Indeed", "Our employees rate Ares 4.8…"); hand-off lines added: "What that
+looks like day to day." (end of Why people stay) and "If that sounds like your kind of
+team, write to us." (end of How we work); the Type column dropped (the title names it).
+
+Growth claims removed (2026-10-05, owner: growth beyond the post is a goal, not yet true).
+"Growth beyond the post" (paths into operations, scheduling, training, account management,
+marketing; promote from inside) → "Schedules you can plan around: Shifts are posted far
+enough ahead to plan a life around, with no endless doubles." (About's people commitment).
+Careers lead: "…with paid training and schedules you can plan a life around." Home careers:
+"…with paid training." (dropped "and real growth paths"). People first: "As the company
+grows, we want our people to grow with it." (stated as an aim).
+

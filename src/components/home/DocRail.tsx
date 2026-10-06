@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
 export type Mark = { id: string; n: string; label: string };
 
@@ -10,7 +10,9 @@ export type Mark = { id: string; n: string; label: string };
 //  dock     Services: a bar fixed at the bottom center, a segment per section (all but
 //           the close) filling as you read, like the page's own stage meter.
 //  counter  About: the section number large, rolling to the next, with its name and bars.
-export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter';
+//  list     Careers: the section names in Inter, dimmed, the current one in ink with a
+//           small dot that moves to it (Intercom's list on Mobbin).
+export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter' | 'list';
 
 // The running document marks. These are the only section numbers on the page.
 // Home uses these; other pages pass their own.
@@ -130,6 +132,23 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
                 );
               })}
             </ol>
+          </nav>
+        )}
+
+        {variant === 'list' && (
+          <nav className="ds-rail-nav">
+            <div className="ds-rl-wrap" style={{ '--i': Math.max(0, index) } as CSSProperties} data-idle={!current || undefined}>
+              <span className="ds-rl-dot" aria-hidden="true" />
+              <ol className="ds-rl">
+                {marks.map((m) => (
+                  <li key={m.id}>
+                    <a href={`#${m.id}`} aria-current={here(m.id)}>
+                      {m.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </nav>
         )}
 
