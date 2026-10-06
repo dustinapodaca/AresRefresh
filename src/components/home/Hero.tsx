@@ -5,9 +5,10 @@ import { GSA_ELIBRARY } from './links';
 export default function Hero() {
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
-      {/* Copper-glass towers. Bleeds off the right edge and runs down under 01 Verify. */}
+      {/* Frosted glass panels in copper and steel-teal light (generated, assets/generated/hero-g).
+          Full bleed from 900px; runs down under 01 Verify. */}
       <div className="ds-hero-photo" aria-hidden="true">
-        <img src="/images/hero6.jpg" alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+        <img src="/images/hero-glass.jpg" width={2400} height={1600} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container">

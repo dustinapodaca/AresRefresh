@@ -259,10 +259,15 @@ body, and the single rust horizon glow at the close.
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero photo:** square edges, full bleed behind the hero copy on desktop and tablet
-  (owner request, 2026-10-05), graded darker and shaded from the left so the copy reads,
-  faded into the canvas at the bottom with a mask. On phones it sits above the copy, full
-  width, faded at the bottom.
+- **Hero image (Home):** `hero-glass.jpg`, a generated image (source and prompt in
+  `assets/generated/hero-g`) of translucent frosted glass panels lit by soft copper
+  and steel-teal light (owner pick, 2026-10-05). It is the one owner-approved exception
+  to "no gradients for decoration": the aurora light lives inside the image, never as a
+  CSS gradient on the page. Square edges; full bleed behind the hero copy from 900px,
+  shaded from the left so the copy reads, and masked into the canvas at the bottom. On
+  phones it sits above the copy. Light grade only (`saturate(1) brightness(0.95)`)
+  because the image is already dark. The rust accent was sampled from the earlier
+  copper-glass hero (`hero6.jpg`, kept in public/images).
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
   division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal

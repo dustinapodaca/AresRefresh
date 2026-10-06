@@ -173,7 +173,7 @@ line.
 **Home, top to bottom:**
 1. **Hero:**
    - The h1 "Security guards for federal and commercial sites." is two lines on desktop
-     over the copper-glass tower photo (`hero6.jpg`). From 900px the photo is full bleed
+     over a generated frosted-glass image in copper and steel-teal light (`hero-glass.jpg`, 2026-10-05; the old copper-glass tower `hero6.jpg` stays in public/images). From 900px the photo is full bleed
      behind the copy (darker grade plus a left shade), masked into the canvas at the
      bottom, with a slight parallax. On phones it sits above the copy.
    - Lead copy, the "Request a quote" button, and "Call 719-696-3966".
