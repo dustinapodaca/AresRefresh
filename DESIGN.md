@@ -196,7 +196,8 @@ sizes are unchanged.
 - **Data: IBM Plex Mono 400** with tabular, slashed-zero numerals: identifiers, phone
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
-- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 11vw, 160px), top-aligned with its note.
+- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
+  (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
   the size.
 - No eyebrows or kickers above headings. No bracketed labels.

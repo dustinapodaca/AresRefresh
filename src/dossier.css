@@ -667,6 +667,8 @@ body:has(.ds-page) {
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 767px) { .ds-figure-num { font-size: 22vw; } }
+/* Desktop: a step smaller (owner, 2026-10-05); phones keep 22vw. */
+@media (min-width: 1024px) { .ds-figure-num { font-size: clamp(88px, 8.4vw, 124px); } }
 /* Mobile: the quote sits to the right, right-aligned (it lives in the right-hand columns
    on desktop); the hero's GSA line is centered, its text left-aligned. */
 @media (max-width: 767px) {
