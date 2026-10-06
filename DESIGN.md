@@ -247,7 +247,9 @@ sizes are unchanged.
   - `dock` (Services): a 44px bar fixed at the bottom center (solid canvas, hairline-strong
     edge, 2px corners) with the current mark left, a 44px segment per section filling
     with the reading position (like the page's stage meter), and `02 / 04` right. Slides
-    up once the first section is reached, away once the footer is in view.
+    up once the first section is reached, away once the footer is in view. With nothing
+    on the side, Services drops the rail column: its sections run the full container,
+    centered like the opening (owner, 2026-10-05).
   - `counter` (About): the section number in Plex Mono at 72px, rolling up into place
     (260ms) when it changes, `/ 04` beside it, the name beneath, and a 24px bar per
     section to jump with.

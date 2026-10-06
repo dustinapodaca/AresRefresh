@@ -618,7 +618,11 @@ body:has(.ds-page) {
 
 /* dock (Services): a bar fixed at the bottom center, a segment per section, like the
    page's stage meter. Solid canvas; slides up once the first section is reached and away
-   once the footer is in view. The rail column stays, so the page keeps its layout. */
+   once the footer is in view. With nothing on the side, the page drops the rail column
+   and its sections run the full container, centered like the opening. */
+@media (min-width: 1200px) {
+  .ds-doc:has(> .ds-rail[data-variant='dock']) { grid-template-columns: minmax(0, 1fr); }
+}
 .ds-dock {
   position: fixed;
   left: 50%;
