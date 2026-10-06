@@ -75,9 +75,9 @@ its own desktop section navigator (see "Rails" below).
   - **Ares does not hire for office roles.**
   - **No FCL yet** (2026-10-06): Ares cannot sponsor clearances. Keep copy general (no
     "cleared officers/roles", no "clearance-eligible"). Lead with the restricted-area work
-    (the RA on Buckley SFB, unnamed on the site): workers checked in and out, escorted and
-    monitored, vehicles inspected on entry and exit, daily coordination with base security
-    forces, Ares wrote the SOP. "Cleared staff" only lightly, as trained on the post.
+    (the RA on Buckley SFB, unnamed on the site), said succinctly for clients: access
+    control alongside base security forces, on an SOP Ares wrote. Background duties (worker
+    and vehicle checks in and out, escort, monitoring) are context, not a list to print.
   - **Ares does not do badging** (2026-10-06). Restricted-area experience is stated
     without naming the base ("federal facilities").
   - **"Growth beyond the post" / career growth paths are not true yet.** Don't claim them.

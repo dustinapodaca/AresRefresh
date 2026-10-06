@@ -67,7 +67,7 @@ export const CAPABILITIES: Capability[] = [
       { name: 'Credential verification', detail: 'IDs, badges, and access lists checked at every entry point.' },
       { name: 'Visitor screening', detail: 'Sign-in, ID checks, and a visitor log you can audit.' },
       { name: 'Gate, dock, and lobby control', detail: 'People, vehicles, and deliveries checked against your post orders before they enter.' },
-      { name: 'Restricted-area escort', detail: 'Entry checks, escort, and monitoring for workers in restricted areas, with vehicles inspected on entry and exit.' },
+      { name: 'Restricted-area escort', detail: 'Personnel and vehicle checks, escort, and monitoring inside restricted areas.' },
     ],
   },
   {
@@ -115,7 +115,7 @@ export type Differentiator = { title: string; body: string; proof: string; href?
 export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
-    body: 'We run entry control for a restricted area on a military installation. Our officers check every worker in and out, escort and monitor them inside, inspect vehicles on entry and exit, and coordinate with base security forces every day. We wrote the post\u2019s SOP, and our cleared staff are trained on it before their first shift.',
+    body: 'We run access control for a restricted area on a military installation, working alongside base security forces every day. We wrote the post\u2019s SOP and train every officer on it.',
     proof: 'Restricted area · Military installation · DoW-vetted',
   },
   {
