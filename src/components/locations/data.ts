@@ -102,8 +102,21 @@ export const DENVER: LocationFile = {
   licenseTitle: 'Licensed in Denver.',
   licenseIntro: 'Colorado has no statewide security license. Denver licenses security companies itself, and these are ours here.',
   license: [
-    // The city's public license record goes here as "Verify" once the owner sends it.
-    { label: 'Private Security Employer license', value: '2021-BFN-0001984', mono: true },
+    {
+      label: 'Private Security Employer license',
+      value: '2021-BFN-0001984',
+      mono: true,
+      route: {
+        links: [
+          // The city's public license record (Accela).
+          {
+            label: 'Verify',
+            href: 'https://aca-prod.accela.com/DENVER/Cap/CapDetail.aspx?Module=Licenses&TabName=Licenses&capID1=21CAP&capID2=00000&capID3=014GJ&agencyCode=DENVER&IsToShowInspection=',
+            external: true,
+          },
+        ],
+      },
+    },
     { label: 'Status', value: 'Licensed and bonded for armed and unarmed security' },
     { label: 'Training provider', value: 'Armed and unarmed, an eligible training provider in Denver' },
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },

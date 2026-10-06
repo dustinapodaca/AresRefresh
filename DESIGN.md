@@ -541,7 +541,7 @@ per city. No rail, no close, no photo, no section numbers.
 - **Licensed in <city>:** Colorado has no statewide license; the city licenses security
   companies itself. The city's license as Home's ledger row (label, mono value, route):
   license number with "Verify ↗" (the city's public record; Colorado Springs: Accela;
-  Denver: to come; Pueblo has none, so "Request a copy", an email), status (licensed and bonded, armed and
+  Denver: Accela; Pueblo has none, so "Request a copy", an email), status (licensed and bonded, armed and
   unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
 - **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
   (4 + 3), each column closed by a hairline; each row is
