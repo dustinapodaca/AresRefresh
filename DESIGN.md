@@ -500,8 +500,9 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
 - **02 Why people stay (the frame as a camera; owner asked for something new, 2026-10-05):**
   the headline with the Indeed rating and the well-being paragraph beside it, then one
   photo frame that holds still (sticky; under the running head on phones) while the four
-  reasons scroll past. As each reason crosses the middle of the viewport the frame zooms
-  and pans across the team photo to a different group (280ms, interruptible), and cuts
+  reasons scroll past. As each reason crosses the middle of the viewport the frame drifts
+  slightly toward a different group of the team photo (1.12 zoom at most, 300ms,
+  interruptible; toned down by the owner), and cuts
   to the officer at the range for "Paid training and renewals"; the caption follows the
   shot. Crops frame groups, never one person. The reason in frame reads ink with a rust
   number; the rest rest at 0.8. Replaces the separate officer plate and "People first."

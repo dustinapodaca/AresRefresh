@@ -45,13 +45,13 @@ export function Roles() {
 }
 
 // 02 Why people stay: one frame works like a camera. It holds still while the four
-// reasons scroll past; as each reaches the middle of the screen the frame pans and zooms
-// across the team photo to a different group, and cuts to the officer at the range for
+// reasons scroll past; as each reaches the middle of the screen the frame drifts slightly
+// toward a different group of the team photo (owner: toned down), and cuts to the officer at the range for
 // training. Crops frame groups, never a single person, so no reason is pinned on anyone.
 type Shot = { src: 'team' | 'officer'; x: number; y: number; z: number; caption: string };
 const SHOTS: Shot[] = [
-  { src: 'team', x: 78, y: 38, z: 1.7, caption: 'The Ares team at the range' },
-  { src: 'team', x: 22, y: 38, z: 1.7, caption: 'The Ares team at the range' },
+  { src: 'team', x: 70, y: 45, z: 1.12, caption: 'The Ares team at the range' },
+  { src: 'team', x: 30, y: 45, z: 1.12, caption: 'The Ares team at the range' },
   { src: 'team', x: 50, y: 50, z: 1, caption: 'The Ares team at the range' },
   { src: 'officer', x: 50, y: 50, z: 1, caption: 'An Ares officer at the range' },
 ];
