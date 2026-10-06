@@ -625,8 +625,9 @@ Few, fast, and crisp. Four to six moments per page.
 - Clearances (owner, 2026-10-06): Ares has no facility clearance (FCL) yet and cannot
   sponsor clearances. Keep copy general: never "cleared officers/roles" or
   "clearance-eligible". Lead with the restricted-area work instead: entry control for a
-  restricted area on a military installation (not named), run alongside base security
-  forces, on an SOP Ares wrote. Succinct and client-facing, not a duty list. Only the
+  experience: access control for restricted areas on military installations (plural, not
+  named), alongside base security forces, on SOPs Ares writes. Succinct and client-facing,
+  not a duty list. Only the
   Careers escort role states a clearance requirement.
 
 **Never**

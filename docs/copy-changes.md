@@ -423,3 +423,11 @@ hold" an active clearance, and nothing implies sponsorship.
 | Capability, Access Control, Restricted-area escort | "Personnel and vehicle checks, escort, and monitoring inside restricted areas." |
 | Services, Government card, Restricted areas | "Access control, escort, and vehicle inspection, working alongside base security forces." |
 | Careers, TS Cleared Security Escort | "Escort and access control inside a restricted area on a military installation. Requires an active TS clearance." |
+
+### Fifth pass (2026-10-06, owner): "we have experience", plural
+
+| Where | Now |
+|---|---|
+| Capability, Why Ares | "We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them." / proof "Restricted areas · Military installations · DoW-vetted" |
+| Services, Government card, Restricted areas | "Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces." |
+| Careers, TS Cleared Security Escort | "Escort and access control inside restricted areas on military installations. Requires an active TS clearance." |

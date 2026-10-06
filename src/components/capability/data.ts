@@ -115,8 +115,8 @@ export type Differentiator = { title: string; body: string; proof: string; href?
 export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
-    body: 'We run access control for a restricted area on a military installation, working alongside base security forces every day. We wrote the post\u2019s SOP and train every officer on it.',
-    proof: 'Restricted area · Military installation · DoW-vetted',
+    body: 'We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them.',
+    proof: 'Restricted areas · Military installations · DoW-vetted',
   },
   {
     title: 'Four-stage deployment',
