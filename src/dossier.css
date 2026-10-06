@@ -207,14 +207,6 @@ body:has(.ds-page) {
 @media (min-width: 1024px) {
   .ds-header .ds-mark { width: 50px; height: 52px; }
 }
-.ds-wordmark {
-  display: block;
-  width: 82px;
-  height: 25px;
-  background: var(--ds-fg);
-  -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
-  mask: url(/images/ares-text.svg) center / contain no-repeat;
-}
 .ds-nav { display: none; }
 .ds-nav ul { display: flex; justify-content: center; gap: 36px; list-style: none; margin: 0; padding: 0; }
 .ds-nav-link {
@@ -388,6 +380,18 @@ body:has(.ds-page) {
 .ds-legal ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
 .ds-legal a { color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
 .ds-legal a:hover { color: var(--ds-fg); }
+
+/* The closing wordmark (FooterWordmark.tsx): the stacked ARES / SECURITY lockup across the
+   container, faint ink with a hairline outline. On desktop the pointer carries a soft
+   light (white to rust) across it. */
+.ds-footer-mark { display: block; width: 100%; height: auto; margin-top: var(--ds-beat-tight); overflow: visible; }
+.ds-footer-mark-base path { fill: rgb(238 240 242 / 0.05); stroke: rgb(238 240 242 / 0.24); stroke-width: 0.22; }
+.ds-footer-mark-lit { opacity: 0; transition: opacity 220ms var(--ds-ease); }
+.ds-footer-mark-lit path { fill: url(#ds-footer-light); stroke: url(#ds-footer-light); stroke-width: 0.22; }
+.ds-footer-mark[data-lit] .ds-footer-mark-lit { opacity: 1; }
+@media not ((hover: hover) and (pointer: fine)) {
+  .ds-footer-mark-lit { display: none; }
+}
 
 /* ============================================================
    HOME
@@ -2312,6 +2316,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    ============================================================ */
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ds-footer-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-settle { from { transform: translateY(32px); } to { transform: translateY(0); } }
@@ -2365,6 +2370,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation: ds-ab-settle linear both;
       animation-timeline: --ds-ab-doc;
       animation-range: entry 0% cover 40%;
+    }
+    /* The footer wordmark's outline draws in as it arrives; its faint fill is already there. */
+    .ds-footer-mark-base path {
+      stroke-dasharray: 1;
+      animation: ds-footer-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 55%;
     }
     .ds-svc-pano img {
       animation: ds-plate linear both;

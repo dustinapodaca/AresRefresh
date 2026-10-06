@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { GSA_ELIBRARY } from './home/links';
+import FooterWordmark from './FooterWordmark';
 
 export default function Footer() {
   const { pathname } = useLocation();
@@ -13,7 +14,6 @@ export default function Footer() {
           <div>
             <Link to="/" className="ds-brand" aria-label="Ares Security home" style={{ marginRight: 0 }}>
               <span className="ds-mark" aria-hidden="true" />
-              <span className="ds-wordmark" aria-hidden="true" />
             </Link>
             <p className="ds-small" style={{ marginTop: 18, maxWidth: '34ch' }}>
               A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado
@@ -76,6 +76,8 @@ export default function Footer() {
             <li><a href="#">Accessibility</a></li>
           </ul>
         </div>
+
+        <FooterWordmark />
       </div>
     </footer>
   );
