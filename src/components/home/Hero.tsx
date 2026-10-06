@@ -5,7 +5,7 @@ import { GSA_ELIBRARY } from './links';
 export default function Hero() {
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
-      {/* A glass fold in amber and white light (owner-supplied, mirrored; hero-fold.webp).
+      {/* A glass fold in amber and white light (owner-supplied, hero-fold.webp).
           Full bleed from 900px; runs down under 01 Verify. */}
       <div className="ds-hero-photo" aria-hidden="true">
         <img src="/images/hero-fold.webp" width={2880} height={1620} alt="" decoding="async" {...{ fetchpriority: 'high' }} />

@@ -260,14 +260,16 @@ body, and the single rust horizon glow at the close.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
 - **Hero image (Home):** `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
-  panel with a glowing edge beside a sweep of amber and white light. Mirrored from the
-  source so the dark panel sits behind the copy and the light falls on the right. WebP,
-  2880px, quality 92 with sharp YUV (smooth gradients band at lower quality), 375KB; the
+  panel with a glowing edge beside a sweep of amber and white light. Framed, not
+  mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
+  the light falls between the copy and the glass edge at about three quarters across.
+  WebP, 2880px, quality 92 with sharp YUV (smooth gradients band at lower quality),
+  314KB; the
   source is kept locally in `.impeccable/gen/hero-fold-source.jpg`. It is the one
   owner-approved exception to "no gradients for decoration": the light lives inside the
-  image, never as a CSS gradient on the page. Full bleed from 900px at 50%, with a black
+  image, never as a CSS gradient on the page. Full bleed from 900px, with a black
   shade from the left (solid canvas to 18%, clear by 88%); masked into the canvas at the
-  bottom. Phones: above the copy at 80%. Earlier options (`hero-panels.webp`,
+  bottom. Phones: above the copy at 42%, the edge just right of center. Earlier options (`hero-panels.webp`,
   `hero-glass.jpg`) stay in public/images; the copper-glass tower (`hero6.jpg`) is now
   the Services band and the source of the rust accent.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,

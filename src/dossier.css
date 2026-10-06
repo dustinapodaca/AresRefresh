@@ -424,7 +424,7 @@ body:has(.ds-page) {
   width: 100%;
   height: 112%;
   object-fit: cover;
-  object-position: 80% 50%;
+  object-position: 42% 50%;
   /* The image is already dark; only a light grade. */
   filter: saturate(1) brightness(0.95);
 }
@@ -470,7 +470,9 @@ body:has(.ds-page) {
     mask-image: linear-gradient(to top, transparent 0%, #000 42%);
   }
   .ds-hero-photo img {
-    object-position: 50% 50%;
+    /* Framed from the image's left edge: the light falls between the copy and the
+       glass edge, which lands about three quarters across. */
+    object-position: 0% 50%;
     filter: saturate(1) brightness(0.95);
   }
   /* Shade, not a band: darkens the sky behind the copy and under the nav, with no edge. */
