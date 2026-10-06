@@ -1726,16 +1726,16 @@ body:has(.ds-page) {
   position: absolute;
   z-index: -1;
   top: 0;
-  bottom: -24px;
+  bottom: -14rem;
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
   border-top: 1px solid rgb(255 255 255 / 0.16);
-  background: linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0.35) 55%, rgb(10 11 13 / 0) 100%);
+  background: linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0.4) 40%, rgb(10 11 13 / 0) 100%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
   backdrop-filter: blur(22px) saturate(140%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 100%);
   pointer-events: none;
 }
 .ds-keyrow.ds-cs-facts li { padding-top: 22px; border-top: 0; }
