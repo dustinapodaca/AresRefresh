@@ -1,7 +1,7 @@
 import Seo from '../seo/Seo';
 import DocRail from '../components/home/DocRail';
 import Opening from '../components/about/Opening';
-import Company from '../components/about/Company';
+import Staffing from '../components/about/Staffing';
 import Commitments from '../components/about/Commitments';
 import People from '../components/about/People';
 import { ABOUT_MARKS } from '../components/about/data';
@@ -15,7 +15,7 @@ export default function About() {
       <Opening />
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
-          <Company />
+          <Staffing />
           <Commitments />
           <People />
         </div>

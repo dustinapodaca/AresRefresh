@@ -332,14 +332,18 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   attribution sits beneath in Inter small: role in ink, base in ink muted. No avatar, no card, no quote
   icon.
 
-### Quality statement (Home 02, owner 2026-10-06)
-- "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
-  columns, aligned to the headline's foot), then what it shapes in three parts on
-  hairline-strong rules: Who we hire, How we train, What they carry (Inter 600 22 to 24px,
-  a 16px line each, facts already on the site). Three columns from 768px; stacked on
-  phones. Static.
-- The pinned staffing passage it replaced moved to About (01) as four ruled steps; the
-  swipe-row classes (`.ds-steps`, meter) stay for About People and Capability Why Ares.
+### Quality (Home 02, owner 2026-10-06)
+- Moved whole from About (photo and facts), in exchange for the staffing passage.
+  "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
+  columns, aligned to the headline's foot); then the patrol vehicles as a wide plate (7
+  columns, 16:10, anchored to the photo's foot, captioned) beside the company facts on
+  hairlines (established, ownership, licensed and bonded, NAICS; columns 9 to 12).
+  Phones: stacked, the photo square. The owner allowed the vehicles photo on Home here.
+
+### Pinned passage (About 01 Staffing, moved from Home 2026-10-06)
+- "How we staff a post." On desktop the officer photograph holds still (sticky) in the
+  left half while the four steps scroll in the right half. The active step reads at full
+  ink; the rest rest at 0.8 opacity. Below 1024px the steps become a swipe row with a meter.
 
 ### Expandable service cards (owner request, 2026-10-05)
 - The one exception to "no card containers", "no glow shadows", and "no icon circles":
@@ -416,7 +420,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People.
+docs/about-concepts.md. Rail marks: 01 Staffing, 02 Commitments, 03 People.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -425,11 +429,10 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People.
   woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
-- **01 Company:** "How we staff a post." (owner, 2026-10-06; swapped with Home's
-  "Quality over quantity.") with a one-line lead, the four steps on hairlines (two by two
-  from 768px; the mono number on the title's line, Inter 600 20px title, 16px body), then
-  a facts ledger (established, ownership, licenses, NAICS) beside the patrol vehicles as a
-  captioned plate (square,
+- **01 Staffing:** "How we staff a post." as the pinned passage (see above; moved whole
+  from Home, owner 2026-10-06). The Company section ("Quality over quantity.", the facts,
+  and the patrol vehicles plate) moved to Home. Was: a facts ledger beside the patrol
+  vehicles as a captioned plate (square,
   anchored to the photo's bottom at every width, no frame edge so the caption is not
   boxed; owner, 2026-10-05).
 - **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
@@ -591,9 +594,8 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   muted at 68ch, strong in ink, lists with a 10px hairline marker.
 
 ### Mobile breaks (below 1024px unless noted)
-- **Swipe rows** (About People, Capability Why Ares; scroll snap, 84% slides so the next
-  one peeks) with a hairline progress bar that fills as the row scrolls. (Home's staffing
-  row, where this began, moved to About as a plain list, 2026-10-06.)
+- **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides
+  so the next one peeks) with a hairline progress bar that fills as the row scrolls.
 - **Ledger groups fold** (at every width since 2026-10-05, owner request; first built
   for phones) behind tappable rows showing the group name, the entry count, and a
   chevron. The four key identifiers stay visible above them.
@@ -692,7 +694,7 @@ Few, fast, and crisp. Four to six moments per page.
   contact@aressecurity.co.
 - Pair every proof element with a way to verify it.
 - Write plain, natural copy. No em-dashes, no slogans, no stacked adjectives.
-- Use real Ares and Colorado photography. No patrol-vehicle photos on Home.
+- Use real Ares and Colorado photography. Patrol-vehicle photos on Home only in 02 Quality (owner, 2026-10-06).
 - Say "minority woman-owned". Veterans: veteran supervisors, a veteran NRA firearms
   instructor, veterans encouraged to apply. Never "veteran-led".
 - Clearances (owner, 2026-10-06): Ares has no facility clearance (FCL) yet and cannot

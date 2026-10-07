@@ -4,7 +4,7 @@ import { GSA_ELIBRARY } from '../home/links';
 // About content. Source: docs/about-content.md; copy changes: docs/copy-changes.md.
 
 export const ABOUT_MARKS: readonly Mark[] = [
-  { id: 'company', n: '01', label: 'Company' },
+  { id: 'staffing', n: '01', label: 'Staffing' },
   { id: 'commitments', n: '02', label: 'Commitments' },
   { id: 'people', n: '03', label: 'People' },
 ];
@@ -16,13 +16,6 @@ export const CREDENTIALS: Credential[] = [
   { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration', label: 'SBA woman-owned small business', id: 'WOSB250470' },
   { src: '/images/cert-women-owned.png', alt: 'Women Owned', label: 'Minority woman-owned' },
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise", label: 'WBENC certified', id: 'WBE2303571', tall: true },
-];
-
-export const FACTS: { label: string; value: string; mono?: boolean }[] = [
-  { label: 'Established', value: 'February 2021, Colorado Springs' },
-  { label: 'Ownership', value: 'Minority woman-owned' },
-  { label: 'Licensed', value: 'Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo' },
-  { label: 'Primary NAICS', value: '561612', mono: true },
 ];
 
 // How we staff a post (moved from Home, owner 2026-10-06).
