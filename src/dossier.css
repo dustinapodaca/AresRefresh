@@ -949,6 +949,121 @@ a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px;
   .ds-value:nth-child(3) .ds-value-light::before { animation-duration: 20s; animation-delay: -13s; }
 }
 
+.ds-keyrow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+  list-style: none;
+  margin: var(--ds-beat-tight) 0 0;
+  padding: 0;
+}
+.ds-keyrow li { padding-top: 16px; border-top: 1px solid var(--ds-rule-strong); }
+.ds-keyrow .ds-data { display: block; font-size: 15px; overflow-wrap: anywhere; }
+.ds-keyrow .ds-small { display: block; margin-top: 8px; font-size: 13px; }
+@media (min-width: 1024px) { .ds-keyrow .ds-data { font-size: 18px; } }
+@media (min-width: 900px) {
+  .ds-keyrow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+}
+
+.ds-ledger { margin-top: var(--ds-beat-tight); }
+.ds-ledger-group summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ds-rule-strong);
+  list-style: none;
+  cursor: pointer;
+}
+.ds-ledger-group summary::-webkit-details-marker { display: none; }
+.ds-ledger-count { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ds-fg-faint); white-space: nowrap; transition: color 180ms var(--ds-ease); }
+.ds-chevron { transition: transform 180ms var(--ds-ease); }
+.ds-ledger-group[open] .ds-chevron { transform: rotate(180deg); }
+/* Folded groups read as three tappable rows, at every width. */
+.ds-ledger-group summary { padding: 18px 0; border-bottom-color: var(--ds-rule); }
+.ds-ledger-group[open] summary { border-bottom-color: var(--ds-rule-strong); }
+.ds-ledger-group[open] { padding-bottom: 28px; }
+@media (min-width: 768px) {
+  .ds-ledger-group summary { padding: 22px 0; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-ledger-group summary:hover .ds-ledger-count { color: var(--ds-fg); }
+}
+.ds-ledger dl { margin: 0; }
+.ds-ledger-row {
+  position: relative;
+  view-timeline: --ds-row block;
+  display: grid;
+  gap: 4px;
+  padding: 16px 0;
+}
+.ds-ledger-row::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ds-rule);
+  transform-origin: left;
+}
+.ds-ledger-row dt { font-size: 15px; color: var(--ds-fg-muted); }
+.ds-ledger-row dd { margin: 0; }
+.ds-ledger-row dd.ds-data { font-size: 17px; }
+.ds-ledger-row dd.ds-note { font-size: 16px; color: var(--ds-fg); line-height: 1.5; }
+.ds-ledger-route { margin-top: 4px; }
+.ds-ledger-route .ds-small { font-size: 13px; color: var(--ds-fg-faint); }
+@media (min-width: 768px) {
+  .ds-ledger-row {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr);
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+  }
+  .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
+}
+.ds-ledger-foot { margin-top: 28px; }
+
+.ds-proof-close { position: relative; margin-top: var(--ds-beat-tight); display: grid; gap: 28px; }
+.ds-figure-num {
+  font-family: var(--ds-data);
+  font-weight: 400;
+  font-size: clamp(96px, 11vw, 160px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: var(--ds-fg);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 767px) { .ds-figure-num { font-size: 22vw; } }
+/* Desktop: a step smaller (owner, 2026-10-05); phones keep 22vw. */
+@media (min-width: 1024px) { .ds-figure-num { font-size: clamp(88px, 8.4vw, 124px); } }
+/* Mobile: the quote sits to the right, right-aligned (it lives in the right-hand columns
+   on desktop); the hero's GSA line is centered, its text left-aligned. */
+@media (max-width: 767px) {
+  .ds-proof-close .ds-quote { margin-left: auto; max-width: 95%; text-align: right; }
+  .ds-quote blockquote p { text-indent: 0; }
+  .ds-hero-gsa { justify-content: center; margin-inline: auto; text-align: left; }
+}
+.ds-figure-note p + p { margin-top: 10px; }
+.ds-figure-note .ds-title { font-size: 18px; line-height: 1.45; font-weight: 400; letter-spacing: 0; }
+.ds-quote { margin: var(--ds-beat-tight) 0 0; }
+.ds-quote blockquote { margin: 0; }
+.ds-quote blockquote p { font-family: var(--ds-text); text-indent: -0.4em; }
+.ds-quote figcaption { margin-top: 24px; }
+.ds-quote figcaption span { display: block; }
+.ds-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  /* The figure spans both rows, so it hangs past its note into the quote; the figure and
+     its note are top-aligned. */
+  .ds-proof-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; }
+  .ds-ledger-foot { text-align: right; }
+  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: 16px; }
+  .ds-figure-note { grid-column: 6 / span 6; grid-row: 1; padding-top: 20px; }
+  .ds-quote { grid-column: 6 / span 7; grid-row: 2; margin-top: var(--ds-beat-tight); }
+}
+
 /* ---------- 02 Quality (owner, 2026-10-06; moved whole from About; Staffing went there) ----------
    The principle as a large statement with the paragraph beside it. Opens after the quote
    with an open beat. */
