@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Arrow from '../Arrow';
 import { INDEED_REVIEWS } from '../careers/data';
 
@@ -6,6 +7,12 @@ import { INDEED_REVIEWS } from '../careers/data';
 // a rust light rises in each card's upper half and blurs through the glass panel that holds
 // the word, the line, and one checkable proof. Desktop: three across, rising into place as
 // they scroll in. Phones: the cards stack and pile up under the running head as you scroll.
+// Generated images (assets/generated/values/, 2026-10-06): light and glass only, never
+// people. Each card has three options (a, b, c); `PICK` holds the chosen one.
+type Option = 'a' | 'b' | 'c';
+const PICK: Record<string, Option> = { Integrity: 'a', Reliability: 'b', Personnel: 'a' };
+const img = (name: string, o: Option) => `/images/values/${name.toLowerCase()}-${o}.webp`;
+
 const VALUES: { name: string; light: 'sun' | 'horizon' | 'three'; line: string; proof: string; href?: string }[] = [
   {
     name: 'Integrity',
@@ -28,7 +35,20 @@ const VALUES: { name: string; light: 'sun' | 'horizon' | 'three'; line: string; 
   },
 ];
 
+// Dev only: `?values=a`, `b`, or `c` previews one option on every card, so the owner can
+// compare the sets in place. Production always shows PICK.
+function usePreview(): Option | null {
+  const [o, setO] = useState<Option | null>(null);
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    const v = new URLSearchParams(window.location.search).get('values');
+    if (v === 'a' || v === 'b' || v === 'c') setO(v);
+  }, []);
+  return o;
+}
+
 export default function Values() {
+  const preview = usePreview();
   return (
     <section id="values" className="ds-values" aria-labelledby="values-title">
       <div className="ds-values-head">
@@ -40,7 +60,9 @@ export default function Values() {
       <ul className="ds-values-list">
         {VALUES.map((v) => (
           <li key={v.name} className="ds-value" data-light={v.light}>
-            <div className="ds-value-light" aria-hidden="true" />
+            <div className="ds-value-light" aria-hidden="true">
+              <img src={img(v.name, preview ?? PICK[v.name])} alt="" width={1200} height={900} loading="lazy" decoding="async" />
+            </div>
             <div className="ds-value-glass">
               <h3>{v.name}</h3>
               <p>{v.line}</p>

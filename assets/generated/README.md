@@ -64,3 +64,20 @@ exception, as was done for the division cards.
   brightness).
 - **Crop:** previews used `object-position: 50% 45%` on desktop and `74% 50%` on phones
   (Home hero), and `60% 42%` for the Services strip.
+
+## Home values cards (2026-10-06)
+
+Nine options, three per card, for "What we stand for" on Home. Light and glass only, no
+people (PRODUCT.md: Ares staff appear only in real photos). Prompts are the `.txt` files in
+`values/`; 1600x1200 masters in `.impeccable/gen/values-*.png`; web versions (1200px WebP,
+q86) in `values/` and `public/images/values/`.
+
+- Integrity: a (glass pane, beam through), b (two frosted panels, light at the seam),
+  c (prism, one straight line of light)
+- Reliability: a (corridor of even lights), b (copper horizon over the mountains),
+  c (row of identical lit glass fins)
+- Personnel: a (three lit frosted columns), b (building, a few warm windows),
+  c (many warm lights out of focus)
+
+Chosen (PICK in `src/components/home/Values.tsx`): Integrity a, Reliability b, Personnel a.
+Preview any set in dev with `/?values=a`, `b`, or `c`.

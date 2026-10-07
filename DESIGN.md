@@ -341,8 +341,10 @@ The live site's Integrity, Reliability, Personnel, redone (Mobbin: Koto's values
 owner-requested exception to "no card containers" and "no glass" for this section.
 - "What we stand for." (display-lg) with "Three things we hold to on every post, and how
   to check them." Three cards (4px corners, #07080a, white/8% edge): a 240 to 260px light
-  area with its own rust light (Integrity: one light; Reliability: a horizon; Personnel:
-  three lights side by side), and a dark glass panel (canvas at 55% over a 22px blur, a
+  area holding a generated image of light and glass, never people (2026-10-06; Integrity:
+  a glass pane with a beam through it; Reliability: a copper horizon; Personnel: three lit
+  frosted columns; options in assets/generated/values/), with the CSS rust light behind as
+  the fallback, and a dark glass panel (canvas at 55% over a 22px blur, a
   white/10% top edge) riding 80px up over it so the light blurs through. In the glass: the
   word (Inter Tight 600, 30 to 38px), one line (#c4c8ce), and a mono proof on a white/10%
   rule (16 of 18 client criteria; on-call coverage in every contract; 4.8 / 5 on Indeed,

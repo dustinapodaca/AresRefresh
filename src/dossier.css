@@ -871,6 +871,9 @@ body:has(.ds-page) {
 /* A fixed light area; the glass rides up over its last 80px, so every light sits on the
    glass edge whatever the text length. */
 .ds-value-light { position: relative; z-index: -1; flex: none; height: 240px; pointer-events: none; }
+/* The card's image (generated light and glass) fills the light area, its foot under the
+   glass; the CSS light below stays as the fallback while it loads. */
+.ds-value-light img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 .ds-value-light::before {
   content: '';
   position: absolute;
