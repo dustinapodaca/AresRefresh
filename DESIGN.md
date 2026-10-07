@@ -412,7 +412,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 Statement.
+docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -432,10 +432,9 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People, 04 St
   initials read ALERT (owner, 2026-10-05; a column of large initials was tried and
   dropped as too much). Each word in Inter Tight 600 at 28 to 38px, full width, its line
   beneath. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
-- **04 Statement (the close):** page 1 of the real capability statement
-  (`capability-page1.webp`) as a plate that settles flat as it scrolls in
-  (perspective tilt to none, scroll-driven), beside view and download links, the quote
-  button, and the phone, over the closing rust light.
+- **No close** (owner, 2026-10-06): the page ends on 03 People and hands straight to the
+  footer. (04 Statement, the capability statement plate with its links, was removed; the
+  Capability Statement page carries it.)
 
 ### Capability Statement page ("The Statement, Served", 2026-10-05)
 The most important page after Home; it must stand out like Home. Concept and Mobbin

@@ -4,7 +4,6 @@ import Opening from '../components/about/Opening';
 import Company from '../components/about/Company';
 import Commitments from '../components/about/Commitments';
 import People from '../components/about/People';
-import Statement from '../components/about/Statement';
 import { ABOUT_MARKS } from '../components/about/data';
 
 // About: "The Company File" (docs/about-concepts.md). Design authority: DESIGN.md.
@@ -19,7 +18,6 @@ export default function About() {
           <Company />
           <Commitments />
           <People />
-          <Statement />
         </div>
         <DocRail marks={ABOUT_MARKS} variant="counter" />
       </div>

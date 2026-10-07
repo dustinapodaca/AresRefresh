@@ -7,7 +7,6 @@ export const ABOUT_MARKS: readonly Mark[] = [
   { id: 'company', n: '01', label: 'Company' },
   { id: 'commitments', n: '02', label: 'Commitments' },
   { id: 'people', n: '03', label: 'People' },
-  { id: 'statement', n: '04', label: 'Statement' },
 ];
 
 export type Credential = { src: string; alt: string; label: string; id?: string; href?: string; tall?: boolean };
@@ -52,4 +51,3 @@ export const TRAITS: Commitment[] = [
   { name: 'Tempered', line: 'Calm and clear when a situation turns.' },
 ];
 
-export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';

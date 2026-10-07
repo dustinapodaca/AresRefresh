@@ -500,3 +500,9 @@ Source: docs/locations-content.md. Colorado Springs first; Denver and Pueblo fol
 New copy, not changes: the privacy policy, terms of use, and accessibility statement are in
 `src/pages/Privacy.tsx`, `Terms.tsx`, and `Accessibility.tsx`. Footer links Privacy, Terms,
 Accessibility now go to them (were `#`). Drafts for the owner and counsel to review.
+
+## About: Statement close removed (2026-10-06, owner)
+
+| Was | Now | Why |
+|---|---|---|
+| 04 Statement: the capability statement plate, view and download links, quote button, phone | Removed; About ends on 03 People | Owner: succinct; the Capability Statement page and the nav carry these |

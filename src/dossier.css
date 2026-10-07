@@ -1898,48 +1898,6 @@ body:has(.ds-page) {
   .ds-ab-people-copy { grid-column: 7 / span 6; }
 }
 
-/* ---------- 04 Statement (the close) ---------- */
-.ds-ab-statement {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  gap: 40px;
-  padding-top: var(--ds-beat-open);
-  padding-bottom: var(--ds-beat);
-}
-.ds-ab-statement::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: calc(-1 * var(--ds-edge));
-  width: 100vw;
-  background: radial-gradient(ellipse 44% 40% at 30% 62%, rgb(188 111 64 / 0.2) 0%, rgb(139 73 32 / 0.09) 50%, rgb(139 73 32 / 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  pointer-events: none;
-}
-.ds-ab-doc {
-  display: block;
-  justify-self: center;
-  width: min(56%, 260px);
-  view-timeline: --ds-ab-doc block;
-  transition: transform 220ms var(--ds-ease);
-}
-.ds-ab-doc img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08); }
-@media (hover: hover) and (pointer: fine) {
-  .ds-ab-doc:hover { transform: translateY(-4px); }
-}
-.ds-ab-statement-copy .ds-lead { margin-top: 20px; }
-.ds-ab-statement-links { display: grid; justify-items: start; gap: 10px; margin-top: 28px; }
-.ds-ab-statement-copy .ds-actions { margin-top: 32px; }
-@media (min-width: 1024px) {
-  .ds-ab-statement { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
-  .ds-ab-doc { grid-column: 1 / span 4; width: 100%; max-width: 360px; justify-self: start; }
-  .ds-ab-statement-copy { grid-column: 6 / span 7; }
-}
-
 /* ============================================================
    CAPABILITY STATEMENT ("The Statement, Served", docs/capability-concepts.md)
    ============================================================ */
@@ -2919,7 +2877,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
 @keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes ds-plate { from { transform: scale(1.06); } to { transform: scale(1); } }
-@keyframes ds-ab-settle { from { transform: perspective(1400px) rotateX(14deg) translateY(28px); } to { transform: none; } }
 /* Floor of 0.8 keeps dimmed body copy above 4.5:1 on the canvas (AA). */
 @keyframes ds-step {
   0%   { opacity: 0.8; }
@@ -2956,13 +2913,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
-    }
-    /* About: the capability statement page settles flat as it scrolls in. */
-    .ds-ab-doc img {
-      transform-origin: 50% 100%;
-      animation: ds-ab-settle linear both;
-      animation-timeline: --ds-ab-doc;
-      animation-range: entry 0% cover 40%;
     }
     .ds-svc-pano img {
       animation: ds-plate linear both;
@@ -3055,7 +3005,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-svc-plus::before,
   .ds-svc-plus span,
   .ds-ab-tabs-bar,
-  .ds-ab-doc,
   .ds-cs-thumb,
   .ds-cs-card,
   .ds-svc-card,
