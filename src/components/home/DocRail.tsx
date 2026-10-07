@@ -18,7 +18,7 @@ export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter' | 'list';
 // Home uses these; other pages pass their own.
 export const MARKS: readonly Mark[] = [
   { id: 'verify', n: '01', label: 'Verify' },
-  { id: 'staffing', n: '02', label: 'Staffing' },
+  { id: 'quality', n: '02', label: 'Quality' },
   { id: 'coverage', n: '03', label: 'Coverage' },
   { id: 'careers', n: '04', label: 'Careers' },
   { id: 'contact', n: '05', label: 'Contact' },

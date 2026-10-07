@@ -506,3 +506,12 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | Was | Now | Why |
 |---|---|---|
 | 04 Statement: the capability statement plate, view and download links, quote button, phone | Removed; About ends on 03 People | Owner: succinct; the Capability Statement page and the nav carry these |
+
+## Home and About: Quality and Staffing swapped (2026-10-06, owner)
+
+| Where | Now | Why |
+|---|---|---|
+| Home 02 (was "How we staff a post." with the lead "Preparation like that is a routine, not a one-off...") | "Quality over quantity." with its paragraph (from About), then Who we hire: "Licensed, background-checked officers, with veteran supervisors and a veteran NRA firearms instructor." How we train: "On the post itself, by a member of our leadership who has worked it, before the first shift." What they carry: "Written post orders, checkpoint logs you can audit, and on-call coverage in every contract." | Owner: swap the two; the three parts are facts already on the site |
+| About 01 (was "Quality over quantity." and its paragraph) | "How we staff a post." / "Every post we take on is staffed the same way, from the first look at the site to the first shift." and the four steps (unchanged wording) | Owner: swap; new lead since the old one answered Home's quote |
+| About facts, Licensed | "Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo" (was "Armed security and training provider in...") | Owner fact, 2026-10-06 |
+| Home rail and running head | 02 Quality (was 02 Staffing) | Follows the section |

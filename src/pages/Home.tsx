@@ -3,7 +3,7 @@ import Hero from '../components/home/Hero';
 import CredentialStrip from '../components/home/CredentialStrip';
 import DocRail from '../components/home/DocRail';
 import Verify from '../components/home/Verify';
-import Staffing from '../components/home/Staffing';
+import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
 import Contact from '../components/home/Contact';
@@ -19,7 +19,7 @@ export default function Home() {
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
           <Verify />
-          <Staffing />
+          <Quality />
           <Coverage />
           <Careers />
           <Contact />

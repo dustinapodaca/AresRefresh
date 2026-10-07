@@ -216,9 +216,9 @@ sizes are unchanged.
   dense blocks of the same thought, `beat` (88 to 136px) between sections, `beat-open`
   (128 to 208px) before and after the quote and the close. Never the same gap twice in a
   row.
-- **Order of beats on Home:** photo hero, dense ledger, open quote, pinned staffing
-  passage, tight typographic lists, full-bleed photograph, short careers block, open
-  close.
+- **Order of beats on Home:** photo hero, dense ledger, open quote, the quality statement
+  (owner, 2026-10-06; was the pinned staffing passage, now on About), tight typographic
+  lists, full-bleed photograph, short careers block, open close.
 - **Copy hand-offs:** each section ends on a line that sets up the next headline, so the
   headlines read as one argument.
 - **Cross-boundary elements:**
@@ -235,7 +235,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
-  `01 Verify`, `02 Staffing`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
+  `01 Verify`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
   `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
@@ -260,7 +260,7 @@ sizes are unchanged.
     (3 to 9, the first longer); dashes already read turn ink muted and the current one is
     the rust tick. Only the current label shows at rest; all show on hover or focus.
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the
-  current mark (`02 Staffing`) left, its count (`02 / 05`) right, and a 1px progress line
+  current mark (`02 Quality`) left, its count (`02 / 05`) right, and a 1px progress line
   along its bottom edge. It appears once the first section reaches the top and is solid
   canvas, not glass.
 
@@ -332,10 +332,14 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   attribution sits beneath in Inter small: role in ink, base in ink muted. No avatar, no card, no quote
   icon.
 
-### Pinned passage (Staffing)
-- On desktop the photograph holds still (sticky) in the left half while four steps
-  scroll in the right half. The active step reads at full ink; the rest rest at 0.8
-  opacity, the floor that keeps dimmed body copy at AA contrast. On mobile it unpins into a plain sequence.
+### Quality statement (Home 02, owner 2026-10-06)
+- "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
+  columns, aligned to the headline's foot), then what it shapes in three parts on
+  hairline-strong rules: Who we hire, How we train, What they carry (Inter 600 22 to 24px,
+  a 16px line each, facts already on the site). Three columns from 768px; stacked on
+  phones. Static.
+- The pinned staffing passage it replaced moved to About (01) as four ruled steps; the
+  swipe-row classes (`.ds-steps`, meter) stay for About People and Capability Why Ares.
 
 ### Expandable service cards (owner request, 2026-10-05)
 - The one exception to "no card containers", "no glow shadows", and "no icon circles":
@@ -421,8 +425,11 @@ docs/about-concepts.md. Rail marks: 01 Company, 02 Commitments, 03 People.
   woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
-- **01 Company:** "Quality over quantity.", one paragraph, a facts ledger (established,
-  ownership, licenses, NAICS), and the patrol vehicles as a captioned plate (square,
+- **01 Company:** "How we staff a post." (owner, 2026-10-06; swapped with Home's
+  "Quality over quantity.") with a one-line lead, the four steps on hairlines (two by two
+  from 768px; the mono number on the title's line, Inter 600 20px title, 16px body), then
+  a facts ledger (established, ownership, licenses, NAICS) beside the patrol vehicles as a
+  captioned plate (square,
   anchored to the photo's bottom at every width, no frame edge so the caption is not
   boxed; owner, 2026-10-05).
 - **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
@@ -584,9 +591,9 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   muted at 68ch, strong in ink, lists with a 10px hairline marker.
 
 ### Mobile breaks (below 1024px unless noted)
-- **Staffing steps become a swipe row** (scroll snap, 84% slides so the next one peeks),
-  each with a large mono numeral, and a hairline progress bar that fills as the row
-  scrolls. Desktop keeps the pinned passage.
+- **Swipe rows** (About People, Capability Why Ares; scroll snap, 84% slides so the next
+  one peeks) with a hairline progress bar that fills as the row scrolls. (Home's staffing
+  row, where this began, moved to About as a plain list, 2026-10-06.)
 - **Ledger groups fold** (at every width since 2026-10-05, owner request; first built
   for phones) behind tappable rows showing the group name, the entry count, and a
   chevron. The four key identifiers stay visible above them.
@@ -656,8 +663,7 @@ Few, fast, and crisp. Four to six moments per page.
   contrast: body copy dims no lower than 0.8 opacity (the hard floor for any text is 0.62). Opacity entrances from 0 are not allowed.
 - **Allowed moments on Home:** the hero photo scrolls 10% slower than the page as the
   hero leaves; ledger hairlines draw from left to right as rows enter (the text is
-  already there); staffing steps brighten as they cross the middle of the viewport
-  (desktop); the full-bleed photograph opens from a 7% side inset to full width; the
+  already there); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
 - **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
   the stage bars draw along the axis; the Denver photo settles inside its frame. The
