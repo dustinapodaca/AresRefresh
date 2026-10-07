@@ -4,7 +4,6 @@ import CredentialStrip from '../components/home/CredentialStrip';
 import DocRail from '../components/home/DocRail';
 import Record from '../components/home/Record';
 import Values from '../components/home/Values';
-import Gsa from '../components/home/Gsa';
 import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
@@ -25,7 +24,6 @@ export default function Home() {
           <Quality />
           <Coverage />
           <Careers />
-          <Gsa />
           <Contact />
         </div>
         <DocRail />

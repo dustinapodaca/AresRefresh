@@ -147,7 +147,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 - One blue-black canvas from header to footer. No bands, no fills, no dividers.
 - Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
-- A running document rail (01 Record to 06 Contact) on desktop; a running head on mobile.
+- A running document rail (01 Record to 05 Contact) on desktop; a running head on mobile.
 - Uneven rhythm on purpose: dense, open, image, tight.
 - Square-shouldered controls (2px corners). Nothing is a pill.
 
@@ -219,10 +219,9 @@ sizes are unchanged.
 - **Order of beats on Home (owner, 2026-10-06):** photo hero; 01 Record (the measured
   figure and the open quote, for every buyer); 02 Quality (statement, patrol vehicles,
   facts); 03 Coverage (tight typographic lists); full-bleed photograph; 04 Careers (short);
-  05 GSA (a short block for federal buyers: the four key identifiers as Home's key row,
-  then eLibrary, SAM.gov, and Capability Statement links); 06 the open close. The federal
-  ledger (01 Verify, "Verify us before you call.") was removed: it tilted Home toward
-  federal buyers and repeated the Capability Statement, which keeps every code.
+  05 the open close. The federal ledger (01 Verify) and the short GSA block that replaced
+  it were removed (owner, 2026-10-06): the Capability Statement carries every code, and
+  the hero keeps its GSA line.
 - **Copy hand-offs:** each section ends on a line that sets up the next headline, so the
   headlines read as one argument.
 - **Cross-boundary elements:**
@@ -239,7 +238,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
-  `01 Record`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 GSA`, `06 Contact`. Services:
+  `01 Record`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
   `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.

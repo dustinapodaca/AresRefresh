@@ -534,3 +534,10 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | Integrity: "We believe that communication is key, and that integrity and transparency are the foundation for building trust and true security with our clients." | "Communication is part of the job. We are open and direct with clients about the post, the people on it, and anything that goes wrong." Proof: "Rated Exceptional on 16 of 18 client criteria" |
 | Reliability: "On-call coverage is written into every contract, and leadership works the first shift on every new post. A site that isn't staffed isn't a discount — it's an exposure." | "On-call coverage is written into every contract, and leadership works the first shift on every new post. An unstaffed site is an exposure, not a saving." (no em-dash) Proof: "On-call coverage in every contract" |
 | Personnel: "Ares Security guards are the backbone of our business. We believe that well-trained, healthy employees provide a quality service to all our clients." | "Our officers are the backbone of the business. Well-trained, healthy employees give every client better service." Proof: "Rated 4.8 / 5 by our employees on Indeed" (links to the reviews) |
+
+## Home: GSA block removed (2026-10-06, owner)
+
+| Was | Now |
+|---|---|
+| 05 "Buying through GSA?" with the four identifiers and links | Removed; the Capability Statement carries every code and the hero keeps its GSA line |
+| Careers hand-off "For federal buyers, the contract vehicle is already in place." | "Hiring Ares for your site starts with a quote request or a call." (restored; it leads into the close again) |

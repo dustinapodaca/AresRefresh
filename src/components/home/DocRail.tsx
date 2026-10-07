@@ -21,8 +21,7 @@ export const MARKS: readonly Mark[] = [
   { id: 'quality', n: '02', label: 'Quality' },
   { id: 'coverage', n: '03', label: 'Coverage' },
   { id: 'careers', n: '04', label: 'Careers' },
-  { id: 'gsa', n: '05', label: 'GSA' },
-  { id: 'contact', n: '06', label: 'Contact' },
+  { id: 'contact', n: '05', label: 'Contact' },
 ];
 
 // Progress through the current section is kept in 40 steps, so the forms that show it

@@ -19,7 +19,7 @@ export default function Careers() {
           </Link>
         </div>
       </div>
-      <p className="ds-lead ds-handoff">For federal buyers, the contract vehicle is already in place.</p>
+      <p className="ds-lead ds-handoff">Hiring Ares for your site starts with a quote request or a call.</p>
     </section>
   );
 }
