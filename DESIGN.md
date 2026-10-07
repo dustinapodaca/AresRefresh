@@ -147,7 +147,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 - One blue-black canvas from header to footer. No bands, no fills, no dividers.
 - Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
-- A running document rail (01 Verify to 05 Contact) on desktop; a running head on mobile.
+- A running document rail (01 Record to 06 Contact) on desktop; a running head on mobile.
 - Uneven rhythm on purpose: dense, open, image, tight.
 - Square-shouldered controls (2px corners). Nothing is a pill.
 
@@ -186,7 +186,7 @@ sizes are unchanged.
     on Home the quote button and call link under the lead show below 1024px only, since
     the nav carries the quote button from there up; owner, 2026-10-06)
     and the Contact headline.
-  - display-lg: section headlines (Verify, Staffing, Careers).
+  - display-lg: section headlines (Record, Staffing, Careers).
   - display-md: the Coverage headline.
   - city: the three city rows (smaller on desktop, owner 2026-10-05).
 - **Text: Inter** with `cv01 cv05 cv09 cv11 ss03`.
@@ -216,14 +216,18 @@ sizes are unchanged.
   dense blocks of the same thought, `beat` (88 to 136px) between sections, `beat-open`
   (128 to 208px) before and after the quote and the close. Never the same gap twice in a
   row.
-- **Order of beats on Home:** photo hero, dense ledger, open quote, the quality statement
-  (owner, 2026-10-06; was the pinned staffing passage, now on About), tight typographic
-  lists, full-bleed photograph, short careers block, open close.
+- **Order of beats on Home (owner, 2026-10-06):** photo hero; 01 Record (the measured
+  figure and the open quote, for every buyer); 02 Quality (statement, patrol vehicles,
+  facts); 03 Coverage (tight typographic lists); full-bleed photograph; 04 Careers (short);
+  05 GSA (a short block for federal buyers: the four key identifiers as Home's key row,
+  then eLibrary, SAM.gov, and Capability Statement links); 06 the open close. The federal
+  ledger (01 Verify, "Verify us before you call.") was removed: it tilted Home toward
+  federal buyers and repeated the Capability Statement, which keeps every code.
 - **Copy hand-offs:** each section ends on a line that sets up the next headline, so the
   headlines read as one argument.
 - **Cross-boundary elements:**
   - The hero photograph fills the hero edge to edge (from 900px) and runs down past it,
-    ending under the opening of 01 Verify.
+    ending under the opening of 01 Record.
   - The measured figure, top-aligned with its note, hangs down past it into the quote's
     rows.
   - A full-bleed photograph starts under the end of 03 Coverage and ends under the start
@@ -235,7 +239,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
-  `01 Verify`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
+  `01 Record`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 GSA`, `06 Contact`. Services:
   `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
@@ -354,7 +358,7 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   sheet; the ticks tighten in on hover (180ms) and turn ink when the card is open. Nowhere else.
 
 ### Credential strip
-- Phones only (hidden from 768px). Between the hero and 01 Verify: the
+- Phones only (hidden from 768px). Between the hero and 01 Record: the
   certification marks only (GSA, SBA, Women Owned, WBENC, Denver Economic Development &
   Opportunity, Colorado Verified Diverse Business, Colorado Verified Small Business; the
   last three added 2026-10-05 as WebPs at 32 to 36px tall), no text, with wide

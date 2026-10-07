@@ -19,7 +19,7 @@ export default function Hero() {
           <p className="ds-lead">
             Ares is a minority woman-owned, employee-focused security firm in Colorado Springs,
             serving Denver and Pueblo. We bridge public-sector compliance and commercial
-            reliability, and every number on this page can be checked.
+            reliability.
           </p>
           {/* Below 1024px only: from there up the nav carries the quote button. */}
           <div className="ds-actions ds-hero-actions">

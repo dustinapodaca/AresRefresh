@@ -2,7 +2,8 @@ import Seo from '../seo/Seo';
 import Hero from '../components/home/Hero';
 import CredentialStrip from '../components/home/CredentialStrip';
 import DocRail from '../components/home/DocRail';
-import Verify from '../components/home/Verify';
+import Record from '../components/home/Record';
+import Gsa from '../components/home/Gsa';
 import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
@@ -18,10 +19,11 @@ export default function Home() {
       <CredentialStrip />
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
-          <Verify />
+          <Record />
           <Quality />
           <Coverage />
           <Careers />
+          <Gsa />
           <Contact />
         </div>
         <DocRail />

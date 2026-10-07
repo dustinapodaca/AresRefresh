@@ -17,11 +17,12 @@ export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter' | 'list';
 // The running document marks. These are the only section numbers on the page.
 // Home uses these; other pages pass their own.
 export const MARKS: readonly Mark[] = [
-  { id: 'verify', n: '01', label: 'Verify' },
+  { id: 'record', n: '01', label: 'Record' },
   { id: 'quality', n: '02', label: 'Quality' },
   { id: 'coverage', n: '03', label: 'Coverage' },
   { id: 'careers', n: '04', label: 'Careers' },
-  { id: 'contact', n: '05', label: 'Contact' },
+  { id: 'gsa', n: '05', label: 'GSA' },
+  { id: 'contact', n: '06', label: 'Contact' },
 ];
 
 // Progress through the current section is kept in 40 steps, so the forms that show it

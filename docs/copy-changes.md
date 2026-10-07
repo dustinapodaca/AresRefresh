@@ -516,3 +516,12 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | About facts, Licensed | "Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo" (was "Armed security and training provider in...") | Owner fact, 2026-10-06 |
 | Home rail and running head | 02 Quality (was 02 Staffing) | Follows the section |
 | Correction (owner, same day) | The sections moved whole, images included: Home 02 is "Quality over quantity." with its paragraph, the patrol vehicles photo, and the facts (the three added parts were dropped); About 01 is "How we staff a post." with the pinned officer photo and the four steps | Owner: move the entire sections |
+
+## Home: Verify removed, Record and GSA added (2026-10-06, owner)
+
+| Where | Was | Now | Why |
+|---|---|---|---|
+| Hero lead | "...We bridge public-sector compliance and commercial reliability, and every number on this page can be checked." | "...We bridge public-sector compliance and commercial reliability." | The ledger it pointed to is gone |
+| 01 | "Verify us before you call." with the federal ledger (GSA, UEI, CAGE, NAICS, groups) | "The record so far." / "Federal agencies and commercial clients hire us for the same thing: a prepared officer on post, every shift." with the <1% figure and the client quote (unchanged) | Owner: the ledger was federal-only and repeated the Capability Statement |
+| 04 Careers hand-off | "Hiring Ares for your site starts with a quote request or a call." | "For federal buyers, the contract vehicle is already in place." | Now sets up the GSA block |
+| 05 (new) | (none) | "Buying through GSA?" / "Agencies can order through our Multiple Award Schedule at pre-negotiated pricing, without opening a new competition. Every identifier is public." Four identifiers; View on GSA eLibrary, Search on SAM.gov, Every code on the Capability Statement | A short federal path near the close |

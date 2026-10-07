@@ -841,13 +841,25 @@ body:has(.ds-page) {
   .ds-runhead { display: none; }
 }
 
-/* ---------- 01 Verify ---------- */
-.ds-verify { padding-top: var(--ds-beat); }
-.ds-verify-head { display: grid; gap: 20px; }
+/* ---------- 01 Record (owner, 2026-10-06; was 01 Verify, the federal ledger) ---------- */
+.ds-record { padding-top: var(--ds-beat); }
+.ds-record-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
-  .ds-verify-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-verify-head h2 { grid-column: 1 / span 7; }
-  .ds-verify-head p { grid-column: 8 / span 5; }
+  .ds-record-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-record-head h2 { grid-column: 1 / span 7; }
+  .ds-record-head p { grid-column: 8 / span 5; }
+}
+
+/* ---------- 05 GSA: a short block for federal buyers before the close ---------- */
+.ds-gsa { padding-top: var(--ds-beat); }
+.ds-gsa-head { display: grid; gap: 16px; }
+.ds-gsa .ds-keyrow { margin-top: 36px; }
+.ds-gsa-links { display: flex; flex-wrap: wrap; gap: 14px 32px; margin-top: 28px; }
+.ds-gsa-links .ds-link { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; }
+@media (min-width: 1024px) {
+  .ds-gsa-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-gsa-head h2 { grid-column: 1 / span 6; }
+  .ds-gsa-head .ds-body { grid-column: 8 / span 5; }
 }
 
 .ds-keyrow {
@@ -956,13 +968,12 @@ body:has(.ds-page) {
 .ds-quote figcaption span { display: block; }
 .ds-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
 @media (min-width: 1024px) {
-  /* The figure spans both rows, so it hangs past its note into the quote. */
-  /* The row is pulled up beside the right-aligned capability link; the figure and its
-     note both start below that link, top-aligned. */
-  .ds-proof-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; margin-top: -4.25rem; }
+  /* The figure spans both rows, so it hangs past its note into the quote; the figure and
+     its note are top-aligned. */
+  .ds-proof-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; }
   .ds-ledger-foot { text-align: right; }
-  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: calc(5.25rem + 16px); }
-  .ds-figure-note { grid-column: 6 / span 6; grid-row: 1; padding-top: 6rem; }
+  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: 16px; }
+  .ds-figure-note { grid-column: 6 / span 6; grid-row: 1; padding-top: 20px; }
   .ds-quote { grid-column: 6 / span 7; grid-row: 2; margin-top: var(--ds-beat-tight); }
 }
 
@@ -983,17 +994,20 @@ body:has(.ds-page) {
 .ds-quality-facts div:last-child { border-bottom: 1px solid var(--ds-rule); }
 .ds-quality-facts dt { font-size: 14px; color: var(--ds-fg-muted); }
 .ds-quality-facts dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
-@media (min-width: 768px) {
-  .ds-quality-photo img { aspect-ratio: 16 / 10; }
+@media (min-width: 768px) and (max-width: 1023px) {
   .ds-quality-facts div { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: 20px; align-items: baseline; }
 }
+@media (min-width: 768px) { .ds-quality-photo img { aspect-ratio: 16 / 10; } }
 @media (min-width: 1024px) {
   .ds-quality-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-quality-head h2 { grid-column: 1 / span 7; }
   .ds-quality-head .ds-lead { grid-column: 8 / span 5; }
   .ds-quality-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-quality-photo { grid-column: 1 / span 7; }
-  .ds-quality-facts { grid-column: 9 / span 4; }
+  /* Five columns, label over value with room between rows. */
+  .ds-quality-facts { grid-column: 8 / span 5; }
+  .ds-quality-facts div { gap: 6px; padding: 18px 0; }
+  .ds-quality-facts dd { font-size: 17px; line-height: 1.5; }
 }
 
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
