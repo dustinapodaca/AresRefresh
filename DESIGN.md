@@ -663,16 +663,15 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
   identifiers stacked label over value.
 - Then the certification marks separated by thin vertical lines.
-- **The closing stage** (owner request: "aurora or gradient or opacity or glass"): the ARES
-  letters of the text logo across the full container (only the letters, not SECURITY),
-  over a slow rust and amber light rising from the bottom edge (soft radial glows, a
-  white-hot core, and a faint conic fan of beams, all blurred, drifting side to side over
-  17 to 22s; still under reduced motion). The letters are lit from below: ink at the top
-  warming to amber (#f1c49a to #e2925a) at the foot. Their lower third sinks under a band
-  of dark glass (canvas at 55% over a 22px blur, a white/10% top edge) that holds the
-  legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado Springs,
-  Colorado", Privacy, Terms, Accessibility. Static, no pointer tracking (a pointer-led wordmark light was tried and removed,
-  2026-10-05). The large "Get to know Ares" index was removed earlier (2026-10-04).
+- **The closing stage** (owner request: "aurora or gradient or opacity or glass"; the giant
+  ARES letters were removed, owner 2026-10-06): an open band (210 to 290px) of slow rust
+  aurora: long, flat ribbons of rust and amber light at staggered heights with bright
+  edges, over faint curtains of light rising from below (a conic fan). Its foot runs 40 to
+  64px under a band of dark glass (canvas at 55% over a 22px blur, a white/10% top edge)
+  that holds the legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado
+  Springs, Colorado", Privacy, Terms, Accessibility. The light drifts slowly (still under
+  reduced motion). Static otherwise, no pointer tracking. The large "Get to know Ares"
+  index was removed earlier (2026-10-04).
 
 ## Motion
 

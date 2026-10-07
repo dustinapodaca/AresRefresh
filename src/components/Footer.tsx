@@ -116,9 +116,6 @@ export default function Footer() {
 
       <div className="ds-ft-stage">
         <div className="ds-ft-aurora" aria-hidden="true" />
-        <div className="ds-container">
-          <div className="ds-ft-giant" aria-hidden="true" />
-        </div>
         <div className="ds-ft-glass">
           <div className="ds-container">
             <div className="ds-legal">
