@@ -11,6 +11,17 @@ served. To use one, copy it into `public/images/` and reference it from the page
   generation record (`.prompt.json`).
 - **Cost guide:** about 25 cents per high-quality 2400x1600 image (an estimate).
 
+### Nano Banana 2 (Google), trial from 2026-10-07
+
+- **Tool:** `gemini-image.py` here (standard-library Python, model
+  `gemini-3.1-flash-image-preview`, 16:9 at 4K by default). The key is read from the
+  `GEMINI_API_KEY` environment variable (Google AI Studio), never stored in this repo.
+- **Run:** `python3 -I assets/generated/gemini-image.py --prompt-file <prompt.txt> --out <image.png> [--ref <style.png>]`.
+  It writes the image and a `.prompt.json` record beside it.
+- **First test:** `hero-b2-nb.prompt.txt`, the hero-b2 prompt reworded for 16:9 with no
+  reference image, to compare against `hero-b2.jpg`.
+- **Cost guide:** about 15 cents per 4K image (published rates; check Google's pricing).
+
 ## Rules for generating
 
 - **Use AI images for:** places, architecture, Colorado landscape, light and texture.
