@@ -3,7 +3,6 @@ import Hero from '../components/home/Hero';
 import CredentialStrip from '../components/home/CredentialStrip';
 import DocRail from '../components/home/DocRail';
 import Record from '../components/home/Record';
-import Values from '../components/home/Values';
 import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
@@ -20,7 +19,6 @@ export default function Home() {
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
           <Record />
-          <Values />
           <Quality />
           <Coverage />
           <Careers />

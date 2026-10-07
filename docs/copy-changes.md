@@ -541,3 +541,12 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 |---|---|
 | 05 "Buying through GSA?" with the four identifiers and links | Removed; the Capability Statement carries every code and the hero keeps its GSA line |
 | Careers hand-off "For federal buyers, the contract vehicle is already in place." | "Hiring Ares for your site starts with a quote request or a call." (restored; it leads into the close again) |
+
+## Home: Record and values merged (2026-10-06, owner: "more organized")
+
+| Was | Now |
+|---|---|
+| "What we stand for." heading and lead, and each card's mono proof line | Folded into 01 Record: each value card leads with its proof as a figure ("<1%" Missed shifts since 2021; "16/18" Client criteria rated Exceptional; "4.8/5" Employee rating on Indeed). The "<1%" figure's note ("On-call scheduling is standard...") is folded into Reliability's line |
+| Reliability line "...An unstaffed site is an exposure, not a saving." | "On-call coverage is written into every contract, and leadership works the first shift on every new post." |
+| Integrity line "...We are open and direct with clients about the post..." | "...We are open and direct about the post, the people on it, and anything that goes wrong." |
+| The quote as a large right-hand pull quote | The same words as a wide card under the three |

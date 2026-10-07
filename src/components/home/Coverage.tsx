@@ -21,7 +21,7 @@ export default function Coverage() {
   return (
     <section id="coverage" className="ds-coverage" aria-labelledby="coverage-title">
       <div className="ds-coverage-head">
-        <h2 id="coverage-title" className="ds-display-md">
+        <h2 id="coverage-title" className="ds-display-lg">
           Where we work.
         </h2>
         <p className="ds-lead">

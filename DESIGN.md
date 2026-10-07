@@ -335,24 +335,26 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   attribution sits beneath in Inter small: role in ink, base in ink muted. No avatar, no card, no quote
   icon.
 
-### What we stand for (Home, under 01 Record; owner 2026-10-06)
-The live site's Integrity, Reliability, Personnel, redone (Mobbin: Koto's values). The
-owner-requested exception to "no card containers" and "no glass" for this section.
-- "What we stand for." (display-lg) with "Three things we hold to on every post, and how
-  to check them." Three cards (4px corners, #07080a, white/8% edge): a 240 to 260px light
-  area holding a generated image of light and glass, never people (2026-10-06; Integrity:
-  a glass pane with a beam through it; Reliability: a copper horizon; Personnel: three lit
-  frosted columns; options in assets/generated/values/), with the CSS rust light behind as
-  the fallback, and a dark glass panel (canvas at 55% over a 22px blur, a
-  white/10% top edge) riding 80px up over it so the light blurs through. In the glass: the
-  word (Inter Tight 600, 30 to 38px), one line (#c4c8ce), and a mono proof on a white/10%
-  rule (16 of 18 client criteria; on-call coverage in every contract; 4.8 / 5 on Indeed,
-  linked). Text measures 10:1 or better at the light's brightest point.
-- Desktop: three across; the cards rise 64px into place as they scroll in, a step apart
-  (scroll-driven; static without support or under reduced motion). Phones and tablets: the
-  cards are sticky under the nav and running head, each 16px lower, so they pile up as you
-  scroll. The lights drift slowly (ambient; still under reduced motion).
-- No rail mark of its own: it belongs to 01 Record.
+### 01 Record: proof cards over a wide quote (Home; owner 2026-10-06)
+Mobbin: Lightdash and Ramp (proof cards over a customer quote). One grid replaces the
+floating figure, the offset quote, and the separate values section. The owner-approved
+exception to "no card containers" and "no glass" for this section.
+- Head: "The record so far." with its lead, in the shared Home head (`.ds-sec-head`:
+  display-lg in 7 columns, the lead in the last 5, aligned to the headline's foot; Quality
+  uses the same head, and Coverage's headline is display-lg too).
+- Three cards (4px corners, #07080a, white/8% edge), each a value led by its proof: a
+  light area with the figure in Plex Mono (44 to 60px) and its caption, its own rust light
+  pooling below them (Reliability <1% missed shifts since 2021, a horizon; Integrity 16/18
+  client criteria rated Exceptional, one light; Personnel 4.8/5 employee rating on Indeed,
+  linked, three lights), and a dark glass panel (canvas at 55% over a 22px blur, a
+  white/10% top edge) riding 80px up over the light with the value's name (Inter 600 22px)
+  and one line (#c4c8ce). Then the client quote as a wide card (all three columns): the
+  light behind the whole card, the quote (Inter 500, 22 to 32px) left, the attribution right.
+- Desktop: three across over the quote; the cards rise 64px into place on scroll.
+  Phones: the four cards are sticky and pile up 16px apart. Lights drift slowly; all
+  motion stops under reduced motion. Text measures 7:1 or better at the light's brightest
+  point. No images (generated options were tried and removed, 2026-10-06; they stay in
+  assets/generated/values/).
 
 ### Quality (Home 02, owner 2026-10-06)
 - Moved whole from About (photo and facts), in exchange for the staffing passage.

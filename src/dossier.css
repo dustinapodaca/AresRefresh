@@ -843,20 +843,21 @@ body:has(.ds-page) {
 
 /* ---------- 01 Record (owner, 2026-10-06; was 01 Verify, the federal ledger) ---------- */
 .ds-record { padding-top: var(--ds-beat); }
-.ds-record-head { display: grid; gap: 20px; }
+/* The shared section head on Home: the headline in 7 columns, the lead in the last 5,
+   aligned to the headline's foot (Record, Quality). */
+.ds-sec-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
-  .ds-record-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-record-head h2 { grid-column: 1 / span 7; }
-  .ds-record-head p { grid-column: 8 / span 5; }
+  .ds-sec-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-sec-head h2 { grid-column: 1 / span 7; }
+  .ds-sec-head .ds-lead { grid-column: 8 / span 5; }
 }
 
-/* ---------- What we stand for (owner, 2026-10-06; Koto's values on Mobbin) ----------
-   Three dark glass cards, each with its own rust light rising in the upper half and
-   blurring through the glass panel below (the footer's and the 404's glass, set in a
-   card). The owner-approved exception to "no card containers" and "no glass" for this
-   section. Desktop: three across, rising into place on scroll. Phones: they pile up. */
-.ds-values { padding-top: var(--ds-beat); }
-.ds-values-head { display: grid; gap: 20px; }
+/* ---------- 01 Record: proof cards over a wide quote (owner, 2026-10-06) ----------
+   Mobbin: Lightdash and Ramp. The three things we stand for, each led by its proof as a
+   figure in its own rust light, the glass panel below riding up over the light (the
+   footer's glass in a card); then a client's words as a wide card. The owner-approved
+   exception to "no card containers" and "no glass" for this section. Desktop: three
+   across over the quote, rising into place on scroll. Phones: they pile up. */
 .ds-values-list { display: grid; gap: 16px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
 .ds-value {
   position: relative;
@@ -868,73 +869,82 @@ body:has(.ds-page) {
   background: #07080a;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
 }
-/* A fixed light area; the glass rides up over its last 80px, so every light sits on the
-   glass edge whatever the text length. */
-.ds-value-light { position: relative; z-index: -1; flex: none; height: 240px; pointer-events: none; }
-/* The card's image (generated light and glass) fills the light area, its foot under the
-   glass; the CSS light below stays as the fallback while it loads. */
-.ds-value-light img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+/* The light area holds the figure at its top; the light pools below it, on the glass edge
+   (the glass rides 80px up over the area's foot). */
+.ds-value-light { position: relative; z-index: 0; flex: none; height: 240px; padding: 26px 24px 0; }
 .ds-value-light::before {
   content: '';
   position: absolute;
   inset: -20%;
+  z-index: -1;
   filter: blur(26px);
   will-change: transform;
+  pointer-events: none;
 }
+.ds-value-figure { margin: 0; font-size: clamp(44px, 4.2vw, 60px); line-height: 1; letter-spacing: -0.05em; color: var(--ds-fg); font-variant-numeric: tabular-nums; }
+.ds-value-caption { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 0; font-size: 14px; color: var(--ds-fg); }
+a.ds-value-caption { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px; }
+a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
 /* Integrity: one steady light. */
 .ds-value[data-light='sun'] .ds-value-light::before {
   background:
-    radial-gradient(20% 24% at 50% 60%, rgb(255 230 204 / 0.85), transparent 70%),
-    radial-gradient(40% 44% at 50% 62%, rgb(214 122 62 / 0.75), transparent 72%),
-    radial-gradient(64% 60% at 50% 66%, rgb(139 73 32 / 0.55), transparent 74%);
+    radial-gradient(18% 20% at 50% 62%, rgb(255 230 204 / 0.8), transparent 70%),
+    radial-gradient(38% 36% at 50% 64%, rgb(214 122 62 / 0.75), transparent 72%),
+    radial-gradient(64% 50% at 50% 68%, rgb(139 73 32 / 0.55), transparent 74%);
 }
 /* Reliability: a horizon, lit end to end. */
 .ds-value[data-light='horizon'] .ds-value-light::before {
   background:
-    radial-gradient(70% 7% at 50% 64%, rgb(255 232 208 / 0.9), transparent 72%),
-    radial-gradient(85% 22% at 50% 66%, rgb(214 122 62 / 0.75), transparent 72%),
-    radial-gradient(100% 46% at 50% 74%, rgb(139 73 32 / 0.5), transparent 74%);
+    radial-gradient(70% 6% at 50% 62%, rgb(255 232 208 / 0.9), transparent 72%),
+    radial-gradient(85% 18% at 50% 64%, rgb(214 122 62 / 0.75), transparent 72%),
+    radial-gradient(100% 40% at 50% 72%, rgb(139 73 32 / 0.5), transparent 74%);
 }
 /* Personnel: three lights side by side. */
 .ds-value[data-light='three'] .ds-value-light::before {
   background:
-    radial-gradient(12% 15% at 32% 62%, rgb(255 226 196 / 0.8), transparent 70%),
-    radial-gradient(12% 15% at 50% 56%, rgb(255 226 196 / 0.85), transparent 70%),
-    radial-gradient(12% 15% at 68% 62%, rgb(255 226 196 / 0.8), transparent 70%),
-    radial-gradient(60% 40% at 50% 66%, rgb(214 122 62 / 0.6), transparent 74%);
+    radial-gradient(11% 13% at 32% 64%, rgb(255 226 196 / 0.8), transparent 70%),
+    radial-gradient(11% 13% at 50% 60%, rgb(255 226 196 / 0.85), transparent 70%),
+    radial-gradient(11% 13% at 68% 64%, rgb(255 226 196 / 0.8), transparent 70%),
+    radial-gradient(60% 34% at 50% 68%, rgb(214 122 62 / 0.6), transparent 74%);
+}
+/* The quote: one long, low horizon across the wide card. */
+/* The quote card has no light area of its own: the light lies behind the whole card,
+   under the glass. */
+.ds-value[data-light='wide'] .ds-value-light { position: absolute; inset: 0; height: auto; padding: 0; }
+.ds-value-quote .ds-value-glass { margin: 0; border-top: 0; background: rgb(10 11 13 / 0.5); }
+.ds-value[data-light='wide'] .ds-value-light::before {
+  background:
+    radial-gradient(34% 30% at 86% 30%, rgb(248 178 108 / 0.55), transparent 72%),
+    radial-gradient(50% 60% at 80% 40%, rgb(214 122 62 / 0.5), transparent 74%),
+    radial-gradient(60% 70% at 20% 110%, rgb(139 73 32 / 0.45), transparent 74%);
 }
 .ds-value-glass {
   position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: -80px;
-  padding: 26px 24px 24px;
+  margin: -80px 0 0;
+  padding: 24px 24px 26px;
   background: rgb(10 11 13 / 0.55);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
   backdrop-filter: blur(22px) saturate(1.25);
   border-top: 1px solid rgb(255 255 255 / 0.1);
 }
-.ds-value-glass h3 { margin: 0; font-family: var(--ds-display); font-size: clamp(30px, 2.6vw, 38px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: var(--ds-fg); }
-.ds-value-glass > p:not(.ds-value-proof) { margin: 14px 0 20px; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
-.ds-value-glass .ds-value-proof {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: auto 0 0;
-  padding-top: 14px;
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-  font-size: 12.5px;
-  line-height: 1.4;
-  color: var(--ds-fg);
-}
-a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--ds-rule-strong); }
+.ds-value-glass h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-value-glass > p { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
+.ds-value-quote blockquote { margin: 0; }
+.ds-value-quote blockquote p { margin: 0; font-family: var(--ds-text); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); text-indent: -0.4em; text-wrap: balance; max-width: 34ch; }
+.ds-value-quote figcaption { margin-top: 20px; font-size: 14px; color: #c4c8ce; }
+.ds-value-quote figcaption span { display: block; }
+.ds-value-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
 @media (min-width: 1024px) {
-  .ds-values-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-values-head h2 { grid-column: 1 / span 7; }
-  .ds-values-head p { grid-column: 8 / span 5; }
   .ds-values-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .ds-value-light { height: 260px; }
+  .ds-value-light { height: 250px; padding: 30px 30px 0; }
+  .ds-value-glass { padding: 26px 30px 30px; }
+  .ds-value-quote { grid-column: 1 / -1; }
+  .ds-value-quote .ds-value-glass { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding: 30px 30px 36px; }
+  .ds-value-quote blockquote { grid-column: 1 / span 9; }
+  .ds-value-quote figcaption { grid-column: 10 / span 3; margin: 0; text-align: right; }
 }
 /* Phones and tablets: the cards stick under the nav and running head and pile up, each a
    step lower than the one before, so a sliver of each stays in view. */
@@ -942,11 +952,13 @@ a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px;
   .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
   .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
+  .ds-value:nth-child(4) { top: calc(var(--ds-header) + var(--ds-runhead) + 64px); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ds-value-light::before { animation: ds-ft-drift 18s ease-in-out infinite alternate; }
   .ds-value:nth-child(2) .ds-value-light::before { animation-duration: 22s; animation-delay: -7s; }
   .ds-value:nth-child(3) .ds-value-light::before { animation-duration: 20s; animation-delay: -13s; }
+  .ds-value:nth-child(4) .ds-value-light::before { animation-duration: 24s; animation-delay: -4s; }
 }
 
 .ds-keyrow {
@@ -1025,51 +1037,19 @@ a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px;
 }
 .ds-ledger-foot { margin-top: 28px; }
 
-.ds-proof-close { position: relative; margin-top: var(--ds-beat-tight); display: grid; gap: 28px; }
-.ds-figure-num {
-  font-family: var(--ds-data);
-  font-weight: 400;
-  font-size: clamp(96px, 11vw, 160px);
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  color: var(--ds-fg);
-  margin: 0;
-  font-variant-numeric: tabular-nums;
-}
-@media (max-width: 767px) { .ds-figure-num { font-size: 22vw; } }
-/* Desktop: a step smaller (owner, 2026-10-05); phones keep 22vw. */
-@media (min-width: 1024px) { .ds-figure-num { font-size: clamp(88px, 8.4vw, 124px); } }
 /* Mobile: the quote sits to the right, right-aligned (it lives in the right-hand columns
    on desktop); the hero's GSA line is centered, its text left-aligned. */
 @media (max-width: 767px) {
-  .ds-proof-close .ds-quote { margin-left: auto; max-width: 95%; text-align: right; }
-  .ds-quote blockquote p { text-indent: 0; }
   .ds-hero-gsa { justify-content: center; margin-inline: auto; text-align: left; }
 }
-.ds-figure-note p + p { margin-top: 10px; }
-.ds-figure-note .ds-title { font-size: 18px; line-height: 1.45; font-weight: 400; letter-spacing: 0; }
-.ds-quote { margin: var(--ds-beat-tight) 0 0; }
-.ds-quote blockquote { margin: 0; }
-.ds-quote blockquote p { font-family: var(--ds-text); text-indent: -0.4em; }
-.ds-quote figcaption { margin-top: 24px; }
-.ds-quote figcaption span { display: block; }
-.ds-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
 @media (min-width: 1024px) {
-  /* The figure spans both rows, so it hangs past its note into the quote; the figure and
-     its note are top-aligned. */
-  .ds-proof-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; }
   .ds-ledger-foot { text-align: right; }
-  .ds-figure-num { grid-column: 1 / span 5; grid-row: 1 / span 2; align-self: start; margin-top: 16px; }
-  .ds-figure-note { grid-column: 6 / span 6; grid-row: 1; padding-top: 20px; }
-  .ds-quote { grid-column: 6 / span 7; grid-row: 2; margin-top: var(--ds-beat-tight); }
 }
 
 /* ---------- 02 Quality (owner, 2026-10-06; moved whole from About; Staffing went there) ----------
    The principle as a large statement with the paragraph beside it. Opens after the quote
    with an open beat. */
 .ds-quality { padding-top: var(--ds-beat-open); }
-.ds-quality-head { display: grid; gap: 24px; }
-.ds-quality-head .ds-lead { max-width: 44ch; }
 /* The patrol vehicles as a wide plate (anchored to the photo's foot, so the vehicles lead)
    beside the company facts on hairlines. Owner, 2026-10-06: vehicles are allowed on Home
    here. */
@@ -1086,9 +1066,6 @@ a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px;
 }
 @media (min-width: 768px) { .ds-quality-photo img { aspect-ratio: 16 / 10; } }
 @media (min-width: 1024px) {
-  .ds-quality-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-quality-head h2 { grid-column: 1 / span 7; }
-  .ds-quality-head .ds-lead { grid-column: 8 / span 5; }
   .ds-quality-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-quality-photo { grid-column: 1 / span 7; }
   /* Five columns, label over value with room between rows. */
@@ -3006,11 +2983,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation-timeline: --ds-row;
       animation-range: cover 0% cover 15%;
     }
-    .ds-figure-num {
-      animation: ds-settle linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 100%;
-    }
     .ds-bleed img {
       animation: ds-open linear both;
       animation-timeline: --ds-bleed;
@@ -3025,6 +2997,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       }
       .ds-value:nth-child(2) { animation-range: entry 10% cover 36%; }
       .ds-value:nth-child(3) { animation-range: entry 20% cover 42%; }
+      .ds-value:nth-child(4) { animation-range: entry 0% cover 30%; }
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */

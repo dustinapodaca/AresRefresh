@@ -11,8 +11,8 @@ const FACTS: { label: string; value: string; mono?: boolean }[] = [
 export default function Quality() {
   return (
     <section id="quality" className="ds-quality" aria-labelledby="quality-title">
-      <div className="ds-quality-head">
-        <h2 id="quality-title" className="ds-display-xl">
+      <div className="ds-sec-head">
+        <h2 id="quality-title" className="ds-display-lg">
           Quality over quantity.
         </h2>
         <p className="ds-lead">
