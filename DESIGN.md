@@ -336,6 +336,23 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   attribution sits beneath in Inter small: role in ink, base in ink muted. No avatar, no card, no quote
   icon.
 
+### What we stand for (Home, under 01 Record; owner 2026-10-06)
+The live site's Integrity, Reliability, Personnel, redone (Mobbin: Koto's values). The
+owner-requested exception to "no card containers" and "no glass" for this section.
+- "What we stand for." (display-lg) with "Three things we hold to on every post, and how
+  to check them." Three cards (4px corners, #07080a, white/8% edge): a 240 to 260px light
+  area with its own rust light (Integrity: one light; Reliability: a horizon; Personnel:
+  three lights side by side), and a dark glass panel (canvas at 55% over a 22px blur, a
+  white/10% top edge) riding 80px up over it so the light blurs through. In the glass: the
+  word (Inter Tight 600, 30 to 38px), one line (#c4c8ce), and a mono proof on a white/10%
+  rule (16 of 18 client criteria; on-call coverage in every contract; 4.8 / 5 on Indeed,
+  linked). Text measures 10:1 or better at the light's brightest point.
+- Desktop: three across; the cards rise 64px into place as they scroll in, a step apart
+  (scroll-driven; static without support or under reduced motion). Phones and tablets: the
+  cards are sticky under the nav and running head, each 16px lower, so they pile up as you
+  scroll. The lights drift slowly (ambient; still under reduced motion).
+- No rail mark of its own: it belongs to 01 Record.
+
 ### Quality (Home 02, owner 2026-10-06)
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
   "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
@@ -711,7 +728,7 @@ Few, fast, and crisp. Four to six moments per page.
 
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
-  features, or services.
+  features, or services. Owner exceptions: the Services and Capability cards, the Home values cards.
 - **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
   closing band, the Services opening, and the 404 card (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas

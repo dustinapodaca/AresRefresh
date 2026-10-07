@@ -525,3 +525,12 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | 01 | "Verify us before you call." with the federal ledger (GSA, UEI, CAGE, NAICS, groups) | "The record so far." / "Federal agencies and commercial clients hire us for the same thing: a prepared officer on post, every shift." with the <1% figure and the client quote (unchanged) | Owner: the ledger was federal-only and repeated the Capability Statement |
 | 04 Careers hand-off | "Hiring Ares for your site starts with a quote request or a call." | "For federal buyers, the contract vehicle is already in place." | Now sets up the GSA block |
 | 05 (new) | (none) | "Buying through GSA?" / "Agencies can order through our Multiple Award Schedule at pre-negotiated pricing, without opening a new competition. Every identifier is public." Four identifiers; View on GSA eLibrary, Search on SAM.gov, Every code on the Capability Statement | A short federal path near the close |
+
+## Home: What we stand for (2026-10-06, owner; from the live site)
+
+| Live site | Now |
+|---|---|
+| "Our company / What We Stand For" (kicker and heading) | "What we stand for." / "Three things we hold to on every post, and how to check them." |
+| Integrity: "We believe that communication is key, and that integrity and transparency are the foundation for building trust and true security with our clients." | "Communication is part of the job. We are open and direct with clients about the post, the people on it, and anything that goes wrong." Proof: "Rated Exceptional on 16 of 18 client criteria" |
+| Reliability: "On-call coverage is written into every contract, and leadership works the first shift on every new post. A site that isn't staffed isn't a discount — it's an exposure." | "On-call coverage is written into every contract, and leadership works the first shift on every new post. An unstaffed site is an exposure, not a saving." (no em-dash) Proof: "On-call coverage in every contract" |
+| Personnel: "Ares Security guards are the backbone of our business. We believe that well-trained, healthy employees provide a quality service to all our clients." | "Our officers are the backbone of the business. Well-trained, healthy employees give every client better service." Proof: "Rated 4.8 / 5 by our employees on Indeed" (links to the reviews) |

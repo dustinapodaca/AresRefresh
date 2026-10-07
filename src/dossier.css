@@ -850,6 +850,102 @@ body:has(.ds-page) {
   .ds-record-head p { grid-column: 8 / span 5; }
 }
 
+/* ---------- What we stand for (owner, 2026-10-06; Koto's values on Mobbin) ----------
+   Three dark glass cards, each with its own rust light rising in the upper half and
+   blurring through the glass panel below (the footer's and the 404's glass, set in a
+   card). The owner-approved exception to "no card containers" and "no glass" for this
+   section. Desktop: three across, rising into place on scroll. Phones: they pile up. */
+.ds-values { padding-top: var(--ds-beat); }
+.ds-values-head { display: grid; gap: 20px; }
+.ds-values-list { display: grid; gap: 16px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
+.ds-value {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: #07080a;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+/* A fixed light area; the glass rides up over its last 80px, so every light sits on the
+   glass edge whatever the text length. */
+.ds-value-light { position: relative; z-index: -1; flex: none; height: 240px; pointer-events: none; }
+.ds-value-light::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  filter: blur(26px);
+  will-change: transform;
+}
+/* Integrity: one steady light. */
+.ds-value[data-light='sun'] .ds-value-light::before {
+  background:
+    radial-gradient(20% 24% at 50% 60%, rgb(255 230 204 / 0.85), transparent 70%),
+    radial-gradient(40% 44% at 50% 62%, rgb(214 122 62 / 0.75), transparent 72%),
+    radial-gradient(64% 60% at 50% 66%, rgb(139 73 32 / 0.55), transparent 74%);
+}
+/* Reliability: a horizon, lit end to end. */
+.ds-value[data-light='horizon'] .ds-value-light::before {
+  background:
+    radial-gradient(70% 7% at 50% 64%, rgb(255 232 208 / 0.9), transparent 72%),
+    radial-gradient(85% 22% at 50% 66%, rgb(214 122 62 / 0.75), transparent 72%),
+    radial-gradient(100% 46% at 50% 74%, rgb(139 73 32 / 0.5), transparent 74%);
+}
+/* Personnel: three lights side by side. */
+.ds-value[data-light='three'] .ds-value-light::before {
+  background:
+    radial-gradient(12% 15% at 32% 62%, rgb(255 226 196 / 0.8), transparent 70%),
+    radial-gradient(12% 15% at 50% 56%, rgb(255 226 196 / 0.85), transparent 70%),
+    radial-gradient(12% 15% at 68% 62%, rgb(255 226 196 / 0.8), transparent 70%),
+    radial-gradient(60% 40% at 50% 66%, rgb(214 122 62 / 0.6), transparent 74%);
+}
+.ds-value-glass {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: -80px;
+  padding: 26px 24px 24px;
+  background: rgb(10 11 13 / 0.55);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+.ds-value-glass h3 { margin: 0; font-family: var(--ds-display); font-size: clamp(30px, 2.6vw, 38px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: var(--ds-fg); }
+.ds-value-glass > p:not(.ds-value-proof) { margin: 14px 0 20px; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
+.ds-value-glass .ds-value-proof {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: auto 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ds-fg);
+}
+a.ds-value-proof:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--ds-rule-strong); }
+@media (min-width: 1024px) {
+  .ds-values-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-values-head h2 { grid-column: 1 / span 7; }
+  .ds-values-head p { grid-column: 8 / span 5; }
+  .ds-values-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .ds-value-light { height: 260px; }
+}
+/* Phones and tablets: the cards stick under the nav and running head and pile up, each a
+   step lower than the one before, so a sliver of each stays in view. */
+@media (max-width: 1023px) {
+  .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
+  .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
+  .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ds-value-light::before { animation: ds-ft-drift 18s ease-in-out infinite alternate; }
+  .ds-value:nth-child(2) .ds-value-light::before { animation-duration: 22s; animation-delay: -7s; }
+  .ds-value:nth-child(3) .ds-value-light::before { animation-duration: 20s; animation-delay: -13s; }
+}
+
 /* ---------- 05 GSA: a short block for federal buyers before the close ---------- */
 .ds-gsa { padding-top: var(--ds-beat); }
 .ds-gsa-head { display: grid; gap: 16px; }
@@ -2887,6 +2983,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
    ============================================================ */
+@keyframes ds-value-rise { from { transform: translateY(64px) scale(0.97); } to { transform: none; } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
@@ -2927,6 +3024,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation: ds-open linear both;
       animation-timeline: --ds-bleed;
       animation-range: entry 0% contain 0%;
+    }
+    /* Home values: the cards rise into place as they scroll in, a step apart (desktop). */
+    @media (min-width: 1024px) {
+      .ds-value {
+        animation: ds-value-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+      }
+      .ds-value:nth-child(2) { animation-range: entry 10% cover 36%; }
+      .ds-value:nth-child(3) { animation-range: entry 20% cover 42%; }
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
