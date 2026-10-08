@@ -550,3 +550,11 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | Reliability line "...An unstaffed site is an exposure, not a saving." | "On-call coverage is written into every contract, and leadership works the first shift on every new post." |
 | Integrity line "...We are open and direct with clients about the post..." | "...We are open and direct about the post, the people on it, and anything that goes wrong." |
 | The quote as a large right-hand pull quote | The same words as a wide card under the three |
+
+## Services divisions reordered (2026-10-08, owner)
+
+| Was | Now |
+|---|---|
+| Specialized & Armed Protection as 05 | 02 (Airport, Commercial, Industrial move to 03 to 05) |
+| "Licensed, firearms-compliant officers for cash-handling, regulated, or high-liability sites." | "Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites." |
+| Detail rows: Armed asset protection, High-risk environments, Data centers | Data centers first, then Armed asset protection, High-risk environments |

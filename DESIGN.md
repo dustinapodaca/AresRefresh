@@ -399,7 +399,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05). The photograph (owner, 2026-10-08: Denver towers at blue hour, glass catching
   copper light, generated with Nano Banana, `services-hero/nb-s1-towers.webp`; chosen over
-  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it keeps its own proportions at 2.5x the screen width on the opening's foot, framed on the right of the photo (about 55% to 95% across, the street and its lights), reaching 64% to 84% of the way up behind the glass instead of covering the whole tall opening; owner, 2026-10-08)
+  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it covers the opening as on desktop, set 48px lower; owner, 2026-10-08)
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
@@ -407,6 +407,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
   point, 6:1 or better at every width). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
+- **Division order (owner, 2026-10-08):** 01 Government, 02 Specialized & Armed Protection (data centers named in its description and first in its detail), 03 Airport & Transportation, 04 Commercial, 05 Industrial, 06 Institutional & Community.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
   tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were
