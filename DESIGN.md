@@ -664,7 +664,7 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   identifiers stacked label over value.
 - Then the certification marks separated by thin vertical lines.
 - **The closing stage** (owner request: "aurora or gradient or opacity or glass"; the giant
-  ARES letters were removed, owner 2026-10-06): an open band (210 to 290px) of flowing rust
+  ARES letters were removed, owner 2026-10-06): an open band (280 to 400px; softer at 65% and fading to black over most of its height, owner 2026-10-08) of flowing rust
   aurora, a mesh gradient in the Framer and Vercel manner (owner, 2026-10-08: no rays): two
   layers of large soft fields, deep copper and rust below, amber with a warm white core
   above (screen blend), wandering on loose 19s and 26s loops in opposite directions
