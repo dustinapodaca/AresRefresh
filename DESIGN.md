@@ -399,7 +399,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05). The photograph (owner, 2026-10-08: Denver towers at blue hour, glass catching
   copper light, generated with Nano Banana, `services-hero/nb-s1-towers.webp`; chosen over
-  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it keeps its own proportions at 1.6x the screen width on the opening's foot, showing about 63% of its width, instead of covering the tall opening; owner, 2026-10-08)
+  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it keeps its own proportions at 2.5x the screen width on the opening's foot, framed on the right of the photo (about 55% to 95% across, the street and its lights), reaching 64% to 84% of the way up behind the glass instead of covering the whole tall opening; owner, 2026-10-08)
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge

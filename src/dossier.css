@@ -1370,11 +1370,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (max-width: 1023px) {
   .ds-svc-open-glass { background: rgb(10 11 13 / 0.68); }
 }
-/* Phones (owner, 2026-10-08: too zoomed in): the photo keeps its own proportions at 1.6x the
-   screen width, sitting on the opening's foot, instead of covering the whole tall opening
-   (which showed a quarter of its width). Above it, the glass sits over plain canvas. */
+/* Phones (owner, 2026-10-08): the photo keeps its own proportions at 2.5x the screen width
+   on the opening's foot, framed on the right of the photo (the street and its lights), and
+   reaches most of the way up behind the glass instead of covering the whole tall opening. */
 @media (max-width: 767px) {
-  .ds-svc-open-photo img { left: 50%; right: auto; width: 160%; max-width: none; margin-left: -80%; height: auto; aspect-ratio: 2400 / 1350; }
+  .ds-svc-open-photo img { left: auto; right: -12%; width: 250%; max-width: none; height: auto; aspect-ratio: 2400 / 1350; }
 }
 
 /* ---------- 01 Divisions: a bento of division cards that open in place ----------
