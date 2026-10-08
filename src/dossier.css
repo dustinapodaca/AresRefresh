@@ -3212,6 +3212,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    below 0.62 opacity.
    ============================================================ */
 @keyframes ds-value-rise { from { transform: translateY(64px) scale(0.97); } to { transform: none; } }
+@keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-26svh); } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
@@ -3237,6 +3238,17 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
+    }
+    /* Home hero, desktop (owner, 2026-10-08): a third layer. As the hero leaves, the glass
+       strip and its copy rise faster than the page (the photo drifts slower), so the strip
+       climbs over the towers. Text and glass move together, so it stays readable. */
+    @media (min-width: 900px) {
+      .ds-hero { view-timeline: --ds-hero block; }
+      .ds-hero-copy {
+        animation: ds-hero-rise linear both;
+        animation-timeline: --ds-hero;
+        animation-range: exit 0% exit 100%;
+      }
     }
     .ds-ledger-row::after {
       animation: ds-draw linear both;

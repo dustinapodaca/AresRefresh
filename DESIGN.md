@@ -722,7 +722,8 @@ Few, fast, and crisp. Four to six moments per page.
 - **Text is never hidden.** Scroll effects may move or dim text, but never below AA
   contrast: body copy dims no lower than 0.8 opacity (the hard floor for any text is 0.62). Opacity entrances from 0 are not allowed.
 - **Allowed moments on Home:** the hero photo scrolls 10% slower than the page as the
-  hero leaves; ledger hairlines draw from left to right as rows enter (the text is
+  hero leaves, while the hero's glass strip and its copy rise faster than the page (26svh
+  over the hero's exit, desktop from 900px; owner, 2026-10-08), so three layers move apart; ledger hairlines draw from left to right as rows enter (the text is
   already there); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
 - **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
