@@ -3,13 +3,33 @@
 AI-generated image options, kept for later. Nothing here is on the site: `assets/` is not
 served. To use one, copy it into `public/images/` and reference it from the page.
 
-- **Tool:** `impeccable generate-image` (OpenAI `gpt-image-2.5-flare`). The key lives in
+- **Default model (owner, 2026-10-08): Nano Banana 2** (see its section below). The owner
+  prefers it: it reads as a real photograph, where the OpenAI images look fake.
+- **Earlier tool:** `impeccable generate-image` (OpenAI `gpt-image-2.5-flare`). The key lives in
   the user's Claude Code settings (`~/.claude/settings.json`, `env.OPENAI_API_KEY`), never
   in this repo.
 - **Masters:** lossless PNGs stay local in `.impeccable/gen/` (gitignored). The files
   here are JPEG copies at quality 82 plus each image's exact prompt (`.prompt.txt`) and
   generation record (`.prompt.json`).
 - **Cost guide:** about 25 cents per high-quality 2400x1600 image (an estimate).
+
+### Nano Banana 2 (Google), trial from 2026-10-07
+
+- **Tool:** `gemini-image.py` here (standard-library Python, model
+  `gemini-3.1-flash-image-preview`, 16:9 at 4K by default). The key is read from the
+  `GEMINI_API_KEY` environment variable (Google AI Studio), never stored in this repo.
+- **Run:** `python3 -I assets/generated/gemini-image.py --prompt-file <prompt.txt> --out <image.png> [--ref <style.png>]`.
+  It writes the image and a `.prompt.json` record beside it.
+- **First test:** `hero-b2-nb.prompt.txt`, the hero-b2 prompt reworded for 16:9 with no
+  reference image, to compare against `hero-b2.jpg`.
+- **Cost guide:** about 15 cents per 4K image (published rates; check Google's pricing).
+  Image models have no free tier (quota 0); the Google project needs billing.
+- **Result (2026-10-08):** `hero-b2-nb.jpg` (`gemini-3.1-flash-image`, returned as a
+  5504x3072 JPEG; master in `.impeccable/gen/`, copy here at 2880px). The summit reads
+  more like Pikes Peak and the detail holds at full size, but the model painted the
+  "quiet left" as a flat dark overlay with a visible soft edge, and the copper band is
+  thin. Next try: drop the left/bottom darkness from the prompt (the page's CSS shade
+  and mask already do that) and ask for a stronger copper horizon.
 
 ## Rules for generating
 
