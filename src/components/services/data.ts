@@ -47,17 +47,30 @@ export const DIVISIONS: Division[] = [
     id: 'specialized',
     n: '02',
     title: 'Specialized & Armed Protection',
-    body: 'Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites.',
+    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by our veteran NRA instructor.',
     covers: [
-      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas.' },
+      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, with unarmed or armed officers.' },
       { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
       { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
     ],
     photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
   },
   {
-    id: 'airport',
+    id: 'industrial',
     n: '03',
+    title: 'Industrial, Logistics & Construction',
+    body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
+    covers: [
+      { name: 'Industrial sites', detail: 'Posted guards around the clock, with checkpoint logs you can audit.' },
+      { name: 'Warehouses', detail: 'Mobile patrols and perimeter security for buildings and yards.' },
+      { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
+      { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
+    ],
+    photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
+  },
+  {
+    id: 'airport',
+    n: '04',
     title: 'Airport & Transportation Security',
     body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
     covers: [
@@ -69,7 +82,7 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'commercial',
-    n: '04',
+    n: '05',
     title: 'Commercial & High‑Traffic Security',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
     covers: [
@@ -80,19 +93,6 @@ export const DIVISIONS: Division[] = [
       { name: 'Grocery', detail: 'Loss prevention that protects revenue and the customer experience.' },
     ],
     photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
-  },
-  {
-    id: 'industrial',
-    n: '05',
-    title: 'Industrial, Logistics & Construction',
-    body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
-    covers: [
-      { name: 'Industrial sites', detail: 'Posted guards around the clock, with checkpoint logs you can audit.' },
-      { name: 'Warehouses', detail: 'Mobile patrols and perimeter security for buildings and yards.' },
-      { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
-      { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
-    ],
-    photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
   },
   {
     id: 'community',

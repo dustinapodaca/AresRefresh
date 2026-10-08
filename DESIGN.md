@@ -407,7 +407,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
   point, 6:1 or better at every width). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
-- **Division order (owner, 2026-10-08):** 01 Government, 02 Specialized & Armed Protection (data centers named in its description and first in its detail), 03 Airport & Transportation, 04 Commercial, 05 Industrial, 06 Institutional & Community.
+- **Division order (owner, 2026-10-08):** 01 Government, 02 Specialized & Armed Protection (data centers named in its description and first in its detail, worded for unarmed or armed officers), 03 Industrial, 04 Airport & Transportation, 05 Commercial, 06 Institutional & Community.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
   tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were

@@ -579,3 +579,11 @@ pages. Items to confirm with the owner:
 | Specialized & Armed Protection as 05 | 02 (Airport, Commercial, Industrial move to 03 to 05) |
 | "Licensed, firearms-compliant officers for cash-handling, regulated, or high-liability sites." | "Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites." |
 | Detail rows: Armed asset protection, High-risk environments, Data centers | Data centers first, then Armed asset protection, High-risk environments |
+
+### Second pass (2026-10-08, owner): data centers are not armed-only; Industrial 03, Airport 04
+
+| Was | Now |
+|---|---|
+| "Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites." | "Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by our veteran NRA instructor." |
+| Data centers: "Access control and checkpoint logs for controlled areas." | "Access control and checkpoint logs for controlled areas, with unarmed or armed officers." |
+| 03 Airport, 04 Commercial, 05 Industrial | 03 Industrial, 04 Airport, 05 Commercial |
