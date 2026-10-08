@@ -5,10 +5,10 @@ import { GSA_ELIBRARY } from './links';
 export default function Hero() {
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
-      {/* A glass fold in amber and white light (owner-supplied, hero-fold.webp).
-          Full bleed from 900px; runs down under 01 Verify. */}
+      {/* The copper-glass tower (hero6.jpg), back on Home (owner, 2026-10-08; it was the
+          Services band). Full bleed from 900px; runs down under 01 Record. */}
       <div className="ds-hero-photo" aria-hidden="true">
-        <img src="/images/hero-fold.webp" width={2880} height={1620} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+        <img src="/images/hero6.jpg" width={2400} height={1600} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container">

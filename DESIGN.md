@@ -283,7 +283,7 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero image (Home):** `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
+- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.85) brightness(0.62) contrast(1.06)` at `50% 50%` from 900px, `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
   the light falls between the copy and the glass edge at about three quarters across.
@@ -396,8 +396,10 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). The copper-glass tower photograph (`hero6.jpg`, the former Home hero)
-  fills the whole opening from the top of the page, behind the nav, like the other heroes
+  2026-10-05). The photograph (owner, 2026-10-08: options in `HERO_OPTIONS` in
+  `src/components/services/Opening.tsx`, previewed in dev with `?hero=<key>`; default
+  `nb-towers`, Denver towers at blue hour generated with Nano Banana; the tower `hero6.jpg`
+  went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
