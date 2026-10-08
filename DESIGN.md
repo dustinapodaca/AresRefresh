@@ -397,7 +397,7 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, `contact-hero.jpg`, swapped from the Request a Quote page; earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it covers the opening as on desktop)
+  2026-10-05). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, `contact-hero.jpg`, swapped from the Request a Quote page; earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sits 164px lower, with a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.6:1 or better)
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge

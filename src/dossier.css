@@ -1342,18 +1342,26 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   -webkit-mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
   mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
 }
-.ds-svc-open-photo img {
+.ds-svc-open-stack {
   position: absolute;
   inset-inline: 0;
-  /* Anchored to the photo's bottom edge (street level); the extra height sits above
-     for the drift as the opening leaves. */
-  bottom: 0;
-  width: 100%;
+  /* Anchored to the photo's bottom edge, set 164px lower (owner, 2026-10-08); the extra
+     height sits above for the drift as the opening leaves. */
+  bottom: -164px;
   height: 112%;
+}
+.ds-svc-open-stack img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: 50% 100%;
   filter: saturate(0.85) brightness(0.74);
 }
+/* The mirror: the same photo flipped vertically, directly above it, so the opening is image
+   to the top and the glass has something to frost there. */
+.ds-svc-open-mirror { position: absolute; inset-inline: 0; bottom: 100%; height: 100%; transform: scaleY(-1); }
 .ds-svc-open-glass {
   position: absolute;
   inset: 0 0 var(--svc-band);
@@ -3241,7 +3249,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
-    .ds-svc-open-photo img {
+    .ds-svc-open-stack {
       animation: ds-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
