@@ -107,7 +107,7 @@ Preview any set in dev with `/?values=a`, `b`, or `c`.
 Prompts in `services-hero/`; masters in `.impeccable/gen/services-hero/`; web copies in
 `public/images/services-hero/` (with WebP copies of the earlier `hero-a` and `hero-e`).
 Options compared in place: fold, nb-towers, nb-entrance, nb-springs, nb-fins, tower-a,
-fins-e, abstract. **Chosen (owner, 2026-10-08): nb-towers** (`nb-s1-towers.webp`).
+fins-e, abstract. **Chosen (owner, 2026-10-08): nb-towers** (`nb-s1-towers.webp`); later the same day moved to open the Request a Quote page, and Services took the real Denver sunset photo (`contact-hero.jpg`).
 
 ## Industry scenes (2026-10-08, Nano Banana 2, test branch)
 

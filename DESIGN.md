@@ -397,9 +397,7 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). The photograph (owner, 2026-10-08: Denver towers at blue hour, glass catching
-  copper light, generated with Nano Banana, `services-hero/nb-s1-towers.webp`; chosen over
-  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones framed on the owner's crop: the upper ~78% of the photo, centred 52% across, then nudged 16px left and 56px down; owner, 2026-10-08)
+  2026-10-05). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, `contact-hero.jpg`, swapped from the Request a Quote page; earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes (on phones it covers the opening as on desktop)
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
@@ -516,7 +514,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
 ### Request a Quote page ("The Intake", 2026-10-05)
 A short form page, so no rail and no scroll effects (owner). Concept and Mobbin board:
 docs/contact-concepts.md.
-- **Opening:** Denver at sunset (`contact-hero.jpg`, captioned; the route's SEO preload)
+- **Opening:** the generated Denver towers at blue hour (`services-hero/nb-s1-towers.webp`, swapped from Services, owner 2026-10-08; generated, so no place caption; the route's SEO preload still names `contact-hero.jpg` until the SEO pass)
   as a band under the nav, shaded from the top and left and masked into the canvas, with
   "Request a quote." and the lead low on it.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a

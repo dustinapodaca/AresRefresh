@@ -85,16 +85,17 @@ export default function Contact() {
       <Seo path="/contact" />
 
       <section className="ds-qt-open" aria-labelledby="qt-title">
+        {/* Denver towers at blue hour (generated with Nano Banana; swapped with the Services
+            opening, owner 2026-10-08). Generated, so it carries no place caption. */}
         <figure className="ds-qt-hero">
           <img
-            src="/images/contact-hero.jpg"
-            alt="Downtown Denver at sunset, the Front Range behind it"
-            width={1400}
-            height={805}
+            src="/images/services-hero/nb-s1-towers.webp"
+            alt=""
+            width={2400}
+            height={1350}
             decoding="async"
             {...{ fetchpriority: 'high' }}
           />
-          <figcaption className="ds-caption">Denver, Colorado</figcaption>
         </figure>
         <div className="ds-container ds-qt-open-copy">
           <h1 id="qt-title" className="ds-display-xl">
