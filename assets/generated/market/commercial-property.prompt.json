@@ -1,0 +1,28 @@
+{
+  "prompt": "A modern commercial office building lobby seen from the plaza at dusk: tall glass walls, a warm lit lobby with a stone reception desk and seating inside, empty plaza with planters in front, city towers behind. A real photograph, not a render: documentary architectural photography, shot on a full-frame camera, natural color, slight film grain, believable light. Dusk or blue hour in Colorado, with the Front Range mountains faint on the horizon where it fits. Dark, calm, and spacious, with deep shadows and warm sodium and copper lights against a cool sky, so it sits on a near-black website. Wide 16:9 composition, the subject in the lower two thirds, open sky above. No people, no faces, no vehicles in motion, no text, no signage, no logos, no flags, no watermarks.",
+  "createdAt": "2026-10-08T19:19:14.424950+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "2K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 170,
+    "candidatesTokenCount": 2065,
+    "totalTokenCount": 2235,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 170
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1680
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

@@ -90,6 +90,250 @@
       "title": "Accessibility Statement | Ares Security",
       "description": "Ares Security builds its website to WCAG 2.2 Level AA. What we have done, known limitations, and how to reach us if something on the site gets in your way."
     },
+    "/services/armed-security-officers": {
+      "title": "Armed Security Officers in Colorado | Ares Security",
+      "description": "Licensed, firearms-qualified armed security officers in Colorado Springs, Denver, and Pueblo. Trained on post by leadership. Order through GSA MAS.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Armed security guard services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/services/unarmed-security-officers": {
+      "title": "Unarmed Security Officers in Colorado | Ares Security",
+      "description": "Uniformed and plainclothes unarmed security officers for lobbies, perimeters, and public areas in Colorado Springs, Denver, and Pueblo.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Unarmed security guard services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/services/access-control": {
+      "title": "Access Control Officers in Colorado | Ares Security",
+      "description": "Access control officers for Colorado sites: credential checks, visitor screening, and gate, dock, and lobby control, with logs you can audit.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Access control security services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/services/mobile-patrol": {
+      "title": "Mobile Security Patrol in Colorado | Ares Security",
+      "description": "Marked-vehicle mobile patrol in Colorado: after-hours checks, alarm response, and multi-property routes with time-stamped reports.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Mobile security patrol services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/services/event-security": {
+      "title": "Event Security in Colorado | Ares Security",
+      "description": "Event security in Colorado Springs, Denver, and Pueblo: crowd management, entry screening, and one plan shared with your staff and venue.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Event security services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/services/emergency-response": {
+      "title": "Security Emergency Response in Colorado | Ares Security",
+      "description": "Security officers who respond on site, contain incidents, work with first responders, and file a written report after every incident.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Security emergency response services",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/industries/data-centers": {
+      "title": "Data Center Security in Colorado | Ares Security",
+      "description": "Security for data centers and critical infrastructure in Colorado: access control, posted officers, and checkpoint logs from construction through operations.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Data center and critical infrastructure security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/industries/government-military": {
+      "title": "Government & Military Facility Security | Ares Security",
+      "description": "Security officers for federal, state, and municipal facilities and military installations in Colorado, available through GSA MAS 47QSMS25D009Q.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Government facility security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/industries/construction-industrial": {
+      "title": "Construction Site Security in Colorado | Ares Security",
+      "description": "Construction and industrial site security in Colorado: gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Construction site security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/industries/commercial-property": {
+      "title": "Commercial & Retail Security in Colorado | Ares Security",
+      "description": "Security officers for Colorado offices, retail, banks, hotels, and healthcare sites, with patrol across a portfolio and one report per property.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Commercial property security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
+    "/insights": {
+      "title": "Insights: Buying Security in Colorado | Ares Security",
+      "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
+    },
+    "/insights/armed-or-unarmed-security": {
+      "title": "Armed or unarmed security: how to decide | Ares Security",
+      "description": "Most sites need unarmed officers. Some need armed ones. The difference is what the officer may have to stop, and what the contract, the insurer, and the law.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
+    "/insights/what-is-a-post-order": {
+      "title": "What Is a Security Post Order? | Ares Security",
+      "description": "A post order is the written instruction set for one security post. It is how a site gets the same coverage on every shift, whoever is standing the post.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
+    "/insights/construction-site-security": {
+      "title": "Construction Site Security Checklist | Ares Security",
+      "description": "An active build is open in ways a finished building is not. What to cover at the gate, on the perimeter, and after hours, and how coverage should change as.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
+    "/insights/buying-security-through-gsa": {
+      "title": "Buying Security Through a GSA Schedule | Ares Security",
+      "description": "The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated pricing without opening a new competition. How it works, and how to.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
+    "/insights/colorado-security-licensing": {
+      "title": "Security Licensing in Colorado | Ares Security",
+      "description": "Colorado has no statewide license for security companies or officers. Cities license them instead, so the right license depends on where your site is.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
+    "/careers/colorado-springs": {
+      "title": "Security Jobs in Colorado Springs, CO | Ares Security",
+      "description": "Armed and unarmed security officer jobs in Colorado Springs with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "breadcrumbs": [
+        {
+          "name": "Careers",
+          "path": "/careers"
+        }
+      ]
+    },
+    "/careers/denver": {
+      "title": "Security Jobs in Denver, CO | Ares Security",
+      "description": "Armed and unarmed security officer jobs in Denver with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "breadcrumbs": [
+        {
+          "name": "Careers",
+          "path": "/careers"
+        }
+      ]
+    },
+    "/careers/pueblo": {
+      "title": "Security Jobs in Pueblo, CO | Ares Security",
+      "description": "Armed and unarmed security officer jobs in Pueblo with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "breadcrumbs": [
+        {
+          "name": "Careers",
+          "path": "/careers"
+        }
+      ]
+    },
     "/404": {
       "title": "Page Not Found | Ares Security",
       "description": "We couldn't find that page. Go to the Ares Security home page, see our services, or request a quote.",
