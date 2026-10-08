@@ -1357,7 +1357,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   height: 100%;
   object-fit: cover;
   object-position: 50% 100%;
-  filter: saturate(0.85) brightness(0.74);
+  /* The full-resolution original is bluer and brighter than the old 1400px export; this
+     grade brings it to the same muted look. */
+  filter: saturate(0.78) sepia(0.12) brightness(0.68) contrast(1.04);
 }
 /* The mirror: the same photo flipped vertically, directly above it, so the opening is image
    to the top and the glass has something to frost there. */
