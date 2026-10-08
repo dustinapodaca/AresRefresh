@@ -1,0 +1,28 @@
+{
+  "prompt": "A modern building facade at dusk photographed close and at an angle: repeating vertical metal fins and dark glass, one edge catching warm copper light from a low sun, the rest in deep steel-blue shadow. A real photograph, not a render: architectural photography on a full-frame camera, natural color, slight film grain. Dark and calm, deep shadows, cool steel-blue tones with warm copper and amber light, so it sits on a near-black website. Wide 16:9, strong subject in the lower half, open dark space in the upper half for a headline. No people, no faces, no text, no signage, no logos, no flags, no watermarks.",
+  "createdAt": "2026-10-08T20:38:31.398829+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "2K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 142,
+    "candidatesTokenCount": 2099,
+    "totalTokenCount": 2241,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 142
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1680
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

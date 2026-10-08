@@ -101,3 +101,15 @@ q86) in `values/` and `public/images/values/`.
 
 Chosen (PICK in `src/components/home/Values.tsx`): Integrity a, Reliability b, Personnel a.
 Preview any set in dev with `/?values=a`, `b`, or `c`.
+
+## Services hero options (2026-10-08, Nano Banana 2)
+
+Prompts in `services-hero/`; masters in `.impeccable/gen/services-hero/`; web copies in
+`public/images/services-hero/` (with WebP copies of the earlier `hero-a` and `hero-e`).
+Options and labels live in `HERO_OPTIONS` (`src/components/services/Opening.tsx`); preview in
+dev with `/services?hero=<key>`: fold, nb-towers (default), nb-entrance, nb-springs, nb-fins,
+tower-a, fins-e, abstract.
+
+## Industry scenes (2026-10-08, Nano Banana 2, test branch)
+
+Prompts in `market/`; web copies in `public/images/market/`. Placeholders until owner photos.
