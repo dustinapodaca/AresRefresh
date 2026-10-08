@@ -624,7 +624,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   columns), lead, quote button (`/contact?service=<slug>`) and call link; beside it a spec
   sheet on hairlines (label 13px faint over value 16px ink; GSA routes to eLibrary). Then
   "What the post covers." (four duties two by two, the mono number on the title's line),
-  "Where we post them." (industry routes), questions, an ask strip, "More services.".
+  "Where it is asked for." (industry routes), questions, an ask strip, "More services.".
 - **Industry pages (`/industries/<slug>`):** a long headline (up to 15em), lead and actions
   in one row, then a full-bleed scene (generated with Nano Banana: light and architecture,
   no people, no caption) masked into the canvas. "What is at stake." (headline left, prose

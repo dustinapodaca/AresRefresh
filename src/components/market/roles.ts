@@ -42,7 +42,7 @@ export const SHARED_SHEET: SheetRow[] = [
 
 const GSA_FAQ: Faq = {
   q: 'Can federal agencies order this through GSA?',
-  a: 'Yes. Ares holds GSA Multiple Award Schedule contract 47QSMS25D009Q under SIN 561612, so agencies can place an order at pre-negotiated pricing without opening a new competition.',
+  a: 'Yes. Ares holds GSA Multiple Award Schedule contract 47QSMS25D009Q under SIN 561612, so agencies can order at pre-negotiated ceiling prices using the streamlined FAR 8.4 procedures, usually a request for quotes to schedule holders on GSA eBuy, instead of a new open-market solicitation.',
 };
 const RELIEF_FAQ: Faq = {
   q: 'What happens if an officer cannot make a shift?',

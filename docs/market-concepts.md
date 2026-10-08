@@ -38,3 +38,16 @@ on Services, and "Jobs by city" on Careers.
 
 Clearance tiers, cleared-guard language, CSTs, clearance sponsorship, SCIF and accreditation
 work, nationwide surge, fill-rate or headcount claims.
+
+## Placeholders (finish review, 2026-10-08)
+
+The four industry scenes (`public/images/market/*.webp`, Nano Banana) are demo images for
+this test branch. They are photoreal and uncaptioned, so a buyer could read them as Ares
+sites. Before merging to main: replace them with owner photography, or drop the band on the
+industry pages.
+
+Older lines elsewhere on the site still say agencies can order "without opening a new
+competition" (Services Government card, Capability Statement). The finish review called that
+overstated (FAR 8.4 orders are still competed among schedule holders); the new pages use
+"streamlined FAR 8.4 procedures" instead. Owner to decide on the older lines, and to confirm
+the citation against current GSA guidance after the FAR overhaul.

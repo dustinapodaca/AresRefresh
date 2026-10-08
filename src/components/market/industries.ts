@@ -55,7 +55,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     faq: [
       {
         q: 'Can you staff a data center while it is being built?',
-        a: 'Yes. A build needs gate and dock control, perimeter rounds, and contractor monitoring. A live site needs posted officers and documented entry. We staff both, and the plan changes as the site does.',
+        a: 'Yes. A build needs gate and dock control, perimeter rounds, and contractor monitoring. A live site needs posted officers and documented entry. We can staff both, and the plan changes as the site does.',
       },
       {
         q: 'Will your officers learn our systems and rules?',
@@ -98,7 +98,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     faq: [
       {
         q: 'How can an agency buy from Ares?',
-        a: 'Through our GSA Multiple Award Schedule contract 47QSMS25D009Q (SIN 561612): agencies can place an order at pre-negotiated pricing without opening a new competition. Every procurement path is on our Capability Statement.',
+        a: 'Through our GSA Multiple Award Schedule contract 47QSMS25D009Q (SIN 561612): agencies can order at pre-negotiated ceiling prices using the streamlined FAR 8.4 procedures, usually a request for quotes to schedule holders on GSA eBuy, instead of a new open-market solicitation. Every procurement path is on our Capability Statement.',
       },
       {
         q: 'Are you a small business?',
@@ -169,7 +169,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'armed-security-officers', line: 'Armed officers for banks and cash-handling sites.' },
     ],
     why: [
-      { label: 'Client rating', value: 'Rated Exceptional on 16 of 18 client criteria' },
+      { label: 'Client rating', value: 'Rated Exceptional on 16 of 18 client criteria', href: '/capability-statement' },
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
       RELIEF,
       LICENSED,

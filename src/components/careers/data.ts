@@ -39,5 +39,5 @@ export const REASONS: { name: string; line: string }[] = [
   { name: 'A real voice on site', line: 'Officers brief leadership directly, and a concern about a post is heard the same day.' },
   { name: 'Schedules you can plan around', line: 'Shifts are posted far enough ahead to plan a life around, with no endless doubles.' },
   { name: 'Veterans welcome', line: 'Our supervisors include veterans, and our NRA firearms instructor is a veteran. Veterans are encouraged to apply.' },
-  { name: 'Paid training and renewals', line: 'State certifications and firearms qualifications are kept current on company time, with no out-of-pocket renewals.' },
+  { name: 'Paid training and renewals', line: 'City licenses and firearms qualifications are kept current on company time, with no out-of-pocket renewals.' },
 ];

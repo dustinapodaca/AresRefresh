@@ -1791,6 +1791,8 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
 .ds-svc-browse { padding-top: var(--ds-beat); }
 .ds-svc-browse-sub { margin: 36px 0 14px; font-size: 13px; font-weight: 500; color: var(--ds-fg-faint); scroll-margin-top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
 .ds-svc-browse > h2 + .ds-svc-browse-sub { margin-top: 28px; }
+/* Four industries as a complete 2x2, never three and an orphan. */
+@media (min-width: 768px) { .ds-svc-browse ul[aria-label='Industries'] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---------- 04 Program (2026-10-08): what comes with every post ---------- */
 .ds-svc-program { padding-top: var(--ds-beat); }

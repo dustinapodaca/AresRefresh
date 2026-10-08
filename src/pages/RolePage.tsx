@@ -53,7 +53,7 @@ export default function RolePage() {
         </section>
 
         <section className="ds-mk-sec ds-mk-sec-tight" aria-labelledby="mk-where">
-          <h2 id="mk-where" className="ds-display-md">Where we post them.</h2>
+          <h2 id="mk-where" className="ds-display-md">Where it is asked for.</h2>
           <RouteRow
             label="Industries"
             items={role.industries.map((s) => {

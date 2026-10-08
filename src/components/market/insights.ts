@@ -108,7 +108,7 @@ export const INSIGHTS: Insight[] = [
     title: 'How agencies can buy security services through a GSA Schedule.',
     category: 'Buying security',
     ...D,
-    summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated pricing without opening a new competition. How it works, and how to check a vendor.',
+    summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated ceiling prices through streamlined procedures. How it works, and how to check a vendor.',
     body: [
       { p: 'The GSA Multiple Award Schedule (MAS) is a set of long-term, government-wide contracts with pre-negotiated ceiling prices. Security guard and patrol services sit under SIN 561612.' },
       { h: 'How ordering works' },
@@ -143,7 +143,7 @@ export const INSIGHTS: Insight[] = [
         'Colorado Springs issues a Contract Security Agency license.',
         'Pueblo licenses security through the Pueblo Police Department.',
       ] },
-      { p: 'Several other cities license security on their own as well. If your site is somewhere else, check with that city before you hire.' },
+      { p: 'Some other cities may license security too. If your site is somewhere else, check with that city before you hire.' },
       { h: 'What to ask a vendor' },
       { list: [
         'Its license number in the city where your site is, and where you can verify it.',
@@ -151,7 +151,7 @@ export const INSIGHTS: Insight[] = [
         'Who trains its officers, and whether it is an approved training provider in that city.',
       ] },
       { h: 'Ares’ licenses' },
-      { p: 'Ares is licensed and bonded for armed and unarmed security, and is an approved armed and unarmed training provider, in Colorado Springs, Denver, and Pueblo. Each license is listed, with a way to verify it, on our city pages.' },
+      { p: 'Ares is licensed and bonded for armed and unarmed security, and is a training provider for armed and unarmed officers, in Colorado Springs, Denver, and Pueblo. Each license is listed on our city pages, with a way to verify it or request a copy.' },
     ],
     related: [
       { label: 'Colorado Springs', to: '/locations/colorado-springs' },

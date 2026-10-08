@@ -566,3 +566,8 @@ pages. Items to confirm with the owner:
 - City job pages: "we train new officers for the licensing their post requires" in each city.
 - Quote form: services now by role (were the six divisions); new optional questions.
 - Footer: "Report a concern" (email to contact@).
+- Finish review fixes: "State certifications" is now "City licenses" (Careers reasons; Colorado
+  has no statewide license); GSA lines on the new pages now say "pre-negotiated ceiling prices
+  using the streamlined FAR 8.4 procedures" (not "without opening a new competition"); role
+  pages' "Where we post them." is "Where it is asked for."; "We staff both" is "We can staff
+  both"; the licensing article says "training provider" and "verify it or request a copy".

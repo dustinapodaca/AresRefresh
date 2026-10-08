@@ -54,7 +54,6 @@ export default function CityJobsPage() {
           <h2 id="mk-license" className="ds-display-md">Licensing, handled.</h2>
           <div className="ds-mk-prose">
             <p>{c.licensing}</p>
-            <p>State certifications and firearms qualifications are kept current on company time, with no out-of-pocket renewals.</p>
           </div>
         </section>
 
