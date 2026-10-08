@@ -664,9 +664,11 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   identifiers stacked label over value.
 - Then the certification marks separated by thin vertical lines.
 - **The closing stage** (owner request: "aurora or gradient or opacity or glass"; the giant
-  ARES letters were removed, owner 2026-10-06): an open band (210 to 290px) of slow rust
-  aurora: long, flat ribbons of rust and amber light at staggered heights with bright
-  edges, over faint curtains of light rising from below (a conic fan). Its foot runs 40 to
+  ARES letters were removed, owner 2026-10-06): an open band (210 to 290px) of flowing rust
+  aurora, a mesh gradient in the Framer and Vercel manner (owner, 2026-10-08: no rays): two
+  layers of large soft fields, deep copper and rust below, amber with a warm white core
+  above (screen blend), wandering on loose 19s and 26s loops in opposite directions
+  (translate, slight rotate, scale), faded out toward the top. Its foot runs 40 to
   64px under a band of dark glass (canvas at 55% over a 22px blur, a white/10% top edge)
   that holds the legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado
   Springs, Colorado", Privacy, Terms, Accessibility. The light drifts slowly (still under
