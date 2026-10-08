@@ -283,7 +283,7 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.85) brightness(0.62) contrast(1.06)` at `50% 50%` from 900px, `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
+- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left; readability comes from a band of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, a white/10% top edge, fading out at its foot so the copper floor shows; the lead and GSA label in #c4c8ce; 5:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
   the light falls between the copy and the glass edge at about three quarters across.
@@ -735,7 +735,7 @@ Few, fast, and crisp. Four to six moments per page.
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services. Owner exceptions: the Services and Capability cards, the Home values cards.
 - **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
-  closing band, the Services opening, and the 404 card (owner requests).
+  closing band, the Services opening, the Home hero's copy band, and the 404 card (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and
