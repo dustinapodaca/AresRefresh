@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import Arrow from '../components/Arrow';
 import CoverageMap from '../components/home/CoverageMap';
 import Seo from '../seo/Seo';
@@ -6,18 +6,39 @@ import Seo from '../seo/Seo';
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
 
-// What needs covering: the six Services divisions and other.
-// Web3Forms uses `subject` as the email's subject line, so the slug is swapped for the
-// label right before posting.
+// What needs covering: the six services (one page each under /services/<slug>) and
+// "not sure". Web3Forms uses `subject` as the email's subject line, so the slug is swapped
+// for the label right before posting. Role and industry pages link here with
+// ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
 const NEEDS: { slug: string; label: string }[] = [
-  { slug: 'government', label: 'Government Security Personnel' },
-  { slug: 'airport', label: 'Airport & Transportation Security' },
-  { slug: 'commercial', label: 'Commercial & High-Traffic Security' },
-  { slug: 'industrial', label: 'Industrial, Logistics & Construction' },
-  { slug: 'specialized', label: 'Specialized & Armed Protection' },
-  { slug: 'community', label: 'Institutional & Community Security' },
+  { slug: 'armed-security-officers', label: 'Armed security officers' },
+  { slug: 'unarmed-security-officers', label: 'Unarmed security officers' },
+  { slug: 'access-control', label: 'Access control' },
+  { slug: 'mobile-patrol', label: 'Mobile patrol' },
+  { slug: 'event-security', label: 'Event security' },
+  { slug: 'emergency-response', label: 'Emergency response' },
+  { slug: 'other', label: 'Not sure, or something else' },
+];
+
+// The post, in a few taps (CenCore's quote form, without the clearance question).
+const CHIPS: { name: string; legend: string; options: string[] }[] = [
+  { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Elsewhere in Colorado'] },
+  { name: 'officers', legend: 'Officers on post at once', options: ['1 to 2', '3 to 5', '6 to 15', '16 or more', 'Not sure'] },
+  { name: 'schedule', legend: 'Schedule', options: ['Business hours', 'Nights and weekends', '24/7', 'One-time or event', 'Not sure'] },
+  { name: 'start', legend: 'When do you need coverage?', options: ['Within 30 days', '1 to 3 months', '3 to 6 months', 'Just planning'] },
+];
+
+const SITE_TYPES: { slug: string; label: string }[] = [
+  { slug: 'government-military', label: 'Government or military facility' },
+  { slug: 'data-centers', label: 'Data center or critical infrastructure' },
+  { slug: 'construction-industrial', label: 'Construction, industrial, or warehouse' },
+  { slug: 'commercial-property', label: 'Office, retail, bank, or hotel' },
+  { slug: 'healthcare-education', label: 'Healthcare, school, or campus' },
+  { slug: 'event-venue', label: 'Event or venue' },
   { slug: 'other', label: 'Something else' },
 ];
+
+const HEARD = ['Google search', 'AI assistant (ChatGPT, Gemini, and others)', 'GSA eLibrary or SAM.gov', 'Agency or prime referral', 'Referral from a client or colleague', 'LinkedIn', 'Other'];
 const LABEL = Object.fromEntries(NEEDS.map((n) => [n.slug, n.label]));
 
 const FAILED = 'That did not send. Please try again, or email contact@aressecurity.co.';
@@ -33,6 +54,25 @@ export default function Contact() {
   // `done` marks a result (it carries the light); while sending, the line only announces.
   const [status, setStatus] = useState<{ text: string; ok: boolean; done: boolean } | null>(null);
   const [sending, setSending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Pick the service or site type the reader came from (after hydration, so the prerendered
+  // HTML and the first client render match).
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const form = formRef.current;
+    if (!form) return;
+    const service = q.get('service');
+    if (service) {
+      const radio = form.querySelector<HTMLInputElement>(`input[name="subject"][value="${CSS.escape(service)}"]`);
+      if (radio) radio.checked = true;
+    }
+    const industry = q.get('industry');
+    if (industry) {
+      const select = form.querySelector<HTMLSelectElement>('select[name="site_type"]');
+      if (select && SITE_TYPES.some((t) => t.slug === industry)) select.value = industry;
+    }
+  }, []);
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -53,6 +93,9 @@ export default function Contact() {
     // Rewrite `subject` from its slug to a readable email subject.
     const slug = String(fd.get('subject') || '');
     fd.set('subject', `Ares Inquiry: ${LABEL[slug] || 'General inquiry'}`);
+    // The site type travels as its label, so the email reads plainly.
+    const site = String(fd.get('site_type') || '');
+    if (site) fd.set('site_type', SITE_TYPES.find((t) => t.slug === site)?.label || site);
 
     // So replying from the inbox goes back to the inquirer, not Web3Forms.
     const email = String(fd.get('email') || '');
@@ -108,7 +151,7 @@ export default function Contact() {
       </section>
 
       <div className="ds-container ds-qt-body">
-        <form className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
+        <form ref={formRef} className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
           <fieldset className="ds-qt-part">
             <legend>What needs covering?</legend>
             <div className="ds-qt-needs">
@@ -125,6 +168,39 @@ export default function Contact() {
             </p>
           </fieldset>
 
+          <fieldset className="ds-qt-part">
+            <legend>About the post</legend>
+            <div className="ds-qt-chipsets">
+              {CHIPS.map((g) => (
+                <fieldset key={g.name} className="ds-qt-chipset">
+                  <legend>{g.legend} <span>Optional</span></legend>
+                  <div className="ds-qt-chips">
+                    {g.options.map((o) => (
+                      <label key={o} className="ds-qt-chip">
+                        <input type="radio" name={g.name} value={o} />
+                        <span>{o}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ))}
+            </div>
+            <div className="ds-qt-fields ds-qt-fields-after">
+              <Field id="qf-site" label="Type of site" optional>
+                <select id="qf-site" name="site_type" className="ds-qt-input ds-qt-select" defaultValue="">
+                  <option value="">Choose one</option>
+                  {SITE_TYPES.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
+                </select>
+              </Field>
+              <Field id="qf-heard" label="How did you hear about us?" optional>
+                <select id="qf-heard" name="heard_about" className="ds-qt-input ds-qt-select" defaultValue="">
+                  <option value="">Choose one</option>
+                  {HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
+                </select>
+              </Field>
+            </div>
+          </fieldset>
+
           <fieldset className="ds-qt-part ds-qt-part-grow">
             <legend>About the site</legend>
             <Field id="qf-message" label="Message">
@@ -133,7 +209,7 @@ export default function Contact() {
                 name="message"
                 required
                 rows={6}
-                placeholder="Site, shift pattern, deadline, and any compliance considerations."
+                placeholder="The address or area, the hours, what officers should watch for, and any requirements the post must meet."
                 className="ds-qt-input"
               />
             </Field>

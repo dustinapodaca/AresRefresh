@@ -2358,7 +2358,7 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
 }
 
 .ds-qt-part { min-width: 0; margin: 0; padding: 0; border: 0; }
-.ds-qt-part legend {
+.ds-qt-part > legend {
   display: block;
   width: 100%;
   margin-bottom: 20px;
@@ -2422,6 +2422,43 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
   .ds-qt-need:hover .ds-qt-dot { border-color: var(--ds-fg-muted); }
   .ds-qt-input:hover { border-color: rgb(255 255 255 / 0.26); }
 }
+
+/* About the post: answers as square chips (2px corners, never pills), one choice each. */
+.ds-qt-chipsets { display: grid; gap: 22px; }
+.ds-qt-chipset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.ds-qt-chipset legend { margin: 0 0 10px; padding: 0; font-size: 13px; font-weight: 500; color: var(--ds-fg-muted); }
+.ds-qt-chipset legend span { margin-left: 6px; font-weight: 400; color: var(--ds-fg-faint); }
+.ds-qt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ds-qt-chip { position: relative; cursor: pointer; }
+.ds-qt-chip input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.ds-qt-chip span {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 2px;
+  background: #0e1013;
+  font-size: 14px;
+  color: var(--ds-fg-muted);
+  transition: background-color 180ms var(--ds-ease), color 180ms var(--ds-ease), border-color 180ms var(--ds-ease);
+}
+.ds-qt-chip input:checked + span { background: var(--ds-fg); border-color: var(--ds-fg); color: var(--ds-canvas); }
+.ds-qt-chip input:focus-visible + span { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
+.ds-qt-chip:active span { transform: scale(0.98); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-qt-chip:hover input:not(:checked) + span { border-color: rgb(255 255 255 / 0.3); color: var(--ds-fg); }
+}
+.ds-qt-fields-after { margin-top: 26px; }
+.ds-qt-select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='none' stroke='%239aa0a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+.ds-qt-select option { background: #0e1013; color: var(--ds-fg); }
 
 /* 02 and 03: fields. Filled, hairline edged, 2px corners. */
 .ds-qt-fields { display: grid; gap: 20px; }
