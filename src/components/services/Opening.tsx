@@ -1,7 +1,6 @@
-// The opening photograph (owner, 2026-10-08): Denver towers at blue hour, generated with
-// Nano Banana (assets/generated/services-hero/s1-towers.txt). The other options tried are
-// recorded in assets/generated/README.md.
-const HERO = { src: '/images/services-hero/nb-s1-towers.webp', width: 2400, height: 1350 };
+// The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
+// (a real place, swapped with the Request a Quote page, which now has the generated towers).
+const HERO = { src: '/images/contact-hero.jpg', width: 1400, height: 805 };
 
 export default function Opening() {
   return (
