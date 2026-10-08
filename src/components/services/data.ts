@@ -44,8 +44,20 @@ export const DIVISIONS: Division[] = [
     },
   },
   {
-    id: 'airport',
+    id: 'specialized',
     n: '02',
+    title: 'Specialized & Armed Protection',
+    body: 'Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites.',
+    covers: [
+      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas.' },
+      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
+      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
+    ],
+    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
+  },
+  {
+    id: 'airport',
+    n: '03',
     title: 'Airport & Transportation Security',
     body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
     covers: [
@@ -57,7 +69,7 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'commercial',
-    n: '03',
+    n: '04',
     title: 'Commercial & High‑Traffic Security',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
     covers: [
@@ -71,7 +83,7 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'industrial',
-    n: '04',
+    n: '05',
     title: 'Industrial, Logistics & Construction',
     body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
     covers: [
@@ -81,18 +93,6 @@ export const DIVISIONS: Division[] = [
       { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
     ],
     photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
-  },
-  {
-    id: 'specialized',
-    n: '05',
-    title: 'Specialized & Armed Protection',
-    body: 'Licensed, firearms-compliant officers for cash-handling, regulated, or high-liability sites.',
-    covers: [
-      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
-      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
-      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas.' },
-    ],
-    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
   },
   {
     id: 'community',

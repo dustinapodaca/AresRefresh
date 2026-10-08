@@ -1370,12 +1370,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (max-width: 1023px) {
   .ds-svc-open-glass { background: rgb(10 11 13 / 0.68); }
 }
-/* Phones (owner, 2026-10-08): the photo keeps its own proportions at 2.5x the screen width
-   on the opening's foot, framed on the right of the photo (the street and its lights), and
-   reaches most of the way up behind the glass instead of covering the whole tall opening. */
+/* Phones (owner, 2026-10-08): the photo covers the opening as before, set 48px lower. */
 @media (max-width: 767px) {
-  .ds-svc-open-photo img { left: auto; right: -12%; width: 250%; max-width: none; height: auto; aspect-ratio: 2400 / 1350; }
+  .ds-svc-open-photo img { bottom: -48px; }
 }
+
 
 /* ---------- 01 Divisions: a bento of division cards that open in place ----------
    Owner requests (2026-10-05): containers with a + that opens each one in place, then a

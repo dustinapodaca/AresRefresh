@@ -571,3 +571,11 @@ pages. Items to confirm with the owner:
   using the streamlined FAR 8.4 procedures" (not "without opening a new competition"); role
   pages' "Where we post them." is "Where it is asked for."; "We staff both" is "We can staff
   both"; the licensing article says "training provider" and "verify it or request a copy".
+
+## Services divisions reordered (2026-10-08, owner)
+
+| Was | Now |
+|---|---|
+| Specialized & Armed Protection as 05 | 02 (Airport, Commercial, Industrial move to 03 to 05) |
+| "Licensed, firearms-compliant officers for cash-handling, regulated, or high-liability sites." | "Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites." |
+| Detail rows: Armed asset protection, High-risk environments, Data centers | Data centers first, then Armed asset protection, High-risk environments |
