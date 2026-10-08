@@ -48,3 +48,6 @@ pnpm-debug.log*
 
 # Generated image options (only chosen images move to public/images)
 .impeccable/gen/
+
+# Python bytecode caches
+__pycache__/
