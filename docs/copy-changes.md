@@ -587,3 +587,4 @@ pages. Items to confirm with the owner:
 | "Licensed, firearms-compliant officers for data centers and cash-handling, regulated, or high-liability sites." | "Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by our veteran NRA instructor." |
 | Data centers: "Access control and checkpoint logs for controlled areas." | "Access control and checkpoint logs for controlled areas, with unarmed or armed officers." |
 | 03 Airport, 04 Commercial, 05 Industrial | 03 Industrial, 04 Airport, 05 Commercial |
+| Specialized card, last sentence (owner, 2026-10-08) | "Armed officers are licensed and firearms-qualified by Ares." (was "...by our veteran NRA instructor.") |

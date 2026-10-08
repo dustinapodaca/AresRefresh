@@ -47,7 +47,7 @@ export const DIVISIONS: Division[] = [
     id: 'specialized',
     n: '02',
     title: 'Specialized & Armed Protection',
-    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by our veteran NRA instructor.',
+    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
     covers: [
       { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, with unarmed or armed officers.' },
       { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
