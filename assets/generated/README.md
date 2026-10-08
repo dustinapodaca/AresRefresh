@@ -21,6 +21,13 @@ served. To use one, copy it into `public/images/` and reference it from the page
 - **First test:** `hero-b2-nb.prompt.txt`, the hero-b2 prompt reworded for 16:9 with no
   reference image, to compare against `hero-b2.jpg`.
 - **Cost guide:** about 15 cents per 4K image (published rates; check Google's pricing).
+  Image models have no free tier (quota 0); the Google project needs billing.
+- **Result (2026-10-08):** `hero-b2-nb.jpg` (`gemini-3.1-flash-image`, returned as a
+  5504x3072 JPEG; master in `.impeccable/gen/`, copy here at 2880px). The summit reads
+  more like Pikes Peak and the detail holds at full size, but the model painted the
+  "quiet left" as a flat dark overlay with a visible soft edge, and the copper band is
+  thin. Next try: drop the left/bottom darkness from the prompt (the page's CSS shade
+  and mask already do that) and ask for a stronger copper horizon.
 
 ## Rules for generating
 

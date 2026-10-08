@@ -75,6 +75,11 @@ def main():
     if not images:
         sys.exit("No image returned:\n" + json.dumps(res, indent=2)[:2000])
 
+    # The API picks the format (4K came back as JPEG); name the file to match.
+    ext = mimetypes.guess_extension(images[0].get("mimeType") or "") or ""
+    ext = {".jpe": ".jpg", ".jpeg": ".jpg"}.get(ext, ext)
+    if ext and not a.out.lower().endswith(ext):
+        a.out = os.path.splitext(a.out)[0] + ext
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     with open(a.out, "wb") as f:
         f.write(base64.b64decode(images[0]["data"]))
