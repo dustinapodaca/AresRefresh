@@ -883,97 +883,63 @@ body:has(.ds-page) {
   .ds-sec-head .ds-lead { grid-column: 8 / span 5; }
 }
 
-/* ---------- 01 Record: proof cards over a wide quote (owner, 2026-10-06) ----------
-   Mobbin: Lightdash and Ramp. The three things we stand for, each led by its proof as a
-   figure in its own rust light, the glass panel below riding up over the light (the
-   footer's glass in a card); then a client's words as a wide card. The owner-approved
-   exception to "no card containers" and "no glass" for this section. Desktop: three
-   across over the quote, rising into place on scroll. Phones: they pile up. */
-.ds-values-list { display: grid; gap: 16px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
+/* ---------- 01 Record: proof cards over a wide quote (owner, 2026-10-06; sleeker 2026-10-08) ----------
+   Mobbin: Lightdash and Ramp. Black frosted glass, no colored light (owner, 2026-10-08):
+   a faint dot grid lies behind the grid so the glass has something to frost; it shows in
+   the gaps and softens to nothing under each card. Each card: the figure and its caption,
+   a hairline, then the value's name and line. Then the client's words as a wide card.
+   Desktop: three across over the quote, rising into place on scroll. Phones: they pile up,
+   each card frosting the one beneath it. */
+.ds-values-list { position: relative; isolation: isolate; display: grid; gap: 16px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
+.ds-values-list::before {
+  content: '';
+  position: absolute;
+  inset: -48px calc(-1 * var(--ds-gutter));
+  z-index: -1;
+  background-image: radial-gradient(circle, rgb(238 240 242 / 0.14) 1.1px, transparent 1.6px);
+  background-size: 16px 16px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
 .ds-value {
   position: relative;
-  isolation: isolate;
-  overflow: clip;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-  background: #07080a;
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  background: rgb(12 13 16 / 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  /* A crisp edge and a single brighter line along the top, like light on a glass edge. */
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  transition: box-shadow 180ms var(--ds-ease);
 }
-/* The light area holds the figure at its top; the light pools below it, on the glass edge
-   (the glass rides 80px up over the area's foot). */
-.ds-value-light { position: relative; z-index: 0; flex: none; height: 240px; padding: 26px 24px 0; }
-.ds-value-light::before {
-  content: '';
-  position: absolute;
-  inset: -20%;
-  z-index: -1;
-  filter: blur(26px);
-  will-change: transform;
-  pointer-events: none;
-}
+.ds-value-light { padding: 26px 24px 22px; }
 .ds-value-figure { margin: 0; font-size: clamp(44px, 4.2vw, 60px); line-height: 1; letter-spacing: -0.05em; color: var(--ds-fg); font-variant-numeric: tabular-nums; }
-.ds-value-caption { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 0; font-size: 14px; color: var(--ds-fg); }
+.ds-value-caption { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; font-size: 14px; color: #c4c8ce; }
 a.ds-value-caption { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px; }
-a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
-/* Integrity: one steady light. */
-.ds-value[data-light='sun'] .ds-value-light::before {
-  background:
-    radial-gradient(18% 20% at 50% 62%, rgb(255 230 204 / 0.8), transparent 70%),
-    radial-gradient(38% 36% at 50% 64%, rgb(214 122 62 / 0.75), transparent 72%),
-    radial-gradient(64% 50% at 50% 68%, rgb(139 73 32 / 0.55), transparent 74%);
-}
-/* Reliability: a horizon, lit end to end. */
-.ds-value[data-light='horizon'] .ds-value-light::before {
-  background:
-    radial-gradient(70% 6% at 50% 62%, rgb(255 232 208 / 0.9), transparent 72%),
-    radial-gradient(85% 18% at 50% 64%, rgb(214 122 62 / 0.75), transparent 72%),
-    radial-gradient(100% 40% at 50% 72%, rgb(139 73 32 / 0.5), transparent 74%);
-}
-/* Personnel: three lights side by side. */
-.ds-value[data-light='three'] .ds-value-light::before {
-  background:
-    radial-gradient(11% 13% at 32% 64%, rgb(255 226 196 / 0.8), transparent 70%),
-    radial-gradient(11% 13% at 50% 60%, rgb(255 226 196 / 0.85), transparent 70%),
-    radial-gradient(11% 13% at 68% 64%, rgb(255 226 196 / 0.8), transparent 70%),
-    radial-gradient(60% 34% at 50% 68%, rgb(214 122 62 / 0.6), transparent 74%);
-}
-/* The quote: one long, low horizon across the wide card. */
-/* The quote card has no light area of its own: the light lies behind the whole card,
-   under the glass. */
-.ds-value[data-light='wide'] .ds-value-light { position: absolute; inset: 0; height: auto; padding: 0; }
-.ds-value-quote .ds-value-glass { margin: 0; border-top: 0; background: rgb(10 11 13 / 0.5); }
-.ds-value[data-light='wide'] .ds-value-light::before {
-  background:
-    radial-gradient(34% 30% at 86% 30%, rgb(248 178 108 / 0.55), transparent 72%),
-    radial-gradient(50% 60% at 80% 40%, rgb(214 122 62 / 0.5), transparent 74%),
-    radial-gradient(60% 70% at 20% 110%, rgb(139 73 32 / 0.45), transparent 74%);
-}
-.ds-value-glass {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin: -80px 0 0;
-  padding: 24px 24px 26px;
-  background: rgb(10 11 13 / 0.55);
-  -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  backdrop-filter: blur(22px) saturate(1.25);
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-}
+a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
+.ds-value-glass { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 26px; border-top: 1px solid rgb(255 255 255 / 0.08); }
 .ds-value-glass h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
 .ds-value-glass > p { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
+/* The quote card: no figure area, the words straight on the glass. */
+.ds-value-quote .ds-value-light { display: none; }
+.ds-value-quote .ds-value-glass { border-top: 0; }
 .ds-value-quote blockquote { margin: 0; }
 .ds-value-quote blockquote p { margin: 0; font-family: var(--ds-text); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); text-indent: -0.4em; text-wrap: balance; max-width: 34ch; }
 .ds-value-quote figcaption { margin-top: 20px; font-size: 14px; color: #c4c8ce; }
 .ds-value-quote figcaption span { display: block; }
 .ds-value-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-value:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.2); }
+}
 @media (min-width: 1024px) {
   .ds-values-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .ds-value-light { height: 250px; padding: 30px 30px 0; }
-  .ds-value-glass { padding: 26px 30px 30px; }
+  .ds-value-light { padding: 32px 30px 26px; }
+  .ds-value-glass { padding: 24px 30px 30px; }
   .ds-value-quote { grid-column: 1 / -1; }
-  .ds-value-quote .ds-value-glass { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding: 30px 30px 36px; }
+  .ds-value-quote .ds-value-glass { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding: 34px 30px 36px; }
   .ds-value-quote blockquote { grid-column: 1 / span 9; }
   .ds-value-quote figcaption { grid-column: 10 / span 3; margin: 0; text-align: right; }
 }
@@ -984,12 +950,6 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
   .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
   .ds-value:nth-child(4) { top: calc(var(--ds-header) + var(--ds-runhead) + 64px); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .ds-value-light::before { animation: ds-ft-drift 18s ease-in-out infinite alternate; }
-  .ds-value:nth-child(2) .ds-value-light::before { animation-duration: 22s; animation-delay: -7s; }
-  .ds-value:nth-child(3) .ds-value-light::before { animation-duration: 20s; animation-delay: -13s; }
-  .ds-value:nth-child(4) .ds-value-light::before { animation-duration: 24s; animation-delay: -4s; }
 }
 
 .ds-keyrow {

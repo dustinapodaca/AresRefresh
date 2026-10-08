@@ -342,18 +342,19 @@ exception to "no card containers" and "no glass" for this section.
 - Head: "The record so far." with its lead, in the shared Home head (`.ds-sec-head`:
   display-lg in 7 columns, the lead in the last 5, aligned to the headline's foot; Quality
   uses the same head, and Coverage's headline is display-lg too).
-- Three cards (4px corners, #07080a, white/8% edge), each a value led by its proof: a
-  light area with the figure in Plex Mono (44 to 60px) and its caption, its own rust light
-  pooling below them (Reliability <1% missed shifts since 2021, a horizon; Integrity 16/18
-  client criteria rated Exceptional, one light; Personnel 4.8/5 employee rating on Indeed,
-  linked, three lights), and a dark glass panel (canvas at 55% over a 22px blur, a
-  white/10% top edge) riding 80px up over the light with the value's name (Inter 600 22px)
-  and one line (#c4c8ce). Then the client quote as a wide card (all three columns): the
-  light behind the whole card, the quote (Inter 500, 22 to 32px) left, the attribution right.
+- Black frosted glass, no colored light (owner, 2026-10-08: the rust gradients were too
+  much): each card canvas at 72% over a 14px blur, a white/8% edge and a white/12% line along
+  the top edge (brighter on hover). A faint dot grid (white/14%, 16px, the maps' grid) lies
+  behind the grid, masked to an oval, so the glass has something to frost: it shows in the
+  gaps and softens to nothing under each card. Each value card: the figure in Plex Mono (44
+  to 60px) with its caption (#c4c8ce; Personnel's links to Indeed), a white/8% hairline,
+  then the name (Inter 600 22px) and one line. Reliability <1% missed shifts since 2021;
+  Integrity 16/18 client criteria rated Exceptional; Personnel 4.8/5 on Indeed. Then the
+  client quote as a wide card (all three columns): the quote (Inter 500, 22 to 32px) left,
+  the attribution right.
 - Desktop: three across over the quote; the cards rise 64px into place on scroll.
-  Phones: the four cards are sticky and pile up 16px apart. Lights drift slowly; all
-  motion stops under reduced motion. Text measures 7:1 or better at the light's brightest
-  point. No images (generated options were tried and removed, 2026-10-06; they stay in
+  Phones: the four cards are sticky and pile up 16px apart, each frosting the one beneath.
+  No images (generated options were tried and removed, 2026-10-06; they stay in
   assets/generated/values/).
 
 ### Quality (Home 02, owner 2026-10-06)
