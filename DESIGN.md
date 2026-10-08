@@ -396,10 +396,9 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). The photograph (owner, 2026-10-08: options in `HERO_OPTIONS` in
-  `src/components/services/Opening.tsx`, previewed in dev with `?hero=<key>`; default
-  `nb-towers`, Denver towers at blue hour generated with Nano Banana; the tower `hero6.jpg`
-  went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes
+  2026-10-05). The photograph (owner, 2026-10-08: Denver towers at blue hour, glass catching
+  copper light, generated with Nano Banana, `services-hero/nb-s1-towers.webp`; chosen over
+  seven other options; the tower `hero6.jpg` went back to Home) fills the whole opening from the top of the page, behind the nav, like the other heroes
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
