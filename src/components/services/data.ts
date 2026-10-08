@@ -4,8 +4,10 @@ import type { Mark } from '../home/DocRail';
 
 export const SERVICE_MARKS: readonly Mark[] = [
   { id: 'divisions', n: '01', label: 'Divisions' },
-  { id: 'process', n: '02', label: 'Process' },
-  { id: 'areas', n: '03', label: 'Areas' },
+  { id: 'browse', n: '02', label: 'By role' },
+  { id: 'process', n: '03', label: 'Process' },
+  { id: 'program', n: '04', label: 'Program' },
+  { id: 'areas', n: '05', label: 'Areas' },
 ];
 
 // `sharp`: a tighter, higher-resolution crop of the same photo, shown only in the tall

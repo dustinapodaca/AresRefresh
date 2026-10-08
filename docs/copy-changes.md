@@ -550,3 +550,19 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | Reliability line "...An unstaffed site is an exposure, not a saving." | "On-call coverage is written into every contract, and leadership works the first shift on every new post." |
 | Integrity line "...We are open and direct with clients about the post..." | "...We are open and direct about the post, the people on it, and anything that goes wrong." |
 | The quote as a large right-hand pull quote | The same words as a wide card under the three |
+
+---
+
+# Test branch: marketing gaps (2026-10-08, DRAFT for owner review)
+
+All new copy, from facts already on the site; see docs/market-concepts.md for the list of
+pages. Items to confirm with the owner:
+- The six role pages' questions and answers (`src/components/market/roles.ts`).
+- The four industry pages' "What is at stake" and asks (`src/components/market/industries.ts`).
+- The five Insights articles (`src/components/market/insights.ts`), especially the GSA
+  ordering and Colorado licensing explanations.
+- "The relief roster" as the name of the on-call offering, and its surge line.
+- The systems list ("Trained on your systems.").
+- City job pages: "we train new officers for the licensing their post requires" in each city.
+- Quote form: services now by role (were the six divisions); new optional questions.
+- Footer: "Report a concern" (email to contact@).

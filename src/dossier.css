@@ -395,7 +395,10 @@ body:has(.ds-page) {
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
   .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
 }
-@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+/* Five columns (Services added 2026-10-08): a touch smaller links so long names fit. */
+@media (min-width: 1024px) { .ds-footer-cols a { font-size: 16px; } }
+.ds-cr-bycity { margin: 24px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
 
 .ds-certs {
   display: flex;
@@ -1783,6 +1786,34 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
 @media (min-width: 768px) {
   .ds-svc-cities { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 }
+
+/* ---------- 02 By role, or by industry (2026-10-08): the index to the role and industry pages ---------- */
+.ds-svc-browse { padding-top: var(--ds-beat); }
+.ds-svc-browse-sub { margin: 36px 0 14px; font-size: 13px; font-weight: 500; color: var(--ds-fg-faint); scroll-margin-top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
+.ds-svc-browse > h2 + .ds-svc-browse-sub { margin-top: 28px; }
+
+/* ---------- 04 Program (2026-10-08): what comes with every post ---------- */
+.ds-svc-program { padding-top: var(--ds-beat); }
+.ds-svc-program-parts { display: grid; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; column-gap: 24px; }
+.ds-svc-program-parts li { padding: 22px 0 26px; border-top: 1px solid var(--ds-rule-strong); }
+.ds-svc-program-parts h3,
+.ds-svc-relief h3,
+.ds-svc-systems h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-svc-program-parts p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 40ch; }
+@media (min-width: 768px) { .ds-svc-program-parts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* The relief roster: the named on-call offering on its own row, its proof in mono. */
+.ds-svc-relief { display: grid; gap: 18px; margin-top: 36px; padding: 26px 0 28px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
+.ds-svc-relief p { margin: 10px 0 0; font-size: 17px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 62ch; }
+.ds-svc-relief-proof { margin: 0; font-size: 14px; color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  .ds-svc-relief { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-svc-relief > div { grid-column: 1 / span 8; }
+  .ds-svc-relief-proof { grid-column: 10 / span 3; text-align: right; }
+}
+.ds-svc-systems { margin-top: var(--ds-beat-tight); }
+.ds-svc-systems > p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); }
+.ds-svc-systems ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
+.ds-svc-systems li { display: inline-flex; align-items: center; height: 36px; padding: 0 12px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; color: var(--ds-fg); }
 
 /* ============================================================
    ABOUT ("The Company File", docs/about-concepts.md)

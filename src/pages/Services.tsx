@@ -3,6 +3,8 @@ import DocRail from '../components/home/DocRail';
 import Opening from '../components/services/Opening';
 import Divisions from '../components/services/Divisions';
 import Process from '../components/services/Process';
+import Browse from '../components/services/Browse';
+import Program from '../components/services/Program';
 import Areas from '../components/services/Areas';
 import { SERVICE_MARKS } from '../components/services/data';
 
@@ -16,7 +18,9 @@ export default function Services() {
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
           <Divisions />
+          <Browse />
           <Process />
+          <Program />
           <Areas />
         </div>
         <DocRail marks={SERVICE_MARKS} variant="dock" />

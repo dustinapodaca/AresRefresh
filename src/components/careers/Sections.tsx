@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Arrow from '../Arrow';
 import { CAREERS_EMAIL, INDEED_REVIEWS, REASONS, ROLES, applyHref } from './data';
@@ -39,6 +40,12 @@ export function Roles() {
           </div>
         ))}
       </div>
+      <p className="ds-cr-bycity">
+        Jobs by city:{' '}
+        <Link to="/careers/colorado-springs" className="ds-link">Colorado Springs</Link>,{' '}
+        <Link to="/careers/denver" className="ds-link">Denver</Link>, and{' '}
+        <Link to="/careers/pueblo" className="ds-link">Pueblo</Link>.
+      </p>
     </section>
   );
 }

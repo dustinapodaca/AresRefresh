@@ -617,6 +617,38 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   and value 7 parts), then sections: Inter 600 20 to 24px sub-heads, 16px / 1.7 body in ink
   muted at 68ch, strong in ink, lists with a 10px hairline marker.
 
+### Role, industry, insight, and city job pages (test branch, 2026-10-08)
+From the CenCore review (docs/market-concepts.md). One shared vocabulary (`ds-mk-*`), no
+rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
+- **Role pages (`/services/<slug>`):** the search phrase as the headline (display-xl, 7
+  columns), lead, quote button (`/contact?service=<slug>`) and call link; beside it a spec
+  sheet on hairlines (label 13px faint over value 16px ink; GSA routes to eLibrary). Then
+  "What the post covers." (four duties two by two, the mono number on the title's line),
+  "Where we post them." (industry routes), questions, an ask strip, "More services.".
+- **Industry pages (`/industries/<slug>`):** a long headline (up to 15em), lead and actions
+  in one row, then a full-bleed scene (generated with Nano Banana: light and architecture,
+  no people, no caption) masked into the canvas. "What is at stake." (headline left, prose
+  right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
+  questions, "Other industries.".
+- **Questions:** the heading left (sticky on desktop) and native details on hairlines
+  right, a + that folds into a minus (220ms). FAQPage JSON-LD in the body.
+- **Ask strip:** one plain line (Inter Tight 500, 22 to 30px), the quote button and the
+  call link, on a hairline-strong rule.
+- **Routes:** ruled links, a title (Inter Tight 600, 20 to 24px) and a line, three across
+  from 768px, arrows nudge on hover.
+- **Insights:** the index as ruled rows (title, summary, category and date in a right
+  column on desktop); articles in one 46rem reading column, 17px / 1.7, the first paragraph
+  in ink, related links, more insights. Article JSON-LD.
+- **Jobs by city (`/careers/<city>`):** open roles on hairlines with Apply (email with the
+  role and city), licensing handled, why people stay (two by two) with the Indeed rating,
+  other cities.
+- **Quote form:** "About the post" adds square chips (40px, 2px corners, ink when chosen;
+  never pills) for location, officers on post, schedule, and start, and selects for site
+  type and how they heard. Prefilled from `?service=` and `?industry=`.
+- **Services:** "By role, or by industry." (the index) after the divisions; "A security
+  program, not a headcount." (three parts, the relief roster with its mono proof, and the
+  systems officers are trained on as square tags). The dock counts five sections.
+
 ### Mobile breaks (below 1024px unless noted)
 - **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides
   so the next one peeks) with a hairline progress bar that fills as the row scrolls.

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
 import { SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
+import { ROLE_PAGES } from './market/roles';
 
 // The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
 // glass, Windsurf's and Opacity's light). No quote button: every page's close and the nav
@@ -62,6 +63,16 @@ export default function Footer() {
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/capability-statement">Capability Statement</Link></li>
+              <li><Link to="/insights">Insights</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Services</h2>
+            <ul>
+              {ROLE_PAGES.map((r) => (
+                <li key={r.slug}><Link to={`/services/${r.slug}`}>{r.name}</Link></li>
+              ))}
             </ul>
           </div>
 
@@ -125,6 +136,7 @@ export default function Footer() {
                 <li><Link to="/privacy">Privacy</Link></li>
                 <li><Link to="/terms">Terms</Link></li>
                 <li><Link to="/accessibility">Accessibility</Link></li>
+                <li><a href={`mailto:contact@aressecurity.co?subject=${encodeURIComponent('Safety concern')}`}>Report a concern</a></li>
               </ul>
             </div>
           </div>
