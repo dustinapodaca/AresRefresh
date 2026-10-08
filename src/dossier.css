@@ -1370,9 +1370,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (max-width: 1023px) {
   .ds-svc-open-glass { background: rgb(10 11 13 / 0.68); }
 }
-/* Phones (owner, 2026-10-08): the photo covers the opening as before, set 48px lower. */
+/* Phones (owner, 2026-10-08, from the owner's crop): the upper part of the photo, the tall
+   tower on the left edge, the sky, and the lit tops of the buildings: the photo is scaled so
+   the opening shows its upper ~78%, anchored to the top, centred 52% across. */
 @media (max-width: 767px) {
-  .ds-svc-open-photo img { bottom: -48px; }
+  .ds-svc-open-photo img { top: 0; bottom: auto; height: 128%; object-position: 52% 0%; }
 }
 
 
