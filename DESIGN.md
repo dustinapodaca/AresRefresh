@@ -283,7 +283,7 @@ body, and the single rust horizon glow at the close. The footer's closing stage 
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left; readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns) and the GSA mark (right-aligned) share the row below it. The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
+- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left, fit rather than zoomed (the photo's box runs only 4 to 7rem past the hero with 4% headroom for a 4% drift, so cover shows about 94% of its width at 1440 and all of it at 1920); readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns) and the GSA mark (right-aligned) share the row below it. The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
   the light falls between the copy and the glass edge at about three quarters across.
@@ -721,8 +721,8 @@ Few, fast, and crisp. Four to six moments per page.
   `prefers-reduced-motion: reduce` states are static and fully visible.
 - **Text is never hidden.** Scroll effects may move or dim text, but never below AA
   contrast: body copy dims no lower than 0.8 opacity (the hard floor for any text is 0.62). Opacity entrances from 0 are not allowed.
-- **Allowed moments on Home:** the hero photo scrolls 10% slower than the page as the
-  hero leaves, while the hero's glass strip and its copy rise faster than the page (26svh
+- **Allowed moments on Home:** the hero photo drifts slightly slower than the page as the
+  hero leaves (4%), while the hero's glass strip and its copy rise faster than the page (26svh
   over the hero's exit, desktop from 900px; owner, 2026-10-08), so three layers move apart; ledger hairlines draw from left to right as rows enter (the text is
   already there); the full-bleed photograph opens from a 7% side inset to full width; the
   figure settles 32px upward as it enters. Plus press and arrow-nudge feedback.
