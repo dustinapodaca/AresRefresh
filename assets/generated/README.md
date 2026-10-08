@@ -3,7 +3,9 @@
 AI-generated image options, kept for later. Nothing here is on the site: `assets/` is not
 served. To use one, copy it into `public/images/` and reference it from the page.
 
-- **Tool:** `impeccable generate-image` (OpenAI `gpt-image-2.5-flare`). The key lives in
+- **Default model (owner, 2026-10-08): Nano Banana 2** (see its section below). The owner
+  prefers it: it reads as a real photograph, where the OpenAI images look fake.
+- **Earlier tool:** `impeccable generate-image` (OpenAI `gpt-image-2.5-flare`). The key lives in
   the user's Claude Code settings (`~/.claude/settings.json`, `env.OPENAI_API_KEY`), never
   in this repo.
 - **Masters:** lossless PNGs stay local in `.impeccable/gen/` (gitignored). The files

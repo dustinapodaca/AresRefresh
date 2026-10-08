@@ -198,8 +198,10 @@ deleted; "DoW-vetted" removed (Capability proof says "Veteran staff"; Services s
   anything meant to read dark must be cut to transparency (canvas compositing in the
   Playwright page, then `cwebp`).
 - Image tools: `cwebp -q 82–92 -m 6` (`-sharp_yuv` for gradients), `sips`. Image
-  generation: `impeccable generate-image` with `OPENAI_API_KEY` in `~/.claude/settings.json`
-  env (never commit it; suggest the owner rotate it).
+  generation (owner, 2026-10-08): **Nano Banana 2 is the default** (it looks real; the
+  OpenAI images read as fake): `python3 -I assets/generated/gemini-image.py` with
+  `GEMINI_API_KEY` (Google AI Studio, billing on; never commit it). OpenAI
+  (`impeccable generate-image`, `OPENAI_API_KEY`) is retired unless the owner asks.
 - Netlify: `npm run build` installs Puppeteer's Chrome before prerendering.
 - `git add` the exact paths you changed; a loose `git rm --cached` once staged an image
   deletion by accident (caught and fixed).
