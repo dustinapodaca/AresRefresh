@@ -601,13 +601,18 @@ body:has(.ds-page) {
     position: absolute;
     inset: 0;
     height: auto;
-    bottom: calc(-1 * clamp(10rem, 26vh, 17rem));
+    bottom: calc(-1 * clamp(4rem, 9vh, 7rem));
     -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 26%);
     mask-image: linear-gradient(to top, transparent 0%, #000 26%);
   }
   /* Brighter (owner, 2026-10-08): the towers and the copper at their foot carry the hero;
      readability comes from the glass band behind the copy, not from darkening the photo. */
+  /* Fit, not zoom (owner, 2026-10-08): the box runs only a little past the hero and the
+     image keeps just 4% of headroom for its drift, so cover shows nearly the photo's full
+     width. */
   .ds-hero-photo img {
+    top: -4%;
+    height: 104%;
     object-position: 50% 50%;
     filter: saturate(0.95) brightness(0.8) contrast(1.06);
   }
@@ -2978,6 +2983,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    below 0.62 opacity.
    ============================================================ */
 @keyframes ds-value-rise { from { transform: translateY(64px) scale(0.97); } to { transform: none; } }
+@keyframes ds-hero-drift { from { transform: translateY(0); } to { transform: translateY(4%); } }
 @keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-26svh); } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -3001,7 +3007,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ds-hero-photo img {
-      animation: ds-drift linear both;
+      animation: ds-hero-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
