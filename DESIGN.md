@@ -528,7 +528,7 @@ docs/contact-concepts.md.
   2026-10-05).
 - **The contact column (5 columns, from column 8):** "Rather talk?" with the phone in
   mono (30 to 40px) over the rust light, the email; "What happens next" as three ruled
-  steps; the Colorado coverage map from Home. Phones: the intake first, then this column.
+  steps; the Colorado coverage map from Home. On desktop the map block is sticky (24px under the nav) while the form scrolls, letting go where the form ends (owner, 2026-10-08). Phones: the intake first, then this column.
 
 ### Careers page ("The Roster", 2026-10-05)
 Recruits: the roles first, the reasons beside real Ares people. Concept and Mobbin board:

@@ -2389,6 +2389,11 @@ a.ds-value-caption:hover { text-decoration-color: var(--ds-fg); }
   .ds-qt-part-grow .ds-qt-field { display: flex; flex-direction: column; flex: 1; }
   .ds-qt-part-grow textarea.ds-qt-input { flex: 1; }
 }
+/* Desktop: once the map reaches the nav, it holds there while the form keeps scrolling,
+   and lets go when the form ends (like the pinned photos on About and Careers). */
+@media (min-width: 1024px) {
+  .ds-qt-where { position: sticky; top: calc(var(--ds-header) + 24px); }
+}
 
 .ds-qt-part { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ds-qt-part > legend {
