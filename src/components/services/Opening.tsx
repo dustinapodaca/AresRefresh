@@ -1,6 +1,7 @@
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
-const HERO = { src: '/images/contact-hero.jpg', width: 1400, height: 805 };
+// The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
+const HERO = { src: '/images/services-hero/denver-sunset.webp', width: 2400, height: 1380 };
 
 export default function Opening() {
   return (
