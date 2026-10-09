@@ -14,6 +14,9 @@ const SIZES: Record<string, string> = {
 };
 const MARKET_HERO = '(max-width: 767px) 170vw, (max-width: 1023px) 105vw, 100vw';
 
+// Heroes use decoding="sync" (2026-10-09): when the file is already in the cache the page
+// paints with the photo in it, instead of a dark frame and then the photo.
+//
 // Responsive WebP for an image the code names by its original path: the srcSet, sizes,
 // and intrinsic width and height from the manifest that assets/tools/optimize-images.py
 // writes. Logos come back as one small WebP with their size. Anything not in the manifest

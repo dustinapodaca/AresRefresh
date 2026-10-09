@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section className="ds-cs-hero" aria-labelledby="cs-title">
       <div className="ds-cs-hero-bg" aria-hidden="true">
-        <img {...responsive('/images/capability-hero/cs-fins.webp')} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+        <img {...responsive('/images/capability-hero/cs-fins.webp')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container ds-cs-hero-grid">

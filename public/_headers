@@ -1,0 +1,18 @@
+# Long-lived caching for files whose names change whenever their content does
+# (2026-10-09). Netlify's default is max-age=0, must-revalidate, which made browsers
+# re-check every hero with the server on each page visit (a dark flash before it showed).
+#   /assets/*      Vite bundles, named with a content hash.
+#   /images/opt/*  Responsive images from assets/tools/optimize-images.py, content-hashed.
+#   /fonts/*       Self-hosted fonts. Rename the file if a font is ever replaced.
+# HTML, llms.txt, the catalogs, and everything else keep Netlify's default, so new deploys
+# show up at once. (Header rules match on path only; that is fine here, unlike the preview
+# noindex, which lives in netlify/edge-functions.)
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/opt/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

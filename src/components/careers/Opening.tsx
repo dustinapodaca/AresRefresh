@@ -12,7 +12,7 @@ export default function Opening() {
         <img
           {...responsive('/images/careers-hero.jpg')}
           alt="Downtown Colorado Springs under a pink evening sky"
-          decoding="async"
+          decoding="sync"
           {...{ fetchpriority: 'high' }}
         />
         <figcaption className="ds-caption">Colorado Springs, Colorado</figcaption>

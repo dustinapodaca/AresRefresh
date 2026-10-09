@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
+import { prefetchHeroesOnIntent } from './lib/prefetchHeroes';
 import './fonts.css';
 import './index.css';
 
@@ -18,3 +19,5 @@ createRoot(document.getElementById('root')!).render(
     </HelmetProvider>
   </StrictMode>,
 );
+
+prefetchHeroesOnIntent();

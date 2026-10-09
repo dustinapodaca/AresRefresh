@@ -64,9 +64,9 @@ export default function Opening() {
       <div className="ds-svc-open-photo" aria-hidden="true">
         <div className="ds-svc-open-stack">
           <div className="ds-svc-open-mirror">
-            <img {...responsive(HERO.src)} alt="" decoding="async" />
+            <img {...responsive(HERO.src)} alt="" decoding="sync" />
           </div>
-          <img {...responsive(HERO.src)} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+          <img {...responsive(HERO.src)} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
         </div>
       </div>
 

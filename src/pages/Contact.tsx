@@ -135,7 +135,7 @@ export default function Contact() {
           <img
             {...responsive('/images/services-hero/nb-s1-towers.webp')}
             alt=""
-            decoding="async"
+            decoding="sync"
             {...{ fetchpriority: 'high' }}
           />
         </figure>

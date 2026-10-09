@@ -53,6 +53,13 @@ Last updated: 2026-10-09. **Read this first when starting a new chat.**
   same responsive hero (`preloadImage` in routes.json is a manifest key).
 - **To add an image:** put the original in `assets/images-src/`, add an entry to the
   script, run it, use `responsive()`.
+- **Caching and page changes** (2026-10-09): generated images carry a content hash in their
+  names (`hero6-1600.<hash>.webp`), and `public/_headers` caches `/assets/*`,
+  `/images/opt/*`, and `/fonts/*` for a year (`immutable`); Netlify's default
+  (max-age=0, must-revalidate) made every page change re-check its hero. Heroes use
+  `decoding="sync"` so a cached hero paints with the page. `src/lib/prefetchHeroes.ts`
+  starts a page's hero (its routes.json `preloadImage`) on hover, focus, or touch of a link
+  to it. Replacing a font: give the file a new name.
 - **Fonts** are self-hosted (`src/fonts.css`, `public/fonts/`, Latin subsets; Inter and
   Inter Tight preloaded in `index.html`). No Google Fonts request.
 - `assets/images-unused/` holds images nothing references (old heroes, client logos).

@@ -9,7 +9,7 @@ export default function Hero() {
       {/* The copper-glass tower (hero6.jpg), back on Home (owner, 2026-10-08; it was the
           Services band). Full bleed from 900px; runs down under 01 Record. */}
       <div className="ds-hero-photo" aria-hidden="true">
-        <img {...responsive('/images/hero6.jpg')} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+        <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container">

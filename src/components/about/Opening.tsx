@@ -34,7 +34,7 @@ export default function Opening() {
         <img
           {...responsive('/images/about-hero.jpg')}
           alt="Pikes Peak behind the red rocks of Garden of the Gods, Colorado Springs"
-          decoding="async"
+          decoding="sync"
           {...{ fetchpriority: 'high' }}
         />
         <figcaption className="ds-caption">Pikes Peak, Colorado Springs</figcaption>

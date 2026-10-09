@@ -3,197 +3,197 @@ export type ImageEntry = { src: string; srcSet?: string; width: number; height: 
 
 export const IMAGES: Record<string, ImageEntry> = {
   "/images/hero6.jpg": {
-    "src": "/images/opt/hero6-1200.webp",
-    "srcSet": "/images/opt/hero6-480.webp 480w, /images/opt/hero6-800.webp 800w, /images/opt/hero6-1200.webp 1200w, /images/opt/hero6-1600.webp 1600w, /images/opt/hero6-2000.webp 2000w, /images/opt/hero6-2400.webp 2400w",
+    "src": "/images/opt/hero6-1200.4f0636b6.webp",
+    "srcSet": "/images/opt/hero6-480.3d5a0a52.webp 480w, /images/opt/hero6-800.a0b04f8a.webp 800w, /images/opt/hero6-1200.4f0636b6.webp 1200w, /images/opt/hero6-1600.f4546a2b.webp 1600w, /images/opt/hero6-2000.fc77648e.webp 2000w, /images/opt/hero6-2400.2e3e7775.webp 2400w",
     "width": 2400,
     "height": 1600
   },
   "/images/about-hero.jpg": {
-    "src": "/images/opt/about-hero-1200.webp",
-    "srcSet": "/images/opt/about-hero-480.webp 480w, /images/opt/about-hero-800.webp 800w, /images/opt/about-hero-1200.webp 1200w, /images/opt/about-hero-1600.webp 1600w, /images/opt/about-hero-2000.webp 2000w, /images/opt/about-hero-2400.webp 2400w",
+    "src": "/images/opt/about-hero-1200.e1a7cf60.webp",
+    "srcSet": "/images/opt/about-hero-480.bb46fd6e.webp 480w, /images/opt/about-hero-800.4c4d6733.webp 800w, /images/opt/about-hero-1200.e1a7cf60.webp 1200w, /images/opt/about-hero-1600.38e439b7.webp 1600w, /images/opt/about-hero-2000.d31df26c.webp 2000w, /images/opt/about-hero-2400.1776d856.webp 2400w",
     "width": 2400,
     "height": 1600
   },
   "/images/careers-hero.jpg": {
-    "src": "/images/opt/careers-hero-1200.webp",
-    "srcSet": "/images/opt/careers-hero-480.webp 480w, /images/opt/careers-hero-800.webp 800w, /images/opt/careers-hero-1200.webp 1200w, /images/opt/careers-hero-1600.webp 1600w, /images/opt/careers-hero-2000.webp 2000w, /images/opt/careers-hero-2390.webp 2390w",
+    "src": "/images/opt/careers-hero-1200.d368e180.webp",
+    "srcSet": "/images/opt/careers-hero-480.42947bd5.webp 480w, /images/opt/careers-hero-800.e0f669f0.webp 800w, /images/opt/careers-hero-1200.d368e180.webp 1200w, /images/opt/careers-hero-1600.9105a277.webp 1600w, /images/opt/careers-hero-2000.116e2a20.webp 2000w, /images/opt/careers-hero-2390.68218598.webp 2390w",
     "width": 2390,
     "height": 1454
   },
   "/images/about-security.jpg": {
-    "src": "/images/opt/about-security-1200.webp",
-    "srcSet": "/images/opt/about-security-480.webp 480w, /images/opt/about-security-800.webp 800w, /images/opt/about-security-1200.webp 1200w, /images/opt/about-security-1408.webp 1408w",
+    "src": "/images/opt/about-security-1200.49821c12.webp",
+    "srcSet": "/images/opt/about-security-480.fd1ec19f.webp 480w, /images/opt/about-security-800.ae7e5b80.webp 800w, /images/opt/about-security-1200.49821c12.webp 1200w, /images/opt/about-security-1408.29bf80d8.webp 1408w",
     "width": 1408,
     "height": 736
   },
   "/images/about-banner.jpg": {
-    "src": "/images/opt/about-banner-1200.webp",
-    "srcSet": "/images/opt/about-banner-480.webp 480w, /images/opt/about-banner-800.webp 800w, /images/opt/about-banner-1200.webp 1200w, /images/opt/about-banner-1600.webp 1600w, /images/opt/about-banner-2000.webp 2000w",
+    "src": "/images/opt/about-banner-1200.2e4ed699.webp",
+    "srcSet": "/images/opt/about-banner-480.ac70d0ed.webp 480w, /images/opt/about-banner-800.af0e1a45.webp 800w, /images/opt/about-banner-1200.2e4ed699.webp 1200w, /images/opt/about-banner-1600.46b84b08.webp 1600w, /images/opt/about-banner-2000.5d492fee.webp 2000w",
     "width": 2000,
     "height": 1391
   },
   "/images/services-hero/denver-sunset.webp": {
-    "src": "/images/opt/services-hero-denver-sunset-1200.webp",
-    "srcSet": "/images/opt/services-hero-denver-sunset-480.webp 480w, /images/opt/services-hero-denver-sunset-800.webp 800w, /images/opt/services-hero-denver-sunset-1200.webp 1200w, /images/opt/services-hero-denver-sunset-1600.webp 1600w, /images/opt/services-hero-denver-sunset-2000.webp 2000w, /images/opt/services-hero-denver-sunset-2400.webp 2400w",
+    "src": "/images/opt/services-hero-denver-sunset-1200.c99340a6.webp",
+    "srcSet": "/images/opt/services-hero-denver-sunset-480.9177106f.webp 480w, /images/opt/services-hero-denver-sunset-800.baee1774.webp 800w, /images/opt/services-hero-denver-sunset-1200.c99340a6.webp 1200w, /images/opt/services-hero-denver-sunset-1600.be1d11e6.webp 1600w, /images/opt/services-hero-denver-sunset-2000.333130c0.webp 2000w, /images/opt/services-hero-denver-sunset-2400.a699c3b9.webp 2400w",
     "width": 2400,
     "height": 1380
   },
   "/images/services-hero/nb-s1-towers.webp": {
-    "src": "/images/opt/services-hero-nb-s1-towers-1200.webp",
-    "srcSet": "/images/opt/services-hero-nb-s1-towers-480.webp 480w, /images/opt/services-hero-nb-s1-towers-800.webp 800w, /images/opt/services-hero-nb-s1-towers-1200.webp 1200w, /images/opt/services-hero-nb-s1-towers-1600.webp 1600w, /images/opt/services-hero-nb-s1-towers-2000.webp 2000w, /images/opt/services-hero-nb-s1-towers-2400.webp 2400w, /images/opt/services-hero-nb-s1-towers-2752.webp 2752w",
+    "src": "/images/opt/services-hero-nb-s1-towers-1200.e62eacd9.webp",
+    "srcSet": "/images/opt/services-hero-nb-s1-towers-480.62065ede.webp 480w, /images/opt/services-hero-nb-s1-towers-800.cd7b8a65.webp 800w, /images/opt/services-hero-nb-s1-towers-1200.e62eacd9.webp 1200w, /images/opt/services-hero-nb-s1-towers-1600.a72d9cdc.webp 1600w, /images/opt/services-hero-nb-s1-towers-2000.66a06f2d.webp 2000w, /images/opt/services-hero-nb-s1-towers-2400.028930ca.webp 2400w, /images/opt/services-hero-nb-s1-towers-2752.49a09958.webp 2752w",
     "width": 2752,
     "height": 1536
   },
   "/images/capability-hero/cs-fins.webp": {
-    "src": "/images/opt/capability-hero-cs-fins-1200.webp",
-    "srcSet": "/images/opt/capability-hero-cs-fins-480.webp 480w, /images/opt/capability-hero-cs-fins-800.webp 800w, /images/opt/capability-hero-cs-fins-1200.webp 1200w, /images/opt/capability-hero-cs-fins-1600.webp 1600w, /images/opt/capability-hero-cs-fins-2000.webp 2000w, /images/opt/capability-hero-cs-fins-2400.webp 2400w, /images/opt/capability-hero-cs-fins-2752.webp 2752w",
+    "src": "/images/opt/capability-hero-cs-fins-1200.5c4ff4a0.webp",
+    "srcSet": "/images/opt/capability-hero-cs-fins-480.a2e7cbc2.webp 480w, /images/opt/capability-hero-cs-fins-800.86b692d8.webp 800w, /images/opt/capability-hero-cs-fins-1200.5c4ff4a0.webp 1200w, /images/opt/capability-hero-cs-fins-1600.447be330.webp 1600w, /images/opt/capability-hero-cs-fins-2000.a65ec538.webp 2000w, /images/opt/capability-hero-cs-fins-2400.9226526a.webp 2400w, /images/opt/capability-hero-cs-fins-2752.291da350.webp 2752w",
     "width": 2752,
     "height": 1536
   },
   "/images/careers-philosophy.jpg": {
-    "src": "/images/opt/careers-philosophy-1184.webp",
-    "srcSet": "/images/opt/careers-philosophy-480.webp 480w, /images/opt/careers-philosophy-800.webp 800w, /images/opt/careers-philosophy-1184.webp 1184w",
+    "src": "/images/opt/careers-philosophy-1184.11fd0cb0.webp",
+    "srcSet": "/images/opt/careers-philosophy-480.d342cea9.webp 480w, /images/opt/careers-philosophy-800.dc300259.webp 800w, /images/opt/careers-philosophy-1184.11fd0cb0.webp 1184w",
     "width": 1184,
     "height": 880
   },
   "/images/careers-team.jpg": {
-    "src": "/images/opt/careers-team-1184.webp",
-    "srcSet": "/images/opt/careers-team-480.webp 480w, /images/opt/careers-team-800.webp 800w, /images/opt/careers-team-1184.webp 1184w",
+    "src": "/images/opt/careers-team-1184.6f7eca4f.webp",
+    "srcSet": "/images/opt/careers-team-480.47f2c8f7.webp 480w, /images/opt/careers-team-800.5336d3e7.webp 800w, /images/opt/careers-team-1184.6f7eca4f.webp 1184w",
     "width": 1184,
     "height": 880
   },
   "/images/mission-vehicle.jpg": {
-    "src": "/images/opt/mission-vehicle-750.webp",
-    "srcSet": "/images/opt/mission-vehicle-480.webp 480w, /images/opt/mission-vehicle-750.webp 750w",
+    "src": "/images/opt/mission-vehicle-750.32c739f8.webp",
+    "srcSet": "/images/opt/mission-vehicle-480.a710dc61.webp 480w, /images/opt/mission-vehicle-750.32c739f8.webp 750w",
     "width": 750,
     "height": 842
   },
   "/images/officer-portrait.jpg": {
-    "src": "/images/opt/officer-portrait-992.webp",
-    "srcSet": "/images/opt/officer-portrait-480.webp 480w, /images/opt/officer-portrait-800.webp 800w, /images/opt/officer-portrait-992.webp 992w",
+    "src": "/images/opt/officer-portrait-992.f21b9e21.webp",
+    "srcSet": "/images/opt/officer-portrait-480.09eb75c6.webp 480w, /images/opt/officer-portrait-800.348ad379.webp 800w, /images/opt/officer-portrait-992.f21b9e21.webp 992w",
     "width": 992,
     "height": 1040
   },
   "/images/backbone-officer.jpg": {
-    "src": "/images/opt/backbone-officer-733.webp",
-    "srcSet": "/images/opt/backbone-officer-480.webp 480w, /images/opt/backbone-officer-733.webp 733w",
+    "src": "/images/opt/backbone-officer-733.4b7d4773.webp",
+    "srcSet": "/images/opt/backbone-officer-480.f95344c4.webp 480w, /images/opt/backbone-officer-733.4b7d4773.webp 733w",
     "width": 733,
     "height": 900
   },
   "/images/matrix-government.jpg": {
-    "src": "/images/opt/matrix-government-640.webp",
-    "srcSet": "/images/opt/matrix-government-480.webp 480w, /images/opt/matrix-government-640.webp 640w",
+    "src": "/images/opt/matrix-government-640.a0d270a6.webp",
+    "srcSet": "/images/opt/matrix-government-480.e4f88b4b.webp 480w, /images/opt/matrix-government-640.a0d270a6.webp 640w",
     "width": 640,
     "height": 427
   },
   "/images/matrix-government.webp": {
-    "src": "/images/opt/matrix-government-862.webp",
-    "srcSet": "/images/opt/matrix-government-480.webp 480w, /images/opt/matrix-government-800.webp 800w, /images/opt/matrix-government-862.webp 862w",
+    "src": "/images/opt/matrix-government-862.a008681e.webp",
+    "srcSet": "/images/opt/matrix-government-480.d8863758.webp 480w, /images/opt/matrix-government-800.380147a3.webp 800w, /images/opt/matrix-government-862.a008681e.webp 862w",
     "width": 862,
     "height": 862
   },
   "/images/matrix-specialized.jpg": {
-    "src": "/images/opt/matrix-specialized-640.webp",
-    "srcSet": "/images/opt/matrix-specialized-480.webp 480w, /images/opt/matrix-specialized-640.webp 640w",
+    "src": "/images/opt/matrix-specialized-640.ed2ce3cb.webp",
+    "srcSet": "/images/opt/matrix-specialized-480.8c3d06c5.webp 480w, /images/opt/matrix-specialized-640.ed2ce3cb.webp 640w",
     "width": 640,
     "height": 384
   },
   "/images/matrix-industrial.jpg": {
-    "src": "/images/opt/matrix-industrial-640.webp",
-    "srcSet": "/images/opt/matrix-industrial-480.webp 480w, /images/opt/matrix-industrial-640.webp 640w",
+    "src": "/images/opt/matrix-industrial-640.d436df76.webp",
+    "srcSet": "/images/opt/matrix-industrial-480.e7ad0dcb.webp 480w, /images/opt/matrix-industrial-640.d436df76.webp 640w",
     "width": 640,
     "height": 360
   },
   "/images/matrix-airport-denver.jpg": {
-    "src": "/images/opt/matrix-airport-denver-1200.webp",
-    "srcSet": "/images/opt/matrix-airport-denver-480.webp 480w, /images/opt/matrix-airport-denver-800.webp 800w, /images/opt/matrix-airport-denver-1200.webp 1200w, /images/opt/matrix-airport-denver-1600.webp 1600w",
+    "src": "/images/opt/matrix-airport-denver-1200.5fdf30d6.webp",
+    "srcSet": "/images/opt/matrix-airport-denver-480.ae44a151.webp 480w, /images/opt/matrix-airport-denver-800.d5fccb37.webp 800w, /images/opt/matrix-airport-denver-1200.5fdf30d6.webp 1200w, /images/opt/matrix-airport-denver-1600.07c7ac42.webp 1600w",
     "width": 1600,
     "height": 1143
   },
   "/images/matrix-commercial.jpg": {
-    "src": "/images/opt/matrix-commercial-1000.webp",
-    "srcSet": "/images/opt/matrix-commercial-480.webp 480w, /images/opt/matrix-commercial-800.webp 800w, /images/opt/matrix-commercial-1000.webp 1000w",
+    "src": "/images/opt/matrix-commercial-1000.2b4a46e5.webp",
+    "srcSet": "/images/opt/matrix-commercial-480.3c13c7b1.webp 480w, /images/opt/matrix-commercial-800.95ab71bf.webp 800w, /images/opt/matrix-commercial-1000.2b4a46e5.webp 1000w",
     "width": 1000,
     "height": 667
   },
   "/images/matrix-community.jpg": {
-    "src": "/images/opt/matrix-community-640.webp",
-    "srcSet": "/images/opt/matrix-community-480.webp 480w, /images/opt/matrix-community-640.webp 640w",
+    "src": "/images/opt/matrix-community-640.4ac6b553.webp",
+    "srcSet": "/images/opt/matrix-community-480.7ec8647c.webp 480w, /images/opt/matrix-community-640.4ac6b553.webp 640w",
     "width": 640,
     "height": 427
   },
   "/images/capability-page1.webp": {
-    "src": "/images/opt/capability-page1-1000.webp",
-    "srcSet": "/images/opt/capability-page1-480.webp 480w, /images/opt/capability-page1-800.webp 800w, /images/opt/capability-page1-1000.webp 1000w",
+    "src": "/images/opt/capability-page1-1000.b2483dbf.webp",
+    "srcSet": "/images/opt/capability-page1-480.e4b3d367.webp 480w, /images/opt/capability-page1-800.fc263a43.webp 800w, /images/opt/capability-page1-1000.b2483dbf.webp 1000w",
     "width": 1000,
     "height": 1295
   },
   "/images/market/data-centers.webp": {
-    "src": "/images/opt/market-data-centers-1200.webp",
-    "srcSet": "/images/opt/market-data-centers-480.webp 480w, /images/opt/market-data-centers-800.webp 800w, /images/opt/market-data-centers-1200.webp 1200w, /images/opt/market-data-centers-1600.webp 1600w, /images/opt/market-data-centers-2000.webp 2000w, /images/opt/market-data-centers-2048.webp 2048w",
+    "src": "/images/opt/market-data-centers-1200.74fe360e.webp",
+    "srcSet": "/images/opt/market-data-centers-480.44ad5daa.webp 480w, /images/opt/market-data-centers-800.43f94069.webp 800w, /images/opt/market-data-centers-1200.74fe360e.webp 1200w, /images/opt/market-data-centers-1600.883cf3ee.webp 1600w, /images/opt/market-data-centers-2000.53ce841b.webp 2000w, /images/opt/market-data-centers-2048.10f3f395.webp 2048w",
     "width": 2048,
     "height": 1144
   },
   "/images/market/government-military.webp": {
-    "src": "/images/opt/market-government-military-1200.webp",
-    "srcSet": "/images/opt/market-government-military-480.webp 480w, /images/opt/market-government-military-800.webp 800w, /images/opt/market-government-military-1200.webp 1200w, /images/opt/market-government-military-1600.webp 1600w, /images/opt/market-government-military-2000.webp 2000w, /images/opt/market-government-military-2048.webp 2048w",
+    "src": "/images/opt/market-government-military-1200.f745e509.webp",
+    "srcSet": "/images/opt/market-government-military-480.a437a6c8.webp 480w, /images/opt/market-government-military-800.c2e3dc33.webp 800w, /images/opt/market-government-military-1200.f745e509.webp 1200w, /images/opt/market-government-military-1600.4302bd32.webp 1600w, /images/opt/market-government-military-2000.3f31f157.webp 2000w, /images/opt/market-government-military-2048.7e1af4cc.webp 2048w",
     "width": 2048,
     "height": 1144
   },
   "/images/market/construction-industrial.webp": {
-    "src": "/images/opt/market-construction-industrial-1200.webp",
-    "srcSet": "/images/opt/market-construction-industrial-480.webp 480w, /images/opt/market-construction-industrial-800.webp 800w, /images/opt/market-construction-industrial-1200.webp 1200w, /images/opt/market-construction-industrial-1600.webp 1600w, /images/opt/market-construction-industrial-2000.webp 2000w, /images/opt/market-construction-industrial-2048.webp 2048w",
+    "src": "/images/opt/market-construction-industrial-1200.6162bec5.webp",
+    "srcSet": "/images/opt/market-construction-industrial-480.67906c4f.webp 480w, /images/opt/market-construction-industrial-800.d4ca4b46.webp 800w, /images/opt/market-construction-industrial-1200.6162bec5.webp 1200w, /images/opt/market-construction-industrial-1600.cdac5ab3.webp 1600w, /images/opt/market-construction-industrial-2000.7c44204e.webp 2000w, /images/opt/market-construction-industrial-2048.c8b7bf2e.webp 2048w",
     "width": 2048,
     "height": 1144
   },
   "/images/market/commercial-property.webp": {
-    "src": "/images/opt/market-commercial-property-1200.webp",
-    "srcSet": "/images/opt/market-commercial-property-480.webp 480w, /images/opt/market-commercial-property-800.webp 800w, /images/opt/market-commercial-property-1200.webp 1200w, /images/opt/market-commercial-property-1600.webp 1600w, /images/opt/market-commercial-property-2000.webp 2000w, /images/opt/market-commercial-property-2048.webp 2048w",
+    "src": "/images/opt/market-commercial-property-1200.2e5bf9ff.webp",
+    "srcSet": "/images/opt/market-commercial-property-480.66179ef2.webp 480w, /images/opt/market-commercial-property-800.6f2ef227.webp 800w, /images/opt/market-commercial-property-1200.2e5bf9ff.webp 1200w, /images/opt/market-commercial-property-1600.132d3bb4.webp 1600w, /images/opt/market-commercial-property-2000.214a9e9c.webp 2000w, /images/opt/market-commercial-property-2048.1e70ae3a.webp 2048w",
     "width": 2048,
     "height": 1144
   },
   "/images/cert-gsa-footer.png": {
-    "src": "/images/opt/cert-gsa-footer.webp",
+    "src": "/images/opt/cert-gsa-footer.90e0c2aa.webp",
     "width": 534,
     "height": 128
   },
   "/images/cert-sba-footer.png": {
-    "src": "/images/opt/cert-sba-footer.webp",
+    "src": "/images/opt/cert-sba-footer.8c1d682b.webp",
     "width": 466,
     "height": 128
   },
   "/images/cert-women-owned.png": {
-    "src": "/images/opt/cert-women-owned.webp",
+    "src": "/images/opt/cert-women-owned.6e6efabb.webp",
     "width": 290,
     "height": 128
   },
   "/images/cert-wbenc.png": {
-    "src": "/images/opt/cert-wbenc.webp",
+    "src": "/images/opt/cert-wbenc.55dbd150.webp",
     "width": 226,
     "height": 128
   },
   "/images/gsa-contract-holder.png": {
-    "src": "/images/opt/gsa-contract-holder.webp",
+    "src": "/images/opt/gsa-contract-holder.90e0c2aa.webp",
     "width": 534,
     "height": 128
   },
   "/images/cert-denver-edo.webp": {
-    "src": "/images/opt/cert-denver-edo.webp",
+    "src": "/images/opt/cert-denver-edo.ac40200e.webp",
     "width": 492,
     "height": 128
   },
   "/images/cert-sba-wosb.webp": {
-    "src": "/images/opt/cert-sba-wosb.webp",
+    "src": "/images/opt/cert-sba-wosb.803372f8.webp",
     "width": 353,
     "height": 128
   },
   "/images/cert-co-diverse.webp": {
-    "src": "/images/opt/cert-co-diverse.webp",
+    "src": "/images/opt/cert-co-diverse.2ac4ab2c.webp",
     "width": 371,
     "height": 128
   },
   "/images/cert-co-small.webp": {
-    "src": "/images/opt/cert-co-small.webp",
+    "src": "/images/opt/cert-co-small.f6dcfe5a.webp",
     "width": 371,
     "height": 128
   }
