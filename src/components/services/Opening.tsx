@@ -69,6 +69,10 @@ export default function Opening() {
         </div>
       </div>
 
+      {/* The place, like the other photo heroes (owner, 2026-10-08). It sits with the photo,
+          under the glass at first: the glass slides off it, then it leaves with the photo. */}
+      <p className="ds-caption ds-svc-open-cap">Downtown Denver, Colorado</p>
+
       <div className="ds-svc-open-glass">
         <div className="ds-container ds-svc-open-head">
           <h1 id="services-title" className="ds-display-xl">
