@@ -24,7 +24,7 @@ Mobbin: Linear and Dovetail (questions as an accordion, heading left), Linear an
 | City recruiting pages | `/careers/<city>` for Colorado Springs, Denver, Pueblo |
 | Safety-concern route | "Report a concern" in the footer legal row (email) |
 
-Also: a Services column in the footer, Insights under Company, "By role, or by industry."
+Also: "By role, or by industry." (The footer's Services column was removed and Insights moved under the Contracting codes, owner 2026-10-08.)
 on Services, and "Jobs by city" on Careers.
 
 ## Not built (needs the owner)

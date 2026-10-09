@@ -395,9 +395,9 @@ body:has(.ds-page) {
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
   .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
 }
-@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
-/* Five columns (Services added 2026-10-08): a touch smaller links so long names fit. */
-@media (min-width: 1024px) { .ds-footer-cols a { font-size: 16px; } }
+@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* Insights under the Contracting codes, an extra line above it (owner, 2026-10-08). */
+.ds-footer-cols .ds-ft-insights { display: inline-block; margin-top: 46px; }
 
 .ds-certs {
   display: flex;
