@@ -1374,7 +1374,26 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   backdrop-filter: blur(22px) saturate(1.25);
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
+/* The hold (owner, 2026-10-08): everything after the glass holds still for the first
+   --svc-cap of scroll. Smooth where scroll-driven animations exist (a transform tied to the
+   page scroll, on the compositor); otherwise the JS spacer. */
 .ds-svc-open-spacer { height: var(--svc-hold); }
+@supports (animation-timeline: scroll()) {
+  html.svc-hold .ds-svc-open-photo,
+  html.svc-hold .ds-svc-band,
+  html.svc-hold .ds-svc .ds-doc-body,
+  html.svc-hold .ds-footer {
+    animation: ds-svc-hold linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px var(--svc-cap, 0px);
+  }
+}
+/* The held content ends --svc-cap lower than its layout box, so the page gets that much more
+   room at its foot to scroll to. */
+@supports (animation-timeline: scroll()) {
+  html.svc-hold body { padding-bottom: var(--svc-cap, 0px); }
+}
+@keyframes ds-svc-hold { from { transform: translateY(0); } to { transform: translateY(var(--svc-cap, 0px)); } }
 .ds-svc-band { height: var(--svc-band); }
 /* On the glass the lead takes the footer's lighter grey; phones and tablets get a darker
    tint, since the sky sits behind the copy there (AA held at the brightest point). */

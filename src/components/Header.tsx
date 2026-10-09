@@ -21,7 +21,13 @@ export default function Header() {
   useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    // The glass bar fades in once the page scrolls. On Services it waits until the opening's
+    // own glass has cleared the nav (--svc-cap, set by services/Opening.tsx), so the two
+    // glasses never stack (owner, 2026-10-08).
+    const onScroll = () => {
+      const cap = parseFloat(document.documentElement.style.getPropertyValue('--svc-cap')) || 0;
+      setScrolled(window.scrollY > Math.max(20, cap));
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);

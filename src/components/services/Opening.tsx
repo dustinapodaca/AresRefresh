@@ -10,20 +10,24 @@ export default function Opening() {
 
   // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
   // below hold still until the glass's foot has cleared the nav, then everything scrolls as
-  // usual. A spacer under the glass grows with the scroll (as --svc-hold), which keeps what
-  // follows in place; without JS it stays 0 and the page scrolls normally.
+  // usual. Where scroll-driven animations exist, the hold is a compositor transform tied to
+  // the scroll (smooth: dossier.css, `html.svc-hold`); this effect only measures the distance
+  // (--svc-cap). Elsewhere a spacer under the glass grows with the scroll (--svc-hold).
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const root = document.documentElement;
-    const anchor = root.style.overflowAnchor;
-    root.style.overflowAnchor = 'none';
     const glass = el.querySelector<HTMLElement>('.ds-svc-open-glass');
     const header = document.querySelector<HTMLElement>('.ds-header');
+    const smooth = CSS.supports('animation-timeline: scroll()');
+    const anchor = root.style.overflowAnchor;
+    root.style.overflowAnchor = 'none';
+    root.classList.add(smooth ? 'svc-hold' : 'svc-hold-js');
     let cap = 0;
     let frame = 0;
     const measure = () => {
       cap = Math.max(0, (glass?.offsetHeight ?? 0) - (header?.offsetHeight ?? 0));
+      root.style.setProperty('--svc-cap', `${cap}px`);
     };
     const update = () => {
       frame = 0;
@@ -34,16 +38,20 @@ export default function Opening() {
     };
     const onResize = () => {
       measure();
-      onScroll();
+      if (!smooth) onScroll();
     };
     measure();
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    if (!smooth) {
+      update();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
     window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       if (frame) cancelAnimationFrame(frame);
+      root.classList.remove('svc-hold', 'svc-hold-js');
+      root.style.removeProperty('--svc-cap');
       root.style.overflowAnchor = anchor;
     };
   }, []);
