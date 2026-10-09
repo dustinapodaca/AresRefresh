@@ -62,6 +62,7 @@ export default function Footer() {
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/careers">Careers</Link></li>
               <li><Link to="/capability-statement">Capability Statement</Link></li>
+              <li><Link to="/insights">Insights</Link></li>
             </ul>
           </div>
 
@@ -90,9 +91,6 @@ export default function Footer() {
                 <span className="ds-data">9KL18</span>
               </li>
             </ul>
-            {/* Insights sits under the codes with an extra line above it, almost on its own
-                (owner, 2026-10-08). */}
-            <Link to="/insights" className="ds-ft-insights">Insights</Link>
           </div>
 
           <div>
