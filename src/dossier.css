@@ -1321,10 +1321,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-intro { margin-top: 20px; }
 
 /* ---------- Opening: headline, then the street band ---------- */
-.ds-svc-open { position: relative; isolation: isolate; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+.ds-svc-open { position: relative; isolation: isolate; }
 .ds-svc-open-head { display: grid; gap: 24px; }
 @media (min-width: 1024px) {
-  .ds-svc-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-svc-open-glass { padding-top: calc(var(--ds-header) + var(--ds-beat)); padding-bottom: var(--ds-beat); }
   .ds-svc-open-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-svc-open-head h1 { grid-column: 1 / span 7; }
   .ds-svc-open-side { grid-column: 8 / span 5; }
@@ -1333,10 +1333,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    into the canvas only at the bottom. Dark glass covers it from the top down to the band,
    so the headline and lead read on the glass and the photo is crisp below its edge
    (owner, 2026-10-06; the footer's glass, turned over). */
-.ds-svc-open { --svc-band: clamp(15rem, 38svh, 28rem); }
+/* Sticky for the whole opening, one screen tall; the content after it slides up over it. */
 .ds-svc-open-photo {
-  position: absolute;
-  inset: 0;
+  position: sticky;
+  top: 0;
+  height: 100svh;
   z-index: -2;
   overflow: clip;
   -webkit-mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
@@ -1365,15 +1366,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    to the top and the glass has something to frost there. */
 .ds-svc-open-mirror { position: absolute; inset-inline: 0; bottom: 100%; height: 100%; transform: scaleY(-1); }
 .ds-svc-open-glass {
-  position: absolute;
-  inset: 0 0 var(--svc-band);
-  z-index: -1;
+  position: relative;
+  margin-top: -100svh;
+  padding-top: calc(var(--ds-header) + var(--ds-beat-tight));
+  padding-bottom: var(--ds-beat-tight);
   background: rgb(10 11 13 / 0.55);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
   backdrop-filter: blur(22px) saturate(1.25);
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
-.ds-svc-band { height: var(--svc-band); margin-top: var(--ds-beat-tight); }
+.ds-svc-open-hold { height: 100svh; }
 /* On the glass the lead takes the footer's lighter grey; phones and tablets get a darker
    tint, since the sky sits behind the copy there (AA held at the brightest point). */
 .ds-svc-open-side .ds-lead { color: #c4c8ce; }
@@ -3251,11 +3253,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
-    .ds-svc-open-stack {
-      animation: ds-drift linear both;
-      animation-timeline: view();
-      animation-range: exit 0% exit 100%;
-    }
     .ds-svc-pano img {
       animation: ds-plate linear both;
       animation-timeline: view();
