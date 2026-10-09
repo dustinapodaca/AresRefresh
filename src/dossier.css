@@ -2076,8 +2076,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   width: 100%;
   height: auto;
   filter: saturate(1) brightness(0.9);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
 }
 .ds-cs-hero-bg::after {
   content: '';
@@ -2092,8 +2092,19 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* Phones (below 900px): the copy starts low in the light so the panels show above the
    headline. */
 @media (max-width: 899px) {
-  /* The copy starts near the foot of the image (16:9 at full width). */
-  .ds-cs-hero .ds-cs-hero-grid { padding-top: max(calc(var(--ds-header) + 28px), calc(56.25vw - 2.5rem)); }
+  /* Phones and tablets (owner, 2026-10-08): a full-width 16:9 photo is too short here, so the
+     photo gets a taller frame, cropped at the sides on the fins, fading out under the copy,
+     which starts low in it as before. */
+  .ds-cs-hero-bg img {
+    height: clamp(27rem, 66svh, 38rem);
+    object-fit: cover;
+    object-position: 74% 50%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  }
+  .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
+  /* The lead sits on the lit fins here, so it takes the lighter grey of the other photo heroes. */
+  .ds-cs-hero-copy .ds-lead { color: #c4c8ce; }
 }
 /* "Capability Statement." on one line on desktop only (owner, 2026-10-06); it runs a few
    px past the 7-column copy column at 1440, into open space. Below 1024px it wraps. */
