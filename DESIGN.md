@@ -487,7 +487,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   `assets/generated/capability/`) shown whole (never cropped; full width at its own
   proportions, fading only at its very foot (2%; the frost softens the edge) so its color runs on under the
   facts' glass and the frost reads; below 900px a taller frame, clamp(27rem, 66svh, 38rem),
-  cropped at the sides on the fins (74%), fading from 55% under the copy, with the lead in
+  cropped at the sides with the photo set further right (60%), under an evenly eased shade from the left (a kink in it read as a dark band), fading from 55% under the copy, with the lead in
   #c4c8ce there; from 900px the copy, the facts' glass, and the codes sit 40px higher and the
   photo 24px higher, owner 2026-10-08, the hero height unchanged), black from the left; below 900px a softer shade from the left keeps the lit fins
   off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
