@@ -3,11 +3,11 @@ import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
 import { SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
 
-// The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
-// glass, Windsurf's and Opacity's light). No quote button: every page's close and the nav
-// carry it. The mark and the company line with the phone, email, and profiles beside them;
-// the columns; the certification marks; then the ARES wordmark set large over a slow rust
-// light, its foot under a band of dark glass that holds the legal row.
+// The footer (owner, 2026-10-08, after Ada's on Mobbin): link columns across the top; a
+// hairline; then a lower half split by a vertical rule. Left: who we are, and the Ares
+// lockup (mark, rule, ARES / SECURITY text logo) set large on the footer's foot. Right:
+// follow us, get in touch, the certification marks, and the legal links at the foot. No
+// quote button: the nav and each page carry it. No newsletter (Ares has none).
 
 // LinkedIn and Indeed match the sameAs links in index.html. The Google Business profile
 // link is not on file yet, so this opens the Maps search for the business.
@@ -25,35 +25,6 @@ export default function Footer() {
   return (
     <footer className="ds ds-footer">
       <div className="ds-container">
-        <div className="ds-ft-top">
-          <div className="ds-ft-intro">
-            <Link to="/" className="ds-brand ds-ft-brand" aria-label="Ares Security home">
-              <span className="ds-mark" aria-hidden="true" />
-              <span className="ds-ft-divider" aria-hidden="true" />
-              <span className="ds-ft-wordmark" aria-hidden="true" />
-            </Link>
-            <p className="ds-ft-statement">
-              A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado
-              Springs.
-            </p>
-          </div>
-
-          <div className="ds-ft-reach">
-            <a href="tel:+17196963966" className="ds-data ds-ft-phone">719-696-3966</a>
-            <a href="mailto:contact@aressecurity.co" className="ds-data ds-ft-email">contact@aressecurity.co</a>
-            <ul className="ds-ft-profiles" aria-label="Ares Security elsewhere">
-              {PROFILES.map((p) => (
-                <li key={p.label}>
-                  <a href={p.href} target="_blank" rel="noopener noreferrer">
-                    {p.label}
-                    <Arrow external size={12} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
         <div className="ds-footer-cols">
           <div>
             <h2>Company</h2>
@@ -106,21 +77,51 @@ export default function Footer() {
           </div>
         </div>
 
-        <ul className="ds-certs" aria-label="Certifications and contract vehicles">
-          <li><img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" loading="lazy" /></li>
-          <li><img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" loading="lazy" /></li>
-          <li><img src="/images/cert-women-owned.png" alt="Women Owned" loading="lazy" /></li>
-          <li><img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
-        </ul>
-      </div>
+        <div className="ds-ft-lower">
+          <div className="ds-ft-left">
+            <div className="ds-ft-row">
+              <h2 className="ds-ft-label">Who we are</h2>
+              <p className="ds-ft-statement">
+                A minority woman-owned, employee-focused security firm, founded in Colorado
+                Springs in 2021 and licensed in Colorado Springs, Denver, and Pueblo.
+              </p>
+            </div>
+            <Link to="/" className="ds-ft-lockup" aria-label="Ares Security home">
+              <span className="ds-ft-lockup-mark" aria-hidden="true" />
+              <span className="ds-ft-lockup-rule" aria-hidden="true" />
+              <span className="ds-ft-lockup-text" aria-hidden="true" />
+            </Link>
+          </div>
 
-      <div className="ds-ft-stage">
-        <div className="ds-ft-aurora" aria-hidden="true" />
-        <div className="ds-ft-glass">
-          <div className="ds-container">
+          <div className="ds-ft-right">
+            <div className="ds-ft-row">
+              <h2 className="ds-ft-label">Follow us</h2>
+              <ul className="ds-ft-list">
+                {PROFILES.map((p) => (
+                  <li key={p.label}>
+                    <a href={p.href} target="_blank" rel="noopener noreferrer">
+                      {p.label}
+                      <Arrow external size={12} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="ds-ft-row">
+              <h2 className="ds-ft-label">Get in touch</h2>
+              <ul className="ds-ft-list">
+                <li><a href="tel:+17196963966" className="ds-data">719-696-3966</a></li>
+                <li><a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a></li>
+              </ul>
+            </div>
+            <ul className="ds-certs" aria-label="Certifications and contract vehicles">
+              <li><img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" loading="lazy" /></li>
+              <li><img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" loading="lazy" /></li>
+              <li><img src="/images/cert-women-owned.png" alt="Women Owned" loading="lazy" /></li>
+              <li><img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
+            </ul>
             <div className="ds-legal">
-              <span>© {YEAR} Ares Security LLC. All rights reserved.</span>
-              <span>Colorado Springs, Colorado</span>
+              <span>© {YEAR} Ares Security LLC</span>
               <ul>
                 <li><Link to="/privacy">Privacy</Link></li>
                 <li><Link to="/terms">Terms</Link></li>

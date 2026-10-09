@@ -271,8 +271,7 @@ sizes are unchanged.
 
 Flat. No shadows, no blur, no glass, no tonal card lifts. Depth comes from three sources
 only: photographs that fade into the canvas, the scale gap between display type and
-body, and the single rust horizon glow at the close. The footer's closing stage (owner,
-2026-10-06) is the one place with a CSS light and glass at the end of every page.
+body, and the single rust horizon glow at the close. 
 
 ## Shapes
 
@@ -647,34 +646,26 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   primary button.
 
 ### Footer
-Redesigned 2026-10-06 (owner; Mobbin: Retool's ruled columns, Railway's wordmark under
-glass, Windsurf's beams, Opacity's light). A bigger footer with no quote button (the nav
-and each page's close carry it). Same canvas, no top rule, a `beat` above it.
-- **Top:** the Ares lockup (the mark at 52px, a 60px rule at ink 50%, and the ARES /
-  SECURITY text logo at 44px, 28px apart; owner's reference), the company line set large
-  under it (Inter Tight 500, 26 to 36px, ink, balanced, about 24ch) in 7 columns; on the
-  right (3 columns, bottom-aligned) the phone and email in mono at 15px (small: the close
-  above carries the phone large), then the profiles as quiet external links: LinkedIn,
-  Google (Business), Indeed. These are the only social profiles. Phones: stacked.
-- **Columns** (Retool): each opens on a 1px vertical hairline (hairline strong), a mono
-  uppercase title in ink faint, links in Inter 18px ink (16px on phones). Company (About
-  Us, Services, Careers, Capability Statement); Service areas; Contracting as label and
-  mono value (GSA MAS 47QSMS25D009Q linking to eLibrary, UEI, CAGE); Registration as a
-  live status: the green light (#7cb85f) and "Active on SAM.gov", "Through March 26,
-  2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
-  identifiers stacked label over value.
-- Then the certification marks separated by thin vertical lines.
-- **The closing stage** (owner request: "aurora or gradient or opacity or glass"; the giant
-  ARES letters were removed, owner 2026-10-06): an open band (280 to 400px; softer at 65%, fading hard to black: full only at the foot, 40% a third of the way up, nearly gone by two thirds; owner 2026-10-08) of flowing rust
-  aurora, a mesh gradient in the Framer and Vercel manner (owner, 2026-10-08: no rays): two
-  layers of large soft fields, deep copper and rust below, amber with a warm white core
-  above (screen blend), wandering on loose 19s and 26s loops in opposite directions
-  (translate, slight rotate, scale), faded out toward the top. Its foot runs 40 to
-  64px under a band of dark glass (canvas at 55% over a 22px blur, a white/10% top edge)
-  that holds the legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado
-  Springs, Colorado", Privacy, Terms, Accessibility. The light drifts slowly (still under
-  reduced motion). Static otherwise, no pointer tracking. The large "Get to know Ares"
-  index was removed earlier (2026-10-04).
+Redesigned 2026-10-08 (owner, after Ada's footer on Mobbin). The canvas, no glass, no
+light, no quote button (the nav and each page carry it), no newsletter (Ares has none).
+- **Columns:** Company, Service areas, Contracting (label and mono value: GSA MAS
+  47QSMS25D009Q to eLibrary, UEI, CAGE), Registration (green light, "Active on SAM.gov",
+  through the SAM date, Verify). Titles in Inter 15px ink faint (no uppercase), links Inter
+  17px ink. Four across on desktop, 2x2 on phones.
+- **The lower half**, under a hairline-strong rule, split like Ada's: left 8 columns and a
+  vertical hairline-strong rule, right 4 columns.
+  - Left: "Who we are" (label) with the company line, and on the footer's foot the Ares
+    lockup set large (the mark, a rule at ink 50%, the ARES / SECURITY text logo, in the
+    owner's lockup proportions; the mark up to 176px tall, the lockup about 60% of the
+    container wide). Where Ada sets its pink mark and wordmark.
+  - Right: "Follow us" (LinkedIn, Google, Indeed), "Get in touch" (phone and email in mono),
+    the certification marks, and the legal row on the foot (copyright, Privacy, Terms,
+    Accessibility). Label beside value from 1360px; stacked below that.
+  - Phones and tablets: the who-we-are line, then the right column, then the lockup last,
+    full width, on the foot.
+- Earlier footers (kept for the record): the Retool/Railway footer with the aurora and
+  dark glass band (2026-10-06 to 10-08); the ARES letters under glass; a pointer-led
+  wordmark light (removed 2026-10-05); "Get to know Ares" (removed 2026-10-04).
 
 ## Motion
 

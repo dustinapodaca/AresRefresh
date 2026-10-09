@@ -312,214 +312,108 @@ body:has(.ds-page) {
 }
 
 /* ---------- Footer ---------- */
-/* Owner, 2026-10-06 (Mobbin: Retool, Railway, Windsurf, Opacity). The one place besides
-   the nav with glass, and the one CSS light: the rust aurora under the closing wordmark. */
+/* Owner, 2026-10-08, after Ada's footer on Mobbin: link columns across the top, a hairline,
+   then a lower half split by a vertical rule. Left: who we are, and the Ares lockup set large
+   on the footer's foot. Right: follow us, get in touch, the certification marks, and the
+   legal links at the foot. The canvas, no glass, no light. */
 .ds-footer {
   background: var(--ds-canvas);
   color: var(--ds-fg-muted);
   font-family: var(--ds-text);
   padding-top: var(--ds-beat);
-}
-/* The mark, a hairline, and the ARES / SECURITY text logo (ares-text.svg). */
-/* Proportions from the owner's lockup: the text logo nearly the mark's height, the rule a
-   little taller than both, an even gap either side. */
-.ds-ft-brand { display: inline-flex; align-items: center; gap: 28px; }
-.ds-ft-brand .ds-mark { width: 50px; height: 52px; }
-.ds-ft-divider { width: 1px; height: 60px; background: rgb(238 240 242 / 0.5); }
-.ds-ft-wordmark {
-  display: block;
-  width: 145px;
-  height: 44px;
-  background: var(--ds-fg);
-  -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
-  mask: url(/images/ares-text.svg) center / contain no-repeat;
-}
-.ds-ft-top { display: grid; gap: 40px; padding-bottom: var(--ds-beat-tight); }
-.ds-ft-statement {
-  margin: 24px 0 0;
-  max-width: 24ch;
-  font-family: var(--ds-display);
-  font-size: clamp(26px, 2.6vw, 36px);
-  font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: var(--ds-fg);
-  text-wrap: balance;
-}
-/* Right of the statement: the phone, the email, and the three profiles (set small: the
-   close above carries the phone large). */
-.ds-ft-reach { display: grid; justify-items: start; align-content: end; gap: 10px; }
-.ds-ft-phone, .ds-ft-email { font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
-.ds-ft-email { color: var(--ds-fg-muted); }
-.ds-ft-phone:hover, .ds-ft-email:hover { color: #fff; }
-.ds-ft-profiles { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; margin: 14px 0 0; padding: 0; }
-.ds-ft-profiles a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: var(--ds-fg-muted);
-  transition: color 180ms var(--ds-ease);
-}
-.ds-ft-profiles a:hover { color: var(--ds-fg); }
-@media (min-width: 1024px) {
-  .ds-ft-top { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-ft-intro { grid-column: 1 / span 7; }
-  .ds-ft-reach { grid-column: 10 / span 3; }
+  overflow: clip;
 }
 
-/* Columns (Retool): each opens on a vertical hairline, the links set larger in ink. */
-.ds-footer-cols { display: grid; gap: 40px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ds-footer-cols > div { padding-left: 20px; border-left: 1px solid var(--ds-rule-strong); }
-.ds-footer-cols h2 { font-family: var(--ds-data); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg-faint); margin: 0 0 18px; }
-.ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.ds-footer-cols a { color: var(--ds-fg); font-size: 18px; letter-spacing: -0.01em; transition: color 180ms var(--ds-ease); }
+/* The columns: a muted title, ink links. */
+.ds-footer-cols { display: grid; gap: 40px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: var(--ds-beat-tight); }
+.ds-footer-cols h2 { margin: 0 0 18px; font-family: var(--ds-text); font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ds-fg-faint); }
+.ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ds-footer-cols a { color: var(--ds-fg); font-size: 17px; letter-spacing: -0.01em; transition: color 180ms var(--ds-ease); }
 .ds-footer-cols a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
-.ds-footer-cols a.ds-data { font-size: 15px; letter-spacing: 0; color: var(--ds-fg); }
+.ds-footer-cols a.ds-data { font-size: 15px; letter-spacing: 0; }
 /* Contracting: label and mono value on each line. */
 .ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
 .ds-ft-ids li > span:first-child { min-width: 4.5em; font-size: 14px; color: var(--ds-fg-faint); }
 .ds-ft-ids .ds-data { font-size: 15px; color: var(--ds-fg-muted); }
-/* Registration: SAM.gov as a live status, with the green light from the Capability
-   Statement (Resend's status line on Mobbin). */
-.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; letter-spacing: -0.01em; color: var(--ds-fg); }
+/* Registration: SAM.gov as a live status, with the green light. */
+.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 17px; letter-spacing: -0.01em; color: var(--ds-fg); }
 .ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
 .ds-ft-status-note { margin: 8px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
 .ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
-/* Phones: an even 2x2. The identifiers stack (label over value) to fit a half column. */
 @media (max-width: 639px) {
-  .ds-footer-cols > div { padding-left: 14px; }
   .ds-footer-cols a { font-size: 16px; }
   .ds-ft-status { font-size: 16px; }
   .ds-ft-ids li { flex-direction: column; gap: 2px; }
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
   .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
 }
-@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(var(--ft-cols, 4), minmax(0, 1fr)); } }
 
-.ds-certs {
-  display: flex;
+/* The lower half, under a hairline. */
+.ds-ft-lower { display: grid; border-top: 1px solid var(--ds-rule-strong); }
+.ds-ft-row { display: grid; gap: 10px; padding: 26px 0; }
+.ds-ft-label { margin: 0; font-size: 15px; font-weight: 400; color: var(--ds-fg-faint); }
+.ds-ft-statement { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ds-fg); max-width: 44ch; text-wrap: pretty; }
+.ds-ft-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ds-ft-list a { display: inline-flex; align-items: center; gap: 6px; font-size: 17px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
+.ds-ft-list a.ds-data { font-size: 15px; }
+.ds-ft-list a:hover { color: #fff; }
+.ds-ft-right .ds-ft-row + .ds-ft-row { border-top: 1px solid var(--ds-rule); }
+
+/* The lockup (the owner's reference: mark, rule, ARES / SECURITY text logo), set large on the
+   footer's foot, its parts in the same proportions as the old 52px lockup. --lk is the mark's
+   height; the whole lockup is about 4.9 times that wide. */
+.ds-ft-lockup {
+  --lk: clamp(48px, calc((100vw - 2 * var(--ds-gutter)) / 5), 176px);
+  display: inline-flex;
   align-items: center;
-  list-style: none;
-  margin: var(--ds-beat-tight) 0 0;
-  padding: 0;
-  gap: 28px;
+  gap: calc(var(--lk) * 0.54);
+  margin-top: 40px;
+  padding-bottom: calc(var(--lk) * 0.16);
+  color: var(--ds-fg);
 }
+.ds-ft-lockup-mark { display: block; width: calc(var(--lk) * 0.96); height: var(--lk); background: currentColor; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
+.ds-ft-lockup-rule { display: block; width: max(1px, calc(var(--lk) * 0.02)); height: calc(var(--lk) * 1.15); background: rgb(238 240 242 / 0.5); }
+.ds-ft-lockup-text { display: block; width: calc(var(--lk) * 0.85 * 576 / 174.87); height: calc(var(--lk) * 0.85); background: currentColor; -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat; mask: url(/images/ares-text.svg) center / contain no-repeat; }
+.ds-ft-lockup:hover { color: #fff; }
+
+.ds-certs { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; list-style: none; margin: 0; padding: 26px 0; border-top: 1px solid var(--ds-rule); }
 .ds-certs li { display: flex; align-items: center; }
-.ds-certs li + li::before {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 30px;
-  margin-right: 28px;
-  background: var(--ds-rule-strong);
-}
-.ds-certs img { display: block; height: 32px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
+.ds-certs img { display: block; height: 28px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
-/* The WBENC mark has fine print that blurs at 32px; give it a little more room and ink. */
-.ds-certs img[src*='cert-wbenc'] { height: 38px; opacity: 0.85; }
-/* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
-@media (max-width: 559px) {
-  .ds-certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
-  .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
-  .ds-certs li + li::before { display: none; }
-  .ds-certs li:nth-child(odd) { border-right: 1px solid var(--ds-rule-strong); }
-  .ds-certs li:nth-child(-n + 2) { border-bottom: 1px solid var(--ds-rule-strong); }
-  .ds-certs img { height: 30px; max-width: 100%; }
-  .ds-certs img[src*='cert-wbenc'] { height: 36px; }
+.ds-certs img[src*='cert-wbenc'] { height: 34px; opacity: 0.85; }
+
+.ds-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 22px; padding: 22px 0 28px; border-top: 1px solid var(--ds-rule); font-size: 13px; color: var(--ds-fg-muted); }
+.ds-legal ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0; padding: 0; }
+.ds-legal a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-legal a:hover { color: var(--ds-fg); }
+
+/* Phones: the right column first (follow, contact, marks, legal), the lockup last on the foot. */
+@media (max-width: 1023px) {
+  .ds-ft-lower { display: flex; flex-direction: column; }
+  .ds-ft-left { display: contents; }
+  .ds-ft-left .ds-ft-row { order: 0; }
+  .ds-ft-right { order: 1; }
+  .ds-ft-lockup { order: 2; margin-top: 32px; }
+  .ds-ft-right .ds-ft-row { border-top: 1px solid var(--ds-rule); }
+}
+@media (min-width: 480px) and (max-width: 1023px) {
+  .ds-ft-right .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+}
+/* Desktop: Ada's split. Left 8 columns (who we are, then the lockup on the foot); a vertical
+   rule; right 4 columns (follow, contact, marks, legal on the foot). */
+@media (min-width: 1024px) {
+  .ds-ft-lower { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .ds-ft-left { grid-column: 1 / span 8; display: flex; flex-direction: column; justify-content: space-between; min-height: clamp(26rem, 34vw, 32rem); padding-right: 24px; border-right: 1px solid var(--ds-rule-strong); }
+  .ds-ft-left .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); column-gap: 24px; }
+  .ds-ft-lockup { --lk: min(176px, calc((min(100vw, var(--ds-max) + 2 * var(--ds-gutter)) - 2 * var(--ds-gutter)) * 0.6 / 5)); margin-top: 0; }
+  .ds-ft-right { grid-column: 9 / span 4; display: flex; flex-direction: column; }
+  .ds-ft-right .ds-legal { margin-top: auto; }
+}
+@media (min-width: 1360px) {
+  .ds-ft-right .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); column-gap: 20px; }
 }
 
-/* The close of every page (owner, 2026-10-06: the ARES letters removed): an open band of
-   slow rust aurora, ribbons of light over soft curtains, its foot under a band of dark
-   glass (Railway) that holds the legal row. */
-.ds-ft-stage {
-  --ft-sink: clamp(40px, 4vw, 64px); /* how much of the aurora runs under the glass */
-  position: relative;
-  isolation: isolate;
-  overflow: clip;
-  margin-top: var(--ds-beat-tight);
-  padding-top: clamp(280px, 26vw, 400px);
-}
-.ds-ft-aurora {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: clip;
-  pointer-events: none;
-  /* A flowing mesh (Framer, Vercel): large soft fields of rust and amber that drift into
-     one another. No rays. The field fades out toward the top of the band. */
-  background:
-    radial-gradient(60% 70% at 50% 120%, rgb(139 73 32 / 0.85), transparent 70%);
-  /* Softer (owner, 2026-10-08): the light at 65%, fading hard to black: full only at the foot,
-     40% by a third of the way up, nearly gone by two thirds. */
-  opacity: 0.65;
-  -webkit-mask: linear-gradient(to top, #000 8%, rgb(0 0 0 / 0.4) 38%, rgb(0 0 0 / 0.12) 66%, transparent 88%);
-  mask: linear-gradient(to top, #000 8%, rgb(0 0 0 / 0.4) 38%, rgb(0 0 0 / 0.12) 66%, transparent 88%);
-}
-.ds-ft-aurora::before,
-.ds-ft-aurora::after {
-  content: '';
-  position: absolute;
-  inset: -40% -20%;
-  will-change: transform;
-}
-/* The slow fields: deep copper and rust, wide and soft. */
-.ds-ft-aurora::before {
-  background:
-    radial-gradient(30% 30% at 20% 52%, rgb(196 112 62 / 0.95), transparent 70%),
-    radial-gradient(34% 32% at 50% 58%, rgb(139 73 32 / 1), transparent 70%),
-    radial-gradient(30% 28% at 80% 50%, rgb(184 100 54 / 0.95), transparent 70%);
-  filter: blur(44px);
-}
-/* The bright fields: amber with a warm white core, smaller, moving the other way. */
-.ds-ft-aurora::after {
-  background:
-    radial-gradient(20% 20% at 36% 52%, rgb(240 160 92 / 0.95), transparent 70%),
-    radial-gradient(14% 14% at 62% 56%, rgb(255 226 192 / 0.75), transparent 70%),
-    radial-gradient(18% 18% at 86% 54%, rgb(236 154 88 / 0.75), transparent 70%),
-    radial-gradient(14% 14% at 12% 58%, rgb(236 154 88 / 0.6), transparent 70%);
-  filter: blur(36px);
-  mix-blend-mode: screen;
-}
-.ds-ft-glass {
-  position: relative;
-  margin-top: calc(-1 * var(--ft-sink));
-  padding-top: calc(var(--ft-sink) + 28px);
-  background: rgb(10 11 13 / 0.55);
-  -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  backdrop-filter: blur(22px) saturate(1.25);
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-}
-.ds-legal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px 28px;
-  padding-bottom: 32px;
-  font-family: var(--ds-data);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  color: #c4c8ce; /* lighter than ink muted so it reads on the lit glass */
-}
-.ds-legal ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-.ds-legal a { color: #c4c8ce; transition: color 180ms var(--ds-ease); }
-.ds-legal a:hover { color: var(--ds-fg); }
-/* The light drifts slowly side to side (ambient; still under reduced motion). */
-@media (prefers-reduced-motion: no-preference) {
-  .ds-ft-aurora::before { animation: ds-ft-flow-a 26s ease-in-out infinite alternate; }
-  .ds-ft-aurora::after { animation: ds-ft-flow-b 19s ease-in-out -7s infinite alternate; }
-}
-/* The fields wander on loose loops, in opposite directions, so the mesh keeps changing. */
-@keyframes ds-ft-flow-a {
-  0% { transform: translate3d(-6%, 2%, 0) rotate(0deg) scale(1); }
-  50% { transform: translate3d(4%, -4%, 0) rotate(8deg) scale(1.08); }
-  100% { transform: translate3d(8%, 3%, 0) rotate(-4deg) scale(0.96); }
-}
-@keyframes ds-ft-flow-b {
-  0% { transform: translate3d(6%, -2%, 0) rotate(0deg) scale(1.05); }
-  50% { transform: translate3d(-5%, 4%, 0) rotate(-10deg) scale(0.94); }
-  100% { transform: translate3d(-9%, -3%, 0) rotate(6deg) scale(1.1); }
-}
 @keyframes ds-ft-drift {
   from { transform: translate3d(-4%, 0, 0); }
   to { transform: translate3d(4%, -3%, 0); }
