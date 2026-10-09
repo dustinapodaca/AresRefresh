@@ -594,7 +594,7 @@ per city. No rail, no close, no photo, no section numbers.
   companies itself. The city's license as Home's ledger row (label, mono value, route):
   license number with "Verify ↗" (on its line at the right at every width; owner, 2026-10-08) (the city's public record; Colorado Springs: Accela;
   Denver: Accela; Pueblo has none, so "Request a copy", an email), status (licensed and bonded, armed and
-  unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
+  unarmed), training provider, armed endorsements, office (CO 80906 only, never a street; its note as two lines, "Headquarters" then the distance or "Since 2021"). On the Denver map the airport reads "DEN AIRPORT" on one line, lifted clear of the city's name.
 - **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
   (4 + 3), each column closed by a hairline; each row is
   the site type (Inter 17px / 500), its division beneath (13px faint), and an arrow that
