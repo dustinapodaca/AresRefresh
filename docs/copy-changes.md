@@ -583,3 +583,10 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | "Who we are": "A minority woman-owned, employee-focused security firm, founded in Colorado Springs in 2021 and licensed in Colorado Springs, Denver, and Pueblo." | "A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado Springs." (under the lockup, no label) |
 | "Follow us" and "Get in touch" on the right | Phone and email as chips under the company line; "Explore", "Service areas", "Follow us" as columns on the right |
 | (none in the Ada footer) | Legal row: "Active on SAM.gov through March 26, 2027", "GSA 47QSMS25D009Q", "UEI XQXDN6E33SF4", "CAGE 9KL18" beside the copyright and policies |
+
+## Footer restored (2026-10-08, owner)
+
+The 2026-10-06 footer with the ARES letters under the dark glass band is back, with its copy
+as it was: the company line, phone, email, and profiles; Company, Service areas,
+Contracting, Registration; the certification marks; "© 2026 Ares Security LLC. All rights
+reserved.", "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
