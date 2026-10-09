@@ -588,3 +588,11 @@ pages. Items to confirm with the owner:
 | Data centers: "Access control and checkpoint logs for controlled areas." | "Access control and checkpoint logs for controlled areas, with unarmed or armed officers." |
 | 03 Airport, 04 Commercial, 05 Industrial | 03 Industrial, 04 Airport, 05 Commercial |
 | Specialized card, last sentence (owner, 2026-10-08) | "Armed officers are licensed and firearms-qualified by Ares." (was "...by our veteran NRA instructor.") |
+
+## Footer after Ada (2026-10-08, owner)
+
+| Was | Now |
+|---|---|
+| Company line beside the lockup: "A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado Springs." | "Who we are": "A minority woman-owned, employee-focused security firm, founded in Colorado Springs in 2021 and licensed in Colorado Springs, Denver, and Pueblo." |
+| Phone, email, and profiles under the lockup | "Follow us" (LinkedIn, Google, Indeed) and "Get in touch" (phone, email) on the right |
+| Legal row on the glass band: "© 2026 Ares Security LLC. All rights reserved." / "Colorado Springs, Colorado" | "© 2026 Ares Security LLC" with Privacy, Terms, Accessibility |
