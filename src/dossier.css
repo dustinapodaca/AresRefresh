@@ -1333,11 +1333,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    into the canvas only at the bottom. Dark glass covers it from the top down to the band,
    so the headline and lead read on the glass and the photo is crisp below its edge
    (owner, 2026-10-06; the footer's glass, turned over). */
-/* Sticky for the whole opening, one screen tall; the content after it slides up over it. */
+/* The photo covers the opening below the spacer, so it holds still while the spacer grows. */
+.ds-svc-open { --svc-band: clamp(15rem, 38svh, 28rem); --svc-hold: 0px; }
 .ds-svc-open-photo {
-  position: sticky;
-  top: 0;
-  height: 100svh;
+  position: absolute;
+  inset: var(--svc-hold) 0 0;
   z-index: -2;
   overflow: clip;
   -webkit-mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
@@ -1367,7 +1367,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-open-mirror { position: absolute; inset-inline: 0; bottom: 100%; height: 100%; transform: scaleY(-1); }
 .ds-svc-open-glass {
   position: relative;
-  margin-top: -100svh;
   padding-top: calc(var(--ds-header) + var(--ds-beat-tight));
   padding-bottom: var(--ds-beat-tight);
   background: rgb(10 11 13 / 0.55);
@@ -1375,7 +1374,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   backdrop-filter: blur(22px) saturate(1.25);
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
-.ds-svc-open-hold { height: 100svh; }
+.ds-svc-open-spacer { height: var(--svc-hold); }
+.ds-svc-band { height: var(--svc-band); }
 /* On the glass the lead takes the footer's lighter grey; phones and tablets get a darker
    tint, since the sky sits behind the copy there (AA held at the brightest point). */
 .ds-svc-open-side .ds-lead { color: #c4c8ce; }
