@@ -56,6 +56,10 @@ Last updated: 2026-10-09. **Read this first when starting a new chat.**
 - **Fonts** are self-hosted (`src/fonts.css`, `public/fonts/`, Latin subsets; Inter and
   Inter Tight preloaded in `index.html`). No Google Fonts request.
 - `assets/images-unused/` holds images nothing references (old heroes, client logos).
+- **`public/llms.txt`** (2026-10-09): a Markdown summary for AI assistants (llmstxt.org
+  format): who Ares is, the verified facts and identifiers, and links to every public page
+  on aressecurity.co. **Keep it in sync** when facts, pages, or the SAM date change. Avoid
+  claims the owner has ruled out (growth paths, response times, "cleared", "veteran-led").
 - **Lighthouse (production build, mobile, 2026-10-09):** most pages 93 to 96, Home 83,
   Services 78 (their big crisp heroes on a slow simulated 4G); accessibility, best
   practices, SEO 100. Run it on `npm run build && npx vite preview` (port 4173), never on
