@@ -590,3 +590,11 @@ The 2026-10-06 footer with the ARES letters under the dark glass band is back, w
 as it was: the company line, phone, email, and profiles; Company, Service areas,
 Contracting, Registration; the certification marks; "© 2026 Ares Security LLC. All rights
 reserved.", "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
+
+## Location pages, office note (2026-10-08, owner)
+
+| Was | Now |
+|---|---|
+| "Headquarters since 2021" | "Headquarters" / "Since 2021" (two lines) |
+| "Headquarters, an hour south on I-25" | "Headquarters" / "An hour south on I-25" |
+| "Headquarters, 45 minutes north on I-25" | "Headquarters" / "45 minutes north on I-25" |
