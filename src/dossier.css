@@ -3213,7 +3213,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    ============================================================ */
 @keyframes ds-value-rise { from { transform: translateY(64px) scale(0.97); } to { transform: none; } }
 @keyframes ds-hero-drift { from { transform: translateY(0); } to { transform: translateY(4%); } }
-@keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-26svh); } }
+@keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-40svh); } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
