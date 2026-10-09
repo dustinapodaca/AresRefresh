@@ -35,18 +35,20 @@ for (let cy = STEP / 2; cy < H; cy += STEP) {
 
 const fmt = (v: number, pos: string, neg: string) => `${Math.abs(v).toFixed(2)}° ${v >= 0 ? pos : neg}`;
 
-type Label = { text: string; cls: string; px: number; py: number; dx?: number; end?: boolean };
+type Label = { text: string; cls: string; px: number; py: number; dx?: number; dy?: number; end?: boolean; note?: string };
 
-// A label pinned to a point of the drawing: `dx` is a CSS-pixel gap from the point, and
-// `end` sets the text to finish at the point instead of starting there.
-function Pin({ text, cls, px, py, dx = 0, end }: Label) {
+// A label pinned to a point of the drawing: `dx` and `dy` are CSS-pixel offsets from the
+// point, `end` sets the text to finish at the point instead of starting there, and `note`
+// follows the text on the same line in the faint mono.
+function Pin({ text, cls, px, py, dx = 0, dy = 0, end, note }: Label) {
   return (
     <span
       className={`ds-loc-pin ${cls}`}
       data-end={end || undefined}
-      style={{ left: `calc(${(px / W) * 100}% + ${dx}px)`, top: `${(py / H) * 100}%` }}
+      style={{ left: `calc(${(px / W) * 100}% + ${dx}px)`, top: `calc(${(py / H) * 100}% + ${dy}px)` }}
     >
       {text}
+      {note && <span className="ds-loc-faint ds-loc-pin-note">{note}</span>}
     </span>
   );
 }
@@ -141,8 +143,13 @@ export default function LocationMap({
         <Pin text="I-25" cls="ds-loc-faint" px={x(-104.93)} py={y(39.3)} dx={10} />
         {landmarks.map((l) => (
           <span key={l.label}>
-            <Pin text={l.label} cls="ds-loc-landmark" px={x(l.lon)} py={y(l.lat) - 4} dx={l.side === 'left' ? -14 : 14} end={l.side === 'left'} />
-            {l.note && (
+            {l.inline ? (
+              // One line, lifted 6px so it clears the city's name below (owner, 2026-10-08).
+              <Pin text={l.label} note={l.note} cls="ds-loc-landmark" px={x(l.lon)} py={y(l.lat)} dx={l.side === 'left' ? -14 : 14} dy={-6} end={l.side === 'left'} />
+            ) : (
+              <Pin text={l.label} cls="ds-loc-landmark" px={x(l.lon)} py={y(l.lat) - 4} dx={l.side === 'left' ? -14 : 14} end={l.side === 'left'} />
+            )}
+            {l.note && !l.inline && (
               <Pin text={l.note} cls="ds-loc-faint" px={x(l.lon)} py={y(l.lat) + 14} dx={l.side === 'left' ? -14 : 14} end={l.side === 'left'} />
             )}
           </span>

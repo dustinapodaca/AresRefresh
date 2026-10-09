@@ -12,7 +12,8 @@ export type City = {
   coord: Coord;
 };
 
-export type Landmark = Coord & { label: string; note?: string; side?: 'left' | 'right'; kind?: 'peak' | 'airport' };
+/** `inline` sets the note on the label's line (DEN AIRPORT), lifted a little off the city. */
+export type Landmark = Coord & { label: string; note?: string; side?: 'left' | 'right'; kind?: 'peak' | 'airport'; inline?: boolean };
 
 export type LicenseRow = {
   label: string;
@@ -133,7 +134,7 @@ export const DENVER: LocationFile = {
     { name: 'Public-sector facilities', division: 'Government', divisionId: 'government' },
     { name: 'Commercial property and corporate campuses', division: 'Commercial', divisionId: 'commercial' },
   ],
-  landmarks: [{ label: 'DEN', note: 'AIRPORT', lat: 39.8561, lon: -104.6737, side: 'right', kind: 'airport' }],
+  landmarks: [{ label: 'DEN', note: 'AIRPORT', lat: 39.8561, lon: -104.6737, side: 'right', kind: 'airport', inline: true }],
 };
 
 export const PUEBLO: LocationFile = {
