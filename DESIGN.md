@@ -681,18 +681,20 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 
 ### Header
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
-- Fixed, 92px desktop / 76px mobile. Transparent over the page at the top (the hero photo
+- Fixed, 84px desktop / 68px mobile (owner, 2026-10-08: 8px slimmer; were 92 / 76). Transparent over the page at the top (the hero photo
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black
-  glass bar fades in (200ms): canvas at 55% over a 20px blur, with a faint white hairline.
+  glass bar fades in (200ms): as dark as the Home hero's glass strip (canvas 72% to 48%
+  left to right over a 24px blur; owner, 2026-10-08, was a flat 55% over 20px), with a faint
+  white hairline.
   The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
   Owner request (2026-10-04); with the footer's closing band and the Services opening
   (2026-10-06), the only glass outside the Services cards.
-- Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
+- Desktop: a three-column grid. The Ares mark alone on the left (46px, white; was 52px), the links
   centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
   below 1024px), white,
   with a 1px underline that draws in on hover and stays under the current page), and a
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
-- Mobile: the mark (44px) and a three-line menu icon that turns into an X. The menu is a
+- Mobile: the mark (38px; was 44px) and a three-line menu icon that turns into an X. The menu is a
   solid canvas sheet with 20px links on hairline rows, the phone and email, and the
   primary button.
 
