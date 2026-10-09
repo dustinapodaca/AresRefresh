@@ -2102,8 +2102,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
   }
-  /* 64px lower than before (owner, 2026-10-08), so more of the photo shows above the headline. */
-  .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem) + 64px); }
+  .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
   /* The lead sits on the lit fins here, so it takes the lighter grey of the other photo heroes. */
   .ds-cs-hero-copy .ds-lead { color: #c4c8ce; }
 }
@@ -2147,7 +2146,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cs-fact-note { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--ds-fg-muted); }
 .ds-cs-verify { margin-top: 10px; font-size: 13px; gap: 4px; }
 @media (min-width: 900px) {
-  .ds-cs-hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100svh; }
+  /* The copy, and the facts' glass and codes after it, sit 64px higher on the photo (owner,
+     2026-10-08); the photo and the hero's height stay where they were. */
+  .ds-cs-hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100svh; box-sizing: border-box; padding-bottom: 64px; }
   .ds-cs-hero-bg::after {
     background:
       linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0) 24%),
