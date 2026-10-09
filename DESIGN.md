@@ -408,7 +408,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
   where the crisp photo begins (`clamp(15rem, 38svh, 28rem)` above the opening's foot).
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
-  point, 6:1 or better at every width). No division index in the opening (owner, 2026-10-05): the
+  point, 6:1 or better at every width). The place caption "Downtown Denver, Colorado" (mono, full ink with a soft dark text shadow) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08); on phones the glass's shade runs 64px past its edge under it. Caption 4.7:1 or better beside the letters at every width. No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **Division order (owner, 2026-10-08):** 01 Government, 02 Specialized & Armed Protection (data centers named in its description and first in its detail, worded for unarmed or armed officers), 03 Industrial, 04 Airport & Transportation, 05 Commercial, 06 Institutional & Community.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
