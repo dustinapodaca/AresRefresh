@@ -112,3 +112,14 @@ fins-e, abstract. **Chosen (owner, 2026-10-08): nb-towers** (`nb-s1-towers.webp`
 ## Industry scenes (2026-10-08, Nano Banana 2, test branch)
 
 Prompts in `market/`; web copies in `public/images/market/`. Placeholders until owner photos.
+
+### Capability Statement hero options (Nano Banana 2, 2026-10-08)
+
+Four options for the Capability Statement hero (`capability/`), 16:9, returned at 5504x3072
+(masters and 2880px WebPs in `.impeccable/gen/capability/`; JPEG copies here at 2880px). No
+reference image. None is placed yet; the hero still uses `hero-panels.webp`.
+- `cs-dossier`: blank pages on a slate desk, copper light raking the edges.
+- `cs-facade`: a generic federal facade, concrete fins and dark glass, one band of copper light.
+- `cs-perimeter`: a secured fence line and gate on the high plains at blue hour (generated, so
+  never captioned as a real place).
+- `cs-sheets`: frosted glass sheets standing like pages, copper-lit edges.
