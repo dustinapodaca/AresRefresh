@@ -1379,10 +1379,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* The mirror: the same photo flipped vertically, directly above it, so the opening is image
    to the top and the glass has something to frost there. */
 .ds-svc-open-mirror { position: absolute; inset-inline: 0; bottom: 100%; height: 100%; transform: scaleY(-1); }
-/* The place caption, top right under the nav as in the other photo heroes; behind the glass
-   (z-index -1, under the positioned glass) and held with the photo. */
-.ds-svc-open-cap { position: absolute; z-index: -1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px + var(--svc-hold)); margin: 0; color: rgb(238 240 242 / 0.7); }
-@media (min-width: 1024px) { .ds-svc-open-cap { top: calc(var(--ds-header) + 20px + var(--svc-hold)); } }
+/* The place caption, on the right just under the glass's edge (owner, 2026-10-08); a child of
+   the glass, so it rides up with it over the photo and out of view. */
+.ds-svc-open-cap { position: absolute; right: var(--ds-gutter); top: calc(100% + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
 .ds-svc-open-glass {
   position: relative;
   padding-top: calc(var(--ds-header) + var(--ds-beat-tight));
@@ -1398,7 +1397,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-open-spacer { height: var(--svc-hold); }
 @supports (animation-timeline: scroll()) {
   html.svc-hold .ds-svc-open-photo,
-  html.svc-hold .ds-svc-open-cap,
   html.svc-hold .ds-svc-band,
   html.svc-hold .ds-svc .ds-doc-body,
   html.svc-hold .ds-footer {
