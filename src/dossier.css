@@ -3316,15 +3316,18 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     }
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
+    /* View timelines read the layout box and ignore the opening's hold, which carries the
+       page --svc-cap lower than its layout, so both ranges start that much later
+       (2026-10-08: the bars drew before they were on screen). */
     .ds-svc-pano img {
       animation: ds-plate linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 45%;
+      animation-range: entry var(--svc-cap, 0px) cover calc(45% + var(--svc-cap, 0px));
     }
     .ds-svc-bar span {
       animation: ds-draw linear both;
       animation-timeline: view();
-      animation-range: entry 40% cover 40%;
+      animation-range: entry calc(40% + var(--svc-cap, 0px)) cover calc(40% + var(--svc-cap, 0px));
     }
   }
   @media (max-width: 767px) {

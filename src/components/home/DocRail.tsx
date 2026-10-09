@@ -31,7 +31,7 @@ const STEPS = 40;
 type Reading = { active: string | null; progress: number; ended: boolean; heights: number[] };
 
 // The current section is the last one whose top has passed 35% of the viewport.
-// Null while the reader is still in the hero. `ended` is true once the document's end has
+// Null while the reader is still in the hero. `ended` is true once the footer's top has
 // scrolled above the viewport's foot (the footer is in view).
 function useReading(marks: readonly Mark[]): Reading {
   const [state, setState] = useState<Reading>({ active: null, progress: 0, ended: false, heights: [] });
@@ -56,8 +56,16 @@ function useReading(marks: readonly Mark[]): Reading {
           progress = Math.round(Math.min(1, Math.max(0, (line - r.top) / r.height)) * STEPS) / STEPS;
         }
       }
+      // The footer's top, not the document's box: on Services the opening's hold carries the
+      // content (and the footer) lower than the document's layout box, which made the dock
+      // leave early (2026-10-08).
+      const foot = document.querySelector('.ds-footer');
       const doc = document.querySelector('.ds-doc');
-      const ended = doc ? doc.getBoundingClientRect().bottom < window.innerHeight : false;
+      const ended = foot
+        ? foot.getBoundingClientRect().top < window.innerHeight
+        : doc
+          ? doc.getBoundingClientRect().bottom < window.innerHeight
+          : false;
       setState((s) =>
         s.active === current && s.progress === progress && s.ended === ended && s.heights.join() === heights.join()
           ? s
