@@ -117,8 +117,9 @@ Prompts in `market/`; web copies in `public/images/market/`. Placeholders until 
 
 Four options for the Capability Statement hero (`capability/`), 16:9, returned at 5504x3072
 (masters and 2880px WebPs in `.impeccable/gen/capability/`; JPEG copies here at 2880px). No
-reference image. **B (`cs-facade`) is the hero** since 2026-10-08 (owner), as
-`public/images/capability-hero/cs-facade.webp`; the other three are kept as options.
+reference image. B (`cs-facade`) was the hero briefly on 2026-10-08; the hero is now the
+Services option `s4-fins` (owner), as `public/images/capability-hero/cs-fins.webp`. Every
+other option is kept here.
 - `cs-dossier`: blank pages on a slate desk, copper light raking the edges.
 - `cs-facade`: a generic federal facade, concrete fins and dark glass, one band of copper light.
 - `cs-perimeter`: a secured fence line and gate on the high plains at blue hour (generated, so

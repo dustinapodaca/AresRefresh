@@ -480,14 +480,15 @@ docs/about-concepts.md. Rail marks: 01 Staffing, 02 Commitments, 03 People.
 The most important page after Home; it must stand out like Home. Concept and Mobbin
 board: docs/capability-concepts.md. Every piece of the old page's content carries over.
 Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
-- **Hero:** a generated federal facade at dusk (owner, 2026-10-08: option B of four Nano
-  Banana options in `assets/generated/capability/`; `capability-hero/cs-facade.webp`, 2880px,
-  210KB; concrete fins, dark glass, one band of copper window light; generated, so no place
-  caption; was the glass-panels light `hero-panels.webp`, kept in public/images) shown whole
-  (owner, 2026-10-08: never cropped; full width at its own proportions, fading into the canvas
-  over its lower third; on phones the copy starts near its foot), black from the left; below
-  900px a softer shade from the left keeps the lit windows off the lead. The spec line is ink muted on the photo. Headline 10:1, lead 5.1:1,
-  spec 5.7:1 or better at every width. "Capability
+- **Hero:** generated copper fins on a building at dusk (owner, 2026-10-08:
+  `capability-hero/cs-fins.webp`, 2752px at its native size, quality 82 with sharp YUV, 227KB, from the Services hero option
+  `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
+  glass-panels light `hero-panels.webp`, both kept, with the other options in
+  `assets/generated/capability/`) shown whole (never cropped; full width at its own
+  proportions, fading into the canvas over its lower third; on phones the copy starts near
+  its foot), black from the left; below 900px a softer shade from the left keeps the lit fins
+  off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
+  6.9:1 or better at every width. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
   quick facts and sections below carry it), a white "Download the PDF"
   button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
