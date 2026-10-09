@@ -1,0 +1,28 @@
+{
+  "prompt": "A sleek modern access control card reader mounted on a smooth board-formed concrete wall at night, photographed from a slight angle with a shallow depth of field. The reader is a slim matte black panel with a single small warm copper status light glowing. A soft copper wash from a recessed light grazes the concrete texture beside it; the rest of the wall falls into blue-black shadow. Calm, controlled, credible security, no branding. Photorealistic studio or architectural photograph, shot on a medium-format camera with natural light falloff and real material texture; it must read as a real photograph, not a 3D render, not CGI, not an illustration. Clean, modern, minimal, restrained. Very dark cool blue-black tonal range overall (the page background is #0a0b0d) with one warm copper light (#bc6f40 to soft amber) and otherwise neutral greys. Show the whole subject inside the frame with breathing room on every side (the image will be shown uncropped). Keep the left 40 percent of the frame calm, dark, and low in detail; the subject sits in the right half. No people, no hands, no readable text, no letters, no numbers, no logos, no flags, no insignia, no seals, no signage, no screens. Wide 16:9.",
+  "createdAt": "2026-10-09T02:33:48.699360+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "4K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 275,
+    "candidatesTokenCount": 3046,
+    "totalTokenCount": 3321,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 275
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 2520
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

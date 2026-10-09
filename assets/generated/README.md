@@ -124,3 +124,11 @@ reference image. **B (`cs-facade`) is the hero** since 2026-10-08 (owner), as
 - `cs-perimeter`: a secured fence line and gate on the high plains at blue hour (generated, so
   never captioned as a real place).
 - `cs-sheets`: frosted glass sheets standing like pages, copper-lit edges.
+
+Round 2 (2026-10-08, owner: "a modern representation of what the capability statement is";
+prompts ask for the whole subject in frame, since the hero now shows the image uncropped):
+- `cs-spec`: one printed spec sheet at a raking angle, ruled lines and grey blocks, no words.
+- `cs-folio`: a blank heavy page in an open black leather folio, copper rim light (its bright
+  page sits behind the headline on desktop; reframe or shade before using).
+- `cs-access`: a matte black card reader on board-formed concrete, one copper status light.
+- `cs-vellum`: fanned translucent grid sheets lit copper from behind, on black glass.
