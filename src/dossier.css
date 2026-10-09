@@ -2052,7 +2052,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   inset: 0;
   background:
     linear-gradient(to bottom, rgb(10 11 13 / 0.65) 0%, rgb(10 11 13 / 0) 30%),
-    /* A softer shade from the left so the facade's lit windows stay off the lead (2026-10-08). */
+    /* A softer shade from the left so the lit fins stay off the lead (2026-10-08). */
     linear-gradient(to right, rgb(10 11 13 / 0.86) 0%, rgb(10 11 13 / 0.72) 50%, rgb(10 11 13 / 0) 90%);
 }
 .ds-cs-hero-grid { display: grid; gap: 28px; padding-top: calc(var(--ds-header) + 28px); }

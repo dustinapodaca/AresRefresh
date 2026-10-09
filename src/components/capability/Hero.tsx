@@ -9,16 +9,16 @@ export function DownloadIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-// The hero: a generated federal facade at dusk (owner, 2026-10-08; option B of four in
-// assets/generated/capability; was the glass-panels light) full bleed, black from the left;
-// generated, so no place caption. The headline,
+// The hero: generated copper fins on a building at dusk (owner, 2026-10-08; s4-fins from the
+// Services hero options; before it the federal facade and the glass-panels light, both kept)
+// shown whole, black from the left; generated, so no place caption. The headline,
 // the offer, and the download. Under it, the four quick facts on a
 // full-width line over a frosted fade.
 export default function Hero() {
   return (
     <section className="ds-cs-hero" aria-labelledby="cs-title">
       <div className="ds-cs-hero-bg" aria-hidden="true">
-        <img src="/images/capability-hero/cs-facade.webp" alt="" width={2880} height={1608} decoding="async" {...{ fetchpriority: 'high' }} />
+        <img src="/images/capability-hero/cs-fins.webp" alt="" width={2752} height={1536} decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container ds-cs-hero-grid">
