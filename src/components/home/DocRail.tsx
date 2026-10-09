@@ -31,8 +31,8 @@ const STEPS = 40;
 type Reading = { active: string | null; progress: number; ended: boolean; heights: number[] };
 
 // The current section is the last one whose top has passed 35% of the viewport.
-// Null while the reader is still in the hero. `ended` is true once the footer's top has
-// scrolled above the viewport's foot (the footer is in view).
+// Null while the reader is still in the hero. `ended` is true once the footer's first line of
+// content has scrolled above the viewport's foot (the footer's text is in view).
 function useReading(marks: readonly Mark[]): Reading {
   const [state, setState] = useState<Reading>({ active: null, progress: 0, ended: false, heights: [] });
   useEffect(() => {
@@ -56,10 +56,11 @@ function useReading(marks: readonly Mark[]): Reading {
           progress = Math.round(Math.min(1, Math.max(0, (line - r.top) / r.height)) * STEPS) / STEPS;
         }
       }
-      // The footer's top, not the document's box: on Services the opening's hold carries the
-      // content (and the footer) lower than the document's layout box, which made the dock
-      // leave early (2026-10-08).
-      const foot = document.querySelector('.ds-footer');
+      // The footer's first line of content, not the document's box: on Services the opening's
+      // hold carries the content (and the footer) lower than the document's layout box, which
+      // made the dock leave early, and the footer's own top padding is still open page
+      // (owner, 2026-10-08: stay until the footer's text first appears).
+      const foot = document.querySelector('.ds-footer .ds-container') ?? document.querySelector('.ds-footer');
       const doc = document.querySelector('.ds-doc');
       const ended = foot
         ? foot.getBoundingClientRect().top < window.innerHeight
