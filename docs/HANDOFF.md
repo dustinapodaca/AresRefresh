@@ -1,24 +1,18 @@
 # Handoff: Ares site redesign ("The Dossier")
 
-Last updated: 2026-10-08 (late). **Read this first when starting a new chat.**
+Last updated: 2026-10-09. **Read this first when starting a new chat.**
 
 ## TL;DR
 
 - **Repo:** `/Users/dustinapodaca/Code/git/AresClaude/ares-security/project/react`
   (origin `github.com/dustinapodaca/AresRefresh`). Open Claude Code **on this folder**, or
   the project skills (Impeccable, Emil) and the Playwright MCP won't load.
-- **Two working branches, both pushed (2026-10-08):**
-  - `redesign-b-fresh`: the redesign (13 prerendered pages). Every change is made here
-    first. Tag `home-v11-dossier` moves with every commit (force-pushed).
-  - `test/marketing-gaps`: `redesign-b-fresh` plus the marketing-gap pages from the
-    CenCore review (32 pages): role pages (`/services/<role>`), industry pages, Insights,
-    jobs by city, a richer quote form, the Services browse and program sections, and
-    "Report a concern" in the footer's legal links. **After every commit on
-    `redesign-b-fresh`, merge it into `test/marketing-gaps`** (`git merge --no-edit
-    redesign-b-fresh`) and resolve conflicts keeping the test extras.
-  - Live site branches (`main`, `seo`, `edit`) are untouched.
-- **The dev server shows `test/marketing-gaps`** (the owner reviews there). Keep the main
-  working copy on that branch; see "Working without switching branches" below.
+- **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
+  use the test tree with the extra pages from now on"). It holds the redesign plus the
+  marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,
+  Insights, jobs by city, the richer quote form. Commit there directly; no more merging
+  from `redesign-b-fresh` (frozen at 61a8c50, still pushed) and no worktree needed.
+  Live site branches (`main`, `seo`, `edit`) are untouched.
 - **Every page is on the Dossier system:** Home, Services, About, Capability Statement,
   Request a Quote, Careers, the three location pages, the 404, and the policies.
 - **Next:** the owner's copy review, then the SEO pass (`src/seo/routes.json`) at the end.
@@ -46,22 +40,26 @@ Last updated: 2026-10-08 (late). **Read this first when starting a new chat.**
 5. Commit messages end with
    `Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>`.
 
-## Working without switching branches
+## Images and performance (2026-10-09)
 
-Switching the main working copy between branches hot-swaps files under the owner's open
-page and breaks things until a hard reload (it brought back the Services hero "jitter"
-once). Instead, edit `redesign-b-fresh` in a **separate git worktree**:
-
-```sh
-git worktree add ../rbf redesign-b-fresh   # once; any path outside the repo
-# edit, commit, tag there; then in the main copy (on test/marketing-gaps):
-git merge --no-edit redesign-b-fresh
-```
-
-Only the changed files reload. The worktree has no `node_modules`, so build and screenshot
-from the main copy after merging. On 2026-10-08 the worktree lived in a temporary session
-folder; if `git worktree list` shows a missing path, run `git worktree prune`. While a
-worktree holds `redesign-b-fresh`, the main copy cannot check that branch out.
+- **Originals** live in `assets/images-src/` (not deployed). **Never** point code at a
+  file in `public/images/` directly.
+- **Pipeline:** `python3 -I assets/tools/optimize-images.py` encodes WebP at 480 to 2400px
+  (never above the source; quality 80 to 84, six lower at 2000px and up; logos as one
+  128px-tall WebP) into `public/images/opt/` and writes `src/lib/images.generated.ts`.
+- **Components** use `<img {...responsive('/images/<old path>', sizes?)} />` from
+  `src/lib/responsive.ts`; the old paths are manifest keys. Full-bleed heroes carry measured
+  `sizes` there (they draw up to 3.7x the screen width on phones). `<Seo>` preloads the
+  same responsive hero (`preloadImage` in routes.json is a manifest key).
+- **To add an image:** put the original in `assets/images-src/`, add an entry to the
+  script, run it, use `responsive()`.
+- **Fonts** are self-hosted (`src/fonts.css`, `public/fonts/`, Latin subsets; Inter and
+  Inter Tight preloaded in `index.html`). No Google Fonts request.
+- `assets/images-unused/` holds images nothing references (old heroes, client logos).
+- **Lighthouse (production build, mobile, 2026-10-09):** most pages 93 to 96, Home 83,
+  Services 78 (their big crisp heroes on a slow simulated 4G); accessibility, best
+  practices, SEO 100. Run it on `npm run build && npx vite preview` (port 4173), never on
+  the dev server. The netlify.app preview scores SEO 69 on purpose (its noindex header).
 
 ## How a page pass is done (the owner's process)
 

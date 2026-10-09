@@ -5,6 +5,7 @@ import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
+import { responsive } from '../lib/responsive';
 
 // An industry page ("The Sector File", docs/market-concepts.md): what is at stake in this
 // environment, what we deliver there, why Ares, a specific ask, and questions.
@@ -36,7 +37,7 @@ export default function IndustryPage() {
           </div>
         </div>
         <div className="ds-mk-ind-band" aria-hidden="true">
-          <img src={ind.image.src} alt="" width={2048} height={1152} decoding="async" {...{ fetchpriority: 'high' }} />
+          <img {...responsive(ind.image.src)} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
         </div>
       </section>
 

@@ -1,3 +1,9 @@
+> **Done (2026-10-09).** Replaced by a pipeline: originals live in `assets/images-src/`,
+> `python3 -I assets/tools/optimize-images.py` writes responsive WebP sizes to
+> `public/images/opt/` plus the manifest `src/lib/images.generated.ts`, and components ask
+> for images through `responsive()` in `src/lib/responsive.ts`. Unused images moved to
+> `assets/images-unused/`. Fonts are self-hosted. The plan below is kept for the record.
+
 # Asset optimization — Ares Security
 
 **Current state:** `dist/` ships **21 MB**, of which **18 MB is images** and

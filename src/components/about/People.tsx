@@ -1,4 +1,5 @@
 import { TRAITS } from './data';
+import { responsive } from '../../lib/responsive';
 
 // 03 People: the officer portrait (real Ares) beside the five traits we hire for (their
 // initials read ALERT), each set large with its line beneath.
@@ -7,10 +8,8 @@ export default function People() {
     <section id="people" className="ds-ab-people" aria-labelledby="people-title">
       <figure className="ds-plate ds-ab-portrait">
         <img
-          src="/images/officer-portrait.jpg"
+          {...responsive('/images/officer-portrait.jpg', '(min-width: 1024px) 50vw, 100vw')}
           alt="An Ares Security officer in a black Ares polo, arms crossed, smiling outside a building"
-          width={992}
-          height={1040}
           loading="lazy"
           decoding="async"
         />

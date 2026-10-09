@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { SEO, HOST, OG_IMAGE, OG_IMAGE_ALT, urlFor } from './routes';
+import { responsive } from '../lib/responsive';
 
 type Props = {
   /** Route key into src/seo/routes.json. */
@@ -68,12 +69,22 @@ export function Seo({ path, noindex = false }: Props) {
         }
       : null;
 
+  const preload = meta.preloadImage ? responsive(meta.preloadImage) : null;
+
   return (
     <Helmet prioritizeSeoTags>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
-      {meta.preloadImage && (
-        <link rel="preload" as="image" href={meta.preloadImage} fetchPriority="high" />
+      {/* The hero's responsive WebP, so the preload matches what the <img> picks
+          (2026-10-09; a plain href fetched the full-size original as well). */}
+      {preload && (
+        <link
+          rel="preload"
+          as="image"
+          href={preload.src}
+          {...(preload.srcSet ? { imageSrcSet: preload.srcSet, imageSizes: preload.sizes } : {})}
+          fetchPriority="high"
+        />
       )}
       {isNoindex ? (
         <meta name="robots" content="noindex" />

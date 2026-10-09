@@ -1,5 +1,6 @@
 import Arrow from '../Arrow';
 import { CAREERS_EMAIL, INDEED_REVIEWS, applyHref } from './data';
+import { responsive } from '../../lib/responsive';
 
 // The opening: the Colorado Springs skyline (a real place, captioned) as a band under the
 // nav, the headline low on it, then the employees' Indeed rating as a small proof beside
@@ -9,10 +10,8 @@ export default function Opening() {
     <section className="ds-cr-open" aria-labelledby="careers-title">
       <figure className="ds-cr-hero">
         <img
-          src="/images/careers-hero.jpg"
+          {...responsive('/images/careers-hero.jpg')}
           alt="Downtown Colorado Springs under a pink evening sky"
-          width={2390}
-          height={1454}
           decoding="async"
           {...{ fetchpriority: 'high' }}
         />

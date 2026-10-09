@@ -1,3 +1,5 @@
+import { responsive } from '../../lib/responsive';
+
 // A slow strip of certification marks between the hero and 01 Verify. The marks repeat
 // so one track is wider than any screen, and a second copy makes the loop seamless.
 // Only the first set carries alt text; every repeat is decorative.
@@ -18,7 +20,7 @@ function Track({ hidden = false }: { hidden?: boolean }) {
       {Array.from({ length: REPEAT }).flatMap((_, r) =>
         MARKS.map((m, i) => (
           <li key={`${r}-${i}`}>
-            <img src={m.src} alt={!hidden && r === 0 ? m.alt : ''} loading="lazy" decoding="async" />
+            <img {...responsive(m.src)} alt={!hidden && r === 0 ? m.alt : ''} loading="lazy" decoding="async" />
           </li>
         )),
       )}

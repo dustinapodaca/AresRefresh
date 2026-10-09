@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Arrow from '../Arrow';
 import { CREDENTIALS } from './data';
+import { responsive } from '../../lib/responsive';
 
 // The opening: Pikes Peak behind Garden of the Gods, full bleed (a real place, so it
 // carries a caption), the headline low on it, then the four certification marks, each
@@ -31,10 +32,8 @@ export default function Opening() {
     <section className="ds-ab-open" aria-labelledby="about-title">
       <figure className="ds-ab-hero">
         <img
-          src="/images/about-hero.jpg"
+          {...responsive('/images/about-hero.jpg')}
           alt="Pikes Peak behind the red rocks of Garden of the Gods, Colorado Springs"
-          width={2400}
-          height={1600}
           decoding="async"
           {...{ fetchpriority: 'high' }}
         />
@@ -55,7 +54,7 @@ export default function Opening() {
       <ul ref={creds} className="ds-container ds-ab-creds" aria-label="Certifications and contract vehicle">
         {CREDENTIALS.map((c, i) => (
           <li key={c.alt} style={{ ['--i' as string]: i }}>
-            <img src={c.src} alt={c.alt} data-tall={c.tall || undefined} loading="eager" />
+            <img {...responsive(c.src)} alt={c.alt} data-tall={c.tall || undefined} loading="eager" />
             {/* The logo names it; a label shows only where the mark says less than we do. */}
             {!c.id && <span className="ds-small">{c.label}</span>}
             {c.id &&

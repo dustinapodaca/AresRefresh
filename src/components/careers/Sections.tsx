@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Arrow from '../Arrow';
 import { CAREERS_EMAIL, INDEED_REVIEWS, REASONS, ROLES, applyHref } from './data';
+import { responsive } from '../../lib/responsive';
 
 // 01 Roles: a quiet table on hairlines (Runway and Linear's open roles on Mobbin). Each
 // Apply opens an email with the role in the subject.
@@ -124,8 +125,8 @@ export function Why() {
       <div className="ds-cr-lens-wrap">
         <figure className="ds-cr-lens" data-src={shot.src} aria-hidden="true">
           <div className="ds-cr-lens-frame">
-            <img src="/images/careers-philosophy.jpg" alt="" width={1184} height={880} loading="lazy" decoding="async" data-shot="team" />
-            <img src="/images/careers-team.jpg" alt="" width={1184} height={880} loading="lazy" decoding="async" data-shot="officer" />
+            <img {...responsive('/images/careers-philosophy.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="" loading="lazy" decoding="async" data-shot="team" />
+            <img {...responsive('/images/careers-team.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="" loading="lazy" decoding="async" data-shot="officer" />
           </div>
           <figcaption className="ds-caption">{shot.caption}</figcaption>
         </figure>

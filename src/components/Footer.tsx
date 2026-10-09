@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
 import { SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
+import { responsive } from '../lib/responsive';
 
 // The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
 // glass, Windsurf's and Opacity's light). No quote button: every page's close and the nav
@@ -108,10 +109,10 @@ export default function Footer() {
         </div>
 
         <ul className="ds-certs" aria-label="Certifications and contract vehicles">
-          <li><img src="/images/cert-gsa-footer.png" alt="GSA Contract Holder" loading="lazy" /></li>
-          <li><img src="/images/cert-sba-footer.png" alt="U.S. Small Business Administration" loading="lazy" /></li>
-          <li><img src="/images/cert-women-owned.png" alt="Women Owned" loading="lazy" /></li>
-          <li><img src="/images/cert-wbenc.png" alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
+          <li><img {...responsive('/images/cert-gsa-footer.png')} alt="GSA Contract Holder" loading="lazy" /></li>
+          <li><img {...responsive('/images/cert-sba-footer.png')} alt="U.S. Small Business Administration" loading="lazy" /></li>
+          <li><img {...responsive('/images/cert-women-owned.png')} alt="Women Owned" loading="lazy" /></li>
+          <li><img {...responsive('/images/cert-wbenc.png')} alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
         </ul>
       </div>
 

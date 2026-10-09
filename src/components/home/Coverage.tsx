@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import CoverageMap from './CoverageMap';
+import { responsive } from '../../lib/responsive';
 
 const CITIES = [
   { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
@@ -64,7 +65,7 @@ export default function Coverage() {
 
       {/* Full bleed. Starts here and ends under the opening of 04 Careers. */}
       <div className="ds-bleed" aria-hidden="true">
-        <img src="/images/about-security.jpg" alt="" loading="lazy" decoding="async" />
+        <img {...responsive('/images/about-security.jpg')} alt="" loading="lazy" decoding="async" />
       </div>
     </section>
   );

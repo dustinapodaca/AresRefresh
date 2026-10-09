@@ -1,5 +1,6 @@
 import Arrow from '../Arrow';
 import { PDF_URL, QUICK_FACTS, SAM_VERIFY } from './data';
+import { responsive } from '../../lib/responsive';
 
 export function DownloadIcon({ size = 16 }: { size?: number }) {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
   return (
     <section className="ds-cs-hero" aria-labelledby="cs-title">
       <div className="ds-cs-hero-bg" aria-hidden="true">
-        <img src="/images/capability-hero/cs-fins.webp" alt="" width={2752} height={1536} decoding="async" {...{ fetchpriority: 'high' }} />
+        <img {...responsive('/images/capability-hero/cs-fins.webp')} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container ds-cs-hero-grid">

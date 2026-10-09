@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
+import { responsive } from '../../lib/responsive';
 
 const CITIES = [
   { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
@@ -17,7 +18,7 @@ export default function Areas() {
       </h2>
       <figure className="ds-svc-pano">
         <div className="ds-svc-pano-frame">
-          <img src="/images/about-banner.jpg" alt="The Denver skyline in front of the Front Range" width={2000} height={1391} loading="lazy" decoding="async" />
+          <img {...responsive('/images/about-banner.jpg', '(min-width: 1280px) 1216px, 100vw')} alt="The Denver skyline in front of the Front Range" loading="lazy" decoding="async" />
         </div>
         <figcaption className="ds-caption">Denver and the Front Range</figcaption>
       </figure>

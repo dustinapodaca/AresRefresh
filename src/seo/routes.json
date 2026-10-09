@@ -6,7 +6,7 @@
     "/": {
       "title": "Colorado Security Guard & Patrol Services | Ares Security",
       "description": "Woman-owned WOSB and WBENC security firm serving Colorado. Armed and unarmed officers, patrol and access control in Colorado Springs, Denver and Pueblo.",
-      "preloadImage": "/images/hero-fold.webp"
+      "preloadImage": "/images/hero6.jpg"
     },
     "/about": {
       "title": "About Ares Security | Woman-Owned, Colorado Springs, CO",
@@ -16,12 +16,12 @@
     "/services": {
       "title": "Security Services: Colorado Springs, Denver, Pueblo | Ares",
       "description": "Armed and unarmed officers, patrol, access control, and event security for government, commercial, and industrial sites in Colorado Springs, Denver, Pueblo.",
-      "preloadImage": "/images/capabilities-hero.jpg"
+      "preloadImage": "/images/services-hero/denver-sunset.webp"
     },
     "/capability-statement": {
       "title": "Capability Statement | GSA MAS, WOSB | Ares Security",
       "description": "Ares Security LLC capability statement: GSA MAS 47QSMS25D009Q, NAICS 561612, UEI XQXDN6E33SF4, CAGE 9KL18, WOSB and WBENC certified. Download the PDF.",
-      "preloadImage": "/images/capability-hero.jpg"
+      "preloadImage": "/images/capability-hero/cs-fins.webp"
     },
     "/careers": {
       "title": "Security Officer Jobs in Colorado Springs & Denver | Ares",
@@ -31,7 +31,7 @@
     "/contact": {
       "title": "Request a Security Quote | Colorado Springs | Ares Security",
       "description": "Request a security quote for Colorado Springs, Denver, or Pueblo. Send a site, a shift pattern, and a deadline. We respond within one business day.",
-      "preloadImage": "/images/contact-hero.jpg"
+      "preloadImage": "/images/services-hero/nb-s1-towers.webp"
     },
     "/locations/colorado-springs": {
       "title": "Security Guards in Colorado Springs, CO | Ares Security",
@@ -45,8 +45,7 @@
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Colorado Springs"
-      ],
-      "preloadImage": "/images/capability-hero.jpg"
+      ]
     },
     "/locations/denver": {
       "title": "Security Guard Services in Denver, CO | Ares Security",
@@ -60,8 +59,7 @@
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Denver"
-      ],
-      "preloadImage": "/images/capability-hero.jpg"
+      ]
     },
     "/locations/pueblo": {
       "title": "Security Guard Services in Pueblo, CO | Ares Security",
@@ -75,8 +73,7 @@
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Pueblo"
-      ],
-      "preloadImage": "/images/capability-hero.jpg"
+      ]
     },
     "/privacy": {
       "title": "Privacy Policy | Ares Security",
@@ -200,7 +197,8 @@
         "Colorado Springs",
         "Denver",
         "Pueblo"
-      ]
+      ],
+      "preloadImage": "/images/market/data-centers.webp"
     },
     "/industries/government-military": {
       "title": "Government & Military Facility Security | Ares Security",
@@ -216,7 +214,8 @@
         "Colorado Springs",
         "Denver",
         "Pueblo"
-      ]
+      ],
+      "preloadImage": "/images/market/government-military.webp"
     },
     "/industries/construction-industrial": {
       "title": "Construction Site Security in Colorado | Ares Security",
@@ -232,7 +231,8 @@
         "Colorado Springs",
         "Denver",
         "Pueblo"
-      ]
+      ],
+      "preloadImage": "/images/market/construction-industrial.webp"
     },
     "/industries/commercial-property": {
       "title": "Commercial & Retail Security in Colorado | Ares Security",
@@ -248,7 +248,8 @@
         "Colorado Springs",
         "Denver",
         "Pueblo"
-      ]
+      ],
+      "preloadImage": "/images/market/commercial-property.webp"
     },
     "/insights": {
       "title": "Insights: Buying Security in Colorado | Ares Security",

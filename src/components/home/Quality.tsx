@@ -1,3 +1,5 @@
+import { responsive } from '../../lib/responsive';
+
 // 02 Quality (owner, 2026-10-06: moved whole from About, photo and all, and set for Home):
 // the principle as a large statement with its paragraph, then the patrol vehicles as a wide
 // plate beside the company facts.
@@ -24,10 +26,8 @@ export default function Quality() {
       <div className="ds-quality-body">
         <figure className="ds-plate ds-quality-photo">
           <img
-            src="/images/mission-vehicle.jpg"
+            {...responsive('/images/mission-vehicle.jpg', '(min-width: 1024px) 58vw, 100vw')}
             alt="Two marked Ares Security patrol vehicles parked outside a residential building"
-            width={750}
-            height={842}
             loading="lazy"
             decoding="async"
           />

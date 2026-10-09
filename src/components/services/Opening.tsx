@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { responsive } from '../../lib/responsive';
 
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
@@ -63,9 +64,9 @@ export default function Opening() {
       <div className="ds-svc-open-photo" aria-hidden="true">
         <div className="ds-svc-open-stack">
           <div className="ds-svc-open-mirror">
-            <img src={HERO.src} alt="" width={HERO.width} height={HERO.height} decoding="async" />
+            <img {...responsive(HERO.src)} alt="" decoding="async" />
           </div>
-          <img src={HERO.src} alt="" width={HERO.width} height={HERO.height} decoding="async" {...{ fetchpriority: 'high' }} />
+          <img {...responsive(HERO.src)} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
         </div>
       </div>
 

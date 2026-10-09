@@ -6,6 +6,7 @@ import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
 import { CAPABILITIES, CERTS, CODES, DIFFERENTIATORS, GSA_SPECS, PATHS, PDF_URL } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
+import { responsive } from '../../lib/responsive';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
 const PHONE = '(max-width: 767px)';
@@ -290,7 +291,8 @@ export function Credentials() {
       <ul className="ds-cs-marks">
         {CERTS.map((c) => (
           <li key={c.name}>
-            <img src={c.src} alt={c.alt} loading="lazy" data-color={c.color || undefined} data-tall={c.tall || undefined} />
+            {/* The name is printed beside each mark, so the logo itself is decorative. */}
+            <img {...responsive(c.src)} alt="" loading="lazy" data-color={c.color || undefined} data-tall={c.tall || undefined} />
             <span className="ds-cs-mark-name">{c.name}</span>
             {c.id && <span className="ds-data ds-cs-mark-id">{c.id}</span>}
           </li>
@@ -334,7 +336,7 @@ export function Download() {
   return (
     <section id="download" className="ds-cs-close" aria-labelledby="dl-title">
       <a href={PDF_URL} className="ds-cs-thumb" target="_blank" rel="noopener noreferrer" aria-label="Open the capability statement PDF (new tab)">
-        <img src="/images/capability-page1.webp" alt="" width={1000} height={1295} loading="lazy" decoding="async" />
+        <img {...responsive('/images/capability-page1.webp', '(min-width: 1024px) 420px, 80vw')} alt="" loading="lazy" decoding="async" />
       </a>
       <div className="ds-cs-close-copy">
         <h2 id="dl-title" className="ds-display-lg">

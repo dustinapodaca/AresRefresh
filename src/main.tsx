@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
+import './fonts.css';
 import './index.css';
 
 // createRoot (not hydrateRoot) on purpose: the prerendered HTML written by

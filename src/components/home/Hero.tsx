@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
+import { responsive } from '../../lib/responsive';
 
 export default function Hero() {
   return (
@@ -8,7 +9,7 @@ export default function Hero() {
       {/* The copper-glass tower (hero6.jpg), back on Home (owner, 2026-10-08; it was the
           Services band). Full bleed from 900px; runs down under 01 Record. */}
       <div className="ds-hero-photo" aria-hidden="true">
-        <img src="/images/hero6.jpg" width={2400} height={1600} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
+        <img {...responsive('/images/hero6.jpg')} alt="" decoding="async" {...{ fetchpriority: 'high' }} />
       </div>
 
       <div className="ds-container">
@@ -32,7 +33,7 @@ export default function Hero() {
             </a>
           </div>
           <div className="ds-hero-gsa">
-            <img src="/images/gsa-contract-holder.png" alt="GSA Contract Holder" width={125} height={30} />
+            <img {...responsive('/images/gsa-contract-holder.png')} alt="GSA Contract Holder" width={125} height={30} />
             <div>
               <span className="ds-small">GSA Multiple Award Schedule</span>
               <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-link ds-data">

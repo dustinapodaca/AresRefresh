@@ -2783,7 +2783,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 .ds-cr-reasons li:last-child { border-bottom: 1px solid var(--ds-rule); }
 .ds-cr-reasons li[data-active] { opacity: 1; }
-.ds-cr-reasons li > .ds-data { padding-top: 6px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-cr-reasons li > .ds-data { padding-top: 6px; font-size: 13px; color: var(--ds-fg-muted); } /* muted, not faint: the row rests at 0.8 and faint fell to 3.7:1 (2026-10-09) */
 .ds-cr-reasons li[data-active] > .ds-data { color: var(--ds-rust); }
 .ds-cr-reasons h3 { margin: 0 0 6px; font-size: clamp(20px, 1.8vw, 24px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
 .ds-cr-reasons .ds-small { max-width: 46ch; }

@@ -4,6 +4,7 @@ import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DIVISIONS } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
+import { responsive } from '../../lib/responsive';
 
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
@@ -148,10 +149,8 @@ export default function Divisions() {
               <div className="ds-svc-card-media" onClick={toggle} aria-hidden="true">
                 {/* Stock photographs, not Ares sites, so they carry no exhibit caption. */}
                 <img
-                  src={d.photo.src}
+                  {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
                   alt=""
-                  width={d.photo.width}
-                  height={d.photo.height}
                   loading={i < 2 ? 'eager' : 'lazy'}
                   decoding="async"
                   style={d.photo.position ? { objectPosition: d.photo.position } : undefined}
@@ -159,10 +158,8 @@ export default function Divisions() {
                 {d.photo.sharp && (
                   <img
                     className="ds-svc-photo-sharp"
-                    src={d.photo.sharp.src}
+                    {...responsive(d.photo.sharp.src, '(min-width: 1024px) 42vw, 100vw')}
                     alt=""
-                    width={d.photo.sharp.width}
-                    height={d.photo.sharp.height}
                     loading="lazy"
                     decoding="async"
                   />

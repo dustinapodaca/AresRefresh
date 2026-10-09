@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import Arrow from '../components/Arrow';
 import CoverageMap from '../components/home/CoverageMap';
 import Seo from '../seo/Seo';
+import { responsive } from '../lib/responsive';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
@@ -132,10 +133,8 @@ export default function Contact() {
             opening, owner 2026-10-08). Generated, so it carries no place caption. */}
         <figure className="ds-qt-hero">
           <img
-            src="/images/services-hero/nb-s1-towers.webp"
+            {...responsive('/images/services-hero/nb-s1-towers.webp')}
             alt=""
-            width={2400}
-            height={1350}
             decoding="async"
             {...{ fetchpriority: 'high' }}
           />

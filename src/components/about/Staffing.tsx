@@ -1,4 +1,5 @@
 import { STAFFING_STEPS } from './data';
+import { responsive } from '../../lib/responsive';
 
 // 01 Staffing (owner, 2026-10-06: moved whole from Home, photo and all, in exchange for
 // "Quality over quantity."): the officer photo holds still on desktop while the four steps
@@ -21,10 +22,8 @@ export default function Staffing() {
         <div className="ds-staffing-media">
           <figure className="ds-plate">
             <img
-              src="/images/backbone-officer.jpg"
+              {...responsive('/images/backbone-officer.jpg', '(min-width: 1024px) 50vw, 100vw')}
               alt="Smiling Ares Security officer in a black Ares Security polo shirt, standing against a brick wall"
-              width={733}
-              height={900}
               loading="lazy"
               decoding="async"
             />
