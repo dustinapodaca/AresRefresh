@@ -312,106 +312,96 @@ body:has(.ds-page) {
 }
 
 /* ---------- Footer ---------- */
-/* Owner, 2026-10-08, after Ada's footer on Mobbin: link columns across the top, a hairline,
-   then a lower half split by a vertical rule. Left: who we are, and the Ares lockup set large
-   on the footer's foot. Right: follow us, get in touch, the certification marks, and the
-   legal links at the foot. The canvas, no glass, no light. */
+/* Owner, 2026-10-08, after Pally's footer on Mobbin. The lockup, the company line, and the
+   phone and email left; Explore, Service areas, Follow us right; a hairline row with the
+   copyright, the federal identifiers and SAM.gov status, and the legal links; then a
+   closing band where the ARES letters sit huge and ghosted in rust light that rises from
+   the page's foot in rippled bands. */
 .ds-footer {
+  position: relative;
   background: var(--ds-canvas);
   color: var(--ds-fg-muted);
   font-family: var(--ds-text);
   padding-top: var(--ds-beat);
   overflow: clip;
 }
-
-/* The columns: a muted title, ink links. */
-.ds-footer-cols { display: grid; gap: 40px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: var(--ds-beat-tight); }
-.ds-footer-cols h2 { margin: 0 0 18px; font-family: var(--ds-text); font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ds-fg-faint); }
-.ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.ds-footer-cols a { color: var(--ds-fg); font-size: 17px; letter-spacing: -0.01em; transition: color 180ms var(--ds-ease); }
-.ds-footer-cols a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
-.ds-footer-cols a.ds-data { font-size: 15px; letter-spacing: 0; }
-/* Contracting: label and mono value on each line. */
-.ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
-.ds-ft-ids li > span:first-child { min-width: 4.5em; font-size: 14px; color: var(--ds-fg-faint); }
-.ds-ft-ids .ds-data { font-size: 15px; color: var(--ds-fg-muted); }
-/* Registration: SAM.gov as a live status, with the green light. */
-.ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 17px; letter-spacing: -0.01em; color: var(--ds-fg); }
-.ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
-.ds-ft-status-note { margin: 8px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
-.ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
-@media (max-width: 639px) {
-  .ds-footer-cols a { font-size: 16px; }
-  .ds-ft-status { font-size: 16px; }
-  .ds-ft-ids li { flex-direction: column; gap: 2px; }
-  .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
-  .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
+.ds-ft-top { display: grid; gap: 48px; padding-bottom: var(--ds-beat-tight); }
+@media (min-width: 1024px) {
+  .ds-ft-top { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .ds-ft-intro { grid-column: 1 / span 6; }
+  .ds-footer-cols { grid-column: 8 / span 5; }
 }
-@media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(var(--ft-cols, 4), minmax(0, 1fr)); } }
 
-/* The lower half, under a hairline. */
-.ds-ft-lower { display: grid; border-top: 1px solid var(--ds-rule-strong); }
-.ds-ft-row { display: grid; gap: 10px; padding: 26px 0; }
-.ds-ft-label { margin: 0; font-size: 15px; font-weight: 400; color: var(--ds-fg-faint); }
-.ds-ft-statement { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ds-fg); max-width: 44ch; text-wrap: pretty; }
-.ds-ft-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.ds-ft-list a { display: inline-flex; align-items: center; gap: 6px; font-size: 17px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
-.ds-ft-list a.ds-data { font-size: 15px; }
-.ds-ft-list a:hover { color: #fff; }
-.ds-ft-right .ds-ft-row + .ds-ft-row { border-top: 1px solid var(--ds-rule); }
-
-/* The lockup (the owner's reference: mark, rule, ARES / SECURITY text logo), set large on the
-   footer's foot, its parts in the same proportions as the old 52px lockup. --lk is the mark's
-   height; the whole lockup is about 4.9 times that wide. */
-.ds-ft-lockup {
-  --lk: clamp(48px, calc((100vw - 2 * var(--ds-gutter)) / 5), 176px);
+/* The lockup: mark, rule at ink 50%, ARES / SECURITY text logo (the owner's proportions). */
+.ds-ft-lockup { --lk: 44px; display: inline-flex; align-items: center; gap: calc(var(--lk) * 0.54); color: var(--ds-fg); }
+.ds-ft-lockup-mark { display: block; width: calc(var(--lk) * 0.96); height: var(--lk); background: currentColor; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
+.ds-ft-lockup-rule { display: block; width: 1px; height: calc(var(--lk) * 1.15); background: rgb(238 240 242 / 0.5); }
+.ds-ft-lockup-text { display: block; width: calc(var(--lk) * 0.85 * 576 / 174.87); height: calc(var(--lk) * 0.85); background: currentColor; -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat; mask: url(/images/ares-text.svg) center / contain no-repeat; }
+@media (min-width: 1024px) { .ds-ft-lockup { --lk: 52px; } }
+.ds-ft-statement { margin: 28px 0 0; max-width: 30ch; font-family: var(--ds-display); font-size: clamp(26px, 2.6vw, 36px); font-weight: 500; line-height: 1.15; letter-spacing: -0.03em; color: var(--ds-fg); text-wrap: balance; }
+.ds-nobr { white-space: nowrap; }
+.ds-ft-reach { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; }
+.ds-ft-chip {
   display: inline-flex;
   align-items: center;
-  gap: calc(var(--lk) * 0.54);
-  margin-top: 40px;
-  padding-bottom: calc(var(--lk) * 0.16);
+  gap: 10px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--ds-rule-strong);
+  border-radius: 2px;
   color: var(--ds-fg);
+  transition: border-color 180ms var(--ds-ease), background-color 180ms var(--ds-ease);
 }
-.ds-ft-lockup-mark { display: block; width: calc(var(--lk) * 0.96); height: var(--lk); background: currentColor; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
-.ds-ft-lockup-rule { display: block; width: max(1px, calc(var(--lk) * 0.02)); height: calc(var(--lk) * 1.15); background: rgb(238 240 242 / 0.5); }
-.ds-ft-lockup-text { display: block; width: calc(var(--lk) * 0.85 * 576 / 174.87); height: calc(var(--lk) * 0.85); background: currentColor; -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat; mask: url(/images/ares-text.svg) center / contain no-repeat; }
-.ds-ft-lockup:hover { color: #fff; }
+.ds-ft-chip .ds-data { font-size: 14px; }
+.ds-ft-chip svg { color: var(--ds-fg-muted); }
+.ds-ft-chip:active { transform: scale(0.98); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-ft-chip:hover { border-color: rgb(255 255 255 / 0.3); background: rgb(255 255 255 / 0.03); }
+}
 
-.ds-certs { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; list-style: none; margin: 0; padding: 26px 0; border-top: 1px solid var(--ds-rule); }
-.ds-certs li { display: flex; align-items: center; }
-.ds-certs img { display: block; height: 28px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
-.ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
-.ds-certs img[src*='cert-wbenc'] { height: 34px; opacity: 0.85; }
+/* The columns: a title in ink, links in ink muted (Pally). */
+.ds-footer-cols { display: grid; gap: 36px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ds-footer-cols h2 { margin: 0 0 18px; font-family: var(--ds-text); font-size: 15px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ds-fg); }
+.ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ds-footer-cols a { display: inline-flex; align-items: center; gap: 6px; color: var(--ds-fg-muted); font-size: 15px; transition: color 180ms var(--ds-ease); }
+.ds-footer-cols a:hover { color: var(--ds-fg); }
+@media (min-width: 640px) { .ds-footer-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-.ds-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 22px; padding: 22px 0 28px; border-top: 1px solid var(--ds-rule); font-size: 13px; color: var(--ds-fg-muted); }
-.ds-legal ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0; padding: 0; }
-.ds-legal a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
-.ds-legal a:hover { color: var(--ds-fg); }
+/* The hairline row: copyright, identifiers with the SAM.gov light, legal links. */
+.ds-legal { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; padding: 24px 0; border-top: 1px solid var(--ds-rule); font-size: 13px; color: var(--ds-fg-faint); }
+.ds-ft-ids { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0; }
+.ds-ft-ids .ds-data { font-size: 12px; color: var(--ds-fg-faint); }
+.ds-ft-ids a.ds-data:hover { color: var(--ds-fg); }
+.ds-ft-sam { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg-muted); }
+.ds-ft-sam:hover { color: var(--ds-fg); }
+.ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
+.ds-legal ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.ds-legal ul a { color: var(--ds-fg-muted); text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; transition: color 180ms var(--ds-ease); }
+.ds-legal ul a:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
 
-/* Phones: the right column first (follow, contact, marks, legal), the lockup last on the foot. */
-@media (max-width: 1023px) {
-  .ds-ft-lower { display: flex; flex-direction: column; }
-  .ds-ft-left { display: contents; }
-  .ds-ft-left .ds-ft-row { order: 0; }
-  .ds-ft-right { order: 1; }
-  .ds-ft-lockup { order: 2; margin-top: 32px; }
-  .ds-ft-right .ds-ft-row { border-top: 1px solid var(--ds-rule); }
+/* The closing band. The ARES letters (the text logo's top 105.4 of 174.87 units) run the
+   container's width, cut by the page's foot; the light rises behind them in bands, and an
+   SVG ripple (turbulence and displacement) bends both, like heat over a road. */
+.ds-ft-band { position: relative; height: clamp(220px, 34vw, 560px); margin-top: var(--ds-beat-tight); pointer-events: none; }
+.ds-ft-band-defs { position: absolute; width: 0; height: 0; }
+.ds-ft-band-art { position: absolute; inset: 0 -48px -24px; filter: url(#ds-ft-ripple); }
+.ds-ft-band-light {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(222 150 96 / 0.78) 0%, rgb(188 111 64 / 0.62) 10%, rgb(160 88 46 / 0.5) 22%, rgb(139 73 32 / 0.26) 40%, rgb(139 73 32 / 0.08) 62%, rgb(10 11 13 / 0) 80%);
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 6px, rgb(0 0 0 / 0.8) 6px 9px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 6px, rgb(0 0 0 / 0.8) 6px 9px);
 }
-@media (min-width: 480px) and (max-width: 1023px) {
-  .ds-ft-right .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
-}
-/* Desktop: Ada's split. Left 8 columns (who we are, then the lockup on the foot); a vertical
-   rule; right 4 columns (follow, contact, marks, legal on the foot). */
-@media (min-width: 1024px) {
-  .ds-ft-lower { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-ft-left { grid-column: 1 / span 8; display: flex; flex-direction: column; justify-content: space-between; min-height: clamp(26rem, 34vw, 32rem); padding-right: 24px; border-right: 1px solid var(--ds-rule-strong); }
-  .ds-ft-left .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); column-gap: 24px; }
-  .ds-ft-lockup { --lk: min(176px, calc((min(100vw, var(--ds-max) + 2 * var(--ds-gutter)) - 2 * var(--ds-gutter)) * 0.6 / 5)); margin-top: 0; }
-  .ds-ft-right { grid-column: 9 / span 4; display: flex; flex-direction: column; }
-  .ds-ft-right .ds-legal { margin-top: auto; }
-}
-@media (min-width: 1360px) {
-  .ds-ft-right .ds-ft-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); column-gap: 20px; }
+.ds-ft-band-letters {
+  position: absolute;
+  left: calc(var(--ds-edge) + 48px);
+  right: calc(var(--ds-edge) + 48px);
+  top: 12%;
+  aspect-ratio: 576 / 105.4;
+  background: rgb(238 240 242 / 0.035);
+  -webkit-mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
+  mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
+  mix-blend-mode: screen;
 }
 
 @keyframes ds-ft-drift {

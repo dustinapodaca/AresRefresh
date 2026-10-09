@@ -271,7 +271,8 @@ sizes are unchanged.
 
 Flat. No shadows, no blur, no glass, no tonal card lifts. Depth comes from three sources
 only: photographs that fade into the canvas, the scale gap between display type and
-body, and the single rust horizon glow at the close. 
+body, and the single rust horizon glow at the close. The footer's closing band (owner,
+2026-10-08, after Pally) is the one rust light at the end of every page.
 
 ## Shapes
 
@@ -398,7 +399,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.78) sepia(0.12) brightness(0.68) contrast(1.04)` to the old muted look; earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sits 164px lower, with a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.9:1 or better). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift).
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
-  only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
+  only at the bottom, drifting slightly as it leaves. Dark glass (the nav's weight: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
   where the crisp photo begins (`clamp(15rem, 38svh, 28rem)` above the opening's foot).
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
@@ -634,7 +635,7 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black
   glass bar fades in (200ms): canvas at 55% over a 20px blur, with a faint white hairline.
   The mobile running head under it is flat canvas. With the mobile menu open the bar is solid.
-  Owner request (2026-10-04); with the footer's closing band and the Services opening
+  Owner request (2026-10-04); with the Services opening
   (2026-10-06), the only glass outside the Services cards.
 - Desktop: a three-column grid. The Ares mark alone on the left (52px, white), the links
   centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
@@ -646,26 +647,33 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   primary button.
 
 ### Footer
-Redesigned 2026-10-08 (owner, after Ada's footer on Mobbin). The canvas, no glass, no
-light, no quote button (the nav and each page carry it), no newsletter (Ares has none).
-- **Columns:** Company, Service areas, Contracting (label and mono value: GSA MAS
-  47QSMS25D009Q to eLibrary, UEI, CAGE), Registration (green light, "Active on SAM.gov",
-  through the SAM date, Verify). Titles in Inter 15px ink faint (no uppercase), links Inter
-  17px ink. Four across on desktop, 2x2 on phones.
-- **The lower half**, under a hairline-strong rule, split like Ada's: left 8 columns and a
-  vertical hairline-strong rule, right 4 columns.
-  - Left: "Who we are" (label) with the company line, and on the footer's foot the Ares
-    lockup set large (the mark, a rule at ink 50%, the ARES / SECURITY text logo, in the
-    owner's lockup proportions; the mark up to 176px tall, the lockup about 60% of the
-    container wide). Where Ada sets its pink mark and wordmark.
-  - Right: "Follow us" (LinkedIn, Google, Indeed), "Get in touch" (phone and email in mono),
-    the certification marks, and the legal row on the foot (copyright, Privacy, Terms,
-    Accessibility). Label beside value from 1360px; stacked below that.
-  - Phones and tablets: the who-we-are line, then the right column, then the lockup last,
-    full width, on the foot.
-- Earlier footers (kept for the record): the Retool/Railway footer with the aurora and
-  dark glass band (2026-10-06 to 10-08); the ARES letters under glass; a pointer-led
-  wordmark light (removed 2026-10-05); "Get to know Ares" (removed 2026-10-04).
+Redesigned 2026-10-08 (owner, after Pally's footer on Mobbin). The canvas, no glass, no
+quote button (the nav and each page carry it), no newsletter (Ares has none).
+- **Top:** left (6 columns from 1024px), the Ares lockup (the mark, a 1px rule at ink 50%,
+  the ARES / SECURITY text logo; 44px, 52px from 1024px), the company line (Inter Tight 500,
+  26 to 36px, ink, 30ch; "woman-owned" never breaks), then the phone and email as two 40px
+  outlined chips (hairline-strong edge, 2px corners, mono, authored 14px icons) where Pally
+  has its CTA. Right (columns 8 to 12): Explore (About Us, Services, Careers, Capability
+  Statement), Service areas (the three cities), Follow us (LinkedIn, Google, Indeed, with
+  the external arrow); titles Inter 15px / 500 ink, links 15px ink muted. Three columns
+  from 640px; two on phones.
+- **Legal row** on one hairline: the copyright; the federal line (the green light and
+  "Active on SAM.gov through" the SAM date, linked to SAM.gov; GSA 47QSMS25D009Q to
+  eLibrary, UEI, CAGE in mono 12px faint); Privacy, Terms, Accessibility. Stacks on phones.
+- **The closing band** (clamp(220px, 34vw, 560px), the page's last thing): a rust and
+  amber light rising from the foot (rgb(222 150 96 / 0.78) to clear by 80%), cut into
+  soft horizontal bands (a 6px / 3px repeating mask) and bent by an SVG ripple
+  (feTurbulence, stretched wide, displacement 12, a slight blur) so the bands read like
+  water, not wood. Over it the ARES letters of the text logo, the container wide, ghosted
+  (ink at 3.5%, screen). Static, decorative (aria-hidden); the ripple is a fixed filter,
+  not an animation. The owner had removed giant ARES letters on 2026-10-06; Pally's
+  layout brings them back faint.
+- The certification marks are no longer in the footer (the hero strip, About, and the
+  Capability Statement carry them).
+- Earlier footers (kept for the record): Ada's split lower half with the large lockup
+  (2026-10-08); the Retool/Railway footer with the aurora and dark glass band (2026-10-06
+  to 10-08); the ARES letters under glass; a pointer-led wordmark light (removed
+  2026-10-05); "Get to know Ares" (removed 2026-10-04).
 
 ## Motion
 
@@ -726,8 +734,8 @@ Few, fast, and crisp. Four to six moments per page.
 **Never**
 - **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
   features, or services. Owner exceptions: the Services and Capability cards, the Home values cards.
-- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
-  closing band, the Services opening, the Home hero's copy band, and the 404 card (owner requests).
+- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the
+  Services opening, the Home hero's copy band, and the 404 card (owner requests).
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and

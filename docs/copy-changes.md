@@ -575,3 +575,11 @@ Accessibility now go to them (were `#`). Drafts for the owner and counsel to rev
 | Company line beside the lockup: "A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado Springs." | "Who we are": "A minority woman-owned, employee-focused security firm, founded in Colorado Springs in 2021 and licensed in Colorado Springs, Denver, and Pueblo." |
 | Phone, email, and profiles under the lockup | "Follow us" (LinkedIn, Google, Indeed) and "Get in touch" (phone, email) on the right |
 | Legal row on the glass band: "© 2026 Ares Security LLC. All rights reserved." / "Colorado Springs, Colorado" | "© 2026 Ares Security LLC" with Privacy, Terms, Accessibility |
+
+## Footer after Pally (2026-10-08, owner)
+
+| Was | Now |
+|---|---|
+| "Who we are": "A minority woman-owned, employee-focused security firm, founded in Colorado Springs in 2021 and licensed in Colorado Springs, Denver, and Pueblo." | "A minority woman-owned, employee-focused security firm. Founded 2021 in Colorado Springs." (under the lockup, no label) |
+| "Follow us" and "Get in touch" on the right | Phone and email as chips under the company line; "Explore", "Service areas", "Follow us" as columns on the right |
+| (none in the Ada footer) | Legal row: "Active on SAM.gov through March 26, 2027", "GSA 47QSMS25D009Q", "UEI XQXDN6E33SF4", "CAGE 9KL18" beside the copyright and policies |
