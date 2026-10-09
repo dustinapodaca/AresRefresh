@@ -3,13 +3,13 @@ import Arrow from '../components/Arrow';
 import CoverageMap from '../components/home/CoverageMap';
 import Seo from '../seo/Seo';
 import { responsive } from '../lib/responsive';
+import { formatPhone, toWeb3Forms, type Quote } from '../lib/quote';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
 
 // What needs covering: the six services (one page each under /services/<slug>) and
-// "not sure". Web3Forms uses `subject` as the email's subject line, so the slug is swapped
-// for the label right before posting. Role and industry pages link here with
+// "not sure". The email carries the label, not the slug (src/lib/quote.ts). Role and industry pages link here with
 // ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
 const NEEDS: { slug: string; label: string }[] = [
   { slug: 'armed-security-officers', label: 'Armed security officers' },
@@ -89,27 +89,29 @@ export default function Contact() {
       return;
     }
 
-    fd.append('access_key', key);
-
-    // Rewrite `subject` from its slug to a readable email subject.
-    const slug = String(fd.get('subject') || '');
-    fd.set('subject', `Ares Inquiry: ${LABEL[slug] || 'General inquiry'}`);
-    // The site type travels as its label, so the email reads plainly.
-    const site = String(fd.get('site_type') || '');
-    if (site) fd.set('site_type', SITE_TYPES.find((t) => t.slug === site)?.label || site);
-
-    // So replying from the inbox goes back to the inquirer, not Web3Forms.
-    const email = String(fd.get('email') || '');
-    if (email) fd.append('replyTo', email);
-
-    // Friendly "from" display name in the notification email.
-    const name = String(fd.get('name') || '');
-    if (name) fd.append('from_name', `Ares Quote: ${name}`);
+    // Read the answers once, as the email shows them (src/lib/quote.ts): labels, not slugs;
+    // trimmed; the phone formatted.
+    const text = (k: string) => String(fd.get(k) || '').trim();
+    const site = text('site_type');
+    const quote: Quote = {
+      name: text('name'),
+      organization: text('organization'),
+      email: text('email'),
+      phone: formatPhone(text('phone')),
+      service: LABEL[text('subject')] || 'General inquiry',
+      location: text('location'),
+      officers: text('officers'),
+      schedule: text('schedule'),
+      start: text('start'),
+      siteType: site ? SITE_TYPES.find((t) => t.slug === site)?.label || site : '',
+      message: text('message'),
+      heardAbout: text('heard_about'),
+    };
 
     setSending(true);
     setStatus({ text: 'Sending your request…', ok: true, done: false });
     try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: toWeb3Forms(quote, key) });
       const data = await res.json();
       if (data.success) {
         setStatus({ text: 'Sent. We will reply to the email you gave us.', ok: true, done: true });
