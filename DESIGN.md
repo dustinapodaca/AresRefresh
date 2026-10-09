@@ -489,7 +489,10 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   facts' glass and the frost reads; below 900px a taller frame, clamp(27rem, 66svh, 38rem),
   cropped at the sides with the photo set further right (60%), under an evenly eased shade from the left (a kink in it read as a dark band), fading from 55% under the copy, with the lead in
   #c4c8ce there; from 900px the copy, the facts' glass, and the codes sit 40px higher and the
-  photo 24px higher, owner 2026-10-08, the hero height unchanged), black from the left; below 900px a softer shade from the left keeps the lit fins
+  photo 24px higher, owner 2026-10-08, the hero height unchanged; the photo is never
+  shorter than the window less 96px, so narrower desktop and tablet windows crop its sides
+  on the fins (66%) instead of leaving black under it, while 1440 and wider still show the
+  whole frame), black from the left; below 900px a softer shade from the left keeps the lit fins
   off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
   6.9:1 or better at every width. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
