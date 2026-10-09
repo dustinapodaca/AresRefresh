@@ -2861,6 +2861,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-other { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg-muted); }
 .ds-loc-landmark { font-family: var(--ds-text); font-size: 14px; color: var(--ds-fg-muted); }
 .ds-loc-faint { font-family: var(--ds-data); font-size: 12px; letter-spacing: 0.08em; color: var(--ds-fg-faint); }
+.ds-loc-pin-note { margin-left: 8px; }
 /* The narrowest phones (under 360px): both city names step down to stay inside the plate. */
 @media (max-width: 359px) {
   .ds-loc-focus { font-size: 13px; letter-spacing: -0.02em; }
@@ -2881,12 +2882,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-license { padding-top: var(--ds-beat); }
 .ds-loc-license-head { display: grid; gap: 20px; }
 .ds-loc-ledger { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
-/* Phones: the route (Verify, Request a copy) sits on the value's line, at the right (owner,
-   2026-10-08); the label stays above. */
+/* Phones: a linked route (Verify, Request a copy) sits on the value's line, at the right
+   (owner, 2026-10-08); the label stays above. Notes (the office's) stay beneath. */
 @media (max-width: 767px) {
-  .ds-loc-ledger .ds-ledger-row { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: baseline; }
-  .ds-loc-ledger .ds-ledger-row dt { grid-column: 1 / -1; }
-  .ds-loc-ledger .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
+  .ds-loc-ledger .ds-ledger-row:has(.ds-ledger-route a) { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: baseline; }
+  .ds-loc-ledger .ds-ledger-row:has(.ds-ledger-route a) dt { grid-column: 1 / -1; }
+  .ds-loc-ledger .ds-ledger-row:has(.ds-ledger-route a) .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
 }
 .ds-loc-routes-inline { display: inline-flex; flex-wrap: wrap; gap: 6px 20px; }
 @media (min-width: 1024px) {
