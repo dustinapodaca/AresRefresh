@@ -1871,7 +1871,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-systems { margin-top: var(--ds-beat-tight); }
 .ds-svc-systems > p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); }
 .ds-svc-systems ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
-.ds-svc-systems li { display: inline-flex; align-items: center; height: 36px; padding: 0 12px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; color: var(--ds-fg); }
+.ds-svc-systems li { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 10px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; color: var(--ds-fg); }
+/* The system's icon, quieter than its name (owner, 2026-10-09). */
+.ds-svc-systems li svg { flex: none; color: var(--ds-fg-muted); }
 
 /* ============================================================
    ABOUT ("The Company File", docs/about-concepts.md)
