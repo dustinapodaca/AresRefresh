@@ -670,10 +670,10 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   letters of the text logo across the full container (only the letters, not SECURITY),
   over a slow rust and amber light rising from the bottom edge (soft radial glows, a
   white-hot core, and a faint conic fan of beams, all blurred, drifting side to side over
-  17 to 22s; still under reduced motion). The letters are a faint black ghost (owner, 2026-10-08;
-  were ink warming to amber): a touch lighter than the canvas at the top (#1a1c20),
-  near-black through the middle, a little rust at the foot (#4e2a15), all at 60% so the
-  glow shows through. Their lower third sinks under a band
+  17 to 22s; still under reduced motion). The letters are black warming to rust (owner, 2026-10-08;
+  were ink warming to amber): solid black (#060607) through the top third, then rust
+  (#5a3018 at two thirds, #7a4220 at the foot) so the warm edge shows just above the
+  glass; full opacity, no grey. Against the glow they read as a silhouette. Their lower third sinks under a band
   of dark glass (canvas at 55% over a 22px blur, a white/10% top edge) that holds the
   legal row (mono 12px in a light grey, #c4c8ce): copyright, "Colorado Springs,
   Colorado", Privacy, Terms, Accessibility. Static, no pointer tracking (a pointer-led wordmark light was tried and removed,
