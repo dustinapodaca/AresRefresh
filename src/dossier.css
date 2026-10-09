@@ -2070,7 +2070,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
   }
-  .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
+  /* 64px lower than before (owner, 2026-10-08), so more of the photo shows above the headline. */
+  .ds-cs-hero .ds-cs-hero-grid { padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem) + 64px); }
   /* The lead sits on the lit fins here, so it takes the lighter grey of the other photo heroes. */
   .ds-cs-hero-copy .ds-lead { color: #c4c8ce; }
 }
