@@ -616,9 +616,13 @@ body:has(.ds-page) {
     object-position: 50% 50%;
     filter: saturate(0.95) brightness(0.8) contrast(1.06);
   }
-  /* Only the sky under the nav is shaded now; no black from the left. */
+  /* A vignette (owner, 2026-10-08: the photo read too bright), lighter than About's: the
+     sky under the nav shaded from the top, and the edges and corners darkened, so the
+     towers in the middle stay lit. */
   .ds-hero-photo::after {
-    background: linear-gradient(to bottom, rgb(10 11 13 / 0.55) 0%, rgb(10 11 13 / 0) 22%);
+    background:
+      linear-gradient(to bottom, rgb(10 11 13 / 0.7) 0%, rgb(10 11 13 / 0.3) 24%, rgb(10 11 13 / 0) 44%),
+      radial-gradient(ellipse 85% 75% at 55% 45%, rgb(10 11 13 / 0) 40%, rgb(10 11 13 / 0.38) 78%, rgb(10 11 13 / 0.62) 100%);
   }
   /* The glass strip (owner, 2026-10-08): full bleed from a little above the headline to the
      foot of the hero, crisp white/10% edges top and bottom; the photo runs on below it into
