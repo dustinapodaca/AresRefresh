@@ -2807,6 +2807,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-license { padding-top: var(--ds-beat); }
 .ds-loc-license-head { display: grid; gap: 20px; }
 .ds-loc-ledger { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
+/* Phones: the route (Verify, Request a copy) sits on the value's line, at the right (owner,
+   2026-10-08); the label stays above. */
+@media (max-width: 767px) {
+  .ds-loc-ledger .ds-ledger-row { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; align-items: baseline; }
+  .ds-loc-ledger .ds-ledger-row dt { grid-column: 1 / -1; }
+  .ds-loc-ledger .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
+}
 .ds-loc-routes-inline { display: inline-flex; flex-wrap: wrap; gap: 6px 20px; }
 @media (min-width: 1024px) {
   .ds-loc-license-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
@@ -2866,6 +2873,11 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-loc-route { stroke-dasharray: 1; animation: ds-route 1200ms var(--ds-ease) 200ms both; }
   .ds-loc-pulse { animation: ds-ring 1800ms var(--ds-ease) 1300ms 2 both; }
 }
+/* It waits until the map is well in view (owner, 2026-10-08: on phones the map sits below the
+   copy and had drawn before anyone reached it). LocationMap sets data-play; without
+   JavaScript (no html.js) it plays on load as before. */
+html.js .ds-loc-map:not([data-play]) .ds-loc-route,
+html.js .ds-loc-map:not([data-play]) .ds-loc-pulse { animation-play-state: paused; }
 
 /* ============================================================
    404 ("The Search Light", docs/notfound-concepts.md)

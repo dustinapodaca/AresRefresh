@@ -592,7 +592,7 @@ per city. No rail, no close, no photo, no section numbers.
   15px, the city 13 to 20px by plate width so it always ends inside the frame).
 - **Licensed in <city>:** Colorado has no statewide license; the city licenses security
   companies itself. The city's license as Home's ledger row (label, mono value, route):
-  license number with "Verify ↗" (the city's public record; Colorado Springs: Accela;
+  license number with "Verify ↗" (on its line at the right at every width; owner, 2026-10-08) (the city's public record; Colorado Springs: Accela;
   Denver: Accela; Pueblo has none, so "Request a copy", an email), status (licensed and bonded, armed and
   unarmed), training provider, armed endorsements, office (CO 80906 only, never a street).
 - **Sites we are ready to staff here:** a ruled list, two columns from 768px read downward
@@ -604,8 +604,10 @@ per city. No rail, no close, no photo, no section numbers.
   Capability Statement, About Ares) in the Services city-strip style on hairline-strong
   rules, then "Also licensed in Denver and Pueblo." Its heading is for screen readers
   only.
-- **Motion:** one moment. I-25 draws down the map on load (1200ms, the standard ease), then
-  a second ring pulses out twice from the city's ring, which stays. Reduced motion: drawn
+- **Motion:** one moment. I-25 draws down the map once it is well in view (1200ms, the
+  standard ease; owner, 2026-10-08: was on load, which on phones ran before the map was
+  reached; without JavaScript it plays on load), then a second ring pulses out twice from the
+  city's ring, which stays. Reduced motion: drawn
   and still.
 
 ### 404 ("The Search Light", 2026-10-06)
