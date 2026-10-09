@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Arrow from '../Arrow';
 import { INDEED_REVIEWS } from '../careers/data';
 
@@ -38,6 +39,37 @@ const VALUES: {
 ];
 
 export default function Record() {
+  const listRef = useRef<HTMLUListElement>(null);
+
+  // Phones and tablets: the four cards pile up, so they share one height, the tallest card's
+  // (owner, 2026-10-08). Without JS they keep their own heights.
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const mq = window.matchMedia('(max-width: 1023px)');
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      list.style.removeProperty('--ds-value-h');
+      if (!mq.matches) return;
+      const cards = [...list.querySelectorAll<HTMLElement>('.ds-value')];
+      const tallest = Math.max(...cards.map((c) => c.offsetHeight));
+      list.style.setProperty('--ds-value-h', `${tallest}px`);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    measure();
+    document.fonts?.ready.then(schedule);
+    window.addEventListener('resize', schedule);
+    mq.addEventListener('change', schedule);
+    return () => {
+      window.removeEventListener('resize', schedule);
+      mq.removeEventListener('change', schedule);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <section id="record" className="ds-record" aria-labelledby="record-title">
       <div className="ds-sec-head">
@@ -50,7 +82,7 @@ export default function Record() {
         </p>
       </div>
 
-      <ul className="ds-values-list">
+      <ul ref={listRef} className="ds-values-list">
         {VALUES.map((v) => (
           <li key={v.name} className="ds-value" data-light={v.light}>
             <div className="ds-value-light">

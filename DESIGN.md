@@ -355,8 +355,10 @@ exception to "no card containers" and "no glass" for this section.
   the attribution right.
 - Desktop: three across over the quote; the cards rise 64px into place on scroll.
   Phones: the four cards are sticky and pile up 16px apart, each frosting the one beneath,
-  all one height (the tallest card's; owner, 2026-10-08), the quote at the top of its card
-  and the attribution on its foot.
+  all one height (the tallest card's, measured in Record.tsx; owner, 2026-10-08), the quote
+  at the top of its card and the attribution on its foot. The quote card stacks too, 16px
+  under the third; the full pile holds for about 80px of scroll, then leaves as one, still
+  fanned (owner, 2026-10-08: each card's bottom margin evens out the release points).
   No images (generated options were tried and removed, 2026-10-06; they stay in
   assets/generated/values/).
 
