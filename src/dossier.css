@@ -234,6 +234,8 @@ body:has(.ds-page) {
   transition: transform 200ms var(--ds-ease);
 }
 .ds-nav-link[aria-current='page']::after { transform: scaleX(1); }
+/* Desktop: the links sit 2px above center in the slimmer bar (owner, 2026-10-08). */
+@media (min-width: 1024px) { .ds-nav-link { top: -2px; } }
 @media (hover: hover) and (pointer: fine) {
   .ds-nav-link:hover::after { transform: scaleX(1); }
 }
