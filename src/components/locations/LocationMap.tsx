@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { CITIES, type City, type Landmark } from './data';
 
 // The Front Range, drawn to scale: 37.95°N to 40.05°N, 106.2°W to 103.6°W (about 224 by
@@ -64,8 +65,27 @@ export default function LocationMap({
   const fx = x(focus.coord.lon);
   const fy = y(focus.coord.lat);
 
+  // I-25 draws and the ring pulses once the map is well in view (owner, 2026-10-08), not on
+  // load: on phones it sits below the copy. CSS holds the moment until data-play is set.
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        el.setAttribute('data-play', '');
+        io.disconnect();
+      },
+      { threshold: 0.5, rootMargin: '0px 0px -15% 0px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <figure
+      ref={ref}
       className="ds-loc-map"
       role="img"
       aria-label={`Map of the Front Range along Interstate 25, with ${focus.name} marked between ${others.map((c) => c.name).join(' and ')}.`}
