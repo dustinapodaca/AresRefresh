@@ -1,0 +1,73 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Ares Security LLC",
+    "documentationUrl": "https://aressecurity.co/llms.txt",
+    "logoUrl": "https://aressecurity.co/ares-logo.png"
+  },
+  "entries": [
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:aressecurity.co:skill:request-a-security-quote",
+      "displayName": "Request a security quote from Ares Security",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://aressecurity.co/skills/request-a-security-quote/SKILL.md",
+      "description": "How to gather a site's needs and request an armed or unarmed security officer quote from Ares Security, a minority woman-owned security company in Colorado Springs, Denver, and Pueblo, Colorado.",
+      "tags": [
+        "security guards",
+        "armed security",
+        "unarmed security",
+        "mobile patrol",
+        "access control",
+        "event security",
+        "Colorado Springs",
+        "Denver",
+        "Pueblo",
+        "Colorado"
+      ],
+      "capabilities": [
+        "RequestSecurityQuote",
+        "PrefillQuoteForm"
+      ],
+      "representativeQueries": [
+        "find armed security guards in Colorado Springs",
+        "get a quote for security officers at a Denver construction site",
+        "who provides event security in Pueblo, Colorado",
+        "hire a woman-owned security company in Colorado"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-09T00:00:00Z"
+    },
+    {
+      "@context": "https://agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:aressecurity.co:skill:verify-ares-security",
+      "displayName": "Verify Ares Security's credentials",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://aressecurity.co/skills/verify-ares-security/SKILL.md",
+      "description": "Where to confirm Ares Security LLC's GSA contract, SAM.gov registration, UEI and CAGE, SBA WOSB and WBENC certifications, and Colorado city security licenses at their issuing sources.",
+      "tags": [
+        "GSA MAS",
+        "SAM.gov",
+        "WOSB",
+        "WBENC",
+        "NAICS 561612",
+        "security license",
+        "Colorado",
+        "procurement"
+      ],
+      "capabilities": [
+        "VerifyVendorCredentials",
+        "GSAScheduleLookup",
+        "CityLicenseLookup"
+      ],
+      "representativeQueries": [
+        "verify Ares Security's GSA schedule contract",
+        "what is Ares Security LLC's UEI and CAGE code",
+        "is Ares Security licensed in Denver",
+        "woman-owned security guard company on GSA in Colorado"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-10-09T00:00:00Z"
+    }
+  ]
+}

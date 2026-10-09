@@ -60,6 +60,17 @@ Last updated: 2026-10-09. **Read this first when starting a new chat.**
   format): who Ares is, the verified facts and identifiers, and links to every public page
   on aressecurity.co. **Keep it in sync** when facts, pages, or the SAM date change. Avoid
   claims the owner has ruled out (growth paths, response times, "cleared", "veteran-led").
+- **AI agent catalog** (2026-10-09): `public/.well-known/ard.json` (Agentic Resource
+  Discovery spec, agenticresourcediscovery.org) and an identical `ai-catalog.json` (the
+  predecessor name Lighthouse 13.5 reads), linked from `index.html` with `rel="ard"` and
+  `rel="ai-catalog"`. Two entries, each an Agent Skill in Markdown: `public/skills/
+  request-a-security-quote/SKILL.md` (how an assistant gathers a site's needs and sends the
+  person to the quote form, with `?service=` / `?industry=` prefill slugs from
+  `src/pages/Contact.tsx`) and `public/skills/verify-ares-security/SKILL.md` (every
+  identifier with its issuing source). Keep both files identical and in sync with facts,
+  the form's slugs, and the SAM date. Validate with Lighthouse's `third-party/ard/ard.js`.
+  Do **not** add an `Agentmap:` line to robots.txt: Lighthouse's robots audit rejects
+  unknown directives and would cost SEO points.
 - **Lighthouse (production build, mobile, 2026-10-09):** most pages 93 to 96, Home 83,
   Services 78 (their big crisp heroes on a slow simulated 4G); accessibility, best
   practices, SEO 100. Run it on `npm run build && npx vite preview` (port 4173), never on
