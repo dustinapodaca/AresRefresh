@@ -43,7 +43,8 @@ PHOTOS = [
     {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.jpg', 'q': 80},
     {'key': '/images/careers-team.jpg', 'source': 'assets/images-src/careers-team.jpg', 'q': 80},
     {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle.jpg', 'q': 80},
-    {'key': '/images/officer-portrait.jpg', 'source': 'assets/images-src/officer-portrait.jpg', 'q': 80},
+    # The About portrait, replaced 2026-10-09 (owner): a PNG original, so encode a touch higher.
+    {'key': '/images/officer-portrait.jpg', 'source': 'assets/images-src/officer-portrait.png', 'q': 82},
     {'key': '/images/backbone-officer.jpg', 'source': 'assets/images-src/backbone-officer.jpg', 'q': 80},
     {'key': '/images/matrix-government.jpg', 'source': 'assets/images-src/matrix-government.jpg', 'q': 80},
     {'key': '/images/matrix-government.webp', 'source': 'assets/images-src/matrix-government.webp', 'q': 82},

@@ -69,10 +69,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 842
   },
   "/images/officer-portrait.jpg": {
-    "src": "/images/opt/officer-portrait-992.f21b9e21.webp",
-    "srcSet": "/images/opt/officer-portrait-480.09eb75c6.webp 480w, /images/opt/officer-portrait-800.348ad379.webp 800w, /images/opt/officer-portrait-992.f21b9e21.webp 992w",
-    "width": 992,
-    "height": 1040
+    "src": "/images/opt/officer-portrait-1200.fcdb4b06.webp",
+    "srcSet": "/images/opt/officer-portrait-480.51bf5f73.webp 480w, /images/opt/officer-portrait-800.956f5920.webp 800w, /images/opt/officer-portrait-1200.fcdb4b06.webp 1200w, /images/opt/officer-portrait-1244.2ba240ee.webp 1244w",
+    "width": 1244,
+    "height": 1264
   },
   "/images/backbone-officer.jpg": {
     "src": "/images/opt/backbone-officer-733.4b7d4773.webp",

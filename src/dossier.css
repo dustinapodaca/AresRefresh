@@ -2068,7 +2068,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (min-width: 1024px) {
   .ds-ab-people { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-ab-portrait { grid-column: 1 / span 5; position: sticky; top: calc(var(--ds-header) + 48px); }
-  .ds-ab-portrait img { aspect-ratio: 992 / 1040; }
+  .ds-ab-portrait img { aspect-ratio: 1244 / 1264; } /* the portrait's own shape (replaced 2026-10-09) */
   .ds-ab-people-copy { grid-column: 7 / span 6; }
 }
 

@@ -9,7 +9,7 @@ export default function People() {
       <figure className="ds-plate ds-ab-portrait">
         <img
           {...responsive('/images/officer-portrait.jpg', '(min-width: 1024px) 50vw, 100vw')}
-          alt="An Ares Security officer in a black Ares polo, arms crossed, smiling outside a building"
+          alt="An Ares Security officer in a black Ares polo, ID lanyard, and duty belt with a radio, arms crossed and smiling in front of a black brick wall"
           loading="lazy"
           decoding="async"
         />
