@@ -484,9 +484,8 @@ body:has(.ds-page) {
   /* Only the ARES letters (the top 105.4 of the logo's 174.87 units). */
   aspect-ratio: 576 / 105.4;
   width: 100%;
-  /* Black against the glow (owner, 2026-10-08; were ink warming to amber): solid black at
-     the top, warming to rust toward the glass where the light catches it. No grey. */
-  background: linear-gradient(to bottom, #060607 0%, #08090a 30%, #24130a 52%, #5a3018 68%, #7a4220 100%);
+  /* Lit from the glow below: ink at the top, warming toward the glass. */
+  background: linear-gradient(to bottom, var(--ds-fg) 22%, #f1c49a 66%, #e2925a 100%);
   -webkit-mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
   mask: url(/images/ares-text.svg) top center / 100% auto no-repeat;
 }
