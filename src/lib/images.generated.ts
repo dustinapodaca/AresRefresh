@@ -51,10 +51,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1536
   },
   "/images/careers-philosophy.jpg": {
-    "src": "/images/opt/careers-philosophy-1184.11fd0cb0.webp",
-    "srcSet": "/images/opt/careers-philosophy-480.d342cea9.webp 480w, /images/opt/careers-philosophy-800.dc300259.webp 800w, /images/opt/careers-philosophy-1184.11fd0cb0.webp 1184w",
-    "width": 1184,
-    "height": 880
+    "src": "/images/opt/careers-philosophy-1200.0fd9bb02.webp",
+    "srcSet": "/images/opt/careers-philosophy-480.e37f1070.webp 480w, /images/opt/careers-philosophy-800.32432b41.webp 800w, /images/opt/careers-philosophy-1200.0fd9bb02.webp 1200w, /images/opt/careers-philosophy-1445.b46777c2.webp 1445w",
+    "width": 1445,
+    "height": 1088
   },
   "/images/careers-team.jpg": {
     "src": "/images/opt/careers-team-1184.6f7eca4f.webp",

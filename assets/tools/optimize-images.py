@@ -40,7 +40,8 @@ PHOTOS = [
     {'key': '/images/services-hero/denver-sunset.webp', 'source': 'assets/images-src/hero1.jpg', 'q': 76},
     {'key': '/images/services-hero/nb-s1-towers.webp', 'source': 'MASTERS/services-hero/s1-towers.jpg', 'q': 82, 'fallback': 'assets/images-src/services-hero/nb-s1-towers.webp'},
     {'key': '/images/capability-hero/cs-fins.webp', 'source': 'MASTERS/services-hero/s4-fins.jpg', 'q': 82, 'fallback': 'assets/images-src/capability-hero/cs-fins.webp'},
-    {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.jpg', 'q': 80},
+    # Careers, Why people stay, first photo: the team at the range, replaced 2026-10-09 (owner).
+    {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.png', 'q': 82},
     {'key': '/images/careers-team.jpg', 'source': 'assets/images-src/careers-team.jpg', 'q': 80},
     {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle.jpg', 'q': 80},
     # The About portrait, replaced 2026-10-09 (owner): a PNG original, so encode a touch higher.
