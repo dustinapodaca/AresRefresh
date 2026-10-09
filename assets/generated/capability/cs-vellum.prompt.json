@@ -1,0 +1,28 @@
+{
+  "prompt": "A small stack of translucent vellum sheets, each printed with a fine pale grid, fanned slightly so their edges step back in a neat offset, resting on a black glass surface with a faint reflection. A warm copper backlight glows through the sheets from behind so the overlapping grids create subtle depth and the sheet edges glow. Minimal, architectural, like a set of drawings or spec pages. Photorealistic studio or architectural photograph, shot on a medium-format camera with natural light falloff and real material texture; it must read as a real photograph, not a 3D render, not CGI, not an illustration. Clean, modern, minimal, restrained. Very dark cool blue-black tonal range overall (the page background is #0a0b0d) with one warm copper light (#bc6f40 to soft amber) and otherwise neutral greys. Show the whole subject inside the frame with breathing room on every side (the image will be shown uncropped). Keep the left 40 percent of the frame calm, dark, and low in detail; the subject sits in the right half. No people, no hands, no readable text, no letters, no numbers, no logos, no flags, no insignia, no seals, no signage, no screens. Wide 16:9.",
+  "createdAt": "2026-10-09T02:33:52.782624+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "4K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 265,
+    "candidatesTokenCount": 3087,
+    "totalTokenCount": 3352,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 265
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 2520
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

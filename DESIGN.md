@@ -483,9 +483,10 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
 - **Hero:** a generated federal facade at dusk (owner, 2026-10-08: option B of four Nano
   Banana options in `assets/generated/capability/`; `capability-hero/cs-facade.webp`, 2880px,
   210KB; concrete fins, dark glass, one band of copper window light; generated, so no place
-  caption; was the glass-panels light `hero-panels.webp`, kept in public/images) full bleed,
-  cover, centered, black from the left; below 900px a softer shade from the left keeps the lit
-  windows off the lead. The spec line is ink muted on the photo. Headline 10:1, lead 5.1:1,
+  caption; was the glass-panels light `hero-panels.webp`, kept in public/images) shown whole
+  (owner, 2026-10-08: never cropped; full width at its own proportions, fading into the canvas
+  over its lower third; on phones the copy starts near its foot), black from the left; below
+  900px a softer shade from the left keeps the lit windows off the lead. The spec line is ink muted on the photo. Headline 10:1, lead 5.1:1,
   spec 5.7:1 or better at every width. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
   quick facts and sections below carry it), a white "Download the PDF"
