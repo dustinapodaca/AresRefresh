@@ -69,7 +69,11 @@ export default function LocationPage({ file }: { file: LocationFile }) {
                         ))}
                       </span>
                     ) : (
-                      <span className="ds-small">{r.route.note}</span>
+                      // The note on one line, its detail beneath (owner, 2026-10-08).
+                      <span className="ds-small ds-loc-note">
+                        <span>{r.route.note}</span>
+                        {r.route.detail && <span>{r.route.detail}</span>}
+                      </span>
                     )}
                   </dd>
                 )}
