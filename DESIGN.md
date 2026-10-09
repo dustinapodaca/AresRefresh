@@ -354,7 +354,9 @@ exception to "no card containers" and "no glass" for this section.
   client quote as a wide card (all three columns): the quote (Inter 500, 22 to 32px) left,
   the attribution right.
 - Desktop: three across over the quote; the cards rise 64px into place on scroll.
-  Phones: the four cards are sticky and pile up 16px apart, each frosting the one beneath.
+  Phones: the four cards are sticky and pile up 16px apart, each frosting the one beneath,
+  all one height (the tallest card's; owner, 2026-10-08), the quote at the top of its card
+  and the attribution on its foot.
   No images (generated options were tried and removed, 2026-10-06; they stay in
   assets/generated/values/).
 

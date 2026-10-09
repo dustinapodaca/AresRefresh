@@ -949,6 +949,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* Phones and tablets: the cards stick under the nav and running head and pile up, each a
    step lower than the one before, so a sliver of each stays in view. */
 @media (max-width: 1023px) {
+  /* One height for all four (owner, 2026-10-08), the tallest card's, so the pile stays even;
+     the quote sits at the top of its card and the attribution on its foot. */
+  .ds-values-list { grid-auto-rows: 1fr; }
+  .ds-value-quote figcaption { margin-top: auto; padding-top: 20px; }
   .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
   .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
