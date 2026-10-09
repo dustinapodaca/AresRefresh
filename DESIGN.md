@@ -485,11 +485,11 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
   glass-panels light `hero-panels.webp`, both kept, with the other options in
   `assets/generated/capability/`) shown whole (never cropped; full width at its own
-  proportions, fading into the canvas over its last 8% so its color runs on under the
+  proportions, fading only at its very foot (2%; the frost softens the edge) so its color runs on under the
   facts' glass and the frost reads; below 900px a taller frame, clamp(27rem, 66svh, 38rem),
   cropped at the sides on the fins (74%), fading from 55% under the copy, with the lead in
-  #c4c8ce there; from 900px the copy, the facts' glass, and the codes sit 64px higher on the
-  photo, owner 2026-10-08, the photo and hero height unchanged), black from the left; below 900px a softer shade from the left keeps the lit fins
+  #c4c8ce there; from 900px the copy, the facts' glass, and the codes sit 40px higher and the
+  photo 24px higher, owner 2026-10-08, the hero height unchanged), black from the left; below 900px a softer shade from the left keeps the lit fins
   off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
   6.9:1 or better at every width. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the

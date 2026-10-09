@@ -2037,15 +2037,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   overflow: clip;
 }
 /* The whole image, never cropped (owner, 2026-10-08): full width at its own proportions,
-   fading into the canvas over its last fifth, so its color runs on under the facts' glass.
+   fading only at its very foot (2%), so its color runs on under the facts' glass and the
+   frost softens the edge.
    Gradients do the rest. */
 .ds-cs-hero-bg img {
   display: block;
   width: 100%;
   height: auto;
   filter: saturate(1) brightness(0.9);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 98%, transparent 100%);
 }
 .ds-cs-hero-bg::after {
   content: '';
@@ -2114,9 +2115,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cs-fact-note { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; color: var(--ds-fg-muted); }
 .ds-cs-verify { margin-top: 10px; font-size: 13px; gap: 4px; }
 @media (min-width: 900px) {
-  /* The copy, and the facts' glass and codes after it, sit 64px higher on the photo (owner,
-     2026-10-08); the photo and the hero's height stay where they were. */
-  .ds-cs-hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100svh; box-sizing: border-box; padding-bottom: 64px; }
+  /* The copy, and the facts' glass and codes after it, sit 40px higher (owner, 2026-10-08:
+     64px up, then 24px back down), and the photo sits 24px higher; the hero's height stays. */
+  .ds-cs-hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: 100svh; box-sizing: border-box; padding-bottom: 40px; }
+  .ds-cs-hero-bg { top: -24px; }
   .ds-cs-hero-bg::after {
     background:
       linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0) 24%),
