@@ -542,7 +542,17 @@ docs/contact-concepts.md.
   above (13px, ink muted, "Optional" in ink faint), a 48px filled field (#0e1013, white/16%
   edge, 2px corners, 16px text so phones don't zoom). Errors are amber (#f2b84b) once the
   reader has tried to send, with a line under the radio group. Then the primary button,
-  the discretion line, and an inline status (aria-live) with the green or amber light.
+  the discretion line, and an inline status (aria-live) that only says "Sending your
+  request…". The result shows as a **toast front and center** (owner, 2026-10-09; Mobbin:
+  GetYourGuide, Perplexity): a dark glass card (canvas-tinted 80% over a 22px blur,
+  white/12% edge, a light top line, a soft drop shadow, 4px corners, up to 440px), the green
+  or amber light with one ring pulsing out, "Request sent." (Inter 600 20px), "Leadership
+  reads every request and will reply to {email}.", and the request's subject in mono under a
+  hairline. Not a modal (no scrim, no focus trap; Escape and the x close it). A sent request
+  closes itself after 7s, a 2px hairline on its foot draining the time (paused on hover and
+  focus); a failure stays, with the contact email. Motion (Emil): in 320ms
+  `cubic-bezier(0.23, 1, 0.32, 1)` rising 14px from 0.96 scale and an 8px blur; out 180ms,
+  faster, settling away; reduced motion is a short fade.
   On desktop the message box grows so the form ends level with the map (owner,
   2026-10-05).
 - **The contact column (5 columns, from column 8):** "Rather talk?" with the phone in

@@ -2618,6 +2618,106 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-qt-status[data-ok]::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; }
 .ds-qt-status[data-ok='true']::before { background: #7cb85f; box-shadow: 0 0 0 4px rgb(124 184 95 / 0.16); }
 .ds-qt-status[data-ok='false']::before { background: #f2b84b; box-shadow: 0 0 0 4px rgb(242 184 75 / 0.16); }
+
+/* ---------- The result toast (owner, 2026-10-09) ----------
+   Front and center over the page, the 404 card's dark glass (a little darker so the copy
+   holds over anything), the form's status lights. Not a modal: no scrim, nothing trapped.
+   In: it rises 14px out of a slight blur and scale (320ms, strong ease-out); out: it
+   settles away faster (180ms). The hairline on its foot drains for the time left. */
+.ds-toast-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  pointer-events: none;
+}
+.ds-toast {
+  position: relative;
+  width: min(100%, 440px);
+  padding: 20px 20px 24px 24px;
+  border-radius: 4px;
+  background: rgb(14 16 19 / 0.8);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  /* The edge, a light top line, and a soft drop shadow that lifts it off the page. */
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 24px 64px -16px rgb(0 0 0 / 0.85),
+    0 4px 16px -4px rgb(0 0 0 / 0.5);
+  overflow: hidden;
+  pointer-events: auto;
+  animation: ds-toast-in 320ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.ds-toast[data-state='closing'] { animation: ds-toast-out 180ms cubic-bezier(0.4, 0, 1, 1) both; }
+.ds-toast-head { display: flex; align-items: center; gap: 12px; }
+.ds-toast-light { position: relative; flex: none; width: 8px; height: 8px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 4px rgb(124 184 95 / 0.16); }
+.ds-toast[data-kind='failed'] .ds-toast-light { background: #f2b84b; box-shadow: 0 0 0 4px rgb(242 184 75 / 0.16); }
+/* One ring pulses out from the light as the card lands. */
+.ds-toast-light::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  color: #7cb85f;
+  opacity: 0;
+  animation: ds-toast-ring 900ms cubic-bezier(0.23, 1, 0.32, 1) 160ms;
+}
+.ds-toast[data-kind='failed'] .ds-toast-light::after { color: #f2b84b; }
+.ds-toast-title { flex: 1; margin: 0; font-family: var(--ds-text); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--ds-fg); }
+.ds-toast-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin: -8px -8px -8px 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: var(--ds-fg-muted);
+  cursor: pointer;
+  transition: color 180ms var(--ds-ease), background-color 180ms var(--ds-ease);
+}
+.ds-toast-close:hover { color: var(--ds-fg); background: rgb(255 255 255 / 0.06); }
+.ds-toast-close:active { transform: scale(0.94); }
+.ds-toast-close:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 2px; }
+.ds-toast-line { margin: 12px 0 0 20px; font-size: 15px; line-height: 1.5; color: #c4c8ce; text-wrap: pretty; }
+.ds-toast-email { color: var(--ds-fg); overflow-wrap: anywhere; }
+.ds-toast-ref { margin: 14px 0 0 20px; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.08); font-size: 12px; line-height: 1.5; color: var(--ds-fg-muted); }
+.ds-toast-life {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgb(238 240 242 / 0.4);
+  transform-origin: left;
+  animation: ds-toast-life var(--toast-life, 7000ms) linear 320ms both;
+}
+.ds-toast:hover .ds-toast-life,
+.ds-toast:focus-within .ds-toast-life { animation-play-state: paused; }
+@keyframes ds-toast-in {
+  from { opacity: 0.4; transform: translateY(14px) scale(0.96); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes ds-toast-out {
+  to { opacity: 0; transform: translateY(8px) scale(0.98); filter: blur(4px); }
+}
+@keyframes ds-toast-ring {
+  from { opacity: 0.7; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.6); }
+}
+@keyframes ds-toast-life { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .ds-toast { animation: ds-toast-fade 140ms linear both; }
+  .ds-toast[data-state='closing'] { animation: ds-toast-fade 120ms linear reverse both; }
+  .ds-toast-light::after { animation: none; }
+}
+@keyframes ds-toast-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 767px) {
   .ds-qt-send .ds-btn { width: 100%; }
 }

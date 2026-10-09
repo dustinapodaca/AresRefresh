@@ -1,9 +1,10 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import Arrow from '../components/Arrow';
 import CoverageMap from '../components/home/CoverageMap';
+import QuoteToast, { type ToastData } from '../components/QuoteToast';
 import Seo from '../seo/Seo';
 import { responsive } from '../lib/responsive';
-import { formatPhone, toWeb3Forms, type Quote } from '../lib/quote';
+import { formatPhone, subjectFor, toWeb3Forms, type Quote } from '../lib/quote';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
@@ -42,8 +43,6 @@ const SITE_TYPES: { slug: string; label: string }[] = [
 const HEARD = ['Google search', 'AI assistant (ChatGPT, Gemini, and others)', 'GSA eLibrary or SAM.gov', 'Agency or prime referral', 'Referral from a client or colleague', 'LinkedIn', 'Other'];
 const LABEL = Object.fromEntries(NEEDS.map((n) => [n.slug, n.label]));
 
-const FAILED = 'That did not send. Please try again, or email contact@aressecurity.co.';
-
 // What happens after a request, from facts already on the site.
 const NEXT = [
   { name: 'Leadership reads it', line: 'Every request is reviewed by leadership only.' },
@@ -55,6 +54,8 @@ export default function Contact() {
   // `done` marks a result (it carries the light); while sending, the line only announces.
   const [status, setStatus] = useState<{ text: string; ok: boolean; done: boolean } | null>(null);
   const [sending, setSending] = useState(false);
+  // The result shows as a centered toast (QuoteToast); the inline line only says "Sending…".
+  const [toast, setToast] = useState<ToastData | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   // Pick the service or site type the reader came from (after hydration, so the prerendered
@@ -108,19 +109,23 @@ export default function Contact() {
       heardAbout: text('heard_about'),
     };
 
+    setToast(null);
     setSending(true);
     setStatus({ text: 'Sending your request…', ok: true, done: false });
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: toWeb3Forms(quote, key) });
       const data = await res.json();
       if (data.success) {
-        setStatus({ text: 'Sent. We will reply to the email you gave us.', ok: true, done: true });
+        setStatus(null);
+        setToast({ kind: 'sent', email: quote.email, subject: subjectFor(quote) });
         form.reset();
       } else {
-        setStatus({ text: FAILED, ok: false, done: true });
+        setStatus(null);
+        setToast({ kind: 'failed' });
       }
     } catch {
-      setStatus({ text: FAILED, ok: false, done: true });
+      setStatus(null);
+      setToast({ kind: 'failed' });
     } finally {
       setSending(false);
     }
@@ -288,6 +293,8 @@ export default function Contact() {
 
         </aside>
       </div>
+
+      <QuoteToast data={toast} onClose={() => setToast(null)} />
     </main>
   );
 }
