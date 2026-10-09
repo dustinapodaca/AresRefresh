@@ -1,0 +1,28 @@
+{
+  "prompt": "Macro photograph of a row of thin sheets of frosted glass standing on edge like pages in a file, receding in perspective toward the right, against pure black. Their polished edges catch a warm copper light and a little cool steel-blue light, so the stack reads as a set of documents made of light. Soft reflections on a black glossy surface below. Minimal, precise, technical. Photorealistic, shot on a medium-format camera, natural and believable, not CGI. Very dark, cool blue-black tonal range overall (the page background is #0a0b0d), with one warm copper light source (#bc6f40 to amber). Keep the left 45 percent of the frame calm and low in detail with nothing important in it (headline text will sit there); the subject and the light live in the right half. No people, no text, no letters, no numbers, no logos, no flags, no insignia, no signage, no vehicles. Wide 16:9 composition for a full-bleed website hero.",
+  "createdAt": "2026-10-09T02:11:50.934403+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "4K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 213,
+    "candidatesTokenCount": 2966,
+    "totalTokenCount": 3179,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 213
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 2520
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}
