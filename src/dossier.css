@@ -2037,14 +2037,15 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   overflow: clip;
 }
 /* The whole image, never cropped (owner, 2026-10-08): full width at its own proportions,
-   fading into the canvas over its lower third. Gradients do the rest. */
+   fading into the canvas over its last fifth, so its color runs on under the facts' glass.
+   Gradients do the rest. */
 .ds-cs-hero-bg img {
   display: block;
   width: 100%;
   height: auto;
   filter: saturate(1) brightness(0.9);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 66%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
 }
 .ds-cs-hero-bg::after {
   content: '';
@@ -2086,7 +2087,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   margin-left: -50vw;
   border-top: 1px solid rgb(255 255 255 / 0.16);
   /* Mostly blur, a light tint: the frost carries the legibility, not the black. */
-  background: linear-gradient(to bottom, rgb(10 11 13 / 0.28) 0%, rgb(10 11 13 / 0.14) 45%, rgb(10 11 13 / 0) 100%);
+  /* A lighter tint (owner, 2026-10-08; was 28% to 14%) so the photo's color comes through. */
+  background: linear-gradient(to bottom, rgb(10 11 13 / 0.1) 0%, rgb(10 11 13 / 0.05) 45%, rgb(10 11 13 / 0) 100%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);

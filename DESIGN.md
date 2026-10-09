@@ -485,8 +485,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
   glass-panels light `hero-panels.webp`, both kept, with the other options in
   `assets/generated/capability/`) shown whole (never cropped; full width at its own
-  proportions, fading into the canvas over its lower third; on phones the copy starts near
-  its foot), black from the left; below 900px a softer shade from the left keeps the lit fins
+  proportions, fading into the canvas over its last fifth so its color runs on under the
+  facts' glass; on phones the copy starts near its foot), black from the left; below 900px a softer shade from the left keeps the lit fins
   off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
   6.9:1 or better at every width. "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
@@ -494,8 +494,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
   it), and a mono spec line
   (company, NAICS, 1 page, PDF, 2.1 MB, 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
-  full-width hairline over a long band of frost (22px blur, a light 28%-to-0 tint, about
-  26rem past the row) that fades out downward (owner, 2026-10-05).
+  full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
+  2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
 - **Capabilities (second pass, 2026-10-05):** six cards titled exactly as in the PDF in the Services card language
   without photos (#0e1013 fill, white/8% edge, faint light from below, 4px corners): mono
   number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
