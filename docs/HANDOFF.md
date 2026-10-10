@@ -7,6 +7,11 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
 - **Repo:** `/Users/dustinapodaca/Code/git/AresClaude/ares-security/project/react`
   (origin `github.com/dustinapodaca/AresRefresh`). Open Claude Code **on this folder**, or
   the project skills (Impeccable, Emil) and the Playwright MCP won't load.
+- **Audit branch from 2026-10-10: `audit`** (owner): created from `test/marketing-gaps` at
+  46090c3. The copy-audit recommendations (Claude Doc "Ares Security Dev Site — Copy Audit &
+  Hero Options") are made here, one at a time as the owner asks, so the result can be
+  compared with `test/marketing-gaps`, which stays as the baseline. Commit audit work on
+  `audit` only.
 - **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
   use the test tree with the extra pages from now on"). It holds the redesign plus the
   marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,
