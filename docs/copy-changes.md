@@ -708,3 +708,7 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 | City pages: site types link to the Services cards | Link to the industry pages; Services route line "Six services, six industries, and how a post starts" |
 | Footer Contracting: GSA MAS, UEI, CAGE | Adds SBA WOSB, WBENC, Denver M/WBE and SBE, B2G vendor 21353671 |
 
+
+## Careers escort role renamed (2026-10-10, owner)
+
+"TS Cleared Security Escort" is now "Restricted-Area Escort". The line keeps "Requires an active TS clearance." (the owner kept it over the audit's "Must hold, or be able to obtain, a security clearance"). Services keeps the industry cards before the services, and the Denver plate stays (owner).

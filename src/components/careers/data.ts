@@ -29,7 +29,9 @@ export const ROLES: Role[] = [
     where: 'Colorado Springs · Denver · Pueblo',
   },
   {
-    title: 'TS Cleared Security Escort',
+    // Renamed from "TS Cleared Security Escort" (copy audit, owner 2026-10-10); the
+    // requirement line stays as the owner wrote it.
+    title: 'Restricted-Area Escort',
     line: 'Escort and access control inside restricted areas on military installations. Requires an active TS clearance.',
     where: 'Denver',
   },
