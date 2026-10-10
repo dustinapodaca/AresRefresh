@@ -181,8 +181,9 @@ export default function Divisions() {
                 {/* The industry's full page, in the card's heading area so it shows closed or open
                     (owner, 2026-10-10). */}
                 {d.page && (
-                  <Link to={d.page.to} className="ds-link ds-svc-more">
-                    See {d.page.label} security
+                  // Screen readers get the industry's name, since all six links read alike.
+                  <Link to={d.page.to} className="ds-link ds-svc-more" aria-label={`Open the full ${d.title} page`}>
+                    Open the full page
                     <Arrow size={14} />
                   </Link>
                 )}

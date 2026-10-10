@@ -658,3 +658,7 @@ New page copy (DRAFT, built from facts already on the site; owner to review): th
 Institutional & Community and Airport & Transportation pages, and the broadened Critical &
 High-Liability Sites page. "De-escalation-first" and AASC membership from the audit doc were
 left out until confirmed.
+
+## Services industry card link (2026-10-10, owner)
+
+"See [industry] security →" is now "Open the full page →", shown only on an open card; screen readers hear "Open the full [industry] page".
