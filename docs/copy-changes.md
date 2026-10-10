@@ -730,3 +730,10 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 - Contact meta: "We respond within one business day." removed (owner: leave the reply time out); Denver city meta "event coverage" is now "access control".
 - Relief and surge coverage: "How fast can you fill a shift?" / "It depends on the post, the hours, and what the site requires, but usually within a week."
 - About: "Why Ares exists." founder block built as a template (the audit's draft about Deidre Herrera-Ruiz), hidden until Deidre approves it; preview at /about?founder=preview. No veteran count (owner).
+
+## Round 1: service page template and industry card summaries (2026-10-10)
+
+- Every service page: the spec sheet is three rows (the service's own row, Training, Order through GSA), with "Licensed and bonded in Colorado Springs, Denver, and Pueblo. On-call relief in every contract." under it; a new "How it works at your site." section (80 to 120 words written only for that service, from facts already on the site; Deidre to confirm); five questions each, one about location.
+- Leads (audit): Armed "Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts."; Unarmed "A visible, trained presence for lobbies, perimeters, and public areas, in uniform or plainclothes."; Access control "Officers who decide who and what gets in, with a log you can audit."; Mobile patrol "Marked vehicles on set routes, alarm response, and a time-stamped report for every property."
+- Removed questions: "Are your armed officers licensed?" (folded into the location question), "Do you staff posts around the clock?", "How soon can you start?", "Can your officers escort contractors and visitors?" (the escort page answers it), and the shared relief question (now the note under the sheet).
+- Services industry cards: two-sentence summaries and three or four site types each (State agencies, Malls, Grocery, and Museums dropped; Military construction and Offices and portfolios added).

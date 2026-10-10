@@ -20,6 +20,9 @@ export type RolePageData = {
   lead: string;
   /** The first spec-sheet row, specific to the role. */
   sheet: SheetRow;
+  /** "How it works at your site." (copy audit service template, 2026-10-10): 80 to 120
+   *  words written only for this service, from facts already on the site. */
+  how: string;
   /** The ask before the questions. */
   ask: string;
   /** Industry slugs this role is most asked for. */
@@ -34,21 +37,19 @@ const GSA_ROW: SheetRow = {
   external: true,
 };
 
-/** The rows every role shares, after its own. */
+/** The rows every role shares, after its own (copy audit, 2026-10-10: three rows; the rows
+ *  identical on every page moved to SHEET_NOTE). */
 export const SHARED_SHEET: SheetRow[] = [
-  { label: 'Licensed and bonded', value: 'Colorado Springs, Denver, and Pueblo', href: '/locations/colorado-springs' },
   { label: 'Training', value: 'On the post, by a member of leadership who has worked it' },
-  { label: 'Coverage', value: 'Any shift pattern, with on-call relief in every contract' },
   GSA_ROW,
 ];
+
+/** One shared line under the sheet. */
+export const SHEET_NOTE = 'Licensed and bonded in Colorado Springs, Denver, and Pueblo. On-call relief in every contract.';
 
 const GSA_FAQ: Faq = {
   q: 'Can federal agencies order this through GSA?',
   a: 'Yes. Ares holds GSA Multiple Award Schedule contract 47QSMS25D009Q under SIN 561612, so agencies can order at pre-negotiated ceiling prices using the streamlined FAR 8.4 procedures, usually a request for quotes to schedule holders on GSA eBuy, instead of a new open-market solicitation.',
-};
-const RELIEF_FAQ: Faq = {
-  q: 'What happens if an officer cannot make a shift?',
-  a: 'On-call coverage is written into every contract, so a call-out is covered from our roster instead of leaving the post empty. We have missed fewer than 1% of shifts since 2021.',
 };
 
 export const ROLE_PAGES: RolePageData[] = [
@@ -57,8 +58,9 @@ export const ROLE_PAGES: RolePageData[] = [
     capabilityId: 'armed',
     name: 'Armed security officers',
     title: 'Armed security officers.',
-    lead: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts across Colorado, from a company licensed and bonded for armed security in Colorado Springs, Denver, and Pueblo.',
+    lead: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts.',
     sheet: { label: 'Firearms', value: 'Qualified by our NRA-certified instructor, a veteran' },
+    how: 'An armed post starts with the reason it needs to be armed: cash on site, regulated goods, an isolated night post, or a contract requirement. We write the post orders around that reason, including who the officer calls first and when the post is armed. Our veteran NRA-certified firearms instructor qualifies each officer, and qualifications are current at the time of post. A member of our leadership who has worked the post then trains each officer on your site before the first shift, and on-call relief is written into the contract, so the post is never left empty.',
     ask: 'Tell us the site, the hours, and why the post needs to be armed.',
     industries: ['government-military', 'commercial-property', 'critical-infrastructure'],
     faq: [
@@ -71,15 +73,14 @@ export const ROLE_PAGES: RolePageData[] = [
         a: 'When the risk, the assets on site, or a contract or insurance requirement calls for it: cash handling, regulated materials, high-liability sites, and some federal posts. If you are not sure, we walk the site before anything is signed and recommend what the post actually needs.',
       },
       {
-        q: 'Are your armed officers licensed?',
-        a: 'Yes. Ares is licensed and bonded for armed security in Colorado Springs, Denver, and Pueblo, and firearms qualifications are current at time of post.',
+        q: 'Do you provide armed officers in Denver and Pueblo?',
+        a: 'Yes. Ares is licensed and bonded for armed security in Colorado Springs, Denver, and Pueblo, and is an approved armed training provider in each. Colorado has no statewide license, so each city licenses security companies itself; the license numbers are on each city\u2019s page.',
       },
       {
         q: 'Who trains them?',
         a: 'Firearms training comes from our NRA-certified firearms instructor, a veteran. Every officer is also trained on the post itself, before the first shift, by a member of our leadership who has worked it.',
       },
       GSA_FAQ,
-      RELIEF_FAQ,
     ],
   },
   {
@@ -87,8 +88,9 @@ export const ROLE_PAGES: RolePageData[] = [
     capabilityId: 'unarmed',
     name: 'Unarmed security officers',
     title: 'Unarmed security officers.',
-    lead: 'Uniformed and plainclothes officers for lobbies, perimeters, and public areas: a visible, trained presence that screens, directs, patrols, and reports.',
+    lead: 'A visible, trained presence for lobbies, perimeters, and public areas, in uniform or plainclothes.',
     sheet: { label: 'Uniform', value: 'Uniformed or plainclothes, as the site calls for' },
+    how: 'An unarmed post is built around what the site needs from the person standing it: a front desk that screens and directs visitors, rounds on a set schedule, or a discreet presence on a sales floor. We walk the site first and write the post orders for it. Each officer is trained on the post by a member of our leadership before the first shift, logs every checkpoint, and writes up anything out of the ordinary. Uniformed or plainclothes is your call, and on-call relief keeps the post covered when an officer cannot make a shift.',
     ask: 'Tell us the site, the hours, and how many officers you need on post.',
     industries: ['commercial-property', 'construction-industrial', 'government-military'],
     faq: [
@@ -105,12 +107,8 @@ export const ROLE_PAGES: RolePageData[] = [
         a: 'Either. Uniformed officers are a visible deterrent. Plainclothes officers suit sites where a uniform would change how the space feels, such as retail loss prevention.',
       },
       {
-        q: 'Do you staff posts around the clock?',
-        a: 'Yes, with on-call relief in every contract so a call-out never leaves the post empty.',
-      },
-      {
-        q: 'How soon can you start?',
-        a: 'It depends on the site and how many officers it needs. We start with a walk of your site and written post orders. Tell us your date in the quote request and we will tell you plainly whether we can meet it.',
+        q: 'Do you provide unarmed officers in Colorado Springs, Denver, and Pueblo?',
+        a: 'Yes. Ares is based in Colorado Springs and licensed and bonded for unarmed and armed security in Colorado Springs, Denver, and Pueblo, with officers trained on each post before the first shift. Sites elsewhere on the Front Range can ask; we will tell you plainly whether we can staff them.',
       },
       GSA_FAQ,
     ],
@@ -120,8 +118,9 @@ export const ROLE_PAGES: RolePageData[] = [
     capabilityId: 'access',
     name: 'Access control officers',
     title: 'Access control officers.',
-    lead: 'Officers who decide who and what gets in: credential checks, visitor screening, and gate, dock, and lobby control, with a log you can audit.',
+    lead: 'Officers who decide who and what gets in, with a log you can audit.',
     sheet: { label: 'Logs', value: 'Visitor and checkpoint logs you can audit' },
+    how: 'Access control starts with your access list and the rules behind it: who may enter, when, through which door or gate, and who signs for visitors and deliveries. We write those rules into the post orders, then train each officer on your entry points and your site\u2019s own systems, such as card readers, visitor software, and intercoms, before the first shift. Every person, vehicle, and delivery is checked before entry, and every check is logged, so you can audit who came and went. Badges stay yours to issue; our officers enforce them.',
     ask: 'Tell us the entry points, the hours, and who is allowed in.',
     industries: ['critical-infrastructure', 'government-military', 'construction-industrial'],
     faq: [
@@ -134,8 +133,8 @@ export const ROLE_PAGES: RolePageData[] = [
         a: 'No. Our officers check the credentials your site issues and enforce your access rules. Issuing badges stays with you.',
       },
       {
-        q: 'Can your officers escort contractors and visitors?',
-        a: 'Yes. We provide escort and monitoring inside restricted and controlled areas, and we have hands-on experience running access control for restricted areas on military installations, alongside base security forces.',
+        q: 'Where in Colorado do you staff access control?',
+        a: 'In Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded for armed and unarmed security. That includes gates and docks at data centers, utilities, and construction sites, and restricted areas on military installations, where we work alongside base security forces.',
       },
       {
         q: 'Will officers use our access system?',
@@ -149,8 +148,9 @@ export const ROLE_PAGES: RolePageData[] = [
     capabilityId: 'vehicle',
     name: 'Mobile patrol',
     title: 'Mobile patrol.',
-    lead: 'Marked Ares vehicles on a set route: after-hours checks, alarm response, and one patrol across several properties, with a time-stamped report for each.',
+    lead: 'Marked vehicles on set routes, alarm response, and a time-stamped report for every property.',
     sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
+    how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property. When an alarm trips, an officer goes to the site, checks it, and reports what was found.',
     ask: 'Tell us the properties, when you want them checked, and what to check.',
     industries: ['commercial-property', 'construction-industrial'],
     faq: [
@@ -170,7 +170,10 @@ export const ROLE_PAGES: RolePageData[] = [
         q: 'Can one patrol cover several properties?',
         a: 'Yes. One route can cover a portfolio, with a separate report for each property.',
       },
-      RELIEF_FAQ,
+      {
+        q: 'Where do your patrols run?',
+        a: 'Across Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
+      },
     ],
   },
   {
@@ -182,6 +185,7 @@ export const ROLE_PAGES: RolePageData[] = [
     title: 'Relief and surge coverage.',
     lead: 'Trained officers when your roster runs short: relief shifts, overflow posts, and surge staffing for inspections, outages, construction phases, and contract transitions.',
     sheet: { label: 'Who it is for', value: 'Site owners, prime contractors, and other security companies' },
+    how: 'Relief works best when it is lined up before you need it. Tell us the posts, the post orders, and the dates that are hard to cover, and we find officers who can stand them. Each one is trained on the post by a member of our leadership before the first shift, so a relief officer arrives knowing the entry points and the rules. For surge work, such as an inspection, an outage, a construction phase, or a contract transition, we staff to your dates and step back when the work is done.',
     ask: 'Send us the site, the posts, and the dates you need covered. We will tell you plainly who we can staff and when.',
     industries: ['construction-industrial', 'critical-infrastructure', 'government-military'],
     faq: [
@@ -203,10 +207,10 @@ export const ROLE_PAGES: RolePageData[] = [
         a: 'Yes. A member of our leadership trains each officer on the post before the first shift, relief and surge officers included.',
       },
       {
-        q: 'What kinds of surge do you cover?',
-        a: 'Inspections, outages and storm events, construction phases, contract transitions, and dates that outgrow your normal staffing.',
+        q: 'Where in Colorado can you cover shifts?',
+        a: 'Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded for armed and unarmed security. Guard companies and primes elsewhere on the Front Range can ask; we will tell you plainly which posts and dates we can staff.',
       },
-      GSA_FAQ,
+
     ],
   },
   {
@@ -218,6 +222,7 @@ export const ROLE_PAGES: RolePageData[] = [
     title: 'Restricted-area escort.',
     lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
     sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
+    how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief roster keeps every escort post staffed.',
     ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
     industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
     faq: [
@@ -233,7 +238,10 @@ export const ROLE_PAGES: RolePageData[] = [
         q: 'Can you escort construction crews and deliveries?',
         a: 'Yes. Escorting trades and deliveries on an active build is the core of our restricted-area work, and coverage changes as the build does.',
       },
-      RELIEF_FAQ,
+      {
+        q: 'Where do you provide restricted-area escorts?',
+        a: 'Along Colorado’s Front Range: the Denver metro area, Colorado Springs, and Pueblo, where Ares is licensed and bonded. Our escort experience is on a Space Force base in Colorado, as a subcontractor on a federal construction program, alongside installation security.',
+      },
       GSA_FAQ,
     ],
   },

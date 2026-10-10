@@ -3392,11 +3392,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @media (min-width: 1024px) {
   .ds-mk-open { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding-top: calc(var(--ds-header) + var(--ds-beat)); }
   .ds-mk-open-copy { grid-column: 1 / span 7; }
-  .ds-mk-open .ds-mk-sheet { grid-column: 9 / span 4; }
+  .ds-mk-open .ds-mk-sheet, .ds-mk-open .ds-mk-sheet-wrap { grid-column: 9 / span 4; }
 }
 
 /* The spec sheet: label over value on hairline rows; routes are quiet links. */
 .ds-mk-sheet { margin: 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-mk-sheet-note { margin: 14px 0 0; font-size: 13px; line-height: 1.5; color: var(--ds-fg-faint); }
 .ds-mk-sheet > div { display: grid; gap: 4px; padding: 14px 0 15px; border-bottom: 1px solid var(--ds-rule); }
 .ds-mk-sheet dt { font-size: 13px; color: var(--ds-fg-faint); }
 .ds-mk-sheet dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }

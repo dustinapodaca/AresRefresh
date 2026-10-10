@@ -43,7 +43,6 @@ export const DIVISIONS: Division[] = [
       { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
       { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
       { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
-      { name: 'State agencies', detail: 'The same staffing, training, and on-call standard as our federal posts.' },
       { name: 'Restricted areas', detail: 'Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces.' },
     ],
     photo: {
@@ -70,11 +69,13 @@ export const DIVISIONS: Division[] = [
     id: 'industrial',
     n: '03',
     title: 'Construction, Industrial & Logistics',
-    body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
+    // Two sentences and three or four site types per card (copy audit card summaries, 2026-10-10).
+    body: 'Gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses, with checkpoint logs you can audit. Coverage changes as a build moves from phase to phase, including escorts on military construction.',
     covers: [
       { name: 'Industrial sites', detail: 'Posted guards around the clock, with checkpoint logs you can audit.' },
       { name: 'Warehouses', detail: 'Mobile patrols and perimeter security for buildings and yards.' },
       { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
+      { name: 'Military construction', detail: 'Escort and gate control for crews and deliveries on a restricted build.' },
     ],
     photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
     page: { to: '/industries/construction-industrial', label: 'construction, industrial, and logistics' },
@@ -85,7 +86,7 @@ export const DIVISIONS: Division[] = [
     title: 'Airport & Transportation',
     // Ready to staff, as the industry page says (copy audit, 2026-10-10: "around the clock"
     // and "staffed on every shift" read as current posts).
-    body: 'Officers we are ready to staff for perimeters, passenger areas, baggage, and cargo operations, uniformed or plainclothes.',
+    body: 'Officers we are ready to staff for perimeters, passenger areas, baggage, and cargo operations, uniformed or plainclothes. The same documented access control we run in restricted areas applies to cargo and other controlled zones.',
     covers: [
       { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage, on the shifts the site needs.' },
       { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
@@ -98,13 +99,12 @@ export const DIVISIONS: Division[] = [
     id: 'commercial',
     n: '05',
     title: 'Commercial & Retail',
-    body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
+    body: 'Visible deterrence and loss prevention for offices, retail, banks, and hotels, scaled to foot traffic. Patrol can cover a whole portfolio, with one report per property.',
     covers: [
       { name: 'Retail', detail: 'Visible deterrence and loss prevention on the sales floor.' },
       { name: 'Banks', detail: 'Officers for cash-handling and high-liability settings.' },
       { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
-      { name: 'Malls', detail: 'Coverage that scales with foot traffic across shared spaces.' },
-      { name: 'Grocery', detail: 'Loss prevention that protects revenue and the customer experience.' },
+      { name: 'Offices and portfolios', detail: 'Lobby officers, and patrol across several properties with a report for each.' },
     ],
     photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
     page: { to: '/industries/commercial-property', label: 'commercial and retail' },
@@ -113,11 +113,10 @@ export const DIVISIONS: Division[] = [
     id: 'community',
     n: '06',
     title: 'Institutional & Community',
-    body: 'Trust-based security for sensitive and community settings, where a calm presence matters most.',
+    body: 'A calm, trained presence for hospitals, schools, campuses, and residential communities. Consistent officers people get to know, trained on each building\u2019s entry points and daily rhythm.',
     covers: [
       { name: 'Hospitals', detail: 'A calm presence at entrances and in public areas.' },
       { name: 'Schools', detail: 'Officers trained on the campus, its entry points, and its daily rhythm.' },
-      { name: 'Museums', detail: 'Officers for galleries and public areas, briefed on the building and its entry points.' },
       { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
       { name: 'Residential & retirement', detail: 'Consistent officers residents can get to know.' },
     ],

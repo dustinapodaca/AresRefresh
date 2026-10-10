@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
-import { ROLE_PAGES, SHARED_SHEET, capabilityFor, roleBySlug } from '../components/market/roles';
+import { ROLE_PAGES, SHARED_SHEET, SHEET_NOTE, capabilityFor, roleBySlug } from '../components/market/roles';
 import { industryBySlug } from '../components/market/industries';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 
@@ -35,10 +35,19 @@ export default function RolePage() {
             </a>
           </div>
         </div>
-        <Sheet rows={[role.sheet, ...SHARED_SHEET]} label={`${role.name} at a glance`} />
+        <div className="ds-mk-sheet-wrap">
+          <Sheet rows={[role.sheet, ...SHARED_SHEET]} label={`${role.name} at a glance`} />
+          <p className="ds-mk-sheet-note">{SHEET_NOTE}</p>
+        </div>
       </section>
 
       <div className="ds-container">
+        {/* Written only for this service (copy audit service template, 2026-10-10). */}
+        <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-how">
+          <h2 id="mk-how" className="ds-display-lg">How it works at your site.</h2>
+          <div className="ds-mk-prose"><p>{role.how}</p></div>
+        </section>
+
         <section className="ds-mk-sec" aria-labelledby="mk-covers">
           <h2 id="mk-covers" className="ds-display-lg">What the post covers.</h2>
           <ol className="ds-mk-duties">
