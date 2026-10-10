@@ -212,9 +212,9 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'commercial-property',
     name: 'Commercial & Retail',
-    short: 'Offices, retail, banks, hotels, and healthcare and campus sites.',
+    short: 'Offices, retail, banks, hotels, and property portfolios.',
     title: 'Security for commercial property and retail.',
-    lead: 'Officers for offices, retail, banks, hotels, and healthcare and campus sites: a visible, courteous presence that deters, screens, and helps.',
+    lead: 'Officers for offices, retail, banks, hotels, and property portfolios: a visible, courteous presence that deters, screens, and helps.',
     image: { src: '/images/market/commercial-property.webp', alt: '' },
     stake: [
       'In a lobby, on a sales floor, or at a hospital entrance, the officer is the first person many visitors meet. They have to deter trouble without making the space feel guarded.',

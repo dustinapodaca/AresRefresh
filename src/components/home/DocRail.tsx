@@ -18,10 +18,11 @@ export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter' | 'list';
 // Home uses these; other pages pass their own.
 export const MARKS: readonly Mark[] = [
   { id: 'record', n: '01', label: 'Record' },
-  { id: 'quality', n: '02', label: 'Quality' },
-  { id: 'coverage', n: '03', label: 'Coverage' },
-  { id: 'careers', n: '04', label: 'Careers' },
-  { id: 'contact', n: '05', label: 'Contact' },
+  { id: 'industries', n: '02', label: 'Industries' },
+  { id: 'quality', n: '03', label: 'Quality' },
+  { id: 'coverage', n: '04', label: 'Coverage' },
+  { id: 'careers', n: '05', label: 'Careers' },
+  { id: 'contact', n: '06', label: 'Contact' },
 ];
 
 // Progress through the current section is kept in 40 steps, so the forms that show it

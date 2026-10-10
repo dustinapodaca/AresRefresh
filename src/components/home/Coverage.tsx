@@ -9,17 +9,6 @@ const CITIES = [
   { to: '/locations/pueblo', name: 'Pueblo', note: 'Service area' },
 ];
 
-// The six industries, one name each (owner, 2026-10-10; same names as Services and the
-// industry pages).
-const DIVISIONS = [
-  'Government & Military',
-  'Critical & High-Liability Sites',
-  'Construction, Industrial & Logistics',
-  'Airport & Transportation',
-  'Commercial & Retail',
-  'Institutional & Community',
-];
-
 export default function Coverage() {
   return (
     <section id="coverage" className="ds-coverage" aria-labelledby="coverage-title">
@@ -45,21 +34,6 @@ export default function Coverage() {
           </li>
         ))}
       </ul>
-
-      <div className="ds-divisions">
-        <h3 className="ds-title">Six industries</h3>
-        <div>
-          <ul>
-            {DIVISIONS.map((d) => (
-              <li key={d}>{d}</li>
-            ))}
-          </ul>
-          <Link to="/services" className="ds-link">
-            See all services
-            <Arrow />
-          </Link>
-        </div>
-      </div>
 
       <p className="ds-lead ds-handoff">
         Every one of those posts is staffed by officers we trained on site.

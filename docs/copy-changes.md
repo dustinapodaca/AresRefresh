@@ -686,3 +686,10 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 | (none) | Armed and unarmed pages: "What do officers do if something happens on site?" |
 | Government "What we deliver" | Adds restricted-area escort first |
 
+## Audit step 4: Home hero options and 02 Industries (2026-10-10, options pending)
+
+- Hero A (default): "Security for sites where every entry counts." / "Restricted-area escorts, access control, and armed and unarmed officers along Colorado's Front Range, for military construction and critical infrastructure as well as offices, retail, and campuses." B and C at `/?hero=b|c`.
+- Proof row: Restricted-area escort on a Space Force base · GSA MAS 47QSMS25D009Q · Minority woman-owned (WOSB, WBENC) · Licensed in Colorado Springs, Denver, Pueblo.
+- New section "The sites we protect." / "Six industries, from restricted areas on military construction to offices and campuses. Each has its own page: what the post covers and what to send us." Then "For prime contractors." / "Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on Front Range work." → Teaming and subcontracting.
+- Commercial & Retail: "Offices, retail, banks, hotels, and healthcare and campus sites" is now "Offices, retail, banks, hotels, and property portfolios" (card line and page lead); the meta description drops healthcare.
+
