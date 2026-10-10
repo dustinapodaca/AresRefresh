@@ -2,6 +2,9 @@
 // favicon-v2-48/192/512.png and the ICO (16, 32, 48, 64) keep the rounded black square with
 // transparent corners; apple-touch-icon-v2.png (180) is a full black square, since iOS rounds
 // it itself. Run after changing the SVG: node assets/tools/make-icons.mjs
+// The mark is placed up and left of the box's center on purpose (owner, 2026-10-09): it is
+// set to sit inside the circle that launchers and some browsers crop icons to. Keep the SVG's
+// translate(82.19 75.00).
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 
