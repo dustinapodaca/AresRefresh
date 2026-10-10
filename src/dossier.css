@@ -2809,14 +2809,37 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-cr-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(10 11 13 / 0.8) 0%, rgb(10 11 13 / 0.3) 38%, rgb(10 11 13 / 0) 60%); }
 .ds-cr-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
 .ds-cr-open-copy { position: relative; margin-top: -4.5rem; }
+/* Phones and tablets (owner, 2026-10-09): the same tall frame as the Capability Statement
+   hero, the copy starting low in it; the photo fades out under the copy. */
+@media (max-width: 899px) {
+  .ds-cr-hero {
+    position: absolute;
+    inset: 0 0 auto;
+    height: clamp(27rem, 66svh, 38rem);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  }
+  .ds-cr-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
+  .ds-cr-open-copy .ds-lead { color: #c4c8ce; }
+  /* A deeper shade where the copy sits, over the spires' lit tips. */
+  .ds-cr-hero::after { background: linear-gradient(to bottom, rgb(10 11 13 / 0.8) 0%, rgb(10 11 13 / 0.3) 28%, rgb(10 11 13 / 0.35) 40%, rgb(10 11 13 / 0.78) 54%, rgb(10 11 13 / 0.88) 100%); }
+}
 .ds-cr-open-copy .ds-lead { margin-top: 20px; }
 .ds-cr-open-copy .ds-actions { margin-top: 28px; }
+/* The rating and the careers email on one line with a rule between, like the logo
+   lockup's (owner, 2026-10-09); stacked on phones. */
+.ds-cr-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 28px; }
+.ds-cr-proof-rule { width: 1px; height: 22px; background: rgb(238 240 242 / 0.5); }
+.ds-cr-proof-email { font-size: 15px; }
+@media (max-width: 639px) {
+  .ds-cr-proof { flex-direction: column; align-items: flex-start; }
+  .ds-cr-proof-rule { display: none; }
+}
 .ds-cr-rating {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 4px 10px;
-  margin-top: 28px;
   font-size: 14px;
   color: var(--ds-fg-muted);
   transition: color 180ms var(--ds-ease);
@@ -2955,7 +2978,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 @media (max-width: 1023px) {
   .ds-cr-apply .ds-link,
-  .ds-cr-open-copy .ds-actions .ds-link { padding-block: 12px; margin-block: -12px; }
+  .ds-cr-proof-email { padding-block: 12px; margin-block: -12px; }
 }
 @media (min-width: 1024px) {
   .ds-cr-apply-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }

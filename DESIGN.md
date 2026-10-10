@@ -566,9 +566,12 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   2026-10-09; desktop framed at 50% 40%; the client may pick another of the eight in
   `assets/careers-hero-options/`; was the Colorado Springs skyline, then Denver from the
   foothills;
-  `careers-hero.jpg` key, captioned; the route's SEO preload) as a band, "Join the team." and the lead low on it, the primary "See open roles"
-  and the careers email, then the Indeed rating as a small linked proof ("4.8 / 5 Rated by
-  our employees on Indeed").
+  `careers-hero.jpg` key, captioned; the route's SEO preload) as a band, "Join the team." and the lead low on it, then the Indeed rating as a small
+  linked proof ("4.8 / 5 Rated by our employees on Indeed"), a 1px rule like the logo
+  lockup's, and the careers email beside it; stacked on phones (owner, 2026-10-09: the
+  "See open roles" button was dropped, the roles sit right below). Phones and tablets get
+  the Capability Statement's tall frame (clamp(27rem, 66svh, 38rem), copy low in it, a
+  deeper shade behind the copy; headline 9:1, lead 10:1).
 - **01 Roles:** a quiet table on hairlines (Runway and Linear on Mobbin): role and line,
   location, and an Apply route that opens an email with the role in the
   subject. Column heads in mono on desktop (visually hidden but announced below 1024px);

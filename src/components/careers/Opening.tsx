@@ -25,20 +25,20 @@ export default function Opening() {
           We hire armed and unarmed officers, with paid training and schedules you can plan a
           life around.
         </p>
-        <div className="ds-actions">
-          <a href="#roles" className="ds-btn ds-btn-primary">
-            See open roles
-            <Arrow />
+        {/* The roles table sits right under the hero, so no button to it (owner, 2026-10-09):
+            the employees' Indeed rating, a rule like the logo lockup's, then the careers
+            email; stacked on phones. */}
+        <div className="ds-cr-proof">
+          <a href={INDEED_REVIEWS} target="_blank" rel="noopener noreferrer" className="ds-cr-rating">
+            <span className="ds-data">4.8 / 5</span>
+            <span>Rated by our employees on Indeed</span>
+            <Arrow external size={12} />
           </a>
-          <a href={applyHref()} className="ds-link ds-data">
+          <span className="ds-cr-proof-rule" aria-hidden="true" />
+          <a href={applyHref()} className="ds-link ds-data ds-cr-proof-email">
             {CAREERS_EMAIL}
           </a>
         </div>
-        <a href={INDEED_REVIEWS} target="_blank" rel="noopener noreferrer" className="ds-cr-rating">
-          <span className="ds-data">4.8 / 5</span>
-          <span>Rated by our employees on Indeed</span>
-          <Arrow external size={12} />
-        </a>
       </div>
     </section>
   );
