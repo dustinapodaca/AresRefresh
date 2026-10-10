@@ -31,7 +31,7 @@ const PARTNERS = [
 const ROLES = [
   { name: 'Restricted-area escorts', line: 'Crews, visitors, and deliveries escorted and logged inside controlled areas.', to: '/services/restricted-area-escort' },
   { name: 'Access control officers', line: 'Credentials, visitors, vehicles, and deliveries checked at every entry.', to: '/services/access-control' },
-  { name: 'Relief, overflow, and surge coverage', line: 'Officers for the shifts and spikes your own roster cannot cover.', to: '/contact?service=teaming' },
+  { name: 'Relief, overflow, and surge coverage', line: 'Officers for the shifts and spikes your own roster cannot cover.', to: '/services/relief-surge-coverage' },
 ];
 
 const GETS: SheetRow[] = [

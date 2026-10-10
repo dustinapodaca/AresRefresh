@@ -712,3 +712,14 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 ## Careers escort role renamed (2026-10-10, owner)
 
 "TS Cleared Security Escort" is now "Restricted-Area Escort". The line keeps "Requires an active TS clearance." (the owner kept it over the audit's "Must hold, or be able to obtain, a security clearance"). Services keeps the industry cards before the services, and the Denver plate stays (owner).
+
+## Relief and surge coverage replaces Event security (2026-10-10, audit doc rev 84)
+
+| Was | Now |
+|---|---|
+| /services/event-security, "Event security." | /services/relief-surge-coverage, "Relief and surge coverage." / "Trained officers when your roster runs short: relief shifts, overflow posts, and surge staffing for inspections, outages, construction phases, and contract transitions." (301 from the old URL) |
+| Capability card "Event Security" | "Relief & Surge Coverage": relief shifts, overflow posts, surge staffing, subcontract coverage |
+| Quote form "Event security" | "Relief and surge coverage" |
+| Commercial & Retail: "Do you staff events at our property?" | "Can you cover extra posts during a busy season or a renovation?" |
+| Footer badges: GSA, SBA, Women Owned, WBENC | Adds Denver Economic Development & Opportunity |
+

@@ -131,6 +131,8 @@ export default function Footer() {
           <li><img {...responsive('/images/cert-sba-footer.png')} alt="U.S. Small Business Administration" loading="lazy" /></li>
           <li><img {...responsive('/images/cert-women-owned.png')} alt="Women Owned" loading="lazy" /></li>
           <li><img {...responsive('/images/cert-wbenc.png')} alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
+          {/* Denver M/WBE and SBE, approved Sept 25, 2026 (copy audit round 2). */}
+          <li><img {...responsive('/images/cert-denver-edo.webp')} alt="Denver Economic Development & Opportunity, M/WBE and SBE certified" loading="lazy" /></li>
         </ul>
       </div>
 

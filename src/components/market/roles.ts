@@ -1,6 +1,7 @@
 // Role pages (/services/<slug>): one page per service, named as buyers search for it
 // (docs/market-concepts.md, 2026-10-08). The six services are the capability statement's
-// six (Restricted-area escort replaced Emergency response, 2026-10-10), and each page's
+// six (Restricted-area escort replaced Emergency response, and Relief and surge coverage
+// replaced Event security, 2026-10-10), and each page's
 // duties reuse its approved lines (src/components/capability/data.ts).
 // FAQs state only what the site already says. No clearance, badging, or response-time
 // claims.
@@ -173,31 +174,34 @@ export const ROLE_PAGES: RolePageData[] = [
     ],
   },
   {
-    slug: 'event-security',
-    capabilityId: 'event',
-    name: 'Event security',
-    title: 'Event security.',
-    lead: 'Officers for public and private events: crowd management, entry screening, and one coverage plan shared with your staff and the venue.',
-    sheet: { label: 'Plan', value: 'One written plan, shared with your staff and venue' },
-    ask: 'Tell us the date, the venue, and how many people you expect.',
-    industries: ['commercial-property', 'government-military'],
+    // Replaced Event security (copy audit round 2, owner 2026-10-10). No fill time is
+    // stated until the owner confirms one Ares can stand behind.
+    slug: 'relief-surge-coverage',
+    capabilityId: 'relief',
+    name: 'Relief and surge coverage',
+    title: 'Relief and surge coverage.',
+    lead: 'Trained officers when your roster runs short: relief shifts, overflow posts, and surge staffing for inspections, outages, construction phases, and contract transitions.',
+    sheet: { label: 'Who it is for', value: 'Site owners, prime contractors, and other security companies' },
+    ask: 'Send us the site, the posts, and the dates you need covered. We will tell you plainly who we can staff and when.',
+    industries: ['construction-industrial', 'critical-infrastructure', 'government-military'],
     faq: [
       {
-        q: 'How far ahead should we book?',
-        a: 'As early as you can. Tell us the date, the expected attendance, and the venue, and we will tell you plainly what we can staff.',
+        q: 'Can your officers work under our post orders?',
+        a: 'Yes. Officers work to your post orders and are trained on the post before their first shift. Uniforms are agreed with you up front.',
       },
       {
-        q: 'What does the coverage plan include?',
-        a: 'Where officers stand, how entry screening works, who they report to on your team, and what happens if something goes wrong. We write it with your staff and the venue.',
+        q: 'Does this count toward our small-business goals?',
+        a: 'It can. Ares is an SBA-certified woman-owned small business (WOSB250470) and a WBENC-certified Women\u2019s Business Enterprise (WBE2303571), so subcontracted work can count toward small-business and supplier-diversity goals.',
       },
       {
-        q: 'Armed or unarmed?',
-        a: 'Either, depending on the event and what the venue requires.',
+        q: 'Do officers train on the site first?',
+        a: 'Yes. A member of our leadership trains each officer on the post before the first shift, relief and surge officers included.',
       },
       {
-        q: 'Do you cover one-day events?',
-        a: 'Yes, along with recurring events and surge coverage for dates that outgrow your normal staffing.',
+        q: 'What kinds of surge do you cover?',
+        a: 'Inspections, outages and storm events, construction phases, contract transitions, and dates that outgrow your normal staffing.',
       },
+      GSA_FAQ,
     ],
   },
   {

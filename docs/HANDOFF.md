@@ -42,6 +42,14 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     industry cards before the services and the Denver plate (2026-10-10), against the audit.
     The Careers escort role is now "Restricted-Area Escort", still "Requires an active TS
     clearance." (owner).
+    Doc update (rev 84, 2026-10-10): `/services/relief-surge-coverage` replaced Event
+    security (role page, the sixth capability card, quote form, Teaming's roles, llms.txt,
+    the skill; 301 from /services/event-security). Commercial & Retail's events question is
+    now "Can you cover extra posts during a busy season or a renovation?". No fill time is
+    stated: the owner has to confirm one Ares can stand behind. The Denver EDO mark joined
+    the footer badge row. The doc's newer clearance line ("must hold, or be able to obtain")
+    is NOT applied: the owner kept "Requires an active TS clearance." (2026-10-10). The quote
+    form still offers the site type "Event or venue" and the schedule "One-time or event".
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the

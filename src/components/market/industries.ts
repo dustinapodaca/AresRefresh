@@ -247,8 +247,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         a: 'Yes, with posted officers, a patrol route across the portfolio, or both, and a report for each property.',
       },
       {
-        q: 'Do you staff events at our property?',
-        a: 'Yes. We provide event security with crowd management, entry screening, and one plan shared with your staff.',
+        q: 'Can you cover extra posts during a busy season or a renovation?',
+        a: 'Yes. Our relief roster staffs extra posts for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first.',
       },
     ],
   },

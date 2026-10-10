@@ -87,15 +87,17 @@ export const CAPABILITIES: Capability[] = [
     ],
   },
   {
-    id: 'event',
-    title: 'Event Security',
-    line: 'Crowd management, entry screening, and coordinated coverage for public and private events.',
-    keys: ['Crowds', 'Entry screening', 'Events'],
+    // Replaced Event Security (copy audit round 2, owner 2026-10-10): the relief and
+    // subcontract coverage every outreach email already sells.
+    id: 'relief',
+    title: 'Relief & Surge Coverage',
+    line: 'Trained officers when a roster runs short: relief shifts, overflow posts, and surge staffing.',
+    keys: ['Relief', 'Overflow', 'Surge'],
     includes: [
-      { name: 'Crowd management', detail: 'Officers placed to keep lines, entrances, and crowds moving safely.' },
-      { name: 'Entry screening', detail: 'Ticket, ID, and bag checks at every entrance.' },
-      { name: 'Coordinated coverage', detail: 'A single plan shared with your event staff and venue.' },
-      { name: 'Public and private events', detail: 'From community gatherings to private functions.' },
+      { name: 'Relief shifts', detail: 'Call-outs, vacations, and training days covered from our roster.' },
+      { name: 'Overflow posts', detail: 'Officers for the entrances, phases, or hours a site adds.' },
+      { name: 'Surge staffing', detail: 'Inspections, outages and storm events, construction phases, and contract transitions.' },
+      { name: 'Subcontract coverage', detail: 'Officers under your post orders, from a woman-owned small business.' },
     ],
   },
   {

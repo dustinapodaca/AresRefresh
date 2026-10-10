@@ -15,7 +15,7 @@
     },
     "/services": {
       "title": "Security Services: Colorado Springs, Denver, Pueblo | Ares",
-      "description": "Armed and unarmed officers, restricted-area escort, access control, patrol, and event security for federal, commercial, and industrial sites in Colorado.",
+      "description": "Armed and unarmed officers, restricted-area escort, access control, patrol, and relief coverage for federal, commercial, and industrial sites in Colorado.",
       "preloadImage": "/images/services-hero/denver-sunset.webp"
     },
     "/capability-statement": {
@@ -155,16 +155,16 @@
         "Pueblo"
       ]
     },
-    "/services/event-security": {
-      "title": "Event Security in Colorado | Ares Security",
-      "description": "Event security in Colorado Springs, Denver, and Pueblo: crowd management, entry screening, and one plan shared with your staff and venue.",
+    "/services/relief-surge-coverage": {
+      "title": "Relief & Surge Security Coverage in Colorado | Ares",
+      "description": "Relief shifts, overflow posts, and surge staffing for site owners, primes, and guard companies in Colorado Springs, Denver, and Pueblo.",
       "breadcrumbs": [
         {
           "name": "Services",
           "path": "/services"
         }
       ],
-      "serviceType": "Event security services",
+      "serviceType": "Relief and surge security coverage",
       "areaServed": [
         "Colorado Springs",
         "Denver",
