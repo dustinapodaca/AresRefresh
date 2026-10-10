@@ -12,6 +12,12 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
   Hero Options") are made here, one at a time as the owner asks, so the result can be
   compared with `test/marketing-gaps`, which stays as the baseline. Commit audit work on
   `audit` only.
+  - **Side by side locally:** the main copy (`project/react`, branch `audit`) runs on
+    http://localhost:5173. The baseline is a git worktree at `project/react-baseline` on
+    `test/marketing-gaps` (node_modules symlinked to the main copy's, `.env.local` copied),
+    served with `npx vite --port 5174 --strictPort` at http://localhost:5174. Don't commit
+    in the worktree; to refresh it after the baseline changes, `git -C ../react-baseline pull`
+    isn't needed (same repo): it always shows that branch's latest commit.
 - **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
   use the test tree with the extra pages from now on"). It holds the redesign plus the
   marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,
