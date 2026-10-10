@@ -7,7 +7,7 @@ import { INSIGHTS } from '../components/market/insights';
 // date, no thumbnails. Read mode.
 export default function Insights() {
   return (
-    <main className="ds ds-page ds-mk">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path="/insights" />
       <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">

@@ -132,7 +132,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="ds ds-page ds-qt">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-qt">
       <Seo path="/contact" />
 
       <section className="ds-qt-open" aria-labelledby="qt-title">

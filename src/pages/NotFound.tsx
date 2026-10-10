@@ -29,7 +29,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <main className="ds ds-page ds-nf">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-nf">
       <Seo path="/404" noindex />
       <section className="ds-nf-stage" aria-labelledby="nf-title">
         <div className="ds-nf-aurora" aria-hidden="true" />

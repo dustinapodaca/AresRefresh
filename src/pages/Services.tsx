@@ -12,7 +12,7 @@ import { SERVICE_MARKS } from '../components/services/data';
 // DESIGN.md. Content source: docs/services-content.md. Copy changes: docs/copy-changes.md.
 export default function Services() {
   return (
-    <main className="ds ds-page ds-svc">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-svc">
       <Seo path="/services" />
       <Opening />
       <div className="ds-container ds-doc">

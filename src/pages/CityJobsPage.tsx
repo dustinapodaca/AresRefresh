@@ -15,7 +15,7 @@ export default function CityJobsPage() {
   const others = CITY_JOBS.filter((o) => o.slug !== c.slug);
 
   return (
-    <main className="ds ds-page ds-mk">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/careers/${c.slug}`} />
       <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">

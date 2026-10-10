@@ -12,7 +12,7 @@ import Contact from '../components/home/Contact';
 // Content source: docs/home-content.md. Copy changes: docs/copy-changes.md.
 export default function Home() {
   return (
-    <main className="ds ds-page">
+    <main id="main" tabIndex={-1} className="ds ds-page">
       <Seo path="/" />
       <Hero />
       <CredentialStrip />

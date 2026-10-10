@@ -26,7 +26,7 @@ export default function InsightPage() {
   };
 
   return (
-    <main className="ds ds-page ds-mk">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/insights/${a.slug}`} />
       <article className="ds-container ds-mk-article" aria-labelledby="mk-title">
         <h1 id="mk-title" className="ds-display-lg">{a.title}</h1>

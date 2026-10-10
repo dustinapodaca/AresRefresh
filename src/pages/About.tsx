@@ -10,7 +10,7 @@ import { ABOUT_MARKS } from '../components/about/data';
 // Content source: docs/about-content.md. Copy changes: docs/copy-changes.md.
 export default function About() {
   return (
-    <main className="ds ds-page ds-ab">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-ab">
       <Seo path="/about" />
       <Opening />
       <div className="ds-container ds-doc">

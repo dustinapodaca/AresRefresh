@@ -8,7 +8,7 @@ import { CAP_MARKS } from '../components/capability/data';
 // authority: DESIGN.md. Content: docs/capability-content.md (all of it carries over).
 export default function CapabilityStatement() {
   return (
-    <main className="ds ds-page ds-cs">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-cs">
       <Seo path="/capability-statement" />
       <Hero />
       <div className="ds-container ds-doc">

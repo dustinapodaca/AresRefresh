@@ -71,7 +71,7 @@ export default function LegalPage({
   const active = useActiveSection(ids);
 
   return (
-    <main className="ds ds-page ds-lg">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-lg">
       <Seo path={path} />
       <div className="ds-container ds-lg-grid">
         <aside className="ds-lg-side">

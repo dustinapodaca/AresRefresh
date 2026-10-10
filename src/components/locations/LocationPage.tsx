@@ -18,7 +18,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
   const others = CITIES.filter((c) => c.slug !== file.city.slug);
 
   return (
-    <main className="ds ds-page ds-loc">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-loc">
       <Seo path={file.path} />
 
       <section className="ds-loc-open" aria-labelledby="loc-title">

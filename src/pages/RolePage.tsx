@@ -18,7 +18,7 @@ export default function RolePage() {
   const others = ROLE_PAGES.filter((r) => r.slug !== role.slug);
 
   return (
-    <main className="ds ds-page ds-mk">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/services/${role.slug}`} />
 
       <section className="ds-container ds-mk-open" aria-labelledby="mk-title">

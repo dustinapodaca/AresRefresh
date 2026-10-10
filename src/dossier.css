@@ -163,6 +163,21 @@ body:has(.ds-page) {
 /* ---------- Header (modeled on v08) ---------- */
 /* Transparent over the page at the top; a solid canvas bar with a hairline fades in once
    the page scrolls (or the mobile menu opens). Logo left, links centered, pill right. */
+.ds-skip {
+  position: fixed;
+  z-index: 100;
+  left: 16px;
+  top: 12px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  background: var(--ds-fg);
+  color: var(--ds-canvas);
+  font: 500 14px/1 var(--ds-text);
+  transform: translateY(-160%);
+  transition: transform 180ms var(--ds-ease);
+}
+main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring on the whole page */
+.ds-skip:focus { transform: none; outline: 2px solid var(--ds-rust); outline-offset: 2px; }
 .ds-header {
   position: fixed;
   inset-inline: 0;
@@ -3055,9 +3070,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 /* It waits until the map is well in view (owner, 2026-10-08: on phones the map sits below the
    copy and had drawn before anyone reached it). LocationMap sets data-play; without
-   JavaScript (no html.js) it plays on load as before. */
-html.js .ds-loc-map:not([data-play]) .ds-loc-route,
-html.js .ds-loc-map:not([data-play]) .ds-loc-pulse { animation-play-state: paused; }
+   JavaScript a <noscript> style in index.html lets it play on load. (An html.js class set by
+   script was baked into the prerendered HTML, so it could not tell the two apart.) */
+.ds-loc-map:not([data-play]) .ds-loc-route,
+.ds-loc-map:not([data-play]) .ds-loc-pulse { animation-play-state: paused; }
 
 /* ============================================================
    404 ("The Search Light", docs/notfound-concepts.md)

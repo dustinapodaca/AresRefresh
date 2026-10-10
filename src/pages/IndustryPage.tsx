@@ -17,7 +17,7 @@ export default function IndustryPage() {
   const others = INDUSTRY_PAGES.filter((i) => i.slug !== ind.slug);
 
   return (
-    <main className="ds ds-page ds-mk">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/industries/${ind.slug}`} />
 
       <section className="ds-mk-ind-open" aria-labelledby="mk-title">

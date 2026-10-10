@@ -8,7 +8,7 @@ import { CAREER_MARKS } from '../components/careers/data';
 // Content: docs/careers-content.md.
 export default function Careers() {
   return (
-    <main className="ds ds-page ds-cr">
+    <main id="main" tabIndex={-1} className="ds ds-page ds-cr">
       <Seo path="/careers" />
       <Opening />
       <div className="ds-container ds-doc">
