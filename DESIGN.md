@@ -782,6 +782,13 @@ Few, fast, and crisp. Four to six moments per page.
 - Photographs dissolve into the canvas with CSS masks, never with overlay gradients that
   leave a visible edge.
 - Hover motion is gated behind `(hover: hover) and (pointer: fine)`.
+- **In-page links glide** (owner, 2026-10-09): every same-page "#" link (the section rails,
+  the policies' table of contents, "See open roles", the skip link) smooth-scrolls and lands
+  the section's first line of content 32px under the nav (24px under the running head on
+  phones), on every page; links from other pages (e.g. /services#industrial) land the same
+  way. `src/lib/scrollToSection.ts`; instant under reduced motion.
+- **Page changes fade in** (owner, 2026-10-09): opacity 0.35 to 1 over 260ms, strong
+  ease-out, on the new page only (not the first load, not under reduced motion).
 
 ## Do's and Don'ts
 
