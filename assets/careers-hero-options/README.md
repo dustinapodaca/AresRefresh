@@ -1,8 +1,8 @@
 # Careers hero options (owner, 2026-10-09)
 
 Eight photos the owner supplied for the Careers opening, mocked on the live page in
-`.playwright-mcp/gallery/careers-heroes.html` (local). **1 is live** (until the client
-weighs in). To switch: copy the chosen file to `assets/images-src/careers-hero.jpg`, set
+`.playwright-mcp/gallery/careers-heroes.html` (local). **7 is live** (2026-10-09, until the client
+weighs in; 1 was live briefly before it). To switch: copy the chosen file to `assets/images-src/careers-hero.jpg`, set
 the caption in `src/components/careers/Opening.tsx`, run
 `python3 -I assets/tools/optimize-images.py`, and set the desktop framing in
 `src/dossier.css` (`.ds-cr-hero img` object-position).

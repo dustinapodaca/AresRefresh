@@ -15,10 +15,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1600
   },
   "/images/careers-hero.jpg": {
-    "src": "/images/opt/careers-hero-1200.ba8d93d5.webp",
-    "srcSet": "/images/opt/careers-hero-480.fb3d4efb.webp 480w, /images/opt/careers-hero-800.c3e7734e.webp 800w, /images/opt/careers-hero-1200.ba8d93d5.webp 1200w, /images/opt/careers-hero-1600.6fbca317.webp 1600w, /images/opt/careers-hero-2000.2a1b6f11.webp 2000w, /images/opt/careers-hero-2400.970b467b.webp 2400w",
+    "src": "/images/opt/careers-hero-1200.b81edba7.webp",
+    "srcSet": "/images/opt/careers-hero-480.f962da7f.webp 480w, /images/opt/careers-hero-800.df42e8e5.webp 800w, /images/opt/careers-hero-1200.b81edba7.webp 1200w, /images/opt/careers-hero-1600.d5a684cf.webp 1600w, /images/opt/careers-hero-2000.f31eb393.webp 2000w, /images/opt/careers-hero-2400.79555ac9.webp 2400w",
     "width": 2400,
-    "height": 1603
+    "height": 1584
   },
   "/images/about-security.jpg": {
     "src": "/images/opt/about-security-1200.49821c12.webp",

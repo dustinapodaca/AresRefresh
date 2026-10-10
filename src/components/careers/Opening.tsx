@@ -11,11 +11,11 @@ export default function Opening() {
       <figure className="ds-cr-hero">
         <img
           {...responsive('/images/careers-hero.jpg')}
-          alt="Downtown Denver on the plains, seen from pine-covered foothills on a hazy evening"
+          alt="The aluminum spires of the Cadet Chapel at the U.S. Air Force Academy against a clear sky"
           decoding="sync"
           {...{ fetchpriority: 'high' }}
         />
-        <figcaption className="ds-caption">Denver from the foothills</figcaption>
+        <figcaption className="ds-caption">Cadet Chapel, U.S. Air Force Academy</figcaption>
       </figure>
       <div className="ds-container ds-cr-open-copy">
         <h1 id="careers-title" className="ds-display-xl">
