@@ -2986,8 +2986,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-license { padding-top: var(--ds-beat); }
 .ds-loc-license-head { display: grid; gap: 20px; }
 .ds-loc-ledger { margin: 40px 0 0; border-top: 1px solid var(--ds-rule-strong); }
-.ds-loc-note span { display: block; }
-.ds-loc-note span:first-child { white-space: nowrap; }
+.ds-loc-note { white-space: nowrap; }
 /* Phones: a linked route (Verify, Request a copy) sits on the value's line, at the right
    (owner, 2026-10-08); the label stays above. Notes (the office's) stay beneath. */
 @media (max-width: 767px) {

@@ -20,7 +20,7 @@ export type LicenseRow = {
   value: string;
   mono?: boolean;
   /** Links (external ones open the issuing city's record) or a plain note. */
-  route?: { links: { label: string; href: string; external?: boolean }[] } | { note: string; detail?: string };
+  route?: { links: { label: string; href: string; external?: boolean }[] } | { note: string };
 };
 
 export type Sector = { name: string; division: string; divisionId: string };
@@ -80,7 +80,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     { label: 'Status', value: 'Licensed and bonded for armed and unarmed security' },
     { label: 'Training provider', value: 'Armed and unarmed, approved by the City of Colorado Springs' },
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
-    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters', detail: 'Since 2021' } },
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters since 2021' } },
   ],
   sectorsTitle: 'Sites we are ready to staff here.',
   sectors: [
@@ -121,7 +121,7 @@ export const DENVER: LocationFile = {
     { label: 'Status', value: 'Licensed and bonded for armed and unarmed security' },
     { label: 'Training provider', value: 'Armed and unarmed, an eligible training provider in Denver' },
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
-    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters', detail: 'An hour south on I-25' } },
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, an hour south on I-25' } },
   ],
   sectorsTitle: 'Sites we are ready to staff here.',
   sectors: [
@@ -154,7 +154,7 @@ export const PUEBLO: LocationFile = {
     { label: 'Status', value: 'Licensed and bonded for armed and unarmed security' },
     { label: 'Training provider', value: 'Armed and unarmed, approved by the Pueblo Police Department' },
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
-    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters', detail: '45 minutes north on I-25' } },
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, 45 minutes north on I-25' } },
   ],
   sectorsTitle: 'Sites we are ready to staff here.',
   sectors: [

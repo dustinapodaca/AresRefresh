@@ -619,3 +619,8 @@ reserved.", "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
 | "Headquarters since 2021" | "Headquarters" / "Since 2021" (two lines) |
 | "Headquarters, an hour south on I-25" | "Headquarters" / "An hour south on I-25" |
 | "Headquarters, 45 minutes north on I-25" | "Headquarters" / "45 minutes north on I-25" |
+
+## Location pages, office note on one line again (2026-10-09, owner)
+
+"Headquarters since 2021", "Headquarters, an hour south on I-25", "Headquarters, 45 minutes
+north on I-25", each on one line (the two-line split of 2026-10-08 is undone).
