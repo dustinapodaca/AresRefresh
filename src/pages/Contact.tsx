@@ -30,12 +30,15 @@ const CHIPS: { name: string; legend: string; options: string[] }[] = [
   { name: 'start', legend: 'When do you need coverage?', options: ['Within 30 days', '1 to 3 months', '3 to 6 months', 'Just planning'] },
 ];
 
+// The six industries, one name each, with the same slugs as their pages (an industry page
+// links here with ?industry=<slug>; owner, 2026-10-10), plus events and anything else.
 const SITE_TYPES: { slug: string; label: string }[] = [
-  { slug: 'government-military', label: 'Government or military facility' },
-  { slug: 'data-centers', label: 'Data center or critical infrastructure' },
-  { slug: 'construction-industrial', label: 'Construction, industrial, or warehouse' },
-  { slug: 'commercial-property', label: 'Office, retail, bank, or hotel' },
-  { slug: 'healthcare-education', label: 'Healthcare, school, or campus' },
+  { slug: 'government-military', label: 'Government & Military' },
+  { slug: 'critical-infrastructure', label: 'Critical & High-Liability Sites' },
+  { slug: 'construction-industrial', label: 'Construction, Industrial & Logistics' },
+  { slug: 'commercial-property', label: 'Commercial & Retail' },
+  { slug: 'institutional-community', label: 'Institutional & Community' },
+  { slug: 'airport-transportation', label: 'Airport & Transportation' },
   { slug: 'event-venue', label: 'Event or venue' },
   { slug: 'other', label: 'Something else' },
 ];

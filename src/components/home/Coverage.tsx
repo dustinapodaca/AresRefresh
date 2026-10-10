@@ -9,13 +9,15 @@ const CITIES = [
   { to: '/locations/pueblo', name: 'Pueblo', note: 'Service area' },
 ];
 
+// The six industries, one name each (owner, 2026-10-10; same names as Services and the
+// industry pages).
 const DIVISIONS = [
-  'Government Security Personnel',
-  'Airport & Transportation Security',
-  'Commercial & High\u2011Traffic Security', // non-breaking hyphen keeps "High-Traffic" together
-  'Industrial, Logistics & Construction',
-  'Specialized & Armed Protection',
-  'Institutional & Community Security',
+  'Government & Military',
+  'Critical & High-Liability Sites',
+  'Construction, Industrial & Logistics',
+  'Commercial & Retail',
+  'Institutional & Community',
+  'Airport & Transportation',
 ];
 
 export default function Coverage() {
@@ -45,7 +47,7 @@ export default function Coverage() {
       </ul>
 
       <div className="ds-divisions">
-        <h3 className="ds-title">Six service divisions</h3>
+        <h3 className="ds-title">Six industries</h3>
         <div>
           <ul>
             {DIVISIONS.map((d) => (

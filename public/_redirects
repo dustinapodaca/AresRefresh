@@ -16,5 +16,8 @@
 # it returned a 200 copy of Home for every mistyped URL, which is a soft
 # 404 and produced unlimited duplicate content.
 
+# Renamed before launch (owner, 2026-10-10): the critical-sites industry page.
+/industries/data-centers    /industries/critical-infrastructure    301
+
 # Anything genuinely unmatched: real 404 status, prerendered 404 page.
 /*    /404.html    404

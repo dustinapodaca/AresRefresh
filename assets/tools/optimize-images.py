@@ -60,6 +60,9 @@ PHOTOS = [
     {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-military.webp', 'q': 82},
     {'key': '/images/market/construction-industrial.webp', 'source': 'assets/images-src/market/construction-industrial.webp', 'q': 82},
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-property.webp', 'q': 82},
+    # The two new industry pages (owner, 2026-10-10), generated like the others.
+    {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},
+    {'key': '/images/market/airport-transportation.webp', 'source': 'assets/images-src/market/airport-transportation.jpg', 'q': 82},
 ]
 
 # Logos show 30 to 48px tall; 128px covers 2.5x screens. Lossless keeps their edges and

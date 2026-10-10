@@ -412,12 +412,17 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   division containers start a short scroll below.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
-  ("Open one to see the sites we staff."), six cards in the order Government, Construction,
-  Commercial, Institutional, Airport, Critical sites (no single industry leads). Each card
-  opens to its summary and site types, then a link to the industry's full page where one
-  exists ("See … security →"). The "By role, or by industry" index keeps only the services
-  ("By role."). The rail mark reads "Industries". Card names, the two new industry pages, and
-  the critical-sites rename and URL move are later steps of the audit.
+  ("Open one to see the sites we staff."): six cards, Government & Military and Critical &
+  High-Liability Sites first (owner), then Construction, Industrial & Logistics; Commercial &
+  Retail; Institutional & Community; Airport & Transportation. Each opens to its summary and
+  site types, then "See … security →" to its industry page. "By role." keeps only the
+  services. **One name per industry** on Home ("Six industries"), Services, the industry
+  pages, the city-page tags, and the quote form's site types. "Specialized & Armed
+  Protection" became Critical & High-Liability Sites (a kind of site, not a service; data
+  centers one example), its page moved from /industries/data-centers (301 redirect) to
+  /industries/critical-infrastructure. Two new industry pages: /industries/
+  institutional-community and /industries/airport-transportation ("ready to staff", no
+  airport client named), with generated images in the same style.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
   tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were

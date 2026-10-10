@@ -1,0 +1,28 @@
+{
+  "prompt": "A generic transportation and cargo area at the edge of a Colorado airport at blue hour: a long low cargo terminal with lit loading docks, a secured perimeter fence and closed vehicle gate, a wide empty apron and parking lot with tall sodium lights, a distant control tower silhouette that is not identifiable, no aircraft markings. A real photograph, not a render: documentary architectural photography, shot on a full-frame camera, natural color, slight film grain, believable light. Dusk or blue hour in Colorado, with the Front Range mountains faint on the horizon where it fits. Dark, calm, and spacious, with deep shadows and warm sodium and copper lights against a cool sky, so it sits on a near-black website. Wide 16:9 composition, the subject in the lower two thirds, open sky above. No people, no faces, no vehicles in motion, no text, no signage, no logos, no flags, no watermarks.",
+  "createdAt": "2026-10-10T20:31:59.475530+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "2K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 191,
+    "candidatesTokenCount": 2132,
+    "totalTokenCount": 2323,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 191
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1680
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

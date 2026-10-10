@@ -1,0 +1,28 @@
+{
+  "prompt": "A modern hospital and medical campus entrance seen across a quiet landscaped plaza at dusk: a covered drop-off canopy lit warm, glass entry doors glowing, low brick and glass campus buildings behind with a few lit windows, young trees and benches along the walkway. A real photograph, not a render: documentary architectural photography, shot on a full-frame camera, natural color, slight film grain, believable light. Dusk or blue hour in Colorado, with the Front Range mountains faint on the horizon where it fits. Dark, calm, and spacious, with deep shadows and warm sodium and copper lights against a cool sky, so it sits on a near-black website. Wide 16:9 composition, the subject in the lower two thirds, open sky above. No people, no faces, no vehicles in motion, no text, no signage, no logos, no flags, no watermarks.",
+  "createdAt": "2026-10-10T20:32:17.993175+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "2K",
+  "mimeType": "image/jpeg",
+  "refs": [],
+  "usage": {
+    "promptTokenCount": 180,
+    "candidatesTokenCount": 2099,
+    "totalTokenCount": 2279,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 180
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1680
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

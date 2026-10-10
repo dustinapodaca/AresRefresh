@@ -178,6 +178,10 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   people stay" opens on the team-at-the-range photo (owner, 2026-10-09).
 - **About:** 03 People portrait replaced with the owner's new officer photo (2026-10-09).
 - **Services:** "Trained on your systems" badges carry small authored icons (2026-10-09).
+  One set of six industry cards ("Who we protect.", 2026-10-10), one name per industry
+  everywhere, six industry pages (two new; data-centers renamed to critical-infrastructure
+  with a 301). The rest of the copy audit (Claude Doc "Ares Security Dev Site — Copy Audit &
+  Hero Options") is still being written by the owner; do only what they ask from it.
 - **Request a quote:** the email is built in `src/lib/quote.ts` (contact first, empty
   answers dropped, phone formatted, subject "Quote request: <service> · <location>", sender
   shown as the person). The result shows as a centered dark-glass toast

@@ -183,23 +183,6 @@
         "Pueblo"
       ]
     },
-    "/industries/data-centers": {
-      "title": "Data Center Security in Colorado | Ares Security",
-      "description": "Security for data centers and critical infrastructure in Colorado: access control, posted officers, and checkpoint logs from construction through operations.",
-      "breadcrumbs": [
-        {
-          "name": "Services",
-          "path": "/services"
-        }
-      ],
-      "serviceType": "Data center and critical infrastructure security",
-      "areaServed": [
-        "Colorado Springs",
-        "Denver",
-        "Pueblo"
-      ],
-      "preloadImage": "/images/market/data-centers.webp"
-    },
     "/industries/government-military": {
       "title": "Government & Military Facility Security | Ares Security",
       "description": "Security officers for federal, state, and municipal facilities and military installations in Colorado, available through GSA MAS 47QSMS25D009Q.",
@@ -216,6 +199,23 @@
         "Pueblo"
       ],
       "preloadImage": "/images/market/government-military.webp"
+    },
+    "/industries/critical-infrastructure": {
+      "title": "Critical Site Security in Colorado | Ares Security",
+      "description": "Security for data centers, utilities, cash-handling, and other high-liability sites in Colorado: access control, armed posts where required, and logs.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Critical and high-liability site security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ],
+      "preloadImage": "/images/market/data-centers.webp"
     },
     "/industries/construction-industrial": {
       "title": "Construction Site Security in Colorado | Ares Security",
@@ -250,6 +250,40 @@
         "Pueblo"
       ],
       "preloadImage": "/images/market/commercial-property.webp"
+    },
+    "/industries/institutional-community": {
+      "title": "Hospital & Campus Security in Colorado | Ares Security",
+      "description": "Security officers for hospitals, schools, campuses, and apartment communities in Colorado Springs, Denver, and Pueblo, trained on your site.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Institutional and community security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ],
+      "preloadImage": "/images/market/institutional-community.webp"
+    },
+    "/industries/airport-transportation": {
+      "title": "Airport & Transit Security in Colorado | Ares Security",
+      "description": "Security officers for airport-area sites, transit and parking facilities, and cargo operations in Colorado: credential checks, gate control, patrol.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Airport and transportation security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ],
+      "preloadImage": "/images/market/airport-transportation.webp"
     },
     "/insights": {
       "title": "Insights: Buying Security in Colorado | Ares Security",

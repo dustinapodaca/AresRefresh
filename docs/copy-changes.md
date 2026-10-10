@@ -639,3 +639,22 @@ north on I-25", each on one line (the two-line split of 2026-10-08 is undone).
 | "By role, or by industry." with a Services list and an Industries list | "By role." with the Services list only |
 | "Whichever division fits your site, the work starts the same way." | "Whichever industry you are in, the work starts the same way." |
 | Rail and dock mark "Divisions" | "Industries" |
+
+## Industries: one name each, two new pages, the critical-sites rename (2026-10-10, owner)
+
+| Was | Now |
+|---|---|
+| Government Security Personnel / Government and military facilities | Government & Military |
+| Specialized & Armed Protection / Data centers and critical infrastructure (/industries/data-centers) | Critical & High-Liability Sites (/industries/critical-infrastructure; old URL redirects) |
+| Industrial, Logistics & Construction / Construction and industrial sites | Construction, Industrial & Logistics |
+| Commercial & High-Traffic Security / Commercial property and retail | Commercial & Retail |
+| Institutional & Community Security | Institutional & Community (new page /industries/institutional-community) |
+| Airport & Transportation Security | Airport & Transportation (new page /industries/airport-transportation, "ready to staff") |
+| Home: "Six service divisions" | "Six industries" |
+| Quote form site types (plain descriptions, incl. "Healthcare, school, or campus") | The six industry names, plus "Event or venue" and "Something else" |
+| Critical card covers: Data centers; Armed asset protection; High-risk environments | Data centers; Critical infrastructure (moved from the industrial card); Cash-handling and regulated sites; High-liability sites |
+
+New page copy (DRAFT, built from facts already on the site; owner to review): the
+Institutional & Community and Airport & Transportation pages, and the broadened Critical &
+High-Liability Sites page. "De-escalation-first" and AASC membership from the audit doc were
+left out until confirmed.

@@ -58,7 +58,7 @@ export const ROLE_PAGES: RolePageData[] = [
     lead: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts across Colorado, from a company licensed and bonded for armed security in Colorado Springs, Denver, and Pueblo.',
     sheet: { label: 'Firearms', value: 'Qualified by our NRA-certified instructor, a veteran' },
     ask: 'Tell us the site, the hours, and why the post needs to be armed.',
-    industries: ['government-military', 'commercial-property', 'data-centers'],
+    industries: ['government-military', 'commercial-property', 'critical-infrastructure'],
     faq: [
       {
         q: 'When does a site need armed officers instead of unarmed?',
@@ -113,7 +113,7 @@ export const ROLE_PAGES: RolePageData[] = [
     lead: 'Officers who decide who and what gets in: credential checks, visitor screening, and gate, dock, and lobby control, with a log you can audit.',
     sheet: { label: 'Logs', value: 'Visitor and checkpoint logs you can audit' },
     ask: 'Tell us the entry points, the hours, and who is allowed in.',
-    industries: ['data-centers', 'government-military', 'construction-industrial'],
+    industries: ['critical-infrastructure', 'government-military', 'construction-industrial'],
     faq: [
       {
         q: 'What does an access control officer do?',
@@ -199,7 +199,7 @@ export const ROLE_PAGES: RolePageData[] = [
     lead: 'When something happens on site: officers who respond, contain the incident, work with first responders, and write down what happened.',
     sheet: { label: 'Reporting', value: 'A written report after every incident' },
     ask: 'Tell us the site and what you need officers ready to handle.',
-    industries: ['data-centers', 'commercial-property', 'government-military'],
+    industries: ['critical-infrastructure', 'commercial-property', 'government-military'],
     faq: [
       {
         q: 'What do officers do during an incident?',

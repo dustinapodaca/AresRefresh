@@ -23,18 +23,18 @@ export type Division = {
   // already on the site; owner to review (docs/copy-changes.md).
   covers: { name: string; detail: string }[];
   photo: { src: string; width: number; height: number; position?: string; sharp?: Photo };
-  /** The industry's full page, where one exists (owner, 2026-10-10). */
+  /** The industry's full page (owner, 2026-10-10). */
   page?: { to: string; label: string };
 };
 
 // The six industries, one set (owner, 2026-10-10: the divisions and the industries were the
-// same list shown twice). Ordered so no single industry leads; each opens to its sites and
-// links to the industry's own page where there is one.
+// same list shown twice). Government and Critical & High-Liability Sites lead (owner); each
+// opens to its sites and links to the industry's own page.
 export const DIVISIONS: Division[] = [
   {
     id: 'government',
     n: '01',
-    title: 'Government Security Personnel',
+    title: 'Government & Military',
     body: 'Lawful, immediate access to federal and state facilities, with veterans on our staff. Agencies can order through our GSA Schedule without opening a new competition.',
     covers: [
       { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
@@ -50,23 +50,36 @@ export const DIVISIONS: Division[] = [
     page: { to: '/industries/government-military', label: 'government and military' },
   },
   {
-    id: 'industrial',
+    id: 'critical',
     n: '02',
-    title: 'Industrial, Logistics & Construction',
+    title: 'Critical & High-Liability Sites',
+    body: 'Officers for data centers, utilities, cash-handling, and other regulated or high-liability sites, where every entry is documented, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
+    covers: [
+      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, from construction through operations.' },
+      { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
+      { name: 'Cash-handling and regulated sites', detail: 'Armed officers where the post requires them, qualified by our veteran NRA firearms instructor.' },
+      { name: 'High-liability sites', detail: 'Officers who follow the access list exactly and write everything down.' },
+    ],
+    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
+    page: { to: '/industries/critical-infrastructure', label: 'critical and high-liability site' },
+  },
+  {
+    id: 'industrial',
+    n: '03',
+    title: 'Construction, Industrial & Logistics',
     body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
     covers: [
       { name: 'Industrial sites', detail: 'Posted guards around the clock, with checkpoint logs you can audit.' },
       { name: 'Warehouses', detail: 'Mobile patrols and perimeter security for buildings and yards.' },
       { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
-      { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
     ],
     photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
-    page: { to: '/industries/construction-industrial', label: 'construction and industrial' },
+    page: { to: '/industries/construction-industrial', label: 'construction, industrial, and logistics' },
   },
   {
     id: 'commercial',
-    n: '03',
-    title: 'Commercial & High‑Traffic Security',
+    n: '04',
+    title: 'Commercial & Retail',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
     covers: [
       { name: 'Retail', detail: 'Visible deterrence and loss prevention on the sales floor.' },
@@ -80,8 +93,8 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'community',
-    n: '04',
-    title: 'Institutional & Community Security',
+    n: '05',
+    title: 'Institutional & Community',
     body: 'Trust-based security for sensitive and community settings, where a calm presence matters most.',
     covers: [
       { name: 'Hospitals', detail: 'A calm presence at entrances and in public areas.' },
@@ -91,11 +104,12 @@ export const DIVISIONS: Division[] = [
       { name: 'Residential & retirement', detail: 'Consistent officers residents can get to know.' },
     ],
     photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
+    page: { to: '/industries/institutional-community', label: 'institutional and community' },
   },
   {
     id: 'airport',
-    n: '05',
-    title: 'Airport & Transportation Security',
+    n: '06',
+    title: 'Airport & Transportation',
     body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
     covers: [
       { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
@@ -103,19 +117,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
     ],
     photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
-  },
-  {
-    id: 'specialized',
-    n: '06',
-    title: 'Specialized & Armed Protection',
-    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
-    covers: [
-      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, with unarmed or armed officers.' },
-      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
-      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
-    ],
-    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
-    page: { to: '/industries/data-centers', label: 'data center' },
+    page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
   },
 ];
 

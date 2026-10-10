@@ -152,6 +152,18 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 2048,
     "height": 1144
   },
+  "/images/market/institutional-community.webp": {
+    "src": "/images/opt/market-institutional-community-1200.217f0103.webp",
+    "srcSet": "/images/opt/market-institutional-community-480.e9070b63.webp 480w, /images/opt/market-institutional-community-800.df818f33.webp 800w, /images/opt/market-institutional-community-1200.217f0103.webp 1200w, /images/opt/market-institutional-community-1600.99d267cf.webp 1600w, /images/opt/market-institutional-community-2000.d9ca671a.webp 2000w, /images/opt/market-institutional-community-2400.a3ffd4fd.webp 2400w, /images/opt/market-institutional-community-2752.657fe2d4.webp 2752w",
+    "width": 2752,
+    "height": 1536
+  },
+  "/images/market/airport-transportation.webp": {
+    "src": "/images/opt/market-airport-transportation-1200.917ecc77.webp",
+    "srcSet": "/images/opt/market-airport-transportation-480.4193876e.webp 480w, /images/opt/market-airport-transportation-800.0c695e59.webp 800w, /images/opt/market-airport-transportation-1200.917ecc77.webp 1200w, /images/opt/market-airport-transportation-1600.4ccae642.webp 1600w, /images/opt/market-airport-transportation-2000.ecf6f8f9.webp 2000w, /images/opt/market-airport-transportation-2400.1ff1397e.webp 2400w, /images/opt/market-airport-transportation-2752.07d988fa.webp 2752w",
+    "width": 2752,
+    "height": 1536
+  },
   "/images/cert-gsa-footer.png": {
     "src": "/images/opt/cert-gsa-footer.90e0c2aa.webp",
     "width": 534,
