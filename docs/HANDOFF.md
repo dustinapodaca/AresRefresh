@@ -1,6 +1,6 @@
 # Handoff: Ares site redesign ("The Dossier")
 
-Last updated: 2026-10-09. **Read this first when starting a new chat.**
+Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`. **Read this first when starting a new chat.**
 
 ## TL;DR
 
@@ -78,6 +78,13 @@ Last updated: 2026-10-09. **Read this first when starting a new chat.**
   the form's slugs, and the SAM date. Validate with Lighthouse's `third-party/ard/ard.js`.
   Do **not** add an `Agentmap:` line to robots.txt: Lighthouse's robots audit rejects
   unknown directives and would cost SEO points.
+- **Icons:** `public/favicon-v2.svg` (the mark in #c4c8ce, set up and left of center on
+  purpose so it fits circular crops) with PNGs, ICO, Apple touch icon, and
+  `manifest.json`; rebuild all with `node assets/tools/make-icons.mjs`.
+- **AI discovery:** `public/llms.txt`, `public/.well-known/ard.json` and `ai-catalog.json`
+  (ARD 1.0, two Agent Skills in `public/skills/`). Keep their facts in sync.
+- **PDF:** `assets/tools/optimize-pdf.py` (2.0MB to 1.35MB, no visible change; original in
+  `assets/files-src/`).
 - **Lighthouse (production build, mobile, 2026-10-09):** most pages 93 to 96, Home 83,
   Services 78 (their big crisp heroes on a slow simulated 4G); accessibility, best
   practices, SEO 100. Run it on `npm run build && npx vite preview` (port 4173), never on
@@ -124,11 +131,22 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 - **Off limits** without the owner's OK: `src/seo/*` (incl. `routes.json`), `scripts/`,
   `netlify/`, `public/_redirects`, routing. `_archive/` is never a design reference.
 
-## State of each area (2026-10-08; DESIGN.md has the full spec)
+## State of each area (updated 2026-10-09, late; DESIGN.md has the full spec)
 
 - **Nav:** 84px desktop / 68px phones (was 92 / 76); mark 46px / 38px; glass as dark as
   the Home hero strip (canvas 72% to 48% left to right over a 24px blur); desktop links
   sit 2px above center. Frosts on first scroll everywhere.
+- **Navigation and motion (2026-10-09):** `src/components/SmoothAnchors.tsx` handles every
+  internal click (capture phase, before React Router's Link). Same-page "#" links glide and
+  land the section's first line 32px under the nav (24px under the running head on phones)
+  via `src/lib/scrollToSection.ts` (layout positions, Services' hold included); cross-page
+  anchors land the same way (ScrollToTop). A link to the open page scrolls to the top. Page
+  changes: **desktop** a soft one-shot CSS fade (`html[data-nav-fade]`, opacity 0.35 to 1,
+  260ms; the owner's pick); **phones and tablets** a View Transition (old fades out, new
+  rises 12px; no view-transition-name on the header, it kills the nav glass); none between
+  the policy pages on phones. The **phone menu** grows out of the hamburger as a circle over
+  the whole screen and draws back into it; a menu tap swaps the page behind the solid sheet
+  and the closing circle reveals it. Skip link to every page's `main#main`.
 - **Footer:** the 2026-10-06 footer, restored after trying Ada's and Pally's (both in git
   history): lockup and company line, phone, email, profiles; Company / Service areas /
   Contracting / Registration (green SAM light); cert marks; then the giant ARES letters
@@ -153,11 +171,23 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   an evenly eased left shade, lead in #c4c8ce). Other options are saved in
   `assets/generated/capability/` (round 1: dossier, facade, perimeter, sheets; round 2:
   spec, folio, access, vellum); masters in `.impeccable/gen/capability/`.
+- **Careers:** hero is the Cadet Chapel, U.S. Air Force Academy (option 7 of 8 in
+  `assets/careers-hero-options/`, desktop framed at 50% 40%), shading lightened twice;
+  phones get the Capability Statement's tall frame. No "See open roles" button: the Indeed
+  rating, a lockup-style rule, and the careers email on one line (stacked on phones). "Why
+  people stay" opens on the team-at-the-range photo (owner, 2026-10-09).
+- **About:** 03 People portrait replaced with the owner's new officer photo (2026-10-09).
+- **Services:** "Trained on your systems" badges carry small authored icons (2026-10-09).
+- **Request a quote:** the email is built in `src/lib/quote.ts` (contact first, empty
+  answers dropped, phone formatted, subject "Quote request: <service> · <location>", sender
+  shown as the person). The result shows as a centered dark-glass toast
+  (`src/components/QuoteToast.tsx`). Web3Forms delivers to dustin.apodaca@aressecurity.co
+  (allowed site: the Netlify address; add aressecurity.co at launch).
 - **Location pages:** the map's I-25 draw and ring pulse wait until the map is in view
-  (an inline script in `index.html` adds `html.js`; without JS it plays on load). On
+  (paused until `data-play`; a `<noscript><style>` in `index.html` plays it without JS). On
   phones "Verify" / "Request a copy" sits on the license number's line. Office note:
-  "Headquarters" then the distance. Denver map: "DEN AIRPORT" on one line, lifted off the
-  city name.
+  on one line ("Headquarters, an hour south on I-25"). Denver map: "DEN AIRPORT" on one
+  line, lifted off the city name.
 
 ## Backlog (decisions and todos, updated 2026-10-09)
 
