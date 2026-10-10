@@ -624,3 +624,7 @@ reserved.", "Colorado Springs, Colorado", Privacy, Terms, Accessibility.
 
 "Headquarters since 2021", "Headquarters, an hour south on I-25", "Headquarters, 45 minutes
 north on I-25", each on one line (the two-line split of 2026-10-08 is undone).
+
+## Capability Statement spec line (2026-10-09)
+
+"1 page · PDF · 2.1 MB" is now "1 page · PDF · 1.3 MB": the PDF was shrunk without visible change (assets/tools/optimize-pdf.py).
