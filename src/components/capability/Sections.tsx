@@ -257,7 +257,7 @@ export function Buy() {
           <ul>
             {PATHS.map((p) => (
               <li key={p.name}>
-                <span>{p.name}</span>
+                {p.to ? <Link to={p.to} className="ds-link">{p.name}</Link> : <span>{p.name}</span>}
                 <span className="ds-data ds-cs-status" data-state={p.status === 'Available' ? 'available' : 'request'}>
                   <i aria-hidden="true" />
                   {p.status}

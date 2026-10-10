@@ -21,6 +21,7 @@ import CityJobsPage from './pages/CityJobsPage';
 import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
+import Teaming from './pages/Teaming';
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
         {/* Services by role, industries, insights, and jobs by city (2026-10-08) */}
         <Route path="/services/:slug" element={<RolePage />} />
         <Route path="/industries/:slug" element={<IndustryPage />} />
+        <Route path="/teaming" element={<Teaming />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<InsightPage />} />
         <Route path="/careers/:city" element={<CityJobsPage />} />

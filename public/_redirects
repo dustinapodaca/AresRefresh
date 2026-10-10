@@ -18,6 +18,7 @@
 
 # Renamed before launch (owner, 2026-10-10): the critical-sites industry page.
 /industries/data-centers    /industries/critical-infrastructure    301
+/services/emergency-response    /services/restricted-area-escort    301
 
 # Anything genuinely unmatched: real 404 status, prerendered 404 page.
 /*    /404.html    404

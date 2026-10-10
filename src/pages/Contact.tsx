@@ -18,7 +18,8 @@ const NEEDS: { slug: string; label: string }[] = [
   { slug: 'access-control', label: 'Access control' },
   { slug: 'mobile-patrol', label: 'Mobile patrol' },
   { slug: 'event-security', label: 'Event security' },
-  { slug: 'emergency-response', label: 'Emergency response' },
+  { slug: 'restricted-area-escort', label: 'Restricted-area escort' },
+  { slug: 'teaming', label: 'Teaming or subcontract coverage' }, // for primes and guard companies (/teaming)
   { slug: 'other', label: 'Not sure, or something else' },
 ];
 

@@ -65,6 +65,21 @@ export default function IndustryPage() {
           <Sheet rows={ind.why} label={`Why Ares for ${ind.name.toLowerCase()}`} />
         </section>
 
+        {ind.primes && (
+          <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-primes">
+            <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
+            <div className="ds-mk-prose">
+              <p>{ind.primes}</p>
+              <p>
+                <Link to="/teaming" className="ds-link">
+                  Teaming and subcontracting
+                  <Arrow size={14} />
+                </Link>
+              </p>
+            </div>
+          </section>
+        )}
+
         <AskStrip line={ind.ask} quote={quote} />
 
         <FaqSection items={ind.faq} />

@@ -18,6 +18,16 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     served with `npx vite --port 5174 --strictPort` at http://localhost:5174. Don't commit
     in the worktree; to refresh it after the baseline changes, `git -C ../react-baseline pull`
     isn't needed (same repo): it always shows that branch's latest commit.
+  - **Progress (round 2 "Next steps"):** 1 done (Home blockers). 2 done: `/teaming`
+    (src/pages/Teaming.tsx) for primes, guard companies, and builders, linked from the
+    footer, the Capability Statement's procurement paths, and a "For prime contractors."
+    block on the Government page (`primes` in industries.ts); the quote form has "Teaming
+    or subcontract coverage" (`?service=teaming`). The Home link comes with step 4. 3 done:
+    `/services/restricted-area-escort` replaced Emergency response (role page, the sixth
+    capability card, quote form, llms.txt, the skill; 301 from the old URL); the emergency
+    questions moved to the armed and unarmed pages, and Government's "What we deliver"
+    leads with escort. No clearance wording on either page (Careers only). The PDF
+    capability statement still lists Emergency Response until it is regenerated.
 - **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
   use the test tree with the extra pages from now on"). It holds the redesign plus the
   marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,

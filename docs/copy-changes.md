@@ -671,3 +671,18 @@ left out until confirmed.
 | Placeholder quote card ("Ares arrived prepared...", Contracting Officer, USAF Buckley) | Removed |
 | Capability Statement "Rated Exceptional by clients", 16 of 18 | "Rated Very Good or Exceptional by clients", the 43 of 45 line, proof "43 of 45 criteria" |
 | Commercial & Retail client rating row, 16 of 18 | "Very Good or Exceptional on 43 of 45 client criteria" |
+
+## Audit step 2: Teaming page (2026-10-10, owner)
+
+New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, guard companies, builders), roles we fill, what the prime gets, how we work, four questions. Quote form option "Teaming or subcontract coverage". Linked from the footer, the Capability Statement ("Teaming and subcontracting with primes"), and the Government page ("For prime contractors.").
+
+## Audit step 3: Restricted-area escort replaces Emergency response (2026-10-10, owner)
+
+| Was | Now |
+|---|---|
+| /services/emergency-response, "Emergency response" | /services/restricted-area-escort, "Restricted-area escort." (301 from the old URL) |
+| Capability card "Emergency Response" (rapid response, containment, first responders, reports) | "Restricted-Area Escort": crew, visitor, and delivery escort; person and vehicle verification; custody logs; coordination with installation security |
+| Quote form "Emergency response" | "Restricted-area escort" |
+| (none) | Armed and unarmed pages: "What do officers do if something happens on site?" |
+| Government "What we deliver" | Adds restricted-area escort first |
+

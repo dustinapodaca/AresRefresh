@@ -1,6 +1,7 @@
 // Role pages (/services/<slug>): one page per service, named as buyers search for it
 // (docs/market-concepts.md, 2026-10-08). The six services are the capability statement's
-// six, and each page's duties reuse its approved lines (src/components/capability/data.ts).
+// six (Restricted-area escort replaced Emergency response, 2026-10-10), and each page's
+// duties reuse its approved lines (src/components/capability/data.ts).
 // FAQs state only what the site already says. No clearance, badging, or response-time
 // claims.
 import { CAPABILITIES } from '../capability/data';
@@ -61,6 +62,10 @@ export const ROLE_PAGES: RolePageData[] = [
     industries: ['government-military', 'commercial-property', 'critical-infrastructure'],
     faq: [
       {
+        q: 'What do officers do if something happens on site?',
+        a: 'They secure the area, keep people safe, contact your designated staff and emergency services, work alongside first responders when they arrive, and write a report of what happened and what was done.',
+      },
+      {
         q: 'When does a site need armed officers instead of unarmed?',
         a: 'When the risk, the assets on site, or a contract or insurance requirement calls for it: cash handling, regulated materials, high-liability sites, and some federal posts. If you are not sure, we walk the site before anything is signed and recommend what the post actually needs.',
       },
@@ -86,6 +91,10 @@ export const ROLE_PAGES: RolePageData[] = [
     ask: 'Tell us the site, the hours, and how many officers you need on post.',
     industries: ['commercial-property', 'construction-industrial', 'government-military'],
     faq: [
+      {
+        q: 'What do officers do if something happens on site?',
+        a: 'They secure the area, keep people safe, contact your designated staff and emergency services, work alongside first responders when they arrive, and write a report of what happened and what was done.',
+      },
       {
         q: 'What does an unarmed officer do on a typical post?',
         a: 'Controls who comes in, patrols on a set schedule, logs every checkpoint, writes up incidents, and acts as the first point of contact for visitors and staff, all to the post orders written for your site.',
@@ -192,27 +201,31 @@ export const ROLE_PAGES: RolePageData[] = [
     ],
   },
   {
-    slug: 'emergency-response',
-    capabilityId: 'emergency',
-    name: 'Emergency response',
-    title: 'Emergency response.',
-    lead: 'When something happens on site: officers who respond, contain the incident, work with first responders, and write down what happened.',
-    sheet: { label: 'Reporting', value: 'A written report after every incident' },
-    ask: 'Tell us the site and what you need officers ready to handle.',
-    industries: ['critical-infrastructure', 'commercial-property', 'government-military'],
+    // Replaced Emergency response (copy audit round 2, owner 2026-10-10). No clearance
+    // wording here: clearance requirements live on Careers only (owner).
+    slug: 'restricted-area-escort',
+    capabilityId: 'escort',
+    name: 'Restricted-area escort',
+    title: 'Restricted-area escort.',
+    lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
+    sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
+    ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
+    industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
     faq: [
       {
-        q: 'What do officers do during an incident?',
-        a: 'Secure the area, keep people safe, contact your designated staff and emergency services, and stay until the scene is handed over.',
+        q: 'What does a restricted-area escort do?',
+        a: 'Keeps every escorted person, crew, or delivery in line of sight inside the controlled area, verifies people and vehicles at entry, and logs who came in, with whom, and when they left.',
       },
       {
-        q: 'Do your officers work with police and fire?',
-        a: 'Yes. They work alongside your staff and first responders during an incident and hand the scene over to them.',
+        q: 'Have your officers escorted on a military installation?',
+        a: 'Yes. Ares provides restricted-area escort and access control on a Space Force base in Colorado, alongside installation security, as a subcontractor on a federal construction program.',
       },
       {
-        q: 'What do we get afterward?',
-        a: 'A written report of what happened, what was done, and who was involved, for your records and your insurer.',
+        q: 'Can you escort construction crews and deliveries?',
+        a: 'Yes. Escorting trades and deliveries on an active build is the core of our restricted-area work, and coverage changes as the build does.',
       },
+      RELIEF_FAQ,
+      GSA_FAQ,
     ],
   },
 ];

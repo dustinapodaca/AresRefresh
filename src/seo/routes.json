@@ -33,6 +33,10 @@
       "description": "Request a security quote for Colorado Springs, Denver, or Pueblo. Send a site, a shift pattern, and a deadline. We respond within one business day.",
       "preloadImage": "/images/services-hero/nb-s1-towers.webp"
     },
+    "/teaming": {
+      "title": "Security Teaming & Subcontracting in Colorado | Ares",
+      "description": "Minority woman-owned security subcontractor for primes, guard companies, and builders: restricted-area escorts, access control, and relief and surge coverage."
+    },
     "/locations/colorado-springs": {
       "title": "Security Guards in Colorado Springs, CO | Ares Security",
       "description": "Armed and unarmed security officers, patrol, and access control in Colorado Springs. Woman-owned and locally based, with on-call coverage in every contract.",
@@ -167,16 +171,16 @@
         "Pueblo"
       ]
     },
-    "/services/emergency-response": {
-      "title": "Security Emergency Response in Colorado | Ares Security",
-      "description": "Security officers who respond on site, contain incidents, work with first responders, and file a written report after every incident.",
+    "/services/restricted-area-escort": {
+      "title": "Restricted-Area Escort in Colorado | Ares Security",
+      "description": "Restricted-area escort for crews, visitors, and deliveries in Colorado: people and vehicles verified, every escort in line of sight, and custody logs.",
       "breadcrumbs": [
         {
           "name": "Services",
           "path": "/services"
         }
       ],
-      "serviceType": "Security emergency response services",
+      "serviceType": "Restricted-area escort",
       "areaServed": [
         "Colorado Springs",
         "Denver",

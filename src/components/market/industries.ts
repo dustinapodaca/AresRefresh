@@ -20,6 +20,8 @@ export type IndustryPageData = {
   why: SheetRow[];
   ask: string;
   faq: Faq[];
+  /** A short block for prime contractors, linking to /teaming (owner, 2026-10-10). */
+  primes?: string;
 };
 
 const LICENSED: SheetRow = { label: 'Licensed and bonded', value: 'Armed and unarmed, in Denver, Colorado Springs, and Pueblo', href: '/locations/denver' };
@@ -42,6 +44,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       'Agencies also need a contracting path that already exists. Ares holds a GSA Multiple Award Schedule contract, is active on SAM.gov, and is an SBA-certified woman-owned small business.',
     ],
     deliver: [
+      { role: 'restricted-area-escort', line: 'Escort for crews, visitors, and deliveries inside restricted areas, with custody logs.' },
       { role: 'access-control', line: 'Entry control, visitor screening, and escort and monitoring inside restricted areas.' },
       { role: 'unarmed-security-officers', line: 'Uniformed officers for entrances, lobbies, and public areas, working to the facility’s post orders.' },
       { role: 'armed-security-officers', line: 'Armed posts where the facility or the contract requires them.' },
@@ -53,6 +56,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { label: 'Restricted areas', value: 'Hands-on access control experience on military installations' },
       { label: 'Veterans', value: 'Veteran supervisors and a veteran NRA firearms instructor' },
     ],
+    primes: 'Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on federal work along the Front Range.',
     ask: 'Send us the facility, the post requirements, and the period of performance. We will come back with a staffing plan under our GSA Schedule.',
     faq: [
       {

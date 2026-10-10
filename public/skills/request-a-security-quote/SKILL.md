@@ -1,6 +1,6 @@
 ---
 name: request-a-security-quote
-description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, mobile patrol, access control, event security, or emergency response at a Colorado site.
+description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, mobile patrol, access control, event security, or restricted-area escort at a Colorado site, or teaming and subcontract coverage for a prime contractor.
 ---
 
 # Request a security quote from Ares Security
@@ -20,7 +20,8 @@ Ask only for what the person has not already said:
   Transportation; Commercial & Retail; Institutional & Community (hospitals, schools,
   campuses, apartments); an event or venue; something else.
 - **Coverage:** armed or unarmed officers, mobile patrol, access control, event security,
-  or emergency response. If they are unsure about armed or unarmed, point them to
+  restricted-area escort, or teaming and subcontract coverage (for primes and guard
+  companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to
   https://aressecurity.co/insights/armed-or-unarmed-security
 - **Schedule:** number of officers, days and hours, and the start date.
 - **Contact:** name, organization, email, and phone.
@@ -32,7 +33,7 @@ Give the person one of these routes:
 - **Quote form:** https://aressecurity.co/contact
   The form can be opened pre-selected with `?service=` and `?industry=`:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
-    `mobile-patrol`, `event-security`, `emergency-response`, `other`
+    `mobile-patrol`, `event-security`, `restricted-area-escort`, `teaming`, `other`
   - industry: `government-military`, `critical-infrastructure`, `construction-industrial`,
     `airport-transportation`, `commercial-property`, `institutional-community`,
     `event-venue`, `other`

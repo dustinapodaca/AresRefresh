@@ -99,15 +99,17 @@ export const CAPABILITIES: Capability[] = [
     ],
   },
   {
-    id: 'emergency',
-    title: 'Emergency Response',
-    line: 'Rapid on-site response, incident containment, and post-incident reporting.',
-    keys: ['Rapid response', 'Containment', 'Reporting'],
+    // Replaced Emergency Response (copy audit round 2, owner 2026-10-10); its content moved
+    // into the officer pages' questions.
+    id: 'escort',
+    title: 'Restricted-Area Escort',
+    line: 'Escort for crews, visitors, and deliveries inside controlled areas, with custody logs.',
+    keys: ['Escort', 'Line of sight', 'Custody logs'],
     includes: [
-      { name: 'Rapid on-site response', detail: 'Officers on scene quickly when something happens at your site.' },
-      { name: 'Incident containment', detail: 'Securing the area and keeping people safe until it is resolved.' },
-      { name: 'First-responder coordination', detail: 'Officers who work alongside your staff and first responders during an incident.' },
-      { name: 'Post-incident reporting', detail: 'A written report of what happened and what was done.' },
+      { name: 'Crew, visitor, and delivery escort', detail: 'People and deliveries escorted inside the controlled area, kept in the officer\u2019s line of sight.' },
+      { name: 'Person and vehicle verification', detail: 'IDs, access lists, and vehicles checked before anyone enters.' },
+      { name: 'Custody logs', detail: 'Who entered, when, with whom, and when they left, logged for every escort.' },
+      { name: 'Coordination with installation security', detail: 'Officers who work to the site\u2019s rules, alongside its own security forces.' },
     ],
   },
 ];
@@ -147,11 +149,11 @@ export const GSA_SPECS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Period of performance', value: '5-year · optional extensions' },
 ];
 
-export const PATHS: { name: string; status: 'Available' | 'On request' }[] = [
+export const PATHS: { name: string; status: 'Available' | 'On request'; to?: string }[] = [
   { name: 'Open market · FAR 13', status: 'Available' },
   { name: 'BPAs & IDIQs', status: 'On request' },
   { name: 'State of Colorado contracts', status: 'Available' },
-  { name: 'Subcontracting to primes', status: 'Available' },
+  { name: 'Teaming and subcontracting with primes', status: 'Available', to: '/teaming' },
 ];
 
 export type Cert = { src: string; alt: string; name: string; id?: string; tall?: boolean; color?: boolean };
