@@ -198,6 +198,13 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 
 ## Gotchas learned
 
+- **The prerender bakes the DOM as it is after scripts run**, classes on `<html>` included.
+  A "JavaScript is on" class set by script ships in the static HTML, so it can't detect
+  no-JS. Use a `<noscript><style>` override instead (as the location maps do, 2026-10-09).
+- **Security headers** live in `public/_headers` (`/*`): nosniff, referrer policy,
+  SAMEORIGIN framing, permissions policy. No CSP yet (inline JSON-LD and Web3Forms need a
+  dedicated pass). Netlify adds HSTS itself.
+
 - Sticky and view timelines need `overflow: clip`, never `hidden`, on ancestors.
 - **View timelines and parent boxes ignore transforms.** The Services hold translates the
   page, so `view()` ranges and `.ds-doc` measurements fire early; offset ranges by
