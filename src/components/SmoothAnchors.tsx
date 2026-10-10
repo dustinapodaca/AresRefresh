@@ -6,17 +6,16 @@ import { scrollToSection } from '../lib/scrollToSection';
 // How clicks move around the site (owner, 2026-10-09).
 // - Same-page "#" links glide to their section (src/lib/scrollToSection.ts).
 // - A link to the page already open scrolls back to the top instead of doing nothing.
-// - With the phone menu open, the menu closes with its own animation first and then the
-//   page changes; the menu closing is the transition.
+// - With the phone menu open, the page changes behind the solid sheet and the sheet then
+//   slides away to reveal it; the reveal is the transition.
 // - Otherwise the page changes inside a View Transition (dossier.css, ::view-transition):
 //   the browser crossfades a snapshot of the old page into the new one on the compositor,
 //   so it stays smooth while a phone renders the new page. Without View Transitions the new
-//   page fades in with CSS instead (html[data-nav]), as it does for back and forward.
+//   page fades in with CSS instead (html[data-nav-fade], set by ScrollToTop), as it does for
+//   back and forward.
 //   None of it under reduced motion.
 // Capture phase, so this runs before React Router's own Link handler (which then sees the
 // click already handled and stands down).
-
-const MENU_CLOSE_MS = 170; // the sheet's close transition (dossier.css, 160ms) plus a frame
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -58,15 +57,13 @@ export default function SmoothAnchors() {
       const to = url.pathname + url.search + url.hash;
       e.preventDefault();
 
-      // The phone menu: let it close, then change the page with no other transition.
+      // The phone menu: change the page now, hidden behind the solid sheet, with no other
+      // transition; the Header then closes the sheet over the painted page, revealing it.
       if (menuOpen) {
-        window.dispatchEvent(new Event('ares:close-menu'));
-        document.documentElement.setAttribute('data-nav-quiet', '');
-        window.setTimeout(() => {
-          navigate(to);
-          // Let the quiet flag outlive the new page's first frames.
-          window.setTimeout(() => document.documentElement.removeAttribute('data-nav-quiet'), 400);
-        }, reduceMotion() ? 0 : MENU_CLOSE_MS);
+        const root = document.documentElement;
+        root.setAttribute('data-nav-quiet', '');
+        navigate(to);
+        window.setTimeout(() => root.removeAttribute('data-nav-quiet'), 400);
         return;
       }
 

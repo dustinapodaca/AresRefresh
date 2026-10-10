@@ -17,8 +17,21 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 
-  // Close the menu on any route change.
-  useEffect(() => setOpen(false), [pathname]);
+  // On a route change the menu closes after the new page has painted beneath it (the sheet is
+  // solid, so the swap is hidden), and its close reveals the new page: that is the
+  // transition from the menu (owner, 2026-10-09). Closing in the same frame as the swap let
+  // the new page's render eat the animation.
+  useEffect(() => {
+    let a = 0;
+    let b = 0;
+    a = requestAnimationFrame(() => {
+      b = requestAnimationFrame(() => setOpen(false));
+    });
+    return () => {
+      cancelAnimationFrame(a);
+      cancelAnimationFrame(b);
+    };
+  }, [pathname]);
   // Links ask the menu to close (with its animation) before they change the page
   // (SmoothAnchors).
   useEffect(() => {

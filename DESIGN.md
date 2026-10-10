@@ -793,11 +793,12 @@ Few, fast, and crisp. Four to six moments per page.
   way. `src/lib/scrollToSection.ts`; instant under reduced motion.
 - **Page changes** (owner, 2026-10-09; reworked the same day for phones): a View
   Transition where supported: the old page fades out in 160ms while the new one rises 12px
-  into place over 320ms (strong ease-out), on the compositor, so a busy phone can't eat it;
-  the header is its own layer and holds still. Browsers without View Transitions, and back
-  and forward, get a CSS fade (opacity 0.35 to 1, 260ms). **From the phone menu** the menu
-  closes with its own animation first (160ms) and then the page changes, with no other
-  transition: the menu closing is the transition. A link to the page already open closes
+  into place over 320ms (strong ease-out), on the compositor, so a busy phone can't eat it.
+  The header gets no view-transition-name (that made it a backdrop root and its frosted glass
+  vanished). Browsers without View Transitions, and back and forward, get a one-shot CSS fade
+  (opacity 0.35 to 1, 260ms). **From the phone menu** the page changes behind the solid
+  sheet, and two frames later the sheet slides up off it (240ms, drawer curve), revealing the
+  new page: the reveal is the transition, with no other. A link to the page already open closes
   the menu and scrolls to the top. Not on the first load; nothing under reduced motion.
   `src/components/SmoothAnchors.tsx`.
 

@@ -168,12 +168,12 @@ body:has(.ds-page) {
    load, and not under reduced motion. */
 /* Where the browser has View Transitions (SmoothAnchors): the old page fades out quickly
    while the new one rises 12px into place, both on the compositor, so a busy phone can't
-   eat the motion. The header is its own layer and holds still. The CSS fade below covers
+   eat the motion. (The header gets no view-transition-name: that makes it a backdrop root
+   and its frosted glass then has nothing to blur.) The CSS fade below covers
    browsers without them, and back and forward. Neither runs after a phone-menu tap (the menu
    closing is the transition) or under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  html[data-nav]:not([data-vt-running]):not([data-nav-quiet]) main.ds-page { animation: ds-page-in 260ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  .ds-header { view-transition-name: site-header; }
+  html[data-nav-fade] main.ds-page { animation: ds-page-in 260ms cubic-bezier(0.23, 1, 0.32, 1) both; }
   ::view-transition-old(root) { animation: ds-vt-out 160ms cubic-bezier(0.4, 0, 1, 1) both; }
   ::view-transition-new(root) { animation: ds-vt-in 320ms cubic-bezier(0.23, 1, 0.32, 1) both; }
 }
@@ -316,7 +316,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   background: var(--ds-canvas);
   clip-path: inset(0 0 100% 0);
   visibility: hidden;
-  transition: clip-path 160ms var(--ds-ease), visibility 0s linear 160ms;
+  transition: clip-path 240ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s linear 240ms; /* the reveal of the new page after a menu tap */
 }
 .ds-header[data-open='true'] .ds-sheet {
   clip-path: inset(0 0 0 0);
