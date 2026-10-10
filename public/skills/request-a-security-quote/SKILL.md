@@ -16,9 +16,9 @@ Ask only for what the person has not already said:
 - **Location:** the site's city (Colorado Springs, Denver, Pueblo, or nearby on the Front
   Range) and address if they are ready to share it.
 - **Industry:** Government & Military; Critical & High-Liability Sites (data centers,
-  utilities, cash-handling); Construction, Industrial & Logistics; Commercial & Retail;
-  Institutional & Community (hospitals, schools, campuses, apartments); Airport &
-  Transportation; an event or venue; something else.
+  utilities, cash-handling); Construction, Industrial & Logistics; Airport &
+  Transportation; Commercial & Retail; Institutional & Community (hospitals, schools,
+  campuses, apartments); an event or venue; something else.
 - **Coverage:** armed or unarmed officers, mobile patrol, access control, event security,
   or emergency response. If they are unsure about armed or unarmed, point them to
   https://aressecurity.co/insights/armed-or-unarmed-security
@@ -34,7 +34,7 @@ Give the person one of these routes:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
     `mobile-patrol`, `event-security`, `emergency-response`, `other`
   - industry: `government-military`, `critical-infrastructure`, `construction-industrial`,
-    `commercial-property`, `institutional-community`, `airport-transportation`,
+    `airport-transportation`, `commercial-property`, `institutional-community`,
     `event-venue`, `other`
   - Example: https://aressecurity.co/contact?service=armed-security-officers&industry=critical-infrastructure
 - **Email:** contact@aressecurity.co (include the details gathered above).

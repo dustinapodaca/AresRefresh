@@ -234,6 +234,23 @@
       ],
       "preloadImage": "/images/market/construction-industrial.webp"
     },
+    "/industries/airport-transportation": {
+      "title": "Airport & Transit Security in Colorado | Ares Security",
+      "description": "Security officers for airport-area sites, transit and parking facilities, and cargo operations in Colorado: credential checks, gate control, patrol.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Airport and transportation security",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ],
+      "preloadImage": "/images/market/airport-transportation.webp"
+    },
     "/industries/commercial-property": {
       "title": "Commercial & Retail Security in Colorado | Ares Security",
       "description": "Security officers for Colorado offices, retail, banks, hotels, and healthcare sites, with patrol across a portfolio and one report per property.",
@@ -267,23 +284,6 @@
         "Pueblo"
       ],
       "preloadImage": "/images/market/institutional-community.webp"
-    },
-    "/industries/airport-transportation": {
-      "title": "Airport & Transit Security in Colorado | Ares Security",
-      "description": "Security officers for airport-area sites, transit and parking facilities, and cargo operations in Colorado: credential checks, gate control, patrol.",
-      "breadcrumbs": [
-        {
-          "name": "Services",
-          "path": "/services"
-        }
-      ],
-      "serviceType": "Airport and transportation security",
-      "areaServed": [
-        "Colorado Springs",
-        "Denver",
-        "Pueblo"
-      ],
-      "preloadImage": "/images/market/airport-transportation.webp"
     },
     "/insights": {
       "title": "Insights: Buying Security in Colorado | Ares Security",

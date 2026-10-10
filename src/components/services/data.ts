@@ -28,7 +28,8 @@ export type Division = {
 };
 
 // The six industries, one set (owner, 2026-10-10: the divisions and the industries were the
-// same list shown twice). Government and Critical & High-Liability Sites lead (owner); each
+// same list shown twice). The owner's fixed order (2026-10-10): Government, Critical,
+// Construction, Airport, Commercial, Institutional, everywhere the six appear. Each
 // opens to its sites and links to the industry's own page.
 export const DIVISIONS: Division[] = [
   {
@@ -77,8 +78,21 @@ export const DIVISIONS: Division[] = [
     page: { to: '/industries/construction-industrial', label: 'construction, industrial, and logistics' },
   },
   {
-    id: 'commercial',
+    id: 'airport',
     n: '04',
+    title: 'Airport & Transportation',
+    body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
+    covers: [
+      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
+      { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
+      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
+    ],
+    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
+    page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
+  },
+  {
+    id: 'commercial',
+    n: '05',
     title: 'Commercial & Retail',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
     covers: [
@@ -93,7 +107,7 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'community',
-    n: '05',
+    n: '06',
     title: 'Institutional & Community',
     body: 'Trust-based security for sensitive and community settings, where a calm presence matters most.',
     covers: [
@@ -105,19 +119,6 @@ export const DIVISIONS: Division[] = [
     ],
     photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
     page: { to: '/industries/institutional-community', label: 'institutional and community' },
-  },
-  {
-    id: 'airport',
-    n: '06',
-    title: 'Airport & Transportation',
-    body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
-    covers: [
-      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
-      { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
-      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
-    ],
-    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
-    page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
   },
 ];
 

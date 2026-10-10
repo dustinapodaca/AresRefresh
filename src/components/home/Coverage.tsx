@@ -15,9 +15,9 @@ const DIVISIONS = [
   'Government & Military',
   'Critical & High-Liability Sites',
   'Construction, Industrial & Logistics',
+  'Airport & Transportation',
   'Commercial & Retail',
   'Institutional & Community',
-  'Airport & Transportation',
 ];
 
 export default function Coverage() {

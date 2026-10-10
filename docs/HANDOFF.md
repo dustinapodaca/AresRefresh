@@ -178,7 +178,10 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   people stay" opens on the team-at-the-range photo (owner, 2026-10-09).
 - **About:** 03 People portrait replaced with the owner's new officer photo (2026-10-09).
 - **Services:** "Trained on your systems" badges carry small authored icons (2026-10-09).
-  One set of six industry cards ("Who we protect.", 2026-10-10), one name per industry
+  One set of six industry cards ("Who we protect.", 2026-10-10) in the owner's **fixed order,
+  which overrides the audit**: Government & Military, Critical & High-Liability Sites,
+  Construction, Industrial & Logistics, Airport & Transportation, Commercial & Retail,
+  Institutional & Community, wherever the six appear. One name per industry
   everywhere, six industry pages (two new; data-centers renamed to critical-infrastructure
   with a 301). The rest of the copy audit (Claude Doc "Ares Security Dev Site — Copy Audit &
   Hero Options") is still being written by the owner; do only what they ask from it.

@@ -412,9 +412,10 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   division containers start a short scroll below.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
-  ("Open one to see the sites we staff."): six cards, Government & Military and Critical &
-  High-Liability Sites first (owner), then Construction, Industrial & Logistics; Commercial &
-  Retail; Institutional & Community; Airport & Transportation. Each opens to its summary and
+  ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &
+  Military; Critical & High-Liability Sites; Construction, Industrial & Logistics; Airport &
+  Transportation; Commercial & Retail; Institutional & Community. The same order wherever
+  the six appear (Home, industry pages, the quote form, llms.txt). Each opens to its summary and
   site types, then "See … security →" to its industry page. "By role." keeps only the
   services. **One name per industry** on Home ("Six industries"), Services, the industry
   pages, the city-page tags, and the quote form's site types. "Specialized & Armed

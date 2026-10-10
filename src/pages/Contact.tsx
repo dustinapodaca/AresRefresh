@@ -36,9 +36,9 @@ const SITE_TYPES: { slug: string; label: string }[] = [
   { slug: 'government-military', label: 'Government & Military' },
   { slug: 'critical-infrastructure', label: 'Critical & High-Liability Sites' },
   { slug: 'construction-industrial', label: 'Construction, Industrial & Logistics' },
+  { slug: 'airport-transportation', label: 'Airport & Transportation' },
   { slug: 'commercial-property', label: 'Commercial & Retail' },
   { slug: 'institutional-community', label: 'Institutional & Community' },
-  { slug: 'airport-transportation', label: 'Airport & Transportation' },
   { slug: 'event-venue', label: 'Event or venue' },
   { slug: 'other', label: 'Something else' },
 ];

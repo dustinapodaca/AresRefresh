@@ -27,6 +27,8 @@ const RELIEF: SheetRow = { label: 'Relief', value: 'On-call coverage written int
 const LOGS: SheetRow = { label: 'Records', value: 'Checkpoint, visitor, and incident logs you can audit' };
 const GSA: SheetRow = { label: 'GSA MAS', value: '47QSMS25D009Q, SIN 561612', href: GSA_ELIBRARY, external: true };
 
+// The owner's fixed order (2026-10-10): Government, Critical, Construction, Airport,
+// Commercial, Institutional.
 export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'government-military',
@@ -160,6 +162,50 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ],
   },
   {
+    // New (owner, 2026-10-10). "Ready to staff" wording; names no airport client until there
+    // is a contract.
+    slug: 'airport-transportation',
+    name: 'Airport & Transportation',
+    short: 'Airport-area sites, transit and parking facilities, and cargo operations.',
+    title: 'Security for airport and transportation sites.',
+    lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',
+    image: { src: '/images/market/airport-transportation.webp', alt: '' },
+    stake: [
+      'Transportation sites never close. Vehicles, cargo, and people move through them around the clock, and every gate, lot, and dock is a way in.',
+      'Around an airport, access is controlled and procedures are set by the facility. Officers have to learn those rules before they stand the post, follow them exactly, and log what they check.',
+    ],
+    deliver: [
+      { role: 'access-control', line: 'Credential checks and gate and dock control for vehicles, cargo, and people, all logged.' },
+      { role: 'unarmed-security-officers', line: 'Uniformed or plainclothes officers for lobbies, platforms, and parking.' },
+      { role: 'mobile-patrol', line: 'Patrol of lots, yards, and perimeters, with after-hours checks.' },
+    ],
+    why: [
+      { label: 'Restricted areas', value: 'Access control and escort experience on military installations' },
+      { label: 'Coverage', value: 'Uniformed or plainclothes, around the clock' },
+      LOGS,
+      RELIEF,
+    ],
+    ask: 'Send us the site, its access rules, and the hours you need covered. We will come back with a staffing plan and post orders.',
+    faq: [
+      {
+        q: 'Have your officers worked restricted areas?',
+        a: 'Yes. Our officers have run access control, escort, and vehicle inspection for restricted areas on military installations, alongside base security forces.',
+      },
+      {
+        q: 'Uniformed or plainclothes?',
+        a: 'Both. Uniformed officers deter and direct; plainclothes officers watch without changing how a space feels. Many sites use both.',
+      },
+      {
+        q: 'Do you cover parking and cargo areas?',
+        a: 'Yes: posted officers at gates and docks, patrol of lots and yards, and a log of every vehicle and delivery checked.',
+      },
+      {
+        q: 'Where in Colorado do you work?',
+        a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
+      },
+    ],
+  },
+  {
     slug: 'commercial-property',
     name: 'Commercial & Retail',
     short: 'Offices, retail, banks, hotels, and healthcare and campus sites.',
@@ -237,50 +283,6 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Where in Colorado do you work?',
         a: 'The Denver metro area, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
-      },
-    ],
-  },
-  {
-    // New (owner, 2026-10-10). "Ready to staff" wording; names no airport client until there
-    // is a contract.
-    slug: 'airport-transportation',
-    name: 'Airport & Transportation',
-    short: 'Airport-area sites, transit and parking facilities, and cargo operations.',
-    title: 'Security for airport and transportation sites.',
-    lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',
-    image: { src: '/images/market/airport-transportation.webp', alt: '' },
-    stake: [
-      'Transportation sites never close. Vehicles, cargo, and people move through them around the clock, and every gate, lot, and dock is a way in.',
-      'Around an airport, access is controlled and procedures are set by the facility. Officers have to learn those rules before they stand the post, follow them exactly, and log what they check.',
-    ],
-    deliver: [
-      { role: 'access-control', line: 'Credential checks and gate and dock control for vehicles, cargo, and people, all logged.' },
-      { role: 'unarmed-security-officers', line: 'Uniformed or plainclothes officers for lobbies, platforms, and parking.' },
-      { role: 'mobile-patrol', line: 'Patrol of lots, yards, and perimeters, with after-hours checks.' },
-    ],
-    why: [
-      { label: 'Restricted areas', value: 'Access control and escort experience on military installations' },
-      { label: 'Coverage', value: 'Uniformed or plainclothes, around the clock' },
-      LOGS,
-      RELIEF,
-    ],
-    ask: 'Send us the site, its access rules, and the hours you need covered. We will come back with a staffing plan and post orders.',
-    faq: [
-      {
-        q: 'Have your officers worked restricted areas?',
-        a: 'Yes. Our officers have run access control, escort, and vehicle inspection for restricted areas on military installations, alongside base security forces.',
-      },
-      {
-        q: 'Uniformed or plainclothes?',
-        a: 'Both. Uniformed officers deter and direct; plainclothes officers watch without changing how a space feels. Many sites use both.',
-      },
-      {
-        q: 'Do you cover parking and cargo areas?',
-        a: 'Yes: posted officers at gates and docks, patrol of lots and yards, and a log of every vehicle and delivery checked.',
-      },
-      {
-        q: 'Where in Colorado do you work?',
-        a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
       },
     ],
   },
