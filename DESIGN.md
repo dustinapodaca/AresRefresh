@@ -714,8 +714,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   with a 1px underline that draws in on hover and stays under the current page), and a
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
 - Mobile: the mark (38px; was 44px) and a three-line menu icon that turns into an X. The menu is a
-  solid canvas sheet with 20px links on hairline rows, the phone and email, and the
-  primary button.
+  solid canvas sheet over the whole screen (the bar's area included, a hairline where the
+  bar ends) with 20px links on hairline rows, the phone and email, and the primary button.
+  It grows out of the hamburger as a circle (300ms, drawer curve) and draws back into it
+  (260ms, accelerating); the links ease in just behind it, 28ms apart, from 0.3 opacity
+  and 10px (owner, 2026-10-09). Instant under reduced motion.
 
 ### Footer
 Redesigned 2026-10-06, restored 2026-10-08 (owner, after trying Ada's and Pally's
@@ -797,7 +800,7 @@ Few, fast, and crisp. Four to six moments per page.
   The header gets no view-transition-name (that made it a backdrop root and its frosted glass
   vanished). Browsers without View Transitions, and back and forward, get a one-shot CSS fade
   (opacity 0.35 to 1, 260ms). **From the phone menu** the page changes behind the solid
-  sheet, and two frames later the sheet slides up off it (240ms, drawer curve), revealing the
+  sheet, and two frames later the sheet draws back into the hamburger (260ms), revealing the
   new page: the reveal is the transition, with no other. A link to the page already open closes
   the menu and scrolls to the top. Not on the first load; nothing under reduced motion.
   `src/components/SmoothAnchors.tsx`.

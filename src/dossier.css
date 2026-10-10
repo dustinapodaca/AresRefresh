@@ -220,12 +220,10 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   pointer-events: none;
 }
 .ds-header[data-solid='true']::before { opacity: 1; }
-/* With the mobile menu open the bar goes solid to match the sheet below it. */
-.ds-header[data-open='true']::before { background: var(--ds-canvas); border-bottom-color: var(--ds-rule); }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .ds-header::before { background: rgb(10 11 13 / 0.94); }
 }
-.ds-header-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 100%; }
+.ds-header-row { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 100%; } /* above the phone menu */
 .ds-brand { display: flex; align-items: center; gap: 12px; color: var(--ds-fg); }
 .ds-mark {
   display: block;
@@ -307,22 +305,32 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-header[data-open='true'] .ds-menu-icon span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .ds-sheet {
+  /* The phone menu (owner, 2026-10-09): solid canvas over the whole screen, the nav bar's
+     area included, grown out of the hamburger as a circle (its center and reach set by
+     Header.tsx) and drawn back into it on close; the bar's row (mark and X) stays on top. A
+     hairline marks where the bar ends. */
   position: fixed;
-  top: var(--ds-header);
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  padding-top: var(--ds-header);
   overflow-y: auto;
-  background: var(--ds-canvas);
-  clip-path: inset(0 0 100% 0);
+  background: linear-gradient(var(--ds-rule), var(--ds-rule)) 0 var(--ds-header) / 100% 1px no-repeat, var(--ds-canvas);
+  clip-path: circle(0px at var(--menu-x, calc(100% - 32px)) var(--menu-y, 34px));
   visibility: hidden;
-  transition: clip-path 240ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s linear 240ms; /* the reveal of the new page after a menu tap */
+  transition: clip-path 260ms cubic-bezier(0.6, 0, 0.8, 0.4), visibility 0s linear 260ms;
 }
 .ds-header[data-open='true'] .ds-sheet {
-  clip-path: inset(0 0 0 0);
+  clip-path: circle(var(--menu-r, 150vmax) at var(--menu-x, calc(100% - 32px)) var(--menu-y, 34px));
   visibility: visible;
-  transition: clip-path 220ms var(--ds-ease), visibility 0s;
+  transition: clip-path 300ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s;
 }
+/* The links ease in just behind the circle, a step apart (never from opacity 0). */
+.ds-header[data-open='true'] .ds-sheet li,
+.ds-header[data-open='true'] .ds-sheet-contact,
+.ds-header[data-open='true'] .ds-sheet .ds-actions {
+  animation: ds-sheet-item 320ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: calc(80ms + var(--i, 0) * 28ms);
+}
+@keyframes ds-sheet-item { from { opacity: 0.3; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .ds-sheet ul { list-style: none; margin: 0; padding: 0; }
 .ds-sheet-link {
   display: flex;
@@ -3584,6 +3592,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   /* The strip holds still and can be swiped instead; the loop copy is dropped. */
   .ds-strip { overflow-x: auto; scrollbar-width: none; }
   .ds-strip-track[aria-hidden] { display: none; }
+  .ds-header[data-open='true'] .ds-sheet li,
+  .ds-header[data-open='true'] .ds-sheet-contact,
+  .ds-header[data-open='true'] .ds-sheet .ds-actions { animation: none; }
   .ds-header,
   .ds-sheet,
   .ds-header[data-open='true'] .ds-sheet,
