@@ -410,7 +410,14 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
   point, 6:1 or better at every width). The place caption "Downtown Denver, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
-- **Division order (owner, 2026-10-08):** 01 Government, 02 Specialized & Armed Protection (data centers named in its description and first in its detail, worded for unarmed or armed officers), 03 Industrial, 04 Airport & Transportation, 05 Commercial, 06 Institutional & Community.
+- **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
+  Industries list were the same list shown twice, so the section is now "Who we protect."
+  ("Open one to see the sites we staff."), six cards in the order Government, Construction,
+  Commercial, Institutional, Airport, Critical sites (no single industry leads). Each card
+  opens to its summary and site types, then a link to the industry's full page where one
+  exists ("See … security →"). The "By role, or by industry" index keeps only the services
+  ("By role."). The rail mark reads "Industries". Card names, the two new industry pages, and
+  the critical-sites rename and URL move are later steps of the audit.
 - **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
   one exception to "no card containers", and with the nav the only glass). Desktop and
   tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were

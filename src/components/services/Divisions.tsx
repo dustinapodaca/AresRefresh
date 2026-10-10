@@ -5,6 +5,7 @@ import { GSA_ELIBRARY } from '../home/links';
 import { DIVISIONS } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
+import { Link } from 'react-router-dom';
 
 const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // drawer curve
 const DURATION = 320;
@@ -123,12 +124,9 @@ export default function Divisions() {
   return (
     <section id="divisions" className="ds-svc-divisions" aria-labelledby="divisions-title">
       <h2 id="divisions-title" className="ds-display-lg">
-        What each division covers.
+        Who we protect.
       </h2>
-      <p className="ds-lead ds-svc-intro">
-        Every division is staffed the same way: each officer is trained on your post by
-        someone from our leadership who has worked it. Open one to see where we post.
-      </p>
+      <p className="ds-lead ds-svc-intro">Open one to see the sites we staff.</p>
 
       <div className="ds-svc-grid" ref={gridRef}>
         {DIVISIONS.map((d, i) => {
@@ -203,6 +201,12 @@ export default function Divisions() {
                       </li>
                     ))}
                   </ul>
+                  {d.page && (
+                    <Link to={d.page.to} className="ds-link ds-svc-more">
+                      See {d.page.label} security
+                      <Arrow size={14} />
+                    </Link>
+                  )}
                 </div>
               </div>
             </article>
@@ -210,7 +214,7 @@ export default function Divisions() {
         })}
       </div>
 
-      <p className="ds-lead ds-handoff">Whichever division fits your site, the work starts the same way.</p>
+      <p className="ds-lead ds-handoff">Whichever industry you are in, the work starts the same way.</p>
     </section>
   );
 }

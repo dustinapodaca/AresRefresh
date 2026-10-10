@@ -3,7 +3,7 @@ import type { Mark } from '../home/DocRail';
 // Services content. Source: docs/services-content.md; copy changes: docs/copy-changes.md.
 
 export const SERVICE_MARKS: readonly Mark[] = [
-  { id: 'divisions', n: '01', label: 'Divisions' },
+  { id: 'divisions', n: '01', label: 'Industries' },
   { id: 'browse', n: '02', label: 'By role' },
   { id: 'process', n: '03', label: 'Process' },
   { id: 'program', n: '04', label: 'Program' },
@@ -23,8 +23,13 @@ export type Division = {
   // already on the site; owner to review (docs/copy-changes.md).
   covers: { name: string; detail: string }[];
   photo: { src: string; width: number; height: number; position?: string; sharp?: Photo };
+  /** The industry's full page, where one exists (owner, 2026-10-10). */
+  page?: { to: string; label: string };
 };
 
+// The six industries, one set (owner, 2026-10-10: the divisions and the industries were the
+// same list shown twice). Ordered so no single industry leads; each opens to its sites and
+// links to the industry's own page where there is one.
 export const DIVISIONS: Division[] = [
   {
     id: 'government',
@@ -42,22 +47,11 @@ export const DIVISIONS: Division[] = [
       src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
       sharp: { src: '/images/matrix-government.webp', width: 862, height: 862 },
     },
-  },
-  {
-    id: 'specialized',
-    n: '02',
-    title: 'Specialized & Armed Protection',
-    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
-    covers: [
-      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, with unarmed or armed officers.' },
-      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
-      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
-    ],
-    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
+    page: { to: '/industries/government-military', label: 'government and military' },
   },
   {
     id: 'industrial',
-    n: '03',
+    n: '02',
     title: 'Industrial, Logistics & Construction',
     body: 'Posted guards around the clock, mobile patrols, perimeter security, and checkpoint logs you can audit.',
     covers: [
@@ -67,22 +61,11 @@ export const DIVISIONS: Division[] = [
       { name: 'Critical infrastructure', detail: 'Posted guards and auditable checkpoint logs where access must be documented.' },
     ],
     photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
-  },
-  {
-    id: 'airport',
-    n: '04',
-    title: 'Airport & Transportation Security',
-    body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
-    covers: [
-      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
-      { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
-      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
-    ],
-    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
+    page: { to: '/industries/construction-industrial', label: 'construction and industrial' },
   },
   {
     id: 'commercial',
-    n: '05',
+    n: '03',
     title: 'Commercial & High‑Traffic Security',
     body: 'Visible deterrence and loss prevention that scales with foot traffic while protecting revenue and the customer experience.',
     covers: [
@@ -93,10 +76,11 @@ export const DIVISIONS: Division[] = [
       { name: 'Grocery', detail: 'Loss prevention that protects revenue and the customer experience.' },
     ],
     photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
+    page: { to: '/industries/commercial-property', label: 'commercial and retail' },
   },
   {
     id: 'community',
-    n: '06',
+    n: '04',
     title: 'Institutional & Community Security',
     body: 'Trust-based security for sensitive and community settings, where a calm presence matters most.',
     covers: [
@@ -107,6 +91,31 @@ export const DIVISIONS: Division[] = [
       { name: 'Residential & retirement', detail: 'Consistent officers residents can get to know.' },
     ],
     photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
+  },
+  {
+    id: 'airport',
+    n: '05',
+    title: 'Airport & Transportation Security',
+    body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
+    covers: [
+      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
+      { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
+      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
+    ],
+    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
+  },
+  {
+    id: 'specialized',
+    n: '06',
+    title: 'Specialized & Armed Protection',
+    body: 'Officers for data centers, cash-handling, and other regulated or high-liability sites, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
+    covers: [
+      { name: 'Data centers', detail: 'Access control and checkpoint logs for controlled areas, with unarmed or armed officers.' },
+      { name: 'Armed asset protection', detail: 'Licensed, firearms-compliant officers, qualified by our veteran NRA firearms instructor.' },
+      { name: 'High-risk environments', detail: 'Armed officers for regulated or high-liability sites.' },
+    ],
+    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
+    page: { to: '/industries/data-centers', label: 'data center' },
   },
 ];
 

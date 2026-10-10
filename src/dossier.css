@@ -1646,6 +1646,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-item-detail { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); }
 /* After Government's proof row the list continues on the same rule, not a second one. */
 .ds-svc-proof + .ds-svc-items { margin-top: 0; }
+/* The link from an opened industry card to its full page (owner, 2026-10-10). */
+.ds-svc-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 15px; }
 .ds-svc-proof + .ds-svc-items li:first-child { border-top: 0; }
 
 @media (min-width: 768px) {

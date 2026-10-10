@@ -628,3 +628,14 @@ north on I-25", each on one line (the two-line split of 2026-10-08 is undone).
 ## Capability Statement spec line (2026-10-09)
 
 "1 page · PDF · 2.1 MB" is now "1 page · PDF · 1.3 MB": the PDF was shrunk without visible change (assets/tools/optimize-pdf.py).
+
+## Services: one set of six industries (2026-10-10, owner, from the copy audit)
+
+| Was | Now |
+|---|---|
+| "What each division covers." | "Who we protect." |
+| "Every division is staffed the same way: each officer is trained on your post by someone from our leadership who has worked it. Open one to see where we post." | "Open one to see the sites we staff." |
+| (none) | In each opened card with a page: "See government and military / construction and industrial / commercial and retail / data center security →" |
+| "By role, or by industry." with a Services list and an Industries list | "By role." with the Services list only |
+| "Whichever division fits your site, the work starts the same way." | "Whichever industry you are in, the work starts the same way." |
+| Rail and dock mark "Divisions" | "Industries" |
