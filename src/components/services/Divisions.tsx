@@ -178,6 +178,14 @@ export default function Divisions() {
                   </button>
                 </h3>
                 <p className="ds-svc-desc">{d.body}</p>
+                {/* The industry's full page, in the card's heading area so it shows closed or open
+                    (owner, 2026-10-10). */}
+                {d.page && (
+                  <Link to={d.page.to} className="ds-link ds-svc-more">
+                    See {d.page.label} security
+                    <Arrow size={14} />
+                  </Link>
+                )}
 
                 {/* Always in the document (and the prerendered HTML); hidden until opened. */}
                 <div id={panelId} className="ds-svc-detail" hidden={!open}>
@@ -201,12 +209,6 @@ export default function Divisions() {
                       </li>
                     ))}
                   </ul>
-                  {d.page && (
-                    <Link to={d.page.to} className="ds-link ds-svc-more">
-                      See {d.page.label} security
-                      <Arrow size={14} />
-                    </Link>
-                  )}
                 </div>
               </div>
             </article>

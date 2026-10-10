@@ -416,7 +416,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   Military; Critical & High-Liability Sites; Construction, Industrial & Logistics; Airport &
   Transportation; Commercial & Retail; Institutional & Community. The same order wherever
   the six appear (Home, industry pages, the quote form, llms.txt). Each opens to its summary and
-  site types, then "See … security →" to its industry page. "By role." keeps only the
+  site types; the open card shows "See … security →" to its industry page in its heading area, under the description (hidden while closed). "By role." keeps only the
   services. **One name per industry** on Home ("Six industries"), Services, the industry
   pages, the city-page tags, and the quote form's site types. "Specialized & Armed
   Protection" became Critical & High-Liability Sites (a kind of site, not a service; data

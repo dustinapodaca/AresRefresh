@@ -1646,8 +1646,12 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-item-detail { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); }
 /* After Government's proof row the list continues on the same rule, not a second one. */
 .ds-svc-proof + .ds-svc-items { margin-top: 0; }
-/* The link from an opened industry card to its full page (owner, 2026-10-10). */
-.ds-svc-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 15px; }
+/* The link from each industry card to its full page, in the heading area under the
+   description (owner, 2026-10-10). Its left edge follows the description's. */
+/* Only on an opened card (owner, 2026-10-10); inline so the arrow follows the last word. */
+.ds-svc-more { position: relative; z-index: 1; display: none; margin: 14px 0 0 calc(1.75rem + 6px); font-size: 15px; line-height: 1.5; }
+.ds-svc-more .ds-arrow { display: inline-block; margin-left: 8px; vertical-align: -2px; }
+.ds-svc-card[data-open='true'] .ds-svc-more { display: inline-block; }
 .ds-svc-proof + .ds-svc-items li:first-child { border-top: 0; }
 
 @media (min-width: 768px) {
@@ -1659,6 +1663,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-svc-card-media { height: 17rem; }
   .ds-svc-card-head button { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: 8px; }
   .ds-svc-desc,
+  .ds-svc-more,
   .ds-svc-detail { margin-left: calc(2.25rem + 8px); }
   .ds-svc-items li { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
   .ds-svc-card[data-open='true'] .ds-svc-card-media { height: 22rem; }
