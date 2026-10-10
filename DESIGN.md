@@ -801,7 +801,8 @@ Few, fast, and crisp. Four to six moments per page.
   vanished). Browsers without View Transitions, and back and forward, get a one-shot CSS fade
   (opacity 0.35 to 1, 260ms). **From the phone menu** the page changes behind the solid
   sheet, and two frames later the sheet draws back into the hamburger (260ms), revealing the
-  new page: the reveal is the transition, with no other. A link to the page already open closes
+  new page: the reveal is the transition, with no other. Between the policy pages (/privacy,
+  /terms, /accessibility) on phones and tablets, no transition at all (owner, 2026-10-09). A link to the page already open closes
   the menu and scrolls to the top. Not on the first load; nothing under reduced motion.
   `src/components/SmoothAnchors.tsx`.
 

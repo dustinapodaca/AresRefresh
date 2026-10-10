@@ -130,7 +130,6 @@ export default function Footer() {
                 <li><Link to="/privacy">Privacy</Link></li>
                 <li><Link to="/terms">Terms</Link></li>
                 <li><Link to="/accessibility">Accessibility</Link></li>
-                <li><a href={`mailto:contact@aressecurity.co?subject=${encodeURIComponent('Safety concern')}`}>Report a concern</a></li>
               </ul>
             </div>
           </div>

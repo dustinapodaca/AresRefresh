@@ -134,7 +134,8 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   Contracting / Registration (green SAM light); cert marks; then the giant ARES letters
   (white warming to amber) over the rust aurora, sinking into the dark glass legal band.
   A black-to-rust letter version was tried and dropped. Test branch: Insights under
-  Company, "Report a concern" in the legal links, no Services column.
+  Company, no Services column ("Report a concern" removed from the legal links, owner
+  2026-10-09).
 - **Home:** hero is the copper tower `hero6.jpg` with a soft vignette and a glass strip
   that rises faster than the page (40svh); 01 Record has black frosted proof cards; on
   phones the four cards (quote included) are one height, stack 16px apart, hold, then

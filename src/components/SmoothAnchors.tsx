@@ -57,6 +57,17 @@ export default function SmoothAnchors() {
       const to = url.pathname + url.search + url.hash;
       e.preventDefault();
 
+      // Between the policy pages on phones and tablets, no transition at all (owner,
+      // 2026-10-09): the documents switch in place.
+      const POLICIES = ['/privacy', '/terms', '/accessibility'];
+      if (POLICIES.includes(location.pathname) && POLICIES.includes(url.pathname) && window.matchMedia('(max-width: 1023px)').matches) {
+        const root = document.documentElement;
+        root.setAttribute('data-nav-quiet', '');
+        navigate(to);
+        window.setTimeout(() => root.removeAttribute('data-nav-quiet'), 400);
+        return;
+      }
+
       // The phone menu: change the page now, hidden behind the solid sheet, with no other
       // transition; the Header then closes the sheet over the painted page, revealing it.
       if (menuOpen) {
