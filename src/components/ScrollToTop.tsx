@@ -18,9 +18,11 @@ export default function ScrollToTop() {
     const id = hash ? decodeURIComponent(hash.slice(1)) : '';
     const target = id ? document.getElementById(id) : null;
     if (target) {
-      // Same landing as the in-page links: the section's content just under the bars.
+      // Same landing as the in-page links: the section's content just under the bars. One
+      // moment later too, once the page's own setup (Services' scroll hold) has run.
       window.scrollTo({ top: sectionY(target), behavior: 'instant' as ScrollBehavior });
-      return;
+      const t = window.setTimeout(() => window.scrollTo({ top: sectionY(target), behavior: 'instant' as ScrollBehavior }), 0);
+      return () => window.clearTimeout(t);
     }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     document.documentElement.scrollTop = 0;

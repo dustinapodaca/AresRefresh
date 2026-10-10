@@ -19,14 +19,16 @@ export function sectionY(el: HTMLElement): number {
   const gap = window.innerWidth >= 1024 ? 32 : 24;
   // Sections land on their content (inside their top padding); a card or row lands on itself.
   const pad = el.tagName === 'SECTION' ? px(getComputedStyle(el).paddingTop) : 0;
-  // Services holds its page still for the first --svc-cap of scroll (transform or spacer), so
-  // a target's current box sits that much higher than where it rests once the hold is spent.
-  let shift = 0;
-  if (root.classList.contains('svc-hold') || root.classList.contains('svc-hold-js')) {
-    const cap = px(getComputedStyle(root).getPropertyValue('--svc-cap'));
-    shift = cap - Math.min(Math.max(window.scrollY, 0), cap);
-  }
-  const top = el.getBoundingClientRect().top + window.scrollY + pad + shift;
+  // The layout position (offsetTop ignores transforms, so a scroll-driven transform mid-run
+  // can't skew it). Services holds its page still for the first --svc-cap of scroll: as a
+  // transform (add the full cap, which is where the page rests once the hold is spent) or,
+  // without scroll timelines, as a spacer already in the layout (add what is left of it).
+  let top = 0;
+  for (let n: HTMLElement | null = el; n; n = n.offsetParent as HTMLElement | null) top += n.offsetTop;
+  const cap = px(getComputedStyle(root).getPropertyValue('--svc-cap'));
+  if (root.classList.contains('svc-hold')) top += cap;
+  else if (root.classList.contains('svc-hold-js')) top += cap - Math.min(Math.max(window.scrollY, 0), cap);
+  top += pad;
   return Math.max(0, Math.round(top - header - runhead - gap));
 }
 
