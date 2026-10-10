@@ -19,6 +19,13 @@ export default function Header() {
 
   // Close the menu on any route change.
   useEffect(() => setOpen(false), [pathname]);
+  // Links ask the menu to close (with its animation) before they change the page
+  // (SmoothAnchors).
+  useEffect(() => {
+    const close = () => setOpen(false);
+    window.addEventListener('ares:close-menu', close);
+    return () => window.removeEventListener('ares:close-menu', close);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
