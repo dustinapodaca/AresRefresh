@@ -723,3 +723,10 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 | Commercial & Retail: "Do you staff events at our property?" | "Can you cover extra posts during a busy season or a renovation?" |
 | Footer badges: GSA, SBA, Women Owned, WBENC | Adds Denver Economic Development & Opportunity |
 
+
+## Quote form, reply time, fill time, founder template (2026-10-10, owner)
+
+- Quote form: site type "Event or venue" removed; schedule "One-time or event" is now "One-time or short-term".
+- Contact meta: "We respond within one business day." removed (owner: leave the reply time out); Denver city meta "event coverage" is now "access control".
+- Relief and surge coverage: "How fast can you fill a shift?" / "It depends on the post, the hours, and what the site requires, but usually within a week."
+- About: "Why Ares exists." founder block built as a template (the audit's draft about Deidre Herrera-Ruiz), hidden until Deidre approves it; preview at /about?founder=preview. No veteran count (owner).

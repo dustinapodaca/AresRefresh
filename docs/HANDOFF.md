@@ -49,7 +49,11 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     stated: the owner has to confirm one Ares can stand behind. The Denver EDO mark joined
     the footer badge row. The doc's newer clearance line ("must hold, or be able to obtain")
     is NOT applied: the owner kept "Requires an active TS clearance." (2026-10-10). The quote
-    form still offers the site type "Event or venue" and the schedule "One-time or event".
+    form's event options are gone (owner). Fill time on the relief page: "usually within a
+    week" (owner). No reply time anywhere (owner: leave it out). No veteran count. About has
+    a hidden founder template ("Why Ares exists.", `src/components/about/Founder.tsx`,
+    `APPROVED = false`, preview `/about?founder=preview`) until Deidre approves the wording
+    and supplies a photo.
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the

@@ -1163,6 +1163,18 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
    The photo holds still on desktop while the four steps scroll past. */
 .ds-staffing { padding-top: var(--ds-beat-open); }
+/* Why Ares exists (About, a template until Deidre approves it): the headline left, the story
+   and her name right. No section number; it sits before 01 Staffing. */
+.ds-founder { display: grid; gap: 24px; padding-top: var(--ds-beat); }
+.ds-founder-body .ds-lead { margin: 0 0 16px; max-width: 46ch; color: var(--ds-fg); }
+.ds-founder-body .ds-lead + .ds-lead { color: var(--ds-fg-muted); }
+.ds-founder-sig { display: grid; gap: 2px; margin: 28px 0 0; padding-top: 14px; border-top: 1px solid var(--ds-rule-strong); max-width: 46ch; }
+.ds-founder-sig span:first-child { font-weight: 600; font-size: 16px; color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-founder h2 { grid-column: 1 / span 6; }
+  .ds-founder-body { grid-column: 7 / span 6; }
+}
 .ds-staffing-intro .ds-lead { margin-top: 20px; }
 .ds-staffing-body { display: grid; gap: 40px; margin-top: var(--ds-beat-tight); }
 .ds-staffing-media .ds-plate img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 20%; }

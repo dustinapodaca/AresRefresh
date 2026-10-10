@@ -18,7 +18,7 @@ Ask only for what the person has not already said:
 - **Industry:** Government & Military; Critical & High-Liability Sites (data centers,
   utilities, cash-handling); Construction, Industrial & Logistics; Airport &
   Transportation; Commercial & Retail; Institutional & Community (hospitals, schools,
-  campuses, apartments); an event or venue; something else.
+  campuses, apartments); something else.
 - **Coverage:** armed or unarmed officers, mobile patrol, access control,
   restricted-area escort, relief and surge coverage, or teaming and subcontract coverage (for primes and guard
   companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to
@@ -36,7 +36,7 @@ Give the person one of these routes:
     `mobile-patrol`, `restricted-area-escort`, `relief-surge-coverage`, `teaming`, `other`
   - industry: `government-military`, `critical-infrastructure`, `construction-industrial`,
     `airport-transportation`, `commercial-property`, `institutional-community`,
-    `event-venue`, `other`
+    `other`
   - Example: https://aressecurity.co/contact?service=armed-security-officers&industry=critical-infrastructure
 - **Email:** contact@aressecurity.co (include the details gathered above).
 - **Phone:** 719-696-3966.

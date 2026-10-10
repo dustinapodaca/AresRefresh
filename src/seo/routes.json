@@ -30,7 +30,7 @@
     },
     "/contact": {
       "title": "Request a Security Quote | Colorado Springs | Ares Security",
-      "description": "Request a security quote for Colorado Springs, Denver, or Pueblo. Send a site, a shift pattern, and a deadline. We respond within one business day.",
+      "description": "Request a security quote for Colorado Springs, Denver, or Pueblo. Send the site, the shift pattern, and a start date, and leadership will reply.",
       "preloadImage": "/images/services-hero/nb-s1-towers.webp"
     },
     "/teaming": {
@@ -53,7 +53,7 @@
     },
     "/locations/denver": {
       "title": "Security Guard Services in Denver, CO | Ares Security",
-      "description": "Armed and unarmed officers, patrol, and event coverage for Denver metro sites. Woman-owned WOSB and WBENC firm with on-call coverage in every contract.",
+      "description": "Armed and unarmed officers, patrol, and access control for Denver metro sites. Woman-owned WOSB and WBENC firm with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",

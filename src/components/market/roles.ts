@@ -186,6 +186,11 @@ export const ROLE_PAGES: RolePageData[] = [
     industries: ['construction-industrial', 'critical-infrastructure', 'government-military'],
     faq: [
       {
+        // Owner, 2026-10-10: "it depends, but within a week usually".
+        q: 'How fast can you fill a shift?',
+        a: 'It depends on the post, the hours, and what the site requires, but usually within a week.',
+      },
+      {
         q: 'Can your officers work under our post orders?',
         a: 'Yes. Officers work to your post orders and are trained on the post before their first shift. Uniforms are agreed with you up front.',
       },

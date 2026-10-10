@@ -1,6 +1,7 @@
 import Seo from '../seo/Seo';
 import DocRail from '../components/home/DocRail';
 import Opening from '../components/about/Opening';
+import Founder from '../components/about/Founder';
 import Staffing from '../components/about/Staffing';
 import Commitments from '../components/about/Commitments';
 import People from '../components/about/People';
@@ -15,6 +16,7 @@ export default function About() {
       <Opening />
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
+          <Founder />
           <Staffing />
           <Commitments />
           <People />

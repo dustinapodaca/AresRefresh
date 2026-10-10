@@ -27,12 +27,13 @@ const NEEDS: { slug: string; label: string }[] = [
 const CHIPS: { name: string; legend: string; options: string[] }[] = [
   { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Elsewhere in Colorado'] },
   { name: 'officers', legend: 'Officers on post at once', options: ['1 to 2', '3 to 5', '6 to 15', '16 or more', 'Not sure'] },
-  { name: 'schedule', legend: 'Schedule', options: ['Business hours', 'Nights and weekends', '24/7', 'One-time or event', 'Not sure'] },
+  { name: 'schedule', legend: 'Schedule', options: ['Business hours', 'Nights and weekends', '24/7', 'One-time or short-term', 'Not sure'] },
   { name: 'start', legend: 'When do you need coverage?', options: ['Within 30 days', '1 to 3 months', '3 to 6 months', 'Just planning'] },
 ];
 
 // The six industries, one name each, with the same slugs as their pages (an industry page
-// links here with ?industry=<slug>; owner, 2026-10-10), plus events and anything else.
+// links here with ?industry=<slug>; owner, 2026-10-10), plus anything else. Event security
+// left the site (owner, 2026-10-10), so the event site type went with it.
 const SITE_TYPES: { slug: string; label: string }[] = [
   { slug: 'government-military', label: 'Government & Military' },
   { slug: 'critical-infrastructure', label: 'Critical & High-Liability Sites' },
@@ -40,7 +41,6 @@ const SITE_TYPES: { slug: string; label: string }[] = [
   { slug: 'airport-transportation', label: 'Airport & Transportation' },
   { slug: 'commercial-property', label: 'Commercial & Retail' },
   { slug: 'institutional-community', label: 'Institutional & Community' },
-  { slug: 'event-venue', label: 'Event or venue' },
   { slug: 'other', label: 'Something else' },
 ];
 
