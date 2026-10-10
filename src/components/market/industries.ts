@@ -110,6 +110,11 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         a: 'Yes. A build needs gate and dock control, perimeter rounds, and contractor monitoring. A live site needs posted officers and documented entry. We can staff both, and the plan changes as the site does.',
       },
       {
+        // Copy audit round 2 (2026-10-10): the line the utility emails use.
+        q: 'Can you add officers during an outage or storm event?',
+        a: 'Yes. Our relief roster staffs surge coverage at substations, yards, and other utility sites during outages and storm events, on top of the posts already in place.',
+      },
+      {
         q: 'Do you provide armed officers for cash-handling and regulated sites?',
         a: 'Yes, where the post calls for it. Armed officers are licensed and firearms-qualified by Ares, and the post orders say when and why the post is armed.',
       },

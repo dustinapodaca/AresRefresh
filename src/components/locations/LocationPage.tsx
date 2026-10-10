@@ -3,13 +3,18 @@ import Seo from '../../seo/Seo';
 import Arrow from '../Arrow';
 import LocationMap from './LocationMap';
 import { CITIES, type LocationFile } from './data';
+import { DIVISIONS } from '../services/data';
+
+// Each site type links to its industry's own page (copy audit, 2026-10-10; was the Services
+// card), falling back to the card if an industry has no page.
+const industryPage = (id: string) => DIVISIONS.find((d) => d.id === id)?.page?.to ?? `/services#${id}`;
 
 // A location page: "The Local File" (docs/locations-concepts.md). It answers the search
 // ("security guards in <city>"), shows the city's own license, lists the sites we are
 // ready to staff there, then hands the reader on to the rest of the site. Design
 // authority: DESIGN.md.
 const ROUTES = [
-  { to: '/services', title: 'Services', line: 'All six divisions and how we start a post' },
+  { to: '/services', title: 'Services', line: 'Six services, six industries, and how a post starts' },
   { to: '/capability-statement', title: 'Capability Statement', line: 'GSA, UEI, CAGE, and the one-page PDF' },
   { to: '/about', title: 'About Ares', line: 'Who we are and how we work' },
 ];
@@ -85,7 +90,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
           <ul className="ds-loc-sector-list" style={{ ['--rows' as string]: Math.ceil(file.sectors.length / 2) }}>
             {file.sectors.map((s, i) => (
               <li key={s.name} data-col-end={i === Math.ceil(file.sectors.length / 2) - 1 || undefined}>
-                <Link to={`/services#${s.divisionId}`}>
+                <Link to={industryPage(s.divisionId)}>
                   <span className="ds-loc-sector">{s.name}</span>
                   <span className="ds-small">{s.division}</span>
                   <Arrow size={16} />

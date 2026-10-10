@@ -92,6 +92,23 @@ export default function Footer() {
                 <span>CAGE</span>
                 <span className="ds-data">9KL18</span>
               </li>
+              {/* The rest of the email signature's row (copy audit round 2, 2026-10-10). */}
+              <li>
+                <span>SBA WOSB</span>
+                <span className="ds-data">WOSB250470</span>
+              </li>
+              <li>
+                <span>WBENC</span>
+                <span className="ds-data">WBE2303571</span>
+              </li>
+              <li>
+                <span>Denver</span>
+                <span>M/WBE and SBE</span>
+              </li>
+              <li>
+                <span>B2G vendor</span>
+                <span className="ds-data">21353671</span>
+              </li>
             </ul>
           </div>
 

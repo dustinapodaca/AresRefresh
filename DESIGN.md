@@ -431,7 +431,11 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12)` (owner, 2026-10-08: a tad brighter and crisper; was brightness 0.68, contrast 1.04); earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sits 164px lower, with a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.1:1 or better, headline 6:1). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift). Because the held page sits `--svc-cap` below its layout box, the page's view-timeline ranges (stage bars, Denver plate) start that much later, and the dock hides once the footer's first line of content appears (owner: not at its top padding), not on the document box (2026-10-08: both had fired early).
+  2026-10-05). Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
+  control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in
+  Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." The audit's
+  options A, B, C and the old copy stay switchable for the client at `/services?hero=`
+  (`COPY` in `Opening.tsx`). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12)` (owner, 2026-10-08: a tad brighter and crisper; was brightness 0.68, contrast 1.04); earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sits 164px lower, with a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.1:1 or better, headline 6:1). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift). Because the held page sits `--svc-cap` below its layout box, the page's view-timeline ranges (stage bars, Denver plate) start that much later, and the dock hides once the footer's first line of content appears (owner: not at its top padding), not on the document box (2026-10-08: both had fired early).
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
@@ -658,7 +662,8 @@ per city. No rail, no close, no photo, no section numbers.
   (4 + 3), each column closed by a hairline; each row is
   the site type (Inter 17px / 500), its division beneath (13px faint), and an arrow that
   nudges 4px on hover; it links to `/services#<division>` (ScrollToTop scrolls to the
-  anchor). Never phrased as current clients or posts.
+  anchor). Never phrased as current clients or posts. Since 2026-10-10 (copy audit) each row
+  links to its industry's own page instead.
 - **Where to next:** the page's ending, after a `beat-open`: three routes (Services,
   Capability Statement, About Ares) in the Services city-strip style on hairline-strong
   rules, then "Also licensed in Denver and Pueblo." Its heading is for screen readers
@@ -776,7 +781,9 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
 - **Columns** (Retool): each opens on a 1px vertical hairline (hairline strong), a mono
   uppercase title in ink faint, links in Inter 18px ink (16px on phones). Company (About
   Us, Services, Careers, Capability Statement); Service areas; Contracting as label and
-  mono value (GSA MAS 47QSMS25D009Q linking to eLibrary, UEI, CAGE); Registration as a
+  mono value, matching the email signature (copy audit, 2026-10-10): GSA MAS 47QSMS25D009Q
+  linking to eLibrary, UEI, CAGE, SBA WOSB, WBENC, Denver M/WBE and SBE, B2G vendor
+  21353671 (labels in a 6.5em column); Registration as a
   live status: the green light (#7cb85f) and "Active on SAM.gov", "Through March 26,
   2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
   identifiers stacked label over value.

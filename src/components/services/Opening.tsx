@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { responsive } from '../../lib/responsive';
 
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
@@ -6,8 +7,36 @@ import { responsive } from '../../lib/responsive';
 // The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
 const HERO = { src: '/images/services-hero/denver-sunset.webp', width: 2400, height: 1380 };
 
+// Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
+// the audit's other options stay switchable for the client at /services?hero=a|b|c|current.
+const COPY = {
+  plan: {
+    title: 'Security officers, patrol, and access control.',
+    lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
+  },
+  a: {
+    title: 'Security officers for every kind of post.',
+    lead: 'Armed and unarmed officers, patrol, and access control for federal, commercial, and industrial sites. Find the service or industry closest to yours.',
+  },
+  b: {
+    title: 'Armed, unarmed, patrol, and access control.',
+    lead: 'One standard of training and supervision behind every post, from federal installations to retail floors.',
+  },
+  c: {
+    title: 'What we staff, and how.',
+    lead: 'Six services, one process: every officer is trained on your post before the first shift.',
+  },
+  current: {
+    title: 'Security officers for six kinds of sites.',
+    lead: 'Armed and unarmed officers for federal, commercial, industrial, and institutional sites in Colorado Springs, Denver, and Pueblo. Find the division closest to your site.',
+  },
+} as const;
+
 export default function Opening() {
   const ref = useRef<HTMLElement>(null);
+  const [params] = useSearchParams();
+  const asked = params.get('hero');
+  const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
 
   // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
   // below hold still until the glass's foot has cleared the nav, then everything scrolls as
@@ -73,14 +102,10 @@ export default function Opening() {
       <div className="ds-svc-open-glass">
         <div className="ds-container ds-svc-open-head">
           <h1 id="services-title" className="ds-display-xl">
-            Security officers for six kinds of sites.
+            {copy.title}
           </h1>
           <div className="ds-svc-open-side">
-            <p className="ds-lead">
-              Armed and unarmed officers for federal, commercial, industrial, and
-              institutional sites in Colorado Springs, Denver, and Pueblo. Find the division
-              closest to your site.
-            </p>
+            <p className="ds-lead">{copy.lead}</p>
           </div>
         </div>
         {/* The place, like the other photo heroes (owner, 2026-10-08): just under the glass's

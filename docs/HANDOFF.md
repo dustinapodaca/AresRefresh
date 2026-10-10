@@ -35,6 +35,16 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     contractors." to /teaming), Quality, Coverage, Careers, Contact; the rail has six marks.
     If the client switches, change the default in Hero.tsx / Industries.tsx and DESIGN.md.
     Step 7's Commercial blurb fix is in too.
+    5 done: Services opening copy (the audit's content plan; options at `/services?hero=a|b|c|current`,
+    also in the gallery), Government card's first line, Airport card's "around the clock" and
+    "staffed on every shift", stage 3 shortened, stage 4's "keep operations running
+    smoothly" cut, Supervision's veterans clause cut, meta adds escort. Not done, waiting
+    on the owner: the audit's Services section order (services before industries) and
+    replacing the Denver plate ("Where we post officers") with one line of city links.
+    7 done: city-page site types link to the industry pages; outage and storm-event
+    coverage on Critical (a question) and in the relief roster. 9 done: the footer's
+    Contracting column matches the email signature. The capability statement PDF is the
+    owner's (2026-10-10: "I'll do it on my own").
 - **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
   use the test tree with the extra pages from now on"). It holds the redesign plus the
   marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,

@@ -36,7 +36,9 @@ export const DIVISIONS: Division[] = [
     id: 'government',
     n: '01',
     title: 'Government & Military',
-    body: 'Lawful, immediate access to federal and state facilities, with veterans on our staff. Agencies can order through our GSA Schedule without opening a new competition.',
+    // Was "Lawful, immediate access to federal and state facilities, with veterans on our
+    // staff" (copy audit: unclear, read as an overclaim; 2026-10-10).
+    body: 'Officers for federal, state, and municipal facilities and military installations, including restricted-area escort and access control. Agencies can order through our GSA Schedule without opening a new competition.',
     covers: [
       { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
       { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
@@ -81,11 +83,13 @@ export const DIVISIONS: Division[] = [
     id: 'airport',
     n: '04',
     title: 'Airport & Transportation',
-    body: 'Perimeter protection, passenger-area security, baggage, and cargo operations, with uniformed and plainclothes coverage around the clock.',
+    // Ready to staff, as the industry page says (copy audit, 2026-10-10: "around the clock"
+    // and "staffed on every shift" read as current posts).
+    body: 'Officers we are ready to staff for perimeters, passenger areas, baggage, and cargo operations, uniformed or plainclothes.',
     covers: [
-      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage around the clock.' },
+      { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage, on the shifts the site needs.' },
       { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
-      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage, staffed on every shift.' },
+      { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage.' },
     ],
     photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
     page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
@@ -141,12 +145,13 @@ export const STAGES: Stage[] = [
     n: '03',
     title: 'Guard training',
     covers: 'Post orders · Firearms · Drills',
-    body: 'No officer is sent to your site without hands-on training from a member of our leadership team who has personally worked that exact post. They learn the entry points, client expectations, and daily rhythm of the site, so your coverage is consistent from the first shift.',
+    // Shortened to what is new here (copy audit, 2026-10-10); the training line is told elsewhere.
+    body: 'Officers learn your entry points, your expectations, and the daily rhythm of the site before their first shift.',
   },
   {
     n: '04',
     title: 'Deployment',
     covers: 'Go-live · QA · Reporting',
-    body: 'We deploy at full staffing with an on-call system behind every post, so a shift is never left open. Real-time quality checks, daily reporting, and immediate support from leadership keep operations running smoothly.',
+    body: 'We deploy at full staffing with an on-call system behind every post, so a shift is never left open. Real-time quality checks, daily reporting, and immediate support from leadership start with the first shift.',
   },
 ];

@@ -693,3 +693,18 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 - New section "The sites we protect." / "Six industries, from restricted areas on military construction to offices and campuses. Each has its own page: what the post covers and what to send us." Then "For prime contractors." / "Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on Front Range work." → Teaming and subcontracting.
 - Commercial & Retail: "Offices, retail, banks, hotels, and healthcare and campus sites" is now "Offices, retail, banks, hotels, and property portfolios" (card line and page lead); the meta description drops healthcare.
 
+## Audit steps 5, 7, 9: Services hub, small fixes, footer (2026-10-10, owner)
+
+| Was | Now |
+|---|---|
+| "Security officers for six kinds of sites." / "...Find the division closest to your site." | "Security officers, patrol, and access control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." |
+| Government card: "Lawful, immediate access to federal and state facilities, with veterans on our staff." | "Officers for federal, state, and municipal facilities and military installations, including restricted-area escort and access control." |
+| Airport card: "...with uniformed and plainclothes coverage around the clock."; "...coverage around the clock."; "...staffed on every shift." | "Officers we are ready to staff for perimeters, passenger areas, baggage, and cargo operations, uniformed or plainclothes."; "...coverage, on the shifts the site needs."; "Perimeter protection and cargo-area coverage." |
+| Stage 3: "No officer is sent to your site without hands-on training from a member of our leadership team who has personally worked that exact post. They learn..." | "Officers learn your entry points, your expectations, and the daily rhythm of the site before their first shift." |
+| Stage 4: "...keep operations running smoothly." | "...start with the first shift." |
+| Supervision: "...and our supervisors include veterans." | Cut |
+| Relief roster: "inspections, transitions, construction phases, and dates..." | "...construction phases, outages and storm events, and dates..." |
+| (none) | Critical: "Can you add officers during an outage or storm event?" |
+| City pages: site types link to the Services cards | Link to the industry pages; Services route line "Six services, six industries, and how a post starts" |
+| Footer Contracting: GSA MAS, UEI, CAGE | Adds SBA WOSB, WBENC, Denver M/WBE and SBE, B2G vendor 21353671 |
+

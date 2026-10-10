@@ -12,7 +12,8 @@ const PARTS = [
   },
   {
     name: 'Supervision',
-    line: 'A member of leadership works the first shift on every new post, and our supervisors include veterans.',
+    // The veterans clause was cut (copy audit, 2026-10-10: Home and Careers carry it).
+    line: 'A member of leadership works the first shift on every new post.',
   },
 ];
 
@@ -102,8 +103,8 @@ export default function Program() {
           <p>
             On-call coverage is written into every contract. When an officer cannot make a
             shift, the post is covered from our roster instead of standing empty. It is also
-            how we staff surge work: inspections, transitions, construction phases, and dates
-            that outgrow your normal staffing.
+            how we staff surge work: inspections, transitions, construction phases, outages and
+            storm events, and dates that outgrow your normal staffing.
           </p>
         </div>
         <p className="ds-data ds-svc-relief-proof">Fewer than 1% of shifts missed since 2021</p>

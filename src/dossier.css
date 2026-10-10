@@ -422,8 +422,10 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-footer-cols a.ds-data { font-size: 15px; letter-spacing: 0; color: var(--ds-fg); }
 /* Contracting: label and mono value on each line. */
 .ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
-.ds-ft-ids li > span:first-child { min-width: 4.5em; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-ft-ids li > span:first-child { flex: none; min-width: 6.5em; font-size: 14px; color: var(--ds-fg-faint); }
 .ds-ft-ids .ds-data { font-size: 15px; color: var(--ds-fg-muted); }
+/* A value in words (Denver's certifications) sits at the identifiers' size. */
+.ds-ft-ids li > span:last-child:not(.ds-data) { font-size: 15px; color: var(--ds-fg-muted); }
 /* Registration: SAM.gov as a live status, with the green light from the Capability
    Statement (Resend's status line on Mobbin). */
 .ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; letter-spacing: -0.01em; color: var(--ds-fg); }
@@ -437,7 +439,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-ft-status { font-size: 16px; }
   .ds-ft-ids li { flex-direction: column; gap: 2px; }
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
-  .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data { font-size: 14px; }
+  .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data, .ds-ft-ids li > span:last-child:not(.ds-data) { font-size: 14px; }
 }
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
