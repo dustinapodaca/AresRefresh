@@ -2822,7 +2822,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-cr-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + clamp(10rem, 28svh, 15rem)); }
   .ds-cr-open-copy .ds-lead { color: #c4c8ce; }
   /* A deeper shade where the copy sits, over the spires' lit tips. */
-  .ds-cr-hero::after { background: linear-gradient(to bottom, rgb(10 11 13 / 0.8) 0%, rgb(10 11 13 / 0.3) 28%, rgb(10 11 13 / 0.35) 40%, rgb(10 11 13 / 0.78) 54%, rgb(10 11 13 / 0.88) 100%); }
+  .ds-cr-hero::after { background: linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0.15) 28%, rgb(10 11 13 / 0.2) 40%, rgb(10 11 13 / 0.6) 54%, rgb(10 11 13 / 0.72) 100%); } /* lightened (owner, 2026-10-09) */
 }
 .ds-cr-open-copy .ds-lead { margin-top: 20px; }
 .ds-cr-open-copy .ds-actions { margin-top: 28px; }
@@ -2851,8 +2851,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-cr-hero { position: absolute; inset: 0; height: auto; }
   .ds-cr-hero::after {
     background:
-      linear-gradient(to bottom, rgb(10 11 13 / 0.85) 0%, rgb(10 11 13 / 0.3) 34%, rgb(10 11 13 / 0) 56%),
-      linear-gradient(to right, rgb(10 11 13 / 0.75) 0%, rgb(10 11 13 / 0.35) 45%, rgb(10 11 13 / 0) 70%);
+      linear-gradient(to bottom, rgb(10 11 13 / 0.6) 0%, rgb(10 11 13 / 0.2) 34%, rgb(10 11 13 / 0) 56%),
+      linear-gradient(to right, rgb(10 11 13 / 0.55) 0%, rgb(10 11 13 / 0.22) 45%, rgb(10 11 13 / 0) 70%); /* lightened (owner, 2026-10-09) */
   }
   .ds-cr-hero figcaption { top: calc(var(--ds-header) + 20px); }
   .ds-cr-open-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }

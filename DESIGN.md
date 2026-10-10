@@ -571,7 +571,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   lockup's, and the careers email beside it; stacked on phones (owner, 2026-10-09: the
   "See open roles" button was dropped, the roles sit right below). Phones and tablets get
   the Capability Statement's tall frame (clamp(27rem, 66svh, 38rem), copy low in it, a
-  deeper shade behind the copy; headline 9:1, lead 10:1).
+  shade behind the copy, lightened at the owner's request on 2026-10-09 on both phones and
+  desktop; headline 5.8:1 or better, lead 9:1).
 - **01 Roles:** a quiet table on hairlines (Runway and Linear on Mobbin): role and line,
   location, and an Apply route that opens an email with the role in the
   subject. Column heads in mono on desktop (visually hidden but announced below 1024px);
