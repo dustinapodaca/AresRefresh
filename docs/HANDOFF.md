@@ -158,22 +158,57 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   "Headquarters" then the distance. Denver map: "DEN AIRPORT" on one line, lifted off the
   city name.
 
-## Waiting on the owner
+## Backlog (decisions and todos, updated 2026-10-09)
 
-- **Saved for later (owner, 2026-10-09): JobPosting structured data** on /careers and the
-  city job pages, so openings show in Google's job search. Needs per role: employment type,
-  pay range (optional but recommended), and location.
+### To build when the owner says go
+- **Open roles from one source, free** (owner, 2026-10-09). Indeed has no API to read an
+  employer's jobs (its Publisher API closed in 2023; every current Indeed API only pushes
+  jobs in), and scraping breaks its terms. Plan: the site becomes the source and Indeed and
+  Google read from it.
+  1. Roles kept in a **Google Sheet** the owner edits (option A; alternatives: a Decap CMS
+     page at /admin, or edits by request). The site reads it at build time; add a Netlify
+     build hook or a daily scheduled rebuild.
+  2. The roles list on /careers and the city job pages, in the site's design.
+  3. An **Indeed XML job feed** (free organic listings; Indeed polls every 12 to 48 hours;
+     may want 3+ live jobs). Then stop posting these roles directly on Indeed (duplicates).
+  4. **JobPosting structured data** for Google Jobs (saved for later, owner 2026-10-09).
+  Needs per role: title, city, employment type, pay range (optional), how to apply.
+- **Branded quote emails, Phase 2** (parked 2026-10-09): a Netlify Function plus Resend
+  from quotes@aressecurity.co, Turnstile, Web3Forms as fallback. Needs the owner's Resend
+  account and DNS records. Skip the visitor confirmation email (abuse risk).
 
-- **SEO pass last** (`routes.json`): stale preloads for `/contact` (`contact-hero.jpg`)
-  and `/services`; `/careers` says "real growth paths"; `/contact` says "We respond within
-  one business day" (never state response times).
-- The owner's own copy review of the whole site.
-- Google Business profile link (the footer's Google link opens a Maps search).
-- Capability statement PDF: check for "cleared", Buckley, badging. (Shrunk 2026-10-09 to 1.35MB with no visible change: `assets/tools/optimize-pdf.py`, original in `assets/files-src/`. Re-run it on any new PDF.)
-- Whether the test-branch pages go to the redesign (and later to `main`).
-- The Gemini API key was pasted in chat on 2026-10-08: suggest rotating it. Pass it inline
-  only (`GEMINI_API_KEY='…' python3 -I assets/generated/gemini-image.py …`); never commit
-  or store it.
+### Waiting on the owner or client
+- **Careers hero:** the client may pick another of the eight in
+  `assets/careers-hero-options/` (photo 7, the Cadet Chapel, is live).
+- **Copy review** of the whole site, including the DRAFT Services program copy
+  (`src/components/services/Program.tsx`) and the test-branch industry images marked as
+  placeholders.
+- **SEO pass** (`src/seo/routes.json`, last): `/careers` description says "real growth
+  paths" (not true yet); `/contact` says "We respond within one business day" (never state
+  response times).
+- **Google Business profile link** (the footer's Google link opens a Maps search). Add it
+  to the footer and the structured data's sameAs.
+- **Capability statement PDF content:** check for "cleared", Buckley, badging.
+- **Analytics:** none today (the privacy policy says no trackers). If wanted, a
+  privacy-friendly one (Plausible, Netlify Analytics); add its origin to the CSP.
+- **Check the nav glass on a real iPhone or Safari** (automated captures skip the blur).
+
+### Launch day (domain cutover)
+- Attach aressecurity.co (and www) as the Netlify site's primary domain; wait for SSL; then
+  uncomment the cutover block in `public/_redirects`.
+- Add aressecurity.co and www to the Web3Forms form's allowed websites, or the form stops.
+- Decide when `test/marketing-gaps` merges to `main`.
+
+### After launch
+- Verify in Google Search Console and Bing Webmaster Tools; submit the sitemap (Bing also
+  feeds ChatGPT search). IndexNow pings run from the Netlify plugin on production deploys.
+
+### Housekeeping
+- Rotate the Gemini API key (pasted in chat 2026-10-08; pass it inline only, never commit
+  or store it) and the OpenAI key in `~/.claude/settings.json`.
+- Performance: render-blocking CSS (about 0.3 to 0.45s on mobile); Home and Services trade
+  mobile speed for sharp heroes (smaller hero files would add 10+ points).
+- SAM renewal: active through March 26, 2027 (`SAM_ACTIVE_THROUGH`).
 
 ## Files that matter
 
