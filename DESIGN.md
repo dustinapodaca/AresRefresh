@@ -794,11 +794,12 @@ Few, fast, and crisp. Four to six moments per page.
   the section's first line of content 32px under the nav (24px under the running head on
   phones), on every page; links from other pages (e.g. /services#industrial) land the same
   way. `src/lib/scrollToSection.ts`; instant under reduced motion.
-- **Page changes** (owner, 2026-10-09; reworked the same day for phones): a View
-  Transition where supported: the old page fades out in 160ms while the new one rises 12px
+- **Page changes** (owner, 2026-10-09; reworked the same day for phones): on phones and
+  tablets a View Transition where supported: the old page fades out in 160ms while the new one rises 12px
   into place over 320ms (strong ease-out), on the compositor, so a busy phone can't eat it.
   The header gets no view-transition-name (that made it a backdrop root and its frosted glass
-  vanished). Browsers without View Transitions, and back and forward, get a one-shot CSS fade
+  vanished). **Desktop** (owner's preference), browsers without View Transitions, and back and
+  forward get a one-shot soft CSS fade
   (opacity 0.35 to 1, 260ms). **From the phone menu** the page changes behind the solid
   sheet, and two frames later the sheet draws back into the hamburger (260ms), revealing the
   new page: the reveal is the transition, with no other. Between the policy pages (/privacy,

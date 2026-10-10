@@ -8,11 +8,12 @@ import { scrollToSection } from '../lib/scrollToSection';
 // - A link to the page already open scrolls back to the top instead of doing nothing.
 // - With the phone menu open, the page changes behind the solid sheet and the sheet then
 //   slides away to reveal it; the reveal is the transition.
-// - Otherwise the page changes inside a View Transition (dossier.css, ::view-transition):
+// - Otherwise, on phones and tablets, the page changes inside a View Transition
+//   (dossier.css, ::view-transition):
 //   the browser crossfades a snapshot of the old page into the new one on the compositor,
 //   so it stays smooth while a phone renders the new page. Without View Transitions the new
-//   page fades in with CSS instead (html[data-nav-fade], set by ScrollToTop), as it does for
-//   back and forward.
+//   page fades in with CSS instead (html[data-nav-fade], set by ScrollToTop), as it does on
+//   desktop and for back and forward.
 //   None of it under reduced motion.
 // Capture phase, so this runs before React Router's own Link handler (which then sees the
 // click already handled and stands down).
@@ -78,7 +79,9 @@ export default function SmoothAnchors() {
         return;
       }
 
-      if (canTransition && !reduceMotion()) {
+      // Phones and tablets use the View Transition (smooth while a phone renders); desktop
+      // keeps the soft CSS fade the owner prefers there (2026-10-09), set by ScrollToTop.
+      if (canTransition && !reduceMotion() && window.matchMedia('(max-width: 1023px)').matches) {
         // While it runs, the CSS fade stands down (it still covers back and forward).
         const root = document.documentElement;
         root.setAttribute('data-vt-running', '');
