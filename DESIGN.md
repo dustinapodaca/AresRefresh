@@ -147,7 +147,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 - One blue-black canvas from header to footer. No bands, no fills, no dividers.
 - Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
-- A running document rail (01 Record to 05 Contact) on desktop; a running head on mobile.
+- A running document rail (01 Record to 06 Contact on Home) on desktop; a running head on mobile.
 - Uneven rhythm on purpose: dense, open, image, tight.
 - Square-shouldered controls (2px corners). Nothing is a pill.
 
@@ -216,10 +216,11 @@ sizes are unchanged.
   dense blocks of the same thought, `beat` (88 to 136px) between sections, `beat-open`
   (128 to 208px) before and after the quote and the close. Never the same gap twice in a
   row.
-- **Order of beats on Home (owner, 2026-10-06):** photo hero; 01 Record (the measured
-  figure and the open quote, for every buyer); 02 Quality (statement, patrol vehicles,
-  facts); 03 Coverage (tight typographic lists); full-bleed photograph; 04 Careers (short);
-  05 the open close. The federal ledger (01 Verify) and the short GSA block that replaced
+- **Order of beats on Home (owner, 2026-10-10, copy audit):** photo hero; 01 Record (the
+  three proof cards); 02 Industries (the six, the first three as plates, then "For prime
+  contractors."); 03 Quality (statement, patrol vehicles, facts); 04 Coverage (map and
+  cities); full-bleed photograph; 05 Careers (short); 06 the open close. (Before
+  2026-10-10: Record, Quality, Coverage with the six industry names, Careers, close.) The federal ledger (01 Verify) and the short GSA block that replaced
   it were removed (owner, 2026-10-06): the Capability Statement carries every code, and
   the hero keeps its GSA line.
 - **Copy hand-offs:** each section ends on a line that sets up the next headline, so the
@@ -238,7 +239,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
-  `01 Record`, `02 Quality`, `03 Coverage`, `04 Careers`, `05 Contact`. Services:
+  `01 Record`, `02 Industries`, `03 Quality`, `04 Coverage`, `05 Careers`, `06 Contact`. Services:
   `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
@@ -284,7 +285,7 @@ every page.
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
-- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left but a soft vignette (owner, 2026-10-08; lighter than About's: the top shaded from 70% to clear by 44%, the edges and corners darkened up to 62% outside an oval around the towers), fit rather than zoomed (the photo's box runs only 4 to 7rem past the hero with 4% headroom for a 4% drift, so cover shows about 94% of its width at 1440 and all of it at 1920); readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns) and the GSA mark (right-aligned) share the row below it. The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
+- **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left but a soft vignette (owner, 2026-10-08; lighter than About's: the top shaded from 70% to clear by 44%, the edges and corners darkened up to 62% outside an oval around the towers), fit rather than zoomed (the photo's box runs only 4 to 7rem past the hero with 4% headroom for a 4% drift, so cover shows about 94% of its width at 1440 and all of it at 1920); readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns, up to 46ch) sits below it, then the proof row across the full width (copy audit, owner 2026-10-10; it replaced the GSA mark, which still shows with the "current" option). The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones. The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
   the light falls between the copy and the glass edge at about three quarters across.
@@ -361,6 +362,34 @@ exception to "no card containers" and "no glass" for this section.
   fanned (owner, 2026-10-08: each card's bottom margin evens out the release points).
   No images (generated options were tried and removed, 2026-10-06; they stay in
   assets/generated/values/).
+
+### Home hero copy and the proof row (copy audit round 2, owner 2026-10-10)
+- **Chosen: option A** "Security for sites where every entry counts." / "Restricted-area
+  escorts, access control, and armed and unarmed officers along Colorado's Front Range, for
+  military construction and critical infrastructure as well as offices, retail, and
+  campuses." No eyebrow; the search phrase lives in the title and description.
+- **Kept for the client (Deidre) to compare:** `/?hero=current|b|c` in `Hero.tsx` (`OPTIONS`):
+  current ("Security guards for federal and commercial sites." with the GSA mark), B
+  ("Security guards and escorts for Colorado's controlled sites."), C ("Escorts. Access
+  control. Officers. One standard."). Gallery: `.playwright-mcp/gallery/hero-options.html`.
+- **Proof row** (A, B, C): four lines on white/12% hairlines, 14px, #c4c8ce on the glass,
+  each a link with a white/20% underline: Restricted-area escort on a Space Force base (to
+  the escort page), GSA MAS 47QSMS25D009Q (mono, to eLibrary), Minority woman-owned (WOSB,
+  WBENC) (to the Capability Statement), Licensed in Colorado Springs, Denver, Pueblo. Four
+  across from 1024px, two by two below.
+
+### 02 Industries (Home, copy audit round 2, owner 2026-10-10)
+- "The sites we protect." in the shared head, then the six industries in the owner's
+  order. **Chosen: plates**: the first three (Government & Military; Critical &
+  High-Liability Sites; Construction, Industrial & Logistics) as photographs in the column
+  (the industry pages' generated images, 4:5, 16:10 on phones, 4px corners, white/8% inset
+  edge, graded `saturate(0.78) brightness(0.84)`, no caption, 1.03 zoom on hover), the name
+  (Inter Tight 600, 22 to 28px) with its arrow kept to the last word, and the short line.
+  The other three as the ruled route strip. Then "For prime contractors." (display-md, its
+  line and "Teaming and subcontracting →" in columns 8 to 12).
+- **Kept for the client to compare:** `/?industries=rows` (type only: the first three as
+  large numbered rows on hairline-strong rules). In `Industries.tsx`.
+- The six-name list left 04 Coverage (this section replaces it).
 
 ### Quality (Home 02, owner 2026-10-06)
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
@@ -708,8 +737,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   chevron. The four key identifiers stay visible above them.
 - **The figure** is set at 22vw on phones.
 - **The pull quote sits right** (flush to the right edge, right-aligned), echoing the
-  desktop layout where it lives in the right-hand columns. **The hero's GSA line is
-  centered** on the screen, with its label and contract link left-aligned.
+  desktop layout where it lives in the right-hand columns. **The hero's proof row** is two
+  by two (with the "current" option, the GSA line is centered instead).
 
 ### Header
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).

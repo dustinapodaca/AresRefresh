@@ -28,14 +28,13 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     questions moved to the armed and unarmed pages, and Government's "What we deliver"
     leads with escort. No clearance wording on either page (Careers only). The PDF
     capability statement still lists Emergency Response until it is regenerated.
-    4 built as options, waiting on the owner's pick: the Home hero at `/?hero=current|a|b|c`
-    (A is the default; A, B, and C carry the new proof row in place of the GSA mark), and a
-    new 02 Industries section after the Record at `/?industries=plates|rows` (plates the
-    default), ending on "For prime contractors." to /teaming; the six-name list left
-    Coverage and the rail has six marks. Comparison page:
-    `.playwright-mcp/gallery/hero-options.html` (scripts hero-opts.mjs, ind-opts.mjs). Once
-    picked, remove the other options and the query switches, and update DESIGN.md (Order
-    of beats, the rail marks). Step 7's Commercial blurb fix is in too.
+    4 done: the owner chose hero **A** and Industries **plates** (2026-10-10), the defaults.
+    The other options stay in the code for the client (Deidre) to compare: `/?hero=current|b|c`
+    and `/?industries=rows`; gallery `.playwright-mcp/gallery/hero-options.html` (scripts
+    hero-opts.mjs, ind-opts.mjs). Home now runs Record, Industries (ending on "For prime
+    contractors." to /teaming), Quality, Coverage, Careers, Contact; the rail has six marks.
+    If the client switches, change the default in Hero.tsx / Industries.tsx and DESIGN.md.
+    Step 7's Commercial blurb fix is in too.
 - **One working branch from 2026-10-09: `test/marketing-gaps`** (owner: "we are going to
   use the test tree with the extra pages from now on"). It holds the redesign plus the
   marketing-gap pages from the CenCore review (32 pages): role pages, industry pages,
