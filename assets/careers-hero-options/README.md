@@ -1,6 +1,6 @@
 # Careers hero options (owner, 2026-10-09)
 
-Six photos the owner supplied for the Careers opening, mocked on the live page in
+Eight photos the owner supplied for the Careers opening, mocked on the live page in
 `.playwright-mcp/gallery/careers-heroes.html` (local). **1 is live** (until the client
 weighs in). To switch: copy the chosen file to `assets/images-src/careers-hero.jpg`, set
 the caption in `src/components/careers/Opening.tsx`, run
@@ -15,3 +15,5 @@ the caption in `src/components/careers/Opening.tsx`, run
 | 4 | 4-denver-capitol-night.jpg | Denver and the State Capitol at night | 50% 10% |
 | 5 | 5-downtown-denver-aerial.jpg | Downtown Denver | 50% 0% |
 | 6 | 6-colorado-springs-pikes-peak.jpg | Downtown Colorado Springs and Pikes Peak | default |
+| 7 | 7-air-force-academy-chapel.jpg | Cadet Chapel, U.S. Air Force Academy | default |
+| 8 | 8-colorado-springs-sunset.jpg | Downtown Colorado Springs (source only 1600px wide) | default |
