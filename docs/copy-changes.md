@@ -662,3 +662,12 @@ left out until confirmed.
 ## Services industry card link (2026-10-10, owner)
 
 "See [industry] security →" is now "Open the full page →", shown only on an open card; screen readers hear "Open the full [industry] page".
+
+## Audit step 1: Home launch blockers (2026-10-10, owner)
+
+| Was | Now |
+|---|---|
+| Record card "Integrity", 16/18, "Client criteria rated Exceptional", "Communication is part of the job..." | "Client rating", 43/45, "Criteria rated Very Good or Exceptional", "Across five past performance evaluations since 2021, clients rated Ares Very Good or Exceptional on 43 of 45 criteria, with none below Satisfactory." |
+| Placeholder quote card ("Ares arrived prepared...", Contracting Officer, USAF Buckley) | Removed |
+| Capability Statement "Rated Exceptional by clients", 16 of 18 | "Rated Very Good or Exceptional by clients", the 43 of 45 line, proof "43 of 45 criteria" |
+| Commercial & Retail client rating row, 16 of 18 | "Very Good or Exceptional on 43 of 45 client criteria" |

@@ -22,11 +22,12 @@ const VALUES: {
     line: 'On-call coverage is written into every contract, and leadership works the first shift on every new post.',
   },
   {
-    name: 'Integrity',
+    // Was "Integrity" with 16/18 (owner, 2026-10-10: all five past performance evaluations).
+    name: 'Client rating',
     light: 'sun',
-    figure: '16/18',
-    caption: 'Client criteria rated Exceptional',
-    line: 'Communication is part of the job. We are open and direct about the post, the people on it, and anything that goes wrong.',
+    figure: '43/45',
+    caption: 'Criteria rated Very Good or Exceptional',
+    line: 'Across five past performance evaluations since 2021, clients rated Ares Very Good or Exceptional on 43 of 45 criteria, with none below Satisfactory.',
   },
   {
     name: 'Personnel',
@@ -41,7 +42,7 @@ const VALUES: {
 export default function Record() {
   const listRef = useRef<HTMLUListElement>(null);
 
-  // Phones and tablets: the four cards pile up, so they share one height, the tallest card's
+  // Phones and tablets: the three cards pile up, so they share one height, the tallest card's
   // (owner, 2026-10-08). Without JS they keep their own heights.
   useEffect(() => {
     const list = listRef.current;
@@ -102,18 +103,6 @@ export default function Record() {
             </div>
           </li>
         ))}
-        <li className="ds-value ds-value-quote" data-light="wide">
-          <div className="ds-value-light" aria-hidden="true" />
-          <figure className="ds-value-glass">
-            <blockquote>
-              <p>“Ares arrived prepared. Their documentation was cleaner than the incumbent’s from day one.”</p>
-            </blockquote>
-            <figcaption>
-              <span>Contracting Officer</span>
-              <span>USAF · Buckley Space Force Base</span>
-            </figcaption>
-          </figure>
-        </li>
       </ul>
     </section>
   );

@@ -350,11 +350,11 @@ exception to "no card containers" and "no glass" for this section.
   gaps and softens to nothing under each card. Each value card: the figure in Plex Mono (44
   to 60px) with its caption (#c4c8ce; Personnel's links to Indeed), a white/8% hairline,
   then the name (Inter 600 22px) and one line. Reliability <1% missed shifts since 2021;
-  Integrity 16/18 client criteria rated Exceptional; Personnel 4.8/5 on Indeed. Then the
-  client quote as a wide card (all three columns): the quote (Inter 500, 22 to 32px) left,
-  the attribution right.
-- Desktop: three across over the quote; the cards rise 64px into place on scroll.
-  Phones: the four cards are sticky and pile up 16px apart, each frosting the one beneath,
+  Client rating 43/45 criteria rated Very Good or Exceptional (across five past performance
+  evaluations, none below Satisfactory; was "Integrity" 16/18); Personnel 4.8/5 on Indeed.
+  The placeholder client quote card was removed (owner, 2026-10-10: it was not a real quote).
+- Desktop: three across; the cards rise 64px into place on scroll.
+  Phones: the three cards are sticky and pile up 16px apart, each frosting the one beneath,
   all one height (the tallest card's, measured in Record.tsx; owner, 2026-10-08), the quote
   at the top of its card and the attribution on its foot. The quote card stacks too, 16px
   under the third; the full pile holds for about 80px of scroll, then leaves as one, still

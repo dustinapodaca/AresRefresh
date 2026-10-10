@@ -128,9 +128,9 @@ export const DIFFERENTIATORS: Differentiator[] = [
     proof: 'Trained on post by leadership',
   },
   {
-    title: 'Rated Exceptional by clients',
-    body: 'Clients rate Ares Exceptional on 16 of 18 criteria across multi-year contracts, including quality of services, overall performance, and repeat business, over 2+ years of monitored performance.',
-    proof: '16 of 18 criteria',
+    title: 'Rated Very Good or Exceptional by clients',
+    body: 'Across five past performance evaluations since 2021, clients rated Ares Very Good or Exceptional on 43 of 45 criteria, with none below Satisfactory.',
+    proof: '43 of 45 criteria',
   },
   {
     title: 'Rated 4.8 by our own employees',

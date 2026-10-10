@@ -93,10 +93,9 @@ statement PDF exists at /capability-statement *(site)*.
 - Veterans: veteran supervisors on staff; the NRA firearms instructor is a veteran; the
   company actively hires veterans. The owner is not a veteran; never write
   "veteran-led" *(owner)*.
-- From the owner's capability statement PDF *(2026)*: clients rate Ares Exceptional on 16
-  of 18 criteria across multi-year contracts (quality of services, overall performance,
-  repeat business) over 2+ years of monitored performance; employees rate Ares 4.8 out of
-  5 on Indeed (management and work-life balance highest).
+- Past performance *(owner, 2026-10-10)*: across five past performance evaluations since 2021,
+  clients rated Ares Very Good or Exceptional on 43 of 45 criteria, none below Satisfactory
+  (29 of 45 Exceptional). Clients are not named. (Replaces the PDF's 16 of 18 Exceptional.)
 - **Absent, never fabricate:** client logos or client names (the owner removed the past
   performance logo grid on 2026-09-01), additional testimonials, staff counts, response
   times, or any other statistics beyond those listed here.

@@ -222,7 +222,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'armed-security-officers', line: 'Armed officers for banks and cash-handling sites.' },
     ],
     why: [
-      { label: 'Client rating', value: 'Rated Exceptional on 16 of 18 client criteria', href: '/capability-statement' },
+      { label: 'Client rating', value: 'Very Good or Exceptional on 43 of 45 client criteria', href: '/capability-statement' },
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
       RELIEF,
       LICENSED,

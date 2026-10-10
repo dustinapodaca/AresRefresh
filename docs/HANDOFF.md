@@ -138,7 +138,7 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
     Ares is ready to staff, never current clients.
   - No FCL; cannot sponsor clearances. Lead with restricted-area experience on military
     installations (plural, unnamed). Ares does not do badging.
-  - Ratings: 4.8/5 on Indeed (employees); clients rate Exceptional on 16 of 18 criteria.
+  - Ratings: 4.8/5 on Indeed (employees); clients rated Ares Very Good or Exceptional on 43 of 45 criteria across five past performance evaluations, none below Satisfactory (replaces 16 of 18, owner 2026-10-10).
 - **Off limits** without the owner's OK: `src/seo/*` (incl. `routes.json`), `scripts/`,
   `netlify/`, `public/_redirects`, routing. `_archive/` is never a design reference.
 

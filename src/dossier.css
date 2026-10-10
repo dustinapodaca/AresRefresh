@@ -993,7 +993,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* Phones and tablets: the cards stick under the nav and running head and pile up, each a
    step lower than the one before, so a sliver of each stays in view. */
 @media (max-width: 1023px) {
-  /* One height for all four (owner, 2026-10-08), the tallest card's, measured in Record.tsx
+  /* One height for all three (owner, 2026-10-08), the tallest card's, measured in Record.tsx
      (--ds-value-h); the quote sits at the top of its card and the attribution on its foot. */
   .ds-values-list { --pile-hold: 96px; display: flex; flex-direction: column; margin-bottom: calc(-1 * var(--pile-hold)); }
   .ds-value { min-height: var(--ds-value-h, 0px); }
@@ -1001,7 +1001,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
   .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
-  .ds-value:nth-child(4) { top: calc(var(--ds-header) + var(--ds-runhead) + 64px); }
   /* The pile holds, then leaves as one (owner, 2026-10-08). A sticky card lets go when the
      foot of its margin box meets the list's end, so each card carries a bottom margin of its
      16px steps to the last card, and the next card takes it back with a negative top margin
@@ -1009,10 +1008,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
      last card is the hold (--pile-hold of scroll with the pile complete); the list's
      negative bottom margin returns that space to the page below. */
   .ds-values-list::after { content: ''; flex: none; height: calc(var(--pile-hold) - 16px); }
-  .ds-value:nth-child(1) { margin-bottom: 48px; }
-  .ds-value:nth-child(2) { margin-top: -48px; margin-bottom: 32px; }
-  .ds-value:nth-child(3) { margin-top: -32px; margin-bottom: 16px; }
-  .ds-value:nth-child(4) { margin-top: -16px; }
+  /* Three cards since the placeholder quote was removed (2026-10-10). */
+  .ds-value:nth-child(1) { margin-bottom: 32px; }
+  .ds-value:nth-child(2) { margin-top: -32px; margin-bottom: 16px; }
+  .ds-value:nth-child(3) { margin-top: -16px; }
 }
 
 .ds-keyrow {
