@@ -15,5 +15,5 @@ the caption in `src/components/careers/Opening.tsx`, run
 | 4 | 4-denver-capitol-night.jpg | Denver and the State Capitol at night | 50% 10% |
 | 5 | 5-downtown-denver-aerial.jpg | Downtown Denver | 50% 0% |
 | 6 | 6-colorado-springs-pikes-peak.jpg | Downtown Colorado Springs and Pikes Peak | default |
-| 7 | 7-air-force-academy-chapel.jpg | Cadet Chapel, U.S. Air Force Academy | default |
+| 7 | 7-air-force-academy-chapel.jpg | Cadet Chapel, U.S. Air Force Academy | 50% 32% |
 | 8 | 8-colorado-springs-sunset.jpg | Downtown Colorado Springs (source only 1600px wide) | default |
