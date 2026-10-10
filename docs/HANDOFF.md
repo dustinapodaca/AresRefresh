@@ -160,12 +160,16 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 
 ## Waiting on the owner
 
+- **Saved for later (owner, 2026-10-09): JobPosting structured data** on /careers and the
+  city job pages, so openings show in Google's job search. Needs per role: employment type,
+  pay range (optional but recommended), and location.
+
 - **SEO pass last** (`routes.json`): stale preloads for `/contact` (`contact-hero.jpg`)
   and `/services`; `/careers` says "real growth paths"; `/contact` says "We respond within
   one business day" (never state response times).
 - The owner's own copy review of the whole site.
 - Google Business profile link (the footer's Google link opens a Maps search).
-- Capability statement PDF: check for "cleared", Buckley, badging; file-size shrink.
+- Capability statement PDF: check for "cleared", Buckley, badging. (Shrunk 2026-10-09 to 1.35MB with no visible change: `assets/tools/optimize-pdf.py`, original in `assets/files-src/`. Re-run it on any new PDF.)
 - Whether the test-branch pages go to the redesign (and later to `main`).
 - The Gemini API key was pasted in chat on 2026-10-08: suggest rotating it. Pass it inline
   only (`GEMINI_API_KEY='…' python3 -I assets/generated/gemini-image.py …`); never commit
@@ -202,8 +206,16 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   A "JavaScript is on" class set by script ships in the static HTML, so it can't detect
   no-JS. Use a `<noscript><style>` override instead (as the location maps do, 2026-10-09).
 - **Security headers** live in `public/_headers` (`/*`): nosniff, referrer policy,
-  SAMEORIGIN framing, permissions policy. No CSP yet (inline JSON-LD and Web3Forms need a
-  dedicated pass). Netlify adds HSTS itself.
+  SAMEORIGIN framing, permissions policy, and a Content-Security-Policy (2026-10-09:
+  scripts, images, fonts from the site only; styles allow inline for React style
+  attributes; `connect-src` adds `https://api.web3forms.com`). **Adding any third party**
+  (analytics, maps, embeds, a new form service) means adding its origin to the CSP, or it
+  will be blocked. Test with `.playwright-mcp/csptest.mjs` against a server that sends the
+  header. Netlify adds HSTS itself. Keep comments outside the `/*` block.
+- **Cross-browser** (2026-10-09): WebKit and Firefox (Playwright) show no overflow, broken
+  images, or script errors on any page type. Firefox has no scroll-driven animations, so it
+  gets the static fallbacks (by design). Headless and Playwright captures of every engine
+  skip the fixed nav's backdrop blur; check the nav glass on a real device.
 
 - Sticky and view timelines need `overflow: clip`, never `hidden`, on ancestors.
 - **View timelines and parent boxes ignore transforms.** The Services hold translates the
