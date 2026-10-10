@@ -562,8 +562,9 @@ docs/contact-concepts.md.
 ### Careers page ("The Roster", 2026-10-05)
 Recruits: the roles first, the reasons beside real Ares people. Concept and Mobbin board:
 docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
-- **Opening:** the Colorado Springs skyline (`careers-hero.jpg`, captioned; the route's SEO
-  preload) as a band, "Join the team." and the lead low on it, the primary "See open roles"
+- **Opening:** Denver from the foothills (owner, 2026-10-09; for now, the client may pick
+  another of the six in `assets/careers-hero-options/`; was the Colorado Springs skyline;
+  `careers-hero.jpg` key, captioned; the route's SEO preload) as a band, "Join the team." and the lead low on it, the primary "See open roles"
   and the careers email, then the Indeed rating as a small linked proof ("4.8 / 5 Rated by
   our employees on Indeed").
 - **01 Roles:** a quiet table on hairlines (Runway and Linear on Mobbin): role and line,
