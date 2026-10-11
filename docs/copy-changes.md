@@ -832,3 +832,5 @@ Not applied (owner): Capability reason 01 "a military installation"; stat-tile n
 - Capability Statement: new "Past performance." section (rail mark 03), three current contracts with clients unnamed: restricted-area escort and access control on a Space Force base in Colorado as a subcontractor (2025 to 2027); armed multi-site security, Denver metro (since 2022, through multiple renewals); retail security, Pueblo (two years, ongoing). Teaming's row is now "Past performance" with the 2025 to 2027 term, linking there.
 - Every H1 drops its closing period (e.g. "Capability Statement", "Request a quote", "A prepared officer on every post"); section headlines keep theirs. The Why Ares subhead stays.
 
+Home "For prime contractors." is now a contained panel with three proof points and a solid button (three forms, `?prime=sheet|brief|key`, sheet the default). About shows the founder block live ("Why Ares exists.", placeholder words and portrait).
+

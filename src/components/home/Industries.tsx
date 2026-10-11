@@ -80,19 +80,94 @@ export default function Industries() {
         ))}
       </ul>
 
-      <div className="ds-primes">
-        <h3 className="ds-display-md">For prime contractors.</h3>
-        <div>
-          <p className="ds-lead">
-            Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow,
-            and surge coverage on Front Range work.
-          </p>
-          <Link to="/teaming" className="ds-link">
-            Teaming and subcontracting
-            <Arrow />
-          </Link>
-        </div>
-      </div>
+      <PrimesPanel form={params.get('prime')} />
     </section>
   );
 }
+
+// "For prime contractors." (copy audit round 3, owner 2026-10-10): a contained panel with
+// three proof points and a solid button to /teaming. Three forms to compare at
+// /?prime=brief|sheet|key (Mobbin: Mailchimp, Kajabi, Dropbox partner bands; Mews figures).
+// The one card container on Home besides the Record cards (owner exception).
+const PRIME_PROOF = [
+  { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571', key: 'WOSB' },
+  { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027', key: '2025–27' },
+  { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract', key: '<1%' },
+];
+
+function PrimesPanel({ form }: { form: string | null }) {
+  const kind = form === 'brief' || form === 'key' ? form : 'sheet';
+  const head = (
+    <>
+      <h3 className="ds-display-md">For prime contractors.</h3>
+      <p className="ds-primes-line">
+        Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and
+        surge coverage on Front Range work.
+      </p>
+    </>
+  );
+  const button = (
+    <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
+      Teaming and subcontracting
+      <Arrow />
+    </Link>
+  );
+  return (
+    <div className="ds-primes-panel" data-form={kind}>
+      {kind === 'brief' && (
+        <>
+          <div className="ds-primes-top">
+            <div>{head}</div>
+            {button}
+          </div>
+          <ul className="ds-primes-cols">
+            {PRIME_PROOF.map((p) => (
+              <li key={p.label}>
+                <span className="ds-primes-label">{p.label}</span>
+                <span className="ds-primes-value">{p.value}</span>
+                <span className="ds-data ds-primes-id">{p.id}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {kind === 'sheet' && (
+        <>
+          <div className="ds-primes-copy">
+            {head}
+            {button}
+          </div>
+          <dl className="ds-primes-sheet">
+            {PRIME_PROOF.map((p) => (
+              <div key={p.label}>
+                <dt>{p.label}</dt>
+                <dd>
+                  <span>{p.value}</span>
+                  <span className="ds-data ds-primes-id">{p.id}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      )}
+      {kind === 'key' && (
+        <>
+          <div className="ds-primes-copy">
+            {head}
+            {button}
+          </div>
+          <ul className="ds-primes-key">
+            {PRIME_PROOF.map((p) => (
+              <li key={p.label}>
+                <span className="ds-data ds-primes-figure">{p.key}</span>
+                <span className="ds-primes-label">{p.label}</span>
+                <span className="ds-primes-caption">{p.value}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  );
+}
+

@@ -1,11 +1,12 @@
-import { useSearchParams } from 'react-router-dom';
+// "Why Ares exists." (copy audit: About had no founder section; owner, 2026-10-10: put it in,
+// real words and a portrait come later). Mobbin: KÖPPEN and incident.io founder notes, Slack's
+// leadership bio: a portrait plate beside a short note that ends on a signed line.
+// PLACEHOLDER: the story is the audit's draft and every line still needs Deidre's sign-off;
+// the plate shows the Ares mark until her photo arrives (set PORTRAIT to its image path,
+// run through the WebP pipeline, and give it real alt text).
+import { responsive } from '../../lib/responsive';
 
-// "Why Ares exists." (copy audit: About had no founder section). A TEMPLATE until Deidre
-// approves the wording and a photo (owner, 2026-10-10: "the founder story will have to come
-// later"). The draft below is the audit's, built from what the owner has shared about
-// Deidre; every line still needs her sign-off. Hidden on the live page until APPROVED is
-// true; preview it at /about?founder=preview.
-const APPROVED = false;
+const PORTRAIT: string | null = null;
 
 const FOUNDER = {
   name: 'Deidre Herrera-Ruiz',
@@ -17,22 +18,25 @@ const FOUNDER = {
 };
 
 export default function Founder() {
-  const [params] = useSearchParams();
-  if (!APPROVED && params.get('founder') !== 'preview') return null;
-
   return (
     <section className="ds-founder" aria-labelledby="founder-title">
-      <h2 id="founder-title" className="ds-display-lg">
-        Why Ares exists.
-      </h2>
-      <div className="ds-founder-body">
+      <figure className="ds-founder-plate" data-empty={!PORTRAIT || undefined}>
+        {PORTRAIT ? (
+          <img {...responsive(PORTRAIT, '(min-width: 1024px) 40vw, 80vw')} alt={`${FOUNDER.name}, ${FOUNDER.role} of Ares Security`} loading="lazy" decoding="async" />
+        ) : (
+          <span className="ds-founder-mark" aria-hidden="true" />
+        )}
+      </figure>
+      <div className="ds-founder-note">
+        <h2 id="founder-title" className="ds-display-lg">
+          Why Ares exists.
+        </h2>
         {FOUNDER.story.map((p) => (
           <p key={p.slice(0, 24)} className="ds-lead">{p}</p>
         ))}
-        {/* A portrait of Deidre goes here once she supplies one (4px corners, hairline edge). */}
         <p className="ds-founder-sig">
-          <span>{FOUNDER.name}</span>
-          <span className="ds-small">{FOUNDER.role}</span>
+          <span className="ds-founder-name">{FOUNDER.name}</span>
+          <span className="ds-data ds-founder-role">{FOUNDER.role} · Founded 2021, Colorado Springs</span>
         </p>
       </div>
     </section>

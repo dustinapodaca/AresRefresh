@@ -1209,18 +1209,33 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
    The photo holds still on desktop while the four steps scroll past. */
 .ds-staffing { padding-top: var(--ds-beat-open); }
-/* Why Ares exists (About, a template until Deidre approves it): the headline left, the story
-   and her name right. No section number; it sits before 01 Staffing. */
-.ds-founder { display: grid; gap: 24px; padding-top: var(--ds-beat); }
-.ds-founder-body .ds-lead { margin: 0 0 16px; max-width: 46ch; color: var(--ds-fg); }
-.ds-founder-body .ds-lead + .ds-lead { color: var(--ds-fg-muted); }
-.ds-founder-sig { display: grid; gap: 2px; margin: 28px 0 0; padding-top: 14px; border-top: 1px solid var(--ds-rule-strong); max-width: 46ch; }
-.ds-founder-sig span:first-child { font-weight: 600; font-size: 16px; color: var(--ds-fg); }
+/* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait): a portrait
+   plate beside a short note that ends on a signed line. No section number; it sits before
+   01 How we work. */
+.ds-founder { display: grid; gap: 32px; padding-top: var(--ds-beat); }
+.ds-founder-plate { position: relative; margin: 0; width: min(100%, 260px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; background: #0e1013; }
+.ds-founder-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
+.ds-founder-plate img { width: 100%; height: 100%; object-fit: cover; }
+/* Until the portrait arrives: the Ares mark, quiet, on the plate. */
+.ds-founder-mark { position: absolute; inset: 0; margin: auto; width: 28%; aspect-ratio: 407.7 / 425.9; background: var(--ds-fg); opacity: 0.12; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
+.ds-founder-note h2 { margin: 0 0 24px; }
+.ds-founder-note .ds-lead { margin: 0 0 16px; max-width: 46ch; color: var(--ds-fg); }
+.ds-founder-note .ds-lead + .ds-lead { color: var(--ds-fg-muted); }
+.ds-founder-sig { display: grid; gap: 6px; margin: 32px 0 0; padding-top: 16px; border-top: 1px solid var(--ds-rule-strong); max-width: 46ch; }
+.ds-founder-name { font-family: var(--ds-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-founder-role { font-size: 12.5px; color: var(--ds-fg-faint); }
 @media (min-width: 1024px) {
-  .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-founder h2 { grid-column: 1 / span 6; }
-  .ds-founder-body { grid-column: 7 / span 6; }
+  .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-founder-plate { grid-column: 1 / span 4; width: 100%; }
+  .ds-founder-note { grid-column: 6 / span 7; }
 }
+/* The portrait opens from the bottom as it enters (Emil: clip-path, already visible). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ds-founder-plate { animation: ds-founder-open linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+  }
+}
+@keyframes ds-founder-open { from { clip-path: inset(10% 0 0 0 round 4px); } to { clip-path: inset(0 0 0 0 round 4px); } }
 .ds-staffing-intro .ds-lead { margin-top: 20px; }
 .ds-staffing-more { display: inline-flex; margin-top: 20px; }
 .ds-staffing-body { display: grid; gap: 40px; margin-top: var(--ds-beat-tight); }
@@ -1292,14 +1307,60 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-ind-plates .ds-ind-name { display: block; }
 .ds-nowrap { white-space: nowrap; }
 .ds-ind-plates .ds-ind-name .ds-arrow { display: inline-block; margin-left: 10px; vertical-align: -1px; }
-.ds-primes { display: grid; gap: 18px; margin-top: var(--ds-beat-tight); }
-.ds-primes h3 { margin: 0; }
-.ds-primes .ds-lead { margin: 0 0 18px; max-width: 44ch; }
-@media (min-width: 1024px) {
-  .ds-primes { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-primes h3 { grid-column: 1 / span 6; }
-  .ds-primes > div { grid-column: 8 / span 5; }
+.ds-primes-panel {
+  /* A contained panel: the capability cards' fill and edge, a light line on its top edge. */
+  position: relative;
+  margin-top: var(--ds-beat-tight);
+  padding: 28px 22px 26px;
+  background: #0e1013;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
 }
+.ds-primes-panel h3 { margin: 0; }
+.ds-primes-line { margin: 14px 0 0; font-size: 17px; line-height: 1.55; color: #c4c8ce; max-width: 46ch; }
+.ds-primes-btn { margin-top: 24px; }
+.ds-primes-label { display: block; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-primes-value { display: block; margin-top: 6px; font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; color: var(--ds-fg); }
+.ds-primes-id { display: block; margin-top: 8px; font-size: 12.5px; color: var(--ds-fg-muted); }
+/* brief: heading and button on top, three proof columns between hairlines below. */
+.ds-primes-top { display: grid; gap: 0; }
+.ds-primes-cols { list-style: none; margin: 28px 0 0; padding: 0; display: grid; border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-primes-cols li { padding: 18px 0; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
+.ds-primes-cols li:last-child { border-bottom: 0; padding-bottom: 0; }
+/* sheet: the copy left, the proof as ledger rows right. */
+.ds-primes-sheet { margin: 28px 0 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
+.ds-primes-sheet > div { display: grid; gap: 4px; padding: 16px 0 17px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
+.ds-primes-sheet > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.ds-primes-sheet dt { font-size: 13px; color: var(--ds-fg-faint); }
+.ds-primes-sheet dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
+/* key: the copy left, three identifiers set large like the ledger's key row. */
+.ds-primes-key { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 22px; }
+.ds-primes-key li { padding-top: 14px; border-top: 1px solid rgb(255 255 255 / 0.1); }
+.ds-primes-figure { display: block; margin-bottom: 10px; font-size: clamp(30px, 3vw, 40px); line-height: 1; letter-spacing: -0.03em; color: var(--ds-fg); font-variant-numeric: tabular-nums; }
+.ds-primes-caption { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.45; color: #c4c8ce; }
+@media (min-width: 768px) {
+  .ds-primes-panel { padding: 40px 40px 38px; }
+  .ds-primes-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ds-primes-cols li { padding: 22px 24px 0; border-bottom: 0; border-left: 1px solid rgb(255 255 255 / 0.08); }
+  .ds-primes-cols li:first-child { padding-left: 0; border-left: 0; }
+  .ds-primes-key { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+@media (min-width: 1024px) {
+  .ds-primes-top { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 48px; }
+  .ds-primes-top .ds-primes-btn { margin-top: 0; }
+  .ds-primes-panel[data-form='sheet'], .ds-primes-panel[data-form='key'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-primes-panel[data-form='sheet'] .ds-primes-copy, .ds-primes-panel[data-form='key'] .ds-primes-copy { grid-column: 1 / span 5; }
+  .ds-primes-sheet { grid-column: 7 / span 6; margin-top: 0; }
+  .ds-primes-key { grid-column: 7 / span 6; margin-top: 0; grid-template-columns: 1fr; gap: 18px; }
+}
+/* One moment (Emil): the panel settles 24px into place as it enters, tied to scroll; it is
+   already visible (transform only), and static under reduced motion. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  }
+}
+@keyframes ds-primes-settle { from { transform: translateY(24px); } to { transform: none; } }
 .ds-coverage { padding-top: var(--ds-beat); }
 .ds-coverage-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
