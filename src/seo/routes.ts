@@ -35,16 +35,6 @@ export const HOST: string = data.host;
 export const OG_IMAGE: string = HOST + data.ogImage;
 export const OG_IMAGE_ALT: string = data.ogImageAlt;
 
-/**
- * The link preview card for a route (owner, 2026-10-11): the first `ogCards` entry whose
- * `match` is the path or a parent of it (`/careers` covers `/careers/denver`), else the
- * default. The cards are drawn by assets/tools/make-og-cards.mjs.
- */
-export function ogCardFor(path: string): { image: string; alt: string } {
-  const card = data.ogCards.find((c) => path === c.match || path.startsWith(`${c.match}/`));
-  return card ? { image: HOST + card.image, alt: card.alt } : { image: OG_IMAGE, alt: OG_IMAGE_ALT };
-}
-
 export const SEO = data.routes as Record<string, RouteMeta>;
 
 /** Paths that belong in the sitemap (indexable only). */

@@ -9,7 +9,8 @@
 //    Chromium and reports CSP violations, console and page errors, failed requests, broken
 //    images, sideways overflow, and the H1 count
 // 4. Checks every internal link and #anchor resolves
-// 5. Checks facts and wording: identifiers, phone, emails, the SAM date, the two AI catalogs,
+// 5. Checks facts and wording (page text, structured data, llms.txt, the AI catalogs and skills):
+//    identifiers, phone, emails, the SAM date, that the two AI catalogs match,
 //    and phrases the owner has ruled out
 //
 // Exit code 1 when anything under "Errors" is found. "Warnings" need a person to read them.
@@ -227,11 +228,21 @@ const decode = (s) => s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/
 const visibleText = (html) => decode(html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
 
 const sources = [];
+const ldSeen = new Set();
 for (const p of Object.keys(routes)) {
   const f = p === '/' ? join(DIST, 'index.html') : join(DIST, `${p.slice(1)}.html`);
-  if (existsSync(f)) sources.push({ name: p, text: visibleText(readFileSync(f, 'utf8')), page: true });
+  if (!existsSync(f)) continue;
+  const html = readFileSync(f, 'utf8');
+  sources.push({ name: p, text: visibleText(html), page: true });
+  // Structured data (JSON-LD) is what search engines read; the same block on many pages is checked once.
+  for (const m of html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)) {
+    const text = decode(m[1]).replace(/\s+/g, ' ');
+    if (ldSeen.has(text)) continue;
+    ldSeen.add(text);
+    sources.push({ name: `${p} (structured data)`, text, page: false });
+  }
 }
-const publicDocs = ['public/llms.txt', ...readdirSync(join(ROOT, 'public/skills')).map((d) => `public/skills/${d}/SKILL.md`)];
+const publicDocs = ['public/llms.txt', 'public/.well-known/ard.json', ...readdirSync(join(ROOT, 'public/skills')).map((d) => `public/skills/${d}/SKILL.md`)];
 for (const f of publicDocs) if (existsSync(join(ROOT, f))) sources.push({ name: f, text: readFileSync(join(ROOT, f), 'utf8').replace(/\s+/g, ' '), page: false });
 
 const ctx = (text, i, len) => '"…' + text.slice(Math.max(0, i - 50), i + len + 50).trim() + '…"';
@@ -271,7 +282,8 @@ const sam = (dataTs.match(/SAM_ACTIVE_THROUGH\s*=\s*'([^']+)'/) || [])[1];
 if (sam) {
   for (const f of publicDocs) {
     const t = readFileSync(join(ROOT, f), 'utf8');
-    if (/SAM/.test(t) && !t.includes(sam)) err('facts', `${f} mentions SAM but not the current date "${sam}" (SAM_ACTIVE_THROUGH)`);
+    // Only files that state a SAM date; naming SAM.gov as a place to verify is fine.
+    if (/SAM[^.]{0,80}\b(through|until|expires?)\b/i.test(t) && !t.includes(sam)) err('facts', `${f} states a SAM date that is not the current one, "${sam}" (SAM_ACTIVE_THROUGH)`);
   }
 }
 const ard = join(ROOT, 'public/.well-known/ard.json');

@@ -38,17 +38,17 @@ As of 2026-10-11 the audit is clean (no warnings). `footer-bg.jpg` (dead CSS fro
 pre-Dossier footer) and `capabilities-hero.jpg` (the old link preview photo) moved to
 `assets/images-unused/` that day.
 
-## Link preview cards
+## Link preview card
 
 The picture shown when someone shares a link (iMessage, Google Messages, Slack, LinkedIn,
-Facebook). Six 1200x630 JPEGs in `public/images/og/`, drawn by
-`node assets/tools/make-og-cards.mjs` from the owner's LinkedIn banner
-(`assets/images-src/og/ares-linkedin-banner.png`) with a dark glass strip carrying one line
-and a mono detail. The lines live in `CARDS` in that script; which page gets which card is
-`ogCards` in `src/seo/routes.json` (a `match` covers the path and everything under it; the
-rest get the default `ogImage`). They stay plain JPEGs outside the pipeline on purpose, and
-keep their names so shared links don't break. Apps cache a link's preview when it is first
-shared, so a changed card can take a while to show on old links.
+Facebook). One card for every page, the image only (owner, 2026-10-11; per-page cards with a
+text strip were tried the same day and dropped): `public/images/og/ares-security.jpg`,
+1200x630, the owner's LinkedIn banner (`assets/images-src/og/ares-linkedin-banner.png`)
+cropped by `node assets/tools/make-og-card.mjs`. Set as `ogImage` in `src/seo/routes.json`
+and as the LocalBusiness `image` in `index.html`. It stays a plain JPEG outside the pipeline
+on purpose; keep its name. Apps cache a link's preview when it is first shared, so a new card
+can take a while to show on old links, and it only shows once this build is live on
+aressecurity.co (the tags name that domain).
 
 ## Add or replace a photo
 

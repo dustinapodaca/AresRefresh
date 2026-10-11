@@ -1,15 +1,7 @@
 {
   "host": "https://aressecurity.co",
   "ogImage": "/images/og/ares-security.jpg",
-  "ogImageAlt": "Ares Security logo on glass over office towers. Security officers across Colorado's Front Range.",
-  "ogCards": [
-    { "match": "/services", "image": "/images/og/services.jpg", "alt": "Ares Security logo on glass over office towers. Armed and unarmed officers, patrol, and access control." },
-    { "match": "/industries", "image": "/images/og/services.jpg", "alt": "Ares Security logo on glass over office towers. Armed and unarmed officers, patrol, and access control." },
-    { "match": "/careers", "image": "/images/og/careers.jpg", "alt": "Ares Security logo on glass over office towers. Careers: security officer roles in Colorado." },
-    { "match": "/capability-statement", "image": "/images/og/capability-statement.jpg", "alt": "Ares Security logo on glass over office towers. Capability statement, GSA MAS 47QSMS25D009Q." },
-    { "match": "/teaming", "image": "/images/og/teaming.jpg", "alt": "Ares Security logo on glass over office towers. Teaming and subcontracting for prime contractors." },
-    { "match": "/contact", "image": "/images/og/request-a-quote.jpg", "alt": "Ares Security logo on glass over office towers. Request a security quote." }
-  ],
+  "ogImageAlt": "Ares Security logo on glass over office towers",
   "routes": {
     "/": {
       "title": "Colorado Security Guard & Patrol Services | Ares Security",
