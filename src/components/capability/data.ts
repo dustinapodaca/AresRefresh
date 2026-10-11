@@ -76,7 +76,8 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     id: 'vehicle',
-    title: 'Patrol Vehicle Security',
+    // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
+    title: 'Mobile Patrol',
     line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
     keys: ['Marked vehicles', 'Alarm response', 'GPS-verified'],
     includes: [

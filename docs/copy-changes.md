@@ -747,3 +747,7 @@ Three or four rows specific to each industry (audit). Government: restricted are
 - "Longest client: On post continuously since 2022, through multiple renewals" (owner: true; client not named) on Home's company facts, the Commercial & Retail "Why Ares here" rows, and llms.txt.
 - Institutional & Community "Why Ares here": "De-escalation: Officers trained to calm a situation before anything else" (owner approved); the records row stepped out to keep four rows.
 - Ares is not an AASC member (owner): never list AASC, here or in the directory listings.
+
+## Mobile patrol, one name (2026-10-10, owner)
+
+Capability Statement card "Patrol Vehicle Security" is now "Mobile Patrol", the name Services, the service page, and the quote form use. The PDF still says Patrol Vehicle Security until the owner updates it.
