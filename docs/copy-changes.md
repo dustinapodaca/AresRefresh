@@ -803,3 +803,4 @@ Then the owner chose all three (2026-10-10): the Services panel, visible breadcr
 - Each city page gets "Security in [city]." after the opening (about 125 words, facts already on the site, "ready to staff" wording; the audit's openers described current work, so they were rewritten) and two questions: Colorado Springs and Pueblo (license, how soon can you start), Denver (license, sites outside the city). Pueblo's "where our CEO started in security" waits for Deidre.
 - Teaming: in the Services panel's top row beside "All services and how a post starts", and as a quiet line in the phone menu.
 
+Colorado Springs paragraph: the ZIP code mention removed (owner, 2026-10-10).
