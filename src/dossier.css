@@ -1085,7 +1085,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-values-list { --pile-hold: 96px; display: flex; flex-direction: column; margin-bottom: calc(-1 * var(--pile-hold)); }
   .ds-value { min-height: var(--ds-value-h, 0px); }
   .ds-value-quote figcaption { margin-top: auto; padding-top: 20px; }
-  .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
+  /* Each card on its own layer, so the pile slides smoothly instead of repainting. */
+  .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); transform: translateZ(0); backface-visibility: hidden; }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
   .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
   /* The pile holds, then leaves as one (owner, 2026-10-08). A sticky card lets go when the
@@ -3910,7 +3911,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    light catching a glass edge. No glow, no gradient fill, no blur. Later in the file than each
    original rule, so it wins at equal specificity. */
 .ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-primes-flow, .ds-founder-face {
-  background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
+  /* A solid layer under the lit edge, so a card that overlaps another (the phone pile) never
+     lets the edge or content beneath show through its border (owner, 2026-10-10). */
+  background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box, linear-gradient(#000, #000) border-box;
   border: 1px solid transparent;
   box-shadow: none;
   -webkit-backdrop-filter: none;
@@ -3927,7 +3930,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-primes-flow { background: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px) 0 0 / 16px 16px padding-box, linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box; }
 .ds-primes-panel .ds-primes-flow { background: radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px) 0 0 / 16px 16px; border-color: transparent; }
 @media (hover: hover) and (pointer: fine) {
-  .ds-value:hover { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box; box-shadow: none; }
+  .ds-value:hover { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box, linear-gradient(#000, #000) border-box; box-shadow: none; }
 }
 /* Services cards hold a photo, so the lit edge is drawn on top of it as a masked ring. */
 .ds-svc-card { background: var(--ds-card); }
