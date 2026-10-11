@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
@@ -25,22 +23,9 @@ import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
 
-// Preview (owner, 2026-10-10): ?match=1 shows the panel style (light from above, top line)
-// on the Capability cards and GSA block, the Services cards, the quote form, and a teaming
-// diagram on /teaming, to compare before adopting. Remove once decided.
-function MatchPreview() {
-  const { search } = useLocation();
-  useEffect(() => {
-    const on = new URLSearchParams(search).get('match') === '1';
-    document.documentElement.toggleAttribute('data-match', on);
-  }, [search]);
-  return null;
-}
-
 export default function App() {
   return (
     <>
-      <MatchPreview />
       <ScrollToTop />
       <SmoothAnchors />
       <Header />

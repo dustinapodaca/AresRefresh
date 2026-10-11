@@ -3898,30 +3898,31 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-svc-cities a:hover .ds-arrow { transform: none; }
 }
 
-/* ---------- Preview: html[data-match] (?match=1, owner 2026-10-10) ----------
-   The prime panel's surface (soft light from above, white/8% edge, white/12% top line) on
-   the Capability cards and GSA block, the Services cards, and the quote form fields. */
-html[data-match] .ds-cs-card {
+/* ---------- One panel surface (owner, 2026-10-10) ----------
+   The Home prime panel's surface (soft light from above, white/8% edge, white/12% top line)
+   carried to the Capability cards and GSA block, the Services cards, and the quote form
+   fields. Later in the file than each original rule, so it wins at equal specificity. */
+.ds-cs-card {
   background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), #0c0d10;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
 }
-html[data-match] .ds-cs-card[data-open='true'] { background: radial-gradient(120% 50% at 50% 0%, rgb(255 255 255 / 0.05), rgb(255 255 255 / 0) 60%), #0f1114; }
-html[data-match] .ds-cs-vehicle {
+.ds-cs-card[data-open='true'] { background: radial-gradient(120% 50% at 50% 0%, rgb(255 255 255 / 0.05), rgb(255 255 255 / 0) 60%), #0f1114; }
+.ds-cs-vehicle {
   padding: 28px 28px 30px;
   border-radius: 4px;
   background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), #0c0d10;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
 }
-html[data-match] .ds-svc-card::after {
+.ds-svc-card::after {
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.16);
 }
-html[data-match] .ds-svc-card { background: radial-gradient(120% 50% at 50% 0%, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0) 60%), #0a0b0d; }
-html[data-match] .ds-qt-input, html[data-match] .ds-qt-select {
+.ds-svc-card { background: radial-gradient(120% 50% at 50% 0%, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0) 60%), #0a0b0d; }
+.ds-qt-input, .ds-qt-select {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 60%), #0c0d10;
   border-color: rgb(255 255 255 / 0.1);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
 }
-html[data-match] .ds-qt-chip span { background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 60%), #0c0d10; border-color: rgb(255 255 255 / 0.1); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); }
-html[data-match] .ds-qt-chip input:checked + span { background: var(--ds-fg); box-shadow: none; }
+.ds-qt-chip span { background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 60%), #0c0d10; border-color: rgb(255 255 255 / 0.1); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08); }
+.ds-qt-chip input:checked + span { background: var(--ds-fg); box-shadow: none; }
 .ds-tm-flow { max-width: 560px; margin: 0 auto; }
 

@@ -273,6 +273,17 @@ sizes are unchanged.
   along its bottom edge. It appears once the first section reaches the top and is solid
   canvas, not glass.
 
+## One panel surface (owner, 2026-10-10)
+
+Every contained panel shares the Home prime panel's surface: near-black (#0c0d10) with a soft
+white/4.5% light from above (a radial gradient at the top), a white/8% inset edge, and a
+white/12% line along the top edge, 4px corners. Used by the Home Record cards (over their
+frosted fill) and prime panel, the Capability Statement cards and its GSA MAS block, the
+Services industry cards (the top edge brightened; the light sits under the photo), and the
+quote form's fields and chips (a faint light from above, a white/10% border, a top line).
+Teaming shows the prime panel's diagram under "What the prime gets". The old faint light
+from below is retired.
+
 ## Elevation & Depth
 
 Flat. No shadows, no blur, no glass, no tonal card lifts. Depth comes from three sources
