@@ -34,10 +34,21 @@ It's read-only. It fails on a broken image, a manifest key used as a raw URL (`s
 nothing uses, and deployed files nothing names. It also prints the sizes. Run it before and
 after any image change.
 
-Known warning as of 2026-10-11 (fine to leave): `/images/capabilities-hero.jpg` (198 KB),
-the social/OG image in `routes.json` and `index.html`. It stays a plain JPEG for crawlers;
-`src/seo/*` is off limits without the owner's OK. (`footer-bg.jpg`, used only by dead CSS
-from the pre-Dossier footer, moved to `assets/images-unused/` the same day.)
+As of 2026-10-11 the audit is clean (no warnings). `footer-bg.jpg` (dead CSS from the
+pre-Dossier footer) and `capabilities-hero.jpg` (the old link preview photo) moved to
+`assets/images-unused/` that day.
+
+## Link preview cards
+
+The picture shown when someone shares a link (iMessage, Google Messages, Slack, LinkedIn,
+Facebook). Six 1200x630 JPEGs in `public/images/og/`, drawn by
+`node assets/tools/make-og-cards.mjs` from the owner's LinkedIn banner
+(`assets/images-src/og/ares-linkedin-banner.png`) with a dark glass strip carrying one line
+and a mono detail. The lines live in `CARDS` in that script; which page gets which card is
+`ogCards` in `src/seo/routes.json` (a `match` covers the path and everything under it; the
+rest get the default `ogImage`). They stay plain JPEGs outside the pipeline on purpose, and
+keep their names so shared links don't break. Apps cache a link's preview when it is first
+shared, so a changed card can take a while to show on old links.
 
 ## Add or replace a photo
 

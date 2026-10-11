@@ -63,9 +63,10 @@ for (const [path, uses] of refs) {
   }
   if (inManifest) {
     for (const u of uses) if (RAW.test(u.text)) errors.push(`${u.file}:${u.line} uses ${path} as a raw URL; that file is not deployed. Use responsive('${path}')`);
-  } else if (!path.endsWith('.svg')) {
+  } else if (!path.endsWith('.svg') && !path.startsWith('/images/og/')) {
+    // SVG masks and the link preview cards (plain JPEGs for crawlers) are meant to be served as is.
     const where = uses.map((u) => `${u.file}:${u.line}`).join(', ');
-    warnings.push(`${path} is served as the original file, outside the pipeline (${where})${/routes\.json|index\.html/.test(where) ? '. Social/OG images may stay as they are' : ''}`);
+    warnings.push(`${path} is served as the original file, outside the pipeline (${where})`);
   }
 }
 

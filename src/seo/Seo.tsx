@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { SEO, HOST, OG_IMAGE, OG_IMAGE_ALT, urlFor } from './routes';
+import { SEO, HOST, ogCardFor, urlFor } from './routes';
 import { responsive } from '../lib/responsive';
 
 type Props = {
@@ -23,6 +23,7 @@ export function Seo({ path, noindex = false }: Props) {
   }
 
   const url = urlFor(path);
+  const card = ogCardFor(path);
   const isNoindex = noindex || Boolean(meta.noindex);
 
   // BreadcrumbList: Home > [trail] > current page. Improves how the URL
@@ -98,15 +99,16 @@ export function Seo({ path, noindex = false }: Props) {
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image" content={card.image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+      <meta property="og:image:alt" content={card.alt} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
-      <meta name="twitter:image" content={OG_IMAGE} />
+      <meta name="twitter:image" content={card.image} />
+      <meta name="twitter:image:alt" content={card.alt} />
 
       {breadcrumbLd && (
         <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>

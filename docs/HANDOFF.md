@@ -152,6 +152,12 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
   the form's slugs, and the SAM date. Validate with Lighthouse's `third-party/ard/ard.js`.
   Do **not** add an `Agentmap:` line to robots.txt: Lighthouse's robots audit rejects
   unknown directives and would cost SEO points.
+- **Link preview cards** (owner, 2026-10-11): six 1200x630 JPEGs in `public/images/og/`
+  from the owner's LinkedIn banner, drawn by `node assets/tools/make-og-cards.mjs` (the lines
+  are in that script). `ogCards` in `src/seo/routes.json` gives Services and industries,
+  Careers, the Capability Statement, Teaming, and the quote page their own card; the rest get
+  `ares-security.jpg`. The old street photo (`capabilities-hero.jpg`) is in
+  `assets/images-unused/`.
 - **Icons:** `public/favicon-v2.svg` (the mark in #c4c8ce, set up and left of center on
   purpose so it fits circular crops) with PNGs, ICO, Apple touch icon, and
   `manifest.json`; rebuild all with `node assets/tools/make-icons.mjs`.
