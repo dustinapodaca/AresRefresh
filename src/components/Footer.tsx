@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
-import { SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
+import { PDF_URL, SAM_ACTIVE_THROUGH, SAM_VERIFY } from './capability/data';
 import { responsive } from '../lib/responsive';
 
 // The footer (owner, 2026-10-06; Mobbin: Retool's ruled columns, Railway's wordmark under
@@ -121,6 +121,11 @@ export default function Footer() {
                 <span className="ds-data">21353671</span>
               </li>
             </ul>
+            {/* The one-page PDF from any page (copy audit group 2, 2026-10-10). */}
+            <a href={PDF_URL} className="ds-ft-pdf" download>
+              Capability statement (PDF)
+              <Arrow size={12} />
+            </a>
           </div>
 
           <div>

@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
@@ -22,6 +23,7 @@ export default function IndustryPage() {
 
       <section className="ds-mk-ind-open" aria-labelledby="mk-title">
         <div className="ds-container">
+          <Crumbs path={`/industries/${ind.slug}`} current={ind.name} />
           <h1 id="mk-title" className="ds-display-xl ds-mk-ind-title">{ind.title}</h1>
           <div className="ds-mk-ind-lead">
             <p className="ds-lead">{ind.lead}</p>

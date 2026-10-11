@@ -348,6 +348,45 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-sheet-contact { display: grid; gap: 6px; margin-top: 36px; }
 .ds-sheet-contact a { color: var(--ds-fg); font-size: 1.125rem; }
 
+/* Breadcrumbs (option, ?crumbs=1): small, faint, above the headline. */
+.ds-crumbs { margin: 0 0 20px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 8px; list-style: none; margin: 0; padding: 0; }
+.ds-crumbs li + li::before { content: '/'; margin-right: 8px; color: var(--ds-rule-strong); }
+.ds-crumbs a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-crumbs a:hover { color: var(--ds-fg); }
+.ds-crumbs [aria-current] { color: var(--ds-fg-faint); }
+
+/* Options (copy audit group 2): the Services panel (/?nav=menu) and the phone Call link
+   (/?call=1). */
+.ds-nav-has-menu { position: relative; display: flex; align-items: center; gap: 2px; }
+.ds-nav-caret { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 28px; padding: 0; background: none; border: 0; color: #fff; cursor: pointer; position: relative; top: -2px; }
+.ds-nav-caret svg { transition: transform 180ms var(--ds-ease); }
+.ds-nav-has-menu[data-open='true'] .ds-nav-caret svg { transform: rotate(180deg); }
+.ds-nav-panel {
+  position: absolute;
+  top: calc(100% + 22px);
+  left: 50%;
+  translate: -50% 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 40px;
+  width: 600px;
+  padding: 24px 28px 22px;
+  background: var(--ds-canvas);
+  border: 1px solid var(--ds-rule-strong);
+  border-radius: 4px;
+}
+.ds-nav-panel[hidden] { display: none; }
+/* A bridge over the gap, so the pointer can travel from the link to the panel. */
+.ds-nav-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -24px; height: 24px; }
+.ds-nav-panel-h { margin: 0 0 8px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-nav-panel ul { display: grid; justify-content: stretch; gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
+.ds-nav-panel li a { display: block; padding: 9px 0; border-bottom: 1px solid var(--ds-rule); font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
+.ds-nav-panel li a:hover { color: #fff; }
+.ds-nav-panel-all { grid-column: 1 / -1; justify-self: start; margin-top: 12px; font-size: 14px; }
+.ds-header-call { font-family: var(--ds-data); font-size: 14px; color: #fff; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px; }
+@media (min-width: 1024px) { .ds-header-call { display: none; } }
+
 @media (min-width: 1024px) {
   .ds-header-row { display: grid; grid-template-columns: 1fr auto 1fr; }
   .ds-nav { display: block; }
@@ -431,6 +470,8 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-ft-status { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; letter-spacing: -0.01em; color: var(--ds-fg); }
 .ds-ft-light { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
 .ds-ft-status-note { margin: 8px 0 0 17px; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-footer-cols a.ds-ft-pdf { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 14px; color: var(--ds-fg); text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
+.ds-footer-cols a.ds-ft-pdf:hover { text-decoration-color: var(--ds-fg); }
 .ds-footer-cols a.ds-ft-verify { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0 17px; font-size: 14px; color: var(--ds-fg-muted); }
 /* Phones: an even 2x2. The identifiers stack (label over value) to fit a half column. */
 @media (max-width: 639px) {

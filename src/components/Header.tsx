@@ -1,18 +1,34 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import Arrow from './Arrow';
+import { ROLE_PAGES } from './market/roles';
+import { INDUSTRY_PAGES } from './market/industries';
 
 // Modeled on the v08 nav (tag home-v08-framer-flow-final): transparent over the page at the
 // top, a solid canvas bar with a hairline once scrolled, links centered, white pill CTA.
-const NAV = [
-  { to: '/', label: 'Home', end: true },
+// Copy audit group 2 (2026-10-10): no Home link (the mark goes home), Insights added.
+const NAV: { to: string; label: string; end?: boolean }[] = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
   { to: '/careers', label: 'Careers' },
+  { to: '/insights', label: 'Insights' },
   { to: '/capability-statement', label: 'Capability Statement' },
 ];
 
+// Options for the owner to compare (copy audit group 2): /?nav=menu opens a Services panel
+// with the six services and the six industries; /?call=1 puts a Call link beside the phone
+// menu button. Both off by default until the owner picks.
+const SERVICES_MENU = {
+  services: ROLE_PAGES.map((r) => ({ to: `/services/${r.slug}`, label: r.name })),
+  industries: INDUSTRY_PAGES.map((i) => ({ to: `/industries/${i.slug}`, label: i.name })),
+};
+
 export default function Header() {
+  const [params] = useSearchParams();
+  const withMenu = params.get('nav') === 'menu';
+  const withCall = params.get('call') === '1';
+  const [panel, setPanel] = useState(false);
+  const panelTimer = useRef(0);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -25,6 +41,7 @@ export default function Header() {
   useEffect(() => {
     let a = 0;
     let b = 0;
+    setPanel(false);
     a = requestAnimationFrame(() => {
       b = requestAnimationFrame(() => setOpen(false));
     });
@@ -47,6 +64,26 @@ export default function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // The Services panel closes on Escape and on a click outside it.
+  useEffect(() => {
+    if (!panel) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setPanel(false);
+    const onDown = (e: PointerEvent) => {
+      if (!(e.target as Element).closest('.ds-nav-has-menu')) setPanel(false);
+    };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('pointerdown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('pointerdown', onDown);
+    };
+  }, [panel]);
+  const hoverPanel = (show: boolean) => {
+    window.clearTimeout(panelTimer.current);
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    panelTimer.current = window.setTimeout(() => setPanel(show), show ? 60 : 160);
+  };
 
   // While the menu is open: lock page scroll and close on Escape.
   useEffect(() => {
@@ -92,17 +129,70 @@ export default function Header() {
 
         <nav className="ds-nav" aria-label="Primary">
           <ul>
-            {NAV.map((item) => (
-              <li key={item.to}>
-                <NavLink to={item.to} end={item.end} className="ds-nav-link">
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
+            {NAV.map((item) =>
+              withMenu && item.to === '/services' ? (
+                <li
+                  key={item.to}
+                  className="ds-nav-has-menu"
+                  data-open={panel}
+                  onMouseEnter={() => hoverPanel(true)}
+                  onMouseLeave={() => hoverPanel(false)}
+                >
+                  <NavLink to={item.to} className="ds-nav-link">
+                    {item.label}
+                  </NavLink>
+                  <button
+                    type="button"
+                    className="ds-nav-caret"
+                    aria-label="Show services and industries"
+                    aria-expanded={panel}
+                    aria-controls="nav-services"
+                    onClick={() => setPanel((p) => !p)}
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                      <path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <div id="nav-services" className="ds-nav-panel" hidden={!panel}>
+                    <div>
+                      <p className="ds-nav-panel-h">Services</p>
+                      <ul>
+                        {SERVICES_MENU.services.map((l) => (
+                          <li key={l.to}><Link to={l.to}>{l.label}</Link></li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="ds-nav-panel-h">Industries</p>
+                      <ul>
+                        {SERVICES_MENU.industries.map((l) => (
+                          <li key={l.to}><Link to={l.to}>{l.label}</Link></li>
+                        ))}
+                      </ul>
+                    </div>
+                    <Link to="/services" className="ds-link ds-nav-panel-all">
+                      All services and how a post starts
+                      <Arrow size={14} />
+                    </Link>
+                  </div>
+                </li>
+              ) : (
+                <li key={item.to}>
+                  <NavLink to={item.to} end={item.end} className="ds-nav-link">
+                    {item.label}
+                  </NavLink>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 
         <div className="ds-header-actions">
+          {withCall && (
+            <a href="tel:+17196963966" className="ds-header-call">
+              Call
+            </a>
+          )}
           <Link to="/contact" className="ds-btn ds-btn-primary ds-header-cta">
             Request a Quote
             <Arrow size={14} />

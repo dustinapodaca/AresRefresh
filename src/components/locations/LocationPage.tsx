@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Crumbs from '../market/Crumbs';
 import Seo from '../../seo/Seo';
 import Arrow from '../Arrow';
 import LocationMap from './LocationMap';
@@ -29,6 +30,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
       <section className="ds-loc-open" aria-labelledby="loc-title">
         <div className="ds-container ds-loc-open-grid">
           <div className="ds-loc-open-copy">
+            <Crumbs path={file.path} current={file.city.name} />
             <h1 id="loc-title" className="ds-display-xl">{file.title}</h1>
             <p className="ds-lead">{file.lead}</p>
             {/* Below 1024px only: from there up the nav carries the quote button. */}

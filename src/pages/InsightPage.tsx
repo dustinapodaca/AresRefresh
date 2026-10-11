@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
@@ -29,6 +30,7 @@ export default function InsightPage() {
     <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/insights/${a.slug}`} />
       <article className="ds-container ds-mk-article" aria-labelledby="mk-title">
+        <Crumbs path={`/insights/${a.slug}`} current={a.title} />
         <h1 id="mk-title" className="ds-display-lg">{a.title}</h1>
         <p className="ds-data ds-mk-article-meta">
           <span>{a.category}</span>
