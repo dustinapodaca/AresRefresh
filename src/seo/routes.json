@@ -377,6 +377,11 @@
       "title": "Page Not Found | Ares Security",
       "description": "We couldn't find that page. Go to the Ares Security home page, see our services, or request a quote.",
       "noindex": true
+    },
+    "/home-next": {
+      "title": "Home preview (new design) | Ares Security",
+      "description": "A preview of the redesigned Ares Security home page, for review only.",
+      "noindex": true
     }
   }
 }

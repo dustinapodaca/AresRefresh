@@ -22,6 +22,7 @@ import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
+import HomeNext from './pages/HomeNext';
 
 export default function App() {
   return (
@@ -31,6 +32,8 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}
+        <Route path="/home-next" element={<HomeNext />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/capability-statement" element={<CapabilityStatement />} />

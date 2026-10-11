@@ -3,7 +3,7 @@ import { responsive } from '../../lib/responsive';
 // 02 Quality (owner, 2026-10-06: moved whole from About, photo and all, and set for Home):
 // the principle as a large statement with its paragraph, then the patrol vehicles as a wide
 // plate beside the company facts.
-const FACTS: { label: string; value: string; mono?: boolean }[] = [
+export const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Established', value: 'February 2021, Colorado Springs' },
   { label: 'Ownership', value: 'Minority woman-owned' },
   { label: 'Licensed', value: 'Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo' },

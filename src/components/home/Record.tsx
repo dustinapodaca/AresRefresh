@@ -6,7 +6,7 @@ import { INDEED_REVIEWS } from '../careers/data';
 // One grid: the three things we stand for, each led by its proof as a figure in its own
 // light, then a client's words as a wide card. Dark glass over rust light, as in the
 // footer. Desktop: the cards rise into place as they scroll in. Phones: they pile up.
-const VALUES: {
+export const VALUES: {
   name: string;
   light: 'sun' | 'horizon' | 'three';
   figure: string;
