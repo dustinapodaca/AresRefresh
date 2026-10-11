@@ -325,6 +325,12 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 ## Files that matter
 
 - `DESIGN.md` (design system and every owner decision), `PRODUCT.md`, `CLAUDE.md`.
+- `docs/options.md`: every live option switch (`?hero=`, `?prime=` ...) and preview route,
+  with its default.
+- Project skills (2026-10-11) in `.claude/skills/`: `preship-check` (build, SEO, CSP,
+  errors, overflow, links, facts and wording on every route at 1440 and 390), `site-images`
+  (the image pipeline, generated images, the PDF, and a read-only image audit), and
+  `client-options` (adding, showing, and retiring options, with a screenshot gallery).
 - `docs/copy-changes.md`, `docs/<page>-content.md`, `docs/<page>-concepts.md`,
   `docs/market-concepts.md` (test-branch pages).
 - `src/dossier.css`: all Dossier styles (tokens `--ds-*`, `--ds-header` drives every

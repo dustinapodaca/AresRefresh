@@ -5,8 +5,8 @@ import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
-// /?hero=current|a|b|b1|b2|b3|b4|c. A is the audit's recommendation and the default until the owner
-// picks; the losing options and this switch come out then. No eyebrow above the headline
+// /?hero=current|a|b|b1|b2|b3|b4|c. B2 is the default (owner, 2026-10-10; A was the audit's
+// recommendation); the losing options and this switch come out when the client picks. No eyebrow above the headline
 // (owner); the search phrase is carried by the title and description.
 const OPTIONS = {
   current: {

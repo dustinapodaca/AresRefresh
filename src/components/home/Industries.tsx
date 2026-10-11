@@ -87,8 +87,8 @@ export default function Industries() {
 
 // "For prime contractors." (copy audit round 3; second pass 2026-10-10 after Slash, Flora,
 // and Resend on Mobbin): a contained panel with three proof points and a solid button to
-// /teaming. Three forms to compare at /?prime=split|diagram|vignettes (split is the default
-// for now). The one card container on Home besides the Record cards (owner exception).
+// /teaming. Three forms to compare at /?prime=split|diagram|vignettes (diagram is the
+// default, owner 2026-10-10). The one card container on Home besides the Record cards (owner exception).
 const PRIME_PROOF = [
   { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571' },
   { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027' },
