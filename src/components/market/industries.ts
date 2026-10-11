@@ -53,7 +53,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       GSA,
       { label: 'SAM.gov', value: `Active through ${SAM_ACTIVE_THROUGH}`, href: SAM_VERIFY, external: true },
       { label: 'WOSB', value: 'WOSB250470, set-aside eligible under NAICS 561612' },
-      { label: 'Restricted areas', value: 'Hands-on access control experience on military installations' },
+      { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', href: '/services/restricted-area-escort' },
       { label: 'Veterans', value: 'Veteran supervisors and a veteran NRA firearms instructor' },
     ],
     primes: 'Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on federal work along the Front Range.',
@@ -97,11 +97,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'armed-security-officers', line: 'Armed posts where the risk, the assets, or the contract calls for them.' },
     ],
     why: [
-      { label: 'Records', value: 'Documented entry, from construction through operations' },
+      { label: 'Entry', value: 'Documented, from construction through operations' },
       { label: 'Restricted areas', value: 'Hands-on access control experience on military installations' },
       { label: 'Armed posts', value: 'Licensed officers, firearms-qualified by Ares, where the post requires it', href: '/services/armed-security-officers' },
-      RELIEF,
-      LICENSED,
+      LOGS,
     ],
     ask: 'Send us the site, its phase, and the hours you need covered. We will come back with a staffing plan and post orders.',
     faq: [
@@ -149,10 +148,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'unarmed-security-officers', line: 'Posted officers and perimeter rounds, with every checkpoint logged.' },
     ],
     why: [
-      LOGS,
       { label: 'First shift', value: 'A member of leadership works the first shift on every new post' },
-      RELIEF,
-      LICENSED,
+      { label: 'Build phases', value: 'Coverage that changes with each phase, including escorts on military construction', href: '/services/restricted-area-escort' },
+      { label: 'After hours', value: 'Mobile patrol in Ares-marked vehicles, with time-stamped reports', href: '/services/mobile-patrol' },
+      LOGS,
     ],
     ask: 'Send us the site, the phase of the build, and the hours you need covered. We will come back with a plan that changes as the site does.',
     faq: [
@@ -189,8 +188,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'mobile-patrol', line: 'Patrol of lots, yards, and perimeters, with after-hours checks.' },
     ],
     why: [
-      { label: 'Restricted areas', value: 'Access control and escort experience on military installations' },
-      { label: 'Coverage', value: 'Uniformed or plainclothes, around the clock' },
+      { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', href: '/services/restricted-area-escort' },
+      { label: 'Uniform', value: 'Uniformed or plainclothes, as the site calls for' },
       LOGS,
       RELIEF,
     ],
@@ -233,7 +232,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     why: [
       { label: 'Client rating', value: 'Very Good or Exceptional on 43 of 45 client criteria', href: '/capability-statement' },
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
-      RELIEF,
+      { label: 'Portfolios', value: 'One patrol across several properties, with a report for each', href: '/services/mobile-patrol' },
       LICENSED,
     ],
     ask: 'Send us the properties, the hours, and what you want officers to watch for. We will come back with a staffing plan for one site or the whole portfolio.',
@@ -271,9 +270,9 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ],
     why: [
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
+      { label: 'Uniform', value: 'Uniformed or plainclothes, as the setting calls for' },
       { label: 'First shift', value: 'A member of leadership works the first shift on every new post' },
       LOGS,
-      LICENSED,
     ],
     ask: 'Send us the site, its entry points, and the hours you need covered. We will come back with a staffing plan and post orders.',
     faq: [

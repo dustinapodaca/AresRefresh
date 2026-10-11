@@ -60,7 +60,7 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     works" paragraphs use only facts already on the site but still need Deidre's read.
     Waiting on the owner for job pages: pay range per role (Colorado requires it in a
     posting), schedule, requirements, benefits summary, and how to apply (Indeed link or a
-    short form). Industry "Why Ares here" rows per the audit are still to do.
+    short form). Industry "Why Ares here" rows are done (held: longest client since 2022, de-escalation, AASC).
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the
