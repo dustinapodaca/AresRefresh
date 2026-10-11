@@ -1371,7 +1371,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-flow-fork { height: 20px; }
 .ds-flow-posts { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; padding-top: 20px; }
 .ds-flow-posts::before { content: ''; position: absolute; top: 0; left: 16.66%; right: 16.66%; height: 1px; background: var(--ds-rule-strong); transform-origin: center; }
-.ds-flow-posts span { position: relative; display: block; padding: 10px 8px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
+.ds-flow-posts span { position: relative; display: flex; align-items: center; justify-content: center; padding: 10px 8px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
 .ds-flow-posts span::before { content: ''; position: absolute; left: 50%; top: -20px; width: 1px; height: 20px; background: var(--ds-rule-strong); }
 
 /* vignettes */
