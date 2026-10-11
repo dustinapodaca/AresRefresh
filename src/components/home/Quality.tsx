@@ -8,6 +8,8 @@ const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Ownership', value: 'Minority woman-owned' },
   { label: 'Licensed', value: 'Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo' },
   { label: 'Primary NAICS', value: '561612', mono: true },
+  // Owner, 2026-10-10: true; the client is not named.
+  { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
 ];
 
 export default function Quality() {

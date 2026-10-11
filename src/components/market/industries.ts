@@ -233,7 +233,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { label: 'Client rating', value: 'Very Good or Exceptional on 43 of 45 client criteria', href: '/capability-statement' },
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
       { label: 'Portfolios', value: 'One patrol across several properties, with a report for each', href: '/services/mobile-patrol' },
-      LICENSED,
+      // Owner, 2026-10-10: true; the client is not named.
+      { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
     ],
     ask: 'Send us the properties, the hours, and what you want officers to watch for. We will come back with a staffing plan for one site or the whole portfolio.',
     faq: [
@@ -270,9 +271,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ],
     why: [
       { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
+      // Owner, 2026-10-10: de-escalation first is how Ares trains. (Ares is not an AASC member.)
+      { label: 'De-escalation', value: 'Officers trained to calm a situation before anything else' },
       { label: 'Uniform', value: 'Uniformed or plainclothes, as the setting calls for' },
       { label: 'First shift', value: 'A member of leadership works the first shift on every new post' },
-      LOGS,
     ],
     ask: 'Send us the site, its entry points, and the hours you need covered. We will come back with a staffing plan and post orders.',
     faq: [

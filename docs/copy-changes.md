@@ -741,3 +741,9 @@ New page `/teaming`, "Teaming and subcontracting.": who we team with (primes, gu
 ## Round 1: industry "Why Ares here" rows (2026-10-10)
 
 Three or four rows specific to each industry (audit). Government: restricted areas now "Escort and access control on a Space Force base in Colorado" (to the escort page). Critical: documented entry, restricted areas, armed posts, records. Construction: first shift, build phases (escorts on military construction), after-hours mobile patrol, records. Airport: the escort row, "Uniformed or plainclothes, as the site calls for" (was "around the clock"), records, relief. Commercial: client rating, officer rating, portfolios, licensed. Institutional: officer rating, uniformed or plainclothes, first shift, records. Held from the audit until confirmed: "longest client on post since 2022", de-escalation, AASC.
+
+## Longest client and de-escalation (2026-10-10, owner)
+
+- "Longest client: On post continuously since 2022, through multiple renewals" (owner: true; client not named) on Home's company facts, the Commercial & Retail "Why Ares here" rows, and llms.txt.
+- Institutional & Community "Why Ares here": "De-escalation: Officers trained to calm a situation before anything else" (owner approved); the records row stepped out to keep four rows.
+- Ares is not an AASC member (owner): never list AASC, here or in the directory listings.
