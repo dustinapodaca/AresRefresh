@@ -21,6 +21,18 @@ export const PAST_PERFORMANCE: { scope: string; where: string; term: string }[] 
   { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing' },
 ];
 
+// The copy audit's version (round 2, for the owner to compare at
+// /capability-statement?past=five): the five referenced contracts and their combined value.
+// The three current contracts above are the default (owner, 2026-10-10).
+export const PAST_FIVE = {
+  lead: 'Five referenced contracts, worth more than $2.1 million combined. Clients are not named here; references are available on request.',
+  rows: [
+    PAST_PERFORMANCE[0],
+    PAST_PERFORMANCE[1],
+    { scope: 'Three completed armed security contracts', where: 'Denver metro', term: '2021 to 2024' },
+  ],
+};
+
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
 export const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f4416aee823f55dc5fa09/view';
 
@@ -198,3 +210,71 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
   { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
   { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
 ];
+
+// Certifications and codes as one table, each identifier once (copy audit round 2, for the
+// owner to compare at /capability-statement?creds=table). The marks above and the code
+// listing stay the default.
+export type CredRow = { label: string; value: string; note?: string; mono?: boolean; mark?: Cert };
+const mark = (src: string) => CERTS.find((c) => c.src === src);
+
+export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
+  {
+    name: 'Contract vehicle',
+    rows: [{ label: 'GSA Multiple Award Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true, mark: mark('/images/cert-gsa-footer.png') }],
+  },
+  {
+    name: 'Registration',
+    rows: [
+      { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}` },
+      { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true },
+      { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true },
+      { label: 'DUNS number', value: '10-244-9635', note: 'Legacy. UEI is the SAM identifier going forward', mono: true },
+      { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services', mono: true },
+      { label: 'PSC code', value: 'S206', note: 'Guard Services', mono: true },
+    ],
+  },
+  {
+    name: 'Certifications',
+    rows: [
+      { label: 'Woman-Owned Small Business', value: 'WOSB250470', note: 'SBA certified. Eligible for WOSB set-aside awards under NAICS 561612', mono: true, mark: mark('/images/cert-sba-wosb.webp') },
+      { label: 'Small business', value: 'Small Business', note: 'SAM-registered', mark: mark('/images/cert-sba-footer.png') },
+      { label: "WBENC Women's Business Enterprise", value: 'WBE2303571', mono: true, mark: mark('/images/cert-wbenc.png') },
+      { label: 'Denver M/WBE · SBE certified', value: '21353671', note: 'B2G vendor number', mono: true, mark: mark('/images/cert-denver-edo.webp') },
+      { label: 'Colorado Verified Diverse Business', value: 'Verified', mark: mark('/images/cert-co-diverse.webp') },
+      { label: 'Colorado Verified Small Business', value: 'Verified', mark: mark('/images/cert-co-small.webp') },
+    ],
+  },
+  {
+    name: 'Licenses and service area',
+    rows: [
+      { label: 'Local license, Denver', value: '2021-BFN-0001984', note: 'Certified training provider · City of Denver', mono: true },
+      { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
+      { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
+      { label: 'Service area', value: 'Greater Colorado Area', note: 'Nationwide on request' },
+    ],
+  },
+];
+
+// Formal third person (copy audit round 2: the Capability Statement and the PDF speak as
+// Ares, not "we"), for the owner to compare at /capability-statement?voice=third. Each
+// line on the page that says we, our, us, or you, with its third-person version. The
+// first-person page is the default.
+export const THIRD_PERSON: Record<string, string> = {
+  'Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.':
+    'Six services, each staffed by officers trained on the post before their first shift. Open one to see what it includes.',
+  'Licensed, firearms-qualified officers, trained by our veteran NRA firearms instructor and current at time of post.':
+    'Licensed, firearms-qualified officers, trained by the Ares veteran NRA firearms instructor and current at time of post.',
+  'Sign-in, ID checks, and a visitor log you can audit.': 'Sign-in, ID checks, and a visitor log the client can audit.',
+  'People, vehicles, and deliveries checked against your post orders before they enter.':
+    'People, vehicles, and deliveries checked against the site\u2019s post orders before they enter.',
+  'Call-outs, vacations, and training days covered from our roster.': 'Call-outs, vacations, and training days covered from the Ares relief roster.',
+  'Officers under your post orders, from a woman-owned small business.': 'Officers under the prime\u2019s post orders, from a woman-owned small business.',
+  'We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them.':
+    'Ares has hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. Ares writes the SOPs for these posts and trains every officer on them.',
+  'Rated 4.8 by our own employees': 'Rated 4.8 by its own employees',
+  'Our employees rate Ares 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.':
+    'Ares employees rate the company 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.',
+  'How to buy from us.': 'How to buy from Ares.',
+  'Contact us to confirm scope and pricing for any vehicle above.': 'Contact Ares to confirm scope and pricing for any vehicle above.',
+  'All data matches our SAM.gov registration.': 'All data matches the Ares SAM.gov registration.',
+};

@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
-import { CAPABILITIES, CERTS, CODES, DIFFERENTIATORS, GSA_SPECS, PAST_PERFORMANCE, PATHS, PDF_URL } from './data';
+import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_FIVE, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
 
@@ -24,6 +24,18 @@ function usePhone() {
     return () => mq.removeEventListener('change', sync);
   }, []);
   return phone;
+}
+
+// Copy audit options, for the owner to compare (see docs/options.md): ?past=five,
+// ?creds=table, ?voice=third. The current page is the default for each.
+function useCsOptions() {
+  const [params] = useSearchParams();
+  const third = params.get('voice') === 'third';
+  return {
+    past: params.get('past') === 'five' ? 'five' : 'current',
+    creds: params.get('creds') === 'table' ? 'table' : 'marks',
+    say: (line: string) => (third ? THIRD_PERSON[line] ?? line : line),
+  };
 }
 
 function Chevron() {
@@ -58,6 +70,7 @@ function useCols() {
 }
 
 export function Capabilities() {
+  const { say } = useCsOptions();
   const [openId, setOpenId] = useState<string | null>(null);
   const cols = useCols();
   const gridRef = useRef<HTMLOListElement>(null);
@@ -125,7 +138,7 @@ export function Capabilities() {
         <h2 id="caps-title" className="ds-display-lg">
           Core competencies.
         </h2>
-        <p className="ds-lead">Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.</p>
+        <p className="ds-lead">{say('Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.')}</p>
       </div>
       <ol className="ds-cs-cards" ref={gridRef}>
         {list.map(({ c, i }) => {
@@ -150,7 +163,7 @@ export function Capabilities() {
                 {c.includes.map((x) => (
                   <li key={x.name}>
                     <span className="ds-cs-inc-name">{x.name}</span>
-                    <span className="ds-cs-inc-detail">{x.detail}</span>
+                    <span className="ds-cs-inc-detail">{say(x.detail)}</span>
                   </li>
                 ))}
               </ul>
@@ -165,6 +178,7 @@ export function Capabilities() {
 // 02 Why Ares: four differentiators, each with its proof line. Desktop: a 2x2 grid on
 // hairlines. Phones: a swipe row with the Home meter.
 export function Why() {
+  const { say } = useCsOptions();
   return (
     <section id="why" className="ds-cs-why" aria-labelledby="why-title">
       <div className="ds-cs-head">
@@ -178,9 +192,9 @@ export function Why() {
           <li key={d.title}>
             <h3 className="ds-cs-why-title">
               <span className="ds-data ds-cs-n">{n2(i)}</span>
-              <span>{d.title}</span>
+              <span>{say(d.title)}</span>
             </h3>
-            <p className="ds-body">{d.body}</p>
+            <p className="ds-body">{say(d.body)}</p>
             <p className="ds-data ds-cs-why-proof">
               {d.href ? (
                 <a href={d.href} target="_blank" rel="noopener noreferrer" className="ds-link ds-data">
@@ -205,16 +219,18 @@ export function Why() {
 // 03 Past performance (owner, 2026-10-10): current contracts as ledger rows, clients
 // unnamed.
 export function Past() {
+  const { past } = useCsOptions();
+  const rows = past === 'five' ? PAST_FIVE.rows : PAST_PERFORMANCE;
   return (
     <section id="past" className="ds-cs-past" aria-labelledby="past-title">
       <div className="ds-cs-head">
         <h2 id="past-title" className="ds-display-lg">
           Past performance.
         </h2>
-        <p className="ds-lead">Three current contracts. Clients are not named here; references are available on request.</p>
+        <p className="ds-lead">{past === 'five' ? PAST_FIVE.lead : 'Three current contracts. Clients are not named here; references are available on request.'}</p>
       </div>
       <ol className="ds-cs-past-list">
-        {PAST_PERFORMANCE.map((p) => (
+        {rows.map((p) => (
           <li key={p.scope}>
             <h3>{p.scope}</h3>
             <p className="ds-cs-past-where">{p.where}</p>
@@ -228,6 +244,7 @@ export function Past() {
 
 // 04 How to buy: the GSA MAS as a spec block with its status, beside the other paths.
 export function Buy() {
+  const { say } = useCsOptions();
   // The status lights pulse once, the first time the section is seen.
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -249,7 +266,7 @@ export function Buy() {
     <section ref={ref} id="buy" className="ds-cs-buy" aria-labelledby="buy-title">
       <div className="ds-cs-head">
         <h2 id="buy-title" className="ds-display-lg">
-          How to buy from us.
+          {say('How to buy from us.')}
         </h2>
         <p className="ds-lead">Pre-negotiated pricing, and award without a re-compete.</p>
       </div>
@@ -290,8 +307,8 @@ export function Buy() {
             ))}
           </ul>
           <p className="ds-cs-note">
-            <strong>Set-aside eligible: WOSB.</strong> Contact us to confirm scope and pricing for
-            any vehicle above.
+            <strong>Set-aside eligible: WOSB.</strong>{' '}
+            {say('Contact us to confirm scope and pricing for any vehicle above.')}
           </p>
         </div>
       </div>
@@ -301,6 +318,7 @@ export function Buy() {
 
 // 04 Credentials: the marks with their numbers, then the full code listing as a ledger.
 export function Credentials() {
+  const { creds, say } = useCsOptions();
   const phone = usePhone();
   const [open, setOpen] = useState(false);
   const shown = !phone || open;
@@ -310,8 +328,10 @@ export function Credentials() {
         <h2 id="creds-title" className="ds-display-lg">
           Certifications and codes.
         </h2>
-        <p className="ds-lead">All data matches our SAM.gov registration.</p>
+        <p className="ds-lead">{say('All data matches our SAM.gov registration.')}</p>
       </div>
+      {creds === 'table' ? <CredTable /> : (
+      <>
       <ul className="ds-cs-marks">
         {CERTS.map((c) => (
           <li key={c.name}>
@@ -351,7 +371,37 @@ export function Credentials() {
           ))}
         </dl>
       </div>
+      </>
+      )}
     </section>
+  );
+}
+
+// ?creds=table: certifications and codes as one ledger, grouped, each identifier once, the
+// mark (where there is one) in a slot at the start of its row.
+function CredTable() {
+  return (
+    <div className="ds-cs-credtable">
+      {CRED_GROUPS.map((g) => (
+        <section key={g.name} aria-label={g.name}>
+          <h3 className="ds-title">{g.name}</h3>
+          <dl>
+            {g.rows.map((r) => (
+              <div key={r.label} data-mark={r.mark ? true : undefined}>
+                <span className="ds-cs-ct-mark" aria-hidden="true">
+                  {r.mark && <img {...responsive(r.mark.src)} alt="" loading="lazy" data-color={r.mark.color || undefined} />}
+                </span>
+                <dt>{r.label}</dt>
+                <dd>
+                  <span className={r.mono ? 'ds-data' : 'ds-cs-code-v'}>{r.value}</span>
+                  {r.note && <span className="ds-cs-code-note">{r.note}</span>}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ))}
+    </div>
   );
 }
 

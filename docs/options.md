@@ -14,6 +14,9 @@ Last checked against the code: 2026-10-11, branch `audit`.
 | Home 02 Industries | `/?industries=` | `plates` (owner, 2026-10-10) | `rows` | `src/components/home/Industries.tsx` | `.ds-industries` |
 | Home, For prime contractors | `/?prime=` | `diagram` (owner, 2026-10-10) | `split`, `vignettes` | `src/components/home/Industries.tsx` (`PrimesPanel`) | `.ds-primes-panel` |
 | Services opening | `/services?hero=` | `plan` "Security officers, patrol, and access control." (copy audit) | `a`, `b`, `c`, `current` | `src/components/services/Opening.tsx` (`COPY`) | n/a, the opening is the top of the page |
+| Capability Statement, Past performance | `/capability-statement?past=` | `current` three current contracts (owner, 2026-10-10) | `five` the audit's five referenced contracts, over $2.1M | `src/components/capability/Sections.tsx` (`Past`), `data.ts` (`PAST_FIVE`) | `.ds-cs-past` |
+| Capability Statement, Certifications and codes | `/capability-statement?creds=` | `marks` the marks, then the code listing | `table` one grouped table, each identifier once (copy audit) | `Sections.tsx` (`CredTable`), `data.ts` (`CRED_GROUPS`) | `.ds-cs-creds` |
+| Capability Statement, voice | `/capability-statement?voice=` | first person ("we", "our") | `third` formal third person, 12 lines (copy audit) | `Sections.tsx` (`useCsOptions`), `data.ts` (`THIRD_PERSON`) | `.ds-cs-why` |
 | About, Why Ares exists | `/about?founder=` | `letter` (owner, 2026-10-10) | `note` | `src/components/about/Founder.tsx` | `.ds-founder` |
 
 ## Whole-page previews

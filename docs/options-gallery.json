@@ -1,46 +1,239 @@
 {
   "name": "all-options",
   "title": "Every live option for Deidre",
-  "intro": "Every alternative still on the site, branch audit, 2026-10-11. The option marked default is what ships and what Google sees. The others show only with the switch in the address.",
+  "intro": "Every alternative still on the site, branch audit (updated 2026-10-11). The option marked default is what ships and what Google sees. The others show only with the switch in the address.",
   "groups": [
-    { "heading": "Home hero", "intro": "Same photo, proof row, and buttons. Only the headline and lead change.", "page": "/", "param": "hero", "selector": ".ds-hero",
+    {
+      "heading": "Home hero",
+      "intro": "Same photo, proof row, and buttons. Only the headline and lead change.",
+      "page": "/",
+      "param": "hero",
+      "selector": ".ds-hero",
       "options": [
-        { "value": "b2", "label": "B2", "tag": "default", "copy": "<b>A prepared officer on every post</b><br>From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.", "note": "Owner's pick for now (2026-10-10). A promise instead of a description." },
-        { "value": "a", "label": "A", "copy": "<b>Security for sites where every entry counts</b><br>Armed and unarmed officers, access control, and restricted-area escorts along Colorado’s Front Range, for government and critical sites as well as offices, retail, and campuses.", "note": "The copy audit's recommendation. Lists the services in the lead." },
-        { "value": "b", "label": "B", "copy": "<b>Security guards and escorts for Colorado’s controlled sites</b><br>From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.", "note": "Searchable headline, but long. B1 to B4 keep its lead with shorter headlines." },
-        { "value": "b1", "label": "B1", "copy": "<b>Security guards for Colorado sites</b><br>(B's lead)", "note": "The plainest search phrase." },
-        { "value": "b3", "label": "B3", "copy": "<b>Armed and unarmed, across Colorado</b><br>(B's lead)", "note": "Names the two main services." },
-        { "value": "b4", "label": "B4", "copy": "<b>Every entry counts</b><br>(B's lead)", "note": "The shortest. A line, not a description." },
-        { "value": "c", "label": "C", "copy": "<b>Escorts. Access control. Officers. One standard</b><br>Every Ares post runs on written post orders, on-site training, and on-call relief, whether it’s a restricted area or a retail floor.", "note": "Leads with escorts, which the owner has said should not lead." },
-        { "value": "current", "label": "Before the audit", "copy": "<b>Security guards for federal and commercial sites</b><br>Ares is a minority woman-owned, employee-focused security firm in Colorado Springs, serving Denver and Pueblo. We bridge public-sector compliance and commercial reliability.", "note": "What was live before the copy audit, with the GSA mark instead of the proof row." }
-      ] },
-    { "heading": "Home: The sites we protect", "page": "/", "param": "industries", "selector": ".ds-industries",
+        {
+          "value": "b2",
+          "label": "B2",
+          "tag": "default",
+          "copy": "<b>A prepared officer on every post</b><br>From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.",
+          "note": "Owner's pick for now (2026-10-10). A promise instead of a description."
+        },
+        {
+          "value": "a",
+          "label": "A",
+          "copy": "<b>Security for sites where every entry counts</b><br>Armed and unarmed officers, access control, and restricted-area escorts along Colorado’s Front Range, for government and critical sites as well as offices, retail, and campuses.",
+          "note": "The copy audit's recommendation. Lists the services in the lead."
+        },
+        {
+          "value": "b",
+          "label": "B",
+          "copy": "<b>Security guards and escorts for Colorado’s controlled sites</b><br>From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.",
+          "note": "Searchable headline, but long. B1 to B4 keep its lead with shorter headlines."
+        },
+        {
+          "value": "b1",
+          "label": "B1",
+          "copy": "<b>Security guards for Colorado sites</b><br>(B's lead)",
+          "note": "The plainest search phrase."
+        },
+        {
+          "value": "b3",
+          "label": "B3",
+          "copy": "<b>Armed and unarmed, across Colorado</b><br>(B's lead)",
+          "note": "Names the two main services."
+        },
+        {
+          "value": "b4",
+          "label": "B4",
+          "copy": "<b>Every entry counts</b><br>(B's lead)",
+          "note": "The shortest. A line, not a description."
+        },
+        {
+          "value": "c",
+          "label": "C",
+          "copy": "<b>Escorts. Access control. Officers. One standard</b><br>Every Ares post runs on written post orders, on-site training, and on-call relief, whether it’s a restricted area or a retail floor.",
+          "note": "Leads with escorts, which the owner has said should not lead."
+        },
+        {
+          "value": "current",
+          "label": "Before the audit",
+          "copy": "<b>Security guards for federal and commercial sites</b><br>Ares is a minority woman-owned, employee-focused security firm in Colorado Springs, serving Denver and Pueblo. We bridge public-sector compliance and commercial reliability.",
+          "note": "What was live before the copy audit, with the GSA mark instead of the proof row."
+        }
+      ]
+    },
+    {
+      "heading": "Home: The sites we protect",
+      "page": "/",
+      "param": "industries",
+      "selector": ".ds-industries",
       "options": [
-        { "value": "plates", "label": "Plates", "tag": "default", "note": "Owner's pick (2026-10-10). The first three industries as photographs, the other three as a ruled list." },
-        { "value": "rows", "label": "Rows", "note": "Type only: the first three as large numbered rows." }
-      ] },
-    { "heading": "Home: For prime contractors", "page": "/", "param": "prime", "selector": ".ds-primes-panel",
+        {
+          "value": "plates",
+          "label": "Plates",
+          "tag": "default",
+          "note": "Owner's pick (2026-10-10). The first three industries as photographs, the other three as a ruled list."
+        },
+        {
+          "value": "rows",
+          "label": "Rows",
+          "note": "Type only: the first three as large numbered rows."
+        }
+      ]
+    },
+    {
+      "heading": "Home: For prime contractors",
+      "page": "/",
+      "param": "prime",
+      "selector": ".ds-primes-panel",
       "options": [
-        { "value": "diagram", "label": "Diagram", "tag": "default", "note": "Owner's pick (2026-10-10). Prime → Ares → three posts; the lines draw on scroll." },
-        { "value": "split", "label": "Split", "note": "The ask on the left, the proof points on the right." },
-        { "value": "vignettes", "label": "Vignettes", "note": "Three small working pictures; the contract-term bar fills on scroll." }
-      ] },
-    { "heading": "Services opening", "page": "/services", "param": "hero",
+        {
+          "value": "diagram",
+          "label": "Diagram",
+          "tag": "default",
+          "note": "Owner's pick (2026-10-10). Prime → Ares → three posts; the lines draw on scroll."
+        },
+        {
+          "value": "split",
+          "label": "Split",
+          "note": "The ask on the left, the proof points on the right."
+        },
+        {
+          "value": "vignettes",
+          "label": "Vignettes",
+          "note": "Three small working pictures; the contract-term bar fills on scroll."
+        }
+      ]
+    },
+    {
+      "heading": "Services opening",
+      "page": "/services",
+      "param": "hero",
       "options": [
-        { "value": "plan", "label": "Content plan", "tag": "default", "copy": "<b>Security officers, patrol, and access control</b><br>Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.", "note": "The copy audit's content plan." },
-        { "value": "a", "label": "A", "copy": "<b>Security officers for every kind of post</b><br>Armed and unarmed officers, patrol, and access control for federal, commercial, and industrial sites. Find the service or industry closest to yours." },
-        { "value": "b", "label": "B", "copy": "<b>Armed, unarmed, patrol, and access control</b><br>One standard of training and supervision behind every post, from federal installations to retail floors." },
-        { "value": "c", "label": "C", "copy": "<b>What we staff, and how</b><br>Six services, one process: every officer is trained on your post before the first shift." },
-        { "value": "current", "label": "Before the audit", "copy": "<b>Security officers for six kinds of sites</b><br>Armed and unarmed officers for federal, commercial, industrial, and institutional sites in Colorado Springs, Denver, and Pueblo. Find the division closest to your site." }
-      ] },
-    { "heading": "About: Why Ares exists", "intro": "Placeholder words and the Ares mark until the founder's story and photo arrive.", "page": "/about", "param": "founder", "selector": ".ds-founder",
+        {
+          "value": "plan",
+          "label": "Content plan",
+          "tag": "default",
+          "copy": "<b>Security officers, patrol, and access control</b><br>Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.",
+          "note": "The copy audit's content plan."
+        },
+        {
+          "value": "a",
+          "label": "A",
+          "copy": "<b>Security officers for every kind of post</b><br>Armed and unarmed officers, patrol, and access control for federal, commercial, and industrial sites. Find the service or industry closest to yours."
+        },
+        {
+          "value": "b",
+          "label": "B",
+          "copy": "<b>Armed, unarmed, patrol, and access control</b><br>One standard of training and supervision behind every post, from federal installations to retail floors."
+        },
+        {
+          "value": "c",
+          "label": "C",
+          "copy": "<b>What we staff, and how</b><br>Six services, one process: every officer is trained on your post before the first shift."
+        },
+        {
+          "value": "current",
+          "label": "Before the audit",
+          "copy": "<b>Security officers for six kinds of sites</b><br>Armed and unarmed officers for federal, commercial, industrial, and institutional sites in Colorado Springs, Denver, and Pueblo. Find the division closest to your site."
+        }
+      ]
+    },
+    {
+      "heading": "About: Why Ares exists",
+      "intro": "Placeholder words and the Ares mark until the founder's story and photo arrive.",
+      "page": "/about",
+      "param": "founder",
+      "selector": ".ds-founder",
       "options": [
-        { "value": "letter", "label": "Letter", "tag": "default", "note": "Owner's pick (2026-10-10). The story set large, signed with a small portrait." },
-        { "value": "note", "label": "Note", "note": "A larger portrait with name and role beside the story, between hairlines." }
-      ] },
-    { "heading": "Whole-page preview: a fresh Home", "intro": "A full alternative Home in a minimal black, dark-glass style, with the same facts in seven beats. Kept beside the current Home (not indexed).", "page": "/home-next", "param": "preview",
+        {
+          "value": "letter",
+          "label": "Letter",
+          "tag": "default",
+          "note": "Owner's pick (2026-10-10). The story set large, signed with a small portrait."
+        },
+        {
+          "value": "note",
+          "label": "Note",
+          "note": "A larger portrait with name and role beside the story, between hairlines."
+        }
+      ]
+    },
+    {
+      "heading": "Capability Statement: Past performance",
+      "intro": "Copy audit round 2 asked for the five referenced contracts and their combined value. The owner chose three current contracts on 2026-10-10.",
+      "page": "/capability-statement",
+      "param": "past",
+      "selector": ".ds-cs-past",
       "options": [
-        { "value": "1", "label": "/home-next", "note": "Saved as an option (tag home-resend-option). The owner kept the current Home for now." }
-      ] }
+        {
+          "value": "current",
+          "label": "Three current",
+          "tag": "default",
+          "copy": "<b>Three current contracts.</b> Clients are not named here; references are available on request.<br>Restricted-area escort and access control, Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Retail security, Pueblo, two years, ongoing",
+          "note": "Owner's version (2026-10-10). Includes the Pueblo retail contract."
+        },
+        {
+          "value": "five",
+          "label": "Five referenced",
+          "copy": "<b>Five referenced contracts, worth more than $2.1 million combined.</b> Clients are not named here; references are available on request.<br>Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Three completed armed security contracts, Denver metro, 2021 to 2024",
+          "note": "The audit's version: adds the dollar figure and the three completed contracts; the Pueblo retail contract is not among the five."
+        }
+      ]
+    },
+    {
+      "heading": "Capability Statement: Certifications and codes",
+      "intro": "Copy audit round 2: merge the marks and the full code listing into one table so each identifier appears once (the GSA contract and WOSB now show twice).",
+      "page": "/capability-statement",
+      "param": "creds",
+      "selector": ".ds-cs-creds",
+      "options": [
+        {
+          "value": "marks",
+          "label": "Marks, then codes",
+          "tag": "default",
+          "note": "Seven marks with their numbers, then the 13-entry code listing in two columns (folded on phones)."
+        },
+        {
+          "value": "table",
+          "label": "One table",
+          "note": "One grouped ledger: Contract vehicle, Registration, Certifications, Licenses and service area. 17 rows, each identifier once, the mark at the start of its row. Not folded on phones."
+        }
+      ]
+    },
+    {
+      "heading": "Capability Statement: Voice",
+      "intro": "Copy audit round 2: the Capability Statement and the PDF speak as Ares, in formal third person. Twelve lines change across the page; the screenshot shows Why Ares.",
+      "page": "/capability-statement",
+      "param": "voice",
+      "selector": ".ds-cs-why",
+      "options": [
+        {
+          "value": "current",
+          "label": "We / our",
+          "tag": "default",
+          "copy": "We have hands-on experience running access control for restricted areas... We write the SOPs for these posts and train every officer on them.<br>Rated 4.8 by our own employees · Our employees rate Ares 4.8 out of 5 on Indeed...<br>How to buy from us. · Contact us to confirm scope and pricing... · All data matches our SAM.gov registration.<br>Trained by our veteran NRA firearms instructor · covered from our roster · a visitor log you can audit · checked against your post orders · officers under your post orders · trained on your post",
+          "note": "First person, like the rest of the site."
+        },
+        {
+          "value": "third",
+          "label": "Third person",
+          "copy": "Ares has hands-on experience running access control for restricted areas... Ares writes the SOPs for these posts and trains every officer on them.<br>Rated 4.8 by its own employees · Ares employees rate the company 4.8 out of 5 on Indeed...<br>How to buy from Ares. · Contact Ares to confirm scope and pricing... · All data matches the Ares SAM.gov registration.<br>Trained by the Ares veteran NRA firearms instructor · covered from the Ares relief roster · a visitor log the client can audit · checked against the site’s post orders · officers under the prime’s post orders · trained on the post",
+          "note": "Matches how a printed capability statement reads. Only this page changes; the rest of the site keeps \"we\"."
+        }
+      ]
+    },
+    {
+      "heading": "Whole-page preview: a fresh Home",
+      "intro": "A full alternative Home in a minimal black, dark-glass style, with the same facts in seven beats. Kept beside the current Home (not indexed).",
+      "page": "/home-next",
+      "param": "preview",
+      "options": [
+        {
+          "value": "1",
+          "label": "/home-next",
+          "note": "Saved as an option (tag home-resend-option). The owner kept the current Home for now."
+        }
+      ]
+    }
   ]
 }

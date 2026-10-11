@@ -52,6 +52,12 @@ for (const g of spec.groups) {
       await p.setViewport({ width: v.width, height: v.height, deviceScaleFactor: 2 });
       await p.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
       await p.goto(url(g, o), { waitUntil: 'networkidle0' });
+      // Lazy images below the fold never load in a clipped capture: load them all first.
+      await p.evaluate(async () => {
+        const imgs = [...document.querySelectorAll('img[loading="lazy"]')];
+        imgs.forEach((img) => { img.loading = 'eager'; });
+        await Promise.all(imgs.map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
+      });
       await new Promise((r) => setTimeout(r, 700));
       const file = join(shotDir, `${g.param}-${o.value}-${v.tag}.png`);
       let clip = { x: 0, y: 0, width: v.width, height: v.tag === 'd' ? v.height : 1250 };
