@@ -190,8 +190,10 @@ export const ROLE_PAGES: RolePageData[] = [
     faq: [
       {
         // Owner, 2026-10-10: "it depends, but within a week usually".
+        // Split by the copy audit (round 3; owner, 2026-10-10): the roster covers posts Ares
+        // already staffs; a new post takes about a week because officers train on site first.
         q: 'How fast can you fill a shift?',
-        a: 'It depends on the post, the hours, and what the site requires, but usually within a week.',
+        a: 'Posts we already staff are covered the same shift from our relief roster. New posts usually take about a week, because every officer trains on the site first.',
       },
       {
         q: 'Can your officers work under our post orders?',

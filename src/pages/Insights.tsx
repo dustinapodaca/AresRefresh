@@ -11,7 +11,7 @@ export default function Insights() {
       <Seo path="/insights" />
       <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
-          <h1 id="mk-title" className="ds-display-xl">Buying security, explained.</h1>
+          <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
           {/* Copy audit (2026-10-10): was "Insights." */}
           <p className="ds-lead">
             Plain answers on choosing coverage, contracting through GSA, and city licensing in

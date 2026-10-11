@@ -6,6 +6,7 @@ import Arrow from '../Arrow';
 import LocationMap from './LocationMap';
 import { CITIES, type LocationFile } from './data';
 import { DIVISIONS } from '../services/data';
+import { heroTitle } from '../../lib/heroTitle';
 
 // Each site type links to its industry's own page (copy audit, 2026-10-10; was the Services
 // card), falling back to the card if an industry has no page.
@@ -32,7 +33,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
         <div className="ds-container ds-loc-open-grid">
           <div className="ds-loc-open-copy">
             <Crumbs path={file.path} current={file.city.name} />
-            <h1 id="loc-title" className="ds-display-xl">{file.title}</h1>
+            <h1 id="loc-title" className="ds-display-xl">{heroTitle(file.title)}</h1>
             <p className="ds-lead">{file.lead}</p>
             {/* Below 1024px only: from there up the nav carries the quote button. */}
             <div className="ds-actions ds-loc-actions">

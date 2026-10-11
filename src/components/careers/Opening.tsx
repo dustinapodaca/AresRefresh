@@ -19,7 +19,7 @@ export default function Opening() {
       </figure>
       <div className="ds-container ds-cr-open-copy">
         <h1 id="careers-title" className="ds-display-xl">
-          Officer jobs with paid training.
+          Officer jobs with paid training
         </h1>
         {/* Copy audit (2026-10-10): was "Join the team." */}
         <p className="ds-lead">

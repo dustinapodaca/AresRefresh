@@ -6,9 +6,19 @@ import type { Mark } from '../home/DocRail';
 export const CAP_MARKS: readonly Mark[] = [
   { id: 'capabilities', n: '01', label: 'Capabilities' },
   { id: 'why', n: '02', label: 'Why Ares' },
-  { id: 'buy', n: '03', label: 'How to buy' },
-  { id: 'credentials', n: '04', label: 'Credentials' },
-  { id: 'download', n: '05', label: 'Download' },
+  { id: 'past', n: '03', label: 'Past performance' },
+  { id: 'buy', n: '04', label: 'How to buy' },
+  { id: 'credentials', n: '05', label: 'Credentials' },
+  { id: 'download', n: '06', label: 'Download' },
+];
+
+// Past performance (owner, 2026-10-10): three current contracts, clients unnamed (no
+// evaluator names or numbers here; those stay in proposals). Never name the base or the
+// clients; one is a cannabis client, and the site carries no cannabis references.
+export const PAST_PERFORMANCE: { scope: string; where: string; term: string }[] = [
+  { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027' },
+  { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals' },
+  { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing' },
 ];
 
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
@@ -127,7 +137,7 @@ export const DIFFERENTIATORS: Differentiator[] = [
   {
     title: 'Restricted-area experience',
     body: 'We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them.',
-    proof: 'Restricted areas · Military installations · Veteran staff',
+    proof: 'Restricted areas · Military installations · Veterans in leadership',
   },
   {
     title: 'Four-stage deployment',

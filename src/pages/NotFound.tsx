@@ -36,7 +36,7 @@ export default function NotFound() {
         <div className="ds-container ds-nf-inner">
           <p className="ds-nf-code" aria-hidden="true">404</p>
           <div className="ds-nf-card">
-            <h1 id="nf-title" className="ds-display-lg">Page not found.</h1>
+            <h1 id="nf-title" className="ds-display-lg">Page not found</h1>
             <p className="ds-nf-lead">
               The link may be old, or the address mistyped. Everything else is where it should be.
             </p>

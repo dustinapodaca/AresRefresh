@@ -823,3 +823,12 @@ Home hero is now B2 (owner, 2026-10-10): "A prepared officer on every post." ove
 | Denver city lead | "...and the DIA corridor. Our leadership trains every officer on the post before their first shift." | Ends at "...and the DIA corridor." (the training line is in "Security in Denver.") |
 
 Not applied (owner): Capability reason 01 "a military installation"; stat-tile numeral check. Waiting on the owner: relief fill-time split, prime panel, unlinked proof row, Capability title period and subhead, past performance, font weights.
+
+## Round 3, owner calls (2026-10-10)
+
+- Relief: "How fast can you fill a shift?" is now "Posts we already staff are covered the same shift from our relief roster. New posts usually take about a week, because every officer trains on the site first."
+- Home proof row: "Minority woman-owned (WOSB, WBENC)" and "Licensed in Colorado Springs, Denver, Pueblo" are plain facts, not links; GSA MAS stays the only link.
+- Veterans: Government's row is now "We hire veterans, and veterans hold leadership roles, including supervision and firearms training"; Capability's proof "Veteran staff" is now "Veterans in leadership". Never "veteran-heavy".
+- Capability Statement: new "Past performance." section (rail mark 03), three current contracts with clients unnamed: restricted-area escort and access control on a Space Force base in Colorado as a subcontractor (2025 to 2027); armed multi-site security, Denver metro (since 2022, through multiple renewals); retail security, Pueblo (two years, ongoing). Teaming's row is now "Past performance" with the 2025 to 2027 term, linking there.
+- Every H1 drops its closing period (e.g. "Capability Statement", "Request a quote", "A prepared officer on every post"); section headlines keep theirs. The Why Ares subhead stays.
+

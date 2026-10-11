@@ -2480,6 +2480,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (min-width: 768px) { .ds-steps-meta.ds-cs-why-meta { display: none; } }
 
 /* ---------- 03 How to buy ---------- */
+.ds-cs-past { padding-top: var(--ds-beat); }
+.ds-cs-past-list { list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-cs-past-list li { display: grid; gap: 6px; padding: 20px 0 22px; border-bottom: 1px solid var(--ds-rule); }
+.ds-cs-past-list h3 { margin: 0; font-family: var(--ds-text); font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-cs-past-where { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--ds-fg-muted); }
+.ds-cs-past-term { margin: 0; font-size: 13px; color: var(--ds-fg); }
+@media (min-width: 1024px) {
+  .ds-cs-past-list li { grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 2fr); column-gap: 24px; align-items: baseline; }
+  .ds-cs-past-term { text-align: right; }
+}
 .ds-cs-buy { padding-top: var(--ds-beat); }
 .ds-cs-buy-grid { display: grid; gap: 48px; margin-top: var(--ds-beat-tight); }
 .ds-cs-vehicle-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; padding-bottom: 14px; border-bottom: 1px solid var(--ds-rule-strong); }

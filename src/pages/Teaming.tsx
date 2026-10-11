@@ -39,7 +39,7 @@ const GETS: SheetRow[] = [
   { label: 'Denver participation', value: 'Denver M/WBE and SBE certified', href: '/capability-statement' },
   { label: 'Licensed', value: 'Armed and unarmed, in Colorado Springs, Denver, and Pueblo', href: '/locations/denver' },
   { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021' },
-  { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado, as a subcontractor' },
+  { label: 'Past performance', value: 'Restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor, 2025 to 2027', href: '/capability-statement#past' },
 ];
 
 const HOW = [
@@ -75,7 +75,7 @@ export default function Teaming() {
 
       <section className="ds-container ds-mk-open" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
-          <h1 id="mk-title" className="ds-display-xl">Teaming and subcontracting.</h1>
+          <h1 id="mk-title" className="ds-display-xl">Teaming and subcontracting</h1>
           <p className="ds-lead">
             A minority woman-owned security subcontractor for primes, guard companies, and
             builders on Colorado's Front Range: restricted-area escorts, access control officers,

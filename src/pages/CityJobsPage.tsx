@@ -4,6 +4,7 @@ import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
 import { CAREERS_EMAIL, INDEED_REVIEWS, REASONS, ROLES, applyHref } from '../components/careers/data';
 import { CITY_JOBS, cityJobsBySlug } from '../components/market/cityJobs';
+import { heroTitle } from '../lib/heroTitle';
 
 // City job pages (/careers/<city>): the roles open in that city, how licensing works there,
 // why people stay, and how to apply. Recruiting beside the city service pages.
@@ -19,7 +20,7 @@ export default function CityJobsPage() {
       <Seo path={`/careers/${c.slug}`} />
       <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
-          <h1 id="mk-title" className="ds-display-xl">{c.title}</h1>
+          <h1 id="mk-title" className="ds-display-xl">{heroTitle(c.title)}</h1>
           <p className="ds-lead">{c.lead}</p>
           <div className="ds-actions">
             <a href="#roles" className="ds-btn ds-btn-primary">

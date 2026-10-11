@@ -7,6 +7,7 @@ import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries'
 import { roleBySlug } from '../components/market/roles';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { responsive } from '../lib/responsive';
+import { heroTitle } from '../lib/heroTitle';
 
 // An industry page ("The Sector File", docs/market-concepts.md): what is at stake in this
 // environment, what we deliver there, why Ares, a specific ask, and questions.
@@ -24,7 +25,7 @@ export default function IndustryPage() {
       <section className="ds-mk-ind-open" aria-labelledby="mk-title">
         <div className="ds-container">
           <Crumbs path={`/industries/${ind.slug}`} current={ind.name} />
-          <h1 id="mk-title" className="ds-display-xl ds-mk-ind-title">{ind.title}</h1>
+          <h1 id="mk-title" className="ds-display-xl ds-mk-ind-title">{heroTitle(ind.title)}</h1>
           <div className="ds-mk-ind-lead">
             <p className="ds-lead">{ind.lead}</p>
             <div className="ds-actions">

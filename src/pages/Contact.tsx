@@ -152,7 +152,7 @@ export default function Contact() {
         </figure>
         <div className="ds-container ds-qt-open-copy">
           <h1 id="qt-title" className="ds-display-xl">
-            Request a quote.
+            Request a quote
           </h1>
           <p className="ds-lead">
             Send a site, a shift pattern, and a deadline. We will come back with a scoped

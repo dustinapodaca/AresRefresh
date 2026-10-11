@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
-import { CAPABILITIES, CERTS, CODES, DIFFERENTIATORS, GSA_SPECS, PATHS, PDF_URL } from './data';
+import { CAPABILITIES, CERTS, CODES, DIFFERENTIATORS, GSA_SPECS, PAST_PERFORMANCE, PATHS, PDF_URL } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
 
@@ -202,7 +202,31 @@ export function Why() {
   );
 }
 
-// 03 How to buy: the GSA MAS as a spec block with its status, beside the other paths.
+// 03 Past performance (owner, 2026-10-10): current contracts as ledger rows, clients
+// unnamed.
+export function Past() {
+  return (
+    <section id="past" className="ds-cs-past" aria-labelledby="past-title">
+      <div className="ds-cs-head">
+        <h2 id="past-title" className="ds-display-lg">
+          Past performance.
+        </h2>
+        <p className="ds-lead">Three current contracts. Clients are not named here; references are available on request.</p>
+      </div>
+      <ol className="ds-cs-past-list">
+        {PAST_PERFORMANCE.map((p) => (
+          <li key={p.scope}>
+            <h3>{p.scope}</h3>
+            <p className="ds-cs-past-where">{p.where}</p>
+            <p className="ds-data ds-cs-past-term">{p.term}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+// 04 How to buy: the GSA MAS as a spec block with its status, beside the other paths.
 export function Buy() {
   // The status lights pulse once, the first time the section is seen.
   const ref = useRef<HTMLElement>(null);

@@ -6,6 +6,7 @@ import Crumbs from '../components/market/Crumbs';
 import { ROLE_PAGES, SHARED_SHEET, SHEET_NOTE, capabilityFor, roleBySlug } from '../components/market/roles';
 import { industryBySlug } from '../components/market/industries';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
+import { heroTitle } from '../lib/heroTitle';
 
 // A role page ("The Post Sheet", docs/market-concepts.md): the service named as buyers
 // search for it, its spec sheet, what the post covers, where we post it, questions, and the
@@ -25,7 +26,7 @@ export default function RolePage() {
       <section className="ds-container ds-mk-open" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
           <Crumbs path={`/services/${role.slug}`} current={role.name} />
-          <h1 id="mk-title" className="ds-display-xl">{role.title}</h1>
+          <h1 id="mk-title" className="ds-display-xl">{heroTitle(role.title)}</h1>
           <p className="ds-lead">{role.lead}</p>
           <div className="ds-actions">
             <Link to={quote} className="ds-btn ds-btn-primary">

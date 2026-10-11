@@ -42,7 +42,7 @@ export default function Opening() {
 
       <div className="ds-container ds-ab-open-copy">
         <h1 id="about-title" className="ds-display-xl">
-          Built around the people on post.
+          Built around the people on post
         </h1>
         {/* Copy audit (2026-10-10): the Home and About heroes no longer repeat each other. */}
         <p className="ds-lead">

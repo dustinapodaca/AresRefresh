@@ -2,6 +2,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
+import { heroTitle } from '../../lib/heroTitle';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
 // /?hero=current|a|b|b1|b2|b3|b4|c. A is the audit's recommendation and the default until the owner
@@ -55,7 +56,7 @@ export default function Hero() {
       <div className="ds-container">
         <div className="ds-hero-copy">
           <h1 id="hero-title" className="ds-display-xl">
-            {hero.title}
+            {heroTitle(hero.title)}
           </h1>
           <p className="ds-lead">{hero.lead}</p>
           {/* Below 1024px only: from there up the nav carries the quote button. */}
@@ -79,12 +80,9 @@ export default function Hero() {
                   <Arrow external size={12} />
                 </a>
               </li>
-              <li>
-                <Link to="/capability-statement">Minority woman-owned (WOSB, WBENC)</Link>
-              </li>
-              <li>
-                <Link to="/locations/colorado-springs">Licensed in Colorado Springs, Denver, Pueblo</Link>
-              </li>
+              {/* Quiet facts, not links; GSA is the only route (copy audit round 3). */}
+              <li>Minority woman-owned (WOSB, WBENC)</li>
+              <li>Licensed in Colorado Springs, Denver, Pueblo</li>
             </ul>
           ) : (
             <div className="ds-hero-gsa">

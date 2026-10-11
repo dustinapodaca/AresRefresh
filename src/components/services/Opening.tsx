@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { responsive } from '../../lib/responsive';
+import { heroTitle } from '../../lib/heroTitle';
 
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
@@ -102,7 +103,7 @@ export default function Opening() {
       <div className="ds-svc-open-glass">
         <div className="ds-container ds-svc-open-head">
           <h1 id="services-title" className="ds-display-xl">
-            {copy.title}
+            {heroTitle(copy.title)}
           </h1>
           <div className="ds-svc-open-side">
             <p className="ds-lead">{copy.lead}</p>

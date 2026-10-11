@@ -54,7 +54,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { label: 'SAM.gov', value: `Active through ${SAM_ACTIVE_THROUGH}`, href: SAM_VERIFY, external: true },
       { label: 'WOSB', value: 'WOSB250470, set-aside eligible under NAICS 561612' },
       { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', href: '/services/restricted-area-escort' },
-      { label: 'Veterans', value: 'Veteran supervisors and a veteran NRA firearms instructor' },
+      // General, not a count (owner, 2026-10-10: never "veteran-heavy").
+      { label: 'Veterans', value: 'We hire veterans, and veterans hold leadership roles, including supervision and firearms training' },
     ],
     primes: 'Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on federal work along the Front Range.',
     ask: 'Send us the facility, the post requirements, and the period of performance. We will come back with a staffing plan under our GSA Schedule.',

@@ -202,6 +202,8 @@ sizes are unchanged.
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
   the size.
+- **Hero headlines (every H1) carry no closing period** (owner, 2026-10-10, `heroTitle()` in
+  src/lib); section headlines (H2) keep theirs.
 - No eyebrows or kickers above headings. No bracketed labels. (Breadcrumbs above the
   headline on service, industry, city, and article pages are navigation, not a label: the
   owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
@@ -717,7 +719,7 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
   faint label, 14px links, the section in view in ink). The document in columns 5 to 11.
   Phones: the documents as a row of links under the header (the current one underlined in
   ink); no table of contents.
-- The document: title (display-lg, with a period), "Effective <date>" and "Ares Security
+- The document: title (display-lg, no period since 2026-10-10), "Effective <date>" and "Ares Security
   LLC" in mono 13px faint, an 18px intro, an at-a-glance ledger (Home's ledger row, label 3
   and value 7 parts), then sections: Inter 600 20 to 24px sub-heads, 16px / 1.7 body in ink
   muted at 68ch, strong in ink, lists with a 10px hairline marker.

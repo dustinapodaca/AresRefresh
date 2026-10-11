@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../../seo/Seo';
+import { heroTitle } from '../../lib/heroTitle';
 
 // The legal pages ("The Fine Print", docs/legal-concepts.md): privacy, terms, and
 // accessibility read as documents in the file. A sticky side column switches between the
@@ -102,7 +103,7 @@ export default function LegalPage({
 
         <article className="ds-lg-doc" aria-labelledby="lg-title">
           <header className="ds-lg-head">
-            <h1 id="lg-title" className="ds-display-lg">{title}</h1>
+            <h1 id="lg-title" className="ds-display-lg">{heroTitle(title)}</h1>
             <p className="ds-data ds-lg-meta">
               <span>Effective {effective}</span>
               <span>Ares Security LLC</span>

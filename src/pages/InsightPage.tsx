@@ -6,6 +6,7 @@ import NotFound from './NotFound';
 import { HOST } from '../seo/routes';
 import { INSIGHTS, insightBySlug } from '../components/market/insights';
 import { JsonLd, RouteRow } from '../components/market/parts';
+import { heroTitle } from '../lib/heroTitle';
 
 // One insight: a read-mode article at a 68ch measure, its related pages, and the other
 // articles. Article structured data in the body.
@@ -31,7 +32,7 @@ export default function InsightPage() {
       <Seo path={`/insights/${a.slug}`} />
       <article className="ds-container ds-mk-article" aria-labelledby="mk-title">
         <Crumbs path={`/insights/${a.slug}`} current={a.title} />
-        <h1 id="mk-title" className="ds-display-lg">{a.title}</h1>
+        <h1 id="mk-title" className="ds-display-lg">{heroTitle(a.title)}</h1>
         <p className="ds-data ds-mk-article-meta">
           <span>{a.category}</span>
           <time dateTime={a.date}>{a.dateLabel}</time>

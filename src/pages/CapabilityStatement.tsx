@@ -1,7 +1,7 @@
 import Seo from '../seo/Seo';
 import DocRail from '../components/home/DocRail';
 import Hero from '../components/capability/Hero';
-import { Buy, Capabilities, Credentials, Download, Why } from '../components/capability/Sections';
+import { Buy, Capabilities, Credentials, Download, Past, Why } from '../components/capability/Sections';
 import { CAP_MARKS } from '../components/capability/data';
 
 // Capability Statement: "The Statement, Served" (docs/capability-concepts.md). Design
@@ -15,6 +15,7 @@ export default function CapabilityStatement() {
         <div className="ds-doc-body">
           <Capabilities />
           <Why />
+          <Past />
           <Buy />
           <Credentials />
           <Download />
