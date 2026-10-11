@@ -12,15 +12,15 @@ export const CAP_MARKS: readonly Mark[] = [
   { id: 'download', n: '06', label: 'Download' },
 ];
 
-// Past performance (owner, 2026-10-11): three current contracts and seven completed, clients
-// unnamed (no evaluator names or numbers here; those stay in proposals). Never name the base
+// Past performance (owner, 2026-10-11): a selection, not a full count (owner: never worded as
+// if these are all the contracts Ares has had), clients unnamed (no evaluator names or numbers here; those stay in proposals). Never name the base
 // or the clients; the completed contracts and the Denver client are cannabis dispensaries,
 // and the site carries no cannabis references. The Pueblo retail client is not named until
 // Deidre approves it.
 export const PAST_PERFORMANCE = {
   // $2.1M is Ares revenue 2021 to 2025 from the tax returns (owner), so it reads as revenue,
   // not as a combined contract value.
-  lead: 'Three current contracts and seven completed since 2021, with more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request.',
+  lead: 'Selected contracts since 2021. Ares earned more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request.',
   rows: [
     { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027' },
     { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals' },

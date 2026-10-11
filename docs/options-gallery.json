@@ -160,7 +160,7 @@
     },
     {
       "heading": "Capability Statement: Past performance",
-      "intro": "Owner's choice (2026-10-11): three current contracts and seven completed since 2021. Clients stay unnamed.",
+      "intro": "Owner's choice (2026-10-11): selected contracts, not a full count, with the revenue figure. Clients stay unnamed.",
       "page": "/capability-statement",
       "param": "past",
       "selector": ".ds-cs-past",
@@ -169,7 +169,7 @@
           "value": "record",
           "label": "Current and completed",
           "tag": "default",
-          "copy": "<b>Three current contracts and seven completed since 2021, with more than $2.1 million in revenue from 2021 through 2025.</b> Clients are not named here; references are available on request.<br>Restricted-area escort and access control, Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Retail security, Pueblo, two years, ongoing · Seven completed armed security contracts, Colorado, 2021 to 2025",
+          "copy": "<b>Selected contracts since 2021.</b> Ares earned more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request.<br>Restricted-area escort and access control, Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Retail security, Pueblo, two years, ongoing · Seven completed armed security contracts, Colorado, 2021 to 2025",
           "note": "Owner, 2026-10-11."
         },
         {
