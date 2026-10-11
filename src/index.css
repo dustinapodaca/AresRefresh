@@ -554,12 +554,6 @@ image-slot[data-fill='true'] {
   overflow: hidden;
   isolation: isolate;
 }
-/* Background image layer — sits behind the gradient overlay */
-.site_footer.is-dark .image_bg {
-  position: absolute; inset: 0; z-index: -2;
-  background: var(--color-ink) url('/images/footer-bg.jpg') center/cover no-repeat;
-  opacity: 0.55;
-}
 /* Dark gradient overlay (matches hi-fi .site_footer.is-dark::before) */
 .site_footer.is-dark::before {
   content: "";

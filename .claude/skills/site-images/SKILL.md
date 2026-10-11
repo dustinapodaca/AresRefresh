@@ -34,13 +34,10 @@ It's read-only. It fails on a broken image, a manifest key used as a raw URL (`s
 nothing uses, and deployed files nothing names. It also prints the sizes. Run it before and
 after any image change.
 
-Known warnings as of 2026-10-11 (both are fine to leave until the owner says otherwise):
-- `/images/capabilities-hero.jpg` (198 KB): the social/OG image in `routes.json` and
-  `index.html`. It stays a plain JPEG for crawlers. `src/seo/*` is off limits without the
-  owner's OK.
-- `/images/footer-bg.jpg` (500 KB): named only by `.site_footer.is-dark .image_bg` in
-  `src/index.css`, the pre-Dossier footer. No component renders that class, so the file
-  deploys for nothing. Offer to move it to `assets/images-unused/` and drop the rule.
+Known warning as of 2026-10-11 (fine to leave): `/images/capabilities-hero.jpg` (198 KB),
+the social/OG image in `routes.json` and `index.html`. It stays a plain JPEG for crawlers;
+`src/seo/*` is off limits without the owner's OK. (`footer-bg.jpg`, used only by dead CSS
+from the pre-Dossier footer, moved to `assets/images-unused/` the same day.)
 
 ## Add or replace a photo
 
