@@ -4,7 +4,7 @@ import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
-// /?hero=current|a|b|c. A is the audit's recommendation and the default until the owner
+// /?hero=current|a|b|b1|b2|b3|b4|c. A is the audit's recommendation and the default until the owner
 // picks; the losing options and this switch come out then. No eyebrow above the headline
 // (owner); the search phrase is carried by the title and description.
 const OPTIONS = {
@@ -25,6 +25,11 @@ const OPTIONS = {
     lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.',
     proof: true,
   },
+  // Shorter headlines over B's lead (owner, 2026-10-10: B is too long, keep its line).
+  b1: { title: 'Security guards for Colorado sites.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
+  b2: { title: 'A prepared officer on every post.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
+  b3: { title: 'Armed and unarmed, across Colorado.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
+  b4: { title: 'Every entry counts.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
   c: {
     title: 'Escorts. Access control. Officers. One standard.',
     lead: 'Every Ares post runs on written post orders, on-site training, and on-call relief, whether it\u2019s a restricted area or a retail floor.',
