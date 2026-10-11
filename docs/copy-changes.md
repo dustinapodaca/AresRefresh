@@ -839,3 +839,5 @@ Prime panel and founder block, second pass after Slash, Flora, and Resend (2026-
 Owner picks (2026-10-10): prime panel Diagram, founder Letter (story a tad smaller, 20 to 26px); the Record cards take the prime panel's soft light from above.
 
 One panel surface everywhere (owner, 2026-10-10): the prime panel's light from above and top line on the Capability cards and GSA block, the Services cards, and the quote form; the teaming diagram on /teaming.
+
+Home order (owner, 2026-10-10): Quality now comes before Industries: Record, Quality, Industries, Coverage, Careers, Contact (rail 02 Quality, 03 Industries).

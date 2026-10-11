@@ -222,8 +222,9 @@ sizes are unchanged.
   (128 to 208px) before and after the quote and the close. Never the same gap twice in a
   row.
 - **Order of beats on Home (owner, 2026-10-10, copy audit):** photo hero; 01 Record (the
-  three proof cards); 02 Industries (the six, the first three as plates, then "For prime
-  contractors."); 03 Quality (statement, patrol vehicles, facts); 04 Coverage (map and
+  three proof cards); 02 Quality (statement, patrol vehicles, facts; moved ahead of
+  Industries, owner 2026-10-10); 03 Industries (the six, the first three as plates, then
+  "For prime contractors."); 04 Coverage (map and
   cities); full-bleed photograph; 05 Careers (short); 06 the open close. (Before
   2026-10-10: Record, Quality, Coverage with the six industry names, Careers, close.) The federal ledger (01 Verify) and the short GSA block that replaced
   it were removed (owner, 2026-10-06): the Capability Statement carries every code, and
@@ -244,7 +245,7 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home:
-  `01 Record`, `02 Industries`, `03 Quality`, `04 Coverage`, `05 Careers`, `06 Contact`. Services:
+  `01 Record`, `02 Quality`, `03 Industries`, `04 Coverage`, `05 Careers`, `06 Contact`. Services:
   `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.

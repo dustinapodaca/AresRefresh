@@ -20,8 +20,9 @@ export default function Home() {
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
           <Record />
-          <Industries />
+          {/* Quality before Industries (owner, 2026-10-10). */}
           <Quality />
+          <Industries />
           <Coverage />
           <Careers />
           <Contact />
