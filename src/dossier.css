@@ -444,23 +444,28 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .ds-certs {
-  display: flex;
+  /* Equal cells, the logo centered in each, a divider on every inner edge (owner,
+     2026-10-10: the marks and their dividers evenly spaced). */
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: center;
+  max-width: 980px;
   list-style: none;
   margin: var(--ds-beat-tight) 0 0;
   padding: 0;
-  gap: 28px;
 }
-.ds-certs li { display: flex; align-items: center; }
+.ds-certs li { position: relative; display: flex; align-items: center; justify-content: center; padding: 0 20px; min-height: 44px; }
 .ds-certs li + li::before {
   content: '';
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
   width: 1px;
   height: 30px;
-  margin-right: 28px;
+  transform: translateY(-50%);
   background: var(--ds-rule-strong);
 }
-.ds-certs img { display: block; height: 32px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
+.ds-certs img { display: block; height: 32px; width: auto; max-width: 100%; object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
 /* The WBENC mark has fine print that blurs at 32px; give it a little more room and ink. */
 .ds-certs img[src*='cert-wbenc'] { height: 38px; opacity: 0.85; }
@@ -470,7 +475,9 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs li + li::before { display: none; }
   .ds-certs li:nth-child(odd) { border-right: 1px solid var(--ds-rule-strong); }
-  .ds-certs li:nth-child(-n + 2) { border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs li:nth-child(-n + 4) { border-bottom: 1px solid var(--ds-rule-strong); }
+  /* The fifth mark sits alone across the bottom row, centered. */
+  .ds-certs li:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
   .ds-certs img { height: 30px; max-width: 100%; }
   .ds-certs img[src*='cert-wbenc'] { height: 36px; }
 }
