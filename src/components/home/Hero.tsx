@@ -15,7 +15,8 @@ const OPTIONS = {
   },
   a: {
     title: 'Security for sites where every entry counts.',
-    lead: 'Restricted-area escorts, access control, and armed and unarmed officers along Colorado\u2019s Front Range, for military construction and critical infrastructure as well as offices, retail, and campuses.',
+    // Escorts no longer lead the line (owner, 2026-10-10: not first, and not twice).
+    lead: 'Armed and unarmed officers, access control, and restricted-area escorts along Colorado\u2019s Front Range, for military construction and critical infrastructure as well as offices, retail, and campuses.',
     proof: true,
   },
   b: {
@@ -61,10 +62,8 @@ export default function Hero() {
           </div>
           {hero.proof ? (
             // The proof row (audit): one line each, every one checkable on the linked page.
+            // The escort item came out (owner, 2026-10-10): the lead already names escorts.
             <ul className="ds-hero-proof" aria-label="Proof">
-              <li>
-                <Link to="/services/restricted-area-escort">Restricted-area escort on a Space Force base</Link>
-              </li>
               <li>
                 <span>GSA MAS</span>{' '}
                 <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">

@@ -364,19 +364,20 @@ exception to "no card containers" and "no glass" for this section.
   assets/generated/values/).
 
 ### Home hero copy and the proof row (copy audit round 2, owner 2026-10-10)
-- **Chosen: option A** "Security for sites where every entry counts." / "Restricted-area
-  escorts, access control, and armed and unarmed officers along Colorado's Front Range, for
-  military construction and critical infrastructure as well as offices, retail, and
-  campuses." No eyebrow; the search phrase lives in the title and description.
+"- **Chosen: option A** "Security for sites where every entry counts." / "Armed and
+  unarmed officers, access control, and restricted-area escorts along Colorado's Front Range,
+  for military construction and critical infrastructure as well as offices, retail, and
+  campuses." (Owner, 2026-10-10: escorts are not the lead word and appear once in the hero;
+  they are visible elsewhere on the site, not the whole identity.) No eyebrow; the search phrase lives in the title and description.
 - **Kept for the client (Deidre) to compare:** `/?hero=current|b|c` in `Hero.tsx` (`OPTIONS`):
   current ("Security guards for federal and commercial sites." with the GSA mark), B
   ("Security guards and escorts for Colorado's controlled sites."), C ("Escorts. Access
   control. Officers. One standard."). Gallery: `.playwright-mcp/gallery/hero-options.html`.
-- **Proof row** (A, B, C): four lines on white/12% hairlines, 14px, #c4c8ce on the glass,
-  each a link with a white/20% underline: Restricted-area escort on a Space Force base (to
-  the escort page), GSA MAS 47QSMS25D009Q (mono, to eLibrary), Minority woman-owned (WOSB,
-  WBENC) (to the Capability Statement), Licensed in Colorado Springs, Denver, Pueblo. Four
-  across from 1024px, two by two below.
+- **Proof row** (A, B, C): three lines on white/12% hairlines, 14px, #c4c8ce on the glass,
+  each a link with a white/20% underline: GSA MAS 47QSMS25D009Q (mono, to eLibrary),
+  Minority woman-owned (WOSB, WBENC) (to the Capability Statement), Licensed in Colorado
+  Springs, Denver, Pueblo. Three across from 1024px; below, two then the third full width.
+  (The escort line was removed, owner 2026-10-10.)
 
 ### 02 Industries (Home, copy audit round 2, owner 2026-10-10)
 - "The sites we protect." in the shared head, then the six industries in the owner's
