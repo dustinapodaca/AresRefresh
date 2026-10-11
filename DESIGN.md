@@ -352,7 +352,8 @@ exception to "no card containers" and "no glass" for this section.
   display-lg in 7 columns, the lead in the last 5, aligned to the headline's foot; Quality
   uses the same head, and Coverage's headline is display-lg too).
 - Black frosted glass, no colored light (owner, 2026-10-08: the rust gradients were too
-  much): each card canvas at 72% over a 14px blur, a white/8% edge and a white/12% line along
+  much): each card canvas at 72% over a 14px blur, with the prime panel's soft white/4.5%
+  light from above (owner, 2026-10-10), a white/8% edge and a white/12% line along
   the top edge (brighter on hover). A faint dot grid (white/14%, 16px, the maps' grid) lies
   behind the grid, masked to an oval, so the glass has something to frost: it shows in the
   gaps and softens to nothing under each card. Each value card: the figure in Plex Mono (44
@@ -409,9 +410,9 @@ exception to "no card containers" and "no glass" for this section.
   The line is two-toned (claim in ink, detail muted, Flora). Three proof points
   (subcontracting credit WOSB250470 · WBE2303571; restricted areas, Space Force base in
   Colorado, 2025 to 2027; reliability <1% since 2021) and a solid "Teaming and
-  subcontracting →" button. Forms at `/?prime=split|diagram|vignettes`: split (default for
-  now: ask left, proof right, a vertical hairline), diagram (prime → Ares → three posts on
-  the dot grid; lines draw on scroll), vignettes (three small working pictures; the term bar
+  subcontracting →" button. Forms at `/?prime=split|diagram|vignettes`: **diagram (chosen,
+  owner 2026-10-10: prime → Ares → three posts on the dot grid; lines draw on scroll)**,
+  split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 
 ### Quality (Home 02, owner 2026-10-06)
@@ -531,8 +532,8 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
 - **Why Ares exists** (founder block, before 01; owner 2026-10-10, pass 2 after Slash,
-  Flora, Resend; live with placeholder words and portrait): `letter` (default for now: the
-  headline in columns 1 to 4, the story in Inter 500 at 22 to 30px in two tones in columns 6
+  Flora, Resend; live with placeholder words and portrait): **`letter` (chosen, owner 2026-10-10)**: the
+  headline in columns 1 to 4, the story in Inter 500 at 20 to 26px in two tones in columns 6
   to 12, signed with a 48px portrait, the name in Inter Tight 600, role in mono) or `note`
   (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
   "How we work →" right between hairlines). Until the photo arrives the portrait shows the

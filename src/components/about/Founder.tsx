@@ -4,7 +4,7 @@ import { responsive } from '../../lib/responsive';
 
 // "Why Ares exists." (copy audit: About had no founder section; owner, 2026-10-10: put it in,
 // real words and a portrait come later). Second pass after Slash, Flora, and Resend on Mobbin;
-// two forms at /about?founder=letter|note (letter is the default for now):
+// two forms at /about?founder=letter|note (owner chose letter, 2026-10-10):
 //  letter  Slash's CEO note: the story set large in two tones (Flora), signed with a small
 //          portrait, name, and role.
 //  note    Resend's "Meet the team": the headline left; on the right a portrait, the name

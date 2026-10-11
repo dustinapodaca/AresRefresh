@@ -96,7 +96,8 @@ const PRIME_PROOF = [
 ];
 
 function PrimesPanel({ form }: { form: string | null }) {
-  const kind = form === 'diagram' || form === 'vignettes' ? form : 'split';
+  // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
+  const kind = form === 'split' || form === 'vignettes' ? form : 'diagram';
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming and subcontracting

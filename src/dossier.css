@@ -1034,7 +1034,9 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-  background: rgb(12 13 16 / 0.72);
+  /* The prime panel's soft light from above (owner, 2026-10-10: match the Diagram panel),
+     over the same frosted fill. */
+  background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), rgb(12 13 16 / 0.72);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
   /* A crisp edge and a single brighter line along the top, like light on a glass edge. */
@@ -1223,7 +1225,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-founder-role { display: block; margin-top: 4px; font-size: 12.5px; color: var(--ds-fg-faint); }
 
 /* letter: the story set large in two tones, signed with a small portrait (Slash, Flora). */
-.ds-founder-story { margin: 0; font-family: var(--ds-text); font-size: clamp(22px, 2.3vw, 30px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; color: var(--ds-fg-muted); max-width: 34ch; text-wrap: pretty; }
+.ds-founder-story { margin: 0; font-family: var(--ds-text); font-size: clamp(20px, 1.9vw, 26px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; color: var(--ds-fg-muted); max-width: 34ch; text-wrap: pretty; }
 .ds-founder-story > span { color: var(--ds-fg); }
 .ds-founder-letter .ds-founder-sig { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; }
 
