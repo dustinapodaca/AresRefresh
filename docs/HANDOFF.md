@@ -305,9 +305,6 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 - **Google Business profile link** (the footer's Google link opens a Maps search). Add it
   to the footer and the structured data's sameAs.
 - **Capability statement PDF content:** check for "cleared", Buckley, badging.
-- **Analytics:** Google Analytics 4 is built in (owner, 2026-10-11) but off until the owner
-  creates the property and sets `VITE_GA_ID` in Netlify. Steps, GA4 settings, events, and
-  the monthly review: `docs/analytics.md`. The privacy policy already describes it.
 - **Check the nav glass on a real iPhone or Safari** (automated captures skip the blur).
 
 ### Launch day (domain cutover)
@@ -315,6 +312,10 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   uncomment the cutover block in `public/_redirects`.
 - Add aressecurity.co and www to the Web3Forms form's allowed websites, or the form stops.
 - Decide when `test/marketing-gaps` merges to `main`.
+- **Google Analytics 4** (owner: set up near launch, 2026-10-11). The code is built in and
+  off: create the GA4 property, set `VITE_GA_ID` in Netlify, redeploy, then the GA4
+  settings (history page views off, five key events, Google signals off). All steps:
+  `docs/analytics.md`. The privacy policy already describes it.
 
 ### After launch
 - Verify in Google Search Console and Bing Webmaster Tools; submit the sitemap (Bing also
