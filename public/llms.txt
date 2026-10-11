@@ -27,9 +27,9 @@ Key facts, each checkable on the linked pages:
 - [Armed security officers](https://aressecurity.co/services/armed-security-officers): Licensed, firearms-qualified armed officers.
 - [Unarmed security officers](https://aressecurity.co/services/unarmed-security-officers): Uniformed and plainclothes officers for lobbies, perimeters, and public areas.
 - [Access control](https://aressecurity.co/services/access-control): Credential checks, visitor screening, and gate, dock, and lobby control, with auditable logs.
-- [Mobile patrol](https://aressecurity.co/services/mobile-patrol): Marked-vehicle patrol, after-hours checks, alarm response, and time-stamped reports.
 - [Restricted-area escort](https://aressecurity.co/services/restricted-area-escort): Escort for crews, visitors, and deliveries inside controlled areas, with people and vehicles verified and custody logs.
 - [Relief and surge coverage](https://aressecurity.co/services/relief-surge-coverage): Relief shifts, overflow posts, and surge staffing for site owners, prime contractors, and other security companies.
+- [Mobile patrol](https://aressecurity.co/services/mobile-patrol): Marked-vehicle patrol, after-hours checks, alarm response, and time-stamped reports.
 
 ## Industries
 

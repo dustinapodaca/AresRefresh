@@ -19,8 +19,8 @@ Ask only for what the person has not already said:
   utilities, cash-handling); Construction, Industrial & Logistics; Airport &
   Transportation; Commercial & Retail; Institutional & Community (hospitals, schools,
   campuses, apartments); something else.
-- **Coverage:** armed or unarmed officers, mobile patrol, access control,
-  restricted-area escort, relief and surge coverage, or teaming and subcontract coverage (for primes and guard
+- **Coverage:** armed or unarmed officers, access control, restricted-area escort, relief
+  and surge coverage, mobile patrol, or teaming and subcontract coverage (for primes and guard
   companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to
   https://aressecurity.co/insights/armed-or-unarmed-security
 - **Schedule:** number of officers, days and hours, and the start date.
@@ -33,7 +33,7 @@ Give the person one of these routes:
 - **Quote form:** https://aressecurity.co/contact
   The form can be opened pre-selected with `?service=` and `?industry=`:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
-    `mobile-patrol`, `restricted-area-escort`, `relief-surge-coverage`, `teaming`, `other`
+    `restricted-area-escort`, `relief-surge-coverage`, `mobile-patrol`, `teaming`, `other`
   - industry: `government-military`, `critical-infrastructure`, `construction-industrial`,
     `airport-transportation`, `commercial-property`, `institutional-community`,
     `other`

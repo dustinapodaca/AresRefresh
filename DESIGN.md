@@ -448,7 +448,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &
   Military; Critical & High-Liability Sites; Construction, Industrial & Logistics; Airport &
   Transportation; Commercial & Retail; Institutional & Community. The same order wherever
-  the six appear (Home, industry pages, the quote form, llms.txt). Each opens to its summary and
+  the six appear (the six services also keep one order, owner 2026-10-10: Armed, Unarmed,
+  Access control, Restricted-area escort, Relief and surge coverage, Mobile patrol; Mobile
+  Patrol is that card's name on the Capability Statement too) (Home, industry pages, the quote form, llms.txt). Each opens to its summary and
   site types; the open card shows "Open the full page →" (owner, 2026-10-10; screen readers hear the industry name) to its industry page in its heading area, under the description (hidden while closed). "By role." keeps only the
   services. **One name per industry** on Home ("Six industries"), Services, the industry
   pages, the city-page tags, and the quote form's site types. "Specialized & Armed

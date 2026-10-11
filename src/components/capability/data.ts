@@ -75,16 +75,17 @@ export const CAPABILITIES: Capability[] = [
     ],
   },
   {
-    id: 'vehicle',
-    // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
-    title: 'Mobile Patrol',
-    line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
-    keys: ['Marked vehicles', 'Alarm response', 'GPS-verified'],
+    // Replaced Emergency Response (copy audit round 2, owner 2026-10-10); its content moved
+    // into the officer pages' questions.
+    id: 'escort',
+    title: 'Restricted-Area Escort',
+    line: 'Escort for crews, visitors, and deliveries inside controlled areas, with custody logs.',
+    keys: ['Escort', 'Line of sight', 'Custody logs'],
     includes: [
-      { name: 'Marked-vehicle patrol', detail: 'Ares-marked vehicles as a visible deterrent on every pass.' },
-      { name: 'Alarm response', detail: 'An officer on site to check the property when an alarm trips.' },
-      { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
-      { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with GPS-verified routes and time-stamped reports per property.' },
+      { name: 'Crew, visitor, and delivery escort', detail: 'People and deliveries escorted inside the controlled area, kept in the officer\u2019s line of sight.' },
+      { name: 'Person and vehicle verification', detail: 'IDs, access lists, and vehicles checked before anyone enters.' },
+      { name: 'Custody logs', detail: 'Who entered, when, with whom, and when they left, logged for every escort.' },
+      { name: 'Coordination with installation security', detail: 'Officers who work to the site\u2019s rules, alongside its own security forces.' },
     ],
   },
   {
@@ -102,17 +103,16 @@ export const CAPABILITIES: Capability[] = [
     ],
   },
   {
-    // Replaced Emergency Response (copy audit round 2, owner 2026-10-10); its content moved
-    // into the officer pages' questions.
-    id: 'escort',
-    title: 'Restricted-Area Escort',
-    line: 'Escort for crews, visitors, and deliveries inside controlled areas, with custody logs.',
-    keys: ['Escort', 'Line of sight', 'Custody logs'],
+    id: 'vehicle',
+    // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
+    title: 'Mobile Patrol',
+    line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
+    keys: ['Marked vehicles', 'Alarm response', 'GPS-verified'],
     includes: [
-      { name: 'Crew, visitor, and delivery escort', detail: 'People and deliveries escorted inside the controlled area, kept in the officer\u2019s line of sight.' },
-      { name: 'Person and vehicle verification', detail: 'IDs, access lists, and vehicles checked before anyone enters.' },
-      { name: 'Custody logs', detail: 'Who entered, when, with whom, and when they left, logged for every escort.' },
-      { name: 'Coordination with installation security', detail: 'Officers who work to the site\u2019s rules, alongside its own security forces.' },
+      { name: 'Marked-vehicle patrol', detail: 'Ares-marked vehicles as a visible deterrent on every pass.' },
+      { name: 'Alarm response', detail: 'An officer on site to check the property when an alarm trips.' },
+      { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
+      { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with GPS-verified routes and time-stamped reports per property.' },
     ],
   },
 ];

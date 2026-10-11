@@ -144,36 +144,35 @@ export const ROLE_PAGES: RolePageData[] = [
     ],
   },
   {
-    slug: 'mobile-patrol',
-    capabilityId: 'vehicle',
-    name: 'Mobile patrol',
-    title: 'Mobile patrol.',
-    lead: 'Marked vehicles on set routes, alarm response, and a time-stamped report for every property.',
-    sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
-    how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property. When an alarm trips, an officer goes to the site, checks it, and reports what was found.',
-    ask: 'Tell us the properties, when you want them checked, and what to check.',
-    industries: ['commercial-property', 'construction-industrial'],
+    // Replaced Emergency response (copy audit round 2, owner 2026-10-10). No clearance
+    // wording here: clearance requirements live on Careers only (owner).
+    slug: 'restricted-area-escort',
+    capabilityId: 'escort',
+    name: 'Restricted-area escort',
+    title: 'Restricted-area escort.',
+    lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
+    sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
+    how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief roster keeps every escort post staffed.',
+    ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
+    industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
     faq: [
       {
-        q: 'Mobile patrol or a posted officer?',
-        a: 'A posted officer stays on one site. A patrol covers one or more sites on a schedule. Patrol suits sites that need regular checks and a visible presence rather than an officer on post every hour.',
+        q: 'What does a restricted-area escort do?',
+        a: 'Keeps every escorted person, crew, or delivery in line of sight inside the controlled area, verifies people and vehicles at entry, and logs who came in, with whom, and when they left.',
       },
       {
-        q: 'Do you respond to alarms?',
-        a: 'Yes. When an alarm trips, an officer goes to the site, checks the property, and reports what was found.',
+        q: 'Have your officers escorted on a military installation?',
+        a: 'Yes. Ares provides restricted-area escort and access control on a Space Force base in Colorado, alongside installation security, as a subcontractor on a federal construction program.',
       },
       {
-        q: 'How do we know the patrol happened?',
-        a: 'Every property gets a time-stamped report, and routes are GPS-verified.',
+        q: 'Can you escort construction crews and deliveries?',
+        a: 'Yes. Escorting trades and deliveries on an active build is the core of our restricted-area work, and coverage changes as the build does.',
       },
       {
-        q: 'Can one patrol cover several properties?',
-        a: 'Yes. One route can cover a portfolio, with a separate report for each property.',
+        q: 'Where do you provide restricted-area escorts?',
+        a: 'Along Colorado’s Front Range: the Denver metro area, Colorado Springs, and Pueblo, where Ares is licensed and bonded. Our escort experience is on a Space Force base in Colorado, as a subcontractor on a federal construction program, alongside installation security.',
       },
-      {
-        q: 'Where do your patrols run?',
-        a: 'Across Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
-      },
+      GSA_FAQ,
     ],
   },
   {
@@ -214,35 +213,36 @@ export const ROLE_PAGES: RolePageData[] = [
     ],
   },
   {
-    // Replaced Emergency response (copy audit round 2, owner 2026-10-10). No clearance
-    // wording here: clearance requirements live on Careers only (owner).
-    slug: 'restricted-area-escort',
-    capabilityId: 'escort',
-    name: 'Restricted-area escort',
-    title: 'Restricted-area escort.',
-    lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
-    sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
-    how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief roster keeps every escort post staffed.',
-    ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
-    industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
+    slug: 'mobile-patrol',
+    capabilityId: 'vehicle',
+    name: 'Mobile patrol',
+    title: 'Mobile patrol.',
+    lead: 'Marked vehicles on set routes, alarm response, and a time-stamped report for every property.',
+    sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
+    how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property. When an alarm trips, an officer goes to the site, checks it, and reports what was found.',
+    ask: 'Tell us the properties, when you want them checked, and what to check.',
+    industries: ['commercial-property', 'construction-industrial'],
     faq: [
       {
-        q: 'What does a restricted-area escort do?',
-        a: 'Keeps every escorted person, crew, or delivery in line of sight inside the controlled area, verifies people and vehicles at entry, and logs who came in, with whom, and when they left.',
+        q: 'Mobile patrol or a posted officer?',
+        a: 'A posted officer stays on one site. A patrol covers one or more sites on a schedule. Patrol suits sites that need regular checks and a visible presence rather than an officer on post every hour.',
       },
       {
-        q: 'Have your officers escorted on a military installation?',
-        a: 'Yes. Ares provides restricted-area escort and access control on a Space Force base in Colorado, alongside installation security, as a subcontractor on a federal construction program.',
+        q: 'Do you respond to alarms?',
+        a: 'Yes. When an alarm trips, an officer goes to the site, checks the property, and reports what was found.',
       },
       {
-        q: 'Can you escort construction crews and deliveries?',
-        a: 'Yes. Escorting trades and deliveries on an active build is the core of our restricted-area work, and coverage changes as the build does.',
+        q: 'How do we know the patrol happened?',
+        a: 'Every property gets a time-stamped report, and routes are GPS-verified.',
       },
       {
-        q: 'Where do you provide restricted-area escorts?',
-        a: 'Along Colorado’s Front Range: the Denver metro area, Colorado Springs, and Pueblo, where Ares is licensed and bonded. Our escort experience is on a Space Force base in Colorado, as a subcontractor on a federal construction program, alongside installation security.',
+        q: 'Can one patrol cover several properties?',
+        a: 'Yes. One route can cover a portfolio, with a separate report for each property.',
       },
-      GSA_FAQ,
+      {
+        q: 'Where do your patrols run?',
+        a: 'Across Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
+      },
     ],
   },
 ];

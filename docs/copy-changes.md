@@ -751,3 +751,7 @@ Three or four rows specific to each industry (audit). Government: restricted are
 ## Mobile patrol, one name (2026-10-10, owner)
 
 Capability Statement card "Patrol Vehicle Security" is now "Mobile Patrol", the name Services, the service page, and the quote form use. The PDF still says Patrol Vehicle Security until the owner updates it.
+
+## One service order (2026-10-10, owner)
+
+Armed, Unarmed, Access control, Restricted-area escort, Relief and surge coverage, Mobile patrol: on Services ("By role"), the Capability Statement cards (numbered 01 to 06 in that order), each service page's "More services", the quote form, llms.txt, and the quote skill.
