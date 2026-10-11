@@ -3,6 +3,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
+import Analytics from './components/Analytics';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -29,6 +30,7 @@ export default function App() {
     <>
       <ScrollToTop />
       <SmoothAnchors />
+      <Analytics />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

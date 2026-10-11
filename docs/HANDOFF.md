@@ -305,8 +305,9 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 - **Google Business profile link** (the footer's Google link opens a Maps search). Add it
   to the footer and the structured data's sameAs.
 - **Capability statement PDF content:** check for "cleared", Buckley, badging.
-- **Analytics:** none today (the privacy policy says no trackers). If wanted, a
-  privacy-friendly one (Plausible, Netlify Analytics); add its origin to the CSP.
+- **Analytics:** Google Analytics 4 is built in (owner, 2026-10-11) but off until the owner
+  creates the property and sets `VITE_GA_ID` in Netlify. Steps, GA4 settings, events, and
+  the monthly review: `docs/analytics.md`. The privacy policy already describes it.
 - **Check the nav glass on a real iPhone or Safari** (automated captures skip the blur).
 
 ### Launch day (domain cutover)
@@ -318,6 +319,7 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 ### After launch
 - Verify in Google Search Console and Bing Webmaster Tools; submit the sitemap (Bing also
   feeds ChatGPT search). IndexNow pings run from the Netlify plugin on production deploys.
+  Then link Search Console to GA4 and start the monthly review (`docs/analytics.md`).
 
 ### Housekeeping
 - Rotate the Gemini API key (pasted in chat 2026-10-08; pass it inline only, never commit

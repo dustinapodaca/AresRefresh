@@ -19,7 +19,8 @@
 
 # Baseline security headers for every page (2026-10-09).
 # Content Security Policy (2026-10-09): only this site's own scripts, styles, images, and
-# fonts; the quote form may post to Web3Forms; no plugins, no framing by other sites.
+# fonts; the quote form may post to Web3Forms; Google Analytics 4 (2026-10-11, Google's
+# documented GA4 origins); no plugins, no framing by other sites.
 # 'unsafe-inline' for styles covers React style attributes; scripts stay strict (the
 # JSON-LD blocks are data, not scripts, so CSP does not apply to them).
 /*
@@ -27,4 +28,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests

@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
 import LegalPage, { type GlanceRow, type LegalSection } from '../components/legal/LegalPage';
 
-// Privacy policy. Written from what the site actually does (2026-10-06): no analytics, no
-// ad trackers, no cookies of its own; the quote form is delivered by Web3Forms; the site is
-// hosted on Netlify; the typefaces load from Google Fonts. Owner to review with counsel.
+// Privacy policy. Written from what the site actually does (2026-10-06; updated 2026-10-11):
+// Google Analytics 4 with its cookies (src/lib/analytics.ts; no ad features), no ad
+// trackers; the quote form is delivered by Web3Forms; the site is hosted on Netlify; the
+// typefaces are served from the site itself. Owner to review with counsel.
 
 const MAIL = 'contact@aressecurity.co';
 
 const GLANCE: GlanceRow[] = [
   { label: 'What we collect', value: 'What you send us through the quote form, by email, or by phone, plus standard server logs.' },
   { label: 'Why', value: 'To reply, prepare quotes and proposals, review job applications, and keep the site running and secure.' },
-  { label: 'Who handles it for us', value: 'Web3Forms delivers the quote form, Netlify hosts the site, and Google Fonts serves the typefaces.' },
+  { label: 'Who handles it for us', value: 'Web3Forms delivers the quote form, Netlify hosts the site, and Google Analytics measures how the site is used.' },
   { label: 'Selling and advertising', value: 'We do not sell personal information or use it for advertising.' },
-  { label: 'Cookies and tracking', value: 'The site sets no cookies of its own and runs no analytics or advertising trackers.' },
+  { label: 'Cookies and tracking', value: 'Google Analytics sets cookies to count visits. No advertising trackers.' },
   { label: 'Your choices', value: <>Ask us to see, correct, or delete what you sent: <a href={`mailto:${MAIL}`} className="ds-link">{MAIL}</a></> },
 ];
 
@@ -63,8 +64,10 @@ const SECTIONS: LegalSection[] = [
             date and time.
           </li>
           <li>
-            <strong>Fonts.</strong> The site loads its typefaces from Google Fonts, so Google
-            receives your IP address and browser details when a page loads.
+            <strong>Analytics.</strong> Google Analytics records how the site is used: the
+            pages you visit, links you use (such as calling us or downloading the capability
+            statement), how you arrived, your device and browser, and your approximate
+            location. It does not receive what you type into the quote form.
           </li>
         </ul>
         <p>
@@ -96,8 +99,8 @@ const SECTIONS: LegalSection[] = [
         <ul>
           <li>
             <strong>Service providers</strong> that work for us: Web3Forms, which delivers quote
-            form submissions to our inbox; Netlify, which hosts the site; Google, which serves the
-            fonts; and our email provider. They may use the information only to provide their
+            form submissions to our inbox; Netlify, which hosts the site; Google, which provides
+            Google Analytics; and our email provider. They may use the information only to provide their
             service.
           </li>
           <li>
@@ -117,14 +120,26 @@ const SECTIONS: LegalSection[] = [
     id: 'cookies',
     title: 'Cookies and tracking',
     body: (
+      <>
       <p>
-        The site sets no cookies of its own and runs no analytics, advertising, or social media
-        tracking. The service providers above process technical data as their own policies
+        The site uses Google Analytics, which sets cookies (named <code>_ga</code>) to tell
+        visits apart and show us which pages and links people use. We use these reports only to
+        improve the site and to see which pages lead to quote requests. We do not use them for
+        advertising, and the site runs no advertising or social media tracking.
+      </p>
+      <p>
+        To opt out, block cookies in your browser or install{' '}
+        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="ds-link">Google’s opt-out add-on</a>.
+        The site works the same either way.
+      </p>
+      <p>
+        The service providers above process technical data as their own policies
         describe:{' '}
         <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" className="ds-link">Web3Forms</a>,{' '}
         <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="ds-link">Netlify</a>, and{' '}
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="ds-link">Google</a>.
       </p>
+      </>
     ),
   },
   {
@@ -218,7 +233,7 @@ export default function Privacy() {
     <LegalPage
       path="/privacy"
       title="Privacy policy."
-      effective="October 6, 2026"
+      effective="October 11, 2026"
       intro={<p>What we collect when you use this site or contact us, why, and what you can ask us to do with it.</p>}
       glance={GLANCE}
       sections={SECTIONS}

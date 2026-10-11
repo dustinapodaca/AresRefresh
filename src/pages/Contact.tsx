@@ -5,6 +5,7 @@ import QuoteToast, { type ToastData } from '../components/QuoteToast';
 import Seo from '../seo/Seo';
 import { responsive } from '../lib/responsive';
 import { formatPhone, subjectFor, toWeb3Forms, type Quote } from '../lib/quote';
+import { track } from '../lib/analytics';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
@@ -120,6 +121,8 @@ export default function Contact() {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: toWeb3Forms(quote, key) });
       const data = await res.json();
       if (data.success) {
+        // A conversion in Google Analytics: which service, nothing the reader typed.
+        track('generate_lead', { service: quote.service });
         setStatus(null);
         setToast({ kind: 'sent', email: quote.email, subject: subjectFor(quote) });
         form.reset();
