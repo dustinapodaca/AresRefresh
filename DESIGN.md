@@ -402,15 +402,17 @@ exception to "no card containers" and "no glass" for this section.
   large numbered rows on hairline-strong rules). In `Industries.tsx`.
 - The six-name list left 04 Coverage (this section replaces it).
 
-### For prime contractors (Home, end of 02 Industries; owner 2026-10-10)
-- A contained panel (an owner exception to "no card containers", like the Record cards):
-  #0e1013 fill, white/8% inset edge, a white/12% light line on the top edge, 4px corners,
-  40px padding (22 on phones). The heading, one line, a solid "Teaming and subcontracting →"
-  button, and three proof points: subcontracting credit (WOSB250470 · WBE2303571), restricted
-  areas (Space Force base in Colorado, 2025 to 2027), reliability (<1% since 2021). Three
-  forms at `/?prime=sheet|brief|key` (sheet = ledger rows, the default for now; brief =
-  three columns between hairlines; key = large mono identifiers). One motion: the panel
-  settles 24px as it scrolls in (transform only; static under reduced motion).
+### For prime contractors (Home, end of 02 Industries; owner 2026-10-10, pass 2)
+- A contained panel (an owner exception to "no card containers", like the Record cards),
+  after Slash, Flora, and Resend: near-black (#0c0d10) with a soft white/4.5% light from
+  above, white/8% inset edge, white/12% top line, 4px corners, 40px padding (22 on phones).
+  The line is two-toned (claim in ink, detail muted, Flora). Three proof points
+  (subcontracting credit WOSB250470 · WBE2303571; restricted areas, Space Force base in
+  Colorado, 2025 to 2027; reliability <1% since 2021) and a solid "Teaming and
+  subcontracting →" button. Forms at `/?prime=split|diagram|vignettes`: split (default for
+  now: ask left, proof right, a vertical hairline), diagram (prime → Ares → three posts on
+  the dot grid; lines draw on scroll), vignettes (three small working pictures; the term bar
+  fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 
 ### Quality (Home 02, owner 2026-10-06)
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
@@ -528,12 +530,13 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
   woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
-- **Why Ares exists** (founder block, before 01; owner 2026-10-10, live with placeholder
-  words and portrait): a 4:5 portrait plate (columns 1 to 4; 260px on phones) beside the
-  note (columns 6 to 12): the headline, two lead paragraphs (ink, then ink muted), and a
-  signed line on a hairline-strong rule (name in Inter Tight 600 22px, role and "Founded
-  2021, Colorado Springs" in mono). Until the photo arrives the plate shows the Ares mark at
-  12%. The plate opens from the bottom on scroll (clip-path, already visible).
+- **Why Ares exists** (founder block, before 01; owner 2026-10-10, pass 2 after Slash,
+  Flora, Resend; live with placeholder words and portrait): `letter` (default for now: the
+  headline in columns 1 to 4, the story in Inter 500 at 22 to 30px in two tones in columns 6
+  to 12, signed with a 48px portrait, the name in Inter Tight 600, role in mono) or `note`
+  (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
+  "How we work →" right between hairlines). Until the photo arrives the portrait shows the
+  Ares mark at 28%. The portrait opens from the bottom on scroll (clip-path).
 - **01 How we work** (renamed from "How we staff a post.", copy audit 2026-10-10; four plain
   principles and a "See the four stages" link to Services): the pinned passage (see above; moved whole
   from Home, owner 2026-10-06). The Company section ("Quality over quantity.", the facts,

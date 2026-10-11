@@ -85,89 +85,130 @@ export default function Industries() {
   );
 }
 
-// "For prime contractors." (copy audit round 3, owner 2026-10-10): a contained panel with
-// three proof points and a solid button to /teaming. Three forms to compare at
-// /?prime=brief|sheet|key (Mobbin: Mailchimp, Kajabi, Dropbox partner bands; Mews figures).
-// The one card container on Home besides the Record cards (owner exception).
+// "For prime contractors." (copy audit round 3; second pass 2026-10-10 after Slash, Flora,
+// and Resend on Mobbin): a contained panel with three proof points and a solid button to
+// /teaming. Three forms to compare at /?prime=split|diagram|vignettes (split is the default
+// for now). The one card container on Home besides the Record cards (owner exception).
 const PRIME_PROOF = [
-  { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571', key: 'WOSB' },
-  { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027', key: '2025–27' },
-  { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract', key: '<1%' },
+  { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571' },
+  { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027' },
+  { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract' },
 ];
 
 function PrimesPanel({ form }: { form: string | null }) {
-  const kind = form === 'brief' || form === 'key' ? form : 'sheet';
-  const head = (
-    <>
-      <h3 className="ds-display-md">For prime contractors.</h3>
-      <p className="ds-primes-line">
-        Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and
-        surge coverage on Front Range work.
-      </p>
-    </>
-  );
+  const kind = form === 'diagram' || form === 'vignettes' ? form : 'split';
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming and subcontracting
       <Arrow />
     </Link>
   );
+  // Flora's two-tone sentence: the claim in ink, the detail muted.
+  const line = (
+    <p className="ds-primes-line">
+      <span>A woman-owned subcontractor for Front Range work.</span> Restricted-area escorts,
+      access control officers, and relief, overflow, and surge coverage under your contract.
+    </p>
+  );
   return (
     <div className="ds-primes-panel" data-form={kind}>
-      {kind === 'brief' && (
+      {kind === 'split' && (
+        // Slash's stat-and-quote split: the ask on the left, the proof on the right, one
+        // vertical hairline between them.
+        <>
+          <div className="ds-primes-ask">
+            <h3 className="ds-display-md">For prime contractors.</h3>
+            {button}
+          </div>
+          <div className="ds-primes-proof">
+            {line}
+            <dl className="ds-primes-sheet">
+              {PRIME_PROOF.map((p) => (
+                <div key={p.label}>
+                  <dt>{p.label}</dt>
+                  <dd>
+                    <span>{p.value}</span>
+                    <span className="ds-data ds-primes-id">{p.id}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </>
+      )}
+      {kind === 'diagram' && (
+        // Slash's "Secure by design": a drawn diagram of how the work flows (the prime holds
+        // the contract, Ares staffs the posts) beside the proof.
+        <>
+          <div className="ds-primes-copy">
+            <h3 className="ds-display-md">For prime contractors.</h3>
+            {line}
+            <ul className="ds-primes-list">
+              {PRIME_PROOF.map((p) => (
+                <li key={p.label}>
+                  <span className="ds-primes-label">{p.label}</span>
+                  <span className="ds-primes-value">{p.value}</span>
+                </li>
+              ))}
+            </ul>
+            {button}
+          </div>
+          <figure className="ds-primes-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
+            <div className="ds-flow-node ds-flow-prime" aria-hidden="true">
+              <span className="ds-data">Prime contractor</span>
+              <span>Holds the contract</span>
+            </div>
+            <span className="ds-flow-line ds-flow-down" aria-hidden="true" />
+            <div className="ds-flow-node ds-flow-ares" aria-hidden="true">
+              <span className="ds-data">Ares Security</span>
+              <span>WOSB subcontractor · post orders, training, relief</span>
+            </div>
+            <span className="ds-flow-line ds-flow-fork" aria-hidden="true" />
+            <div className="ds-flow-posts" aria-hidden="true">
+              <span>Restricted-area escort</span>
+              <span>Access control</span>
+              <span>Relief and surge</span>
+            </div>
+          </figure>
+        </>
+      )}
+      {kind === 'vignettes' && (
+        // Flora's cards: a small working picture on top, the caption beneath.
         <>
           <div className="ds-primes-top">
-            <div>{head}</div>
+            <div>
+              <h3 className="ds-display-md">For prime contractors.</h3>
+              {line}
+            </div>
             {button}
           </div>
-          <ul className="ds-primes-cols">
-            {PRIME_PROOF.map((p) => (
-              <li key={p.label}>
-                <span className="ds-primes-label">{p.label}</span>
-                <span className="ds-primes-value">{p.value}</span>
-                <span className="ds-data ds-primes-id">{p.id}</span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {kind === 'sheet' && (
-        <>
-          <div className="ds-primes-copy">
-            {head}
-            {button}
-          </div>
-          <dl className="ds-primes-sheet">
-            {PRIME_PROOF.map((p) => (
-              <div key={p.label}>
-                <dt>{p.label}</dt>
-                <dd>
-                  <span>{p.value}</span>
-                  <span className="ds-data ds-primes-id">{p.id}</span>
-                </dd>
+          <ul className="ds-primes-vigs">
+            <li>
+              <div className="ds-vig ds-vig-ids" aria-hidden="true">
+                <span><b>SBA WOSB</b><span className="ds-data">WOSB250470</span></span>
+                <span><b>WBENC</b><span className="ds-data">WBE2303571</span></span>
               </div>
-            ))}
-          </dl>
-        </>
-      )}
-      {kind === 'key' && (
-        <>
-          <div className="ds-primes-copy">
-            {head}
-            {button}
-          </div>
-          <ul className="ds-primes-key">
-            {PRIME_PROOF.map((p) => (
-              <li key={p.label}>
-                <span className="ds-data ds-primes-figure">{p.key}</span>
-                <span className="ds-primes-label">{p.label}</span>
-                <span className="ds-primes-caption">{p.value}</span>
-              </li>
-            ))}
+              <h4>{PRIME_PROOF[0].label}</h4>
+              <p>{PRIME_PROOF[0].value}</p>
+            </li>
+            <li>
+              <div className="ds-vig ds-vig-term" aria-hidden="true">
+                <span className="ds-vig-bar"><span /></span>
+                <span className="ds-data ds-vig-years"><span>2025</span><span>2027</span></span>
+              </div>
+              <h4>{PRIME_PROOF[1].label}</h4>
+              <p>{PRIME_PROOF[1].value}</p>
+            </li>
+            <li>
+              <div className="ds-vig ds-vig-figure" aria-hidden="true">
+                <span className="ds-data">&lt;1%</span>
+              </div>
+              <h4>{PRIME_PROOF[2].label}</h4>
+              <p>{PRIME_PROOF[2].value}</p>
+            </li>
           </ul>
         </>
       )}
     </div>
   );
 }
-

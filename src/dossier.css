@@ -1209,33 +1209,47 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
    The photo holds still on desktop while the four steps scroll past. */
 .ds-staffing { padding-top: var(--ds-beat-open); }
-/* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait): a portrait
-   plate beside a short note that ends on a signed line. No section number; it sits before
-   01 How we work. */
-.ds-founder { display: grid; gap: 32px; padding-top: var(--ds-beat); }
-.ds-founder-plate { position: relative; margin: 0; width: min(100%, 260px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; background: #0e1013; }
-.ds-founder-plate::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
-.ds-founder-plate img { width: 100%; height: 100%; object-fit: cover; }
-/* Until the portrait arrives: the Ares mark, quiet, on the plate. */
-.ds-founder-mark { position: absolute; inset: 0; margin: auto; width: 28%; aspect-ratio: 407.7 / 425.9; background: var(--ds-fg); opacity: 0.12; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
-.ds-founder-note h2 { margin: 0 0 24px; }
-.ds-founder-note .ds-lead { margin: 0 0 16px; max-width: 46ch; color: var(--ds-fg); }
-.ds-founder-note .ds-lead + .ds-lead { color: var(--ds-fg-muted); }
-.ds-founder-sig { display: grid; gap: 6px; margin: 32px 0 0; padding-top: 16px; border-top: 1px solid var(--ds-rule-strong); max-width: 46ch; }
-.ds-founder-name { font-family: var(--ds-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ds-fg); }
-.ds-founder-role { font-size: 12.5px; color: var(--ds-fg-faint); }
+/* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait; second pass
+   after Slash, Flora, and Resend). Two forms: letter (default) and note. */
+.ds-founder { display: grid; gap: 28px; padding-top: var(--ds-beat); }
+.ds-founder h2 { margin: 0; }
+.ds-founder-face { position: relative; display: block; flex: none; overflow: hidden; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); }
+.ds-founder-face[data-size='sm'] { width: 48px; height: 48px; }
+.ds-founder-face[data-size='md'] { width: 88px; height: 88px; }
+.ds-founder-face img { width: 100%; height: 100%; object-fit: cover; }
+/* Until the portrait arrives: the Ares mark, quiet. */
+.ds-founder-mark { position: absolute; inset: 0; margin: auto; width: 42%; aspect-ratio: 407.7 / 425.9; background: var(--ds-fg); opacity: 0.28; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
+.ds-founder-name { display: block; font-family: var(--ds-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-founder-role { display: block; margin-top: 4px; font-size: 12.5px; color: var(--ds-fg-faint); }
+
+/* letter: the story set large in two tones, signed with a small portrait (Slash, Flora). */
+.ds-founder-story { margin: 0; font-family: var(--ds-text); font-size: clamp(22px, 2.3vw, 30px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; color: var(--ds-fg-muted); max-width: 34ch; text-wrap: pretty; }
+.ds-founder-story > span { color: var(--ds-fg); }
+.ds-founder-letter .ds-founder-sig { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; }
+
+/* note: the headline left; portrait, name, story, and a route right, between hairlines
+   (Resend). */
+.ds-founder-head .ds-lead { margin-top: 14px; }
+.ds-founder-card { padding: 24px 0 26px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
+.ds-founder-who { display: flex; align-items: center; gap: 18px; }
+.ds-founder-text { margin: 20px 0 0; font-size: 17px; line-height: 1.65; color: var(--ds-fg-muted); max-width: 60ch; }
+.ds-founder-more { display: inline-flex; margin-top: 18px; font-size: 15px; }
+
 @media (min-width: 1024px) {
-  .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-founder-plate { grid-column: 1 / span 4; width: 100%; }
-  .ds-founder-note { grid-column: 6 / span 7; }
+  .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+  .ds-founder[data-form='letter'] h2 { grid-column: 1 / span 4; }
+  .ds-founder-letter { grid-column: 6 / span 7; }
+  .ds-founder-head { grid-column: 1 / span 5; }
+  .ds-founder-card { grid-column: 7 / span 6; }
 }
-/* The portrait opens from the bottom as it enters (Emil: clip-path, already visible). */
+/* One moment (Emil): the portrait opens from the bottom as it scrolls in (clip-path, from an
+   already-visible sliver); static under reduced motion. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .ds-founder-plate { animation: ds-founder-open linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
+    .ds-founder-face { animation: ds-founder-open linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
   }
 }
-@keyframes ds-founder-open { from { clip-path: inset(10% 0 0 0 round 4px); } to { clip-path: inset(0 0 0 0 round 4px); } }
+@keyframes ds-founder-open { from { clip-path: inset(30% 0 0 0 round 4px); } to { clip-path: inset(0 0 0 0 round 4px); } }
 .ds-staffing-intro .ds-lead { margin-top: 20px; }
 .ds-staffing-more { display: inline-flex; margin-top: 20px; }
 .ds-staffing-body { display: grid; gap: 40px; margin-top: var(--ds-beat-tight); }
@@ -1308,59 +1322,94 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-nowrap { white-space: nowrap; }
 .ds-ind-plates .ds-ind-name .ds-arrow { display: inline-block; margin-left: 10px; vertical-align: -1px; }
 .ds-primes-panel {
-  /* A contained panel: the capability cards' fill and edge, a light line on its top edge. */
+  /* Slash's panel: near-black with a soft light from above, a hairline edge, a light line on
+     the top edge (second pass, owner 2026-10-10). */
   position: relative;
   margin-top: var(--ds-beat-tight);
   padding: 28px 22px 26px;
-  background: #0e1013;
+  background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), #0c0d10;
   border-radius: 4px;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  overflow: hidden;
 }
 .ds-primes-panel h3 { margin: 0; }
-.ds-primes-line { margin: 14px 0 0; font-size: 17px; line-height: 1.55; color: #c4c8ce; max-width: 46ch; }
+.ds-primes-line { margin: 14px 0 0; font-size: 17px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 52ch; text-wrap: pretty; }
+.ds-primes-line > span { color: var(--ds-fg); }
 .ds-primes-btn { margin-top: 24px; }
 .ds-primes-label { display: block; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-primes-value { display: block; margin-top: 6px; font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; color: var(--ds-fg); }
-.ds-primes-id { display: block; margin-top: 8px; font-size: 12.5px; color: var(--ds-fg-muted); }
-/* brief: heading and button on top, three proof columns between hairlines below. */
-.ds-primes-top { display: grid; gap: 0; }
-.ds-primes-cols { list-style: none; margin: 28px 0 0; padding: 0; display: grid; border-top: 1px solid rgb(255 255 255 / 0.08); }
-.ds-primes-cols li { padding: 18px 0; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
-.ds-primes-cols li:last-child { border-bottom: 0; padding-bottom: 0; }
-/* sheet: the copy left, the proof as ledger rows right. */
-.ds-primes-sheet { margin: 28px 0 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
-.ds-primes-sheet > div { display: grid; gap: 4px; padding: 16px 0 17px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
+.ds-primes-value { display: block; margin-top: 4px; font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ds-fg); }
+.ds-primes-id { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ds-fg-muted); }
+
+/* split */
+.ds-primes-ask { display: grid; align-content: space-between; gap: 20px; }
+.ds-primes-ask .ds-primes-btn { margin-top: 0; justify-self: start; }
+.ds-primes-proof { margin-top: 28px; }
+.ds-primes-proof .ds-primes-line { margin-top: 0; }
+.ds-primes-sheet { margin: 24px 0 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
+.ds-primes-sheet > div { display: grid; gap: 4px; padding: 15px 0 16px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
 .ds-primes-sheet > div:last-child { border-bottom: 0; padding-bottom: 0; }
 .ds-primes-sheet dt { font-size: 13px; color: var(--ds-fg-faint); }
 .ds-primes-sheet dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
-/* key: the copy left, three identifiers set large like the ledger's key row. */
-.ds-primes-key { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 22px; }
-.ds-primes-key li { padding-top: 14px; border-top: 1px solid rgb(255 255 255 / 0.1); }
-.ds-primes-figure { display: block; margin-bottom: 10px; font-size: clamp(30px, 3vw, 40px); line-height: 1; letter-spacing: -0.03em; color: var(--ds-fg); font-variant-numeric: tabular-nums; }
-.ds-primes-caption { display: block; margin-top: 4px; font-size: 14.5px; line-height: 1.45; color: #c4c8ce; }
+
+/* diagram */
+.ds-primes-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
+.ds-primes-list li { padding: 13px 0 14px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
+.ds-primes-flow { position: relative; display: grid; justify-items: center; margin: 32px 0 0; padding: 28px 16px; border-radius: 4px; background-color: rgb(255 255 255 / 0.015); background-image: radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px); background-size: 16px 16px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+.ds-flow-node { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 16px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12); }
+.ds-flow-node .ds-data { font-size: 12.5px; color: var(--ds-fg); }
+.ds-flow-node > span:last-child { font-size: 13px; color: var(--ds-fg-muted); max-width: 30ch; }
+.ds-flow-ares { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18), inset 0 1px 0 rgb(255 255 255 / 0.18); }
+.ds-flow-line { display: block; width: 1px; height: 28px; background: var(--ds-rule-strong); transform-origin: top; }
+.ds-flow-fork { height: 20px; }
+.ds-flow-posts { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; padding-top: 20px; }
+.ds-flow-posts::before { content: ''; position: absolute; top: 0; left: 16.66%; right: 16.66%; height: 1px; background: var(--ds-rule-strong); transform-origin: center; }
+.ds-flow-posts span { position: relative; display: block; padding: 10px 8px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
+.ds-flow-posts span::before { content: ''; position: absolute; left: 50%; top: -20px; width: 1px; height: 20px; background: var(--ds-rule-strong); }
+
+/* vignettes */
+.ds-primes-top { display: grid; gap: 0; }
+.ds-primes-vigs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 12px; }
+.ds-primes-vigs li { padding: 14px 14px 18px; border-radius: 4px; background: linear-gradient(180deg, #14161a 0%, #0f1013 100%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07); }
+.ds-primes-vigs h4 { margin: 16px 0 0; font-family: var(--ds-text); font-size: 15px; font-weight: 600; color: var(--ds-fg); }
+.ds-primes-vigs p { margin: 4px 0 0; font-size: 14px; line-height: 1.45; color: var(--ds-fg-muted); }
+.ds-vig { display: grid; align-content: center; min-height: 112px; padding: 14px; border-radius: 4px; background: #0a0b0d; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+.ds-vig-ids { gap: 8px; }
+.ds-vig-ids > span { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 10px; border-radius: 2px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07); }
+.ds-vig-ids b { font-weight: 500; font-size: 12px; color: var(--ds-fg-faint); }
+.ds-vig-ids .ds-data { font-size: 12.5px; color: var(--ds-fg); }
+.ds-vig-bar { display: block; height: 6px; border-radius: 2px; background: rgb(255 255 255 / 0.06); overflow: hidden; }
+.ds-vig-bar span { display: block; height: 100%; width: 50%; background: var(--ds-fg); transform-origin: left; }
+.ds-vig-years { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; color: var(--ds-fg-muted); }
+.ds-vig-figure .ds-data { font-size: 48px; line-height: 1; letter-spacing: -0.04em; color: var(--ds-fg); }
+
 @media (min-width: 768px) {
-  .ds-primes-panel { padding: 40px 40px 38px; }
-  .ds-primes-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .ds-primes-cols li { padding: 22px 24px 0; border-bottom: 0; border-left: 1px solid rgb(255 255 255 / 0.08); }
-  .ds-primes-cols li:first-child { padding-left: 0; border-left: 0; }
-  .ds-primes-key { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .ds-primes-panel { padding: 40px; }
+  .ds-primes-vigs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 }
 @media (min-width: 1024px) {
+  .ds-primes-panel[data-form='split'], .ds-primes-panel[data-form='diagram'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .ds-primes-panel[data-form='split'] .ds-primes-ask { grid-column: 1 / span 4; padding-right: 24px; }
+  .ds-primes-panel[data-form='split'] .ds-primes-proof { grid-column: 5 / span 8; margin-top: 0; padding-left: 40px; border-left: 1px solid rgb(255 255 255 / 0.08); }
+  .ds-primes-panel[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 6; }
+  .ds-primes-panel[data-form='diagram'] .ds-primes-flow { grid-column: 8 / span 5; margin-top: 0; align-self: center; }
   .ds-primes-top { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 48px; }
   .ds-primes-top .ds-primes-btn { margin-top: 0; }
-  .ds-primes-panel[data-form='sheet'], .ds-primes-panel[data-form='key'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-  .ds-primes-panel[data-form='sheet'] .ds-primes-copy, .ds-primes-panel[data-form='key'] .ds-primes-copy { grid-column: 1 / span 5; }
-  .ds-primes-sheet { grid-column: 7 / span 6; margin-top: 0; }
-  .ds-primes-key { grid-column: 7 / span 6; margin-top: 0; grid-template-columns: 1fr; gap: 18px; }
 }
-/* One moment (Emil): the panel settles 24px into place as it enters, tied to scroll; it is
-   already visible (transform only), and static under reduced motion. */
+/* Motion (Emil): one moment per form, tied to scroll, from an already-visible default; all
+   static under reduced motion. The panel settles 24px; the diagram's lines draw down to the
+   posts; the 2025 to 2027 bar fills to where the term stands. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .ds-flow-line, .ds-flow-posts span::before { animation: ds-flow-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
+    .ds-flow-posts::before { animation: ds-flow-span linear both; animation-timeline: view(); animation-range: entry 25% cover 45%; }
+    .ds-vig-bar span { animation: ds-vig-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 50%; }
   }
 }
 @keyframes ds-primes-settle { from { transform: translateY(24px); } to { transform: none; } }
+@keyframes ds-flow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes ds-flow-span { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ds-vig-fill { from { transform: scaleX(0.15); } to { transform: scaleX(1); } }
 .ds-coverage { padding-top: var(--ds-beat); }
 .ds-coverage-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {

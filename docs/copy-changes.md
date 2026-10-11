@@ -834,3 +834,4 @@ Not applied (owner): Capability reason 01 "a military installation"; stat-tile n
 
 Home "For prime contractors." is now a contained panel with three proof points and a solid button (three forms, `?prime=sheet|brief|key`, sheet the default). About shows the founder block live ("Why Ares exists.", placeholder words and portrait).
 
+Prime panel and founder block, second pass after Slash, Flora, and Resend (2026-10-10): prime forms `?prime=split|diagram|vignettes` (split default); founder forms `?founder=letter|note` (letter default). The prime line is now "A woman-owned subcontractor for Front Range work. Restricted-area escorts, access control officers, and relief, overflow, and surge coverage under your contract."
