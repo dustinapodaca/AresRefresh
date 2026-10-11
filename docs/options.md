@@ -28,6 +28,15 @@ Last checked against the code: 2026-10-11, branch `audit`.
 
 ## Galleries
 
-Local review pages in `.playwright-mcp/gallery/` (gitignored): `hero-options.html`,
-`round3-options.html`, `round3b-options.html`, `group2-options.html`, and others. New rounds
-get a new file; build them with the client-options skill's `options-gallery.mjs`.
+**The running gallery:** `docs/options-gallery.json` builds
+`.playwright-mcp/gallery/all-options.html` (gitignored), every option above at 1440 and 390
+with its copy and an "Open live" link. Add each new option to it in the same commit as the
+code, then re-run (dev server up):
+
+```bash
+node .claude/skills/client-options/scripts/options-gallery.mjs docs/options-gallery.json
+```
+
+Older one-round galleries in `.playwright-mcp/gallery/` stay as the record:
+`hero-options.html`, `round3-options.html`, `round3b-options.html`, `group2-options.html`,
+and others.

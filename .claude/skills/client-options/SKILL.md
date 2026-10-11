@@ -59,23 +59,29 @@ const opt = OPTIONS[(asked && asked in OPTIONS ? asked : '<default>') as keyof t
 
 ## The gallery (what the owner looks at)
 
-With the dev server up (`npm run dev`, :5173), write a spec in
-`.playwright-mcp/gallery/specs/<round>.json` (gitignored) and run:
+**One running gallery: `docs/options-gallery.json` -> `.playwright-mcp/gallery/all-options.html`.**
+The owner keeps adding to it and shows it to Deidre locally, so every live option belongs
+in it (owner, 2026-10-11). The spec is tracked in git; the HTML and screenshots are not.
+With the dev server up (`npm run dev`, :5173):
 
 ```bash
-node .claude/skills/client-options/scripts/options-gallery.mjs .playwright-mcp/gallery/specs/<round>.json
-open .playwright-mcp/gallery/<round>.html
+node .claude/skills/client-options/scripts/options-gallery.mjs docs/options-gallery.json
+open .playwright-mcp/gallery/all-options.html
 ```
+
+Keep the spec in step with `docs/options.md`, in the same commit as the code change:
+- **New option or new switch:** add its entry (or a new group) with its copy and a
+  one-line note. A whole-page preview is a group with its route as `page` and any unused
+  `param` (see the `/home-next` group).
+- **Default changes:** move `"tag": "default"` and update the note (who, date).
+- **Options removed:** delete their entries. Re-run the script after every change.
 
 The spec format is in the script's header. Each option gets a 1440 and a 390 capture with
 reduced motion (scroll effects at rest), its copy, a one-line note on how it differs, and an
 "Open live" link. Use `selector` to frame one section (e.g. `.ds-primes-panel`). A selector
-that isn't on the page stops the run, so check class names in the component first. Mark the
-default or recommended option with `"tag"`. Older galleries (`hero-options.html`,
-`round3-options.html` ...) stay as the record; don't overwrite them, start a new name per round.
-
-To share outside this machine, the gallery is a local file. Offer to publish it as a
-private artifact if the owner wants to send it to Deidre.
+that isn't on the page stops the run, so check class names in the component first. Hero
+copy in the spec has no closing period, like the page. Older round galleries
+(`hero-options.html`, `round3-options.html` ...) stay as the record; don't overwrite them.
 
 ## When a choice is made
 
