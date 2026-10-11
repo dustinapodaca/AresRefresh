@@ -620,10 +620,22 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (#7cb85f) for active and available, amber (#f2b84b) for on request, each with a soft
   halo and one pulse outward when the section is first seen. These are the page's only
   functional colors.
-- **Credentials ("Certifications and codes."):** seven marks on hairlines in a fixed 48px logo slot (white
-  silhouettes, including the horizontal SBA WOSB mark `cert-sba-wosb.webp`; the GSA plate in its own colors), each with its
-  number where one is published; then the full code listing as a two-column ledger.
-  Phones: the listing folds behind a disclosure button in its h3, with the entry count.
+- **Past performance (rail 03, owner 2026-10-11):** "Three current contracts and five completed
+  since 2021." as ledger rows (scope, where, mono term): the Space Force base subcontract, armed
+  multi-site Denver metro, retail Pueblo, and five completed armed contracts in Colorado
+  (2021 to 2025). Clients never named (the dispensaries never mentioned).
+- **Credentials ("Certifications and codes.", owner 2026-10-11, from the copy audit):** one
+  grouped ledger, each identifier once: Contract vehicle (the square GSA mark
+  `cert-gsa-square`, in its own colors), Registration (SAM status with the footer's green
+  light, UEI, CAGE, DUNS, NAICS, PSC), Certifications (SBA WOSB, WBENC, Denver M/WBE and SBE,
+  the two Colorado marks; no separate SAM-registered small business row), Licenses and service
+  area. Each group opens with its name in the `title` style on a hairline-strong rule; rows on
+  hairlines with the mark (white silhouette) in an 88px slot, label, mono value, faint note.
+  Phones: mark, label, and value on one line (value right), the note beneath; not folded.
+  The earlier marks-then-listing layout stays at `?creds=marks`.
+- **Voice (owner 2026-10-11, copy audit):** this page, like the PDF, speaks as Ares in formal
+  third person ("Ares has…", "How to buy from Ares."); the rest of the site says "we".
+  The first-person lines stay at `?voice=first`.
 - **Download (the close):** the PDF thumbnail beside "Take this capability statement
   with you.", Download, Open in a new tab, quote, and phone, over the closing rust light.
 

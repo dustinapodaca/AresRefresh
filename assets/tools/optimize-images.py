@@ -71,7 +71,7 @@ LOGO_HEIGHT = 128
 LOGOS = [
     'cert-gsa-footer.png', 'cert-sba-footer.png', 'cert-women-owned.png', 'cert-wbenc.png',
     'gsa-contract-holder.png', 'cert-denver-edo.webp', 'cert-sba-wosb.webp',
-    'cert-co-diverse.webp', 'cert-co-small.webp',
+    'cert-co-diverse.webp', 'cert-co-small.webp', 'cert-gsa-square.png',
 ]
 
 

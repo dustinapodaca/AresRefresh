@@ -841,3 +841,14 @@ Owner picks (2026-10-10): prime panel Diagram, founder Letter (story a tad small
 One panel surface everywhere (owner, 2026-10-10): the prime panel's light from above and top line on the Capability cards and GSA block, the Services cards, and the quote form; the teaming diagram on /teaming.
 
 Design (owner, 2026-10-10): the canvas is true black (#000); every card shares one surface (flat #060708, a thin edge lit brightest at the top), replacing the light-from-above panel; cards and glass are now in DESIGN.md as system parts, not exceptions. The Resend-style Home is saved as an option: git tag home-resend-option, live at /home-next.
+
+## Capability Statement, copy audit picks (owner, 2026-10-11)
+
+| Where | Was | Now |
+|---|---|---|
+| Past performance lead | "Three current contracts. Clients are not named here; references are available on request." | "Three current contracts and five completed since 2021. Clients are not named here; references are available on request." |
+| Past performance rows | Space Force base (2025 to 2027); armed multi-site, Denver metro (since 2022); retail, Pueblo (two years, ongoing) | Same three, plus "Five completed armed security contracts", Colorado, 2021 to 2025 (owner: all armed, all dispensaries, never said on the site) |
+| Certifications and codes | Seven marks with numbers, then a 13-entry code listing (GSA contract and WOSB shown twice) | One grouped table, 16 rows, each identifier once; "SBA small business, SAM-registered" dropped (the WOSB row covers it, owner) |
+| Voice | "We have hands-on experience…", "We write the SOPs…", "Rated 4.8 by our own employees", "Our employees rate Ares…", "How to buy from us.", "Contact us…", "our SAM.gov registration", "our veteran NRA firearms instructor", "from our roster", "a visitor log you can audit", "your post orders" (twice), "trained on your post" | "Ares has…", "Ares writes the SOPs…", "Rated 4.8 by its own employees", "Ares employees rate the company…", "How to buy from Ares.", "Contact Ares…", "the Ares SAM.gov registration", "the Ares veteran NRA firearms instructor", "from the Ares relief roster", "a visitor log the client can audit", "the site's post orders" / "the prime's post orders", "trained on the post" |
+
+The earlier versions stay at `/capability-statement?past=current`, `?creds=marks`, `?voice=first`.

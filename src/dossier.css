@@ -3960,29 +3960,35 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 
 
-/* Capability Statement ?creds=table (copy audit option): certifications and codes as one
-   grouped ledger, each identifier once, the mark in a slot at the start of its row. */
+/* Capability Statement credentials (copy audit, owner 2026-10-11): certifications and codes
+   as one grouped ledger, each identifier once, the mark in a slot at the start of its row.
+   Phones: the mark, the label, and the value on one line, the note beneath. */
 .ds-cs-credtable { display: grid; gap: var(--ds-beat-tight); margin-top: var(--ds-beat-tight); }
 .ds-cs-credtable section > .ds-title { margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--ds-rule-strong); }
 .ds-cs-credtable dl { margin: 0; }
 .ds-cs-credtable dl > div {
-  display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 16px; row-gap: 4px;
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; column-gap: 14px; row-gap: 4px;
   align-items: center; padding: 14px 0; border-bottom: 1px solid var(--ds-rule);
 }
+.ds-cs-credtable dl > div:not([data-mark]) { grid-template-columns: minmax(0, 1fr) auto; }
+.ds-cs-credtable dl > div:not([data-mark]) .ds-cs-ct-mark { display: none; }
 .ds-cs-credtable dt { font-size: 15px; line-height: 1.35; color: var(--ds-fg); }
-.ds-cs-credtable dd { grid-column: 2; margin: 0; display: grid; gap: 3px; }
-.ds-cs-credtable .ds-data { font-size: 16px; }
-.ds-cs-ct-mark { grid-row: span 2; display: flex; align-items: center; min-height: 28px; }
-.ds-cs-ct-mark img { display: block; max-height: 28px; max-width: 64px; width: auto; height: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.85; }
+.ds-cs-credtable dd { display: contents; }
+.ds-cs-credtable dd > :first-child { grid-row: 1; grid-column: -2; justify-self: end; text-align: right; display: inline-flex; align-items: center; gap: 8px; }
+.ds-cs-credtable dd > .ds-cs-code-note { grid-row: 2; grid-column: 1 / -1; }
+.ds-cs-credtable dl > div[data-mark] dd > .ds-cs-code-note { grid-column: 2 / -1; }
+.ds-cs-credtable .ds-data { font-size: 15px; }
+.ds-cs-credtable .ds-cs-code-v { font-size: 15px; }
+.ds-cs-ct-mark { display: flex; align-items: center; min-height: 28px; }
+.ds-cs-ct-mark img { display: block; max-height: 26px; max-width: 56px; width: auto; height: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.85; }
 .ds-cs-ct-mark img[data-color] { filter: none; opacity: 1; }
-@media (max-width: 767px) {
-  .ds-cs-credtable dl > div:not([data-mark]) { grid-template-columns: minmax(0, 1fr); }
-  .ds-cs-credtable dl > div:not([data-mark]) .ds-cs-ct-mark { display: none; }
-  .ds-cs-credtable dl > div:not([data-mark]) dd { grid-column: 1; }
-}
 @media (min-width: 768px) {
-  .ds-cs-credtable dl > div { grid-template-columns: 88px minmax(0, 4fr) minmax(0, 6fr); column-gap: 24px; min-height: 60px; }
-  .ds-cs-ct-mark { grid-row: auto; }
+  .ds-cs-credtable dl > div,
+  .ds-cs-credtable dl > div:not([data-mark]) { grid-template-columns: 88px minmax(0, 4fr) minmax(0, 2fr) minmax(0, 4fr); column-gap: 24px; min-height: 60px; }
+  .ds-cs-credtable dl > div:not([data-mark]) .ds-cs-ct-mark { display: flex; }
   .ds-cs-ct-mark img { max-height: 32px; max-width: 88px; }
-  .ds-cs-credtable dd { grid-column: 3; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: 24px; align-items: baseline; }
+  .ds-cs-credtable dd > :first-child { grid-column: 3; justify-self: start; text-align: left; }
+  .ds-cs-credtable dd > .ds-cs-code-note,
+  .ds-cs-credtable dl > div[data-mark] dd > .ds-cs-code-note { grid-row: 1; grid-column: 4; }
+  .ds-cs-credtable .ds-data, .ds-cs-credtable .ds-cs-code-v { font-size: 16px; }
 }

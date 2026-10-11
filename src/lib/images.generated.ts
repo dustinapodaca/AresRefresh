@@ -208,5 +208,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "src": "/images/opt/cert-co-small.f6dcfe5a.webp",
     "width": 371,
     "height": 128
+  },
+  "/images/cert-gsa-square.png": {
+    "src": "/images/opt/cert-gsa-square.e1d756d4.webp",
+    "width": 129,
+    "height": 128
   }
 };

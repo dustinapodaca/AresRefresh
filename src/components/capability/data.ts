@@ -12,25 +12,25 @@ export const CAP_MARKS: readonly Mark[] = [
   { id: 'download', n: '06', label: 'Download' },
 ];
 
-// Past performance (owner, 2026-10-10): three current contracts, clients unnamed (no
-// evaluator names or numbers here; those stay in proposals). Never name the base or the
-// clients; one is a cannabis client, and the site carries no cannabis references.
-export const PAST_PERFORMANCE: { scope: string; where: string; term: string }[] = [
-  { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027' },
-  { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals' },
-  { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing' },
-];
-
-// The copy audit's version (round 2, for the owner to compare at
-// /capability-statement?past=five): the five referenced contracts and their combined value.
-// The three current contracts above are the default (owner, 2026-10-10).
-export const PAST_FIVE = {
-  lead: 'Five referenced contracts, worth more than $2.1 million combined. Clients are not named here; references are available on request.',
+// Past performance (owner, 2026-10-11): three current contracts and five completed, clients
+// unnamed (no evaluator names or numbers here; those stay in proposals). Never name the base
+// or the clients; the completed contracts and the Denver client are cannabis dispensaries,
+// and the site carries no cannabis references. The Pueblo retail client is not named until
+// Deidre approves it.
+export const PAST_PERFORMANCE = {
+  lead: 'Three current contracts and five completed since 2021. Clients are not named here; references are available on request.',
   rows: [
-    PAST_PERFORMANCE[0],
-    PAST_PERFORMANCE[1],
-    { scope: 'Three completed armed security contracts', where: 'Denver metro', term: '2021 to 2024' },
+    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027' },
+    { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals' },
+    { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing' },
+    { scope: 'Five completed armed security contracts', where: 'Colorado', term: '2021 to 2025' },
   ],
+};
+
+// What was live before (owner, 2026-10-10), for comparison at /capability-statement?past=current.
+export const PAST_CURRENT = {
+  lead: 'Three current contracts. Clients are not named here; references are available on request.',
+  rows: PAST_PERFORMANCE.rows.slice(0, 3),
 };
 
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
@@ -211,21 +211,22 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
   { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
 ];
 
-// Certifications and codes as one table, each identifier once (copy audit round 2, for the
-// owner to compare at /capability-statement?creds=table). The marks above and the code
-// listing stay the default.
-export type CredRow = { label: string; value: string; note?: string; mono?: boolean; mark?: Cert };
+// Certifications and codes as one table, each identifier once (copy audit round 2; the
+// owner chose it, 2026-10-11). The marks and code listing above stay at
+// /capability-statement?creds=marks. SAM-registered "Small business" was dropped: the WOSB
+// certification already says it (owner).
+export type CredRow = { label: string; value: string; note?: string; mono?: boolean; live?: boolean; mark?: Cert };
 const mark = (src: string) => CERTS.find((c) => c.src === src);
 
 export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
   {
     name: 'Contract vehicle',
-    rows: [{ label: 'GSA Multiple Award Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true, mark: mark('/images/cert-gsa-footer.png') }],
+    rows: [{ label: 'GSA Multiple Award Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true, mark: { src: '/images/cert-gsa-square.png', alt: 'GSA', name: 'GSA', color: true } }],
   },
   {
     name: 'Registration',
     rows: [
-      { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}` },
+      { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}`, live: true },
       { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true },
       { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true },
       { label: 'DUNS number', value: '10-244-9635', note: 'Legacy. UEI is the SAM identifier going forward', mono: true },
@@ -237,7 +238,6 @@ export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
     name: 'Certifications',
     rows: [
       { label: 'Woman-Owned Small Business', value: 'WOSB250470', note: 'SBA certified. Eligible for WOSB set-aside awards under NAICS 561612', mono: true, mark: mark('/images/cert-sba-wosb.webp') },
-      { label: 'Small business', value: 'Small Business', note: 'SAM-registered', mark: mark('/images/cert-sba-footer.png') },
       { label: "WBENC Women's Business Enterprise", value: 'WBE2303571', mono: true, mark: mark('/images/cert-wbenc.png') },
       { label: 'Denver M/WBE · SBE certified', value: '21353671', note: 'B2G vendor number', mono: true, mark: mark('/images/cert-denver-edo.webp') },
       { label: 'Colorado Verified Diverse Business', value: 'Verified', mark: mark('/images/cert-co-diverse.webp') },
@@ -256,9 +256,9 @@ export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
 ];
 
 // Formal third person (copy audit round 2: the Capability Statement and the PDF speak as
-// Ares, not "we"), for the owner to compare at /capability-statement?voice=third. Each
-// line on the page that says we, our, us, or you, with its third-person version. The
-// first-person page is the default.
+// Ares, not "we"; the owner chose it, 2026-10-11). Each line on the page that says we, our,
+// us, or you, with its third-person version. The first-person lines stay at
+// /capability-statement?voice=first. New copy on this page is written in third person.
 export const THIRD_PERSON: Record<string, string> = {
   'Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.':
     'Six services, each staffed by officers trained on the post before their first shift. Open one to see what it includes.',

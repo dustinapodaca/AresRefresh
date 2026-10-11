@@ -160,65 +160,65 @@
     },
     {
       "heading": "Capability Statement: Past performance",
-      "intro": "Copy audit round 2 asked for the five referenced contracts and their combined value. The owner chose three current contracts on 2026-10-10.",
+      "intro": "Owner's choice (2026-10-11): three current contracts and five completed since 2021. Clients stay unnamed.",
       "page": "/capability-statement",
       "param": "past",
       "selector": ".ds-cs-past",
       "options": [
         {
-          "value": "current",
-          "label": "Three current",
+          "value": "record",
+          "label": "Current and completed",
           "tag": "default",
-          "copy": "<b>Three current contracts.</b> Clients are not named here; references are available on request.<br>Restricted-area escort and access control, Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Retail security, Pueblo, two years, ongoing",
-          "note": "Owner's version (2026-10-10). Includes the Pueblo retail contract."
+          "copy": "<b>Three current contracts and five completed since 2021.</b> Clients are not named here; references are available on request.<br>Restricted-area escort and access control, Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Retail security, Pueblo, two years, ongoing · Five completed armed security contracts, Colorado, 2021 to 2025",
+          "note": "Owner, 2026-10-11."
         },
         {
-          "value": "five",
-          "label": "Five referenced",
-          "copy": "<b>Five referenced contracts, worth more than $2.1 million combined.</b> Clients are not named here; references are available on request.<br>Space Force base, 2025 to 2027 · Armed multi-site security, Denver metro, since 2022 · Three completed armed security contracts, Denver metro, 2021 to 2024",
-          "note": "The audit's version: adds the dollar figure and the three completed contracts; the Pueblo retail contract is not among the five."
+          "value": "current",
+          "label": "Before (three current)",
+          "copy": "<b>Three current contracts.</b> Clients are not named here; references are available on request.",
+          "note": "What was live 2026-10-10 to 2026-10-11."
         }
       ]
     },
     {
       "heading": "Capability Statement: Certifications and codes",
-      "intro": "Copy audit round 2: merge the marks and the full code listing into one table so each identifier appears once (the GSA contract and WOSB now show twice).",
+      "intro": "Owner's choice (2026-10-11): one table, each identifier once. The square GSA mark; no separate SAM-registered small business row (the WOSB row says it); the green light on SAM status; on phones the value sits on the label's line.",
       "page": "/capability-statement",
       "param": "creds",
       "selector": ".ds-cs-creds",
       "options": [
         {
-          "value": "marks",
-          "label": "Marks, then codes",
-          "tag": "default",
-          "note": "Seven marks with their numbers, then the 13-entry code listing in two columns (folded on phones)."
-        },
-        {
           "value": "table",
           "label": "One table",
-          "note": "One grouped ledger: Contract vehicle, Registration, Certifications, Licenses and service area. 17 rows, each identifier once, the mark at the start of its row. Not folded on phones."
+          "tag": "default",
+          "note": "Contract vehicle, Registration, Certifications, Licenses and service area. 16 rows."
+        },
+        {
+          "value": "marks",
+          "label": "Before (marks, then codes)",
+          "note": "Seven marks with their numbers, then the 13-entry code listing (folded on phones)."
         }
       ]
     },
     {
       "heading": "Capability Statement: Voice",
-      "intro": "Copy audit round 2: the Capability Statement and the PDF speak as Ares, in formal third person. Twelve lines change across the page; the screenshot shows Why Ares.",
+      "intro": "Owner's choice (2026-10-11): the Capability Statement speaks as Ares in formal third person. Twelve lines change; the screenshot shows Why Ares.",
       "page": "/capability-statement",
       "param": "voice",
       "selector": ".ds-cs-why",
       "options": [
         {
-          "value": "current",
-          "label": "We / our",
-          "tag": "default",
-          "copy": "We have hands-on experience running access control for restricted areas... We write the SOPs for these posts and train every officer on them.<br>Rated 4.8 by our own employees · Our employees rate Ares 4.8 out of 5 on Indeed...<br>How to buy from us. · Contact us to confirm scope and pricing... · All data matches our SAM.gov registration.<br>Trained by our veteran NRA firearms instructor · covered from our roster · a visitor log you can audit · checked against your post orders · officers under your post orders · trained on your post",
-          "note": "First person, like the rest of the site."
-        },
-        {
           "value": "third",
           "label": "Third person",
           "copy": "Ares has hands-on experience running access control for restricted areas... Ares writes the SOPs for these posts and trains every officer on them.<br>Rated 4.8 by its own employees · Ares employees rate the company 4.8 out of 5 on Indeed...<br>How to buy from Ares. · Contact Ares to confirm scope and pricing... · All data matches the Ares SAM.gov registration.<br>Trained by the Ares veteran NRA firearms instructor · covered from the Ares relief roster · a visitor log the client can audit · checked against the site’s post orders · officers under the prime’s post orders · trained on the post",
-          "note": "Matches how a printed capability statement reads. Only this page changes; the rest of the site keeps \"we\"."
+          "note": "Owner, 2026-10-11. Only this page; the rest of the site keeps \"we\".",
+          "tag": "default"
+        },
+        {
+          "value": "first",
+          "label": "Before (we / our)",
+          "copy": "We have hands-on experience running access control for restricted areas... We write the SOPs for these posts and train every officer on them.<br>Rated 4.8 by our own employees · Our employees rate Ares 4.8 out of 5 on Indeed...<br>How to buy from us. · Contact us to confirm scope and pricing... · All data matches our SAM.gov registration.<br>Trained by our veteran NRA firearms instructor · covered from our roster · a visitor log you can audit · checked against your post orders · officers under your post orders · trained on your post",
+          "note": "First person, like the rest of the site."
         }
       ]
     },

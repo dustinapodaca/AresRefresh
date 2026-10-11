@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
-import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_FIVE, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
+import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_CURRENT, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
 
@@ -26,14 +26,15 @@ function usePhone() {
   return phone;
 }
 
-// Copy audit options, for the owner to compare (see docs/options.md): ?past=five,
-// ?creds=table, ?voice=third. The current page is the default for each.
+// Copy audit choices (owner, 2026-10-11): past performance with the completed contracts,
+// one credentials table, formal third person. What was live before stays at ?past=current,
+// ?creds=marks, ?voice=first (see docs/options.md).
 function useCsOptions() {
   const [params] = useSearchParams();
-  const third = params.get('voice') === 'third';
+  const third = params.get('voice') !== 'first';
   return {
-    past: params.get('past') === 'five' ? 'five' : 'current',
-    creds: params.get('creds') === 'table' ? 'table' : 'marks',
+    past: params.get('past') === 'current' ? 'current' : 'record',
+    creds: params.get('creds') === 'marks' ? 'marks' : 'table',
     say: (line: string) => (third ? THIRD_PERSON[line] ?? line : line),
   };
 }
@@ -216,21 +217,21 @@ export function Why() {
   );
 }
 
-// 03 Past performance (owner, 2026-10-10): current contracts as ledger rows, clients
-// unnamed.
+// 03 Past performance (owner, 2026-10-11): current and completed contracts as ledger rows,
+// clients unnamed.
 export function Past() {
   const { past } = useCsOptions();
-  const rows = past === 'five' ? PAST_FIVE.rows : PAST_PERFORMANCE;
+  const record = past === 'current' ? PAST_CURRENT : PAST_PERFORMANCE;
   return (
     <section id="past" className="ds-cs-past" aria-labelledby="past-title">
       <div className="ds-cs-head">
         <h2 id="past-title" className="ds-display-lg">
           Past performance.
         </h2>
-        <p className="ds-lead">{past === 'five' ? PAST_FIVE.lead : 'Three current contracts. Clients are not named here; references are available on request.'}</p>
+        <p className="ds-lead">{record.lead}</p>
       </div>
       <ol className="ds-cs-past-list">
-        {rows.map((p) => (
+        {record.rows.map((p) => (
           <li key={p.scope}>
             <h3>{p.scope}</h3>
             <p className="ds-cs-past-where">{p.where}</p>
@@ -377,8 +378,8 @@ export function Credentials() {
   );
 }
 
-// ?creds=table: certifications and codes as one ledger, grouped, each identifier once, the
-// mark (where there is one) in a slot at the start of its row.
+// Certifications and codes as one ledger, grouped, each identifier once, the mark (where
+// there is one) in a slot at the start of its row. SAM status carries the footer's green light.
 function CredTable() {
   return (
     <div className="ds-cs-credtable">
@@ -393,7 +394,10 @@ function CredTable() {
                 </span>
                 <dt>{r.label}</dt>
                 <dd>
-                  <span className={r.mono ? 'ds-data' : 'ds-cs-code-v'}>{r.value}</span>
+                  <span className={r.mono ? 'ds-data' : 'ds-cs-code-v'}>
+                    {r.live && <i className="ds-ft-light" aria-hidden="true" />}
+                    {r.value}
+                  </span>
                   {r.note && <span className="ds-cs-code-note">{r.note}</span>}
                 </dd>
               </div>
