@@ -804,3 +804,5 @@ Then the owner chose all three (2026-10-10): the Services panel, visible breadcr
 - Teaming: in the Services panel's top row beside "All services and how a post starts", and as a quiet line in the phone menu.
 
 Colorado Springs paragraph: the ZIP code mention removed (owner, 2026-10-10).
+
+City questions "How soon can you start a post in Colorado Springs / Pueblo?": now "It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has..." (owner, 2026-10-10).

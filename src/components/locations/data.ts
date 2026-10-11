@@ -97,7 +97,8 @@ export const COLORADO_SPRINGS: LocationFile = {
     },
     {
       q: 'How soon can you start a post in Colorado Springs?',
-      a: 'It depends on the site and how many officers it needs. Our leadership is based in Colorado Springs, so we can walk the site quickly, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+      // Owner, 2026-10-10: what the start date depends on.
+      a: 'It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has. Our leadership is based in Colorado Springs, so we can walk the site quickly and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
     },
   ],
   sectors: [
@@ -194,7 +195,7 @@ export const PUEBLO: LocationFile = {
     },
     {
       q: 'How soon can you start a post in Pueblo?',
-      a: 'It depends on the site and how many officers it needs. We walk the site, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+      a: 'It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has. We walk the site, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
     },
   ],
   sectors: [
