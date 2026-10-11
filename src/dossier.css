@@ -382,7 +382,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-nav-panel ul { display: grid; justify-content: stretch; gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
 .ds-nav-panel li a { display: block; padding: 9px 0; border-bottom: 1px solid var(--ds-rule); font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
 .ds-nav-panel li a:hover { color: #fff; }
-.ds-nav-panel-all { grid-column: 1 / -1; justify-self: start; margin-top: 12px; font-size: 14px; }
+.ds-nav-panel-all { grid-column: 1 / -1; justify-self: start; margin: 4px 0 20px; font-size: 15px; font-weight: 500; }
 .ds-header-call { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; color: #fff; }
 @media (min-width: 1024px) { .ds-header-call { display: none; } }
 

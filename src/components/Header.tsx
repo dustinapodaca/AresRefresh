@@ -151,6 +151,11 @@ export default function Header() {
                     </svg>
                   </button>
                   <div id="nav-services" className="ds-nav-panel" hidden={!panel}>
+                    {/* First, with room around it (owner, 2026-10-10). */}
+                    <Link to="/services" className="ds-link ds-nav-panel-all">
+                      All services and how a post starts
+                      <Arrow size={14} />
+                    </Link>
                     <div>
                       <p className="ds-nav-panel-h">Services</p>
                       <ul>
@@ -167,10 +172,6 @@ export default function Header() {
                         ))}
                       </ul>
                     </div>
-                    <Link to="/services" className="ds-link ds-nav-panel-all">
-                      All services and how a post starts
-                      <Arrow size={14} />
-                    </Link>
                   </div>
                 </li>
               ) : (

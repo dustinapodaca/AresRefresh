@@ -772,8 +772,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
 - **Services panel** (desktop, owner 2026-10-10): a chevron beside Services (and hovering)
   opens a solid canvas panel (hairline-strong edge, 4px corners, 600px) under the bar with
-  the six services and the six industries in their fixed orders on hairline rows, and "All
-  services and how a post starts →". Closes on Escape, a click outside, or a page change.
+  first "All services and how a post starts →" (15px / 500, set apart with space above and
+  below; owner, 2026-10-10), then the six services and the six industries in their fixed
+  orders on hairline rows. Closes on Escape, a click outside, or a page change.
 - Mobile: the mark (38px; was 44px), the phone icon (a call link, 44px target), and a
   three-line menu icon that turns into an X. The menu is a
   solid canvas sheet over the whole screen (the bar's area included, a hairline where the
