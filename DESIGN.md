@@ -369,7 +369,10 @@ exception to "no card containers" and "no glass" for this section.
   assets/generated/values/).
 
 ### Home hero copy and the proof row (copy audit round 2, owner 2026-10-10)
-"- **Chosen: option A** "Security for sites where every entry counts." / "Armed and
+"- **Current default: B2** (owner, 2026-10-10): "A prepared officer on every post." / "From
+  restricted areas and data centers to offices and campuses: officers trained on your post
+  before the first shift." Two lines at every width. Before it: B (too long), then
+  **option A** "Security for sites where every entry counts." / "Armed and
   unarmed officers, access control, and restricted-area escorts along Colorado's Front Range,
   for government and critical sites as well as offices, retail, and campuses." (Owner,
   2026-10-10: no "military construction" up front; escorts are not the lead word and appear once in the hero;

@@ -808,3 +808,5 @@ Colorado Springs paragraph: the ZIP code mention removed (owner, 2026-10-10).
 City questions "How soon can you start a post in Colorado Springs / Pueblo?": now "It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has..." (owner, 2026-10-10).
 
 Denver gets the same "How soon can you start a post in Denver?" question (owner, 2026-10-10), so it has three.
+
+Home hero is now B2 (owner, 2026-10-10): "A prepared officer on every post." over B's line. B, B1, B3, B4, A, C, and the old hero stay at /?hero=.

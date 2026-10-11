@@ -41,8 +41,9 @@ type OptionKey = keyof typeof OPTIONS;
 export default function Hero() {
   const [params] = useSearchParams();
   const asked = params.get('hero');
-  // Trying B as the default (owner, 2026-10-10); A is at /?hero=a.
-  const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'b') as OptionKey];
+  // B2 is the default for now (owner, 2026-10-10: "A prepared officer on every post." over
+  // B's line); the other options stay at /?hero=.
+  const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'b2') as OptionKey];
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
       {/* The copper-glass tower (hero6.jpg), back on Home (owner, 2026-10-08; it was the
