@@ -14,11 +14,11 @@
   --ds-rust: #bc6f40;
   --ds-rust-deep: #8b4920;
   /* Cards (owner, 2026-10-10): flat black, a shade darker than the page, with a thin edge lit
-     brightest along the top like light on a glass edge, fading down the sides. */
+     from the top and the bottom like light on a glass edge, dimmest at the middle of the sides. */
   --ds-card: #060708;
   --ds-card-raised: #0d0e11; /* a card on a card: diagram nodes, an opened card */
-  --ds-card-edge: linear-gradient(180deg, rgb(255 255 255 / 0.2) 0%, rgb(255 255 255 / 0.08) 22%, rgb(255 255 255 / 0.05) 60%, rgb(255 255 255 / 0.04) 100%);
-  --ds-card-edge-hover: linear-gradient(180deg, rgb(255 255 255 / 0.3) 0%, rgb(255 255 255 / 0.12) 22%, rgb(255 255 255 / 0.08) 100%);
+  --ds-card-edge: linear-gradient(180deg, rgb(255 255 255 / 0.2) 0%, rgb(255 255 255 / 0.07) 22%, rgb(255 255 255 / 0.04) 50%, rgb(255 255 255 / 0.07) 78%, rgb(255 255 255 / 0.16) 100%);
+  --ds-card-edge-hover: linear-gradient(180deg, rgb(255 255 255 / 0.3) 0%, rgb(255 255 255 / 0.11) 22%, rgb(255 255 255 / 0.06) 50%, rgb(255 255 255 / 0.11) 78%, rgb(255 255 255 / 0.24) 100%);
 
   /* Typography from v10 (tag home-v10-mobbin-redesign): Inter Tight display, Inter text. */
   --ds-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
