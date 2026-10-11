@@ -786,3 +786,8 @@ Lead: "Restricted-area escorts, access control, and armed and unarmed officers..
 
 Then (owner, 2026-10-10: broader, not "military construction" up front): Home hero lead "...for government and critical sites as well as offices, retail, and campuses."; option B "From restricted areas and data centers to offices and campuses: ..."; 02 Industries lead "Six industries, from government facilities and critical sites to offices and campuses." Military construction stays where it is specific: the Construction card and page, and Teaming's builders line.
 
+## About traits and Home hero B (2026-10-10, owner)
+
+- About 03 People: "Rooted" (Backgrounds and perspectives that reflect the communities we protect) is now "Local" (People who live in the communities they protect); "Tempered" is now "Steady" (line kept). The initials no longer read ALERT (owner approved).
+- Home hero: option B is the default for now ("Security guards and escorts for Colorado's controlled sites."); A is at /?hero=a.
+

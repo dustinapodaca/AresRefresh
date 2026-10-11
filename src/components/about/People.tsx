@@ -1,8 +1,8 @@
 import { TRAITS } from './data';
 import { responsive } from '../../lib/responsive';
 
-// 03 People: the officer portrait (real Ares) beside the five traits we hire for (their
-// initials read ALERT), each set large with its line beneath.
+// 03 People: the officer portrait (real Ares) beside the five traits we hire for
+// (Approachable, Licensed, Experienced, Local, Steady), each set large with its line beneath.
 export default function People() {
   return (
     <section id="people" className="ds-ab-people" aria-labelledby="people-title">

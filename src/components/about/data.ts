@@ -54,14 +54,15 @@ export const FOR_PEOPLE: Commitment[] = [
   { name: 'Real support', line: 'A chain of command on every shift. When you call, someone answers.' },
 ];
 
-// Five traits whose initials read ALERT, in that order (owner, 2026-10-05; were Diverse,
-// Experienced, Composed, Cleared, Courteous; lines kept, two words trimmed).
+// Five traits (owner, 2026-10-05; were Diverse, Experienced, Composed, Cleared, Courteous).
+// Their initials read ALERT until the copy audit's plainer words (owner, 2026-10-10):
+// Rooted became Local, Tempered became Steady.
 export const TRAITS: Commitment[] = [
   { name: 'Approachable', line: 'People who treat clients and the public with respect.' },
   // Colorado has no statewide license; cities license security (was "state-licensed").
   { name: 'Licensed', line: 'Background-checked and licensed before they reach your post.' },
   { name: 'Experienced', line: 'Seasoned officers who have stood the hard posts before.' },
-  { name: 'Rooted', line: 'Backgrounds and perspectives that reflect the communities we protect.' },
-  { name: 'Tempered', line: 'Calm and clear when a situation turns.' },
+  { name: 'Local', line: 'People who live in the communities they protect.' },
+  { name: 'Steady', line: 'Calm and clear when a situation turns.' },
 ];
 

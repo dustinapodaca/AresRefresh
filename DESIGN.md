@@ -518,9 +518,10 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
 - **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
   line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
   underline (240ms), one list at a time.
-- **03 People:** the officer portrait (sticky on desktop) beside the five traits, whose
-  initials read ALERT (owner, 2026-10-05; a column of large initials was tried and
-  dropped as too much). Each word in Inter Tight 600 at 28 to 38px, full width, its line
+- **03 People:** the officer portrait (sticky on desktop) beside the five traits:
+  Approachable, Licensed, Experienced, Local, Steady (owner, 2026-10-10: the copy audit's
+  plainer words replaced Rooted and Tempered, so the initials no longer read ALERT; a column
+  of large initials was tried and dropped as too much, 2026-10-05). Each word in Inter Tight 600 at 28 to 38px, full width, its line
   beneath. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
 - **No close** (owner, 2026-10-06): the page ends on 03 People and hands straight to the
   footer. (04 Statement, the capability statement plate with its links, was removed; the

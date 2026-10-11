@@ -28,7 +28,7 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     questions moved to the armed and unarmed pages, and Government's "What we deliver"
     leads with escort. No clearance wording on either page (Careers only). The PDF
     capability statement still lists Emergency Response until it is regenerated.
-    4 done: the owner chose hero **A** and Industries **plates** (2026-10-10), the defaults.
+    4 done: the owner chose Industries **plates** and hero **A**, then asked to try **B** as the default (2026-10-10; A at `/?hero=a`).
     The other options stay in the code for the client (Deidre) to compare: `/?hero=current|b|c`
     and `/?industries=rows`; gallery `.playwright-mcp/gallery/hero-options.html` (scripts
     hero-opts.mjs, ind-opts.mjs). Home now runs Record, Industries (ending on "For prime
