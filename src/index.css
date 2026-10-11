@@ -18,7 +18,7 @@
 
   /* Dossier system (DESIGN.md, clean-slate redesign 2026-10-04). Separate names so
      pages not yet restyled keep the legacy Moonstone tokens above. */
-  --color-canvas: #0a0b0d;
+  --color-canvas: #000000;
   --color-fg: #eef0f2;
   --color-fg-muted: #9aa0a8;
   --color-fg-faint: #7d838c;

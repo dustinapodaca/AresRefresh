@@ -177,7 +177,7 @@ a.hn-caption { color: var(--hn-ink); text-decoration: underline; text-decoration
      into the footer's canvas, so there is no cut line or band. */
   background:
     radial-gradient(ellipse 44% 30% at 50% 58%, rgb(188 111 64 / 0.2), rgb(139 73 32 / 0.06) 55%, rgb(188 111 64 / 0) 100%),
-    linear-gradient(to bottom, #050506 70%, #0a0b0d 100%);
+    linear-gradient(to bottom, #050506 70%, #000000 100%);
 }
 .hn-close .hn-wrap { position: relative; z-index: 1; }
 .hn-display-close { font-size: clamp(40px, 5.6vw, 76px); }

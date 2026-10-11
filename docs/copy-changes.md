@@ -839,3 +839,5 @@ Prime panel and founder block, second pass after Slash, Flora, and Resend (2026-
 Owner picks (2026-10-10): prime panel Diagram, founder Letter (story a tad smaller, 20 to 26px); the Record cards take the prime panel's soft light from above.
 
 One panel surface everywhere (owner, 2026-10-10): the prime panel's light from above and top line on the Capability cards and GSA block, the Services cards, and the quote form; the teaming diagram on /teaming.
+
+Design (owner, 2026-10-10): the canvas is true black (#000); every card shares one surface (flat #060708, a thin edge lit brightest at the top), replacing the light-from-above panel; cards and glass are now in DESIGN.md as system parts, not exceptions. The Resend-style Home is saved as an option: git tag home-resend-option, live at /home-next.

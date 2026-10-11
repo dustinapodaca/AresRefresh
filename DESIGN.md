@@ -144,7 +144,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 `_archive/`, which is not a design reference.
 
 **Key Characteristics:**
-- One blue-black canvas from header to footer. No bands, no fills, no dividers.
+- One true-black canvas from header to footer. No bands, no fills, no dividers.
 - Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
 - A running document rail (01 Record to 06 Contact on Home) on desktop; a running head on mobile.
@@ -155,8 +155,8 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 
 A cool, nearly colorless palette with one warm light source.
 
-- **Canvas `#0a0b0d`** (blue-black) is the only page surface, everywhere, including the
-  header, the mobile menu, and the footer.
+- **Canvas `#000000`** (true black; owner, 2026-10-10, was #0a0b0d blue-black) is the only
+  page surface, everywhere, including the header, the mobile menu, and the footer.
 - **Ink `#eef0f2`** for headlines, values, and primary text.
 - **Ink muted `#9aa0a8`** for body copy, ledger labels, and secondary links (7.4:1).
 - **Ink faint `#7d838c`** for captions, rail marks at rest, and source notes. Never
@@ -273,17 +273,22 @@ sizes are unchanged.
   along its bottom edge. It appears once the first section reaches the top and is solid
   canvas, not glass.
 
-## One panel surface (owner, 2026-10-10)
+## Cards and glass (owner, 2026-10-10)
 
-Every contained panel shares the Home prime panel's surface: near-black (#0c0d10) with a soft
-white/4.5% light from above (a radial gradient at the top), a white/8% inset edge, and a
-white/12% line along the top edge, 4px corners. Used by the Home Record cards (over their
-frosted fill) and prime panel, the Capability Statement cards and its GSA MAS block, the
-Services industry cards (the top edge brightened; the light sits under the photo), and the
-quote form's fields and chips (a faint light from above, a white/10% border, a top line).
-Teaming shows the prime panel's diagram under the "What the prime gets." heading (left column
-on desktop, after the rows on phones). The old faint light
-from below is retired.
+Cards and glass are part of the system, not exceptions.
+- **Cards** are flat black, a shade darker than nothing would suggest on a true-black page:
+  `--ds-card #060708` (a card on a card, such as a diagram node or an opened card,
+  `--ds-card-raised #0d0e11`), with a 1px edge lit brightest along the top like light on a
+  glass edge (`--ds-card-edge`: white 20% at the top, 8% by a fifth of the way down, 4 to 5%
+  down the sides and foot), drawn as a gradient border. No glow, no gradient fill, no blur, no
+  drop shadow. 4px corners. Hover brightens the edge (`--ds-card-edge-hover`).
+- **Used by:** the Home Record cards and the prime-contractor panel (with its diagram), the
+  Capability Statement cards and GSA MAS block, the Services industry cards (the edge drawn
+  over the photo as a masked ring), the Teaming diagram, the About founder portrait, and the
+  quote form's fields and chips (the same surface at control scale; errors amber).
+- **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
+  photographic content: the header bar, the Home hero strip, the Services opening, the
+  footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.
 
 ## Elevation & Depth
 
@@ -944,10 +949,10 @@ Few, fast, and crisp. Four to six moments per page.
   Careers escort role states a clearance requirement.
 
 **Never**
-- **Card containers:** no boxed, filled, or bordered cards; no tile grids of stats,
-  features, or services. Owner exceptions: the Services and Capability cards, the Home values cards.
-- **Glassmorphism:** no backdrop blur or frosted panels, except the nav bar, the footer's
-  closing band, the Services opening, the Home hero's copy band, and the 404 card (owner requests).
+- **Card containers:** cards follow "Cards and glass" above; no other boxed or filled
+  containers, and no tile grids of icons with captions.
+- **Glass:** only over moving or photographic content (see "Cards and glass"); never as a
+  card surface on the plain canvas.
 - **Background bands:** no section fills or alternating light and dark strips; the canvas
   never changes.
 - **Section dividers:** no rule, gradient line, or ornament between sections; space and
