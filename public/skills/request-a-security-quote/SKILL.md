@@ -1,6 +1,6 @@
 ---
 name: request-a-security-quote
-description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, mobile patrol, access control, restricted-area escort, or relief and surge coverage at a Colorado site, or teaming and subcontract coverage for a prime contractor.
+description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, access control, restricted-area escort, relief and surge coverage, or mobile patrol at a Colorado site, or teaming and subcontract coverage for a prime contractor.
 ---
 
 # Request a security quote from Ares Security
