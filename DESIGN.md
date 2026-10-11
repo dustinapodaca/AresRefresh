@@ -281,7 +281,8 @@ white/12% line along the top edge, 4px corners. Used by the Home Record cards (o
 frosted fill) and prime panel, the Capability Statement cards and its GSA MAS block, the
 Services industry cards (the top edge brightened; the light sits under the photo), and the
 quote form's fields and chips (a faint light from above, a white/10% border, a top line).
-Teaming shows the prime panel's diagram under "What the prime gets". The old faint light
+Teaming shows the prime panel's diagram under the "What the prime gets." heading (left column
+on desktop, after the rows on phones). The old faint light
 from below is retired.
 
 ## Elevation & Depth
