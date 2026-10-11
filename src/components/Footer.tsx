@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from './Arrow';
 import { GSA_ELIBRARY } from './home/links';
@@ -21,6 +22,16 @@ const PROFILES = [
 // The copyright year is the year the site is built, so it rolls over with the first build
 // of each new year.
 const YEAR = new Date().getFullYear();
+
+// The certification marks, in the order the email signature uses.
+const CERTS = [
+  { src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' },
+  { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
+  { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
+  { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
+  // Denver M/WBE and SBE, approved Sept 25, 2026 (copy audit round 2).
+  { src: '/images/cert-denver-edo.webp', alt: 'Denver Economic Development & Opportunity, M/WBE and SBE certified' },
+];
 
 export default function Footer() {
   return (
@@ -102,11 +113,11 @@ export default function Footer() {
                 <span className="ds-data">WBE2303571</span>
               </li>
               <li>
-                <span>Denver</span>
+                <span>DENVER</span>
                 <span>M/WBE and SBE</span>
               </li>
               <li>
-                <span>B2G vendor</span>
+                <span>B2G VID</span>
                 <span className="ds-data">21353671</span>
               </li>
             </ul>
@@ -126,13 +137,16 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* The marks and the lines between them share the row evenly (owner, 2026-10-10): every
+            gap is the same, each line sits midway, and GSA starts on the text's left edge. The
+            lines are their own (hidden) items so the spacing can do that. */}
         <ul className="ds-certs" aria-label="Certifications and contract vehicles">
-          <li><img {...responsive('/images/cert-gsa-footer.png')} alt="GSA Contract Holder" loading="lazy" /></li>
-          <li><img {...responsive('/images/cert-sba-footer.png')} alt="U.S. Small Business Administration" loading="lazy" /></li>
-          <li><img {...responsive('/images/cert-women-owned.png')} alt="Women Owned" loading="lazy" /></li>
-          <li><img {...responsive('/images/cert-wbenc.png')} alt="Certified WBENC Women's Business Enterprise" loading="lazy" /></li>
-          {/* Denver M/WBE and SBE, approved Sept 25, 2026 (copy audit round 2). */}
-          <li><img {...responsive('/images/cert-denver-edo.webp')} alt="Denver Economic Development & Opportunity, M/WBE and SBE certified" loading="lazy" /></li>
+          {CERTS.map((c, i) => (
+            <Fragment key={c.src}>
+              {i > 0 && <li className="ds-certs-rule" aria-hidden="true" />}
+              <li><img {...responsive(c.src)} alt={c.alt} loading="lazy" /></li>
+            </Fragment>
+          ))}
         </ul>
       </div>
 

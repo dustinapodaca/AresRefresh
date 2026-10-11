@@ -788,9 +788,12 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
   identifiers stacked label over value.
 - Then the certification marks (GSA, SBA, Women Owned, WBENC, Denver Economic Development &
-  Opportunity) in five equal cells, each mark centered, a thin vertical line on every inner
-  edge, so the marks and the lines are evenly spaced (owner, 2026-10-10; up to 980px wide).
-  Phones: a 2x2 cross with the fifth mark centered across the bottom.
+  Opportunity) and the thin vertical lines between them spread across the row (up to
+  980px) with every gap the same, each line midway, and GSA starting on the footer's left
+  text edge (owner, 2026-10-10; the lines are hidden list items so the spacing can do
+  this). Marks 26px tall below 1024px. Phones (below 700px): a 2x2 cross with the fifth mark
+  centered across the bottom. Contracting labels are uppercase like GSA MAS: DENVER,
+  B2G VID.
 - **The closing stage** (owner request: "aurora or gradient or opacity or glass"): the ARES
   letters of the text logo across the full container (only the letters, not SECURITY),
   over a slow rust and amber light rising from the bottom edge (soft radial glows, a
