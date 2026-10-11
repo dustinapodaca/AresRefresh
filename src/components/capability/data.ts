@@ -54,7 +54,7 @@ export const CAPABILITIES: Capability[] = [
   {
     id: 'unarmed',
     title: 'Unarmed Security Officers',
-    line: 'Uniformed and plainclothes officers for lobbies, perimeters, and passenger areas.',
+    line: 'Uniformed and plainclothes officers for lobbies, perimeters, and public areas.',
     keys: ['Uniformed', 'Plainclothes', '24/7'],
     includes: [
       { name: 'Lobby and front desk', detail: 'A visible first point of contact that screens and directs visitors.' },

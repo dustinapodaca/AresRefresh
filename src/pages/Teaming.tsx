@@ -4,7 +4,7 @@ import Arrow from '../components/Arrow';
 import { AskStrip, FaqSection, Sheet } from '../components/market/parts';
 import type { Faq, SheetRow } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
-import { SAM_VERIFY } from '../components/capability/data';
+import { PDF_URL, SAM_VERIFY } from '../components/capability/data';
 
 // Teaming and subcontracting (copy audit round 2, owner 2026-10-10): the landing page for
 // primes, guard companies, and builders, the page every teaming email links to. No facility
@@ -89,6 +89,11 @@ export default function Teaming() {
             <a href="tel:+17196963966" className="ds-link">
               Call <span className="ds-data">719-696-3966</span>
             </a>
+            {/* Primes look for the capability statement (copy audit round 3). */}
+            <a href={PDF_URL} className="ds-link" download>
+              Capability statement (PDF)
+              <Arrow size={14} />
+            </a>
           </div>
         </div>
         <Sheet rows={IDS} label="Ares Security identifiers" />
@@ -143,7 +148,7 @@ export default function Teaming() {
 
         <FaqSection items={FAQ} />
 
-        <AskStrip line="Send us the contract, the posts, and the coverage you need. We will come back with who we can staff and when." quote={QUOTE} />
+        <AskStrip line="Send us the contract, the posts, and the coverage you need. We will come back with who we can staff and when." quote={QUOTE} label="Talk teaming" />
       </div>
     </main>
   );

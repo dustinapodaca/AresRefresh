@@ -117,7 +117,8 @@ export const DENVER: LocationFile = {
   city: city('denver'),
   path: '/locations/denver',
   title: 'Security guards in Denver.',
-  lead: 'Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor. Our leadership trains every officer on the post before their first shift.',
+  // The training line moved into "Security in Denver." (copy audit round 3).
+  lead: 'Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor.',
   licenseTitle: 'Licensed in Denver.',
   licenseIntro: 'Colorado has no statewide security license. Denver licenses security companies itself, and these are ours here.',
   license: [

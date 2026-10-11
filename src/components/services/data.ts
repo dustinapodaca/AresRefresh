@@ -138,7 +138,7 @@ export const STAGES: Stage[] = [
     n: '02',
     title: 'Compliance mapping',
     covers: 'Regulations · Access rules · SOPs',
-    body: 'We check every regulation, access requirement, and SOP against your facility, whether it is federal, state, or commercial. That removes compliance risk and gives you audit confidence from the moment we go live.',
+    body: 'We check every regulation, access requirement, and SOP against your facility, whether it is federal, state, or commercial. That reduces compliance risk and gives you audit confidence from the moment we go live.',
   },
   {
     n: '03',

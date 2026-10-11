@@ -170,7 +170,7 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Where do you provide restricted-area escorts?',
-        a: 'Along Colorado’s Front Range: the Denver metro area, Colorado Springs, and Pueblo, where Ares is licensed and bonded. Our escort experience is on a Space Force base in Colorado, as a subcontractor on a federal construction program, alongside installation security.',
+        a: 'Along Colorado’s Front Range: the Denver metro area, Colorado Springs, and Pueblo, where Ares is licensed and bonded for armed and unarmed security. Tell us the site and its access rules, and we will tell you plainly what we can staff and when.',
       },
       GSA_FAQ,
     ],

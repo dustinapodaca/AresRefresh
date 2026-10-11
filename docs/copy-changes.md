@@ -810,3 +810,16 @@ City questions "How soon can you start a post in Colorado Springs / Pueblo?": no
 Denver gets the same "How soon can you start a post in Denver?" question (owner, 2026-10-10), so it has three.
 
 Home hero is now B2 (owner, 2026-10-10): "A prepared officer on every post." over B's line. B, B1, B3, B4, A, C, and the old hero stay at /?hero=.
+
+## Round 3 quick fixes (2026-10-10, audit doc rev 104)
+
+| Where | Was | Now |
+|---|---|---|
+| Unarmed blurb (More services, Capability) | "...lobbies, perimeters, and passenger areas." | "...lobbies, perimeters, and public areas." |
+| Services stage 2 | "That removes compliance risk..." | "That reduces compliance risk..." |
+| Escort, "Where do you provide restricted-area escorts?" | Repeated the Space Force line | "...where Ares is licensed and bonded for armed and unarmed security. Tell us the site and its access rules, and we will tell you plainly what we can staff and when." (the Space Force line stays in the military-installation question) |
+| Teaming | Bottom button "Request a quote"; no PDF link | "Talk teaming"; "Capability statement (PDF) →" beside Call in the opening |
+| Home Personnel card | "Our officers are the backbone of the business. Well-trained, healthy employees give every client better service." | "Our officers rate us highest for management and work-life balance." |
+| Denver city lead | "...and the DIA corridor. Our leadership trains every officer on the post before their first shift." | Ends at "...and the DIA corridor." (the training line is in "Security in Denver.") |
+
+Not applied (owner): Capability reason 01 "a military installation"; stat-tile numeral check. Waiting on the owner: relief fill-time split, prime panel, unlinked proof row, Capability title period and subhead, past performance, font weights.

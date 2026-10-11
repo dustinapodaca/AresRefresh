@@ -35,7 +35,8 @@ const VALUES: {
     figure: '4.8/5',
     caption: 'Employee rating on Indeed',
     href: INDEED_REVIEWS,
-    line: 'Our officers are the backbone of the business. Well-trained, healthy employees give every client better service.',
+    // Says what the 4.8 is about (copy audit round 3, 2026-10-10; Careers says the same).
+    line: 'Our officers rate us highest for management and work-life balance.',
   },
 ];
 
