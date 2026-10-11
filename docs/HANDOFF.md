@@ -58,7 +58,7 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     `SHEET_NOTE`, three-row sheet, five questions with a location one) and the Services
     industry cards have two-sentence summaries with three or four site types. The "How it
     works" paragraphs use only facts already on the site but still need Deidre's read.
-    Waiting on the owner for job pages: pay range per role (Colorado requires it in a
+    Job pages come last, if at all (owner, 2026-10-10); they would need: pay range per role (Colorado requires it in a
     posting), schedule, requirements, benefits summary, and how to apply (Indeed link or a
     short form). Industry "Why Ares here" rows are done (longest client since 2022 and de-escalation added, owner; Ares is not an AASC member, never list it).
     7 done: city-page site types link to the industry pages; outage and storm-event
