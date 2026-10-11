@@ -1288,6 +1288,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* 02 Industries (copy audit, 2026-10-10): the first three larger, the last three as a ruled
    strip, then the prime-contractor block. */
 .ds-industries { padding-top: var(--ds-beat); }
+/* Phones and tablets: the Record pile hands back its 96px hold (--pile-hold) with a negative
+   margin, so this section adds it back; the released cards then stop a full beat above the
+   headline instead of running into it (owner, 2026-10-10). */
+@media (max-width: 1023px) { .ds-industries { padding-top: calc(var(--ds-beat) + 96px); } }
 .ds-ind-plates, .ds-ind-rows { list-style: none; margin: 44px 0 0; padding: 0; display: grid; }
 .ds-ind-plates { gap: 36px 24px; }
 @media (min-width: 768px) { .ds-ind-plates { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
