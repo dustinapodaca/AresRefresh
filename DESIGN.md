@@ -761,8 +761,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Owner request (2026-10-04); with the footer's closing band and the Services opening
   (2026-10-06), the only glass outside the Services cards.
 - Desktop: a three-column grid. The Ares mark alone on the left (46px, white; was 52px), the links
-  centered (Home, About, Services, Careers, Capability Statement; Inter 15px / 400 (14px
-  below 1024px), white,
+  centered (About, Services, Careers, Insights, Capability Statement since 2026-10-10:
+  no Home link, the mark goes home; Inter 15px / 400 (14px below 1024px), white,
   with a 1px underline that draws in on hover and stays under the current page), and a
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
 - Mobile: the mark (38px; was 44px) and a three-line menu icon that turns into an X. The menu is a

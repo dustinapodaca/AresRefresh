@@ -791,3 +791,7 @@ Then (owner, 2026-10-10: broader, not "military construction" up front): Home he
 - About 03 People: "Rooted" (Backgrounds and perspectives that reflect the communities we protect) is now "Local" (People who live in the communities they protect); "Tempered" is now "Steady" (line kept). The initials no longer read ALERT (owner approved).
 - Home hero: option B is the default for now ("Security guards and escorts for Colorado's controlled sites."); A is at /?hero=a.
 
+
+## Group 2: navigation (2026-10-10)
+
+Applied: the nav drops "Home" and adds Insights (About, Services, Careers, Insights, Capability Statement; desktop and phone menu); the footer's Contracting column ends with "Capability statement (PDF) →". Options, off until the owner picks: a Services dropdown with the six services and six industries (/?nav=menu), a "Call" link beside the phone menu button (/?call=1, a word, since only arrow icons are allowed), and visible breadcrumbs above the headline on service, industry, city, and article pages (?crumbs=1). Comparison page: .playwright-mcp/gallery/group2-options.html.

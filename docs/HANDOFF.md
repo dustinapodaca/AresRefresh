@@ -65,8 +65,10 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     removed, owner): Careers teaser, hand-offs
     cut; About hero, "How we work.", commitments; Careers hero and why; Contact job-seeker
     line; Insights hero (docs/copy-changes.md). Open for the owner: About's Rooted/Tempered
-    rename (breaks ALERT). Next: group 2 (nav, breadcrumbs, PDF link in footer; options
-    first), then city-page paragraphs.
+    rename (breaks ALERT). Group 2 (0780f6a): nav without Home and with Insights, footer
+    PDF link; options waiting on the owner: `?nav=menu` (Services dropdown), `?call=1`
+    (phone Call link), `?crumbs=1` (visible breadcrumbs); gallery
+    `.playwright-mcp/gallery/group2-options.html`. Then city-page paragraphs.
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the
