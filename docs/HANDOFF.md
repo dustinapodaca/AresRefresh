@@ -71,6 +71,12 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     sits in the panel's top row and the phone menu. City pages have "Security in [city]."
     and two questions each (Pueblo's CEO line waits for Deidre). The audit's next steps are
     done except job pages (last, if at all).
+    Late 2026-10-10: round 3 of the audit doc (rev 104) applied (quick fixes, relief fill
+    time split, quiet proof row, past performance, no H1 periods, founder Letter, prime
+    Diagram). A fresh Resend-style Home was built and SAVED AS AN OPTION (tag
+    `home-resend-option`, live at /home-next, noindex); the Dossier Home stays. Then the canvas
+    became true black and every card got one surface (flat #060708, a thin edge lit from the
+    top and bottom); DESIGN.md "Cards and glass" makes cards and glass part of the system.
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the
