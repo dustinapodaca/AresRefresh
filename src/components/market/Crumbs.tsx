@@ -1,14 +1,13 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SEO } from '../../seo/routes';
 
-// Visible breadcrumbs (copy audit group 2, an option for the owner at ?crumbs=1): the same
-// trail the BreadcrumbList JSON-LD already gives search engines (routes.json), shown small
-// above the headline on service, industry, city, and article pages. Off by default: DESIGN.md
-// bans eyebrows above headlines, so the owner decides whether a trail reads like one.
+// Visible breadcrumbs (copy audit group 2; owner chose them, 2026-10-10): the same trail the
+// BreadcrumbList JSON-LD gives search engines (routes.json), shown small above the headline
+// on service, industry, city, and article pages. The one owner-approved exception to "no
+// eyebrows above headlines": it is navigation, not a label.
 export default function Crumbs({ path, current }: { path: string; current: string }) {
-  const [params] = useSearchParams();
   const trail = SEO[path]?.breadcrumbs;
-  if (params.get('crumbs') !== '1' || !trail?.length) return null;
+  if (!trail?.length) return null;
   return (
     <nav className="ds-crumbs" aria-label="Breadcrumb">
       <ol>

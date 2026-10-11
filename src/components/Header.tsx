@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import Arrow from './Arrow';
+import PhoneIcon from './PhoneIcon';
 import { ROLE_PAGES } from './market/roles';
 import { INDUSTRY_PAGES } from './market/industries';
 
@@ -15,18 +16,14 @@ const NAV: { to: string; label: string; end?: boolean }[] = [
   { to: '/capability-statement', label: 'Capability Statement' },
 ];
 
-// Options for the owner to compare (copy audit group 2): /?nav=menu opens a Services panel
-// with the six services and the six industries; /?call=1 puts a Call link beside the phone
-// menu button. Both off by default until the owner picks.
+// Copy audit group 2 (owner chose both, 2026-10-10): Services opens a panel with the six
+// services and the six industries, and phones get a call link beside the menu button.
 const SERVICES_MENU = {
   services: ROLE_PAGES.map((r) => ({ to: `/services/${r.slug}`, label: r.name })),
   industries: INDUSTRY_PAGES.map((i) => ({ to: `/industries/${i.slug}`, label: i.name })),
 };
 
 export default function Header() {
-  const [params] = useSearchParams();
-  const withMenu = params.get('nav') === 'menu';
-  const withCall = params.get('call') === '1';
   const [panel, setPanel] = useState(false);
   const panelTimer = useRef(0);
   const [open, setOpen] = useState(false);
@@ -130,7 +127,7 @@ export default function Header() {
         <nav className="ds-nav" aria-label="Primary">
           <ul>
             {NAV.map((item) =>
-              withMenu && item.to === '/services' ? (
+              item.to === '/services' ? (
                 <li
                   key={item.to}
                   className="ds-nav-has-menu"
@@ -188,11 +185,9 @@ export default function Header() {
         </nav>
 
         <div className="ds-header-actions">
-          {withCall && (
-            <a href="tel:+17196963966" className="ds-header-call">
-              Call
-            </a>
-          )}
+          <a href="tel:+17196963966" className="ds-header-call" aria-label="Call 719-696-3966">
+            <PhoneIcon />
+          </a>
           <Link to="/contact" className="ds-btn ds-btn-primary ds-header-cta">
             Request a Quote
             <Arrow size={14} />

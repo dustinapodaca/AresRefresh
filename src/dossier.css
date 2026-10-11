@@ -348,7 +348,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-sheet-contact { display: grid; gap: 6px; margin-top: 36px; }
 .ds-sheet-contact a { color: var(--ds-fg); font-size: 1.125rem; }
 
-/* Breadcrumbs (option, ?crumbs=1): small, faint, above the headline. */
+/* Breadcrumbs (owner, 2026-10-10): small, faint, above the headline. */
 .ds-crumbs { margin: 0 0 20px; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 8px; list-style: none; margin: 0; padding: 0; }
 .ds-crumbs li + li::before { content: '/'; margin-right: 8px; color: var(--ds-rule-strong); }
@@ -356,8 +356,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-crumbs a:hover { color: var(--ds-fg); }
 .ds-crumbs [aria-current] { color: var(--ds-fg-faint); }
 
-/* Options (copy audit group 2): the Services panel (/?nav=menu) and the phone Call link
-   (/?call=1). */
+/* The Services panel and the phone call link (copy audit group 2, owner 2026-10-10). */
 .ds-nav-has-menu { position: relative; display: flex; align-items: center; gap: 2px; }
 .ds-nav-caret { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 28px; padding: 0; background: none; border: 0; color: #fff; cursor: pointer; position: relative; top: -2px; }
 .ds-nav-caret svg { transition: transform 180ms var(--ds-ease); }
@@ -384,7 +383,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-nav-panel li a { display: block; padding: 9px 0; border-bottom: 1px solid var(--ds-rule); font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
 .ds-nav-panel li a:hover { color: #fff; }
 .ds-nav-panel-all { grid-column: 1 / -1; justify-self: start; margin-top: 12px; font-size: 14px; }
-.ds-header-call { font-family: var(--ds-data); font-size: 14px; color: #fff; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px; }
+.ds-header-call { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; color: #fff; }
 @media (min-width: 1024px) { .ds-header-call { display: none; } }
 
 @media (min-width: 1024px) {

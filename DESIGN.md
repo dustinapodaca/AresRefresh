@@ -202,7 +202,10 @@ sizes are unchanged.
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
   the size.
-- No eyebrows or kickers above headings. No bracketed labels.
+- No eyebrows or kickers above headings. No bracketed labels. (Breadcrumbs above the
+  headline on service, industry, city, and article pages are navigation, not a label: the
+  owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
+  strong, from the same trail as the BreadcrumbList JSON-LD.)
 - Font loading: Google Fonts, `display=swap`: Inter (300 to 800), Inter Tight (500, 600),
   IBM Plex Mono (400, 500).
 
@@ -301,7 +304,9 @@ every page.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
   division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal
-  links, `↗` for external verification links. No icon sets, no icon circles.
+  links, `↗` for external verification links. No icon sets, no icon circles. The one
+  exception (owner, 2026-10-10): a phone handset drawn the same way (`PhoneIcon.tsx`, 22px,
+  no fill) as the call link beside the menu button on phones and tablets.
 
 ## Components
 
@@ -765,7 +770,12 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   no Home link, the mark goes home; Inter 15px / 400 (14px below 1024px), white,
   with a 1px underline that draws in on hover and stays under the current page), and a
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
-- Mobile: the mark (38px; was 44px) and a three-line menu icon that turns into an X. The menu is a
+- **Services panel** (desktop, owner 2026-10-10): a chevron beside Services (and hovering)
+  opens a solid canvas panel (hairline-strong edge, 4px corners, 600px) under the bar with
+  the six services and the six industries in their fixed orders on hairline rows, and "All
+  services and how a post starts →". Closes on Escape, a click outside, or a page change.
+- Mobile: the mark (38px; was 44px), the phone icon (a call link, 44px target), and a
+  three-line menu icon that turns into an X. The menu is a
   solid canvas sheet over the whole screen (the bar's area included, a hairline where the
   bar ends) with 20px links on hairline rows, the phone and email, and the primary button.
   It grows out of the hamburger as a circle (300ms, drawer curve) and draws back into it

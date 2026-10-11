@@ -795,3 +795,6 @@ Then (owner, 2026-10-10: broader, not "military construction" up front): Home he
 ## Group 2: navigation (2026-10-10)
 
 Applied: the nav drops "Home" and adds Insights (About, Services, Careers, Insights, Capability Statement; desktop and phone menu); the footer's Contracting column ends with "Capability statement (PDF) →". Options, off until the owner picks: a Services dropdown with the six services and six industries (/?nav=menu), a "Call" link beside the phone menu button (/?call=1, a word, since only arrow icons are allowed), and visible breadcrumbs above the headline on service, industry, city, and article pages (?crumbs=1). Comparison page: .playwright-mcp/gallery/group2-options.html.
+
+Then the owner chose all three (2026-10-10): the Services panel, visible breadcrumbs, and a phone call link on phones, drawn as a handset icon in the arrows' style (the one icon exception). No query switches any more.
+
