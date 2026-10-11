@@ -151,11 +151,18 @@ export default function Header() {
                     </svg>
                   </button>
                   <div id="nav-services" className="ds-nav-panel" hidden={!panel}>
-                    {/* First, with room around it (owner, 2026-10-10). */}
-                    <Link to="/services" className="ds-link ds-nav-panel-all">
-                      All services and how a post starts
-                      <Arrow size={14} />
-                    </Link>
+                    {/* First, with room around it (owner, 2026-10-10); Teaming beside it, so
+                        primes and guard companies are one hover away. */}
+                    <div className="ds-nav-panel-top">
+                      <Link to="/services" className="ds-link">
+                        All services and how a post starts
+                        <Arrow size={14} />
+                      </Link>
+                      <Link to="/teaming" className="ds-link">
+                        Teaming and subcontracting
+                        <Arrow size={14} />
+                      </Link>
+                    </div>
                     <div>
                       <p className="ds-nav-panel-h">Services</p>
                       <ul>
@@ -227,6 +234,11 @@ export default function Header() {
               ))}
             </ul>
           </nav>
+          {/* Phones have no Services panel, so Teaming gets a quiet line of its own. */}
+          <Link to="/teaming" className="ds-link ds-sheet-teaming" style={{ ['--i' as string]: NAV.length }}>
+            Teaming and subcontracting
+            <Arrow size={14} />
+          </Link>
           <div className="ds-sheet-contact" style={{ ['--i' as string]: NAV.length }}>
             <a href="tel:+17196963966" className="ds-data">719-696-3966</a>
             <a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a>

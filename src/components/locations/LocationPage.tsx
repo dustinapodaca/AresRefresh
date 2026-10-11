@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Crumbs from '../market/Crumbs';
+import { FaqSection } from '../market/parts';
 import Seo from '../../seo/Seo';
 import Arrow from '../Arrow';
 import LocationMap from './LocationMap';
@@ -49,6 +50,12 @@ export default function LocationPage({ file }: { file: LocationFile }) {
       </section>
 
       <div className="ds-container">
+        {/* Only this city's page says this (copy audit, 2026-10-10). */}
+        <section className="ds-loc-local ds-mk-split" aria-labelledby="loc-local-title">
+          <h2 id="loc-local-title" className="ds-display-lg">Security in {file.city.name}.</h2>
+          <div className="ds-mk-prose"><p>{file.local}</p></div>
+        </section>
+
         <section className="ds-loc-license" aria-labelledby="loc-license-title">
           <div className="ds-loc-license-head">
             <h2 id="loc-license-title" className="ds-display-lg">{file.licenseTitle}</h2>
@@ -101,6 +108,8 @@ export default function LocationPage({ file }: { file: LocationFile }) {
             ))}
           </ul>
         </section>
+
+        <FaqSection items={file.faq} />
 
         <nav className="ds-loc-next" aria-labelledby="loc-next-title">
           <h2 id="loc-next-title" className="sr-only">Where to next</h2>

@@ -24,6 +24,7 @@ export type LicenseRow = {
 };
 
 export type Sector = { name: string; division: string; divisionId: string };
+export type CityFaq = { q: string; a: string };
 
 export type LocationFile = {
   city: City;
@@ -33,8 +34,13 @@ export type LocationFile = {
   licenseTitle: string;
   licenseIntro: string;
   license: LicenseRow[];
+  /** "Security in <city>." (copy audit, 2026-10-10): 120 to 180 words only this city's page
+   *  says, from facts already on the site, in "ready to staff" terms. */
+  local: string;
   sectorsTitle: string;
   sectors: Sector[];
+  /** Two questions only this city's page asks (copy audit). */
+  faq: CityFaq[];
   landmarks: Landmark[];
   /** Which side of its dot the city's name sits on the map (default right). */
   focusSide?: 'left' | 'right';
@@ -82,7 +88,18 @@ export const COLORADO_SPRINGS: LocationFile = {
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters since 2021' } },
   ],
+  local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, in the 80906 ZIP code, so leadership is a short drive from any post in El Paso County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, and campuses. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
   sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Colorado Springs license?',
+      a: 'Yes. Colorado has no statewide security license, so the City of Colorado Springs licenses contract security agencies itself. Ares holds Colorado Springs Contract Security Agency license 0850744L for armed and unarmed security, and you can check it in the city\u2019s public record from the license section above.',
+    },
+    {
+      q: 'How soon can you start a post in Colorado Springs?',
+      a: 'It depends on the site and how many officers it needs. Our leadership is based in Colorado Springs, so we can walk the site quickly, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+    },
+  ],
   sectors: [
     { name: 'Defense contractors and military-adjacent sites', division: 'Government & Military', divisionId: 'government' },
     { name: 'Data centers', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
@@ -123,7 +140,18 @@ export const DENVER: LocationFile = {
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, an hour south on I-25' } },
   ],
+  local: 'Greater Denver runs from Aurora and Commerce City to Lakewood, Douglas County, and the DIA corridor, and Ares is licensed to staff all of it. Denver licenses private security employers itself, and we hold Denver license 2021-BFN-0001984 for armed and unarmed security, as an eligible training provider in the city. Here we are ready to staff data centers and their builds, warehouses and logistics, airport-area sites, hospitals, parking and transportation, public-sector facilities, and commercial property. Our headquarters is an hour south on I-25 in Colorado Springs, and a member of our leadership still trains each officer on the post before the first shift and works the first shift on every new post. Ares is also Denver M/WBE and SBE certified, for city work that sets participation goals.',
   sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Denver license?',
+      a: 'Yes. Colorado has no statewide security license, so Denver licenses private security employers itself. Ares holds Denver Private Security Employer license 2021-BFN-0001984 for armed and unarmed security, and you can check it in the city\u2019s public record from the license section above.',
+    },
+    {
+      q: 'Do you cover sites outside the city of Denver?',
+      a: 'Yes. We staff across Greater Denver, including Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+    },
+  ],
   sectors: [
     { name: 'Data centers and critical infrastructure', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Airport-area sites and the DIA corridor', division: 'Airport & Transportation', divisionId: 'airport' },
@@ -156,7 +184,19 @@ export const PUEBLO: LocationFile = {
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, 45 minutes north on I-25' } },
   ],
+  // The audit's "Pueblo is where our CEO started in security" waits for Deidre's OK.
+  local: 'Pueblo licenses security companies through the Pueblo Police Department, and Ares holds Pueblo license 26422 for armed and unarmed security. The department also approves us as an armed and unarmed training provider, so the officers we post here are trained and qualified to Pueblo\u2019s own rules. Our headquarters is 45 minutes north on I-25 in Colorado Springs, close enough that a member of our leadership walks each site, trains each officer on the post before the first shift, and works the first shift on every new post. Here we are ready to staff industrial and energy sites, construction, city and county facilities, campuses, apartment and residential properties, and commercial property, across Pueblo and Pueblo County. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
   sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Pueblo license?',
+      a: 'Yes. Colorado has no statewide security license, and Pueblo licenses security companies through the Pueblo Police Department. Ares holds Pueblo merchant patrol and security license 26422 for armed and unarmed security. Pueblo has no online lookup, so we send a copy on request.',
+    },
+    {
+      q: 'How soon can you start a post in Pueblo?',
+      a: 'It depends on the site and how many officers it needs. We walk the site, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+    },
+  ],
   sectors: [
     { name: 'Industrial and energy sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
     { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },

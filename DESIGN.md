@@ -649,7 +649,8 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
 
 ### Location pages ("The Local File", 2026-10-06)
 SEO landing pages for "security guards in <city>": answer the search, show the city's own
-license, list the sites we are ready to staff there, then hand off. Concept and Mobbin
+license, say what only this city's page can, list the sites we are ready to staff there,
+answer two local questions, then hand off. Concept and Mobbin
 board: docs/locations-concepts.md. One component (`src/components/locations/`), one record
 per city. No rail, no close, no photo, no section numbers.
 - **Opening:** the search phrase as the headline (display-xl, 7 columns) and a two-sentence
@@ -663,6 +664,12 @@ per city. No rail, no close, no photo, no section numbers.
   coordinates and a 25-mile scale bar in mono. The drawing is SVG; its words are HTML laid
   over it from the same projection, in CSS pixels (faint 12px, landmark 14px, other cities
   15px, the city 13 to 20px by plate width so it always ends inside the frame).
+- **Security in <city>.** (copy audit, 2026-10-10): right after the opening, the headline
+  left and one paragraph of about 120 to 130 words right (`local` in data.ts), only facts
+  already on the site and "ready to staff" wording, never current clients. Two questions
+  per city (the city's license, and starting a post or the area covered) sit after the
+  sites list as the shared questions block, with FAQPage JSON-LD. Pueblo's "where our CEO
+  started" line waits for Deidre.
 - **Licensed in <city>:** Colorado has no statewide license; the city licenses security
   companies itself. The city's license as Home's ledger row (label, mono value, route):
   license number with "Verify ↗" (on its line at the right at every width; owner, 2026-10-08) (the city's public record; Colorado Springs: Accela;
@@ -772,11 +779,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
 - **Services panel** (desktop, owner 2026-10-10): a chevron beside Services (and hovering)
   opens a solid canvas panel (hairline-strong edge, 4px corners, 600px) under the bar with
-  first "All services and how a post starts →" (15px / 500, set apart with space above and
-  below; owner, 2026-10-10), then the six services and the six industries in their fixed
+  first a row with "All services and how a post starts →" and "Teaming and subcontracting →"
+  (15px / 500, set apart with space above and below; owner, 2026-10-10; 660px wide so both
+  stay on one line), then the six services and the six industries in their fixed
   orders on hairline rows. Closes on Escape, a click outside, or a page change.
 - Mobile: the mark (38px; was 44px), the phone icon (a call link, 44px target), and a
-  three-line menu icon that turns into an X. The menu is a
+  three-line menu icon that turns into an X. The phone menu has a quiet "Teaming and
+  subcontracting →" line under the links (phones have no Services panel). The menu is a
   solid canvas sheet over the whole screen (the bar's area included, a hairline where the
   bar ends) with 20px links on hairline rows, the phone and email, and the primary button.
   It grows out of the hamburger as a circle (300ms, drawer curve) and draws back into it

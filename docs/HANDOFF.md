@@ -67,7 +67,10 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     line; Insights hero (docs/copy-changes.md). Open for the owner: About's Rooted/Tempered
     rename (breaks ALERT). Group 2 (0780f6a): nav without Home and with Insights, footer
     PDF link; the owner then turned on all three: the Services panel, visible
-    breadcrumbs, and a phone call icon (the one icon exception, `PhoneIcon.tsx`). Then city-page paragraphs.
+    breadcrumbs, and a phone call icon (the one icon exception, `PhoneIcon.tsx`). Teaming
+    sits in the panel's top row and the phone menu. City pages have "Security in [city]."
+    and two questions each (Pueblo's CEO line waits for Deidre). The audit's next steps are
+    done except job pages (last, if at all).
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the

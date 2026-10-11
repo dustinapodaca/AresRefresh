@@ -798,3 +798,8 @@ Applied: the nav drops "Home" and adds Insights (About, Services, Careers, Insig
 
 Then the owner chose all three (2026-10-10): the Services panel, visible breadcrumbs, and a phone call link on phones, drawn as a handset icon in the arrows' style (the one icon exception). No query switches any more.
 
+## City pages and Teaming links (2026-10-10)
+
+- Each city page gets "Security in [city]." after the opening (about 125 words, facts already on the site, "ready to staff" wording; the audit's openers described current work, so they were rewritten) and two questions: Colorado Springs and Pueblo (license, how soon can you start), Denver (license, sites outside the city). Pueblo's "where our CEO started in security" waits for Deidre.
+- Teaming: in the Services panel's top row beside "All services and how a post starts", and as a quiet line in the phone menu.
+
