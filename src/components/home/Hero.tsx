@@ -15,13 +15,14 @@ const OPTIONS = {
   },
   a: {
     title: 'Security for sites where every entry counts.',
-    // Escorts no longer lead the line (owner, 2026-10-10: not first, and not twice).
-    lead: 'Armed and unarmed officers, access control, and restricted-area escorts along Colorado\u2019s Front Range, for military construction and critical infrastructure as well as offices, retail, and campuses.',
+    // Escorts no longer lead the line, and the sites are named broadly (owner, 2026-10-10:
+    // not first, not twice, and not "military construction" up front).
+    lead: 'Armed and unarmed officers, access control, and restricted-area escorts along Colorado\u2019s Front Range, for government and critical sites as well as offices, retail, and campuses.',
     proof: true,
   },
   b: {
     title: 'Security guards and escorts for Colorado\u2019s controlled sites.',
-    lead: 'From restricted areas on military construction to data centers, offices, and campuses: officers trained on your post before the first shift.',
+    lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.',
     proof: true,
   },
   c: {

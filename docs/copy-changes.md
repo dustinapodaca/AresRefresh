@@ -784,3 +784,5 @@ The Home hero's audience routes ("Federal buyers: capability statement", "Lookin
 
 Lead: "Restricted-area escorts, access control, and armed and unarmed officers..." is now "Armed and unarmed officers, access control, and restricted-area escorts along Colorado's Front Range, for military construction and critical infrastructure as well as offices, retail, and campuses." The proof row's "Restricted-area escort on a Space Force base" line came out (three lines remain). Owner: escort work stays visible across the site but isn't the whole identity or blasted twice in the hero.
 
+Then (owner, 2026-10-10: broader, not "military construction" up front): Home hero lead "...for government and critical sites as well as offices, retail, and campuses."; option B "From restricted areas and data centers to offices and campuses: ..."; 02 Industries lead "Six industries, from government facilities and critical sites to offices and campuses." Military construction stays where it is specific: the Construction card and page, and Teaming's builders line.
+

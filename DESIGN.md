@@ -366,8 +366,8 @@ exception to "no card containers" and "no glass" for this section.
 ### Home hero copy and the proof row (copy audit round 2, owner 2026-10-10)
 "- **Chosen: option A** "Security for sites where every entry counts." / "Armed and
   unarmed officers, access control, and restricted-area escorts along Colorado's Front Range,
-  for military construction and critical infrastructure as well as offices, retail, and
-  campuses." (Owner, 2026-10-10: escorts are not the lead word and appear once in the hero;
+  for government and critical sites as well as offices, retail, and campuses." (Owner,
+  2026-10-10: no "military construction" up front; escorts are not the lead word and appear once in the hero;
   they are visible elsewhere on the site, not the whole identity.) No eyebrow; the search phrase lives in the title and description.
 - **Kept for the client (Deidre) to compare:** `/?hero=current|b|c` in `Hero.tsx` (`OPTIONS`):
   current ("Security guards for federal and commercial sites." with the GSA mark), B
