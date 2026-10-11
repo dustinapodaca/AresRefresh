@@ -620,9 +620,9 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (#7cb85f) for active and available, amber (#f2b84b) for on request, each with a soft
   halo and one pulse outward when the section is first seen. These are the page's only
   functional colors.
-- **Past performance (rail 03, owner 2026-10-11):** "Three current contracts and five completed
-  since 2021." as ledger rows (scope, where, mono term): the Space Force base subcontract, armed
-  multi-site Denver metro, retail Pueblo, and five completed armed contracts in Colorado
+- **Past performance (rail 03, owner 2026-10-11):** "Three current contracts and seven completed
+  since 2021", with more than $2.1 million in revenue 2021 through 2025, as ledger rows (scope, where, mono term): the Space Force base subcontract, armed
+  multi-site Denver metro, retail Pueblo, and seven completed armed contracts in Colorado
   (2021 to 2025). Clients never named (the dispensaries never mentioned).
 - **Credentials ("Certifications and codes.", owner 2026-10-11, from the copy audit):** one
   grouped ledger, each identifier once: Contract vehicle (the square GSA mark
