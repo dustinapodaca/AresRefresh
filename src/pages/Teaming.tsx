@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import { AskStrip, FaqSection, Sheet } from '../components/market/parts';
@@ -69,6 +69,8 @@ const FAQ: Faq[] = [
 ];
 
 export default function Teaming() {
+  const [params] = useSearchParams();
+  const preview = params.get('match') === '1';
   return (
     <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path="/teaming" />
@@ -132,6 +134,28 @@ export default function Teaming() {
           <h2 id="tm-gets" className="ds-display-lg">What the prime gets.</h2>
           <Sheet rows={GETS} label="What the prime gets" />
         </section>
+        {preview && (
+          // Preview: the Home prime panel's diagram, explaining teaming at a glance.
+          <section className="ds-mk-sec ds-mk-sec-tight" aria-label="How teaming works">
+            <figure className="ds-primes-flow ds-tm-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
+              <div className="ds-flow-node ds-flow-prime" aria-hidden="true">
+                <span className="ds-data">Prime contractor</span>
+                <span>Holds the contract</span>
+              </div>
+              <span className="ds-flow-line ds-flow-down" aria-hidden="true" />
+              <div className="ds-flow-node ds-flow-ares" aria-hidden="true">
+                <span className="ds-data">Ares Security</span>
+                <span>WOSB subcontractor · post orders, training, relief</span>
+              </div>
+              <span className="ds-flow-line ds-flow-fork" aria-hidden="true" />
+              <div className="ds-flow-posts" aria-hidden="true">
+                <span>Restricted-area escort</span>
+                <span>Access control</span>
+                <span>Relief and surge</span>
+              </div>
+            </figure>
+          </section>
+        )}
 
         <section className="ds-mk-sec" aria-labelledby="tm-how">
           <h2 id="tm-how" className="ds-display-lg">How we work.</h2>
