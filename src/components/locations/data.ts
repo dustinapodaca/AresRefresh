@@ -152,6 +152,11 @@ export const DENVER: LocationFile = {
       q: 'Do you cover sites outside the city of Denver?',
       a: 'Yes. We staff across Greater Denver, including Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
     },
+    {
+      // Owner, 2026-10-10: the same factors as the other cities.
+      q: 'How soon can you start a post in Denver?',
+      a: 'It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has. Leadership comes up from Colorado Springs to walk the site and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+    },
   ],
   sectors: [
     { name: 'Data centers and critical infrastructure', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
