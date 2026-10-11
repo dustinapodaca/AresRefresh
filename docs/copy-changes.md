@@ -764,7 +764,6 @@ Armed, Unarmed, Access control, Restricted-area escort, Relief and surge coverag
 
 | Page | Was | Now |
 |---|---|---|
-| Home hero | (none) | Two routes under the proof row: "Federal buyers: capability statement →" and "Looking for work: open roles →" |
 | Home Careers | "Join the people who staff them." / "We hire armed and unarmed officers, with paid training. Our supervisors include veterans..." | "Now hiring armed and unarmed officers." / "Paid training, schedules posted ahead, and a supervisor who answers. Veterans encouraged to apply." |
 | Home hand-offs | "Every one of those posts is staffed by officers we trained on site."; "Hiring Ares for your site starts with a quote request or a call." | Cut |
 | About hero | "A Colorado Springs security firm built around its people." / "Ares Security is minority woman-owned and employee-focused..." | "Built around the people on post." / "Ares was founded in Colorado Springs in 2021 on one idea: officers trained for the specific site, and treated well, protect it better." |
@@ -778,3 +777,5 @@ Armed, Unarmed, Access control, Restricted-area escort, Relief and surge coverag
 | Insights | "Insights." / "Plain answers for people buying security..." | "Buying security, explained." / "Plain answers on choosing coverage, contracting through GSA, and city licensing in Colorado." |
 
 Not applied: About's "Rooted" to "Local" and "Tempered" to "Steady" (breaks the ALERT initials; owner to decide); About's new close and the Contact map swap (they undo owner decisions); the veterans count line and the Quality "CEO writes every post order" line (unconfirmed).
+
+The Home hero's audience routes ("Federal buyers: capability statement", "Looking for work: open roles") were tried and removed (owner, 2026-10-10).
