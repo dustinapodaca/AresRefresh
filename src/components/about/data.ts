@@ -4,7 +4,7 @@ import { GSA_ELIBRARY } from '../home/links';
 // About content. Source: docs/about-content.md; copy changes: docs/copy-changes.md.
 
 export const ABOUT_MARKS: readonly Mark[] = [
-  { id: 'staffing', n: '01', label: 'Staffing' },
+  { id: 'staffing', n: '01', label: 'How we work' },
   { id: 'commitments', n: '02', label: 'Commitments' },
   { id: 'people', n: '03', label: 'People' },
 ];
@@ -18,23 +18,24 @@ export const CREDENTIALS: Credential[] = [
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise", label: 'WBENC certified', id: 'WBE2303571', tall: true },
 ];
 
-// How we staff a post (moved from Home, owner 2026-10-06).
+// How we work (moved from Home, owner 2026-10-06; renamed from "How we staff a post" and
+// trimmed to plain sentences, copy audit 2026-10-10). The process itself lives on Services.
 export const STAFFING_STEPS: { title: string; body: string }[] = [
   {
-    title: 'Plan the site before anything is signed.',
-    body: 'We take the time to fully understand your site, operations, and risks before anything is signed. This upfront work prevents surprises and delivers a solution that actually fits the way your facility runs.',
+    title: 'Plan before we sign.',
+    body: 'We walk your site and learn its risks before any contract is signed.',
   },
   {
-    title: 'Write it down precisely.',
-    body: 'Our proposals, post orders, and documentation are consistently praised for their clarity and detail. We treat every deliverable with the same care our clients expect from top-tier technical submittals.',
+    title: 'Write it down.',
+    body: 'Post orders, proposals, and reports are written for your site.',
   },
   {
     title: 'Keep you informed.',
-    body: 'You’ll always know what’s happening. We provide timely updates, direct access to the team managing your account, and professional reporting that keeps everyone aligned.',
+    body: 'You get direct access to the people managing your account, and reports on a set schedule.',
   },
   {
-    title: 'Train every officer on the post itself.',
-    body: 'Every guard receives hands-on, site-specific training from a member of our leadership team who has personally worked that exact post. Your protection is prepared from the very first shift.',
+    title: 'Train on the post.',
+    body: 'Every officer learns your post from a leader who has worked it.',
   },
 ];
 
@@ -50,7 +51,6 @@ export const FOR_CLIENTS: Commitment[] = [
 export const FOR_PEOPLE: Commitment[] = [
   { name: 'Fair pay', line: 'What the post demands, on time and in full, with overtime honored.' },
   { name: 'Trained first', line: 'Trained on the specific site before the first shift.' },
-  { name: 'Livable schedules', line: 'Posted far enough ahead to plan a life around. No endless doubles.' },
   { name: 'Real support', line: 'A chain of command on every shift. When you call, someone answers.' },
 ];
 
@@ -58,7 +58,8 @@ export const FOR_PEOPLE: Commitment[] = [
 // Experienced, Composed, Cleared, Courteous; lines kept, two words trimmed).
 export const TRAITS: Commitment[] = [
   { name: 'Approachable', line: 'People who treat clients and the public with respect.' },
-  { name: 'Licensed', line: 'Background-checked and state-licensed before they reach your post.' },
+  // Colorado has no statewide license; cities license security (was "state-licensed").
+  { name: 'Licensed', line: 'Background-checked and licensed before they reach your post.' },
   { name: 'Experienced', line: 'Seasoned officers who have stood the hard posts before.' },
   { name: 'Rooted', line: 'Backgrounds and perspectives that reflect the communities we protect.' },
   { name: 'Tempered', line: 'Calm and clear when a situation turns.' },

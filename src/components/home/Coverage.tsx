@@ -35,9 +35,6 @@ export default function Coverage() {
         ))}
       </ul>
 
-      <p className="ds-lead ds-handoff">
-        Every one of those posts is staffed by officers we trained on site.
-      </p>
 
       {/* Full bleed. Starts here and ends under the opening of 04 Careers. */}
       <div className="ds-bleed" aria-hidden="true">

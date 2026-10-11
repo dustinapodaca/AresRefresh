@@ -42,12 +42,12 @@ export default function Opening() {
 
       <div className="ds-container ds-ab-open-copy">
         <h1 id="about-title" className="ds-display-xl">
-          A Colorado Springs security firm built around its people.
+          Built around the people on post.
         </h1>
+        {/* Copy audit (2026-10-10): the Home and About heroes no longer repeat each other. */}
         <p className="ds-lead">
-          Ares Security is minority woman-owned and employee-focused. Founded in 2021 in
-          Colorado Springs, we serve Denver and Pueblo too, and we hold every post, federal or
-          commercial, to public-sector standards.
+          Ares was founded in Colorado Springs in 2021 on one idea: officers trained for the
+          specific site, and treated well, protect it better.
         </p>
       </div>
 

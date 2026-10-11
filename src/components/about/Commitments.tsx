@@ -27,8 +27,8 @@ export default function Commitments() {
           What we commit to.
         </h2>
         <p className="ds-lead">
-          Two failures run through this industry: clients dropped once the contract is signed,
-          and officers treated as interchangeable. We commit to the opposite on both sides.
+          This industry lets down two groups: clients dropped once the contract is signed, and
+          officers treated as interchangeable. We commit to both.
         </p>
       </div>
 

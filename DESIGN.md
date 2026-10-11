@@ -498,7 +498,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks: 01 Staffing, 02 Commitments, 03 People.
+docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -507,7 +507,8 @@ docs/about-concepts.md. Rail marks: 01 Staffing, 02 Commitments, 03 People.
   woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
-- **01 Staffing:** "How we staff a post." as the pinned passage (see above; moved whole
+- **01 How we work** (renamed from "How we staff a post.", copy audit 2026-10-10; four plain
+  principles and a "See the four stages" link to Services): the pinned passage (see above; moved whole
   from Home, owner 2026-10-06). The Company section ("Quality over quantity.", the facts,
   and the patrol vehicles plate) moved to Home. Was: a facts ledger beside the patrol
   vehicles as a captioned plate (square,

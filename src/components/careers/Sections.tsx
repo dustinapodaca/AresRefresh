@@ -106,18 +106,17 @@ export function Why() {
           Why people stay.
         </h2>
         <div className="ds-cr-why-text">
+          {/* The 4.8 rating is in the hero; here only the route to the reviews (copy audit). */}
           <p className="ds-lead">
-            Our employees rate Ares 4.8 out of 5 on Indeed, with management and work-life
-            balance scoring highest.{' '}
-            <a href={INDEED_REVIEWS} target="_blank" rel="noopener noreferrer" className="ds-link">
-              Read the reviews
-              <Arrow external size={12} />
-            </a>
-          </p>
-          <p className="ds-body">
             The well-being of our people comes first. Healthy officers do better work, so we plan
             for a real balance between work and rest. As the company grows, we want our people to
             grow with it.
+          </p>
+          <p className="ds-body">
+            <a href={INDEED_REVIEWS} target="_blank" rel="noopener noreferrer" className="ds-link">
+              Read the reviews on Indeed
+              <Arrow external size={12} />
+            </a>
           </p>
         </div>
       </div>
@@ -150,7 +149,6 @@ export function Why() {
           ))}
         </ol>
       </div>
-      <p className="ds-handoff">If that sounds like your kind of team, write to us.</p>
     </section>
   );
 }

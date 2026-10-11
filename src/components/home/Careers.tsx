@@ -6,12 +6,13 @@ export default function Careers() {
     <section id="careers" className="ds-careers" aria-labelledby="careers-title">
       <div className="ds-careers-grid">
         <div className="ds-careers-copy">
+          {/* Copy audit (2026-10-10): was "Join the people who staff them." */}
           <h2 id="careers-title" className="ds-display-lg">
-            Join the people who staff them.
+            Now hiring armed and unarmed officers.
           </h2>
           <p className="ds-body">
-            We hire armed and unarmed officers, with paid training. Our supervisors include veterans, and our NRA firearms instructor is a
-            veteran. Veterans are encouraged to apply.
+            Paid training, schedules posted ahead, and a supervisor who answers. Veterans
+            encouraged to apply.
           </p>
           <Link to="/careers" className="ds-link">
             See open roles
@@ -19,7 +20,6 @@ export default function Careers() {
           </Link>
         </div>
       </div>
-      <p className="ds-lead ds-handoff">Hiring Ares for your site starts with a quote request or a call.</p>
     </section>
   );
 }

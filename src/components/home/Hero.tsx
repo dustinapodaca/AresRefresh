@@ -91,6 +91,18 @@ export default function Hero() {
               </div>
             </div>
           )}
+          {/* Audience routes (copy audit, 2026-10-10): federal buyers and job seekers are one
+              click from their page. */}
+          <p className="ds-hero-routes">
+            <Link to="/capability-statement">
+              Federal buyers: capability statement
+              <Arrow size={14} />
+            </Link>
+            <Link to="/careers">
+              Looking for work: open roles
+              <Arrow size={14} />
+            </Link>
+          </p>
         </div>
       </div>
     </section>

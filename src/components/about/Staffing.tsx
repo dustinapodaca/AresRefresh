@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import Arrow from '../Arrow';
 import { STAFFING_STEPS } from './data';
 import { responsive } from '../../lib/responsive';
 
@@ -9,12 +11,17 @@ export default function Staffing() {
     <section id="staffing" className="ds-staffing" aria-labelledby="staffing-title">
       <div className="ds-staffing-intro">
         <h2 id="staffing-title" className="ds-display-lg">
-          How we staff a post.
+          How we work.
         </h2>
         <p className="ds-lead">
           Every post we take on is staffed the same way, from the first look at the site to the
           first shift.
         </p>
+        {/* The full process lives on Services (copy audit, 2026-10-10). */}
+        <Link to="/services#process" className="ds-link ds-staffing-more">
+          See the four stages
+          <Arrow />
+        </Link>
       </div>
 
       <div className="ds-staffing-body">

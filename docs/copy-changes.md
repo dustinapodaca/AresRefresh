@@ -759,3 +759,22 @@ Armed, Unarmed, Access control, Restricted-area escort, Relief and surge coverag
 ## Capability card names match the service pages (2026-10-10, owner)
 
 "Armed Physical Security", "Unarmed Physical Security", and "Access Control" are now "Armed Security Officers", "Unarmed Security Officers", and "Access Control Officers" (in federal buying, "physical security" can read as barriers and systems; NAICS 561612 is guard services). The quote form's "Access control" is now "Access control officers". The owner is updating the PDF to match.
+
+## Group 1 copy edits from the audit (2026-10-10)
+
+| Page | Was | Now |
+|---|---|---|
+| Home hero | (none) | Two routes under the proof row: "Federal buyers: capability statement →" and "Looking for work: open roles →" |
+| Home Careers | "Join the people who staff them." / "We hire armed and unarmed officers, with paid training. Our supervisors include veterans..." | "Now hiring armed and unarmed officers." / "Paid training, schedules posted ahead, and a supervisor who answers. Veterans encouraged to apply." |
+| Home hand-offs | "Every one of those posts is staffed by officers we trained on site."; "Hiring Ares for your site starts with a quote request or a call." | Cut |
+| About hero | "A Colorado Springs security firm built around its people." / "Ares Security is minority woman-owned and employee-focused..." | "Built around the people on post." / "Ares was founded in Colorado Springs in 2021 on one idea: officers trained for the specific site, and treated well, protect it better." |
+| About 01 | "How we staff a post." with four long steps | "How we work." Plan before we sign / Write it down / Keep you informed / Train on the post, one plain sentence each; "See the four stages →" to Services; rail mark "How we work" |
+| About commitments | "Two failures run through this industry..." | "This industry lets down two groups: clients dropped once the contract is signed, and officers treated as interchangeable. We commit to both."; "Livable schedules" moved out (Careers has it) |
+| About traits | Licensed: "...state-licensed..." | "Background-checked and licensed before they reach your post." (Colorado has no statewide license) |
+| Careers hero | "Join the team." / "We hire armed and unarmed officers, with paid training and schedules you can plan a life around." | "Officer jobs with paid training." / "Armed and unarmed roles in Colorado Springs, Denver, and Pueblo. Schedules posted ahead, and a supervisor who answers." |
+| Careers why | "Our employees rate Ares 4.8 out of 5 on Indeed..." | Cut (the hero has it); "Read the reviews on Indeed ↗" stays |
+| Careers | "If that sounds like your kind of team, write to us." | Cut |
+| Contact | (none) | "Looking for work? Email careers@aressecurity.co" under Send |
+| Insights | "Insights." / "Plain answers for people buying security..." | "Buying security, explained." / "Plain answers on choosing coverage, contracting through GSA, and city licensing in Colorado." |
+
+Not applied: About's "Rooted" to "Local" and "Tempered" to "Steady" (breaks the ALERT initials; owner to decide); About's new close and the Contact map swap (they undo owner decisions); the veterans count line and the Quality "CEO writes every post order" line (unconfirmed).

@@ -61,6 +61,11 @@ Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`
     Job pages come last, if at all (owner, 2026-10-10); they would need: pay range per role (Colorado requires it in a
     posting), schedule, requirements, benefits summary, and how to apply (Indeed link or a
     short form). Industry "Why Ares here" rows are done (longest client since 2022 and de-escalation added, owner; Ares is not an AASC member, never list it).
+    Group 1 copy edits done (2026-10-10): Home hero audience routes, Careers teaser, hand-offs
+    cut; About hero, "How we work.", commitments; Careers hero and why; Contact job-seeker
+    line; Insights hero (docs/copy-changes.md). Open for the owner: About's Rooted/Tempered
+    rename (breaks ALERT). Next: group 2 (nav, breadcrumbs, PDF link in footer; options
+    first), then city-page paragraphs.
     7 done: city-page site types link to the industry pages; outage and storm-event
     coverage on Critical (a question) and in the relief roster. 9 done: the footer's
     Contracting column matches the email signature. The capability statement PDF is the

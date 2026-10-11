@@ -256,6 +256,11 @@ export default function Contact() {
             <p className="ds-small">
               <strong>Discretion guaranteed.</strong> Requests are read by leadership only.
             </p>
+            {/* So applicants don't use the quote form (copy audit, 2026-10-10). */}
+            <p className="ds-small">
+              Looking for work? Email{' '}
+              <a href="mailto:careers@aressecurity.co" className="ds-link ds-data">careers@aressecurity.co</a>
+            </p>
             <p className="ds-qt-status" role="status" aria-live="polite" data-ok={status?.done ? String(status.ok) : undefined}>
               {status?.text}
             </p>
