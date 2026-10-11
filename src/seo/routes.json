@@ -293,6 +293,16 @@
       "title": "Insights: Buying Security in Colorado | Ares Security",
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
+    "/insights/relief-surge-coverage": {
+      "title": "Relief and Surge Security Coverage | Ares Security",
+      "description": "Every security roster runs short sometimes. What to line up before a call-out, an inspection, or a contract change leaves a post empty.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
     "/insights/armed-or-unarmed-security": {
       "title": "Armed or unarmed security: how to decide | Ares Security",
       "description": "Most sites need unarmed officers. Some need armed ones. The difference is what the officer may have to stop, and what the contract, the insurer, and the law.",

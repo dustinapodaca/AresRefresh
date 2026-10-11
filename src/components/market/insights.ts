@@ -23,6 +23,47 @@ const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
   {
+    // First of the copy audit's monthly topics (owner asked for a draft, 2026-10-11). Every
+    // fact is already on the site: the relief roster's fill times (owner, 2026-10-10), the
+    // missed-shift record, training on the post, and the certification numbers.
+    slug: 'relief-surge-coverage',
+    title: 'Relief and surge coverage: what to line up before you need it.',
+    category: 'Operations',
+    date: '2026-10-11',
+    dateLabel: 'October 11, 2026',
+    summary: 'Every security roster runs short sometimes. What to arrange before a call-out, an inspection, or a contract change leaves a post empty.',
+    body: [
+      { p: 'Every security roster runs short sometimes. An officer calls out, a vacation lands on a holiday week, an inspection needs extra posts, or a contract changes hands. The sites that handle it well arranged the coverage before the gap opened.' },
+      { h: 'Relief, overflow, and surge are different needs' },
+      { list: [
+        'Relief covers a regular post when its officer is out: call-outs, vacations, and training days.',
+        'Overflow adds posts when a site adds entrances, phases, or hours.',
+        'Surge staffs a short, busy stretch: an inspection, an outage or storm event, a construction phase, or a contract transition.',
+      ] },
+      { p: 'All three need officers who can stand the post on short notice and know its rules when they arrive.' },
+      { h: 'What to line up in advance' },
+      { list: [
+        'Current post orders for every post that might need cover, so a relief officer works to the same instructions as the regular one.',
+        'The dates you already know will be hard to cover, such as holidays, inspections, and planned shutdowns.',
+        'What a new officer needs to get on site: badges, access lists, or an escort.',
+        'Who calls for cover, who they call, and how much notice they can usually give.',
+        'Uniforms, agreed up front.',
+      ] },
+      { h: 'Train before the shift, not during it' },
+      { p: 'A relief officer who has never seen the site is the weakest point in a roster. Ask the security company how its relief officers learn a post. At Ares, a member of our leadership trains each officer on the post before the first shift, relief and surge officers included.' },
+      { h: 'Ask how fast cover really comes' },
+      { p: 'Get an answer for your posts, not a general promise. Posts we already staff are covered the same shift from our relief roster. A new post usually takes about a week, because every officer trains on the site first.' },
+      { p: 'Since 2021, Ares has missed fewer than 1% of shifts, with on-call scheduling in every contract.' },
+      { h: 'For prime contractors and other security companies' },
+      { p: 'Relief and surge work is often subcontracted. If you hold the contract, check that the subcontractor is licensed in the city where the site is, will work under your post orders, and counts toward your small-business goals. Ares is an SBA-certified woman-owned small business (WOSB250470) and a WBENC-certified Women\u2019s Business Enterprise (WBE2303571), licensed and bonded in Colorado Springs, Denver, and Pueblo.' },
+    ],
+    related: [
+      { label: 'Relief and surge coverage', to: '/services/relief-surge-coverage' },
+      { label: 'Construction, industrial, and logistics sites', to: '/industries/construction-industrial' },
+      { label: 'Teaming and subcontracting', to: '/teaming' },
+    ],
+  },
+  {
     slug: 'armed-or-unarmed-security',
     title: 'Armed or unarmed security: how to decide.',
     category: 'Buying security',

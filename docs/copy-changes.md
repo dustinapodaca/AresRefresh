@@ -852,3 +852,12 @@ Design (owner, 2026-10-10): the canvas is true black (#000); every card shares o
 | Voice | "We have hands-on experience…", "We write the SOPs…", "Rated 4.8 by our own employees", "Our employees rate Ares…", "How to buy from us.", "Contact us…", "our SAM.gov registration", "our veteran NRA firearms instructor", "from our roster", "a visitor log you can audit", "your post orders" (twice), "trained on your post" | "Ares has…", "Ares writes the SOPs…", "Rated 4.8 by its own employees", "Ares employees rate the company…", "How to buy from Ares.", "Contact Ares…", "the Ares SAM.gov registration", "the Ares veteran NRA firearms instructor", "from the Ares relief roster", "a visitor log the client can audit", "the site's post orders" / "the prime's post orders", "trained on the post" |
 
 The earlier versions stay at `/capability-statement?past=current`, `?creds=marks`, `?voice=first`.
+
+## Insights: first monthly article (draft, 2026-10-11)
+
+New: `/insights/relief-surge-coverage`, "Relief and surge coverage: what to line up before you
+need it." (the copy audit's first topic). Facts only from the site: the relief roster's fill
+times, training on the post by leadership, fewer than 1% missed shifts since 2021, WOSB and
+WBENC numbers, the three city licenses. Links to the relief service, the Construction
+industry page, and Teaming. Added to routes.json (sitemap), llms.txt, and the Insights index
+(first, dated October 11, 2026). For the owner to read before launch.
