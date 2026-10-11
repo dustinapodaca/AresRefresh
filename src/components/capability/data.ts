@@ -39,7 +39,9 @@ export type Capability = {
 export const CAPABILITIES: Capability[] = [
   {
     id: 'armed',
-    title: 'Armed Physical Security',
+    // Card names match the service pages (owner, 2026-10-10; were "Armed Physical Security",
+    // "Unarmed Physical Security", "Access Control"). The owner updates the PDF to match.
+    title: 'Armed Security Officers',
     line: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts.',
     keys: ['Armed', 'Cash-handling', 'Regulated'],
     includes: [
@@ -51,7 +53,7 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     id: 'unarmed',
-    title: 'Unarmed Physical Security',
+    title: 'Unarmed Security Officers',
     line: 'Uniformed and plainclothes officers for lobbies, perimeters, and passenger areas.',
     keys: ['Uniformed', 'Plainclothes', '24/7'],
     includes: [
@@ -64,7 +66,7 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     id: 'access',
-    title: 'Access Control',
+    title: 'Access Control Officers',
     line: 'Credential verification, visitor screening, and gate, dock, and lobby control.',
     keys: ['Credentials', 'Screening', 'Escort'],
     includes: [

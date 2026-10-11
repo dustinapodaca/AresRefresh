@@ -755,3 +755,7 @@ Capability Statement card "Patrol Vehicle Security" is now "Mobile Patrol", the 
 ## One service order (2026-10-10, owner)
 
 Armed, Unarmed, Access control, Restricted-area escort, Relief and surge coverage, Mobile patrol: on Services ("By role"), the Capability Statement cards (numbered 01 to 06 in that order), each service page's "More services", the quote form, llms.txt, and the quote skill.
+
+## Capability card names match the service pages (2026-10-10, owner)
+
+"Armed Physical Security", "Unarmed Physical Security", and "Access Control" are now "Armed Security Officers", "Unarmed Security Officers", and "Access Control Officers" (in federal buying, "physical security" can read as barriers and systems; NAICS 561612 is guard services). The quote form's "Access control" is now "Access control officers". The owner is updating the PDF to match.
