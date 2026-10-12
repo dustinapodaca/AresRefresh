@@ -1194,9 +1194,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* The patrol vehicles as a wide plate (anchored to the photo's foot, so the vehicles lead)
    beside the company facts on hairlines. Owner, 2026-10-06: vehicles are allowed on Home
    here. */
-.ds-quality-body { display: grid; gap: 36px; margin-top: var(--ds-beat-tight); }
+.ds-quality-body { display: grid; gap: 36px; margin-top: calc(var(--ds-beat-tight) + 24px); } /* +24px (owner, 2026-10-12) */
 .ds-quality-photo img { aspect-ratio: 1; object-fit: cover; object-position: 50% 100%; } /* anchored at the photo's foot (owner, 2026-10-12) */
-.ds-quality-photo::after { content: none; }
+/* No frame edge: the plate's edge was drawn around the caption too (owner, 2026-10-12). The
+   doubled class outranks .ds-plate::after, which comes later. */
+.ds-plate.ds-quality-photo::after { content: none; }
 .ds-quality-facts { margin: 0; }
 .ds-quality-facts div { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--ds-rule); }
 .ds-quality-facts div:last-child { border-bottom: 1px solid var(--ds-rule); }
@@ -1207,12 +1209,22 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 }
 @media (min-width: 768px) { .ds-quality-photo img { aspect-ratio: 16 / 10; } }
 @media (min-width: 1024px) {
-  .ds-quality-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  /* The facts' top and bottom rules line up with the photo's top and bottom edges (owner,
+     2026-10-12): the caption hangs below the photo outside its box, the facts stretch to the
+     photo's height, and the rows share it evenly. */
+  .ds-quality-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: stretch; }
   .ds-quality-photo { grid-column: 1 / span 7; }
+  .ds-quality-photo figcaption { position: absolute; top: 100%; left: 0; }
   /* Five columns, label over value with room between rows. */
-  .ds-quality-facts { grid-column: 8 / span 5; }
-  .ds-quality-facts div { gap: 6px; padding: 18px 0; }
+  .ds-quality-facts { grid-column: 8 / span 5; display: flex; flex-direction: column; }
+  .ds-quality-facts div { flex: 1; align-content: start; gap: 4px; padding: 14px 0; }
   .ds-quality-facts dd { font-size: 17px; line-height: 1.5; }
+}
+/* 1200 to 1279: the rail column takes room and the photo is at its shortest, so the facts
+   tighten to stay within it. */
+@media (min-width: 1200px) and (max-width: 1279px) {
+  .ds-quality-facts div { padding: 10px 0; }
+  .ds-quality-facts dd { font-size: 16px; line-height: 1.45; }
 }
 
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
