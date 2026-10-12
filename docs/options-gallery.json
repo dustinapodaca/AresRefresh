@@ -139,6 +139,30 @@
       ]
     },
     {
+      "heading": "Services opening photo",
+      "intro": "Same opening and copy; only the photograph changes. Framed so each subject sits in the clear area under the glass.",
+      "page": "/services",
+      "param": "photo",
+      "options": [
+        {
+          "value": "pikes",
+          "label": "Colorado Springs, Pikes Peak",
+          "tag": "default",
+          "note": "Downtown at dusk, the lit skyline in the clear area and the alpenglow peak glowing through the glass (owner, 2026-10-12)."
+        },
+        {
+          "value": "skyline",
+          "label": "Denver skyline, dusk",
+          "note": "The skyline over the Speer bridges, warm late light (Unsplash, Jakob Rosen). A tall photo, so the sky fills the glass."
+        },
+        {
+          "value": "capitol",
+          "label": "Denver, State Capitol at night",
+          "note": "The lit dome and downtown towers from above, all amber light (Unsplash, Kevin Bree)."
+        }
+      ]
+    },
+    {
       "heading": "About: Why Ares exists",
       "intro": "Placeholder words and the Ares mark until the founder's story and photo arrive.",
       "page": "/about",

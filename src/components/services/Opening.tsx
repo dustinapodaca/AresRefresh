@@ -6,9 +6,18 @@ import { heroTitle } from '../../lib/heroTitle';
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
 // The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
-// Since 2026-10-12 (owner): downtown Colorado Springs at dusk with Pikes Peak in alpenglow.
-// The Denver sunset moved to the Capability Statement hero.
-const HERO = { src: '/images/services-hero/colorado-springs.webp', width: 2527, height: 1322 };
+// The opening photo. Since 2026-10-12 (owner): downtown Colorado Springs at dusk with Pikes Peak
+// in alpenglow (the Denver sunset moved to the Capability Statement hero). Two Denver options for
+// the owner to compare at /services?photo=skyline|capitol; pikes is the default. Each sets its
+// framing (dossier.css reads the vars): `pos` the object-position, `drop` how far the photo sits
+// below its box on phones and tablets, `dropD` and `ratio` (height / width) from 1024px.
+const PHOTOS = {
+  pikes: { src: '/images/services-hero/colorado-springs.webp', caption: 'Downtown Colorado Springs, Colorado', pos: '50% 100%', drop: '-200px', dropD: '-110px', ratio: 0.5231 },
+  // Measured so each subject (the skyline over the bridges; the dome and towers) centers in the
+  // clear area under the glass; from 1024px the drop scales with the width, like the photo.
+  skyline: { src: '/images/services-hero/denver-skyline-dusk.webp', caption: 'Downtown Denver, Colorado', pos: '50% 66%', drop: '-152px', dropD: 'calc(133px - 58.4vw)', ratio: 1.5 },
+  capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496 },
+} as const;
 
 // Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
 // the audit's other options stay switchable for the client at /services?hero=a|b|c|current.
@@ -40,6 +49,8 @@ export default function Opening() {
   const [params] = useSearchParams();
   const asked = params.get('hero');
   const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
+  const askedPhoto = params.get('photo');
+  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'pikes') as keyof typeof PHOTOS];
 
   // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
   // below hold still until the glass's foot has cleared the nav, then everything scrolls as
@@ -94,7 +105,17 @@ export default function Opening() {
       {/* The photo, anchored at its foot, with a mirror of it (flipped vertically) above so the
           glass frosts real image to the top. It holds still while the glass slides away. */}
       <div className="ds-svc-open-photo" aria-hidden="true">
-        <div className="ds-svc-open-stack">
+        <div
+          className="ds-svc-open-stack"
+          style={
+            {
+              '--svc-pos': HERO.pos,
+              '--svc-drop': HERO.drop,
+              '--svc-drop-d': HERO.dropD,
+              '--svc-ratio': HERO.ratio || undefined,
+            } as React.CSSProperties
+          }
+        >
           <div className="ds-svc-open-mirror">
             <img {...responsive(HERO.src)} alt="" decoding="sync" />
           </div>
@@ -113,7 +134,7 @@ export default function Opening() {
         </div>
         {/* The place, like the other photo heroes (owner, 2026-10-08): just under the glass's
             edge on the right, riding up with the glass over the photo and out of view. */}
-        <p className="ds-caption ds-svc-open-cap">Downtown Colorado Springs, Colorado</p>
+        <p className="ds-caption ds-svc-open-cap">{HERO.caption}</p>
       </div>
 
       {/* Grows with the first scroll (--svc-hold) so the photo and the page below hold still. */}

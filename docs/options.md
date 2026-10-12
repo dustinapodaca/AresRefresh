@@ -17,6 +17,7 @@ Last checked against the code: 2026-10-11, branch `audit`.
 | Capability Statement, Past performance | `/capability-statement?past=` | `record` selected current and completed contracts (owner, 2026-10-11) | `current` the three current only | `src/components/capability/Sections.tsx` (`Past`), `data.ts` (`PAST_PERFORMANCE`, `PAST_CURRENT`) | `.ds-cs-past` |
 | Capability Statement, Certifications and codes | `/capability-statement?creds=` | `table` one grouped table, each identifier once (owner, 2026-10-11) | `marks` the marks, then the code listing | `Sections.tsx` (`CredTable`), `data.ts` (`CRED_GROUPS`) | `.ds-cs-creds` |
 | Capability Statement, voice | `/capability-statement?voice=` | `third` formal third person (owner, 2026-10-11) | `first` "we" and "our" | `Sections.tsx` (`useCsOptions`), `data.ts` (`THIRD_PERSON`) | `.ds-cs-why` |
+| Services opening photo | `/services?photo=` | `pikes` downtown Colorado Springs, Pikes Peak (owner, 2026-10-12) | `skyline` Denver skyline at dusk, `capitol` Denver State Capitol at night | `src/components/services/Opening.tsx` (`PHOTOS`) | n/a, the opening is the top of the page |
 | About, Why Ares exists | `/about?founder=` | `letter` (owner, 2026-10-10) | `note` | `src/components/about/Founder.tsx` | `.ds-founder` |
 
 ## Whole-page previews

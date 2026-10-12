@@ -7,6 +7,9 @@ import { IMAGES } from './images.generated';
 const SIZES: Record<string, string> = {
   '/images/hero6.jpg': '(max-width: 767px) 240vw, (max-width: 1023px) 145vw, (max-width: 1439px) 128vw, 106vw',
   '/images/services-hero/colorado-springs.webp': '(max-width: 767px) 371vw, (max-width: 1023px) 182vw, (max-width: 1439px) 117vw, 101vw',
+  // Services photo options (?photo=): the same opening, so the same measured sizes.
+  '/images/services-hero/denver-skyline-dusk.webp': '(max-width: 767px) 371vw, (max-width: 1023px) 182vw, (max-width: 1439px) 117vw, 101vw',
+  '/images/services-hero/denver-capitol-night.webp': '(max-width: 767px) 371vw, (max-width: 1023px) 182vw, (max-width: 1439px) 117vw, 101vw',
   // Now the Capability Statement hero (2026-10-12), so it takes that hero's measured sizes.
   '/images/services-hero/denver-sunset.webp': '(max-width: 767px) 256vw, (max-width: 1023px) 142vw, (max-width: 1439px) 118vw, 100vw',
   '/images/about-hero.jpg': '(max-width: 767px) 195vw, (max-width: 1023px) 117vw, 106vw',

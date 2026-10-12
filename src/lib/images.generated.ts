@@ -38,6 +38,18 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 2527,
     "height": 1322
   },
+  "/images/services-hero/denver-skyline-dusk.webp": {
+    "src": "/images/opt/services-hero-denver-skyline-dusk-1200.0d4a241e.webp",
+    "srcSet": "/images/opt/services-hero-denver-skyline-dusk-480.e7925f7a.webp 480w, /images/opt/services-hero-denver-skyline-dusk-800.56623a8b.webp 800w, /images/opt/services-hero-denver-skyline-dusk-1200.0d4a241e.webp 1200w, /images/opt/services-hero-denver-skyline-dusk-1600.2436f95c.webp 1600w, /images/opt/services-hero-denver-skyline-dusk-2000.9bdffb9b.webp 2000w, /images/opt/services-hero-denver-skyline-dusk-2400.dea30466.webp 2400w",
+    "width": 2400,
+    "height": 3600
+  },
+  "/images/services-hero/denver-capitol-night.webp": {
+    "src": "/images/opt/services-hero-denver-capitol-night-1200.2934436a.webp",
+    "srcSet": "/images/opt/services-hero-denver-capitol-night-480.970f2341.webp 480w, /images/opt/services-hero-denver-capitol-night-800.b796380a.webp 800w, /images/opt/services-hero-denver-capitol-night-1200.2934436a.webp 1200w, /images/opt/services-hero-denver-capitol-night-1600.b80b3e8f.webp 1600w, /images/opt/services-hero-denver-capitol-night-2000.ae35dbc2.webp 2000w, /images/opt/services-hero-denver-capitol-night-2400.b2e2d9eb.webp 2400w",
+    "width": 2400,
+    "height": 1799
+  },
   "/images/services-hero/denver-sunset.webp": {
     "src": "/images/opt/services-hero-denver-sunset-1200.c99340a6.webp",
     "srcSet": "/images/opt/services-hero-denver-sunset-480.9177106f.webp 480w, /images/opt/services-hero-denver-sunset-800.baee1774.webp 800w, /images/opt/services-hero-denver-sunset-1200.c99340a6.webp 1200w, /images/opt/services-hero-denver-sunset-1600.be1d11e6.webp 1600w, /images/opt/services-hero-denver-sunset-2000.333130c0.webp 2000w, /images/opt/services-hero-denver-sunset-2400.a699c3b9.webp 2400w",

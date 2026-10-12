@@ -40,6 +40,10 @@ PHOTOS = [
     # Services opening (owner, 2026-10-12): downtown Colorado Springs at dusk, Pikes Peak in
     # alpenglow (a stormy-day view of downtown was tried first, kept in images-unused).
     {'key': '/images/services-hero/colorado-springs.webp', 'source': 'assets/images-src/services-hero/colorado-springs-pikes-peak.jpg', 'q': 80},
+    # Two more Services opening options for the owner to compare (2026-10-12, Unsplash: Jakob
+    # Rosen, Kevin Bree): /services?photo=skyline|capitol.
+    {'key': '/images/services-hero/denver-skyline-dusk.webp', 'source': 'assets/images-src/services-hero/denver-skyline-dusk.jpg', 'q': 80},
+    {'key': '/images/services-hero/denver-capitol-night.webp', 'source': 'assets/images-src/services-hero/denver-capitol-night.jpg', 'q': 80},
     # Denver at sunset: the Services opening until 2026-10-12, now the Capability Statement hero.
     {'key': '/images/services-hero/denver-sunset.webp', 'source': 'assets/images-src/hero1.jpg', 'q': 76},
     {'key': '/images/services-hero/nb-s1-towers.webp', 'source': 'MASTERS/services-hero/s1-towers.jpg', 'q': 82, 'fallback': 'assets/images-src/services-hero/nb-s1-towers.webp'},
