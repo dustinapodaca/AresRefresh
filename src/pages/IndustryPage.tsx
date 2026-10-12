@@ -45,7 +45,15 @@ export default function IndustryPage() {
             alt=""
             decoding="sync"
             {...{ fetchpriority: 'high' }}
-            style={ind.image.position ? { objectPosition: ind.image.position } : undefined}
+            // Framing per image (industries.ts); phones may set their own (CSS reads the vars).
+            style={
+              {
+                '--mk-pos': ind.image.position,
+                '--mk-mpos': ind.image.mobile?.position,
+                '--mk-mzoom': ind.image.mobile?.zoom,
+                '--mk-morigin': ind.image.mobile?.origin,
+              } as React.CSSProperties
+            }
           />
         </div>
       </section>

@@ -32,6 +32,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 2000,
     "height": 1391
   },
+  "/images/services-hero/colorado-springs.webp": {
+    "src": "/images/opt/services-hero-colorado-springs-1200.f05562f3.webp",
+    "srcSet": "/images/opt/services-hero-colorado-springs-480.f94e7039.webp 480w, /images/opt/services-hero-colorado-springs-800.bf9e013a.webp 800w, /images/opt/services-hero-colorado-springs-1200.f05562f3.webp 1200w, /images/opt/services-hero-colorado-springs-1600.240dc090.webp 1600w, /images/opt/services-hero-colorado-springs-2000.24908c7c.webp 2000w, /images/opt/services-hero-colorado-springs-2400.57001d42.webp 2400w, /images/opt/services-hero-colorado-springs-3200.ad450f00.webp 3200w",
+    "width": 3200,
+    "height": 2133
+  },
   "/images/services-hero/denver-sunset.webp": {
     "src": "/images/opt/services-hero-denver-sunset-1200.c99340a6.webp",
     "srcSet": "/images/opt/services-hero-denver-sunset-480.9177106f.webp 480w, /images/opt/services-hero-denver-sunset-800.baee1774.webp 800w, /images/opt/services-hero-denver-sunset-1200.c99340a6.webp 1200w, /images/opt/services-hero-denver-sunset-1600.be1d11e6.webp 1600w, /images/opt/services-hero-denver-sunset-2000.333130c0.webp 2000w, /images/opt/services-hero-denver-sunset-2400.a699c3b9.webp 2400w",
@@ -41,12 +47,6 @@ export const IMAGES: Record<string, ImageEntry> = {
   "/images/services-hero/nb-s1-towers.webp": {
     "src": "/images/opt/services-hero-nb-s1-towers-1200.e62eacd9.webp",
     "srcSet": "/images/opt/services-hero-nb-s1-towers-480.62065ede.webp 480w, /images/opt/services-hero-nb-s1-towers-800.cd7b8a65.webp 800w, /images/opt/services-hero-nb-s1-towers-1200.e62eacd9.webp 1200w, /images/opt/services-hero-nb-s1-towers-1600.a72d9cdc.webp 1600w, /images/opt/services-hero-nb-s1-towers-2000.66a06f2d.webp 2000w, /images/opt/services-hero-nb-s1-towers-2400.028930ca.webp 2400w, /images/opt/services-hero-nb-s1-towers-2752.49a09958.webp 2752w",
-    "width": 2752,
-    "height": 1536
-  },
-  "/images/capability-hero/cs-fins.webp": {
-    "src": "/images/opt/capability-hero-cs-fins-1200.5c4ff4a0.webp",
-    "srcSet": "/images/opt/capability-hero-cs-fins-480.a2e7cbc2.webp 480w, /images/opt/capability-hero-cs-fins-800.86b692d8.webp 800w, /images/opt/capability-hero-cs-fins-1200.5c4ff4a0.webp 1200w, /images/opt/capability-hero-cs-fins-1600.447be330.webp 1600w, /images/opt/capability-hero-cs-fins-2000.a65ec538.webp 2000w, /images/opt/capability-hero-cs-fins-2400.9226526a.webp 2400w, /images/opt/capability-hero-cs-fins-2752.291da350.webp 2752w",
     "width": 2752,
     "height": 1536
   },
@@ -159,10 +159,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1536
   },
   "/images/market/airport-transportation.webp": {
-    "src": "/images/opt/market-airport-transportation-1200.56233c6e.webp",
-    "srcSet": "/images/opt/market-airport-transportation-480.14e035b3.webp 480w, /images/opt/market-airport-transportation-800.70034bc8.webp 800w, /images/opt/market-airport-transportation-1200.56233c6e.webp 1200w, /images/opt/market-airport-transportation-1600.48b9b28f.webp 1600w, /images/opt/market-airport-transportation-2000.84582f01.webp 2000w, /images/opt/market-airport-transportation-2400.9dd605cf.webp 2400w, /images/opt/market-airport-transportation-3200.eaf524d8.webp 3200w",
-    "width": 3200,
-    "height": 2560
+    "src": "/images/opt/market-airport-transportation-1200.cd659612.webp",
+    "srcSet": "/images/opt/market-airport-transportation-480.db58d170.webp 480w, /images/opt/market-airport-transportation-800.51298a63.webp 800w, /images/opt/market-airport-transportation-1200.cd659612.webp 1200w, /images/opt/market-airport-transportation-1600.86eaecc7.webp 1600w, /images/opt/market-airport-transportation-2000.e4f404eb.webp 2000w, /images/opt/market-airport-transportation-2048.ba99b127.webp 2048w",
+    "width": 2048,
+    "height": 1287
   },
   "/images/cert-gsa-footer.png": {
     "src": "/images/opt/cert-gsa-footer.90e0c2aa.webp",

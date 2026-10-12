@@ -476,13 +476,13 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in
   Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." The audit's
   options A, B, C and the old copy stay switchable for the client at `/services?hero=`
-  (`COPY` in `Opening.tsx`). The photograph (owner, 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12)` (owner, 2026-10-08: a tad brighter and crisper; was brightness 0.68, contrast 1.04); earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sits 164px lower, with a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.1:1 or better, headline 6:1). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift). Because the held page sits `--svc-cap` below its layout box, the page's view-timeline ranges (stage bars, Denver plate) start that much later, and the dock hides once the footer's first line of content appears (owner: not at its top padding), not on the document box (2026-10-08: both had fired early).
+  (`COPY` in `Opening.tsx`). The photograph (owner, 2026-10-12: downtown Colorado Springs under the Front Range on a stormy evening, `services-hero/colorado-springs.webp` from a 3200px master, same grade, anchored flush at its foot so the skyline sits in the clear area; caption "Downtown Colorado Springs, Colorado". Before it, owner 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12)` (owner, 2026-10-08: a tad brighter and crisper; was brightness 0.68, contrast 1.04); earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sat 164px lower then; a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.1:1 or better, headline 6:1). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift). Because the held page sits `--svc-cap` below its layout box, the page's view-timeline ranges (stage bars, Denver plate) start that much later, and the dock hides once the footer's first line of content appears (owner: not at its top padding), not on the document box (2026-10-08: both had fired early).
   (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
   only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
   55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
   where the crisp photo begins (`clamp(15rem, 38svh, 28rem)` above the opening's foot).
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
-  point, 6:1 or better at every width). The place caption "Downtown Denver, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
+  point, 6:1 or better at every width). The place caption "Downtown Colorado Springs, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
@@ -578,7 +578,7 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
 The most important page after Home; it must stand out like Home. Concept and Mobbin
 board: docs/capability-concepts.md. Every piece of the old page's content carries over.
 Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
-- **Hero:** generated copper fins on a building at dusk (owner, 2026-10-08:
+- **Hero:** downtown Denver at sunset (owner, 2026-10-12: `services-hero/denver-sunset.webp`, the Services opening's photo until then, in the same frame and shades; the fins image moved to `assets/images-unused/capability-hero/`). Before it, generated copper fins on a building at dusk (owner, 2026-10-08:
   `capability-hero/cs-fins.webp`, 2752px at its native size, quality 82 with sharp YUV, 227KB, from the Services hero option
   `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
   glass-panels light `hero-panels.webp`, both kept, with the other options in
@@ -791,10 +791,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
   sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
   and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
-  Denver International's terminal at blue hour over the roadways, taillight trails, strip at
-  `50% 38%`, graded to the site (owner, 2026-10-12: from purple to a night sky, warm-white
-  tents, amber and rust trails; `assets/tools/grade-photo.html`, ungraded master kept). A
-  sunset photo of the terminal was tried first and kept in images-unused. The other three are still the generated
+  Denver International's terminal and hotel at sunset with a jet climbing out (owner,
+  2026-10-12, chosen back over a blue-hour roadway photo, kept graded and plain in
+  images-unused), strip at `50% 96%` so the terminal rides above the bottom fade; phones zoom
+  1.6x toward the right end and the jet (`mobile` in `industries.ts`: position, zoom, origin). The other three are still the generated
   dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".

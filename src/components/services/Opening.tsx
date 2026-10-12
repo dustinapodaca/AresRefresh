@@ -6,7 +6,9 @@ import { heroTitle } from '../../lib/heroTitle';
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
 // The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
-const HERO = { src: '/images/services-hero/denver-sunset.webp', width: 2400, height: 1380 };
+// Since 2026-10-12 (owner): downtown Colorado Springs under the Front Range on a stormy evening.
+// The Denver sunset moved to the Capability Statement hero.
+const HERO = { src: '/images/services-hero/colorado-springs.webp', width: 3200, height: 2133 };
 
 // Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
 // the audit's other options stay switchable for the client at /services?hero=a|b|c|current.
@@ -89,7 +91,7 @@ export default function Opening() {
 
   return (
     <section ref={ref} className="ds-svc-open" aria-labelledby="services-title">
-      {/* The photo sits 164px lower, with a mirror of it (flipped vertically) above so the
+      {/* The photo, anchored at its foot, with a mirror of it (flipped vertically) above so the
           glass frosts real image to the top. It holds still while the glass slides away. */}
       <div className="ds-svc-open-photo" aria-hidden="true">
         <div className="ds-svc-open-stack">
@@ -111,7 +113,7 @@ export default function Opening() {
         </div>
         {/* The place, like the other photo heroes (owner, 2026-10-08): just under the glass's
             edge on the right, riding up with the glass over the photo and out of view. */}
-        <p className="ds-caption ds-svc-open-cap">Downtown Denver, Colorado</p>
+        <p className="ds-caption ds-svc-open-cap">Downtown Colorado Springs, Colorado</p>
       </div>
 
       {/* Grows with the first scroll (--svc-hold) so the photo and the page below hold still. */}

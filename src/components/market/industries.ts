@@ -16,7 +16,14 @@ export type IndustryPageData = {
   /** The hero scene: generated (assets/generated/market/) or a real photo (owner, 2026-10-12).
    *  `position` frames the page's wide strip (default 50% 60%); `card` frames Home's tall card
    *  (object-position, plus an optional zoom toward `origin`; default centered, no zoom). */
-  image: { src: string; alt: string; position?: string; card?: { position: string; zoom?: number; origin?: string } };
+  image: {
+    src: string;
+    alt: string;
+    position?: string;
+    /** Phones (below 768px) only: the strip's framing, with an optional zoom toward `origin`. */
+    mobile?: { position: string; zoom?: number; origin?: string };
+    card?: { position: string; zoom?: number; origin?: string };
+  };
   stake: string[];
   deliver: { role: string; line: string }[];
   why: SheetRow[];
@@ -188,9 +195,15 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Airport-area sites, transit and parking facilities, and cargo operations.',
     title: 'Security for airport and transportation sites.',
     lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',
-    // A real photo (owner, 2026-10-12): the lit terminal over the roadways; framed so the peak
-    // tips clear the top fade and the curving ramp shows below.
-    image: { src: '/images/market/airport-transportation.webp', alt: '', position: '50% 38%' },
+    // A real photo (owner, 2026-10-12): the terminal sits low in the frame. Desktop frames near the
+    // foot so the terminal rides above the bottom fade; phones zoom toward the terminal's right
+    // end and the climbing jet.
+    image: {
+      src: '/images/market/airport-transportation.webp',
+      alt: '',
+      position: '50% 96%',
+      mobile: { position: '78% 80%', zoom: 1.6, origin: '72% 110%' },
+    },
     stake: [
       'Transportation sites never close. Vehicles, cargo, and people move through them around the clock, and every gate, lot, and dock is a way in.',
       'Around an airport, access is controlled and procedures are set by the facility. Officers have to learn those rules before they stand the post, follow them exactly, and log what they check.',

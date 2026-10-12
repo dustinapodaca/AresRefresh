@@ -37,9 +37,11 @@ PHOTOS = [
     {'key': '/images/about-security.jpg', 'source': 'assets/images-src/about-security.jpg', 'q': 80},
     {'key': '/images/about-banner.jpg', 'source': 'assets/images-src/about-banner.jpg', 'q': 80},
     # A noisy sunset under glass: q76 looks the same as q82 at a third less.
+    # Services opening (owner, 2026-10-12): downtown Colorado Springs under the Front Range.
+    {'key': '/images/services-hero/colorado-springs.webp', 'source': 'assets/images-src/services-hero/colorado-springs.jpg', 'q': 78},
+    # Denver at sunset: the Services opening until 2026-10-12, now the Capability Statement hero.
     {'key': '/images/services-hero/denver-sunset.webp', 'source': 'assets/images-src/hero1.jpg', 'q': 76},
     {'key': '/images/services-hero/nb-s1-towers.webp', 'source': 'MASTERS/services-hero/s1-towers.jpg', 'q': 82, 'fallback': 'assets/images-src/services-hero/nb-s1-towers.webp'},
-    {'key': '/images/capability-hero/cs-fins.webp', 'source': 'MASTERS/services-hero/s4-fins.jpg', 'q': 82, 'fallback': 'assets/images-src/capability-hero/cs-fins.webp'},
     # Careers, Why people stay, first photo: the team at the range, replaced 2026-10-09 (owner).
     {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.png', 'q': 82},
     {'key': '/images/careers-team.jpg', 'source': 'assets/images-src/careers-team.jpg', 'q': 80},
@@ -67,11 +69,10 @@ PHOTOS = [
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-property.webp', 'q': 82},
     # The two new industry pages (owner, 2026-10-10), generated like the others.
     {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},
-    # A real photo (owner, 2026-10-12): Denver International's terminal at blue hour over the
-    # roadways, taillight trails. Master downsized from the 4125px original to 3200px, then graded
-    # to the site (owner, 2026-10-12: night sky, amber and rust, no purple) with
-    # assets/tools/grade-photo.html; the ungraded master is airport-denver-roadway.jpg.
-    {'key': '/images/market/airport-transportation.webp', 'source': 'assets/images-src/market/airport-denver-roadway-graded.jpg', 'q': 80},
+    # A real photo (owner, 2026-10-12): Denver International's terminal and hotel at sunset, a jet
+    # climbing out. Arrived 2048px and already compressed. (The blue-hour roadway photo, plain and
+    # graded, was tried after it and is kept in images-unused.)
+    {'key': '/images/market/airport-transportation.webp', 'source': 'assets/images-src/market/airport-denver-sunset.jpg', 'q': 82},
 ]
 
 # Logos show 30 to 48px tall; 128px covers 2.5x screens. Lossless keeps their edges and

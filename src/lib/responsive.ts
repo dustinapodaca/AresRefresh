@@ -6,10 +6,11 @@ import { IMAGES } from './images.generated';
 // The page's <img> and its preload in <Seo> both read this, so they fetch the same file.
 const SIZES: Record<string, string> = {
   '/images/hero6.jpg': '(max-width: 767px) 240vw, (max-width: 1023px) 145vw, (max-width: 1439px) 128vw, 106vw',
-  '/images/services-hero/denver-sunset.webp': '(max-width: 767px) 371vw, (max-width: 1023px) 182vw, (max-width: 1439px) 117vw, 101vw',
+  '/images/services-hero/colorado-springs.webp': '(max-width: 767px) 371vw, (max-width: 1023px) 182vw, (max-width: 1439px) 117vw, 101vw',
+  // Now the Capability Statement hero (2026-10-12), so it takes that hero's measured sizes.
+  '/images/services-hero/denver-sunset.webp': '(max-width: 767px) 256vw, (max-width: 1023px) 142vw, (max-width: 1439px) 118vw, 100vw',
   '/images/about-hero.jpg': '(max-width: 767px) 195vw, (max-width: 1023px) 117vw, 106vw',
   '/images/careers-hero.jpg': '(max-width: 767px) 142vw, 100vw',
-  '/images/capability-hero/cs-fins.webp': '(max-width: 767px) 256vw, (max-width: 1023px) 142vw, (max-width: 1439px) 118vw, 100vw',
   '/images/services-hero/nb-s1-towers.webp': '(max-width: 767px) 148vw, 100vw',
 };
 const MARKET_HERO = '(max-width: 767px) 170vw, (max-width: 1023px) 105vw, 100vw';
