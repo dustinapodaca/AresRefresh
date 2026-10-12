@@ -67,9 +67,9 @@ PHOTOS = [
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-property.webp', 'q': 82},
     # The two new industry pages (owner, 2026-10-10), generated like the others.
     {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},
-    # A real photo (owner, 2026-10-12): Denver International's terminal and hotel at sunset, a jet
-    # climbing out. Arrived 2048px and already compressed.
-    {'key': '/images/market/airport-transportation.webp', 'source': 'assets/images-src/market/airport-denver.jpg', 'q': 82},
+    # A real photo (owner, 2026-10-12): Denver International's terminal at blue hour over the
+    # roadways, taillight trails. Master downsized from the 4125px original to 3200px.
+    {'key': '/images/market/airport-transportation.webp', 'source': 'assets/images-src/market/airport-denver-roadway.jpg', 'q': 80},
 ]
 
 # Logos show 30 to 48px tall; 128px covers 2.5x screens. Lossless keeps their edges and

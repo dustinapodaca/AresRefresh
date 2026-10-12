@@ -791,8 +791,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
   sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
   and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
-  Denver International's terminal and hotel at sunset with a jet climbing out, strip at
-  `50% 88%` (the terminal sits low in the frame). The other three are still the generated
+  Denver International's terminal at blue hour over the roadways, taillight trails, strip at
+  `50% 38%` (a sunset photo of the terminal was tried first and kept in images-unused). The other three are still the generated
   dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
