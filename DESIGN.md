@@ -790,8 +790,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   in `industries.ts`; default `50% 60%`). Government & Military: a Space Force base near
   Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
   sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
-  and the wing (`card` in `industries.ts`: position, zoom, origin). The other four are still
-  the generated dusk scenes. "What is at stake." (headline left, prose
+  and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
+  Denver International's terminal and hotel at sunset with a jet climbing out, strip at
+  `50% 88%` (the terminal sits low in the frame). The other three are still the generated
+  dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines

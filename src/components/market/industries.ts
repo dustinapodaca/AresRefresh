@@ -188,7 +188,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Airport-area sites, transit and parking facilities, and cargo operations.',
     title: 'Security for airport and transportation sites.',
     lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',
-    image: { src: '/images/market/airport-transportation.webp', alt: '' },
+    // A real photo (owner, 2026-10-12): the terminal sits low in the frame, so the strip frames low.
+    image: { src: '/images/market/airport-transportation.webp', alt: '', position: '50% 88%' },
     stake: [
       'Transportation sites never close. Vehicles, cargo, and people move through them around the clock, and every gate, lot, and dock is a way in.',
       'Around an airport, access is controlled and procedures are set by the facility. Officers have to learn those rules before they stand the post, follow them exactly, and log what they check.',
