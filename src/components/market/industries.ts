@@ -103,10 +103,9 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Data centers, utilities, cash-handling, and other sites where every entry is documented.',
     title: 'Security for critical and high-liability sites.',
     lead: 'Access control, posted officers, and armed posts where required, for data centers, utilities, cash-handling, and other regulated sites where every entry has to be documented.',
-    // A real photo (owner, 2026-10-12): a data center aisle. The strip frames high on the racks and
-    // ceiling lights so the bright floor doesn't lead; Home's card shows it whole (a zoom lost
-    // the racks).
-    image: { src: '/images/market/data-centers.webp', alt: '', position: '50% 42%' },
+    // A real photo (owner, 2026-10-12): a data center campus under snowy peaks. The wide strip
+    // can't hold both, so it frames on the building; phones and Home's card show both.
+    image: { src: '/images/market/data-centers.webp', alt: '', position: '50% 80%' },
     stake: [
       'Critical and high-liability sites are judged on who was allowed in. A missed check at a dock or a gate is the gap an audit, an insurer, or an incident will find.',
       'Some hold equipment a business depends on, some hold cash or regulated goods, and some are still being built. Each needs officers who follow the access list exactly, write everything down, and are armed only where the post calls for it.',
