@@ -135,10 +135,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1144
   },
   "/images/market/government-military.webp": {
-    "src": "/images/opt/market-government-military-1200.f745e509.webp",
-    "srcSet": "/images/opt/market-government-military-480.a437a6c8.webp 480w, /images/opt/market-government-military-800.c2e3dc33.webp 800w, /images/opt/market-government-military-1200.f745e509.webp 1200w, /images/opt/market-government-military-1600.4302bd32.webp 1600w, /images/opt/market-government-military-2000.3f31f157.webp 2000w, /images/opt/market-government-military-2048.7e1af4cc.webp 2048w",
-    "width": 2048,
-    "height": 1144
+    "src": "/images/opt/market-government-military-1200.51870224.webp",
+    "srcSet": "/images/opt/market-government-military-480.29555b87.webp 480w, /images/opt/market-government-military-800.92aac365.webp 800w, /images/opt/market-government-military-1200.51870224.webp 1200w, /images/opt/market-government-military-1600.41a57024.webp 1600w, /images/opt/market-government-military-2000.c1aabb3d.webp 2000w, /images/opt/market-government-military-2400.0dcbd47b.webp 2400w, /images/opt/market-government-military-3200.4de90c97.webp 3200w",
+    "width": 3200,
+    "height": 2133
   },
   "/images/market/construction-industrial.webp": {
     "src": "/images/opt/market-construction-industrial-1200.74e7ff8c.webp",

@@ -14,8 +14,9 @@ export type IndustryPageData = {
   title: string;
   lead: string;
   /** The hero scene: generated (assets/generated/market/) or a real photo (owner, 2026-10-12).
-   *  `position` frames the page's wide strip (default 50% 60%). */
-  image: { src: string; alt: string; position?: string };
+   *  `position` frames the page's wide strip (default 50% 60%); `card` frames Home's tall card
+   *  (object-position, plus an optional zoom toward `origin`; default centered, no zoom). */
+  image: { src: string; alt: string; position?: string; card?: { position: string; zoom?: number; origin?: string } };
   stake: string[];
   deliver: { role: string; line: string }[];
   why: SheetRow[];
@@ -39,7 +40,14 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Federal, state, and municipal facilities and military installations, through GSA.',
     title: 'Security for government and military facilities.',
     lead: 'Officers for federal, state, and municipal facilities and military installations, available to agencies through our GSA Multiple Award Schedule.',
-    image: { src: '/images/market/government-military.webp', alt: '' },
+    // A real photo (owner, 2026-10-12): a Space Force base at golden hour. The strip keeps the
+    // radomes, building, and mountains; Home's card zooms in on a radome, the dish, and the wing.
+    image: {
+      src: '/images/market/government-military.webp',
+      alt: '',
+      position: '50% 55%',
+      card: { position: '22% 50%', zoom: 2, origin: '25% 57%' },
+    },
     stake: [
       'Public-sector posts run on post orders, documentation, and the rules of the facility. The officer at the entrance represents the agency to everyone who walks through it.',
       'Agencies also need a contracting path that already exists. Ares holds a GSA Multiple Award Schedule contract, is active on SAM.gov, and is an SBA-certified woman-owned small business.',

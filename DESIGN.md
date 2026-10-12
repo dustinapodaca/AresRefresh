@@ -787,7 +787,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Construction, Industrial & Logistics is the first: a steel-frame build in downtown
   Colorado Springs on a winter day, the contractor's name on the elevator core removed,
   framed at `50% 35%` so the crane and roofline show (each image can set its own `position`
-  in `industries.ts`; default `50% 60%`). The other five are still the generated dusk scenes. "What is at stake." (headline left, prose
+  in `industries.ts`; default `50% 60%`). Government & Military: a Space Force base near
+  Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
+  sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
+  and the wing (`card` in `industries.ts`: position, zoom, origin). The other four are still
+  the generated dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines

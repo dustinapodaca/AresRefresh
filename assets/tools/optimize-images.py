@@ -57,7 +57,9 @@ PHOTOS = [
     {'key': '/images/capability-page1.webp', 'source': 'assets/images-src/capability-page1.webp', 'q': 84},
     # Test branch only (skipped where missing).
     {'key': '/images/market/data-centers.webp', 'source': 'assets/images-src/market/data-centers.webp', 'q': 82},
-    {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-military.webp', 'q': 82},
+    # A real photo (owner, 2026-10-12): a Space Force base near Colorado Springs at golden hour,
+    # radomes and the Front Range behind. Master downsized from the 8219px original to 3200px.
+    {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-schriever.jpg', 'q': 80},
     # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
     # only); the untouched original is construction-colorado-springs.jpg beside it.

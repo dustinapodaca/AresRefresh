@@ -38,7 +38,22 @@ export default function Industries() {
             <li key={ind.slug}>
               <Link to={`/industries/${ind.slug}`}>
                 <span className="ds-ind-photo" aria-hidden="true">
-                  <img {...responsive(ind.image.src)} alt="" loading="lazy" decoding="async" />
+                  <img
+                    {...responsive(ind.image.src)}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    // Per-image card framing (industries.ts); `scale` composes with the hover zoom.
+                    style={
+                      ind.image.card
+                        ? {
+                            objectPosition: ind.image.card.position,
+                            scale: ind.image.card.zoom ? String(ind.image.card.zoom) : undefined,
+                            transformOrigin: ind.image.card.origin,
+                          }
+                        : undefined
+                    }
+                  />
                 </span>
                 <span className="ds-ind-name">
                   {ind.name.split(' ').slice(0, -1).join(' ')}{' '}
