@@ -141,10 +141,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1295
   },
   "/images/market/data-centers.webp": {
-    "src": "/images/opt/market-data-centers-1200.74fe360e.webp",
-    "srcSet": "/images/opt/market-data-centers-480.44ad5daa.webp 480w, /images/opt/market-data-centers-800.43f94069.webp 800w, /images/opt/market-data-centers-1200.74fe360e.webp 1200w, /images/opt/market-data-centers-1600.883cf3ee.webp 1600w, /images/opt/market-data-centers-2000.53ce841b.webp 2000w, /images/opt/market-data-centers-2048.10f3f395.webp 2048w",
-    "width": 2048,
-    "height": 1144
+    "src": "/images/opt/market-data-centers-1200.50c06205.webp",
+    "srcSet": "/images/opt/market-data-centers-480.a332067a.webp 480w, /images/opt/market-data-centers-800.48ac7b4c.webp 800w, /images/opt/market-data-centers-1200.50c06205.webp 1200w, /images/opt/market-data-centers-1536.bb182062.webp 1536w",
+    "width": 1536,
+    "height": 1024
   },
   "/images/market/government-military.webp": {
     "src": "/images/opt/market-government-military-1200.51870224.webp",

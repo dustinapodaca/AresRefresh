@@ -800,8 +800,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Denver International's terminal and hotel at sunset with a jet climbing out (owner,
   2026-10-12, chosen back over a blue-hour roadway photo, kept graded and plain in
   images-unused), strip at `50% 96%` so the terminal rides above the bottom fade; phones zoom
-  1.6x toward the right end and the jet (`mobile` in `industries.ts`: position, zoom, origin). The other three are still the generated
-  dusk scenes. "What is at stake." (headline left, prose
+  1.6x toward the right end and the jet (`mobile` in `industries.ts`: position, zoom, origin). Critical & High-Liability Sites: a data center aisle between server racks
+  (owner, 2026-10-12; 1536px, so a touch soft on large retina screens), strip at `50% 42%`.
+  The other two are still the generated dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines
