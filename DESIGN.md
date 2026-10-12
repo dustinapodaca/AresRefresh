@@ -781,8 +781,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   "What the post covers." (four duties two by two, the mono number on the title's line),
   "Where it is asked for." (industry routes), questions, an ask strip, "More services.".
 - **Industry pages (`/industries/<slug>`):** a long headline (up to 15em), lead and actions
-  in one row, then a full-bleed scene (generated with Nano Banana: light and architecture,
-  no people, no caption) masked into the canvas. "What is at stake." (headline left, prose
+  in one row, then a full-bleed scene masked into the canvas, no caption. The scenes are
+  moving to real photos the owner finds, one industry at a time (owner, 2026-10-12: the
+  generated ones read as generic and fake; a second generated round was rejected too).
+  Construction, Industrial & Logistics is the first: a steel-frame build in downtown
+  Colorado Springs on a winter day, the contractor's name on the elevator core removed,
+  framed at `50% 35%` so the crane and roofline show (each image can set its own `position`
+  in `industries.ts`; default `50% 60%`). The other five are still the generated dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines

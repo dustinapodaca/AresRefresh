@@ -13,8 +13,9 @@ export type IndustryPageData = {
   short: string;
   title: string;
   lead: string;
-  /** Generated demo image (assets/generated/market/), light and architecture only. */
-  image: { src: string; alt: string };
+  /** The hero scene: generated (assets/generated/market/) or a real photo (owner, 2026-10-12).
+   *  `position` frames the page's wide strip (default 50% 60%). */
+  image: { src: string; alt: string; position?: string };
   stake: string[];
   deliver: { role: string; line: string }[];
   why: SheetRow[];
@@ -138,7 +139,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Gate control, perimeter rounds, and after-hours patrol for builds and yards.',
     title: 'Security for construction and industrial sites.',
     lead: 'Gate control, perimeter rounds, and after-hours patrol for active builds, yards, warehouses, and industrial sites, while the site is being built and after.',
-    image: { src: '/images/market/construction-industrial.webp', alt: '' },
+    // A real photo (owner, 2026-10-12): framed high so the crane and roofline show.
+    image: { src: '/images/market/construction-industrial.webp', alt: '', position: '50% 35%' },
     stake: [
       'An active build is open in ways a finished building is not: fences move, gates change, and equipment and materials sit on the ground overnight. Theft and trespass happen in the hours nobody is there.',
       'Warehouses and industrial sites run long hours, with trucks, contractors, and deliveries at every gate. Both need officers who check everything in and out and keep a record of it.',

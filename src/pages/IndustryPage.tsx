@@ -40,7 +40,13 @@ export default function IndustryPage() {
           </div>
         </div>
         <div className="ds-mk-ind-band" aria-hidden="true">
-          <img {...responsive(ind.image.src)} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+          <img
+            {...responsive(ind.image.src)}
+            alt=""
+            decoding="sync"
+            {...{ fetchpriority: 'high' }}
+            style={ind.image.position ? { objectPosition: ind.image.position } : undefined}
+          />
         </div>
       </section>
 

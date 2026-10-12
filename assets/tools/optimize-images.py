@@ -58,7 +58,10 @@ PHOTOS = [
     # Test branch only (skipped where missing).
     {'key': '/images/market/data-centers.webp', 'source': 'assets/images-src/market/data-centers.webp', 'q': 82},
     {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-military.webp', 'q': 82},
-    {'key': '/images/market/construction-industrial.webp', 'source': 'assets/images-src/market/construction-industrial.webp', 'q': 82},
+    # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
+    # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
+    # only); the untouched original is construction-colorado-springs.jpg beside it.
+    {'key': '/images/market/construction-industrial.webp', 'source': 'assets/images-src/market/construction-colorado-springs-clean.png', 'q': 80},
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-property.webp', 'q': 82},
     # The two new industry pages (owner, 2026-10-10), generated like the others.
     {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},

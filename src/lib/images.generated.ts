@@ -141,10 +141,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1144
   },
   "/images/market/construction-industrial.webp": {
-    "src": "/images/opt/market-construction-industrial-1200.6162bec5.webp",
-    "srcSet": "/images/opt/market-construction-industrial-480.67906c4f.webp 480w, /images/opt/market-construction-industrial-800.d4ca4b46.webp 800w, /images/opt/market-construction-industrial-1200.6162bec5.webp 1200w, /images/opt/market-construction-industrial-1600.cdac5ab3.webp 1600w, /images/opt/market-construction-industrial-2000.7c44204e.webp 2000w, /images/opt/market-construction-industrial-2048.c8b7bf2e.webp 2048w",
-    "width": 2048,
-    "height": 1144
+    "src": "/images/opt/market-construction-industrial-1200.74e7ff8c.webp",
+    "srcSet": "/images/opt/market-construction-industrial-480.1fbe50a0.webp 480w, /images/opt/market-construction-industrial-800.540967a2.webp 800w, /images/opt/market-construction-industrial-1200.74e7ff8c.webp 1200w, /images/opt/market-construction-industrial-1600.7f364862.webp 1600w, /images/opt/market-construction-industrial-2000.cd326cc4.webp 2000w",
+    "width": 2000,
+    "height": 1333
   },
   "/images/market/commercial-property.webp": {
     "src": "/images/opt/market-commercial-property-1200.2e5bf9ff.webp",

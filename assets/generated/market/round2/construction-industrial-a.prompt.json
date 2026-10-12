@@ -1,0 +1,36 @@
+{
+  "prompt": "An active mid-rise construction site in a Denver neighborhood: a concrete and steel frame five stories up, a tower crane, chain-link fence with torn green privacy screening, a gravel gate with a small site trailer, stacked materials and a parked excavator, mud and tire ruts, older brick buildings and the foothills behind. Light: a flat, overcast winter day, soft gray sky, patchy old snow along the curbs. A documentary photograph taken by a working photographer in Colorado, not an architectural showcase: eye level, from across the street or the edge of the lot, 35mm lens, ordinary unposed framing. Real-world wear everywhere: weathered concrete, dust, tire marks, dry grass and weeds at the edges, faded paint lines, utility poles and wires, a few ordinary parked cars. Natural, uneven light with no glow, no lens flare, no HDR look, no hyper-clean surfaces, no perfect symmetry. Muted, true-to-life color like an unedited RAW file, fine grain, slightly imperfect exposure. The main subject sits in a horizontal band through the middle of the frame, near the center, so the picture still works cropped to a wide strip or to a tall 4:5 crop. Wide 16:9. No people in uniform and no recognizable people, no readable text, signs, logos, flags, insignia, or watermarks. Not any real, identifiable building. Use the reference photos only for their photographic look: lens, light, color, realism, and the Colorado setting. Do not copy their buildings, mountains' exact shapes, signs, or any text.",
+  "createdAt": "2026-10-12T19:45:21.708209+00:00",
+  "tool": "assets/generated/gemini-image.py",
+  "model": "gemini-3.1-flash-image-preview",
+  "aspectRatio": "16:9",
+  "imageSize": "2K",
+  "mimeType": "image/jpeg",
+  "refs": [
+    "/private/tmp/claude-501/-Users-dustinapodaca-Code-git-AresClaude-ares-security-project-react/b272ccb6-a9eb-4ece-b5f9-32df88c07c3e/scratchpad/refs/ref-construction.jpg",
+    "/private/tmp/claude-501/-Users-dustinapodaca-Code-git-AresClaude-ares-security-project-react/b272ccb6-a9eb-4ece-b5f9-32df88c07c3e/scratchpad/refs/ref-still.png",
+    "/private/tmp/claude-501/-Users-dustinapodaca-Code-git-AresClaude-ares-security-project-react/b272ccb6-a9eb-4ece-b5f9-32df88c07c3e/scratchpad/refs/ref-fb.jpg"
+  ],
+  "usage": {
+    "promptTokenCount": 1105,
+    "candidatesTokenCount": 2139,
+    "totalTokenCount": 3244,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 331
+      },
+      {
+        "modality": "IMAGE",
+        "tokenCount": 774
+      }
+    ],
+    "candidatesTokensDetails": [
+      {
+        "modality": "IMAGE",
+        "tokenCount": 1680
+      }
+    ],
+    "serviceTier": "standard"
+  }
+}

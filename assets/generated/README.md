@@ -133,3 +133,11 @@ prompts ask for the whole subject in frame, since the hero now shows the image u
   page sits behind the headline on desktop; reframe or shade before using).
 - `cs-access`: a matte black card reader on board-formed concrete, one copper status light.
 - `cs-vellum`: fanned translucent grid sheets lit copper from behind, on black glass.
+
+### Industry heroes, round 2 (Nano Banana, 2026-10-12; rejected)
+
+Twelve documentary-style renders (two per industry, overcast winter and low autumn sun) with
+real Colorado photos as style references. The owner rejected all of them: too snowy, run down,
+and abandoned-looking. Prompts and records kept in `market/round2/`; the images were deleted.
+The industry heroes move to real photos the owner supplies, one at a time (Construction first:
+a real photo with the contractor's name removed by an OpenAI masked edit of that patch only).
