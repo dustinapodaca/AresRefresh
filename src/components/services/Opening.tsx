@@ -11,13 +11,14 @@ import { heroTitle } from '../../lib/heroTitle';
 // (pikes, downtown Colorado Springs with Pikes Peak, was the default earlier that day; the
 // Denver sunset moved to the Capability Statement hero). Each sets its
 // framing (dossier.css reads the vars): `pos` the object-position, `drop` how far the photo sits
-// below its box on phones and tablets, `dropD` and `ratio` (height / width) from 1024px.
+// below its box on phones and tablets, `dropD` and `ratio` (height / width) from 1024px, and
+// optionally `tint`, the black in the glass (default 0.55, 0.68 below 1024px; the blur stays).
 const PHOTOS = {
   pikes: { src: '/images/services-hero/colorado-springs.webp', caption: 'Downtown Colorado Springs, Colorado', pos: '50% 100%', drop: '-200px', dropD: '-110px', ratio: 0.5231 },
   // Measured so each subject (the skyline over the bridges; the dome and towers) centers in the
   // clear area under the glass; from 1024px the drop scales with the width, like the photo.
   skyline: { src: '/images/services-hero/denver-skyline-dusk.webp', caption: 'Downtown Denver, Colorado', pos: '50% 66%', drop: '-152px', dropD: 'calc(133px - 58.4vw)', ratio: 1.5 },
-  capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496 },
+  capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496, tint: 0.12 },
 } as const;
 
 // Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
@@ -102,7 +103,12 @@ export default function Opening() {
   }, []);
 
   return (
-    <section ref={ref} className="ds-svc-open" aria-labelledby="services-title">
+    <section
+      ref={ref}
+      className="ds-svc-open"
+      aria-labelledby="services-title"
+      style={'tint' in HERO ? ({ '--svc-tint': HERO.tint } as React.CSSProperties) : undefined}
+    >
       {/* The photo, anchored at its foot, with a mirror of it (flipped vertically) above so the
           glass frosts real image to the top. It holds still while the glass slides away. */}
       <div className="ds-svc-open-photo" aria-hidden="true">

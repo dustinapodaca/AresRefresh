@@ -1718,7 +1718,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   position: relative;
   padding-top: calc(var(--ds-header) + var(--ds-beat-tight));
   padding-bottom: var(--ds-beat-tight);
-  background: rgb(0 0 0 / 0.55);
+  background: rgb(0 0 0 / var(--svc-tint, 0.55));
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
   backdrop-filter: blur(22px) saturate(1.25);
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
@@ -1748,7 +1748,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    tint, since the sky sits behind the copy there (AA held at the brightest point). */
 .ds-svc-open-side .ds-lead { color: #c4c8ce; }
 @media (max-width: 1023px) {
-  .ds-svc-open-glass { background: rgb(0 0 0 / 0.68); }
+  .ds-svc-open-glass { background: rgb(0 0 0 / var(--svc-tint, 0.68)); }
 }
 
 
