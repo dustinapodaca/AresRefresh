@@ -1195,7 +1195,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    beside the company facts on hairlines. Owner, 2026-10-06: vehicles are allowed on Home
    here. */
 .ds-quality-body { display: grid; gap: 36px; margin-top: var(--ds-beat-tight); }
-.ds-quality-photo img { aspect-ratio: 1; object-fit: cover; object-position: 50% 100%; }
+.ds-quality-photo img { aspect-ratio: 1; object-fit: cover; object-position: 50% 80%; } /* the cars and the roofline (2026-10-12 photo) */
 .ds-quality-photo::after { content: none; }
 .ds-quality-facts { margin: 0; }
 .ds-quality-facts div { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--ds-rule); }

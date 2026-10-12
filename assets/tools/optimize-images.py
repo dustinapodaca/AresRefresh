@@ -46,7 +46,9 @@ PHOTOS = [
     # Careers, Why people stay, first photo: the team at the range, replaced 2026-10-09 (owner).
     {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.png', 'q': 82},
     {'key': '/images/careers-team.jpg', 'source': 'assets/images-src/careers-team.jpg', 'q': 80},
-    {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle.jpg', 'q': 80},
+    # Two Ares patrol SUVs outside an apartment building (owner, 2026-10-12; the previous photo is
+    # in images-unused). Arrived 1142 x 1378.
+    {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle.jpg', 'q': 82},
     # The About portrait, replaced 2026-10-09 (owner): a PNG original, so encode a touch higher.
     {'key': '/images/officer-portrait.jpg', 'source': 'assets/images-src/officer-portrait.png', 'q': 82},
     {'key': '/images/backbone-officer.jpg', 'source': 'assets/images-src/backbone-officer.jpg', 'q': 80},
