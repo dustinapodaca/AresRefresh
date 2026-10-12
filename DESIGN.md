@@ -433,7 +433,7 @@ exception to "no card containers" and "no glass" for this section.
   the right corners (from the top half on phones); the diagram has no frame, its hairline wires
   are SVG (the fork curves into the posts) and draw on scroll, and a rust light runs a 3.6s
   cycle from the prime through Ares (its rust dot pulses) down each wire, lighting each post's
-  corner dot rust as it lands; it first starts when the diagram rises above the bottom third of
+  corner dot rust as it lands; it first starts when the diagram rises above the bottom quarter of
   the window, then loops; ambient, still under reduced motion)**,
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.

@@ -114,7 +114,7 @@ const PRIME_PROOF = [
 function PrimesPanel({ form }: { form: string | null }) {
   // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
   const kind = form === 'split' || form === 'vignettes' ? form : 'diagram';
-  // The light waits until the diagram rises above the bottom third of the window, then runs for good
+  // The light waits until the diagram rises above the bottom quarter of the window, then runs for good
   // (owner, 2026-10-12): data-live switches the CSS loop on, once.
   const flowRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -126,8 +126,8 @@ function PrimesPanel({ form }: { form: string | null }) {
         el.dataset.live = 'true';
         io.disconnect();
       },
-      // The bottom third of the viewport doesn't count.
-      { rootMargin: '0px 0px -33.33% 0px' },
+      // The bottom quarter of the viewport doesn't count.
+      { rootMargin: '0px 0px -25% 0px' },
     );
     io.observe(el);
     return () => io.disconnect();
