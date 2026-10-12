@@ -51,8 +51,10 @@ PHOTOS = [
     {'key': '/images/careers-philosophy.jpg', 'source': 'assets/images-src/careers-philosophy.png', 'q': 82},
     {'key': '/images/careers-team.jpg', 'source': 'assets/images-src/careers-team.jpg', 'q': 80},
     # Two Ares patrol SUVs outside an apartment building (owner, 2026-10-12; the previous photo is
-    # in images-unused). Arrived 1142 x 1378.
-    {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle.jpg', 'q': 82},
+    # in images-unused). Arrived 1142 x 1378. The wrap's number read 719-686-3966 in the photo; the
+    # 8 was replaced with the 9 copied from "3966" on the same line (pixels only, no AI;
+    # 2026-10-12). The untouched photo is mission-vehicle.jpg beside it.
+    {'key': '/images/mission-vehicle.jpg', 'source': 'assets/images-src/mission-vehicle-fixed.png', 'q': 82},
     # The About portrait, replaced 2026-10-09 (owner): a PNG original, so encode a touch higher.
     {'key': '/images/officer-portrait.jpg', 'source': 'assets/images-src/officer-portrait.png', 'q': 82},
     {'key': '/images/backbone-officer.jpg', 'source': 'assets/images-src/backbone-officer.jpg', 'q': 80},

@@ -75,8 +75,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 880
   },
   "/images/mission-vehicle.jpg": {
-    "src": "/images/opt/mission-vehicle-1142.b57b1806.webp",
-    "srcSet": "/images/opt/mission-vehicle-480.0b86e040.webp 480w, /images/opt/mission-vehicle-800.b955dd16.webp 800w, /images/opt/mission-vehicle-1142.b57b1806.webp 1142w",
+    "src": "/images/opt/mission-vehicle-1142.3f3e668c.webp",
+    "srcSet": "/images/opt/mission-vehicle-480.0504839b.webp 480w, /images/opt/mission-vehicle-800.fba1f260.webp 800w, /images/opt/mission-vehicle-1142.3f3e668c.webp 1142w",
     "width": 1142,
     "height": 1378
   },
