@@ -578,7 +578,7 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
 The most important page after Home; it must stand out like Home. Concept and Mobbin
 board: docs/capability-concepts.md. Every piece of the old page's content carries over.
 Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
-- **Hero:** downtown Denver at sunset (owner, 2026-10-12: `services-hero/denver-sunset.webp`, the Services opening's photo until then, in the same frame and shades; the fins image moved to `assets/images-unused/capability-hero/`). Before it, generated copper fins on a building at dusk (owner, 2026-10-08:
+- **Hero:** downtown Denver at sunset (owner, 2026-10-12: `services-hero/denver-sunset.webp`, the Services opening's photo until then, in the same frame and shades, with the place caption "Downtown Denver, Colorado" top right under the nav like About; the fins image moved to `assets/images-unused/capability-hero/`). Before it, generated copper fins on a building at dusk (owner, 2026-10-08:
   `capability-hero/cs-fins.webp`, 2752px at its native size, quality 82 with sharp YUV, 227KB, from the Services hero option
   `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
   glass-panels light `hero-panels.webp`, both kept, with the other options in

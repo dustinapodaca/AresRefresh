@@ -2413,6 +2413,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     linear-gradient(to right, rgb(0 0 0 / 0.8) 0%, rgb(0 0 0 / 0.72) 18%, rgb(0 0 0 / 0.58) 36%, rgb(0 0 0 / 0.4) 54%, rgb(0 0 0 / 0.22) 72%, rgb(0 0 0 / 0.08) 88%, rgb(0 0 0 / 0) 100%);
 }
 .ds-cs-hero-grid { display: grid; gap: 28px; padding-top: calc(var(--ds-header) + 28px); }
+/* The place caption (2026-10-12), top right under the nav like About's and the quote page's. */
+.ds-cs-hero-cap { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: rgb(238 240 242 / 0.7); }
+@media (min-width: 1024px) { .ds-cs-hero-cap { top: calc(var(--ds-header) + 20px); } }
 /* Phones (below 900px): the copy starts low in the light so the panels show above the
    headline. */
 @media (max-width: 899px) {

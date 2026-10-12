@@ -12,7 +12,8 @@ export function DownloadIcon({ size = 16 }: { size?: number }) {
 
 // The hero: generated copper fins on a building at dusk (owner, 2026-10-08; s4-fins from the
 // Services hero options; before it the federal facade and the glass-panels light, both kept)
-// shown whole, black from the left; generated, so no place caption. The headline,
+// shown whole, black from the left. Since 2026-10-12 (owner) the photo is downtown Denver at
+// sunset, a real place, so it carries a place caption like the other photo heroes. The headline,
 // the offer, and the download. Under it, the four quick facts on a
 // full-width line over a frosted fade.
 export default function Hero() {
@@ -21,6 +22,7 @@ export default function Hero() {
       <div className="ds-cs-hero-bg" aria-hidden="true">
         <img {...responsive('/images/services-hero/denver-sunset.webp')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
       </div>
+      <p className="ds-caption ds-cs-hero-cap">Downtown Denver, Colorado</p>
 
       <div className="ds-container ds-cs-hero-grid">
         <div className="ds-cs-hero-copy">
