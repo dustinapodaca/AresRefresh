@@ -6,7 +6,7 @@ import { responsive } from '../../lib/responsive';
 export const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Established', value: 'February 2021, Colorado Springs' },
   { label: 'Ownership', value: 'Minority woman-owned' },
-  { label: 'Licensed', value: 'Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo' },
+  // The "Licensed" row was removed (owner, 2026-10-12); the proof row and city pages carry it.
   { label: 'Primary NAICS', value: '561612', mono: true },
   // Owner, 2026-10-10: true; the client is not named.
   { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },

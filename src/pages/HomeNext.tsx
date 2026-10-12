@@ -115,7 +115,7 @@ export default function HomeNext() {
             ))}
           </ul>
           <dl className="hn-facts">
-            {FACTS.filter((f) => f.label !== 'Licensed').map((f) => (
+            {FACTS.map((f) => (
               <div key={f.label}>
                 <dt>{f.label}</dt>
                 <dd className={f.mono ? 'ds-data' : undefined}>{f.value}</dd>

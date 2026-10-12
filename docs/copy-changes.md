@@ -861,3 +861,7 @@ times, training on the post by leadership, fewer than 1% missed shifts since 202
 WBENC numbers, the three city licenses. Links to the relief service, the Construction
 industry page, and Teaming. Added to routes.json (sitemap), llms.txt, and the Insights index
 (first, dated October 11, 2026). For the owner to read before launch.
+
+## Home Quality facts (owner, 2026-10-12)
+
+Removed the "Licensed" row ("Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo"). The facts are now Established, Ownership, Primary NAICS, Longest client. Licensing still shows in the hero's proof row, the city pages, and the footer.
