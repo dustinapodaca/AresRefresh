@@ -6,9 +6,10 @@ import { heroTitle } from '../../lib/heroTitle';
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
 // The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
-// The opening photo. Since 2026-10-12 (owner): downtown Colorado Springs at dusk with Pikes Peak
-// in alpenglow (the Denver sunset moved to the Capability Statement hero). Two Denver options for
-// the owner to compare at /services?photo=skyline|capitol; pikes is the default. Each sets its
+// The opening photo. Default since 2026-10-12 (owner): the Colorado State Capitol and downtown
+// Denver at night. The other options stay for comparison at /services?photo=pikes|skyline
+// (pikes, downtown Colorado Springs with Pikes Peak, was the default earlier that day; the
+// Denver sunset moved to the Capability Statement hero). Each sets its
 // framing (dossier.css reads the vars): `pos` the object-position, `drop` how far the photo sits
 // below its box on phones and tablets, `dropD` and `ratio` (height / width) from 1024px.
 const PHOTOS = {
@@ -50,7 +51,7 @@ export default function Opening() {
   const asked = params.get('hero');
   const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
   const askedPhoto = params.get('photo');
-  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'pikes') as keyof typeof PHOTOS];
+  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'capitol') as keyof typeof PHOTOS];
 
   // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
   // below hold still until the glass's foot has cleared the nav, then everything scrolls as

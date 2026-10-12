@@ -145,20 +145,20 @@
       "param": "photo",
       "options": [
         {
+          "value": "capitol",
+          "label": "Denver, State Capitol at night",
+          "note": "The lit dome and downtown towers from above, all amber light (Unsplash, Kevin Bree). Owner's pick, 2026-10-12.",
+          "tag": "default"
+        },
+        {
           "value": "pikes",
           "label": "Colorado Springs, Pikes Peak",
-          "tag": "default",
           "note": "Downtown at dusk, the lit skyline in the clear area and the alpenglow peak glowing through the glass (owner, 2026-10-12)."
         },
         {
           "value": "skyline",
           "label": "Denver skyline, dusk",
           "note": "The skyline over the Speer bridges, warm late light (Unsplash, Jakob Rosen). A tall photo, so the sky fills the glass."
-        },
-        {
-          "value": "capitol",
-          "label": "Denver, State Capitol at night",
-          "note": "The lit dome and downtown towers from above, all amber light (Unsplash, Kevin Bree)."
         }
       ]
     },
