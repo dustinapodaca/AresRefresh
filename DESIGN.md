@@ -436,7 +436,7 @@ exception to "no card containers" and "no glass" for this section.
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
   "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
   columns, aligned to the headline's foot); then the patrol vehicles as a wide plate (7
-  columns, 16:10, framed at `50% 80%` on the cars and the roofline, captioned; owner's new photo of two Ares SUVs, 2026-10-12) beside the company facts on
+  columns, 16:10, anchored to the photo's foot at every width, captioned; owner's new photo of two Ares SUVs, 2026-10-12) beside the company facts on
   hairlines (established, ownership, licensed and bonded, NAICS; columns 9 to 12).
   Phones: stacked, the photo square. The owner allowed the vehicles photo on Home here.
 
