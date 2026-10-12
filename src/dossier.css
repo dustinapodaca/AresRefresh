@@ -1442,10 +1442,12 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    each post's dot lights rust as it lands (62%), easing back by the next cycle. Ambient, so it
    stops under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .ds-flow-wire-down .ds-wire-pulse { animation: ds-pulse-down 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-  .ds-flow-wire-fork .ds-wire-pulse { animation: ds-pulse-fork 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-  .ds-flow-ares .ds-flow-dot { animation: ds-dot-ares 3.6s linear infinite; }
-  .ds-flow-posts .ds-flow-dot { animation: ds-dot-post 3.6s linear infinite; }
+  /* Starts once the diagram reaches the top third of the window (data-live, set in
+     Industries.tsx), then loops. */
+  .ds-primes-flow[data-live] .ds-flow-wire-down .ds-wire-pulse { animation: ds-pulse-down 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .ds-primes-flow[data-live] .ds-flow-wire-fork .ds-wire-pulse { animation: ds-pulse-fork 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .ds-primes-flow[data-live] .ds-flow-ares .ds-flow-dot { animation: ds-dot-ares 3.6s linear infinite; }
+  .ds-primes-flow[data-live] .ds-flow-posts .ds-flow-dot { animation: ds-dot-post 3.6s linear infinite; }
 }
 @keyframes ds-pulse-down {
   0% { stroke-dashoffset: 22; opacity: 1; }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
@@ -113,6 +114,24 @@ const PRIME_PROOF = [
 function PrimesPanel({ form }: { form: string | null }) {
   // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
   const kind = form === 'split' || form === 'vignettes' ? form : 'diagram';
+  // The light waits until the diagram reaches the top third of the window, then runs for good
+  // (owner, 2026-10-12): data-live switches the CSS loop on, once.
+  const flowRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = flowRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        el.dataset.live = 'true';
+        io.disconnect();
+      },
+      // Only the top third of the viewport counts.
+      { rootMargin: '0px 0px -66.67% 0px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [kind]);
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming and subcontracting
@@ -169,7 +188,7 @@ function PrimesPanel({ form }: { form: string | null }) {
             </ul>
             {button}
           </div>
-          <figure className="ds-primes-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
+          <figure ref={flowRef} className="ds-primes-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
             {/* Framer-style flow (owner, 2026-10-12): hairline wires that draw in on scroll, and
                 a rust light that runs from the prime through Ares to each post, which lights as
                 it arrives. The wires are SVG so the fork can curve; the light is ambient and
