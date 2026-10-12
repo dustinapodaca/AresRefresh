@@ -6,9 +6,9 @@ import { heroTitle } from '../../lib/heroTitle';
 // The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
 // (a real place, swapped with the Request a Quote page, which now has the generated towers).
 // The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
-// Since 2026-10-12 (owner): downtown Colorado Springs under the Front Range on a stormy evening.
+// Since 2026-10-12 (owner): downtown Colorado Springs at dusk with Pikes Peak in alpenglow.
 // The Denver sunset moved to the Capability Statement hero.
-const HERO = { src: '/images/services-hero/colorado-springs.webp', width: 3200, height: 2133 };
+const HERO = { src: '/images/services-hero/colorado-springs.webp', width: 2527, height: 1322 };
 
 // Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
 // the audit's other options stay switchable for the client at /services?hero=a|b|c|current.

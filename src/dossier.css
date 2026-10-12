@@ -1663,10 +1663,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   position: absolute;
   inset-inline: 0;
   /* Anchored to the photo's bottom edge; the extra height sits above for the drift as the
-     opening leaves. Flush since the Colorado Springs photo (2026-10-12): its downtown sits at
-     the photo's foot (the Denver photo before it was set 164px lower, owner 2026-10-08). */
-  bottom: 0;
+     opening leaves. The Pikes Peak photo (2026-10-12) is set lower so the lit skyline and the
+     mountains sit in the clear area under the glass, the peak glowing through the glass (the
+     Denver photo before it was set 164px lower, owner 2026-10-08). */
+  bottom: -200px;
   height: 112%;
+}
+@media (min-width: 1024px) {
+  /* The photo at its own proportions (2527 x 1322), so the skyline lands at the same place at
+     every desktop width. */
+  .ds-svc-open-stack { height: max(112%, 52.31vw); bottom: -110px; }
 }
 .ds-svc-open-stack img {
   position: absolute;

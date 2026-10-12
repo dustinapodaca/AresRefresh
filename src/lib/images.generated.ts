@@ -33,10 +33,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1391
   },
   "/images/services-hero/colorado-springs.webp": {
-    "src": "/images/opt/services-hero-colorado-springs-1200.f05562f3.webp",
-    "srcSet": "/images/opt/services-hero-colorado-springs-480.f94e7039.webp 480w, /images/opt/services-hero-colorado-springs-800.bf9e013a.webp 800w, /images/opt/services-hero-colorado-springs-1200.f05562f3.webp 1200w, /images/opt/services-hero-colorado-springs-1600.240dc090.webp 1600w, /images/opt/services-hero-colorado-springs-2000.24908c7c.webp 2000w, /images/opt/services-hero-colorado-springs-2400.57001d42.webp 2400w, /images/opt/services-hero-colorado-springs-3200.ad450f00.webp 3200w",
-    "width": 3200,
-    "height": 2133
+    "src": "/images/opt/services-hero-colorado-springs-1200.f5d2edd4.webp",
+    "srcSet": "/images/opt/services-hero-colorado-springs-480.0f655ed9.webp 480w, /images/opt/services-hero-colorado-springs-800.b1e953f9.webp 800w, /images/opt/services-hero-colorado-springs-1200.f5d2edd4.webp 1200w, /images/opt/services-hero-colorado-springs-1600.7d057445.webp 1600w, /images/opt/services-hero-colorado-springs-2000.29fa6d45.webp 2000w, /images/opt/services-hero-colorado-springs-2400.ae5f43ea.webp 2400w, /images/opt/services-hero-colorado-springs-2527.3f336e9c.webp 2527w",
+    "width": 2527,
+    "height": 1322
   },
   "/images/services-hero/denver-sunset.webp": {
     "src": "/images/opt/services-hero-denver-sunset-1200.c99340a6.webp",

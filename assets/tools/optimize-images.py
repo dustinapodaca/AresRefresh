@@ -37,8 +37,9 @@ PHOTOS = [
     {'key': '/images/about-security.jpg', 'source': 'assets/images-src/about-security.jpg', 'q': 80},
     {'key': '/images/about-banner.jpg', 'source': 'assets/images-src/about-banner.jpg', 'q': 80},
     # A noisy sunset under glass: q76 looks the same as q82 at a third less.
-    # Services opening (owner, 2026-10-12): downtown Colorado Springs under the Front Range.
-    {'key': '/images/services-hero/colorado-springs.webp', 'source': 'assets/images-src/services-hero/colorado-springs.jpg', 'q': 78},
+    # Services opening (owner, 2026-10-12): downtown Colorado Springs at dusk, Pikes Peak in
+    # alpenglow (a stormy-day view of downtown was tried first, kept in images-unused).
+    {'key': '/images/services-hero/colorado-springs.webp', 'source': 'assets/images-src/services-hero/colorado-springs-pikes-peak.jpg', 'q': 80},
     # Denver at sunset: the Services opening until 2026-10-12, now the Capability Statement hero.
     {'key': '/images/services-hero/denver-sunset.webp', 'source': 'assets/images-src/hero1.jpg', 'q': 76},
     {'key': '/images/services-hero/nb-s1-towers.webp', 'source': 'MASTERS/services-hero/s1-towers.jpg', 'q': 82, 'fallback': 'assets/images-src/services-hero/nb-s1-towers.webp'},
