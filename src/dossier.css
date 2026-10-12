@@ -1377,17 +1377,24 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* diagram */
 .ds-primes-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
 .ds-primes-list li { padding: 13px 0 14px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
-.ds-primes-flow { position: relative; display: grid; justify-items: center; margin: 32px 0 0; padding: 28px 16px; border-radius: 4px; background-color: rgb(255 255 255 / 0.015); background-image: radial-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px); background-size: 16px 16px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
-.ds-flow-node { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 16px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12); }
-.ds-flow-node .ds-data { font-size: 12.5px; color: var(--ds-fg); }
+.ds-primes-flow { position: relative; display: grid; justify-items: center; margin: 32px 0 0; padding: 8px 0; }
+.ds-flow-node { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 18px; border-radius: 4px; }
+.ds-flow-node .ds-data { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ds-fg); }
 .ds-flow-node > span:last-child { font-size: 13px; color: var(--ds-fg-muted); max-width: 30ch; }
-.ds-flow-ares { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18), inset 0 1px 0 rgb(255 255 255 / 0.18); }
-.ds-flow-line { display: block; width: 1px; height: 28px; background: var(--ds-rule-strong); transform-origin: top; }
-.ds-flow-fork { height: 20px; }
-.ds-flow-posts { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; padding-top: 20px; }
-.ds-flow-posts::before { content: ''; position: absolute; top: 0; left: 16.66%; right: 16.66%; height: 1px; background: var(--ds-rule-strong); transform-origin: center; }
-.ds-flow-posts span { position: relative; display: flex; align-items: center; justify-content: center; padding: 10px 8px; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
-.ds-flow-posts span::before { content: ''; position: absolute; left: 50%; top: -20px; width: 1px; height: 20px; background: var(--ds-rule-strong); }
+/* The wires: hairlines that scale with the box but keep a 1px stroke. */
+.ds-flow-wire { display: block; overflow: visible; }
+.ds-flow-wire path { fill: none; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ds-flow-wire-down { width: 2px; height: 32px; }
+.ds-flow-wire-fork { width: 100%; height: 48px; }
+.ds-wire-base { stroke: var(--ds-rule-strong); }
+/* The light: a short rust dash, parked off the wire until it runs. */
+.ds-wire-pulse { stroke: var(--ds-rust); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 22 130; stroke-dashoffset: 22; opacity: 0; }
+/* Status dots: faint until the light arrives (Ares's is always on, like the HQ dot). */
+.ds-flow-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: rgb(255 255 255 / 0.18); }
+.ds-flow-posts .ds-flow-dot { position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; }
+.ds-flow-ares .ds-flow-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+.ds-flow-posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; }
+.ds-flow-posts span { position: relative; display: flex; align-items: center; justify-content: center; padding: 16px 10px; border-radius: 4px; font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
 
 /* vignettes */
 .ds-primes-top { display: grid; gap: 0; }
@@ -1424,14 +1431,44 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
-    .ds-flow-line, .ds-flow-posts span::before { animation: ds-flow-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
-    .ds-flow-posts::before { animation: ds-flow-span linear both; animation-timeline: view(); animation-range: entry 25% cover 45%; }
+    .ds-wire-base { stroke-dasharray: 100; animation: ds-wire-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
     .ds-vig-bar span { animation: ds-vig-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 50%; }
   }
 }
 @keyframes ds-primes-settle { from { transform: translateY(24px); } to { transform: none; } }
-@keyframes ds-flow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-@keyframes ds-flow-span { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ds-wire-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+/* The light (owner, 2026-10-12): one 3.6s cycle. It runs down from the prime (0 to 26%),
+   Ares's dot pulses as it passes (26 to 40%), it splits down the three wires (30 to 62%), and
+   each post's dot lights rust as it lands (62%), easing back by the next cycle. Ambient, so it
+   stops under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-flow-wire-down .ds-wire-pulse { animation: ds-pulse-down 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .ds-flow-wire-fork .ds-wire-pulse { animation: ds-pulse-fork 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+  .ds-flow-ares .ds-flow-dot { animation: ds-dot-ares 3.6s linear infinite; }
+  .ds-flow-posts .ds-flow-dot { animation: ds-dot-post 3.6s linear infinite; }
+}
+@keyframes ds-pulse-down {
+  0% { stroke-dashoffset: 22; opacity: 1; }
+  26% { stroke-dashoffset: -100; opacity: 1; }
+  27%, 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+@keyframes ds-pulse-fork {
+  0%, 29% { stroke-dashoffset: 22; opacity: 0; }
+  30% { stroke-dashoffset: 22; opacity: 1; }
+  62% { stroke-dashoffset: -100; opacity: 1; }
+  63%, 100% { stroke-dashoffset: -100; opacity: 0; }
+}
+@keyframes ds-dot-ares {
+  0%, 24% { box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+  30% { box-shadow: 0 0 0 6px rgb(188 111 64 / 0.28); }
+  44%, 100% { box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+}
+@keyframes ds-dot-post {
+  0%, 60% { background: rgb(255 255 255 / 0.18); box-shadow: 0 0 0 0 rgb(188 111 64 / 0); }
+  64% { background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.22); }
+  86% { background: var(--ds-rust); box-shadow: 0 0 0 2px rgb(188 111 64 / 0.1); }
+  100% { background: rgb(255 255 255 / 0.18); box-shadow: 0 0 0 0 rgb(188 111 64 / 0); }
+}
 @keyframes ds-vig-fill { from { transform: scaleX(0.15); } to { transform: scaleX(1); } }
 .ds-coverage { padding-top: var(--ds-beat); }
 .ds-coverage-head { display: grid; gap: 20px; }
@@ -3954,8 +3991,29 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 /* The diagram keeps its dot grid on its card; inside the Home prime panel it sits on the
    panel's own card, with no second frame. */
-.ds-primes-flow { background: radial-gradient(rgb(255 255 255 / 0.09) 1px, transparent 1px) 0 0 / 16px 16px padding-box, linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box; }
-.ds-primes-panel .ds-primes-flow { background: radial-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px) 0 0 / 16px 16px; border-color: transparent; }
+/* The diagram sits straight on the panel (no frame); the panel carries the dot grid. */
+.ds-primes-flow { background: none; border: 0; }
+/* The dot grid across the whole prime panel (owner, 2026-10-12): black over the copy, coming in
+   from the middle, and vignetted to black in the right-hand corners. Phones: in from the top
+   half, under the copy. */
+.ds-primes-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(rgb(255 255 255 / 0.11) 1px, transparent 1px) 0 0 / 16px 16px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 52%, #000 74%), radial-gradient(ellipse 90% 40% at 50% 84%, #000 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 52%, #000 74%), radial-gradient(ellipse 90% 40% at 50% 84%, #000 40%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.ds-primes-panel > * { position: relative; }
+@media (min-width: 1024px) {
+  .ds-primes-panel::before {
+    -webkit-mask-image: linear-gradient(to right, transparent 34%, #000 58%), radial-gradient(ellipse 62% 92% at 74% 50%, #000 42%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 34%, #000 58%), radial-gradient(ellipse 62% 92% at 74% 50%, #000 42%, transparent 100%);
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .ds-value:hover { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box, linear-gradient(#000, #000) border-box; box-shadow: none; }
 }

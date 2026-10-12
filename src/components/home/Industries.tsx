@@ -170,20 +170,40 @@ function PrimesPanel({ form }: { form: string | null }) {
             {button}
           </div>
           <figure className="ds-primes-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
+            {/* Framer-style flow (owner, 2026-10-12): hairline wires that draw in on scroll, and
+                a rust light that runs from the prime through Ares to each post, which lights as
+                it arrives. The wires are SVG so the fork can curve; the light is ambient and
+                stops under reduced motion. */}
             <div className="ds-flow-node ds-flow-prime" aria-hidden="true">
               <span className="ds-data">Prime contractor</span>
               <span>Holds the contract</span>
             </div>
-            <span className="ds-flow-line ds-flow-down" aria-hidden="true" />
+            <svg className="ds-flow-wire ds-flow-wire-down" viewBox="0 0 2 40" preserveAspectRatio="none" aria-hidden="true">
+              <path className="ds-wire-base" d="M1 0V40" pathLength="100" />
+              <path className="ds-wire-pulse" d="M1 0V40" pathLength="100" />
+            </svg>
             <div className="ds-flow-node ds-flow-ares" aria-hidden="true">
-              <span className="ds-data">Ares Security</span>
+              <span className="ds-data">
+                <i className="ds-flow-dot" />
+                Ares Security
+              </span>
               <span>WOSB subcontractor · post orders, training, relief</span>
             </div>
-            <span className="ds-flow-line ds-flow-fork" aria-hidden="true" />
+            <svg className="ds-flow-wire ds-flow-wire-fork" viewBox="0 0 300 48" preserveAspectRatio="none" aria-hidden="true">
+              {['M150 0C150 26 50 22 50 48', 'M150 0V48', 'M150 0C150 26 250 22 250 48'].map((d) => (
+                <g key={d}>
+                  <path className="ds-wire-base" d={d} pathLength="100" />
+                  <path className="ds-wire-pulse" d={d} pathLength="100" />
+                </g>
+              ))}
+            </svg>
             <div className="ds-flow-posts" aria-hidden="true">
-              <span>Restricted-area escort</span>
-              <span>Access control</span>
-              <span>Relief and surge</span>
+              {['Restricted-area escort', 'Access control', 'Relief and surge'].map((t) => (
+                <span key={t}>
+                  <i className="ds-flow-dot" />
+                  {t}
+                </span>
+              ))}
             </div>
           </figure>
         </>

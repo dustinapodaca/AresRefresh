@@ -428,7 +428,12 @@ exception to "no card containers" and "no glass" for this section.
   (subcontracting credit WOSB250470 · WBE2303571; restricted areas, Space Force base in
   Colorado, 2025 to 2027; reliability <1% since 2021) and a solid "Teaming and
   subcontracting →" button. Forms at `/?prime=split|diagram|vignettes`: **diagram (chosen,
-  owner 2026-10-10: prime → Ares → three posts on the dot grid; lines draw on scroll)**,
+  owner 2026-10-10: prime → Ares → three posts; reworked 2026-10-12, owner: the dot grid spans
+  the whole panel, masked to black over the copy and in from the middle, vignetted to black in
+  the right corners (from the top half on phones); the diagram has no frame, its hairline wires
+  are SVG (the fork curves into the posts) and draw on scroll, and a rust light runs a 3.6s
+  cycle from the prime through Ares (its rust dot pulses) down each wire, lighting each post's
+  corner dot rust as it lands; ambient, still under reduced motion)**,
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 
