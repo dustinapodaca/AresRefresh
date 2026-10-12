@@ -792,7 +792,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
   and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
   Denver International's terminal at blue hour over the roadways, taillight trails, strip at
-  `50% 38%` (a sunset photo of the terminal was tried first and kept in images-unused). The other three are still the generated
+  `50% 38%`, graded to the site (owner, 2026-10-12: from purple to a night sky, warm-white
+  tents, amber and rust trails; `assets/tools/grade-photo.html`, ungraded master kept). A
+  sunset photo of the terminal was tried first and kept in images-unused. The other three are still the generated
   dusk scenes. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".

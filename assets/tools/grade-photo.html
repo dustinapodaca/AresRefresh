@@ -1,0 +1,50 @@
+<!-- Night grade for real photos (2026-10-12): most color out except warm lights and reds,
+     reds toward rust, a sky gradient that ends at the subject's top, a darker tone curve, and
+     amber highlights. Run in headless Chrome beside a src.jpg; window.grade(params) returns a
+     JPEG data URL. The airport hero used:
+     { baseSat: 0.08, keepWarm: 0.9, keepRed: 1, rust: 1, grad: 0.85, gradEnd: 0.28,
+       grad2: 0.4, gradEnd2: 0.5, gamma: 1.6, warm: 0.95, shadowWarm: 0.6 } -->
+<html><body><canvas id="c"></canvas><script>
+const load = (src) => new Promise((r) => { const i = new Image(); i.onload = () => r(i); i.src = src; });
+function rgb2hsv(r, g, b) { const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; let h = 0;
+  if (d) { if (mx === r) h = ((g - b) / d) % 6; else if (mx === g) h = (b - r) / d + 2; else h = (r - g) / d + 4; h *= 60; if (h < 0) h += 360; }
+  return [h, mx ? d / mx : 0, mx]; }
+function hsv2rgb(h, s, v) { const c = v * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = v - c; let r, g, b;
+  if (h < 60) [r, g, b] = [c, x, 0]; else if (h < 120) [r, g, b] = [x, c, 0]; else if (h < 180) [r, g, b] = [0, c, x];
+  else if (h < 240) [r, g, b] = [0, x, c]; else if (h < 300) [r, g, b] = [x, 0, c]; else [r, g, b] = [c, 0, x]; return [r + m, g + m, b + m]; }
+const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+window.grade = async (p) => {
+  const img = await load('src.jpg');
+  const c = document.getElementById('c'); c.width = img.width; c.height = img.height;
+  const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+  const d = x.getImageData(0, 0, c.width, c.height), a = d.data, W = c.width, H = c.height;
+  for (let i = 0; i < a.length; i += 4) {
+    const y = Math.floor(i / 4 / W) / H;
+    let r = a[i] / 255, g = a[i + 1] / 255, b = a[i + 2] / 255;
+    let [h, s, v] = rgb2hsv(r, g, b);
+    // Global: color mostly out, except warm lights (amber) and reds (taillights).
+    const warmHue = sm(15, 30, h) * (1 - sm(55, 70, h));
+    const red = Math.max(1 - sm(10, 40, h), sm(340, 352, h));
+    const keep = Math.max(warmHue * p.keepWarm, red * sm(0.3, 0.5, s) * p.keepRed);
+    s *= p.baseSat + (1 - p.baseSat) * keep;
+    // Reds swing toward rust.
+    if (s > 0.25) { const hh = h > 180 ? h - 360 : h; h = (h + (18 - hh) * red * p.rust + 360) % 360; }
+    [r, g, b] = hsv2rgb(h, s, v);
+    // Graduated darkening from the top, gone by the tallest tent peak.
+    const gk = (1 - p.grad * (1 - sm(0, p.gradEnd, y))) * (1 - p.grad2 * (1 - sm(0, p.gradEnd2, y)));
+    r *= gk; g *= gk; b *= gk;
+    // Tone curve: darken mids and shadows.
+    const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const k = L > 0.0001 ? Math.pow(L, p.gamma) / L : 0; r *= k; g *= k; b *= k;
+    const L2 = L * k;
+    // Split tone: amber highlights, faint warm shadows.
+    const hi = sm(0.35, 0.95, L2), lo = 1 - sm(0, 0.3, L2);
+    r += p.warm * hi * 0.08 + p.shadowWarm * lo * 0.022;
+    g += p.warm * hi * 0.032 + p.shadowWarm * lo * 0.009;
+    b -= p.warm * hi * 0.055 + p.shadowWarm * lo * 0.012;
+    a[i] = r * 255; a[i + 1] = g * 255; a[i + 2] = b * 255;
+  }
+  x.putImageData(d, 0, 0);
+  return c.toDataURL('image/jpeg', 0.93);
+};
+</script></body></html>

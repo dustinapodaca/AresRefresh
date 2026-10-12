@@ -159,8 +159,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1536
   },
   "/images/market/airport-transportation.webp": {
-    "src": "/images/opt/market-airport-transportation-1200.8cde16d7.webp",
-    "srcSet": "/images/opt/market-airport-transportation-480.59c1e763.webp 480w, /images/opt/market-airport-transportation-800.512c6c99.webp 800w, /images/opt/market-airport-transportation-1200.8cde16d7.webp 1200w, /images/opt/market-airport-transportation-1600.de6b35c0.webp 1600w, /images/opt/market-airport-transportation-2000.fcd28c64.webp 2000w, /images/opt/market-airport-transportation-2400.d777ca70.webp 2400w, /images/opt/market-airport-transportation-3200.a8bc7bcb.webp 3200w",
+    "src": "/images/opt/market-airport-transportation-1200.56233c6e.webp",
+    "srcSet": "/images/opt/market-airport-transportation-480.14e035b3.webp 480w, /images/opt/market-airport-transportation-800.70034bc8.webp 800w, /images/opt/market-airport-transportation-1200.56233c6e.webp 1200w, /images/opt/market-airport-transportation-1600.48b9b28f.webp 1600w, /images/opt/market-airport-transportation-2000.84582f01.webp 2000w, /images/opt/market-airport-transportation-2400.9dd605cf.webp 2400w, /images/opt/market-airport-transportation-3200.eaf524d8.webp 3200w",
     "width": 3200,
     "height": 2560
   },
