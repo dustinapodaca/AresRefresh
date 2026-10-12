@@ -1194,7 +1194,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* The patrol vehicles as a wide plate (anchored to the photo's foot, so the vehicles lead)
    beside the company facts on hairlines. Owner, 2026-10-06: vehicles are allowed on Home
    here. */
-.ds-quality-body { display: grid; gap: 36px; margin-top: calc(var(--ds-beat-tight) + 24px); } /* +24px (owner, 2026-10-12) */
+.ds-quality-body { display: grid; gap: 36px; margin-top: var(--ds-beat-tight); }
 .ds-quality-photo img { aspect-ratio: 1; object-fit: cover; object-position: 50% 100%; } /* anchored at the photo's foot (owner, 2026-10-12) */
 /* No frame edge: the plate's edge was drawn around the caption too (owner, 2026-10-12). The
    doubled class outranks .ds-plate::after, which comes later. */
@@ -1208,6 +1208,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-quality-facts div { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: 20px; align-items: baseline; }
 }
 @media (min-width: 768px) { .ds-quality-photo img { aspect-ratio: 16 / 10; } }
+/* Desktop: the picture sits 24px lower in its frame, so the cars ride lower (owner, 2026-10-12). */
+@media (min-width: 1024px) { .ds-quality-photo img { object-position: 50% calc(100% + 24px); } }
 @media (min-width: 1024px) {
   /* The facts' top and bottom rules line up with the photo's top and bottom edges (owner,
      2026-10-12): the caption hangs below the photo outside its box, the facts stretch to the
