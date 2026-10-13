@@ -3680,7 +3680,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 
 /* Questions: the heading left (sticky on desktop), the accordion right. */
 .ds-mk-faq { display: grid; gap: 28px; padding-top: var(--ds-beat); }
-.ds-mk-faq-head .ds-small { margin-top: 14px; }
 .ds-mk-faq-list { border-top: 1px solid var(--ds-rule-strong); }
 .ds-mk-faq-list details { border-bottom: 1px solid var(--ds-rule); }
 .ds-mk-faq-list summary {

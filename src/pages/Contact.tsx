@@ -50,7 +50,8 @@ const LABEL = Object.fromEntries(NEEDS.map((n) => [n.slug, n.label]));
 
 // What happens after a request, from facts already on the site.
 const NEXT = [
-  { name: 'Leadership reads it', line: 'Every request is reviewed by leadership only.' },
+  // "Read by leadership only" stays once, under Send (design review, 2026-10-13).
+  { name: 'We read your request', line: 'Your site, the coverage you need, and your dates.' },
   { name: 'We walk your site', line: 'Before anything is signed, so the plan fits how your site runs.' },
   { name: 'You get a scoped proposal', line: 'Staffing, post orders, and pricing for your site.' },
 ];

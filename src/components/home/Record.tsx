@@ -79,8 +79,8 @@ export default function Record() {
           The record so far.
         </h2>
         <p className="ds-lead">
-          Federal agencies and commercial clients hire us for the same thing: a prepared officer
-          on post, every shift.
+          {/* Design review (2026-10-13): the old line repeated the hero's headline. */}
+          Federal agencies and commercial clients hold us to the same record.
         </p>
       </div>
 

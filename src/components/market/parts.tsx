@@ -20,10 +20,9 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
   return (
     <section id={id} className="ds-mk-faq" aria-labelledby={`${id}-title`}>
       <div className="ds-mk-faq-head">
+        {/* "Something else? Call ..." was cut (design review, 2026-10-13): the phone is already
+            in each page's opening and its closing ask. */}
         <h2 id={`${id}-title`} className="ds-display-md">Questions, answered.</h2>
-        <p className="ds-small">
-          Something else? Call <a href="tel:+17196963966" className="ds-link ds-data">719-696-3966</a>.
-        </p>
       </div>
       <div className="ds-mk-faq-list">
         {items.map((f) => (

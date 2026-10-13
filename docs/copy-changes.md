@@ -865,3 +865,12 @@ industry page, and Teaming. Added to routes.json (sitemap), llms.txt, and the In
 ## Home Quality facts (owner, 2026-10-12)
 
 Removed the "Licensed" row ("Licensed and bonded armed and unarmed security and training provider in Denver, Colorado Springs, and Pueblo"). The facts are now Established, Ownership, Primary NAICS, Longest client. Licensing still shows in the hero's proof row, the city pages, and the footer.
+
+## Design & flow review, quick copy items (owner, 2026-10-13)
+
+| Where | Was | Now |
+|---|---|---|
+| Home Record lead | "Federal agencies and commercial clients hire us for the same thing: a prepared officer on post, every shift." (repeated the hero) | "Federal agencies and commercial clients hold us to the same record." |
+| Questions block (service, industry, city pages, Teaming) | "Something else? Call 719-696-3966." under "Questions, answered." | Cut (the phone is in each opening and closing ask) |
+| Contact, what happens next, step 01 | "Leadership reads it" / "Every request is reviewed by leadership only." | "We read your request" / "Your site, the coverage you need, and your dates." ("read by leadership only" stays once, under Send) |
+| Services, Airport card | "...perimeters, passenger areas, baggage, and cargo operations..." | "...perimeters, public areas, baggage, and cargo operations..." |

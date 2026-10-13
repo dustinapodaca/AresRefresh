@@ -86,7 +86,7 @@ export const DIVISIONS: Division[] = [
     title: 'Airport & Transportation',
     // Ready to staff, as the industry page says (copy audit, 2026-10-10: "around the clock"
     // and "staffed on every shift" read as current posts).
-    body: 'Officers we are ready to staff for perimeters, passenger areas, baggage, and cargo operations, uniformed or plainclothes. The same documented access control we run in restricted areas applies to cargo and other controlled zones.',
+    body: 'Officers we are ready to staff for perimeters, public areas, baggage, and cargo operations, uniformed or plainclothes. The same documented access control we run in restricted areas applies to cargo and other controlled zones.',
     covers: [
       { name: 'Airports', detail: 'Perimeter, passenger-area, baggage, and cargo coverage, on the shifts the site needs.' },
       { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
