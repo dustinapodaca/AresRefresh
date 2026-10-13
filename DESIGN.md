@@ -278,9 +278,11 @@ sizes are unchanged.
 Cards and glass are part of the system, not exceptions.
 - **Cards** are flat black, a shade darker than nothing would suggest on a true-black page:
   `--ds-card #060708` (a card on a card, such as a diagram node or an opened card,
-  `--ds-card-raised #0d0e11`), with a 1px edge lit from the top and the bottom like light on a
-  glass edge (`--ds-card-edge`: white 20% at the top and 16% at the foot, fading to 4% at the
-  middle of the sides; owner, 2026-10-10), drawn as a gradient border. No glow, no gradient fill, no blur, no
+  `--ds-card-raised #0d0e11`), with a 1px glass edge (`--ds-card-edge`, owner 2026-10-12): light
+  rakes across it on a 150deg diagonal, white 28% at the top-left corner, never below about 10%
+  (no dark band down the sides), a faint warm rust glint (214 150 104 at 20%) low on the right,
+  and 20% again at the bottom-right corner; drawn as a gradient border (was lit top and bottom,
+  fading to 4% mid-side, 2026-10-10). No glow, no gradient fill, no blur, no
   drop shadow. 4px corners. Hover brightens the edge (`--ds-card-edge-hover`).
 - **Used by:** the Home Record cards and the prime-contractor panel (with its diagram), the
   Capability Statement cards and GSA MAS block, the Services industry cards (the edge drawn
