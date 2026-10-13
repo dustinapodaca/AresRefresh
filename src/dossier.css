@@ -4393,7 +4393,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    menu, the main one above the capability statement (sticky inside the card, which scrolls; the folding
    panels clip instead of hide so they don't trap the sticky). */
 .ds-np-drop-inner { overflow: clip; }
-.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 10px; margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); } /* solid, so the list never shows through */
+.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 14px; /* the button 4px lower (owner, 2026-10-13) */ margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); } /* solid, so the list never shows through */
 .ds-np-sub-mail { font-size: 14px !important; color: var(--ds-fg-muted); }
 .ds-np-mcontact-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .ds-np-mcontact-row + a { margin-top: -4px; } /* the email 4px higher (owner, 2026-10-13) */
