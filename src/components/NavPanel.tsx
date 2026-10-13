@@ -323,18 +323,26 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                       </button>
                       <div className="ds-np-acc" data-open={mobileMenu === item.menu || undefined}>
                         <div className="ds-np-drop-inner">
+                          {/* Phones (owner, 2026-10-13): Services opens on its two overview links
+                              (all services, Teaming), then a divider, then the six services;
+                              Industries and Company show their links only (no city links). */}
                           <ul className="ds-np-sub">
+                            {item.menu === 'Services' && (
+                              <>
+                                {MENUS.Services.footer?.map((l) => (
+                                  <li key={'f' + l.to}>
+                                    <Link to={l.to} className="ds-np-sub-more">
+                                      {l.label}
+                                      <Arrow size={12} />
+                                    </Link>
+                                  </li>
+                                ))}
+                                <li className="ds-np-sub-rule" aria-hidden="true" />
+                              </>
+                            )}
                             {MENUS[item.menu].columns.flatMap((c) => c.links).map((l) => (
                               <li key={l.to + l.label}>
                                 <Link to={l.to}>{l.label}</Link>
-                              </li>
-                            ))}
-                            {MENUS[item.menu].footer?.slice(0, 1).map((l) => (
-                              <li key={'f' + l.to}>
-                                <Link to={l.to} className="ds-np-sub-more">
-                                  {l.label}
-                                  <Arrow size={12} />
-                                </Link>
                               </li>
                             ))}
                           </ul>

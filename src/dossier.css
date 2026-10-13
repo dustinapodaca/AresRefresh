@@ -4336,3 +4336,4 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @media (max-width: 1023px) {
   .ds-np[data-layout='full'][data-open='true'] .ds-np-card { min-height: 100svh; background: rgb(8 9 11 / 0.97); }
 }
+.ds-np-sub-rule { height: 1px; margin: 2px 0; background: rgb(255 255 255 / 0.1); }

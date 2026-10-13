@@ -866,7 +866,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   under a small faint label, a 288px real photo with a mono caption beneath, and a row of
   footer links under a hairline (Company adds LinkedIn, Google, and Indeed). Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
-  three menus as accordions, the phone and email, the button, and the capability statement PDF.
+  three menus as accordions (Services opens on "All services and how a post starts" and Teaming, a divider, then the six services; Industries and Company list their links only, no city links; owner 2026-10-13), the phone and email, the button, and the capability statement PDF.
   Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
   previous nav (below) stays at `?nav=classic`.
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
