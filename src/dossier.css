@@ -4183,3 +4183,147 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 5; align-self: center; }
   .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-flow { grid-column: 7 / span 6; }
 }
+
+/* ---------- Nav options (design review item 3, owner 2026-10-13; /?nav=) ----------
+   Shared pieces, off in the live nav: the ARES / SECURITY wordmark beside the mark, a text
+   phone number, a "Menu" label, and the credentials strip. */
+.ds-wordmark { display: none; flex: none; width: 66px; height: 20px; background: #fff; -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat; mask: url(/images/ares-text.svg) center / contain no-repeat; }
+.ds-header-phone { display: none; font-size: 13px; color: var(--ds-fg); text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 4px; }
+.ds-menu-label { display: none; font: 400 12px/1 var(--ds-data); letter-spacing: 0.08em; text-transform: uppercase; }
+.ds-header-util { display: none; }
+.ds-header:not([data-nav='current']) .ds-wordmark { display: block; }
+.ds-header:not([data-nav='current']) .ds-mark { width: 30px; height: 31px; }
+
+/* 1. ledger (Heron AI): the bar ruled into cells, mono uppercase labels, a hairline always. */
+.ds-header[data-nav='ledger']::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 1px; background: rgb(255 255 255 / 0.12); pointer-events: none; }
+.ds-header[data-nav='ledger'] .ds-menu-icon { display: none; }
+.ds-header[data-nav='ledger'] .ds-menu-label { display: inline; }
+.ds-header[data-nav='ledger'] .ds-menu-btn,
+.ds-header[data-nav='ledger'] .ds-header-call { width: auto; height: 100%; margin: 0; padding: 0 16px; border-left: 1px solid rgb(255 255 255 / 0.12); }
+.ds-header[data-nav='ledger'] .ds-menu-btn { margin-right: calc(-1 * var(--ds-gutter)); padding-right: var(--ds-gutter); }
+.ds-header[data-nav='ledger'] .ds-header-actions { gap: 0; height: 100%; }
+@media (min-width: 1024px) {
+  .ds-header[data-nav='ledger'] .ds-header-row { display: flex; }
+  .ds-header[data-nav='ledger'] .ds-nav { margin-left: auto; height: 100%; }
+  .ds-header[data-nav='ledger'] .ds-nav ul { gap: 0; height: 100%; }
+  .ds-header[data-nav='ledger'] .ds-nav li { display: flex; align-items: center; height: 100%; border-left: 1px solid rgb(255 255 255 / 0.12); }
+  .ds-header[data-nav='ledger'] .ds-nav-link { top: 0; display: flex; align-items: center; height: 100%; padding: 0 18px; font: 400 12px/1 var(--ds-data); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+  .ds-header[data-nav='ledger'] .ds-nav-link:hover,
+  .ds-header[data-nav='ledger'] .ds-nav-link[aria-current='page'] { color: #fff; }
+  .ds-header[data-nav='ledger'] .ds-nav-link::after { left: 18px; right: 18px; bottom: -1px; }
+  .ds-header[data-nav='ledger'] .ds-nav-has-menu .ds-nav-link { padding-right: 4px; }
+  .ds-header[data-nav='ledger'] .ds-nav-caret { top: 0; margin-right: 12px; }
+  .ds-header[data-nav='ledger'] .ds-header-actions { padding-left: 18px; border-left: 1px solid rgb(255 255 255 / 0.12); }
+  .ds-header[data-nav='ledger'] .ds-nav-panel { top: 100%; }
+}
+
+/* 2. split (Resend, Giga): the links beside the lockup, the phone and the button at the right. */
+.ds-header[data-nav='split'] .ds-menu-label { display: inline; margin-left: 10px; }
+.ds-header[data-nav='split'] .ds-menu-btn { width: auto; padding: 0 10px; }
+@media (min-width: 1024px) {
+  .ds-header[data-nav='split'] .ds-header-row { display: flex; }
+  .ds-header[data-nav='split'] .ds-nav { margin-left: 44px; }
+  .ds-header[data-nav='split'] .ds-nav ul { justify-content: flex-start; gap: 28px; }
+  .ds-header[data-nav='split'] .ds-nav-link { font-size: 14px; color: rgb(238 240 242 / 0.72); transition: color 180ms var(--ds-ease); }
+  .ds-header[data-nav='split'] .ds-nav-link:hover,
+  .ds-header[data-nav='split'] .ds-nav-link[aria-current='page'] { color: #fff; }
+  .ds-header[data-nav='split'] .ds-header-actions { margin-left: auto; gap: 24px; }
+  .ds-header[data-nav='split'] .ds-header-phone { display: inline; }
+}
+
+/* 3. utility (Retool): a thin strip of credentials and contacts over a shorter main bar. */
+@media (min-width: 1024px) {
+  .ds-header[data-nav='utility'] .ds-header-util { display: block; position: absolute; inset-inline: 0; top: 0; z-index: 1; height: 26px; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+  .ds-header[data-nav='utility'] .ds-header-util .ds-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+  .ds-header[data-nav='utility'] .ds-header-util .ds-data { font-size: 11.5px; letter-spacing: 0.02em; color: var(--ds-fg-faint); }
+  .ds-header[data-nav='utility'] .ds-header-util a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+  .ds-header[data-nav='utility'] .ds-header-util a:hover { color: #fff; }
+  .ds-header[data-nav='utility'] .ds-header-row { height: calc(100% - 26px); margin-top: 26px; }
+  .ds-header[data-nav='utility'] .ds-nav-link { top: 0; }
+  .ds-header[data-nav='utility'] .ds-nav-panel { top: calc(100% + 14px); }
+}
+
+/* Centered bars: no full-width glass; the bar itself floats, 4px corners (never a pill). */
+.ds-header[data-nav='capsule']::before,
+.ds-header[data-nav='float']::before,
+.ds-header[data-nav='island']::before { display: none; }
+
+/* 4. capsule (VanMoof): a small glass bar, centered: menu, lockup, button. The menu opens the
+   full sheet at every width. */
+.ds-header[data-nav='capsule'] .ds-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: min(600px, calc(100% - 24px));
+  height: 52px;
+  margin: 10px auto 0;
+  padding: 0 6px 0 4px;
+  border-radius: 4px;
+  background: rgb(8 9 11 / 0.62);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  backdrop-filter: blur(22px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.14);
+}
+.ds-header[data-nav='capsule'] .ds-header-actions { display: contents; }
+.ds-header[data-nav='capsule'] .ds-menu-btn { order: -1; display: inline-flex; width: auto; margin: 0; padding: 0 12px; gap: 10px; }
+.ds-header[data-nav='capsule'] .ds-menu-icon { width: 18px; height: 12px; }
+.ds-header[data-nav='capsule'] .ds-menu-icon span:nth-child(2) { top: 5px; }
+.ds-header[data-nav='capsule'] .ds-menu-icon span:nth-child(3) { top: 10px; }
+.ds-header[data-open='true'][data-nav='capsule'] .ds-menu-icon span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.ds-header[data-open='true'][data-nav='capsule'] .ds-menu-icon span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+.ds-header[data-nav='capsule'] .ds-nav,
+.ds-header[data-nav='capsule'] .ds-header-call { display: none; }
+.ds-header[data-nav='capsule'] .ds-header-cta { display: inline-flex; height: 38px; padding: 0 14px; font-size: 13px; }
+.ds-header[data-nav='capsule'] .ds-sheet { display: block; }
+@media (min-width: 1024px) {
+  .ds-header[data-nav='capsule'] .ds-menu-label { display: inline; }
+  .ds-header[data-nav='capsule'] .ds-header-row { height: 56px; margin-top: 14px; }
+  .ds-header[data-nav='capsule'] .ds-menu-btn { display: inline-flex; }
+}
+@media (max-width: 380px) {
+  .ds-header[data-nav='capsule'] .ds-wordmark { display: none; }
+}
+
+/* 5. float (Superpower, Framer): the whole bar inset as glass, links centered. */
+.ds-header[data-nav='float'] .ds-header-row {
+  width: calc(100% - 24px);
+  max-width: calc(var(--ds-max) + 48px);
+  height: 52px;
+  margin: 8px auto 0;
+  padding: 0 8px 0 16px;
+  border-radius: 4px;
+  background: rgb(8 9 11 / 0.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  backdrop-filter: blur(22px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.14);
+}
+.ds-header[data-nav='float'] .ds-menu-btn { margin-right: -2px; }
+@media (min-width: 1024px) {
+  .ds-header[data-nav='float'] .ds-header-row { width: calc(100% - 32px); height: 60px; margin-top: 12px; padding: 0 10px 0 22px; }
+  .ds-header[data-nav='float'] .ds-nav-link { top: 0; }
+  .ds-header[data-nav='float'] .ds-nav-panel { top: calc(100% + 18px); }
+}
+
+/* 6. island (Sana, Giga): the lockup and the button sit free; the links ride in a centered
+   glass island. Phones: the phone and menu share a small glass box at the right. */
+.ds-header[data-nav='island'] .ds-header-actions { padding: 0 2px 0 4px; border-radius: 4px; background: rgb(8 9 11 / 0.6); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12); }
+.ds-header[data-nav='island'] .ds-menu-btn { margin-right: 0; }
+@media (min-width: 1024px) {
+  .ds-header[data-nav='island'] .ds-header-actions { padding: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+  .ds-header[data-nav='island'] .ds-nav { padding: 5px; border-radius: 4px; background: rgb(8 9 11 / 0.6); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.14); }
+  .ds-header[data-nav='island'] .ds-nav ul { gap: 2px; }
+  .ds-header[data-nav='island'] .ds-nav-link { top: 0; padding: 9px 14px; border-radius: 2px; font-size: 14px; transition: background-color 180ms var(--ds-ease); }
+  .ds-header[data-nav='island'] .ds-nav-link::after { display: none; }
+  .ds-header[data-nav='island'] .ds-nav-link[aria-current='page'] { background: rgb(255 255 255 / 0.1); }
+  .ds-header[data-nav='island'] .ds-nav-has-menu .ds-nav-link { padding-right: 6px; }
+  .ds-header[data-nav='island'] .ds-nav-caret { top: 0; margin-right: 6px; }
+  .ds-header[data-nav='island'] .ds-nav-panel { top: calc(100% + 20px); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-header[data-nav='island'] .ds-nav-link:hover { background: rgb(255 255 255 / 0.06); }
+}
+/* Island, once scrolled: the lockup takes its own small glass box so it stays legible over the
+   page, matching the links' island. */
+.ds-header[data-nav='island'] .ds-brand { padding: 8px 12px 8px 10px; margin-left: -10px; border-radius: 4px; transition: background-color 200ms ease-out, box-shadow 200ms ease-out; }
+.ds-header[data-nav='island'][data-solid='true'] .ds-brand { background: rgb(8 9 11 / 0.6); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12); }
+.ds-header[data-nav='island'] .ds-brand { justify-self: start; }

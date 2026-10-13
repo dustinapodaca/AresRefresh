@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import Arrow from './Arrow';
 import PhoneIcon from './PhoneIcon';
 import { ROLE_PAGES } from './market/roles';
@@ -23,7 +23,29 @@ const SERVICES_MENU = {
   industries: INDUSTRY_PAGES.map((i) => ({ to: `/industries/${i.slug}`, label: i.name })),
 };
 
+// Nav options (design review item 3, owner 2026-10-13; Mobbin: Heron AI, Resend, Giga, Retool,
+// VanMoof, Superpower, Sana), for the owner to compare at /?nav=. Full-width bars: ledger
+// (ruled cells, mono labels), split (links beside the lockup, phone at the right), utility (a
+// thin strip of credentials over the bar). Centered bars: capsule (a small glass bar, menu at
+// every width), float (the whole bar inset as glass), island (the links in a glass island).
+// "current" is the live nav. The choice sticks for the session so it can be judged page to page.
+const NAV_FORMS = ['current', 'ledger', 'split', 'utility', 'capsule', 'float', 'island'] as const;
+type NavForm = (typeof NAV_FORMS)[number];
+function useNavForm(): NavForm {
+  const [params] = useSearchParams();
+  const asked = params.get('nav');
+  let form: string | null = asked;
+  try {
+    if (asked) sessionStorage.setItem('ares-nav', asked);
+    else form = sessionStorage.getItem('ares-nav');
+  } catch {
+    // Storage blocked: the URL alone decides.
+  }
+  return NAV_FORMS.includes(form as NavForm) ? (form as NavForm) : 'current';
+}
+
 export default function Header() {
+  const navForm = useNavForm();
   const [panel, setPanel] = useState(false);
   const panelTimer = useRef(0);
   const [open, setOpen] = useState(false);
@@ -126,10 +148,21 @@ export default function Header() {
   return (
     <>
     <a href="#main" className="ds ds-skip">Skip to content</a>
-    <header ref={headerRef} className="ds ds-header" data-solid={scrolled || open} data-open={open}>
+    <header ref={headerRef} className="ds ds-header" data-solid={scrolled || open} data-open={open} data-nav={navForm}>
+      {navForm === 'utility' && (
+        <div className="ds-header-util" aria-label="Credentials">
+          <div className="ds-container">
+            <span className="ds-data">GSA MAS 47QSMS25D009Q · Minority woman-owned · Licensed in Colorado Springs, Denver, Pueblo</span>
+            <span className="ds-data">
+              <a href="tel:+17196963966">719-696-3966</a> · <a href="mailto:contact@aressecurity.co">contact@aressecurity.co</a>
+            </span>
+          </div>
+        </div>
+      )}
       <div className="ds-container ds-header-row">
         <Link to="/" onClick={onBrand} className="ds-brand" aria-label="Ares Security home">
           <span className="ds-mark" aria-hidden="true" />
+          <span className="ds-wordmark" aria-hidden="true" />
         </Link>
 
         <nav className="ds-nav" aria-label="Primary">
@@ -204,6 +237,7 @@ export default function Header() {
           <a href="tel:+17196963966" className="ds-header-call" aria-label="Call 719-696-3966">
             <PhoneIcon />
           </a>
+          <a href="tel:+17196963966" className="ds-header-phone ds-data">719-696-3966</a>
           <Link to={cta.to} className="ds-btn ds-btn-primary ds-header-cta">
             {cta.label}
             <Arrow size={14} />
@@ -224,6 +258,7 @@ export default function Header() {
               <span />
               <span />
             </span>
+            <span className="ds-menu-label" aria-hidden="true">{open ? 'Close' : 'Menu'}</span>
           </button>
         </div>
       </div>

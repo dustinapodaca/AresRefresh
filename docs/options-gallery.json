@@ -4,6 +4,50 @@
   "intro": "Every alternative still on the site, branch audit (updated 2026-10-11). The option marked default is what ships and what Google sees. The others show only with the switch in the address.",
   "groups": [
     {
+      "heading": "Navigation (desktop and phone)",
+      "intro": "Design review item 3, from Mobbin: Heron AI, Resend, Giga, Retool, VanMoof, Superpower, Framer, Sana. Three full-width bars, then three centered bars. Each adds the ARES SECURITY wordmark beside the mark. The choice sticks while you click around (?nav=current to go back).",
+      "page": "/",
+      "param": "nav",
+      "options": [
+        {
+          "value": "current",
+          "label": "Current",
+          "tag": "default",
+          "note": "Mark alone, links centered, glass bar once scrolled."
+        },
+        {
+          "value": "ledger",
+          "label": "1 Ledger (Heron AI)",
+          "note": "Full width, ruled into cells by hairlines, mono uppercase labels, a hairline always under the bar. Phones: Menu as a word in its own cell."
+        },
+        {
+          "value": "split",
+          "label": "2 Split (Resend, Giga)",
+          "note": "Full width; links sit beside the lockup, the phone number and button on the right. Phones: Menu label beside the icon."
+        },
+        {
+          "value": "utility",
+          "label": "3 Utility (Retool)",
+          "note": "Full width with a thin credentials strip on top (GSA MAS, minority woman-owned, licensed; phone and email). Phones: the strip hides."
+        },
+        {
+          "value": "capsule",
+          "label": "4 Capsule (VanMoof)",
+          "note": "A small centered glass bar at every width: Menu, lockup, button. The menu opens the full sheet on desktop too."
+        },
+        {
+          "value": "float",
+          "label": "5 Float (Superpower, Framer)",
+          "note": "The whole bar inset from the edges as glass with 4px corners, links centered."
+        },
+        {
+          "value": "island",
+          "label": "6 Island (Sana, Giga)",
+          "note": "Lockup and button sit free; the links ride in a centered glass island. Once scrolled the lockup gets its own glass. Phones: phone and menu in a small glass box."
+        }
+      ]
+    },
+    {
       "heading": "Home hero",
       "intro": "Same photo, proof row, and buttons. Only the headline and lead change.",
       "page": "/",
