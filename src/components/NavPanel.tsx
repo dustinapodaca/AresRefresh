@@ -188,7 +188,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   const cardRef = useRef<HTMLDivElement>(null);
   // Desktop (owner, 2026-10-13): the menus open on hover. A short delay before opening keeps a
   // pointer crossing the bar from flashing a menu; moving between items swaps at once; leaving
-  // the card closes after a beat, so the pointer can travel into the open panel. Click still
+  // the card closes almost at once (the panel is part of the card, so no travel gap to bridge). Click still
   // toggles, for keyboards and touch.
   const hoverTimer = useRef(0);
   const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -311,7 +311,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
         <div
           ref={cardRef}
           className="ds-np-card"
-          onMouseLeave={() => hoverTo(null, 220)}
+          onMouseLeave={() => hoverTo(null, 40)}
           onMouseEnter={() => window.clearTimeout(hoverTimer.current)}
         >
           <div className="ds-np-row">

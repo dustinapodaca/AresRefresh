@@ -4246,6 +4246,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* Growing panels: grid rows from 0fr to 1fr, so height animates to its content. */
 .ds-np-drop, .ds-np-mobile, .ds-np-acc { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1); }
 .ds-np-drop[data-open], .ds-np-mobile[data-open], .ds-np-acc[data-open] { grid-template-rows: 1fr; }
+/* Closing is quicker than opening (owner, 2026-10-13: leaving the menu should feel immediate). */
+.ds-np-drop:not([data-open]) { transition-duration: 200ms; transition-timing-function: cubic-bezier(0.4, 0, 1, 1); }
 .ds-np-drop-inner { min-height: 0; overflow: hidden; }
 .ds-np-drop { display: none; }
 

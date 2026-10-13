@@ -881,7 +881,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   without a running head do this past 80% of the first screen. Reduced motion: a short fade
   only. (Owner, 2026-10-13.)
   On desktop the menus open on hover (a 90ms delay, then moving between items swaps at once;
-  leaving the card closes after 220ms so the pointer can reach the panel; hovering Capability
+  leaving the card closes after 40ms and the panel folds away in 200ms; hovering Capability
   Statement closes it; owner, 2026-10-13); click keeps it open with a mouse and toggles for
   keyboards and touch. Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
   previous nav (below) stays at `?nav=classic`.
