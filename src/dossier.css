@@ -981,7 +981,9 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 
 .ds-runhead {
   position: fixed;
-  top: var(--ds-header);
+  /* Tucked 1px under the nav (owner, 2026-10-13): the nav's hairline then always sits on this
+     solid strip, so no page pixels show through a gap between them while scrolling. */
+  top: calc(var(--ds-header) - 1px);
   left: 0;
   right: 0;
   z-index: 40;
