@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react';
 import { responsive } from '../../lib/responsive';
 
 // A slow strip of certification marks between the hero and 01 Verify. The marks repeat
@@ -28,10 +29,43 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
+// The loop starts with Colorado Verified Small Business in the middle of the screen, so GSA and
+// SBA are the next marks in (owner, 2026-10-13): the belt's animation is started part way
+// through (a negative delay); under reduced motion the swipeable strip is scrolled there.
+const START = '/images/cert-co-small.webp';
+const LOOP_S = 60;
+
 export default function CredentialStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  const beltRef = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const strip = ref.current;
+    const belt = beltRef.current;
+    if (!strip || !belt) return;
+    const place = () => {
+      const track = belt.firstElementChild as HTMLElement | null;
+      const start = track?.querySelector<HTMLImageElement>(`img[src*="${START.split('/').pop()!.replace('.webp', '')}"]`)?.parentElement;
+      if (!track || !start) return;
+      const offset = start.offsetLeft + start.offsetWidth / 2 - strip.clientWidth / 2;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        strip.scrollLeft = Math.max(0, offset);
+        return;
+      }
+      const fraction = Math.max(0, offset) / track.offsetWidth;
+      belt.style.animationDelay = `${-(fraction * LOOP_S).toFixed(2)}s`;
+    };
+    place();
+    const imgs = Array.from(belt.querySelectorAll('img'));
+    imgs.forEach((i) => i.addEventListener('load', place, { once: true }));
+    window.addEventListener('resize', place);
+    return () => {
+      imgs.forEach((i) => i.removeEventListener('load', place));
+      window.removeEventListener('resize', place);
+    };
+  }, []);
   return (
-    <div className="ds-strip" role="region" aria-label="Certifications">
-      <div className="ds-strip-belt">
+    <div ref={ref} className="ds-strip" role="region" aria-label="Certifications">
+      <div ref={beltRef} className="ds-strip-belt">
         <Track />
         <Track hidden />
       </div>

@@ -470,7 +470,8 @@ exception to "no card containers" and "no glass" for this section.
   last three added 2026-10-05 as WebPs at 32 to 36px tall), no text, with wide
   spacing (72px mobile, 112px desktop). No rules above or below; the edges fade out with
   a mask. Moves slowly (60s loop), pauses on hover, and holds still and becomes swipeable
-  under reduced motion.
+  under reduced motion. It starts with Colorado Verified Small Business in the middle of the
+  screen, so GSA and SBA are the next marks in (owner, 2026-10-13).
 
 ### Coverage map
 - An authored SVG of Colorado to scale (37°N to 41°N, 102.05°W to 109.05°W) on a faint dot
