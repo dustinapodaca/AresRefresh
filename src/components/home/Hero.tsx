@@ -65,9 +65,7 @@ export default function Hero() {
               Request a Quote
               <Arrow />
             </Link>
-            <a href="tel:+17196963966" className="ds-link">
-              Call <span className="ds-data">719-696-3966</span>
-            </a>
+            {/* No call link here (owner, 2026-10-13): the nav's handset and menu carry the phone. */}
           </div>
           {hero.proof ? (
             // The proof row (audit): one line each, every one checkable on the linked page.

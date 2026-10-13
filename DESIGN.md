@@ -183,7 +183,7 @@ sizes are unchanged.
   -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
   to 1.15. Reduce size before loosening tracking.
   - display-xl: the hero headline (two lines on desktop, set over the full-bleed photo;
-    on Home the quote button and call link under the lead show below 1024px only, since
+    on Home the quote button under the lead shows below 1024px only (the call link was removed, owner 2026-10-13), since
     the nav carries the quote button from there up; owner, 2026-10-06)
     and the Contact headline.
   - display-lg: section headlines (Record, Staffing, Careers).
