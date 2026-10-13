@@ -225,6 +225,34 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
     };
   }, [mobileOpen]);
 
+  // Phones (owner, 2026-10-13): once the running head with its progress line slides out, the
+  // divider and the ARES SECURITY wordmark are drawn into the mark, leaving the mark alone; they
+  // slide back out when it leaves. Pages without a running head use a scroll depth instead.
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    setCompact(false);
+    let mo: MutationObserver | null = null;
+    let onScroll: (() => void) | null = null;
+    const frame = requestAnimationFrame(() => {
+      const head = document.querySelector<HTMLElement>('.ds-runhead');
+      if (head) {
+        const sync = () => setCompact(head.dataset.visible === 'true');
+        sync();
+        mo = new MutationObserver(sync);
+        mo.observe(head, { attributes: true, attributeFilter: ['data-visible'] });
+      } else {
+        onScroll = () => setCompact(window.scrollY > window.innerHeight * 0.8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      mo?.disconnect();
+      if (onScroll) window.removeEventListener('scroll', onScroll);
+    };
+  }, [pathname]);
+
   // Fetch the three menu photos once the page has settled, so a menu never opens on a blank
   // frame (they are small: the 288px-wide file of each).
   useEffect(() => {
@@ -251,7 +279,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   return (
     <>
       <a href="#main" className="ds ds-skip">Skip to content</a>
-      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout}>
+      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !mobileOpen) || undefined}>
         <div ref={cardRef} className="ds-np-card">
           <div className="ds-np-row">
             <Link to="/" className="ds-np-brand" aria-label="Ares Security home">

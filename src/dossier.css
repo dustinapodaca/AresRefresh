@@ -4337,3 +4337,23 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np[data-layout='full'][data-open='true'] .ds-np-card { min-height: 100svh; background: rgb(8 9 11 / 0.97); }
 }
 .ds-np-sub-rule { height: 1px; margin: 2px 0; background: rgb(255 255 255 / 0.1); }
+
+/* Phones: the wordmark drawn into the mark once the running head appears (owner, 2026-10-13).
+   The divider folds down first; the wordmark slides left into the mark, shrinking and fading as
+   it goes (clipped at the mark's edge, so it disappears behind it); the mark gives a small pulse
+   as it takes it in. Reversed when the running head leaves. Desktop keeps the full lockup. */
+@media (max-width: 1023px) {
+  .ds-np-brand { position: relative; }
+  .ds-np-brand .ds-mark { position: relative; z-index: 1; }
+  .ds-np-divider, .ds-np-wordmark { transform-origin: left center; transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms ease-out, clip-path 460ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .ds-np-wordmark { clip-path: inset(0 0 0 0); }
+  .ds-np[data-compact] .ds-np-divider { transform: translateX(-12px) scaleY(0); opacity: 0; transition-duration: 260ms, 200ms; }
+  .ds-np[data-compact] .ds-np-wordmark { transform: translateX(-52px) scale(0.35); opacity: 0; clip-path: inset(0 0 0 30%); transition-delay: 60ms; }
+  .ds-np[data-compact] .ds-np-brand .ds-mark { animation: ds-np-absorb 520ms cubic-bezier(0.22, 1, 0.36, 1) 160ms; }
+  .ds-np:not([data-compact]) .ds-np-divider { transition-delay: 180ms; }
+}
+@keyframes ds-np-absorb { 0% { transform: scale(1); } 45% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .ds-np-divider, .ds-np-wordmark { transition: opacity 120ms linear !important; transform: none !important; clip-path: none !important; }
+  .ds-np[data-compact] .ds-np-brand .ds-mark { animation: none; }
+}
