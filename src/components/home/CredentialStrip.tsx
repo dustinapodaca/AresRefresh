@@ -29,10 +29,10 @@ function Track({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-// The loop starts with Colorado Verified Small Business in the middle of the screen, so GSA and
-// SBA are the next marks in (owner, 2026-10-13): the belt's animation is started part way
+// The loop starts with Colorado Verified Diverse Business in the middle of the screen, then
+// Colorado Verified Small Business, GSA, and SBA come in (owner, 2026-10-13; was Small Business): the belt's animation is started part way
 // through (a negative delay); under reduced motion the swipeable strip is scrolled there.
-const START = '/images/cert-co-small.webp';
+const START = '/images/cert-co-diverse.webp';
 const LOOP_S = 60;
 
 export default function CredentialStrip() {
