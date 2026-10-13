@@ -240,7 +240,8 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
     };
   }, [mobileOpen]);
 
-  // Phones (owner, 2026-10-13): once the running head with its progress line slides out, the
+  // Once the reader reaches the page's sections (the running head's signal, also kept up to date
+  // on desktop where the rail shows instead; owner, 2026-10-13), the
   // divider and the ARES SECURITY wordmark are drawn into the mark, leaving the mark alone; they
   // slide back out when it leaves. Pages without a running head use a scroll depth instead.
   const [compact, setCompact] = useState(false);
@@ -294,7 +295,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   return (
     <>
       <a href="#main" className="ds ds-skip">Skip to content</a>
-      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !mobileOpen) || undefined}>
+      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !isOpen) || undefined}>
         <div ref={cardRef} className="ds-np-card">
           <div className="ds-np-row">
             <Link to="/" className="ds-np-brand" aria-label="Ares Security home">

@@ -874,11 +874,12 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
   three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links only, no city links; owner 2026-10-13), the phone and email, the button, and the capability statement PDF.
-  On phones, once the running head with its progress line slides out, the divider folds away
-  and the wordmark slides left into the mark (shrinking, fading, clipped behind it) while the
-  mark gives a small pulse; it slides back out when the running head leaves. Pages without a
-  running head do this past 80% of the first screen. Reduced motion: a short fade only.
-  (Owner, 2026-10-13.)
+  On phones and desktop, once the reader reaches the page's sections (when the running head
+  would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
+  slides left into the mark (shrinking, fading, clipped behind it), and the mark grows to 112%
+  and stays that size; all of it slides back out on the way up or when a menu opens. Pages
+  without a running head do this past 80% of the first screen. Reduced motion: a short fade
+  only. (Owner, 2026-10-13.)
   Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
   previous nav (below) stays at `?nav=classic`.
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
