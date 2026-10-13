@@ -280,7 +280,7 @@ Cards and glass are part of the system, not exceptions.
   `--ds-card #060708` (a card on a card, such as a diagram node or an opened card,
   `--ds-card-raised #0d0e11`), with a 1px glass edge (`--ds-card-edge`, owner 2026-10-12): light
   rakes across it on a 150deg diagonal, white 28% at the top-left corner, never below about 10%
-  (no dark band down the sides), a faint warm rust glint (214 150 104 at 20%) low on the right,
+  (no dark band down the sides), a warm rust glint (224 156 108 at 30%, brightened 2026-10-12) low on the right,
   and 20% again at the bottom-right corner; drawn as a gradient border (was lit top and bottom,
   fading to 4% mid-side, 2026-10-10). No glow, no gradient fill, no blur, no
   drop shadow. 4px corners. Hover brightens the edge (`--ds-card-edge-hover`).
