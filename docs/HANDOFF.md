@@ -1,6 +1,41 @@
 # Handoff: Ares site redesign ("The Dossier")
 
-Last updated: 2026-10-09 (late). Pushed through a9d65f1 on `test/marketing-gaps`. **Read this first when starting a new chat.**
+Last updated: 2026-10-13 (late). Branch `audit`, pushed through 8964159. **Read this first when starting a new chat.**
+
+## Where we are (2026-10-13)
+
+Work happens on `audit` (dev server http://localhost:5173). Everything is pushed. Recent work,
+newest first; the detail is in DESIGN.md, docs/copy-changes.md, and docs/options.md.
+
+- **Nav:** a new panel nav (`src/components/NavPanel.tsx`), adapted from a 21st.dev "navbar2"
+  the owner chose, rebuilt without Next.js, motion, or icon libraries. Edge-to-edge dark glass
+  bar at `--ds-header` height (default); `?nav=float` floating card, `?nav=classic` the old
+  `Header.tsx` (sticks for the session). Footer-style lockup (mark, divider, wordmark) that
+  collapses into the mark (mark grows to ~33px phone / ~39px desktop) once the sections begin;
+  links held in a centered column; context button (Request a Quote / Talk teaming / Apply).
+  Desktop menus (Services, Industries, Company) open on hover with large links, a photo, and
+  strong overview links; phones get a full-screen list with accordions. Six Mobbin-inspired
+  nav options were tried and rejected (reverted).
+- **Design & Flow Review** (Claude Doc "Ares Site — Design & Flow Review") turned into a
+  31-item list: done 2, 5, 7, 12, 14, 17, 20, 21, 22, 23, 25, 26, 27; 28 built as options
+  (`/?vehicles=wide|portrait|glass`, no pick yet); 3 replaced by the panel nav; skipped by
+  recommendation 1, 4, 6, 8, 9, 13, 15, 16, 18, 24, 29, 30; left 10/11 (type and radius
+  tokens) and 31 (375px check).
+- **Copy rules from this round:** service names are Title Case with "&" wherever a name
+  appears; "Request a Quote" Title Case on buttons and links (headings stay sentence case);
+  GSA number at most once per page; Natural Grocers is never named.
+- **Photos:** industry heroes moving to real owner photos one at a time: Construction,
+  Government, Airport, Critical done; Commercial & Retail and Institutional & Community still
+  generated. Services opens on the State Capitol at night (`?photo=pikes|skyline`); the
+  Capability Statement hero is the Denver sunset with the lightest left shade that keeps 4.5:1.
+- **Design:** glass card edges lit on a diagonal with a warm-grey glint; copy icon beside the
+  UEI, CAGE, and GSA numbers (an approved icon, with the handset).
+- **Analytics:** GA4 built and off; set up at launch (docs/analytics.md).
+
+**Open with the owner:** keep or remove the vehicle options; Title Case "Capability Statement
+(PDF)" in the footer and on Teaming; photos for the last two industries; nav glass solid on
+phones once the running head shows (offered); type/radius tokens and the 375px check.
+
 
 ## TL;DR
 
