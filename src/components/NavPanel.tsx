@@ -21,7 +21,10 @@ type Menu = {
   columns: { label?: string; links: MenuLink[] }[];
   footer?: MenuLink[];
   profiles?: boolean;
-  image: { src: string; caption: string };
+  /** `position` and `zoom` frame the photo in its slot (default 50% 75%, no zoom). */
+  image: { src: string; caption: string; position?: string; zoom?: number; origin?: string };
+  /** Footer links are the menu's overview links: drawn with more weight (owner, 2026-10-13). */
+  strongFoot?: boolean;
   /** Phones: overview links above a divider at the top of the accordion. */
   phoneTop?: MenuLink[];
 };
@@ -39,7 +42,9 @@ const MENUS: Record<string, Menu> = {
       { label: 'All services and how a post starts', to: '/services' },
       { label: 'Teaming and subcontracting', to: '/teaming' },
     ],
-    image: { src: '/images/mission-vehicle.jpg', caption: 'Ares patrol vehicles' },
+    // The cars just below center (owner, 2026-10-13).
+    image: { src: '/images/mission-vehicle.jpg', caption: 'Ares patrol vehicles', position: '50% 90%' },
+    strongFoot: true,
     phoneTop: [
       { label: 'All services and how a post starts', to: '/services' },
       { label: 'Teaming and subcontracting', to: '/teaming' },
@@ -50,8 +55,11 @@ const MENUS: Record<string, Menu> = {
       { label: 'Who we protect', links: industries.slice(0, 3) },
       { links: industries.slice(3) },
     ],
-    footer: [{ label: 'Security in Colorado Springs, Denver, and Pueblo', to: '/locations/colorado-springs' }],
-    image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado' },
+    // The overview link, as on phones (owner, 2026-10-13; was the city pages).
+    footer: [{ label: 'All industries and how a post starts', to: '/services' }],
+    // A little closer, toward the radomes on the left (owner, 2026-10-13).
+    image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '30% 60%', zoom: 1.25, origin: '30% 60%' },
+    strongFoot: true,
     // The industries live on the Services page too (owner, 2026-10-13).
     phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],
   },
@@ -139,11 +147,18 @@ function MenuBody({ menu }: { menu: Menu }) {
         </div>
       ))}
       <figure className="ds-np-photo">
-        <img {...responsive(menu.image.src, '288px')} alt="" decoding="async" />
+        <span className="ds-np-photo-frame">
+          <img
+            {...responsive(menu.image.src, '288px')}
+            alt=""
+            decoding="async"
+            style={{ objectPosition: menu.image.position, scale: menu.image.zoom ? String(menu.image.zoom) : undefined, transformOrigin: menu.image.origin }}
+          />
+        </span>
         <figcaption className="ds-caption">{menu.image.caption}</figcaption>
       </figure>
       {(menu.footer || menu.profiles) && (
-        <div className="ds-np-foot">
+        <div className="ds-np-foot" data-strong={menu.strongFoot || undefined}>
           {menu.footer?.map((l) => (
             <Link key={l.to + l.label} to={l.to} className="ds-link">
               {l.label}
