@@ -852,7 +852,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   for the site (React Router, CSS motion, the site's own icons, 2px and 4px corners, no
   language switcher or sign-in). A floating dark-glass card (canvas at 72% over a 24px blur,
   90% when open, the site's glass edge as a masked ring), 60px tall on phones and 68px on
-  desktop, inside the same `--ds-header` height. The lockup is the footer's scaled down: the
+  desktop, inside the same `--ds-header` height (64px and 72px since 2026-10-13, owner). The lockup is the footer's scaled down: the
   mark, a 1px divider at ink 50% a little taller than it, and the wordmark nearly its height
   (owner, 2026-10-13). Desktop: the lockup, then
   Services, Industries, and Company as menu buttons (2px-cornered tint when open) and
