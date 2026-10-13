@@ -1383,7 +1383,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-flow-node > span:last-child { font-size: 13px; color: var(--ds-fg-muted); max-width: 30ch; }
 /* The wires: hairlines that scale with the box but keep a 1px stroke. */
 .ds-flow-wire { display: block; overflow: visible; }
-.ds-flow-wire path { fill: none; stroke-width: 1; vector-effect: non-scaling-stroke; }
+/* The down wire is a 2px-wide box, so its stroke must not scale; the fork is drawn at its real
+   size (FlowFork), so it never scales. */
+.ds-flow-wire path { fill: none; stroke-width: 1; }
+.ds-flow-wire-down path { vector-effect: non-scaling-stroke; }
 .ds-flow-wire-down { width: 2px; height: 32px; }
 .ds-flow-wire-fork { width: 100%; height: 48px; }
 .ds-wire-base { stroke: var(--ds-rule-strong); }
@@ -1431,7 +1434,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
-    .ds-wire-base { stroke-dasharray: 100; animation: ds-wire-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
+    /* Drawn by the time the wire is fully on screen, so the light never runs on a half-drawn wire. */
+    .ds-wire-base { stroke-dasharray: 100; animation: ds-wire-draw linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
     .ds-vig-bar span { animation: ds-vig-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 50%; }
   }
 }

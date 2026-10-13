@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
@@ -111,6 +111,39 @@ const PRIME_PROOF = [
   { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract' },
 ];
 
+// The fork from Ares to the three posts, drawn at its real pixel width (measured) so nothing is
+// stretched: a stretched SVG throws off the curves' length, and their draw-in and light then
+// stopped short of the posts (2026-10-12). Each wire lands on the center of its post (three
+// columns, 8px gaps, as .ds-flow-posts).
+function FlowFork() {
+  const ref = useRef<SVGSVGElement>(null);
+  const [w, setW] = useState(300);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setW(Math.round(e.contentRect.width) || 300));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const H = 48;
+  const col = (w - 16) / 3;
+  const mid = w / 2;
+  const ends = [col / 2, col + 8 + col / 2, 2 * col + 16 + col / 2];
+  return (
+    <svg ref={ref} className="ds-flow-wire ds-flow-wire-fork" viewBox={`0 0 ${w} ${H}`} aria-hidden="true">
+      {ends.map((x) => {
+        const d = Math.abs(x - mid) < 1 ? `M${mid} 0V${H}` : `M${mid} 0C${mid} 26 ${x} 22 ${x} ${H}`;
+        return (
+          <g key={Math.round(x)}>
+            <path className="ds-wire-base" d={d} pathLength="100" />
+            <path className="ds-wire-pulse" d={d} pathLength="100" />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 function PrimesPanel({ form }: { form: string | null }) {
   // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
   const kind = form === 'split' || form === 'vignettes' ? form : 'diagram';
@@ -208,14 +241,7 @@ function PrimesPanel({ form }: { form: string | null }) {
               </span>
               <span>WOSB subcontractor · post orders, training, relief</span>
             </div>
-            <svg className="ds-flow-wire ds-flow-wire-fork" viewBox="0 0 300 48" preserveAspectRatio="none" aria-hidden="true">
-              {['M150 0C150 26 50 22 50 48', 'M150 0V48', 'M150 0C150 26 250 22 250 48'].map((d) => (
-                <g key={d}>
-                  <path className="ds-wire-base" d={d} pathLength="100" />
-                  <path className="ds-wire-pulse" d={d} pathLength="100" />
-                </g>
-              ))}
-            </svg>
+            <FlowFork />
             <div className="ds-flow-posts" aria-hidden="true">
               {['Restricted-area escort', 'Access control', 'Relief and surge'].map((t) => (
                 <span key={t}>
