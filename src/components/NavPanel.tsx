@@ -377,7 +377,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                   <Arrow />
                 </Link>
                 <a href={PDF_URL} className="ds-np-secondary" target="_blank" rel="noopener noreferrer">
-                  Capability statement (PDF)
+                  Capability Statement (PDF)
                   <Arrow external size={12} />
                 </a>
               </div>
