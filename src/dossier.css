@@ -4354,10 +4354,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-wordmark { clip-path: inset(0 0 0 0); }
 .ds-np[data-compact] .ds-np-divider { transform: translateX(-12px) scaleY(0); opacity: 0; transition-duration: 260ms, 200ms; }
 .ds-np[data-compact] .ds-np-wordmark { transform: translateX(-52px) scale(0.35); opacity: 0; clip-path: inset(0 0 0 30%); transition-delay: 60ms; }
-.ds-np[data-compact] .ds-np-brand .ds-mark { transform: scale(1.12); transition-delay: 140ms; }
+/* Phones: 28px to about 33px (owner, 2026-10-13: 2px past the first 112%). */
+.ds-np[data-compact] .ds-np-brand .ds-mark { transform: scale(1.19); transition-delay: 140ms; }
 .ds-np:not([data-compact]) .ds-np-divider { transition-delay: 180ms; }
 @media (min-width: 1024px) {
   .ds-np[data-compact] .ds-np-wordmark { transform: translateX(-62px) scale(0.35); }
+  /* Desktop: 31px to about 39px. */
+  .ds-np[data-compact] .ds-np-brand .ds-mark { transform: scale(1.26); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ds-np-divider, .ds-np-wordmark { transition: opacity 120ms linear !important; transform: none !important; clip-path: none !important; }
