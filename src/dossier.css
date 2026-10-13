@@ -657,9 +657,9 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   object-position: 62% 40%;
   filter: saturate(0.9) brightness(0.8);
 }
-/* Phones: the photo sits 76px further right (owner, 2026-10-12). */
+/* Phones: the photo sits 52px further right (owner, 2026-10-12). */
 @media (max-width: 767px) {
-  .ds-hero-photo img { object-position: calc(62% + 76px) 40%; }
+  .ds-hero-photo img { object-position: calc(62% + 52px) 40%; }
 }
 .ds-hero-photo {
   /* Masks, not overlays: the photo dissolves into the canvas with no edge. */
