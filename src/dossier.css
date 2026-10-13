@@ -4343,7 +4343,11 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 /* Phones, edge to edge: the open list covers the whole screen, like the old menu sheet. */
 @media (max-width: 1023px) {
-  .ds-np[data-layout='full'][data-open='true'] .ds-np-card { min-height: 100svh; background: rgb(8 9 11 / 0.97); }
+  /* The open sheet is pinned to all four edges instead of sized in vh units: on Android Chrome the
+     address bar hides on scroll and the viewport grows, which left a strip of page uncovered at
+     the bottom (owner, 2026-10-13). The header stretches to the bottom; the card fills it. */
+  .ds-np[data-layout='full'][data-open='true'] { bottom: 0; height: auto; }
+  .ds-np[data-layout='full'][data-open='true'] .ds-np-card { height: 100%; max-height: none; background: rgb(8 9 11 / 0.97); }
 }
 .ds-np-sub-rule { height: 1px; margin: 2px 0; background: rgb(255 255 255 / 0.1); }
 
@@ -4392,6 +4396,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 10px; margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); } /* solid, so the list never shows through */
 .ds-np-sub-mail { font-size: 14px !important; color: var(--ds-fg-muted); }
 .ds-np-mcontact-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ds-np-mcontact-row + a { margin-top: -4px; } /* the email 4px higher (owner, 2026-10-13) */
 .ds-np-micons { display: inline-flex; align-items: center; gap: 2px; margin-right: -10px; }
 .ds-np-micons a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 34px; color: var(--ds-fg-muted) !important; transition: color 180ms var(--ds-ease); }
 .ds-np-micons a:hover { color: #fff !important; }
