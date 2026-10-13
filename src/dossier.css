@@ -4094,30 +4094,31 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-cs-credtable .ds-data, .ds-cs-credtable .ds-cs-code-v { font-size: 16px; }
 }
 
-/* Copy beside an identifier (Capability Statement; design review, owner 2026-10-13): a quiet
-   mono text button with the link underline, ink on hover, rust-free; "Copied" for a moment. */
+/* Copy icon beside an identifier (Capability Statement; design review, owner 2026-10-13):
+   ink muted, ink on hover, a check for a moment once copied. 28px target around a 15px icon. */
 .ds-copy {
   flex: none;
   align-self: center;
-  margin: 0;
-  padding: 2px 0;
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -6px 0;
+  padding: 0;
   border: 0;
+  border-radius: 2px;
   background: none;
-  font: 400 12px/1.2 var(--ds-data);
   color: var(--ds-fg-muted);
-  text-decoration: underline;
-  text-decoration-color: var(--ds-rule-strong);
-  text-underline-offset: 4px;
   cursor: pointer;
-  transition: color 180ms var(--ds-ease), text-decoration-color 180ms var(--ds-ease);
+  transition: color 180ms var(--ds-ease);
 }
-.ds-copy[data-copied] { color: var(--ds-fg); text-decoration-color: transparent; }
+.ds-copy[data-copied] { color: var(--ds-fg); }
 @media (hover: hover) and (pointer: fine) {
-  .ds-copy:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
+  .ds-copy:hover { color: var(--ds-fg); }
 }
 .ds-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 /* Where Copy sits: beside the hero facts' values, the GSA contract number, and the credential
    table's identifiers. */
-.ds-cs-fact-v { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.ds-cs-specs dd:has(.ds-copy) { display: flex; align-items: baseline; gap: 12px; }
-.ds-cs-credtable dd .ds-copy { margin-left: 4px; }
+.ds-cs-fact-v { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ds-cs-specs dd:has(.ds-copy) { display: flex; align-items: center; gap: 6px; }
+.ds-cs-credtable dd .ds-copy { margin-left: 2px; }

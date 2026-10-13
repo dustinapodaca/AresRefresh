@@ -642,10 +642,11 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   hairlines with the mark (white silhouette) in an 88px slot, label, mono value, faint note.
   Phones: mark, label, and value on one line (value right), the note beneath; not folded.
   The earlier marks-then-listing layout stays at `?creds=marks`.
-- **Copy (design review, owner 2026-10-13):** a quiet mono "Copy" text button (12px, ink
-  muted, the link underline; "Copied" for 1.6s, announced) beside the UEI and CAGE in the hero
-  facts, the GSA contract number in the How to buy block, and the GSA, UEI, and CAGE rows of the
-  credentials table. Text, not an icon.
+- **Copy (design review, owner 2026-10-13):** a copy icon (two overlapping sheets, 15px, drawn
+  like the arrows, ink muted; a check for 1.6s once copied, announced; 28px target) beside the
+  UEI and CAGE in the hero facts, the GSA contract number in the How to buy block, and the GSA,
+  UEI, and CAGE rows of the credentials table. With the handset, an owner exception to arrows
+  only.
 - **Voice (owner 2026-10-11, copy audit):** this page, like the PDF, speaks as Ares in formal
   third person ("Ares has…", "How to buy from Ares."); the rest of the site says "we".
   The first-person lines stay at `?voice=first`.
