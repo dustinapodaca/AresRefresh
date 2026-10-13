@@ -2597,8 +2597,11 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-cs-hero-bg::after {
     background:
       linear-gradient(to bottom, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 24%),
-      linear-gradient(to right, rgb(0 0 0 / 1) 0%, rgb(0 0 0 / 0.94) 22%, rgb(0 0 0 / 0.62) 46%, rgb(0 0 0 / 0) 72%);
+      /* Lighter on the left (owner, 2026-10-13; was 1, 0.94, 0.62; lighter than 0.76 drops the lead below 4.5:1): the Denver sunset shows
+         through, and the lead and spec line take the lighter grey to keep their contrast. */
+      linear-gradient(to right, rgb(0 0 0 / 0.76 0.7 0.52) 0%, rgb(0 0 0 / ) 22%, rgb(0 0 0 / ) 46%, rgb(0 0 0 / 0) 72%);
   }
+  .ds-cs-hero-copy .ds-lead, .ds-cs-spec { color: #c4c8ce; }
   .ds-cs-hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding-top: calc(var(--ds-header) + 24px); }
   /* Keep the whole key row, including the SAM.gov route, above the fold at 900px tall. */
   .ds-cs-facts { margin-top: clamp(2rem, 5vh, 3.5rem); padding-bottom: 28px; }

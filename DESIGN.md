@@ -602,8 +602,9 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   shorter than the window less 96px, so narrower desktop and tablet windows crop its sides
   on the fins (66%) instead of leaving black under it, while 1440 and wider still show the
   whole frame), black from the left; below 900px a softer shade from the left keeps the lit fins
-  off the lead. The spec line is ink muted on the photo. Headline 6.7:1, lead 6.3:1, spec
-  6.9:1 or better at every width. "Capability
+  off the lead. The spec line is ink muted on the photo. Since 2026-10-13 (owner) the shade from the left is lighter on desktop (76% to 0 by
+  72%; was 100%), with the lead and spec line in #c4c8ce: headline 4.6:1, lead 5.0:1, spec
+  4.7:1 or better at the brightest point (the Denver sunset). "Capability
   statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
   quick facts and sections below carry it), a white "Download the PDF"
   button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
