@@ -22,6 +22,8 @@ type Menu = {
   footer?: MenuLink[];
   profiles?: boolean;
   image: { src: string; caption: string };
+  /** Phones: overview links above a divider at the top of the accordion. */
+  phoneTop?: MenuLink[];
 };
 
 const roles = ROLE_PAGES.map((r) => ({ label: r.name, to: `/services/${r.slug}` }));
@@ -38,6 +40,10 @@ const MENUS: Record<string, Menu> = {
       { label: 'Teaming and subcontracting', to: '/teaming' },
     ],
     image: { src: '/images/mission-vehicle.jpg', caption: 'Ares patrol vehicles' },
+    phoneTop: [
+      { label: 'All services and how a post starts', to: '/services' },
+      { label: 'Teaming and subcontracting', to: '/teaming' },
+    ],
   },
   Industries: {
     columns: [
@@ -46,6 +52,8 @@ const MENUS: Record<string, Menu> = {
     ],
     footer: [{ label: 'Security in Colorado Springs, Denver, and Pueblo', to: '/locations/colorado-springs' }],
     image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado' },
+    // The industries live on the Services page too (owner, 2026-10-13).
+    phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],
   },
   Company: {
     columns: [
@@ -323,13 +331,13 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                       </button>
                       <div className="ds-np-acc" data-open={mobileMenu === item.menu || undefined}>
                         <div className="ds-np-drop-inner">
-                          {/* Phones (owner, 2026-10-13): Services opens on its two overview links
-                              (all services, Teaming), then a divider, then the six services;
-                              Industries and Company show their links only (no city links). */}
+                          {/* Phones (owner, 2026-10-13): Services and Industries open on their
+                              overview links, then a divider, then the six; Company shows its links
+                              only (no city links). */}
                           <ul className="ds-np-sub">
-                            {item.menu === 'Services' && (
+                            {MENUS[item.menu].phoneTop && (
                               <>
-                                {MENUS.Services.footer?.map((l) => (
+                                {MENUS[item.menu].phoneTop!.map((l) => (
                                   <li key={'f' + l.to}>
                                     <Link to={l.to} className="ds-np-sub-more">
                                       {l.label}
