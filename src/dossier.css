@@ -1236,6 +1236,49 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-quality-facts dd { font-size: 16px; line-height: 1.45; }
 }
 
+/* Vehicle options (design review item 28, owner 2026-10-13; /?vehicles=). Phones keep the
+   stacked plate in every form except portrait, which shows the photo whole. */
+.ds-quality-body[data-form='portrait'] .ds-quality-photo img { aspect-ratio: 1142 / 1378; object-position: 50% 100%; }
+@media (min-width: 1024px) {
+  /* wide: the photo across the whole column, the four facts in a row beneath it. */
+  .ds-quality-body[data-form='wide'] { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 48px; }
+  .ds-quality-body[data-form='wide'] .ds-quality-photo { grid-column: 1 / -1; }
+  .ds-quality-body[data-form='wide'] .ds-quality-photo img { aspect-ratio: 21 / 9; object-position: 50% 92%; }
+  .ds-quality-body[data-form='wide'] .ds-quality-photo figcaption { position: static; margin-top: 12px; }
+  .ds-quality-body[data-form='wide'] .ds-quality-facts { display: contents; }
+  .ds-quality-body[data-form='wide'] .ds-quality-facts div { grid-column: auto; padding: 16px 0 0; border-bottom: 0; }
+
+  /* portrait: the photo whole, at its own proportions, the facts two by two beside it, sitting
+     on its foot. */
+  .ds-quality-body[data-form='portrait'] .ds-quality-photo { grid-column: 1 / span 5; }
+  .ds-quality-body[data-form='portrait'] .ds-quality-photo img { object-position: 50% 100%; }
+  .ds-quality-body[data-form='portrait'] .ds-quality-facts { grid-column: 7 / span 6; display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; align-content: end; }
+  .ds-quality-body[data-form='portrait'] .ds-quality-facts div { flex: none; padding: 18px 0 22px; }
+  .ds-quality-body[data-form='portrait'] .ds-quality-facts div:nth-last-child(2) { border-bottom: 1px solid var(--ds-rule); }
+}
+@media (min-width: 768px) {
+  /* glass: the photo large across the column, the facts on a strip of dark glass over its foot. */
+  .ds-quality-body[data-form='glass'] { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .ds-quality-body[data-form='glass'] > * { grid-area: 1 / 1; }
+  .ds-quality-body[data-form='glass'] .ds-quality-photo img { aspect-ratio: 16 / 9; object-position: 50% 96%; }
+  .ds-quality-body[data-form='glass'] .ds-quality-photo figcaption { position: absolute; top: 14px; right: 16px; left: auto; margin: 0; color: rgb(238 240 242 / 0.8); }
+  .ds-quality-body[data-form='glass'] .ds-quality-facts {
+    align-self: end;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 24px;
+    padding: 20px 28px 22px;
+    border-radius: 0 0 4px 4px;
+    background: rgb(0 0 0 / 0.55);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
+    backdrop-filter: blur(22px) saturate(1.2);
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+  }
+  .ds-quality-body[data-form='glass'] .ds-quality-facts div { flex: none; padding: 0; border: 0; }
+  .ds-quality-body[data-form='glass'] .ds-quality-facts dt { color: #c4c8ce; }
+  .ds-quality-body[data-form='glass'] .ds-quality-facts dd { font-size: 16px; }
+}
+
 /* ---------- Staffing (moved to About 01, owner 2026-10-06) ----------
    The photo holds still on desktop while the four steps scroll past. */
 .ds-staffing { padding-top: var(--ds-beat-open); }

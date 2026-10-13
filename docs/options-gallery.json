@@ -105,6 +105,36 @@
       ]
     },
     {
+      "heading": "Home: Patrol vehicles (Quality)",
+      "intro": "Design review item 28: ways to give the patrol vehicles more room, same photo (it is 1142px wide, so the larger forms are slightly soft on big screens).",
+      "page": "/",
+      "param": "vehicles",
+      "selector": ".ds-quality",
+      "options": [
+        {
+          "value": "side",
+          "label": "Side (current)",
+          "tag": "default",
+          "note": "The photo in 7 columns beside the four facts, lined up top and bottom."
+        },
+        {
+          "value": "wide",
+          "label": "Wide",
+          "note": "The photo across the whole column (21:9), the four facts in a row beneath it."
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait",
+          "note": "The photo whole at its own proportions (building, sky, and cars), the facts two by two on its foot. Sharpest of the four."
+        },
+        {
+          "value": "glass",
+          "label": "Glass",
+          "note": "The photo large (16:9) with the facts on a strip of dark glass over its foot; caption top right."
+        }
+      ]
+    },
+    {
       "heading": "Services opening",
       "page": "/services",
       "param": "hero",

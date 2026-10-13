@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom';
 import { responsive } from '../../lib/responsive';
 
 // 02 Quality (owner, 2026-10-06: moved whole from About, photo and all, and set for Home):
@@ -12,7 +13,15 @@ export const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
 ];
 
+// Ways to feature the patrol vehicles (design review item 28, owner 2026-10-13), same photo,
+// for the owner to compare at /?vehicles=wide|portrait|glass. The current side-by-side plate is
+// the default ("side").
+const FORMS = ['side', 'wide', 'portrait', 'glass'] as const;
+
 export default function Quality() {
+  const [params] = useSearchParams();
+  const asked = params.get('vehicles');
+  const form = FORMS.includes(asked as (typeof FORMS)[number]) ? asked : 'side';
   return (
     <section id="quality" className="ds-quality" aria-labelledby="quality-title">
       <div className="ds-sec-head">
@@ -25,7 +34,7 @@ export default function Quality() {
         </p>
       </div>
 
-      <div className="ds-quality-body">
+      <div className="ds-quality-body" data-form={form}>
         <figure className="ds-plate ds-quality-photo">
           <img
             {...responsive('/images/mission-vehicle.jpg', '(min-width: 1024px) 58vw, 100vw')}
