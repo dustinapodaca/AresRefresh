@@ -453,19 +453,17 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                 )}
               </ul>
               {/* Phones (owner, 2026-10-13): no phone and email rows (the call icon is in the bar;
-                  the email is under Company). The PDF sits at the end of the list, and the main
-                  button is pinned to the bottom so it stays on screen while the list scrolls. */}
-              <div className="ds-np-mpdf">
-                <a href={PDF_URL} className="ds-np-secondary" target="_blank" rel="noopener noreferrer">
-                  Capability Statement (PDF)
-                  <Arrow external size={12} />
-                </a>
-              </div>
+                  the email is under Company). Both buttons are pinned to the bottom, the main one
+                  above the capability statement, so they stay on screen while the list scrolls. */}
               <div className="ds-np-mbtns">
                 <Link to={cta.to} className="ds-btn ds-btn-primary">
                   {cta.label}
                   <Arrow />
                 </Link>
+                <a href={PDF_URL} className="ds-np-secondary" target="_blank" rel="noopener noreferrer">
+                  Capability Statement (PDF)
+                  <Arrow external size={12} />
+                </a>
               </div>
             </div>
           </div>

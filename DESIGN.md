@@ -873,7 +873,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   underline (owner, 2026-10-13). Each photo sets its own framing: the patrol cars just below
   center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
-  three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links and the email, no city links; owner 2026-10-13), then the capability statement PDF; the main button is pinned to the bottom of the open menu so it stays on screen while the list scrolls (no phone or email rows: the call icon is in the bar). Closing the menu resets every section to folded.
+  three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links and the email, no city links; owner 2026-10-13), then both buttons pinned to the bottom of the open menu (the main button above Capability Statement (PDF)) so they stay on screen while the list scrolls (no phone or email rows: the call icon is in the bar). Closing the menu resets every section to folded.
   On phones and desktop, once the reader reaches the page's sections (when the running head
   would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
   slides left into the mark (shrinking, fading, clipped behind it), and the mark grows (to about
