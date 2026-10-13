@@ -4385,3 +4385,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @media (min-width: 1024px) {
   .ds-np-card { overflow: hidden; max-height: none; overscroll-behavior: auto; }
 }
+
+/* Phone menu, streamlined (owner, 2026-10-13): the PDF button ends the list, and the main button
+   is pinned to the bottom of the open menu (sticky inside the card, which scrolls; the folding
+   panels clip instead of hide so they don't trap the sticky). */
+.ds-np-drop-inner { overflow: clip; }
+.ds-np-mpdf { padding: 18px 18px 0; }
+.ds-np-mpdf .ds-np-secondary { display: flex; }
+.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: rgb(8 9 11 / 0.97); border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-np[data-layout='full'] .ds-np-mpdf { max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); margin-inline: auto; padding-inline: var(--ds-gutter); }
+.ds-np-sub-mail { font-size: 14px !important; color: var(--ds-fg-muted); }
