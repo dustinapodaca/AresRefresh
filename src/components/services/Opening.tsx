@@ -64,7 +64,7 @@ export default function Opening() {
     if (!el) return;
     const root = document.documentElement;
     const glass = el.querySelector<HTMLElement>('.ds-svc-open-glass');
-    const header = document.querySelector<HTMLElement>('.ds-header');
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
     const smooth = CSS.supports('animation-timeline: scroll()');
     const anchor = root.style.overflowAnchor;
     root.style.overflowAnchor = 'none';

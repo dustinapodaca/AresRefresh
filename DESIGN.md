@@ -848,6 +848,20 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   by two (with the "current" option, the GSA line is centered instead).
 
 ### Header
+- **Panel nav (owner, 2026-10-13; live).** From a 21st.dev "navbar2" the owner chose, rebuilt
+  for the site (React Router, CSS motion, the site's own icons, 2px and 4px corners, no
+  language switcher or sign-in). A floating dark-glass card (canvas at 72% over a 24px blur,
+  90% when open, the site's glass edge as a masked ring), 52px tall on phones and 60px on
+  desktop, inside the same `--ds-header` height. Desktop: the ARES SECURITY lockup, then
+  Services, Industries, and Company as menu buttons (2px-cornered tint when open) and
+  Capability Statement as a link; the phone in mono and the context button at the right. A
+  menu grows the card downward (grid rows, 350ms): two columns of large Inter Tight links
+  under a small faint label, a 288px real photo with a mono caption beneath, and a row of
+  footer links under a hairline (Company adds LinkedIn, Google, and Indeed). Phones: lockup,
+  handset, and a two-line menu button that turns to an X; the card opens into a list with the
+  three menus as accordions, the phone and email, the button, and the capability statement PDF.
+  Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
+  previous nav (below) stays at `?nav=classic`.
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
 - Fixed, 84px desktop / 68px mobile (owner, 2026-10-08: 8px slimmer; were 92 / 76). Transparent over the page at the top (the hero photo
   runs up behind it, darkened at the top edge); once the page scrolls, a frosted black

@@ -10,6 +10,7 @@ Last checked against the code: 2026-10-11, branch `audit`.
 
 | Where | Switch | Default | Other options | Code | Gallery selector |
 |---|---|---|---|---|---|
+| Navigation (every page) | `?nav=classic` (sticks for the session; `?nav=panel` to return) | the panel nav (owner, 2026-10-13) | `classic`, the previous bar | `src/components/NavPanel.tsx`, `src/components/Header.tsx` | top of page |
 | Home hero | `/?hero=` | `b2` "A prepared officer on every post." (owner, 2026-10-10) | `current`, `a`, `b`, `b1`, `b3`, `b4`, `c` | `src/components/home/Hero.tsx` (`OPTIONS`) | `.ds-hero` |
 | Home 02 Industries | `/?industries=` | `plates` (owner, 2026-10-10) | `rows` | `src/components/home/Industries.tsx` | `.ds-industries` |
 | Home, For prime contractors | `/?prime=` | `diagram` (owner, 2026-10-10) | `split`, `vignettes` | `src/components/home/Industries.tsx` (`PrimesPanel`) | `.ds-primes-panel` |

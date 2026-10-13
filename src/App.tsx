@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
+import NavPanel, { useClassicNav } from './components/NavPanel';
 import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
@@ -26,12 +27,14 @@ import Teaming from './pages/Teaming';
 import HomeNext from './pages/HomeNext';
 
 export default function App() {
+  // The panel nav (owner, 2026-10-13); the previous one stays at ?nav=classic.
+  const classicNav = useClassicNav();
   return (
     <>
       <ScrollToTop />
       <SmoothAnchors />
       <Analytics />
-      <Header />
+      {classicNav ? <Header /> : <NavPanel />}
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}

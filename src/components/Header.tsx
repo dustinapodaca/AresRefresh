@@ -126,7 +126,7 @@ export default function Header() {
   return (
     <>
     <a href="#main" className="ds ds-skip">Skip to content</a>
-    <header ref={headerRef} className="ds ds-header" data-solid={scrolled || open} data-open={open}>
+    <header ref={headerRef} className="ds ds-header" data-site-header data-solid={scrolled || open} data-open={open}>
       <div className="ds-container ds-header-row">
         <Link to="/" onClick={onBrand} className="ds-brand" aria-label="Ares Security home">
           <span className="ds-mark" aria-hidden="true" />

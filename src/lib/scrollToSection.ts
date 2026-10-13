@@ -13,7 +13,7 @@ function px(value: string) {
 /** The scroll position that puts `el`'s content start just under the bars. */
 export function sectionY(el: HTMLElement): number {
   const root = document.documentElement;
-  const header = document.querySelector<HTMLElement>('.ds-header')?.offsetHeight ?? 0;
+  const header = document.querySelector<HTMLElement>('[data-site-header]')?.offsetHeight ?? 0;
   // The running head shows below 1200px once the reader is past the opening.
   const runhead = document.querySelector('.ds-runhead') && window.innerWidth < 1200 ? px(getComputedStyle(root).getPropertyValue('--ds-runhead')) : 0;
   const gap = window.innerWidth >= 1024 ? 32 : 24;

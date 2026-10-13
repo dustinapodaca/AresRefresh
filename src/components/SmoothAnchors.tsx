@@ -35,7 +35,7 @@ export default function SmoothAnchors() {
       if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
 
       const samePage = url.pathname === location.pathname && url.search === location.search;
-      const menuOpen = document.querySelector('.ds-header[data-open="true"]') !== null;
+      const menuOpen = document.querySelector('[data-site-header][data-open="true"]') !== null;
 
       // Same page with a section: glide to it.
       if (samePage && url.hash) {
