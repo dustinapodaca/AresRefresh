@@ -4310,3 +4310,29 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-burger span { transition: none; }
   .ds-np-menu { animation: none; }
 }
+
+/* The panel nav edge to edge (owner, 2026-10-13; the floating card stays at ?nav=float): the
+   same glass, menus, and phone list, but the bar runs across the whole top at the old bar's
+   height (--ds-header), square, with one hairline along its foot. Its content lines up with
+   the page's container. */
+.ds-np[data-layout='full'] { padding: 0; }
+.ds-np[data-layout='full'] .ds-np-card { max-width: none; max-height: 100svh; border-radius: 0; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+.ds-np[data-layout='full'] .ds-np-card::after { display: none; }
+.ds-np[data-layout='full'] .ds-np-row,
+.ds-np[data-layout='full'] .ds-np-menu,
+.ds-np[data-layout='full'] .ds-np-mlist,
+.ds-np[data-layout='full'] .ds-np-mcontact,
+.ds-np[data-layout='full'] .ds-np-mbtns { max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); margin-inline: auto; padding-inline: var(--ds-gutter); }
+.ds-np[data-layout='full'] .ds-np-row { height: calc(var(--ds-header) - 1px); }
+.ds-np[data-layout='full'] .ds-np-actions { margin-right: -10px; }
+.ds-np[data-layout='full'] .ds-np-drop[data-open],
+.ds-np[data-layout='full'] .ds-np-mobile[data-open] { border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-np[data-layout='full'] .ds-np-menu { border-top: 0; padding-top: 26px; padding-bottom: 30px; }
+.ds-np[data-layout='full'] .ds-np-mlist { border-top: 0; }
+@media (min-width: 1024px) {
+  .ds-np[data-layout='full'] .ds-np-actions { margin-right: 0; }
+}
+/* Phones, edge to edge: the open list covers the whole screen, like the old menu sheet. */
+@media (max-width: 1023px) {
+  .ds-np[data-layout='full'][data-open='true'] .ds-np-card { min-height: 100svh; background: rgb(8 9 11 / 0.97); }
+}

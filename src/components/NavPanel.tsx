@@ -89,8 +89,10 @@ const ITEMS: { label: string; menu?: string; to?: string }[] = [
   { label: 'Capability Statement', to: '/capability-statement' },
 ];
 
-/** The previous nav at ?nav=classic, for comparison; it sticks for the session. */
-export function useClassicNav(): boolean {
+/** Which nav shows: the panel stretched edge to edge (default since 2026-10-13, owner), the
+ *  floating card (?nav=float), or the previous bar (?nav=classic). Sticks for the session. */
+export type NavLayout = 'full' | 'float' | 'classic';
+export function useNavLayout(): NavLayout {
   const [params] = useSearchParams();
   const asked = params.get('nav');
   let form: string | null = asked;
@@ -100,7 +102,7 @@ export function useClassicNav(): boolean {
   } catch {
     // Storage blocked: the URL alone decides.
   }
-  return form === 'classic';
+  return form === 'classic' || form === 'float' ? form : 'full';
 }
 
 function Chevron({ open }: { open: boolean }) {
@@ -156,7 +158,7 @@ function MenuBody({ menu }: { menu: Menu }) {
   );
 }
 
-export default function NavPanel() {
+export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float' }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<string | null>(null);
@@ -241,7 +243,7 @@ export default function NavPanel() {
   return (
     <>
       <a href="#main" className="ds ds-skip">Skip to content</a>
-      <header className="ds ds-np" data-site-header data-open={isOpen}>
+      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout}>
         <div ref={cardRef} className="ds-np-card">
           <div className="ds-np-row">
             <Link to="/" className="ds-np-brand" aria-label="Ares Security home">

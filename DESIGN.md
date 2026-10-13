@@ -848,6 +848,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   by two (with the "current" option, the GSA line is centered instead).
 
 ### Header
+- **Panel nav (owner, 2026-10-13; live), edge to edge:** the bar runs across the whole top at
+  the old bar's height (`--ds-header`), square, one hairline along its foot, content aligned
+  with the page container; on phones the open list covers the screen. The floating card
+  described next stays at `?nav=float`.
 - **Panel nav (owner, 2026-10-13; live).** From a 21st.dev "navbar2" the owner chose, rebuilt
   for the site (React Router, CSS motion, the site's own icons, 2px and 4px corners, no
   language switcher or sign-in). A floating dark-glass card (canvas at 72% over a 24px blur,
