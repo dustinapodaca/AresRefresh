@@ -7,6 +7,7 @@ import { DownloadIcon } from './Hero';
 import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_CURRENT, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
+import CopyButton from './CopyButton';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
 const PHONE = '(max-width: 767px)';
@@ -285,7 +286,10 @@ export function Buy() {
             {GSA_SPECS.map((s) => (
               <div key={s.label}>
                 <dt>{s.label}</dt>
-                <dd className={s.mono ? 'ds-data' : undefined}>{s.value}</dd>
+                <dd className={s.mono ? 'ds-data' : undefined}>
+                  {s.value}
+                  {s.copy && <CopyButton value={s.value} label="GSA contract number" />}
+                </dd>
               </div>
             ))}
           </dl>
@@ -397,6 +401,7 @@ function CredTable() {
                   <span className={r.mono ? 'ds-data' : 'ds-cs-code-v'}>
                     {r.live && <i className="ds-ft-light" aria-hidden="true" />}
                     {r.value}
+                    {r.copy && <CopyButton value={r.value} label={r.label} />}
                   </span>
                   {r.note && <span className="ds-cs-code-note">{r.note}</span>}
                 </dd>

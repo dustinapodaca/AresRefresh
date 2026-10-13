@@ -1,6 +1,7 @@
 import Arrow from '../Arrow';
 import { PDF_URL, QUICK_FACTS, SAM_VERIFY } from './data';
 import { responsive } from '../../lib/responsive';
+import CopyButton from './CopyButton';
 
 export function DownloadIcon({ size = 16 }: { size?: number }) {
   return (
@@ -51,7 +52,10 @@ export default function Hero() {
       <ul className="ds-container ds-keyrow ds-cs-facts" aria-label="Quick facts">
         {QUICK_FACTS.map((f) => (
           <li key={f.label}>
-            <span className="ds-data">{f.value}</span>
+            <span className="ds-cs-fact-v">
+              <span className="ds-data">{f.value}</span>
+              {f.copy && <CopyButton value={f.value} label={f.label} />}
+            </span>
             <span className="ds-small">{f.label}</span>
             {/* Each line of a note is its own row, spaced like the label above it. */}
             {f.note.split('\n').map((line) => (

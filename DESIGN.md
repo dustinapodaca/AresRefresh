@@ -854,7 +854,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   centered (About, Services, Careers, Insights, Capability Statement since 2026-10-10:
   no Home link, the mark goes home; Inter 15px / 400 (14px below 1024px), white,
   with a 1px underline that draws in on hover and stays under the current page), and a
-  primary "Request a Quote" button (2px corners) with an arrow on the right. No phone number in the bar.
+  primary button (2px corners) with an arrow on the right, naming the next step for the page (design review, owner 2026-10-13): "Talk teaming" on /teaming and the Capability Statement (to the quote form's teaming option), "Apply" on Careers and the city job pages (to #apply), "Request a Quote" everywhere else; the phone menu's button matches. No phone number in the bar.
 - **Services panel** (desktop, owner 2026-10-10): a chevron beside Services (and hovering)
   opens a solid canvas panel (hairline-strong edge, 4px corners, 600px) under the bar with
   first a row with "All services and how a post starts →" and "Teaming and subcontracting →"
@@ -882,7 +882,7 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   above carries the phone large), then the profiles as quiet external links: LinkedIn,
   Google (Business), Indeed. These are the only social profiles. Phones: stacked.
 - **Columns** (Retool): each opens on a 1px vertical hairline (hairline strong), a mono
-  uppercase title in ink faint, links in Inter 18px ink (16px on phones). Company (About
+  uppercase label in ink faint (plain text tied to its list, not a heading; design review, owner 2026-10-13), links in Inter 18px ink (16px on phones). Company (About
   Us, Services, Careers, Capability Statement); Service areas; Contracting as label and
   mono value, matching the email signature (copy audit, 2026-10-10): GSA MAS 47QSMS25D009Q
   linking to eLibrary, UEI, CAGE, SBA WOSB, WBENC, Denver M/WBE and SBE, B2G vendor

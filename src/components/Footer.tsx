@@ -68,8 +68,8 @@ export default function Footer() {
 
         <div className="ds-footer-cols">
           <div>
-            <h2>Company</h2>
-            <ul>
+            <p id="ft-company" className="ds-ft-label">Company</p>
+            <ul aria-labelledby="ft-company">
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/services">Services</Link></li>
               <li><Link to="/careers">Careers</Link></li>
@@ -80,8 +80,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2>Service areas</h2>
-            <ul>
+            <p id="ft-areas" className="ds-ft-label">Service areas</p>
+            <ul aria-labelledby="ft-areas">
               <li><Link to="/locations/colorado-springs">Colorado Springs</Link></li>
               <li><Link to="/locations/denver">Denver</Link></li>
               <li><Link to="/locations/pueblo">Pueblo</Link></li>
@@ -89,8 +89,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2>Contracting</h2>
-            <ul className="ds-ft-ids">
+            <p id="ft-contracting" className="ds-ft-label">Contracting</p>
+            <ul aria-labelledby="ft-contracting" className="ds-ft-ids">
               <li>
                 <span>GSA MAS</span>
                 <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">47QSMS25D009Q</a>
@@ -129,7 +129,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2>Registration</h2>
+            <p id="ft-registration" className="ds-ft-label">Registration</p>
             <p className="ds-ft-status">
               <span className="ds-ft-light" aria-hidden="true" />
               Active on SAM.gov

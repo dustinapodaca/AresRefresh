@@ -30,6 +30,14 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
+  // The nav button names the next step for the page (design review, owner 2026-10-13):
+  // primes on Teaming and the Capability Statement, applicants on Careers, a quote elsewhere.
+  const cta =
+    pathname === '/teaming' || pathname === '/capability-statement'
+      ? { label: 'Talk teaming', to: '/contact?service=teaming' }
+      : pathname === '/careers' || pathname.startsWith('/careers/')
+        ? { label: 'Apply', to: '/careers#apply' }
+        : { label: 'Request a Quote', to: '/contact' };
 
   // On a route change the menu closes after the new page has painted beneath it (the sheet is
   // solid, so the swap is hidden), and its close reveals the new page: that is the
@@ -196,8 +204,8 @@ export default function Header() {
           <a href="tel:+17196963966" className="ds-header-call" aria-label="Call 719-696-3966">
             <PhoneIcon />
           </a>
-          <Link to="/contact" className="ds-btn ds-btn-primary ds-header-cta">
-            Request a Quote
+          <Link to={cta.to} className="ds-btn ds-btn-primary ds-header-cta">
+            {cta.label}
             <Arrow size={14} />
           </Link>
           <button
@@ -244,8 +252,8 @@ export default function Header() {
             <a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a>
           </div>
           <div className="ds-actions" style={{ marginTop: 32, ['--i' as string]: NAV.length + 1 }}>
-            <Link to="/contact" className="ds-btn ds-btn-primary">
-              Request a Quote
+            <Link to={cta.to} className="ds-btn ds-btn-primary">
+              {cta.label}
               <Arrow />
             </Link>
           </div>

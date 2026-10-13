@@ -42,11 +42,11 @@ export const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f44
 // year); the footer and the Capability Statement both read it.
 export const SAM_ACTIVE_THROUGH = 'March 26, 2027';
 
-export const QUICK_FACTS: { label: string; value: string; note: string; verify?: boolean }[] = [
+export const QUICK_FACTS: { label: string; value: string; note: string; verify?: boolean; copy?: boolean }[] = [
   { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services' },
   { label: 'Set-aside', value: 'WOSB eligible', note: 'Woman-Owned Small Business\nWBE certified' },
-  { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity ID (SAM.gov)', verify: true },
-  { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity' },
+  { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity ID (SAM.gov)', verify: true, copy: true },
+  { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', copy: true },
 ];
 
 // Six core competencies (from the capability statement PDF and the old page). Each card
@@ -171,8 +171,8 @@ export const DIFFERENTIATORS: Differentiator[] = [
   },
 ];
 
-export const GSA_SPECS: { label: string; value: string; mono?: boolean }[] = [
-  { label: 'Contract number', value: '47QSMS25D009Q', mono: true },
+export const GSA_SPECS: { label: string; value: string; mono?: boolean; copy?: boolean }[] = [
+  { label: 'Contract number', value: '47QSMS25D009Q', mono: true, copy: true },
   { label: 'SIN', value: '561612 · Security Services' },
   { label: 'Schedule', value: 'Multiple Award Schedule (MAS)' },
   { label: 'Period of performance', value: '5-year · optional extensions' },
@@ -217,20 +217,20 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
 // owner chose it, 2026-10-11). The marks and code listing above stay at
 // /capability-statement?creds=marks. SAM-registered "Small business" was dropped: the WOSB
 // certification already says it (owner).
-export type CredRow = { label: string; value: string; note?: string; mono?: boolean; live?: boolean; mark?: Cert };
+export type CredRow = { label: string; value: string; note?: string; mono?: boolean; live?: boolean; copy?: boolean; mark?: Cert };
 const mark = (src: string) => CERTS.find((c) => c.src === src);
 
 export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
   {
     name: 'Contract vehicle',
-    rows: [{ label: 'GSA Multiple Award Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true, mark: { src: '/images/cert-gsa-square.png', alt: 'GSA', name: 'GSA', color: true } }],
+    rows: [{ label: 'GSA Multiple Award Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true, copy: true, mark: { src: '/images/cert-gsa-square.png', alt: 'GSA', name: 'GSA', color: true } }],
   },
   {
     name: 'Registration',
     rows: [
       { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}`, live: true },
-      { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true },
-      { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true },
+      { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true, copy: true },
+      { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true, copy: true },
       { label: 'DUNS number', value: '10-244-9635', note: 'Legacy. UEI is the SAM identifier going forward', mono: true },
       { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services', mono: true },
       { label: 'PSC code', value: 'S206', note: 'Guard Services', mono: true },
