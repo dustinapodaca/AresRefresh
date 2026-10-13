@@ -4310,8 +4310,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-sub { list-style: none; margin: 0; padding: 0 0 14px 14px; border-left: 1px solid rgb(255 255 255 / 0.12); display: grid; gap: 12px; }
 .ds-np-sub a { font-size: 15px; color: var(--ds-fg-muted); }
 .ds-np-sub-more { display: inline-flex; align-items: center; gap: 6px; color: var(--ds-fg) !important; }
-.ds-np-mcontact { display: grid; gap: 6px; padding: 18px 18px 0; }
-.ds-np-mcontact a { font-size: 16px; color: var(--ds-fg); }
+.ds-np-mcontact { display: grid; gap: 4px; }
+.ds-np-mcontact a { font-size: 15px; color: var(--ds-fg); }
 .ds-np-mbtns { display: grid; gap: 10px; padding: 18px 18px 20px; }
 .ds-np-mbtns .ds-btn { justify-content: center; }
 .ds-np-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); font: 500 14px/1 var(--ds-text); color: var(--ds-fg); }
@@ -4331,7 +4331,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np[data-layout='full'] .ds-np-row,
 .ds-np[data-layout='full'] .ds-np-menu,
 .ds-np[data-layout='full'] .ds-np-mlist,
-.ds-np[data-layout='full'] .ds-np-mcontact,
 .ds-np[data-layout='full'] .ds-np-mbtns { max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); margin-inline: auto; padding-inline: var(--ds-gutter); }
 .ds-np[data-layout='full'] .ds-np-row { height: calc(var(--ds-header) - 1px); }
 .ds-np[data-layout='full'] .ds-np-actions { margin-right: -10px; }
@@ -4390,5 +4389,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    menu, the main one above the capability statement (sticky inside the card, which scrolls; the folding
    panels clip instead of hide so they don't trap the sticky). */
 .ds-np-drop-inner { overflow: clip; }
-.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 10px; margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: rgb(8 9 11 / 0.97); border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 10px; margin-top: 18px; padding: 14px 18px calc(14px + env(safe-area-inset-bottom)); background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); } /* solid, so the list never shows through */
 .ds-np-sub-mail { font-size: 14px !important; color: var(--ds-fg-muted); }
+.ds-np-mcontact-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ds-np-micons { display: inline-flex; align-items: center; gap: 2px; margin-right: -10px; }
+.ds-np-micons a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 34px; color: var(--ds-fg-muted) !important; transition: color 180ms var(--ds-ease); }
+.ds-np-micons a:hover { color: #fff !important; }
+.ds-np-sub-mail { display: none; }

@@ -4,7 +4,6 @@ import Arrow from './Arrow';
 import PhoneIcon from './PhoneIcon';
 import { ROLE_PAGES } from './market/roles';
 import { INDUSTRY_PAGES } from './market/industries';
-import { PDF_URL } from './capability/data';
 import { responsive } from '../lib/responsive';
 
 // The panel nav (owner, 2026-10-13; from a 21st.dev "navbar2" the owner picked, rebuilt for this
@@ -120,6 +119,30 @@ export function useNavLayout(): NavLayout {
   }
   return form === 'classic' || form === 'float' ? form : 'full';
 }
+
+// The three profiles as small monochrome marks for the phone menu (owner, 2026-10-13).
+const PROFILE_ICONS: Record<string, JSX.Element> = {
+  LinkedIn: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
+    </svg>
+  ),
+  Google: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21.6 12.23c0-.74-.06-1.46-.18-2.15H12v4.07h5.39a4.6 4.6 0 0 1-2 3.02v2.5h3.23c1.89-1.74 2.98-4.3 2.98-7.44Z" />
+      <path d="M12 22c2.7 0 4.96-.9 6.62-2.43l-3.23-2.5c-.9.6-2.05.95-3.39.95-2.6 0-4.81-1.76-5.6-4.12H3.06v2.58A10 10 0 0 0 12 22Z" />
+      <path d="M6.4 13.9a6 6 0 0 1 0-3.8V7.52H3.06a10 10 0 0 0 0 8.96l3.34-2.58Z" />
+      <path d="M12 6c1.47 0 2.78.5 3.82 1.5l2.86-2.87C16.95 3.05 14.7 2.13 12 2.13a10 10 0 0 0-8.94 5.4L6.4 10.1C7.19 7.74 9.4 6 12 6Z" />
+    </svg>
+  ),
+  Indeed: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4.5 10.2C7.3 5.2 13.4 2.6 19.4 4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <circle cx="12.6" cy="10.6" r="2.7" fill="currentColor" />
+      <rect x="10.6" y="14.6" width="4" height="7.4" rx="2" fill="currentColor" />
+    </svg>
+  ),
+};
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -433,11 +456,6 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                                 <Link to={l.to}>{l.label}</Link>
                               </li>
                             ))}
-                            {item.menu === 'Company' && (
-                              <li>
-                                <a href="mailto:contact@aressecurity.co" className="ds-data ds-np-sub-mail">contact@aressecurity.co</a>
-                              </li>
-                            )}
                           </ul>
                         </div>
                       </div>
@@ -452,18 +470,27 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                   ),
                 )}
               </ul>
-              {/* Phones (owner, 2026-10-13): no phone and email rows (the call icon is in the bar;
-                  the email is under Company). Both buttons are pinned to the bottom, the main one
-                  above the capability statement, so they stay on screen while the list scrolls. */}
+              {/* Phones (owner, 2026-10-13): pinned to the bottom of the open menu, so it stays on
+                  screen while the list scrolls: the phone and the profiles, the email, then the main
+                  button. (The PDF button was dropped from the phone menu.) */}
               <div className="ds-np-mbtns">
+                <div className="ds-np-mcontact">
+                  <div className="ds-np-mcontact-row">
+                    <a href="tel:+17196963966" className="ds-data">719-696-3966</a>
+                    <span className="ds-np-micons">
+                      {PROFILES.map((p) => (
+                        <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`Ares Security on ${p.label}`}>
+                          {PROFILE_ICONS[p.label]}
+                        </a>
+                      ))}
+                    </span>
+                  </div>
+                  <a href="mailto:contact@aressecurity.co" className="ds-data">contact@aressecurity.co</a>
+                </div>
                 <Link to={cta.to} className="ds-btn ds-btn-primary">
                   {cta.label}
                   <Arrow />
                 </Link>
-                <a href={PDF_URL} className="ds-np-secondary" target="_blank" rel="noopener noreferrer">
-                  Capability Statement (PDF)
-                  <Arrow external size={12} />
-                </a>
               </div>
             </div>
           </div>
