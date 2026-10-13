@@ -58,8 +58,8 @@ export const INSIGHTS: Insight[] = [
       { p: 'Relief and surge work is often subcontracted. If you hold the contract, check that the subcontractor is licensed in the city where the site is, will work under your post orders, and counts toward your small-business goals. Ares is an SBA-certified woman-owned small business (WOSB250470) and a WBENC-certified Women\u2019s Business Enterprise (WBE2303571), licensed and bonded in Colorado Springs, Denver, and Pueblo.' },
     ],
     related: [
-      { label: 'Relief and surge coverage', to: '/services/relief-surge-coverage' },
-      { label: 'Construction, industrial, and logistics sites', to: '/industries/construction-industrial' },
+      { label: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
+      { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
       { label: 'Teaming and subcontracting', to: '/teaming' },
     ],
   },
@@ -90,8 +90,8 @@ export const INSIGHTS: Insight[] = [
       { p: 'Walk the site with the security company before anything is signed. A good vendor will tell you when unarmed coverage is enough.' },
     ],
     related: [
-      { label: 'Armed security officers', to: '/services/armed-security-officers' },
-      { label: 'Unarmed security officers', to: '/services/unarmed-security-officers' },
+      { label: 'Armed Security Officers', to: '/services/armed-security-officers' },
+      { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
     ],
   },
   {
@@ -118,8 +118,8 @@ export const INSIGHTS: Insight[] = [
       { p: 'A post order is only as good as its last update. Change it when gates, hours, tenants, or contacts change, and retrain the officers who stand the post.' },
     ],
     related: [
-      { label: 'Unarmed security officers', to: '/services/unarmed-security-officers' },
-      { label: 'Access control officers', to: '/services/access-control' },
+      { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
+      { label: 'Access Control Officers', to: '/services/access-control' },
     ],
   },
   {
@@ -140,8 +140,8 @@ export const INSIGHTS: Insight[] = [
       { p: 'A build at excavation needs different coverage than a build at fit-out. Revisit the post orders and staffing whenever gates, hours, or the value on site change.' },
     ],
     related: [
-      { label: 'Construction and industrial sites', to: '/industries/construction-industrial' },
-      { label: 'Mobile patrol', to: '/services/mobile-patrol' },
+      { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
+      { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
     ],
   },
   {
@@ -166,7 +166,7 @@ export const INSIGHTS: Insight[] = [
       { p: 'Ares holds GSA MAS contract 47QSMS25D009Q under SIN 561612, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
     related: [
-      { label: 'Government and military facilities', to: '/industries/government-military' },
+      { label: 'Government & Military', to: '/industries/government-military' },
       { label: 'Capability Statement', to: '/capability-statement' },
     ],
   },

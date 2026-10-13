@@ -30,9 +30,9 @@ const PARTNERS = [
 ];
 
 const ROLES = [
-  { name: 'Restricted-area escorts', line: 'Crews, visitors, and deliveries escorted and logged inside controlled areas.', to: '/services/restricted-area-escort' },
-  { name: 'Access control officers', line: 'Credentials, visitors, vehicles, and deliveries checked at every entry.', to: '/services/access-control' },
-  { name: 'Relief, overflow, and surge coverage', line: 'Officers for the shifts and spikes your own roster cannot cover.', to: '/services/relief-surge-coverage' },
+  { name: 'Restricted-Area Escort', line: 'Crews, visitors, and deliveries escorted and logged inside controlled areas.', to: '/services/restricted-area-escort' },
+  { name: 'Access Control Officers', line: 'Credentials, visitors, vehicles, and deliveries checked at every entry.', to: '/services/access-control' },
+  { name: 'Relief & Surge Coverage', line: 'Officers for the shifts and spikes your own roster cannot cover.', to: '/services/relief-surge-coverage' },
 ];
 
 const GETS: SheetRow[] = [
@@ -61,7 +61,8 @@ const FAQ: Faq[] = [
   },
   {
     q: 'Do you subcontract on federal work?',
-    a: 'Yes. Ares provides restricted-area escort and access control on a Space Force base in Colorado as a subcontractor on a federal construction program, and holds GSA Multiple Award Schedule contract 47QSMS25D009Q.',
+    // The Space Force line is in the sheet's past performance row (design review, 2026-10-13).
+    a: 'Yes. Ares works today as a subcontractor on a federal construction program, providing restricted-area escort and access control, and holds GSA Multiple Award Schedule contract 47QSMS25D009Q.',
   },
   {
     q: 'Where in Colorado do you work?',

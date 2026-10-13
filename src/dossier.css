@@ -4122,3 +4122,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-cs-fact-v { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .ds-cs-specs dd:has(.ds-copy) { display: flex; align-items: center; gap: 6px; }
 .ds-cs-credtable dd .ds-copy { margin-left: 2px; }
+
+/* The smaller prime panel on the Government page (design review, owner 2026-10-13): Home's
+   panel with less padding, a narrower diagram, and no proof list. */
+.ds-primes-panel.ds-primes-compact { margin-top: 0; }
+.ds-primes-compact .ds-primes-flow { max-width: 440px; margin-inline: auto; }
+.ds-primes-compact .ds-flow-node { padding: 10px 14px; }
+.ds-primes-compact .ds-flow-node > span:last-child { font-size: 12.5px; }
+.ds-primes-compact .ds-flow-posts span { padding: 12px 8px; font-size: 12px; }
+@media (min-width: 768px) { .ds-primes-panel.ds-primes-compact { padding: 32px; } }
+@media (min-width: 1024px) {
+  .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 5; align-self: center; }
+  .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-flow { grid-column: 7 / span 6; }
+}

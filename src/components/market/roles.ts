@@ -28,6 +28,8 @@ export type RolePageData = {
   /** Industry slugs this role is most asked for. */
   industries: string[];
   faq: Faq[];
+  /** No GSA row: services agencies don't usually buy (design review, owner 2026-10-13). */
+  noGsa?: boolean;
 };
 
 const GSA_ROW: SheetRow = {
@@ -38,10 +40,12 @@ const GSA_ROW: SheetRow = {
 };
 
 /** The rows every role shares, after its own (copy audit, 2026-10-10: three rows; the rows
- *  identical on every page moved to SHEET_NOTE). */
-export const SHARED_SHEET: SheetRow[] = [
+ *  identical on every page moved to SHEET_NOTE). The GSA number appears once per page at most,
+ *  and not on Relief & Surge or Mobile Patrol (design review, owner 2026-10-13). */
+export const sheetFor = (r: RolePageData): SheetRow[] => [
+  r.sheet,
   { label: 'Training', value: 'On the post, by a member of leadership who has worked it' },
-  GSA_ROW,
+  ...(r.noGsa ? [] : [GSA_ROW]),
 ];
 
 /** One shared line under the sheet. */
@@ -49,15 +53,18 @@ export const SHEET_NOTE = 'Licensed and bonded in Colorado Springs, Denver, and 
 
 const GSA_FAQ: Faq = {
   q: 'Can federal agencies order this through GSA?',
-  a: 'Yes. Ares holds GSA Multiple Award Schedule contract 47QSMS25D009Q under SIN 561612, so agencies can order at pre-negotiated ceiling prices using the streamlined FAR 8.4 procedures, usually a request for quotes to schedule holders on GSA eBuy, instead of a new open-market solicitation.',
+  // The contract number is in the sheet above, so the answer doesn't repeat it.
+  a: 'Yes. Ares holds a GSA Multiple Award Schedule contract under SIN 561612, so agencies can order at pre-negotiated ceiling prices using the streamlined FAR 8.4 procedures, usually a request for quotes to schedule holders on GSA eBuy, instead of a new open-market solicitation.',
 };
 
+// Service names are proper nouns: Title Case with "&" wherever a name appears (design review,
+// owner 2026-10-13); prose that describes the work stays in sentence case.
 export const ROLE_PAGES: RolePageData[] = [
   {
     slug: 'armed-security-officers',
     capabilityId: 'armed',
-    name: 'Armed security officers',
-    title: 'Armed security officers.',
+    name: 'Armed Security Officers',
+    title: 'Armed Security Officers.',
     lead: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts.',
     sheet: { label: 'Firearms', value: 'Qualified by our NRA-certified instructor, a veteran' },
     how: 'An armed post starts with the reason it needs to be armed: cash on site, regulated goods, an isolated night post, or a contract requirement. We write the post orders around that reason, including who the officer calls first and when the post is armed. Our veteran NRA-certified firearms instructor qualifies each officer, and qualifications are current at the time of post. A member of our leadership who has worked the post then trains each officer on your site before the first shift, and on-call relief is written into the contract, so the post is never left empty.',
@@ -86,8 +93,8 @@ export const ROLE_PAGES: RolePageData[] = [
   {
     slug: 'unarmed-security-officers',
     capabilityId: 'unarmed',
-    name: 'Unarmed security officers',
-    title: 'Unarmed security officers.',
+    name: 'Unarmed Security Officers',
+    title: 'Unarmed Security Officers.',
     lead: 'A visible, trained presence for lobbies, perimeters, and public areas, in uniform or plainclothes.',
     sheet: { label: 'Uniform', value: 'Uniformed or plainclothes, as the site calls for' },
     how: 'An unarmed post is built around what the site needs from the person standing it: a front desk that screens and directs visitors, rounds on a set schedule, or a discreet presence on a sales floor. We walk the site first and write the post orders for it. Each officer is trained on the post by a member of our leadership before the first shift, logs every checkpoint, and writes up anything out of the ordinary. Uniformed or plainclothes is your call, and on-call relief keeps the post covered when an officer cannot make a shift.',
@@ -116,8 +123,8 @@ export const ROLE_PAGES: RolePageData[] = [
   {
     slug: 'access-control',
     capabilityId: 'access',
-    name: 'Access control officers',
-    title: 'Access control officers.',
+    name: 'Access Control Officers',
+    title: 'Access Control Officers.',
     lead: 'Officers who decide who and what gets in, with a log you can audit.',
     sheet: { label: 'Logs', value: 'Visitor and checkpoint logs you can audit' },
     how: 'Access control starts with your access list and the rules behind it: who may enter, when, through which door or gate, and who signs for visitors and deliveries. We write those rules into the post orders, then train each officer on your entry points and your site\u2019s own systems, such as card readers, visitor software, and intercoms, before the first shift. Every person, vehicle, and delivery is checked before entry, and every check is logged, so you can audit who came and went. Badges stay yours to issue; our officers enforce them.',
@@ -148,8 +155,8 @@ export const ROLE_PAGES: RolePageData[] = [
     // wording here: clearance requirements live on Careers only (owner).
     slug: 'restricted-area-escort',
     capabilityId: 'escort',
-    name: 'Restricted-area escort',
-    title: 'Restricted-area escort.',
+    name: 'Restricted-Area Escort',
+    title: 'Restricted-Area Escort.',
     lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
     sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
     how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief roster keeps every escort post staffed.',
@@ -162,7 +169,8 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Have your officers escorted on a military installation?',
-        a: 'Yes. Ares provides restricted-area escort and access control on a Space Force base in Colorado, alongside installation security, as a subcontractor on a federal construction program.',
+        // The base is named once, in the experience row (design review, owner 2026-10-13).
+        a: 'Yes. That is our current work: escort and access control alongside installation security, as a subcontractor on a federal construction program.',
       },
       {
         q: 'Can you escort construction crews and deliveries?',
@@ -179,9 +187,10 @@ export const ROLE_PAGES: RolePageData[] = [
     // Replaced Event security (copy audit round 2, owner 2026-10-10). No fill time is
     // stated until the owner confirms one Ares can stand behind.
     slug: 'relief-surge-coverage',
+    noGsa: true,
     capabilityId: 'relief',
-    name: 'Relief and surge coverage',
-    title: 'Relief and surge coverage.',
+    name: 'Relief & Surge Coverage',
+    title: 'Relief & Surge Coverage.',
     lead: 'Trained officers when your roster runs short: relief shifts, overflow posts, and surge staffing for inspections, outages, construction phases, and contract transitions.',
     sheet: { label: 'Who it is for', value: 'Site owners, prime contractors, and other security companies' },
     how: 'Relief works best when it is lined up before you need it. Tell us the posts, the post orders, and the dates that are hard to cover, and we find officers who can stand them. Each one is trained on the post by a member of our leadership before the first shift, so a relief officer arrives knowing the entry points and the rules. For surge work, such as an inspection, an outage, a construction phase, or a contract transition, we staff to your dates and step back when the work is done.',
@@ -216,9 +225,10 @@ export const ROLE_PAGES: RolePageData[] = [
   },
   {
     slug: 'mobile-patrol',
+    noGsa: true,
     capabilityId: 'vehicle',
-    name: 'Mobile patrol',
-    title: 'Mobile patrol.',
+    name: 'Mobile Patrol',
+    title: 'Mobile Patrol.',
     lead: 'Marked vehicles on set routes, alarm response, and a time-stamped report for every property.',
     sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
     how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property. When an alarm trips, an officer goes to the site, checks it, and reports what was found.',

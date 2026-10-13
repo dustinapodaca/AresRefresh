@@ -78,7 +78,7 @@ export default function PrimeFlow({ className = '' }: { className?: string }) {
       </div>
       <FlowFork />
       <div className="ds-flow-posts" aria-hidden="true">
-        {['Restricted-area escort', 'Access control', 'Relief and surge'].map((t) => (
+        {['Restricted-Area Escort', 'Access Control', 'Relief & Surge'].map((t) => (
           <span key={t}>
             <i className="ds-flow-dot" />
             {t}

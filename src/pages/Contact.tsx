@@ -14,12 +14,12 @@ import { track } from '../lib/analytics';
 // "not sure". The email carries the label, not the slug (src/lib/quote.ts). Role and industry pages link here with
 // ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
 const NEEDS: { slug: string; label: string }[] = [
-  { slug: 'armed-security-officers', label: 'Armed security officers' },
-  { slug: 'unarmed-security-officers', label: 'Unarmed security officers' },
-  { slug: 'access-control', label: 'Access control officers' },
-  { slug: 'restricted-area-escort', label: 'Restricted-area escort' },
-  { slug: 'relief-surge-coverage', label: 'Relief and surge coverage' },
-  { slug: 'mobile-patrol', label: 'Mobile patrol' },
+  { slug: 'armed-security-officers', label: 'Armed Security Officers' },
+  { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers' },
+  { slug: 'access-control', label: 'Access Control Officers' },
+  { slug: 'restricted-area-escort', label: 'Restricted-Area Escort' },
+  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage' },
+  { slug: 'mobile-patrol', label: 'Mobile Patrol' },
   { slug: 'teaming', label: 'Teaming or subcontract coverage' }, // for primes and guard companies (/teaming)
   { slug: 'other', label: 'Not sure, or something else' },
 ];

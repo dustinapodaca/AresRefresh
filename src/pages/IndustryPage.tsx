@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
+import PrimeFlow from '../components/home/PrimeFlow';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
@@ -83,16 +84,21 @@ export default function IndustryPage() {
         </section>
 
         {ind.primes && (
-          <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-primes">
-            <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
-            <div className="ds-mk-prose">
-              <p>{ind.primes}</p>
-              <p>
-                <Link to="/teaming" className="ds-link">
+          // A smaller version of Home's prime panel (design review, owner 2026-10-13): the same
+          // card, the two-tone line, the button, and the animated diagram, without the proof list.
+          <section className="ds-mk-sec" aria-labelledby="mk-primes">
+            <div className="ds-primes-panel ds-primes-compact" data-form="diagram">
+              <div className="ds-primes-copy">
+                <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
+                <p className="ds-primes-line">
+                  <span>A woman-owned subcontractor for federal work.</span> {ind.primes}
+                </p>
+                <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
                   Teaming and subcontracting
-                  <Arrow size={14} />
+                  <Arrow />
                 </Link>
-              </p>
+              </div>
+              <PrimeFlow />
             </div>
           </section>
         )}

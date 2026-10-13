@@ -176,9 +176,9 @@ export default function HomeNext() {
               </div>
               <span className="ds-flow-line ds-flow-fork" aria-hidden="true" />
               <div className="ds-flow-posts" aria-hidden="true">
-                <span>Restricted-area escort</span>
-                <span>Access control</span>
-                <span>Relief and surge</span>
+                <span>Restricted-Area Escort</span>
+                <span>Access Control</span>
+                <span>Relief & Surge</span>
               </div>
             </figure>
             <dl className="hn-prime-proof">

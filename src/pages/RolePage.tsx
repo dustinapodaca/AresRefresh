@@ -3,7 +3,7 @@ import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
 import Crumbs from '../components/market/Crumbs';
-import { ROLE_PAGES, SHARED_SHEET, SHEET_NOTE, capabilityFor, roleBySlug } from '../components/market/roles';
+import { ROLE_PAGES, SHEET_NOTE, capabilityFor, roleBySlug, sheetFor } from '../components/market/roles';
 import { industryBySlug } from '../components/market/industries';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { heroTitle } from '../lib/heroTitle';
@@ -39,7 +39,7 @@ export default function RolePage() {
           </div>
         </div>
         <div className="ds-mk-sheet-wrap">
-          <Sheet rows={[role.sheet, ...SHARED_SHEET]} label={`${role.name} at a glance`} />
+          <Sheet rows={sheetFor(role)} label={`${role.name} at a glance`} />
           <p className="ds-mk-sheet-note">{SHEET_NOTE}</p>
         </div>
       </section>

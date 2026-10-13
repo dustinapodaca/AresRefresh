@@ -69,7 +69,8 @@ export const CAPABILITIES: Capability[] = [
     line: 'Licensed, firearms-qualified officers for cash-handling, regulated, and high-liability posts.',
     keys: ['Armed', 'Cash-handling', 'Regulated'],
     includes: [
-      { name: 'Fixed armed posts', detail: 'Officers on a set post every shift. Fewer than 1% missed shifts since 2021, with on-call scheduling in every contract.' },
+      // The missed-shift figure lives in Why Ares and the PDF (design review, owner 2026-10-13).
+      { name: 'Fixed armed posts', detail: 'Officers on a set post every shift, with on-call scheduling in every contract.' },
       { name: 'Cash-handling sites', detail: 'Banks, retail cash rooms, and other sites where money changes hands.' },
       { name: 'Regulated and high-liability sites', detail: 'Posts with licensing, audit, or insurance requirements on who may stand them.' },
       { name: 'Firearms qualification', detail: 'Licensed, firearms-qualified officers, trained by our veteran NRA firearms instructor and current at time of post.' },

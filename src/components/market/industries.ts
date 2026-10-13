@@ -73,7 +73,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       // General, not a count (owner, 2026-10-10: never "veteran-heavy").
       { label: 'Veterans', value: 'We hire veterans, and veterans hold leadership roles, including supervision and firearms training' },
     ],
-    primes: 'Woman-owned subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage on federal work along the Front Range.',
+    // The detail half of the prime panel's two-tone line (the claim is in IndustryPage.tsx).
+    primes: 'Subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage under your contract.',
     ask: 'Send us the facility, the post requirements, and the period of performance. We will come back with a staffing plan under our GSA Schedule.',
     faq: [
       {
@@ -144,10 +145,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         q: 'Where in Colorado do you work?',
         a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
       },
-      {
-        q: 'Can a federal agency order through GSA?',
-        a: 'Yes. Ares holds GSA Multiple Award Schedule contract 47QSMS25D009Q under SIN 561612.',
-      },
+      // The GSA question was cut here (design review, owner 2026-10-13): agencies aren't the
+      // usual buyer for critical and high-liability sites; the Government page carries it.
     ],
   },
   {
@@ -216,7 +215,9 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { role: 'mobile-patrol', line: 'Patrol of lots, yards, and perimeters, with after-hours checks.' },
     ],
     why: [
-      { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', href: '/services/restricted-area-escort' },
+      // Airport: restricted-area experience is enough; the base is named on Government (design
+      // review, owner 2026-10-13).
+      { label: 'Restricted areas', value: 'Restricted-area escort and access control experience', href: '/services/restricted-area-escort' },
       { label: 'Uniform', value: 'Uniformed or plainclothes, as the site calls for' },
       LOGS,
       RELIEF,
