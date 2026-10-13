@@ -57,8 +57,8 @@ const MENUS: Record<string, Menu> = {
     ],
     // The overview link, as on phones (owner, 2026-10-13; was the city pages).
     footer: [{ label: 'All industries and how a post starts', to: '/services' }],
-    // A little closer, toward the radomes on the left (owner, 2026-10-13).
-    image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '30% 60%', zoom: 1.25, origin: '30% 60%' },
+    // Closer, toward the radomes on the left (owner, 2026-10-13: 1.6x, was 1.25x).
+    image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' },
     strongFoot: true,
     // The industries live on the Services page too (owner, 2026-10-13).
     phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],

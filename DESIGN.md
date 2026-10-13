@@ -871,7 +871,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Industries the footer holds the overview links (All services and how a post starts, Teaming;
   All industries and how a post starts), drawn with weight: ink, 16px / 500, a brighter
   underline (owner, 2026-10-13). Each photo sets its own framing: the patrol cars just below
-  center (50% 90%), the Space Force base zoomed 1.25 toward the radomes on the left. Phones: lockup,
+  center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
   three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links only, no city links; owner 2026-10-13), the phone and email, the button, and the capability statement PDF.
   On phones, once the running head with its progress line slides out, the divider folds away
