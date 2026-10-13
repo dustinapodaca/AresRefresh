@@ -15,7 +15,7 @@ const ROUTES = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
   { to: '/capability-statement', label: 'Capability Statement' },
-  { to: '/contact', label: 'Request a quote' },
+  { to: '/contact', label: 'Request a Quote' },
 ];
 
 export default function NotFound() {

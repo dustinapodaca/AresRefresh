@@ -70,7 +70,7 @@ const MENUS: Record<string, Menu> = {
         links: [
           { label: 'Capability Statement', to: '/capability-statement' },
           { label: 'Teaming', to: '/teaming' },
-          { label: 'Request a quote', to: '/contact' },
+          { label: 'Request a Quote', to: '/contact' },
         ],
       },
     ],
@@ -178,7 +178,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
       ? { label: 'Talk teaming', to: '/contact?service=teaming' }
       : pathname === '/careers' || pathname.startsWith('/careers/')
         ? { label: 'Apply', to: '/careers#apply' }
-        : { label: 'Request a quote', to: '/contact' };
+        : { label: 'Request a Quote', to: '/contact' };
 
   // Everything closes on a page change, on Escape, and on a click outside the card.
   useEffect(() => {

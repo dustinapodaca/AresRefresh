@@ -62,7 +62,7 @@ export default function Hero() {
           {/* Below 1024px only: from there up the nav carries the quote button. */}
           <div className="ds-actions ds-hero-actions">
             <Link to="/contact" className="ds-btn ds-btn-primary">
-              Request a quote
+              Request a Quote
               <Arrow />
             </Link>
             <a href="tel:+17196963966" className="ds-link">

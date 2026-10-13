@@ -68,7 +68,7 @@ export function Sheet({ rows, label }: { rows: SheetRow[]; label: string }) {
 }
 
 /** The ask: one plain line, the quote button, and the phone, on a strong hairline. */
-export function AskStrip({ line, quote, label = 'Request a quote' }: { line: string; quote: string; label?: string }) {
+export function AskStrip({ line, quote, label = 'Request a Quote' }: { line: string; quote: string; label?: string }) {
   return (
     <div className="ds-mk-ask">
       <p className="ds-mk-ask-line">{line}</p>

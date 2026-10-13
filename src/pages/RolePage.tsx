@@ -30,7 +30,7 @@ export default function RolePage() {
           <p className="ds-lead">{role.lead}</p>
           <div className="ds-actions">
             <Link to={quote} className="ds-btn ds-btn-primary">
-              Request a quote
+              Request a Quote
               <Arrow />
             </Link>
             <a href="tel:+17196963966" className="ds-link">

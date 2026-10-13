@@ -26,7 +26,7 @@ export default function Contact() {
       </dl>
       <div className="ds-actions">
         <Link to="/contact" className="ds-btn ds-btn-primary">
-          Request a quote
+          Request a Quote
           <Arrow />
         </Link>
         <Link to="/capability-statement" className="ds-link">

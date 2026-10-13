@@ -882,3 +882,7 @@ Removed the "Licensed" row ("Licensed and bonded armed and unarmed security and 
 - **Space Force line:** Escort's military-installation question now reads "Yes. That is our current work: escort and access control alongside installation security, as a subcontractor on a federal construction program." (the base is in the experience row); Teaming's federal question drops the base (it is in the past performance row); Airport's restricted-areas row is now "Restricted-area escort and access control experience".
 - **Fewer than 1%:** the Capability Statement's "Fixed armed posts" line drops the figure ("Officers on a set post every shift, with on-call scheduling in every contract.").
 - **Government page "For prime contractors.":** now a smaller version of Home's prime panel: "A woman-owned subcontractor for federal work. Subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage under your contract." with the button and the animated diagram.
+
+## "Request a Quote" in Title Case (owner, 2026-10-13)
+
+Every button and link that says it (the nav button and Company menu, the Home hero and closing buttons, service, industry, and city page buttons, the ask strips, the Capability Statement close, the 404 routes) now reads "Request a Quote". The Contact page headline "Request a quote" and the sentence "Request a quote, or call us." stay sentence case, as headings do.

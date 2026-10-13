@@ -437,7 +437,7 @@ export function Download() {
         </div>
         <p className="ds-cs-close-contact">
           <Link to="/contact" className="ds-link">
-            Request a quote
+            Request a Quote
             <Arrow />
           </Link>
           <a href="tel:+17196963966" className="ds-link">
