@@ -246,6 +246,7 @@ export default function NavPanel() {
           <div className="ds-np-row">
             <Link to="/" className="ds-np-brand" aria-label="Ares Security home">
               <span className="ds-mark" aria-hidden="true" />
+              <span className="ds-np-divider" aria-hidden="true" />
               <span className="ds-np-wordmark" aria-hidden="true" />
             </Link>
 
@@ -273,7 +274,6 @@ export default function NavPanel() {
             </nav>
 
             <div className="ds-np-actions">
-              <a href="tel:+17196963966" className="ds-np-call ds-data">719-696-3966</a>
               <Link to={cta.to} className="ds-btn ds-btn-primary ds-np-cta">
                 {cta.label}
                 <Arrow size={14} />

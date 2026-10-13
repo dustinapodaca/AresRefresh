@@ -851,10 +851,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Panel nav (owner, 2026-10-13; live).** From a 21st.dev "navbar2" the owner chose, rebuilt
   for the site (React Router, CSS motion, the site's own icons, 2px and 4px corners, no
   language switcher or sign-in). A floating dark-glass card (canvas at 72% over a 24px blur,
-  90% when open, the site's glass edge as a masked ring), 52px tall on phones and 60px on
-  desktop, inside the same `--ds-header` height. Desktop: the ARES SECURITY lockup, then
+  90% when open, the site's glass edge as a masked ring), 60px tall on phones and 68px on
+  desktop, inside the same `--ds-header` height. The lockup is the footer's scaled down: the
+  mark, a 1px divider at ink 50% a little taller than it, and the wordmark nearly its height
+  (owner, 2026-10-13). Desktop: the lockup, then
   Services, Industries, and Company as menu buttons (2px-cornered tint when open) and
-  Capability Statement as a link; the phone in mono and the context button at the right. A
+  Capability Statement as a link, held in a centered column so they never shift when the
+  context button at the right changes length; no phone number on desktop (owner). A
   menu grows the card downward (grid rows, 350ms): two columns of large Inter Tight links
   under a small faint label, a 288px real photo with a mono caption beneath, and a row of
   footer links under a hairline (Company adds LinkedIn, Google, and Indeed). Phones: lockup,
