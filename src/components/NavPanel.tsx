@@ -186,6 +186,18 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  // Desktop (owner, 2026-10-13): the menus open on hover. A short delay before opening keeps a
+  // pointer crossing the bar from flashing a menu; moving between items swaps at once; leaving
+  // the card closes after a beat, so the pointer can travel into the open panel. Click still
+  // toggles, for keyboards and touch.
+  const hoverTimer = useRef(0);
+  const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hoverTo = (menu: string | null, delay: number) => {
+    if (!canHover()) return;
+    window.clearTimeout(hoverTimer.current);
+    hoverTimer.current = window.setTimeout(() => setOpenMenu(menu), delay);
+  };
+  useEffect(() => () => window.clearTimeout(hoverTimer.current), []);
   const { pathname } = useLocation();
   // The button names the next step for the page (design review, owner 2026-10-13).
   const cta =
@@ -296,7 +308,12 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
     <>
       <a href="#main" className="ds ds-skip">Skip to content</a>
       <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !isOpen) || undefined}>
-        <div ref={cardRef} className="ds-np-card">
+        <div
+          ref={cardRef}
+          className="ds-np-card"
+          onMouseLeave={() => hoverTo(null, 220)}
+          onMouseEnter={() => window.clearTimeout(hoverTimer.current)}
+        >
           <div className="ds-np-row">
             <Link to="/" className="ds-np-brand" aria-label="Ares Security home">
               <span className="ds-mark" aria-hidden="true" />
@@ -314,13 +331,25 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                     aria-expanded={openMenu === item.menu}
                     aria-controls="np-menu"
                     data-active={openMenu === item.menu || undefined}
-                    onClick={() => setOpenMenu((m) => (m === item.menu ? null : item.menu!))}
+                    onClick={() => {
+                      window.clearTimeout(hoverTimer.current);
+                      // With a mouse the hover already opened it, so a click keeps it open;
+                      // keyboards and touch toggle.
+                      setOpenMenu((m) => (m === item.menu && !canHover() ? null : item.menu!));
+                    }}
+                    onMouseEnter={() => hoverTo(item.menu!, openMenu ? 0 : 90)}
                   >
                     {item.label}
                     <Chevron open={openMenu === item.menu} />
                   </button>
                 ) : (
-                  <NavLink key={item.label} to={item.to!} className="ds-np-item" onClick={() => setOpenMenu(null)}>
+                  <NavLink
+                    key={item.label}
+                    to={item.to!}
+                    className="ds-np-item"
+                    onClick={() => setOpenMenu(null)}
+                    onMouseEnter={() => hoverTo(null, 120)}
+                  >
                     {item.label}
                   </NavLink>
                 ),

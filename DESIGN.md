@@ -880,7 +880,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   33px on phones, 39px on desktop) and stays that size; all of it slides back out on the way up or when a menu opens. Pages
   without a running head do this past 80% of the first screen. Reduced motion: a short fade
   only. (Owner, 2026-10-13.)
-  Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
+  On desktop the menus open on hover (a 90ms delay, then moving between items swaps at once;
+  leaving the card closes after 220ms so the pointer can reach the panel; hovering Capability
+  Statement closes it; owner, 2026-10-13); click keeps it open with a mouse and toggles for
+  keyboards and touch. Closes on Escape, a click outside, or a page change. `src/components/NavPanel.tsx`. The
   previous nav (below) stays at `?nav=classic`.
 - Modeled on the v08 nav (tag `home-v08-framer-flow-final`, owner request 2026-10-04).
 - Fixed, 84px desktop / 68px mobile (owner, 2026-10-08: 8px slimmer; were 92 / 76). Transparent over the page at the top (the hero photo
