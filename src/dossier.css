@@ -2597,9 +2597,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-cs-hero-bg::after {
     background:
       linear-gradient(to bottom, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 24%),
-      /* Lighter on the left (owner, 2026-10-13; was 1, 0.94, 0.62; lighter than 0.76 drops the lead below 4.5:1): the Denver sunset shows
-         through, and the lead and spec line take the lighter grey to keep their contrast. */
-      linear-gradient(to right, rgb(0 0 0 / 0.76 0.7 0.52) 0%, rgb(0 0 0 / ) 22%, rgb(0 0 0 / ) 46%, rgb(0 0 0 / 0) 72%);
+      /* Lighter on the left (owner, 2026-10-13; was 1, 0.94, 0.62 by 46%): the same eased shade
+         as phones, so the Denver sunset shows through; the lead and spec line take the lighter
+         grey to keep their contrast. */
+      linear-gradient(to right, rgb(0 0 0 / 0.8) 0%, rgb(0 0 0 / 0.72) 18%, rgb(0 0 0 / 0.58) 36%, rgb(0 0 0 / 0.4) 54%, rgb(0 0 0 / 0.22) 72%, rgb(0 0 0 / 0.08) 88%, rgb(0 0 0 / 0) 100%);
   }
   .ds-cs-hero-copy .ds-lead, .ds-cs-spec { color: #c4c8ce; }
   .ds-cs-hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding-top: calc(var(--ds-header) + 24px); }
