@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
+import PrimeFlow from './PrimeFlow';
 
 // 02 Industries (copy audit round 2, 2026-10-10): the six industries in the owner's fixed
 // order, the first three larger (where the restricted-area and documented work lives), then
@@ -111,60 +111,9 @@ const PRIME_PROOF = [
   { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract' },
 ];
 
-// The fork from Ares to the three posts, drawn at its real pixel width (measured) so nothing is
-// stretched: a stretched SVG throws off the curves' length, and their draw-in and light then
-// stopped short of the posts (2026-10-12). Each wire lands on the center of its post (three
-// columns, 8px gaps, as .ds-flow-posts).
-function FlowFork() {
-  const ref = useRef<SVGSVGElement>(null);
-  const [w, setW] = useState(300);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([e]) => setW(Math.round(e.contentRect.width) || 300));
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-  const H = 48;
-  const col = (w - 16) / 3;
-  const mid = w / 2;
-  const ends = [col / 2, col + 8 + col / 2, 2 * col + 16 + col / 2];
-  return (
-    <svg ref={ref} className="ds-flow-wire ds-flow-wire-fork" viewBox={`0 0 ${w} ${H}`} aria-hidden="true">
-      {ends.map((x) => {
-        const d = Math.abs(x - mid) < 1 ? `M${mid} 0V${H}` : `M${mid} 0C${mid} 26 ${x} 22 ${x} ${H}`;
-        return (
-          <g key={Math.round(x)}>
-            <path className="ds-wire-base" d={d} pathLength="100" />
-            <path className="ds-wire-pulse" d={d} pathLength="100" />
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
 function PrimesPanel({ form }: { form: string | null }) {
   // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
   const kind = form === 'split' || form === 'vignettes' ? form : 'diagram';
-  // The light waits until the diagram rises above the bottom quarter of the window, then runs for good
-  // (owner, 2026-10-12): data-live switches the CSS loop on, once.
-  const flowRef = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const el = flowRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
-        el.dataset.live = 'true';
-        io.disconnect();
-      },
-      // The bottom quarter of the viewport doesn't count.
-      { rootMargin: '0px 0px -25% 0px' },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [kind]);
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming and subcontracting
@@ -221,36 +170,7 @@ function PrimesPanel({ form }: { form: string | null }) {
             </ul>
             {button}
           </div>
-          <figure ref={flowRef} className="ds-primes-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
-            {/* Framer-style flow (owner, 2026-10-12): hairline wires that draw in on scroll, and
-                a rust light that runs from the prime through Ares to each post, which lights as
-                it arrives. The wires are SVG so the fork can curve; the light is ambient and
-                stops under reduced motion. */}
-            <div className="ds-flow-node ds-flow-prime" aria-hidden="true">
-              <span className="ds-data">Prime contractor</span>
-              <span>Holds the contract</span>
-            </div>
-            <svg className="ds-flow-wire ds-flow-wire-down" viewBox="0 0 2 40" preserveAspectRatio="none" aria-hidden="true">
-              <path className="ds-wire-base" d="M1 0V40" pathLength="100" />
-              <path className="ds-wire-pulse" d="M1 0V40" pathLength="100" />
-            </svg>
-            <div className="ds-flow-node ds-flow-ares" aria-hidden="true">
-              <span className="ds-data">
-                <i className="ds-flow-dot" />
-                Ares Security
-              </span>
-              <span>WOSB subcontractor · post orders, training, relief</span>
-            </div>
-            <FlowFork />
-            <div className="ds-flow-posts" aria-hidden="true">
-              {['Restricted-area escort', 'Access control', 'Relief and surge'].map((t) => (
-                <span key={t}>
-                  <i className="ds-flow-dot" />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </figure>
+          <PrimeFlow />
         </>
       )}
       {kind === 'vignettes' && (

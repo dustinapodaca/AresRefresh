@@ -4,6 +4,7 @@ import Arrow from '../components/Arrow';
 import { AskStrip, FaqSection, Sheet } from '../components/market/parts';
 import type { Faq, SheetRow } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
+import PrimeFlow from '../components/home/PrimeFlow';
 import { PDF_URL, SAM_VERIFY } from '../components/capability/data';
 
 // Teaming and subcontracting (copy audit round 2, owner 2026-10-10): the landing page for
@@ -131,25 +132,10 @@ export default function Teaming() {
         <section className="ds-mk-sec ds-mk-split ds-tm-gets" aria-labelledby="tm-gets">
           <h2 id="tm-gets" className="ds-display-lg">What the prime gets.</h2>
           <Sheet rows={GETS} label="What the prime gets" />
-          {/* The Home prime panel's diagram (owner, 2026-10-10): under the heading on desktop,
-              after the sheet on phones. */}
-          <figure className="ds-primes-flow ds-tm-flow" aria-label="The prime holds the contract; Ares staffs restricted-area escort, access control, and relief posts under it">
-            <div className="ds-flow-node ds-flow-prime" aria-hidden="true">
-              <span className="ds-data">Prime contractor</span>
-              <span>Holds the contract</span>
-            </div>
-            <span className="ds-flow-line ds-flow-down" aria-hidden="true" />
-            <div className="ds-flow-node ds-flow-ares" aria-hidden="true">
-              <span className="ds-data">Ares Security</span>
-              <span>WOSB subcontractor · post orders, training, relief</span>
-            </div>
-            <span className="ds-flow-line ds-flow-fork" aria-hidden="true" />
-            <div className="ds-flow-posts" aria-hidden="true">
-              <span>Restricted-area escort</span>
-              <span>Access control</span>
-              <span>Relief and surge</span>
-            </div>
-          </figure>
+          {/* The Home prime panel's diagram and its light (owner, 2026-10-10; animation 2026-10-12),
+              on the plain black page, no dot grid: under the heading on desktop, after the
+              sheet on phones. */}
+          <PrimeFlow className="ds-tm-flow" />
         </section>
 
         <section className="ds-mk-sec" aria-labelledby="tm-how">

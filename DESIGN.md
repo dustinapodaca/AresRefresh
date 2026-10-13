@@ -434,7 +434,9 @@ exception to "no card containers" and "no glass" for this section.
   are SVG (the fork curves into the posts) and draw on scroll, and a rust light runs a 3.6s
   cycle from the prime through Ares (its rust dot pulses) down each wire, lighting each post's
   corner dot rust as it lands; it first starts when the diagram rises above the bottom quarter of
-  the window, then loops; ambient, still under reduced motion)**,
+  the window, then loops; ambient, still under reduced motion)** The same diagram and light run on /teaming (one
+  component, `src/components/home/PrimeFlow.tsx`), on the plain black page with no dot grid
+  (owner, 2026-10-12).,
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 
