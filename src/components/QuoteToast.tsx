@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import Arrow from './Arrow';
+import { PDF_URL } from './capability/data';
 
 // The quote form's result, front and center (owner, 2026-10-09; Mobbin: GetYourGuide and
 // Perplexity's centered confirmations). A dark glass card over the page, like the 404's:
@@ -6,11 +8,16 @@ import { useEffect, useRef, useState } from 'react';
 // Not a modal: the page stays usable behind it and nothing traps focus. A sent request
 // closes itself after DURATION (the hairline along its foot drains to show it, and pauses
 // while the pointer or focus is on the card); a failed one stays until closed.
+// Since 2026-10-13 (design review, owner) a sent request also shows what happens next, in three
+// short steps on hairlines, and the two ways to keep going: call, or take the PDF. No reply time
+// (owner rule).
 export type ToastData =
   | { kind: 'sent'; email: string; subject: string }
   | { kind: 'failed' };
 
-const DURATION = 7000;
+const DURATION = 14000; // longer since the card carries next steps (2026-10-13)
+
+const NEXT = ['We read your request', 'We walk your site, before anything is signed', 'You get a scoped proposal'];
 
 export default function QuoteToast({ data, onClose }: { data: ToastData | null; onClose: () => void }) {
   // Keep the last data while the card plays its exit, then unmount.
@@ -68,6 +75,23 @@ export default function QuoteToast({ data, onClose }: { data: ToastData | null; 
           <>
             <p className="ds-toast-line">
               Leadership reads every request and will reply to <span className="ds-toast-email">{shown.email}</span>.
+            </p>
+            <ol className="ds-toast-steps" aria-label="What happens next">
+              {NEXT.map((s, i) => (
+                <li key={s}>
+                  <span className="ds-data" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  {s}
+                </li>
+              ))}
+            </ol>
+            <p className="ds-toast-actions">
+              <a href="tel:+17196963966" className="ds-link">
+                Call <span className="ds-data">719-696-3966</span>
+              </a>
+              <a href={PDF_URL} className="ds-link" target="_blank" rel="noopener noreferrer">
+                Capability statement
+                <Arrow external size={12} />
+              </a>
             </p>
             <p className="ds-data ds-toast-ref">{shown.subject}</p>
             {/* Time left before it closes itself; it pauses on hover and focus. */}

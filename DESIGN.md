@@ -671,8 +671,10 @@ docs/contact-concepts.md.
   GetYourGuide, Perplexity): a dark glass card (canvas-tinted 80% over a 22px blur,
   white/12% edge, a light top line, a soft drop shadow, 4px corners, up to 440px), the green
   or amber light with one ring pulsing out, "Request sent." (Inter 600 20px), "Leadership
-  reads every request and will reply to {email}.", and the request's subject in mono under a
-  hairline. Not a modal (no scrim, no focus trap; Escape and the x close it). A sent request
+  reads every request and will reply to {email}.", then (design review, owner 2026-10-13) what happens next as three short numbered
+  steps on hairlines (We read your request; We walk your site, before anything is signed; You
+  get a scoped proposal), the call link and the capability statement PDF, and the request's
+  subject in mono under a hairline. No reply time. Closes itself after 14s (was 7s). Not a modal (no scrim, no focus trap; Escape and the x close it). A sent request
   closes itself after 7s, a 2px hairline on its foot draining the time (paused on hover and
   focus); a failure stays, with the contact email. Motion (Emil): in 320ms
   `cubic-bezier(0.23, 1, 0.32, 1)` rising 14px from 0.96 scale and an 8px blur; out 180ms,

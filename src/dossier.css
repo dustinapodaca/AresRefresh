@@ -3076,7 +3076,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-toast-close:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 2px; }
 .ds-toast-line { margin: 12px 0 0 20px; font-size: 15px; line-height: 1.5; color: #c4c8ce; text-wrap: pretty; }
 .ds-toast-email { color: var(--ds-fg); overflow-wrap: anywhere; }
-.ds-toast-ref { margin: 14px 0 0 20px; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.08); font-size: 12px; line-height: 1.5; color: var(--ds-fg-muted); }
+.ds-toast-steps { list-style: none; margin: 16px 0 0 20px; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-toast-steps li { display: flex; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgb(255 255 255 / 0.06); font-size: 14px; line-height: 1.4; color: #c4c8ce; }
+.ds-toast-steps .ds-data { flex: none; font-size: 11.5px; color: var(--ds-fg-faint); }
+.ds-toast-actions { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 16px 0 0 20px; font-size: 14px; }
+.ds-toast-actions .ds-link { color: var(--ds-fg); }
+.ds-toast-ref { margin: 16px 0 0 20px; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.08); font-size: 12px; line-height: 1.5; color: var(--ds-fg-muted); }
 .ds-toast-life {
   position: absolute;
   left: 0;
