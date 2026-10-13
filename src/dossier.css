@@ -1439,13 +1439,13 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    posts; the 2025 to 2027 bar fills to where the term stands. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; will-change: transform; }
     /* Drawn by the time the wire is fully on screen, so the light never runs on a half-drawn wire. */
     .ds-wire-base { stroke-dasharray: 100; animation: ds-wire-draw linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
     .ds-vig-bar span { animation: ds-vig-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 50%; }
   }
 }
-@keyframes ds-primes-settle { from { transform: translateY(24px); } to { transform: none; } }
+@keyframes ds-primes-settle { from { transform: translate3d(0, 24px, 0); } to { transform: translate3d(0, 0, 0); } }
 @keyframes ds-wire-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 /* The light (owner, 2026-10-12): one 3.6s cycle. It runs down from the prime (0 to 26%),
    Ares's dot pulses as it passes (26 to 40%), it splits down the three wires (30 to 62%), and
@@ -3802,7 +3802,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
    ============================================================ */
-@keyframes ds-value-rise { from { transform: translateY(64px) scale(0.97); } to { transform: none; } }
+/* Translate only (2026-10-12): a scale made the browser redraw the 1px glass edge every frame,
+   and it shimmered on scroll. */
+@keyframes ds-value-rise { from { transform: translate3d(0, 64px, 0); } to { transform: translate3d(0, 0, 0); } }
 @keyframes ds-hero-drift { from { transform: translateY(0); } to { transform: translateY(4%); } }
 @keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-40svh); } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
@@ -3858,6 +3860,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
         animation: ds-value-rise linear both;
         animation-timeline: view();
         animation-range: entry 0% cover 30%;
+        /* Its own layer: the card, edge and all, is drawn once and slides as an image. */
+        will-change: transform;
       }
       .ds-value:nth-child(2) { animation-range: entry 10% cover 36%; }
       .ds-value:nth-child(3) { animation-range: entry 20% cover 42%; }
