@@ -241,6 +241,13 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
       window.removeEventListener('pointerdown', onDown);
     };
   }, [openMenu, mobileOpen]);
+  // Phones (owner, 2026-10-13): closing the list resets it, so it always opens with every
+  // section folded. The reset waits for the close to finish so nothing jumps while it folds.
+  useEffect(() => {
+    if (mobileOpen) return;
+    const t = window.setTimeout(() => setMobileMenu(null), 320);
+    return () => window.clearTimeout(t);
+  }, [mobileOpen]);
   // Phones: the page holds still while the list is open.
   useEffect(() => {
     if (!mobileOpen) return;
