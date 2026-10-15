@@ -756,6 +756,11 @@ const Topography = ({
       powerPreference: 'high-performance'
     });
     if (!container || !canvas || !gl) return undefined;
+    // Ares (2026-10-15): skip software rendering (no GPU: SwiftShader or llvmpipe). It runs on the
+    // CPU, so slowly that it stalls the page; the dark hero box shows instead.
+    const info = gl.getExtension('WEBGL_debug_renderer_info');
+    const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
+    if (/swiftshader|llvmpipe|software/i.test(renderer)) return undefined;
 
     const floatTargets = !!gl.getExtension('EXT_color_buffer_float');
     const terrain = link(gl, terrainVertex(floatTargets), terrainFragment(floatTargets));

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
@@ -47,6 +48,13 @@ export default function Hero() {
   // B's line); the other options stay at /?hero=.
   const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'b2') as OptionKey];
   const bg = params.get('herobg') === 'photo' ? 'photo' : 'topo';
+  // The terrain is drawn in the browser only, after mount, and never for automated browsers:
+  // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
+  // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
+  const [live, setLive] = useState(false);
+  useEffect(() => {
+    if (!navigator.webdriver) setLive(true);
+  }, []);
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
       {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
@@ -60,7 +68,7 @@ export default function Hero() {
         </div>
       ) : (
         <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
-          <Topography
+          {live && <Topography
             color="#7a3c17"
             lineCount={22}
             lineWidth={1.2}
@@ -74,7 +82,7 @@ export default function Hero() {
             fog={0.35}
             hoverEffect="lift"
             clickEffect="pulse"
-          />
+          />}
         </div>
       )}
 
