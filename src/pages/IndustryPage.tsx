@@ -31,7 +31,7 @@ export default function IndustryPage() {
             <p className="ds-lead">{ind.lead}</p>
             <div className="ds-actions">
               <Link to={quote} className="ds-btn ds-btn-primary">
-                Request a Quote
+                Request a quote
                 <Arrow />
               </Link>
               <a href="tel:+17196963966" className="ds-link">

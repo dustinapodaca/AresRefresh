@@ -439,6 +439,16 @@ exception to "no card containers" and "no glass" for this section.
   the window, then loops; ambient, still under reduced motion)** The same diagram and light run on /teaming (one
   component, `src/components/home/PrimeFlow.tsx`), on the plain black page with no dot grid
   (owner, 2026-10-12).,
+  **pipeline** (`/?prime=pipeline`, owner 2026-10-15, after gladia.io's "foundation of every voice
+  product"): one stack of five cards (Prime contractor; Ares Security with WOSB250470 and
+  WBE2303571; Restricted-Area Escort, Space Force base, 2025 to 2027 with a term bar; Access
+  Control, post orders written by Ares; Relief & Surge) on a vertical line that grows with the
+  scroll, its rust tip riding at 70% of the window (`PrimePipeline.tsx`). Cards wait at 0.62
+  opacity, 22px lower; as the tip reaches one it lifts into place, a light runs once around its
+  edge (1.1s), its values brighten in turn, and a small status tag in the status green comes up
+  (2px corners). At the foot "Fewer than 1% of shifts missed · since 2021" lights green and a
+  rust light starts running down the line. On desktop the copy is sticky beside it (the panel is
+  `overflow: clip` for this form). Built and still under reduced motion.
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 

@@ -4401,3 +4401,73 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-micons a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 34px; color: var(--ds-fg-muted) !important; transition: color 180ms var(--ds-ease); }
 .ds-np-micons a:hover { color: #fff !important; }
 .ds-np-sub-mail { display: none; }
+
+/* ---------- Prime pipeline (owner, 2026-10-15, after gladia.io; /?prime=pipeline) ----------
+   One stack of cards on a vertical line that grows with the scroll (--p, 0 to 1, set in
+   PrimePipeline.tsx; --h is the figure's height). Cards wait slightly dimmed and lower, then lift
+   into place as the line's tip reaches them, with a light that runs once around the edge. */
+/* overflow: clip, not hidden, so the panel isn't a scroll box and the copy can stick. */
+.ds-primes-panel[data-form='pipeline'] { overflow: clip; }
+@property --ds-pipe-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.ds-pipe { position: relative; display: grid; justify-items: center; gap: 52px; margin: 40px 0 0; padding: 36px 0 8px; --p: 0; --h: 0px; }
+.ds-pipe-line { position: absolute; top: 0; bottom: 26px; left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
+.ds-pipe-fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
+.ds-pipe-tip { position: absolute; top: 0; left: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); transform: translateY(calc(var(--p) * var(--h))); opacity: calc(1 - var(--p) * var(--p) * var(--p)); }
+.ds-pipe-pulse { position: absolute; left: 50%; top: 0; width: 2px; height: 56px; margin-left: -1px; border-radius: 2px; background: linear-gradient(to bottom, rgb(188 111 64 / 0), var(--ds-rust)); opacity: 0; }
+
+.ds-pipe-card { position: relative; z-index: 1; width: min(100%, 344px); padding: 16px 18px 17px; border-radius: 4px; translate: var(--x, 0px) 0;
+  background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
+  opacity: 0.62; transform: translateY(22px) scale(0.97); transition: opacity 420ms var(--ds-ease), transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ds-pipe-card[data-on] { opacity: 1; transform: none; }
+/* The light around the edge: a bright arc on a masked 1px ring, one turn as the card turns on. */
+.ds-pipe-card::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
+  background: conic-gradient(from var(--ds-pipe-a), transparent 0deg, transparent 250deg, rgb(241 196 154 / 0.95) 320deg, #fff 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.ds-pipe-card[data-on]::after { animation: ds-pipe-trace 1100ms cubic-bezier(0.45, 0, 0.3, 1) 120ms both; }
+@keyframes ds-pipe-trace { 0% { --ds-pipe-a: 0deg; opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { --ds-pipe-a: 360deg; opacity: 0; } }
+
+.ds-pipe-head { display: flex; align-items: center; gap: 9px; }
+.ds-pipe-head b { font-family: var(--ds-text); font-size: 15.5px; font-weight: 500; color: var(--ds-fg); }
+.ds-pipe-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.22); transition: background 300ms var(--ds-ease) 200ms, box-shadow 300ms var(--ds-ease) 200ms; }
+.ds-pipe-card[data-on] .ds-pipe-dot { background: var(--ds-fg-muted); }
+.ds-pipe-card[data-ares] .ds-pipe-dot, .ds-pipe-card[data-ares][data-on] .ds-pipe-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+.ds-pipe-sub { display: block; margin: 4px 0 0 16px; font-size: 12px; color: var(--ds-fg-faint); }
+.ds-pipe-rows { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid rgb(255 255 255 / 0.07); display: grid; gap: 8px; }
+.ds-pipe-rows > div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+.ds-pipe-rows dt { font-size: 13.5px; color: var(--ds-fg-muted); }
+.ds-pipe-rows dd { margin: 0; font-size: 13.5px; text-align: right; color: var(--ds-fg-muted); transition: color 320ms var(--ds-ease); transition-delay: calc(380ms + var(--i, 0) * 110ms); }
+.ds-pipe-rows dd.ds-data { font-size: 13px; }
+.ds-pipe-card[data-on] .ds-pipe-rows dd { color: var(--ds-fg); }
+.ds-pipe-bar { display: block; height: 3px; margin-top: 12px; border-radius: 2px; background: rgb(255 255 255 / 0.07); overflow: hidden; }
+.ds-pipe-bar span { display: block; height: 100%; width: 50%; background: var(--ds-fg); transform-origin: left; transform: scaleX(0); transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 520ms; }
+.ds-pipe-card[data-on] .ds-pipe-bar span { transform: none; }
+/* The status tag over the card's corner (2px corners, never a pill), in the site's status green. */
+.ds-pipe-tag { position: absolute; top: -26px; right: 0; padding: 2px 8px; border-radius: 2px; font-size: 11.5px; line-height: 18px; color: #9fd27f; background: rgb(124 184 95 / 0.1); box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.28);
+  opacity: 0.62; transform: translateY(4px) scale(0.94); transition: opacity 260ms var(--ds-ease) 640ms, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1) 640ms; }
+.ds-pipe-card:nth-of-type(odd) .ds-pipe-tag { right: auto; left: 0; }
+.ds-pipe-card[data-on] .ds-pipe-tag { opacity: 1; transform: none; }
+/* The finish: the reliability line lights green when the line reaches it. */
+.ds-pipe-end { position: relative; z-index: 1; display: inline-flex; max-width: 100%; text-wrap: balance; align-items: center; gap: 9px; margin: 0; padding: 8px 14px; border-radius: 2px; font-size: 12.5px; color: var(--ds-fg-muted); background: #08090b; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  transition: color 300ms var(--ds-ease), background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease), transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); transform: scale(0.96); }
+.ds-pipe-end i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.22); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
+.ds-pipe-end[data-on] { color: #c9e8b6; background: linear-gradient(rgb(124 184 95 / 0.12), rgb(124 184 95 / 0.12)), #08090b; box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.4); transform: none; }
+.ds-pipe-end[data-on] i { background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.2); }
+/* Once built, a rust light runs down the line on a loop (ambient). */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-pipe[data-done] .ds-pipe-pulse { animation: ds-pipe-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) 600ms infinite; }
+}
+@keyframes ds-pipe-run { 0% { transform: translateY(-56px); opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(var(--h)); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ds-pipe-card, .ds-pipe-card *, .ds-pipe-end, .ds-pipe-end i { transition: none !important; }
+}
+@media (max-width: 767px) {
+  .ds-pipe { gap: 40px; }
+  .ds-pipe-end { padding: 8px 12px; font-size: 11.5px; gap: 8px; }
+  .ds-pipe-card { width: min(100%, 290px); translate: calc(var(--x, 0px) * 0.4) 0; }
+}
+@media (min-width: 1024px) {
+  .ds-primes-panel[data-form='pipeline'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  /* The copy holds still while the pipeline builds beside it. */
+  .ds-primes-panel[data-form='pipeline'] .ds-primes-copy { grid-column: 1 / span 6; align-self: start; position: sticky; top: calc(var(--ds-header) + 40px); }
+  .ds-primes-panel[data-form='pipeline'] .ds-pipe { grid-column: 7 / span 6; margin-top: 0; padding-top: 30px; }
+}

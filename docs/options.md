@@ -13,7 +13,7 @@ Last checked against the code: 2026-10-11, branch `audit`.
 | Navigation (every page) | `?nav=` (sticks for the session) | `full` the panel nav edge to edge (owner, 2026-10-13) | `float` the floating card, `classic` the previous bar | `src/components/NavPanel.tsx`, `src/components/Header.tsx` | top of page |
 | Home hero | `/?hero=` | `b2` "A prepared officer on every post." (owner, 2026-10-10) | `current`, `a`, `b`, `b1`, `b3`, `b4`, `c` | `src/components/home/Hero.tsx` (`OPTIONS`) | `.ds-hero` |
 | Home 02 Industries | `/?industries=` | `plates` (owner, 2026-10-10) | `rows` | `src/components/home/Industries.tsx` | `.ds-industries` |
-| Home, For prime contractors | `/?prime=` | `diagram` (owner, 2026-10-10) | `split`, `vignettes` | `src/components/home/Industries.tsx` (`PrimesPanel`) | `.ds-primes-panel` |
+| Home, For prime contractors | `/?prime=` | `diagram` (owner, 2026-10-10) | `split`, `vignettes`, `pipeline` (2026-10-15, after gladia.io) | `src/components/home/Industries.tsx` (`PrimesPanel`) | `.ds-primes-panel` |
 | Home, patrol vehicles (Quality) | `/?vehicles=` | `side` the photo beside the facts | `wide`, `portrait`, `glass` (design review, 2026-10-13) | `src/components/home/Quality.tsx` (`FORMS`) | `.ds-quality` |
 | Services opening | `/services?hero=` | `plan` "Security officers, patrol, and access control." (copy audit) | `a`, `b`, `c`, `current` | `src/components/services/Opening.tsx` (`COPY`) | n/a, the opening is the top of the page |
 | Capability Statement, Past performance | `/capability-statement?past=` | `record` selected current and completed contracts (owner, 2026-10-11) | `current` the three current only | `src/components/capability/Sections.tsx` (`Past`), `data.ts` (`PAST_PERFORMANCE`, `PAST_CURRENT`) | `.ds-cs-past` |
