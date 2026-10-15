@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, useSearchParams } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import NavPanel, { useNavLayout } from './components/NavPanel';
@@ -26,7 +27,27 @@ import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
 import HomeNext from './pages/HomeNext';
 
+// The card surface (owner, 2026-10-15): gladia.io's frosted glass to compare at ?cards=glass
+// (?cards=solid goes back). The choice sticks for the session, like the nav. Sets
+// <html data-cards="glass">; the styles are in dossier.css ("Glass cards").
+function useCardStyle() {
+  const [params] = useSearchParams();
+  const asked = params.get('cards');
+  useEffect(() => {
+    let form: string | null = asked;
+    try {
+      if (asked) sessionStorage.setItem('ares-cards', asked);
+      else form = sessionStorage.getItem('ares-cards');
+    } catch {
+      // Storage blocked: the URL alone decides.
+    }
+    if (form === 'glass') document.documentElement.dataset.cards = 'glass';
+    else delete document.documentElement.dataset.cards;
+  }, [asked]);
+}
+
 export default function App() {
+  useCardStyle();
   // The panel nav, edge to edge (owner, 2026-10-13); ?nav=float and ?nav=classic to compare.
   const navLayout = useNavLayout();
   return (
