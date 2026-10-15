@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 
 // The prime contractor pipeline (owner, 2026-10-15, after gladia.io's "foundation of every voice
 // product"): the prime and Ares as cards on a vertical line that grows with the scroll. The
 // line's tip rides at 70% of the window; as it reaches a card the card lifts into place, a light
-// runs once around its edge, its values brighten in turn, and its status tag comes up. From Ares
-// three wires branch out, one after another, to the three posts: small tiles that step down left
-// to right and light as their wire arrives (owner, 2026-10-15: the posts were full cards). Then a
-// rust light runs down the line on a loop. Every fact is one already on the panel. Reduced
+// runs once around its edge, a shine sweeps across it, its values brighten in turn, and its status
+// tag comes up. From the foot of Ares three separate straight lines drop to the three posts, small
+// tiles that step down left to right; the lines grow with the scroll too, and each tile lights the
+// same way as the tip reaches it (owner, 2026-10-15: the posts were full cards, then curved wires).
+// Then a rust light runs down the line on a loop. Every fact is one already on the panel. Reduced
 // motion: built and still.
 type Row = { label: string; value: string; mono?: boolean };
 type Card = { title: string; sub: string; rows: Row[]; tag: string; ares?: boolean };
@@ -32,42 +33,6 @@ const CARDS: Card[] = [
 
 const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
 
-// The three wires from Ares to the posts, drawn at the box's real size (measured), each from the
-// top center down to the top center of its tile.
-function PostWires({ box }: { box: RefObject<HTMLDivElement | null> }) {
-  const [geo, setGeo] = useState<{ w: number; h: number; ends: { x: number; y: number }[] }>({ w: 300, h: 100, ends: [] });
-  useEffect(() => {
-    const el = box.current;
-    if (!el) return;
-    const measure = () => {
-      const tiles = Array.from(el.querySelectorAll<HTMLElement>('.ds-pipe-post'));
-      setGeo({
-        w: el.offsetWidth,
-        h: el.offsetHeight,
-        ends: tiles.map((t) => ({ x: t.offsetLeft + t.offsetWidth / 2, y: t.offsetTop })),
-      });
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [box]);
-  const mid = geo.w / 2;
-  return (
-    <svg className="ds-pipe-wires" viewBox={`0 0 ${geo.w} ${geo.h}`} width={geo.w} height={geo.h} aria-hidden="true">
-      {geo.ends.map(({ x, y }, i) => {
-        const d = Math.abs(x - mid) < 1 ? `M${mid} 0V${y}` : `M${mid} 0C${mid} ${y * 0.55} ${x} ${y * 0.35} ${x} ${y}`;
-        return (
-          <g key={i} style={{ '--i': i } as CSSProperties}>
-            <path className="ds-pipe-wire" d={d} pathLength="100" />
-            <path className="ds-pipe-wire-lit" d={d} pathLength="100" />
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
 export default function PrimePipeline({ className = '' }: { className?: string }) {
   const ref = useRef<HTMLElement>(null);
   const postsRef = useRef<HTMLDivElement>(null);
@@ -76,11 +41,21 @@ export default function PrimePipeline({ className = '' }: { className?: string }
     const posts = postsRef.current;
     if (!el || !posts) return;
     const cards = Array.from(el.querySelectorAll<HTMLElement>('.ds-pipe-card'));
+    const tiles = Array.from(posts.querySelectorAll<HTMLElement>('.ds-pipe-post'));
+    const drops = Array.from(posts.querySelectorAll<HTMLElement>('.ds-pipe-drop'));
+    // Each drop runs straight down from the foot of Ares to the top of its tile.
+    const place = () =>
+      tiles.forEach((t, i) => {
+        drops[i].style.left = `${t.offsetLeft + t.offsetWidth / 2}px`;
+        drops[i].style.height = `${t.offsetTop}px`;
+      });
+    place();
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (still) {
       el.style.setProperty('--p', '1');
       cards.forEach((c) => (c.dataset.on = 'true'));
-      posts.dataset.on = 'true';
+      tiles.forEach((t) => (t.dataset.on = 'true'));
+      drops.forEach((d) => d.style.setProperty('--q', '1'));
       el.dataset.done = 'true';
       return;
     }
@@ -98,21 +73,29 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       cards.forEach((c) => {
         if (!c.dataset.on && tip >= c.offsetTop + 8) c.dataset.on = 'true';
       });
-      // The wires branch out once the tip reaches the foot of Ares; the light loop follows.
-      if (!posts.dataset.on && tip >= lineH) {
-        posts.dataset.on = 'true';
-        el.dataset.done = 'true';
-      }
+      // Past the foot of Ares the tip carries on down the three drops; each tile turns on as its
+      // drop reaches it (the left one first: it sits highest).
+      const below = tip - lineH;
+      tiles.forEach((t, i) => {
+        const len = t.offsetTop;
+        drops[i].style.setProperty('--q', Math.min(1, Math.max(0, below / len)).toFixed(4));
+        if (!t.dataset.on && below >= len + 8) t.dataset.on = 'true';
+      });
+      if (!el.dataset.done && tiles.every((t) => t.dataset.on)) el.dataset.done = 'true';
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
     };
+    const onResize = () => {
+      place();
+      onScroll();
+    };
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onResize);
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(raf);
     };
   }, []);
@@ -147,7 +130,11 @@ export default function PrimePipeline({ className = '' }: { className?: string }
         </div>
       ))}
       <div ref={postsRef} className="ds-pipe-posts" aria-hidden="true">
-        <PostWires box={postsRef} />
+        {POSTS.map((t) => (
+          <span key={t} className="ds-pipe-drop">
+            <span />
+          </span>
+        ))}
         {POSTS.map((t, i) => (
           <span key={t} className="ds-pipe-post" style={{ '--i': i } as CSSProperties}>
             <i className="ds-pipe-dot" />

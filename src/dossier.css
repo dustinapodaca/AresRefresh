@@ -4439,35 +4439,40 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-pipe-rows dd.ds-data { font-size: 13px; }
 .ds-pipe-card[data-on] .ds-pipe-rows dd { color: var(--ds-fg); }
 /* The status tag over the card's corner (2px corners, never a pill), in the site's status green. */
-.ds-pipe-tag { position: absolute; top: -26px; right: 0; padding: 2px 8px; border-radius: 2px; font-size: 11.5px; line-height: 18px; color: #9fd27f; background: rgb(124 184 95 / 0.1); box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.28);
+.ds-pipe-tag { position: absolute; top: -26px; right: 0; padding: 2px 8px; border-radius: 2px; font-size: 11.5px; line-height: 18px; color: #9fd27f; background: linear-gradient(rgb(124 184 95 / 0.1), rgb(124 184 95 / 0.1)), #08090b; z-index: 2; box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.28);
   opacity: 0.62; transform: translateY(4px) scale(0.94); transition: opacity 260ms var(--ds-ease) 640ms, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1) 640ms; }
 .ds-pipe-card:nth-of-type(odd) .ds-pipe-tag { right: auto; left: 0; }
 .ds-pipe-card[data-on] .ds-pipe-tag { opacity: 1; transform: none; }
-/* The posts (owner, 2026-10-15): three small tiles stepping down left to right, under three
-   wires from the foot of Ares that draw one after another; each tile lights as its wire lands. */
+/* The posts (owner, 2026-10-15): three small tiles stepping down left to right, each under its
+   own straight line from the foot of Ares; the lines fill with the scroll (--q, 0 to 1) and each
+   tile lights as its line reaches it. */
+.ds-pipe-drop { position: absolute; top: 0; width: 1px; margin-left: -0.5px; background: rgb(255 255 255 / 0.08); }
+.ds-pipe-drop > span { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--q, 0)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.42), var(--ds-rust)); }
 .ds-pipe-posts { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 10px; width: min(100%, 440px); margin-top: -52px; padding-top: 52px; }
-.ds-pipe-wires { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
-.ds-pipe-wire, .ds-pipe-wire-lit { fill: none; stroke-width: 1; }
-.ds-pipe-wire { stroke: rgb(255 255 255 / 0.08); }
-.ds-pipe-wire-lit { stroke: rgb(255 255 255 / 0.42); stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 520ms cubic-bezier(0.45, 0, 0.3, 1); transition-delay: calc(var(--i) * 200ms); }
-.ds-pipe-posts[data-on] .ds-pipe-wire-lit { stroke-dashoffset: 0; }
 .ds-pipe-post { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 54px; margin-top: calc(var(--i) * 28px); padding: 12px 10px 12px 14px; border-radius: 4px; text-align: center; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--ds-fg);
   background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
-  opacity: 0.62; transform: translateY(10px); transition: opacity 360ms var(--ds-ease), transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1); transition-delay: calc(420ms + var(--i) * 200ms); }
+  opacity: 0.62; transform: translateY(10px); transition: opacity 420ms var(--ds-ease), transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .ds-pipe-post .ds-pipe-dot { position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; }
-.ds-pipe-posts[data-on] .ds-pipe-post { opacity: 1; transform: none; }
-.ds-pipe-posts[data-on] .ds-pipe-post .ds-pipe-dot { background: var(--ds-rust); box-shadow: 0 0 0 2px rgb(188 111 64 / 0.2); transition-delay: calc(520ms + var(--i) * 200ms); }
+.ds-pipe-post[data-on] { opacity: 1; transform: none; }
+.ds-pipe-post[data-on] .ds-pipe-dot { background: var(--ds-rust); box-shadow: 0 0 0 2px rgb(188 111 64 / 0.2); }
 .ds-pipe-post::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
   background: conic-gradient(from var(--ds-pipe-a), transparent 0deg, transparent 250deg, rgb(241 196 154 / 0.95) 320deg, #fff 340deg, transparent 360deg);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
-.ds-pipe-posts[data-on] .ds-pipe-post::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) both; animation-delay: calc(460ms + var(--i) * 200ms); }
+.ds-pipe-post[data-on]::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) 100ms both; }
+/* The shine (gladia.io): a soft band of light sweeps across a card once as it lights up. */
+.ds-pipe-card::before, .ds-pipe-post::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.07) 44%, rgb(255 236 220 / 0.13) 50%, rgb(255 255 255 / 0.07) 56%, transparent 70%) no-repeat;
+  background-size: 250% 100%; background-position: 130% 0; }
+.ds-pipe-card[data-on]::before, .ds-pipe-post[data-on]::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
+@keyframes ds-pipe-shine { 0% { opacity: 0; background-position: 130% 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; background-position: -30% 0; } }
 /* Once built, a rust light runs down the line on a loop (ambient). */
 @media (prefers-reduced-motion: no-preference) {
   .ds-pipe[data-done] .ds-pipe-pulse { animation: ds-pipe-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) 600ms infinite; }
 }
 @keyframes ds-pipe-run { 0% { transform: translateY(-56px); opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(var(--h)); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .ds-pipe-card, .ds-pipe-card *, .ds-pipe-post, .ds-pipe-post *, .ds-pipe-wire-lit { transition: none !important; }
+  .ds-pipe-card, .ds-pipe-card *, .ds-pipe-post, .ds-pipe-post * { transition: none !important; }
+  .ds-pipe-card::before, .ds-pipe-post::before, .ds-pipe-card::after, .ds-pipe-post::after { animation: none !important; }
 }
 @media (max-width: 767px) {
   .ds-pipe { gap: 40px; }
