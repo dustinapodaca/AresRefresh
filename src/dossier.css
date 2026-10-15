@@ -4479,6 +4479,15 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-primes-panel[data-form='pipeline'] .ds-pipe { grid-column: 7 / span 6; margin-top: 0; padding-top: 30px; }
 }
 
+/* Home hero terrain, desktop (owner, 2026-10-15): a longer, stronger black fade into 01 Record
+   than the photo's (it was transparent to solid over the last 26%). */
+@media (min-width: 900px) {
+  .ds-hero-topo {
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgb(0 0 0 / 0.35) 20%, #000 46%);
+    mask-image: linear-gradient(to top, transparent 0%, rgb(0 0 0 / 0.35) 20%, #000 46%);
+  }
+}
+
 /* ---------- Glass cards (owner, 2026-10-15, after gladia.io; ?cards=glass) ----------
    Gladia's recipe on the site's own corners: a see-through card with a dark wash (52% black at
    the top to 32% at the foot), the page behind blurred and its color lifted (22px, saturate
