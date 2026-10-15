@@ -52,8 +52,16 @@ export default function Hero() {
   // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
   // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
   const [live, setLive] = useState(false);
+  // Desktop zooms out (owner, 2026-10-15): the component narrows its camera on wide screens, so
+  // the land reads magnified there; smaller landforms from 900px. Phones keep the full size.
+  const [wide, setWide] = useState(false);
   useEffect(() => {
     if (!navigator.webdriver) setLive(true);
+    const mq = window.matchMedia('(min-width: 900px)');
+    const sync = () => setWide(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
   }, []);
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
@@ -72,7 +80,8 @@ export default function Hero() {
             color="#7a3c17"
             lineCount={22}
             lineWidth={1.2}
-            elevation={1.15}
+            elevation={0.65}
+            scale={wide ? 0.55 : 1}
             foreground={0.2}
             tilt={32}
             speed={0.25}
