@@ -440,13 +440,15 @@ exception to "no card containers" and "no glass" for this section.
   component, `src/components/home/PrimeFlow.tsx`), on the plain black page with no dot grid
   (owner, 2026-10-12).,
   **pipeline** (`/?prime=pipeline`, owner 2026-10-15, after gladia.io's "foundation of every voice
-  product"): one stack of five cards (Prime contractor; Ares Security with WOSB250470 and
-  WBE2303571; Restricted-Area Escort, Space Force base, 2025 to 2027 with a term bar; Access
-  Control, post orders written by Ares; Relief & Surge) on a vertical line that grows with the
-  scroll, its rust tip riding at 70% of the window (`PrimePipeline.tsx`). Cards wait at 0.62
+  product"): Prime contractor and Ares Security (WOSB250470, WBE2303571) as cards on a vertical
+  line that grows with the scroll, its rust tip riding at 70% of the window
+  (`PrimePipeline.tsx`); from the foot of Ares three wires branch out one after another (200ms
+  apart) to the three posts as small tiles, the service name only, stepping down 28px each left
+  to right (18px on phones), each lighting (rust dot, edge light) as its wire lands (owner,
+  2026-10-15: they were full cards with details). Cards wait at 0.62
   opacity, 22px lower; as the tip reaches one it lifts into place, a light runs once around its
   edge (1.1s), its values brighten in turn, and a small status tag in the status green comes up
-  (2px corners). Once the last card is on, a rust light starts running down the line (a green
+  (2px corners). Once the wires branch, a rust light starts running down the line (a green
   "Fewer than 1% of shifts missed" finish was removed, owner 2026-10-15). On desktop the copy is sticky beside it (the panel is
   `overflow: clip` for this form). Built and still under reduced motion.
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar

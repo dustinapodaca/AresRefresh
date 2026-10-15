@@ -4410,12 +4410,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-primes-panel[data-form='pipeline'] { overflow: clip; }
 @property --ds-pipe-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 .ds-pipe { position: relative; display: grid; justify-items: center; gap: 52px; margin: 40px 0 0; padding: 36px 0 0; --p: 0; --h: 0px; }
-.ds-pipe-line { position: absolute; top: 0; bottom: 40px; /* ends behind the last card */ left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
+.ds-pipe-line { position: absolute; top: 0; height: var(--h); /* to the foot of Ares, where the wires begin */ left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
 .ds-pipe-fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
 .ds-pipe-tip { position: absolute; top: 0; left: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); transform: translateY(calc(var(--p) * var(--h))); opacity: calc(1 - var(--p) * var(--p) * var(--p)); }
 .ds-pipe-pulse { position: absolute; left: 50%; top: 0; width: 2px; height: 56px; margin-left: -1px; border-radius: 2px; background: linear-gradient(to bottom, rgb(188 111 64 / 0), var(--ds-rust)); opacity: 0; }
 
-.ds-pipe-card { position: relative; z-index: 1; width: min(100%, 344px); padding: 16px 18px 17px; border-radius: 4px; translate: var(--x, 0px) 0;
+.ds-pipe-card { position: relative; z-index: 1; width: min(100%, 344px); padding: 16px 18px 17px; border-radius: 4px;
   background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
   opacity: 0.62; transform: translateY(22px) scale(0.97); transition: opacity 420ms var(--ds-ease), transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .ds-pipe-card[data-on] { opacity: 1; transform: none; }
@@ -4438,25 +4438,42 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-pipe-rows dd { margin: 0; font-size: 13.5px; text-align: right; color: var(--ds-fg-muted); transition: color 320ms var(--ds-ease); transition-delay: calc(380ms + var(--i, 0) * 110ms); }
 .ds-pipe-rows dd.ds-data { font-size: 13px; }
 .ds-pipe-card[data-on] .ds-pipe-rows dd { color: var(--ds-fg); }
-.ds-pipe-bar { display: block; height: 3px; margin-top: 12px; border-radius: 2px; background: rgb(255 255 255 / 0.07); overflow: hidden; }
-.ds-pipe-bar span { display: block; height: 100%; width: 50%; background: var(--ds-fg); transform-origin: left; transform: scaleX(0); transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 520ms; }
-.ds-pipe-card[data-on] .ds-pipe-bar span { transform: none; }
 /* The status tag over the card's corner (2px corners, never a pill), in the site's status green. */
 .ds-pipe-tag { position: absolute; top: -26px; right: 0; padding: 2px 8px; border-radius: 2px; font-size: 11.5px; line-height: 18px; color: #9fd27f; background: rgb(124 184 95 / 0.1); box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.28);
   opacity: 0.62; transform: translateY(4px) scale(0.94); transition: opacity 260ms var(--ds-ease) 640ms, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1) 640ms; }
 .ds-pipe-card:nth-of-type(odd) .ds-pipe-tag { right: auto; left: 0; }
 .ds-pipe-card[data-on] .ds-pipe-tag { opacity: 1; transform: none; }
+/* The posts (owner, 2026-10-15): three small tiles stepping down left to right, under three
+   wires from the foot of Ares that draw one after another; each tile lights as its wire lands. */
+.ds-pipe-posts { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 10px; width: min(100%, 440px); margin-top: -52px; padding-top: 52px; }
+.ds-pipe-wires { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
+.ds-pipe-wire, .ds-pipe-wire-lit { fill: none; stroke-width: 1; }
+.ds-pipe-wire { stroke: rgb(255 255 255 / 0.08); }
+.ds-pipe-wire-lit { stroke: rgb(255 255 255 / 0.42); stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 520ms cubic-bezier(0.45, 0, 0.3, 1); transition-delay: calc(var(--i) * 200ms); }
+.ds-pipe-posts[data-on] .ds-pipe-wire-lit { stroke-dashoffset: 0; }
+.ds-pipe-post { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; min-height: 54px; margin-top: calc(var(--i) * 28px); padding: 12px 10px 12px 14px; border-radius: 4px; text-align: center; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--ds-fg);
+  background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
+  opacity: 0.62; transform: translateY(10px); transition: opacity 360ms var(--ds-ease), transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1); transition-delay: calc(420ms + var(--i) * 200ms); }
+.ds-pipe-post .ds-pipe-dot { position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; }
+.ds-pipe-posts[data-on] .ds-pipe-post { opacity: 1; transform: none; }
+.ds-pipe-posts[data-on] .ds-pipe-post .ds-pipe-dot { background: var(--ds-rust); box-shadow: 0 0 0 2px rgb(188 111 64 / 0.2); transition-delay: calc(520ms + var(--i) * 200ms); }
+.ds-pipe-post::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
+  background: conic-gradient(from var(--ds-pipe-a), transparent 0deg, transparent 250deg, rgb(241 196 154 / 0.95) 320deg, #fff 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.ds-pipe-posts[data-on] .ds-pipe-post::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) both; animation-delay: calc(460ms + var(--i) * 200ms); }
 /* Once built, a rust light runs down the line on a loop (ambient). */
 @media (prefers-reduced-motion: no-preference) {
   .ds-pipe[data-done] .ds-pipe-pulse { animation: ds-pipe-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) 600ms infinite; }
 }
 @keyframes ds-pipe-run { 0% { transform: translateY(-56px); opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(var(--h)); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .ds-pipe-card, .ds-pipe-card * { transition: none !important; }
+  .ds-pipe-card, .ds-pipe-card *, .ds-pipe-post, .ds-pipe-post *, .ds-pipe-wire-lit { transition: none !important; }
 }
 @media (max-width: 767px) {
   .ds-pipe { gap: 40px; }
-  .ds-pipe-card { width: min(100%, 290px); translate: calc(var(--x, 0px) * 0.4) 0; }
+  .ds-pipe-card { width: min(100%, 290px); }
+  .ds-pipe-posts { margin-top: -40px; padding-top: 40px; gap: 6px; }
+  .ds-pipe-post { margin-top: calc(var(--i) * 18px); padding: 11px 6px 11px 8px; font-size: 12px; }
 }
 @media (min-width: 1024px) {
   .ds-primes-panel[data-form='pipeline'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
