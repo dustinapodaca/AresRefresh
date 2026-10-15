@@ -80,7 +80,9 @@ export default function Hero() {
             color="#7a3c17"
             lineCount={22}
             lineWidth={1.2}
-            elevation={0.65}
+            // Elevation 0.65 (owner, 2026-10-15). Desktop's smaller landforms scale the height down
+            // with them, or the hills keep their old steepness (0.65 / 0.55 = 1.18, near the old 1.15).
+            elevation={wide ? 0.36 : 0.65}
             scale={wide ? 0.55 : 1}
             foreground={0.2}
             tilt={32}

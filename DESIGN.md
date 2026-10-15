@@ -327,7 +327,8 @@ every page.
 - **Hero background (Home), from 2026-10-15 (owner):** React Bits' Topography
   (`src/components/home/Topography.tsx`, WebGL2), contour lines of a terrain in the site's rust
   (`#7a3c17`; 22 lines, every fifth bolder, elevation 0.65 (owner, 2026-10-15; was 1.15), landforms at 0.55 scale from 900px so
-  desktop reads zoomed out (the component narrows its camera on wide screens; phones keep 1), tilt 32, a slow forward glide, glow
+  desktop reads zoomed out (the component narrows its camera on wide screens; phones keep 1), with
+  the height scaled the same (0.36 there) so the hills stay as flat, tilt 32, a slow forward glide, glow
   0.6), drifting under the copy in the photo's box with the same shades and the glass strip over
   it; the cursor lifts the land and a click sends a ring out over it. It rises from flat on load,
   pauses off screen, and holds still under reduced motion. The copper-glass tower photo below moved
