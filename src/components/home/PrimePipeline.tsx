@@ -7,7 +7,7 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 // tag comes up. From the foot of Ares three separate straight lines drop to the three posts, small
 // tiles that step down left to right; the lines grow with the scroll too, and each tile lights the
 // same way as the tip reaches it (owner, 2026-10-15: the posts were full cards, then curved wires).
-// Then a rust light runs down the line on a loop. Every fact is one already on the panel. Reduced
+// Nothing loops once it is built (owner, 2026-10-15: the rust light running down the line was removed). Every fact is one already on the panel. Reduced
 // motion: built and still.
 type Row = { label: string; value: string; mono?: boolean };
 type Card = { title: string; sub: string; rows: Row[]; tag: string; ares?: boolean };
@@ -56,7 +56,6 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       cards.forEach((c) => (c.dataset.on = 'true'));
       tiles.forEach((t) => (t.dataset.on = 'true'));
       drops.forEach((d) => d.style.setProperty('--q', '1'));
-      el.dataset.done = 'true';
       return;
     }
     let raf = 0;
@@ -81,7 +80,6 @@ export default function PrimePipeline({ className = '' }: { className?: string }
         drops[i].style.setProperty('--q', Math.min(1, Math.max(0, below / len)).toFixed(4));
         if (!t.dataset.on && below >= len + 8) t.dataset.on = 'true';
       });
-      if (!el.dataset.done && tiles.every((t) => t.dataset.on)) el.dataset.done = 'true';
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -109,7 +107,6 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       <span className="ds-pipe-line" aria-hidden="true">
         <span className="ds-pipe-fill" />
         <span className="ds-pipe-tip" />
-        <span className="ds-pipe-pulse" />
       </span>
       {CARDS.map((c) => (
         <div key={c.title} className="ds-pipe-card" data-ares={c.ares ? 'true' : undefined} aria-hidden="true">

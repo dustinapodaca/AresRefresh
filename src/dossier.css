@@ -4413,7 +4413,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-pipe-line { position: absolute; top: 0; height: var(--h); /* to the foot of Ares, where the wires begin */ left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
 .ds-pipe-fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
 .ds-pipe-tip { position: absolute; top: 0; left: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); transform: translateY(calc(var(--p) * var(--h))); opacity: calc(1 - var(--p) * var(--p) * var(--p)); }
-.ds-pipe-pulse { position: absolute; left: 50%; top: 0; width: 2px; height: 56px; margin-left: -1px; border-radius: 2px; background: linear-gradient(to bottom, rgb(188 111 64 / 0), var(--ds-rust)); opacity: 0; }
 
 .ds-pipe-card { position: relative; z-index: 1; width: min(100%, 344px); padding: 16px 18px 17px; border-radius: 4px;
   background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
@@ -4465,11 +4464,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   background-size: 250% 100%; background-position: 130% 0; }
 .ds-pipe-card[data-on]::before, .ds-pipe-post[data-on]::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
 @keyframes ds-pipe-shine { 0% { opacity: 0; background-position: 130% 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; background-position: -30% 0; } }
-/* Once built, a rust light runs down the line on a loop (ambient). */
-@media (prefers-reduced-motion: no-preference) {
-  .ds-pipe[data-done] .ds-pipe-pulse { animation: ds-pipe-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) 600ms infinite; }
-}
-@keyframes ds-pipe-run { 0% { transform: translateY(-56px); opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(var(--h)); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
   .ds-pipe-card, .ds-pipe-card *, .ds-pipe-post, .ds-pipe-post * { transition: none !important; }
   .ds-pipe-card::before, .ds-pipe-post::before, .ds-pipe-card::after, .ds-pipe-post::after { animation: none !important; }
