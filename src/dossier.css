@@ -2856,7 +2856,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cs-thumb img { display: block; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1); }
 @media (hover: hover) and (pointer: fine) { .ds-cs-thumb:hover { transform: translateY(-4px); } }
 .ds-cs-close-copy .ds-actions { margin-top: 28px; }
-.ds-cs-close-contact { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 22px 0 0; }
 @media (min-width: 1024px) {
   .ds-cs-close { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
   .ds-cs-thumb { grid-column: 1 / span 3; width: 100%; max-width: 260px; }

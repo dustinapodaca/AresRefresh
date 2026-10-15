@@ -414,7 +414,8 @@ function CredTable() {
   );
 }
 
-// 05 Download, the close: the statement's thumbnail beside every way to take it with you.
+// 05 Download, the close: the statement's thumbnail beside the download and open links (the quote
+// and call links came out, owner 2026-10-15; the nav carries the quote).
 export function Download() {
   return (
     <section id="download" className="ds-cs-close" aria-labelledby="dl-title">
@@ -435,15 +436,6 @@ export function Download() {
             <Arrow external size={14} />
           </a>
         </div>
-        <p className="ds-cs-close-contact">
-          <Link to="/contact" className="ds-link">
-            Request a Quote
-            <Arrow />
-          </Link>
-          <a href="tel:+17196963966" className="ds-link">
-            Call <span className="ds-data">719-696-3966</span>
-          </a>
-        </p>
       </div>
     </section>
   );

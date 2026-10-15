@@ -697,7 +697,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   third person ("Ares has…", "How to buy from Ares."); the rest of the site says "we".
   The first-person lines stay at `?voice=first`.
 - **Download (the close):** the PDF thumbnail beside "Take this capability statement
-  with you.", Download, Open in a new tab, quote, and phone, over the closing rust light.
+  with you.", Download and Open in a new tab, over the closing rust light (the quote and phone links came out, owner 2026-10-15).
 
 ### Request a Quote page ("The Intake", 2026-10-05)
 A short form page, so no rail and no scroll effects (owner). Concept and Mobbin board:
