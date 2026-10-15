@@ -292,11 +292,15 @@ Cards and glass are part of the system, not exceptions.
   gladia.io's speech-to-text page): every card becomes see-through glass: a dark wash from 52%
   black at the top to 32% at the foot, the page behind blurred 22px with its color lifted
   (saturate 1.65), a 1px white/10% edge with a white/14% inner line along the top, a soft shadow
-  beneath (0 12px 36px, black 28%), 14px corners (10px for cards inside cards, which are lighter:
-  white 6% to 1.5%, 16px blur). Glass only reads over light, so in this mode a soft rust and
-  amber glow sits behind the Record cards and inside the prime panel under the pipeline.
-  Gladia's "liquid" edge refraction (an SVG displacement filter) works in Chrome only, so it was
-  left out.
+  beneath (0 12px 36px, black 28%), the site's 4px corners (owner, 2026-10-15; cards inside cards
+  are lighter: white 6% to 1.5%, 16px blur). Each card carries its own light, a small lens flare
+  in one corner (a warm core, a rust halo, a faint streak), the corner turning card to card (top
+  left, top right, bottom right); the glow behind the Record cards and under the pipeline is kept
+  faint (rust 14 to 16%). The same stroke (`--ds-glass-edge` white/10%, `--ds-glass-top` the
+  white/14% inner top line) goes on every glass surface in this mode: the nav bar and float card,
+  the Home hero strip, the Services opening and card panels, the Capability frost band, the
+  footer band, the toast, and the 404 card. Gladia's "liquid" edge refraction (an SVG
+  displacement filter) works in Chrome only, so it was left out.
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.
