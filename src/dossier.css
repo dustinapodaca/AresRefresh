@@ -4517,7 +4517,7 @@ html[data-cards='glass'] .ds-primes-panel { background: linear-gradient(180deg, 
    the card so only its edge shows (Gladia's purple, in the site's rust). */
 html[data-cards='glass'] .ds-value {
   background:
-    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(226 146 90 / 0.85) 0%, rgb(188 111 64 / 0.42) 38%, rgb(139 73 32 / 0) 72%),
+    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%), /* Gladia's strength: 46% to 18%, at 0.9 */
     var(--ds-glass-wash);
 }
 
