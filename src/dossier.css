@@ -4485,9 +4485,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    Gladia's recipe on the site's own corners: a see-through card with a dark wash (52% black at
    the top to 32% at the foot), the page behind blurred and its color lifted (22px, saturate
    1.65), and one stroke for every glass surface on the site: a 1px white/10% edge with a
-   white/14% line just inside the top (--ds-glass-edge, --ds-glass-top). The cards themselves are
-   only glass; the light lives behind them: soft rust and amber glows under each card, toward one
-   of its corners, that come through the frost and spill past the edge (owner, 2026-10-15). */
+   white/14% line just inside the top (--ds-glass-edge, --ds-glass-top). No glows behind the cards
+   (tried and removed, owner 2026-10-15); the Home Record cards carry a rust light in one corner. */
 html[data-cards='glass'] {
   --ds-glass-edge: rgb(255 255 255 / 0.1);
   --ds-glass-top: inset 0 1px 0 rgb(255 255 255 / 0.14);
@@ -4512,54 +4511,14 @@ html[data-cards='glass'] :is(.ds-pipe-card, .ds-pipe-post, .ds-flow-node, .ds-fl
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
   backdrop-filter: blur(16px) saturate(1.6);
 }
-/* The light behind the glass: soft glows under each card, offset toward a corner, drawn on the
-   card's container so the glass frosts them and they spill past its edge. Each glow box runs
-   220px past its container so every glow fades out before it reaches an edge. */
 html[data-cards='glass'] .ds-primes-panel { background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 40%), #07080a; }
-/* Prime pipeline: behind the prime card's top right, Ares's lower left, and the posts. */
-html[data-cards='glass'] .ds-pipe::before {
-  content: ''; position: absolute; inset: -220px; z-index: 0; pointer-events: none;
+/* The Home Record cards (owner, 2026-10-15, after gladia.io's "How it compares" cards): one
+   light inside each card, a rust glow tucked into the lower right corner, centred just outside
+   the card so only its edge shows (Gladia's purple, in the site's rust). */
+html[data-cards='glass'] .ds-value {
   background:
-    radial-gradient(150px 120px at calc(220px + 0.82 * (100% - 440px)) calc(220px + 0.10 * (100% - 440px)), rgb(241 196 154 / 0.28), rgb(241 196 154 / 0) 72%),
-    radial-gradient(260px 200px at calc(220px + 0.80 * (100% - 440px)) calc(220px + 0.12 * (100% - 440px)), rgb(188 111 64 / 0.3), rgb(188 111 64 / 0) 72%),
-    radial-gradient(240px 190px at calc(220px + 0.14 * (100% - 440px)) calc(220px + 0.58 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
-    radial-gradient(130px 110px at calc(220px + 0.16 * (100% - 440px)) calc(220px + 0.56 * (100% - 440px)), rgb(241 196 154 / 0.2), rgb(241 196 154 / 0) 72%),
-    radial-gradient(280px 160px at calc(220px + 0.84 * (100% - 440px)) calc(220px + 0.98 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%);
-}
-/* Record: card one's top left, card two's top right, card three's lower right. */
-html[data-cards='glass'] .ds-values-list::after {
-  content: ''; position: absolute; z-index: -1; pointer-events: none; inset: -220px;
-  background:
-    radial-gradient(150px 120px at calc(220px + 0.02 * (100% - 440px)) calc(220px + 0.06 * (100% - 440px)), rgb(241 196 154 / 0.26), rgb(241 196 154 / 0) 72%),
-    radial-gradient(300px 220px at calc(220px + 0.04 * (100% - 440px)) calc(220px + 0.08 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
-    radial-gradient(150px 120px at calc(220px + 0.64 * (100% - 440px)) calc(220px + 0.04 * (100% - 440px)), rgb(241 196 154 / 0.24), rgb(241 196 154 / 0) 72%),
-    radial-gradient(300px 220px at calc(220px + 0.62 * (100% - 440px)) calc(220px + 0.06 * (100% - 440px)), rgb(188 111 64 / 0.3), rgb(188 111 64 / 0) 72%),
-    radial-gradient(150px 120px at calc(220px + 0.98 * (100% - 440px)) calc(220px + 0.96 * (100% - 440px)), rgb(241 196 154 / 0.24), rgb(241 196 154 / 0) 72%),
-    radial-gradient(300px 220px at calc(220px + 0.96 * (100% - 440px)) calc(220px + 0.94 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%);
-}
-/* Phones and tablets: ::after is the card pile's spacer there, so it goes back to that job and
-   the glows ride on the dot grid layer (::before) instead, inside its oval mask. */
-@media (max-width: 1023px) {
-  html[data-cards='glass'] .ds-values-list::after { position: static; inset: auto; z-index: auto; background: none; }
-  html[data-cards='glass'] .ds-values-list::before {
-    background-image:
-      radial-gradient(circle, rgb(238 240 242 / 0.14) 1.1px, transparent 1.6px),
-      radial-gradient(52% 16% at 22% 14%, rgb(188 111 64 / 0.36), rgb(188 111 64 / 0) 72%),
-      radial-gradient(52% 16% at 80% 46%, rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
-      radial-gradient(52% 16% at 24% 80%, rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%);
-    background-size: 16px 16px, 100% 100%, 100% 100%, 100% 100%;
-    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
-    background-position: center, 0 0, 0 0, 0 0;
-  }
-}
-/* Capability cards: a few glows across the grid. */
-html[data-cards='glass'] .ds-cs-cards { position: relative; isolation: isolate; }
-html[data-cards='glass'] .ds-cs-cards::before {
-  content: ''; position: absolute; z-index: -1; pointer-events: none; inset: -220px;
-  background:
-    radial-gradient(300px 220px at calc(220px + 0.02 * (100% - 440px)) calc(220px + 0.04 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%),
-    radial-gradient(300px 220px at calc(220px + 0.66 * (100% - 440px)) calc(220px + 0.46 * (100% - 440px)), rgb(188 111 64 / 0.24), rgb(188 111 64 / 0) 72%),
-    radial-gradient(300px 220px at calc(220px + 0.98 * (100% - 440px)) calc(220px + 0.96 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%);
+    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(226 146 90 / 0.85) 0%, rgb(188 111 64 / 0.42) 38%, rgb(139 73 32 / 0) 72%),
+    var(--ds-glass-wash);
 }
 
 /* One stroke for every glass surface: the 1px white/10% edge, and the white/14% inner line on
