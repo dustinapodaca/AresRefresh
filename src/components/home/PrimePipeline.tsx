@@ -3,9 +3,9 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 // The prime contractor pipeline (owner, 2026-10-15, after gladia.io's "foundation of every voice
 // product"): one stack of cards on a vertical line that grows with the scroll. The line's tip
 // rides at 70% of the window; as it reaches a card the card lifts into place, a light runs once
-// around its edge, its values brighten in turn, and its status tag comes up. When the line
-// reaches the foot, the reliability line lights green and a rust light starts running down the
-// line. Every fact is one already on the panel. Reduced motion: built and still.
+// around its edge, its values brighten in turn, and its status tag comes up. Once the last card
+// is on, a rust light starts running down the line (the green reliability finish was removed,
+// owner 2026-10-15). Every fact is one already on the panel. Reduced motion: built and still.
 type Row = { label: string; value: string; mono?: boolean };
 type Card = { title: string; sub: string; rows: Row[]; tag: string; ares?: boolean; bar?: boolean; x?: number };
 
@@ -56,12 +56,10 @@ export default function PrimePipeline({ className = '' }: { className?: string }
     const el = ref.current;
     if (!el) return;
     const cards = Array.from(el.querySelectorAll<HTMLElement>('.ds-pipe-card'));
-    const end = el.querySelector<HTMLElement>('.ds-pipe-end');
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (still) {
       el.style.setProperty('--p', '1');
       cards.forEach((c) => (c.dataset.on = 'true'));
-      if (end) end.dataset.on = 'true';
       el.dataset.done = 'true';
       return;
     }
@@ -77,10 +75,8 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       cards.forEach((c) => {
         if (!c.dataset.on && tip >= c.offsetTop + 8) c.dataset.on = 'true';
       });
-      if (end && !end.dataset.on && tip >= end.offsetTop + 4) {
-        end.dataset.on = 'true';
-        el.dataset.done = 'true';
-      }
+      // Once the last card is on, the light starts running down the line.
+      if (!el.dataset.done && cards.every((c) => c.dataset.on)) el.dataset.done = 'true';
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -99,7 +95,7 @@ export default function PrimePipeline({ className = '' }: { className?: string }
     <figure
       ref={ref}
       className={`ds-pipe ${className}`.trim()}
-      aria-label="The prime holds the contract; Ares, a woman-owned subcontractor, staffs restricted-area escort, access control, and relief posts under it, with fewer than 1% of shifts missed since 2021"
+      aria-label="The prime holds the contract; Ares, a woman-owned subcontractor, staffs restricted-area escort, access control, and relief posts under it"
     >
       <span className="ds-pipe-line" aria-hidden="true">
         <span className="ds-pipe-fill" />
@@ -135,10 +131,6 @@ export default function PrimePipeline({ className = '' }: { className?: string }
           )}
         </div>
       ))}
-      <p className="ds-pipe-end ds-data" aria-hidden="true">
-        <i />
-        Fewer than 1% of shifts missed · since 2021
-      </p>
     </figure>
   );
 }

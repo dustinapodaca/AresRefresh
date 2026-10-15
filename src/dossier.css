@@ -4409,8 +4409,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* overflow: clip, not hidden, so the panel isn't a scroll box and the copy can stick. */
 .ds-primes-panel[data-form='pipeline'] { overflow: clip; }
 @property --ds-pipe-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-.ds-pipe { position: relative; display: grid; justify-items: center; gap: 52px; margin: 40px 0 0; padding: 36px 0 8px; --p: 0; --h: 0px; }
-.ds-pipe-line { position: absolute; top: 0; bottom: 26px; left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
+.ds-pipe { position: relative; display: grid; justify-items: center; gap: 52px; margin: 40px 0 0; padding: 36px 0 0; --p: 0; --h: 0px; }
+.ds-pipe-line { position: absolute; top: 0; bottom: 40px; /* ends behind the last card */ left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
 .ds-pipe-fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
 .ds-pipe-tip { position: absolute; top: 0; left: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); transform: translateY(calc(var(--p) * var(--h))); opacity: calc(1 - var(--p) * var(--p) * var(--p)); }
 .ds-pipe-pulse { position: absolute; left: 50%; top: 0; width: 2px; height: 56px; margin-left: -1px; border-radius: 2px; background: linear-gradient(to bottom, rgb(188 111 64 / 0), var(--ds-rust)); opacity: 0; }
@@ -4446,23 +4446,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   opacity: 0.62; transform: translateY(4px) scale(0.94); transition: opacity 260ms var(--ds-ease) 640ms, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1) 640ms; }
 .ds-pipe-card:nth-of-type(odd) .ds-pipe-tag { right: auto; left: 0; }
 .ds-pipe-card[data-on] .ds-pipe-tag { opacity: 1; transform: none; }
-/* The finish: the reliability line lights green when the line reaches it. */
-.ds-pipe-end { position: relative; z-index: 1; display: inline-flex; max-width: 100%; text-wrap: balance; align-items: center; gap: 9px; margin: 0; padding: 8px 14px; border-radius: 2px; font-size: 12.5px; color: var(--ds-fg-muted); background: #08090b; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
-  transition: color 300ms var(--ds-ease), background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease), transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); transform: scale(0.96); }
-.ds-pipe-end i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: rgb(255 255 255 / 0.22); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
-.ds-pipe-end[data-on] { color: #c9e8b6; background: linear-gradient(rgb(124 184 95 / 0.12), rgb(124 184 95 / 0.12)), #08090b; box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.4); transform: none; }
-.ds-pipe-end[data-on] i { background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.2); }
 /* Once built, a rust light runs down the line on a loop (ambient). */
 @media (prefers-reduced-motion: no-preference) {
   .ds-pipe[data-done] .ds-pipe-pulse { animation: ds-pipe-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) 600ms infinite; }
 }
 @keyframes ds-pipe-run { 0% { transform: translateY(-56px); opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translateY(var(--h)); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .ds-pipe-card, .ds-pipe-card *, .ds-pipe-end, .ds-pipe-end i { transition: none !important; }
+  .ds-pipe-card, .ds-pipe-card * { transition: none !important; }
 }
 @media (max-width: 767px) {
   .ds-pipe { gap: 40px; }
-  .ds-pipe-end { padding: 8px 12px; font-size: 11.5px; gap: 8px; }
   .ds-pipe-card { width: min(100%, 290px); translate: calc(var(--x, 0px) * 0.4) 0; }
 }
 @media (min-width: 1024px) {

@@ -446,8 +446,8 @@ exception to "no card containers" and "no glass" for this section.
   scroll, its rust tip riding at 70% of the window (`PrimePipeline.tsx`). Cards wait at 0.62
   opacity, 22px lower; as the tip reaches one it lifts into place, a light runs once around its
   edge (1.1s), its values brighten in turn, and a small status tag in the status green comes up
-  (2px corners). At the foot "Fewer than 1% of shifts missed · since 2021" lights green and a
-  rust light starts running down the line. On desktop the copy is sticky beside it (the panel is
+  (2px corners). Once the last card is on, a rust light starts running down the line (a green
+  "Fewer than 1% of shifts missed" finish was removed, owner 2026-10-15). On desktop the copy is sticky beside it (the panel is
   `overflow: clip` for this form). Built and still under reduced motion.
   split (ask left, proof right, a vertical hairline), vignettes (three small working pictures; the term bar
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
