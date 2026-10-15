@@ -4485,25 +4485,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    Gladia's recipe on the site's own corners: a see-through card with a dark wash (52% black at
    the top to 32% at the foot), the page behind blurred and its color lifted (22px, saturate
    1.65), and one stroke for every glass surface on the site: a 1px white/10% edge with a
-   white/14% line just inside the top (--ds-glass-edge, --ds-glass-top). Each card carries its
-   own light, a small lens flare in one corner (a warm core, a rust halo, a faint streak), and a
-   faint glow sits behind the Record cards and the prime pipeline for the glass to frost. */
+   white/14% line just inside the top (--ds-glass-edge, --ds-glass-top). The cards themselves are
+   only glass; the light lives behind them: soft rust and amber glows under each card, toward one
+   of its corners, that come through the frost and spill past the edge (owner, 2026-10-15). */
 html[data-cards='glass'] {
   --ds-glass-edge: rgb(255 255 255 / 0.1);
   --ds-glass-top: inset 0 1px 0 rgb(255 255 255 / 0.14);
   --ds-glass-wash: linear-gradient(180deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.4) 55%, rgb(0 0 0 / 0.32));
-  --ds-flare-x: 0%;
-  --ds-flare-y: 0%;
-}
-/* The flare, drawn in the card's own background above the frost (corner set per card below). */
-html[data-cards='glass'] :is(.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face, .ds-pipe-card, .ds-pipe-post, .ds-flow-node, .ds-flow-posts span) {
-  --ds-flare:
-    radial-gradient(90px 70px at var(--ds-flare-x) var(--ds-flare-y), rgb(255 226 196 / 0.2), rgb(255 226 196 / 0) 70%),
-    radial-gradient(260px 200px at var(--ds-flare-x) var(--ds-flare-y), rgb(188 111 64 / 0.16), rgb(188 111 64 / 0) 72%),
-    linear-gradient(var(--ds-flare-angle, 135deg), rgb(241 196 154 / 0.07) 0%, rgb(241 196 154 / 0) 26%);
 }
 html[data-cards='glass'] :is(.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face) {
-  background: var(--ds-flare), var(--ds-glass-wash);
+  background: var(--ds-glass-wash);
   border: 1px solid var(--ds-glass-edge);
   box-shadow: var(--ds-glass-top), 0 12px 36px rgb(0 0 0 / 0.28);
   -webkit-backdrop-filter: blur(22px) saturate(1.65);
@@ -4515,37 +4506,60 @@ html[data-cards='glass'] :is(.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-ve
 }
 /* Cards inside a card (the pipeline, the diagram, an opened card): lighter glass, same stroke. */
 html[data-cards='glass'] :is(.ds-pipe-card, .ds-pipe-post, .ds-flow-node, .ds-flow-posts span, .ds-cs-card[data-open='true']) {
-  background: var(--ds-flare), linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
   border: 1px solid var(--ds-glass-edge);
   box-shadow: var(--ds-glass-top), 0 8px 24px rgb(0 0 0 / 0.3);
   -webkit-backdrop-filter: blur(16px) saturate(1.6);
   backdrop-filter: blur(16px) saturate(1.6);
 }
-/* Each card's flare in a different corner: top left, top right, bottom right, in turn. */
-html[data-cards='glass'] :is(.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post):nth-child(3n + 2) { --ds-flare-x: 100%; --ds-flare-y: 0%; --ds-flare-angle: 225deg; }
-html[data-cards='glass'] :is(.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post):nth-child(3n) { --ds-flare-x: 100%; --ds-flare-y: 100%; --ds-flare-angle: 315deg; }
-html[data-cards='glass'] .ds-primes-panel { --ds-flare-x: 100%; --ds-flare-y: 0%; --ds-flare-angle: 225deg; }
-/* The light behind the glass, kept faint: under the pipeline, and under the Record cards. */
-html[data-cards='glass'] .ds-primes-panel {
+/* The light behind the glass: soft glows under each card, offset toward a corner, drawn on the
+   card's container so the glass frosts them and they spill past its edge. Each glow box runs
+   220px past its container so every glow fades out before it reaches an edge. */
+html[data-cards='glass'] .ds-primes-panel { background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 40%), #07080a; }
+/* Prime pipeline: behind the prime card's top right, Ares's lower left, and the posts. */
+html[data-cards='glass'] .ds-pipe::before {
+  content: ''; position: absolute; inset: -220px; z-index: 0; pointer-events: none;
   background:
-    var(--ds-flare),
-    radial-gradient(36% 44% at 76% 60%, rgb(188 111 64 / 0.14), rgb(188 111 64 / 0) 70%),
-    linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 40%),
-    #07080a;
+    radial-gradient(150px 120px at calc(220px + 0.82 * (100% - 440px)) calc(220px + 0.10 * (100% - 440px)), rgb(241 196 154 / 0.28), rgb(241 196 154 / 0) 72%),
+    radial-gradient(260px 200px at calc(220px + 0.80 * (100% - 440px)) calc(220px + 0.12 * (100% - 440px)), rgb(188 111 64 / 0.3), rgb(188 111 64 / 0) 72%),
+    radial-gradient(240px 190px at calc(220px + 0.14 * (100% - 440px)) calc(220px + 0.58 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
+    radial-gradient(130px 110px at calc(220px + 0.16 * (100% - 440px)) calc(220px + 0.56 * (100% - 440px)), rgb(241 196 154 / 0.2), rgb(241 196 154 / 0) 72%),
+    radial-gradient(280px 160px at calc(220px + 0.84 * (100% - 440px)) calc(220px + 0.98 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%);
 }
+/* Record: card one's top left, card two's top right, card three's lower right. */
+html[data-cards='glass'] .ds-values-list::after {
+  content: ''; position: absolute; z-index: -1; pointer-events: none; inset: -220px;
+  background:
+    radial-gradient(150px 120px at calc(220px + 0.02 * (100% - 440px)) calc(220px + 0.06 * (100% - 440px)), rgb(241 196 154 / 0.26), rgb(241 196 154 / 0) 72%),
+    radial-gradient(300px 220px at calc(220px + 0.04 * (100% - 440px)) calc(220px + 0.08 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
+    radial-gradient(150px 120px at calc(220px + 0.64 * (100% - 440px)) calc(220px + 0.04 * (100% - 440px)), rgb(241 196 154 / 0.24), rgb(241 196 154 / 0) 72%),
+    radial-gradient(300px 220px at calc(220px + 0.62 * (100% - 440px)) calc(220px + 0.06 * (100% - 440px)), rgb(188 111 64 / 0.3), rgb(188 111 64 / 0) 72%),
+    radial-gradient(150px 120px at calc(220px + 0.98 * (100% - 440px)) calc(220px + 0.96 * (100% - 440px)), rgb(241 196 154 / 0.24), rgb(241 196 154 / 0) 72%),
+    radial-gradient(300px 220px at calc(220px + 0.96 * (100% - 440px)) calc(220px + 0.94 * (100% - 440px)), rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%);
+}
+/* Phones and tablets: ::after is the card pile's spacer there, so it goes back to that job and
+   the glows ride on the dot grid layer (::before) instead, inside its oval mask. */
 @media (max-width: 1023px) {
-  html[data-cards='glass'] .ds-primes-panel {
-    background:
-      var(--ds-flare),
-      radial-gradient(70% 28% at 50% 74%, rgb(188 111 64 / 0.14), rgb(188 111 64 / 0) 70%),
-      #07080a;
+  html[data-cards='glass'] .ds-values-list::after { position: static; inset: auto; z-index: auto; background: none; }
+  html[data-cards='glass'] .ds-values-list::before {
+    background-image:
+      radial-gradient(circle, rgb(238 240 242 / 0.14) 1.1px, transparent 1.6px),
+      radial-gradient(52% 16% at 22% 14%, rgb(188 111 64 / 0.36), rgb(188 111 64 / 0) 72%),
+      radial-gradient(52% 16% at 80% 46%, rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%),
+      radial-gradient(52% 16% at 24% 80%, rgb(188 111 64 / 0.32), rgb(188 111 64 / 0) 72%);
+    background-size: 16px 16px, 100% 100%, 100% 100%, 100% 100%;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    background-position: center, 0 0, 0 0, 0 0;
   }
 }
-html[data-cards='glass'] .ds-values-list::after {
-  content: ''; position: absolute; z-index: -1; pointer-events: none;
-  left: 0; right: 0; top: 6%; bottom: 6%;
-  background: radial-gradient(60% 56% at 50% 55%, rgb(188 111 64 / 0.16), rgb(188 111 64 / 0) 72%);
-  filter: blur(20px);
+/* Capability cards: a few glows across the grid. */
+html[data-cards='glass'] .ds-cs-cards { position: relative; isolation: isolate; }
+html[data-cards='glass'] .ds-cs-cards::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none; inset: -220px;
+  background:
+    radial-gradient(300px 220px at calc(220px + 0.02 * (100% - 440px)) calc(220px + 0.04 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%),
+    radial-gradient(300px 220px at calc(220px + 0.66 * (100% - 440px)) calc(220px + 0.46 * (100% - 440px)), rgb(188 111 64 / 0.24), rgb(188 111 64 / 0) 72%),
+    radial-gradient(300px 220px at calc(220px + 0.98 * (100% - 440px)) calc(220px + 0.96 * (100% - 440px)), rgb(188 111 64 / 0.28), rgb(188 111 64 / 0) 72%);
 }
 
 /* One stroke for every glass surface: the 1px white/10% edge, and the white/14% inner line on
