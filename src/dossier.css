@@ -4406,8 +4406,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    One stack of cards on a vertical line that grows with the scroll (--p, 0 to 1, set in
    PrimePipeline.tsx; --h is the figure's height). Cards wait slightly dimmed and lower, then lift
    into place as the line's tip reaches them, with a light that runs once around the edge. */
-/* overflow: clip, not hidden, so the panel isn't a scroll box and the copy can stick. */
-.ds-primes-panel[data-form='pipeline'] { overflow: clip; }
 @property --ds-pipe-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 .ds-pipe { position: relative; display: grid; justify-items: center; gap: 52px; margin: 40px 0 0; padding: 36px 0 0; --p: 0; --h: 0px; }
 .ds-pipe-line { position: absolute; top: 0; height: var(--h); /* to the foot of Ares, where the wires begin */ left: 50%; width: 1px; transform: translateX(-0.5px); background: rgb(255 255 255 / 0.08); }
@@ -4476,8 +4474,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 @media (min-width: 1024px) {
   .ds-primes-panel[data-form='pipeline'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  /* The copy holds still while the pipeline builds beside it. */
-  .ds-primes-panel[data-form='pipeline'] .ds-primes-copy { grid-column: 1 / span 6; align-self: start; position: sticky; top: calc(var(--ds-header) + 40px); }
+  /* The copy sits centered in the panel beside the pipeline (owner, 2026-10-15; it was sticky). */
+  .ds-primes-panel[data-form='pipeline'] .ds-primes-copy { grid-column: 1 / span 6; align-self: center; }
   .ds-primes-panel[data-form='pipeline'] .ds-pipe { grid-column: 7 / span 6; margin-top: 0; padding-top: 30px; }
 }
 
