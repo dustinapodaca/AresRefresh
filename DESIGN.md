@@ -293,8 +293,8 @@ Cards and glass are part of the system, not exceptions.
   black at the top to 32% at the foot, the page behind blurred 22px with its color lifted
   (saturate 1.65), a 1px white/10% edge with a white/14% inner line along the top, a soft shadow
   beneath (0 12px 36px, black 28%), the site's 4px corners (owner, 2026-10-15; cards inside cards
-  are lighter: white 6% to 1.5%, 16px blur). The three Home Record cards copy gladia.io's "How it
-  compares" cards: one light inside each card, a rust glow tucked into the lower right corner
+  are lighter: white 6% to 1.5%, 16px blur). The three Home Record cards and the six Capability Statement
+  cards (open or closed) copy gladia.io's "How it compares" cards: one light inside each card, a rust glow tucked into the lower right corner
   (centred just outside it, kept as faint as Gladia's: rust 42% at the core, 16% a third of the
   way out, gone by 72%), so only its edge shows (owner, 2026-10-15). Glows behind the cards (in their corners,
   or under them) were tried the same day and removed. The same stroke (`--ds-glass-edge` white/10%, `--ds-glass-top` the
