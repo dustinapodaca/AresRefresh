@@ -104,8 +104,8 @@ export default function Industries() {
 
 // "For prime contractors." (copy audit round 3; second pass 2026-10-10 after Slash, Flora,
 // and Resend on Mobbin): a contained panel with three proof points and a solid button to
-// /teaming. Forms to compare at /?prime=split|diagram|vignettes|pipeline (diagram is the
-// default, owner 2026-10-10; pipeline added 2026-10-15 after gladia.io, for the owner to try). The one card container on Home besides the Record cards (owner exception).
+// /teaming. Forms to compare at /?prime=split|diagram|vignettes|pipeline. Pipeline is the default
+// (owner, 2026-10-15, after gladia.io); diagram was the default from 2026-10-10. The one card container on Home besides the Record cards (owner exception).
 const PRIME_PROOF = [
   { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571' },
   { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027' },
@@ -113,8 +113,8 @@ const PRIME_PROOF = [
 ];
 
 function PrimesPanel({ form }: { form: string | null }) {
-  // Diagram is the default (owner, 2026-10-10); split and vignettes stay at ?prime=.
-  const kind = form === 'split' || form === 'vignettes' || form === 'pipeline' ? form : 'diagram';
+  // Pipeline is the default (owner, 2026-10-15); diagram, split, and vignettes stay at ?prime=.
+  const kind = form === 'split' || form === 'vignettes' || form === 'diagram' ? form : 'pipeline';
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming and subcontracting

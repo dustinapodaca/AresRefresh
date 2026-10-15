@@ -288,7 +288,8 @@ Cards and glass are part of the system, not exceptions.
   Capability Statement cards and GSA MAS block, the Services industry cards (the edge drawn
   over the photo as a masked ring), the Teaming diagram, the About founder portrait, and the
   quote form's fields and chips (the same surface at control scale; errors amber).
-- **Glass cards, an option** (`?cards=glass`, sticks for the session; owner 2026-10-15, after
+- **Glass cards, the default since 2026-10-15** (owner; the earlier solid lit-edge cards stay at
+  `?cards=solid`, which sticks for the session; after
   gladia.io's speech-to-text page): every card becomes see-through glass: a dark wash from 52%
   black at the top to 32% at the foot, the page behind blurred 22px with its color lifted
   (saturate 1.65), a 1px white/10% edge with a white/14% inner line along the top, a soft shadow
@@ -323,6 +324,15 @@ every page.
   (`saturate(0.78) brightness(0.84)`) to sit on the canvas.
 - **Full-bleed photos:** square edges, edge to edge, faded into the canvas top and
   bottom with a linear gradient (at least 22% of the height each end).
+- **Hero background (Home), from 2026-10-15 (owner):** React Bits' Topography
+  (`src/components/home/Topography.tsx`, WebGL2), contour lines of a terrain in the site's rust
+  (`#7a3c17`; 22 lines, every fifth bolder, elevation 1.15, tilt 32, a slow forward glide, glow
+  0.6), drifting under the copy in the photo's box with the same shades and the glass strip over
+  it; the cursor lifts the land and a click sends a ring out over it. It rises from flat on load,
+  pauses off screen, and holds still under reduced motion. The copper-glass tower photo below moved
+  to the Services opening and stays here at `/?herobg=photo`. (One change to the React Bits source:
+  its cleanup no longer destroys the WebGL context, which drew the hero white under React's
+  development Strict Mode.)
 - **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left but a soft vignette (owner, 2026-10-08; lighter than About's: the top shaded from 70% to clear by 44%, the edges and corners darkened up to 62% outside an oval around the towers), fit rather than zoomed (the photo's box runs only 4 to 7rem past the hero with 4% headroom for a 4% drift, so cover shows about 94% of its width at 1440 and all of it at 1920); readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns, up to 46ch) sits below it, then the proof row across the full width (copy audit, owner 2026-10-10; it replaced the GSA mark, which still shows with the "current" option). The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones, moved 36px further right below 768px (owner, 2026-10-12). The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so
@@ -453,7 +463,7 @@ exception to "no card containers" and "no glass" for this section.
   the window, then loops; ambient, still under reduced motion)** The same diagram and light run on /teaming (one
   component, `src/components/home/PrimeFlow.tsx`), on the plain black page with no dot grid
   (owner, 2026-10-12).,
-  **pipeline** (`/?prime=pipeline`, owner 2026-10-15, after gladia.io's "foundation of every voice
+  **pipeline (the default since 2026-10-15, owner; the diagram is `/?prime=diagram`)**, after gladia.io's "foundation of every voice
   product"): Prime contractor and Ares Security (WOSB250470, WBE2303571) as cards on a vertical
   line that grows with the scroll, its rust tip riding at 70% of the window
   (`PrimePipeline.tsx`); from the foot of Ares three separate straight lines drop to the three
@@ -511,7 +521,9 @@ exception to "no card containers" and "no glass" for this section.
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
 - **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
+  2026-10-05). **Photo since 2026-10-15 (owner): the copper-glass tower (`hero6.jpg`, from the Home
+  hero), anchored at its foot so the lit copper underside sits in the clear area below the glass,
+  no caption (not a named place); headline 6:1, lead 7:1 or better.** The Capitol is `?photo=capitol`. Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
   control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in
   Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." The audit's
   options A, B, C and the old copy stay switchable for the client at `/services?hero=`

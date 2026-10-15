@@ -3,6 +3,7 @@ import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
+import Topography from './Topography';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
 // /?hero=current|a|b|b1|b2|b3|b4|c. B2 is the default (owner, 2026-10-10; A was the audit's
@@ -45,13 +46,37 @@ export default function Hero() {
   // B2 is the default for now (owner, 2026-10-10: "A prepared officer on every post." over
   // B's line); the other options stay at /?hero=.
   const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'b2') as OptionKey];
+  const bg = params.get('herobg') === 'photo' ? 'photo' : 'topo';
   return (
     <section className="ds-hero" aria-labelledby="hero-title">
-      {/* The copper-glass tower (hero6.jpg), back on Home (owner, 2026-10-08; it was the
-          Services band). Full bleed from 900px; runs down under 01 Record. */}
-      <div className="ds-hero-photo" aria-hidden="true">
-        <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
-      </div>
+      {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
+          in the site's rust drifting under the copy, the cursor lifting the land and a click
+          sending a ring out. The copper-glass tower photo (hero6.jpg) moved to the Services
+          opening and stays here at /?herobg=photo. Same box as the photo: full bleed from
+          900px, running down under 01 Record. */}
+      {bg === 'photo' ? (
+        <div className="ds-hero-photo" aria-hidden="true">
+          <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+        </div>
+      ) : (
+        <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
+          <Topography
+            color="#7a3c17"
+            lineCount={22}
+            lineWidth={1.2}
+            elevation={1.15}
+            foreground={0.2}
+            tilt={32}
+            speed={0.25}
+            direction="forward"
+            glow={0.6}
+            depthOfField={0.4}
+            fog={0.35}
+            hoverEffect="lift"
+            clickEffect="pulse"
+          />
+        </div>
+      )}
 
       <div className="ds-container">
         <div className="ds-hero-copy">

@@ -27,9 +27,9 @@ import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
 import HomeNext from './pages/HomeNext';
 
-// The card surface (owner, 2026-10-15): gladia.io's frosted glass to compare at ?cards=glass
-// (?cards=solid goes back). The choice sticks for the session, like the nav. Sets
-// <html data-cards="glass">; the styles are in dossier.css ("Glass cards").
+// The card surface (owner, 2026-10-15): gladia.io's frosted glass is the default; the earlier
+// solid lit-edge cards stay at ?cards=solid. The choice sticks for the session, like the nav.
+// Sets <html data-cards="glass">; the styles are in dossier.css ("Glass cards").
 function useCardStyle() {
   const [params] = useSearchParams();
   const asked = params.get('cards');
@@ -41,8 +41,8 @@ function useCardStyle() {
     } catch {
       // Storage blocked: the URL alone decides.
     }
-    if (form === 'glass') document.documentElement.dataset.cards = 'glass';
-    else delete document.documentElement.dataset.cards;
+    if (form === 'solid') delete document.documentElement.dataset.cards;
+    else document.documentElement.dataset.cards = 'glass';
   }, [asked]);
 }
 

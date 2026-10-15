@@ -18,6 +18,9 @@ const PHOTOS = {
   // Measured so each subject (the skyline over the bridges; the dome and towers) centers in the
   // clear area under the glass; from 1024px the drop scales with the width, like the photo.
   skyline: { src: '/images/services-hero/denver-skyline-dusk.webp', caption: 'Downtown Denver, Colorado', pos: '50% 66%', drop: '-152px', dropD: 'calc(133px - 58.4vw)', ratio: 1.5 },
+  // The copper-glass tower (owner, 2026-10-15: moved from the Home hero). Not a named place, so
+  // no caption.
+  tower: { src: '/images/hero6.jpg', caption: '', pos: '50% 100%', drop: '0px', dropD: '0px', ratio: 0.6667 },
   capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496, tint: 0.12 },
 } as const;
 
@@ -52,7 +55,7 @@ export default function Opening() {
   const asked = params.get('hero');
   const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
   const askedPhoto = params.get('photo');
-  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'capitol') as keyof typeof PHOTOS];
+  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'tower') as keyof typeof PHOTOS];
 
   // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
   // below hold still until the glass's foot has cleared the nav, then everything scrolls as
@@ -141,7 +144,7 @@ export default function Opening() {
         </div>
         {/* The place, like the other photo heroes (owner, 2026-10-08): just under the glass's
             edge on the right, riding up with the glass over the photo and out of view. */}
-        <p className="ds-caption ds-svc-open-cap">{HERO.caption}</p>
+        {HERO.caption && <p className="ds-caption ds-svc-open-cap">{HERO.caption}</p>}
       </div>
 
       {/* Grows with the first scroll (--svc-hold) so the photo and the page below hold still. */}
