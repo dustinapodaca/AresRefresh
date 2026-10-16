@@ -965,7 +965,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   with the two officers from the Home careers band, Capability Statement with Denver at sunset,
   Insights with the owner's LinkedIn banner, `/images/nav/insights.png`; 104px, 4px corners, a dark
   wash from the foot). Teaming and Request a Quote aren't repeated there on phones: Teaming is on the
-  Services page and the quote button is always pinned at the foot (owner, 2026-10-15). The pages reset to the main one when the menu closes. The photo accordions stay at
+  Services page and the quote button is always pinned at the foot (owner, 2026-10-15). The pages reset to the main one when the menu closes. While a page scrolls, the logo bar stays at the top and the Back row
+  just under it, both solid, the content scrolling behind them (owner, 2026-10-15). The photo accordions stay at
   ?mnav=accordion. The menu button is three bars (the top one long) that slide off to the right one
   after another, then an X that draws in stroke by stroke; the reverse on close. The strip with the phone, email, and Request a Quote
   always sits on the bottom of the screen while the menu is open, however short the list (owner,

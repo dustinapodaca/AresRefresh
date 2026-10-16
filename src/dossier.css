@@ -4754,3 +4754,13 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 .ds-np-pane-sub { position: relative; z-index: 1; background: #08090b; }
 /* Room under each page's last item, so it scrolls clear of the pinned strip (owner, 2026-10-15). */
 .ds-np-pane-sub { padding-bottom: 36px; }
+/* The open phone menu (owner, 2026-10-15): the logo bar stays at the top, and on a section page the
+   Back row stays just under it; everything else scrolls behind them (both solid). */
+@media (max-width: 1023px) {
+  .ds-np[data-open='true'] .ds-np-row { position: sticky; top: 0; z-index: 3; background: #08090b; box-shadow: 0 1px 0 rgb(255 255 255 / 0.1); }
+  .ds-np-back {
+    position: sticky; top: calc(var(--ds-header) - 1px); z-index: 2; display: flex;
+    width: calc(100% + 2 * var(--ds-gutter)); height: 52px; margin: 0 calc(-1 * var(--ds-gutter));
+    padding: 0 var(--ds-gutter); box-sizing: border-box; background: #08090b;
+  }
+}
