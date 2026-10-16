@@ -603,7 +603,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
     glass): 1px glass edge and top line, soft shadow, liquid at 12px with a darker wash (56% to 44% black) because it crosses the
     bright sky (lead 5.2:1 at the brightest point). Phones (owner, 2026-10-15: too dark, no copper
     coming through): the card overlaps only the photo's last 56px and its wash is much lighter (12% to
-    34% black), so the copper underside shows above it and glows into it (lead 16:1). Phones: the card over the plate's foot.
+    34% black), so the copper underside shows above it and glows into it (lead 16:1). On phones the card keeps the CSS
+    frost (22px), not the liquid filter: Android Chrome drew a seam down the card where it tiles the
+    filter, which a laptop's phone view never shows (owner, 2026-10-15). Phones: the card over the plate's foot.
   - `sink`: the headline huge (up to 148px) low over the photo, its last line resting in a full-width
     band of liquid glass (18px frost, its top edge bent and lit, like the footer's ARES letters) that
     holds the lead and the link. A shade over the photo keeps the headline 6:1 or better.

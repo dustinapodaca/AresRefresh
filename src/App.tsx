@@ -61,7 +61,7 @@ function useCardStyle() {
 // pipeline's cards (solid, owner 2026-10-15).
 // Pseudo-element glass takes its filter through --ds-liquid. Finds them on whatever page is
 // showing and keeps up as pages change.
-const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
+const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // The frost is lighter than the CSS frost these surfaces had (22 to 26px), as on Gladia, or the
   // blur smears the bend away; the dark tints keep the copy readable. The Home Record cards stay a
   // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
@@ -85,7 +85,9 @@ const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
   // Record cards' 12px, matching their recipe), the sink
   // band (its top edge only, like the footer), and the lens slab (lighter frost and a wider rim,
   // so the towers bend through).
-  { sel: '.ds-ap-card', opts: { blur: 12 } },
+  // Not on phones (owner, 2026-10-15): Android Chrome drew a seam down the card where it tiles the
+  // filter (a laptop's phone view never shows it); phones keep the CSS frost.
+  { sel: '.ds-ap-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
   { sel: '.ds-sk-band', opts: { blur: 18, edges: { top: true } } },
   { sel: '.ds-ln-slab', opts: { blur: 7, bezel: 32 } },
 ];
@@ -94,9 +96,14 @@ function useLiquidCards(on: boolean) {
     if (!on || !liquidSupported()) return;
     const done = new Map<HTMLElement, () => void>();
     const scan = () => {
-      for (const { sel, opts } of LIQUID) {
+      for (const { sel, opts, media } of LIQUID) {
+        const fits = !media || window.matchMedia(media).matches;
         document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
-          if (!done.has(el)) done.set(el, attachLiquid(el, opts));
+          if (fits && !done.has(el)) done.set(el, attachLiquid(el, opts));
+          else if (!fits && done.has(el)) {
+            done.get(el)!();
+            done.delete(el);
+          }
         });
       }
       done.forEach((off, el) => {
@@ -112,8 +119,12 @@ function useLiquidCards(on: boolean) {
       t = window.setTimeout(scan, 120);
     });
     mo.observe(document.body, { childList: true, subtree: true });
+    // Surfaces limited to a width come and go as the window crosses it.
+    const mqs = LIQUID.filter((l) => l.media).map((l) => window.matchMedia(l.media!));
+    mqs.forEach((mq) => mq.addEventListener('change', scan));
     scan();
     return () => {
+      mqs.forEach((mq) => mq.removeEventListener('change', scan));
       mo.disconnect();
       window.clearTimeout(t);
       done.forEach((off) => off());
