@@ -81,8 +81,10 @@ PHOTOS = [
     {'key': '/images/market/construction-industrial.webp', 'source': 'assets/images-src/market/construction-colorado-springs-clean.png', 'q': 80},
     # A real photo (owner, 2026-10-16): the Denver Pavilions sign on 16th Street, its letters in rust,
     # a glass tower behind (Unsplash, Benigno Hoyuela). 2400px. The generated dusk scene it
-    # replaced is in images-unused.
-    {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-denver-pavilions.jpg', 'q': 80},
+    # replaced is in images-unused. The Coyote Ugly signs on the wall and over the door were
+    # removed (owner, 2026-10-16) by cloning the wall beside them; the untouched original is
+    # commercial-denver-pavilions.jpg beside it.
+    {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-denver-pavilions-clean.png', 'q': 80},
     # A real photo (owner, 2026-10-16): apartment buildings at blue hour, balconies and warm lit
     # windows (Unsplash, Getty Images). Master downsized from the 6149px original to 3200px. The
     # generated scene it replaced is in images-unused.

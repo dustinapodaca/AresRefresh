@@ -984,7 +984,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   the building; phones and Home's card show the peaks too.
   Commercial & Retail (owner, 2026-10-16): the Denver Pavilions sign on 16th Street, its letters
   in rust with a glass tower behind (Unsplash, Benigno Hoyuela), strip at `50% 50%` on the D and the
-  tower; phones show the whole word. Institutional & Community (owner, 2026-10-16): apartment
+  tower; phones show the whole word. The Coyote Ugly signs (on the wall and over the door) were
+  removed by cloning the wall beside them (owner, 2026-10-16); the original is kept beside it. Institutional & Community (owner, 2026-10-16): apartment
   buildings at blue hour, balconies and warm lit windows (Unsplash, Getty Images), strip at `50% 72%`
   so the lit windows sit above the fade. All six industries now use real photos. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
