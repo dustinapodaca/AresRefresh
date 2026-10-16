@@ -32,6 +32,14 @@ Last checked against the code: 2026-10-11, branch `audit`.
 |---|---|---|---|
 | `/home-next` | Resend-style Home (black, dark frosted glass, seven beats) | tag `home-resend-option`; `src/pages/HomeNext.tsx`, `src/home-next.css` | `noindex`, not in the sitemap. The Dossier Home stays the default. |
 
+## Tags of replaced sections
+
+- `services-program-option`: the Services section "A security program, not a headcount." (three
+  parts, the relief roster row, the systems tags) and the four stages' earlier copy, before the
+  parts folded into the stages and the roster and systems became their own sections (owner,
+  2026-10-15).
+- `services-open-roles-option`: Services openings with the six services in the opening.
+
 ## Tags of earlier Home versions
 
 `home-v00-original` through `home-v11-dossier`. See README.md "Home redesign versions".

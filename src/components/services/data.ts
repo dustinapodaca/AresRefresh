@@ -6,8 +6,11 @@ export const SERVICE_MARKS: readonly Mark[] = [
   { id: 'divisions', n: '01', label: 'Industries' },
   { id: 'browse', n: '02', label: 'By role' },
   { id: 'process', n: '03', label: 'Process' },
-  { id: 'program', n: '04', label: 'Program' },
-  { id: 'areas', n: '05', label: 'Areas' },
+  // "A security program, not a headcount." folded into the stages and split in two (owner,
+  // 2026-10-15; the old section is tagged services-program-option).
+  { id: 'relief', n: '04', label: 'Relief roster' },
+  { id: 'systems', n: '05', label: 'Systems' },
+  { id: 'areas', n: '06', label: 'Areas' },
 ];
 
 // `sharp`: a tighter, higher-resolution crop of the same photo, shown only in the tall
@@ -137,20 +140,23 @@ export const STAGES: Stage[] = [
   {
     n: '02',
     title: 'Compliance mapping',
-    covers: 'Regulations · Access rules · SOPs',
-    body: 'We check every regulation, access requirement, and SOP against your facility, whether it is federal, state, or commercial. That reduces compliance risk and gives you audit confidence from the moment we go live.',
+    covers: 'Regulations · Access rules · Post orders',
+    // The program section's "Post orders and SOPs" folded in (owner, 2026-10-15).
+    body: 'We check every regulation, access requirement, and SOP against your facility, whether it is federal, state, or commercial, and write the post orders and procedures for every post with you. That reduces compliance risk and gives you audit confidence from the moment we go live.',
   },
   {
     n: '03',
     title: 'Guard training',
-    covers: 'Post orders · Firearms · Drills',
+    covers: 'On the post · Firearms · Drills',
     // Shortened to what is new here (copy audit, 2026-10-10); the training line is told elsewhere.
-    body: 'Officers learn your entry points, your expectations, and the daily rhythm of the site before their first shift.',
+    // The post orders and training on the post came in from the program section (2026-10-15).
+    body: 'Officers learn your post orders, your entry points, and the daily rhythm of the site, trained on the post before their first shift.',
   },
   {
     n: '04',
     title: 'Deployment',
-    covers: 'Go-live · QA · Reporting',
-    body: 'We deploy at full staffing with an on-call system behind every post, so a shift is never left open. Real-time quality checks, daily reporting, and immediate support from leadership start with the first shift.',
+    covers: 'Go-live · Supervision · Logs',
+    // The program section's "Supervision" and "Records you can audit" folded in (owner, 2026-10-15).
+    body: 'We deploy at full staffing with on-call relief behind every post, and a member of leadership works the first shift on every new post. Checkpoint, visitor, and incident logs are time-stamped and kept to your post orders, so the work can be checked after the fact. Quality checks and daily reporting start with the first shift.',
   },
 ];

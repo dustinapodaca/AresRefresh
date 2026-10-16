@@ -2300,27 +2300,80 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 /* Four industries as a complete 2x2, never three and an orphan. */
 @media (min-width: 768px) { .ds-svc-browse ul[aria-label='Industries'] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* ---------- 04 Program (2026-10-08): what comes with every post ---------- */
-.ds-svc-program { padding-top: var(--ds-beat); }
-.ds-svc-program-parts { display: grid; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; column-gap: 24px; }
-.ds-svc-program-parts li { padding: 22px 0 26px; border-top: 1px solid var(--ds-rule-strong); }
-.ds-svc-program-parts h3,
-.ds-svc-relief h3,
-.ds-svc-systems h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); }
-.ds-svc-program-parts p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 40ch; }
-@media (min-width: 768px) { .ds-svc-program-parts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* The relief roster: the named on-call offering on its own row, its proof in mono. */
-.ds-svc-relief { display: grid; gap: 18px; margin-top: 36px; padding: 26px 0 28px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
-.ds-svc-relief p { margin: 10px 0 0; font-size: 17px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 62ch; }
-.ds-svc-relief-proof { margin: 0; font-size: 14px; color: var(--ds-fg); }
-@media (min-width: 1024px) {
-  .ds-svc-relief { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-svc-relief > div { grid-column: 1 / span 8; }
-  .ds-svc-relief-proof { grid-column: 10 / span 3; text-align: right; }
+/* ---------- 04 The relief roster (owner, 2026-10-15) ----------
+   The program section folded into the four stages; the roster is its own block: a contained panel
+   (the prime contractors panel's surface) with the copy beside a small week of shifts that plays
+   one quiet moment when it comes into view (Relief.tsx). The finished state is the default. */
+.ds-svc-relief-sec { padding-top: var(--ds-beat); }
+.ds-relief-panel {
+  position: relative; display: grid; gap: 36px; padding: 28px 22px 26px; border-radius: 4px;
+  background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), #0c0d10;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
 }
-.ds-svc-systems { margin-top: var(--ds-beat-tight); }
-.ds-svc-systems > p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); }
-.ds-svc-systems ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
+html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, rgb(255 255 255 / 0.03), rgb(255 255 255 / 0) 40%), #07080a; }
+.ds-relief-copy p { margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 52ch; text-wrap: pretty; }
+.ds-relief-copy .ds-relief-proof { display: flex; align-items: center; gap: 10px; margin-top: 22px; font-size: 14px; color: var(--ds-fg); }
+.ds-relief-proof i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); }
+
+/* The week: a label column and seven days; three shift rows, then the on-call row a little apart. */
+.ds-relief-fig { margin: 0; align-self: center; }
+.ds-relief-grid { display: grid; grid-template-columns: 50px repeat(7, minmax(0, 1fr)); gap: 5px; align-items: center; }
+.ds-relief-day { font-size: 12px; color: var(--ds-fg-faint); text-align: center; padding-bottom: 4px; }
+.ds-relief-label { font-size: 12px; color: var(--ds-fg-faint); white-space: nowrap; }
+.ds-relief-cell {
+  position: relative; height: 26px; border-radius: 2px;
+  background: linear-gradient(180deg, #15171a, #101215); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07);
+  transition: opacity 360ms var(--ds-ease), box-shadow 300ms var(--ds-ease);
+  transition-delay: calc(var(--k) * 28ms);
+}
+/* A staffed shift: a small dot. The shift that loses its officer goes amber, then green. */
+.ds-relief-cell i { position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--ds-fg-muted);
+  transition: background 260ms var(--ds-ease), box-shadow 260ms var(--ds-ease), transform 260ms cubic-bezier(0.23, 1, 0.32, 1); transition-delay: inherit; }
+.ds-relief-cell[data-out] i { background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.2); }
+.ds-relief-cell[data-out] { box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.4); }
+.ds-relief-oncall { margin-top: 22px; }
+.ds-relief-slot { position: relative; height: 18px; margin-top: 22px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.09); background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.03) 0 2px, transparent 2px 5px); transition: box-shadow 260ms var(--ds-ease), background 260ms var(--ds-ease); }
+.ds-relief-slot[data-hit] { box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.42); background: rgb(124 184 95 / 0.1); }
+/* The hairline that rises from the on-call slot into the shift above it. */
+.ds-relief-wire { position: absolute; left: 50%; bottom: 100%; width: 1px; height: 27px; margin-left: -0.5px; transform-origin: bottom; background: linear-gradient(to top, rgb(124 184 95 / 0.8), rgb(124 184 95 / 0.25)); transition: transform 520ms cubic-bezier(0.77, 0, 0.175, 1); }
+
+.ds-relief-status { display: flex; align-items: center; gap: 10px; margin-top: 20px; padding-top: 14px; border-top: 1px solid rgb(255 255 255 / 0.07); font-size: 13px; color: var(--ds-fg); }
+.ds-relief-status i { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #7cb85f; box-shadow: 0 0 0 3px rgb(124 184 95 / 0.18); transition: background 260ms var(--ds-ease), box-shadow 260ms var(--ds-ease); }
+.ds-relief-status[data-state='idle'] i { background: rgb(255 255 255 / 0.3); box-shadow: none; }
+.ds-relief-status[data-state='out'] i { background: #f2b84b; box-shadow: 0 0 0 3px rgb(242 184 75 / 0.2); }
+@media (prefers-reduced-motion: no-preference) {
+  .ds-relief-status span { animation: ds-relief-swap 320ms cubic-bezier(0.23, 1, 0.32, 1); }
+}
+@keyframes ds-relief-swap { from { opacity: 0.4; filter: blur(3px); transform: translateY(3px); } }
+
+/* The moment's steps (only when the reader will see it play): armed is the empty start, fill
+   lights the week cell by cell, out turns Thursday night amber, relief draws the wire, done is
+   the default above. */
+.ds-relief-fig:is([data-step='armed'], [data-step='fill'], [data-step='out'], [data-step='relief']) .ds-relief-cell[data-out] { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07); }
+.ds-relief-fig:is([data-step='armed'], [data-step='fill'], [data-step='out'], [data-step='relief']) .ds-relief-cell[data-out] i { background: var(--ds-fg-muted); box-shadow: none; }
+.ds-relief-fig:is([data-step='armed'], [data-step='fill'], [data-step='out'], [data-step='relief']) .ds-relief-slot[data-hit] { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.09); background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.03) 0 2px, transparent 2px 5px); }
+.ds-relief-fig:is([data-step='armed'], [data-step='fill'], [data-step='out']) .ds-relief-wire { transform: scaleY(0); }
+.ds-relief-fig[data-step='armed'] .ds-relief-cell { opacity: 0.35; transition-delay: 0ms; }
+.ds-relief-fig[data-step='armed'] .ds-relief-cell i { transform: scale(0.4); background: rgb(255 255 255 / 0.25); }
+.ds-relief-fig:is([data-step='out'], [data-step='relief']) .ds-relief-cell[data-out] { box-shadow: inset 0 0 0 1px rgb(242 184 75 / 0.5); transition-delay: 0ms; }
+.ds-relief-fig:is([data-step='out'], [data-step='relief']) .ds-relief-cell[data-out] i { background: #f2b84b; box-shadow: 0 0 0 3px rgb(242 184 75 / 0.2); transition-delay: 0ms; }
+.ds-relief-fig[data-step='relief'] .ds-relief-slot[data-hit] { box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.42); background: rgb(124 184 95 / 0.1); }
+.ds-relief-fig[data-step='done'] .ds-relief-cell { transition-delay: 0ms; }
+
+@media (min-width: 768px) {
+  .ds-relief-panel { padding: 40px; }
+  .ds-relief-grid { grid-template-columns: 52px repeat(7, minmax(0, 1fr)); gap: 6px; }
+  .ds-relief-cell { height: 30px; }
+}
+@media (min-width: 1024px) {
+  .ds-relief-panel { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 48px; }
+  .ds-relief-copy { grid-column: 1 / span 5; }
+  .ds-relief-fig { grid-column: 7 / span 6; }
+}
+
+/* ---------- 05 Trained on your systems (owner, 2026-10-15: its own short section) ---------- */
+.ds-svc-systems { padding-top: var(--ds-beat-tight); }
+.ds-svc-systems ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 28px 0 0; padding: 0; }
 .ds-svc-systems li { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 10px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; color: var(--ds-fg); }
 /* The system's icon, quieter than its name (owner, 2026-10-09). */
 .ds-svc-systems li svg { flex: none; color: var(--ds-fg-muted); }

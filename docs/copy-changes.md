@@ -890,3 +890,14 @@ Every button and link that says it (the nav button and Company menu, the Home he
 ## Services opening forms (owner, 2026-10-15)
 
 New interface line in the four `/services?open=` forms only (the default opening is unchanged): "Who we protect" with a down arrow, a link to the industries section. The headline and lead are the current copy. (An earlier round's "Six services.", "Or find your industry", and "View the service" went with the versions that put the services in the opening, tagged `services-open-roles-option`.)
+
+## Services: the program section folded into the four stages (owner, 2026-10-15)
+
+"A security program, not a headcount." repeated the stages, so its parts moved into them (no new facts; the old version is tagged `services-program-option`):
+- **02 Compliance mapping:** tags "Regulations · Access rules · Post orders" (was "· SOPs"); the body adds "and write the post orders and procedures for every post with you".
+- **03 Guard training:** tags "On the post · Firearms · Drills" (was "Post orders · Firearms · Drills"); body "Officers learn your post orders, your entry points, and the daily rhythm of the site, trained on the post before their first shift." (was "Officers learn your entry points, your expectations, and the daily rhythm of the site before their first shift.")
+- **04 Deployment:** tags "Go-live · Supervision · Logs" (was "Go-live · QA · Reporting"); body "We deploy at full staffing with on-call relief behind every post, and a member of leadership works the first shift on every new post. Checkpoint, visitor, and incident logs are time-stamped and kept to your post orders, so the work can be checked after the fact. Quality checks and daily reporting start with the first shift." (was "We deploy at full staffing with an on-call system behind every post, so a shift is never left open. Real-time quality checks, daily reporting, and immediate support from leadership start with the first shift.")
+- Removed: the headline "A security program, not a headcount.", its lead, and the three parts (Post orders and SOPs, Records you can audit, Supervision).
+- **The relief roster.** is now an H2 in its own block, same paragraph and proof. New lines in its illustration: "A week of posts", "Thursday night: officer out", and "Covered the same shift from the roster" (from the existing "Posts we already staff are covered the same shift from our relief roster."); labels Day, Swing, Night, On call.
+- **Trained on your systems.** is now an H2 with the same lead and six systems.
+

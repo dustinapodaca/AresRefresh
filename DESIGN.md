@@ -960,9 +960,27 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Quote form:** "About the post" adds square chips (40px, 2px corners, ink when chosen;
   never pills) for location, officers on post, schedule, and start, and selects for site
   type and how they heard. Prefilled from `?service=` and `?industry=`.
-- **Services:** "By role, or by industry." (the index) after the divisions; "A security
-  program, not a headcount." (three parts, the relief roster with its mono proof, and the
-  systems officers are trained on as square tags). The dock counts five sections.
+- **Services:** "By role, or by industry." (the index) after the divisions. "A security program,
+  not a headcount." was folded away (owner, 2026-10-15: it repeated the four stages; tagged
+  `services-program-option`): its post orders and SOPs went into stage 02, training on the post
+  into 03, and leadership on the first shift and the audit logs into 04. Two parts stand on their
+  own after the stages:
+  - **04 The relief roster:** a contained panel (the prime contractors panel's surface, 4px
+    corners, 48px padding on desktop) with "The relief roster." (display-md), its paragraph, and
+    the proof beside the green status light ("Fewer than 1% of shifts missed since 2021", mono) in
+    columns 1 to 5, and a small week of shifts in columns 7 to 12 (stacked on phones): Mon to Sun
+    in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On call
+    row of hatched slots a little apart, and a status line in mono under a hairline. One quiet
+    moment when it comes into view (an example week, labeled as one for screen readers): the
+    week fills in cell by cell (28ms apart), Thursday night's dot turns amber ("Thursday night:
+    officer out"), the on-call slot beneath it lights green and a hairline rises into the shift
+    (520ms), and the shift turns green, "Covered the same shift from the roster" (the site's
+    approved line). Once, then it holds; the finished week is the default (prerendered, no JS,
+    reduced motion, or already on screen). Amber and green are the Capability page's status
+    colors.
+  - **05 Trained on your systems:** its own short section, the shared head (display-lg, the lead
+    beside it) over the six systems as square tags with their authored icons.
+  The dock counts six sections (Industries, By role, Process, Relief roster, Systems, Areas).
 
 ### Mobile breaks (below 1024px unless noted)
 - **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides
