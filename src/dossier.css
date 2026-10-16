@@ -4542,7 +4542,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* The link holds still (its 24px right padding covers where the words slide to); only the inner
    span moves, so the pointer over the arrow keeps the hover (owner, 2026-10-16: it flickered). */
 .ds-np-big-in { position: relative; display: inline-block; transition: transform 260ms var(--ds-ease); }
-.ds-np-big-arrow { position: absolute; left: -24px; top: 50%; display: flex; opacity: 0; translate: -8px -50%; transition: opacity 200ms var(--ds-ease), translate 260ms var(--ds-ease); }
+/* The arrow never takes the pointer: at rest it sits invisible left of the link, and catching the
+   pointer there started the same flicker. Where it lands is inside the link anyway. */
+.ds-np-big-arrow { position: absolute; left: -24px; top: 50%; display: flex; opacity: 0; pointer-events: none; translate: -8px -50%; transition: opacity 200ms var(--ds-ease), translate 260ms var(--ds-ease); }
 .ds-np-big[aria-current='page'] .ds-np-big-in { transform: translateX(24px); }
 .ds-np-big[aria-current='page'] .ds-np-big-arrow { opacity: 1; translate: 0 -50%; }
 /* The overview links, above the columns (owner, 2026-10-15): bold white, a little smaller than the
