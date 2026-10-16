@@ -28,8 +28,9 @@ import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
 import HomeNext from './pages/HomeNext';
 
-// The card surface (owner, 2026-10-15): gladia.io's frosted glass is the default; the earlier
-// solid lit-edge cards stay at ?cards=solid. The choice sticks for the session, like the nav.
+// The card surface (owner, 2026-10-15): liquid glass is the default (the glass cards plus the
+// liquid rim); plain glass is ?cards=glass and the earlier solid lit-edge cards ?cards=solid. The
+// choice sticks for the session, like the nav.
 // Sets <html data-cards="glass">; the styles are in dossier.css ("Glass cards").
 function useCardStyle() {
   const [params] = useSearchParams();
@@ -44,10 +45,11 @@ function useCardStyle() {
     }
     if (form === 'solid') delete document.documentElement.dataset.cards;
     else document.documentElement.dataset.cards = 'glass';
-    // ?cards=liquid (owner, 2026-10-15, after gladia.io): the glass cards, plus the liquid rim.
-    if (form === 'liquid') document.documentElement.dataset.liquid = 'true';
+    // Liquid (the default, owner 2026-10-15, after gladia.io): the glass cards plus the liquid rim.
+    const liquid = form !== 'solid' && form !== 'glass';
+    if (liquid) document.documentElement.dataset.liquid = 'true';
     else delete document.documentElement.dataset.liquid;
-    setLiquid(form === 'liquid');
+    setLiquid(liquid);
   }, [asked]);
   const [liquid, setLiquid] = useState(false);
   useLiquidCards(liquid);
