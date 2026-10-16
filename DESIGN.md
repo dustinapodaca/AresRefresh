@@ -309,8 +309,8 @@ Cards and glass are part of the system, not exceptions.
   card's exact size, matched to Gladia's own filter (owner, 2026-10-15: the first version faded at the
   edges instead of bending): the filter region runs 12% past the element so the rim has real page to
   bend, the bend is strongest right at the rim and dies off within about 20px (e^(-d/4) over a 24px
-  rim), reaching 100px, then a light frost (7px on the cards, 10px on the hero strips, Services
-  opening and cards, footer, and 404; 12px on the Home Record cards) with the color lifted and a
+  rim), reaching 100px, then a light frost (7px on the cards, 10px on the Home hero strip, Services
+  cards, and 404; 18px on the Services opening, footer, and Capability hero (owner, 2026-10-15); 12px on the Home Record cards) with the color lifted and a
   thin highlight along the rim lit from the top left) on the Record, Capability, and pipeline
   cards. Chromium only; Safari and Firefox keep the CSS frost. No light behind the cards (a rust
   arc like Gladia's purple planet was tried and removed, owner 2026-10-15); the Record and

@@ -68,9 +68,11 @@ const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
   { sel: '.ds-value', opts: { blur: 12 } },
   { sel: '.ds-cs-card' },
   { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 10 } },
-  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 10 } },
+  // More frost on the Services opening, the footer, and the Capability hero (owner, 2026-10-15; was 10).
+  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18 } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
-  { sel: '.ds-svc-open-glass, .ds-ft-glass, .ds-nf-card', opts: { blur: 10 } },
+  { sel: '.ds-svc-open-glass, .ds-ft-glass', opts: { blur: 18 } },
+  { sel: '.ds-nf-card', opts: { blur: 10 } },
   { sel: '.ds-svc-card-text', opts: { blur: 10 } },
 ];
 function useLiquidCards(on: boolean) {
