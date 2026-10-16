@@ -4538,9 +4538,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 /* The menu links (owner, 2026-10-15; no underline): on hover the text slides right and an arrow
    comes in on its left, then both slide back out. The current page holds that state. */
-.ds-np-big { position: relative; display: inline-block; font: 600 22px/1.15 var(--ds-display); letter-spacing: -0.03em; color: var(--ds-fg); transition: color 180ms var(--ds-ease), transform 260ms var(--ds-ease); }
+.ds-np-big { display: inline-block; padding-right: 24px; font: 600 22px/1.15 var(--ds-display); letter-spacing: -0.03em; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
+/* The link holds still (its 24px right padding covers where the words slide to); only the inner
+   span moves, so the pointer over the arrow keeps the hover (owner, 2026-10-16: it flickered). */
+.ds-np-big-in { position: relative; display: inline-block; transition: transform 260ms var(--ds-ease); }
 .ds-np-big-arrow { position: absolute; left: -24px; top: 50%; display: flex; opacity: 0; translate: -8px -50%; transition: opacity 200ms var(--ds-ease), translate 260ms var(--ds-ease); }
-.ds-np-big[aria-current='page'] { transform: translateX(24px); }
+.ds-np-big[aria-current='page'] .ds-np-big-in { transform: translateX(24px); }
 .ds-np-big[aria-current='page'] .ds-np-big-arrow { opacity: 1; translate: 0 -50%; }
 /* The overview links, above the columns (owner, 2026-10-15): bold white, a little smaller than the
    menu links, with a down-right arrow; a hairline under the row. */
@@ -4556,7 +4559,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-foot .ds-link { color: var(--ds-fg-muted); }
 .ds-np-profiles { display: inline-flex; gap: 18px; margin-left: auto; }
 @media (hover: hover) and (pointer: fine) {
-  .ds-np-big:hover { color: #fff; transform: translateX(24px); }
+  .ds-np-big:hover { color: #fff; }
+  .ds-np-big:hover .ds-np-big-in { transform: translateX(24px); }
   .ds-np-big:hover .ds-np-big-arrow { opacity: 1; translate: 0 -50%; }
   .ds-np-over:hover { color: #fff; }
   .ds-np-over:hover .ds-np-over-arrow { transform: translate(2px, 2px); }
@@ -4577,7 +4581,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); font: 500 14px/1 var(--ds-text); color: var(--ds-fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-arrow, .ds-np-burger i { transition: none !important; }
+  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-burger i { transition: none !important; }
   .ds-np-menu { animation: none; }
 }
 

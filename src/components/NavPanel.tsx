@@ -183,11 +183,14 @@ function MenuBody({ menu }: { menu: Menu }) {
             {col.links.map((l) => (
               <li key={l.to + l.label}>
                 <NavLink to={l.to} className="ds-np-big" end>
-                  {/* On hover the link slides right and this arrow comes in on its left. */}
-                  <span className="ds-np-big-arrow" aria-hidden="true">
-                    <Arrow size={16} />
+                  {/* On hover the words slide right and this arrow comes in on their left. Only
+                      the inner span moves, so the link's hover area holds still under the pointer. */}
+                  <span className="ds-np-big-in">
+                    <span className="ds-np-big-arrow" aria-hidden="true">
+                      <Arrow size={16} />
+                    </span>
+                    {l.label}
                   </span>
-                  {l.label}
                 </NavLink>
               </li>
             ))}
