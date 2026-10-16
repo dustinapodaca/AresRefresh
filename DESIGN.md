@@ -949,7 +949,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   underline (owner, 2026-10-13). Each photo sets its own framing: the patrol cars just below
   center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
-  three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links, no city links; owner 2026-10-13), then a solid strip pinned to the bottom of the open menu so it stays on screen while the list scrolls: the phone (mono) with LinkedIn, Google, and Indeed as small monochrome marks on the right, the email, and the main button. No PDF button in the phone menu (owner, 2026-10-13). Company lists its links only. Closing the menu resets every section to folded.
+  three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links, no city links; owner 2026-10-13), then a solid strip pinned to the bottom of the open menu so it stays on screen while the list scrolls: the phone (mono) with LinkedIn, Google, and Indeed as small monochrome marks on the right, the email, and the main button. No PDF button in the phone menu (owner, 2026-10-13). Company lists its links only. Closing the menu resets every section to folded. Since 2026-10-15 (owner, after gigaenergy.com's
+  phone menu) the open sections carry photos: Services lists the six with a 56px real Ares photo
+  beside each (the officer at the range for Armed, the officer with the badge for Unarmed, the
+  officer portrait for Access Control, the Space Force base for Restricted-Area Escort, the team at
+  the range for Relief & Surge, the patrol cars for Mobile Patrol), its name, and its tags in mono;
+  Industries is a row of photo cards (the industry pages' photos, 16:10, 72% wide so the next one
+  peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
   On phones and desktop, once the reader reaches the page's sections (when the running head
   would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
   slides left into the mark (shrinking, fading, clipped behind it), and the mark grows (to about
