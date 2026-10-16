@@ -4887,7 +4887,13 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
    above 4.5:1. */
 @media (max-width: 767px) {
   .ds-ap-wrap { margin-top: -56px; }
-  html[data-cards='glass'] .ds-ap-card { background: linear-gradient(180deg, rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.24) 50%, rgb(0 0 0 / 0.34)); }
+  /* More color through it (owner, 2026-10-15): a lighter wash and less blur so the copper isn't
+     smeared away; no saturation boost, the copper's own color (the CSS frost: no liquid on phones). */
+  html[data-cards='glass'] .ds-ap-card {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.04), rgb(0 0 0 / 0.14) 50%, rgb(0 0 0 / 0.24));
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
 }
 @media (min-width: 768px) {
   .ds-ap-photo { aspect-ratio: 16 / 9; max-height: none; }
