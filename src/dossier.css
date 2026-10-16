@@ -5387,14 +5387,59 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 }
 
 
-/* The prime contractor panel, starting over (owner, 2026-10-16: it read as AI-made): flat black,
-   no light from above, no dot grid, no glass. The edge stays. Home and the Government & Defense
-   panel, in every card mode. */
+/* The prime contractor panel, starting over (owner, 2026-10-16: it read as AI-made). After
+   gladia.io's "Start transcribing in minutes" card: black, the site's lit glass edge (bright at the
+   top left, a warm glint low on the right) with a brighter line along the top and a faint inner
+   rim so the edge reads as thickness, and inside it one beam of the site's rust light rising
+   diagonally from the foot, blurred, with a deeper rust pool low on the right. No dot grid, no
+   backdrop blur. Home and Government & Defense. */
 html .ds-primes-panel,
 html[data-cards] .ds-primes-panel {
-  background: #000;
+  isolation: isolate;
+  background: linear-gradient(#000, #000) padding-box, var(--ds-card-edge) border-box;
+  border: 1px solid transparent;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.12),
+    inset 0 0 40px rgb(255 255 255 / 0.03),
+    0 8px 28px rgb(0 0 0 / 0.2);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
-  box-shadow: none;
 }
-.ds-primes-panel::before { content: none; }
+.ds-primes-panel > * { z-index: 1; }
+/* The beam: a long ellipse of copper light with a warm core, turned to rise from the foot, behind
+   the diagram (right half) so the copy stays on clean black. The core is lighter than the rust
+   swatch so on black it reads as light, not brown. */
+.ds-primes-panel::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: auto;
+  left: 54%;
+  top: -12%;
+  width: 28%;
+  height: 140%;
+  background: radial-gradient(closest-side, rgb(255 184 128 / 0.6), rgb(236 136 72 / 0.46) 30%, rgb(188 111 64 / 0.26) 58%, rgb(139 73 32 / 0.1) 82%, transparent);
+  transform: rotate(28deg);
+  filter: blur(40px);
+  opacity: 0.9;
+  -webkit-mask-image: none;
+  mask-image: none;
+  pointer-events: none;
+}
+/* Phones and tablets: the diagram sits under the copy, so the beam rises only through the lower
+   part of the panel, behind it. */
+@media (max-width: 1023px) {
+  .ds-primes-panel::before { left: 30%; top: 46%; width: 44%; height: 66%; }
+}
+/* The pool: deeper rust low on the right. */
+.ds-primes-panel::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: -18% 0;
+  background:
+    radial-gradient(46% 40% at 92% 96%, rgb(139 73 32 / 0.4), transparent 72%),
+    radial-gradient(36% 30% at 60% 104%, rgb(236 136 72 / 0.22), transparent 70%);
+  filter: blur(36px);
+  pointer-events: none;
+}

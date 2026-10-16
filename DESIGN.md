@@ -506,9 +506,13 @@ exception to "no card containers" and "no glass" for this section.
 - The six-name list left 04 Coverage (this section replaces it).
 
 ### For prime contractors (Home, end of 02 Industries; owner 2026-10-10, pass 2)
-- **Being redone (owner, 2026-10-16: it read as AI-made).** First step: the panel is flat black
-  (#000) in every card mode, with no light from above, no dot grid, and no glass; the edge stays.
-  Home and the Government & Defense panel. What follows describes the panel before the redo.
+- **Being redone (owner, 2026-10-16: it read as AI-made).** So far, after gladia.io's "Start
+  transcribing in minutes" card: black, the site's lit glass edge (`--ds-card-edge`) with a white/12%
+  line along the top and a faint inner rim, so the edge reads as glass; inside, one beam of copper
+  light (a warm core lighter than the rust swatch, so it reads as light, not brown) rising
+  diagonally from the foot behind the diagram, blurred 40px, and a deeper rust pool low on the right.
+  The copy stays on clean black (phones: the beam only behind the diagram). No dot grid, no backdrop
+  blur. Home and the Government & Defense panel. What follows describes the panel before the redo.
 - A contained panel (an owner exception to "no card containers", like the Record cards),
   after Slash, Flora, and Resend: near-black (#0c0d10) with a soft white/4.5% light from
   above, white/8% inset edge, white/12% top line, 4px corners, 40px padding (22 on phones).
