@@ -82,7 +82,8 @@ PHOTOS = [
     # A real photo (owner, 2026-10-16): the Denver Pavilions sign on 16th Street, its letters in rust,
     # a glass tower behind (Unsplash, Benigno Hoyuela). 2400px. The generated dusk scene it
     # replaced is in images-unused. The Coyote Ugly signs on the wall and over the door were
-    # removed (owner, 2026-10-16) by cloning the wall beside them; the untouched original is
+    # removed (owner, 2026-10-16): OpenAI masked edit (gpt-image-1) of a 1024px crop, only the two
+    # masked patches composited back with a 2px feather; the untouched original is
     # commercial-denver-pavilions.jpg beside it.
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-denver-pavilions-clean.png', 'q': 80},
     # A real photo (owner, 2026-10-16): apartment buildings at blue hour, balconies and warm lit

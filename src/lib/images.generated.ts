@@ -165,8 +165,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1333
   },
   "/images/market/commercial-property.webp": {
-    "src": "/images/opt/market-commercial-property-1200.ac05c03c.webp",
-    "srcSet": "/images/opt/market-commercial-property-480.13daa173.webp 480w, /images/opt/market-commercial-property-800.56dd2f97.webp 800w, /images/opt/market-commercial-property-1200.ac05c03c.webp 1200w, /images/opt/market-commercial-property-1600.8df483a7.webp 1600w, /images/opt/market-commercial-property-2000.6cb35172.webp 2000w, /images/opt/market-commercial-property-2400.87cb3a58.webp 2400w",
+    "src": "/images/opt/market-commercial-property-1200.c66f258e.webp",
+    "srcSet": "/images/opt/market-commercial-property-480.7949cb27.webp 480w, /images/opt/market-commercial-property-800.f977f7db.webp 800w, /images/opt/market-commercial-property-1200.c66f258e.webp 1200w, /images/opt/market-commercial-property-1600.afe2da13.webp 1600w, /images/opt/market-commercial-property-2000.39648694.webp 2000w, /images/opt/market-commercial-property-2400.04122761.webp 2400w",
     "width": 2400,
     "height": 1600
   },
