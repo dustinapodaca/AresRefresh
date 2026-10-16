@@ -4783,3 +4783,56 @@ html[data-cards='glass'] .ds-cs-cards .ds-cs-card { -webkit-backdrop-filter: non
     backdrop-filter: blur(18px) saturate(140%);
   }
 }
+
+/* ---------- Services opening, three forms without the glass (owner, 2026-10-15, from Mobbin) ----------
+   /services?open=plate|split|overlap; the copper-glass tower in each, graded like the site's other
+   plates, the copy on plain black. */
+.ds-svc-alt { position: relative; }
+.ds-svc-alt img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95) brightness(0.85) contrast(1.05); }
+.ds-svc-alt-photo { position: relative; overflow: hidden; }
+.ds-svc-alt-photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
+.ds-svc-alt .ds-lead { color: var(--ds-fg-muted); }
+
+/* plate: headline and lead, then the photo as a wide plate in the column. */
+.ds-svc-alt[data-form='plate'] .ds-svc-alt-grid { padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); display: grid; gap: 22px; }
+.ds-svc-alt[data-form='plate'] .ds-svc-alt-photo { margin-top: 26px; aspect-ratio: 4 / 3; border-radius: 4px; }
+.ds-svc-alt[data-form='plate'] .ds-svc-alt-photo img { object-position: 50% 92%; }
+@media (min-width: 1024px) {
+  .ds-svc-alt[data-form='plate'] .ds-svc-alt-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-svc-alt[data-form='plate'] h1 { grid-column: 1 / span 7; }
+  .ds-svc-alt[data-form='plate'] .ds-lead { grid-column: 8 / span 5; margin: 0; }
+  .ds-svc-alt[data-form='plate'] .ds-svc-alt-photo { grid-column: 1 / -1; margin-top: 56px; aspect-ratio: 21 / 9; }
+}
+
+/* split: copy on black at left, the photo filling the right half to the edge, full height. */
+.ds-svc-alt[data-form='split'] .ds-svc-alt-split { display: grid; }
+.ds-svc-alt[data-form='split'] .ds-svc-alt-photo { order: -1; aspect-ratio: 4 / 5; max-height: 62svh; width: 100%; }
+.ds-svc-alt[data-form='split'] .ds-svc-alt-photo img { object-position: 50% 80%; }
+.ds-svc-alt[data-form='split'] .ds-svc-alt-copy { display: grid; gap: 20px; padding: 32px var(--ds-gutter) 0; }
+@media (min-width: 1024px) {
+  .ds-svc-alt[data-form='split'] .ds-svc-alt-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: max(640px, 86svh); }
+  .ds-svc-alt[data-form='split'] .ds-svc-alt-photo { order: 0; aspect-ratio: auto; max-height: none; height: 100%; }
+  .ds-svc-alt[data-form='split'] .ds-svc-alt-photo::after { box-shadow: none; }
+  .ds-svc-alt[data-form='split'] .ds-svc-alt-copy {
+    align-content: end; gap: 24px;
+    padding: calc(var(--ds-header) + var(--ds-beat)) 56px var(--ds-beat) max(var(--ds-gutter), calc((100vw - var(--ds-max)) / 2));
+  }
+}
+
+/* overlap: a big headline across, the photo set right and rising under its last line. */
+.ds-svc-alt[data-form='overlap'] .ds-svc-alt-grid { padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); display: grid; }
+.ds-svc-alt[data-form='overlap'] h1 { position: relative; z-index: 1; }
+.ds-svc-alt[data-form='overlap'] .ds-lead { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--ds-rule-strong); max-width: 34ch; }
+.ds-svc-alt[data-form='overlap'] .ds-svc-alt-photo { margin-top: 32px; aspect-ratio: 4 / 3; border-radius: 4px; }
+.ds-svc-alt[data-form='overlap'] .ds-svc-alt-photo img { object-position: 50% 96%; }
+@media (min-width: 1024px) {
+  .ds-svc-alt[data-form='overlap'] .ds-svc-alt-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto 1fr; column-gap: 24px; padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-svc-alt[data-form='overlap'] h1 { grid-column: 1 / span 10; grid-row: 1; font-size: clamp(64px, 7.4vw, 112px); }
+  .ds-svc-alt[data-form='overlap'] .ds-svc-alt-photo { grid-column: 6 / -1; grid-row: 1 / span 3; margin-top: clamp(96px, 9vw, 140px); aspect-ratio: 16 / 11; }
+  .ds-svc-alt[data-form='overlap'] .ds-lead { grid-column: 1 / span 4; grid-row: 2; align-self: start; margin-top: 44px; }
+  /* The photo's top eases into black where the headline crosses it, so the headline reads. */
+  .ds-svc-alt[data-form='overlap'] .ds-svc-alt-photo img {
+    -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.25), #000 42%);
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.25), #000 42%);
+  }
+}

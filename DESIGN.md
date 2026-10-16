@@ -577,6 +577,13 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
   point, 6:1 or better at every width). The place caption "Downtown Colorado Springs, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
+- **Three openings without the glass or the scroll hold** (owner, 2026-10-15, from Mobbin), to compare
+  at `/services?open=`: `plate` (headline 7 columns and lead 5 on black, then the tower as a 21:9
+  plate across the column, 4:3 on phones; Save.design, Vizcom), `split` (copy at the foot of a black
+  left half, the tower filling the right half to the screen edge at 86svh, behind the nav; on phones
+  the photo on top; Dropbox), `overlap` (the headline across 10 columns, the tower in columns 6 to 12
+  rising under its last line, its top easing into black where the line crosses it, the lead under a
+  hairline at left; MasterClass). The glass opening stays the default until the owner picks.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
   ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &

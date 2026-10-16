@@ -49,7 +49,63 @@ const COPY = {
   },
 } as const;
 
+// Three openings without the glass or the scroll hold (owner, 2026-10-15, from Mobbin), for the
+// owner to compare at /services?open=plate|split|overlap. The glass opening stays the default.
+//   plate    headline and lead on black, the photo below as a wide plate in the column
+//            (Save.design, Vizcom)
+//   split    copy in a black column on the left, the photo filling the right half to the edge
+//            (Dropbox)
+//   overlap  a big headline across, the photo set right and rising under its last line, the lead
+//            on the left (MasterClass)
+const FORMS = ['plate', 'split', 'overlap'] as const;
+type Form = (typeof FORMS)[number];
+
+function OpeningAlt({ form, copy, src }: { form: Form; copy: { title: string; lead: string }; src: string }) {
+  const photo = (
+    <img {...responsive(src, form === 'split' ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 1280px, 100vw')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+  );
+  return (
+    <section className="ds-svc-alt" data-form={form} aria-labelledby="services-title">
+      {form === 'split' ? (
+        <div className="ds-svc-alt-split">
+          <div className="ds-svc-alt-copy">
+            <h1 id="services-title" className="ds-display-xl">
+              {heroTitle(copy.title)}
+            </h1>
+            <p className="ds-lead">{copy.lead}</p>
+          </div>
+          <div className="ds-svc-alt-photo" aria-hidden="true">
+            {photo}
+          </div>
+        </div>
+      ) : (
+        <div className="ds-container ds-svc-alt-grid">
+          <h1 id="services-title" className="ds-display-xl">
+            {heroTitle(copy.title)}
+          </h1>
+          <p className="ds-lead">{copy.lead}</p>
+          <div className="ds-svc-alt-photo" aria-hidden="true">
+            {photo}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function Opening() {
+  const [params] = useSearchParams();
+  const askedForm = params.get('open');
+  if (askedForm && (FORMS as readonly string[]).includes(askedForm)) {
+    const copy = COPY[((params.get('hero') ?? '') in COPY ? params.get('hero') : 'plan') as keyof typeof COPY];
+    const askedPhoto = params.get('photo');
+    const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'tower') as keyof typeof PHOTOS];
+    return <OpeningAlt form={askedForm as Form} copy={copy} src={HERO.src} />;
+  }
+  return <OpeningGlass />;
+}
+
+function OpeningGlass() {
   const ref = useRef<HTMLElement>(null);
   const [params] = useSearchParams();
   const asked = params.get('hero');
