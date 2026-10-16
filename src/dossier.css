@@ -2376,6 +2376,16 @@ html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, 
 .ds-svc-systems li { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 10px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; color: var(--ds-fg); }
 /* The system's icon, quieter than its name (owner, 2026-10-09). */
 .ds-svc-systems li svg { flex: none; color: var(--ds-fg-muted); }
+/* Desktop (owner, 2026-10-15): the headline with its lead beneath on the left, the systems as a
+   collection on the right. */
+@media (min-width: 1024px) {
+  .ds-svc-systems { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+  .ds-svc-systems .ds-sec-head { grid-column: 1 / span 5; display: block; }
+  .ds-svc-systems .ds-sec-head .ds-lead { margin-top: 20px; }
+  /* A neat collection: two columns of equal badges, three rows. */
+  .ds-svc-systems ul { grid-column: 6 / span 7; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .ds-svc-systems li { height: auto; min-height: 44px; padding: 8px 14px 8px 12px; line-height: 1.35; }
+}
 
 /* ============================================================
    ABOUT ("The Company File", docs/about-concepts.md)

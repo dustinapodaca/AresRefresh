@@ -981,8 +981,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     the same shift from this week's on-call schedule" (owner). Once, then it holds; the finished week is the default (prerendered, no JS,
     reduced motion, or already on screen). The green is the Capability page's status green; the
     red is used only here.
-  - **05 Trained on your systems:** its own short section, the shared head (display-lg, the lead
-    beside it) over the six systems as square tags with their authored icons.
+  - **05 Trained on your systems:** its own short section: the headline (display-lg) with its lead
+    beneath, and the six systems as square tags with their authored icons. Desktop (owner,
+    2026-10-15): the headline and lead in columns 1 to 5, the tags as a collection in columns 6 to 12,
+    two equal columns of three (44px rows). Phones and tablets: stacked, the tags wrapping.
   The dock counts six sections (Industries, By role, Process, Relief schedule, Systems, Areas).
 
 ### Mobile breaks (below 1024px unless noted)
