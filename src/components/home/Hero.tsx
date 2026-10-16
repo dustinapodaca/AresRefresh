@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
@@ -63,8 +63,27 @@ export default function Hero() {
     mq.addEventListener('change', sync);
     return () => mq.removeEventListener('change', sync);
   }, []);
+  // Phones and tablets (owner, 2026-10-16): the terrain reaches down to the end of the lead, just
+  // above the quote button (it ended at the headline). How far the copy's top sits above the
+  // lead's foot goes in --topo-reach; the CSS grows the box by that and pulls the copy up by the
+  // same, so the copy stays put. Without JS the box keeps its old 7rem reach.
+  const sectionRef = useRef<HTMLElement>(null);
+  const copyRef = useRef<HTMLDivElement>(null);
+  const leadRef = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    const section = sectionRef.current, copy = copyRef.current, lead = leadRef.current;
+    if (!section || !copy || !lead) return;
+    const measure = () => {
+      const reach = lead.offsetTop + lead.offsetHeight + 16;
+      section.style.setProperty('--topo-reach', `${reach}px`);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(copy);
+    return () => ro.disconnect();
+  }, []);
   return (
-    <section className="ds-hero" aria-labelledby="hero-title">
+    <section ref={sectionRef} className="ds-hero" aria-labelledby="hero-title">
       {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
           in the site's rust drifting under the copy, the cursor lifting the land and a click
           sending a ring out. The copper-glass tower photo (hero6.jpg) moved to the Services
@@ -103,11 +122,11 @@ export default function Hero() {
       )}
 
       <div className="ds-container">
-        <div className="ds-hero-copy">
+        <div ref={copyRef} className="ds-hero-copy">
           <h1 id="hero-title" className="ds-display-xl">
             {heroTitle(hero.title)}
           </h1>
-          <p className="ds-lead">{hero.lead}</p>
+          <p ref={leadRef} className="ds-lead">{hero.lead}</p>
           {/* Below 1024px only: from there up the nav carries the quote button. */}
           <div className="ds-actions ds-hero-actions">
             <Link to="/contact" className="ds-btn ds-btn-primary">

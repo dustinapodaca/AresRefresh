@@ -385,7 +385,9 @@ every page.
   and the terrain starts above the window (160px on desktop, 100px on phones, the box growing by as
   much so the copy stays put) so mid-distance land, not the dark horizon, sits behind the nav. The nav
   glass is lighter for it in the liquid mode (42% black over an 18px blur; was 50% over 24px, then 32% over 14px). On desktop it fades to black into 01 Record over a longer
-  stretch than the photo did (transparent at the foot, 35% at a fifth of the way up, solid by 46%; owner, 2026-10-15). The copper-glass tower photo below moved
+  stretch than the photo did (transparent at the foot, 35% at a fifth of the way up, solid by 46%; owner, 2026-10-15). Below 900px the terrain runs on to the end of the
+  lead, 16px above the quote button (owner, 2026-10-16; it ended at the headline): the box grows by the
+  measured headline-and-lead height and the copy is pulled up by the same, so the copy stays put. The copper-glass tower photo below moved
   to the Services opening and stays here at `/?herobg=photo`. (One change to the React Bits source:
   its cleanup no longer destroys the WebGL context, which drew the hero white under React's
   development Strict Mode.)
