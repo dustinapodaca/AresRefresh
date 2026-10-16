@@ -5050,3 +5050,74 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
   }
 }
 @keyframes ds-ln-drift { from { transform: scale(1.08) translateX(2.5%); } to { transform: scale(1.08) translateX(-2.5%); } }
+
+/* ---------- The prime pipeline, thin (Government page, owner 2026-10-15) ----------
+   PrimeStrip.tsx: the prime, Ares, and the three posts in one row of the pipeline's tiles, under
+   the panel's copy, moving like the full pipeline: the line grows with the scroll (--w1, --w2)
+   with its rust tip; each tile lifts, a light runs once round its edge, a shine sweeps across it,
+   its line brightens, and its green tag comes up as the line reaches it. Built and still by default
+   (no JS, reduced motion); the dim start only applies once the script runs it ([data-live]). */
+@media (min-width: 1024px) {
+  .ds-primes-panel.ds-primes-compact[data-form='strip'] .ds-primes-copy {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end;
+  }
+  .ds-primes-compact[data-form='strip'] .ds-primes-copy > h2,
+  .ds-primes-compact[data-form='strip'] .ds-primes-copy > .ds-primes-line { grid-column: 1 / span 8; }
+  .ds-primes-compact[data-form='strip'] .ds-primes-copy > .ds-primes-btn { grid-column: 10 / span 3; grid-row: 1 / span 2; justify-self: end; margin: 0; }
+}
+.ds-pstrip {
+  display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start;
+  margin: 28px 0 0; padding-top: 44px; border-top: 1px solid rgb(255 255 255 / 0.07);
+}
+.ds-pstrip-node, .ds-pstrip-posts li {
+  position: relative; display: flex; align-items: center; gap: 10px; border-radius: 4px;
+  background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
+}
+.ds-pstrip-node { padding: 10px 14px 10px 12px; }
+.ds-pstrip-text { display: grid; gap: 2px; }
+.ds-pstrip-node b { font-family: var(--ds-text); font-size: 14.5px; font-weight: 500; color: var(--ds-fg); }
+.ds-pstrip-node small { font-size: 12px; color: var(--ds-fg); transition: color 320ms var(--ds-ease) 380ms; }
+.ds-pstrip-node .ds-pipe-tag { left: 0; right: auto; opacity: 1; transform: none; white-space: nowrap; }
+.ds-pstrip-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ds-fg-muted); transition: background 300ms var(--ds-ease) 200ms, box-shadow 300ms var(--ds-ease) 200ms; }
+.ds-pstrip-node[data-ares] .ds-pstrip-dot,
+.ds-pstrip-posts .ds-pstrip-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+/* The wires: hairlines that fill in the line's direction with a rust tip at the end. Upright on phones. */
+/* Upright on phones, tall enough to hold the next tile's tag. */
+.ds-pstrip-wire { position: relative; display: block; width: 1px; height: 44px; margin-left: 15px; background: rgb(255 255 255 / 0.08); }
+.ds-pstrip-wire > span { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--w)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
+.ds-pstrip-tip { display: none; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18);
+  left: 50%; top: calc(var(--w) * 100%); margin: -3.5px 0 0 -3.5px; opacity: calc(1 - var(--w) * var(--w) * var(--w)); }
+.ds-pstrip[data-live] .ds-pstrip-tip { display: block; }
+/* The posts: three small tiles off one bracket, lighting in turn. */
+.ds-pstrip-posts { list-style: none; margin: 0 0 0 15px; padding: 0 0 0 14px; display: grid; gap: 6px; border-left: 1px solid rgb(188 111 64 / 0.5); transition: border-color 300ms var(--ds-ease); }
+.ds-pstrip-posts li { padding: 7px 12px 7px 10px; font-size: 13px; font-weight: 500; color: var(--ds-fg); }
+.ds-pstrip-posts li::before { content: ''; position: absolute; left: -15px; top: 50%; width: 14px; height: 1px; background: rgb(188 111 64 / 0.5); }
+@media (min-width: 768px) {
+  .ds-pstrip { grid-template-columns: auto minmax(40px, 1fr) auto minmax(40px, 1fr) auto; align-items: center; justify-items: stretch; }
+  .ds-pstrip-wire { width: auto; height: 1px; margin: 0; }
+  .ds-pstrip-wire > span { transform-origin: left; transform: scaleX(var(--w)); background: linear-gradient(to right, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
+  .ds-pstrip-tip { left: calc(var(--w) * 100%); top: 50%; }
+  .ds-pstrip-posts { margin-left: 0; }
+}
+/* The pipeline's light-up, on each tile as the line reaches it: the lift, the light round the
+   edge (ds-pipe-trace), the shine (ds-pipe-shine), the line brightening, the tag coming up. */
+.ds-pstrip[data-live] :is(.ds-pstrip-node, .ds-pstrip-posts li) {
+  opacity: 0.62; transform: translateY(12px) scale(0.97);
+  transition: opacity 420ms var(--ds-ease), transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ds-pstrip[data-live] .ds-pstrip-posts li { transform: translateY(8px); transition-delay: calc(var(--i) * 120ms); }
+.ds-pstrip[data-live] :is(.ds-pstrip-node, .ds-pstrip-posts li)[data-on] { opacity: 1; transform: none; }
+.ds-pstrip[data-live] :is(.ds-pstrip-node, .ds-pstrip-posts li):not([data-on]) .ds-pstrip-dot { background: rgb(255 255 255 / 0.22); box-shadow: none; }
+.ds-pstrip[data-live] .ds-pstrip-node:not([data-on]) small { color: var(--ds-fg-muted); }
+.ds-pstrip[data-live] .ds-pstrip-node .ds-pipe-tag { opacity: 0.62; transform: translateY(4px) scale(0.94); }
+.ds-pstrip[data-live] .ds-pstrip-node[data-on] .ds-pipe-tag { opacity: 1; transform: none; }
+.ds-pstrip[data-live] .ds-pstrip-posts:not([data-on]) { border-left-color: rgb(255 255 255 / 0.08); }
+.ds-pstrip-node::after, .ds-pstrip-posts li::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
+  background: conic-gradient(from var(--ds-pipe-a), transparent 0deg, transparent 250deg, rgb(241 196 154 / 0.95) 320deg, #fff 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.ds-pstrip-node::before { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.07) 44%, rgb(255 236 220 / 0.13) 50%, rgb(255 255 255 / 0.07) 56%, transparent 70%) no-repeat;
+  background-size: 250% 100%; background-position: 130% 0; }
+.ds-pstrip[data-live] .ds-pstrip-node[data-on]::after { animation: ds-pipe-trace 1100ms cubic-bezier(0.45, 0, 0.3, 1) 120ms both; }
+.ds-pstrip[data-live] .ds-pstrip-posts li[data-on]::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) calc(100ms + var(--i) * 120ms) both; }
+.ds-pstrip[data-live] .ds-pstrip-node[data-on]::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }

@@ -4,6 +4,7 @@ import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import PrimeFlow from '../components/home/PrimeFlow';
 import PrimePipeline from '../components/home/PrimePipeline';
+import PrimeStrip from '../components/market/PrimeStrip';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
@@ -16,7 +17,10 @@ import { heroTitle } from '../lib/heroTitle';
 export default function IndustryPage() {
   const { slug } = useParams();
   const [params] = useSearchParams();
-  const primeForm = params.get('prime') === 'diagram' ? 'diagram' : 'pipeline';
+  // The prime panel's figure (owner, 2026-10-15): the thin strip by default; Home's full pipeline
+  // at ?prime=pipeline and the earlier diagram at ?prime=diagram.
+  const asked = params.get('prime');
+  const primeForm = asked === 'diagram' || asked === 'pipeline' ? asked : 'strip';
   const ind = industryBySlug(slug);
   if (!ind) return <NotFound />;
   const quote = `/contact?industry=${ind.slug}`;
@@ -88,9 +92,8 @@ export default function IndustryPage() {
 
         {ind.primes && (
           // A smaller version of Home's prime panel (design review, owner 2026-10-13): the same
-          // card, the two-tone line, the button, and Home's pipeline with its scroll animation
-          // (owner, 2026-10-15; the earlier diagram stays at ?prime=diagram, as on Home), without
-          // the proof list.
+          // card, the two-tone line, the button, and the pipeline drawn thin in one row (owner,
+          // 2026-10-15: Home and /teaming carry the full one), without the proof list.
           <section className="ds-mk-sec" aria-labelledby="mk-primes">
             <div className="ds-primes-panel ds-primes-compact" data-form={primeForm}>
               <div className="ds-primes-copy">
@@ -103,7 +106,7 @@ export default function IndustryPage() {
                   <Arrow />
                 </Link>
               </div>
-              {primeForm === 'diagram' ? <PrimeFlow /> : <PrimePipeline />}
+              {primeForm === 'diagram' ? <PrimeFlow /> : primeForm === 'pipeline' ? <PrimePipeline /> : <PrimeStrip />}
             </div>
           </section>
         )}
