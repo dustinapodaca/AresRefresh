@@ -382,11 +382,14 @@ function SlideMenu({
       </div>
       {pages.map(({ m, body }) => (
         <div key={m} className="ds-np-pane ds-np-pane-sub" data-on={panel === m || undefined} {...(panel === m ? {} : { inert: '' })}>
-          <button ref={panel === m ? backRef : undefined} type="button" className="ds-np-back" onClick={() => setPanel(null)}>
-            <ArrowBack />
-            Back
-          </button>
-          <p className="ds-np-pane-title">{m}</p>
+          {/* Back on the left, the section's name on the right, in one bar (owner, 2026-10-15). */}
+          <div className="ds-np-backbar">
+            <button ref={panel === m ? backRef : undefined} type="button" className="ds-np-back" onClick={() => setPanel(null)}>
+              <ArrowBack />
+              Back
+            </button>
+            <p className="ds-np-pane-title">{m}</p>
+          </div>
           {body}
         </div>
       ))}
