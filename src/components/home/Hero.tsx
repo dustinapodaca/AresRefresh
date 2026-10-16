@@ -90,7 +90,8 @@ export default function Hero() {
             direction="forward"
             glow={0.6}
             depthOfField={0.4}
-            fog={0.35}
+            // Less distance fog (owner, 2026-10-15; was 0.35), so the far land reaches up behind the nav.
+            fog={0.12}
             hoverEffect="lift"
             clickEffect="pulse"
           />}

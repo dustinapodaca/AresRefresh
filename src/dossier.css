@@ -4485,6 +4485,17 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-primes-panel[data-form='pipeline'] .ds-pipe { grid-column: 7 / span 6; margin-top: 0; padding-top: 30px; }
 }
 
+/* Home hero terrain (owner, 2026-10-15): no shade from the top (the photo's, to keep its sky from
+   glaring under the nav), so the contour lines run up behind the nav and show through its glass.
+   Desktop keeps the photo's edge vignette. */
+.ds-hero-topo::after { background: none; }
+/* The terrain starts above the window, so mid-distance land (not the dark horizon) sits behind the
+   nav. Phones: the box grows upward by as much as it moves up, so the copy below stays put. */
+.ds-hero-topo { margin-top: -100px; height: calc(58svh + var(--ds-header) + 100px); }
+@media (min-width: 900px) {
+  .ds-hero-topo { top: -160px; margin-top: 0; height: auto; }
+  .ds-hero-topo::after { background: radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%); }
+}
 /* Home hero terrain, desktop (owner, 2026-10-15): a longer, stronger black fade into 01 Record
    than the photo's (it was transparent to solid over the last 26%). */
 @media (min-width: 900px) {
@@ -4602,7 +4613,12 @@ html[data-liquid='true'] {
 }
 /* The nav keeps its CSS frost (24px), with less black. The phone menu's open sheet stays nearly
    solid (its own rule is more specific). */
-html[data-liquid='true'] .ds-np-card { background: rgb(8 9 11 / 0.5); }
+html[data-liquid='true'] .ds-np-card {
+  /* Lighter (owner, 2026-10-15): the Home terrain reads through it at the top of the page. */
+  background: rgb(8 9 11 / 0.32);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
 @media (min-width: 1024px) {
   html[data-liquid='true'] .ds-np[data-open='true'] .ds-np-card { background: rgb(8 9 11 / 0.82); }
 }
