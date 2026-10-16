@@ -365,6 +365,13 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-crumbs a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
 .ds-crumbs a:hover { color: var(--ds-fg); }
 .ds-crumbs [aria-current] { color: var(--ds-fg-faint); }
+/* Phones: one line; a long current page (an article title) ends in an ellipsis instead of
+   wrapping onto a second line that opens with "/" (375px check, owner 2026-10-16). */
+@media (max-width: 767px) {
+  .ds-crumbs ol { flex-wrap: nowrap; }
+  .ds-crumbs li { flex: none; white-space: nowrap; }
+  .ds-crumbs li:last-child { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+}
 
 /* The Services panel and the phone call link (copy audit group 2, owner 2026-10-10). */
 .ds-nav-has-menu { position: relative; display: flex; align-items: center; gap: 2px; }
@@ -4620,7 +4627,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-pipe { gap: 40px; }
   .ds-pipe-card { width: min(100%, 290px); }
   .ds-pipe-posts { margin-top: -40px; padding-top: 40px; gap: 6px; }
-  .ds-pipe-post { margin-top: calc(var(--i) * 18px); padding: 11px 6px 11px 8px; font-size: 12px; }
+  /* 15px on top so a two-line name clears the corner dot (375px check, owner 2026-10-16). */
+  .ds-pipe-post { margin-top: calc(var(--i) * 18px); padding: 15px 6px 11px 8px; font-size: 12px; }
 }
 @media (min-width: 1024px) {
   .ds-primes-panel[data-form='pipeline'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }

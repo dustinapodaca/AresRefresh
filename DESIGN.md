@@ -207,7 +207,8 @@ sizes are unchanged.
 - No eyebrows or kickers above headings. No bracketed labels. (Breadcrumbs above the
   headline on service, industry, city, and article pages are navigation, not a label: the
   owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
-  strong, from the same trail as the BreadcrumbList JSON-LD.)
+  strong, from the same trail as the BreadcrumbList JSON-LD. On phones one line, a long
+  current page ending in an ellipsis; owner, 2026-10-16.)
 - Font loading: Google Fonts, `display=swap`: Inter (300 to 800), Inter Tight (500, 600),
   IBM Plex Mono (400, 500).
 
