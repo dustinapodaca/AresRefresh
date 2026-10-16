@@ -970,3 +970,11 @@ part of the mission), without its clearance claims. The slug /industries/governm
   CenCore finish review called it overstated).
 - SEO title "Government & Defense Security in Colorado" (was "Government & Military Facility
   Security").
+
+## "Teaming & subcontracting" everywhere (owner, 2026-10-16)
+
+The nav's overview links took "&" first; every other Teaming label follows: the Teaming page H1,
+the prime contractor panels' button (Home, Government & Defense, /home-next), the close's ledger
+row (?close=ledger), the GSA insight's related link, the Capability Statement's procurement path
+("Teaming & subcontracting with primes"), the classic nav (?nav=classic), and llms.txt. Prose
+keeps "and" (e.g. "teaming and subcontract coverage" in a sentence).

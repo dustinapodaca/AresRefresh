@@ -159,7 +159,7 @@ export default function HomeNext() {
             <h2 id="hn-prime" className="hn-h2">For prime <span>contractors</span></h2>
             <p className="hn-sub">A woman-owned subcontractor for Front Range work: restricted-area escorts, access control officers, and relief, overflow, and surge coverage under your contract.</p>
             <Link to="/teaming" className="hn-btn hn-btn-glass">
-              Teaming and subcontracting
+              Teaming & subcontracting
               <Arrow size={14} />
             </Link>
           </header>

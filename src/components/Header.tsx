@@ -163,11 +163,11 @@ export default function Header() {
                         primes and guard companies are one hover away. */}
                     <div className="ds-nav-panel-top">
                       <Link to="/services" className="ds-link">
-                        All services and how a post starts
+                        All services & how a post starts
                         <Arrow size={14} />
                       </Link>
                       <Link to="/teaming" className="ds-link">
-                        Teaming and subcontracting
+                        Teaming & subcontracting
                         <Arrow size={14} />
                       </Link>
                     </div>
@@ -244,7 +244,7 @@ export default function Header() {
           </nav>
           {/* Phones have no Services panel, so Teaming gets a quiet line of its own. */}
           <Link to="/teaming" className="ds-link ds-sheet-teaming" style={{ ['--i' as string]: NAV.length }}>
-            Teaming and subcontracting
+            Teaming & subcontracting
             <Arrow size={14} />
           </Link>
           <div className="ds-sheet-contact" style={{ ['--i' as string]: NAV.length }}>

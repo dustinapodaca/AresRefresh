@@ -185,7 +185,7 @@ function Ledger() {
     { label: 'Call', value: PHONE, mono: true, href: TEL },
     { label: 'Email', value: EMAIL, mono: true, href: `mailto:${EMAIL}` },
     { label: 'Capability statement', value: 'One page, PDF', to: '/capability-statement' },
-    { label: 'Prime contractors', value: 'Teaming and subcontracting', to: '/teaming' },
+    { label: 'Prime contractors', value: 'Teaming & subcontracting', to: '/teaming' },
   ];
   return (
     <div className="ds-cta-split">

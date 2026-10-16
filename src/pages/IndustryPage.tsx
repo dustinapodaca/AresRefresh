@@ -106,7 +106,7 @@ export default function IndustryPage() {
                   <span>A woman-owned subcontractor for federal work.</span> {ind.primes}
                 </p>
                 <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
-                  Teaming and subcontracting
+                  Teaming & subcontracting
                   <Arrow />
                 </Link>
               </div>

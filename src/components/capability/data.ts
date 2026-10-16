@@ -186,7 +186,7 @@ export const PATHS: { name: string; status: 'Available' | 'On request'; to?: str
   { name: 'Open market · FAR 13', status: 'Available' },
   { name: 'BPAs & IDIQs', status: 'On request' },
   { name: 'State of Colorado contracts', status: 'Available' },
-  { name: 'Teaming and subcontracting with primes', status: 'Available', to: '/teaming' },
+  { name: 'Teaming & subcontracting with primes', status: 'Available', to: '/teaming' },
 ];
 
 export type Cert = { src: string; alt: string; name: string; id?: string; tall?: boolean; color?: boolean };

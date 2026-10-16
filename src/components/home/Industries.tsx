@@ -117,7 +117,7 @@ function PrimesPanel({ form }: { form: string | null }) {
   const kind = form === 'split' || form === 'vignettes' || form === 'diagram' ? form : 'pipeline';
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
-      Teaming and subcontracting
+      Teaming & subcontracting
       <Arrow />
     </Link>
   );

@@ -60,7 +60,7 @@ export const INSIGHTS: Insight[] = [
     related: [
       { label: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
       { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
-      { label: 'Teaming and subcontracting', to: '/teaming' },
+      { label: 'Teaming & subcontracting', to: '/teaming' },
     ],
   },
   {

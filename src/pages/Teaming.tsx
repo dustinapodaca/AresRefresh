@@ -77,7 +77,7 @@ export default function Teaming() {
 
       <section className="ds-container ds-mk-open" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
-          <h1 id="mk-title" className="ds-display-xl">Teaming and subcontracting</h1>
+          <h1 id="mk-title" className="ds-display-xl">Teaming & subcontracting</h1>
           <p className="ds-lead">
             A minority woman-owned security subcontractor for primes, guard companies, and
             builders on Colorado's Front Range: restricted-area escorts, access control officers,
