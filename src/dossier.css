@@ -5386,3 +5386,15 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
   .ds-pph-track .ds-pph-chips { grid-column: 3; display: grid; grid-template-columns: max-content; justify-content: center; margin-top: 18px; }
 }
 
+
+/* The prime contractor panel, starting over (owner, 2026-10-16: it read as AI-made): flat black,
+   no light from above, no dot grid, no glass. The edge stays. Home and the Government & Defense
+   panel, in every card mode. */
+html .ds-primes-panel,
+html[data-cards] .ds-primes-panel {
+  background: #000;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.ds-primes-panel::before { content: none; }
