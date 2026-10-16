@@ -351,9 +351,10 @@ every page.
   bottom with a linear gradient (at least 22% of the height each end).
 - **Hero background (Home), from 2026-10-15 (owner):** React Bits' Topography
   (`src/components/home/Topography.tsx`, WebGL2), contour lines of a terrain in the site's rust
-  (`#7a3c17`; 22 lines, every fifth bolder, elevation 0.5 (owner, 2026-10-15; was 1.15, then 0.65), landforms at 0.55 scale from 900px so
-  desktop reads zoomed out (the component narrows its camera on wide screens; phones keep 1), with
-  the height scaled the same (0.28 there) so the hills stay as flat, tilt 32, a slow forward glide, glow
+  (`#7a3c17`; 22 lines, every fifth bolder, elevation 0.5 (owner, 2026-10-15; was 1.15, then 0.65), landforms at 0.75 scale from 900px so
+  desktop reads zoomed out a little (the component narrows its camera on wide screens; phones keep
+  1; it was 0.55, too busy), with lower, rounder hills there (0.3) and less fine detail (0.12, phones
+  0.35), like Colorado's rolling high plains rather than pointy or busy (owner, 2026-10-15), tilt 32, a slow forward glide, glow
   0.6), drifting under the copy in the photo's box with the same shades and the glass strip over
   it; the cursor lifts the land and a click sends a ring out over it. It rises from flat on load,
   pauses off screen, and holds still under reduced motion. It runs behind the nav and reads through

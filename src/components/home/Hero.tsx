@@ -82,8 +82,11 @@ export default function Hero() {
             lineWidth={1.2}
             // Elevation 0.5 (owner, 2026-10-15; was 1.15, then 0.65). Desktop's smaller landforms
             // scale the height down with them (0.5 x 0.55), or the hills keep their old steepness.
-            elevation={wide ? 0.28 : 0.5}
-            scale={wide ? 0.55 : 1}
+            // Desktop (owner, 2026-10-15): zoomed back in partway (0.75, was 0.55) with rounder, lower
+            // hills and less fine detail, like Colorado's rolling high plains, not busy or pointy.
+            elevation={wide ? 0.3 : 0.5}
+            scale={wide ? 0.75 : 1}
+            detail={wide ? 0.12 : 0.35}
             foreground={0.2}
             tilt={32}
             speed={0.25}
