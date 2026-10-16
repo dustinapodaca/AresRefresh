@@ -9,8 +9,8 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 // JS): built and still. Every fact is one already on the panel.
 //
 // Three whole forms to compare, each with its desktop and phone layout (owner, 2026-10-15: the
-// upright tiles looked bad on phones), at ?pstrip=ledger|card|track (ledger is the default until
-// the owner picks; `row` keeps the row of tiles, upright on phones):
+// upright tiles looked bad on phones), at ?pstrip=ledger|card|track (card chosen, owner 2026-10-16; `row`
+// keeps the row of tiles, upright on phones):
 //   ledger  ruled columns (rows on phones) on a line that grows with the scroll, each dot lighting
 //           as the line's rust tip reaches it
 //   card    one pipeline card holding the flow: prime, Ares, then the posts as square chips, joined
@@ -21,7 +21,7 @@ const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
 export const STRIP_FORMS = ['ledger', 'card', 'track', 'row'] as const;
 export type StripForm = (typeof STRIP_FORMS)[number];
 
-export default function PrimeStrip({ form = 'ledger' }: { form?: StripForm }) {
+export default function PrimeStrip({ form = 'card' }: { form?: StripForm }) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {

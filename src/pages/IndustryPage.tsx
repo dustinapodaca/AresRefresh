@@ -22,9 +22,9 @@ export default function IndustryPage() {
   const asked = params.get('prime');
   const primeForm = asked === 'diagram' || asked === 'pipeline' ? asked : 'strip';
   // The strip's form, three to compare, each with its desktop and phone layout (owner,
-  // 2026-10-15): ?pstrip=ledger|card|track; ledger until the owner picks, the tile row at `row`.
+  // 2026-10-15): ?pstrip=ledger|card|track; card chosen (owner, 2026-10-16), the tile row at `row`.
   const askedStrip = params.get('pstrip');
-  const stripForm = (askedStrip && (STRIP_FORMS as readonly string[]).includes(askedStrip) ? askedStrip : 'ledger') as StripForm;
+  const stripForm = (askedStrip && (STRIP_FORMS as readonly string[]).includes(askedStrip) ? askedStrip : 'card') as StripForm;
   const ind = industryBySlug(slug);
   if (!ind) return <NotFound />;
   const quote = `/contact?industry=${ind.slug}`;

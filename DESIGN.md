@@ -344,8 +344,7 @@ Cards and glass are part of the system, not exceptions.
   its green tag (Teaming, Subcontracting credit) as the line reaches it; the posts light in turn
   off a rust bracket. The full pipeline stays there at `?prime=pipeline`, the diagram at
   `?prime=diagram`. Three whole forms of the strip to compare (owner, 2026-10-15: the upright tiles looked bad
-  on phones; each form has its desktop and phone layout) at `?pstrip=`: `ledger` (the default for
-  now: three ruled columns under a hairline that fills left to right with the scroll, its rust tip
+  on phones; each form has its desktop and phone layout) at `?pstrip=`: **`card` (chosen, owner 2026-10-16)**, `ledger` (three ruled columns under a hairline that fills left to right with the scroll, its rust tip
   lighting each column's dot and bringing up its tag; on phones the same as rows on a rail that
   grows downward), `card` (one pipeline card that lifts, traces, and shines, holding prime, Ares, and
   the posts as square chips joined by small rust arrows; side by side on desktop, stacked on phones),
