@@ -303,6 +303,14 @@ Cards and glass are part of the system, not exceptions.
   the Home hero strip, the Services opening and card panels, the Capability frost band, the
   footer band, the toast, and the 404 card. Gladia's "liquid" edge refraction (an SVG
   displacement filter) works in Chrome only, so it was left out.
+- **Liquid glass, an option** (`?cards=liquid`, owner 2026-10-15, after gladia.io's audio
+  intelligence and meeting assistant pages): the glass cards plus a rim that bends the light behind
+  them like the edge of a lens. `src/lib/liquidGlass.ts` builds an SVG backdrop filter for each
+  card's exact size (an 18px rim, a 36px bend at most, then a 9px frost with the color lifted and a
+  thin highlight along the rim lit from the top left) on the Record, Capability, and pipeline
+  cards. Chromium only; Safari and Firefox keep the CSS frost. The bend needs something bright
+  behind it, so this mode adds a rust arc behind the Record cards on desktop (crest behind the
+  middle of the cards), like Gladia's purple planet. Not the default.
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.

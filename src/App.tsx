@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { attachLiquid, liquidSupported } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import NavPanel, { useNavLayout } from './components/NavPanel';
@@ -43,7 +44,46 @@ function useCardStyle() {
     }
     if (form === 'solid') delete document.documentElement.dataset.cards;
     else document.documentElement.dataset.cards = 'glass';
+    // ?cards=liquid (owner, 2026-10-15, after gladia.io): the glass cards, plus the liquid rim.
+    if (form === 'liquid') document.documentElement.dataset.liquid = 'true';
+    else delete document.documentElement.dataset.liquid;
+    setLiquid(form === 'liquid');
   }, [asked]);
+  const [liquid, setLiquid] = useState(false);
+  useLiquidCards(liquid);
+}
+
+// The liquid rim on the cards (lib/liquidGlass.ts), in Chromium browsers only. Finds the cards on
+// whatever page is showing and keeps up as pages change.
+const LIQUID_CARDS = '.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post';
+function useLiquidCards(on: boolean) {
+  useEffect(() => {
+    if (!on || !liquidSupported()) return;
+    const done = new Map<HTMLElement, () => void>();
+    const scan = () => {
+      document.querySelectorAll<HTMLElement>(LIQUID_CARDS).forEach((el) => {
+        if (!done.has(el)) done.set(el, attachLiquid(el));
+      });
+      done.forEach((off, el) => {
+        if (!el.isConnected) {
+          off();
+          done.delete(el);
+        }
+      });
+    };
+    let t = 0;
+    const mo = new MutationObserver(() => {
+      window.clearTimeout(t);
+      t = window.setTimeout(scan, 120);
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+    scan();
+    return () => {
+      mo.disconnect();
+      window.clearTimeout(t);
+      done.forEach((off) => off());
+    };
+  }, [on]);
 }
 
 export default function App() {
