@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import PrimeFlow from '../components/home/PrimeFlow';
+import PrimePipeline from '../components/home/PrimePipeline';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
@@ -14,6 +15,8 @@ import { heroTitle } from '../lib/heroTitle';
 // environment, what we deliver there, why Ares, a specific ask, and questions.
 export default function IndustryPage() {
   const { slug } = useParams();
+  const [params] = useSearchParams();
+  const primeForm = params.get('prime') === 'diagram' ? 'diagram' : 'pipeline';
   const ind = industryBySlug(slug);
   if (!ind) return <NotFound />;
   const quote = `/contact?industry=${ind.slug}`;
@@ -85,9 +88,11 @@ export default function IndustryPage() {
 
         {ind.primes && (
           // A smaller version of Home's prime panel (design review, owner 2026-10-13): the same
-          // card, the two-tone line, the button, and the animated diagram, without the proof list.
+          // card, the two-tone line, the button, and Home's pipeline with its scroll animation
+          // (owner, 2026-10-15; the earlier diagram stays at ?prime=diagram, as on Home), without
+          // the proof list.
           <section className="ds-mk-sec" aria-labelledby="mk-primes">
-            <div className="ds-primes-panel ds-primes-compact" data-form="diagram">
+            <div className="ds-primes-panel ds-primes-compact" data-form={primeForm}>
               <div className="ds-primes-copy">
                 <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
                 <p className="ds-primes-line">
@@ -98,7 +103,7 @@ export default function IndustryPage() {
                   <Arrow />
                 </Link>
               </div>
-              <PrimeFlow />
+              {primeForm === 'diagram' ? <PrimeFlow /> : <PrimePipeline />}
             </div>
           </section>
         )}

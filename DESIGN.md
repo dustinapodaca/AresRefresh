@@ -336,7 +336,8 @@ Cards and glass are part of the system, not exceptions.
   phone pile keep the CSS frost (the pile at 26px with 62% to 50% black so the card beneath
   doesn't show). The Home Record cards are a little denser on desktop too (26px, 46% to 30%
   black). The prime pipeline's cards and tiles are solid, not glass, on Home and now on /teaming,
-  which shows the same pipeline and animation in place of the diagram (owner, 2026-10-15).
+  which shows the same pipeline and animation in place of the diagram (owner, 2026-10-15). The Government industry page's smaller prime panel shows it too (owner, 2026-10-15; the diagram
+  stays there at `?prime=diagram`).
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.

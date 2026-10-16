@@ -4275,6 +4275,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @media (min-width: 1024px) {
   .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 5; align-self: center; }
   .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-flow { grid-column: 7 / span 6; }
+  /* The pipeline in the compact panel (Government, owner 2026-10-15): the copy in 5 columns beside it. */
+  .ds-primes-panel.ds-primes-compact[data-form='pipeline'] .ds-primes-copy { grid-column: 1 / span 5; }
 }
 
 /* ---------- The panel nav (owner, 2026-10-13) ----------
