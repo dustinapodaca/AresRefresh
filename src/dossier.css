@@ -5067,9 +5067,7 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 }
 .ds-pstrip { margin: 28px 0 0; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / 0.07); }
 .ds-pstrip-row { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; padding-top: 16px; }
-/* Phones show their own form (below); the row only with ?pphone=tiles. */
-@media (max-width: 767px) { .ds-pstrip:not([data-phone='tiles']) .ds-pstrip-row { display: none; } }
-@media (min-width: 768px) { .ds-pph { display: none; } }
+
 .ds-pstrip-node, .ds-pstrip-posts li {
   position: relative; display: flex; align-items: center; gap: 10px; border-radius: 4px;
   background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
@@ -5124,8 +5122,8 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 .ds-pstrip[data-live] .ds-pstrip-posts li[data-on]::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) calc(100ms + var(--i) * 120ms) both; }
 .ds-pstrip[data-live] .ds-pstrip-node[data-on]::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
 
-/* ---------- The prime strip on phones: three forms to compare (owner, 2026-10-15) ----------
-   ?pphone=ledger|card|track (PrimeStrip.tsx). Each part has data-at (1 the prime, 2 Ares, 3 the
+/* ---------- The prime strip: three forms to compare (owner, 2026-10-15) ----------
+   ?pstrip=ledger|card|track (PrimeStrip.tsx), each laid out for phones first, then desktop below. Each part has data-at (1 the prime, 2 Ares, 3 the
    posts) and lights once the strip's data-step reaches it, driven by the scroll; built and still
    by default. */
 .ds-pph b { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg); }
@@ -5187,4 +5185,31 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 .ds-pph-stops b { font-size: 13px; line-height: 1.25; white-space: nowrap; letter-spacing: -0.01em; }
 .ds-pph-stops small { font-size: 11.5px; }
 .ds-pph-track .ds-pph-chips { justify-content: center; margin-top: 20px; }
+
+/* The three forms on tablets and desktop (owner, 2026-10-15: whole versions, not only phones). */
+@media (min-width: 768px) {
+  .ds-pstrip:not([data-form='row']) { padding-top: 32px; }
+  /* ledger: three ruled columns under a line that fills left to right, a dot for each on it. */
+  .ds-pph-ledger { padding-left: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr); column-gap: 32px; }
+  .ds-pph-rail { left: 4px; right: 0; top: 4px; bottom: auto; width: auto; height: 1px; }
+  .ds-pph-rail > span { transform-origin: left; transform: scaleX(var(--p, 1)); background: linear-gradient(to right, rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
+  .ds-pph-rail > i { left: calc(var(--p, 1) * 100%); top: 50%; margin: -3.5px 0 0 -3.5px; }
+  .ds-pph-row, .ds-pph-row:first-of-type { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; align-content: start; gap: 10px; padding: 30px 0 0; border-top: 0; }
+  .ds-pph-dot, .ds-pph-row:first-of-type .ds-pph-dot { left: 0; top: 0; }
+  .ds-pph-row .ds-pph-tag { grid-row: 1; }
+  .ds-pph-row ul { gap: 9px; }
+
+  /* card: side by side, joined by small rust arrows pointing right. */
+  .ds-pph-card { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.3fr); align-items: center; column-gap: 22px; padding: 24px 26px; }
+  .ds-pph-arrow { width: 40px; height: 1px; margin: 0; background: linear-gradient(to right, rgb(255 255 255 / 0.2), var(--ds-rust)); }
+  .ds-pph-arrow::after { left: auto; right: 0; bottom: auto; top: -2px; transform: rotate(-45deg); }
+
+  /* track: the stops across the full width, the posts as chips under "Posts". */
+  .ds-pph-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ds-pph-stops { grid-column: 1 / -1; }
+  .ds-pph-stops b { font-size: 15px; }
+  .ds-pph-stops small { font-size: 12px; }
+  /* One width for the three chips (the longest name's), centered under the stop. */
+  .ds-pph-track .ds-pph-chips { grid-column: 3; display: grid; grid-template-columns: max-content; justify-content: center; margin-top: 18px; }
+}
 

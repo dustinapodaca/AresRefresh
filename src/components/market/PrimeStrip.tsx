@@ -8,17 +8,20 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 // comes up; the posts light in turn last. Nothing reverses once built. Reduced motion (and no
 // JS): built and still. Every fact is one already on the panel.
 //
-// Phones get their own form (owner, 2026-10-15: the upright tiles looked bad), three to compare at
-// ?pphone=ledger|card|track (ledger is the default until the owner picks; `tiles` keeps the
-// upright tiles):
-//   ledger  ruled rows on a rail that grows with the scroll, each row's dot lighting as it's reached
-//   card    one pipeline card holding the flow: prime, Ares, then the posts as square chips
-//   track   the stage meter's look: three dots on a line that fills with the scroll, the posts beneath
+// Three whole forms to compare, each with its desktop and phone layout (owner, 2026-10-15: the
+// upright tiles looked bad on phones), at ?pstrip=ledger|card|track (ledger is the default until
+// the owner picks; `row` keeps the row of tiles, upright on phones):
+//   ledger  ruled columns (rows on phones) on a line that grows with the scroll, each dot lighting
+//           as the line's rust tip reaches it
+//   card    one pipeline card holding the flow: prime, Ares, then the posts as square chips, joined
+//           by small rust arrows; side by side on desktop, stacked on phones
+//   track   the stage meter's look: three stops on a line that fills with the scroll, the posts
+//           as chips beneath
 const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
-export const PHONE_FORMS = ['ledger', 'card', 'track', 'tiles'] as const;
-export type PhoneForm = (typeof PHONE_FORMS)[number];
+export const STRIP_FORMS = ['ledger', 'card', 'track', 'row'] as const;
+export type StripForm = (typeof STRIP_FORMS)[number];
 
-export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) {
+export default function PrimeStrip({ form = 'ledger' }: { form?: StripForm }) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -45,12 +48,10 @@ export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) 
     const clamp = (v: number) => Math.min(1, Math.max(0, v));
     const update = () => {
       raf = 0;
-      // The phone forms are taller, so the line runs over the strip's own height there.
+      // The line runs as the strip rises from 80% of the window, over its own height or 40% of the
+      // window, whichever is more (the phone forms are taller).
       const r = el.getBoundingClientRect();
-      const wide = window.innerWidth >= 768;
-      const p = wide
-        ? clamp((window.innerHeight * 0.8 - r.top) / (window.innerHeight * 0.4))
-        : clamp((window.innerHeight * 0.78 - r.top) / Math.max(r.height, window.innerHeight * 0.3));
+      const p = clamp((window.innerHeight * 0.8 - r.top) / Math.max(r.height, window.innerHeight * 0.4));
       // The line only grows: it never draws back on the way up.
       best = Math.max(best, p);
       const w1 = clamp((best - 0.08) / 0.36);
@@ -78,16 +79,17 @@ export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) 
       window.removeEventListener('resize', onScroll);
       cancelAnimationFrame(raf);
     };
-  }, [phone]);
+  }, [form]);
 
   return (
     <figure
       ref={ref}
       className="ds-pstrip"
-      data-phone={phone}
+      data-form={form}
       aria-label="The prime holds the contract; Ares, a woman-owned subcontractor (WOSB, WBENC), staffs restricted-area escort, access control, and relief posts under it"
     >
-      {/* The row: desktop and tablets (and phones with ?pphone=tiles). */}
+      {/* The row of tiles (?pstrip=row): upright on phones. */}
+      {form === 'row' && (
       <div className="ds-pstrip-row" aria-hidden="true">
         <div className="ds-pstrip-node" data-i="0">
           <span className="ds-pipe-tag ds-data">Teaming</span>
@@ -122,9 +124,9 @@ export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) 
           ))}
         </ul>
       </div>
+      )}
 
-      {/* Phones. */}
-      {phone === 'ledger' && (
+      {form === 'ledger' && (
         <div className="ds-pph ds-pph-ledger" aria-hidden="true">
           <span className="ds-pph-rail">
             <span />
@@ -156,7 +158,7 @@ export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) 
           </div>
         </div>
       )}
-      {phone === 'card' && (
+      {form === 'card' && (
         <div className="ds-pph ds-pph-card" aria-hidden="true">
           <div className="ds-pph-sec" data-at="1">
             <span className="ds-pph-tag ds-data">Teaming</span>
@@ -177,7 +179,7 @@ export default function PrimeStrip({ phone = 'ledger' }: { phone?: PhoneForm }) 
           </ul>
         </div>
       )}
-      {phone === 'track' && (
+      {form === 'track' && (
         <div className="ds-pph ds-pph-track" aria-hidden="true">
           <div className="ds-pph-line">
             <span />

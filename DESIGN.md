@@ -343,12 +343,14 @@ Cards and glass are part of the system, not exceptions.
   scroll with its rust tip, and each tile lifts, traces its edge, catches the shine, and brings up
   its green tag (Teaming, Subcontracting credit) as the line reaches it; the posts light in turn
   off a rust bracket. The full pipeline stays there at `?prime=pipeline`, the diagram at
-  `?prime=diagram`. Phones get their own form (owner, 2026-10-15: the upright tiles looked bad), three to
-  compare at `?pphone=`: `ledger` (the default for now: ruled rows on a rail that grows with the
-  scroll, its rust tip lighting each row's dot; the tags at the right of each row; the posts as rows
-  with rust dots), `card` (one pipeline card that lifts, traces, and shines, holding prime, Ares,
-  and the posts as square chips, joined by small rust arrows), `track` (the stage meter's look:
-  three stops on a line that fills with the scroll, the posts as chips beneath).
+  `?prime=diagram`. Three whole forms of the strip to compare (owner, 2026-10-15: the upright tiles looked bad
+  on phones; each form has its desktop and phone layout) at `?pstrip=`: `ledger` (the default for
+  now: three ruled columns under a hairline that fills left to right with the scroll, its rust tip
+  lighting each column's dot and bringing up its tag; on phones the same as rows on a rail that
+  grows downward), `card` (one pipeline card that lifts, traces, and shines, holding prime, Ares, and
+  the posts as square chips joined by small rust arrows; side by side on desktop, stacked on phones),
+  `track` (the stage meter's look: three stops on a line that fills with the scroll, labels under
+  each, the posts as one-width chips under Posts); `row` keeps the row of tiles.
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.
