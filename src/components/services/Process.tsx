@@ -5,8 +5,8 @@ import { STAGES } from './data';
 import SystemTags from './Systems';
 
 // The section's head on desktop (owner, 2026-10-16: too much black to the right of the lead), for
-// the owner to compare at /services?stagehead=current|head|column|wide. `current` is the default
-// until the owner picks. Phones and tablets are the same in all four.
+// the owner to compare at /services?stagehead=current|head|column|wide. `head` chosen (owner,
+// 2026-10-16). Phones and tablets are the same in all four.
 //   current  the headline across, the lead under it in five columns
 //   head     the site's section head: headline in 7 columns, the lead in the last 5 at its foot
 //   column   the lead starts at column 5, over the stage bodies and the axis
@@ -19,7 +19,7 @@ const HEADS = ['current', 'head', 'column', 'wide'] as const;
 export default function Process() {
   const [params] = useSearchParams();
   const asked = params.get('stagehead');
-  const head = HEADS.includes(asked as (typeof HEADS)[number]) ? asked : 'current';
+  const head = HEADS.includes(asked as (typeof HEADS)[number]) ? asked : 'head';
   const rowRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
 

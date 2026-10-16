@@ -201,14 +201,14 @@
       "options": [
         {
           "value": "current",
-          "label": "Current",
-          "tag": "default",
+          "label": "Before",
           "note": "The headline across, the lead under it in five columns."
         },
         {
           "value": "head",
-          "label": "Section head",
-          "note": "The site's section head, as on Home: headline in 7 columns, the lead in the last 5 at its foot."
+          "label": "Section head (current)",
+          "note": "The site's section head, as on Home: headline in 7 columns, the lead in the last 5 at its foot.",
+          "tag": "default"
         },
         {
           "value": "column",

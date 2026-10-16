@@ -673,6 +673,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   At every width (owner, 2026-10-05) the opened card glides to just under the nav (and the
   running head where it shows), one grid gap below it, so the card above is never seen. Detail is
   always in the HTML (`hidden` until opened).
+- **Process head** (owner, 2026-10-16): on desktop the site's section head, the headline in 7
+  columns and its lead in the last 5 at the headline's foot (was the headline across with the lead
+  beneath, which left the right side empty; the others at `/services?stagehead=current|column|wide`).
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
