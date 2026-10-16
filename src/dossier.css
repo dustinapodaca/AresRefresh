@@ -3979,8 +3979,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-mk-faq-mark::before,
 .ds-mk-faq-mark::after { content: ''; position: absolute; left: 0; top: 50%; width: 12px; height: 1.5px; margin-top: -0.75px; background: var(--ds-fg-muted); transition: transform 220ms var(--ds-ease); }
 .ds-mk-faq-mark::after { transform: rotate(90deg); }
-.ds-mk-faq-list details[open] .ds-mk-faq-mark::after { transform: rotate(0deg); }
-.ds-mk-faq-list details p { margin: -4px 0 0; padding: 0 0 22px; font-size: 16px; line-height: 1.65; color: var(--ds-fg-muted); max-width: 64ch; }
+.ds-mk-faq-list details[open]:not([data-closing]) .ds-mk-faq-mark::after { transform: rotate(0deg); }
+/* The answer's box is what eases open and shut (FaqSection); it clips while it moves. */
+.ds-mk-faq-a { overflow: hidden; margin-top: -4px; }
+.ds-mk-faq-list details p { margin: 0; padding: 0 0 22px; font-size: 16px; line-height: 1.65; color: var(--ds-fg-muted); max-width: 64ch; }
 @media (min-width: 1024px) {
   .ds-mk-faq { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-mk-faq-head { grid-column: 1 / span 4; position: sticky; top: calc(var(--ds-header) + 32px); }

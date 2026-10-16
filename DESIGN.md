@@ -986,7 +986,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines
-  right, a + that folds into a minus (220ms). FAQPage JSON-LD in the body.
+  right, a + that folds into a minus (220ms). One open at a time (owner, 2026-10-16): the answer
+  eases open (260ms, rising 6px) and shut (200ms), the open one closing as another opens; native
+  details without JS, a snap under reduced motion. FAQPage JSON-LD in the body.
 - **Ask strip:** one plain line (Inter Tight 500, 22 to 30px), the quote button and the
   call link, on a hairline-strong rule.
 - **Routes:** ruled links, a title (Inter Tight 600, 20 to 24px) and a line, three across

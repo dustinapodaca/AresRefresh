@@ -1,3 +1,4 @@
+import { useRef, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import type { Faq, SheetRow } from './roles';
@@ -9,6 +10,34 @@ export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+// Opening and closing the questions (owner, 2026-10-16): the answer's height eases open (260ms)
+// and shut (200ms), and one question is open at a time, the other closing as the new one opens.
+// Without JS the native <details> still open and close; under reduced motion they snap.
+const FAQ_EASE = 'cubic-bezier(0.2, 0.8, 0.2, 1)';
+const running = new WeakMap<HTMLElement, Animation>();
+
+function slide(details: HTMLDetailsElement, open: boolean) {
+  const body = details.querySelector<HTMLElement>('.ds-mk-faq-a');
+  if (!body) return;
+  running.get(body)?.cancel();
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (open) {
+    details.removeAttribute('data-closing');
+    details.open = true;
+    if (still) return;
+    const h = body.scrollHeight;
+    const a = body.animate([{ height: '0px', transform: 'translateY(-6px)' }, { height: `${h}px`, transform: 'none' }], { duration: 260, easing: FAQ_EASE });
+    running.set(body, a);
+    a.onfinish = () => running.delete(body);
+  } else {
+    if (still) { details.open = false; return; }
+    details.setAttribute('data-closing', '');
+    const a = body.animate([{ height: `${body.offsetHeight}px` }, { height: '0px' }], { duration: 200, easing: FAQ_EASE });
+    running.set(body, a);
+    a.onfinish = () => { running.delete(body); details.open = false; details.removeAttribute('data-closing'); };
+  }
+}
+
 /** Questions as an accordion (Linear and Dovetail on Mobbin): the heading left, the questions
  *  right, each a native <details> so it works without JS. Emits FAQPage structured data. */
 export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: string }) {
@@ -17,6 +46,16 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
     '@type': 'FAQPage',
     mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   };
+  const listRef = useRef<HTMLDivElement>(null);
+  const toggle = (e: MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const details = e.currentTarget.parentElement as HTMLDetailsElement;
+    const opening = !details.open || details.hasAttribute('data-closing');
+    if (opening) {
+      listRef.current?.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((d) => d !== details && !d.hasAttribute('data-closing') && slide(d, false));
+    }
+    slide(details, opening);
+  };
   return (
     <section id={id} className="ds-mk-faq" aria-labelledby={`${id}-title`}>
       <div className="ds-mk-faq-head">
@@ -24,14 +63,16 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
             in each page's opening and its closing ask. */}
         <h2 id={`${id}-title`} className="ds-display-md">Questions, answered.</h2>
       </div>
-      <div className="ds-mk-faq-list">
+      <div className="ds-mk-faq-list" ref={listRef}>
         {items.map((f) => (
           <details key={f.q}>
-            <summary>
+            <summary onClick={toggle}>
               <span>{f.q}</span>
               <span className="ds-mk-faq-mark" aria-hidden="true" />
             </summary>
-            <p>{f.a}</p>
+            <div className="ds-mk-faq-a">
+              <p>{f.a}</p>
+            </div>
           </details>
         ))}
       </div>
