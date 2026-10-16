@@ -36,11 +36,11 @@ export default function Relief() {
         if (!e.isIntersecting) return;
         io.disconnect();
         setStep('fill');
-        // From the call-out on, twice as slow (owner, 2026-10-15) so the call-out can be read
-        // before the shift is covered.
+        // From the call-out on, four times the first pace (owner, 2026-10-15: twice as slow, then
+        // twice again) so the call-out can be read before the shift is covered.
         timers.push(window.setTimeout(() => setStep('out'), 1100));
-        timers.push(window.setTimeout(() => setStep('relief'), 2700));
-        timers.push(window.setTimeout(() => setStep('done'), 3900));
+        timers.push(window.setTimeout(() => setStep('relief'), 4300));
+        timers.push(window.setTimeout(() => setStep('done'), 6700));
       },
       { threshold: 0.55 },
     );
