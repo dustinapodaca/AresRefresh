@@ -64,14 +64,14 @@ const MENUS: Record<string, Menu> = {
       { links: roles.slice(3) },
     ],
     top: [
-      { label: 'All services and how a post starts', to: '/services' },
-      { label: 'Teaming and subcontracting', to: '/teaming' },
+      { label: 'All services & how a post starts', to: '/services' },
+      { label: 'Teaming & subcontracting', to: '/teaming' },
     ],
     // The cars just below center (owner, 2026-10-13).
     image: { src: '/images/mission-vehicle.jpg', caption: 'Ares patrol vehicles', position: '50% 90%' },
     phoneTop: [
-      { label: 'All services and how a post starts', to: '/services' },
-      { label: 'Teaming and subcontracting', to: '/teaming' },
+      { label: 'All services & how a post starts', to: '/services' },
+      { label: 'Teaming & subcontracting', to: '/teaming' },
     ],
   },
   Industries: {
@@ -80,11 +80,11 @@ const MENUS: Record<string, Menu> = {
       { links: industries.slice(3) },
     ],
     // The overview link, as on phones (owner, 2026-10-13; was the city pages).
-    top: [{ label: 'All industries and how a post starts', to: '/services' }],
+    top: [{ label: 'All industries & how a post starts', to: '/services' }],
     image: GOV_IMAGE,
     linkImages: industryImages,
     // The industries live on the Services page too (owner, 2026-10-13).
-    phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],
+    phoneTop: [{ label: 'All industries & how a post starts', to: '/services' }],
   },
   Company: {
     columns: [
@@ -179,11 +179,12 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-// The overview links' arrow: the site's arrow, pointing down and to the right.
+// The overview links' arrow: the site's arrow, pointing down and to the right, drawn as large as
+// the 18px arrows in the phone menu (owner, 2026-10-16; it was a small 6px glyph).
 function ArrowDownRight() {
   return (
-    <svg className="ds-np-over-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 5 11 11M11 6v5H6" />
+    <svg className="ds-np-over-arrow" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3.5 3.5 12.5 12.5M12.5 6v6.5H6" />
     </svg>
   );
 }
@@ -356,7 +357,7 @@ function Overview({ links }: { links?: MenuLink[] }) {
         <li key={l.to + l.label}>
           <Link to={l.to} className="ds-np-sub-more">
             {l.label}
-            <Arrow size={12} />
+            <Arrow size={18} />
           </Link>
         </li>
       ))}

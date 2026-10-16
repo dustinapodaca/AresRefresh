@@ -1108,8 +1108,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   only. (Owner, 2026-10-13.)
   Desktop menus since 2026-10-15 (owner): the overview links (All services and how a post starts,
   Teaming; All industries and how a post starts) sit in a row above the columns, under a hairline,
-  in Inter Tight 600 17px white with a down-right arrow drawn like the site's arrows (they were the
-  footer row). The menu links have no underline: on hover the text slides 24px right and a → comes
+  in Inter Tight 600 22px white, the menu links' size, with an 18px down-right arrow drawn like the
+  site's arrows, no underline (owner, 2026-10-16; were 17px with a small arrow; they were the footer
+  row before that). "&" in their names: "All services & how a post starts", "Teaming &
+  subcontracting", "All industries & how a post starts". On the phone pages they are 20px rows with
+  the 18px arrow at the right, like the main list, no underline (were 16px, underlined). The menu links have no underline: on hover the text slides 24px right and a → comes
   in on its left (260ms), sliding back out after; the current page holds that state. The menu
   toggles are a + whose upright stroke rotates flat into a - when open (300ms), on desktop and in
   the phone accordions (was a caret).
