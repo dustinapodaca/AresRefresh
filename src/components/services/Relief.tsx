@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 // 04 The relief roster (owner, 2026-10-15): the on-call offering in its own block, after the
 // program section folded into the four stages. Beside the copy, a week of shifts drawn small
 // plays one quiet moment when the block comes into view: the week fills in, one night shift's
-// officer is out (amber), the on-call slot beneath it lights and a hairline rises into the
+// officer is out (red), the on-call slot beneath it lights and a hairline rises into the
 // shift, and it turns green, "Covered the same shift from the roster" (an owner-approved line).
 // It plays once and holds. The finished state is the default (prerendered, no JS, reduced
 // motion); only a reader who will see it play gets the empty start.
@@ -36,11 +36,11 @@ export default function Relief() {
         if (!e.isIntersecting) return;
         io.disconnect();
         setStep('fill');
-        // From the call-out on, four times the first pace (owner, 2026-10-15: twice as slow, then
-        // twice again) so the call-out can be read before the shift is covered.
+        // From the call-out on, three times the first pace (owner, 2026-10-15: tried twice and four
+        // times) so the call-out can be read before the shift is covered.
         timers.push(window.setTimeout(() => setStep('out'), 1100));
-        timers.push(window.setTimeout(() => setStep('relief'), 4300));
-        timers.push(window.setTimeout(() => setStep('done'), 6700));
+        timers.push(window.setTimeout(() => setStep('relief'), 3500));
+        timers.push(window.setTimeout(() => setStep('done'), 5300));
       },
       { threshold: 0.55 },
     );

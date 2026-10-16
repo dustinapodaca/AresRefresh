@@ -972,13 +972,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On call
     row of hatched slots a little apart, and a status line in mono under a hairline. One quiet
     moment when it comes into view (an example week, labeled as one for screen readers): the
-    week fills in cell by cell (28ms apart), Thursday night's dot turns amber ("Thursday night:
-    officer out", held 3.2s), the on-call slot beneath it lights green and a hairline rises into the
-    shift (2080ms), and 2.4s later the shift turns green (from the call-out on, four times the first
-    pace so it can be read; owner, 2026-10-15), "Covered the same shift from the roster" (the site's
+    week fills in cell by cell (28ms apart), Thursday night's dot turns red (#e5534b; owner,
+    2026-10-15, was amber) ("Thursday night: officer out", held 2.4s), the on-call slot beneath it
+    lights green and a hairline rises into the shift (1560ms), and 1.8s later the shift turns green
+    (from the call-out on, three times the first pace so it can be read; owner, 2026-10-15), "Covered the same shift from the roster" (the site's
     approved line). Once, then it holds; the finished week is the default (prerendered, no JS,
-    reduced motion, or already on screen). Amber and green are the Capability page's status
-    colors.
+    reduced motion, or already on screen). The green is the Capability page's status green; the
+    red is used only here.
   - **05 Trained on your systems:** its own short section, the shared head (display-lg, the lead
     beside it) over the six systems as square tags with their authored icons.
   The dock counts six sections (Industries, By role, Process, Relief roster, Systems, Areas).
