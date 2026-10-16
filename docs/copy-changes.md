@@ -908,3 +908,14 @@ New interface line in the four `/services?open=` forms only (the default opening
 - The illustration's last line: "Covered the same shift from this week's on-call schedule" (was "Covered the same shift from the roster").
 - Dock label "Relief schedule". Other pages still say "relief roster" (Capability Statement, service and industry pages, the Insights article).
 
+## "Relief schedule" everywhere (owner, 2026-10-15)
+
+Ares' on-call coverage is called the relief schedule site-wide (was "relief roster"):
+- Insights, "How fast can a post be staffed?": "covered the same shift from our relief schedule".
+- Capability Statement, Relief & Surge Coverage, "Relief shifts": "Call-outs, vacations, and training days covered from our relief schedule." (third person: "the Ares relief schedule").
+- Critical & High-Liability Sites FAQ: "Yes. We staff surge coverage at substations, yards, and other utility sites from our relief schedule during outages and storm events, on top of the posts already in place." (was "Our relief roster staffs surge coverage...").
+- Commercial & Retail FAQ: "Yes. We staff extra posts from our relief schedule for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first." (was "Our relief roster staffs extra posts...").
+- Restricted-Area Escort, how it works: "our relief schedule keeps every escort post staffed".
+- Relief & Surge Coverage FAQ: "covered the same shift from our relief schedule".
+- Kept: "when your roster runs short" (the client's roster). The capability statement PDF is the owner's to update if it says "roster".
+

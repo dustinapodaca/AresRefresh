@@ -123,7 +123,7 @@ export const CAPABILITIES: Capability[] = [
     line: 'Trained officers when a roster runs short: relief shifts, overflow posts, and surge staffing.',
     keys: ['Relief', 'Overflow', 'Surge'],
     includes: [
-      { name: 'Relief shifts', detail: 'Call-outs, vacations, and training days covered from our roster.' },
+      { name: 'Relief shifts', detail: 'Call-outs, vacations, and training days covered from our relief schedule.' },
       { name: 'Overflow posts', detail: 'Officers for the entrances, phases, or hours a site adds.' },
       { name: 'Surge staffing', detail: 'Inspections, outages and storm events, construction phases, and contract transitions.' },
       { name: 'Subcontract coverage', detail: 'Officers under your post orders, from a woman-owned small business.' },
@@ -273,7 +273,7 @@ export const THIRD_PERSON: Record<string, string> = {
   'Sign-in, ID checks, and a visitor log you can audit.': 'Sign-in, ID checks, and a visitor log the client can audit.',
   'People, vehicles, and deliveries checked against your post orders before they enter.':
     'People, vehicles, and deliveries checked against the site\u2019s post orders before they enter.',
-  'Call-outs, vacations, and training days covered from our roster.': 'Call-outs, vacations, and training days covered from the Ares relief roster.',
+  'Call-outs, vacations, and training days covered from our relief schedule.': 'Call-outs, vacations, and training days covered from the Ares relief schedule.',
   'Officers under your post orders, from a woman-owned small business.': 'Officers under the prime\u2019s post orders, from a woman-owned small business.',
   'We have hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. We write the SOPs for these posts and train every officer on them.':
     'Ares has hands-on experience running access control for restricted areas on military installations, working alongside base security forces every day. Ares writes the SOPs for these posts and trains every officer on them.',

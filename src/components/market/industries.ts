@@ -131,7 +131,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         // Copy audit round 2 (2026-10-10): the line the utility emails use.
         q: 'Can you add officers during an outage or storm event?',
-        a: 'Yes. Our relief roster staffs surge coverage at substations, yards, and other utility sites during outages and storm events, on top of the posts already in place.',
+        a: 'Yes. We staff surge coverage at substations, yards, and other utility sites from our relief schedule during outages and storm events, on top of the posts already in place.',
       },
       {
         q: 'Do you provide armed officers for cash-handling and regulated sites?',
@@ -277,7 +277,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Can you cover extra posts during a busy season or a renovation?',
-        a: 'Yes. Our relief roster staffs extra posts for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first.',
+        a: 'Yes. We staff extra posts from our relief schedule for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first.',
       },
     ],
   },

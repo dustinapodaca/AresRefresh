@@ -159,7 +159,7 @@ export const ROLE_PAGES: RolePageData[] = [
     title: 'Restricted-Area Escort.',
     lead: 'Escorts for crews, visitors, and deliveries inside restricted and controlled areas: people and vehicles verified at entry, every escort kept in line of sight, and custody logged, on the site\u2019s own rules.',
     sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
-    how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief roster keeps every escort post staffed.',
+    how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief schedule keeps every escort post staffed.',
     ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
     industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
     faq: [
@@ -199,10 +199,10 @@ export const ROLE_PAGES: RolePageData[] = [
     faq: [
       {
         // Owner, 2026-10-10: "it depends, but within a week usually".
-        // Split by the copy audit (round 3; owner, 2026-10-10): the roster covers posts Ares
+        // Split by the copy audit (round 3; owner, 2026-10-10): the relief schedule covers posts Ares
         // already staffs; a new post takes about a week because officers train on site first.
         q: 'How fast can you fill a shift?',
-        a: 'Posts we already staff are covered the same shift from our relief roster. New posts usually take about a week, because every officer trains on the site first.',
+        a: 'Posts we already staff are covered the same shift from our relief schedule. New posts usually take about a week, because every officer trains on the site first.',
       },
       {
         q: 'Can your officers work under our post orders?',
