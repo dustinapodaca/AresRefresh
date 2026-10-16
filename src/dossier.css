@@ -5065,10 +5065,11 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
   .ds-primes-compact[data-form='strip'] .ds-primes-copy > .ds-primes-line { grid-column: 1 / span 8; }
   .ds-primes-compact[data-form='strip'] .ds-primes-copy > .ds-primes-btn { grid-column: 10 / span 3; grid-row: 1 / span 2; justify-self: end; margin: 0; }
 }
-.ds-pstrip {
-  display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start;
-  margin: 28px 0 0; padding-top: 44px; border-top: 1px solid rgb(255 255 255 / 0.07);
-}
+.ds-pstrip { margin: 28px 0 0; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / 0.07); }
+.ds-pstrip-row { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; padding-top: 16px; }
+/* Phones show their own form (below); the row only with ?pphone=tiles. */
+@media (max-width: 767px) { .ds-pstrip:not([data-phone='tiles']) .ds-pstrip-row { display: none; } }
+@media (min-width: 768px) { .ds-pph { display: none; } }
 .ds-pstrip-node, .ds-pstrip-posts li {
   position: relative; display: flex; align-items: center; gap: 10px; border-radius: 4px;
   background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
@@ -5093,7 +5094,8 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 .ds-pstrip-posts li { padding: 7px 12px 7px 10px; font-size: 13px; font-weight: 500; color: var(--ds-fg); }
 .ds-pstrip-posts li::before { content: ''; position: absolute; left: -15px; top: 50%; width: 14px; height: 1px; background: rgb(188 111 64 / 0.5); }
 @media (min-width: 768px) {
-  .ds-pstrip { grid-template-columns: auto minmax(40px, 1fr) auto minmax(40px, 1fr) auto; align-items: center; justify-items: stretch; }
+  .ds-pstrip { padding-top: 44px; }
+  .ds-pstrip-row { padding-top: 0; grid-template-columns: auto minmax(40px, 1fr) auto minmax(40px, 1fr) auto; align-items: center; justify-items: stretch; }
   .ds-pstrip-wire { width: auto; height: 1px; margin: 0; }
   .ds-pstrip-wire > span { transform-origin: left; transform: scaleX(var(--w)); background: linear-gradient(to right, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
   .ds-pstrip-tip { left: calc(var(--w) * 100%); top: 50%; }
@@ -5121,3 +5123,68 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 .ds-pstrip[data-live] .ds-pstrip-node[data-on]::after { animation: ds-pipe-trace 1100ms cubic-bezier(0.45, 0, 0.3, 1) 120ms both; }
 .ds-pstrip[data-live] .ds-pstrip-posts li[data-on]::after { animation: ds-pipe-trace 1000ms cubic-bezier(0.45, 0, 0.3, 1) calc(100ms + var(--i) * 120ms) both; }
 .ds-pstrip[data-live] .ds-pstrip-node[data-on]::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
+
+/* ---------- The prime strip on phones: three forms to compare (owner, 2026-10-15) ----------
+   ?pphone=ledger|card|track (PrimeStrip.tsx). Each part has data-at (1 the prime, 2 Ares, 3 the
+   posts) and lights once the strip's data-step reaches it, driven by the scroll; built and still
+   by default. */
+.ds-pph b { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg); }
+.ds-pph small { display: block; margin-top: 2px; font-size: 12px; color: var(--ds-fg-muted); }
+.ds-pph-tag { display: inline-block; padding: 2px 8px; border-radius: 2px; font-size: 11.5px; line-height: 18px; white-space: nowrap; color: #9fd27f;
+  background: rgb(124 184 95 / 0.1); box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.28); }
+.ds-pph [data-at], .ds-pph[data-at] { transition: opacity 420ms var(--ds-ease), transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+/* Not reached yet: dimmed and a little low (never hidden). */
+.ds-pstrip[data-live]:not([data-step]) .ds-pph [data-at],
+.ds-pstrip[data-live][data-step='1'] .ds-pph [data-at='2'],
+.ds-pstrip[data-live][data-step='1'] .ds-pph [data-at='3'],
+.ds-pstrip[data-live][data-step='2'] .ds-pph [data-at='3'] { opacity: 0.62; transform: translateY(8px); }
+
+/* ledger: ruled rows on a rail. */
+.ds-pph-ledger { position: relative; padding-left: 26px; }
+.ds-pph-rail { position: absolute; left: 4px; top: 18px; bottom: 30px; width: 1px; background: rgb(255 255 255 / 0.08); }
+.ds-pph-rail > span { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p, 1));
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
+.ds-pph-rail > i { display: none; position: absolute; left: 50%; top: calc(var(--p, 1) * 100%); width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
+  background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); opacity: calc(1 - var(--p, 1) * var(--p, 1) * var(--p, 1)); }
+.ds-pstrip[data-live] .ds-pph-rail > i { display: block; }
+.ds-pph-row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 14px 0; border-top: 1px solid rgb(255 255 255 / 0.08); }
+.ds-pph-row:first-of-type { border-top: 0; padding-top: 4px; }
+.ds-pph-dot { position: absolute; left: -26px; top: 20px; width: 9px; height: 9px; border-radius: 50%; background: #0c0e10; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.4); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
+.ds-pph-row:first-of-type .ds-pph-dot { top: 10px; }
+.ds-pph-row[data-ares] .ds-pph-dot, .ds-pph-row[data-at='3'] .ds-pph-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+.ds-pph-row ul { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ds-pph-row li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: var(--ds-fg); }
+.ds-pph-row li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ds-rust); }
+
+/* card: one pipeline card holding the flow. */
+.ds-pph-card { position: relative; padding: 18px; border-radius: 4px;
+  background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent; }
+.ds-pph-card::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; opacity: 0;
+  background: conic-gradient(from var(--ds-pipe-a), transparent 0deg, transparent 250deg, rgb(241 196 154 / 0.95) 320deg, #fff 340deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.ds-pph-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.07) 44%, rgb(255 236 220 / 0.13) 50%, rgb(255 255 255 / 0.07) 56%, transparent 70%) no-repeat;
+  background-size: 250% 100%; background-position: 130% 0; }
+.ds-pstrip[data-live][data-step] .ds-pph-card::after { animation: ds-pipe-trace 1100ms cubic-bezier(0.45, 0, 0.3, 1) 120ms both; }
+.ds-pstrip[data-live][data-step] .ds-pph-card::before { animation: ds-pipe-shine 1200ms cubic-bezier(0.4, 0, 0.2, 1) 200ms both; }
+.ds-pph-sec { display: grid; justify-items: start; gap: 6px; }
+.ds-pph-sec small { margin-top: -2px; }
+.ds-pph-arrow { display: block; width: 1px; height: 22px; margin: 10px 0 10px 6px; background: linear-gradient(to bottom, rgb(255 255 255 / 0.2), var(--ds-rust)); position: relative; }
+.ds-pph-arrow::after { content: ''; position: absolute; left: -3px; bottom: -1px; width: 5px; height: 5px; border-right: 1px solid var(--ds-rust); border-bottom: 1px solid var(--ds-rust); transform: rotate(45deg); }
+.ds-pph-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ds-pph-chips li { display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 2px; font-size: 13px; font-weight: 500; color: var(--ds-fg);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12); background: rgb(255 255 255 / 0.03); }
+.ds-pph-chips li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ds-rust); }
+
+/* track: three stops on a line that fills with the scroll, the posts beneath. */
+.ds-pph-track { position: relative; }
+.ds-pph-line { position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: 5px; height: 1px; background: rgb(255 255 255 / 0.1); }
+.ds-pph-line > span { position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 1)); background: linear-gradient(to right, rgb(255 255 255 / 0.3), var(--ds-rust)); }
+.ds-pph-stops { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); text-align: center; }
+.ds-pph-stops li { display: grid; justify-items: center; align-content: start; gap: 2px; padding: 0 2px; }
+.ds-pph-stops i { width: 11px; height: 11px; margin-bottom: 10px; border-radius: 50%; background: #0c0e10; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
+.ds-pph-stops li[data-ares] i, .ds-pph-stops li[data-at='3'] i { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
+.ds-pph-stops b { font-size: 13px; line-height: 1.25; white-space: nowrap; letter-spacing: -0.01em; }
+.ds-pph-stops small { font-size: 11.5px; }
+.ds-pph-track .ds-pph-chips { justify-content: center; margin-top: 20px; }
+

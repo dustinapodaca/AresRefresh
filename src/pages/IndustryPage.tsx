@@ -4,7 +4,7 @@ import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import PrimeFlow from '../components/home/PrimeFlow';
 import PrimePipeline from '../components/home/PrimePipeline';
-import PrimeStrip from '../components/market/PrimeStrip';
+import PrimeStrip, { PHONE_FORMS, type PhoneForm } from '../components/market/PrimeStrip';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
@@ -21,6 +21,9 @@ export default function IndustryPage() {
   // at ?prime=pipeline and the earlier diagram at ?prime=diagram.
   const asked = params.get('prime');
   const primeForm = asked === 'diagram' || asked === 'pipeline' ? asked : 'strip';
+  // The strip's phone form, three to compare (owner, 2026-10-15): ?pphone=ledger|card|track.
+  const askedPhone = params.get('pphone');
+  const phoneForm = (askedPhone && (PHONE_FORMS as readonly string[]).includes(askedPhone) ? askedPhone : 'ledger') as PhoneForm;
   const ind = industryBySlug(slug);
   if (!ind) return <NotFound />;
   const quote = `/contact?industry=${ind.slug}`;
@@ -106,7 +109,7 @@ export default function IndustryPage() {
                   <Arrow />
                 </Link>
               </div>
-              {primeForm === 'diagram' ? <PrimeFlow /> : primeForm === 'pipeline' ? <PrimePipeline /> : <PrimeStrip />}
+              {primeForm === 'diagram' ? <PrimeFlow /> : primeForm === 'pipeline' ? <PrimePipeline /> : <PrimeStrip phone={phoneForm} />}
             </div>
           </section>
         )}
