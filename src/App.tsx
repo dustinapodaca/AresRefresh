@@ -55,13 +55,21 @@ function useCardStyle() {
   useLiquidCards(liquid);
 }
 
-// The liquid rim (lib/liquidGlass.ts), in Chromium browsers only: the cards and the Home hero's
-// glass strip (its ::before; same blur as its CSS frost). Not the nav: on its thin bar the filter
-// didn't take (the page showed through sharp), so it keeps its CSS frost, with less black.
-// Finds them on whatever page is showing and keeps up as pages change.
+// The liquid rim (lib/liquidGlass.ts), in Chromium browsers only, on every glass surface, each at
+// the blur of its CSS frost (owner, 2026-10-15). Not the nav (on its thin bar the filter didn't
+// take, like any fixed or sticky glass in Chrome; it keeps its CSS frost) and not the prime
+// pipeline's cards (solid, owner 2026-10-15).
+// Pseudo-element glass takes its filter through --ds-liquid. Finds them on whatever page is
+// showing and keeps up as pages change.
 const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
-  { sel: '.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post' },
+  // The Home Record cards a little blurrier, so they read as glass on phones (owner, 2026-10-15).
+  { sel: '.ds-value', opts: { blur: 26 } },
+  { sel: '.ds-cs-card' },
   { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 24 } },
+  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 22 } },
+  // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
+  { sel: '.ds-svc-open-glass, .ds-ft-glass, .ds-nf-card', opts: { blur: 22 } },
+  { sel: '.ds-svc-card-text', opts: { blur: 24 } },
 ];
 function useLiquidCards(on: boolean) {
   useEffect(() => {

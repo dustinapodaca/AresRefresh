@@ -4606,3 +4606,36 @@ html[data-liquid='true'] .ds-np-card { background: rgb(8 9 11 / 0.5); }
 @media (min-width: 1024px) {
   html[data-liquid='true'] .ds-np[data-open='true'] .ds-np-card { background: rgb(8 9 11 / 0.82); }
 }
+
+/* Liquid on every glass surface (owner, 2026-10-15): the Capability hero's frost band takes its
+   filter through --ds-liquid like the Home hero strip (the others are set on the element). */
+html[data-liquid='true'] .ds-cs-facts::before {
+  -webkit-backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
+  backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
+}
+/* The Home Record cards: a little more black than the other liquid cards, so they read as glass,
+   not a window, especially where they pile up on phones (owner, 2026-10-15). */
+html[data-liquid='true'] .ds-value {
+  background:
+    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.46), rgb(0 0 0 / 0.36) 55%, rgb(0 0 0 / 0.3));
+}
+/* Phones and tablets: the cards pile up (they're sticky), so each one hides the one beneath a
+   little more. The liquid filter doesn't run on sticky or fixed glass in Chrome (the page showed
+   through sharp, as on the nav), so the pile uses the CSS frost at the same strength. */
+@media (max-width: 1023px) {
+  html[data-liquid='true'] .ds-value {
+    -webkit-backdrop-filter: blur(26px) saturate(1.45) !important;
+    backdrop-filter: blur(26px) saturate(1.45) !important;
+    background:
+      radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+      linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.54) 55%, rgb(0 0 0 / 0.5));
+  }
+}
+/* The prime pipeline's cards and tiles are solid, not glass (owner, 2026-10-15): a near-black
+   fill under the glass stroke, no see-through, no blur. */
+html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
+  background: linear-gradient(180deg, #121417, #0c0e10);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}

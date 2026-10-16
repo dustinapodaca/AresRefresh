@@ -315,7 +315,15 @@ Cards and glass are part of the system, not exceptions.
   20% black (was 52% to 32%), the Home hero's glass strip 50% to 30% (was 72% to 48%) and liquid too
   (its 24px blur, through `--ds-liquid` on its ::before), and the nav bar 50% (was 72%; 82% with a
   desktop menu open). The nav keeps its CSS frost: on its thin bar the liquid filter didn't take and
-  the page showed through sharp.
+  the page showed through sharp. Since 2026-10-15 (owner) the liquid is on every glass surface,
+  each at its CSS blur: the Home hero strip and the Capability hero's frost band (both through
+  `--ds-liquid` on their ::before), the Services opening and its card panels, the footer band, and
+  the 404 card, each checked to frost (fine detail behind cut by half or more). Chrome doesn't run
+  the filter on fixed or sticky glass, so the nav, the quote toast, and the Home Record cards'
+  phone pile keep the CSS frost (the pile at 26px with 62% to 50% black so the card beneath
+  doesn't show). The Home Record cards are a little denser on desktop too (26px, 46% to 30%
+  black). The prime pipeline's cards and tiles are solid, not glass, on Home and now on /teaming,
+  which shows the same pipeline and animation in place of the diagram (owner, 2026-10-15).
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.
