@@ -4498,15 +4498,27 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    little black, fading in and out with the menu. Desktop only; the phone menu covers the screen. */
 .ds-np-scrim { display: none; }
 @media (min-width: 1024px) {
+  /* Frosted like Figma's Glass (owner, 2026-10-15): a heavy blur with the color lifted, a pale
+     white frost over very little black, a sheen of light from the top under the nav, and a fine
+     grain so it reads as etched glass, not a dimmed screen. (Figma's edge refraction has no CSS
+     equivalent.) */
   .ds-np-scrim {
     display: block; position: fixed; inset: 0; z-index: 49; pointer-events: none;
-    background: rgb(0 0 0 / 0.16);
-    -webkit-backdrop-filter: blur(6px) saturate(0.9);
-    backdrop-filter: blur(6px) saturate(0.9);
+    background:
+      radial-gradient(120% 60% at 50% 0%, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0) 60%),
+      linear-gradient(rgb(255 255 255 / 0.035), rgb(255 255 255 / 0.035)),
+      rgb(0 0 0 / 0.12);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5) brightness(0.92);
+    backdrop-filter: blur(22px) saturate(1.5) brightness(0.92);
     opacity: 0; visibility: hidden;
-    transition: opacity 280ms var(--ds-ease), visibility 0s linear 280ms;
+    transition: opacity 320ms var(--ds-ease), visibility 0s linear 320ms;
   }
-  .ds-np-scrim[data-open] { opacity: 1; visibility: visible; transition: opacity 280ms var(--ds-ease), visibility 0s; }
+  .ds-np-scrim::after {
+    content: ''; position: absolute; inset: 0; opacity: 0.06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+  .ds-np-scrim[data-open] { opacity: 1; visibility: visible; transition: opacity 320ms var(--ds-ease), visibility 0s; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ds-np-scrim { transition: none !important; }
