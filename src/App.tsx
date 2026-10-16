@@ -80,8 +80,8 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // a little (owner, 2026-10-15; was 3px).
   { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true }, rimBlur: 14 } },
   { sel: '.ds-nf-card', opts: { blur: 10 } },
-  // A little more frost and color on the Services card panels (owner, 2026-10-15; was 10 and 1.45).
-  { sel: '.ds-svc-card-text', opts: { blur: 14, saturate: 1.6, edges: { top: true }, grows: true } },
+  // Not the Services card panels (owner, 2026-10-15): the live filter on six panels glitched on fast
+  // scrolls; each panel now carries its own blurred copy of its photo (.ds-svc-glass).
   // The Services opening forms (owner, 2026-10-15, /services?open=): the aperture card (at the Home
   // Record cards' 12px, matching their recipe), the sink
   // band (its top edge only, like the footer), and the lens slab (lighter frost and a wider rim,

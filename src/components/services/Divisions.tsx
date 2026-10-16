@@ -66,18 +66,26 @@ export default function Divisions() {
   const [openId, setOpenId] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Each card's mirrored photo starts at the photo's foot: the photo's height, kept current as
-  // cards open, close, and resize (--svc-mh on the card).
+  // Each card's frosted panel holds its own blurred copy of the card's photo and its reflection,
+  // laid where the photo sits behind the panel: the photo's height (--svc-mh) and the panel's top
+  // in the card (--svc-pt), kept current as cards open, close, and resize.
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
+    const measure = (card: HTMLElement) => {
+      const media = card.querySelector<HTMLElement>('.ds-svc-card-media');
+      const panel = card.querySelector<HTMLElement>('.ds-svc-card-text');
+      if (!media || !panel) return;
+      card.style.setProperty('--svc-mh', `${media.offsetHeight}px`);
+      card.style.setProperty('--svc-pt', `${panel.offsetTop}px`);
+    };
     const ro = new ResizeObserver((entries) => {
       for (const e of entries) {
-        const media = e.target as HTMLElement;
-        media.parentElement?.style.setProperty('--svc-mh', `${media.offsetHeight}px`);
+        const card = (e.target as HTMLElement).closest<HTMLElement>('.ds-svc-card');
+        if (card) measure(card);
       }
     });
-    grid.querySelectorAll<HTMLElement>('.ds-svc-card-media').forEach((m) => ro.observe(m));
+    grid.querySelectorAll<HTMLElement>('.ds-svc-card-media, .ds-svc-card-text').forEach((el) => ro.observe(el));
     return () => ro.disconnect();
   }, []);
 
@@ -178,22 +186,27 @@ export default function Divisions() {
                   />
                 )}
               </div>
-              {/* The photo again, flipped, directly under its foot (owner, 2026-10-15): the frosted
-                  panel blurs this reflection all the way down instead of the black under the photo,
-                  which drew a line through the glass. */}
-              <div className="ds-svc-card-mirror" aria-hidden="true">
-                <img
-                  {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  style={d.photo.position ? { objectPosition: d.photo.position } : undefined}
-                />
-              </div>
 
               {/* Over the photo's foot, a frosted panel (owner reference) carries the name and
                   the one-line description; the detail opens beneath it. */}
               <div className="ds-svc-card-text">
+                {/* The frost (owner, 2026-10-15): the card's photo and its reflection (flipped, fading
+                    out) blurred once, under the panel's tint. Not a live backdrop filter, which
+                    re-filtered on every scroll frame and glitched on fast scrolls. */}
+                <div className="ds-svc-glass" aria-hidden="true">
+                  <div className="ds-svc-glass-img">
+                    {[0, 1].map((k) => (
+                      <img
+                        key={k}
+                        {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
+                        alt=""
+                        loading={i < 2 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        style={d.photo.position ? { objectPosition: d.photo.position } : undefined}
+                      />
+                    ))}
+                  </div>
+                </div>
                 <h3 id={`${d.id}-title`} className="ds-svc-card-head">
                   <button type="button" aria-expanded={open} aria-controls={panelId} onClick={toggle}>
                     <span className="ds-data ds-svc-n" aria-hidden="true">{d.n}</span>

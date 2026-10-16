@@ -1903,47 +1903,38 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   transition: transform 300ms var(--ds-ease);
 }
 .ds-svc-card-media .ds-svc-photo-sharp { display: none; }
-/* The photo reflects below its foot (owner, 2026-10-15): a flipped copy (Divisions.tsx) sits right
-   under the photo, the photo's own height (--svc-mh), so the frosted panel blurs a mirror of the
-   photo all the way down instead of the black under it, which drew a line through the glass. Its
-   first row is the photo's last row, so there is no seam; it fades out toward the card's foot.
-   (CSS box-reflect was tried first; Chrome didn't draw it here.) */
-.ds-svc-card-mirror {
-  position: absolute;
-  z-index: -1;
-  inset-inline: 0;
-  top: var(--svc-mh, 100%);
-  height: var(--svc-mh, 0px);
-  overflow: hidden;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000, rgb(0 0 0 / 0.5) 40%, transparent 80%);
-  mask-image: linear-gradient(to bottom, #000, rgb(0 0 0 / 0.5) 40%, transparent 80%);
-}
-.ds-svc-card-mirror img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scaleY(-1);
-  filter: saturate(0.82) brightness(0.86) contrast(1.04);
-}
-/* Opened on desktop the photo is the left column, top to bottom: nothing below it to reflect. */
-@media (min-width: 1024px) {
-  .ds-svc-card[data-open='true'] .ds-svc-card-mirror { display: none; }
-}
 /* The frosted panel rides up over the photo's foot. */
 .ds-svc-card-text {
   position: relative;
   flex: none;
   margin-top: -5.5rem;
   padding: 6px 20px 22px;
-  /* A step darker (owner, 2026-10-15) now the panel frosts the photo's reflection all the way down:
-     every card's title and description 4.5:1 or better at the brightest point. */
-  background: linear-gradient(to bottom, rgb(5 6 7 / 0.46), rgb(5 6 7 / 0.76) 5.5rem, rgb(5 6 7 / 0.76));
-  /* A little more frost and color (owner, 2026-10-15; was 24px, 140%). */
-  -webkit-backdrop-filter: blur(30px) saturate(160%);
-  backdrop-filter: blur(30px) saturate(160%);
+  /* The frost is .ds-svc-glass below, not a backdrop filter (owner, 2026-10-15: the live liquid
+     filter re-filtered on every scroll frame and glitched on fast scrolls). */
+  isolation: isolate;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+/* The panel's frost: the card's photo, then the photo flipped beneath it (its reflection, fading out),
+   laid exactly where the photo sits behind the panel (--svc-pt, --svc-mh from Divisions.tsx),
+   blurred once with the color lifted (14px, 1.6, owner 2026-10-15), under the panel's tint (a step
+   darker so every card's text holds 4.5:1; 46% to 76% black) and its light along the top. It is
+   painted once and scrolls as a picture. Slightly wider than the card so the blur doesn't darken
+   the sides. */
+.ds-svc-glass { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.ds-svc-glass-img {
+  position: absolute; left: -4%; width: 108%; top: calc(-1 * var(--svc-pt, 0px)); height: calc(2 * var(--svc-mh, 0px));
+  filter: blur(14px) saturate(1.6);
+}
+.ds-svc-glass-img img { display: block; width: 100%; height: 50%; object-fit: cover; filter: saturate(0.82) brightness(0.86) contrast(1.04); }
+.ds-svc-glass-img img + img {
+  transform: scaleY(-1);
+  -webkit-mask-image: linear-gradient(to top, #000, rgb(0 0 0 / 0.5) 40%, transparent 80%);
+  mask-image: linear-gradient(to top, #000, rgb(0 0 0 / 0.5) 40%, transparent 80%);
+}
+.ds-svc-glass::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgb(5 6 7 / 0.46), rgb(5 6 7 / 0.76) 5.5rem, rgb(5 6 7 / 0.76));
+  box-shadow: var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.06));
 }
 .ds-svc-card-head { margin: 0; }
 .ds-svc-card-head button {
@@ -2099,6 +2090,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     mask-image: linear-gradient(to bottom, #000 72%, transparent);
   }
   .ds-svc-card[data-open='true'] .ds-svc-card-media:has(.ds-svc-photo-sharp) img:not(.ds-svc-photo-sharp) { opacity: 0; }
+  .ds-svc-card[data-open='true'] .ds-svc-glass { display: none; }
   .ds-svc-card[data-open='true'] .ds-svc-card-text {
     margin-top: 0;
     padding: 18px 32px 32px;
