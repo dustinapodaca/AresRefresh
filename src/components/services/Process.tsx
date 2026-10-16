@@ -1,12 +1,25 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { STAGES } from './data';
 import SystemTags from './Systems';
+
+// The section's head on desktop (owner, 2026-10-16: too much black to the right of the lead), for
+// the owner to compare at /services?stagehead=current|head|column|wide. `current` is the default
+// until the owner picks. Phones and tablets are the same in all four.
+//   current  the headline across, the lead under it in five columns
+//   head     the site's section head: headline in 7 columns, the lead in the last 5 at its foot
+//   column   the lead starts at column 5, over the stage bodies and the axis
+//   wide     the lead across about 8 columns, three lines instead of five
+const HEADS = ['current', 'head', 'column', 'wide'] as const;
 
 // 02 Process, set as a schedule chart: one axis from pre-contract to operational, and
 // each stage's bar one step further along it. Below 1024px the stages become a swipe
 // row under a process meter that fills as the row is swiped.
 export default function Process() {
+  const [params] = useSearchParams();
+  const asked = params.get('stagehead');
+  const head = HEADS.includes(asked as (typeof HEADS)[number]) ? asked : 'current';
   const rowRef = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
 
@@ -82,14 +95,16 @@ export default function Process() {
 
   return (
     <section id="process" className="ds-svc-process" aria-labelledby="process-title">
-      <h2 id="process-title" className="ds-display-lg">
-        Four stages, from site walk to first shift.
-      </h2>
-      <p className="ds-lead ds-svc-intro">
-        Every site has its own shift pattern, threat profile, and compliance requirements.
-        The four stages exist because protection that holds up under scrutiny can&rsquo;t be
-        rushed, copied from another contract, or trusted to a stranger on day one.
-      </p>
+      <div className="ds-svc-process-head" data-head={head}>
+        <h2 id="process-title" className="ds-display-lg">
+          Four stages, from site walk to first shift.
+        </h2>
+        <p className="ds-lead ds-svc-intro">
+          Every site has its own shift pattern, threat profile, and compliance requirements.
+          The four stages exist because protection that holds up under scrutiny can&rsquo;t be
+          rushed, copied from another contract, or trusted to a stranger on day one.
+        </p>
+      </div>
 
       <div className="ds-svc-gantt">
         {/* Phones and tablets: the meter. Four quarters on a hairline, the ink fill tied to

@@ -2174,6 +2174,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-svc-stage-title { font-size: 24px; }
 }
 .ds-svc-process .ds-handoff { margin-top: var(--ds-beat-tight); }
+/* The head's forms on desktop (/services?stagehead=, owner 2026-10-16; Process.tsx). */
+@media (min-width: 1024px) {
+  .ds-svc-process-head[data-head='head'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-svc-process-head[data-head='head'] h2 { grid-column: 1 / span 7; }
+  .ds-svc-process-head[data-head='head'] .ds-lead { grid-column: 8 / span 5; margin-top: 0; }
+  /* Column 5, where the axis and the stage bodies start. */
+  .ds-svc-process-head[data-head='column'] .ds-lead { margin-left: calc(100% / 3 + 8px); margin-top: 28px; }
+  /* About eight columns. */
+  .ds-svc-process-head[data-head='wide'] .ds-lead { max-width: calc((100% - 11 * 24px) / 12 * 8 + 7 * 24px); }
+}
 
 /* Phones and tablets: the stages become a swipe row under a process meter. The meter is
    the chart's axis turned into a position indicator: four quarters on a hairline, an ink

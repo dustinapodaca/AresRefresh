@@ -193,6 +193,36 @@
       ]
     },
     {
+      "heading": "Services: four stages head (desktop)",
+      "intro": "Owner, 2026-10-16: too much black to the right of the lead. Phones are the same in all four.",
+      "page": "/services",
+      "param": "stagehead",
+      "selector": ".ds-svc-process-head",
+      "options": [
+        {
+          "value": "current",
+          "label": "Current",
+          "tag": "default",
+          "note": "The headline across, the lead under it in five columns."
+        },
+        {
+          "value": "head",
+          "label": "Section head",
+          "note": "The site's section head, as on Home: headline in 7 columns, the lead in the last 5 at its foot."
+        },
+        {
+          "value": "column",
+          "label": "Stage column",
+          "note": "The lead starts at column 5, over the axis and the stage bodies."
+        },
+        {
+          "value": "wide",
+          "label": "Wide lead",
+          "note": "The lead across about 8 columns: three lines instead of five."
+        }
+      ]
+    },
+    {
       "heading": "About: Why Ares exists",
       "intro": "Placeholder words and the Ares mark until the founder's story and photo arrive.",
       "page": "/about",
