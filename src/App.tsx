@@ -81,10 +81,11 @@ const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
   { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true }, rimBlur: 14 } },
   { sel: '.ds-nf-card', opts: { blur: 10 } },
   { sel: '.ds-svc-card-text', opts: { blur: 10, edges: { top: true } } },
-  // The Services opening forms (owner, 2026-10-15, /services?open=): the aperture card, the sink
+  // The Services opening forms (owner, 2026-10-15, /services?open=): the aperture card (at the Home
+  // Record cards' 12px, matching their recipe), the sink
   // band (its top edge only, like the footer), and the lens slab (lighter frost and a wider rim,
   // so the towers bend through).
-  { sel: '.ds-ap-card', opts: { blur: 10 } },
+  { sel: '.ds-ap-card', opts: { blur: 12 } },
   { sel: '.ds-sk-band', opts: { blur: 18, edges: { top: true } } },
   { sel: '.ds-ln-slab', opts: { blur: 7, bezel: 32 } },
 ];

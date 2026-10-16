@@ -4868,6 +4868,21 @@ html[data-cards='glass'] .ds-cs-cards .ds-cs-card { -webkit-backdrop-filter: non
   background: rgb(6 7 8 / 0.58); backdrop-filter: blur(10px) saturate(1.3); -webkit-backdrop-filter: blur(10px) saturate(1.3);
 }
 .ds-ap-card .ds-lead { color: var(--ds-fg); }
+/* In the glass modes the card is the site's glass card, the Home Record cards' recipe (owner,
+   2026-10-15): the rust light in the lower right corner, the 1px glass edge and the line inside
+   the top, and the soft shadow; liquid at their 12px (App.tsx). The wash is a step darker than
+   theirs (56% to 44% black; theirs 46% to 30%) because this card crosses the bright sky: the lead
+   holds 5.2:1 at the brightest point (it was 3.8:1 at theirs). */
+html[data-cards='glass'] .ds-ap-card {
+  background:
+    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.56), rgb(0 0 0 / 0.48) 55%, rgb(0 0 0 / 0.44));
+  border: 1px solid var(--ds-glass-edge);
+  box-shadow: var(--ds-glass-top), 0 12px 36px rgb(0 0 0 / 0.28);
+  -webkit-backdrop-filter: blur(22px) saturate(1.65);
+  backdrop-filter: blur(22px) saturate(1.65);
+}
+html[data-cards='glass'] .ds-ap-card::after { display: none; }
 @media (min-width: 768px) {
   .ds-ap-photo { aspect-ratio: 16 / 9; max-height: none; }
   /* The card straddles the plate's top edge on the right, beside the headline's foot, so the lead

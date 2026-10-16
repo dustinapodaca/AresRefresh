@@ -598,7 +598,10 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
     corners) that opens to the screen's edges over the first 70% of a screen of scroll, the photo
     settling from 1.1 inside it (tied to the scroll; static without scroll timelines or under reduced
     motion). A liquid glass card with the lead straddles the plate's top edge on the right, beside the
-    headline's foot, so its rim bends the photo's edge. Phones: the card over the plate's foot.
+    headline's foot, so its rim bends the photo's edge. The card is the site's glass card, the Home
+    Record cards' recipe (rust light in the lower right, 1px glass edge and top line, soft shadow,
+    liquid at 12px; owner, 2026-10-15) with a darker wash (56% to 44% black) because it crosses the
+    bright sky (lead 5.2:1 at the brightest point). Phones: the card over the plate's foot.
   - `sink`: the headline huge (up to 148px) low over the photo, its last line resting in a full-width
     band of liquid glass (18px frost, its top edge bent and lit, like the footer's ARES letters) that
     holds the lead and the link. A shade over the photo keeps the headline 6:1 or better.
