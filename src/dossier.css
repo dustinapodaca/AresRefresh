@@ -5406,40 +5406,47 @@ html[data-cards] .ds-primes-panel {
   backdrop-filter: none;
 }
 .ds-primes-panel > * { z-index: 1; }
-/* The beam: a long ellipse of copper light with a warm core, turned to rise from the foot, behind
-   the diagram (right half) so the copy stays on clean black. The core is lighter than the rust
-   swatch so on black it reads as light, not brown. */
+/* The light (owner, 2026-10-16: "more like Gladia's gradients, pronounced, uniform, clean"): one
+   wedge rising from the lower right corner behind the diagram, the way Gladia's eclipse glow rises
+   from its card's corner. Concentric ellipses step through the clay and rust family, pale clay at
+   the core, then copper, rust, and deep umber into black, turned 26deg so the wedge fans up and to
+   the left, and blurred so the steps melt into one smooth ramp. Sized in px so every panel gets the
+   same light. */
 .ds-primes-panel::before {
   content: '';
   position: absolute;
   z-index: 0;
   inset: auto;
-  left: 54%;
-  top: -12%;
-  width: 28%;
-  height: 140%;
-  background: radial-gradient(closest-side, rgb(255 184 128 / 0.6), rgb(236 136 72 / 0.46) 30%, rgb(188 111 64 / 0.26) 58%, rgb(139 73 32 / 0.1) 82%, transparent);
-  transform: rotate(28deg);
-  filter: blur(40px);
-  opacity: 0.9;
+  right: -60px;
+  bottom: -150px;
+  width: 820px;
+  height: 440px;
+  transform-origin: 100% 100%;
+  transform: rotate(26deg);
+  background:
+    radial-gradient(ellipse 24% 30% at 88% 78%, rgb(250 214 182 / 0.95), rgb(250 214 182 / 0) 100%),
+    radial-gradient(ellipse 40% 46% at 86% 76%, rgb(232 150 98 / 0.9), rgb(232 150 98 / 0) 100%),
+    radial-gradient(ellipse 60% 62% at 82% 74%, rgb(196 104 58 / 0.78), rgb(196 104 58 / 0) 100%),
+    radial-gradient(ellipse 82% 78% at 76% 72%, rgb(122 56 26 / 0.62), rgb(122 56 26 / 0) 100%),
+    radial-gradient(ellipse 100% 92% at 70% 70%, rgb(58 24 10 / 0.5), rgb(58 24 10 / 0) 100%);
+  filter: blur(26px);
   -webkit-mask-image: none;
   mask-image: none;
   pointer-events: none;
 }
-/* Phones and tablets: the diagram sits under the copy, so the beam rises only through the lower
-   part of the panel, behind it. */
-@media (max-width: 1023px) {
-  .ds-primes-panel::before { left: 30%; top: 46%; width: 44%; height: 66%; }
-}
-/* The pool: deeper rust low on the right. */
+/* Gladia's faint grey streak beyond the color, along the same line. */
 .ds-primes-panel::after {
   content: '';
   position: absolute;
   z-index: 0;
-  inset: -18% 0;
-  background:
-    radial-gradient(46% 40% at 92% 96%, rgb(139 73 32 / 0.4), transparent 72%),
-    radial-gradient(36% 30% at 60% 104%, rgb(236 136 72 / 0.22), transparent 70%);
-  filter: blur(36px);
+  inset: auto;
+  right: 180px;
+  bottom: 60px;
+  width: 560px;
+  height: 160px;
+  transform-origin: 100% 100%;
+  transform: rotate(26deg);
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0) 100%);
+  filter: blur(30px);
   pointer-events: none;
 }

@@ -508,10 +508,13 @@ exception to "no card containers" and "no glass" for this section.
 ### For prime contractors (Home, end of 02 Industries; owner 2026-10-10, pass 2)
 - **Being redone (owner, 2026-10-16: it read as AI-made).** So far, after gladia.io's "Start
   transcribing in minutes" card: black, the site's lit glass edge (`--ds-card-edge`) with a white/12%
-  line along the top and a faint inner rim, so the edge reads as glass; inside, one beam of copper
-  light (a warm core lighter than the rust swatch, so it reads as light, not brown) rising
-  diagonally from the foot behind the diagram, blurred 40px, and a deeper rust pool low on the right.
-  The copy stays on clean black (phones: the beam only behind the diagram). No dot grid, no backdrop
+  line along the top and a faint inner rim, so the edge reads as glass; inside, one wedge of light
+  rising from the lower right corner behind the diagram, like Gladia's eclipse glow (owner: "more
+  pronounced, uniform, clean"): concentric ellipses through the clay and rust family, pale clay
+  (250 214 182) at the core, then copper (232 150 98), rust (196 104 58), deep rust (122 56 26), and
+  umber (58 24 10) into black, turned 26deg to fan up and to the left, blurred 26px into one smooth
+  ramp, with Gladia's faint grey streak beyond it. Sized in px (820 by 440; phones 520 by 300) so
+  every panel gets the same light. The copy stays on clean black. No dot grid, no backdrop
   blur. Home and the Government & Defense panel. What follows describes the panel before the redo.
 - A contained panel (an owner exception to "no card containers", like the Record cards),
   after Slash, Flora, and Resend: near-black (#0c0d10) with a soft white/4.5% light from
