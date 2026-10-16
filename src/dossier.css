@@ -2179,11 +2179,15 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     border: 0;
     background: none;
     font-size: 13px;
-    text-align: left;
+    /* At the end of its quarter, over where the fill stops for that stage (owner, 2026-10-15). */
+    text-align: right;
     color: var(--ds-fg-muted);
     cursor: pointer;
+    transition: color 180ms var(--ds-ease);
   }
-  .ds-svc-meter-nums li:first-child button { color: var(--ds-fg); }
+  /* Passed stages in ink, the current one in rust (owner, 2026-10-15), from the swipe position. */
+  .ds-svc-meter-nums li[data-on] button { color: var(--ds-fg); }
+  .ds-svc-meter-nums li[data-active] button { color: var(--ds-rust); }
   /* The track: a hairline with ticks at the stage boundaries. */
   .ds-svc-meter-track {
     position: relative;
@@ -2248,7 +2252,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (min-width: 768px) and (max-width: 1023px) {
   .ds-svc-stage { flex-basis: 62%; }
 }
-@keyframes ds-num-on { from { color: var(--ds-fg-muted); } to { color: var(--ds-fg); } }
 /* Position indicators: tied to the swipe, so they stay on under reduced motion. */
 @supports (animation-timeline: scroll()) {
   @media (max-width: 1023px) {
@@ -2256,11 +2259,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
       display: block;
       animation: ds-bar linear both;
       animation-timeline: --ds-svc-swipe;
-    }
-    .ds-svc-meter-nums li:not(:first-child) button {
-      animation: ds-num-on linear both;
-      animation-timeline: --ds-svc-swipe;
-      animation-range: calc(var(--i) * 33.33% - 6%) calc(var(--i) * 33.33%);
     }
   }
 }

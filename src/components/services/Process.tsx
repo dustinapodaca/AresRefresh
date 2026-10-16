@@ -92,11 +92,12 @@ export default function Process() {
 
       <div className="ds-svc-gantt">
         {/* Phones and tablets: the meter. Four quarters on a hairline, the ink fill tied to
-            the swipe position, each number lighting as its stage is reached. */}
+            the swipe position. Each number sits at the end of its quarter, over where the fill
+            stops for that stage; the current one is rust, the ones passed ink (owner, 2026-10-15). */}
         <div className="ds-svc-meter">
           <ol className="ds-svc-meter-nums">
             {STAGES.map((s, i) => (
-              <li key={s.n} style={{ '--i': i } as CSSProperties}>
+              <li key={s.n} style={{ '--i': i } as CSSProperties} data-on={i <= active ? 'true' : undefined} data-active={i === active ? 'true' : undefined}>
                 <button type="button" className="ds-data" onClick={() => goTo(i)} aria-label={`Stage ${i + 1}: ${s.title}`}>
                   {s.n}
                 </button>
