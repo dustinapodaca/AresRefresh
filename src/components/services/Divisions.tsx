@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -65,6 +65,21 @@ function bento(openId: string | null): Map<string, Slot> {
 export default function Divisions() {
   const [openId, setOpenId] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  // Each card's mirrored photo starts at the photo's foot: the photo's height, kept current as
+  // cards open, close, and resize (--svc-mh on the card).
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const ro = new ResizeObserver((entries) => {
+      for (const e of entries) {
+        const media = e.target as HTMLElement;
+        media.parentElement?.style.setProperty('--svc-mh', `${media.offsetHeight}px`);
+      }
+    });
+    grid.querySelectorAll<HTMLElement>('.ds-svc-card-media').forEach((m) => ro.observe(m));
+    return () => ro.disconnect();
+  }, []);
 
   const toggleCard = useCallback(
     (id: string) => {
@@ -162,6 +177,18 @@ export default function Divisions() {
                     decoding="async"
                   />
                 )}
+              </div>
+              {/* The photo again, flipped, directly under its foot (owner, 2026-10-15): the frosted
+                  panel blurs this reflection all the way down instead of the black under the photo,
+                  which drew a line through the glass. */}
+              <div className="ds-svc-card-mirror" aria-hidden="true">
+                <img
+                  {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  style={d.photo.position ? { objectPosition: d.photo.position } : undefined}
+                />
               </div>
 
               {/* Over the photo's foot, a frosted panel (owner reference) carries the name and

@@ -636,7 +636,11 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   dropped); 4px corners on every card (the 10px / 28px plate corners were retired). Phones: one column. Each card: near-black fill (`#050607`), a white/10% edge and a
   faint inner light from below (drawn on top), the photo across the top (growing to
   fill when a row-mate is taller, slight 1.03 zoom on hover), and a frosted panel
-  (24px blur over a dark tint) riding up over the photo's foot with the number beside
+  (24px blur over a dark tint; since 2026-10-15 (owner) liquid at a 14px frost with the color lifted
+  1.6, 30px and 160% for the CSS frost, a step darker, 46% to 76% black) riding up over the photo's
+  foot, over a flipped copy of the photo set right under its foot and fading out, so the glass frosts
+  a reflection all the way down instead of black (that drew a line through the glass; owner,
+  2026-10-15; every card's text 5.1:1 or better), with the number beside
   the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
   The + (or the photo) opens one card at a time: it takes its row's full width (its
   row-mate moves down and the cards after it re-pair beneath; a last odd card sits at

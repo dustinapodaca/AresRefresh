@@ -20,6 +20,8 @@ export type LiquidOptions = {
   /** Put the filter on this pseudo-element (via the --ds-liquid custom property on the host). */
   pseudo?: '::before' | '::after';
   blur?: number;
+  /** How much the color behind is lifted (default 1.45). */
+  saturate?: number;
   scale?: number;
   bezel?: number;
   /** Only these edges bend and catch the light (full-width bands: never the sides, which sit on
@@ -147,7 +149,7 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
   return { dispUrl, specUrl, rimUrl };
 }
 
-function build(id: string, w: number, h: number, r: number, o: { blur: number; scale: number; bezel: number; edges: Edges | null; rimBlur?: number }) {
+function build(id: string, w: number, h: number, r: number, o: { blur: number; saturate: number; scale: number; bezel: number; edges: Edges | null; rimBlur?: number }) {
   const { dispUrl, specUrl, rimUrl } = maps(w, h, r, o.bezel, o.edges);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
@@ -170,7 +172,7 @@ function build(id: string, w: number, h: number, r: number, o: { blur: number; s
     <feComposite in="frostRim" in2="rimMask" operator="in" result="rimLayer"/>
     <feComposite in="rimLayer" in2="frostFull" operator="over" result="frost"/>`
     }
-    <feColorMatrix in="frost" type="saturate" values="1.45" result="lifted"/>
+    <feColorMatrix in="frost" type="saturate" values="${o.saturate}" result="lifted"/>
     <feImage href="${specUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rim"/>
     <feComponentTransfer in="rim" result="rimSoft"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
     <feBlend in="rimSoft" in2="lifted" mode="screen"/>`;
@@ -184,7 +186,7 @@ export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => v
   const id = `ares-liquid-${++counter}`;
   const e = opts.edges;
   const edges: Edges | null = e ? { top: !!e.top, right: !!e.right, bottom: !!e.bottom, left: !!e.left } : null;
-  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges, rimBlur: opts.rimBlur };
+  const o = { blur: opts.blur ?? BLUR, saturate: opts.saturate ?? 1.45, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges, rimBlur: opts.rimBlur };
   let current: SVGFilterElement | null = null;
   let last = '';
   const apply = () => {
