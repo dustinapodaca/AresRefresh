@@ -17,6 +17,16 @@ const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
     ),
   },
   {
+    name: 'CCTV monitors',
+    short: 'CCTV',
+    icon: (
+      <>
+        <path d="M2 4.6 11.2 2.4l1.1 4.3-9.2 2.2Z" />
+        <path d="M12.6 4.2 14.5 3.8M5.5 8.4l.6 2.6H2.5M2.5 9.5v3" />
+      </>
+    ),
+  },
+  {
     name: 'Visitor management software',
     short: 'Visitor software',
     icon: (
@@ -24,16 +34,6 @@ const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
         <rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5" />
         <circle cx="6" cy="7" r="1.5" />
         <path d="M3.75 11c.4-1.2 1.2-1.8 2.25-1.8s1.85.6 2.25 1.8M10 6.5h2.25M10 9h2.25" />
-      </>
-    ),
-  },
-  {
-    name: 'CCTV monitors',
-    short: 'CCTV',
-    icon: (
-      <>
-        <path d="M2 4.6 11.2 2.4l1.1 4.3-9.2 2.2Z" />
-        <path d="M12.6 4.2 14.5 3.8M5.5 8.4l.6 2.6H2.5M2.5 9.5v3" />
       </>
     ),
   },
