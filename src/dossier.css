@@ -4877,7 +4877,6 @@ html[data-cards='glass'] .ds-cs-cards .ds-cs-card { -webkit-backdrop-filter: non
 }
 @media (min-width: 1024px) {
   .ds-ap-head { padding-top: calc(var(--ds-header) + clamp(40px, 7vh, 80px)); }
-  .ds-ap-head .ds-svx-title { font-size: clamp(60px, 7.4vw, 116px); max-width: 11em; }
   .ds-ap-stage { margin-top: clamp(40px, 6vh, 64px); }
   .ds-ap-photo { aspect-ratio: auto; height: clamp(520px, 74svh, 820px); }
 }

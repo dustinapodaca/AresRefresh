@@ -29,8 +29,8 @@ const Photo = ({ className = 'ds-svx-photo' }: { className?: string }) => (
   </div>
 );
 
-const Title = ({ copy }: { copy: Copy }) => (
-  <h1 id="services-title" className="ds-svx-title">
+const Title = ({ copy, className = 'ds-svx-title' }: { copy: Copy; className?: string }) => (
+  <h1 id="services-title" className={className}>
     {heroTitle(copy.title)}
   </h1>
 );
@@ -109,7 +109,8 @@ function Aperture({ copy }: { copy: Copy }) {
   return (
     <>
       <div className="ds-container ds-ap-head">
-        <Title copy={copy} />
+        {/* The site's hero headline size, as on every other page (owner, 2026-10-15). */}
+        <Title copy={copy} className="ds-display-xl" />
       </div>
       <div className="ds-ap-stage">
         <Photo className="ds-svx-photo ds-ap-photo" />

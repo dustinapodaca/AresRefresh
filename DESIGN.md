@@ -593,7 +593,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
     so cheap on phones) under a tint dark at the top behind the copy and clear through the middle;
     under the pointer the frost fades (260ms) to the crisp photo. On the first view the glass forms
     pane by pane (900ms, 80ms apart). The opening fades into the canvas at its foot.
-  - `aperture`: the headline large (up to 116px), then the photo as a plate in the column (4px
+  - `aperture`: the headline at display-xl, the same size as every other page's (owner, 2026-10-15;
+    it was up to 116px), then the photo as a plate in the column (4px
     corners) that opens to the screen's edges over the first 70% of a screen of scroll, the photo
     settling from 1.1 inside it (tied to the scroll; static without scroll timelines or under reduced
     motion). A liquid glass card with the lead straddles the plate's top edge on the right, beside the
