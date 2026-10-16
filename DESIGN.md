@@ -640,7 +640,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   1.6, 30px and 160% for the CSS frost, a step darker, 46% to 76% black) riding up over the photo's
   foot, over a flipped copy of the photo set right under its foot and fading out, so the glass frosts
   a reflection all the way down instead of black (that drew a line through the glass; owner,
-  2026-10-15; every card's text 5.1:1 or better), with the number beside
+  2026-10-15; every card's text 5.1:1 or better; the panel's liquid filter is built so a change in
+  height needs no rebuild, so opening a card no longer swaps it mid-animation, which read as a snap
+  on phones), with the number beside
   the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
   The + (or the photo) opens one card at a time: it takes its row's full width (its
   row-mate moves down and the cards after it re-pair beneath; a last odd card sits at

@@ -31,6 +31,10 @@ export type LiquidOptions = {
    *  the full frost, so the bend shows on its heavy 18px frost instead of reading as a fade, and
    *  the frost kept solid where there is no page past an edge. Others leave it unset. */
   rimBlur?: number;
+  /** For glass that grows in place (the Services card panels, owner 2026-10-15): outside the map
+   *  the page is left unbent instead of shifted, and with no bottom edge a change in height needs
+   *  no rebuild, so opening a card never swaps the filter mid-animation (that read as a snap). */
+  grows?: boolean;
 };
 type Edges = { top: boolean; right: boolean; bottom: boolean; left: boolean };
 
@@ -149,7 +153,7 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
   return { dispUrl, specUrl, rimUrl };
 }
 
-function build(id: string, w: number, h: number, r: number, o: { blur: number; saturate: number; scale: number; bezel: number; edges: Edges | null; rimBlur?: number }) {
+function build(id: string, w: number, h: number, r: number, o: { blur: number; saturate: number; scale: number; bezel: number; edges: Edges | null; rimBlur?: number; grows?: boolean }) {
   const { dispUrl, specUrl, rimUrl } = maps(w, h, r, o.bezel, o.edges);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
@@ -159,7 +163,13 @@ function build(id: string, w: number, h: number, r: number, o: { blur: number; s
   f.setAttribute('height', '124%');
   f.setAttribute('color-interpolation-filters', 'sRGB');
   f.innerHTML = `
-    <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>
+    ${
+      o.grows
+        ? `<feFlood flood-color="rgb(128,128,128)" result="neutral"/>
+    <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="mapOnly"/>
+    <feComposite in="mapOnly" in2="neutral" operator="over" result="map"/>`
+        : `<feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>`
+    }
     <feDisplacementMap in="SourceGraphic" in2="map" scale="${o.scale}" xChannelSelector="R" yChannelSelector="G" result="bent"/>
     ${
       o.rimBlur == null
@@ -186,7 +196,9 @@ export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => v
   const id = `ares-liquid-${++counter}`;
   const e = opts.edges;
   const edges: Edges | null = e ? { top: !!e.top, right: !!e.right, bottom: !!e.bottom, left: !!e.left } : null;
-  const o = { blur: opts.blur ?? BLUR, saturate: opts.saturate ?? 1.45, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges, rimBlur: opts.rimBlur };
+  const o = { blur: opts.blur ?? BLUR, saturate: opts.saturate ?? 1.45, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges, rimBlur: opts.rimBlur, grows: opts.grows };
+  // Growing glass with no bottom edge only needs a new map when its width changes.
+  const heightFree = !!opts.grows && !!edges && !edges.bottom;
   let current: SVGFilterElement | null = null;
   let last = '';
   const apply = () => {
@@ -195,7 +207,7 @@ export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => v
     const h = Math.round(opts.pseudo ? parseFloat(cs.height) : el.offsetHeight);
     if (!w || !h) return;
     const r = parseFloat(cs.borderTopLeftRadius) || 0;
-    const key = `${w}x${h}@${r}`;
+    const key = heightFree ? `${w}@${r}` : `${w}x${h}@${r}`;
     if (key === last) return;
     last = key;
     const next = build(id, w, h, r, o);
