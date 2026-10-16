@@ -9,18 +9,12 @@ const NS = 'http://www.w3.org/2000/svg';
 // dies off within about 20px (their map: full at the edge, about 57% at 2px, 14% at 8px, gone by
 // 24px), it reaches 100px, and the frost is light (7px) so the bend stays visible. The filter
 // region runs 12% past the element on every side, as theirs does, so the rim has real page to
-// bend and the frost doesn't fade out toward the edges. Where there is no page past an edge (a
-// full-width band at the screen's sides, or the footer at the page's foot), the blur would still
-// thin out there, so the frost is made fully solid again after the blur (its color kept): the
-// edge reads as frosted glass, not a fade (owner, 2026-10-15).
+// bend and the frost doesn't fade out toward the edges.
 const BEZEL = 24; // px of rim that bends the light
 const SCALE = 100; // the strongest bend, in px
 const FALLOFF = 4; // px: the bend at d px in from the rim is e^(-d / FALLOFF)
 const BLUR = 7; // the frost (a CSS blur(Npx) is the same as N here)
-// Along the rim the frost is light, so the bend shows even on heavily frosted glass (the footer and
-// the heroes at 18px read as a fade at the edge otherwise; owner, 2026-10-15). It eases into the
-// full frost across the rim.
-const RIM_BLUR = 3;
+
 
 export type LiquidOptions = {
   /** Put the filter on this pseudo-element (via the --ds-liquid custom property on the host). */
@@ -31,6 +25,10 @@ export type LiquidOptions = {
   /** Only these edges bend and catch the light (full-width bands: never the sides, which sit on
    *  the screen's edges, and only the edges that read as glass). Default: all four. */
   edges?: { top?: boolean; right?: boolean; bottom?: boolean; left?: boolean };
+  /** The footer only (owner, 2026-10-15): a light frost of this many px along the rim, easing into
+   *  the full frost, so the bend shows on its heavy 18px frost instead of reading as a fade, and
+   *  the frost kept solid where there is no page past an edge. Others leave it unset. */
+  rimBlur?: number;
 };
 type Edges = { top: boolean; right: boolean; bottom: boolean; left: boolean };
 
@@ -149,7 +147,7 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
   return { dispUrl, specUrl, rimUrl };
 }
 
-function build(id: string, w: number, h: number, r: number, o: { blur: number; scale: number; bezel: number; edges: Edges | null }) {
+function build(id: string, w: number, h: number, r: number, o: { blur: number; scale: number; bezel: number; edges: Edges | null; rimBlur?: number }) {
   const { dispUrl, specUrl, rimUrl } = maps(w, h, r, o.bezel, o.edges);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
@@ -161,13 +159,17 @@ function build(id: string, w: number, h: number, r: number, o: { blur: number; s
   f.innerHTML = `
     <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>
     <feDisplacementMap in="SourceGraphic" in2="map" scale="${o.scale}" xChannelSelector="R" yChannelSelector="G" result="bent"/>
-    <feGaussianBlur in="bent" stdDeviation="${o.blur}" result="blurred"/>
+    ${
+      o.rimBlur == null
+        ? `<feGaussianBlur in="bent" stdDeviation="${o.blur}" result="frost"/>`
+        : `<feGaussianBlur in="bent" stdDeviation="${o.blur}" result="blurred"/>
     <feComponentTransfer in="blurred" result="frostFull"><feFuncA type="table" tableValues="1 1"/></feComponentTransfer>
-    <feGaussianBlur in="bent" stdDeviation="${RIM_BLUR}" result="rimBlurred"/>
+    <feGaussianBlur in="bent" stdDeviation="${o.rimBlur}" result="rimBlurred"/>
     <feComponentTransfer in="rimBlurred" result="frostRim"><feFuncA type="table" tableValues="1 1"/></feComponentTransfer>
     <feImage href="${rimUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rimMask"/>
     <feComposite in="frostRim" in2="rimMask" operator="in" result="rimLayer"/>
-    <feComposite in="rimLayer" in2="frostFull" operator="over" result="frost"/>
+    <feComposite in="rimLayer" in2="frostFull" operator="over" result="frost"/>`
+    }
     <feColorMatrix in="frost" type="saturate" values="1.45" result="lifted"/>
     <feImage href="${specUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rim"/>
     <feComponentTransfer in="rim" result="rimSoft"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
@@ -182,7 +184,7 @@ export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => v
   const id = `ares-liquid-${++counter}`;
   const e = opts.edges;
   const edges: Edges | null = e ? { top: !!e.top, right: !!e.right, bottom: !!e.bottom, left: !!e.left } : null;
-  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges };
+  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges, rimBlur: opts.rimBlur };
   let current: SVGFilterElement | null = null;
   let last = '';
   const apply = () => {
