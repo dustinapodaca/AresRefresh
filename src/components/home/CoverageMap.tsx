@@ -22,13 +22,18 @@ const I25: [number, number][] = [
   [37, -104.47],
 ];
 
+// Two landmarks for the Home map (owner, 2026-10-16), drawn as on the location maps: a peak is an
+// open triangle, an airport an open square.
+const PIKES = { lat: 38.8409, lon: -105.0442 };
+const DEN = { lat: 39.8561, lon: -104.6737 };
+
 const STEP = 16;
 const DOTS: [number, number][] = [];
 for (let cy = STEP / 2; cy < H; cy += STEP) {
   for (let cx = STEP / 2; cx < W; cx += STEP) DOTS.push([cx, cy]);
 }
 
-export default function CoverageMap() {
+export default function CoverageMap({ landmarks = false }: { landmarks?: boolean }) {
   const route = I25.map(([lat, lon], i) => `${i ? 'L' : 'M'}${x(lon).toFixed(1)} ${y(lat).toFixed(1)}`).join(' ');
   const hq = CITIES.find((c) => c.hq)!;
 
@@ -37,7 +42,7 @@ export default function CoverageMap() {
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label="Map of Colorado showing Ares service areas along Interstate 25: Denver, Colorado Springs (headquarters), and Pueblo."
+        aria-label={`Map of Colorado showing Ares service areas along Interstate 25: Denver, Colorado Springs (headquarters), and Pueblo${landmarks ? ', with Pikes Peak and Denver International Airport' : ''}.`}
       >
         <defs>
           <radialGradient id="ds-map-glow">
@@ -55,6 +60,20 @@ export default function CoverageMap() {
         <path className="ds-map-route" d={route} pathLength={1} fill="none" stroke="#5a6069" strokeWidth="1.25" />
         <text className="ds-map-label-faint" x={x(-104.9) + 10} y={y(40.3)}>I-25</text>
         <text className="ds-map-label-faint" x="14" y="24">COLORADO</text>
+        {landmarks && (
+          <g className="ds-map-landmarks">
+            <path
+              d={`M${x(PIKES.lon)} ${y(PIKES.lat) - 6} L${x(PIKES.lon) + 5.5} ${y(PIKES.lat) + 4} L${x(PIKES.lon) - 5.5} ${y(PIKES.lat) + 4} Z`}
+              fill="none"
+              stroke="#7d838c"
+              strokeWidth="1.25"
+              strokeLinejoin="round"
+            />
+            <text className="ds-map-label-faint" x={x(PIKES.lon) - 12} y={y(PIKES.lat) + 4} textAnchor="end">PIKES PEAK</text>
+            <rect x={x(DEN.lon) - 4} y={y(DEN.lat) - 4} width="8" height="8" fill="none" stroke="#7d838c" strokeWidth="1.25" />
+            <text className="ds-map-label-faint" x={x(DEN.lon) + 10} y={y(DEN.lat) + 4}>DEN</text>
+          </g>
+        )}
         {CITIES.map((c) => {
           const cx = x(c.lon);
           const cy = y(c.lat);

@@ -433,7 +433,8 @@ every page.
 
 ### Typographic lists
 - **City list:** each city at display-lg on its own row between hairlines, a link to its
-  location page, with an arrow that nudges 4px on hover.
+  location page, with an arrow that nudges 4px on hover. On desktop (owner, 2026-10-16) the
+  list sits under the Coverage lead, left of the map (5 columns), the names at 26 to 32px.
 - **Division list:** two columns at every width (Inter 17px / 500 in ink; 15px on phones),
   1px hairline under each item.
 
@@ -575,6 +576,9 @@ exception to "no card containers" and "no glass" for this section.
   grid, with Denver, Colorado Springs, and Pueblo plotted from real coordinates and
   Interstate 25 traced through them. Colorado Springs is marked in rust as HQ with one
   soft rust glow. Sits beside the Coverage headline on desktop, under it on mobile.
+  On Home's desktop map (owner, 2026-10-16) two landmarks in ink faint, drawn as on the location
+  maps: Pikes Peak (an open triangle, its name to the left) and DEN (an open square, its name to
+  the right, above Denver's). Not on phones, where the larger labels collide; not on the quote page.
 
 ### Services page ("The Schedule", 2026-10-05)
 Same system as Home, its own structures (owner: "similar but unique to the page

@@ -20,21 +20,21 @@ export default function Coverage() {
           Armed and unarmed officers for federal, commercial, industrial, and
           institutional sites, from our base in Colorado Springs.
         </p>
-        <CoverageMap />
+        <CoverageMap landmarks />
+        {/* In the head so desktop can set it under the lead, left of the map (owner, 2026-10-16);
+            phones and tablets keep it below the map. */}
+        <ul className="ds-cities">
+          {CITIES.map((c) => (
+            <li key={c.to}>
+              <Link to={c.to} className="ds-city">
+                <span className="ds-city-name">{c.name}</span>
+                <span className="ds-small">{c.note}</span>
+                <Arrow size={24} />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <ul className="ds-cities">
-        {CITIES.map((c) => (
-          <li key={c.to}>
-            <Link to={c.to} className="ds-city">
-              <span className="ds-city-name">{c.name}</span>
-              <span className="ds-small">{c.note}</span>
-              <Arrow size={24} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-
 
       {/* Full bleed. Starts here and ends under the opening of 04 Careers. */}
       <div className="ds-bleed" aria-hidden="true">
