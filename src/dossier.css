@@ -4614,10 +4614,11 @@ html[data-liquid='true'] {
 /* The nav keeps its CSS frost (24px), with less black. The phone menu's open sheet stays nearly
    solid (its own rule is more specific). */
 html[data-liquid='true'] .ds-np-card {
-  /* Lighter (owner, 2026-10-15): the Home terrain reads through it at the top of the page. */
-  background: rgb(8 9 11 / 0.32);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  backdrop-filter: blur(14px) saturate(1.4);
+  /* Lighter than before so the Home terrain reads through it (owner, 2026-10-15), then a touch
+     darker and blurrier (42% over 18px; was 32% over 14px). */
+  background: rgb(8 9 11 / 0.42);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
 }
 @media (min-width: 1024px) {
   html[data-liquid='true'] .ds-np[data-open='true'] .ds-np-card { background: rgb(8 9 11 / 0.82); }
