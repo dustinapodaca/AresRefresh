@@ -4555,8 +4555,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-over { display: inline-flex; align-items: center; gap: 8px; font: 600 17px/1.2 var(--ds-display); letter-spacing: -0.02em; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
 .ds-np-over-arrow { flex: none; transition: transform 200ms var(--ds-ease); }
 .ds-np-photo { grid-row: 1 / span 3; grid-column: 3; position: relative; margin: 6px 0 0; }
-.ds-np-photo-frame { display: block; height: 190px; border-radius: 4px; overflow: hidden; }
+.ds-np-photo-frame { position: relative; display: block; height: 190px; border-radius: 4px; overflow: hidden; }
 .ds-np-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 75%; filter: saturate(0.85) brightness(0.82); }
+/* Industries: every industry's photo stacked in the slot, the hovered one shown (owner, 2026-10-16).
+   A 220ms crossfade; a menu with one photo shows it as before. */
+.ds-np-photo-frame img { position: absolute; inset: 0; opacity: 0; transition: opacity 220ms var(--ds-ease); }
+.ds-np-photo-frame img[data-on] { opacity: 1; }
 .ds-np-photo figcaption { margin: 10px 0 0; }
 .ds-np-photo::after { content: ''; position: absolute; inset: 0 0 auto; height: 190px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
 .ds-np-foot { grid-column: 1 / 3; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; margin-top: 28px; padding-top: 14px; border-top: 1px solid rgb(255 255 255 / 0.08); font-size: 14px; }
@@ -4585,7 +4589,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); font: 500 14px/1 var(--ds-text); color: var(--ds-fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-burger i { transition: none !important; }
+  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-photo-frame img, .ds-np-burger i { transition: none !important; }
   .ds-np-menu { animation: none; }
 }
 

@@ -16,12 +16,16 @@ import { responsive } from '../lib/responsive';
 // The previous nav stays at ?nav=classic for comparison (the choice sticks for the session).
 
 type MenuLink = { label: string; to: string; external?: boolean };
+type MenuImage = { src: string; caption: string; position?: string; zoom?: number; origin?: string };
 type Menu = {
   columns: { label?: string; links: MenuLink[] }[];
   footer?: MenuLink[];
   profiles?: boolean;
   /** `position` and `zoom` frame the photo in its slot (default 50% 75%, no zoom). */
-  image: { src: string; caption: string; position?: string; zoom?: number; origin?: string };
+  image: MenuImage;
+  /** Desktop: a photo per link, keyed by its path; hovering or focusing the link shows it in the
+   *  photo slot (Industries only, owner 2026-10-16). */
+  linkImages?: Record<string, MenuImage>;
   /** Desktop: the menu's overview links, in a row above the columns (owner, 2026-10-15; they were
    *  the footer). Bold white, a little smaller than the menu links, with a down-right arrow. */
   top?: MenuLink[];
@@ -31,6 +35,25 @@ type Menu = {
 
 const roles = ROLE_PAGES.map((r) => ({ label: r.name, to: `/services/${r.slug}` }));
 const industries = INDUSTRY_PAGES.map((i) => ({ label: i.name, to: `/industries/${i.slug}` }));
+
+// The Industries menu's default photo, also Government & Military's: closer, toward the radomes on
+// the left (owner, 2026-10-13: 1.6x, was 1.25x).
+const GOV_IMAGE: MenuImage = { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' };
+// Each industry's own page photo for the Industries menu (owner, 2026-10-16). Captions only where
+// the photo is a known place; the others leave the line empty so the menu keeps its height.
+const INDUSTRY_CAPTIONS: Record<string, string> = {
+  'construction-industrial': 'A build in downtown Colorado Springs',
+  'airport-transportation': 'Denver International Airport',
+  'commercial-property': 'Denver Pavilions, Denver',
+};
+const industryImages: Record<string, MenuImage> = Object.fromEntries(
+  INDUSTRY_PAGES.map((i) => [
+    `/industries/${i.slug}`,
+    i.slug === 'government-military'
+      ? GOV_IMAGE
+      : { src: i.image.src, caption: INDUSTRY_CAPTIONS[i.slug] ?? '', position: i.image.position },
+  ]),
+);
 
 const MENUS: Record<string, Menu> = {
   Services: {
@@ -56,8 +79,8 @@ const MENUS: Record<string, Menu> = {
     ],
     // The overview link, as on phones (owner, 2026-10-13; was the city pages).
     top: [{ label: 'All industries and how a post starts', to: '/services' }],
-    // Closer, toward the radomes on the left (owner, 2026-10-13: 1.6x, was 1.25x).
-    image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' },
+    image: GOV_IMAGE,
+    linkImages: industryImages,
     // The industries live on the Services page too (owner, 2026-10-13).
     phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],
   },
@@ -164,6 +187,12 @@ function ArrowDownRight() {
 }
 
 function MenuBody({ menu }: { menu: Menu }) {
+  // The link last hovered or focused picks the photo (menus with linkImages); it holds until the
+  // menu closes, so moving toward the photo doesn't flip it back.
+  const [pick, setPick] = useState<string | null>(null);
+  const shown = (pick && menu.linkImages?.[pick]) || menu.image;
+  // Every photo the slot can show, stacked; only the shown one is opaque, so a swap crossfades.
+  const photos = menu.linkImages ? [menu.image, ...Object.values(menu.linkImages).filter((im) => im !== menu.image)] : [menu.image];
   return (
     <div className="ds-np-menu">
       {menu.top && (
@@ -182,7 +211,13 @@ function MenuBody({ menu }: { menu: Menu }) {
           <ul>
             {col.links.map((l) => (
               <li key={l.to + l.label}>
-                <NavLink to={l.to} className="ds-np-big" end>
+                <NavLink
+                  to={l.to}
+                  className="ds-np-big"
+                  end
+                  onMouseEnter={menu.linkImages?.[l.to] ? () => setPick(l.to) : undefined}
+                  onFocus={menu.linkImages?.[l.to] ? () => setPick(l.to) : undefined}
+                >
                   {/* On hover the words slide right and this arrow comes in on their left. Only
                       the inner span moves, so the link's hover area holds still under the pointer. */}
                   <span className="ds-np-big-in">
@@ -199,14 +234,18 @@ function MenuBody({ menu }: { menu: Menu }) {
       ))}
       <figure className="ds-np-photo">
         <span className="ds-np-photo-frame">
-          <img
-            {...responsive(menu.image.src, '288px')}
-            alt=""
-            decoding="async"
-            style={{ objectPosition: menu.image.position, scale: menu.image.zoom ? String(menu.image.zoom) : undefined, transformOrigin: menu.image.origin }}
-          />
+          {photos.map((im) => (
+            <img
+              key={im.src}
+              {...responsive(im.src, '288px')}
+              alt=""
+              decoding="async"
+              data-on={im === shown || undefined}
+              style={{ objectPosition: im.position, scale: im.zoom ? String(im.zoom) : undefined, transformOrigin: im.origin }}
+            />
+          ))}
         </span>
-        <figcaption className="ds-caption">{menu.image.caption}</figcaption>
+        <figcaption className="ds-caption">{shown.caption || '\u00a0'}</figcaption>
       </figure>
       {(menu.footer || menu.profiles) && (
         <div className="ds-np-foot">
@@ -518,8 +557,9 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   // frame (they are small: the 288px-wide file of each).
   useEffect(() => {
     const t = window.setTimeout(() => {
-      for (const m of Object.values(MENUS)) {
-        const r = responsive(m.image.src, '288px');
+      const srcs = new Set(Object.values(MENUS).flatMap((m) => [m.image.src, ...Object.values(m.linkImages ?? {}).map((im) => im.src)]));
+      for (const src of srcs) {
+        const r = responsive(src, '288px');
         const img = new Image();
         if (r.srcSet) img.srcset = r.srcSet;
         img.sizes = '288px';

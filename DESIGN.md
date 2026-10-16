@@ -1066,7 +1066,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Industries the footer holds the overview links (All services and how a post starts, Teaming;
   All industries and how a post starts), drawn with weight: ink, 16px / 500, a brighter
   underline (owner, 2026-10-13). Each photo sets its own framing: the patrol cars just below
-  center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. Phones: lockup,
+  center (50% 90%), the Space Force base zoomed 1.6 toward the radomes on the left. In Industries the photo follows the
+  link hovered or focused (owner, 2026-10-16): each industry's own page photo, crossfading in 220ms
+  and holding until the menu closes; the caption names the place only where it is known (Space
+  Force base, downtown Colorado Springs build, Denver International, Denver Pavilions), otherwise
+  the line stays empty. Services and Company keep one photo. Phones: lockup,
   handset, and a two-line menu button that turns to an X; the card opens into a list with the
   three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links, no city links; owner 2026-10-13), then a solid strip pinned to the bottom of the open menu so it stays on screen while the list scrolls: the phone (mono) with LinkedIn, Google, and Indeed as small monochrome marks on the right, the email, and the main button. No PDF button in the phone menu (owner, 2026-10-13). Company lists its links only. Closing the menu resets every section to folded. Since 2026-10-15 (owner, after gigaenergy.com's
   phone menu) the open sections carry photos: Services lists the six with a 56px real Ares photo
