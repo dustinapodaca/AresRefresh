@@ -194,7 +194,17 @@ export function Why() {
           <li key={d.title}>
             <h3 className="ds-cs-why-title">
               <span className="ds-data ds-cs-n">{n2(i)}</span>
-              <span>{say(d.title)}</span>
+              <span>
+                {d.phoneBreak && d.title.startsWith(d.phoneBreak) ? (
+                  <>
+                    {say(d.phoneBreak)}
+                    <br className="ds-cs-why-br" />
+                    {say(d.title.slice(d.phoneBreak.length))}
+                  </>
+                ) : (
+                  say(d.title)
+                )}
+              </span>
             </h3>
             <p className="ds-body">{say(d.body)}</p>
             <p className="ds-data ds-cs-why-proof">

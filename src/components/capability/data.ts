@@ -146,7 +146,9 @@ export const CAPABILITIES: Capability[] = [
 
 // Why Ares: the capability statement's three differentiators, plus restricted-area
 // experience (owner, 2026-10-05). Each carries its proof.
-export type Differentiator = { title: string; body: string; proof: string; href?: string };
+// `phoneBreak`: the words before a line break on narrow phones, so the title wraps to two lines like
+// the others there (owner, 2026-10-15).
+export type Differentiator = { title: string; body: string; proof: string; href?: string; phoneBreak?: string };
 
 export const DIFFERENTIATORS: Differentiator[] = [
   {
@@ -156,6 +158,7 @@ export const DIFFERENTIATORS: Differentiator[] = [
   },
   {
     title: 'Four-stage deployment',
+    phoneBreak: 'Four-stage',
     body: 'Every engagement runs in four stages: technical audit, compliance mapping, guard training, and deployment. Every officer is trained on the post by a member of leadership who has worked it, before the first shift.',
     proof: 'Trained on post by leadership',
   },

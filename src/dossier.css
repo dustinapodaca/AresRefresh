@@ -2695,6 +2695,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cs-why-title { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); align-items: baseline; gap: 4px; margin: 0; font-family: var(--ds-display); font-size: clamp(24px, 2.2vw, 30px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: var(--ds-fg); text-wrap: balance; }
 .ds-cs-why-row .ds-body { margin-top: 14px; font-size: 15.5px; }
 .ds-cs-why-meta { display: none; }
+/* Four-stage deployment wraps to two lines on narrow phones, like the other titles there (owner, 2026-10-15). */
+.ds-cs-why-br { display: none; }
+@media (max-width: 419px) { .ds-cs-why-br { display: inline; } }
 @media (min-width: 768px) {
   .ds-cs-why-row { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
   .ds-cs-why-row .ds-body { max-width: 52ch; }
