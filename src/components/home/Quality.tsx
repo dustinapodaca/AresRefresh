@@ -14,14 +14,14 @@ export const FACTS: { label: string; value: string; mono?: boolean }[] = [
 ];
 
 // Ways to feature the patrol vehicles (design review item 28, owner 2026-10-13), same photo,
-// for the owner to compare at /?vehicles=wide|portrait|glass. The current side-by-side plate is
-// the default ("side").
+// at /?vehicles=side|wide|portrait|glass. Wide chosen (owner, 2026-10-16); the earlier
+// side-by-side plate stays at `side`.
 const FORMS = ['side', 'wide', 'portrait', 'glass'] as const;
 
 export default function Quality() {
   const [params] = useSearchParams();
   const asked = params.get('vehicles');
-  const form = FORMS.includes(asked as (typeof FORMS)[number]) ? asked : 'side';
+  const form = FORMS.includes(asked as (typeof FORMS)[number]) ? asked : 'wide';
   return (
     <section id="quality" className="ds-quality" aria-labelledby="quality-title">
       <div className="ds-sec-head">

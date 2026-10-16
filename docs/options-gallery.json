@@ -113,13 +113,13 @@
       "options": [
         {
           "value": "side",
-          "label": "Side (current)",
-          "tag": "default",
+          "label": "Side",
           "note": "The photo in 7 columns beside the four facts, lined up top and bottom."
         },
         {
           "value": "wide",
-          "label": "Wide",
+          "label": "Wide (current)",
+          "tag": "default",
           "note": "The photo across the whole column (21:9), the four facts in a row beneath it."
         },
         {
