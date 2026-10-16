@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import Arrow from './Arrow';
 import PhoneIcon from './PhoneIcon';
-import { ROLE_PAGES } from './market/roles';
+import { ROLE_PAGES, capabilityFor } from './market/roles';
 import { INDUSTRY_PAGES } from './market/industries';
 import { responsive } from '../lib/responsive';
 
@@ -229,7 +229,61 @@ function MenuBody({ menu }: { menu: Menu }) {
   );
 }
 
+// The phone menu's photos (owner, 2026-10-15, after gigaenergy.com's phone menu): a real Ares
+// photo beside each service, and the industry pages' own photos on the swipe cards.
+const SERVICE_PHOTOS: Record<string, { src: string; position?: string }> = {
+  armed: { src: '/images/careers-team.jpg', position: '55% 40%' },
+  unarmed: { src: '/images/officer-portrait.jpg', position: '50% 30%' },
+  access: { src: '/images/backbone-officer.jpg', position: '40% 30%' },
+  escort: { src: '/images/market/government-military.webp', position: '30% 60%' },
+  relief: { src: '/images/careers-philosophy.jpg', position: '50% 55%' },
+  vehicle: { src: '/images/mission-vehicle.jpg', position: '55% 80%' },
+};
+
+// Phones: Services as a list with a photo beside each, Industries as a row of photo cards that
+// swipes sideways (owner, 2026-10-15). The earlier plain lists stay at ?mnav=list.
+function PhoneServices() {
+  return (
+    <ul className="ds-np-svc">
+      {ROLE_PAGES.map((r) => {
+        const ph = SERVICE_PHOTOS[r.capabilityId];
+        return (
+          <li key={r.slug}>
+            <Link to={`/services/${r.slug}`}>
+              <span className="ds-np-thumb">
+                {ph && <img {...responsive(ph.src, '56px')} alt="" loading="lazy" decoding="async" style={{ objectPosition: ph.position }} />}
+              </span>
+              <span className="ds-np-svc-text">
+                <b>{r.name}</b>
+                <small className="ds-data">{capabilityFor(r).keys.join(' · ')}</small>
+              </span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function PhoneIndustries() {
+  return (
+    <div className="ds-np-swipe" role="list" aria-label="Industries">
+      {INDUSTRY_PAGES.map((i) => (
+        <Link key={i.slug} to={`/industries/${i.slug}`} className="ds-np-ind" role="listitem">
+          <span className="ds-np-ind-photo">
+            <img {...responsive(i.image.src, '72vw')} alt="" loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
+          </span>
+          <b>{i.name}</b>
+          <small>{i.short}</small>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float' }) {
+  const [navParams] = useSearchParams();
+  const richPhone = navParams.get('mnav') !== 'list';
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<string | null>(null);
@@ -479,11 +533,21 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                                 <li className="ds-np-sub-rule" aria-hidden="true" />
                               </>
                             )}
-                            {MENUS[item.menu].columns.flatMap((c) => c.links).map((l) => (
-                              <li key={l.to + l.label}>
-                                <Link to={l.to}>{l.label}</Link>
+                            {richPhone && item.menu === 'Services' ? (
+                              <li className="ds-np-sub-wide">
+                                <PhoneServices />
                               </li>
-                            ))}
+                            ) : richPhone && item.menu === 'Industries' ? (
+                              <li className="ds-np-sub-wide">
+                                <PhoneIndustries />
+                              </li>
+                            ) : (
+                              MENUS[item.menu].columns.flatMap((c) => c.links).map((l) => (
+                                <li key={l.to + l.label}>
+                                  <Link to={l.to}>{l.label}</Link>
+                                </li>
+                              ))
+                            )}
                           </ul>
                         </div>
                       </div>
