@@ -26,6 +26,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 1408,
     "height": 736
   },
+  "/images/nav/insights.png": {
+    "src": "/images/opt/nav-insights-1200.ddb5497a.webp",
+    "srcSet": "/images/opt/nav-insights-480.4f819321.webp 480w, /images/opt/nav-insights-800.45809a77.webp 800w, /images/opt/nav-insights-1200.ddb5497a.webp 1200w, /images/opt/nav-insights-1600.d7c3118c.webp 1600w, /images/opt/nav-insights-2000.87856986.webp 2000w, /images/opt/nav-insights-2400.615ae10a.webp 2400w",
+    "width": 2400,
+    "height": 727
+  },
   "/images/about-banner.jpg": {
     "src": "/images/opt/about-banner-1200.2e4ed699.webp",
     "srcSet": "/images/opt/about-banner-480.ac70d0ed.webp 480w, /images/opt/about-banner-800.af0e1a45.webp 800w, /images/opt/about-banner-1200.2e4ed699.webp 1200w, /images/opt/about-banner-1600.46b84b08.webp 1600w, /images/opt/about-banner-2000.5d492fee.webp 2000w",

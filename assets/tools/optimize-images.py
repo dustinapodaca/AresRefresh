@@ -35,6 +35,8 @@ PHOTOS = [
     {'key': '/images/about-hero.jpg', 'source': 'assets/images-src/about-hero.jpg', 'q': 80},
     {'key': '/images/careers-hero.jpg', 'source': 'assets/images-src/careers-hero.jpg', 'q': 80},
     {'key': '/images/about-security.jpg', 'source': 'assets/images-src/about-security.jpg', 'q': 80},
+    # The phone menu's Insights tile: the owner's LinkedIn banner (2026-10-15).
+    {'key': '/images/nav/insights.png', 'source': 'assets/images-src/nav/insights-linkedin-banner.png', 'q': 82},
     {'key': '/images/about-banner.jpg', 'source': 'assets/images-src/about-banner.jpg', 'q': 80},
     # A noisy sunset under glass: q76 looks the same as q82 at a third less.
     # Services opening (owner, 2026-10-12): downtown Colorado Springs at dusk, Pikes Peak in

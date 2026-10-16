@@ -284,17 +284,16 @@ function PhoneIndustries() {
 // The phone menu's pages (owner, 2026-10-15, after yucca.co.za): the main page lists the sections,
 // each with an arrow; tapping one slides the list away to the left as its page slides in from the
 // right, with a back button. Services and Industries keep their photos (the photo list and the
-// swipe row); Company opens on photo tiles where a picture says something (About, Careers, the
-// Capability Statement), then plain rows.
+// swipe row); Company is four photo tiles (owner, 2026-10-15). Teaming and Request a Quote aren't
+// repeated there on phones: Teaming is on the Services page and the quote button is always pinned
+// at the foot of the menu.
 const COMPANY_TILES = [
   { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 62%' },
-  { label: 'Careers', to: '/careers', src: '/images/careers-team.jpg', position: '50% 30%' },
+  // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
+  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 40%' },
   { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
-];
-const COMPANY_ROWS = [
-  { label: 'Insights', to: '/insights' },
-  { label: 'Teaming and subcontracting', to: '/teaming' },
-  { label: 'Request a Quote', to: '/contact' },
+  // The owner's LinkedIn banner (2026-10-15).
+  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 50%' },
 ];
 
 function ArrowBack() {
@@ -331,16 +330,6 @@ function CompanyPane() {
               <img {...responsive(t.src, '100vw')} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
               <span>{t.label}</span>
               <Arrow size={18} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <ul className="ds-np-rows">
-        {COMPANY_ROWS.map((r) => (
-          <li key={r.to}>
-            <Link to={r.to}>
-              {r.label}
-              <Arrow size={14} />
             </Link>
           </li>
         ))}

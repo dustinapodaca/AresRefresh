@@ -961,10 +961,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   (Inter Tight 600 25px) with arrows; tapping one slides the list a quarter to the left and dims it
   while that section's page slides in over it from the right (460ms, the drawer curve), with a Back
   button (focused) and its title, its content coming up in turn. Services and Industries keep the
-  photo list and the swipe row; Company opens on photo tiles where a picture says something (About
-  Ares with Pikes Peak, Careers with the officer at the range, Capability Statement with Denver at
-  sunset; 104px, 4px corners, a dark wash from the foot), then rows for Insights, Teaming, and
-  Request a Quote. The pages reset to the main one when the menu closes. The photo accordions stay at
+  photo list and the swipe row; Company is four photo tiles (About Ares with Pikes Peak, Careers
+  with the two officers from the Home careers band, Capability Statement with Denver at sunset,
+  Insights with the owner's LinkedIn banner, `/images/nav/insights.png`; 104px, 4px corners, a dark
+  wash from the foot). Teaming and Request a Quote aren't repeated there on phones: Teaming is on the
+  Services page and the quote button is always pinned at the foot (owner, 2026-10-15). The pages reset to the main one when the menu closes. The photo accordions stay at
   ?mnav=accordion. The menu button is three bars (the top one long) that slide off to the right one
   after another, then an X that draws in stroke by stroke; the reverse on close. The strip with the phone, email, and Request a Quote
   always sits on the bottom of the screen while the menu is open, however short the list (owner,
