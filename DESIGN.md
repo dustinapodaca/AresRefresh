@@ -576,9 +576,9 @@ exception to "no card containers" and "no glass" for this section.
   grid, with Denver, Colorado Springs, and Pueblo plotted from real coordinates and
   Interstate 25 traced through them. Colorado Springs is marked in rust as HQ with one
   soft rust glow. Sits beside the Coverage headline on desktop, under it on mobile.
-  On Home's desktop map (owner, 2026-10-16) two landmarks in ink faint, drawn as on the location
-  maps: Pikes Peak (an open triangle, its name to the left) and DEN (an open square, its name to
-  the right, above Denver's). Not on phones, where the larger labels collide; not on the quote page.
+  On Home's map (owner, 2026-10-16) Pikes Peak in ink faint, drawn as on the location maps (an
+  open triangle, its name to the left of it), at every width; not on the quote page. (DEN was
+  tried the same day and removed.)
 
 ### Services page ("The Schedule", 2026-10-05)
 Same system as Home, its own structures (owner: "similar but unique to the page
@@ -986,8 +986,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Services:** "By role, or by industry." (the index) after the divisions. "A security program,
   not a headcount." was folded away (owner, 2026-10-15: it repeated the four stages; tagged
   `services-program-option`): its post orders and SOPs went into stage 02, training on the post
-  into 03, and leadership on the first shift and the audit logs into 04. Two parts stand on their
-  own after the stages:
+  into 03, and leadership on the first shift and the audit logs into 04. Two parts stood on their
+  own after the stages; since 2026-10-16 only the relief schedule does:
   - **04 The relief schedule** (owner, 2026-10-15; was "The relief roster"): a contained panel (the prime contractors panel's surface, 4px
     corners, 48px padding on desktop) with "The relief schedule." (display-md), its paragraph, and
     the proof beside the green status light ("Fewer than 1% of shifts missed since 2021", mono) in
@@ -1002,11 +1002,12 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     the same shift from this week's on-call schedule" (owner). Once, then it holds; the finished week is the default (prerendered, no JS,
     reduced motion, or already on screen). The green is the Capability page's status green; the
     red is used only here.
-  - **05 Trained on your systems:** its own short section: the headline (display-lg) with its lead
-    beneath, and the six systems as square tags with their authored icons. Desktop (owner,
-    2026-10-15): the headline and lead in columns 1 to 5, the tags as a collection in columns 6 to 12,
-    two equal columns of three (44px rows). Phones and tablets: stacked, the tags wrapping.
-  The dock counts six sections (Industries, By role, Process, Relief schedule, Systems, Areas).
+  - **Trained on your systems** (folded into stage 03 Guard training, owner 2026-10-16; the
+    section is tagged `services-systems-option`): the stage's line now ends on "the systems already
+    there", and the six systems follow it as square tags with their authored icons (2px corners,
+    hairline-strong edge, 14px, the icon in ink muted), wrapping, on desktop and in the phone swipe
+    row. (Was its own section: headline and lead left, the tags two by two right.)
+  The dock counts five sections (Industries, By role, Process, Relief schedule, Areas).
 
 ### Mobile breaks (below 1024px unless noted)
 - **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides

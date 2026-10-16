@@ -5,7 +5,6 @@ import Divisions from '../components/services/Divisions';
 import Process from '../components/services/Process';
 import Browse from '../components/services/Browse';
 import Relief from '../components/services/Relief';
-import Systems from '../components/services/Systems';
 import Areas from '../components/services/Areas';
 import { SERVICE_MARKS } from '../components/services/data';
 
@@ -22,7 +21,6 @@ export default function Services() {
           <Browse />
           <Process />
           <Relief />
-          <Systems />
           <Areas />
         </div>
         <DocRail marks={SERVICE_MARKS} variant="dock" />

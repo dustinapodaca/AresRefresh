@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import Arrow from '../Arrow';
 import { STAGES } from './data';
+import SystemTags from './Systems';
 
 // 02 Process, set as a schedule chart: one axis from pre-contract to operational, and
 // each stage's bar one step further along it. Below 1024px the stages become a swipe
@@ -128,6 +129,7 @@ export default function Process() {
                   <span />
                 </span>
                 <p className="ds-body">{s.body}</p>
+                {s.systems && <SystemTags />}
               </div>
             </li>
           ))}

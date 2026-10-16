@@ -1,5 +1,5 @@
-// 05 Systems (owner, 2026-10-15): "Trained on your systems." on its own, from the program section
-// that folded into the four stages.
+// The systems officers learn before their first shift, as tags in stage 03 Guard training (owner,
+// 2026-10-16; they were the section "Trained on your systems.", tagged services-systems-option).
 // Each system with a small authored icon (owner, 2026-10-09): 16px, 1.5px strokes with round
 // caps, like the site's arrows. Decorative; the words carry the meaning.
 const SYSTEMS: { name: string; icon: JSX.Element }[] = [
@@ -62,23 +62,17 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
 ];
 
-export default function Systems() {
+export default function SystemTags() {
   return (
-    <section id="systems" className="ds-svc-systems" aria-labelledby="systems-title">
-      <div className="ds-sec-head">
-        <h2 id="systems-title" className="ds-display-lg">Trained on your systems.</h2>
-        <p className="ds-lead">Before their first shift, officers learn the systems already at your site, such as:</p>
-      </div>
-      <ul>
-        {SYSTEMS.map((s) => (
-          <li key={s.name}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              {s.icon}
-            </svg>
-            {s.name}
-          </li>
-        ))}
-      </ul>
-    </section>
+    <ul className="ds-svc-sys" aria-label="Systems officers learn, such as">
+      {SYSTEMS.map((s) => (
+        <li key={s.name}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            {s.icon}
+          </svg>
+          {s.name}
+        </li>
+      ))}
+    </ul>
   );
 }

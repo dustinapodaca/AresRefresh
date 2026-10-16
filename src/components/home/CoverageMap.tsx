@@ -22,10 +22,8 @@ const I25: [number, number][] = [
   [37, -104.47],
 ];
 
-// Two landmarks for the Home map (owner, 2026-10-16), drawn as on the location maps: a peak is an
-// open triangle, an airport an open square.
+// Pikes Peak on the Home map (owner, 2026-10-16), an open triangle as on the location maps.
 const PIKES = { lat: 38.8409, lon: -105.0442 };
-const DEN = { lat: 39.8561, lon: -104.6737 };
 
 const STEP = 16;
 const DOTS: [number, number][] = [];
@@ -42,7 +40,7 @@ export default function CoverageMap({ landmarks = false }: { landmarks?: boolean
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
-        aria-label={`Map of Colorado showing Ares service areas along Interstate 25: Denver, Colorado Springs (headquarters), and Pueblo${landmarks ? ', with Pikes Peak and Denver International Airport' : ''}.`}
+        aria-label={`Map of Colorado showing Ares service areas along Interstate 25: Denver, Colorado Springs (headquarters), and Pueblo${landmarks ? ', with Pikes Peak' : ''}.`}
       >
         <defs>
           <radialGradient id="ds-map-glow">
@@ -70,8 +68,6 @@ export default function CoverageMap({ landmarks = false }: { landmarks?: boolean
               strokeLinejoin="round"
             />
             <text className="ds-map-label-faint" x={x(PIKES.lon) - 12} y={y(PIKES.lat) + 4} textAnchor="end">PIKES PEAK</text>
-            <rect x={x(DEN.lon) - 4} y={y(DEN.lat) - 4} width="8" height="8" fill="none" stroke="#7d838c" strokeWidth="1.25" />
-            <text className="ds-map-label-faint" x={x(DEN.lon) + 10} y={y(DEN.lat) + 4}>DEN</text>
           </g>
         )}
         {CITIES.map((c) => {

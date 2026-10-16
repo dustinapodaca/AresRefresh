@@ -9,8 +9,8 @@ export const SERVICE_MARKS: readonly Mark[] = [
   // "A security program, not a headcount." folded into the stages and split in two (owner,
   // 2026-10-15; the old section is tagged services-program-option).
   { id: 'relief', n: '04', label: 'Relief schedule' },
-  { id: 'systems', n: '05', label: 'Systems' },
-  { id: 'areas', n: '06', label: 'Areas' },
+  // "Trained on your systems." folded into stage 03 (owner, 2026-10-16).
+  { id: 'areas', n: '05', label: 'Areas' },
 ];
 
 // `sharp`: a tighter, higher-resolution crop of the same photo, shown only in the tall
@@ -128,7 +128,7 @@ export const DIVISIONS: Division[] = [
   },
 ];
 
-export type Stage = { n: string; title: string; covers: string; body: string };
+export type Stage = { n: string; title: string; covers: string; body: string; systems?: boolean };
 
 export const STAGES: Stage[] = [
   {
@@ -150,7 +150,9 @@ export const STAGES: Stage[] = [
     covers: 'On the post · Firearms · Drills',
     // Shortened to what is new here (copy audit, 2026-10-10); the training line is told elsewhere.
     // The post orders and training on the post came in from the program section (2026-10-15).
-    body: 'Officers learn your post orders, your entry points, and the daily rhythm of the site, trained on the post before their first shift.',
+    // "Trained on your systems." folded in, its systems as tags under the body (owner, 2026-10-16).
+    body: 'Officers learn your post orders, your entry points, the daily rhythm of the site, and the systems already there, trained on the post before their first shift.',
+    systems: true,
   },
   {
     n: '04',
