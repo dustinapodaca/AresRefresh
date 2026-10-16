@@ -360,7 +360,9 @@ every page.
   pauses off screen, and holds still under reduced motion. It runs behind the nav and reads through
   it (owner, 2026-10-15): no shade from the top (the photo's), less distance fog (0.12, was 0.35),
   and the terrain starts above the window (160px on desktop, 100px on phones, the box growing by as
-  much so the copy stays put) so mid-distance land, not the dark horizon, sits behind the nav. The nav
+  much so the copy stays put) so mid-distance land, not the dark horizon, sits behind the nav. On
+  phones it runs down behind the copy to the proof row, full strength above the headline and fading
+  to black from the headline down to that row (owner, 2026-10-15). The nav
   glass is lighter for it in the liquid mode (42% black over an 18px blur; was 50% over 24px, then 32% over 14px). On desktop it fades to black into 01 Record over a longer
   stretch than the photo did (transparent at the foot, 35% at a fifth of the way up, solid by 46%; owner, 2026-10-15). The copper-glass tower photo below moved
   to the Services opening and stays here at `/?herobg=photo`. (One change to the React Bits source:

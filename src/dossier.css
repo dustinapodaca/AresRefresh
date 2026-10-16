@@ -4490,8 +4490,18 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    Desktop keeps the photo's edge vignette. */
 .ds-hero-topo::after { background: none; }
 /* The terrain starts above the window, so mid-distance land (not the dark horizon) sits behind the
-   nav. Phones: the box grows upward by as much as it moves up, so the copy below stays put. */
-.ds-hero-topo { margin-top: -100px; height: calc(58svh + var(--ds-header) + 100px); }
+   nav. Phones (owner, 2026-10-15): it runs down behind the copy to the proof row (GSA, licensed),
+   full strength above the headline and fading to black from the headline down to that row. The box
+   leaves the flow there, so the copy keeps its place by padding instead of the old overlap. */
+@media (max-width: 899px) {
+  .ds-hero-topo {
+    position: absolute; top: -100px; left: 0; right: 0; bottom: 0; height: auto; margin: 0;
+    --topo-text: calc(58svh + var(--ds-header) - 7rem + 100px); /* the headline's top, in the box */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 var(--topo-text), transparent calc(100% - var(--ds-beat-tight)));
+    mask-image: linear-gradient(to bottom, #000 0, #000 var(--topo-text), transparent calc(100% - var(--ds-beat-tight)));
+  }
+  .ds-hero-topo ~ .ds-container .ds-hero-copy { margin-top: 0; padding-top: calc(58svh + var(--ds-header) - 7rem); }
+}
 @media (min-width: 900px) {
   .ds-hero-topo { top: -160px; margin-top: 0; height: auto; }
   .ds-hero-topo::after { background: radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%); }
