@@ -165,10 +165,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1333
   },
   "/images/market/commercial-property.webp": {
-    "src": "/images/opt/market-commercial-property-1200.2e5bf9ff.webp",
-    "srcSet": "/images/opt/market-commercial-property-480.66179ef2.webp 480w, /images/opt/market-commercial-property-800.6f2ef227.webp 800w, /images/opt/market-commercial-property-1200.2e5bf9ff.webp 1200w, /images/opt/market-commercial-property-1600.132d3bb4.webp 1600w, /images/opt/market-commercial-property-2000.214a9e9c.webp 2000w, /images/opt/market-commercial-property-2048.1e70ae3a.webp 2048w",
-    "width": 2048,
-    "height": 1144
+    "src": "/images/opt/market-commercial-property-1200.7265c46f.webp",
+    "srcSet": "/images/opt/market-commercial-property-480.cfdaa764.webp 480w, /images/opt/market-commercial-property-800.ba352e87.webp 800w, /images/opt/market-commercial-property-1200.7265c46f.webp 1200w, /images/opt/market-commercial-property-1600.34950f23.webp 1600w, /images/opt/market-commercial-property-2000.ae703745.webp 2000w, /images/opt/market-commercial-property-2400.dfa44c82.webp 2400w",
+    "width": 2400,
+    "height": 1600
   },
   "/images/market/institutional-community.webp": {
     "src": "/images/opt/market-institutional-community-1200.217f0103.webp",

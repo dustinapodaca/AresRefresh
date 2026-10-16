@@ -79,7 +79,10 @@ PHOTOS = [
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
     # only); the untouched original is construction-colorado-springs.jpg beside it.
     {'key': '/images/market/construction-industrial.webp', 'source': 'assets/images-src/market/construction-colorado-springs-clean.png', 'q': 80},
-    {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-property.webp', 'q': 82},
+    # A real photo (owner, 2026-10-16): the Denver Pavilions sign on 16th Street, its letters in rust,
+    # a glass tower behind (Unsplash, Benigno Hoyuela). 2400px. The generated dusk scene it
+    # replaced is in images-unused.
+    {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-denver-pavilions.jpg', 'q': 80},
     # The two new industry pages (owner, 2026-10-10), generated like the others.
     {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},
     # A real photo (owner, 2026-10-12): Denver International's terminal and hotel at sunset, a jet

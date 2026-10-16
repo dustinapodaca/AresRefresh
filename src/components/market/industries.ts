@@ -248,7 +248,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Offices, retail, banks, hotels, and property portfolios.',
     title: 'Security for commercial property and retail.',
     lead: 'Officers for offices, retail, banks, hotels, and property portfolios: a visible, courteous presence that deters, screens, and helps.',
-    image: { src: '/images/market/commercial-property.webp', alt: '' },
+    // A real photo (owner, 2026-10-16): the Denver Pavilions sign, framed on the D and the tower.
+    image: { src: '/images/market/commercial-property.webp', alt: '', position: '50% 50%' },
     stake: [
       'In a lobby, on a sales floor, or at a hospital entrance, the officer is the first person many visitors meet. They have to deter trouble without making the space feel guarded.',
       'Property managers also need the work reported the same way across one building or a portfolio, so they can read one summary instead of chasing several.',

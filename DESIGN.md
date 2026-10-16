@@ -982,7 +982,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   1.6x toward the right end and the jet (`mobile` in `industries.ts`: position, zoom, origin). Critical & High-Liability Sites: a data center campus under snowy peaks
   (owner, 2026-10-12, over a server-aisle photo kept in images-unused), strip at `50% 80%` on
   the building; phones and Home's card show the peaks too.
-  The other two are still the generated dusk scenes. "What is at stake." (headline left, prose
+  Commercial & Retail (owner, 2026-10-16): the Denver Pavilions sign on 16th Street, its letters
+  in rust with a glass tower behind (Unsplash, Benigno Hoyuela), strip at `50% 50%` on the D and the
+  tower; phones show the whole word. Institutional & Community is still the generated dusk scene. "What is at stake." (headline left, prose
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines
