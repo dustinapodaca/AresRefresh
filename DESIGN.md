@@ -955,7 +955,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   officer portrait for Access Control, the Space Force base for Restricted-Area Escort, the team at
   the range for Relief & Surge, the patrol cars for Mobile Patrol), its name, and its tags in mono;
   Industries is a row of photo cards (the industry pages' photos, 16:10, 72% wide so the next one
-  peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
+  peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list. The strip with the phone, email, and Request a Quote
+  always sits on the bottom of the screen while the menu is open, however short the list (owner,
+  2026-10-15): the open card is a column whose menu part grows to fill it.
   On phones and desktop, once the reader reaches the page's sections (when the running head
   would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
   slides left into the mark (shrinking, fading, clipped behind it), and the mark grows (to about

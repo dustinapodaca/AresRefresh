@@ -4679,3 +4679,17 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 .ds-np-ind-photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); }
 .ds-np-ind b { margin-top: 4px; font: 600 17px/1.2 var(--ds-display); letter-spacing: -0.02em; color: var(--ds-fg); }
 .ds-np-ind small { font-size: 13px; line-height: 1.4; color: var(--ds-fg-muted); }
+
+/* Phone menu (owner, 2026-10-15): the strip with the phone, the email, and Request a Quote always
+   sits on the bottom of the screen while the menu is open, however short the list above it. The
+   open card (which fills the screen) is a column; the menu part grows to fill it and pushes the
+   strip to the foot, where it stays stuck (sticky) while a long list scrolls behind it. */
+@media (max-width: 1023px) {
+  .ds-np[data-open='true'] .ds-np-card { display: flex; flex-direction: column; }
+  .ds-np[data-open='true'] .ds-np-mobile { flex: 1 0 auto; }
+  .ds-np[data-open='true'] .ds-np-mobile > .ds-np-drop-inner { display: flex; flex-direction: column; }
+  .ds-np[data-open='true'] .ds-np-mbtns { margin-top: auto; }
+  /* In the column, the centered pieces would shrink to their content; keep them full width. */
+  .ds-np[data-open='true'] .ds-np-card > *,
+  .ds-np[data-open='true'] .ds-np-mobile > .ds-np-drop-inner > * { width: 100%; box-sizing: border-box; }
+}
