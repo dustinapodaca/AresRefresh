@@ -135,6 +135,46 @@
       ]
     },
     {
+      "heading": "Home: the close (06 Contact)",
+      "intro": "Owner, 2026-10-16: four new closes from Mobbin, each a whole version.",
+      "page": "/",
+      "param": "close",
+      "selector": "#contact",
+      "options": [
+        {
+          "value": "current",
+          "label": "Current",
+          "tag": "default",
+          "copy": "<b>Request a quote, or call us.</b>",
+          "note": "The headline, the phone large, email and base, the button and the PDF link."
+        },
+        {
+          "value": "centered",
+          "label": "Centered",
+          "copy": "<b>Tell us about the post.</b><br>Leadership reads every request, and we walk your site before anything is signed.",
+          "note": "One centered statement over the rust light, the button and the call link side by side (Resend, Slash, Rox)."
+        },
+        {
+          "value": "starter",
+          "label": "Starter",
+          "copy": "<b>Start with the post.</b><br>Pick what needs covering and the quote form opens with it chosen. Leadership reads every request.",
+          "note": "A glass card of the services as square chips, each opening the quote form with it chosen (Claude, Fiasco)."
+        },
+        {
+          "value": "routes",
+          "label": "Two routes",
+          "copy": "<b>Request a quote, or call us.</b>",
+          "note": "Two glass cards, Request a quote and Call us, then a line for primes (Linear, Grok)."
+        },
+        {
+          "value": "ledger",
+          "label": "Ledger",
+          "copy": "<b>Request a quote, or call us.</b><br>Send a site, a shift pattern, and a deadline. Leadership reads every request.",
+          "note": "The button left; Call, Email, Capability statement, and Teaming as ruled rows right (Clay)."
+        }
+      ]
+    },
+    {
       "heading": "Services opening",
       "page": "/services",
       "param": "hero",

@@ -1680,6 +1680,103 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* The close's forms (/?close=, owner 2026-10-16; Contact.tsx). Each keeps the rust light, moved
+   to sit under its weight. */
+.ds-contact[data-form='centered']::before { background: radial-gradient(ellipse 46% 44% at 50% 70%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
+.ds-contact:is([data-form='starter'], [data-form='ledger'])::before { background: radial-gradient(ellipse 44% 46% at 70% 62%, rgb(188 111 64 / 0.24) 0%, rgb(139 73 32 / 0.11) 48%, rgb(139 73 32 / 0) 100%); }
+.ds-contact[data-form='routes']::before { background: radial-gradient(ellipse 56% 40% at 50% 74%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
+
+.ds-cta-meta { display: flex; flex-wrap: wrap; justify-content: inherit; gap: 6px 12px; margin: 0; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-cta-meta a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-cta-meta a:hover { color: var(--ds-fg); }
+
+/* centered: one statement in the middle of the page. */
+.ds-cta-center { display: grid; justify-items: center; text-align: center; }
+.ds-cta-center .ds-lead { margin-top: 24px; max-width: 40ch; }
+.ds-cta-center .ds-actions { justify-content: center; margin-top: 40px; }
+.ds-cta-center .ds-cta-meta { justify-content: center; margin-top: 36px; }
+@media (max-width: 767px) {
+  .ds-cta-center .ds-actions { justify-self: stretch; }
+  .ds-cta-center .ds-actions .ds-link { align-self: center; }
+  /* Phones: email and base on their own lines, no dangling separator. */
+  .ds-cta-meta { flex-direction: column; gap: 6px; }
+  .ds-cta-meta span[aria-hidden] { display: none; }
+}
+
+/* A glass card on the close, the site's glass recipe at its own scale. */
+.ds-cta-card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 28px 24px;
+  border: 1px solid var(--ds-glass-edge, rgb(255 255 255 / 0.1));
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.36) 60%, rgb(0 0 0 / 0.3));
+  box-shadow: var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.28);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  backdrop-filter: blur(22px) saturate(1.5);
+}
+@media (min-width: 768px) { .ds-cta-card { padding: 36px 36px 40px; } }
+.ds-cta-card-title { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-cta-card-line { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 44ch; }
+.ds-cta-card .ds-btn { justify-self: start; margin-top: 8px; }
+
+/* starter and ledger: copy left, the way in right. */
+.ds-cta-split { display: grid; gap: 40px; }
+.ds-cta-copy .ds-lead { margin-top: 24px; }
+.ds-cta-copy .ds-actions { margin-top: 36px; }
+.ds-cta-alt { margin: 28px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
+@media (min-width: 1024px) {
+  .ds-cta-split { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-cta-copy { grid-column: 1 / span 6; }
+  .ds-cta-split > :last-child { grid-column: 7 / span 6; }
+  .ds-cta-split .ds-display-xl { font-size: clamp(48px, 4.6vw, 68px); }
+}
+.ds-cta-starter ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; }
+.ds-cta-starter li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--ds-rule-strong);
+  border-radius: 2px;
+  font-size: 14px;
+  color: var(--ds-fg);
+  transition: border-color 180ms var(--ds-ease), background-color 180ms var(--ds-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-cta-starter li a:hover { border-color: var(--ds-fg-muted); background: rgb(255 255 255 / 0.04); }
+}
+.ds-cta-starter .ds-btn { margin-top: 12px; }
+@media (max-width: 767px) { .ds-cta-starter .ds-btn { justify-self: stretch; } }
+
+/* routes: the headline, then two cards. */
+.ds-cta-routes { display: grid; gap: 16px; margin-top: 48px; }
+@media (min-width: 768px) { .ds-cta-routes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+.ds-cta-phone { margin-top: 0; font-size: 30px; }
+@media (min-width: 640px) { .ds-cta-phone { font-size: 36px; } }
+.ds-cta-routes .ds-cta-meta { margin-top: 4px; }
+.ds-cta-primes { margin: 36px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
+@media (max-width: 767px) { .ds-cta-routes .ds-btn { justify-self: stretch; } }
+
+/* ledger: ruled rows, label over value on phones, side by side from 768px. */
+.ds-cta-ledger { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-cta-ledger li { border-bottom: 1px solid var(--ds-rule); }
+.ds-cta-ledger a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; padding: 18px 0; color: var(--ds-fg); }
+.ds-cta-ledger-label { font-size: 13px; color: var(--ds-fg-faint); }
+.ds-cta-ledger-value { grid-column: 1; font-size: 17px; font-weight: 500; }
+.ds-cta-ledger-value.ds-data { font-weight: 400; font-size: 16px; }
+.ds-cta-ledger .ds-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--ds-fg-muted); }
+@media (min-width: 768px) {
+  .ds-cta-ledger a { grid-template-columns: 11rem minmax(0, 1fr) auto; padding: 20px 0; }
+  .ds-cta-ledger-label { font-size: 14px; color: var(--ds-fg-muted); }
+  .ds-cta-ledger-value { grid-column: 2; }
+  .ds-cta-ledger .ds-arrow { grid-column: 3; grid-row: 1; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-cta-ledger a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
+}
+
 /* ---------- Credential strip (between the hero and 01 Verify) ---------- */
 .ds-strip {
   position: relative;
