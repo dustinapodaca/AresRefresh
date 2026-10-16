@@ -4240,11 +4240,26 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-actions { display: flex; align-items: center; gap: 4px; }
 .ds-np-phone { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: #fff; }
 .ds-np-burger { position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; }
-.ds-np-burger span { position: absolute; left: 12px; right: 12px; height: 1.5px; border-radius: 1px; background: currentColor; transition: transform 240ms var(--ds-ease); }
-.ds-np-burger span:nth-child(1) { top: 18px; }
-.ds-np-burger span:nth-child(2) { top: 25px; }
-.ds-np-burger[data-open] span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
-.ds-np-burger[data-open] span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
+/* The menu button (owner, 2026-10-15, after yucca.co.za): three bars, the top one long, slide off
+   to the right one after another, then the X draws in, stroke by stroke; the reverse on close. */
+.ds-np-burger { overflow: hidden; }
+.ds-np-bars, .ds-np-x { position: absolute; pointer-events: none; }
+.ds-np-bars { inset: 0; }
+.ds-np-bars i { position: absolute; right: 11px; height: 1.5px; border-radius: 1px; background: currentColor; transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1); }
+.ds-np-bars i:nth-child(1) { top: 15.5px; width: 22px; transition-delay: 0.24s; }
+.ds-np-bars i:nth-child(2) { top: 21.25px; width: 14px; transition-delay: 0.19s; }
+.ds-np-bars i:nth-child(3) { top: 27px; width: 14px; transition-delay: 0.14s; }
+.ds-np-burger[data-open] .ds-np-bars i { transform: translateX(36px); }
+.ds-np-burger[data-open] .ds-np-bars i:nth-child(1) { transition-delay: 0.1s; }
+.ds-np-burger[data-open] .ds-np-bars i:nth-child(2) { transition-delay: 0.05s; }
+.ds-np-burger[data-open] .ds-np-bars i:nth-child(3) { transition-delay: 0s; }
+.ds-np-x { left: 12px; top: 12px; width: 20px; height: 20px; transform: rotate(45deg); }
+.ds-np-x i { position: absolute; border-radius: 1px; background: currentColor; transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1); }
+.ds-np-x i:nth-child(1) { left: 0; right: 0; top: 50%; height: 1.5px; margin-top: -0.75px; transform: scaleX(0); transition-delay: 0.06s; }
+.ds-np-x i:nth-child(2) { top: 0; bottom: 0; left: 50%; width: 1.5px; margin-left: -0.75px; transform: scaleY(0); transition-delay: 0s; }
+.ds-np-burger[data-open] .ds-np-x i { transform: none; }
+.ds-np-burger[data-open] .ds-np-x i:nth-child(1) { transition-delay: 0.26s; }
+.ds-np-burger[data-open] .ds-np-x i:nth-child(2) { transition-delay: 0.36s; }
 .ds-np-chev { flex: none; }
 /* The + turns into a - (owner, 2026-10-15): its upright stroke rotates flat. */
 .ds-np-chev-v { transform-box: fill-box; transform-origin: center; transition: transform 300ms var(--ds-ease); }
@@ -4333,7 +4348,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); font: 500 14px/1 var(--ds-text); color: var(--ds-fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-arrow, .ds-np-burger span { transition: none; }
+  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-arrow, .ds-np-burger i { transition: none !important; }
   .ds-np-menu { animation: none; }
 }
 
@@ -4696,3 +4711,44 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
   .ds-np[data-open='true'] .ds-np-card > *,
   .ds-np[data-open='true'] .ds-np-mobile > .ds-np-drop-inner > * { flex-shrink: 0; }
 }
+
+/* ---------- Phone menu pages that slide over (owner, 2026-10-15, after yucca.co.za) ----------
+   All the pages share one grid cell; the one showing is in the flow, the rest are moved aside
+   (the main list a little to the left, the section pages fully to the right) and collapse once
+   their slide has finished, so the menu is only as tall as the page showing. */
+.ds-np-stage { display: grid; overflow: clip; }
+.ds-np-pane { grid-area: 1 / 1; min-width: 0; max-height: 6000px; overflow: clip;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 460ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s, max-height 0s; }
+.ds-np-pane-sub { transform: translateX(100%); visibility: hidden; max-height: 0;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 460ms, max-height 0s linear 460ms; }
+.ds-np-pane-sub[data-on] { transform: none; visibility: visible; max-height: 6000px;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s, max-height 0s; }
+.ds-np-stage[data-panel] .ds-np-pane-main { transform: translateX(-24%); opacity: 0.25; visibility: hidden; max-height: 0;
+  transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 460ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 460ms, max-height 0s linear 460ms; }
+/* The main page: large links, an arrow on each. */
+.ds-np-mlist-slide .ds-np-mitem { padding: 17px 0; font: 600 25px/1.1 var(--ds-display); letter-spacing: -0.035em; }
+.ds-np-mlist-slide .ds-np-mitem .ds-arrow { flex: none; }
+/* A section page: back, its title, then its content coming up in turn. */
+.ds-np-back { display: inline-flex; align-items: center; gap: 10px; height: 44px; margin: 4px 0 0 -2px; padding: 0 4px; border: 0; background: none; font: 400 14px var(--ds-text); color: var(--ds-fg-muted); cursor: pointer; }
+.ds-np-pane-title { margin: 6px 0 16px; font: 600 26px/1.1 var(--ds-display); letter-spacing: -0.035em; color: var(--ds-fg); }
+.ds-np-overview { list-style: none; margin: 0 0 18px; padding: 0 0 16px; display: grid; gap: 12px; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
+.ds-np-pane-sub > * { transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 460ms cubic-bezier(0.22, 1, 0.36, 1); }
+.ds-np-pane-sub:not([data-on]) > * { transform: translateX(24px); opacity: 0.35; }
+.ds-np-pane-sub[data-on] > :nth-child(2) { transition-delay: 40ms; }
+.ds-np-pane-sub[data-on] > :nth-child(3) { transition-delay: 80ms; }
+.ds-np-pane-sub[data-on] > :nth-child(4) { transition-delay: 120ms; }
+/* Company: photo tiles where a picture says something, then plain rows. */
+.ds-np-tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ds-np-tile { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; height: 104px; padding: 14px 16px; border-radius: 4px; overflow: hidden; color: #fff !important; isolation: isolate; }
+.ds-np-tile img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) brightness(0.8); }
+.ds-np-tile::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.15) 70%); }
+.ds-np-tile::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); pointer-events: none; }
+.ds-np-tile span { font: 600 21px/1.1 var(--ds-display); letter-spacing: -0.03em; }
+.ds-np-rows { list-style: none; margin: 18px 0 0; padding: 0; }
+.ds-np-rows a { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgb(255 255 255 / 0.08); font: 500 16px var(--ds-text); color: var(--ds-fg) !important; }
+@media (prefers-reduced-motion: reduce) {
+  .ds-np-pane, .ds-np-pane-sub, .ds-np-pane-sub > *, .ds-np-stage[data-panel] .ds-np-pane-main { transition: none !important; }
+}
+/* The section pages keep the list's margins, and cover the main list as they slide over it. */
+.ds-np[data-layout='full'] .ds-np-pane-sub { width: 100%; max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); margin-inline: auto; padding-inline: var(--ds-gutter); box-sizing: border-box; }
+.ds-np-pane-sub { position: relative; z-index: 1; background: #08090b; }

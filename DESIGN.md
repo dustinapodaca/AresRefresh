@@ -955,7 +955,18 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   officer portrait for Access Control, the Space Force base for Restricted-Area Escort, the team at
   the range for Relief & Surge, the patrol cars for Mobile Patrol), its name, and its tags in mono;
   Industries is a row of photo cards (the industry pages' photos, 16:10, 72% wide so the next one
-  peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list. The strip with the phone, email, and Request a Quote
+  peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
+  Since later on 2026-10-15 (owner, a hybrid with yucca.co.za) the phone menu is pages that slide
+  over: the main page lists Services, Industries, Company, and Capability Statement as large links
+  (Inter Tight 600 25px) with arrows; tapping one slides the list a quarter to the left and dims it
+  while that section's page slides in over it from the right (460ms, the drawer curve), with a Back
+  button (focused) and its title, its content coming up in turn. Services and Industries keep the
+  photo list and the swipe row; Company opens on photo tiles where a picture says something (About
+  Ares with Pikes Peak, Careers with the officer at the range, Capability Statement with Denver at
+  sunset; 104px, 4px corners, a dark wash from the foot), then rows for Insights, Teaming, and
+  Request a Quote. The pages reset to the main one when the menu closes. The photo accordions stay at
+  ?mnav=accordion. The menu button is three bars (the top one long) that slide off to the right one
+  after another, then an X that draws in stroke by stroke; the reverse on close. The strip with the phone, email, and Request a Quote
   always sits on the bottom of the screen while the menu is open, however short the list (owner,
   2026-10-15): the open card is a column whose menu part grows to fill it.
   On phones and desktop, once the reader reaches the page's sections (when the running head

@@ -281,9 +281,138 @@ function PhoneIndustries() {
   );
 }
 
+// The phone menu's pages (owner, 2026-10-15, after yucca.co.za): the main page lists the sections,
+// each with an arrow; tapping one slides the list away to the left as its page slides in from the
+// right, with a back button. Services and Industries keep their photos (the photo list and the
+// swipe row); Company opens on photo tiles where a picture says something (About, Careers, the
+// Capability Statement), then plain rows.
+const COMPANY_TILES = [
+  { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 62%' },
+  { label: 'Careers', to: '/careers', src: '/images/careers-team.jpg', position: '50% 30%' },
+  { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
+];
+const COMPANY_ROWS = [
+  { label: 'Insights', to: '/insights' },
+  { label: 'Teaming and subcontracting', to: '/teaming' },
+  { label: 'Request a Quote', to: '/contact' },
+];
+
+function ArrowBack() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M13.5 8h-11M7 3.5 2.5 8 7 12.5" />
+    </svg>
+  );
+}
+
+function Overview({ links }: { links?: MenuLink[] }) {
+  if (!links) return null;
+  return (
+    <ul className="ds-np-overview">
+      {links.map((l) => (
+        <li key={l.to + l.label}>
+          <Link to={l.to} className="ds-np-sub-more">
+            {l.label}
+            <Arrow size={12} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function CompanyPane() {
+  return (
+    <>
+      <ul className="ds-np-tiles">
+        {COMPANY_TILES.map((t) => (
+          <li key={t.to}>
+            <Link to={t.to} className="ds-np-tile">
+              <img {...responsive(t.src, '100vw')} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
+              <span>{t.label}</span>
+              <Arrow size={18} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <ul className="ds-np-rows">
+        {COMPANY_ROWS.map((r) => (
+          <li key={r.to}>
+            <Link to={r.to}>
+              {r.label}
+              <Arrow size={14} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+function SlideMenu({
+  panel,
+  setPanel,
+  backRef,
+}: {
+  panel: string | null;
+  setPanel: (p: string | null) => void;
+  backRef: React.RefObject<HTMLButtonElement>;
+}) {
+  const stageRef = useRef<HTMLDivElement>(null);
+  // A page that slides in starts at its top, with the focus on its back button.
+  useEffect(() => {
+    const card = stageRef.current?.closest('.ds-np-card');
+    if (card) card.scrollTop = 0;
+    if (panel) backRef.current?.focus({ preventScroll: true });
+  }, [panel, backRef]);
+  const pages: { m: string; body: JSX.Element }[] = [
+    { m: 'Services', body: <><Overview links={MENUS.Services.phoneTop} /><PhoneServices /></> },
+    { m: 'Industries', body: <><Overview links={MENUS.Industries.phoneTop} /><PhoneIndustries /></> },
+    { m: 'Company', body: <CompanyPane /> },
+  ];
+  return (
+    <div ref={stageRef} className="ds-np-stage" data-panel={panel || undefined}>
+      <div className="ds-np-pane ds-np-pane-main" {...(panel ? { inert: '' } : {})}>
+        <ul className="ds-np-mlist ds-np-mlist-slide">
+          {ITEMS.map((item) => (
+            <li key={item.label}>
+              {item.menu ? (
+                <button type="button" className="ds-np-mitem" onClick={() => setPanel(item.menu!)}>
+                  {item.label}
+                  <Arrow size={18} />
+                </button>
+              ) : (
+                <Link to={item.to!} className="ds-np-mitem">
+                  {item.label}
+                  <Arrow size={18} />
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {pages.map(({ m, body }) => (
+        <div key={m} className="ds-np-pane ds-np-pane-sub" data-on={panel === m || undefined} {...(panel === m ? {} : { inert: '' })}>
+          <button ref={panel === m ? backRef : undefined} type="button" className="ds-np-back" onClick={() => setPanel(null)}>
+            <ArrowBack />
+            Back
+          </button>
+          <p className="ds-np-pane-title">{m}</p>
+          {body}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float' }) {
   const [navParams] = useSearchParams();
-  const richPhone = navParams.get('mnav') !== 'list';
+  // The phone menu (owner, 2026-10-15): pages that slide over (after yucca.co.za), the default;
+  // the photo accordions at ?mnav=accordion; the plain lists at ?mnav=list.
+  const mnav = navParams.get('mnav');
+  const phoneMode: 'slide' | 'accordion' | 'list' = mnav === 'accordion' || mnav === 'list' ? mnav : 'slide';
+  const richPhone = phoneMode !== 'list';
+  const backRef = useRef<HTMLButtonElement>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<string | null>(null);
@@ -485,8 +614,17 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                 onClick={() => setMobileOpen((o) => !o)}
                 data-open={mobileOpen || undefined}
               >
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
+                {/* Three bars that slide off to the right, then an X that draws in (owner,
+                    2026-10-15, after yucca.co.za); the reverse on close. */}
+                <span className="ds-np-bars" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className="ds-np-x" aria-hidden="true">
+                  <i />
+                  <i />
+                </span>
               </button>
             </div>
           </div>
@@ -501,6 +639,9 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
           {/* Phones: the list, with the three menus as accordions. */}
           <div id="np-mobile" className="ds-np-mobile" data-open={mobileOpen || undefined} {...(mobileOpen ? {} : { inert: '' })}>
             <div className="ds-np-drop-inner">
+              {phoneMode === 'slide' ? (
+                <SlideMenu panel={mobileMenu} setPanel={setMobileMenu} backRef={backRef} />
+              ) : (
               <ul className="ds-np-mlist">
                 {ITEMS.map((item) =>
                   item.menu ? (
@@ -562,6 +703,7 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
                   ),
                 )}
               </ul>
+              )}
               {/* Phones (owner, 2026-10-13): pinned to the bottom of the open menu, so it stays on
                   screen while the list scrolls: the phone and the profiles, the email, then the main
                   button. (The PDF button was dropped from the phone menu.) */}
