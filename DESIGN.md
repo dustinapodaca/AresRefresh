@@ -562,6 +562,17 @@ exception to "no card containers" and "no glass" for this section.
   (1.5px strokes) inside four 7px corner ticks on a 36px target, like crop marks on a spec
   sheet; the ticks tighten in on hover (180ms) and turn ink when the card is open. Nowhere else.
 
+### The close (Home 06 Contact; owner 2026-10-16)
+- **Two routes** (after Linear's "How can we help?" and Grok's contact cards, from Mobbin):
+  "Request a quote, or call us." at display-xl, then two glass cards side by side from 768px
+  (stacked on phones), the site's glass recipe (1px white/10% edge, white/14% top line, a dark
+  wash over a 22px blur, 4px corners) over the rust light, moved to sit under them. "Request a
+  quote": one line on what follows (a site walk before anything is signed, then a scoped
+  proposal) and the primary button (full width on phones). "Call us": the phone in Plex Mono (30
+  to 36px), the email and base in small mono beneath. The primes line that sat under the cards
+  was removed (owner). The earlier close and three other forms stay at
+  `/?close=current|centered|starter|ledger` (`Contact.tsx`).
+
 ### Credential strip
 - Phones only (hidden from 768px). Between the hero and 01 Record: the
   certification marks only (GSA, SBA, Women Owned, WBENC, Denver Economic Development &

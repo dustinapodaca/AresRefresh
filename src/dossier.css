@@ -1756,7 +1756,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cta-phone { margin-top: 0; font-size: 30px; }
 @media (min-width: 640px) { .ds-cta-phone { font-size: 36px; } }
 .ds-cta-routes .ds-cta-meta { margin-top: 4px; }
-.ds-cta-primes { margin: 36px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
 @media (max-width: 767px) { .ds-cta-routes .ds-btn { justify-self: stretch; } }
 
 /* ledger: ruled rows, label over value on phones, side by side from 768px. */

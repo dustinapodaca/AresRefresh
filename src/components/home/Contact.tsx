@@ -2,14 +2,15 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 
 // The close, five forms for the owner to compare at /?close=current|centered|starter|routes|ledger
-// (owner, 2026-10-16, from Mobbin; each is a whole version, desktop and phone). `current` is the
-// default until the owner picks.
+// (owner, 2026-10-16, from Mobbin; each is a whole version, desktop and phone). `routes` chosen
+// (owner, 2026-10-16), without its primes line.
 //   current   the headline, the phone large, email and base, the button and the PDF link
 //   centered  one centered statement over the rust light, the button and the call link side by side
 //             (Resend, Slash, Rox)
 //   starter   the headline left; a glass card right where the reader picks what needs covering,
 //             each a link that opens the quote form with it chosen (Claude's split close, Fiasco's chips)
-//   routes    two glass cards, Request a quote and Call us, then a quiet line for primes (Linear, Grok)
+//   routes    two glass cards, Request a quote and Call us (Linear, Grok); the primes line under them
+//             was removed (owner, 2026-10-16)
 //   ledger    the headline and the button left; the other ways in as ruled rows right (Clay)
 const FORMS = ['current', 'centered', 'starter', 'routes', 'ledger'] as const;
 type Form = (typeof FORMS)[number];
@@ -32,7 +33,7 @@ const NEEDS = [
 export default function Contact() {
   const [params] = useSearchParams();
   const asked = params.get('close');
-  const form: Form = FORMS.includes(asked as Form) ? (asked as Form) : 'current';
+  const form: Form = FORMS.includes(asked as Form) ? (asked as Form) : 'routes';
 
   return (
     <section id="contact" className="ds-contact" data-form={form} aria-labelledby="contact-title">
@@ -175,13 +176,6 @@ function Routes() {
           </p>
         </div>
       </div>
-      <p className="ds-cta-primes">
-        Prime contractor?{' '}
-        <Link to="/teaming" className="ds-link">
-          Teaming and subcontracting
-          <Arrow />
-        </Link>
-      </p>
     </>
   );
 }

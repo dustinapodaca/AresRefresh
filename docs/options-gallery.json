@@ -143,8 +143,7 @@
       "options": [
         {
           "value": "current",
-          "label": "Current",
-          "tag": "default",
+          "label": "Before",
           "copy": "<b>Request a quote, or call us.</b>",
           "note": "The headline, the phone large, email and base, the button and the PDF link."
         },
@@ -162,9 +161,10 @@
         },
         {
           "value": "routes",
-          "label": "Two routes",
+          "label": "Two routes (current)",
           "copy": "<b>Request a quote, or call us.</b>",
-          "note": "Two glass cards, Request a quote and Call us, then a line for primes (Linear, Grok)."
+          "note": "Two glass cards, Request a quote and Call us (Linear, Grok). Chosen by the owner, 2026-10-16.",
+          "tag": "default"
         },
         {
           "value": "ledger",
