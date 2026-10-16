@@ -577,13 +577,37 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
   point, 6:1 or better at every width). The place caption "Downtown Colorado Springs, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
   division containers start a short scroll below.
-- **Three openings without the glass or the scroll hold** (owner, 2026-10-15, from Mobbin), to compare
-  at `/services?open=`: `plate` (headline 7 columns and lead 5 on black, then the tower as a 21:9
-  plate across the column, 4:3 on phones; Save.design, Vizcom), `split` (copy at the foot of a black
-  left half, the tower filling the right half to the screen edge at 86svh, behind the nav; on phones
-  the photo on top; Dropbox), `overlap` (the headline across 10 columns, the tower in columns 6 to 12
-  rising under its last line, its top easing into black where the line crosses it, the lead under a
-  hairline at left; MasterClass). The glass opening stays the default until the owner picks.
+- **Four openings with glass, no scroll hold** (owner, 2026-10-15: "another home page hero that
+  needs to wow"; from Mobbin, Emil, and Impeccable), to compare at `/services?open=`. Each uses the
+  copper-glass tower (graded like the Home hero) and puts the six services in the opening, in their
+  fixed order, each a link to its page, since the lead says "Pick a service". The glass opening stays
+  the default until the owner picks. (Three plainer forms, `plate`, `split`, `overlap`, were tried
+  and dropped the same day as too basic.)
+  - `curtain`: the photo seen through six frosted panes, like the tower's own curtain wall. From
+    1024px six tall panes run from the top of the page to the foot of the opening, 1px mullions
+    between them, the headline (8 columns) and the lead (in ink) across their tops, each pane's
+    service name (Inter Tight 600, 19 to 24px) and keys in mono at its foot. A pane is a blurred
+    copy of the photo laid exactly over it (no backdrop filter, so cheap on phones) under a dark tint;
+    on hover or focus the frost fades (260ms) to the crisp photo. On the first view the glass forms
+    pane by pane (900ms, 80ms apart). Tablets: 3 by 2 panes under the copy; phones 2 by 3, with a
+    shade from the top behind the copy.
+  - `aperture`: the headline large (up to 100px, 8 columns) and the lead beside its foot, then the
+    photo as a plate in the column (4px corners) that opens to the screen's edges over the first 70%
+    of a screen of scroll, the photo settling from 1.1 inside it (tied to the scroll, static without
+    scroll timelines or under reduced motion). A liquid glass card ("Six services.", two columns of
+    name and keys on hairlines, "Or find your industry" to #divisions) straddles the photo's foot
+    on the right, so its rim bends the photo's edge. Phones: one column, the card over the plate's foot.
+  - `index`: the six set large over the photo (Inter Tight 600, up to 64px; A24's stacked titles),
+    the current one in ink and the rest in ink muted; a liquid glass card (keys, the line, "View the
+    service") rides beside the current row (520ms) and the photo reframes on it (each service its own
+    scale and shift, 1.6s). It steps through the six every 3.4s while in view, holds while the reader
+    points at or focuses the list, and never steps under reduced motion. A shade from the left and
+    from the top and foot keeps the copy readable. Phones: the card under the list.
+  - `lens`: one tall liquid glass slab (6 columns, from under the nav to 32px above the foot, the
+    site's glass edge, a wider 32px rim and a light 7px frost so the towers bend through it) holding
+    the headline, the lead, and the six as a ledger (name, keys in mono, arrow). The photo drifts
+    slowly behind it on desktop (26s, ambient, off under reduced motion) so the bend moves. Phones:
+    the photo above, the slab over its lower part.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
   ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &

@@ -886,3 +886,8 @@ Removed the "Licensed" row ("Licensed and bonded armed and unarmed security and 
 ## "Request a Quote" in Title Case (owner, 2026-10-13)
 
 Every button and link that says it (the nav button and Company menu, the Home hero and closing buttons, service, industry, and city page buttons, the ask strips, the Capability Statement close, the 404 routes) now reads "Request a Quote". The Contact page headline "Request a quote" and the sentence "Request a quote, or call us." stay sentence case, as headings do.
+
+## Services opening forms (owner, 2026-10-15)
+
+New interface lines in the four `/services?open=` forms only (the default opening is unchanged): "Six services." (the aperture card's heading), "Or find your industry" (a link to the industries section), and "View the service" (the index card's link). The service names, keys, and lines are the existing ones from the service pages and the Capability Statement.
+
