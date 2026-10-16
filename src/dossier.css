@@ -4692,4 +4692,7 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
   /* In the column, the centered pieces would shrink to their content; keep them full width. */
   .ds-np[data-open='true'] .ds-np-card > *,
   .ds-np[data-open='true'] .ds-np-mobile > .ds-np-drop-inner > * { width: 100%; box-sizing: border-box; }
+  /* And never squeeze them when a long list overflows the screen (the logo bar shrank, owner 2026-10-15). */
+  .ds-np[data-open='true'] .ds-np-card > *,
+  .ds-np[data-open='true'] .ds-np-mobile > .ds-np-drop-inner > * { flex-shrink: 0; }
 }
