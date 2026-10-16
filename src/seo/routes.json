@@ -205,7 +205,7 @@
     },
     "/industries/critical-infrastructure": {
       "title": "Critical Site Security in Colorado | Ares Security",
-      "description": "Security for data centers, utilities, cash-handling, and other high-liability sites in Colorado: access control, armed posts where required, and logs.",
+      "description": "Security for data centers, utilities, hospitals, cash-handling, and other high-liability sites in Colorado: access control, armed posts, and logs.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -256,7 +256,7 @@
     },
     "/industries/commercial-property": {
       "title": "Commercial & Retail Security in Colorado | Ares Security",
-      "description": "Security officers for Colorado offices, retail, banks, and hotels, with patrol across a property portfolio and one report per property.",
+      "description": "Security officers for Colorado stores, grocery, shopping centers, banks, hotels, and offices: loss prevention, and patrol across a portfolio.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -272,8 +272,8 @@
       "preloadImage": "/images/market/commercial-property.webp"
     },
     "/industries/institutional-community": {
-      "title": "Hospital & Campus Security in Colorado | Ares Security",
-      "description": "Security officers for hospitals, schools, campuses, and apartment communities in Colorado Springs, Denver, and Pueblo, trained on your site.",
+      "title": "School & Apartment Security in Colorado | Ares Security",
+      "description": "Security officers for apartment communities, HOAs, schools, campuses, and places of worship in Colorado Springs, Denver, and Pueblo, trained on your site.",
       "breadcrumbs": [
         {
           "name": "Services",

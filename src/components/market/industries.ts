@@ -101,15 +101,17 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // example among several). /industries/data-centers redirects here (public/_redirects).
     slug: 'critical-infrastructure',
     name: 'Critical & High-Liability Sites',
-    short: 'Data centers, utilities, cash-handling, and other sites where every entry is documented.',
+    // Hospitals moved here from Institutional & Community (owner, 2026-10-16): their security is
+    // about liability and documented entry, like the rest of this page.
+    short: 'Data centers, utilities, hospitals, cash-handling, and other sites where every entry is documented.',
     title: 'Security for critical and high-liability sites.',
-    lead: 'Access control, posted officers, and armed posts where required, for data centers, utilities, cash-handling, and other regulated sites where every entry has to be documented.',
+    lead: 'Access control, posted officers, and armed posts where required, for data centers, utilities, hospitals, cash-handling, and other regulated sites where every entry has to be documented.',
     // A real photo (owner, 2026-10-12): a data center campus under snowy peaks. The wide strip
     // can't hold both, so it frames on the building; phones and Home's card show both.
     image: { src: '/images/market/data-centers.webp', alt: '', position: '50% 80%' },
     stake: [
       'Critical and high-liability sites are judged on who was allowed in. A missed check at a dock or a gate is the gap an audit, an insurer, or an incident will find.',
-      'Some hold equipment a business depends on, some hold cash or regulated goods, and some are still being built. Each needs officers who follow the access list exactly, write everything down, and are armed only where the post calls for it.',
+      'Some hold equipment a business depends on, some hold cash or regulated goods, some never close, like a hospital, and some are still being built. Each needs officers who follow the access list exactly, write everything down, and are armed only where the post calls for it.',
     ],
     deliver: [
       { role: 'access-control', line: 'Credential checks at every entry, visitor screening, and dock and gate control, all logged.' },
@@ -136,6 +138,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Do you provide armed officers for cash-handling and regulated sites?',
         a: 'Yes, where the post calls for it. Armed officers are licensed and firearms-qualified by Ares, and the post orders say when and why the post is armed.',
+      },
+      {
+        q: 'Do you staff hospitals?',
+        a: 'Yes: officers at main and emergency entrances, visitor screening and check-in, and patrol of parking and grounds, with every entry logged. Officers are trained to calm a situation before anything else, and are armed only where the post calls for it.',
       },
       {
         q: 'Will your officers learn our systems and rules?',
@@ -245,13 +251,14 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'commercial-property',
     name: 'Commercial & Retail',
-    short: 'Offices, retail, banks, hotels, and property portfolios.',
+    // Businesses, stores, and loss prevention (owner, 2026-10-16).
+    short: 'Retail stores, grocery, shopping centers, banks, hotels, and offices.',
     title: 'Security for commercial property and retail.',
-    lead: 'Officers for offices, retail, banks, hotels, and property portfolios: a visible, courteous presence that deters, screens, and helps.',
+    lead: 'Officers for stores, grocery, shopping centers, banks, hotels, and corporate and tech offices: loss prevention and a visible, courteous presence that deters, screens, and helps.',
     // A real photo (owner, 2026-10-16): the Denver Pavilions sign, framed on the D and the tower.
     image: { src: '/images/market/commercial-property.webp', alt: '', position: '50% 50%' },
     stake: [
-      'In a lobby, on a sales floor, or at a hospital entrance, the officer is the first person many visitors meet. They have to deter trouble without making the space feel guarded.',
+      'In a lobby, on a sales floor, or at a store entrance, the officer is the first person many visitors meet. They have to deter theft and trouble without making the space feel guarded.',
       'Property managers also need the work reported the same way across one building or a portfolio, so they can read one summary instead of chasing several.',
     ],
     deliver: [
@@ -286,13 +293,15 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // New (owner, 2026-10-10).
     slug: 'institutional-community',
     name: 'Institutional & Community',
-    short: 'Hospitals, schools, campuses, and apartment communities.',
-    title: 'Security for hospitals, schools, campuses, and communities.',
-    lead: 'Officers for hospitals, schools, campuses, and apartment communities: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
+    // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
+    // to Critical & High-Liability Sites.
+    short: 'Apartment communities, HOAs, schools, campuses, and community centers.',
+    title: 'Security for apartments, schools, campuses, and communities.',
+    lead: 'Officers for apartment communities, HOAs, schools, campuses, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
     // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
     image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
     stake: [
-      'In a hospital, a school, or an apartment community, the officer is part of daily life. Patients, students, staff, and residents need to feel safe without feeling watched, and a visitor in distress needs someone calm.',
+      'At a school, an apartment community, or a place of worship, the officer is part of daily life. Students, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
       'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
     ],
     deliver: [
@@ -310,7 +319,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ask: 'Send us the site, its entry points, and the hours you need covered. We will come back with a staffing plan and post orders.',
     faq: [
       {
-        q: 'Can officers be plainclothes in a school or hospital?',
+        q: 'Can officers be plainclothes in a school or on a campus?',
         a: 'Yes. Uniformed officers deter at entrances, and plainclothes officers work where a uniform would change how the space feels. Many sites use both.',
       },
       {
@@ -318,8 +327,12 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         a: 'As much as schedules allow. Each post is staffed with officers trained on that site, and on-call relief is written into every contract, so a shift is never left open.',
       },
       {
-        q: 'Do you cover apartment and residential communities?',
+        q: 'Do you cover apartment communities and HOAs?',
         a: 'Yes: posted officers, patrol across buildings and grounds, and after-hours checks, with a report for each property.',
+      },
+      {
+        q: 'Do you cover places of worship and community centers?',
+        a: 'Yes: a calm, respectful presence during services and events, and patrol of parking and grounds.',
       },
       {
         q: 'Where in Colorado do you work?',

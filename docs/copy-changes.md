@@ -919,3 +919,29 @@ Ares' on-call coverage is called the relief schedule site-wide (was "relief rost
 - Relief & Surge Coverage FAQ: "covered the same shift from our relief schedule".
 - Kept: "when your roster runs short" (the client's roster). The capability statement PDF is the owner's to update if it says "roster".
 
+
+## Industry scope: hospitals move, community and retail sharpened (owner, 2026-10-16)
+
+Hospitals move from Institutional & Community to Critical & High-Liability Sites (their security
+is about liability and documented entry). Institutional & Community is apartments, HOAs, schools,
+campuses, community centers, and places of worship; Commercial & Retail is businesses, stores, and
+loss prevention.
+- Critical & High-Liability Sites: "hospitals" added to the short line, lead, Services card body,
+  SEO description, and llms.txt; "what's at stake" adds "some never close, like a hospital"; new
+  question "Do you staff hospitals?"; the Services card's "High-liability sites" item became
+  "Hospitals".
+- Commercial & Retail: short line "Retail stores, grocery, shopping centers, banks, hotels, and
+  offices." (was "Offices, retail, banks, hotels, and property portfolios."); lead names stores,
+  grocery, shopping centers, banks, hotels, and corporate and tech offices, and leads with loss
+  prevention; "at a hospital entrance" became "at a store entrance", and "deter trouble" became
+  "deter theft and trouble"; Services card items "Retail, grocery, and shopping centers" and
+  "Corporate and tech offices"; SEO description and llms.txt to match.
+- Institutional & Community: short line "Apartment communities, HOAs, schools, campuses, and
+  community centers." (was "Hospitals, schools, campuses, and apartment communities."); H1
+  "Security for apartments, schools, campuses, and communities"; lead adds community centers and
+  places of worship; "what's at stake" now opens "At a school, an apartment community, or a place
+  of worship"; the plainclothes question says "in a school or on a campus"; the apartment question
+  adds HOAs; new question on places of worship and community centers; Services card items Apartments
+  and HOAs, Schools and campuses, Places of worship, Community centers. SEO title "School &
+  Apartment Security in Colorado" (was "Hospital & Campus Security in Colorado").
+- Denver city page: the "Hospitals and healthcare" row now points to Critical & High-Liability Sites.

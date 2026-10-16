@@ -164,7 +164,7 @@ export const DENVER: LocationFile = {
     { name: 'Airport-area sites and the DIA corridor', division: 'Airport & Transportation', divisionId: 'airport' },
     { name: 'Construction, including data-center builds', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
     { name: 'Warehouses and logistics', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
-    { name: 'Hospitals and healthcare', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Hospitals and healthcare', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Parking and transportation', division: 'Airport & Transportation', divisionId: 'airport' },
     { name: 'Public-sector facilities', division: 'Government & Military', divisionId: 'government' },
     { name: 'Commercial property and corporate campuses', division: 'Commercial & Retail', divisionId: 'commercial' },
