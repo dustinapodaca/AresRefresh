@@ -22,8 +22,9 @@ type Menu = {
   profiles?: boolean;
   /** `position` and `zoom` frame the photo in its slot (default 50% 75%, no zoom). */
   image: { src: string; caption: string; position?: string; zoom?: number; origin?: string };
-  /** Footer links are the menu's overview links: drawn with more weight (owner, 2026-10-13). */
-  strongFoot?: boolean;
+  /** Desktop: the menu's overview links, in a row above the columns (owner, 2026-10-15; they were
+   *  the footer). Bold white, a little smaller than the menu links, with a down-right arrow. */
+  top?: MenuLink[];
   /** Phones: overview links above a divider at the top of the accordion. */
   phoneTop?: MenuLink[];
 };
@@ -37,13 +38,12 @@ const MENUS: Record<string, Menu> = {
       { label: 'By role', links: roles.slice(0, 3) },
       { links: roles.slice(3) },
     ],
-    footer: [
+    top: [
       { label: 'All services and how a post starts', to: '/services' },
       { label: 'Teaming and subcontracting', to: '/teaming' },
     ],
     // The cars just below center (owner, 2026-10-13).
     image: { src: '/images/mission-vehicle.jpg', caption: 'Ares patrol vehicles', position: '50% 90%' },
-    strongFoot: true,
     phoneTop: [
       { label: 'All services and how a post starts', to: '/services' },
       { label: 'Teaming and subcontracting', to: '/teaming' },
@@ -55,10 +55,9 @@ const MENUS: Record<string, Menu> = {
       { links: industries.slice(3) },
     ],
     // The overview link, as on phones (owner, 2026-10-13; was the city pages).
-    footer: [{ label: 'All industries and how a post starts', to: '/services' }],
+    top: [{ label: 'All industries and how a post starts', to: '/services' }],
     // Closer, toward the radomes on the left (owner, 2026-10-13: 1.6x, was 1.25x).
     image: { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' },
-    strongFoot: true,
     // The industries live on the Services page too (owner, 2026-10-13).
     phoneTop: [{ label: 'All industries and how a post starts', to: '/services' }],
   },
@@ -144,10 +143,22 @@ const PROFILE_ICONS: Record<string, JSX.Element> = {
   ),
 };
 
+// The menu toggle (owner, 2026-10-15; was a caret): a + whose upright stroke turns flat into a -
+// when the menu opens.
 function Chevron({ open }: { open: boolean }) {
   return (
-    <svg className="ds-np-chev" data-open={open || undefined} width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-      <path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="ds-np-chev" data-open={open || undefined} width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+      <path d="M1.5 5h7" />
+      <path className="ds-np-chev-v" d="M5 1.5v7" />
+    </svg>
+  );
+}
+
+// The overview links' arrow: the site's arrow, pointing down and to the right.
+function ArrowDownRight() {
+  return (
+    <svg className="ds-np-over-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 5 11 11M11 6v5H6" />
     </svg>
   );
 }
@@ -155,6 +166,16 @@ function Chevron({ open }: { open: boolean }) {
 function MenuBody({ menu }: { menu: Menu }) {
   return (
     <div className="ds-np-menu">
+      {menu.top && (
+        <div className="ds-np-top">
+          {menu.top.map((l) => (
+            <Link key={l.to + l.label} to={l.to} className="ds-np-over">
+              {l.label}
+              <ArrowDownRight />
+            </Link>
+          ))}
+        </div>
+      )}
       {menu.columns.map((col, i) => (
         <div key={i} className="ds-np-col">
           <p className="ds-np-label" aria-hidden={!col.label}>{col.label ?? ' '}</p>
@@ -162,6 +183,10 @@ function MenuBody({ menu }: { menu: Menu }) {
             {col.links.map((l) => (
               <li key={l.to + l.label}>
                 <NavLink to={l.to} className="ds-np-big" end>
+                  {/* On hover the link slides right and this arrow comes in on its left. */}
+                  <span className="ds-np-big-arrow" aria-hidden="true">
+                    <Arrow size={16} />
+                  </span>
                   {l.label}
                 </NavLink>
               </li>
@@ -181,7 +206,7 @@ function MenuBody({ menu }: { menu: Menu }) {
         <figcaption className="ds-caption">{menu.image.caption}</figcaption>
       </figure>
       {(menu.footer || menu.profiles) && (
-        <div className="ds-np-foot" data-strong={menu.strongFoot || undefined}>
+        <div className="ds-np-foot">
           {menu.footer?.map((l) => (
             <Link key={l.to + l.label} to={l.to} className="ds-link">
               {l.label}
