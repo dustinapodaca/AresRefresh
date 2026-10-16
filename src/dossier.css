@@ -4752,3 +4752,5 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 /* The section pages keep the list's margins, and cover the main list as they slide over it. */
 .ds-np[data-layout='full'] .ds-np-pane-sub { width: 100%; max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); margin-inline: auto; padding-inline: var(--ds-gutter); box-sizing: border-box; }
 .ds-np-pane-sub { position: relative; z-index: 1; background: #08090b; }
+/* Room under each page's last item, so it scrolls clear of the pinned strip (owner, 2026-10-15). */
+.ds-np-pane-sub { padding-bottom: 36px; }
