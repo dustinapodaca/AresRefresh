@@ -362,6 +362,9 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
   return (
     <>
       <a href="#main" className="ds ds-skip">Skip to content</a>
+      {/* Desktop (owner, 2026-10-15): while a menu is open, a light glass softly mutes the whole
+          page under the nav, fading in and out with the menu. Clicks pass through it. */}
+      <div className="ds-np-scrim" data-open={Boolean(openMenu) || undefined} aria-hidden="true" />
       <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !isOpen) || undefined}>
         <div
           ref={cardRef}

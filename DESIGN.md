@@ -930,6 +930,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   in on its left (260ms), sliding back out after; the current page holds that state. The menu
   toggles are a + whose upright stroke rotates flat into a - when open (300ms), on desktop and in
   the phone accordions (was a caret).
+  While a desktop menu is open, a light glass covers the page under the nav (a 6px blur over 16%
+  black, slightly desaturated), fading in and out with the menu (280ms); clicks pass through it.
+  Not on phones, where the menu already covers the screen (owner, 2026-10-15).
   On desktop the menus open on hover (a 90ms delay, then moving between items swaps at once;
   leaving the card closes after 40ms and the panel folds away in 200ms; hovering Capability
   Statement closes it; owner, 2026-10-13); click keeps it open with a mouse and toggles for
