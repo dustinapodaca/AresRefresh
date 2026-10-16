@@ -127,6 +127,7 @@ export default function Process() {
               <div className="ds-svc-stage-body">
                 <span className="ds-svc-bar" aria-hidden="true">
                   <span />
+                  <i className="ds-svc-bar-end" />
                 </span>
                 <p className="ds-body">{s.body}</p>
                 {s.systems && <SystemTags />}

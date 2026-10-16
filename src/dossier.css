@@ -2150,6 +2150,18 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   transform-origin: left;
 }
 .ds-svc-stage-body .ds-body { margin-top: 16px; font-size: 16px; }
+/* A rust tick at the end of the stage's quarter, shown once the bar has drawn to it (owner,
+   2026-10-16). Static and shown without scroll timelines or under reduced motion. */
+.ds-svc-bar-end {
+  position: absolute;
+  top: -5px;
+  left: calc((var(--i) + 1) * 25%);
+  width: 2px;
+  height: 13px;
+  margin-left: -2px;
+  border-radius: 1px;
+  background: var(--ds-rust);
+}
 @media (min-width: 768px) {
   .ds-svc-stage-tags { margin-left: calc(2.25rem + 8px); }
 }
@@ -3960,6 +3972,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-40svh); } }
 @keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ds-svc-bar-end { 0%, 94% { opacity: 0; transform: scaleY(0); } 100% { opacity: 1; transform: scaleY(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-settle { from { transform: translateY(32px); } to { transform: translateY(0); } }
@@ -4030,6 +4043,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     }
     .ds-svc-bar span {
       animation: ds-draw linear both;
+      animation-timeline: view();
+      animation-range: entry calc(40% + var(--svc-cap, 0px)) cover calc(40% + var(--svc-cap, 0px));
+    }
+    /* Same range as the bar, so the tick comes up just as the draw reaches it. */
+    .ds-svc-bar-end {
+      animation: ds-svc-bar-end linear both;
       animation-timeline: view();
       animation-range: entry calc(40% + var(--svc-cap, 0px)) cover calc(40% + var(--svc-cap, 0px));
     }

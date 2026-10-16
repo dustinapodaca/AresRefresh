@@ -676,7 +676,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 - **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
   Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
   hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
-  body. The bars draw in as each row arrives. No pinned passage on this page.
+  body. The bars draw in as each row arrives, and a 2px by 13px rust tick comes up at the end of
+  each quarter as its draw reaches it (owner, 2026-10-16; desktop, shown and still without scroll
+  timelines or under reduced motion). No pinned passage on this page.
   Below 1024px (owner, 2026-10-05) the stages become a swipe row (scroll snap, 84%
   slides on phones and 62% on tablets, so the next one peeks), under a process meter:
   stage numbers 01 to 04 over a hairline split into quarters with ticks, the phase labels
