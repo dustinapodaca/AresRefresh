@@ -976,7 +976,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   framed at `50% 35%` so the crane and roofline show (each image can set its own `position`
   in `industries.ts`; default `50% 60%`). Government & Military: a Space Force base near
   Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
-  sign or name to remove, strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
+  sign or name to remove (the grey clouds across the top left were removed with a masked edit,
+  color-matched to the clear sky, owner 2026-10-16), strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
   and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
   Denver International's terminal and hotel at sunset with a jet climbing out (owner,
   2026-10-12, chosen back over a blue-hour roadway photo, kept graded and plain in

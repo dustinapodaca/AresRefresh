@@ -153,8 +153,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1366
   },
   "/images/market/government-military.webp": {
-    "src": "/images/opt/market-government-military-1200.51870224.webp",
-    "srcSet": "/images/opt/market-government-military-480.29555b87.webp 480w, /images/opt/market-government-military-800.92aac365.webp 800w, /images/opt/market-government-military-1200.51870224.webp 1200w, /images/opt/market-government-military-1600.41a57024.webp 1600w, /images/opt/market-government-military-2000.c1aabb3d.webp 2000w, /images/opt/market-government-military-2400.0dcbd47b.webp 2400w, /images/opt/market-government-military-3200.4de90c97.webp 3200w",
+    "src": "/images/opt/market-government-military-1200.3157ee6b.webp",
+    "srcSet": "/images/opt/market-government-military-480.34eb2bc3.webp 480w, /images/opt/market-government-military-800.5cd365d2.webp 800w, /images/opt/market-government-military-1200.3157ee6b.webp 1200w, /images/opt/market-government-military-1600.e51ac84c.webp 1600w, /images/opt/market-government-military-2000.7b8265e4.webp 2000w, /images/opt/market-government-military-2400.bfce7f1c.webp 2400w, /images/opt/market-government-military-3200.ded64a2c.webp 3200w",
     "width": 3200,
     "height": 2133
   },
