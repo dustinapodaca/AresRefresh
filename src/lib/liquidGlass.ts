@@ -9,11 +9,18 @@ const NS = 'http://www.w3.org/2000/svg';
 // dies off within about 20px (their map: full at the edge, about 57% at 2px, 14% at 8px, gone by
 // 24px), it reaches 100px, and the frost is light (7px) so the bend stays visible. The filter
 // region runs 12% past the element on every side, as theirs does, so the rim has real page to
-// bend and the frost doesn't fade out toward the edges.
+// bend and the frost doesn't fade out toward the edges. Where there is no page past an edge (a
+// full-width band at the screen's sides, or the footer at the page's foot), the blur would still
+// thin out there, so the frost is made fully solid again after the blur (its color kept): the
+// edge reads as frosted glass, not a fade (owner, 2026-10-15).
 const BEZEL = 24; // px of rim that bends the light
 const SCALE = 100; // the strongest bend, in px
 const FALLOFF = 4; // px: the bend at d px in from the rim is e^(-d / FALLOFF)
 const BLUR = 7; // the frost (a CSS blur(Npx) is the same as N here)
+// Along the rim the frost is light, so the bend shows even on heavily frosted glass (the footer and
+// the heroes at 18px read as a fade at the edge otherwise; owner, 2026-10-15). It eases into the
+// full frost across the rim.
+const RIM_BLUR = 3;
 
 export type LiquidOptions = {
   /** Put the filter on this pseudo-element (via the --ds-liquid custom property on the host). */
@@ -78,6 +85,7 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
   const x = c.getContext('2d')!;
   const disp = x.createImageData(w, h);
   const spec = x.createImageData(w, h);
+  const rim = x.createImageData(w, h); // where the light frost shows: the rim, fading inward
   const lx = -0.6;
   const ly = -0.8; // light from the top left
   for (let j = 0; j < h; j++) {
@@ -112,6 +120,11 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
         dx = -nx * m;
         dy = -ny * m;
       }
+      if (inside >= 0 && inside < bezel) {
+        const t = 1 - inside / bezel;
+        rim.data[k] = rim.data[k + 1] = rim.data[k + 2] = 255;
+        rim.data[k + 3] = Math.round(255 * t * t * (3 - 2 * t));
+      }
       disp.data[k] = 128 + dx * 127;
       disp.data[k + 1] = 128 + dy * 127;
       disp.data[k + 2] = 128;
@@ -130,11 +143,14 @@ function maps(w: number, h: number, r: number, bezel: number, edges: Edges | nul
   x.clearRect(0, 0, w, h);
   x.putImageData(spec, 0, 0);
   const specUrl = c.toDataURL();
-  return { dispUrl, specUrl };
+  x.clearRect(0, 0, w, h);
+  x.putImageData(rim, 0, 0);
+  const rimUrl = c.toDataURL();
+  return { dispUrl, specUrl, rimUrl };
 }
 
 function build(id: string, w: number, h: number, r: number, o: { blur: number; scale: number; bezel: number; edges: Edges | null }) {
-  const { dispUrl, specUrl } = maps(w, h, r, o.bezel, o.edges);
+  const { dispUrl, specUrl, rimUrl } = maps(w, h, r, o.bezel, o.edges);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
   f.setAttribute('x', '-12%');
@@ -145,7 +161,13 @@ function build(id: string, w: number, h: number, r: number, o: { blur: number; s
   f.innerHTML = `
     <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>
     <feDisplacementMap in="SourceGraphic" in2="map" scale="${o.scale}" xChannelSelector="R" yChannelSelector="G" result="bent"/>
-    <feGaussianBlur in="bent" stdDeviation="${o.blur}" result="frost"/>
+    <feGaussianBlur in="bent" stdDeviation="${o.blur}" result="blurred"/>
+    <feComponentTransfer in="blurred" result="frostFull"><feFuncA type="table" tableValues="1 1"/></feComponentTransfer>
+    <feGaussianBlur in="bent" stdDeviation="${RIM_BLUR}" result="rimBlurred"/>
+    <feComponentTransfer in="rimBlurred" result="frostRim"><feFuncA type="table" tableValues="1 1"/></feComponentTransfer>
+    <feImage href="${rimUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rimMask"/>
+    <feComposite in="frostRim" in2="rimMask" operator="in" result="rimLayer"/>
+    <feComposite in="rimLayer" in2="frostFull" operator="over" result="frost"/>
     <feColorMatrix in="frost" type="saturate" values="1.45" result="lifted"/>
     <feImage href="${specUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rim"/>
     <feComponentTransfer in="rim" result="rimSoft"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
