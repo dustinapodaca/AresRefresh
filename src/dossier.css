@@ -4764,3 +4764,22 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
     padding: 0 var(--ds-gutter); box-sizing: border-box; background: #08090b;
   }
 }
+
+/* ---------- Capability page performance (owner, 2026-10-15, after an audit) ----------
+   On phones the liquid glass covered up to 88% of the screen from the hero down through the cards,
+   redrawn every scroll frame, and scrolling stuttered until Why Ares. The Capability cards sit on
+   plain black, so their backdrop filter showed nothing: it's off (they keep their tint, edge, and
+   corner light). On phones and tablets the frost band under the hero ends just past the quick
+   facts (it ran about 26rem further, mostly invisible) and uses the CSS frost, not the liquid. */
+html[data-cards='glass'] .ds-cs-cards .ds-cs-card { -webkit-backdrop-filter: none; backdrop-filter: none; }
+@media (max-width: 899px) {
+  .ds-cs-facts::before {
+    bottom: -4rem;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  }
+  html[data-liquid='true'] .ds-cs-facts::before {
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+}
