@@ -5,9 +5,18 @@
 // only: other browsers can't use an SVG filter as a backdrop, so they keep the CSS frost.
 
 const NS = 'http://www.w3.org/2000/svg';
-const BEZEL = 18; // px of rim that bends the light
-const SCALE = 36; // the strongest bend, in px
-const BLUR = 9;
+// Defaults (owner, 2026-10-15: a stronger bend; was an 18px rim and a 36px bend).
+const BEZEL = 26; // px of rim that bends the light
+const SCALE = 60; // the strongest bend, in px
+const BLUR = 9; // the frost (a CSS blur(Npx) is the same as N here)
+
+export type LiquidOptions = {
+  /** Put the filter on this pseudo-element (via the --ds-liquid custom property on the host). */
+  pseudo?: '::before' | '::after';
+  blur?: number;
+  scale?: number;
+  bezel?: number;
+};
 
 let defs: SVGDefsElement | null = null;
 let counter = 0;
@@ -53,7 +62,7 @@ function sdf(x: number, y: number, w: number, h: number, r: number) {
   return { d, nx, ny };
 }
 
-function maps(w: number, h: number, r: number) {
+function maps(w: number, h: number, r: number, bezel: number) {
   const c = document.createElement('canvas');
   c.width = w;
   c.height = h;
@@ -69,9 +78,9 @@ function maps(w: number, h: number, r: number) {
       const inside = -d; // px from the rim
       let dx = 0;
       let dy = 0;
-      if (inside >= 0 && inside < BEZEL) {
+      if (inside >= 0 && inside < bezel) {
         // A convex rim: the bend is strongest at the edge and eases to nothing inward.
-        const t = 1 - inside / BEZEL;
+        const t = 1 - inside / bezel;
         const m = t * t * (3 - 2 * t);
         dx = -nx * m;
         dy = -ny * m;
@@ -97,8 +106,8 @@ function maps(w: number, h: number, r: number) {
   return { dispUrl, specUrl };
 }
 
-function build(id: string, w: number, h: number, r: number) {
-  const { dispUrl, specUrl } = maps(w, h, r);
+function build(id: string, w: number, h: number, r: number, o: Required<Omit<LiquidOptions, 'pseudo'>>) {
+  const { dispUrl, specUrl } = maps(w, h, r, o.bezel);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
   f.setAttribute('x', '0');
@@ -109,8 +118,8 @@ function build(id: string, w: number, h: number, r: number) {
   f.setAttribute('color-interpolation-filters', 'sRGB');
   f.innerHTML = `
     <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>
-    <feDisplacementMap in="SourceGraphic" in2="map" scale="${SCALE}" xChannelSelector="R" yChannelSelector="G" result="bent"/>
-    <feGaussianBlur in="bent" stdDeviation="${BLUR}" result="frost"/>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="${o.scale}" xChannelSelector="R" yChannelSelector="G" result="bent"/>
+    <feGaussianBlur in="bent" stdDeviation="${o.blur}" result="frost"/>
     <feColorMatrix in="frost" type="saturate" values="1.45" result="lifted"/>
     <feImage href="${specUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="rim"/>
     <feComponentTransfer in="rim" result="rimSoft"><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
@@ -118,33 +127,46 @@ function build(id: string, w: number, h: number, r: number) {
   return f;
 }
 
-/** Gives one element the liquid backdrop; returns a cleanup. Rebuilds the filter on resize. */
-export function attachLiquid(el: HTMLElement): () => void {
+/** Gives one element (or its pseudo-element) the liquid backdrop; returns a cleanup. Rebuilds the
+ *  filter when the size settles after a resize. */
+export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => void {
   const d = ensureDefs();
   const id = `ares-liquid-${++counter}`;
+  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL };
   let current: SVGFilterElement | null = null;
   let last = '';
   const apply = () => {
-    const w = Math.round(el.offsetWidth);
-    const h = Math.round(el.offsetHeight);
+    const cs = getComputedStyle(el, opts.pseudo ?? null);
+    const w = Math.round(opts.pseudo ? parseFloat(cs.width) : el.offsetWidth);
+    const h = Math.round(opts.pseudo ? parseFloat(cs.height) : el.offsetHeight);
     if (!w || !h) return;
-    const r = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0;
+    const r = parseFloat(cs.borderTopLeftRadius) || 0;
     const key = `${w}x${h}@${r}`;
     if (key === last) return;
     last = key;
-    const next = build(id, w, h, r);
+    const next = build(id, w, h, r, o);
     if (current) d.replaceChild(next, current);
     else d.appendChild(next);
     current = next;
-    el.style.setProperty('backdrop-filter', `url(#${id})`);
-    el.style.setProperty('-webkit-backdrop-filter', `url(#${id})`);
+    if (opts.pseudo) el.style.setProperty('--ds-liquid', `url(#${id})`);
+    else {
+      el.style.setProperty('backdrop-filter', `url(#${id})`);
+      el.style.setProperty('-webkit-backdrop-filter', `url(#${id})`);
+    }
   };
   apply();
-  const ro = new ResizeObserver(apply);
+  // Rebuild once the size settles (a menu opening resizes the nav every frame).
+  let t = 0;
+  const ro = new ResizeObserver(() => {
+    window.clearTimeout(t);
+    t = window.setTimeout(apply, 140);
+  });
   ro.observe(el);
   return () => {
     ro.disconnect();
+    window.clearTimeout(t);
     current?.remove();
+    el.style.removeProperty('--ds-liquid');
     el.style.removeProperty('backdrop-filter');
     el.style.removeProperty('-webkit-backdrop-filter');
   };

@@ -306,12 +306,16 @@ Cards and glass are part of the system, not exceptions.
 - **Liquid glass, the default** (owner 2026-10-15; plain glass `?cards=glass`, solid `?cards=solid`; after gladia.io's audio
   intelligence and meeting assistant pages): the glass cards plus a rim that bends the light behind
   them like the edge of a lens. `src/lib/liquidGlass.ts` builds an SVG backdrop filter for each
-  card's exact size (an 18px rim, a 36px bend at most, then a 9px frost with the color lifted and a
+  card's exact size (a 26px rim, a 60px bend at most since 2026-10-15, was 18 and 36; then a 9px frost with the color lifted and a
   thin highlight along the rim lit from the top left) on the Record, Capability, and pipeline
   cards. Chromium only; Safari and Firefox keep the CSS frost. No light behind the cards (a rust
   arc like Gladia's purple planet was tried and removed, owner 2026-10-15); the Record and
   Capability cards keep their faint rust light in the lower right corner, so the rim bends only the
-  dot grid and the page.
+  dot grid and the page. More color through all of it (owner, 2026-10-15): the cards' wash is 36% to
+  20% black (was 52% to 32%), the Home hero's glass strip 50% to 30% (was 72% to 48%) and liquid too
+  (its 24px blur, through `--ds-liquid` on its ::before), and the nav bar 50% (was 72%; 82% with a
+  desktop menu open). The nav keeps its CSS frost: on its thin bar the liquid filter didn't take and
+  the page showed through sharp.
 - **Glass** (backdrop blur over a dark tint) is for things that sit over moving or
   photographic content: the header bar, the Home hero strip, the Services opening, the
   footer's closing band, the 404 card, the toast. Not for cards on the plain canvas.

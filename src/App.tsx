@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, useSearchParams } from 'react-router-dom';
-import { attachLiquid, liquidSupported } from './lib/liquidGlass';
+import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 import NavPanel, { useNavLayout } from './components/NavPanel';
@@ -55,17 +55,24 @@ function useCardStyle() {
   useLiquidCards(liquid);
 }
 
-// The liquid rim on the cards (lib/liquidGlass.ts), in Chromium browsers only. Finds the cards on
-// whatever page is showing and keeps up as pages change.
-const LIQUID_CARDS = '.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post';
+// The liquid rim (lib/liquidGlass.ts), in Chromium browsers only: the cards and the Home hero's
+// glass strip (its ::before; same blur as its CSS frost). Not the nav: on its thin bar the filter
+// didn't take (the page showed through sharp), so it keeps its CSS frost, with less black.
+// Finds them on whatever page is showing and keeps up as pages change.
+const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
+  { sel: '.ds-value, .ds-cs-card, .ds-pipe-card, .ds-pipe-post' },
+  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 24 } },
+];
 function useLiquidCards(on: boolean) {
   useEffect(() => {
     if (!on || !liquidSupported()) return;
     const done = new Map<HTMLElement, () => void>();
     const scan = () => {
-      document.querySelectorAll<HTMLElement>(LIQUID_CARDS).forEach((el) => {
-        if (!done.has(el)) done.set(el, attachLiquid(el));
-      });
+      for (const { sel, opts } of LIQUID) {
+        document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
+          if (!done.has(el)) done.set(el, attachLiquid(el, opts));
+        });
+      }
       done.forEach((off, el) => {
         if (!el.isConnected) {
           off();
