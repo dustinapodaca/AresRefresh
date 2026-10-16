@@ -1261,6 +1261,11 @@ Few, fast, and crisp. Four to six moments per page.
   contact@aressecurity.co.
 - Pair every proof element with a way to verify it.
 - Write plain, natural copy. No em-dashes, no slogans, no stacked adjectives.
+- "&" in names, "and" in sentences (owner, 2026-10-16). Use "&" in the names of the six services,
+  the six industries, and named offerings ("Teaming & subcontracting"), and in the nav, button, and
+  link labels that point to them ("All services & how a post starts"). Keep "and" in headlines,
+  leads, body copy, FAQ answers, and descriptive lists ("Apartments and HOAs"), and keep official
+  names as issued ("Merchant patrol and security license").
 - Use real Ares and Colorado photography. Patrol-vehicle photos on Home only in 02 Quality (owner, 2026-10-06).
 - Say "minority woman-owned". Veterans: veteran supervisors, a veteran NRA firearms
   instructor, veterans encouraged to apply. Never "veteran-led".
