@@ -75,8 +75,9 @@ const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
   { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18, edges: { top: true } } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
   { sel: '.ds-svc-open-glass', opts: { blur: 18, edges: { bottom: true } } },
-  // The footer only: a light frost along its rim so the bend shows (owner, 2026-10-15).
-  { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true }, rimBlur: 3 } },
+  // The footer only: a lighter frost along its rim (14px easing into its 18px) so the bend shows
+  // a little (owner, 2026-10-15; was 3px).
+  { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true }, rimBlur: 14 } },
   { sel: '.ds-nf-card', opts: { blur: 10 } },
   { sel: '.ds-svc-card-text', opts: { blur: 10, edges: { top: true } } },
 ];
