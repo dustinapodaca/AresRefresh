@@ -21,7 +21,11 @@ export type LiquidOptions = {
   blur?: number;
   scale?: number;
   bezel?: number;
+  /** Only these edges bend and catch the light (full-width bands: never the sides, which sit on
+   *  the screen's edges, and only the edges that read as glass). Default: all four. */
+  edges?: { top?: boolean; right?: boolean; bottom?: boolean; left?: boolean };
 };
+type Edges = { top: boolean; right: boolean; bottom: boolean; left: boolean };
 
 let defs: SVGDefsElement | null = null;
 let counter = 0;
@@ -67,7 +71,7 @@ function sdf(x: number, y: number, w: number, h: number, r: number) {
   return { d, nx, ny };
 }
 
-function maps(w: number, h: number, r: number, bezel: number) {
+function maps(w: number, h: number, r: number, bezel: number, edges: Edges | null) {
   const c = document.createElement('canvas');
   c.width = w;
   c.height = h;
@@ -79,7 +83,26 @@ function maps(w: number, h: number, r: number, bezel: number) {
   for (let j = 0; j < h; j++) {
     for (let i = 0; i < w; i++) {
       const k = (j * w + i) * 4;
-      const { d, nx, ny } = sdf(i + 0.5, j + 0.5, w, h, r);
+      let { d, nx, ny } = sdf(i + 0.5, j + 0.5, w, h, r);
+      if (edges) {
+        // Only the chosen edges: distance and normal to the nearest of them.
+        const x = i + 0.5;
+        const y = j + 0.5;
+        d = -Infinity;
+        nx = 0;
+        ny = 0;
+        const near = (dist: number, ex: number, ey: number) => {
+          if (-dist > d) {
+            d = -dist;
+            nx = ex;
+            ny = ey;
+          }
+        };
+        if (edges.top) near(y, 0, -1);
+        if (edges.bottom) near(h - y, 0, 1);
+        if (edges.left) near(x, -1, 0);
+        if (edges.right) near(w - x, 1, 0);
+      }
       const inside = -d; // px from the rim
       let dx = 0;
       let dy = 0;
@@ -110,8 +133,8 @@ function maps(w: number, h: number, r: number, bezel: number) {
   return { dispUrl, specUrl };
 }
 
-function build(id: string, w: number, h: number, r: number, o: Required<Omit<LiquidOptions, 'pseudo'>>) {
-  const { dispUrl, specUrl } = maps(w, h, r, o.bezel);
+function build(id: string, w: number, h: number, r: number, o: { blur: number; scale: number; bezel: number; edges: Edges | null }) {
+  const { dispUrl, specUrl } = maps(w, h, r, o.bezel, o.edges);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
   f.setAttribute('x', '-12%');
@@ -135,7 +158,9 @@ function build(id: string, w: number, h: number, r: number, o: Required<Omit<Liq
 export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => void {
   const d = ensureDefs();
   const id = `ares-liquid-${++counter}`;
-  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL };
+  const e = opts.edges;
+  const edges: Edges | null = e ? { top: !!e.top, right: !!e.right, bottom: !!e.bottom, left: !!e.left } : null;
+  const o = { blur: opts.blur ?? BLUR, scale: opts.scale ?? SCALE, bezel: opts.bezel ?? BEZEL, edges };
   let current: SVGFilterElement | null = null;
   let last = '';
   const apply = () => {

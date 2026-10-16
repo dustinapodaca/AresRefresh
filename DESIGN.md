@@ -323,7 +323,10 @@ Cards and glass are part of the system, not exceptions.
   each at its CSS blur: the Home hero strip and the Capability hero's frost band (both through
   `--ds-liquid` on their ::before), the Services opening and its card panels, the footer band, and
   the 404 card, each checked to frost (fine detail behind cut by half or more). Chrome doesn't run
-  the filter on fixed or sticky glass, so the nav, the quote toast, and the Home Record cards'
+  the filter on fixed or sticky glass. Full-width bands bend and light only the edges that read as glass,
+  never their sides or an edge that only shows when a phone's address bar slides away (owner,
+  2026-10-15): the footer band, the Capability hero band, and the Services card panels their top, the
+  Services opening its bottom, the Home hero strip its top and bottom. Also, so the nav, the quote toast, and the Home Record cards'
   phone pile keep the CSS frost (the pile at 26px with 62% to 50% black so the card beneath
   doesn't show). The Home Record cards are a little denser on desktop too (26px, 46% to 30%
   black). The prime pipeline's cards and tiles are solid, not glass, on Home and now on /teaming,

@@ -67,13 +67,17 @@ const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
   // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
   { sel: '.ds-value', opts: { blur: 12 } },
   { sel: '.ds-cs-card' },
-  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 10 } },
+  // Full-width bands bend and light only the edges that read as glass, never their sides (they sit
+  // on the screen's edges) and never an edge that only shows when a phone's address bar slides away
+  // (owner, 2026-10-15).
+  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 10, edges: { top: true, bottom: true } } },
   // More frost on the Services opening, the footer, and the Capability hero (owner, 2026-10-15; was 10).
-  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18 } },
+  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18, edges: { top: true } } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
-  { sel: '.ds-svc-open-glass, .ds-ft-glass', opts: { blur: 18 } },
+  { sel: '.ds-svc-open-glass', opts: { blur: 18, edges: { bottom: true } } },
+  { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true } } },
   { sel: '.ds-nf-card', opts: { blur: 10 } },
-  { sel: '.ds-svc-card-text', opts: { blur: 10 } },
+  { sel: '.ds-svc-card-text', opts: { blur: 10, edges: { top: true } } },
 ];
 function useLiquidCards(on: boolean) {
   useEffect(() => {
