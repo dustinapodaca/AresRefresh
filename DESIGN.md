@@ -1005,8 +1005,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   - **Trained on your systems** (folded into stage 03 Guard training, owner 2026-10-16; the
     section is tagged `services-systems-option`): the stage's line now ends on "the systems already
     there", and the six systems follow it as square tags with their authored icons (2px corners,
-    hairline-strong edge, 14px, the icon in ink muted), wrapping, on desktop and in the phone swipe
-    row. (Was its own section: headline and lead left, the tags two by two right.)
+    hairline-strong edge, 14px, the icon in ink muted), wrapping. Below 1024px, in the swipe row,
+    short names on smaller tags (13px, 30px tall: Card readers, Visitor software, CCTV, Radios,
+    Gates and docks, Alarms) so the six take three rows, not six (owner, 2026-10-16). (Was its own
+    section: headline and lead left, the tags two by two right.)
   The dock counts five sections (Industries, By role, Process, Relief schedule, Areas).
 
 ### Mobile breaks (below 1024px unless noted)

@@ -2378,6 +2378,16 @@ html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, 
 .ds-svc-sys li { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; padding: 6px 12px 6px 10px; border: 1px solid var(--ds-rule-strong); border-radius: 2px; font-size: 14px; line-height: 1.35; color: var(--ds-fg); }
 /* The system's icon, quieter than its name (owner, 2026-10-09). */
 .ds-svc-sys li svg { flex: none; color: var(--ds-fg-muted); }
+/* Phones and tablets (the swipe row): short names on smaller tags, so the six take about three
+   rows instead of six (owner, 2026-10-16). */
+.ds-svc-sys-short { display: none; }
+@media (max-width: 1023px) {
+  .ds-svc-sys { gap: 6px; margin-top: 14px; }
+  .ds-svc-sys li { min-height: 30px; padding: 4px 10px 4px 8px; gap: 7px; font-size: 13px; }
+  .ds-svc-sys li svg { width: 14px; height: 14px; }
+  .ds-svc-sys-long { display: none; }
+  .ds-svc-sys-short { display: inline; }
+}
 
 /* ============================================================
    ABOUT ("The Company File", docs/about-concepts.md)

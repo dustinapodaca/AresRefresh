@@ -2,9 +2,12 @@
 // 2026-10-16; they were the section "Trained on your systems.", tagged services-systems-option).
 // Each system with a small authored icon (owner, 2026-10-09): 16px, 1.5px strokes with round
 // caps, like the site's arrows. Decorative; the words carry the meaning.
-const SYSTEMS: { name: string; icon: JSX.Element }[] = [
+// `short` is the name on phones and tablets, where the tags sit in the stages' swipe row and the
+// full names stacked one per line (owner, 2026-10-16).
+const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
   {
     name: 'Card readers and access panels',
+    short: 'Card readers',
     icon: (
       <>
         <rect x="4.5" y="1.75" width="7" height="12.5" rx="1.5" />
@@ -15,6 +18,7 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
   {
     name: 'Visitor management software',
+    short: 'Visitor software',
     icon: (
       <>
         <rect x="1.75" y="2.75" width="12.5" height="10.5" rx="1.5" />
@@ -25,6 +29,7 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
   {
     name: 'CCTV monitors',
+    short: 'CCTV',
     icon: (
       <>
         <path d="M2 4.6 11.2 2.4l1.1 4.3-9.2 2.2Z" />
@@ -34,6 +39,7 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
   {
     name: 'Intercoms and radios',
+    short: 'Radios',
     icon: (
       <>
         <rect x="4.75" y="4.5" width="6.5" height="10" rx="1.5" />
@@ -43,6 +49,7 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
   {
     name: 'Gate and dock controls',
+    short: 'Gates and docks',
     icon: (
       <>
         <path d="M3 14.25V4M1.5 14.25h3" />
@@ -53,6 +60,7 @@ const SYSTEMS: { name: string; icon: JSX.Element }[] = [
   },
   {
     name: 'Alarm panels',
+    short: 'Alarms',
     icon: (
       <>
         <path d="M8 2.25A3.5 3.5 0 0 0 4.5 5.75v3L3 11.25h10l-1.5-2.5v-3A3.5 3.5 0 0 0 8 2.25Z" />
@@ -70,7 +78,8 @@ export default function SystemTags() {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             {s.icon}
           </svg>
-          {s.name}
+          <span className="ds-svc-sys-long">{s.name}</span>
+          <span className="ds-svc-sys-short">{s.short}</span>
         </li>
       ))}
     </ul>
