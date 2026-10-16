@@ -171,10 +171,10 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 1600
   },
   "/images/market/institutional-community.webp": {
-    "src": "/images/opt/market-institutional-community-1200.217f0103.webp",
-    "srcSet": "/images/opt/market-institutional-community-480.e9070b63.webp 480w, /images/opt/market-institutional-community-800.df818f33.webp 800w, /images/opt/market-institutional-community-1200.217f0103.webp 1200w, /images/opt/market-institutional-community-1600.99d267cf.webp 1600w, /images/opt/market-institutional-community-2000.d9ca671a.webp 2000w, /images/opt/market-institutional-community-2400.a3ffd4fd.webp 2400w, /images/opt/market-institutional-community-2752.657fe2d4.webp 2752w",
-    "width": 2752,
-    "height": 1536
+    "src": "/images/opt/market-institutional-community-1200.0eb95a99.webp",
+    "srcSet": "/images/opt/market-institutional-community-480.1b0ef343.webp 480w, /images/opt/market-institutional-community-800.073c5d2d.webp 800w, /images/opt/market-institutional-community-1200.0eb95a99.webp 1200w, /images/opt/market-institutional-community-1600.f909295c.webp 1600w, /images/opt/market-institutional-community-2000.148540e0.webp 2000w, /images/opt/market-institutional-community-2400.576c3eb8.webp 2400w, /images/opt/market-institutional-community-3200.63152604.webp 3200w",
+    "width": 3200,
+    "height": 2133
   },
   "/images/market/airport-transportation.webp": {
     "src": "/images/opt/market-airport-transportation-1200.cd659612.webp",

@@ -83,8 +83,10 @@ PHOTOS = [
     # a glass tower behind (Unsplash, Benigno Hoyuela). 2400px. The generated dusk scene it
     # replaced is in images-unused.
     {'key': '/images/market/commercial-property.webp', 'source': 'assets/images-src/market/commercial-denver-pavilions.jpg', 'q': 80},
-    # The two new industry pages (owner, 2026-10-10), generated like the others.
-    {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/institutional-community.jpg', 'q': 82},
+    # A real photo (owner, 2026-10-16): apartment buildings at blue hour, balconies and warm lit
+    # windows (Unsplash, Getty Images). Master downsized from the 6149px original to 3200px. The
+    # generated scene it replaced is in images-unused.
+    {'key': '/images/market/institutional-community.webp', 'source': 'assets/images-src/market/community-apartments-dusk.jpg', 'q': 80},
     # A real photo (owner, 2026-10-12): Denver International's terminal and hotel at sunset, a jet
     # climbing out. Arrived 2048px and already compressed. (The blue-hour roadway photo, plain and
     # graded, was tried after it and is kept in images-unused.)

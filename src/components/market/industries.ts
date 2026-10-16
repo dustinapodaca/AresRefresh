@@ -289,7 +289,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     short: 'Hospitals, schools, campuses, and apartment communities.',
     title: 'Security for hospitals, schools, campuses, and communities.',
     lead: 'Officers for hospitals, schools, campuses, and apartment communities: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
-    image: { src: '/images/market/institutional-community.webp', alt: '' },
+    // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
+    image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
     stake: [
       'In a hospital, a school, or an apartment community, the officer is part of daily life. Patients, students, staff, and residents need to feel safe without feeling watched, and a visitor in distress needs someone calm.',
       'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
