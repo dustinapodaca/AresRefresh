@@ -958,7 +958,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
   Since later on 2026-10-15 (owner, a hybrid with yucca.co.za) the phone menu is pages that slide
   over: the main page lists Services, Industries, Company, and Capability Statement as large links
-  (Inter Tight 600 21px, was 25) with arrows; tapping one slides the list a quarter to the left and dims it
+  (Inter Tight 600 20px, was 25; each page's title the same 20px) with arrows; tapping one slides the list a quarter to the left and dims it
   while that section's page slides in over it from the right (460ms, the drawer curve), with a Back
   button (focused) and its title, its content coming up in turn. Services and Industries keep the
   photo list and the swipe row; Company is four photo tiles (About Ares with Pikes Peak, Careers

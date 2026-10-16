@@ -4726,11 +4726,11 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 .ds-np-stage[data-panel] .ds-np-pane-main { transform: translateX(-24%); opacity: 0.25; visibility: hidden; max-height: 0;
   transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 460ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 460ms, max-height 0s linear 460ms; }
 /* The main page: large links, an arrow on each. */
-.ds-np-mlist-slide .ds-np-mitem { padding: 16px 0; font: 600 21px/1.1 var(--ds-display); letter-spacing: -0.03em; } /* 21px (owner, 2026-10-15; was 25) */
+.ds-np-mlist-slide .ds-np-mitem { padding: 16px 0; font: 600 20px/1.1 var(--ds-display); letter-spacing: -0.03em; } /* 20px, the same as the page titles (owner, 2026-10-15; was 25, then 21) */
 .ds-np-mlist-slide .ds-np-mitem .ds-arrow { flex: none; }
 /* A section page: back, its title, then its content coming up in turn. */
 .ds-np-back { display: inline-flex; align-items: center; gap: 10px; height: 44px; margin: 4px 0 0 -2px; padding: 0 4px; border: 0; background: none; font: 400 14px var(--ds-text); color: var(--ds-fg-muted); cursor: pointer; }
-.ds-np-pane-title { margin: 6px 0 16px; font: 600 26px/1.1 var(--ds-display); letter-spacing: -0.035em; color: var(--ds-fg); }
+.ds-np-pane-title { margin: 6px 0 16px; font: 600 20px/1.1 var(--ds-display); letter-spacing: -0.03em; color: var(--ds-fg); } /* 20px, matching the main links (owner, 2026-10-15; was 26) */
 .ds-np-overview { list-style: none; margin: 0 0 18px; padding: 0 0 16px; display: grid; gap: 12px; border-bottom: 1px solid rgb(255 255 255 / 0.1); }
 .ds-np-pane-sub > * { transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1), opacity 460ms cubic-bezier(0.22, 1, 0.36, 1); }
 .ds-np-pane-sub:not([data-on]) > * { transform: translateX(24px); opacity: 0.35; }
