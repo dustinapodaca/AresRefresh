@@ -2,7 +2,8 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
 
-// Four openings for the Services page, each built on the copper-glass tower and each with glass
+// The Services opening (aperture, the default since 2026-10-15, owner) and three other forms kept
+// for comparison. Four openings for the Services page, each built on the copper-glass tower and each with glass
 // doing a job (owner, 2026-10-15: "another home page hero that needs to wow"; from Mobbin, Emil,
 // and Impeccable). No scroll hold. Only the headline and the lead: the services and industries
 // stay in the page below, so the opening sends the reader down to them (owner, 2026-10-15; the

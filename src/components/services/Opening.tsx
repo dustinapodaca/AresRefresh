@@ -50,17 +50,17 @@ const COPY = {
   },
 } as const;
 
-// /services?open=curtain|aperture|index|lens: the four openings in OpeningForms.tsx (owner,
-// 2026-10-15). The glass opening below stays the default until the owner picks.
+// The opening's form (OpeningForms.tsx). Aperture is the default (owner, 2026-10-15); curtain,
+// sink, and lens stay switchable at /services?open=curtain|sink|lens, and the earlier glass that
+// slid up over the held photo at /services?open=current (the only form that holds the scroll).
 export default function Opening() {
   const [params] = useSearchParams();
   const askedForm = params.get('open');
-  if (askedForm && (FORMS as readonly string[]).includes(askedForm)) {
-    const asked = params.get('hero');
-    const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
-    return <OpeningForms form={askedForm as Form} copy={copy} />;
-  }
-  return <OpeningGlass />;
+  if (askedForm === 'current') return <OpeningGlass />;
+  const form = (askedForm && (FORMS as readonly string[]).includes(askedForm) ? askedForm : 'aperture') as Form;
+  const asked = params.get('hero');
+  const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
+  return <OpeningForms form={form} copy={copy} />;
 }
 
 function OpeningGlass() {

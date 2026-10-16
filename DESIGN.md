@@ -562,7 +562,8 @@ exception to "no card containers" and "no glass" for this section.
 ### Services page ("The Schedule", 2026-10-05)
 Same system as Home, its own structures (owner: "similar but unique to the page
 contents"). Nothing on Services repeats a Home layout except the rail and the footer.
-- **Opening:** headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
+- **Opening: aperture, the default since 2026-10-15 (owner)**, described under "Four openings" below.
+  What follows is the earlier glass opening, kept at `/services?open=current`: headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05). **Photo since 2026-10-15 (owner): the copper-glass tower (`hero6.jpg`, from the Home
   hero), anchored at its foot so the lit copper underside sits in the clear area below the glass,
   no caption (not a named place); headline 6:1, lead 7:1 or better.** The Capitol is `?photo=capitol`. Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
@@ -583,8 +584,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   "Who we protect ↓" link to the industries: the services and industries stay in the page below, so
   the opening sends the reader down to them (owner, 2026-10-15; versions with the six services in the
   opening, including `index`, are tagged `services-open-roles-option`; three plainer forms, `plate`,
-  `split`, `overlap`, were dropped as too basic). The glass opening stays the default until the owner
-  picks.
+  `split`, `overlap`, were dropped as too basic). **Aperture is the default (owner, 2026-10-15)**;
+  curtain, sink, and lens stay at `?open=curtain|sink|lens`, and the earlier sliding glass, the only
+  form with the scroll hold, at `?open=current`.
   - `curtain`: the photo seen through tall frosted panes like the tower's own curtain wall (six from
     1024px, three below), 1px mullions between them, the headline (8 columns) and the lead (in ink)
     over their tops. A pane is a blurred copy of the photo laid exactly over it (no backdrop filter,
