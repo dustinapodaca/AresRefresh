@@ -39,9 +39,11 @@ const industries = INDUSTRY_PAGES.map((i) => ({ label: i.name, to: `/industries/
 // The Industries menu's default photo, also Government & Military's: closer, toward the radomes on
 // the left (owner, 2026-10-13: 1.6x, was 1.25x).
 const GOV_IMAGE: MenuImage = { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' };
-// Each industry's own page photo for the Industries menu (owner, 2026-10-16). Captions only where
-// the photo is a known place; the others leave the line empty so the menu keeps its height.
+// Each industry's own page photo for the Industries menu, each with a caption (owner, 2026-10-16;
+// the data center and apartment lines are the owner's wording for those two photos).
 const INDUSTRY_CAPTIONS: Record<string, string> = {
+  'critical-infrastructure': 'A data center in view of the Rockies',
+  'institutional-community': 'An apartment community in Colorado',
   'construction-industrial': 'A build in downtown Colorado Springs',
   'airport-transportation': 'Denver International Airport',
   'commercial-property': 'Denver Pavilions, Denver',
