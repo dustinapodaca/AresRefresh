@@ -889,5 +889,4 @@ Every button and link that says it (the nav button and Company menu, the Home he
 
 ## Services opening forms (owner, 2026-10-15)
 
-New interface lines in the four `/services?open=` forms only (the default opening is unchanged): "Six services." (the aperture card's heading), "Or find your industry" (a link to the industries section), and "View the service" (the index card's link). The service names, keys, and lines are the existing ones from the service pages and the Capability Statement.
-
+New interface line in the four `/services?open=` forms only (the default opening is unchanged): "Who we protect" with a down arrow, a link to the industries section. The headline and lead are the current copy. (An earlier round's "Six services.", "Or find your industry", and "View the service" went with the versions that put the services in the opening, tagged `services-open-roles-option`.)

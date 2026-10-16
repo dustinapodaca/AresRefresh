@@ -579,35 +579,31 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   division containers start a short scroll below.
 - **Four openings with glass, no scroll hold** (owner, 2026-10-15: "another home page hero that
   needs to wow"; from Mobbin, Emil, and Impeccable), to compare at `/services?open=`. Each uses the
-  copper-glass tower (graded like the Home hero) and puts the six services in the opening, in their
-  fixed order, each a link to its page, since the lead says "Pick a service". The glass opening stays
-  the default until the owner picks. (Three plainer forms, `plate`, `split`, `overlap`, were tried
-  and dropped the same day as too basic.)
-  - `curtain`: the photo seen through six frosted panes, like the tower's own curtain wall. From
-    1024px six tall panes run from the top of the page to the foot of the opening, 1px mullions
-    between them, the headline (8 columns) and the lead (in ink) across their tops, each pane's
-    service name (Inter Tight 600, 19 to 24px) and keys in mono at its foot. A pane is a blurred
-    copy of the photo laid exactly over it (no backdrop filter, so cheap on phones) under a dark tint;
-    on hover or focus the frost fades (260ms) to the crisp photo. On the first view the glass forms
-    pane by pane (900ms, 80ms apart). Tablets: 3 by 2 panes under the copy; phones 2 by 3, with a
-    shade from the top behind the copy.
-  - `aperture`: the headline large (up to 100px, 8 columns) and the lead beside its foot, then the
-    photo as a plate in the column (4px corners) that opens to the screen's edges over the first 70%
-    of a screen of scroll, the photo settling from 1.1 inside it (tied to the scroll, static without
-    scroll timelines or under reduced motion). A liquid glass card ("Six services.", two columns of
-    name and keys on hairlines, "Or find your industry" to #divisions) straddles the photo's foot
-    on the right, so its rim bends the photo's edge. Phones: one column, the card over the plate's foot.
-  - `index`: the six set large over the photo (Inter Tight 600, up to 64px; A24's stacked titles),
-    the current one in ink and the rest in ink muted; a liquid glass card (keys, the line, "View the
-    service") rides beside the current row (520ms) and the photo reframes on it (each service its own
-    scale and shift, 1.6s). It steps through the six every 3.4s while in view, holds while the reader
-    points at or focuses the list, and never steps under reduced motion. A shade from the left and
-    from the top and foot keeps the copy readable. Phones: the card under the list.
-  - `lens`: one tall liquid glass slab (6 columns, from under the nav to 32px above the foot, the
-    site's glass edge, a wider 32px rim and a light 7px frost so the towers bend through it) holding
-    the headline, the lead, and the six as a ledger (name, keys in mono, arrow). The photo drifts
-    slowly behind it on desktop (26s, ambient, off under reduced motion) so the bend moves. Phones:
-    the photo above, the slab over its lower part.
+  copper-glass tower (graded like the Home hero) and holds only the headline, the lead, and a quiet
+  "Who we protect ↓" link to the industries: the services and industries stay in the page below, so
+  the opening sends the reader down to them (owner, 2026-10-15; versions with the six services in the
+  opening, including `index`, are tagged `services-open-roles-option`; three plainer forms, `plate`,
+  `split`, `overlap`, were dropped as too basic). The glass opening stays the default until the owner
+  picks.
+  - `curtain`: the photo seen through tall frosted panes like the tower's own curtain wall (six from
+    1024px, three below), 1px mullions between them, the headline (8 columns) and the lead (in ink)
+    over their tops. A pane is a blurred copy of the photo laid exactly over it (no backdrop filter,
+    so cheap on phones) under a tint dark at the top behind the copy and clear through the middle;
+    under the pointer the frost fades (260ms) to the crisp photo. On the first view the glass forms
+    pane by pane (900ms, 80ms apart). The opening fades into the canvas at its foot.
+  - `aperture`: the headline large (up to 116px), then the photo as a plate in the column (4px
+    corners) that opens to the screen's edges over the first 70% of a screen of scroll, the photo
+    settling from 1.1 inside it (tied to the scroll; static without scroll timelines or under reduced
+    motion). A liquid glass card with the lead straddles the plate's top edge on the right, beside the
+    headline's foot, so its rim bends the photo's edge. Phones: the card over the plate's foot.
+  - `sink`: the headline huge (up to 148px) low over the photo, its last line resting in a full-width
+    band of liquid glass (18px frost, its top edge bent and lit, like the footer's ARES letters) that
+    holds the lead and the link. A shade over the photo keeps the headline 6:1 or better.
+  - `lens`: one tall liquid glass slab (6 columns, from under the nav to 56px above the foot, the
+    site's glass edge, a wider 32px rim and a light 7px frost) with the headline at its top and the
+    lead at its foot, clear glass between where the towers bend through. The photo drifts slowly
+    behind it on desktop (26s, ambient, off under reduced motion) so the bend moves. Phones: the photo
+    above, the slab over its lower part.
 - **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
   Industries list were the same list shown twice, so the section is now "Who we protect."
   ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &
