@@ -306,7 +306,11 @@ Cards and glass are part of the system, not exceptions.
 - **Liquid glass, the default** (owner 2026-10-15; plain glass `?cards=glass`, solid `?cards=solid`; after gladia.io's audio
   intelligence and meeting assistant pages): the glass cards plus a rim that bends the light behind
   them like the edge of a lens. `src/lib/liquidGlass.ts` builds an SVG backdrop filter for each
-  card's exact size (a 26px rim, a 60px bend at most since 2026-10-15, was 18 and 36; then a 9px frost with the color lifted and a
+  card's exact size, matched to Gladia's own filter (owner, 2026-10-15: the first version faded at the
+  edges instead of bending): the filter region runs 12% past the element so the rim has real page to
+  bend, the bend is strongest right at the rim and dies off within about 20px (e^(-d/4) over a 24px
+  rim), reaching 100px, then a light frost (7px on the cards, 10px on the hero strips, Services
+  opening and cards, footer, and 404; 12px on the Home Record cards) with the color lifted and a
   thin highlight along the rim lit from the top left) on the Record, Capability, and pipeline
   cards. Chromium only; Safari and Firefox keep the CSS frost. No light behind the cards (a rust
   arc like Gladia's purple planet was tried and removed, owner 2026-10-15); the Record and

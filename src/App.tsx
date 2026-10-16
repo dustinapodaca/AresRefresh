@@ -62,14 +62,16 @@ function useCardStyle() {
 // Pseudo-element glass takes its filter through --ds-liquid. Finds them on whatever page is
 // showing and keeps up as pages change.
 const LIQUID: { sel: string; opts?: LiquidOptions }[] = [
-  // The Home Record cards a little blurrier, so they read as glass on phones (owner, 2026-10-15).
-  { sel: '.ds-value', opts: { blur: 26 } },
+  // The frost is lighter than the CSS frost these surfaces had (22 to 26px), as on Gladia, or the
+  // blur smears the bend away; the dark tints keep the copy readable. The Home Record cards stay a
+  // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
+  { sel: '.ds-value', opts: { blur: 12 } },
   { sel: '.ds-cs-card' },
-  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 24 } },
-  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 22 } },
+  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 10 } },
+  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 10 } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
-  { sel: '.ds-svc-open-glass, .ds-ft-glass, .ds-nf-card', opts: { blur: 22 } },
-  { sel: '.ds-svc-card-text', opts: { blur: 24 } },
+  { sel: '.ds-svc-open-glass, .ds-ft-glass, .ds-nf-card', opts: { blur: 10 } },
+  { sel: '.ds-svc-card-text', opts: { blur: 10 } },
 ];
 function useLiquidCards(on: boolean) {
   useEffect(() => {

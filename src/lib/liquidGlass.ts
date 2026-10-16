@@ -5,10 +5,15 @@
 // only: other browsers can't use an SVG filter as a backdrop, so they keep the CSS frost.
 
 const NS = 'http://www.w3.org/2000/svg';
-// Defaults (owner, 2026-10-15: a stronger bend; was an 18px rim and a 36px bend).
-const BEZEL = 26; // px of rim that bends the light
-const SCALE = 60; // the strongest bend, in px
-const BLUR = 9; // the frost (a CSS blur(Npx) is the same as N here)
+// Matched to gladia.io's own filter (owner, 2026-10-15): the bend is strongest right at the rim and
+// dies off within about 20px (their map: full at the edge, about 57% at 2px, 14% at 8px, gone by
+// 24px), it reaches 100px, and the frost is light (7px) so the bend stays visible. The filter
+// region runs 12% past the element on every side, as theirs does, so the rim has real page to
+// bend and the frost doesn't fade out toward the edges.
+const BEZEL = 24; // px of rim that bends the light
+const SCALE = 100; // the strongest bend, in px
+const FALLOFF = 4; // px: the bend at d px in from the rim is e^(-d / FALLOFF)
+const BLUR = 7; // the frost (a CSS blur(Npx) is the same as N here)
 
 export type LiquidOptions = {
   /** Put the filter on this pseudo-element (via the --ds-liquid custom property on the host). */
@@ -79,9 +84,8 @@ function maps(w: number, h: number, r: number, bezel: number) {
       let dx = 0;
       let dy = 0;
       if (inside >= 0 && inside < bezel) {
-        // A convex rim: the bend is strongest at the edge and eases to nothing inward.
-        const t = 1 - inside / bezel;
-        const m = t * t * (3 - 2 * t);
+        // Strongest at the edge, dying off quickly inward (and to exactly 0 at the bezel).
+        const m = Math.exp(-inside / FALLOFF) * (1 - inside / bezel);
         dx = -nx * m;
         dy = -ny * m;
       }
@@ -110,11 +114,10 @@ function build(id: string, w: number, h: number, r: number, o: Required<Omit<Liq
   const { dispUrl, specUrl } = maps(w, h, r, o.bezel);
   const f = document.createElementNS(NS, 'filter');
   f.setAttribute('id', id);
-  f.setAttribute('x', '0');
-  f.setAttribute('y', '0');
-  f.setAttribute('width', String(w));
-  f.setAttribute('height', String(h));
-  f.setAttribute('filterUnits', 'userSpaceOnUse');
+  f.setAttribute('x', '-12%');
+  f.setAttribute('y', '-12%');
+  f.setAttribute('width', '124%');
+  f.setAttribute('height', '124%');
   f.setAttribute('color-interpolation-filters', 'sRGB');
   f.innerHTML = `
     <feImage href="${dispUrl}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="map"/>
