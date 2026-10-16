@@ -901,3 +901,10 @@ New interface line in the four `/services?open=` forms only (the default opening
 - **The relief roster.** is now an H2 in its own block, same paragraph and proof. New lines in its illustration: "A week of posts", "Thursday night: officer out", and "Covered the same shift from the roster" (from the existing "Posts we already staff are covered the same shift from our relief roster."); labels Day, Swing, Night, On call.
 - **Trained on your systems.** is now an H2 with the same lead and six systems.
 
+## Services: the relief schedule (owner, 2026-10-15)
+
+- Headline "The relief schedule." (was "The relief roster.").
+- Paragraph: "the post is covered from our on-call schedule instead of standing empty" (was "from our roster").
+- The illustration's last line: "Covered the same shift from this week's on-call schedule" (was "Covered the same shift from the roster").
+- Dock label "Relief schedule". Other pages still say "relief roster" (Capability Statement, service and industry pages, the Insights article).
+

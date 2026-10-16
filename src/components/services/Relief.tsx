@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 
-// 04 The relief roster (owner, 2026-10-15): the on-call offering in its own block, after the
+// 04 The relief schedule (owner, 2026-10-15; was "The relief roster"): the on-call offering in its own block, after the
 // program section folded into the four stages. Beside the copy, a week of shifts drawn small
 // plays one quiet moment when the block comes into view: the week fills in, one night shift's
 // officer is out (red), the on-call slot beneath it lights and a hairline rises into the
-// shift, and it turns green, "Covered the same shift from the roster" (an owner-approved line).
+// shift, and it turns green, "Covered the same shift from this week's on-call schedule" (owner).
 // It plays once and holds. The finished state is the default (prerendered, no JS, reduced
 // motion); only a reader who will see it play gets the empty start.
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -16,7 +16,7 @@ const STATUS: Record<Step, string> = {
   fill: 'A week of posts',
   out: 'Thursday night: officer out',
   relief: 'Thursday night: officer out',
-  done: 'Covered the same shift from the roster',
+  done: 'Covered the same shift from this week\u2019s on-call schedule',
 };
 
 export default function Relief() {
@@ -56,10 +56,10 @@ export default function Relief() {
     <section id="relief" ref={ref} className="ds-svc-relief-sec" aria-labelledby="relief-title">
       <div className="ds-relief-panel">
         <div className="ds-relief-copy">
-          <h2 id="relief-title" className="ds-display-md">The relief roster.</h2>
+          <h2 id="relief-title" className="ds-display-md">The relief schedule.</h2>
           <p>
             On-call coverage is written into every contract. When an officer cannot make a shift, the
-            post is covered from our roster instead of standing empty. It is also how we staff surge
+            post is covered from our on-call schedule instead of standing empty. It is also how we staff surge
             work: inspections, transitions, construction phases, outages and storm events, and dates
             that outgrow your normal staffing.
           </p>
@@ -71,7 +71,7 @@ export default function Relief() {
         <figure
           className="ds-relief-fig"
           data-step={step}
-          aria-label="An example week of day, swing, and night shifts: an officer is out on Thursday night, and the shift is covered from the on-call roster"
+          aria-label="An example week of day, swing, and night shifts: an officer is out on Thursday night, and the shift is covered from the on-call schedule"
         >
           <div className="ds-relief-grid" aria-hidden="true">
             <span />

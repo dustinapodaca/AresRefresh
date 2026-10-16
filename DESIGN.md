@@ -965,8 +965,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   `services-program-option`): its post orders and SOPs went into stage 02, training on the post
   into 03, and leadership on the first shift and the audit logs into 04. Two parts stand on their
   own after the stages:
-  - **04 The relief roster:** a contained panel (the prime contractors panel's surface, 4px
-    corners, 48px padding on desktop) with "The relief roster." (display-md), its paragraph, and
+  - **04 The relief schedule** (owner, 2026-10-15; was "The relief roster"): a contained panel (the prime contractors panel's surface, 4px
+    corners, 48px padding on desktop) with "The relief schedule." (display-md), its paragraph, and
     the proof beside the green status light ("Fewer than 1% of shifts missed since 2021", mono) in
     columns 1 to 5, and a small week of shifts in columns 7 to 12 (stacked on phones): Mon to Sun
     in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On call
@@ -975,13 +975,13 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     week fills in cell by cell (28ms apart), Thursday night's dot turns red (#e5534b; owner,
     2026-10-15, was amber) ("Thursday night: officer out", held 2.4s), the on-call slot beneath it
     lights green and a hairline rises into the shift (1560ms), and 1.8s later the shift turns green
-    (from the call-out on, three times the first pace so it can be read; owner, 2026-10-15), "Covered the same shift from the roster" (the site's
-    approved line). Once, then it holds; the finished week is the default (prerendered, no JS,
+    (from the call-out on, three times the first pace so it can be read; owner, 2026-10-15), "Covered
+    the same shift from this week's on-call schedule" (owner). Once, then it holds; the finished week is the default (prerendered, no JS,
     reduced motion, or already on screen). The green is the Capability page's status green; the
     red is used only here.
   - **05 Trained on your systems:** its own short section, the shared head (display-lg, the lead
     beside it) over the six systems as square tags with their authored icons.
-  The dock counts six sections (Industries, By role, Process, Relief roster, Systems, Areas).
+  The dock counts six sections (Industries, By role, Process, Relief schedule, Systems, Areas).
 
 ### Mobile breaks (below 1024px unless noted)
 - **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides

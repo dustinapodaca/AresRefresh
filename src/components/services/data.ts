@@ -8,7 +8,7 @@ export const SERVICE_MARKS: readonly Mark[] = [
   { id: 'process', n: '03', label: 'Process' },
   // "A security program, not a headcount." folded into the stages and split in two (owner,
   // 2026-10-15; the old section is tagged services-program-option).
-  { id: 'relief', n: '04', label: 'Relief roster' },
+  { id: 'relief', n: '04', label: 'Relief schedule' },
   { id: 'systems', n: '05', label: 'Systems' },
   { id: 'areas', n: '06', label: 'Areas' },
 ];
