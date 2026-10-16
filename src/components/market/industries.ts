@@ -42,27 +42,31 @@ const GSA: SheetRow = { label: 'GSA MAS', value: '47QSMS25D009Q, SIN 561612', hr
 // Commercial, Institutional.
 export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
+    // Government & Defense (owner, 2026-10-16; was Government & Military): federal agencies,
+    // military installations, and defense contractors, pitched the way CenCore pitches its
+    // defense page (security as part of the mission), without its clearance claims. The slug stays.
     slug: 'government-military',
-    name: 'Government & Military',
-    short: 'Federal, state, and municipal facilities and military installations, through GSA.',
-    title: 'Security for government and military facilities.',
-    lead: 'Officers for federal, state, and municipal facilities and military installations, available to agencies through our GSA Multiple Award Schedule.',
-    // A real photo (owner, 2026-10-12): a Space Force base at golden hour. The strip keeps the
-    // radomes, building, and mountains; Home's card zooms in on a radome, the dish, and the wing.
+    name: 'Government & Defense',
+    short: 'Federal agencies, military bases, and defense contractors, through GSA.',
+    title: 'Security for government, military bases, and defense contractors.',
+    lead: 'Officers for federal, state, and local agencies, military installations, and the defense contractors that support them: restricted-area escort, access control, and armed posts, available to agencies through our GSA Multiple Award Schedule.',
+    // A real photo (owner, 2026-10-16): radomes behind a barbed-wire fence on a Space Force base in
+    // Colorado. The strip sits low (whole radomes, the mountains, the fence line along its foot);
+    // Home's card shows the left radome and the low buildings behind the fence.
     image: {
       src: '/images/market/government-military.webp',
       alt: '',
-      position: '50% 55%',
-      card: { position: '22% 50%', zoom: 2, origin: '25% 57%' },
+      position: '50% 90%',
+      card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%' },
     },
     stake: [
-      'Public-sector posts run on post orders, documentation, and the rules of the facility. The officer at the entrance represents the agency to everyone who walks through it.',
-      'Agencies also need a contracting path that already exists. Ares holds a GSA Multiple Award Schedule contract, is active on SAM.gov, and is an SBA-certified woman-owned small business.',
+      'On a military installation or a defense contractor’s site, security is part of the mission. One missed check at a gate, or one unescorted visitor in a restricted area, becomes a finding, a stop-work, or a delay to the program.',
+      'Agencies and primes also need a contracting path that already exists. Ares holds a GSA Multiple Award Schedule contract, is active on SAM.gov, and is an SBA-certified woman-owned small business, so an agency can order directly and a prime can count our work toward its small-business subcontracting goals.',
     ],
     deliver: [
-      { role: 'restricted-area-escort', line: 'Escort for crews, visitors, and deliveries inside restricted areas, with custody logs.' },
-      { role: 'access-control', line: 'Entry control, visitor screening, and escort and monitoring inside restricted areas.' },
-      { role: 'unarmed-security-officers', line: 'Uniformed officers for entrances, lobbies, and public areas, working to the facility’s post orders.' },
+      { role: 'restricted-area-escort', line: 'Escort for crews, visitors, and deliveries inside restricted areas on installations and contractor sites, with custody logs.' },
+      { role: 'access-control', line: 'Gate and entry control, credential and vehicle checks, and visitor screening, alongside base security forces.' },
+      { role: 'unarmed-security-officers', line: 'Uniformed officers for agency buildings, contractor offices, and public areas, working to the facility’s post orders.' },
       { role: 'armed-security-officers', line: 'Armed posts where the facility or the contract requires them.' },
     ],
     why: [
@@ -70,12 +74,13 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       { label: 'SAM.gov', value: `Active through ${SAM_ACTIVE_THROUGH}`, href: SAM_VERIFY, external: true },
       { label: 'WOSB', value: 'WOSB250470, set-aside eligible under NAICS 561612' },
       { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', href: '/services/restricted-area-escort' },
+      { label: 'Primes', value: 'Subcontracting credit as a woman-owned small business, under your contract', href: '/teaming' },
       // General, not a count (owner, 2026-10-10: never "veteran-heavy").
       { label: 'Veterans', value: 'We hire veterans, and veterans hold leadership roles, including supervision and firearms training' },
     ],
     // The detail half of the prime panel's two-tone line (the claim is in IndustryPage.tsx).
     primes: 'Subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage under your contract.',
-    ask: 'Send us the facility, the post requirements, and the period of performance. We will come back with a staffing plan under our GSA Schedule.',
+    ask: 'Send us the installation or facility, the post requirements, and the period of performance. We will come back with a staffing plan, under our GSA Schedule or your contract.',
     faq: [
       {
         q: 'How can an agency buy from Ares?',
@@ -88,6 +93,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Where can we check your identifiers?',
         a: 'UEI XQXDN6E33SF4, CAGE 9KL18, and primary NAICS 561612. Every code is on our Capability Statement, with links to check them on SAM.gov and GSA eLibrary.',
+      },
+      {
+        q: 'Do you work with defense contractors?',
+        a: 'Yes. We can post officers for access control, visitor screening, and escorts at contractor facilities and on the installations where they work, and we team with primes as a woman-owned small business subcontractor for relief, overflow, and surge coverage under their contracts.',
       },
       {
         q: 'Have you worked on military installations?',

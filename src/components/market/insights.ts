@@ -166,7 +166,7 @@ export const INSIGHTS: Insight[] = [
       { p: 'Ares holds GSA MAS contract 47QSMS25D009Q under SIN 561612, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
     related: [
-      { label: 'Government & Military', to: '/industries/government-military' },
+      { label: 'Government & Defense', to: '/industries/government-military' },
       { label: 'Capability Statement', to: '/capability-statement' },
     ],
   },

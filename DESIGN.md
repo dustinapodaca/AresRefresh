@@ -494,7 +494,7 @@ exception to "no card containers" and "no glass" for this section.
 
 ### 02 Industries (Home, copy audit round 2, owner 2026-10-10)
 - "The sites we protect." in the shared head, then the six industries in the owner's
-  order. **Chosen: plates**: the first three (Government & Military; Critical &
+  order. **Chosen: plates**: the first three (Government & Defense; Critical &
   High-Liability Sites; Construction, Industrial & Logistics) as photographs in the column
   (the industry pages' generated images, 4:5, 16:10 on phones, 4px corners, white/8% inset
   edge, graded `saturate(0.78) brightness(0.84)`, no caption, 1.03 zoom on hover), the name
@@ -974,11 +974,12 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Construction, Industrial & Logistics is the first: a steel-frame build in downtown
   Colorado Springs on a winter day, the contractor's name on the elevator core removed,
   framed at `50% 35%` so the crane and roofline show (each image can set its own `position`
-  in `industries.ts`; default `50% 60%`). Government & Military: a Space Force base near
-  Colorado Springs at golden hour (radomes, a dish, the main building, the Front Range), no
-  sign or name to remove (the grey clouds across the top left were removed with a masked edit,
-  color-matched to the clear sky, owner 2026-10-16), strip at `50% 55%`; Home's card zooms 2x on a radome, the dish,
-  and the wing (`card` in `industries.ts`: position, zoom, origin). Airport & Transportation:
+  in `industries.ts`; default `50% 60%`). Government & Defense (renamed from Government & Military,
+  owner 2026-10-16: federal agencies, military installations, and defense contractors, pitched
+  like CenCore's defense page without its clearance claims): radomes behind a barbed-wire fence on a
+  Space Force base in Colorado (DVIDS 7084760), strip at `50% 90%` (whole radomes, the mountains, the
+  fence line), Home's card on the left radome behind the fence (`0% 50%`, 1.35x toward `22% 88%`).
+  The golden-hour base photo before it (and its cloud-free edit) is in images-unused. Airport & Transportation:
   Denver International's terminal and hotel at sunset with a jet climbing out (owner,
   2026-10-12, chosen back over a blue-hour roadway photo, kept graded and plain in
   images-unused), strip at `50% 96%` so the terminal rides above the bottom fade; phones zoom

@@ -38,21 +38,21 @@ export const DIVISIONS: Division[] = [
   {
     id: 'government',
     n: '01',
-    title: 'Government & Military',
-    // Was "Lawful, immediate access to federal and state facilities, with veterans on our
-    // staff" (copy audit: unclear, read as an overclaim; 2026-10-10).
-    body: 'Officers for federal, state, and municipal facilities and military installations, including restricted-area escort and access control. Agencies can order through our GSA Schedule without opening a new competition.',
+    // Government & Defense (owner, 2026-10-16; was Government & Military). "Without opening a new
+    // competition" came out with it (the CenCore finish review called it overstated).
+    title: 'Government & Defense',
+    body: 'Officers for federal agencies, military installations, and defense contractors, including restricted-area escort and access control. Agencies can order through our GSA Schedule.',
     covers: [
       { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
-      { name: 'Courthouses', detail: 'Uniformed officers for entrances and public areas, working to the court\u2019s post orders.' },
-      { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule without opening a new competition.' },
+      { name: 'Defense contractors', detail: 'Access control, visitor screening, and escorts at contractor sites, and teaming with primes.' },
+      { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule.' },
       { name: 'Restricted areas', detail: 'Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces.' },
     ],
     photo: {
       src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
       sharp: { src: '/images/matrix-government.webp', width: 862, height: 862 },
     },
-    page: { to: '/industries/government-military', label: 'government and military' },
+    page: { to: '/industries/government-military', label: 'government and defense' },
   },
   {
     id: 'critical',

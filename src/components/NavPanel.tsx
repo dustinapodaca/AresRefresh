@@ -36,9 +36,9 @@ type Menu = {
 const roles = ROLE_PAGES.map((r) => ({ label: r.name, to: `/services/${r.slug}` }));
 const industries = INDUSTRY_PAGES.map((i) => ({ label: i.name, to: `/industries/${i.slug}` }));
 
-// The Industries menu's default photo, also Government & Military's: closer, toward the radomes on
-// the left (owner, 2026-10-13: 1.6x, was 1.25x).
-const GOV_IMAGE: MenuImage = { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '18% 60%', zoom: 1.6, origin: '18% 60%' };
+// The Industries menu's default photo, also Government & Defense's: the radomes behind the fence
+// (owner, 2026-10-16; the earlier base photo was zoomed 1.6x toward its radomes).
+const GOV_IMAGE: MenuImage = { src: '/images/market/government-military.webp', caption: 'A Space Force base in Colorado', position: '60% 55%' };
 // Each industry's own page photo for the Industries menu, each with a caption (owner, 2026-10-16;
 // the data center and apartment lines are the owner's wording for those two photos).
 const INDUSTRY_CAPTIONS: Record<string, string> = {

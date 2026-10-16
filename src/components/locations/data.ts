@@ -102,7 +102,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     },
   ],
   sectors: [
-    { name: 'Defense contractors and military-adjacent sites', division: 'Government & Military', divisionId: 'government' },
+    { name: 'Defense contractors and military-adjacent sites', division: 'Government & Defense', divisionId: 'government' },
     { name: 'Data centers', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Construction and industrial sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
     { name: 'Utilities and critical infrastructure', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
@@ -166,7 +166,7 @@ export const DENVER: LocationFile = {
     { name: 'Warehouses and logistics', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
     { name: 'Hospitals and healthcare', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Parking and transportation', division: 'Airport & Transportation', divisionId: 'airport' },
-    { name: 'Public-sector facilities', division: 'Government & Military', divisionId: 'government' },
+    { name: 'Public-sector facilities', division: 'Government & Defense', divisionId: 'government' },
     { name: 'Commercial property and corporate campuses', division: 'Commercial & Retail', divisionId: 'commercial' },
   ],
   landmarks: [{ label: 'DEN', note: 'AIRPORT', lat: 39.8561, lon: -104.6737, side: 'right', kind: 'airport', inline: true }],
@@ -207,7 +207,7 @@ export const PUEBLO: LocationFile = {
   sectors: [
     { name: 'Industrial and energy sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
     { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
-    { name: 'City and county facilities', division: 'Government & Military', divisionId: 'government' },
+    { name: 'City and county facilities', division: 'Government & Defense', divisionId: 'government' },
     { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
     { name: 'Apartment and residential properties', division: 'Institutional & Community', divisionId: 'community' },
     { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },

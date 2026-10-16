@@ -945,3 +945,28 @@ loss prevention.
   and HOAs, Schools and campuses, Places of worship, Community centers. SEO title "School &
   Apartment Security in Colorado" (was "Hospital & Campus Security in Colorado").
 - Denver city page: the "Hospitals and healthcare" row now points to Critical & High-Liability Sites.
+
+## Government & Military becomes Government & Defense (owner, 2026-10-16)
+
+Pitched toward federal and defense buyers, after CenCore's Defense & Intelligence page (security as
+part of the mission), without its clearance claims. The slug /industries/government-military stays.
+- Name everywhere (industry page, Services card, Home plate, nav, quote form site type, city site
+  lists, insight related link, SEO, llms.txt, the quote skill): "Government & Defense".
+- Short line: "Federal agencies, military bases, and defense contractors, through GSA." (was
+  "Federal, state, and municipal facilities and military installations, through GSA.")
+- H1: "Security for government, military bases, and defense contractors" (was "for government and
+  military facilities"). Lead names federal, state, and local agencies, military installations,
+  and the defense contractors that support them, and the three services (restricted-area escort,
+  access control, armed posts).
+- "What is at stake": security as part of the mission; a missed check or an unescorted visitor in
+  a restricted area becomes a finding, a stop-work, or a program delay; primes can count Ares toward
+  small-business subcontracting goals.
+- What we deliver: lines name installations and contractor sites, and gate, credential, and vehicle
+  checks alongside base security forces.
+- Why Ares: a "Primes" row (subcontracting credit as a woman-owned small business, to /teaming).
+- New question: "Do you work with defense contractors?" The ask adds "or your contract".
+- Services card: body names federal agencies, military installations, and defense contractors;
+  "Courthouses" became "Defense contractors"; "without opening a new competition" came out (the
+  CenCore finish review called it overstated).
+- SEO title "Government & Defense Security in Colorado" (was "Government & Military Facility
+  Security").

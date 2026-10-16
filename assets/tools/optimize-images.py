@@ -72,12 +72,10 @@ PHOTOS = [
     # A real photo (owner, 2026-10-12): a data center campus under snowy peaks (the server-aisle
     # photo tried first is in images-unused). 2048px.
     {'key': '/images/market/data-centers.webp', 'source': 'assets/images-src/market/data-center-campus.webp', 'q': 82},
-    # A real photo (owner, 2026-10-12): a Space Force base near Colorado Springs at golden hour,
-    # radomes and the Front Range behind. Master downsized from the 8219px original to 3200px.
-    # The grey clouds across the top left were removed (owner, 2026-10-16): OpenAI masked edit of the
-    # top-left 2400x1600 at 0.64 scale, only the cloud band composited back, color-matched row by
-    # row to the real sky beside it, 28px soft edge. The untouched original is beside it.
-    {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-schriever-clean.jpg', 'q': 80},
+    # A real photo (owner, 2026-10-16): radomes behind a barbed-wire fence on a Space Force base in
+    # Colorado (DVIDS 7084760, via Wikimedia Commons). Master downsized from 3840px to 3200px. The
+    # golden-hour base photo it replaced (and its cloud-free edit) is in images-unused.
+    {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-radomes.jpg', 'q': 80},
     # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
     # only); the untouched original is construction-colorado-springs.jpg beside it.
