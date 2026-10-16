@@ -25,14 +25,15 @@ function slide(details: HTMLDetailsElement, open: boolean) {
     details.removeAttribute('data-closing');
     details.open = true;
     if (still) return;
-    const h = body.scrollHeight;
+    // The exact (fractional) open height, so the last frame lands where the layout rests.
+    const h = body.getBoundingClientRect().height;
     const a = body.animate([{ height: '0px', transform: 'translateY(-6px)' }, { height: `${h}px`, transform: 'none' }], { duration: 260, easing: FAQ_EASE });
     running.set(body, a);
     a.onfinish = () => running.delete(body);
   } else {
     if (still) { details.open = false; return; }
     details.setAttribute('data-closing', '');
-    const a = body.animate([{ height: `${body.offsetHeight}px` }, { height: '0px' }], { duration: 200, easing: FAQ_EASE });
+    const a = body.animate([{ height: `${body.getBoundingClientRect().height}px` }, { height: '0px' }], { duration: 200, easing: FAQ_EASE });
     running.set(body, a);
     a.onfinish = () => { running.delete(body); details.open = false; details.removeAttribute('data-closing'); };
   }
