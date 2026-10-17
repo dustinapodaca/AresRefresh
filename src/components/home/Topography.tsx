@@ -1,6 +1,8 @@
 // @ts-nocheck
 // Topography, from React Bits (reactbits.dev, JavaScript + CSS variant), added for the
-// Home hero background (one change: the cleanup no longer calls loseContext, see the end) (owner, 2026-10-15). WebGL2 contour terrain; it draws nothing where WebGL2
+// Home hero background (owner, 2026-10-15). Two Ares changes: the cleanup no longer calls
+// loseContext (see the end), and the lines take the prime panel's clay and rust ramp by brightness
+// instead of one tone-mapped color (aresRamp, owner 2026-10-16). WebGL2 contour terrain; it draws nothing where WebGL2
 // is missing, and holds still under reduced motion. Type checks are off because the source is
 // plain JavaScript.
 
@@ -206,6 +208,16 @@ in float vLift;
 in vec3 vNormal;
 out vec4 outColor;
 
+// The prime contractor panel's ramp (Ares change, owner 2026-10-16): dim lines in umber and deep
+// rust, brighter ones in rust and copper, pale clay only at the brightest ridges and the glow.
+vec3 aresRamp(float x) {
+  vec3 c = mix(vec3(0.227, 0.094, 0.039), vec3(0.478, 0.220, 0.102), smoothstep(0.0, 0.32, x));
+  c = mix(c, vec3(0.737, 0.408, 0.227), smoothstep(0.28, 0.58, x));
+  c = mix(c, vec3(0.910, 0.588, 0.384), smoothstep(0.55, 0.82, x));
+  c = mix(c, vec3(0.980, 0.839, 0.714), smoothstep(0.84, 1.0, x));
+  return c;
+}
+
 float smoother(float x) {
   x = clamp(x, 0.0, 1.0);
   return x * x * x * (x * (x * 6.0 - 15.0) + 10.0);
@@ -319,7 +331,10 @@ void main() {
     return;
   }
 
-  vec3 color = 1.0 - exp(-uColor * light * 1.8);
+  float lum = max(max(light.r, light.g), light.b);
+  float tone = 1.0 - exp(-lum * 1.5);
+  vec3 color = aresRamp(tone) * (1.0 - exp(-lum * 1.9));
+  if (light.r != light.g || light.g != light.b) color *= light / max(lum, 1e-4);
   float top = max(max(color.r, color.g), color.b);
   float dither = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
   color = max(color + dither / 255.0 * step(0.002, top), 0.0);
@@ -397,6 +412,16 @@ in float vFrame;
 in float vDepth;
 out vec4 outColor;
 
+// The prime contractor panel's ramp (Ares change, owner 2026-10-16): dim lines in umber and deep
+// rust, brighter ones in rust and copper, pale clay only at the brightest ridges and the glow.
+vec3 aresRamp(float x) {
+  vec3 c = mix(vec3(0.227, 0.094, 0.039), vec3(0.478, 0.220, 0.102), smoothstep(0.0, 0.32, x));
+  c = mix(c, vec3(0.737, 0.408, 0.227), smoothstep(0.28, 0.58, x));
+  c = mix(c, vec3(0.910, 0.588, 0.384), smoothstep(0.55, 0.82, x));
+  c = mix(c, vec3(0.980, 0.839, 0.714), smoothstep(0.84, 1.0, x));
+  return c;
+}
+
 float smoother(float x) {
   x = clamp(x, 0.0, 1.0);
   return x * x * x * (x * (x * 6.0 - 15.0) + 10.0);
@@ -428,7 +453,7 @@ void main() {
     outColor = vec4(uColor * ink, ink);
     return;
   }
-  vec3 color = 1.0 - exp(-uColor * light * 1.8);
+  vec3 color = aresRamp(1.0 - exp(-light * 1.5)) * (1.0 - exp(-light * 1.9));
   outColor = vec4(color, max(max(color.r, color.g), color.b)) * uOpacity;
 }`;
 
