@@ -517,9 +517,11 @@ exception to "no card containers" and "no glass" for this section.
   ramp, with Gladia's faint grey streak beyond it. Sized in px (820 by 440; phones 520 by 300) so
   every panel gets the same light. The copy stays on clean black. **Now a flowing mesh gradient**
   (owner, 2026-10-16, after a ColorFlow embed; `PrimeGlow.tsx`, WebGL1): broad shapes from a
-  two-octave, low-frequency domain warp with smooth wavy edges, drifting slowly, mostly black and
-  umber with deep rust, rust, copper, and pale clay only in the hottest folds (a second field shifts
-  the hue between deeper and warmer rust). Kept to the lower right (phones: the lower part of the
+  two-octave, low-frequency domain warp with smooth wavy edges, mostly black and umber with deep
+  rust, and rust and copper only in the hottest folds, no pale clay (darker, owner 2026-10-16; a
+  second field shifts the hue between deeper and warmer rust). The motion is a seamless 90-second
+  loop (every offset travels around a circle), so it repeats instead of drifting until the light
+  all but vanished; with a dim floor in the corner, the lit side stays within a narrow range. Kept to the lower right (phones: the lower part of the
   panel), black over the copy. Drawn at half resolution, paused off screen, one still frame under
   reduced motion, skipped for automated browsers (the prerender); the CSS wedge above is the
   fallback without WebGL. No dot grid, no backdrop

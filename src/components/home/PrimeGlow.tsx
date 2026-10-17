@@ -2,19 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 
 // The prime contractor panel's light, a flowing mesh gradient (owner, 2026-10-16, after a ColorFlow
 // embed: large soft shapes with smooth, wavy edges, always drifting), kept mostly black and in the
-// site's clay and rust family: umber, deep rust, rust, copper, and a little pale clay at the hottest
-// point. The flow lives low on the right behind the diagram and fades to black over the copy.
+// site's clay and rust family: mostly black and umber, deep rust, and rust and copper only in the
+// hottest folds (darker, owner 2026-10-16). The motion is a seamless 90-second loop. The flow lives low on the right behind the diagram and fades to black over the copy.
 // WebGL1, drawn at half resolution (it is all soft), paused off screen, one still frame under
 // reduced motion. Not drawn for automated browsers (the prerender has no GPU) or where WebGL is
 // missing; the CSS wedge on the panel's ::before shows instead (Industries.tsx, IndustryPage.tsx).
 
-const VERT = `
+export const VERT = `
 attribute vec2 aPos;
 void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
 `;
 
-const FRAG = `
+export const FRAG = `
 precision highp float;
+#define LOOP 90.0
 uniform vec2 uRes;
 uniform float uTime;
 uniform float uWide;
@@ -34,30 +35,40 @@ float fbm(vec2 p) {
 void main() {
   vec2 uv = gl_FragCoord.xy / uRes;          // 0..1, origin bottom left
   vec2 p = vec2(uv.x * uRes.x / uRes.y, uv.y) * 0.62;
-  float t = uTime * 0.03;
+
+  // A seamless loop (owner, 2026-10-16: it drifted until the light all but vanished): every offset
+  // travels around a circle, so the flow repeats exactly every LOOP seconds and the light keeps
+  // coming back instead of wandering out of the corner.
+  float a = uTime * 6.2831853 / LOOP;
+  vec2 o1 = vec2(cos(a), sin(a)) * 0.55;
+  vec2 o2 = vec2(cos(a + 2.1), sin(a + 2.1)) * 0.45;
+  vec2 o3 = vec2(cos(a + 4.2), sin(a + 4.2)) * 0.35;
 
   // Domain warp at low frequency: large shapes that fold slowly, with smooth wavy edges.
-  vec2 q = vec2(fbm(p + vec2(0.0, t)), fbm(p + vec2(5.2, 1.3) - t * 0.8));
-  float f = fbm(p + 1.7 * q + vec2(t * 0.5, -t * 0.3));
+  vec2 q = vec2(fbm(p + o1), fbm(p + vec2(5.2, 1.3) + o2));
+  float f = fbm(p + 1.7 * q + o3);
   // A second field shifts the hue between deeper and warmer rust across the shapes.
-  float hue = fbm(p * 0.8 + 2.3 * q + vec2(3.1, 7.4) - t * 0.4);
+  float hue = fbm(p * 0.8 + 2.3 * q + vec2(3.1, 7.4) - o1 * 0.6);
 
   // Where the light may sit: the lower right, black toward the upper left (the copy).
   // Phones and tablets (uWide 0): the lower part of the panel only.
   float reachWide = smoothstep(0.62, 1.22, uv.x * 0.9 + (1.0 - uv.y) * 0.62);
   float reachNarrow = smoothstep(0.5, 1.0, 1.0 - uv.y);
   float reach = mix(reachNarrow, reachWide, uWide);
-  float heat = clamp(smoothstep(0.26, 0.7, f) * reach * 1.12, 0.0, 1.0);
+  // The shapes, with black folds between them (the higher threshold), and a dim floor so the
+  // corner never goes fully dark at any point in the loop.
+  float shape = smoothstep(0.36, 0.8, f);
+  float heat = max(shape * reach * 0.92, reach * reach * 0.2);
 
-  // The ramp, mostly black and umber: each step a smooth band, pale clay only at the hottest point.
-  vec3 deep = mix(vec3(0.360, 0.130, 0.060), vec3(0.478, 0.220, 0.102), hue);
-  vec3 mid = mix(vec3(0.640, 0.300, 0.150), vec3(0.737, 0.408, 0.227), hue);
+  // The ramp, darker (owner, 2026-10-16): mostly black and umber, deep rust through the middle,
+  // rust and copper only in the hottest folds, no pale clay.
+  vec3 deep = mix(vec3(0.300, 0.105, 0.048), vec3(0.420, 0.190, 0.088), hue);
+  vec3 mid = mix(vec3(0.560, 0.255, 0.125), vec3(0.660, 0.360, 0.200), hue);
   vec3 c = vec3(0.0);
-  c = mix(c, vec3(0.140, 0.058, 0.026), smoothstep(0.06, 0.30, heat));
-  c = mix(c, deep, smoothstep(0.26, 0.52, heat));
-  c = mix(c, mid, smoothstep(0.50, 0.74, heat));
-  c = mix(c, vec3(0.910, 0.588, 0.384), smoothstep(0.74, 0.92, heat));
-  c = mix(c, vec3(0.980, 0.839, 0.714), smoothstep(0.93, 1.0, heat));
+  c = mix(c, vec3(0.110, 0.044, 0.020), smoothstep(0.08, 0.34, heat));
+  c = mix(c, deep, smoothstep(0.32, 0.6, heat));
+  c = mix(c, mid, smoothstep(0.58, 0.82, heat));
+  c = mix(c, vec3(0.820, 0.520, 0.330), smoothstep(0.84, 1.0, heat));
 
   // A fine dither so the dark steps never band.
   c += (hash(gl_FragCoord.xy + fract(uTime)) - 0.5) / 255.0;
@@ -115,12 +126,14 @@ export default function PrimeGlow() {
         gl.viewport(0, 0, w, h);
       }
     };
-    // A fixed start, so the still frame and the first frame are the same, and well settled.
-    const T0 = 40;
+    // A fixed start in the 90s loop (LOOP in the shader), so the still frame and the first frame
+    // are the same. Time wraps at the loop, so the float never grows.
+    const T0 = 12;
+    const LOOP = 90;
     const draw = (seconds: number) => {
       size();
       gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, T0 + seconds);
+      gl.uniform1f(uTime, (T0 + seconds) % LOOP);
       gl.uniform1f(uWide, wide.matches ? 1 : 0);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
