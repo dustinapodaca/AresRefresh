@@ -532,6 +532,16 @@ exception to "no card containers" and "no glass" for this section.
   reduced motion, skipped for automated browsers (the prerender); the CSS wedge above is the
   fallback without WebGL. No dot grid, no backdrop
   blur. Home and the Government & Defense panel. What follows describes the panel before the redo.
+  **The diagram inside it, four reworks to compare** (owner, 2026-10-16: the boxed cards, green tags,
+  and rust dots read as AI-made; `PrimeDiagram.tsx`, `/?pdiag=`, the boxed pipeline the default until
+  a pick). None uses a box, a tag, or a decorative dot; type, hairlines, and drawn lines carry it,
+  one rust mark where it means something (Ares), mono only for the identifiers, and one authored
+  moment each, played once in view (text visible throughout; still under reduced motion): `chain`
+  (a ruled ledger of the three parties on a 1px track that draws down, the rail's rust tick on Ares),
+  `fork` (the names in type, thin lines drawn from the prime to Ares and forking in rust to the
+  posts), `contract` (a contract outline numbered by depth with drawn elbows), `sentence` (one
+  editorial line with rust arrows, the identifiers as a footnote on hairlines). Home only; /teaming
+  keeps the pipeline.
 - A contained panel (an owner exception to "no card containers", like the Record cards),
   after Slash, Flora, and Resend: near-black (#0c0d10) with a soft white/4.5% light from
   above, white/8% inset edge, white/12% top line, 4px corners, 40px padding (22 on phones).

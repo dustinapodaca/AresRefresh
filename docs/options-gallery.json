@@ -175,6 +175,41 @@
       ]
     },
     {
+      "heading": "Home: the prime diagram",
+      "intro": "Owner, 2026-10-16: the boxed cards read as AI-made. No boxes, tags, or decorative dots in any of the four.",
+      "page": "/",
+      "param": "pdiag",
+      "selector": ".ds-primes-panel",
+      "options": [
+        {
+          "value": "pipeline",
+          "label": "Boxed cards (current)",
+          "tag": "default",
+          "note": "The earlier pipeline of cards and tiles."
+        },
+        {
+          "value": "chain",
+          "label": "Chain",
+          "note": "A ruled ledger of the three parties on a 1px track, the rust tick on Ares."
+        },
+        {
+          "value": "fork",
+          "label": "Fork",
+          "note": "The names in type, joined by thin drawn lines that fork from Ares to the posts."
+        },
+        {
+          "value": "contract",
+          "label": "Contract",
+          "note": "A contract outline numbered by depth (1, 1.1, 1.1.1) with drawn elbows."
+        },
+        {
+          "value": "sentence",
+          "label": "Sentence",
+          "note": "One editorial line, Prime contractor to Ares to the posts, with the identifiers as a footnote."
+        }
+      ]
+    },
+    {
       "heading": "Services opening",
       "page": "/services",
       "param": "hero",

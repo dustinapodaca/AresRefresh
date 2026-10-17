@@ -3,7 +3,7 @@ import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
 import PrimeFlow from './PrimeFlow';
-import PrimePipeline from './PrimePipeline';
+import PrimeDiagram from './PrimeDiagram';
 import PrimeGlow from './PrimeGlow';
 
 // 02 Industries (copy audit round 2, 2026-10-10): the six industries in the owner's fixed
@@ -193,7 +193,7 @@ function PrimesPanel({ form }: { form: string | null }) {
             </ul>
             {button}
           </div>
-          <PrimePipeline />
+          <PrimeDiagram />
         </>
       )}
       {kind === 'vignettes' && (
