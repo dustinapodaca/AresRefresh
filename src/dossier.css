@@ -5461,3 +5461,46 @@ html[data-cards] .ds-primes-panel {
 .ds-primes-panel > .ds-pglow[data-on] { opacity: 1; }
 .ds-primes-panel:has(> .ds-pglow[data-on])::before,
 .ds-primes-panel:has(> .ds-pglow[data-on])::after { content: none; }
+/* The CSS version (the default, owner 2026-10-16; ?primeglow=webgl for the shader). Four soft
+   shapes in the clay and rust family, each a radial gradient fading to nothing at its edge (no
+   filter), drifting on its own long loop by transform alone, so it is cheap and crisp on phones.
+   The layer is masked so the light stays low on the right (phones: low in the panel) and the copy
+   sits on black. A faint still grain on top keeps the dark ramp from banding. */
+.ds-primes-panel > .ds-pglow-css {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(115deg, transparent 38%, rgb(0 0 0 / 0.55) 56%, #000 78%);
+  mask-image: linear-gradient(115deg, transparent 38%, rgb(0 0 0 / 0.55) 56%, #000 78%);
+}
+.ds-primes-panel:has(> .ds-pglow-css)::before,
+.ds-primes-panel:has(> .ds-pglow-css)::after { content: none; }
+.ds-pglow-css i { position: absolute; display: block; border-radius: 50%; will-change: transform; }
+/* Umber: the wide dark body. */
+.ds-pglow-css i:nth-child(1) { right: -22%; bottom: -46%; width: 92%; height: 130%; background: radial-gradient(closest-side, rgb(60 24 10 / 0.95), rgb(46 18 8 / 0.6) 55%, rgb(46 18 8 / 0) 100%); animation: ds-pg-a 38s ease-in-out infinite; }
+/* Deep rust. */
+.ds-pglow-css i:nth-child(2) { right: -8%; bottom: -40%; width: 66%; height: 96%; background: radial-gradient(closest-side, rgb(112 48 20 / 0.9), rgb(96 40 16 / 0.45) 58%, rgb(96 40 16 / 0) 100%); animation: ds-pg-b 29s ease-in-out infinite; }
+/* Rust. */
+.ds-pglow-css i:nth-child(3) { right: 6%; bottom: -30%; width: 44%; height: 70%; background: radial-gradient(closest-side, rgb(168 82 40 / 0.8), rgb(150 70 32 / 0.35) 60%, rgb(150 70 32 / 0) 100%); animation: ds-pg-c 23s ease-in-out infinite; }
+/* Copper: the small hot fold. */
+.ds-pglow-css i:nth-child(4) { right: 14%; bottom: -20%; width: 26%; height: 44%; background: radial-gradient(closest-side, rgb(206 128 78 / 0.7), rgb(188 108 62 / 0.25) 62%, rgb(188 108 62 / 0) 100%); animation: ds-pg-d 31s ease-in-out infinite; }
+@keyframes ds-pg-a { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-6%, -5%) scale(1.06); } 66% { transform: translate(4%, -8%) scale(0.96); } }
+@keyframes ds-pg-b { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 50% { transform: translate(-14%, -10%) scale(1.12) rotate(14deg); } }
+@keyframes ds-pg-c { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(-18%, -6%) scale(1.1); } 50% { transform: translate(-8%, -18%) scale(0.92); } 75% { transform: translate(8%, -8%) scale(1.04); } }
+@keyframes ds-pg-d { 0%, 100% { transform: translate(0, 0) scale(1); } 30% { transform: translate(-22%, -14%) scale(1.15); } 60% { transform: translate(-6%, -26%) scale(0.85); } }
+/* The grain: an SVG noise tile at very low strength, still. */
+.ds-primes-panel > .ds-pglow-css::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px; opacity: 0.07; mix-blend-mode: overlay;
+}
+/* Phones and tablets: the diagram sits under the copy, so the light stays in the panel's lower part. */
+@media (max-width: 1023px) {
+  .ds-primes-panel > .ds-pglow-css {
+    -webkit-mask-image: linear-gradient(to top, #000 0%, rgb(0 0 0 / 0.6) 26%, transparent 48%);
+    mask-image: linear-gradient(to top, #000 0%, rgb(0 0 0 / 0.6) 26%, transparent 48%);
+  }
+  .ds-pglow-css i:nth-child(1) { right: -40%; bottom: -14%; width: 150%; height: 46%; }
+  .ds-pglow-css i:nth-child(2) { right: -20%; bottom: -12%; width: 110%; height: 34%; }
+  .ds-pglow-css i:nth-child(3) { right: -4%; bottom: -8%; width: 76%; height: 24%; }
+  .ds-pglow-css i:nth-child(4) { right: 10%; bottom: -4%; width: 46%; height: 15%; }
+}
+@media (prefers-reduced-motion: reduce) { .ds-pglow-css i { animation: none; } }

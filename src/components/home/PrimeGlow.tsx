@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 // The prime contractor panel's light, a flowing mesh gradient (owner, 2026-10-16, after a ColorFlow
 // embed: large soft shapes with smooth, wavy edges, always drifting), kept mostly black and in the
@@ -76,7 +77,25 @@ void main() {
 }
 `;
 
+// Two ways to draw it, for the owner to compare on a phone at ?primeglow= (2026-10-16): `css` (the
+// default since 2026-10-16) is four large, soft radial-gradient shapes drifting on long looping
+// keyframes, animated only by transform so the phone's compositor does all the work, crisp at any
+// pixel density, with a faint still grain against banding; `webgl` is the shader below. On phones
+// the shader ran at half the CSS size, so a 3x screen showed it stretched about 6x and blotchy.
 export default function PrimeGlow() {
+  const [params] = useSearchParams();
+  if (params.get('primeglow') === 'webgl') return <PrimeGlowGL />;
+  return (
+    <div className="ds-pglow-css" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+      <i />
+    </div>
+  );
+}
+
+function PrimeGlowGL() {
   const ref = useRef<HTMLCanvasElement>(null);
   const [on, setOn] = useState(false);
 
