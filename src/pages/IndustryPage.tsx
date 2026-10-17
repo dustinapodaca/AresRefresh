@@ -11,6 +11,7 @@ import { roleBySlug } from '../components/market/roles';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { responsive } from '../lib/responsive';
 import { heroTitle } from '../lib/heroTitle';
+import PrimeGlow from '../components/home/PrimeGlow';
 
 // An industry page ("The Sector File", docs/market-concepts.md): what is at stake in this
 // environment, what we deliver there, why Ares, a specific ask, and questions.
@@ -100,6 +101,7 @@ export default function IndustryPage() {
           // 2026-10-15: Home and /teaming carry the full one), without the proof list.
           <section className="ds-mk-sec" aria-labelledby="mk-primes">
             <div className="ds-primes-panel ds-primes-compact" data-form={primeForm}>
+              <PrimeGlow />
               <div className="ds-primes-copy">
                 <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
                 <p className="ds-primes-line">

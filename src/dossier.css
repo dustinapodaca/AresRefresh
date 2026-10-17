@@ -5450,3 +5450,14 @@ html[data-cards] .ds-primes-panel {
   filter: blur(30px);
   pointer-events: none;
 }
+/* Phones and tablets: a smaller wedge, under the diagram at the panel's foot. */
+@media (max-width: 1023px) {
+  .ds-primes-panel::before { right: -40px; bottom: -110px; width: 520px; height: 300px; }
+  .ds-primes-panel::after { right: 120px; bottom: 40px; width: 360px; height: 110px; }
+}
+/* The flowing gradient (PrimeGlow.tsx, owner 2026-10-16) fills the panel under everything; once it
+   draws, the CSS wedge and streak above step aside (they stay as the fallback without WebGL). */
+.ds-primes-panel > .ds-pglow { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 600ms var(--ds-ease); }
+.ds-primes-panel > .ds-pglow[data-on] { opacity: 1; }
+.ds-primes-panel:has(> .ds-pglow[data-on])::before,
+.ds-primes-panel:has(> .ds-pglow[data-on])::after { content: none; }

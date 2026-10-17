@@ -514,7 +514,14 @@ exception to "no card containers" and "no glass" for this section.
   (250 214 182) at the core, then copper (232 150 98), rust (196 104 58), deep rust (122 56 26), and
   umber (58 24 10) into black, turned 26deg to fan up and to the left, blurred 26px into one smooth
   ramp, with Gladia's faint grey streak beyond it. Sized in px (820 by 440; phones 520 by 300) so
-  every panel gets the same light. The copy stays on clean black. No dot grid, no backdrop
+  every panel gets the same light. The copy stays on clean black. **Now a flowing mesh gradient**
+  (owner, 2026-10-16, after a ColorFlow embed; `PrimeGlow.tsx`, WebGL1): broad shapes from a
+  two-octave, low-frequency domain warp with smooth wavy edges, drifting slowly, mostly black and
+  umber with deep rust, rust, copper, and pale clay only in the hottest folds (a second field shifts
+  the hue between deeper and warmer rust). Kept to the lower right (phones: the lower part of the
+  panel), black over the copy. Drawn at half resolution, paused off screen, one still frame under
+  reduced motion, skipped for automated browsers (the prerender); the CSS wedge above is the
+  fallback without WebGL. No dot grid, no backdrop
   blur. Home and the Government & Defense panel. What follows describes the panel before the redo.
 - A contained panel (an owner exception to "no card containers", like the Record cards),
   after Slash, Flora, and Resend: near-black (#0c0d10) with a soft white/4.5% light from

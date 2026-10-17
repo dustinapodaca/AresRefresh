@@ -4,6 +4,7 @@ import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
 import PrimeFlow from './PrimeFlow';
 import PrimePipeline from './PrimePipeline';
+import PrimeGlow from './PrimeGlow';
 
 // 02 Industries (copy audit round 2, 2026-10-10): the six industries in the owner's fixed
 // order, the first three larger (where the restricted-area and documented work lives), then
@@ -130,6 +131,7 @@ function PrimesPanel({ form }: { form: string | null }) {
   );
   return (
     <div className="ds-primes-panel" data-form={kind}>
+      <PrimeGlow />
       {kind === 'split' && (
         // Slash's stat-and-quote split: the ask on the left, the proof on the right, one
         // vertical hairline between them.
