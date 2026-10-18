@@ -3,8 +3,9 @@ import type { Mark } from '../home/DocRail';
 // Services content. Source: docs/services-content.md; copy changes: docs/copy-changes.md.
 
 export const SERVICE_MARKS: readonly Mark[] = [
-  { id: 'divisions', n: '01', label: 'Industries' },
-  { id: 'browse', n: '02', label: 'By role' },
+  // The services first (owner, 2026-10-18): the Capability Statement's cards replace "By role.".
+  { id: 'capabilities', n: '01', label: 'Services' },
+  { id: 'divisions', n: '02', label: 'Industries' },
   { id: 'process', n: '03', label: 'Process' },
   // "A security program, not a headcount." folded into the stages and split in two (owner,
   // 2026-10-15; the old section is tagged services-program-option).

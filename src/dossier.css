@@ -2168,6 +2168,8 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-more { position: relative; z-index: 1; display: none; margin: 14px 0 0 calc(1.75rem + 6px); font-size: 15px; line-height: 1.5; }
 .ds-svc-more .ds-arrow { display: inline-block; margin-left: 8px; vertical-align: -2px; }
 .ds-svc-card[data-open='true'] .ds-svc-more { display: inline-block; }
+/* The service cards on Services (owner, 2026-10-18) open to their service page the same way. */
+.ds-cs-card[data-open='true'] .ds-svc-more { display: inline-block; }
 .ds-svc-proof + .ds-svc-items li:first-child { border-top: 0; }
 
 @media (min-width: 768px) {
@@ -2427,12 +2429,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-svc-cities { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 }
 
-/* ---------- 02 By role, or by industry (2026-10-08): the index to the role and industry pages ---------- */
-.ds-svc-browse { padding-top: var(--ds-beat); }
-.ds-svc-browse-sub { margin: 36px 0 14px; font-size: 13px; font-weight: 500; color: var(--ds-fg-faint); scroll-margin-top: calc(var(--ds-header) + var(--ds-runhead) + 16px); }
-.ds-svc-browse > h2 + .ds-svc-browse-sub { margin-top: 28px; }
-/* Four industries as a complete 2x2, never three and an orphan. */
-@media (min-width: 768px) { .ds-svc-browse ul[aria-label='Industries'] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---------- 04 The relief roster (owner, 2026-10-15) ----------
    The program section folded into the four stages; the roster is its own block: a contained panel
@@ -2859,6 +2855,8 @@ html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, 
    the service includes. */
 .ds-cs-caps { padding-top: var(--ds-beat); }
 .ds-cs-cards { display: grid; gap: 12px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; grid-auto-flow: row dense; }
+/* The plain list of the six on the Capability Statement (owner, 2026-10-18) sits where the cards did. */
+.ds-cs-caps > .ds-mk-routes { margin-top: var(--ds-beat-tight); }
 .ds-cs-card {
   position: relative;
   padding: 6px 20px 22px;

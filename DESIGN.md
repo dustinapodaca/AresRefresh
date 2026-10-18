@@ -816,6 +816,12 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   (company, NAICS, 1 page, PDF, 1.3 MB since the lossless shrink of 2026-10-09, 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
   2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
+- **Services first (owner, 2026-10-18; web audit item G):** the six capability cards below now open
+  the Services page, right after the opening and before "Who we protect", in the site's "we" voice,
+  each open card with "Open the full page →" to its service page (as the industry cards do). They
+  replace Services' "By role." list. The Capability Statement's "Core competencies." is now that
+  plain list: the six as ruled routes to their service pages (title and one line), in the page's
+  third person. The earlier layout is tagged `services-before-capability-cards`.
 - **Capabilities (second pass, 2026-10-05):** six cards named as on the service pages (owner, 2026-10-10: Armed Security Officers, Unarmed Security Officers, Access Control Officers, Restricted-Area Escort, Relief & Surge Coverage, Mobile Patrol; the PDF follows) in the Services card language
   without photos (#0e1013 fill, white/8% edge, faint light from below, 4px corners): mono
   number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
@@ -1074,7 +1080,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     short names on smaller tags (13px, 30px tall: Card readers, CCTV, Visitor software, Radios,
     Gates and docks, Alarms) so the six take three rows, not six (owner, 2026-10-16). (Was its own
     section: headline and lead left, the tags two by two right.)
-  The dock counts five sections (Industries, By role, Process, Relief schedule, Areas).
+  The dock counts five sections (Services, Industries, Process, Relief schedule, Areas).
 
 ### Mobile breaks (below 1024px unless noted)
 - **Swipe rows** (About Staffing and People, Capability Why Ares; scroll snap, 84% slides

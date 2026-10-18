@@ -8,6 +8,8 @@ import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PA
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
 import CopyButton from './CopyButton';
+import { ROLE_PAGES, capabilityFor } from '../market/roles';
+import { RouteRow } from '../market/parts';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
 const PHONE = '(max-width: 767px)';
@@ -71,8 +73,14 @@ function useCols() {
   return cols;
 }
 
-export function Capabilities() {
-  const { say } = useCsOptions();
+// Since 2026-10-18 (owner) these cards open the Services page, in its own voice ("we") and each
+// with a link to its service page; the Capability Statement lists the six as plain routes
+// (Competencies, below). The earlier placement is tagged services-before-capability-cards.
+const ROLE_FOR = new Map(ROLE_PAGES.map((r) => [r.capabilityId, r]));
+
+export function Capabilities({ onServices = false }: { onServices?: boolean }) {
+  const { say: sayCs } = useCsOptions();
+  const say = onServices ? (line: string) => line : sayCs;
   const [openId, setOpenId] = useState<string | null>(null);
   const cols = useCols();
   const gridRef = useRef<HTMLOListElement>(null);
@@ -161,6 +169,13 @@ export function Capabilities() {
               </h3>
               <p className="ds-cs-card-line">{c.line}</p>
               <p className="ds-data ds-cs-keys">{c.keys.join(' · ')}</p>
+              {onServices && ROLE_FOR.get(c.id) && (
+                // The service's own page, as on the industry cards; screen readers get its name.
+                <Link to={`/services/${ROLE_FOR.get(c.id)!.slug}`} className="ds-link ds-svc-more" aria-label={`Open the full ${c.title} page`}>
+                  Open the full page
+                  <Arrow size={14} />
+                </Link>
+              )}
               <ul id={panel} className="ds-cs-includes" hidden={!open}>
                 {c.includes.map((x) => (
                   <li key={x.name}>
@@ -173,6 +188,22 @@ export function Capabilities() {
           );
         })}
       </ol>
+    </section>
+  );
+}
+
+// 01 Core competencies on the Capability Statement (owner, 2026-10-18): the six services as plain
+// routes to their pages, in the page's third person; the expandable cards moved to Services.
+export function Competencies() {
+  return (
+    <section id="capabilities" className="ds-cs-caps" aria-labelledby="caps-title">
+      <div className="ds-cs-head">
+        <h2 id="caps-title" className="ds-display-lg">
+          Core competencies.
+        </h2>
+        <p className="ds-lead">Six services, each staffed by officers Ares trains on the post before their first shift.</p>
+      </div>
+      <RouteRow label="Core competencies" items={ROLE_PAGES.map((r) => ({ to: `/services/${r.slug}`, title: r.name, line: capabilityFor(r).line }))} />
     </section>
   );
 }

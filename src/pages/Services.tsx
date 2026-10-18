@@ -3,7 +3,7 @@ import DocRail from '../components/home/DocRail';
 import Opening from '../components/services/Opening';
 import Divisions from '../components/services/Divisions';
 import Process from '../components/services/Process';
-import Browse from '../components/services/Browse';
+import { Capabilities } from '../components/capability/Sections';
 import Relief from '../components/services/Relief';
 import Areas from '../components/services/Areas';
 import { SERVICE_MARKS } from '../components/services/data';
@@ -17,8 +17,10 @@ export default function Services() {
       <Opening />
       <div className="ds-container ds-doc">
         <div className="ds-doc-body">
+          {/* The six services first (owner, 2026-10-18, web audit): the Capability Statement's
+              cards, which replace the "By role." list; the industries follow. */}
+          <Capabilities onServices />
           <Divisions />
-          <Browse />
           <Process />
           <Relief />
           <Areas />
