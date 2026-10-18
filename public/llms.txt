@@ -33,7 +33,8 @@ Key facts, each checkable on the linked pages:
 
 ## Industries
 
-- [Government & Defense](https://aressecurity.co/industries/government-military): Officers for federal agencies, military installations, and defense contractors, available through GSA MAS.
+- [All industries](https://aressecurity.co/industries): The six industries Ares protects, each with its own page.
+- [Government & Defense](https://aressecurity.co/industries/government-defense): Officers for federal agencies, military installations, and defense contractors, available through GSA MAS.
 - [Critical & High-Liability Sites](https://aressecurity.co/industries/critical-infrastructure): Data centers, utilities, hospitals, cash-handling, and other regulated sites where every entry is documented; armed posts where required.
 - [Construction, Industrial & Logistics](https://aressecurity.co/industries/construction-industrial): Gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses.
 - [Airport & Transportation](https://aressecurity.co/industries/airport-transportation): Airport-area sites, transit and parking facilities, and cargo operations Ares is ready to staff.
@@ -42,6 +43,7 @@ Key facts, each checkable on the linked pages:
 
 ## Locations
 
+- [All service areas](https://aressecurity.co/locations): Colorado Springs, Denver, and Pueblo, with each city's security license.
 - [Security guards in Colorado Springs, CO](https://aressecurity.co/locations/colorado-springs): The city license, and the sites Ares is ready to staff in Colorado Springs.
 - [Security guards in Denver, CO](https://aressecurity.co/locations/denver): The city license, and the sites Ares is ready to staff in Denver.
 - [Security guards in Pueblo, CO](https://aressecurity.co/locations/pueblo): The city license, and the sites Ares is ready to staff in Pueblo.
@@ -49,7 +51,7 @@ Key facts, each checkable on the linked pages:
 ## Guides for buyers
 
 - [Insights](https://aressecurity.co/insights): Plain answers for people buying security in Colorado.
-- [Relief and surge coverage: what to line up](https://aressecurity.co/insights/relief-surge-coverage)
+- [Who covers the post when an officer calls out?](https://aressecurity.co/insights/relief-surge-coverage)
 - [Armed or unarmed security: how to decide](https://aressecurity.co/insights/armed-or-unarmed-security)
 - [What is a security post order?](https://aressecurity.co/insights/what-is-a-post-order)
 - [Construction site security checklist](https://aressecurity.co/insights/construction-site-security)

@@ -36,13 +36,17 @@
       "title": "Security Teaming & Subcontracting in Colorado | Ares",
       "description": "Minority woman-owned security subcontractor for primes, guard companies, and builders: restricted-area escorts, access control, and relief and surge coverage."
     },
+    "/locations": {
+      "title": "Security Guard Service Areas in Colorado | Ares Security",
+      "description": "Licensed armed and unarmed security in Colorado Springs, Denver, and Pueblo, from our headquarters in Colorado Springs. See each city's license and sites."
+    },
     "/locations/colorado-springs": {
       "title": "Security Guards in Colorado Springs, CO | Ares Security",
       "description": "Armed and unarmed security officers, patrol, and access control in Colorado Springs. Woman-owned and locally based, with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
@@ -56,7 +60,7 @@
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
@@ -70,7 +74,7 @@
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
@@ -80,7 +84,7 @@
     },
     "/privacy": {
       "title": "Privacy Policy | Ares Security",
-      "description": "How Ares Security handles what you share through our site, by email, or by phone, what Google Analytics measures, and how to opt out. We never sell personal information."
+      "description": "How Ares Security handles what you share through our site, email, or phone, what Google Analytics measures, and how to opt out. We never sell your data."
     },
     "/terms": {
       "title": "Terms of Use | Ares Security",
@@ -186,13 +190,17 @@
         "Pueblo"
       ]
     },
-    "/industries/government-military": {
+    "/industries": {
+      "title": "Security by Industry in Colorado | Ares Security",
+      "description": "Security officers for government and defense, critical sites, construction, airports, commercial property, and campuses in Colorado Springs, Denver, and Pueblo."
+    },
+    "/industries/government-defense": {
       "title": "Government & Defense Security in Colorado | Ares Security",
       "description": "Security officers for federal agencies, military installations, and defense contractors in Colorado, available through GSA MAS 47QSMS25D009Q.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Government facility security",
@@ -208,8 +216,8 @@
       "description": "Security for data centers, utilities, hospitals, cash-handling, and other high-liability sites in Colorado: access control, armed posts, and logs.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Critical and high-liability site security",
@@ -225,8 +233,8 @@
       "description": "Construction and industrial site security in Colorado: gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Construction site security",
@@ -242,8 +250,8 @@
       "description": "Security officers for airport-area sites, transit and parking facilities, and cargo operations in Colorado: credential checks, gate control, patrol.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Airport and transportation security",
@@ -259,8 +267,8 @@
       "description": "Security officers for Colorado stores, grocery, shopping centers, banks, hotels, and offices: loss prevention, and patrol across a portfolio.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Commercial property security",
@@ -276,8 +284,8 @@
       "description": "Security officers for apartment communities, HOAs, schools, campuses, and places of worship in Colorado Springs, Denver, and Pueblo, trained on your site.",
       "breadcrumbs": [
         {
-          "name": "Services",
-          "path": "/services"
+          "name": "Industries",
+          "path": "/industries"
         }
       ],
       "serviceType": "Institutional and community security",
@@ -293,7 +301,7 @@
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
     "/insights/relief-surge-coverage": {
-      "title": "Relief and Surge Security Coverage | Ares Security",
+      "title": "Who Covers a Post When an Officer Calls Out? | Ares Security",
       "description": "Every security roster runs short sometimes. What to line up before a call-out, an inspection, or a contract change leaves a post empty.",
       "breadcrumbs": [
         {
@@ -385,11 +393,6 @@
     "/404": {
       "title": "Page Not Found | Ares Security",
       "description": "We couldn't find that page. Go to the Ares Security home page, see our services, or request a quote.",
-      "noindex": true
-    },
-    "/home-next": {
-      "title": "Home preview (new design) | Ares Security",
-      "description": "A preview of the redesigned Ares Security home page, for review only.",
       "noindex": true
     }
   }

@@ -51,7 +51,7 @@ const INDUSTRY_CAPTIONS: Record<string, string> = {
 const industryImages: Record<string, MenuImage> = Object.fromEntries(
   INDUSTRY_PAGES.map((i) => [
     `/industries/${i.slug}`,
-    i.slug === 'government-military'
+    i.slug === 'government-defense'
       ? GOV_IMAGE
       : { src: i.image.src, caption: INDUSTRY_CAPTIONS[i.slug] ?? '', position: i.image.position },
   ]),

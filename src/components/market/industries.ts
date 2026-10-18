@@ -45,7 +45,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // Government & Defense (owner, 2026-10-16; was Government & Military): federal agencies,
     // military installations, and defense contractors, pitched the way CenCore pitches its
     // defense page (security as part of the mission), without its clearance claims. The slug stays.
-    slug: 'government-military',
+    slug: 'government-defense',
     name: 'Government & Defense',
     short: 'Federal agencies, military bases, and defense contractors, through GSA.',
     title: 'Security for government, military bases, and defense contractors.',

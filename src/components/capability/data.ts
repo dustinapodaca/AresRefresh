@@ -211,7 +211,7 @@ export const CODES: { label: string; value: string; note: string; mono?: boolean
   { label: 'Socioeconomic', value: 'Small Business · WOSB', note: 'Small Business · Woman-Owned Small Business' },
   { label: 'GSA Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true },
   { label: 'SBA set-asides', value: 'WOSB set-aside eligible', note: 'Eligible for WOSB set-aside awards under NAICS 561612' },
-  { label: 'Service area', value: 'Greater Colorado Area', note: 'Nationwide on request' },
+  { label: 'Service area', value: 'Greater Colorado Area', note: 'Other locations through teaming partners' },
   { label: 'Local license, Denver', value: '2021-BFN-0001984', note: 'Certified training provider · City of Denver', mono: true },
   { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
   { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
@@ -256,7 +256,7 @@ export const CRED_GROUPS: { name: string; rows: CredRow[] }[] = [
       { label: 'Local license, Denver', value: '2021-BFN-0001984', note: 'Certified training provider · City of Denver', mono: true },
       { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
       { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
-      { label: 'Service area', value: 'Greater Colorado Area', note: 'Nationwide on request' },
+      { label: 'Service area', value: 'Greater Colorado Area', note: 'Other locations through teaming partners' },
     ],
   },
 ];

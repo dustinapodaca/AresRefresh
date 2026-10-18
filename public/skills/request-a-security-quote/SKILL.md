@@ -35,7 +35,7 @@ Give the person one of these routes:
   The form can be opened pre-selected with `?service=` and `?industry=`:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
     `restricted-area-escort`, `relief-surge-coverage`, `mobile-patrol`, `teaming`, `other`
-  - industry: `government-military`, `critical-infrastructure`, `construction-industrial`,
+  - industry: `government-defense`, `critical-infrastructure`, `construction-industrial`,
     `airport-transportation`, `commercial-property`, `institutional-community`,
     `other`
   - Example: https://aressecurity.co/contact?service=armed-security-officers&industry=critical-infrastructure

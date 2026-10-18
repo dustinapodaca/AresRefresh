@@ -36,7 +36,7 @@ const CHIPS: { name: string; legend: string; options: string[] }[] = [
 // links here with ?industry=<slug>; owner, 2026-10-10), plus anything else. Event security
 // left the site (owner, 2026-10-10), so the event site type went with it.
 const SITE_TYPES: { slug: string; label: string }[] = [
-  { slug: 'government-military', label: 'Government & Defense' },
+  { slug: 'government-defense', label: 'Government & Defense' },
   { slug: 'critical-infrastructure', label: 'Critical & High-Liability Sites' },
   { slug: 'construction-industrial', label: 'Construction, Industrial & Logistics' },
   { slug: 'airport-transportation', label: 'Airport & Transportation' },

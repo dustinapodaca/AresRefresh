@@ -69,7 +69,7 @@ export const ROLE_PAGES: RolePageData[] = [
     sheet: { label: 'Firearms', value: 'Qualified by our NRA-certified instructor, a veteran' },
     how: 'An armed post starts with the reason it needs to be armed: cash on site, regulated goods, an isolated night post, or a contract requirement. We write the post orders around that reason, including who the officer calls first and when the post is armed. Our veteran NRA-certified firearms instructor qualifies each officer, and qualifications are current at the time of post. A member of our leadership who has worked the post then trains each officer on your site before the first shift, and on-call relief is written into the contract, so the post is never left empty.',
     ask: 'Tell us the site, the hours, and why the post needs to be armed.',
-    industries: ['government-military', 'commercial-property', 'critical-infrastructure'],
+    industries: ['government-defense', 'commercial-property', 'critical-infrastructure'],
     faq: [
       {
         q: 'What do officers do if something happens on site?',
@@ -99,7 +99,7 @@ export const ROLE_PAGES: RolePageData[] = [
     sheet: { label: 'Uniform', value: 'Uniformed or plainclothes, as the site calls for' },
     how: 'An unarmed post is built around what the site needs from the person standing it: a front desk that screens and directs visitors, rounds on a set schedule, or a discreet presence on a sales floor. We walk the site first and write the post orders for it. Each officer is trained on the post by a member of our leadership before the first shift, logs every checkpoint, and writes up anything out of the ordinary. Uniformed or plainclothes is your call, and on-call relief keeps the post covered when an officer cannot make a shift.',
     ask: 'Tell us the site, the hours, and how many officers you need on post.',
-    industries: ['commercial-property', 'construction-industrial', 'government-military'],
+    industries: ['commercial-property', 'construction-industrial', 'government-defense'],
     faq: [
       {
         q: 'What do officers do if something happens on site?',
@@ -129,7 +129,7 @@ export const ROLE_PAGES: RolePageData[] = [
     sheet: { label: 'Logs', value: 'Visitor and checkpoint logs you can audit' },
     how: 'Access control starts with your access list and the rules behind it: who may enter, when, through which door or gate, and who signs for visitors and deliveries. We write those rules into the post orders, then train each officer on your entry points and your site\u2019s own systems, such as card readers, visitor software, and intercoms, before the first shift. Every person, vehicle, and delivery is checked before entry, and every check is logged, so you can audit who came and went. Badges stay yours to issue; our officers enforce them.',
     ask: 'Tell us the entry points, the hours, and who is allowed in.',
-    industries: ['critical-infrastructure', 'government-military', 'construction-industrial'],
+    industries: ['critical-infrastructure', 'government-defense', 'construction-industrial'],
     faq: [
       {
         q: 'What does an access control officer do?',
@@ -161,7 +161,7 @@ export const ROLE_PAGES: RolePageData[] = [
     sheet: { label: 'Experience', value: 'Restricted-area escort and access control on a Space Force base in Colorado' },
     how: 'Escort work starts with the site\u2019s own rules: who may enter the controlled area, who must be escorted, and how many people one officer can keep in sight. We build the post orders around those rules and work alongside installation or site security. Officers verify people and vehicles at entry, keep every escorted crew, visitor, or delivery in line of sight, and log who came in, with whom, and when they left. On an active build, coverage changes as the work moves, and our relief schedule keeps every escort post staffed.',
     ask: 'Send us the site, its access rules, and the crews or deliveries that need escort. We will come back with a staffing plan and post orders.',
-    industries: ['government-military', 'critical-infrastructure', 'construction-industrial'],
+    industries: ['government-defense', 'critical-infrastructure', 'construction-industrial'],
     faq: [
       {
         q: 'What does a restricted-area escort do?',
@@ -195,7 +195,7 @@ export const ROLE_PAGES: RolePageData[] = [
     sheet: { label: 'Who it is for', value: 'Site owners, prime contractors, and other security companies' },
     how: 'Relief works best when it is lined up before you need it. Tell us the posts, the post orders, and the dates that are hard to cover, and we find officers who can stand them. Each one is trained on the post by a member of our leadership before the first shift, so a relief officer arrives knowing the entry points and the rules. For surge work, such as an inspection, an outage, a construction phase, or a contract transition, we staff to your dates and step back when the work is done.',
     ask: 'Send us the site, the posts, and the dates you need covered. We will tell you plainly who we can staff and when.',
-    industries: ['construction-industrial', 'critical-infrastructure', 'government-military'],
+    industries: ['construction-industrial', 'critical-infrastructure', 'government-defense'],
     faq: [
       {
         // Owner, 2026-10-10: "it depends, but within a week usually".

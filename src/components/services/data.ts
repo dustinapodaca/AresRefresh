@@ -52,7 +52,7 @@ export const DIVISIONS: Division[] = [
       src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
       sharp: { src: '/images/matrix-government.webp', width: 862, height: 862 },
     },
-    page: { to: '/industries/government-military', label: 'government and defense' },
+    page: { to: '/industries/government-defense', label: 'government and defense' },
   },
   {
     id: 'critical',

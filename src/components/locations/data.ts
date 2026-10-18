@@ -156,7 +156,8 @@ export const DENVER: LocationFile = {
     {
       // Owner, 2026-10-10: the same factors as the other cities.
       q: 'How soon can you start a post in Denver?',
-      a: 'It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has. Leadership comes up from Colorado Springs to walk the site and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+      // Worded apart from the other two cities' (web audit, 2026-10-18); the same facts.
+      a: 'Four things set it: the site, what our technical audit finds before anything is signed, how many officers the post needs, and any clearance requirements. Leadership comes up from Colorado Springs to walk the site and train each officer on the post before the first shift. Give us your start date and we will tell you plainly whether we can meet it.',
     },
   ],
   sectors: [
@@ -201,7 +202,8 @@ export const PUEBLO: LocationFile = {
     },
     {
       q: 'How soon can you start a post in Pueblo?',
-      a: 'It depends on the site, the technical audit we do before anything is signed, how many officers the post needs, and any clearance requirements the site has. We walk the site, write the post orders, and train each officer on the post before the first shift. Tell us your date and we will say plainly whether we can meet it.',
+      // Worded apart from the other two cities' (web audit, 2026-10-18); the same facts.
+      a: 'The start date turns on the site, our technical audit before anything is signed, the number of officers the post needs, and any clearance requirements. Leadership comes down I-25 from Colorado Springs to walk the site, write the post orders, and train each officer on the post before the first shift. Send us your date and we will answer plainly whether we can make it.',
     },
   ],
   sectors: [

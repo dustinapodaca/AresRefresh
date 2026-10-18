@@ -27,7 +27,8 @@ export const INSIGHTS: Insight[] = [
     // fact is already on the site: the relief schedule's fill times (owner, 2026-10-10), the
     // missed-shift record, training on the post, and the certification numbers.
     slug: 'relief-surge-coverage',
-    title: 'Relief and surge coverage: what to line up before you need it.',
+    // Retitled as a question (web audit, 2026-10-18) so it stops competing with the service page.
+    title: 'Who covers the post when an officer calls out?',
     category: 'Operations',
     date: '2026-10-11',
     dateLabel: 'October 11, 2026',
@@ -166,7 +167,7 @@ export const INSIGHTS: Insight[] = [
       { p: 'Ares holds GSA MAS contract 47QSMS25D009Q under SIN 561612, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
     related: [
-      { label: 'Government & Defense', to: '/industries/government-military' },
+      { label: 'Government & Defense', to: '/industries/government-defense' },
       { label: 'Capability Statement', to: '/capability-statement' },
     ],
   },
