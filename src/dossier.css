@@ -4919,7 +4919,8 @@ html[data-cards='glass'] .ds-cs-card::before {
 html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opacity 640ms cubic-bezier(0.45, 0, 0.55, 1) 320ms; }
 @media (hover: hover) and (pointer: fine) {
   html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover::before { opacity: 0; }
-  html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover { box-shadow: var(--ds-glass-top), inset 0 0 0 2000px #000, 0 12px 36px rgb(0 0 0 / 0.28); }
+  /* Its own background stays (the solid cards' lighter hover, #121418, flashed grey before the black). */
+  html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover { background: var(--ds-glass-wash); box-shadow: var(--ds-glass-top), inset 0 0 0 2000px #000, 0 12px 36px rgb(0 0 0 / 0.28); }
   html[data-cards='glass'] .ds-cs-card:hover { border-color: var(--ds-glass-edge); }
 }
 @media (prefers-reduced-motion: reduce) {
