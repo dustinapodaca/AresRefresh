@@ -817,7 +817,7 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
   2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
 - **Services first (owner, 2026-10-18; web audit item G):** the six capability cards below now open
-  the Services page, right after the opening and before "Who we protect", in the site's "we" voice,
+  the Services page under "What we staff." (owner), right after the opening and before "Who we protect.", in the site's "we" voice,
   each open card with "Open the full page →" to its service page (as the industry cards do). They
   replace Services' "By role." list. The Capability Statement's "Core competencies." is now that
   plain list: the six as ruled routes to their service pages (title and one line), in the page's

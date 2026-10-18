@@ -146,7 +146,8 @@ export function Capabilities({ onServices = false }: { onServices?: boolean }) {
     <section id="capabilities" className="ds-cs-caps" aria-labelledby="caps-title">
       <div className="ds-cs-head">
         <h2 id="caps-title" className="ds-display-lg">
-          Core competencies.
+          {/* On Services it pairs with the next headline, "Who we protect." (owner, 2026-10-18). */}
+          {onServices ? 'What we staff.' : 'Core competencies.'}
         </h2>
         <p className="ds-lead">{say('Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.')}</p>
       </div>
