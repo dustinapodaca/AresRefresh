@@ -2896,6 +2896,15 @@ html[data-cards] .ds-relief-panel {
   cursor: pointer;
 }
 .ds-cs-card-head .ds-cs-n { align-self: baseline; padding-top: 0.35em; }
+/* The whole card is the button (owner, 2026-10-18): the header button's hit area stretches over the
+   card, so a click anywhere opens or closes it and hovering anywhere animates the +; the full-page
+   link stays on top. The number turns rust on hover. */
+.ds-cs-card-head button::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.ds-cs-card .ds-svc-more { z-index: 2; }
+.ds-cs-card-head .ds-cs-n { transition: color 400ms cubic-bezier(0.45, 0, 0.55, 1); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-cs-card-head button:hover .ds-cs-n { color: var(--ds-rust); }
+}
 .ds-cs-card-title { font-size: 19px; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; color: var(--ds-fg); }
 .ds-cs-card[data-open='true'] .ds-svc-plus span:first-child { transform: rotate(45deg); }
 .ds-cs-card[data-open='true'] .ds-svc-plus span:last-child { transform: rotate(135deg); }
@@ -4899,9 +4908,9 @@ html[data-cards='glass'] .ds-cs-card {
   /* An inner black fill, clear at rest, that hover fades in so the card goes fully black (owner,
      2026-10-18); the top line stays above it. The same list in every state so it interpolates. */
   box-shadow: var(--ds-glass-top), inset 0 0 0 2000px rgb(0 0 0 / 0), 0 12px 36px rgb(0 0 0 / 0.28);
-  transition: box-shadow 520ms cubic-bezier(0.45, 0, 0.55, 1), border-color 320ms var(--ds-ease);
+  transition: box-shadow 400ms cubic-bezier(0.45, 0, 0.55, 1), border-color 320ms var(--ds-ease);
 }
-html[data-cards='glass'] .ds-cs-card[data-open='true'] { transition: box-shadow 640ms cubic-bezier(0.45, 0, 0.55, 1) 320ms, border-color 320ms var(--ds-ease); }
+html[data-cards='glass'] .ds-cs-card[data-open='true'] { transition: box-shadow 520ms cubic-bezier(0.45, 0, 0.55, 1) 320ms, border-color 320ms var(--ds-ease); }
 html[data-cards='glass'] .ds-cs-card[data-open='true'] {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
 }
@@ -4914,9 +4923,9 @@ html[data-cards='glass'] .ds-cs-card::before {
   background: var(--ds-card-rust);
   pointer-events: none;
   /* An even ease, not the site's quick one, so the fade glides (owner: softly). */
-  transition: opacity 520ms cubic-bezier(0.45, 0, 0.55, 1);
+  transition: opacity 400ms cubic-bezier(0.45, 0, 0.55, 1);
 }
-html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opacity 640ms cubic-bezier(0.45, 0, 0.55, 1) 320ms; }
+html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opacity 520ms cubic-bezier(0.45, 0, 0.55, 1) 320ms; }
 @media (hover: hover) and (pointer: fine) {
   html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover::before { opacity: 0; }
   /* Its own background stays (the solid cards' lighter hover, #121418, flashed grey before the black). */
