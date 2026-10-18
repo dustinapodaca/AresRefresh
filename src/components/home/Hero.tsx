@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
-import Topography from './Topography';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
 // /?hero=current|a|b|b1|b2|b3|b4|c. B2 is the default (owner, 2026-10-10; A was the audit's
@@ -40,6 +39,10 @@ const OPTIONS = {
   },
 } as const;
 type OptionKey = keyof typeof OPTIONS;
+
+// The terrain (WebGL2) loads on its own, only on Home and only once the page has mounted, so other
+// pages and the first paint don't carry its code (web audit, 2026-10-18).
+const Topography = lazy(() => import('./Topography'));
 
 // The terrain's still frames (2026-10-18), captured from the live terrain at 1440 and 390.
 const TOPO_STILL = responsive('/images/hero-topo/terrain-desktop.webp');
@@ -108,7 +111,7 @@ export default function Hero() {
             <source media="(min-width: 900px)" srcSet={TOPO_STILL.srcSet} sizes="100vw" width={TOPO_STILL.width} height={TOPO_STILL.height} />
             <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" decoding="async" />
           </picture>
-          {live && <Topography
+          {live && <Suspense fallback={null}><Topography
             onReady={onDrawn}
             color="#7a3c17"
             lineCount={22}
@@ -131,7 +134,7 @@ export default function Hero() {
             fog={0.12}
             hoverEffect="lift"
             clickEffect="pulse"
-          />}
+          /></Suspense>}
         </div>
       )}
 

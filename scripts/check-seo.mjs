@@ -78,7 +78,7 @@ for (const p of Object.keys(routes)) {
   if (desc && desc.length > 160) warnings.push(`${rel}: description is ${desc.length} chars (>160 may truncate)`);
 
   // --- prerender actually captured content ---
-  if (!/<div id="root">\s*<\S/.test(html)) errors.push(`${rel}: #root looks empty — prerender did not capture content`);
+  if (!/<div id="root"[^>]*>\s*<\S/.test(html)) errors.push(`${rel}: #root looks empty — prerender did not capture content`);
 
   // --- structured data parses ---
   for (const m of html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/g)) {

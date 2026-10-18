@@ -101,7 +101,9 @@ try {
     const html = await page.evaluate(() => {
       const first = window.__ARES_FIRST_RENDER__;
       if (typeof first !== 'string') throw new Error('no first render recorded');
-      document.getElementById('root').innerHTML = first;
+      const root = document.getElementById('root');
+      root.innerHTML = first;
+      root.setAttribute('data-prerendered', '');
       return `<!doctype html>${document.documentElement.outerHTML}`;
     });
 

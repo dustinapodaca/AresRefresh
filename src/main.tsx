@@ -46,10 +46,11 @@ const app = (
 // the page's largest paint is not pushed back to when the JavaScript arrives (Lighthouse timed
 // Home's headline at about 6s on a slow phone, though it painted at about 2s). Where the markup and
 // the first render disagree, React quietly redraws on its own; the [hydrate] line says where.
-// The dev server's empty shell, and any page with nothing prerendered, are drawn fresh as before.
+// Only pages the prerender wrote (it marks #root data-prerendered) hydrate; the dev server's shell,
+// a hot reload of this file, and any page with nothing prerendered are drawn fresh as before.
 // To go back: createRoot only (tag before-hydrate).
 const root = document.getElementById('root')!;
-if (root.hasChildNodes()) {
+if (root.hasAttribute('data-prerendered')) {
   hydrateRoot(root, app, {
     onRecoverableError: (error, info) => {
       console.error('[hydrate]', error, (info as { componentStack?: string })?.componentStack ?? '');
