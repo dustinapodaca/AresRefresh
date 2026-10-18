@@ -1060,7 +1060,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   into 03, and leadership on the first shift and the audit logs into 04. Two parts stood on their
   own after the stages; since 2026-10-16 only the relief schedule does:
   - **04 The relief schedule** (owner, 2026-10-15; was "The relief roster"): a contained panel (the prime contractors panel's surface, 4px
-    corners, 48px padding on desktop) with "The relief schedule." (display-md), its paragraph, and
+    corners, 48px padding on desktop; since 2026-10-18 (owner) its redone surface: black, the lit glass edge, a brighter top line and
+    a faint inner rim, without the rust light) with "The relief schedule." (display-md), its paragraph, and
     the proof beside the green status light ("Fewer than 1% of shifts missed since 2021", mono) in
     columns 1 to 5, and a small week of shifts in columns 7 to 12 (stacked on phones): Mon to Sun
     in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On call
