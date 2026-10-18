@@ -524,7 +524,7 @@ exception to "no card containers" and "no glass" for this section.
   all but vanished; with a dim floor in the corner, the lit side stays within a narrow range. **Drawn in
   CSS by default since 2026-10-16** (owner: it looked poor on a phone, where the shader ran at half
   the CSS size and a 3x screen showed it stretched about 6x): four large soft radial-gradient shapes
-  (umber, deep rust, rust, copper) on their own long loops (23 to 38s, ease-in-out, transform only,
+  (umber, deep rust, rust, copper; a touch browner and dimmer than at first, owner 2026-10-18) on their own long loops (23 to 38s, ease-in-out, transform only,
   so the compositor does the work and it is crisp at any density), masked to the lower right
   (phones: the lower part of the panel), with a faint still SVG grain against banding. Still under
   reduced motion. The shader stays at `?primeglow=webgl`. Kept to the lower right (phones: the lower part of the
