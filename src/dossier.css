@@ -2758,7 +2758,7 @@ html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, 
 }
 .ds-cs-hero-grid { display: grid; gap: 28px; padding-top: calc(var(--ds-header) + 28px); }
 /* The place caption (2026-10-12), top right under the nav like About's and the quote page's. */
-.ds-cs-hero-cap { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: var(--ds-fg); text-shadow: 0 0 3px rgb(0 0 0 / 0.9), 0 0 10px rgb(0 0 0 / 0.85), 0 0 22px rgb(0 0 0 / 0.6); } /* full ink and the Services caption's shadow: the 70% ink fell to 2.8:1 on the sunset (2026-10-18) */
+.ds-cs-hero-cap { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: var(--ds-fg); } /* full ink, no shadow (owner, 2026-10-18); the 70% ink fell to 2.8:1 on the sunset */
 @media (min-width: 1024px) { .ds-cs-hero-cap { top: calc(var(--ds-header) + 20px); } }
 /* Phones (below 900px): the copy starts low in the light so the panels show above the
    headline. */
@@ -2827,6 +2827,10 @@ html[data-cards='glass'] .ds-relief-panel { background: linear-gradient(180deg, 
   .ds-cs-hero-bg img { height: max(55.81vw, calc(100svh - 96px)); object-fit: cover; object-position: 66% 50%; }
   .ds-cs-hero-bg::after {
     background:
+      /* A soft dark pool behind the place caption at the top right (owner, 2026-10-18): the bright
+         sunset sky there left the full-ink caption at 3.7:1 at 1440 and 4:1 at 1680, with no
+         shadow on the letters. */
+      radial-gradient(ellipse 30rem 9rem at 100% calc(var(--ds-header) + 44px), rgb(0 0 0 / 0.38) 0%, rgb(0 0 0 / 0.2) 45%, rgb(0 0 0 / 0) 100%),
       linear-gradient(to bottom, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0) 24%),
       /* Lighter on the left (owner, 2026-10-13; was 1, 0.94, 0.62 by 46%): the lightest eased
          shade that keeps the headline, lead, and spec line at 4.5:1 at the brightest point of the
@@ -3457,7 +3461,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* Desktop: the chapel's spires rise behind the headline (owner, 2026-10-09). */
 @media (min-width: 1024px) { .ds-cr-hero img { object-position: 50% 40%; } }
 .ds-cr-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / 0.8) 0%, rgb(0 0 0 / 0.3) 38%, rgb(0 0 0 / 0) 60%); }
-.ds-cr-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: var(--ds-fg); text-shadow: 0 0 3px rgb(0 0 0 / 0.9), 0 0 10px rgb(0 0 0 / 0.85), 0 0 22px rgb(0 0 0 / 0.6); } /* as the Capability caption (2026-10-18; was 70% ink, 3.5:1) */
+.ds-cr-hero figcaption { position: absolute; z-index: 1; right: var(--ds-gutter); top: calc(var(--ds-header) + 12px); margin: 0; color: var(--ds-fg); } /* full ink, no shadow, as the Capability caption (owner, 2026-10-18; was 70% ink, 3.5:1) */
 .ds-cr-open-copy { position: relative; margin-top: -4.5rem; }
 /* Phones and tablets (owner, 2026-10-09): the same tall frame as the Capability Statement
    hero, the copy starting low in it; the photo fades out under the copy. */
