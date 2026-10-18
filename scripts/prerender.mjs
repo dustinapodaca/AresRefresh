@@ -95,7 +95,15 @@ try {
 
     await page.waitForSelector('h1', { timeout: 15000 });
 
-    const html = await page.evaluate(() => `<!doctype html>${document.documentElement.outerHTML}`);
+    // Save the markup React first drew (window.__ARES_FIRST_RENDER__, set in src/main.tsx), which
+    // is what hydration expects, inside the finished page's head (2026-10-18). The finished body
+    // carries effects' changes (measured rails, filled-in text) that would make React redraw.
+    const html = await page.evaluate(() => {
+      const first = window.__ARES_FIRST_RENDER__;
+      if (typeof first !== 'string') throw new Error('no first render recorded');
+      document.getElementById('root').innerHTML = first;
+      return `<!doctype html>${document.documentElement.outerHTML}`;
+    });
 
     const file = outFile(p);
     mkdirSync(dirname(file), { recursive: true });
