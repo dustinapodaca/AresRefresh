@@ -41,8 +41,14 @@ type Edges = { top: boolean; right: boolean; bottom: boolean; left: boolean };
 let defs: SVGDefsElement | null = null;
 let counter = 0;
 
+// Every browser on an iPhone or iPad is WebKit underneath, whatever its name (Chrome is CriOS,
+// Firefox FxiOS, Edge EdgiOS), so none of them can run it; were one to pass, the url() filter
+// would void the CSS frost and leave the glass unblurred (2026-10-18).
 export const liquidSupported = () =>
-  typeof window !== 'undefined' && 'chrome' in window && !/Firefox/.test(navigator.userAgent);
+  typeof window !== 'undefined' &&
+  'chrome' in window &&
+  !/Firefox|FxiOS|CriOS|EdgiOS|iPhone|iPad|iPod/.test(navigator.userAgent) &&
+  !(/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
 function ensureDefs() {
   if (defs) return defs;
