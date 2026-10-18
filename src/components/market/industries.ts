@@ -22,7 +22,7 @@ export type IndustryPageData = {
     position?: string;
     /** Phones (below 768px) only: the strip's framing, with an optional zoom toward `origin`. */
     mobile?: { position: string; zoom?: number; origin?: string };
-    card?: { position: string; zoom?: number; origin?: string };
+    card?: { position: string; zoom?: number; origin?: string; /** From 1024px, if it differs (owner, 2026-10-18). */ desktopPosition?: string };
   };
   stake: string[];
   deliver: { role: string; line: string }[];
@@ -57,7 +57,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       src: '/images/market/government-military.webp',
       alt: '',
       position: '50% 90%',
-      card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%' },
+      // Desktop sits a little further right in the photo, so the radome moves left in the card (owner, 2026-10-18).
+      card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%', desktopPosition: '8% 50%' },
     },
     stake: [
       'On a military installation or a defense contractor’s site, security is part of the mission. One missed check at a gate, or one unescorted visitor in a restricted area, becomes a finding, a stop-work, or a delay to the program.',

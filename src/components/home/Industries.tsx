@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
@@ -49,11 +50,12 @@ export default function Industries() {
                     // Per-image card framing (industries.ts); `scale` composes with the hover zoom.
                     style={
                       ind.image.card
-                        ? {
-                            objectPosition: ind.image.card.position,
+                        ? ({
+                            '--card-pos': ind.image.card.position,
+                            '--card-pos-desktop': ind.image.card.desktopPosition ?? ind.image.card.position,
                             scale: ind.image.card.zoom ? String(ind.image.card.zoom) : undefined,
                             transformOrigin: ind.image.card.origin,
-                          }
+                          } as CSSProperties)
                         : undefined
                     }
                   />
