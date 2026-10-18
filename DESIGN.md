@@ -1064,7 +1064,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
     a faint inner rim, without the rust light) with "The relief schedule." (display-md), its paragraph, and
     the proof beside the green status light ("Fewer than 1% of shifts missed since 2021", mono) in
     columns 1 to 5, and a small week of shifts in columns 7 to 12 (stacked on phones): Mon to Sun
-    in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On call
+    in mono over Day, Swing, and Night rows of small hairline tiles with a dot each, an On-call
     row of hatched slots a little apart (rust edge and hatch since 2026-10-18, owner), and a status line in mono under a hairline. One quiet
     moment once the whole week is on screen below the nav (owner, 2026-10-18; was 55% of it) (an example week, labeled as one for screen readers): the
     week fills in cell by cell (28ms apart), Thursday night's dot turns red (#e5534b; owner,

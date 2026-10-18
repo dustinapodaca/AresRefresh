@@ -88,7 +88,7 @@ export default function Relief() {
             {SHIFTS.map((s, row) => (
               <Row key={s} label={s} row={row} />
             ))}
-            <span className="ds-data ds-relief-label ds-relief-oncall">On call</span>
+            <span className="ds-data ds-relief-label ds-relief-oncall">On-call</span>
             {DAYS.map((d, col) => (
               <span key={d} className="ds-relief-slot" data-hit={col === OUT.col ? 'true' : undefined}>
                 {col === OUT.col && <i className="ds-relief-wire" />}
