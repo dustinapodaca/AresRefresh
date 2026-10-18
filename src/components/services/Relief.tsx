@@ -31,6 +31,13 @@ export default function Relief() {
     if (r.top < window.innerHeight * 0.85 && r.bottom > 0) return;
     setStep('armed');
     const timers: number[] = [];
+    // Starts once the whole week is on screen below the nav (owner, 2026-10-18; was 55% of it),
+    // and below the running head where it shows. On a screen too short to hold it (a phone on its
+    // side), as much of it as fits, so it never waits forever.
+    const fig = (el.querySelector('.ds-relief-fig') as HTMLElement | null) ?? el;
+    const css = getComputedStyle(document.documentElement);
+    const head = (parseFloat(css.getPropertyValue('--ds-header')) || 72) + (window.innerWidth < 1200 ? parseFloat(css.getPropertyValue('--ds-runhead')) || 36 : 0);
+    const fits = Math.min(1, ((window.innerHeight - head) / fig.offsetHeight) * 0.98);
     const io = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) return;
@@ -42,9 +49,9 @@ export default function Relief() {
         timers.push(window.setTimeout(() => setStep('relief'), 3500));
         timers.push(window.setTimeout(() => setStep('done'), 5300));
       },
-      { threshold: 0.55 },
+      { threshold: fits, rootMargin: `-${head}px 0px 0px 0px` },
     );
-    io.observe(el.querySelector('.ds-relief-fig') ?? el);
+    io.observe(fig);
     return () => {
       io.disconnect();
       timers.forEach(clearTimeout);
