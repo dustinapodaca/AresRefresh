@@ -4768,6 +4768,16 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-hero-topo { top: -160px; margin-top: 0; height: auto; }
   .ds-hero-topo::after { background: radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%); }
 }
+/* The terrain's still (2026-10-18): a captured frame under the canvas, for wherever the live
+   terrain can't run. It fills the box like the canvas, without the photo's drift or grade, and
+   fades out as the live terrain rises from flat on load. */
+.ds-hero-topo .ds-hero-topo-still img {
+  top: 0; height: 100%; object-fit: cover; object-position: 50% 50%; filter: none; animation: none;
+  transition: opacity 1.6s var(--ds-ease);
+}
+.ds-hero-topo[data-drawn] .ds-hero-topo-still img { opacity: 0; }
+.ds-hero-topo .topography-container { position: absolute; inset: 0; }
+
 /* Home hero terrain, desktop (owner, 2026-10-15): a longer, stronger black fade into 01 Record
    than the photo's (it was transparent to solid over the last 26%). */
 @media (min-width: 900px) {

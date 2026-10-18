@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
@@ -41,6 +41,9 @@ const OPTIONS = {
 } as const;
 type OptionKey = keyof typeof OPTIONS;
 
+// The terrain's still frames (2026-10-18), captured from the live terrain at 1440 and 390.
+const TOPO_STILL = responsive('/images/hero-topo/terrain-desktop.webp');
+
 export default function Hero() {
   const [params] = useSearchParams();
   const asked = params.get('hero');
@@ -51,12 +54,18 @@ export default function Hero() {
   // The terrain is drawn in the browser only, after mount, and never for automated browsers:
   // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
   // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
+  // Where it can't run (WebGL2 blocked or missing, a software renderer, no JavaScript, the
+  // prerender) a still frame of it stands in (2026-10-18); it fades out once the terrain draws its
+  // first frame. Under reduced motion the still is all that shows, so the GPU never starts.
   const [live, setLive] = useState(false);
+  const [drawn, setDrawn] = useState(false);
+  const onDrawn = useCallback(() => setDrawn(true), []);
   // Desktop zooms out (owner, 2026-10-15): the component narrows its camera on wide screens, so
   // the land reads magnified there; smaller landforms from 900px. Phones keep the full size.
   const [wide, setWide] = useState(false);
   useEffect(() => {
-    if (!navigator.webdriver) setLive(true);
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!navigator.webdriver && !still) setLive(true);
     const mq = window.matchMedia('(min-width: 900px)');
     const sync = () => setWide(mq.matches);
     sync();
@@ -94,8 +103,13 @@ export default function Hero() {
           <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
         </div>
       ) : (
-        <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
+        <div className="ds-hero-photo ds-hero-topo" data-drawn={drawn || undefined} aria-hidden="true">
+          <picture className="ds-hero-topo-still">
+            <source media="(min-width: 900px)" srcSet={TOPO_STILL.srcSet} sizes="100vw" width={TOPO_STILL.width} height={TOPO_STILL.height} />
+            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" decoding="async" />
+          </picture>
           {live && <Topography
+            onReady={onDrawn}
             color="#7a3c17"
             lineCount={22}
             lineWidth={1.2}

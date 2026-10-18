@@ -32,6 +32,9 @@ PHOTO_WIDTHS = [480, 800, 1200, 1600, 2000, 2400]
 # Full-bleed photos with smooth skies get sharp YUV (it keeps gradients from banding).
 PHOTOS = [
     {'key': '/images/hero6.jpg', 'source': 'assets/images-src/hero6.jpg', 'q': 80},
+    # Home hero terrain stills (2026-10-18): frames of the live WebGL terrain, shown where it can't run.
+    {'key': '/images/hero-topo/terrain-desktop.webp', 'source': 'assets/images-src/hero-topo/terrain-desktop.png', 'q': 80},
+    {'key': '/images/hero-topo/terrain-phone.webp', 'source': 'assets/images-src/hero-topo/terrain-phone.png', 'q': 80},
     {'key': '/images/about-hero.jpg', 'source': 'assets/images-src/about-hero.jpg', 'q': 80},
     {'key': '/images/careers-hero.jpg', 'source': 'assets/images-src/careers-hero.jpg', 'q': 80},
     {'key': '/images/about-security.jpg', 'source': 'assets/images-src/about-security.jpg', 'q': 80},

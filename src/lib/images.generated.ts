@@ -8,6 +8,18 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 2400,
     "height": 1600
   },
+  "/images/hero-topo/terrain-desktop.webp": {
+    "src": "/images/opt/hero-topo-terrain-desktop-1200.9f7883b4.webp",
+    "srcSet": "/images/opt/hero-topo-terrain-desktop-480.cac15a16.webp 480w, /images/opt/hero-topo-terrain-desktop-800.47a4f79b.webp 800w, /images/opt/hero-topo-terrain-desktop-1200.9f7883b4.webp 1200w, /images/opt/hero-topo-terrain-desktop-1600.c905999d.webp 1600w, /images/opt/hero-topo-terrain-desktop-2000.f385f04f.webp 2000w, /images/opt/hero-topo-terrain-desktop-2400.404a5fe0.webp 2400w, /images/opt/hero-topo-terrain-desktop-2880.dd0a2bc9.webp 2880w",
+    "width": 2880,
+    "height": 2282
+  },
+  "/images/hero-topo/terrain-phone.webp": {
+    "src": "/images/opt/hero-topo-terrain-phone-780.6dbd89d5.webp",
+    "srcSet": "/images/opt/hero-topo-terrain-phone-480.fb13e95f.webp 480w, /images/opt/hero-topo-terrain-phone-780.6dbd89d5.webp 780w",
+    "width": 780,
+    "height": 1500
+  },
   "/images/about-hero.jpg": {
     "src": "/images/opt/about-hero-1200.e1a7cf60.webp",
     "srcSet": "/images/opt/about-hero-480.bb46fd6e.webp 480w, /images/opt/about-hero-800.4c4d6733.webp 800w, /images/opt/about-hero-1200.e1a7cf60.webp 1200w, /images/opt/about-hero-1600.38e439b7.webp 1600w, /images/opt/about-hero-2000.d31df26c.webp 2000w, /images/opt/about-hero-2400.1776d856.webp 2400w",

@@ -728,7 +728,10 @@ const Topography = ({
   lightMode = false,
   dpr,
   className = '',
-  style
+  style,
+  // Ares (2026-10-18): called once, after the first frame is drawn, so the hero can fade out the
+  // still that stands in where WebGL2 is blocked, missing, or software only.
+  onReady
 }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -767,6 +770,8 @@ const Topography = ({
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -1299,6 +1304,7 @@ const Topography = ({
     };
 
     let sizedDpr = settingsRef.current.dpr;
+    let ready = false;
 
     const resize = () => {
       const s = settingsRef.current;
@@ -1403,6 +1409,10 @@ const Topography = ({
 
       const sculpting = updateSculpt(s, dt);
       render();
+      if (!ready) {
+        ready = true;
+        onReadyRef.current?.();
+      }
 
       const settling =
         Math.abs(s.tilt - state.tilt) > 0.01 ||
