@@ -4893,7 +4893,15 @@ html[data-cards='glass'] .ds-value {
 /* The six service cards (on Services since 2026-10-18) carry the same light on a layer of its own,
    so it can fade (owner, 2026-10-18): on hover it fades out and the card goes plain dark (instead
    of its edge brightening); once a card has opened (after the 320ms open), the light fades back. */
-html[data-cards='glass'] .ds-cs-card { isolation: isolate; background: var(--ds-glass-wash); }
+html[data-cards='glass'] .ds-cs-card {
+  isolation: isolate;
+  background: var(--ds-glass-wash);
+  /* An inner black fill, clear at rest, that hover fades in so the card goes fully black (owner,
+     2026-10-18); the top line stays above it. The same list in every state so it interpolates. */
+  box-shadow: var(--ds-glass-top), inset 0 0 0 2000px rgb(0 0 0 / 0), 0 12px 36px rgb(0 0 0 / 0.28);
+  transition: box-shadow 520ms cubic-bezier(0.45, 0, 0.55, 1), border-color 320ms var(--ds-ease);
+}
+html[data-cards='glass'] .ds-cs-card[data-open='true'] { transition: box-shadow 640ms cubic-bezier(0.45, 0, 0.55, 1) 320ms, border-color 320ms var(--ds-ease); }
 html[data-cards='glass'] .ds-cs-card[data-open='true'] {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
 }
@@ -4911,10 +4919,11 @@ html[data-cards='glass'] .ds-cs-card::before {
 html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opacity 640ms cubic-bezier(0.45, 0, 0.55, 1) 320ms; }
 @media (hover: hover) and (pointer: fine) {
   html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover::before { opacity: 0; }
+  html[data-cards='glass'] .ds-cs-card:not([data-open='true']):hover { box-shadow: var(--ds-glass-top), inset 0 0 0 2000px #000, 0 12px 36px rgb(0 0 0 / 0.28); }
   html[data-cards='glass'] .ds-cs-card:hover { border-color: var(--ds-glass-edge); }
 }
 @media (prefers-reduced-motion: reduce) {
-  html[data-cards='glass'] .ds-cs-card::before { transition: none; }
+  html[data-cards='glass'] .ds-cs-card, html[data-cards='glass'] .ds-cs-card::before { transition: none; }
 }
 
 /* One stroke for every glass surface: the 1px white/10% edge, and the white/14% inner line on

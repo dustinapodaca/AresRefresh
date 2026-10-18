@@ -300,8 +300,8 @@ Cards and glass are part of the system, not exceptions.
   (centred just outside it, kept as faint as Gladia's: rust 42% at the core, 16% a third of the
   way out, gone by 72%), so only its edge shows (owner, 2026-10-15). Since 2026-10-18 (owner) that light takes the prime panel's
   ramp, a step darker (rust 52% at the core, deep rust, then umber, gone by 78%; `--ds-card-rust`); the six cards now live on Services. On those six (owner, 2026-10-18) the light sits on its
-  own layer: hovering a closed card fades it out over 520ms on an even ease, leaving the card plain dark (its edge
-  no longer brightens), and opening a card fades it back over 640ms once the 320ms open has finished (an owner
+  own layer: hovering a closed card fades it out over 520ms on an even ease while an inner black fill fades in, so
+  the card goes fully black (owner; its edge no longer brightens), and opening a card fades the black out and the light back over 640ms once the 320ms open has finished (an owner
   exception to the 300ms limit: "softly"). Instant under reduced motion. Glows behind the cards (in their corners,
   or under them) were tried the same day and removed. The same stroke (`--ds-glass-edge` white/10%, `--ds-glass-top` the
   white/14% inner top line) goes on every glass surface in this mode: the nav bar and float card,
