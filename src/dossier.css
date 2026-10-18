@@ -2166,6 +2166,16 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    description (owner, 2026-10-10). Its left edge follows the description's. */
 /* Only on an opened card (owner, 2026-10-10); inline so the arrow follows the last word. */
 .ds-svc-more { position: relative; z-index: 1; display: none; margin: 14px 0 0 calc(1.75rem + 6px); font-size: 15px; line-height: 1.5; }
+/* The whole industry card opens and closes it too (owner, 2026-10-18; a click handler on the card in
+   Divisions.tsx, since its frosted text panel is a layer of its own), so hovering anywhere on it
+   animates the + and turns the number rust. */
+.ds-svc-card { cursor: pointer; }
+.ds-svc-card-head .ds-svc-n { transition: color 400ms cubic-bezier(0.45, 0, 0.55, 1); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-svc-card:hover .ds-svc-card-head .ds-svc-n { color: var(--ds-rust); }
+  .ds-svc-card:hover .ds-svc-plus { --tick: rgb(238 240 242 / 0.75); }
+  .ds-svc-card:hover .ds-svc-plus::before { transform: scale(0.84); }
+}
 .ds-svc-more .ds-arrow { display: inline-block; margin-left: 8px; vertical-align: -2px; }
 .ds-svc-card[data-open='true'] .ds-svc-more { display: inline-block; }
 /* The service cards on Services (owner, 2026-10-18) open to their service page the same way. */

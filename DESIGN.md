@@ -721,7 +721,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   to 76% black; every card's text 5.1:1 or better) and a light along its top. It paints once and
   scrolls as a picture, so nothing re-filters while the page moves. With the number beside
   the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
-  The + (or the photo) opens one card at a time: it takes its row's full width (its
+  The + (or the photo; since 2026-10-18, owner, anywhere on the card, with the number turning rust and the +
+  animating on card hover) opens one card at a time: it takes its row's full width (its
   row-mate moves down and the cards after it re-pair beneath; a last odd card sits at
   half width), the + turns into an x, and the detail appears under the
   description (Government's GSA ledger row, then each site type with one plain line).

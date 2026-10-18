@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type MouseEvent } from 'react';
 import { flushSync } from 'react-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
@@ -156,6 +156,14 @@ export default function Divisions() {
           const open = openId === d.id;
           const panelId = `${d.id}-detail`;
           const toggle = () => toggleCard(d.id);
+          // The whole card opens and closes it (owner, 2026-10-18), photo and text alike; links and the
+          // + button keep their own clicks, and the end of a text selection is not a click. The +
+          // button stays the keyboard control.
+          const onCardClick = (e: MouseEvent<HTMLElement>) => {
+            if ((e.target as HTMLElement).closest('a, button')) return;
+            if (window.getSelection()?.toString()) return;
+            toggle();
+          };
           return (
             <article
               key={d.id}
@@ -165,9 +173,10 @@ export default function Divisions() {
               data-col={i % 2 ? 'right' : 'left'}
               data-corner={slots.get(d.id)?.corners || undefined}
               aria-labelledby={`${d.id}-title`}
+              onClick={onCardClick}
               style={{ '--o': i * 2, '--lo': slots.get(d.id)?.order, '--span': slots.get(d.id)?.span } as CSSProperties}
             >
-              <div className="ds-svc-card-media" onClick={toggle} aria-hidden="true">
+              <div className="ds-svc-card-media" aria-hidden="true">
                 {/* Stock photographs, not Ares sites, so they carry no exhibit caption. */}
                 <img
                   {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
