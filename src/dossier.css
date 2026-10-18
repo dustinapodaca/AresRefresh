@@ -4777,14 +4777,17 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-hero-topo { top: -160px; margin-top: 0; height: auto; }
   .ds-hero-topo::after { background: radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%); }
 }
-/* The terrain's still (2026-10-18): a captured frame under the canvas, for wherever the live
-   terrain can't run. It fills the box like the canvas, without the photo's drift or grade, and
-   fades out as the live terrain rises from flat on load. */
+/* The terrain's still (2026-10-18): a captured frame of the live terrain, for wherever it can't
+   run. <html data-terrain> decides from the first paint (index.html, lib/terrainSupport.ts):
+   'live' hides the still (it isn't even fetched), 'still' or no value (no JavaScript) shows it,
+   and 'fallback' (the terrain was expected but drew nothing) fades it in. No swap otherwise
+   (owner, 2026-10-18). It fills the box like the canvas, without the photo's drift or grade. */
 .ds-hero-topo .ds-hero-topo-still img {
   top: 0; height: 100%; object-fit: cover; object-position: 50% 50%; filter: none; animation: none;
-  transition: opacity 1.6s var(--ds-ease);
 }
-.ds-hero-topo[data-drawn] .ds-hero-topo-still img { opacity: 0; }
+html[data-terrain='live'] .ds-hero-topo-still { display: none; }
+html[data-terrain='fallback'] .ds-hero-topo .ds-hero-topo-still img { animation: ds-topo-still-in 600ms var(--ds-ease) both; }
+@keyframes ds-topo-still-in { from { opacity: 0; } }
 .ds-hero-topo .topography-container { position: absolute; inset: 0; }
 
 /* Home hero terrain, desktop (owner, 2026-10-15): a longer, stronger black fade into 01 Record

@@ -393,11 +393,15 @@ every page.
   its cleanup no longer destroys the WebGL context, which drew the hero white under React's
   development Strict Mode.)
   **Fallback still (2026-10-18, owner):** a captured frame of the live terrain (`/images/hero-topo/
-  terrain-desktop.webp` from 900px, `terrain-phone.webp` below; captured at 1440 and 390, 2x) sits
-  under the canvas, so the hero is never an empty black box where WebGL2 is blocked or missing, the
-  renderer is software only, JavaScript is off, or in the prerender. It fades out (1.6s) once the
-  terrain draws its first frame (`onReady` in `Topography.tsx`). Under reduced motion only the still
-  shows and the terrain never starts. Recapture it if the terrain's colors or camera change.
+  terrain-desktop.webp` from 900px, `terrain-phone.webp` below; captured at 1440 and 390, 2x) shows
+  only where the terrain can't run: WebGL2 blocked or missing, a software renderer, no JavaScript,
+  the prerender, reduced motion. Never one then the other (owner, 2026-10-18: the still-then-terrain
+  crossfade was rejected). A small inline script in index.html (allowed by its sha256 in
+  public/_headers) opens a WebGL2 context before the first paint and sets `<html data-terrain>`:
+  `live` runs the terrain and hides the still (not even fetched), `still` shows the still and never
+  loads the terrain. `lib/terrainSupport.ts` does the same when Home is reached from another page.
+  If the terrain was expected but draws nothing within 4s of visible time, the still fades in
+  (`fallback`, 600ms), the only fade. Recapture the still if the terrain's colors or camera change.
 - **Hero image (Home), from 2026-10-08:** the copper-glass tower `hero6.jpg` again (owner; it had moved to the Services band), graded `saturate(0.95) brightness(0.8) contrast(1.06)` at `50% 50%` from 900px with no black from the left but a soft vignette (owner, 2026-10-08; lighter than About's: the top shaded from 70% to clear by 44%, the edges and corners darkened up to 62% outside an oval around the towers), fit rather than zoomed (the photo's box runs only 4 to 7rem past the hero with 4% headroom for a 4% drift, so cover shows about 94% of its width at 1440 and all of it at 1920); readability comes from a strip of dark glass behind the copy (owner, 2026-10-08: full bleed from just above the headline to the hero's foot, canvas 72% to 48% left to right over a 24px blur, crisp white/10% edges top and bottom, no fade; the photo and its copper floor run on below it into 01 Record. From 1024px the headline runs across and the lead (6 columns, up to 46ch) sits below it, then the proof row across the full width (copy audit, owner 2026-10-10; it replaced the GSA mark, which still shows with the "current" option). The lead and GSA label in #c4c8ce; 6.7:1 or better at the brightest point), `saturate(0.9) brightness(0.8)` at `62% 40%` on phones, moved 36px further right below 768px (owner, 2026-10-12). The earlier Home hero, kept for the record: `hero-fold.webp` (owner-supplied, 2026-10-05): a dark glass
   panel with a glowing edge beside a sweep of amber and white light. Framed, not
   mirrored: on desktop it is anchored at its left edge (`object-position: 0% 50%`), so

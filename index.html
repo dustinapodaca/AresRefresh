@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Home hero: can this browser run the terrain? Sets <html data-terrain> before the first
+         paint, so the hero shows the terrain or its still from the start, never one then the
+         other (2026-10-18). The same check as src/lib/terrainSupport.ts, minified; its sha256 is
+         allowed in public/_headers, so update that hash whenever this line changes. -->
+    <script>(function(){if(location.pathname!=='/')return;var m='still';try{if(!navigator.webdriver&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var g=document.createElement('canvas').getContext('webgl2');if(g){var i=g.getExtension('WEBGL_debug_renderer_info'),r=i?String(g.getParameter(i.UNMASKED_RENDERER_WEBGL)):'',l=g.getExtension('WEBGL_lose_context');l&&l.loseContext();if(!/swiftshader|llvmpipe|software/i.test(r))m='live'}}}catch(e){}document.documentElement.setAttribute('data-terrain',m)})();</script>
     <!-- Browser tab, bookmark, and home-screen icons, the same set as the live site
          aressecurity.co (copied from it 2026-10-09). -->
     <link rel="icon" href="/favicon-v2.svg" type="image/svg+xml" />

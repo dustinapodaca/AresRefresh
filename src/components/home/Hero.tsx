@@ -1,9 +1,10 @@
-import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
+import { terrainMode } from '../../lib/terrainSupport';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
 // /?hero=current|a|b|b1|b2|b3|b4|c. B2 is the default (owner, 2026-10-10; A was the audit's
@@ -58,17 +59,56 @@ export default function Hero() {
   // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
   // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
   // Where it can't run (WebGL2 blocked or missing, a software renderer, no JavaScript, the
-  // prerender) a still frame of it stands in (2026-10-18); it fades out once the terrain draws its
-  // first frame. Under reduced motion the still is all that shows, so the GPU never starts.
+  // prerender, reduced motion) a still frame of it shows instead, from the first paint (owner,
+  // 2026-10-18: no still-then-terrain swap). <html data-terrain> says which; the inline script in
+  // index.html sets it before the first paint, and lib/terrainSupport.ts when Home is reached
+  // from another page. If the terrain was expected but draws nothing within a few seconds, the
+  // still comes in its place ('fallback'), the only time it fades.
   const [live, setLive] = useState(false);
-  const [drawn, setDrawn] = useState(false);
-  const onDrawn = useCallback(() => setDrawn(true), []);
+  const drawn = useRef(false);
+  const onDrawn = useCallback(() => {
+    drawn.current = true;
+  }, []);
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    if (!html.dataset.terrain) html.dataset.terrain = terrainMode();
+  }, []);
+  useEffect(() => {
+    const html = document.documentElement;
+    if (bg !== 'topo' || html.dataset.terrain !== 'live') return;
+    setLive(true);
+    // Counted only while the tab is showing: a background tab draws nothing yet.
+    let left = 4000;
+    let started = 0;
+    let timer = 0;
+    const fail = () => {
+      if (drawn.current) return;
+      html.dataset.terrain = 'fallback';
+      setLive(false);
+    };
+    const run = () => {
+      if (document.hidden || timer) return;
+      started = performance.now();
+      timer = window.setTimeout(fail, left);
+    };
+    const pause = () => {
+      if (!document.hidden || !timer) return;
+      window.clearTimeout(timer);
+      timer = 0;
+      left -= performance.now() - started;
+    };
+    const onVisibility = () => (document.hidden ? pause() : run());
+    run();
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [bg]);
   // Desktop zooms out (owner, 2026-10-15): the component narrows its camera on wide screens, so
   // the land reads magnified there; smaller landforms from 900px. Phones keep the full size.
   const [wide, setWide] = useState(false);
   useEffect(() => {
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!navigator.webdriver && !still) setLive(true);
     const mq = window.matchMedia('(min-width: 900px)');
     const sync = () => setWide(mq.matches);
     sync();
@@ -106,10 +146,11 @@ export default function Hero() {
           <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
         </div>
       ) : (
-        <div className="ds-hero-photo ds-hero-topo" data-drawn={drawn || undefined} aria-hidden="true">
+        <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
           <picture className="ds-hero-topo-still">
             <source media="(min-width: 900px)" srcSet={TOPO_STILL.srcSet} sizes="100vw" width={TOPO_STILL.width} height={TOPO_STILL.height} />
-            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" decoding="async" />
+            {/* Lazy: hidden while the terrain runs, so it is only fetched where it shows. */}
+            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" loading="lazy" decoding="async" />
           </picture>
           {live && <Suspense fallback={null}><Topography
             onReady={onDrawn}
