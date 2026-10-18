@@ -4046,8 +4046,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* Insights index: ruled rows, title and summary left, category and date right. */
 .ds-mk-posts { list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
 .ds-mk-posts li { border-bottom: 1px solid var(--ds-rule); }
-/* The service-area hub's map, under the cities (web audit, 2026-10-18). */
-.ds-loc-hub-map { max-width: 46rem; margin-top: var(--ds-beat-tight); }
 .ds-mk-posts a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; padding: 24px 0 26px; color: var(--ds-fg); }
 .ds-mk-post-title { grid-column: 1; font-size: 20px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; }
 .ds-mk-post-sum { grid-column: 1; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 64ch; }

@@ -20,8 +20,6 @@ import Accessibility from './pages/Accessibility';
 import RolePage from './pages/RolePage';
 import IndustryPage from './pages/IndustryPage';
 import Insights from './pages/Insights';
-import IndustriesHub from './pages/IndustriesHub';
-import LocationsHub from './pages/LocationsHub';
 import InsightPage from './pages/InsightPage';
 import CityJobsPage from './pages/CityJobsPage';
 import ColoradoSprings from './pages/locations/ColoradoSprings';
@@ -155,7 +153,6 @@ export default function App() {
 
         {/* Services by role, industries, insights, and jobs by city (2026-10-08) */}
         <Route path="/services/:slug" element={<RolePage />} />
-        <Route path="/industries" element={<IndustriesHub />} />
         <Route path="/industries/:slug" element={<IndustryPage />} />
         <Route path="/teaming" element={<Teaming />} />
         <Route path="/insights" element={<Insights />} />
@@ -163,7 +160,6 @@ export default function App() {
         <Route path="/careers/:city" element={<CityJobsPage />} />
 
         {/* Service areas */}
-        <Route path="/locations" element={<LocationsHub />} />
         <Route path="/locations/colorado-springs" element={<ColoradoSprings />} />
         <Route path="/locations/denver" element={<Denver />} />
         <Route path="/locations/pueblo" element={<Pueblo />} />

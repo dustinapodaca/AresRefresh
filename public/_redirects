@@ -22,6 +22,9 @@
 /services/event-security    /services/relief-surge-coverage    301
 # Government & Defense took its name in the address too (web audit, 2026-10-18).
 /industries/government-military    /industries/government-defense    301
+# No hub pages (owner, 2026-10-18): a trimmed address lands on the matching Services section.
+/industries    /services#divisions    301
+/locations    /services#areas    301
 
 # Anything genuinely unmatched: real 404 status, prerendered 404 page.
 /*    /404.html    404

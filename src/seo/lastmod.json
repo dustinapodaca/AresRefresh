@@ -27,20 +27,16 @@
     "hash": "5cb6589410c68ff68d7e333677ae500ddd6cb4e4",
     "date": "2026-10-18"
   },
-  "/locations": {
-    "hash": "a2ebd9c9e056645ae14076a219715427b0b0de86",
-    "date": "2026-10-18"
-  },
   "/locations/colorado-springs": {
-    "hash": "8aa87067b7ff531710f75c2ea9ed5c739d0c38a5",
+    "hash": "e918239336214440b21b65eedb198ba364ff8939",
     "date": "2026-10-18"
   },
   "/locations/denver": {
-    "hash": "8d37fbb4bbea5a24834209caa764427674fc0893",
+    "hash": "830baaa3e30e248681f5a9f2ec13c37553464ecf",
     "date": "2026-10-18"
   },
   "/locations/pueblo": {
-    "hash": "a66e21453bfe0da664a814a2af6590245c4aac2c",
+    "hash": "11081d461d803db211f4dc4dec578e001c36b595",
     "date": "2026-10-18"
   },
   "/privacy": {
@@ -79,32 +75,28 @@
     "hash": "335c9eb626c5ab3ad67cde67bc2ba9faab652d50",
     "date": "2026-10-18"
   },
-  "/industries": {
-    "hash": "86ea84a72666dc9aac0af428db26ad21bf94b8d9",
-    "date": "2026-10-18"
-  },
   "/industries/government-defense": {
-    "hash": "c7c35d2ebd9efd8aac47fae96a6af1528f2178b6",
+    "hash": "15d1666b6f5605bff89118625efdcbc87fc2a11f",
     "date": "2026-10-18"
   },
   "/industries/critical-infrastructure": {
-    "hash": "c2bae5d938c1eddc545eda69b2b1f24b7057c9dc",
+    "hash": "2fba947471f5f0449078a225ca45a20fc9073a4b",
     "date": "2026-10-18"
   },
   "/industries/construction-industrial": {
-    "hash": "73d2d05bbe4917446799ac8856b307269a4925c3",
+    "hash": "5d519b73fd78da45782116a5d3d17a953501c03f",
     "date": "2026-10-18"
   },
   "/industries/airport-transportation": {
-    "hash": "b66c83257220e06f571e5ead9afc5d206b719142",
+    "hash": "dca37472c24f01f732653a0a5a7ed34585999714",
     "date": "2026-10-18"
   },
   "/industries/commercial-property": {
-    "hash": "dba658fcb72b2df8f38de77fece0174039cb76f8",
+    "hash": "b6179ccccc9e0198754655bf1ff0ec1bfa6e1083",
     "date": "2026-10-18"
   },
   "/industries/institutional-community": {
-    "hash": "82a8a5c81e32832612b60cc456f1bab929b4a62f",
+    "hash": "9f1916ba826bd3083af2688ad2bc0d5be5d25145",
     "date": "2026-10-18"
   },
   "/insights": {
