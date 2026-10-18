@@ -6,11 +6,13 @@ import { responsive } from '../../lib/responsive';
 // plate beside the company facts.
 export const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Established', value: 'February 2021, Colorado Springs' },
-  { label: 'Ownership', value: 'Minority woman-owned' },
   // The "Licensed" row was removed (owner, 2026-10-12); the proof row and city pages carry it.
   { label: 'Primary NAICS', value: '561612', mono: true },
   // Owner, 2026-10-10: true; the client is not named.
   { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
+  // The "Ownership" row was removed (owner, 2026-10-18); the hero's proof row carries it.
+  // In its place (owner, 2026-10-18): training that covers every service, not only armed posts.
+  { label: 'Post training', value: 'By our leadership, before the first shift' },
 ];
 
 // Ways to feature the patrol vehicles (design review item 28, owner 2026-10-13), same photo,

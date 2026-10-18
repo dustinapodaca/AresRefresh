@@ -574,7 +574,7 @@ exception to "no card containers" and "no glass" for this section.
   (stacked, square). The other forms stay at `/?vehicles=side|portrait|glass`; what follows is
   `side`, the earlier default: the patrol vehicles as a wide plate (7
   columns, 16:10, anchored to the photo's foot, 24px lower in its frame on desktop so the cars ride lower, captioned; owner's new photo of two Ares SUVs, 2026-10-12) beside the company facts on
-  hairlines (established, ownership, NAICS, longest client; columns 9 to 12; the licensed row was removed, owner 2026-10-12). On desktop the facts' top and bottom rules line up with the photo's top and bottom edges, the rows sharing the height evenly, and the caption hangs below the photo; the photo has no frame edge (owner, 2026-10-12).
+  hairlines (established, NAICS, longest client, post training; post training replaced the ownership row, owner 2026-10-18; columns 9 to 12; the licensed row was removed, owner 2026-10-12). On desktop the facts' top and bottom rules line up with the photo's top and bottom edges, the rows sharing the height evenly, and the caption hangs below the photo; the photo has no frame edge (owner, 2026-10-12).
   Phones: stacked, the photo square. The owner allowed the vehicles photo on Home here.
 
 ### Pinned passage (About 01 Staffing, moved from Home 2026-10-06)
