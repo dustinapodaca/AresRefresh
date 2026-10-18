@@ -1027,8 +1027,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   owner 2026-10-16: federal agencies, military installations, and defense contractors, pitched
   like CenCore's defense page without its clearance claims): radomes behind a barbed-wire fence on a
   Space Force base in Colorado (DVIDS 7084760), strip at `50% 90%` (whole radomes, the mountains, the
-  fence line), Home's card on the left radome behind the fence (`0% 50%`, 1.35x toward `22% 88%`; on desktop `8% 50%`, the
-  radome a little further left, owner 2026-10-18, through the card's `desktopPosition`).
+  fence line), Home's card on the left radome behind the fence (`0% 50%`, 1.35x toward `22% 88%`; on desktop `29% 50%`, about
+  three-fifths of the left radome showing, owner 2026-10-18, through the card's `desktopPosition`).
   The golden-hour base photo before it (and its cloud-free edit) is in images-unused. Airport & Transportation:
   Denver International's terminal and hotel at sunset with a jet climbing out (owner,
   2026-10-12, chosen back over a blue-hour roadway photo, kept graded and plain in

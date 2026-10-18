@@ -58,7 +58,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       alt: '',
       position: '50% 90%',
       // Desktop sits a little further right in the photo, so the radome moves left in the card (owner, 2026-10-18).
-      card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%', desktopPosition: '8% 50%' },
+      card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%', desktopPosition: '29% 50%' },
     },
     stake: [
       'On a military installation or a defense contractor’s site, security is part of the mission. One missed check at a gate, or one unescorted visitor in a restricted area, becomes a finding, a stop-work, or a delay to the program.',
