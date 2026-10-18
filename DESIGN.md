@@ -585,8 +585,8 @@ exception to "no card containers" and "no glass" for this section.
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
   "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
   columns, aligned to the headline's foot); then, **since 2026-10-16 (owner), the `wide` form**:
-  the patrol vehicles across the whole column on desktop (21:9, the cars 32px lower in the frame
-  than at first, owner), the four facts in a row beneath it, captioned; phones unchanged
+  the patrol vehicles across the whole column on desktop (21:9, the cars 44px lower in the frame
+  than at first, owner; 32px until 2026-10-18), the four facts in a row beneath it, captioned; phones unchanged
   (stacked, square). The other forms stay at `/?vehicles=side|portrait|glass`; what follows is
   `side`, the earlier default: the patrol vehicles as a wide plate (7
   columns, 16:10, anchored to the photo's foot, 24px lower in its frame on desktop so the cars ride lower, captioned; owner's new photo of two Ares SUVs, 2026-10-12) beside the company facts on

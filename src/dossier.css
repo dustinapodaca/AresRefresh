@@ -1257,10 +1257,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-quality-body[data-form='portrait'] .ds-quality-photo img { aspect-ratio: 1142 / 1378; object-position: 50% 100%; }
 @media (min-width: 1024px) {
   /* wide (the default since 2026-10-16, owner): the photo across the whole column, the four facts
-     in a row beneath it; the cars sit 32px lower in the frame (owner). */
+     in a row beneath it; the cars sit 44px lower in the frame (owner; 32px until 2026-10-18). */
   .ds-quality-body[data-form='wide'] { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 48px; }
   .ds-quality-body[data-form='wide'] .ds-quality-photo { grid-column: 1 / -1; }
-  .ds-quality-body[data-form='wide'] .ds-quality-photo img { aspect-ratio: 21 / 9; object-position: 50% calc(92% + 32px); }
+  .ds-quality-body[data-form='wide'] .ds-quality-photo img { aspect-ratio: 21 / 9; object-position: 50% calc(92% + 44px); }
   .ds-quality-body[data-form='wide'] .ds-quality-photo figcaption { position: static; margin-top: 12px; }
   .ds-quality-body[data-form='wide'] .ds-quality-facts { display: contents; }
   .ds-quality-body[data-form='wide'] .ds-quality-facts div { grid-column: auto; padding: 16px 0 0; border-bottom: 0; }
