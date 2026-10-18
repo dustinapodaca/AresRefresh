@@ -4879,15 +4879,21 @@ html[data-cards='glass'] .ds-primes-panel { background: linear-gradient(180deg, 
    compares" cards): one
    light inside each card, a rust glow tucked into the lower right corner, centred just outside
    the card so only its edge shows (Gladia's purple, in the site's rust). */
+/* The corner light, in the prime panel's ramp (owner, 2026-10-18; was one rust, #bc6f40 at 42% to 16%):
+   rust at the core, deep rust, then umber, reaching a little further in, and stopping at rust, so it
+   stays a step darker than the prime panel's copper. */
+html[data-cards='glass'] {
+  --ds-card-rust: radial-gradient(520px 420px at calc(100% + 64px) calc(100% + 104px), rgb(156 86 43 / 0.52) 0%, rgb(104 51 22 / 0.42) 28%, rgb(56 26 11 / 0.28) 54%, rgb(56 26 11 / 0) 78%);
+}
 html[data-cards='glass'] :is(.ds-value, .ds-cs-card) {
   background:
-    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%), /* Gladia's strength: 46% to 18%, at 0.9 */
+    var(--ds-card-rust),
     var(--ds-glass-wash);
 }
 /* The Capability cards carry the same light, open or closed (owner, 2026-10-15). */
 html[data-cards='glass'] .ds-cs-card[data-open='true'] {
   background:
-    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+    var(--ds-card-rust),
     linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
 }
 
@@ -4943,7 +4949,7 @@ html[data-liquid='true'] .ds-cs-facts::before {
    not a window, especially where they pile up on phones (owner, 2026-10-15). */
 html[data-liquid='true'] .ds-value {
   background:
-    radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+    var(--ds-card-rust),
     linear-gradient(180deg, rgb(0 0 0 / 0.46), rgb(0 0 0 / 0.36) 55%, rgb(0 0 0 / 0.3));
 }
 /* Phones and tablets: the cards pile up (they're sticky), so each one hides the one beneath a
@@ -4954,7 +4960,7 @@ html[data-liquid='true'] .ds-value {
     -webkit-backdrop-filter: blur(26px) saturate(1.45) !important;
     backdrop-filter: blur(26px) saturate(1.45) !important;
     background:
-      radial-gradient(460px 370px at calc(100% + 76px) calc(100% + 118px), rgb(188 111 64 / 0.42) 0%, rgb(188 111 64 / 0.16) 38%, rgb(188 111 64 / 0) 72%),
+      var(--ds-card-rust),
       linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.54) 55%, rgb(0 0 0 / 0.5));
   }
 }

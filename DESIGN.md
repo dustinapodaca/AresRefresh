@@ -298,7 +298,8 @@ Cards and glass are part of the system, not exceptions.
   are lighter: white 6% to 1.5%, 16px blur). The three Home Record cards and the six Capability Statement
   cards (open or closed) copy gladia.io's "How it compares" cards: one light inside each card, a rust glow tucked into the lower right corner
   (centred just outside it, kept as faint as Gladia's: rust 42% at the core, 16% a third of the
-  way out, gone by 72%), so only its edge shows (owner, 2026-10-15). Glows behind the cards (in their corners,
+  way out, gone by 72%), so only its edge shows (owner, 2026-10-15). Since 2026-10-18 (owner) that light takes the prime panel's
+  ramp, a step darker (rust 52% at the core, deep rust, then umber, gone by 78%; `--ds-card-rust`); the six cards now live on Services. Glows behind the cards (in their corners,
   or under them) were tried the same day and removed. The same stroke (`--ds-glass-edge` white/10%, `--ds-glass-top` the
   white/14% inner top line) goes on every glass surface in this mode: the nav bar and float card,
   the Home hero strip, the Services opening and card panels, the Capability frost band, the
