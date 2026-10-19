@@ -4817,8 +4817,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    lead's foot; the box grows by what that adds to the old 7rem overlap, and the copy is pulled up
    by the same, so it stays where it was. */
 @media (max-width: 899px) {
-  /* 16px shorter since the headline went to three lines on phones (owner, 2026-10-19; 24px, then 20px). */
-  .ds-hero-topo { height: calc(58svh + var(--ds-header) + 100px + var(--topo-reach, 7rem) - 7rem - 16px); }
+  /* 58px shorter since the headline went to three lines on phones (owner, 2026-10-19; 24px, 20px, 16px, then 42px more). */
+  .ds-hero-topo { height: calc(58svh + var(--ds-header) + 100px + var(--topo-reach, 7rem) - 7rem - 58px); }
   .ds-hero-topo + .ds-container .ds-hero-copy { margin-top: calc(-1 * var(--topo-reach, 7rem)); }
 }
 @media (min-width: 900px) {
