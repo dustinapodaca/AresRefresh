@@ -66,7 +66,8 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
   { sel: '.ds-value', opts: { blur: 12 } },
   // About's "What clients told us" cards (owner, 2026-10-18), at the Record cards' frost.
-  { sel: '.ds-heard-card', opts: { blur: 12 } },
+  // CSS frost below 768px: Android Chrome tiles the filter and drew a seam across the card (owner, 2026-10-19).
+  { sel: '.ds-heard-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
   // About's credential card (owner, 2026-10-18); phones keep the CSS frost (the Android seam).
   { sel: '.ds-ab-cred-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
   // Not the Capability cards: they sit on plain black, so a backdrop filter showed nothing and cost

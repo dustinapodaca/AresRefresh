@@ -10,7 +10,7 @@ const n2 = (i: number) => String(i + 1).padStart(2, '0');
 // Desktop: the headline, intro, and a counter hold still on the left while the cards pass the
 // center on the right, one at a time. As a card reaches the center, a rust line draws through
 // the complaint, the complaint dims, and the answer rises into place; passed cards stay that way.
-// Phones and tablets: one column, the same moment at the optical center.
+// Phones and tablets: one column, the same moment.
 // The resolved state is the default (prerendered HTML, no JavaScript, reduced motion); the
 // motion is armed only after mount: data-anim="ready" sets the waiting state on cards not yet
 // reached, then "on" (a frame later) turns the transitions on, so nothing animates backwards.
@@ -19,19 +19,36 @@ export default function Heard() {
   const [anim, setAnim] = useState<'ready' | 'on' | null>(null);
   const [current, setCurrent] = useState(0);
 
-  // Runs before the page's scroll observer is set up (About.tsx; a child's effects run before
-  // its parent's): cards already above the center on mount (a reload mid-page) start resolved.
+  // A card resolves once its top passes 42% of the way down the screen, a little above the middle
+  // (owner, 2026-10-19: the strike came too early at the center band), and stays resolved. Cards
+  // already past that line on mount (a reload mid-page) start resolved; a fast jump past the line
+  // resolves too.
   useEffect(() => {
     const root = ref.current;
     if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const mid = window.innerHeight / 2;
-    root.querySelectorAll<HTMLElement>('.ds-heard-card').forEach((card) => {
-      const r = card.getBoundingClientRect();
-      if (r.top + r.height / 2 < mid) card.setAttribute('data-in-view', 'true');
+    const LINE = 0.42;
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.ds-heard-card'));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting || e.boundingClientRect.top < window.innerHeight * LINE) {
+            e.target.setAttribute('data-in-view', 'true');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: `0px 0px -${Math.round((1 - LINE) * 100)}% 0px`, threshold: 0 },
+    );
+    cards.forEach((card) => {
+      if (card.getBoundingClientRect().top < window.innerHeight * LINE) card.setAttribute('data-in-view', 'true');
+      else io.observe(card);
     });
     setAnim('ready');
     const id = requestAnimationFrame(() => requestAnimationFrame(() => setAnim('on')));
-    return () => cancelAnimationFrame(id);
+    return () => {
+      cancelAnimationFrame(id);
+      io.disconnect();
+    };
   }, []);
 
   // The desktop counter follows the card nearest the center of the screen.
@@ -97,7 +114,7 @@ export default function Heard() {
           </div>
           <ol className="ds-heard-list">
             {HEARD.map((h) => (
-              <li key={h.heard} className="ds-heard-card" data-scroll-active="" data-scroll-once="" data-scroll-center="">
+              <li key={h.heard} className="ds-heard-card">
                 <p className="ds-data ds-heard-label">What we heard</p>
                 {/* The strike is a background line, decorative: readers get the words. */}
                 <p className="ds-heard-complaint">

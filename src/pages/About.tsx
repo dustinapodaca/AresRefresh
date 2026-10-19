@@ -11,7 +11,7 @@ import { useScrollInViewObserver } from '../hooks/useScrollInViewObserver';
 // Content source: docs/about-content.md. Copy changes: docs/copy-changes.md.
 export default function About() {
   // One scroll observer for the page (center, once), set up after the sections' own effects have
-  // tagged their elements: Heard's cards, and on phones the credential rows in People.
+  // tagged their elements: on phones the credential rows in People (Heard watches its own cards).
   useScrollInViewObserver();
   return (
     <main id="main" tabIndex={-1} className="ds ds-page ds-ab">

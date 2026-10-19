@@ -10,6 +10,9 @@ import { heroTitle } from '../lib/heroTitle';
 
 // One insight: a read-mode article at a 68ch measure, its related pages, and the other
 // articles. Article structured data in the body.
+// The articles' author and his LinkedIn (owner, 2026-10-19).
+const AUTHOR_LINKEDIN = 'https://www.linkedin.com/in/dustinapodaca';
+
 export default function InsightPage() {
   const { slug } = useParams();
   const a = insightBySlug(slug);
@@ -23,7 +26,7 @@ export default function InsightPage() {
     datePublished: a.date,
     dateModified: a.date,
     // The articles' author (owner, 2026-10-19): the same Person as in index.html's JSON-LD.
-    author: { '@type': 'Person', '@id': `${HOST}/#dustin-apodaca`, name: 'Dustin Apodaca' },
+    author: { '@type': 'Person', '@id': `${HOST}/#dustin-apodaca`, name: 'Dustin Apodaca', sameAs: [AUTHOR_LINKEDIN] },
     publisher: { '@id': `${HOST}/#localbusiness` },
     mainEntityOfPage: `${HOST}/insights/${a.slug}`,
   };
@@ -37,7 +40,10 @@ export default function InsightPage() {
         <p className="ds-data ds-mk-article-meta">
           <span>{a.category}</span>
           <time dateTime={a.date}>{a.dateLabel}</time>
-          <span>Dustin Apodaca</span>
+          <a href={AUTHOR_LINKEDIN} target="_blank" rel="noopener noreferrer" className="ds-link" aria-label="Dustin Apodaca on LinkedIn (new tab)">
+            Dustin Apodaca
+            <Arrow external size={12} />
+          </a>
         </p>
         <div className="ds-mk-article-body">
           {a.body.map((b, i) =>

@@ -787,15 +787,16 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
 - **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
-  instead, each a liquid glass card (LIQUID at 12px; the CSS frost elsewhere): a mono "What we heard"
+  instead, each a liquid glass card (LIQUID at 12px from 768px; the CSS frost below, where Android Chrome drew a seam across
+  the card, owner 2026-10-19, and in other browsers): a mono "What we heard"
   in ink faint, the complaint in display type, a hairline, a mono "What we do" in rust, the answer in
   ink at lead size. Desktop: the headline, intro, and a mono counter (01 / 04, the card nearest the
   center) hold still on the left (sticky under the nav); the cards pass on the right, 24vh apart so one
   holds the center at a time, over a very soft rust light held at the middle of the screen (the prime
-  panel's CSS shapes, quieter). As a card reaches the center a rust line draws through each line of
+  panel's CSS shapes, quieter). As a card's top passes 42% of the way down the screen, a little above the middle (owner, 2026-10-19; it was
+  the center band), a rust line draws through each line of
   the complaint (a background on the inline text, 600ms), the complaint dims from ink muted to ink
-  faint, and the answer rises 12px from 0.8 to full; passed cards stay resolved (the scroll observer's
-  center-and-once mode). Phones and tablets: one column, the same moment at the optical center. The
+  faint, and the answer rises 12px from 0.8 to full; passed cards stay resolved (Heard's own observer). Phones and tablets: one column, the same moment. The
   resolved state is the default (prerender, no JavaScript, reduced motion); the waiting state applies
   only once armed after mount. Then "Those details are what clients thank us for most." and "Tell us
   about your site →".
