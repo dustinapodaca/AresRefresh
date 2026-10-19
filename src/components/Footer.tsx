@@ -123,7 +123,7 @@ export default function Footer() {
             </ul>
             {/* The one-page PDF from any page (copy audit group 2, 2026-10-10). */}
             <a href={PDF_URL} className="ds-ft-pdf" download>
-              Capability statement (PDF)
+              Capability Statement (PDF)
               <Arrow size={12} />
             </a>
           </div>

@@ -360,12 +360,14 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .ds-certs {
-  /* The marks and the lines share the row evenly (owner, 2026-10-10): space-between gives
-     every gap the same width, each line sits midway, GSA starts on the text's left edge. */
-  display: flex;
+  /* Five equal cells across the footer's full width with the lines between them, each mark
+     centered in its cell, so the lines are evenly spaced whatever a mark's width and the middle
+     mark sits on the page's center (owner, 2026-10-19; was space-between up to 980px, GSA on
+     the text's left edge). */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(4, 1px minmax(0, 1fr));
   align-items: center;
-  justify-content: space-between;
-  max-width: 980px;
+  justify-items: center;
   list-style: none;
   margin: var(--ds-beat-tight) 0 0;
   padding: 0;
@@ -380,9 +382,14 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-certs img { height: 26px; }
   .ds-certs img[src*='cert-wbenc'] { height: 32px; }
 }
+/* Narrow tablets: the widest marks (GSA, Denver) nearly met their lines (owner, 2026-10-19). */
+@media (min-width: 700px) and (max-width: 899px) {
+  .ds-certs img { height: 22px; }
+  .ds-certs img[src*='cert-wbenc'] { height: 28px; }
+}
 /* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
 @media (max-width: 699px) {
-  .ds-certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+  .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; }
   .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs .ds-certs-rule { display: none; }
   .ds-certs li:not(.ds-certs-rule):nth-of-type(4n + 1) { border-right: 1px solid var(--ds-rule-strong); }
