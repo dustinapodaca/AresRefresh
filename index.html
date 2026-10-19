@@ -27,6 +27,8 @@
     <link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
     <link rel="alternate" type="text/markdown" href="/llms.txt" title="Ares Security for AI assistants" />
     <meta name="color-scheme" content="dark" />
+    <!-- The site's author (owner, 2026-10-19); the same Person is in the JSON-LD below. -->
+    <meta name="author" content="Dustin Apodaca" />
     <!-- Without JavaScript, moments that wait to be seen (the location maps) play on load. -->
     <noscript><style>.ds-loc-map .ds-loc-route, .ds-loc-map .ds-loc-pulse { animation-play-state: running !important; }</style></noscript>
 
@@ -53,7 +55,8 @@
       content="Woman-owned WOSB and WBENC security firm in Colorado Springs. Armed and unarmed officers, patrol, and access control across Denver and Pueblo. GSA MAS holder."
     />
 
-    <!-- Site-wide structured data. Organization + LocalBusiness only; no
+    <!-- Site-wide structured data. Organization, the WebSite and its author, the founder, and
+         LocalBusiness; no
          ratings or reviews, and no geo/openingHours until the exact Google
          Business Profile values are confirmed. Page-level Service and
          BreadcrumbList nodes are emitted per route by <Seo>. -->
@@ -95,6 +98,20 @@
             "worksFor": { "@id": "https://aressecurity.co/#organization" },
             "url": "https://aressecurity.co/about",
             "sameAs": ["https://www.linkedin.com/in/deidre-herrera-ruiz/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://aressecurity.co/#website",
+            "name": "Ares Security",
+            "url": "https://aressecurity.co",
+            "publisher": { "@id": "https://aressecurity.co/#organization" },
+            "author": { "@id": "https://aressecurity.co/#dustin-apodaca" },
+            "creator": { "@id": "https://aressecurity.co/#dustin-apodaca" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://aressecurity.co/#dustin-apodaca",
+            "name": "Dustin Apodaca"
           },
           {
             "@type": "LocalBusiness",

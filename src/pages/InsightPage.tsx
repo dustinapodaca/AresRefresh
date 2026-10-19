@@ -22,7 +22,8 @@ export default function InsightPage() {
     description: a.summary,
     datePublished: a.date,
     dateModified: a.date,
-    author: { '@type': 'Organization', name: 'Ares Security LLC', url: HOST },
+    // The articles' author (owner, 2026-10-19): the same Person as in index.html's JSON-LD.
+    author: { '@type': 'Person', '@id': `${HOST}/#dustin-apodaca`, name: 'Dustin Apodaca' },
     publisher: { '@id': `${HOST}/#localbusiness` },
     mainEntityOfPage: `${HOST}/insights/${a.slug}`,
   };
@@ -36,7 +37,7 @@ export default function InsightPage() {
         <p className="ds-data ds-mk-article-meta">
           <span>{a.category}</span>
           <time dateTime={a.date}>{a.dateLabel}</time>
-          <span>Ares Security</span>
+          <span>Dustin Apodaca</span>
         </p>
         <div className="ds-mk-article-body">
           {a.body.map((b, i) =>
