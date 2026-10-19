@@ -1,3 +1,6 @@
+# On DreamHost (Apache) public/.htaccess does what this file and _redirects do; keep them in step
+# (deploy/dreamhost.sh checks the Content-Security-Policy matches before it uploads).
+#
 # Long-lived caching for files whose names change whenever their content does
 # (2026-10-09). Netlify's default is max-age=0, must-revalidate, which made browsers
 # re-check every hero with the server on each page visit (a dark flash before it showed).

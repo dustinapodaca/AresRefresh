@@ -1034,3 +1034,11 @@ Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews
   default stays B2 until a new headline is picked from ten at /?hero=h1 to h10, all over B2's lead.
 - Home hero headline (owner, 2026-10-19): "Security officers for Colorado’s Front Range." (h1), was
   "A prepared officer on every post." (now the Services headline; kept at /?hero=b2). Same lead.
+
+- Careers, no promise of paid training or paid license renewals (owner, 2026-10-19: not always true):
+  Careers H1 "Security officer jobs in Colorado" (was "Officer jobs with paid training"); the reason
+  "Paid training and renewals" is now "Trained in-house" (Ares is an approved armed and unarmed training
+  provider in all three cities); Home careers "Training for your city license, ..."; the city job
+  pages' leads "with training for your city license ..." and the heading "Training for your license."
+  (was "Licensing, handled."); the Careers and city job descriptions in routes.json likewise (Careers
+  also drops "real growth paths").

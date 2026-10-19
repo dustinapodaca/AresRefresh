@@ -1,0 +1,87 @@
+# Apache settings for hosting the built site on DreamHost (owner, 2026-10-19). Netlify ignores
+# this file and uses _headers and _redirects instead; this file does the same job on Apache, so the
+# two must stay in step. deploy/dreamhost.sh refuses to upload if the Content-Security-Policy here
+# differs from the one in _headers.
+#
+#   1. https and the bare domain (www and http redirect to https://aressecurity.co)
+#   2. the 301s from _redirects
+#   3. clean URLs: /services serves services.html, as on Netlify; /about.html and /about/ redirect
+#   4. a real 404 status with the prerendered 404 page
+#   5. the security headers and caching from _headers, plus compression
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+# /services is both a page (services.html) and a folder (services/...): don't add a slash to folders.
+DirectorySlash Off
+ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+  AddType text/markdown .md
+  AddCharset utf-8 .txt .md .json .xml .css .js .svg
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. One address: https://aressecurity.co (only for the real domain, so local tests are left alone).
+  RewriteCond %{HTTP_HOST} ^www\.aressecurity\.co$ [NC]
+  RewriteRule ^ https://aressecurity.co%{REQUEST_URI} [R=301,L,NE]
+  RewriteCond %{HTTP_HOST} ^aressecurity\.co$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://aressecurity.co%{REQUEST_URI} [R=301,L,NE]
+
+  # 2. The 301s from _redirects (keep the two lists the same).
+  RewriteRule ^industries/data-centers/?$ /industries/critical-infrastructure [R=301,L]
+  RewriteRule ^services/emergency-response/?$ /services/restricted-area-escort [R=301,L]
+  RewriteRule ^services/event-security/?$ /services/relief-surge-coverage [R=301,L]
+  RewriteRule ^industries/government-military/?$ /industries/government-defense [R=301,L]
+  RewriteRule ^industries/?$ /services#divisions [R=301,L,NE]
+  RewriteRule ^locations/?$ /services#areas [R=301,L,NE]
+
+  # 3. Clean URLs. /index.html and /page.html redirect to their clean address; /page/ drops its slash.
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]
+  RewriteRule ^ / [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?]
+  RewriteRule ^ /%1 [R=301,L,NE]
+  RewriteCond %{REQUEST_URI} ^/(.+)/$
+  RewriteCond %{REQUEST_FILENAME} -d [OR]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+  # /services -> services.html (also when a services/ folder exists beside it).
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+  # Netlify's own files are not part of the site.
+  RewriteRule ^(_headers|_redirects)$ - [R=404,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # 5. Security headers, as in _headers.
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-rbq/bXSBBRLazdy5XJF+2aPkE64jwIkIHJQHLngq24g=' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://api.web3forms.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests"
+  <If "%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'">
+    Header always set Strict-Transport-Security "max-age=31536000"
+  </If>
+
+  # Caching, as in _headers: files whose names change with their content are kept for a year;
+  # everything else (the pages, llms.txt, the PDF) is checked on every visit, so a new upload shows at once.
+  <If "%{REQUEST_URI} =~ m#^/(assets|images/opt|fonts)/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <Else>
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </Else>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/markdown application/javascript text/javascript application/json application/manifest+json application/xml image/svg+xml
+</IfModule>

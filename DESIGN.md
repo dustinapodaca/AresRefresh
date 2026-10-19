@@ -948,7 +948,7 @@ docs/careers-concepts.md. Rail marks: Roles, Why people stay, Apply.
   2026-10-09; desktop framed at 50% 40%; the client may pick another of the eight in
   `assets/careers-hero-options/`; was the Colorado Springs skyline, then Denver from the
   foothills;
-  `careers-hero.jpg` key, captioned; the route's SEO preload) as a band, "Join the team." and the lead low on it, then the Indeed rating as a small
+  `careers-hero.jpg` key, captioned; the route's SEO preload) as a band, "Security officer jobs in Colorado" (owner, 2026-10-19; was "Join the team.", then "Officer jobs with paid training") and the lead low on it, then the Indeed rating as a small
   linked proof ("4.8 / 5 Rated by our employees on Indeed"), a 1px rule like the logo
   lockup's, and the careers email beside it; stacked on phones (owner, 2026-10-09: the
   "See open roles" button was dropped, the roles sit right below). Phones and tablets get

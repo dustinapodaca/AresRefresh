@@ -342,6 +342,17 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 - **Capability statement PDF content:** check for "cleared", Buckley, badging.
 - **Check the nav glass on a real iPhone or Safari** (automated captures skip the blur).
 
+### Launch on DreamHost (owner, 2026-10-19: the quicker first launch, before any Netlify move)
+- The domain, DNS, and email stay where they are; only the site's files change. `public/.htaccess`
+  gives Apache what Netlify's `_headers` and `_redirects` give Netlify (clean URLs, the 301s, the real
+  404, security headers, caching, https and the bare domain), tested on Apache 2.4 against the build.
+- In the DreamHost panel: turn on SSH for the site's user and confirm the site has its free
+  Let's Encrypt certificate. Add aressecurity.co to Web3Forms' allowed websites.
+- `DH_SSH=user@server.dreamhost.com DH_DIR=aressecurity.co ./deploy/dreamhost.sh --dry-run`, read what
+  would change, then run it without `--dry-run`. It builds, checks, backs up the server folder, uploads,
+  and checks a few live URLs. Roll back by renaming the backup folder (see the script's header).
+- Then: one test quote, Search Console and Bing with the sitemap, and an IndexNow ping by hand.
+
 ### Launch day (domain cutover)
 - Attach aressecurity.co (and www) as the Netlify site's primary domain; wait for SSL; then
   uncomment the cutover block in `public/_redirects`.

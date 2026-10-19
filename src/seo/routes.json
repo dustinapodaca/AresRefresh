@@ -24,7 +24,7 @@
     },
     "/careers": {
       "title": "Security Officer Jobs in Colorado Springs & Denver | Ares",
-      "description": "Armed and unarmed security officer jobs in Colorado Springs, Denver, and Pueblo. Paid training, veteran-friendly leadership, and real growth paths.",
+      "description": "Armed and unarmed security officer jobs in Colorado Springs, Denver, and Pueblo. Training for your city license, posted schedules, and veteran supervisors.",
       "preloadImage": "/images/careers-hero.jpg"
     },
     "/contact": {
@@ -354,7 +354,7 @@
     },
     "/careers/colorado-springs": {
       "title": "Security Jobs in Colorado Springs, CO | Ares Security",
-      "description": "Armed and unarmed security officer jobs in Colorado Springs with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "description": "Armed and unarmed security officer jobs in Colorado Springs with Ares Security. Training for your city license, and schedules you can plan around.",
       "breadcrumbs": [
         {
           "name": "Careers",
@@ -364,7 +364,7 @@
     },
     "/careers/denver": {
       "title": "Security Jobs in Denver, CO | Ares Security",
-      "description": "Armed and unarmed security officer jobs in Denver with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "description": "Armed and unarmed security officer jobs in Denver with Ares Security. Training for your city license, and schedules you can plan around.",
       "breadcrumbs": [
         {
           "name": "Careers",
@@ -374,7 +374,7 @@
     },
     "/careers/pueblo": {
       "title": "Security Jobs in Pueblo, CO | Ares Security",
-      "description": "Armed and unarmed security officer jobs in Pueblo with Ares Security. Paid training and licensing support, and schedules you can plan around.",
+      "description": "Armed and unarmed security officer jobs in Pueblo with Ares Security. Training for your city license, and schedules you can plan around.",
       "breadcrumbs": [
         {
           "name": "Careers",

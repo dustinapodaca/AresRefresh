@@ -52,7 +52,7 @@ export default function CityJobsPage() {
         </section>
 
         <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-license">
-          <h2 id="mk-license" className="ds-display-md">Licensing, handled.</h2>
+          <h2 id="mk-license" className="ds-display-md">Training for your license.</h2>
           <div className="ds-mk-prose">
             <p>{c.licensing}</p>
           </div>

@@ -11,7 +11,7 @@ export default function Careers() {
             Now hiring armed and unarmed officers.
           </h2>
           <p className="ds-body">
-            Paid training, schedules posted ahead, and a supervisor who answers. Veterans
+            Training for your city license, schedules posted ahead, and a supervisor who answers. Veterans
             encouraged to apply.
           </p>
           <Link to="/careers" className="ds-link">
