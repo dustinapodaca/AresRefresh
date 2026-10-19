@@ -292,6 +292,16 @@
       "title": "Insights: Buying Security in Colorado | Ares Security",
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
+    "/insights/security-guard-cost-colorado": {
+      "title": "How Much Do Security Guards Cost in Colorado? | Ares",
+      "description": "What drives the price of a security officer in Colorado: hours, armed or unarmed, a post or a patrol, wage rules, and what to compare in quotes.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
     "/insights/relief-surge-coverage": {
       "title": "Who Covers a Post When an Officer Calls Out? | Ares Security",
       "description": "Every security roster runs short sometimes. What to line up before a call-out, an inspection, or a contract change leaves a post empty.",

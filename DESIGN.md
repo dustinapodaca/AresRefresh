@@ -430,7 +430,8 @@ every page.
 - **Rules:** 1px hairlines only. Rules belong to rows and lists (ledger rows, city rows,
   division rows). A rule is never used to separate one section from the next.
 - **Icons:** authored SVG arrows only (1.5px stroke, round caps): `→` for internal
-  links, `↗` for external verification links. No icon sets, no icon circles. The one
+  links, `↗` for external verification links. No icon sets, no icon circles. Every arrow turns rust on hover (owner, 2026-10-19), on links
+  and in the nav, but not on the filled buttons (Request a Quote and the like); underlines and text keep their own hover colors. The one
   exception (owner, 2026-10-10): a phone handset drawn the same way (`PhoneIcon.tsx`, 22px,
   no fill) as the call link beside the menu button on phones and tablets.
 
@@ -1158,11 +1159,12 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   desktop, inside the same `--ds-header` height (64px and 72px since 2026-10-13, owner). The lockup is the footer's scaled down: the
   mark, a 1px divider at ink 50% a little taller than it, and the wordmark nearly its height
   (owner, 2026-10-13). Desktop: the lockup, then
-  Services, Industries, and Company as menu buttons (2px-cornered tint when open) and
+  Services, Industries, and Company as menu buttons (a 2px-cornered box of full black on hover and when open; owner, 2026-10-19, was a lighter tint) and
   Capability Statement as a link, held in a centered column so they never shift when the
   context button at the right changes length; no phone number on desktop (owner). A
-  menu grows the card downward (grid rows, 350ms): two columns of large Inter Tight links
-  under a small faint label, a 288px real photo with a mono caption beneath, and a row of
+  menu grows the card downward (grid rows, 350ms): a 288px real photo with a mono caption beneath on the
+  left (owner, 2026-10-19; was on the right), 96px from the links, then two columns of large Inter Tight links under a small
+  faint label, and a row of
   footer links under a hairline (Company adds LinkedIn, Google, and Indeed). In Services and
   Industries the footer holds the overview links (All services and how a post starts, Teaming;
   All industries and how a post starts), drawn with weight: ink, 16px / 500, a brighter
@@ -1202,18 +1204,21 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   slides left into the mark (shrinking, fading, clipped behind it), and the mark grows (to about
   33px on phones, 39px on desktop) and stays that size; all of it slides back out on the way up or when a menu opens. Pages
   without a running head do this past 80% of the first screen. Reduced motion: a short fade
-  only. (Owner, 2026-10-13.)
+  only. (Owner, 2026-10-13.) On desktop, hovering the lockup grows it from its left edge (220ms), so it
+  reads as the link home: 1.04 with the wordmark showing, 1.07 for the mark alone once folded (owner,
+  2026-10-19); none under reduced motion.
   Desktop menus since 2026-10-15 (owner): the overview links (All services and how a post starts,
   Teaming; All industries and how a post starts) sit in a row above the columns, under a hairline,
   in Inter Tight 600 22px white, the menu links' size, with an 18px down-right arrow drawn like the
-  site's arrows, no underline (owner, 2026-10-16; were 17px with a small arrow; they were the footer
+  site's arrows (turning rust on hover, owner 2026-10-19), no underline (owner, 2026-10-16; were 17px with a small arrow; they were the footer
   row before that). "&" in their names: "All services & how a post starts", "Teaming &
   subcontracting", "All industries & how a post starts". On the phone pages they are 20px rows with
   the 18px arrow at the right, like the main list, no underline (were 16px, underlined), with a
   hairline between them. On desktop the row is two columns like the menu's, so Teaming sits over the
-  right-hand links (owner, 2026-10-16). The menu links have no underline: on hover the text slides 24px right and a → comes
-  in on its left (260ms), sliding back out after; the current page holds that state. The menu
-  toggles are a + whose upright stroke rotates flat into a - when open (300ms), on desktop and in
+  right-hand links (owner, 2026-10-16). The menu links have no underline: on hover the text slides 24px right and a rust → comes
+  in on its left (260ms; rust since 2026-10-19, owner), sliding back out after; the current page holds that state. The menu
+  toggles are a + whose upright stroke rotates flat into a - when open (300ms; in the desktop bar it
+  turns rust on hover and while open, owner 2026-10-19), on desktop and in
   the phone accordions (was a caret).
   While a desktop menu is open, a frosted glass covers the page under the nav (after Figma's
   Glass: a 22px blur with the color lifted, a pale white frost over 12% black, a sheen from the top,

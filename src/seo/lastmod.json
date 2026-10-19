@@ -100,31 +100,35 @@
     "date": "2026-10-19"
   },
   "/insights": {
-    "hash": "7a996b1c513752fbe980f15a00923d37bc8e5017",
+    "hash": "cfb40d1081d226eaa02836a046c88794a5c6f202",
+    "date": "2026-10-19"
+  },
+  "/insights/security-guard-cost-colorado": {
+    "hash": "120de8f49e9c0c2c9bc3cfce7adfb8908a8d1c58",
     "date": "2026-10-19"
   },
   "/insights/relief-surge-coverage": {
-    "hash": "68e8642907e702b0cb7049b5808deb16a9f3dff5",
+    "hash": "88719f73923c8b2b8d1389a14346fedfe92931cd",
     "date": "2026-10-19"
   },
   "/insights/armed-or-unarmed-security": {
-    "hash": "8890170e06fb9933e66f4ffb21fc75a94411d5d3",
+    "hash": "8db7dd1b626be8b729c14935969704696224a8e8",
     "date": "2026-10-19"
   },
   "/insights/what-is-a-post-order": {
-    "hash": "ec1a7e1c85c5b7e2fc7ca3f5401462662f6d8202",
+    "hash": "db9bad5158e7fb5b3183fd768221d4c892eb78e4",
     "date": "2026-10-19"
   },
   "/insights/construction-site-security": {
-    "hash": "51b09494e5b1b1ee52ed562698c6859b5a5c8f4e",
+    "hash": "0ec351ee6d42c6367a5b7f528ea382dff9a40ee1",
     "date": "2026-10-19"
   },
   "/insights/buying-security-through-gsa": {
-    "hash": "779df85674feed3a3641d2bb215831275bb32868",
+    "hash": "07e0dbe6ffd70564e5e3e0efbfccc2501211671e",
     "date": "2026-10-19"
   },
   "/insights/colorado-security-licensing": {
-    "hash": "1acce864621cec1fb9edb271df20efc617645ed7",
+    "hash": "1ceedeb2341d1c79f69291cb98683665b4049cfd",
     "date": "2026-10-19"
   },
   "/careers/colorado-springs": {

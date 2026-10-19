@@ -13,8 +13,10 @@
 #   --no-build   upload the dist/ that is already there (only if nothing changed since the last build)
 #   Google Analytics: .env.production gives every build the GA4 ID (docs/analytics.md).
 #
-# Each real upload first copies the server folder to <DH_DIR>-backup-<date-time> beside it. To roll
-# back: ssh in, then  mv aressecurity.co aressecurity.co-bad && mv aressecurity.co-backup-<stamp> aressecurity.co
+# GitHub runs this on every push to main (.github/workflows/deploy-dreamhost.yml).
+#
+# Each real upload first copies the server folder to <DH_DIR>-backup-<date-time> beside it (the five
+# newest are kept). To roll back: ssh in, then  mv aressecurity.co aressecurity.co-bad && mv aressecurity.co-backup-<stamp> aressecurity.co
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -57,6 +59,8 @@ fi
 stamp=$(date +%Y%m%d-%H%M%S)
 echo "== Backing up $DH_DIR to $DH_DIR-backup-$stamp on the server"
 ssh "$DH_SSH" "if [ -d '$DH_DIR' ]; then cp -a '$DH_DIR' '$DH_DIR-backup-$stamp'; fi"
+# Keep the five newest backups (about 19 MB each), so automatic deploys don't fill the account.
+ssh "$DH_SSH" "ls -1d '$DH_DIR'-backup-* 2>/dev/null | sort -r | tail -n +6 | xargs -r rm -rf"
 
 echo "== Uploading"
 "${RSYNC[@]}" dist/ "$DH_SSH:$DH_DIR/"

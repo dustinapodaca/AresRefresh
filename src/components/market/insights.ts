@@ -23,6 +23,52 @@ const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
   {
+    // Topic 1 of the copy audit's Insights list (2026-10-19): what drives the price, with no
+    // rates (the audit's note). Every Ares fact is already on the site: the site walk before
+    // anything is signed, the scoped proposal, training on the post, on-call relief, the GSA
+    // schedule, and the city licenses. The rest is general, checkable practice.
+    slug: 'security-guard-cost-colorado',
+    title: 'How much do security guards cost in Colorado?',
+    category: 'Buying security',
+    date: '2026-10-19',
+    dateLabel: 'October 19, 2026',
+    summary: 'The price of a security officer comes down to a handful of choices: the hours, armed or unarmed, a post or a patrol, and what the site asks of the officer. What drives each one, and how to compare quotes.',
+    body: [
+      { p: 'The price of security comes down to a handful of choices: how many hours the post is staffed, whether the officer is armed, whether the site needs a fixed post or a patrol, and what the site asks of the officer. Two posts with the same title can differ on most of them, which is why we quote each site rather than publish rates.' },
+      { h: 'Hours are the biggest factor' },
+      { p: 'A post is billed by the hour it is staffed, so the schedule sets most of the cost. A post staffed around the clock is 168 hours a week, the work of more than four full-time officers. Holidays, overnight shifts, and overtime can raise the cost of the same hours.' },
+      { p: 'Before asking for a quote, decide which hours actually need an officer. Many sites need a full post only at night and on weekends.' },
+      { h: 'Armed or unarmed' },
+      { p: 'Armed officers cost more. They need firearms training and current qualifications, and they carry more liability. Most sites are well served by unarmed officers; some contracts, insurers, and risks call for armed ones.' },
+      { h: 'A fixed post or a patrol' },
+      { p: 'A fixed post keeps one officer on site for the whole shift. A mobile patrol visits on a schedule, checks the site, and responds to alarms, so its cost is shared with other stops on the route. A site that needs eyes on it a few times a night may not need a full post.' },
+      { h: 'What the post asks of the officer' },
+      { list: [
+        'Access control, visitor screening, or an access system to run.',
+        'Restricted areas or escort duty, with their own rules for entry.',
+        'Training on the site, its post orders, and its systems.',
+        'Reports, logs, and checkpoints the client wants to review.',
+      ] },
+      { p: 'Each one adds skill or time, and so cost. Each one is also a reason the cheapest officer may not be the right one for the post.' },
+      { h: 'Wage rules set a floor' },
+      { p: 'Officer pay is most of the price, and the law sets its minimum. Denver sets its own minimum wage, above the state’s. Federal service contracts usually fall under the Service Contract Act, which sets the wages and benefits for each area from the Department of Labor’s wage determination.' },
+      { h: 'Relief and supervision belong in the price' },
+      { p: 'A low hourly rate can leave out what keeps a post covered: relief officers for call-outs and vacations, supervision, and training on the site. Ask what happens when an officer calls out, and whether that cover is part of the rate. At Ares, every contract has on-call scheduling behind it, and a member of our leadership trains each officer on the post before the first shift.' },
+      { h: 'How to compare quotes' },
+      { list: [
+        'Give every vendor the same scope: posts, hours, armed or unarmed, and duties.',
+        'Ask what the rate includes, such as relief, supervision, training, and reports.',
+        'Ask for the vendor’s license in the city where the site is, since Colorado has no statewide security license.',
+        'Ask to walk the site before anything is signed.',
+      ] },
+      { p: 'We walk every site before anything is signed, then send a scoped proposal for that site. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
+    ],
+    related: [
+      { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
+      { label: 'Commercial & Retail', to: '/industries/commercial-property' },
+    ],
+  },
+  {
     // First of the copy audit's monthly topics (owner asked for a draft, 2026-10-11). Every
     // fact is already on the site: the relief schedule's fill times (owner, 2026-10-10), the
     // missed-shift record, training on the post, and the certification numbers.

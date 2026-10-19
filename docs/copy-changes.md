@@ -1042,3 +1042,15 @@ Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews
   pages' leads "with training for your city license ..." and the heading "Training for your license."
   (was "Licensing, handled."); the Careers and city job descriptions in routes.json likewise (Careers
   also drops "real growth paths").
+
+## Insights: second monthly article (draft, 2026-10-19)
+
+New: `/insights/security-guard-cost-colorado`, "How much do security guards cost in Colorado?"
+(topic 1 of the copy audit's Insights list: explain what drives the price, publish no rates).
+Sections: hours, armed or unarmed, a fixed post or a patrol, what the post asks of the officer,
+wage rules (Denver's own minimum wage; the Service Contract Act on federal contracts), relief and
+supervision in the price, how to compare quotes. Ares facts only from the site: the site walk
+before anything is signed, the scoped proposal, on-call scheduling in every contract, training on
+the post by leadership, the GSA Schedule's ceiling prices, no statewide license. Links to Mobile
+Patrol and Commercial & Retail. Added to routes.json (sitemap), llms.txt, and the Insights index
+(first, dated October 19, 2026). Author Dustin Apodaca, as on the others.

@@ -1,0 +1,62 @@
+# Deploy to DreamHost whenever main changes (owner, 2026-10-19). Builds the site, runs the SEO
+# check, backs up the server folder, then mirrors dist/ onto it with rsync --delete, so the server
+# matches the build exactly: changed files are replaced and files the build no longer has are
+# removed. deploy/dreamhost.sh does the work; this only gives it SSH access.
+#
+# Repository secrets (Settings > Secrets and variables > Actions):
+#   DH_SSH          the SFTP/SSH user @ its server, e.g. username@iad1-shared-b7-01.dreamhost.com
+#   DH_DIR          the web folder, relative to that user's home, e.g. aressecurity.co
+#   DH_SSH_KEY      the private half of a key made for this deploy (its .pub is on DreamHost)
+#   DH_KNOWN_HOSTS  the server's host key: the output of  ssh-keyscan <server>
+#
+# Run it by hand from the Actions tab too (Run workflow); tick "dry run" to see what would change.
+name: Deploy to DreamHost
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run (list what would change, upload nothing)
+        type: boolean
+        default: true
+
+# One deploy at a time; a second merge waits for the first to finish.
+concurrency:
+  group: deploy-dreamhost
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: SSH access to DreamHost
+        env:
+          DH_SSH_KEY: ${{ secrets.DH_SSH_KEY }}
+          DH_KNOWN_HOSTS: ${{ secrets.DH_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$DH_SSH_KEY" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$DH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Build, check, and upload
+        env:
+          DH_SSH: ${{ secrets.DH_SSH }}
+          DH_DIR: ${{ secrets.DH_DIR }}
+        run: |
+          if [ "${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}" = "true" ]; then
+            ./deploy/dreamhost.sh --dry-run
+          else
+            ./deploy/dreamhost.sh
+          fi
