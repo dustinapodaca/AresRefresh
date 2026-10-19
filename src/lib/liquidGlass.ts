@@ -50,9 +50,20 @@ export const liquidSupported = () =>
   !/Firefox|FxiOS|CriOS|EdgiOS|iPhone|iPad|iPod/.test(navigator.userAgent) &&
   !(/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
 
+// The prerender (an automated browser on a page not yet marked data-prerendered) builds no filters:
+// they would be saved into the HTML, sized to its window, and since the page later builds its own
+// under the same ids, url(#ares-liquid-N) found the stale copy first, so the footer glass and the
+// cards bent with the wrong shape on the live site (2026-10-19); they also added up to 100 KB a page.
+const isPrerender = () =>
+  navigator.webdriver && !document.getElementById('root')?.hasAttribute('data-prerendered');
+
 function ensureDefs() {
   if (defs) return defs;
+  // Clear filters saved into pages built before that fix.
+  document.querySelectorAll('svg[data-ares-liquid]').forEach((s) => s.remove());
+  document.querySelectorAll('defs > filter[id^="ares-liquid-"]').forEach((f) => f.closest('svg')?.remove());
   const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('data-ares-liquid', '');
   svg.setAttribute('aria-hidden', 'true');
   svg.setAttribute('width', '0');
   svg.setAttribute('height', '0');
@@ -198,6 +209,7 @@ function build(id: string, w: number, h: number, r: number, o: { blur: number; s
 /** Gives one element (or its pseudo-element) the liquid backdrop; returns a cleanup. Rebuilds the
  *  filter when the size settles after a resize. */
 export function attachLiquid(el: HTMLElement, opts: LiquidOptions = {}): () => void {
+  if (isPrerender()) return () => {};
   const d = ensureDefs();
   const id = `ares-liquid-${++counter}`;
   const e = opts.edges;
