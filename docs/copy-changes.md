@@ -978,3 +978,5 @@ the prime contractor panels' button (Home, Government & Defense, /home-next), th
 row (?close=ledger), the GSA insight's related link, the Capability Statement's procurement path
 ("Teaming & subcontracting with primes"), the classic nav (?nav=classic), and llms.txt. Prose
 keeps "and" (e.g. "teaming and subcontract coverage" in a sentence).
+
+2026-10-18 (web audit, owner): Home hero lead (B2) "From restricted areas and data centers to offices and campuses: ..." became "From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift." The other hero options keep "data centers".

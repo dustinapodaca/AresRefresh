@@ -30,7 +30,8 @@ const OPTIONS = {
   },
   // Shorter headlines over B's lead (owner, 2026-10-10: B is too long, keep its line).
   b1: { title: 'Security guards for Colorado sites.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
-  b2: { title: 'A prepared officer on every post.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
+  // The lead says "critical sites", not "data centers" (web audit, owner 2026-10-18: keep public copy broad).
+  b2: { title: 'A prepared officer on every post.', lead: 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.', proof: true },
   b3: { title: 'Armed and unarmed, across Colorado.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
   b4: { title: 'Every entry counts.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
   c: {
