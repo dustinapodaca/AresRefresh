@@ -8,20 +8,13 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 // comes up; the posts light in turn last. Nothing reverses once built. Reduced motion (and no
 // JS): built and still. Every fact is one already on the panel.
 //
-// Three whole forms to compare, each with its desktop and phone layout (owner, 2026-10-15: the
-// upright tiles looked bad on phones), at ?pstrip=ledger|card|track (card chosen, owner 2026-10-16; `row`
-// keeps the row of tiles, upright on phones):
-//   ledger  ruled columns (rows on phones) on a line that grows with the scroll, each dot lighting
-//           as the line's rust tip reaches it
-//   card    one pipeline card holding the flow: prime, Ares, then the posts as square chips, joined
-//           by small rust arrows; side by side on desktop, stacked on phones
-//   track   the stage meter's look: three stops on a line that fills with the scroll, the posts
-//           as chips beneath
+// The card form (owner, 2026-10-16): one pipeline card holding the flow, prime, Ares, then the
+// posts as square chips joined by small rust arrows; side by side on desktop, stacked on phones.
+// The ledger, track, and row forms (?pstrip=) were removed at launch (owner, 2026-10-19; tag
+// options-archive-2026-10-19, docs/options-archive.md).
 const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
-export const STRIP_FORMS = ['ledger', 'card', 'track', 'row'] as const;
-export type StripForm = (typeof STRIP_FORMS)[number];
 
-export default function PrimeStrip({ form = 'card' }: { form?: StripForm }) {
+export default function PrimeStrip() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -79,135 +72,34 @@ export default function PrimeStrip({ form = 'card' }: { form?: StripForm }) {
       window.removeEventListener('resize', onScroll);
       cancelAnimationFrame(raf);
     };
-  }, [form]);
+  }, []);
 
   return (
     <figure
       ref={ref}
       className="ds-pstrip"
-      data-form={form}
+      data-form="card"
       aria-label="The prime holds the contract; Ares, a woman-owned subcontractor (WOSB, WBENC), staffs restricted-area escort, access control, and relief posts under it"
     >
-      {/* The row of tiles (?pstrip=row): upright on phones. */}
-      {form === 'row' && (
-      <div className="ds-pstrip-row" aria-hidden="true">
-        <div className="ds-pstrip-node" data-i="0">
-          <span className="ds-pipe-tag ds-data">Teaming</span>
-          <i className="ds-pstrip-dot" />
-          <span className="ds-pstrip-text">
-            <b>Prime contractor</b>
-            <small className="ds-data">Holds the contract</small>
-          </span>
+      <div className="ds-pph ds-pph-card" aria-hidden="true">
+        <div className="ds-pph-sec" data-at="1">
+          <span className="ds-pph-tag ds-data">Teaming</span>
+          <b>Prime contractor</b>
+          <small className="ds-data">Holds the contract</small>
         </div>
-        <span className="ds-pstrip-wire" style={{ '--w': 'var(--w1, 0)' } as CSSProperties}>
-          <span />
-          <i className="ds-pstrip-tip" />
-        </span>
-        <div className="ds-pstrip-node" data-i="1" data-ares="true">
-          <span className="ds-pipe-tag ds-data">Subcontracting credit</span>
-          <i className="ds-pstrip-dot" />
-          <span className="ds-pstrip-text">
-            <b>Ares Security</b>
-            <small className="ds-data">WOSB · WBENC</small>
-          </span>
+        <span className="ds-pph-arrow" data-at="2" />
+        <div className="ds-pph-sec" data-at="2" data-ares="true">
+          <span className="ds-pph-tag ds-data">Subcontracting credit</span>
+          <b>Ares Security</b>
+          <small className="ds-data">WOSB · WBENC</small>
         </div>
-        <span className="ds-pstrip-wire" style={{ '--w': 'var(--w2, 0)' } as CSSProperties}>
-          <span />
-          <i className="ds-pstrip-tip" />
-        </span>
-        <ul className="ds-pstrip-posts">
+        <span className="ds-pph-arrow" data-at="3" />
+        <ul className="ds-pph-chips" data-at="3">
           {POSTS.map((p, i) => (
-            <li key={p} style={{ '--i': i } as CSSProperties}>
-              <i className="ds-pstrip-dot" />
-              {p}
-            </li>
+            <li key={p} style={{ '--i': i } as CSSProperties}>{p}</li>
           ))}
         </ul>
       </div>
-      )}
-
-      {form === 'ledger' && (
-        <div className="ds-pph ds-pph-ledger" aria-hidden="true">
-          <span className="ds-pph-rail">
-            <span />
-            <i />
-          </span>
-          <div className="ds-pph-row" data-at="1">
-            <i className="ds-pph-dot" />
-            <div>
-              <b>Prime contractor</b>
-              <small className="ds-data">Holds the contract</small>
-            </div>
-            <span className="ds-pph-tag ds-data">Teaming</span>
-          </div>
-          <div className="ds-pph-row" data-at="2" data-ares="true">
-            <i className="ds-pph-dot" />
-            <div>
-              <b>Ares Security</b>
-              <small className="ds-data">WOSB · WBENC</small>
-            </div>
-            <span className="ds-pph-tag ds-data">Subcontracting credit</span>
-          </div>
-          <div className="ds-pph-row" data-at="3">
-            <i className="ds-pph-dot" />
-            <ul>
-              {POSTS.map((p, i) => (
-                <li key={p} style={{ '--i': i } as CSSProperties}>{p}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-      {form === 'card' && (
-        <div className="ds-pph ds-pph-card" aria-hidden="true">
-          <div className="ds-pph-sec" data-at="1">
-            <span className="ds-pph-tag ds-data">Teaming</span>
-            <b>Prime contractor</b>
-            <small className="ds-data">Holds the contract</small>
-          </div>
-          <span className="ds-pph-arrow" data-at="2" />
-          <div className="ds-pph-sec" data-at="2" data-ares="true">
-            <span className="ds-pph-tag ds-data">Subcontracting credit</span>
-            <b>Ares Security</b>
-            <small className="ds-data">WOSB · WBENC</small>
-          </div>
-          <span className="ds-pph-arrow" data-at="3" />
-          <ul className="ds-pph-chips" data-at="3">
-            {POSTS.map((p, i) => (
-              <li key={p} style={{ '--i': i } as CSSProperties}>{p}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {form === 'track' && (
-        <div className="ds-pph ds-pph-track" aria-hidden="true">
-          <div className="ds-pph-line">
-            <span />
-          </div>
-          <ol className="ds-pph-stops">
-            <li data-at="1">
-              <i />
-              <b>Prime contractor</b>
-              <small className="ds-data">Holds the contract</small>
-            </li>
-            <li data-at="2" data-ares="true">
-              <i />
-              <b>Ares Security</b>
-              <small className="ds-data">WOSB · WBENC</small>
-            </li>
-            <li data-at="3">
-              <i />
-              <b>Posts</b>
-              <small className="ds-data">Under the contract</small>
-            </li>
-          </ol>
-          <ul className="ds-pph-chips" data-at="3">
-            {POSTS.map((p, i) => (
-              <li key={p} style={{ '--i': i } as CSSProperties}>{p}</li>
-            ))}
-          </ul>
-        </div>
-      )}
     </figure>
   );
 }

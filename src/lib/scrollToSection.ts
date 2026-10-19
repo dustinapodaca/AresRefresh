@@ -20,14 +20,9 @@ export function sectionY(el: HTMLElement): number {
   // Sections land on their content (inside their top padding); a card or row lands on itself.
   const pad = el.tagName === 'SECTION' ? px(getComputedStyle(el).paddingTop) : 0;
   // The layout position (offsetTop ignores transforms, so a scroll-driven transform mid-run
-  // can't skew it). Services holds its page still for the first --svc-cap of scroll: as a
-  // transform (add the full cap, which is where the page rests once the hold is spent) or,
-  // without scroll timelines, as a spacer already in the layout (add what is left of it).
+  // can't skew it).
   let top = 0;
   for (let n: HTMLElement | null = el; n; n = n.offsetParent as HTMLElement | null) top += n.offsetTop;
-  const cap = px(getComputedStyle(root).getPropertyValue('--svc-cap'));
-  if (root.classList.contains('svc-hold')) top += cap;
-  else if (root.classList.contains('svc-hold-js')) top += cap - Math.min(Math.max(window.scrollY, 0), cap);
   top += pad;
   return Math.max(0, Math.round(top - header - runhead - gap));
 }

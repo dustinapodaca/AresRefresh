@@ -220,11 +220,6 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 226,
     "height": 128
   },
-  "/images/gsa-contract-holder.png": {
-    "src": "/images/opt/gsa-contract-holder.90e0c2aa.webp",
-    "width": 534,
-    "height": 128
-  },
   "/images/cert-denver-edo.webp": {
     "src": "/images/opt/cert-denver-edo.ac40200e.webp",
     "width": 492,

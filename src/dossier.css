@@ -68,7 +68,6 @@ body:has(.ds-page) {
   margin-inline: auto;
   padding-inline: var(--ds-gutter);
 }
-.ds-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
 
 /* ---------- Type ---------- */
 .ds-display-xl,
@@ -130,8 +129,6 @@ body:has(.ds-page) {
   transition: text-decoration-color 180ms var(--ds-ease);
 }
 .ds-link:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
-.ds-link-muted { color: var(--ds-fg-muted); }
-.ds-link-muted:hover { color: var(--ds-fg); }
 
 .ds-arrow { flex: none; transition: transform 180ms var(--ds-ease); }
 
@@ -153,7 +150,6 @@ body:has(.ds-page) {
 .ds-btn:active { transform: scale(0.98); }
 .ds-btn-primary { background: var(--ds-fg); color: var(--ds-canvas); }
 .ds-btn-primary:hover { background: #ffffff; color: var(--ds-canvas); }
-.ds-btn-sm { height: 40px; padding: 0 16px; font-size: 14px; }
 
 @media (hover: hover) and (pointer: fine) {
   .ds-link:hover .ds-arrow,
@@ -230,8 +226,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-header[data-solid='true']::before { opacity: 1; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .ds-header::before { background: rgb(0 0 0 / 0.94); }
-}
-.ds-header-row { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 100%; } /* above the phone menu */
+} /* above the phone menu */
 .ds-brand { display: flex; align-items: center; gap: 12px; color: var(--ds-fg); }
 .ds-mark {
   display: block;
@@ -247,116 +242,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 @media (min-width: 1024px) {
   .ds-header .ds-mark { width: 44px; height: 46px; }
 }
-.ds-nav { display: none; }
-.ds-nav ul { display: flex; justify-content: center; gap: 36px; list-style: none; margin: 0; padding: 0; }
-.ds-nav-link {
-  position: relative;
-  display: inline-block;
-  padding: 6px 0;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: #fff;
-}
-.ds-nav-link:hover { color: #fff; }
-.ds-nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: #fff;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 200ms var(--ds-ease);
-}
-.ds-nav-link[aria-current='page']::after { transform: scaleX(1); }
-/* Desktop: the links sit 2px above center in the slimmer bar (owner, 2026-10-08). */
-@media (min-width: 1024px) { .ds-nav-link { top: -2px; } }
-@media (hover: hover) and (pointer: fine) {
-  .ds-nav-link:hover::after { transform: scaleX(1); }
-}
-.ds-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
-.ds-header-cta { display: none; height: 40px; padding: 0 18px; }
-@media (min-width: 1024px) {
-  .ds-nav-link { font-size: 15px; }
-}
-
-.ds-menu-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-right: -10px;
-  padding: 0;
-  background: none;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-}
-.ds-menu-icon { position: relative; width: 24px; height: 16px; }
-.ds-menu-icon span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: currentColor;
-  transition: transform 200ms var(--ds-ease), opacity 200ms var(--ds-ease);
-}
-.ds-menu-icon span:nth-child(1) { top: 0; }
-.ds-menu-icon span:nth-child(2) { top: 7px; }
-.ds-menu-icon span:nth-child(3) { top: 14px; }
-.ds-header[data-open='true'] .ds-menu-icon span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.ds-header[data-open='true'] .ds-menu-icon span:nth-child(2) { transform: scaleX(0); opacity: 0; }
-.ds-header[data-open='true'] .ds-menu-icon span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.ds-sheet {
-  /* The phone menu (owner, 2026-10-09): solid canvas over the whole screen, the nav bar's
-     area included, grown out of the hamburger as a circle (its center and reach set by
-     Header.tsx) and drawn back into it on close; the bar's row (mark and X) stays on top. A
-     hairline marks where the bar ends. */
-  position: fixed;
-  inset: 0;
-  padding-top: var(--ds-header);
-  overflow-y: auto;
-  background: linear-gradient(var(--ds-rule), var(--ds-rule)) 0 var(--ds-header) / 100% 1px no-repeat, var(--ds-canvas);
-  clip-path: circle(0px at var(--menu-x, calc(100% - 32px)) var(--menu-y, 34px));
-  visibility: hidden;
-  transition: clip-path 260ms cubic-bezier(0.6, 0, 0.8, 0.4), visibility 0s linear 260ms;
-}
-.ds-header[data-open='true'] .ds-sheet {
-  clip-path: circle(var(--menu-r, 150vmax) at var(--menu-x, calc(100% - 32px)) var(--menu-y, 34px));
-  visibility: visible;
-  transition: clip-path 300ms cubic-bezier(0.32, 0.72, 0, 1), visibility 0s;
-}
-/* The links ease in just behind the circle, a step apart (never from opacity 0). */
-.ds-header[data-open='true'] .ds-sheet li,
-.ds-header[data-open='true'] .ds-sheet-teaming,
-.ds-header[data-open='true'] .ds-sheet-contact,
-.ds-header[data-open='true'] .ds-sheet .ds-actions {
-  animation: ds-sheet-item 320ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation-delay: calc(80ms + var(--i, 0) * 28ms);
-}
-@keyframes ds-sheet-item { from { opacity: 0.3; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.ds-sheet ul { list-style: none; margin: 0; padding: 0; }
-.ds-sheet-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 0;
-  border-bottom: 1px solid var(--ds-rule);
-  font-family: var(--ds-text);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--ds-fg);
-}
-.ds-sheet-teaming { display: inline-flex; margin-top: 24px; font-size: 16px; }
-.ds-sheet-contact { display: grid; gap: 6px; margin-top: 36px; }
-.ds-sheet-contact a { color: var(--ds-fg); font-size: 1.125rem; }
 
 /* Breadcrumbs (owner, 2026-10-10): small, faint, above the headline. */
 .ds-crumbs { margin: 0 0 20px; font-size: 13px; color: var(--ds-fg-faint); }
@@ -371,44 +256,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-crumbs ol { flex-wrap: nowrap; }
   .ds-crumbs li { flex: none; white-space: nowrap; }
   .ds-crumbs li:last-child { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-}
-
-/* The Services panel and the phone call link (copy audit group 2, owner 2026-10-10). */
-.ds-nav-has-menu { position: relative; display: flex; align-items: center; gap: 2px; }
-.ds-nav-caret { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 28px; padding: 0; background: none; border: 0; color: #fff; cursor: pointer; position: relative; top: -2px; }
-.ds-nav-caret svg { transition: transform 180ms var(--ds-ease); }
-.ds-nav-has-menu[data-open='true'] .ds-nav-caret svg { transform: rotate(180deg); }
-.ds-nav-panel {
-  position: absolute;
-  top: calc(100% + 22px);
-  left: 50%;
-  translate: -50% 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 40px;
-  width: 660px;
-  padding: 24px 28px 22px;
-  background: var(--ds-canvas);
-  border: 1px solid var(--ds-rule-strong);
-  border-radius: 4px;
-}
-.ds-nav-panel[hidden] { display: none; }
-/* A bridge over the gap, so the pointer can travel from the link to the panel. */
-.ds-nav-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -24px; height: 24px; }
-.ds-nav-panel-h { margin: 0 0 8px; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-nav-panel ul { display: grid; justify-content: stretch; gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
-.ds-nav-panel li a { display: block; padding: 9px 0; border-bottom: 1px solid var(--ds-rule); font-size: 15px; color: var(--ds-fg); transition: color 180ms var(--ds-ease); }
-.ds-nav-panel li a:hover { color: #fff; }
-.ds-nav-panel-top { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin: 4px 0 20px; }
-.ds-nav-panel-top a { justify-self: start; font-size: 15px; font-weight: 500; white-space: nowrap; }
-.ds-header-call { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -6px; color: #fff; }
-@media (min-width: 1024px) { .ds-header-call { display: none; } }
-
-@media (min-width: 1024px) {
-  .ds-header-row { display: grid; grid-template-columns: 1fr auto 1fr; }
-  .ds-nav { display: block; }
-  .ds-header-cta { display: inline-flex; }
-  .ds-menu-btn, .ds-sheet { display: none; }
 }
 
 /* ---------- Footer ---------- */
@@ -695,16 +542,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 @media (min-width: 1024px) {
   .ds-hero-actions { display: none; }
 }
-.ds-hero-gsa {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: 44px;
-  max-width: 30rem;
-}
-.ds-hero-gsa img { display: block; height: 34px; width: auto; }
-.ds-hero-gsa span { display: block; }
-.ds-hero-gsa .ds-link { font-size: 15px; }
 /* The proof row (copy audit options, 2026-10-10): four checkable lines on hairlines, in place
    of the GSA mark. Two by two on phones, four across from 1024px. */
 .ds-hero-proof {
@@ -793,7 +630,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-hero-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); padding-bottom: clamp(3rem, 9vh, 6rem); }
   .ds-hero-copy h1 { max-width: 10.6em; }
   .ds-hero-copy .ds-lead { max-width: 40ch; color: #c4c8ce; }
-  .ds-hero-gsa .ds-small { color: #c4c8ce; }
   .ds-hero-proof li { color: #c4c8ce; }
 }
 /* Desktop has no hero actions (the nav carries the quote), so the copy is lifted most of
@@ -805,7 +641,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-hero-copy { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-bottom: clamp(2.5rem, 6vh, 4rem); }
   .ds-hero-copy h1 { grid-column: 1 / -1; grid-row: 1; }
   .ds-hero-copy .ds-lead { grid-column: 1 / span 6; grid-row: 2; }
-  .ds-hero-copy .ds-hero-gsa { grid-column: 8 / span 5; grid-row: 2; justify-self: end; align-self: end; margin-top: 0; }
   .ds-hero-copy .ds-hero-proof { grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; margin-top: 44px; }
   .ds-hero-copy .ds-lead { max-width: 46ch; }
 }
@@ -1080,14 +915,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-value-glass { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 26px; border-top: 1px solid rgb(255 255 255 / 0.08); }
 .ds-value-glass h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
 .ds-value-glass > p { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
-/* The quote card: no figure area, the words straight on the glass. */
-.ds-value-quote .ds-value-light { display: none; }
-.ds-value-quote .ds-value-glass { border-top: 0; }
-.ds-value-quote blockquote { margin: 0; }
-.ds-value-quote blockquote p { margin: 0; font-family: var(--ds-text); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); text-indent: -0.4em; text-wrap: balance; max-width: 34ch; }
-.ds-value-quote figcaption { margin-top: 20px; font-size: 14px; color: #c4c8ce; }
-.ds-value-quote figcaption span { display: block; }
-.ds-value-quote figcaption span:first-child { font-weight: 500; color: var(--ds-fg); }
 @media (hover: hover) and (pointer: fine) {
   .ds-value:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.2); }
 }
@@ -1095,10 +922,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-values-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
   .ds-value-light { padding: 32px 30px 26px; }
   .ds-value-glass { padding: 24px 30px 30px; }
-  .ds-value-quote { grid-column: 1 / -1; }
-  .ds-value-quote .ds-value-glass { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding: 34px 30px 36px; }
-  .ds-value-quote blockquote { grid-column: 1 / span 9; }
-  .ds-value-quote figcaption { grid-column: 10 / span 3; margin: 0; text-align: right; }
 }
 /* Phones and tablets: the cards stick under the nav and running head and pile up, each a
    step lower than the one before, so a sliver of each stays in view. */
@@ -1107,7 +930,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
      (--ds-value-h); the quote sits at the top of its card and the attribution on its foot. */
   .ds-values-list { --pile-hold: 96px; display: flex; flex-direction: column; margin-bottom: calc(-1 * var(--pile-hold)); }
   .ds-value { min-height: var(--ds-value-h, 0px); }
-  .ds-value-quote figcaption { margin-top: auto; padding-top: 20px; }
   /* Each card on its own layer, so the pile slides smoothly instead of repainting. */
   .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); transform: translateZ(0); backface-visibility: hidden; }
   .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
@@ -1142,30 +964,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 }
 
 .ds-ledger { margin-top: var(--ds-beat-tight); }
-.ds-ledger-group summary {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--ds-rule-strong);
-  list-style: none;
-  cursor: pointer;
-}
-.ds-ledger-group summary::-webkit-details-marker { display: none; }
-.ds-ledger-count { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ds-fg-faint); white-space: nowrap; transition: color 180ms var(--ds-ease); }
-.ds-chevron { transition: transform 180ms var(--ds-ease); }
-.ds-ledger-group[open] .ds-chevron { transform: rotate(180deg); }
-/* Folded groups read as three tappable rows, at every width. */
-.ds-ledger-group summary { padding: 18px 0; border-bottom-color: var(--ds-rule); }
-.ds-ledger-group[open] summary { border-bottom-color: var(--ds-rule-strong); }
-.ds-ledger-group[open] { padding-bottom: 28px; }
-@media (min-width: 768px) {
-  .ds-ledger-group summary { padding: 22px 0; }
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-ledger-group summary:hover .ds-ledger-count { color: var(--ds-fg); }
-}
 .ds-ledger dl { margin: 0; }
 .ds-ledger-row {
   position: relative;
@@ -1198,16 +996,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
     padding: 18px 0;
   }
   .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
-}
-.ds-ledger-foot { margin-top: 28px; }
-
-/* Mobile: the quote sits to the right, right-aligned (it lives in the right-hand columns
-   on desktop); the hero's GSA line is centered, its text left-aligned. */
-@media (max-width: 767px) {
-  .ds-hero-gsa { justify-content: center; margin-inline: auto; text-align: left; }
-}
-@media (min-width: 1024px) {
-  .ds-ledger-foot { text-align: right; }
 }
 
 /* ---------- 02 Quality (owner, 2026-10-06; moved whole from About; Staffing went there) ----------
@@ -1251,10 +1039,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-quality-facts div { padding: 10px 0; }
   .ds-quality-facts dd { font-size: 16px; line-height: 1.45; }
 }
-
-/* Vehicle options (design review item 28, owner 2026-10-13; /?vehicles=). Phones keep the
-   stacked plate in every form except portrait, which shows the photo whole. */
-.ds-quality-body[data-form='portrait'] .ds-quality-photo img { aspect-ratio: 1142 / 1378; object-position: 50% 100%; }
 @media (min-width: 1024px) {
   /* wide (the default since 2026-10-16, owner): the photo across the whole column, the four facts
      in a row beneath it; the cars sit 44px lower in the frame (owner; 32px until 2026-10-18). */
@@ -1264,36 +1048,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-quality-body[data-form='wide'] .ds-quality-photo figcaption { position: static; margin-top: 12px; }
   .ds-quality-body[data-form='wide'] .ds-quality-facts { display: contents; }
   .ds-quality-body[data-form='wide'] .ds-quality-facts div { grid-column: auto; padding: 16px 0 0; border-bottom: 0; }
-
-  /* portrait: the photo whole, at its own proportions, the facts two by two beside it, sitting
-     on its foot. */
-  .ds-quality-body[data-form='portrait'] .ds-quality-photo { grid-column: 1 / span 5; }
-  .ds-quality-body[data-form='portrait'] .ds-quality-photo img { object-position: 50% 100%; }
-  .ds-quality-body[data-form='portrait'] .ds-quality-facts { grid-column: 7 / span 6; display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; align-content: end; }
-  .ds-quality-body[data-form='portrait'] .ds-quality-facts div { flex: none; padding: 18px 0 22px; }
-  .ds-quality-body[data-form='portrait'] .ds-quality-facts div:nth-last-child(2) { border-bottom: 1px solid var(--ds-rule); }
-}
-@media (min-width: 768px) {
-  /* glass: the photo large across the column, the facts on a strip of dark glass over its foot. */
-  .ds-quality-body[data-form='glass'] { display: grid; grid-template-columns: minmax(0, 1fr); }
-  .ds-quality-body[data-form='glass'] > * { grid-area: 1 / 1; }
-  .ds-quality-body[data-form='glass'] .ds-quality-photo img { aspect-ratio: 16 / 9; object-position: 50% 96%; }
-  .ds-quality-body[data-form='glass'] .ds-quality-photo figcaption { position: absolute; top: 14px; right: 16px; left: auto; margin: 0; color: rgb(238 240 242 / 0.8); }
-  .ds-quality-body[data-form='glass'] .ds-quality-facts {
-    align-self: end;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 24px;
-    padding: 20px 28px 22px;
-    border-radius: 0 0 4px 4px;
-    background: rgb(0 0 0 / 0.55);
-    -webkit-backdrop-filter: blur(22px) saturate(1.2);
-    backdrop-filter: blur(22px) saturate(1.2);
-    border-top: 1px solid rgb(255 255 255 / 0.12);
-  }
-  .ds-quality-body[data-form='glass'] .ds-quality-facts div { flex: none; padding: 0; border: 0; }
-  .ds-quality-body[data-form='glass'] .ds-quality-facts dt { color: #c4c8ce; }
-  .ds-quality-body[data-form='glass'] .ds-quality-facts dd { font-size: 16px; }
 }
 
 /* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait; second pass
@@ -1315,20 +1069,10 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-founder-story > span { color: var(--ds-fg); }
 .ds-founder-letter .ds-founder-sig { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; }
 
-/* note: the headline left; portrait, name, story, and a route right, between hairlines
-   (Resend). */
-.ds-founder-head .ds-lead { margin-top: 14px; }
-.ds-founder-card { padding: 24px 0 26px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
-.ds-founder-who { display: flex; align-items: center; gap: 18px; }
-.ds-founder-text { margin: 20px 0 0; font-size: 17px; line-height: 1.65; color: var(--ds-fg-muted); max-width: 60ch; }
-.ds-founder-more { display: inline-flex; margin-top: 18px; font-size: 15px; }
-
 @media (min-width: 1024px) {
   .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-founder[data-form='letter'] h2 { grid-column: 1 / span 4; }
   .ds-founder-letter { grid-column: 6 / span 7; }
-  .ds-founder-head { grid-column: 1 / span 5; }
-  .ds-founder-card { grid-column: 7 / span 6; }
 }
 /* One moment (Emil): the portrait opens from the bottom as it scrolls in (clip-path, from an
    already-visible sliver); static under reduced motion. */
@@ -1358,7 +1102,7 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    margin, so this section adds it back; the released cards then stop a full beat above the
    headline instead of running into it (owner, 2026-10-10). */
 @media (max-width: 1023px) { .ds-industries { padding-top: calc(var(--ds-beat) + 96px); } }
-.ds-ind-plates, .ds-ind-rows { list-style: none; margin: 44px 0 0; padding: 0; display: grid; }
+.ds-ind-plates { list-style: none; margin: 44px 0 0; padding: 0; display: grid; }
 .ds-ind-plates { gap: 36px 24px; }
 @media (min-width: 768px) { .ds-ind-plates { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .ds-ind-plates a { display: grid; gap: 8px; color: var(--ds-fg); }
@@ -1374,19 +1118,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-ind-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
 @media (hover: hover) and (pointer: fine) {
   .ds-ind-plates a:hover img { transform: scale(1.03); }
-  .ds-ind-plates a:hover .ds-arrow, .ds-ind-rows a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
+  .ds-ind-plates a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
 }
-.ds-ind-rows li { border-top: 1px solid var(--ds-rule-strong); }
-.ds-ind-rows a { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: 8px 16px; align-items: baseline; padding: 28px 0 30px; color: var(--ds-fg); }
 .ds-ind-n { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-ind-rows .ds-ind-name { font-size: clamp(28px, 3.6vw, 48px); letter-spacing: -0.035em; line-height: 1.02; }
-.ds-ind-rows .ds-ind-line { grid-column: 2; }
-.ds-ind-rows .ds-arrow { grid-column: 3; grid-row: 1; align-self: center; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
-@media (min-width: 1024px) {
-  .ds-ind-rows a { grid-template-columns: 2.5rem minmax(0, 7fr) minmax(0, 4fr) auto; align-items: center; }
-  .ds-ind-rows .ds-ind-line { grid-column: 3; grid-row: 1; }
-  .ds-ind-rows .ds-arrow { grid-column: 4; }
-}
 .ds-industries .ds-ind-rest { margin-top: 56px; }
 /* Plates: the arrow follows the last word of the name, however it wraps. */
 .ds-ind-plates .ds-ind-name { display: block; }
@@ -1409,72 +1143,13 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-primes-btn { margin-top: 24px; }
 .ds-primes-label { display: block; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-primes-value { display: block; margin-top: 4px; font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ds-fg); }
-.ds-primes-id { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ds-fg-muted); }
-
-/* split */
-.ds-primes-ask { display: grid; align-content: space-between; gap: 20px; }
-.ds-primes-ask .ds-primes-btn { margin-top: 0; justify-self: start; }
-.ds-primes-proof { margin-top: 28px; }
-.ds-primes-proof .ds-primes-line { margin-top: 0; }
-.ds-primes-sheet { margin: 24px 0 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
-.ds-primes-sheet > div { display: grid; gap: 4px; padding: 15px 0 16px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
-.ds-primes-sheet > div:last-child { border-bottom: 0; padding-bottom: 0; }
-.ds-primes-sheet dt { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-primes-sheet dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
 
 /* diagram */
 .ds-primes-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
 .ds-primes-list li { padding: 13px 0 14px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
-.ds-primes-flow { position: relative; display: grid; justify-items: center; margin: 32px 0 0; padding: 8px 0; }
-.ds-flow-node { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 18px; border-radius: 4px; }
-.ds-flow-node .ds-data { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ds-fg); }
-.ds-flow-node > span:last-child { font-size: 13px; color: var(--ds-fg-muted); max-width: 30ch; }
-/* The wires: hairlines that scale with the box but keep a 1px stroke. */
-.ds-flow-wire { display: block; overflow: visible; }
-/* The down wire is a 2px-wide box, so its stroke must not scale; the fork is drawn at its real
-   size (FlowFork), so it never scales. */
-.ds-flow-wire path { fill: none; stroke-width: 1; }
-.ds-flow-wire-down path { vector-effect: non-scaling-stroke; }
-.ds-flow-wire-down { width: 2px; height: 32px; }
-.ds-flow-wire-fork { width: 100%; height: 48px; }
-.ds-wire-base { stroke: var(--ds-rule-strong); }
-/* The light: a short rust dash, parked off the wire until it runs. */
-.ds-wire-pulse { stroke: var(--ds-rust); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 22 130; stroke-dashoffset: 22; opacity: 0; }
-/* Status dots: faint until the light arrives (Ares's is always on, like the HQ dot). */
-.ds-flow-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: rgb(255 255 255 / 0.18); }
-.ds-flow-posts .ds-flow-dot { position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; }
-.ds-flow-ares .ds-flow-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-.ds-flow-posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; }
-.ds-flow-posts span { position: relative; display: flex; align-items: center; justify-content: center; padding: 16px 10px; border-radius: 4px; font-size: 12.5px; line-height: 1.3; text-align: center; color: var(--ds-fg); }
-
-/* vignettes */
-.ds-primes-top { display: grid; gap: 0; }
-.ds-primes-vigs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 12px; }
-.ds-primes-vigs li { padding: 14px 14px 18px; border-radius: 4px; background: linear-gradient(180deg, #14161a 0%, #0f1013 100%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07); }
-.ds-primes-vigs h4 { margin: 16px 0 0; font-family: var(--ds-text); font-size: 15px; font-weight: 600; color: var(--ds-fg); }
-.ds-primes-vigs p { margin: 4px 0 0; font-size: 14px; line-height: 1.45; color: var(--ds-fg-muted); }
-.ds-vig { display: grid; align-content: center; min-height: 112px; padding: 14px; border-radius: 4px; background: #000000; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
-.ds-vig-ids { gap: 8px; }
-.ds-vig-ids > span { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 10px; border-radius: 2px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.07); }
-.ds-vig-ids b { font-weight: 500; font-size: 12px; color: var(--ds-fg-faint); }
-.ds-vig-ids .ds-data { font-size: 12.5px; color: var(--ds-fg); }
-.ds-vig-bar { display: block; height: 6px; border-radius: 2px; background: rgb(255 255 255 / 0.06); overflow: hidden; }
-.ds-vig-bar span { display: block; height: 100%; width: 50%; background: var(--ds-fg); transform-origin: left; }
-.ds-vig-years { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; color: var(--ds-fg-muted); }
-.ds-vig-figure .ds-data { font-size: 48px; line-height: 1; letter-spacing: -0.04em; color: var(--ds-fg); }
 
 @media (min-width: 768px) {
   .ds-primes-panel { padding: 40px; }
-  .ds-primes-vigs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-}
-@media (min-width: 1024px) {
-  .ds-primes-panel[data-form='split'], .ds-primes-panel[data-form='diagram'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-primes-panel[data-form='split'] .ds-primes-ask { grid-column: 1 / span 4; padding-right: 24px; }
-  .ds-primes-panel[data-form='split'] .ds-primes-proof { grid-column: 5 / span 8; margin-top: 0; padding-left: 40px; border-left: 1px solid rgb(255 255 255 / 0.08); }
-  .ds-primes-panel[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 6; }
-  .ds-primes-panel[data-form='diagram'] .ds-primes-flow { grid-column: 8 / span 5; margin-top: 0; align-self: center; }
-  .ds-primes-top { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 48px; }
-  .ds-primes-top .ds-primes-btn { margin-top: 0; }
 }
 /* Motion (Emil): one moment per form, tied to scroll, from an already-visible default; all
    static under reduced motion. The panel settles 24px; the diagram's lines draw down to the
@@ -1482,48 +1157,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ds-primes-panel { animation: ds-primes-settle linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; will-change: transform; }
-    /* Drawn by the time the wire is fully on screen, so the light never runs on a half-drawn wire. */
-    .ds-wire-base { stroke-dasharray: 100; animation: ds-wire-draw linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-    .ds-vig-bar span { animation: ds-vig-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 50%; }
   }
 }
 @keyframes ds-primes-settle { from { transform: translate3d(0, 24px, 0); } to { transform: translate3d(0, 0, 0); } }
-@keyframes ds-wire-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
-/* The light (owner, 2026-10-12): one 3.6s cycle. It runs down from the prime (0 to 26%),
-   Ares's dot pulses as it passes (26 to 40%), it splits down the three wires (30 to 62%), and
-   each post's dot lights rust as it lands (62%), easing back by the next cycle. Ambient, so it
-   stops under reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  /* Starts once the diagram rises above the bottom quarter of the window (data-live, set in
-     Industries.tsx), then loops. */
-  .ds-primes-flow[data-live] .ds-flow-wire-down .ds-wire-pulse { animation: ds-pulse-down 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-  .ds-primes-flow[data-live] .ds-flow-wire-fork .ds-wire-pulse { animation: ds-pulse-fork 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-  .ds-primes-flow[data-live] .ds-flow-ares .ds-flow-dot { animation: ds-dot-ares 3.6s linear infinite; }
-  .ds-primes-flow[data-live] .ds-flow-posts .ds-flow-dot { animation: ds-dot-post 3.6s linear infinite; }
-}
-@keyframes ds-pulse-down {
-  0% { stroke-dashoffset: 22; opacity: 1; }
-  26% { stroke-dashoffset: -100; opacity: 1; }
-  27%, 100% { stroke-dashoffset: -100; opacity: 0; }
-}
-@keyframes ds-pulse-fork {
-  0%, 29% { stroke-dashoffset: 22; opacity: 0; }
-  30% { stroke-dashoffset: 22; opacity: 1; }
-  62% { stroke-dashoffset: -100; opacity: 1; }
-  63%, 100% { stroke-dashoffset: -100; opacity: 0; }
-}
-@keyframes ds-dot-ares {
-  0%, 24% { box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-  30% { box-shadow: 0 0 0 6px rgb(188 111 64 / 0.28); }
-  44%, 100% { box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-}
-@keyframes ds-dot-post {
-  0%, 60% { background: rgb(255 255 255 / 0.18); box-shadow: 0 0 0 0 rgb(188 111 64 / 0); }
-  64% { background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.22); }
-  86% { background: var(--ds-rust); box-shadow: 0 0 0 2px rgb(188 111 64 / 0.1); }
-  100% { background: rgb(255 255 255 / 0.18); box-shadow: 0 0 0 0 rgb(188 111 64 / 0); }
-}
-@keyframes ds-vig-fill { from { transform: scaleX(0.15); } to { transform: scaleX(1); } }
 .ds-coverage { padding-top: var(--ds-beat); }
 .ds-coverage-head { display: grid; gap: 20px; }
 @media (min-width: 1024px) {
@@ -1563,22 +1199,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-city:hover .ds-arrow { transform: translateX(4px); }
-}
-
-.ds-divisions { display: grid; gap: 20px; margin-top: var(--ds-beat-tight); }
-.ds-divisions ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
-@media (min-width: 768px) { .ds-divisions ul { column-gap: 24px; } }
-.ds-divisions li { padding: 14px 0; border-bottom: 1px solid var(--ds-rule); font-size: 17px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; color: var(--ds-fg); }
-.ds-divisions .ds-link { margin-top: 16px; }
-/* Two columns on phones too: shorter, closer to a spec grid. */
-@media (max-width: 767px) { .ds-divisions li { font-size: 15px; line-height: 1.3; padding: 16px 0; } }
-@media (min-width: 768px) {
-  .ds-divisions ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 1024px) {
-  .ds-divisions { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-divisions h3 { grid-column: 1 / span 4; }
-  .ds-divisions > div { grid-column: 5 / span 8; }
 }
 
 /* Full-bleed photograph: starts under the end of 03 Coverage and ends under the
@@ -1659,33 +1279,14 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 }
 @media (min-width: 640px) { .ds-phone { font-size: 44px; } }
 .ds-phone:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
-.ds-pairs { display: grid; gap: 20px 24px; margin: 40px 0 0; max-width: 46rem; }
-.ds-pairs div { padding-top: 14px; border-top: 1px solid var(--ds-rule); }
-.ds-pairs dt { font-size: 0.875rem; color: var(--ds-fg-muted); }
-.ds-pairs dd { margin: 6px 0 0; font-size: 15px; }
 .ds-contact .ds-actions { margin-top: 44px; }
-@media (min-width: 640px) {
-  .ds-pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-/* The close's forms (/?close=, owner 2026-10-16; Contact.tsx). Each keeps the rust light, moved
-   to sit under its weight. */
-.ds-contact[data-form='centered']::before { background: radial-gradient(ellipse 46% 44% at 50% 70%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
 .ds-contact:is([data-form='starter'], [data-form='ledger'])::before { background: radial-gradient(ellipse 44% 46% at 70% 62%, rgb(188 111 64 / 0.24) 0%, rgb(139 73 32 / 0.11) 48%, rgb(139 73 32 / 0) 100%); }
 .ds-contact[data-form='routes']::before { background: radial-gradient(ellipse 56% 40% at 50% 74%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
 
 .ds-cta-meta { display: flex; flex-wrap: wrap; justify-content: inherit; gap: 6px 12px; margin: 0; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-cta-meta a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
 .ds-cta-meta a:hover { color: var(--ds-fg); }
-
-/* centered: one statement in the middle of the page. */
-.ds-cta-center { display: grid; justify-items: center; text-align: center; }
-.ds-cta-center .ds-lead { margin-top: 24px; max-width: 40ch; }
-.ds-cta-center .ds-actions { justify-content: center; margin-top: 40px; }
-.ds-cta-center .ds-cta-meta { justify-content: center; margin-top: 36px; }
 @media (max-width: 767px) {
-  .ds-cta-center .ds-actions { justify-self: stretch; }
-  .ds-cta-center .ds-actions .ds-link { align-self: center; }
   /* Phones: email and base on their own lines, no dangling separator. */
   .ds-cta-meta { flex-direction: column; gap: 6px; }
   .ds-cta-meta span[aria-hidden] { display: none; }
@@ -1709,35 +1310,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-cta-card-line { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 44ch; }
 .ds-cta-card .ds-btn { justify-self: start; margin-top: 8px; }
 
-/* starter and ledger: copy left, the way in right. */
-.ds-cta-split { display: grid; gap: 40px; }
-.ds-cta-copy .ds-lead { margin-top: 24px; }
-.ds-cta-copy .ds-actions { margin-top: 36px; }
-.ds-cta-alt { margin: 28px 0 0; font-size: 15px; color: var(--ds-fg-muted); }
-@media (min-width: 1024px) {
-  .ds-cta-split { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-cta-copy { grid-column: 1 / span 6; }
-  .ds-cta-split > :last-child { grid-column: 7 / span 6; }
-  .ds-cta-split .ds-display-xl { font-size: clamp(48px, 4.6vw, 68px); }
-}
-.ds-cta-starter ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 4px 0 0; padding: 0; }
-.ds-cta-starter li a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid var(--ds-rule-strong);
-  border-radius: 2px;
-  font-size: 14px;
-  color: var(--ds-fg);
-  transition: border-color 180ms var(--ds-ease), background-color 180ms var(--ds-ease);
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-cta-starter li a:hover { border-color: var(--ds-fg-muted); background: rgb(255 255 255 / 0.04); }
-}
-.ds-cta-starter .ds-btn { margin-top: 12px; }
-@media (max-width: 767px) { .ds-cta-starter .ds-btn { justify-self: stretch; } }
-
 /* routes: the headline, then two cards. */
 .ds-cta-routes { display: grid; gap: 16px; margin-top: 48px; }
 @media (min-width: 768px) { .ds-cta-routes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
@@ -1745,24 +1317,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (min-width: 640px) { .ds-cta-phone { font-size: 36px; } }
 .ds-cta-routes .ds-cta-meta { margin-top: 4px; }
 @media (max-width: 767px) { .ds-cta-routes .ds-btn { justify-self: stretch; } }
-
-/* ledger: ruled rows, label over value on phones, side by side from 768px. */
-.ds-cta-ledger { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
-.ds-cta-ledger li { border-bottom: 1px solid var(--ds-rule); }
-.ds-cta-ledger a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; padding: 18px 0; color: var(--ds-fg); }
-.ds-cta-ledger-label { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-cta-ledger-value { grid-column: 1; font-size: 17px; font-weight: 500; }
-.ds-cta-ledger-value.ds-data { font-weight: 400; font-size: 16px; }
-.ds-cta-ledger .ds-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--ds-fg-muted); }
-@media (min-width: 768px) {
-  .ds-cta-ledger a { grid-template-columns: 11rem minmax(0, 1fr) auto; padding: 20px 0; }
-  .ds-cta-ledger-label { font-size: 14px; color: var(--ds-fg-muted); }
-  .ds-cta-ledger-value { grid-column: 2; }
-  .ds-cta-ledger .ds-arrow { grid-column: 3; grid-row: 1; }
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-cta-ledger a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-fg); }
-}
 
 /* ---------- Credential strip (between the hero and 01 Verify) ---------- */
 .ds-strip {
@@ -1818,89 +1372,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-svc-n { font-size: 13px; color: var(--ds-fg-faint); }
 @media (min-width: 768px) { .ds-svc-title-row { grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0 8px; } }
 .ds-svc-intro { margin-top: 20px; }
-
-/* ---------- Opening: headline, then the street band ---------- */
-.ds-svc-open { position: relative; isolation: isolate; }
-.ds-svc-open-head { display: grid; gap: 24px; }
-@media (min-width: 1024px) {
-  .ds-svc-open-glass { padding-top: calc(var(--ds-header) + var(--ds-beat)); padding-bottom: var(--ds-beat); }
-  .ds-svc-open-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-svc-open-head h1 { grid-column: 1 / span 7; }
-  .ds-svc-open-side { grid-column: 8 / span 5; }
-}
-/* The photograph fills the whole opening from the top of the page (behind the nav), faded
-   into the canvas only at the bottom. Dark glass covers it from the top down to the band,
-   so the headline and lead read on the glass and the photo is crisp below its edge
-   (owner, 2026-10-06; the footer's glass, turned over). */
-/* The photo covers the opening below the spacer, so it holds still while the spacer grows. */
-.ds-svc-open { --svc-band: clamp(15rem, 38svh, 28rem); --svc-hold: 0px; }
-.ds-svc-open-photo {
-  position: absolute;
-  inset: var(--svc-hold) 0 0;
-  z-index: -2;
-  overflow: clip;
-  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
-  mask-image: linear-gradient(to top, transparent 0, #000 clamp(6rem, 14svh, 9rem));
-}
-.ds-svc-open-stack {
-  position: absolute;
-  inset-inline: 0;
-  /* Anchored to the photo's bottom edge; the extra height sits above for the drift as the
-     opening leaves. The Pikes Peak photo (2026-10-12) is set lower so the lit skyline and the
-     mountains sit in the clear area under the glass, the peak glowing through the glass (the
-     Denver photo before it was set 164px lower, owner 2026-10-08). */
-  bottom: var(--svc-drop, -200px);
-  height: 112%;
-}
-@media (min-width: 1024px) {
-  /* A wide photo can sit at its own proportions (--svc-ratio, height / width), so its skyline
-     lands at the same place at every desktop width (the Pikes Peak photo: 2527 x 1322). */
-  .ds-svc-open-stack { height: max(112%, calc(100vw * var(--svc-ratio, 0))); bottom: var(--svc-drop-d, -110px); }
-}
-.ds-svc-open-stack img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: var(--svc-pos, 50% 100%);
-  /* The full-resolution original is bluer and brighter than the old 1400px export; this
-     grade brings it to the same muted look. */
-  filter: saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12);
-}
-/* The mirror: the same photo flipped vertically, directly above it, so the opening is image
-   to the top and the glass has something to frost there. */
-.ds-svc-open-mirror { position: absolute; inset-inline: 0; bottom: 100%; height: 100%; transform: scaleY(-1); }
-/* The place caption, on the right just under the glass's edge (owner, 2026-10-08); a child of
-   the glass, so it rides up with it over the photo and out of view. */
-.ds-svc-open-cap {
-  position: absolute;
-  right: var(--ds-gutter);
-  top: calc(100% + 12px);
-  margin: 0;
-  /* It sits on the open photo (hazy sunset on phones), so full ink with a soft dark shadow
-     close behind the letters, not the 70% ink the shaded heroes use. */
-  color: var(--ds-fg);
-  text-shadow: 0 0 3px rgb(0 0 0 / 0.9), 0 0 10px rgb(0 0 0 / 0.85), 0 0 22px rgb(0 0 0 / 0.6);
-}
-.ds-svc-open-glass {
-  position: relative;
-  padding-top: calc(var(--ds-header) + var(--ds-beat-tight));
-  padding-bottom: var(--ds-beat-tight);
-  background: rgb(0 0 0 / var(--svc-tint, 0.55));
-  -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  backdrop-filter: blur(22px) saturate(1.25);
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
-}
-/* The hold (owner, 2026-10-08): everything after the glass holds still for the first
-   --svc-cap of scroll. Smooth where scroll-driven animations exist (a transform tied to the
-   page scroll, on the compositor); otherwise the JS spacer. */
-.ds-svc-open-spacer { height: var(--svc-hold); }
 @supports (animation-timeline: scroll()) {
-  html.svc-hold .ds-svc-open-photo,
-  html.svc-hold .ds-svc-band,
   html.svc-hold .ds-svc .ds-doc-body,
-  html.svc-hold .ds-footer {
+html.svc-hold .ds-footer {
     animation: ds-svc-hold linear both;
     animation-timeline: scroll(root);
     animation-range: 0px var(--svc-cap, 0px);
@@ -1912,15 +1386,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   html.svc-hold body { padding-bottom: var(--svc-cap, 0px); }
 }
 @keyframes ds-svc-hold { from { transform: translateY(0); } to { transform: translateY(var(--svc-cap, 0px)); } }
-.ds-svc-band { height: var(--svc-band); }
-/* On the glass the lead takes the footer's lighter grey; phones and tablets get a darker
-   tint, since the sky sits behind the copy there (AA held at the brightest point). */
-.ds-svc-open-side .ds-lead { color: #c4c8ce; }
-@media (max-width: 1023px) {
-  .ds-svc-open-glass { background: rgb(0 0 0 / var(--svc-tint, 0.68)); }
-}
-
-
 
 /* ---------- 01 Divisions: a bento of division cards that open in place ----------
    Owner requests (2026-10-05): containers with a + that opens each one in place, then a
@@ -2257,10 +1722,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-svc-process-head[data-head='head'] { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-svc-process-head[data-head='head'] h2 { grid-column: 1 / span 7; }
   .ds-svc-process-head[data-head='head'] .ds-lead { grid-column: 8 / span 5; margin-top: 0; }
-  /* Column 5, where the axis and the stage bodies start. */
-  .ds-svc-process-head[data-head='column'] .ds-lead { margin-left: calc(100% / 3 + 8px); margin-top: 28px; }
-  /* About eight columns. */
-  .ds-svc-process-head[data-head='wide'] .ds-lead { max-width: calc((100% - 11 * 24px) / 12 * 8 + 7 * 24px); }
 }
 
 /* Phones and tablets: the stages become a swipe row under a process meter. The meter is
@@ -2392,7 +1853,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 @media (min-width: 768px) {
   .ds-svc-cities { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 }
-
 
 /* ---------- 04 The relief roster (owner, 2026-10-15) ----------
    The program section folded into the four stages; the roster is its own block: a contained panel
@@ -3084,59 +2544,8 @@ html[data-cards='glass'] .ds-ab-cred-card {
 
 /* ---------- 04 Credentials ---------- */
 .ds-cs-creds { padding-top: var(--ds-beat-open); }
-.ds-cs-marks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
-/* Every logo sits in the same 48px slot, so the names line up across the row. */
-.ds-cs-marks li { display: grid; grid-template-rows: 48px auto auto; align-content: start; gap: 6px; padding-top: 18px; border-top: 1px solid var(--ds-rule-strong); }
-.ds-cs-marks li img { align-self: center; margin-bottom: 0 !important; }
-.ds-cs-marks img { display: block; height: 32px; width: auto; max-width: 100%; margin-bottom: 8px; filter: grayscale(1) brightness(0) invert(1); opacity: 0.85; }
-.ds-cs-marks img[src*='cert-co-'], .ds-cs-marks img[src*='cert-denver'] { height: 34px; }
-.ds-cs-marks img[data-tall] { height: 44px; margin-bottom: 0; }
-/* Marks that only read in their own colors (the GSA plate, the SBA WOSB badge). */
-.ds-cs-marks img[data-color] { filter: none; opacity: 1; }
-.ds-cs-mark-name { font-size: 14px; line-height: 1.35; color: var(--ds-fg); }
-.ds-cs-mark-id { font-size: 12px; color: var(--ds-fg-muted); }
-@media (min-width: 768px) { .ds-cs-marks { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; } }
-.ds-cs-codes { margin-top: var(--ds-beat-tight); }
-.ds-cs-codes-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--ds-rule-strong);
-}
-.ds-cs-codes-head .ds-title { margin: 0; }
-.ds-cs-codes-head button {
-  display: flex;
-  width: 100%;
-  min-height: 44px;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.ds-cs-codes-head .ds-ledger-count { font-family: var(--ds-text); font-weight: 400; letter-spacing: 0; }
-.ds-cs-codes[data-open='true'] .ds-chevron { transform: rotate(180deg); }
-.ds-cs-codes-note { color: var(--ds-fg-faint); font-size: 13px; }
-@media (max-width: 767px) { .ds-cs-codes-head { flex-direction: column; } .ds-cs-codes-head .ds-title { width: 100%; } }
-.ds-cs-code-list { display: grid; margin: 0; }
-.ds-cs-code-list div { display: grid; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--ds-rule); }
-.ds-cs-code-list dt { font-size: 14px; color: var(--ds-fg-muted); }
-.ds-cs-code-list dd { margin: 0; display: grid; gap: 3px; }
-.ds-cs-code-list .ds-data { font-size: 16px; }
 .ds-cs-code-v { font-size: 16px; font-weight: 500; color: var(--ds-fg); }
 .ds-cs-code-note { font-size: 13px; line-height: 1.4; color: var(--ds-fg-faint); }
-@media (min-width: 768px) {
-  .ds-cs-code-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
-  .ds-cs-code-list div { grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: 16px; align-items: baseline; }
-}
 
 /* ---------- 05 Download (the close) ---------- */
 .ds-cs-close {
@@ -4175,12 +3584,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @keyframes ds-value-rise { from { transform: translate3d(0, 64px, 0); } to { transform: translate3d(0, 0, 0); } }
 @keyframes ds-hero-drift { from { transform: translateY(0); } to { transform: translateY(4%); } }
 @keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-40svh); } }
-@keyframes ds-drift { from { transform: translateY(0); } to { transform: translateY(10%); } }
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-svc-bar-end { 0%, 94% { opacity: 0; transform: scaleY(0); } 100% { opacity: 1; transform: scaleY(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes ds-settle { from { transform: translateY(32px); } to { transform: translateY(0); } }
 @keyframes ds-marquee { to { transform: translateX(-50%); } }
 @keyframes ds-ring { from { transform: scale(1); opacity: 0.6; } to { transform: scale(2.2); opacity: 0; } }
 @keyframes ds-route { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
@@ -4294,29 +3701,22 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   /* The strip holds still and can be swiped instead; the loop copy is dropped. */
   .ds-strip { overflow-x: auto; scrollbar-width: none; }
   .ds-strip-track[aria-hidden] { display: none; }
-  .ds-header[data-open='true'] .ds-sheet li,
-  .ds-header[data-open='true'] .ds-sheet-teaming,
-  .ds-header[data-open='true'] .ds-sheet-contact,
-  .ds-header[data-open='true'] .ds-sheet .ds-actions { animation: none; }
   .ds-header,
-  .ds-sheet,
-  .ds-header[data-open='true'] .ds-sheet,
-  .ds-menu-icon span,
-  .ds-runhead,
-  .ds-rail a::before,
-  .ds-tk-dashes span,
-  .ds-tk-label,
-  .ds-dock,
-  .ds-dock a > span > span,
-  .ds-arrow,
-  .ds-btn,
-  .ds-svc-plus,
-  .ds-svc-plus::before,
-  .ds-svc-plus span,
-  .ds-cs-thumb,
-  .ds-cs-card,
-  .ds-svc-card,
-  .ds-svc-cities .ds-arrow { transition-duration: 0s; }
+.ds-runhead,
+.ds-rail a::before,
+.ds-tk-dashes span,
+.ds-tk-label,
+.ds-dock,
+.ds-dock a > span > span,
+.ds-arrow,
+.ds-btn,
+.ds-svc-plus,
+.ds-svc-plus::before,
+.ds-svc-plus span,
+.ds-cs-thumb,
+.ds-cs-card,
+.ds-svc-card,
+.ds-svc-cities .ds-arrow { transition-duration: 0s; }
   .ds-count-n span { animation: none; }
   .ds-rl-dot { transition-duration: 0s; }
   .ds-cr-lens img,
@@ -4335,7 +3735,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    lit brightest along the top (--ds-card-edge), drawn as a gradient border so it reads like
    light catching a glass edge. No glow, no gradient fill, no blur. Later in the file than each
    original rule, so it wins at equal specificity. */
-.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-primes-flow, .ds-founder-face {
+.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face {
   /* A solid layer under the lit edge, so a card that overlaps another (the phone pile) never
      lets the edge or content beneath show through its border (owner, 2026-10-10). */
   background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box, linear-gradient(#000, #000) border-box;
@@ -4345,15 +3745,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   backdrop-filter: none;
 }
 .ds-cs-vehicle { padding: 28px 28px 30px; border-radius: 4px; }
-.ds-cs-card[data-open='true'], .ds-flow-node, .ds-flow-posts span {
+.ds-cs-card[data-open='true'] {
   background: linear-gradient(var(--ds-card-raised), var(--ds-card-raised)) padding-box, var(--ds-card-edge) border-box;
   border: 1px solid transparent;
   box-shadow: none;
 }
 /* The diagram keeps its dot grid on its card; inside the Home prime panel it sits on the
    panel's own card, with no second frame. */
-/* The diagram sits straight on the panel (no frame); the panel carries the dot grid. */
-.ds-primes-flow { background: none; border: 0; }
 /* The dot grid across the whole prime panel (owner, 2026-10-12): black over the copy, coming in
    from the middle, and vignetted to black in the right-hand corners. Phones: in from the top
    half, under the copy. */
@@ -4404,7 +3802,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-tm-gets > .ds-mk-sheet { grid-row: 1 / span 2; }
   .ds-tm-gets > .ds-tm-flow { grid-column: 1 / span 5; grid-row: 2; max-width: none; margin-top: 32px; }
 }
-
 
 /* Capability Statement credentials (copy audit, owner 2026-10-11): certifications and codes
    as one grouped ledger, each identifier once, the mark in a slot at the start of its row.
@@ -4471,14 +3868,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 /* The smaller prime panel on the Government page (design review, owner 2026-10-13): Home's
    panel with less padding, a narrower diagram, and no proof list. */
 .ds-primes-panel.ds-primes-compact { margin-top: 0; }
-.ds-primes-compact .ds-primes-flow { max-width: 440px; margin-inline: auto; }
-.ds-primes-compact .ds-flow-node { padding: 10px 14px; }
-.ds-primes-compact .ds-flow-node > span:last-child { font-size: 12.5px; }
-.ds-primes-compact .ds-flow-posts span { padding: 12px 8px; font-size: 12px; }
 @media (min-width: 768px) { .ds-primes-panel.ds-primes-compact { padding: 32px; } }
 @media (min-width: 1024px) {
-  .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-copy { grid-column: 1 / span 5; align-self: center; }
-  .ds-primes-panel.ds-primes-compact[data-form='diagram'] .ds-primes-flow { grid-column: 7 / span 6; }
   /* The pipeline in the compact panel (Government, owner 2026-10-15): the copy in 5 columns beside it. */
   .ds-primes-panel.ds-primes-compact[data-form='pipeline'] .ds-primes-copy { grid-column: 1 / span 5; }
 }
@@ -4557,8 +3948,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-chev[data-open] .ds-np-chev-v { transform: rotate(90deg); }
 
 /* Growing panels: grid rows from 0fr to 1fr, so height animates to its content. */
-.ds-np-drop, .ds-np-mobile, .ds-np-acc { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1); }
-.ds-np-drop[data-open], .ds-np-mobile[data-open], .ds-np-acc[data-open] { grid-template-rows: 1fr; }
+.ds-np-drop, .ds-np-mobile { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1); }
+.ds-np-drop[data-open], .ds-np-mobile[data-open] { grid-template-rows: 1fr; }
 /* Closing is quicker than opening (owner, 2026-10-13: leaving the menu should feel immediate). */
 .ds-np-drop:not([data-open]) { transition-duration: 200ms; transition-timing-function: cubic-bezier(0.4, 0, 1, 1); }
 .ds-np-drop-inner { min-height: 0; overflow: hidden; }
@@ -4647,10 +4038,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-mcontact a { font-size: 15px; color: var(--ds-fg); }
 .ds-np-mbtns { display: grid; gap: 10px; padding: 18px 18px 20px; }
 .ds-np-mbtns .ds-btn { justify-content: center; }
-.ds-np-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); font: 500 14px/1 var(--ds-text); color: var(--ds-fg); }
 
 @media (prefers-reduced-motion: reduce) {
-  .ds-np-drop, .ds-np-mobile, .ds-np-acc, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-photo-frame img, .ds-np-burger i { transition: none !important; }
+  .ds-np-drop, .ds-np-mobile, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-photo-frame img, .ds-np-burger i { transition: none !important; }
   .ds-np-menu { animation: none; }
 }
 
@@ -4682,7 +4072,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np[data-layout='full'][data-open='true'] { bottom: 0; height: auto; }
   .ds-np[data-layout='full'][data-open='true'] .ds-np-card { height: 100%; max-height: none; background: rgb(8 9 11 / 0.97); }
 }
-.ds-np-sub-rule { height: 1px; margin: 2px 0; background: rgb(255 255 255 / 0.1); }
 
 /* The wordmark drawn into the mark once the reader reaches the page's sections (owner,
    2026-10-13; phones first, then desktop too): the divider folds down first; the wordmark slides
@@ -4719,14 +4108,12 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    menu, the main one above the capability statement (sticky inside the card, which scrolls; the folding
    panels clip instead of hide so they don't trap the sticky). */
 .ds-np-drop-inner { overflow: clip; }
-.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 14px; /* the button 4px lower (owner, 2026-10-13) */ margin-top: 18px; padding: 6px 18px calc(18px + env(safe-area-inset-bottom)); /* 8px closer to its top rule; 4px more under the button (owner, 2026-10-13) */ background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); } /* solid, so the list never shows through */
-.ds-np-sub-mail { font-size: 14px !important; color: var(--ds-fg-muted); }
+.ds-np-mbtns { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 14px; /* the button 4px lower (owner, 2026-10-13) */ margin-top: 18px; padding: 6px 18px calc(18px + env(safe-area-inset-bottom)); /* 8px closer to its top rule; 4px more under the button (owner, 2026-10-13) */ background: #08090b; border-top: 1px solid rgb(255 255 255 / 0.08); }
 .ds-np-mcontact-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .ds-np-mcontact-row + a { margin-top: -4px; } /* the email 4px higher (owner, 2026-10-13) */
 .ds-np-micons { display: inline-flex; align-items: center; gap: 2px; margin-right: -10px; }
 .ds-np-micons a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 34px; color: var(--ds-fg-muted) !important; transition: color 180ms var(--ds-ease); }
 .ds-np-micons a:hover { color: #fff !important; }
-.ds-np-sub-mail { display: none; }
 
 /* ---------- Prime pipeline (owner, 2026-10-15, after gladia.io; /?prime=pipeline) ----------
    One stack of cards on a vertical line that grows with the scroll (--p, 0 to 1, set in
@@ -4965,17 +4352,12 @@ html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opa
    any glass with a top edge. */
 html[data-cards='glass'] .ds-header::before { border-bottom-color: var(--ds-glass-edge); }
 html[data-cards='glass'] .ds-np[data-layout='full'] .ds-np-card { border-bottom-color: var(--ds-glass-edge); }
-html[data-cards='glass'] .ds-np[data-layout='float'] .ds-np-card { box-shadow: inset 0 0 0 1px var(--ds-glass-edge), var(--ds-glass-top); }
-html[data-cards='glass'] .ds-np[data-layout='float'] .ds-np-card::after { display: none; }
 html[data-cards='glass'] .ds-hero-copy::before { border-top-color: var(--ds-glass-edge); border-bottom-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
-html[data-cards='glass'] .ds-svc-open-glass { border-bottom-color: var(--ds-glass-edge); }
 html[data-cards='glass'] .ds-svc-card-text { box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-cs-facts::before { border-top-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-ft-glass { border-top-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
-html[data-cards='glass'] .ds-quality-body[data-form='glass'] .ds-quality-facts { border-top-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-toast { box-shadow: inset 0 0 0 1px var(--ds-glass-edge), var(--ds-glass-top), 0 24px 64px -16px rgb(0 0 0 / 0.85), 0 4px 16px -4px rgb(0 0 0 / 0.5); }
 html[data-cards='glass'] .ds-nf-card { border-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
-
 
 /* ---------- Liquid glass: more color (owner, 2026-10-15) ----------
    Less black in every liquid glass so more of the page's color comes through; the same blur and a
@@ -5035,11 +4417,6 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-
-/* ---------- Phone menu: photos and a swipe row (owner, 2026-10-15, after gigaenergy.com) ----------
-   Services: each with a small real Ares photo, its name, and its tags. Industries: a row of photo
-   cards that swipes sideways, the next one peeking in at the edge. ?mnav=list keeps the plain lists. */
-.ds-np-sub-wide { min-width: 0; }
 .ds-np-svc { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .ds-np-svc a { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: center; padding: 7px 0; color: var(--ds-fg) !important; }
 .ds-np-thumb { position: relative; display: block; width: 56px; height: 56px; border-radius: 4px; overflow: hidden; background: #111316; }
@@ -5111,8 +4488,6 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 .ds-np-tile::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.15) 70%); }
 .ds-np-tile::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); pointer-events: none; }
 .ds-np-tile span { font: 600 21px/1.1 var(--ds-display); letter-spacing: -0.03em; }
-.ds-np-rows { list-style: none; margin: 18px 0 0; padding: 0; }
-.ds-np-rows a { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgb(255 255 255 / 0.08); font: 500 16px var(--ds-text); color: var(--ds-fg) !important; }
 @media (prefers-reduced-motion: reduce) {
   .ds-np-pane, .ds-np-pane-sub, .ds-np-pane-sub > *, .ds-np-stage[data-panel] .ds-np-pane-main { transition: none !important; }
 }
@@ -5158,67 +4533,16 @@ html[data-cards='glass'] .ds-cs-cards .ds-cs-card { -webkit-backdrop-filter: non
 .ds-svx { position: relative; isolation: isolate; overflow: clip; }
 .ds-svx-photo { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .ds-svx-photo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95) brightness(0.8) contrast(1.06); }
-.ds-svx-title {
-  margin: 0; font-family: var(--ds-display); font-weight: 600; color: var(--ds-fg);
-  font-size: clamp(42px, 6vw, 92px); line-height: 0.95; letter-spacing: -0.045em; text-wrap: balance;
-}
 .ds-svx .ds-lead { color: #c4c8ce; }
 .ds-svx-down { margin-top: 20px; font-size: 15px; font-weight: 500; }
 @media (hover: hover) and (pointer: fine) { .ds-svx-down:hover .ds-arrow { transform: translateY(3px); } }
 .ds-svx a:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
 /* The site's glass edge, drawn as a 1px ring. */
-.ds-ap-card::after,
-.ds-ln-slab::after {
+.ds-ap-card::after {
   content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
   background: var(--ds-card-edge);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-}
-/* Full-bleed photos fade into the canvas at the foot with a mask. */
-.ds-svx[data-form='curtain'] .ds-svx-photo,
-.ds-cw-wall,
-.ds-ln-photo,
-.ds-sk-photo {
-  -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent);
-  mask-image: linear-gradient(to bottom, #000 76%, transparent);
-}
-
-/* curtain: tall panes of frosted glass over the whole opening. */
-.ds-svx[data-form='curtain'] { min-height: max(720px, 100svh); }
-.ds-cw-wall { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ds-cw-wall .ds-cw-pane:nth-child(n + 4) { display: none; }
-.ds-cw-pane { position: relative; overflow: hidden; isolation: isolate; }
-/* The frost: the photo again, blurred and darkened, laid over the photo behind (Curtain() places
-   it). It fades away to clear the pane. */
-.ds-cw-pane img {
-  position: absolute; max-width: none; object-fit: cover; transform: scale(1.06);
-  filter: blur(14px) saturate(1.35) brightness(0.7);
-  transition: opacity 260ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-/* The glass's tint (darker at the top behind the copy, clear through the middle) and the mullions. */
-.ds-cw-pane::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 0.74), rgb(0 0 0 / 0.62) 38%, rgb(0 0 0 / 0.16) 64%, rgb(0 0 0 / 0.3) 100%);
-}
-.ds-cw-pane + .ds-cw-pane::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 1px; z-index: 1; background: rgb(255 255 255 / 0.16); }
-@media (prefers-reduced-motion: no-preference) {
-  /* The glass forms pane by pane on the first view: the crisp photo first, then the frost. */
-  .ds-cw-pane img { animation: ds-cw-frost-in 900ms cubic-bezier(0.23, 1, 0.32, 1) backwards; animation-delay: calc(240ms + var(--i) * 80ms); }
-}
-@keyframes ds-cw-frost-in { from { opacity: 0; } }
-@media (hover: hover) and (pointer: fine) { .ds-cw-pane:hover img { opacity: 0; } }
-.ds-cw-copy { position: relative; z-index: 1; padding-top: calc(var(--ds-header) + 40px); pointer-events: none; }
-.ds-cw-copy a { pointer-events: auto; }
-.ds-cw-copy .ds-lead { color: var(--ds-fg); margin-top: 22px; }
-@media (min-width: 1024px) {
-  .ds-svx[data-form='curtain'] { height: clamp(720px, 100svh, 1040px); }
-  .ds-cw-wall { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .ds-cw-wall .ds-cw-pane:nth-child(n + 4) { display: block; }
-  .ds-cw-pane img { filter: blur(16px) saturate(1.35) brightness(0.7); }
-  .ds-cw-copy { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding-top: calc(var(--ds-header) + clamp(56px, 10vh, 112px)); }
-  .ds-cw-copy .ds-svx-title { grid-column: 1 / span 8; }
-  .ds-cw-side { grid-column: 9 / span 4; }
-  .ds-cw-copy .ds-lead { margin: 0; }
 }
 
 /* aperture: the plate that opens to the full width on scroll. */
@@ -5285,52 +4609,6 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 @keyframes ds-ap-open { to { clip-path: inset(0 0 round 0); } }
 @keyframes ds-ap-settle { from { transform: scale(1.1); } to { transform: scale(1); } }
 
-/* sink: the headline's last line sinks into a band of liquid glass, like the footer's letters. */
-.ds-svx[data-form='sink'] { --sk-t: clamp(50px, 9vw, 148px); display: flex; flex-direction: column; justify-content: flex-end; min-height: max(700px, 100svh); }
-.ds-sk-photo::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.24) 26%, rgb(0 0 0 / 0.56) 50%, rgb(0 0 0 / 0.6));
-}
-.ds-sk-stack { position: relative; padding-top: calc(var(--ds-header) + 40px); }
-.ds-svx[data-form='sink'] .ds-svx-title { position: relative; z-index: 0; font-size: var(--sk-t); line-height: 0.9; letter-spacing: -0.05em; max-width: 9.5em; }
-.ds-sk-band {
-  position: relative; z-index: 1; margin-top: calc(var(--sk-t) * -0.09);
-  padding: calc(var(--sk-t) * 0.09 + 28px) 0 40px;
-  background: rgb(6 7 8 / 0.5); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12);
-}
-.ds-sk-row .ds-lead { color: var(--ds-fg); }
-@media (min-width: 1024px) {
-  .ds-svx[data-form='sink'] { height: clamp(720px, 100svh, 1040px); }
-  .ds-sk-photo img { object-position: 50% 40%; }
-  .ds-sk-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-sk-row .ds-lead { grid-column: 1 / span 6; }
-  .ds-sk-row .ds-svx-down { grid-column: 11 / span 2; justify-self: end; margin: 0; }
-  .ds-sk-band { padding-bottom: 48px; }
-}
-
-/* lens: one slab of liquid glass, the headline at its top and the lead at its foot. */
-.ds-svx[data-form='lens'] { min-height: max(720px, 100svh); }
-.ds-ln-photo img { object-position: 62% 50%; }
-.ds-ln-frame { padding-top: calc(var(--ds-header) + 26svh); padding-bottom: 20px; }
-.ds-ln-slab {
-  position: relative; border-radius: 4px; padding: 28px 22px 24px; display: grid; gap: 96px;
-  background: rgb(6 7 8 / 0.6); backdrop-filter: blur(8px) saturate(1.3); -webkit-backdrop-filter: blur(8px) saturate(1.3);
-}
-.ds-ln-slab .ds-svx-title { font-size: clamp(38px, 4.6vw, 68px); }
-.ds-ln-foot .ds-lead { color: var(--ds-fg); }
-@media (min-width: 1024px) {
-  .ds-svx[data-form='lens'] { height: clamp(720px, 100svh, 1040px); }
-  .ds-ln-photo img { object-position: 50% 60%; }
-  .ds-ln-frame { position: absolute; inset: 0; padding-top: calc(var(--ds-header) + 28px); padding-bottom: 56px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-ln-slab { grid-column: 1 / span 6; padding: clamp(32px, 4vh, 48px) 36px 36px; display: flex; flex-direction: column; justify-content: space-between; }
-  /* The photo drifts slowly behind the slab, so the bend at its rim moves (ambient). */
-  @media (prefers-reduced-motion: no-preference) {
-    .ds-ln-photo img { animation: ds-ln-drift 26s ease-in-out infinite alternate; }
-  }
-}
-@keyframes ds-ln-drift { from { transform: scale(1.08) translateX(2.5%); } to { transform: scale(1.08) translateX(-2.5%); } }
-
 /* ---------- The prime pipeline, thin (Government page, owner 2026-10-15) ----------
    PrimeStrip.tsx: the prime, Ares, and the three posts in one row of the pipeline's tiles, under
    the panel's copy, moving like the full pipeline: the line grows with the scroll (--w1, --w2)
@@ -5346,37 +4624,21 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
   .ds-primes-compact[data-form='strip'] .ds-primes-copy > .ds-primes-btn { grid-column: 10 / span 3; grid-row: 1 / span 2; justify-self: end; margin: 0; }
 }
 .ds-pstrip { margin: 28px 0 0; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / 0.07); }
-.ds-pstrip-row { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; padding-top: 16px; }
 
 .ds-pstrip-node, .ds-pstrip-posts li {
   position: relative; display: flex; align-items: center; gap: 10px; border-radius: 4px;
   background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent;
 }
 .ds-pstrip-node { padding: 10px 14px 10px 12px; }
-.ds-pstrip-text { display: grid; gap: 2px; }
 .ds-pstrip-node b { font-family: var(--ds-text); font-size: 14.5px; font-weight: 500; color: var(--ds-fg); }
 .ds-pstrip-node small { font-size: 12px; color: var(--ds-fg); transition: color 320ms var(--ds-ease) 380ms; }
 .ds-pstrip-node .ds-pipe-tag { left: 0; right: auto; opacity: 1; transform: none; white-space: nowrap; }
-.ds-pstrip-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ds-fg-muted); transition: background 300ms var(--ds-ease) 200ms, box-shadow 300ms var(--ds-ease) 200ms; }
-.ds-pstrip-node[data-ares] .ds-pstrip-dot,
-.ds-pstrip-posts .ds-pstrip-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-/* The wires: hairlines that fill in the line's direction with a rust tip at the end. Upright on phones. */
-/* Upright on phones, tall enough to hold the next tile's tag. */
-.ds-pstrip-wire { position: relative; display: block; width: 1px; height: 44px; margin-left: 15px; background: rgb(255 255 255 / 0.08); }
-.ds-pstrip-wire > span { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--w)); background: linear-gradient(to bottom, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
-.ds-pstrip-tip { display: none; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18);
-  left: 50%; top: calc(var(--w) * 100%); margin: -3.5px 0 0 -3.5px; opacity: calc(1 - var(--w) * var(--w) * var(--w)); }
-.ds-pstrip[data-live] .ds-pstrip-tip { display: block; }
 /* The posts: three small tiles off one bracket, lighting in turn. */
 .ds-pstrip-posts { list-style: none; margin: 0 0 0 15px; padding: 0 0 0 14px; display: grid; gap: 6px; border-left: 1px solid rgb(188 111 64 / 0.5); transition: border-color 300ms var(--ds-ease); }
 .ds-pstrip-posts li { padding: 7px 12px 7px 10px; font-size: 13px; font-weight: 500; color: var(--ds-fg); }
 .ds-pstrip-posts li::before { content: ''; position: absolute; left: -15px; top: 50%; width: 14px; height: 1px; background: rgb(188 111 64 / 0.5); }
 @media (min-width: 768px) {
   .ds-pstrip { padding-top: 44px; }
-  .ds-pstrip-row { padding-top: 0; grid-template-columns: auto minmax(40px, 1fr) auto minmax(40px, 1fr) auto; align-items: center; justify-items: stretch; }
-  .ds-pstrip-wire { width: auto; height: 1px; margin: 0; }
-  .ds-pstrip-wire > span { transform-origin: left; transform: scaleX(var(--w)); background: linear-gradient(to right, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
-  .ds-pstrip-tip { left: calc(var(--w) * 100%); top: 50%; }
   .ds-pstrip-posts { margin-left: 0; }
 }
 /* The pipeline's light-up, on each tile as the line reaches it: the lift, the light round the
@@ -5417,23 +4679,6 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
 .ds-pstrip[data-live][data-step='1'] .ds-pph [data-at='3'],
 .ds-pstrip[data-live][data-step='2'] .ds-pph [data-at='3'] { opacity: 0.62; transform: translateY(8px); }
 
-/* ledger: ruled rows on a rail. */
-.ds-pph-ledger { position: relative; padding-left: 26px; }
-.ds-pph-rail { position: absolute; left: 4px; top: 18px; bottom: 30px; width: 1px; background: rgb(255 255 255 / 0.08); }
-.ds-pph-rail > span { position: absolute; inset: 0; transform-origin: top; transform: scaleY(var(--p, 1));
-  background: linear-gradient(to bottom, rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
-.ds-pph-rail > i { display: none; position: absolute; left: 50%; top: calc(var(--p, 1) * 100%); width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
-  background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18); opacity: calc(1 - var(--p, 1) * var(--p, 1) * var(--p, 1)); }
-.ds-pstrip[data-live] .ds-pph-rail > i { display: block; }
-.ds-pph-row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 14px 0; border-top: 1px solid rgb(255 255 255 / 0.08); }
-.ds-pph-row:first-of-type { border-top: 0; padding-top: 4px; }
-.ds-pph-dot { position: absolute; left: -26px; top: 20px; width: 9px; height: 9px; border-radius: 50%; background: #0c0e10; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.4); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
-.ds-pph-row:first-of-type .ds-pph-dot { top: 10px; }
-.ds-pph-row[data-ares] .ds-pph-dot, .ds-pph-row[data-at='3'] .ds-pph-dot { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-.ds-pph-row ul { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.ds-pph-row li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 500; color: var(--ds-fg); }
-.ds-pph-row li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ds-rust); }
-
 /* card: one pipeline card holding the flow. */
 .ds-pph-card { position: relative; padding: 18px; border-radius: 4px;
   background: linear-gradient(180deg, #121417, #0c0e10) padding-box, var(--ds-card-edge) border-box; border: 1px solid transparent; }
@@ -5454,45 +4699,15 @@ html[data-cards='glass'] .ds-ap-card::after { display: none; }
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12); background: rgb(255 255 255 / 0.03); }
 .ds-pph-chips li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ds-rust); }
 
-/* track: three stops on a line that fills with the scroll, the posts beneath. */
-.ds-pph-track { position: relative; }
-.ds-pph-line { position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: 5px; height: 1px; background: rgb(255 255 255 / 0.1); }
-.ds-pph-line > span { position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--p, 1)); background: linear-gradient(to right, rgb(255 255 255 / 0.3), var(--ds-rust)); }
-.ds-pph-stops { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); text-align: center; }
-.ds-pph-stops li { display: grid; justify-items: center; align-content: start; gap: 2px; padding: 0 2px; }
-.ds-pph-stops i { width: 11px; height: 11px; margin-bottom: 10px; border-radius: 50%; background: #0c0e10; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45); transition: background 300ms var(--ds-ease), box-shadow 300ms var(--ds-ease); }
-.ds-pph-stops li[data-ares] i, .ds-pph-stops li[data-at='3'] i { background: var(--ds-rust); box-shadow: 0 0 0 3px rgb(188 111 64 / 0.18); }
-.ds-pph-stops b { font-size: 13px; line-height: 1.25; white-space: nowrap; letter-spacing: -0.01em; }
-.ds-pph-stops small { font-size: 11.5px; }
-.ds-pph-track .ds-pph-chips { justify-content: center; margin-top: 20px; }
-
 /* The three forms on tablets and desktop (owner, 2026-10-15: whole versions, not only phones). */
 @media (min-width: 768px) {
   .ds-pstrip:not([data-form='row']) { padding-top: 32px; }
-  /* ledger: three ruled columns under a line that fills left to right, a dot for each on it. */
-  .ds-pph-ledger { padding-left: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr); column-gap: 32px; }
-  .ds-pph-rail { left: 4px; right: 0; top: 4px; bottom: auto; width: auto; height: 1px; }
-  .ds-pph-rail > span { transform-origin: left; transform: scaleX(var(--p, 1)); background: linear-gradient(to right, rgb(255 255 255 / 0.15), rgb(255 255 255 / 0.42) 70%, var(--ds-rust)); }
-  .ds-pph-rail > i { left: calc(var(--p, 1) * 100%); top: 50%; margin: -3.5px 0 0 -3.5px; }
-  .ds-pph-row, .ds-pph-row:first-of-type { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: start; align-content: start; gap: 10px; padding: 30px 0 0; border-top: 0; }
-  .ds-pph-dot, .ds-pph-row:first-of-type .ds-pph-dot { left: 0; top: 0; }
-  .ds-pph-row .ds-pph-tag { grid-row: 1; }
-  .ds-pph-row ul { gap: 9px; }
 
   /* card: side by side, joined by small rust arrows pointing right. */
   .ds-pph-card { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1.3fr); align-items: center; column-gap: 22px; padding: 24px 26px; }
   .ds-pph-arrow { width: 40px; height: 1px; margin: 0; background: linear-gradient(to right, rgb(255 255 255 / 0.2), var(--ds-rust)); }
   .ds-pph-arrow::after { left: auto; right: 0; bottom: auto; top: -2px; transform: rotate(-45deg); }
-
-  /* track: the stops across the full width, the posts as chips under "Posts". */
-  .ds-pph-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .ds-pph-stops { grid-column: 1 / -1; }
-  .ds-pph-stops b { font-size: 15px; }
-  .ds-pph-stops small { font-size: 12px; }
-  /* One width for the three chips (the longest name's), centered under the stop. */
-  .ds-pph-track .ds-pph-chips { grid-column: 3; display: grid; grid-template-columns: max-content; justify-content: center; margin-top: 18px; }
 }
-
 
 /* The prime contractor panel, starting over (owner, 2026-10-16: it read as AI-made). After
    gladia.io's "Start transcribing in minutes" card: black, the site's lit glass edge (bright at the

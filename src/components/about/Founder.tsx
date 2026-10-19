@@ -1,14 +1,12 @@
-import { Link, useSearchParams } from 'react-router-dom';
+
 import Arrow from '../Arrow';
 import { responsive } from '../../lib/responsive';
 
 // "Why Ares exists." (copy audit: About had no founder section; owner, 2026-10-10: put it in,
-// real words and a portrait come later). Second pass after Slash, Flora, and Resend on Mobbin;
-// two forms at /about?founder=letter|note (owner chose letter, 2026-10-10):
-//  letter  Slash's CEO note: the story set large in two tones (Flora), signed with a small
-//          portrait, name, and role.
-//  note    Resend's "Meet the team": the headline left; on the right a portrait, the name
-//          and role, the story, and a route on to how we work, between hairlines.
+// real words and a portrait come later). Second pass after Slash, Flora, and Resend on Mobbin:
+// the letter (owner, 2026-10-10), Slash's CEO note, the story set large in two tones (Flora),
+// signed with a small portrait, name, and role. The note form (/about?founder=note) was removed at
+// launch (owner, 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
 // PLACEHOLDER: every line of the story still needs Deidre's sign-off. Her portrait arrived
 // 2026-10-19 (owner); with PORTRAIT null the Ares mark shows instead.
 const PORTRAIT: string | null = '/images/founder-deidre.jpg';
@@ -25,7 +23,7 @@ const FOUNDER = {
   close: 'She founded Ares in 2021 to fix it.',
 };
 
-function Portrait({ size }: { size: 'sm' | 'md' }) {
+function Portrait({ size }: { size: 'sm' }) {
   return (
     <span className="ds-founder-face" data-size={size} data-empty={!PORTRAIT || undefined}>
       {PORTRAIT ? (
@@ -48,34 +46,6 @@ function FounderLink() {
 }
 
 export default function Founder() {
-  const [params] = useSearchParams();
-  const form = params.get('founder') === 'note' ? 'note' : 'letter';
-
-  if (form === 'note') {
-    return (
-      <section id="founder" className="ds-founder" data-form="note" aria-labelledby="founder-title">
-        <div className="ds-founder-head">
-          <h2 id="founder-title" className="ds-display-lg">Why Ares exists.</h2>
-          <p className="ds-lead">Founded in Colorado Springs in 2021.</p>
-        </div>
-        <div className="ds-founder-card">
-          <div className="ds-founder-who">
-            <Portrait size="md" />
-            <div>
-              <span className="ds-founder-name"><FounderLink /></span>
-              <span className="ds-data ds-founder-role">{FOUNDER.role}</span>
-            </div>
-          </div>
-          <p className="ds-founder-text">{FOUNDER.lead} {FOUNDER.rest} {FOUNDER.close}</p>
-          <Link to="/about#heard" className="ds-link ds-founder-more">
-            What clients told us
-            <Arrow size={14} />
-          </Link>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="founder" className="ds-founder" data-form="letter" aria-labelledby="founder-title">
       <h2 id="founder-title" className="ds-display-lg">Why Ares exists.</h2>

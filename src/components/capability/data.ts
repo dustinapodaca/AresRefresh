@@ -29,12 +29,6 @@ export const PAST_PERFORMANCE = {
   ],
 };
 
-// What was live before (owner, 2026-10-10), for comparison at /capability-statement?past=current.
-export const PAST_CURRENT = {
-  lead: 'Three current contracts. Clients are not named here; references are available on request.',
-  rows: PAST_PERFORMANCE.rows.slice(0, 3),
-};
-
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
 export const SAM_VERIFY = 'https://sam.gov/workspace/contract/opp/acdccc2e5c1f4416aee823f55dc5fa09/view';
 
@@ -201,25 +195,9 @@ export const CERTS: Cert[] = [
   { src: '/images/cert-co-small.webp', alt: 'Colorado Verified Small Business', name: 'Colorado Verified Small Business' },
 ];
 
-export const CODES: { label: string; value: string; note: string; mono?: boolean }[] = [
-  { label: 'UEI', value: 'XQXDN6E33SF4', note: 'Unique Entity Identifier (SAM.gov)', mono: true },
-  { label: 'CAGE code', value: '9KL18', note: 'Commercial & Government Entity', mono: true },
-  { label: 'DUNS number', value: '10-244-9635', note: 'Legacy. UEI is the SAM identifier going forward', mono: true },
-  { label: 'SAM status', value: 'Active', note: `Through ${SAM_ACTIVE_THROUGH}` },
-  { label: 'Primary NAICS', value: '561612', note: 'Security Guards & Patrol Services', mono: true },
-  { label: 'PSC code', value: 'S206', note: 'Guard Services', mono: true },
-  { label: 'Socioeconomic', value: 'Small Business · WOSB', note: 'Small Business · Woman-Owned Small Business' },
-  { label: 'GSA Schedule', value: '47QSMS25D009Q', note: 'SIN 561612 · Security Services', mono: true },
-  { label: 'SBA set-asides', value: 'WOSB set-aside eligible', note: 'Eligible for WOSB set-aside awards under NAICS 561612' },
-  { label: 'Service area', value: 'Greater Colorado Area', note: 'Other locations through teaming partners' },
-  { label: 'Local license, Denver', value: '2021-BFN-0001984', note: 'Certified training provider · City of Denver', mono: true },
-  { label: 'Local license, Colorado Springs', value: '0850744L', note: 'Certified training provider · City of Colorado Springs', mono: true },
-  { label: 'Local license, Pueblo', value: '26422', note: 'Certified training provider · City of Pueblo', mono: true },
-];
-
 // Certifications and codes as one table, each identifier once (copy audit round 2; the
-// owner chose it, 2026-10-11). The marks and code listing above stay at
-// /capability-statement?creds=marks. SAM-registered "Small business" was dropped: the WOSB
+// owner chose it, 2026-10-11). The marks-then-listing layout (?creds=marks) was removed at launch
+// (owner, 2026-10-19). SAM-registered "Small business" was dropped: the WOSB
 // certification already says it (owner).
 export type CredRow = { label: string; value: string; note?: string; mono?: boolean; live?: boolean; copy?: boolean; mark?: Cert };
 const mark = (src: string) => CERTS.find((c) => c.src === src);

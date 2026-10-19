@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from '../home/links';
 import { DownloadIcon } from './Hero';
-import { CAPABILITIES, CERTS, CODES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_CURRENT, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
+import { CAPABILITIES, CRED_GROUPS, DIFFERENTIATORS, GSA_SPECS, PAST_PERFORMANCE, PATHS, PDF_URL, THIRD_PERSON } from './data';
 import { glideUnderHeads } from '../glideUnderHeads';
 import { responsive } from '../../lib/responsive';
 import CopyButton from './CopyButton';
@@ -12,42 +12,12 @@ import { ROLE_PAGES, capabilityFor } from '../market/roles';
 import { RouteRow } from '../market/parts';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
-const PHONE = '(max-width: 767px)';
 
-// True on phones. Starts false so the first render matches the prerendered page (every
-// list open, all content in the HTML); corrected before paint, and kept in step if the
-// screen changes size or orientation.
-function usePhone() {
-  const [phone, setPhone] = useState(false);
-  useLayoutEffect(() => {
-    const mq = window.matchMedia(PHONE);
-    const sync = () => setPhone(mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  }, []);
-  return phone;
-}
-
-// Copy audit choices (owner, 2026-10-11): past performance with the completed contracts,
-// one credentials table, formal third person. What was live before stays at ?past=current,
-// ?creds=marks, ?voice=first (see docs/options.md).
+// Copy audit choices (owner, 2026-10-11): past performance with the completed contracts, one
+// credentials table, formal third person. The earlier ?past=current, ?creds=marks, and ?voice=first
+// were removed at launch (owner, 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
 function useCsOptions() {
-  const [params] = useSearchParams();
-  const third = params.get('voice') !== 'first';
-  return {
-    past: params.get('past') === 'current' ? 'current' : 'record',
-    creds: params.get('creds') === 'marks' ? 'marks' : 'table',
-    say: (line: string) => (third ? THIRD_PERSON[line] ?? line : line),
-  };
-}
-
-function Chevron() {
-  return (
-    <svg className="ds-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" />
-    </svg>
-  );
+  return { say: (line: string) => THIRD_PERSON[line] ?? line };
 }
 
 // 01 Capabilities: six cards (the Services card language, without photos). The + opens
@@ -263,8 +233,7 @@ export function Why() {
 // 03 Past performance (owner, 2026-10-11): current and completed contracts as ledger rows,
 // clients unnamed.
 export function Past() {
-  const { past } = useCsOptions();
-  const record = past === 'current' ? PAST_CURRENT : PAST_PERFORMANCE;
+  const record = PAST_PERFORMANCE;
   return (
     <section id="past" className="ds-cs-past" aria-labelledby="past-title">
       <div className="ds-cs-head">
@@ -363,12 +332,9 @@ export function Buy() {
   );
 }
 
-// 04 Credentials: the marks with their numbers, then the full code listing as a ledger.
+// 04 Credentials: one grouped table, each identifier once (owner, 2026-10-11).
 export function Credentials() {
-  const { creds, say } = useCsOptions();
-  const phone = usePhone();
-  const [open, setOpen] = useState(false);
-  const shown = !phone || open;
+  const { say } = useCsOptions();
   return (
     <section id="credentials" className="ds-cs-creds" aria-labelledby="creds-title">
       <div className="ds-cs-head">
@@ -377,49 +343,7 @@ export function Credentials() {
         </h2>
         <p className="ds-lead">{say('All data matches our SAM.gov registration.')}</p>
       </div>
-      {creds === 'table' ? <CredTable /> : (
-      <>
-      <ul className="ds-cs-marks">
-        {CERTS.map((c) => (
-          <li key={c.name}>
-            {/* The name is printed beside each mark, so the logo itself is decorative. */}
-            <img {...responsive(c.src)} alt="" loading="lazy" data-color={c.color || undefined} data-tall={c.tall || undefined} />
-            <span className="ds-cs-mark-name">{c.name}</span>
-            {c.id && <span className="ds-data ds-cs-mark-id">{c.id}</span>}
-          </li>
-        ))}
-      </ul>
-      <div className="ds-cs-codes" data-open={shown}>
-        <div className="ds-cs-codes-head">
-          <h3 className="ds-title">
-            {phone ? (
-              <button type="button" aria-expanded={shown} aria-controls="code-list" onClick={() => setOpen((v) => !v)}>
-                <span>Full code listing</span>
-                <span className="ds-ledger-count">
-                  {CODES.length} entries
-                  <Chevron />
-                </span>
-              </button>
-            ) : (
-              'Full code listing'
-            )}
-          </h3>
-          <span className="ds-small ds-cs-codes-note">Confirmed against SAM.gov</span>
-        </div>
-        <dl id="code-list" className="ds-cs-code-list" hidden={!shown}>
-          {CODES.map((c) => (
-            <div key={c.label}>
-              <dt>{c.label}</dt>
-              <dd>
-                <span className={c.mono ? 'ds-data' : 'ds-cs-code-v'}>{c.value}</span>
-                <span className="ds-cs-code-note">{c.note}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-      </>
-      )}
+      <CredTable />
     </section>
   );
 }

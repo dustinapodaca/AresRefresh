@@ -1,10 +1,23 @@
-# Live options
+# Options archive
 
-Every alternative kept on the site for the owner and the client (Deidre) to compare. The
-default is what ships and what search engines see; the others appear only with the switch
-in the URL. Keep this list in step with the code (see `.claude/skills/client-options`).
+**No option switches are live.** Every `?…` switch below was removed from the site at launch
+(owner, 2026-10-19). The site ships only the chosen version of each; the alternatives exist only
+here and in git.
 
-Last checked against the code: 2026-10-11, branch `audit`.
+- **Restore the exact code:** the tag `options-archive-2026-10-19` (commit 77d4ab3, pushed to
+  GitHub) is the last version with every switch working. To look: `git worktree add
+  ../ares-options options-archive-2026-10-19`, run it, and open the URLs below. To bring one back,
+  copy that option's component code from the tag into `audit` (and any CSS rules for its variant:
+  they were pruned from `src/dossier.css` in the same change).
+- **Defaults at removal** (what ships now): Home hero h1 "Security officers for Colorado's Front
+  Range." with the terrain background; Industries plates; prime panel pipeline with the CSS light;
+  Quality wide; close routes; liquid glass cards; the edge-to-edge panel nav with the sliding phone
+  menu; Services opening aperture with the tower photo and "A prepared officer on every post.";
+  Services stage head `head`; About founder letter; Capability Statement record, table, third
+  person; Government strip card.
+- The table below is the record as of 2026-10-11, with later defaults noted where they changed.
+  Home hero gained ten headlines on 2026-10-19 (`h1`…`h10`; `h1` chosen); the Services opening
+  headline became "A prepared officer on every post." (its earlier line at `?hero=officers`).
 
 ## Query switches
 

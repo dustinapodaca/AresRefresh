@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { responsive } from '../../lib/responsive';
 
 // 02 Quality (owner, 2026-10-06: moved whole from About, photo and all, and set for Home):
@@ -15,15 +14,10 @@ export const FACTS: { label: string; value: string; mono?: boolean }[] = [
   { label: 'Post training', value: 'By our leadership, before the first shift' },
 ];
 
-// Ways to feature the patrol vehicles (design review item 28, owner 2026-10-13), same photo,
-// at /?vehicles=side|wide|portrait|glass. Wide chosen (owner, 2026-10-16); the earlier
-// side-by-side plate stays at `side`.
-const FORMS = ['side', 'wide', 'portrait', 'glass'] as const;
-
+// The patrol vehicles across the whole column, the facts in a row beneath (design review item 28;
+// wide chosen, owner 2026-10-16). The side, portrait, and glass forms (/?vehicles=) were removed at
+// launch (owner, 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
 export default function Quality() {
-  const [params] = useSearchParams();
-  const asked = params.get('vehicles');
-  const form = FORMS.includes(asked as (typeof FORMS)[number]) ? asked : 'wide';
   return (
     <section id="quality" className="ds-quality" aria-labelledby="quality-title">
       <div className="ds-sec-head">
@@ -36,7 +30,7 @@ export default function Quality() {
         </p>
       </div>
 
-      <div className="ds-quality-body" data-form={form}>
+      <div className="ds-quality-body" data-form="wide">
         <figure className="ds-plate ds-quality-photo">
           <img
             {...responsive('/images/mission-vehicle.jpg', '(min-width: 1024px) 58vw, 100vw')}

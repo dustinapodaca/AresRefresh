@@ -123,6 +123,11 @@ components:
 
 # Design System: Ares Security
 
+> **Option switches removed (owner, 2026-10-19).** Where this file says an alternative "stays at
+> `?…`" or lists forms "to compare at `?…`", that alternative is no longer on the site: only the
+> chosen version ships. Each is archived in git tag `options-archive-2026-10-19` and described in
+> `docs/options-archive.md`.
+
 ## Overview
 
 **Creative North Star: "The Dossier"**
@@ -676,7 +681,8 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
     so cheap on phones) under a tint dark at the top behind the copy and clear through the middle;
     under the pointer the frost fades (260ms) to the crisp photo. On the first view the glass forms
     pane by pane (900ms, 80ms apart). The opening fades into the canvas at its foot.
-  - `aperture`: the headline at display-xl, the same size as every other page's (owner, 2026-10-15;
+  - `aperture`: the headline at display-xl, the same size as every other page's, set as two lines at
+    every width, "A prepared officer" / "on every post" (owner, 2026-10-19) (owner, 2026-10-15;
     it was up to 116px), then the photo as a plate in the column (4px
     corners) that opens to the screen's edges over the first 70% of a screen of scroll, the photo
     settling from 1.1 inside it (tied to the scroll; static without scroll timelines or under reduced

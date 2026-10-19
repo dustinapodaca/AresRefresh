@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
-import Header from './components/Header';
-import NavPanel, { useNavLayout } from './components/NavPanel';
+import NavPanel from './components/NavPanel';
 import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
@@ -27,31 +26,16 @@ import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
 
-// The card surface (owner, 2026-10-15): liquid glass is the default (the glass cards plus the
-// liquid rim); plain glass is ?cards=glass and the earlier solid lit-edge cards ?cards=solid. The
-// choice sticks for the session, like the nav.
-// Sets <html data-cards="glass">; the styles are in dossier.css ("Glass cards").
+// The card surface (owner, 2026-10-15): liquid glass, the glass cards plus the liquid rim. Sets
+// <html data-cards="glass" data-liquid="true">; the styles are in dossier.css ("Glass cards"). The
+// earlier ?cards=glass and ?cards=solid switches were removed at launch (owner, 2026-10-19; tag
+// options-archive-2026-10-19, docs/options-archive.md).
 function useCardStyle() {
-  const [params] = useSearchParams();
-  const asked = params.get('cards');
   useEffect(() => {
-    let form: string | null = asked;
-    try {
-      if (asked) sessionStorage.setItem('ares-cards', asked);
-      else form = sessionStorage.getItem('ares-cards');
-    } catch {
-      // Storage blocked: the URL alone decides.
-    }
-    if (form === 'solid') delete document.documentElement.dataset.cards;
-    else document.documentElement.dataset.cards = 'glass';
-    // Liquid (the default, owner 2026-10-15, after gladia.io): the glass cards plus the liquid rim.
-    const liquid = form !== 'solid' && form !== 'glass';
-    if (liquid) document.documentElement.dataset.liquid = 'true';
-    else delete document.documentElement.dataset.liquid;
-    setLiquid(liquid);
-  }, [asked]);
-  const [liquid, setLiquid] = useState(false);
-  useLiquidCards(liquid);
+    document.documentElement.dataset.cards = 'glass';
+    document.documentElement.dataset.liquid = 'true';
+  }, []);
+  useLiquidCards(true);
 }
 
 // The liquid rim (lib/liquidGlass.ts), in Chromium browsers only, on every glass surface, each at
@@ -79,22 +63,16 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // More frost on the Services opening, the footer, and the Capability hero (owner, 2026-10-15; was 10).
   { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18, edges: { top: true } } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
-  { sel: '.ds-svc-open-glass', opts: { blur: 18, edges: { bottom: true } } },
   // The footer only: a lighter frost along its rim (14px easing into its 18px) so the bend shows
   // a little (owner, 2026-10-15; was 3px).
   { sel: '.ds-ft-glass', opts: { blur: 18, edges: { top: true }, rimBlur: 14 } },
   { sel: '.ds-nf-card', opts: { blur: 10 } },
   // Not the Services card panels (owner, 2026-10-15): the live filter on six panels glitched on fast
   // scrolls; each panel now carries its own blurred copy of its photo (.ds-svc-glass).
-  // The Services opening forms (owner, 2026-10-15, /services?open=): the aperture card (at the Home
-  // Record cards' 12px, matching their recipe), the sink
-  // band (its top edge only, like the footer), and the lens slab (lighter frost and a wider rim,
-  // so the towers bend through).
+  // The Services opening's aperture card (owner, 2026-10-15), at the Home Record cards' 12px.
   // Not on phones (owner, 2026-10-15): Android Chrome drew a seam down the card where it tiles the
   // filter (a laptop's phone view never shows it); phones keep the CSS frost.
   { sel: '.ds-ap-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
-  { sel: '.ds-sk-band', opts: { blur: 18, edges: { top: true } } },
-  { sel: '.ds-ln-slab', opts: { blur: 7, bezel: 32 } },
 ];
 function useLiquidCards(on: boolean) {
   useEffect(() => {
@@ -140,13 +118,12 @@ function useLiquidCards(on: boolean) {
 export default function App() {
   useCardStyle();
   // The panel nav, edge to edge (owner, 2026-10-13); ?nav=float and ?nav=classic to compare.
-  const navLayout = useNavLayout();
   return (
     <>
       <ScrollToTop />
       <SmoothAnchors />
       <Analytics />
-      {navLayout === 'classic' ? <Header /> : <NavPanel layout={navLayout} />}
+      <NavPanel />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}

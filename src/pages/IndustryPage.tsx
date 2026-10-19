@@ -1,10 +1,8 @@
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
-import PrimeFlow from '../components/home/PrimeFlow';
-import PrimePipeline from '../components/home/PrimePipeline';
-import PrimeStrip, { STRIP_FORMS, type StripForm } from '../components/market/PrimeStrip';
+import PrimeStrip from '../components/market/PrimeStrip';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
@@ -17,15 +15,6 @@ import PrimeGlow from '../components/home/PrimeGlow';
 // environment, what we deliver there, why Ares, a specific ask, and questions.
 export default function IndustryPage() {
   const { slug } = useParams();
-  const [params] = useSearchParams();
-  // The prime panel's figure (owner, 2026-10-15): the thin strip by default; Home's full pipeline
-  // at ?prime=pipeline and the earlier diagram at ?prime=diagram.
-  const asked = params.get('prime');
-  const primeForm = asked === 'diagram' || asked === 'pipeline' ? asked : 'strip';
-  // The strip's form, three to compare, each with its desktop and phone layout (owner,
-  // 2026-10-15): ?pstrip=ledger|card|track; card chosen (owner, 2026-10-16), the tile row at `row`.
-  const askedStrip = params.get('pstrip');
-  const stripForm = (askedStrip && (STRIP_FORMS as readonly string[]).includes(askedStrip) ? askedStrip : 'card') as StripForm;
   const ind = industryBySlug(slug);
   if (!ind) return <NotFound />;
   const quote = `/contact?industry=${ind.slug}`;
@@ -98,9 +87,10 @@ export default function IndustryPage() {
         {ind.primes && (
           // A smaller version of Home's prime panel (design review, owner 2026-10-13): the same
           // card, the two-tone line, the button, and the pipeline drawn thin in one row (owner,
-          // 2026-10-15: Home and /teaming carry the full one), without the proof list.
+          // 2026-10-15: Home and /teaming carry the full one), without the proof list. Its other
+          // forms (?prime=, ?pstrip=) were removed at launch (owner, 2026-10-19).
           <section className="ds-mk-sec" aria-labelledby="mk-primes">
-            <div className="ds-primes-panel ds-primes-compact" data-form={primeForm}>
+            <div className="ds-primes-panel ds-primes-compact" data-form="strip">
               <PrimeGlow />
               <div className="ds-primes-copy">
                 <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
@@ -112,7 +102,7 @@ export default function IndustryPage() {
                   <Arrow />
                 </Link>
               </div>
-              {primeForm === 'diagram' ? <PrimeFlow /> : primeForm === 'pipeline' ? <PrimePipeline /> : <PrimeStrip form={stripForm} />}
+              <PrimeStrip />
             </div>
           </section>
         )}

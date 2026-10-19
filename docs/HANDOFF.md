@@ -28,6 +28,10 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
   Apodaca is the site and Insights author; Careers no longer promises paid training or renewals;
   icons renamed v3. The web audit's log (Claude Doc "AresRefresh Web Audit, October 2026") is
   current: everything done or kept by choice.
+- **Option switches removed (owner, 2026-10-19):** every `?…` design switch is gone; only the chosen
+  versions ship (33 KB less JavaScript, 35 KB less CSS; every page pixel-identical at 1440 and 390).
+  The alternatives are archived: tag `options-archive-2026-10-19`, `docs/options-archive.md`.
+  `?service=` and `?industry=` on the quote form are features and stay.
 - **Still open:** pay range, benefits, and deadline per job (Colorado pay transparency; W1);
   Deidre's sign-off on her story (fine for now); a named contact on Capability and Teaming;
   Bing Webmaster import and Request indexing if not done; a photo shoot; more guides; a News page.
@@ -35,7 +39,7 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
 ## Where we were (2026-10-13)
 
 Work happens on `audit` (dev server http://localhost:5173). Everything is pushed. Recent work,
-newest first; the detail is in DESIGN.md, docs/copy-changes.md, and docs/options.md.
+newest first; the detail is in DESIGN.md, docs/copy-changes.md, and docs/options-archive.md.
 
 - **Nav:** a new panel nav (`src/components/NavPanel.tsx`), adapted from a 21st.dev "navbar2"
   the owner chose, rebuilt without Next.js, motion, or icon libraries. Edge-to-edge dark glass
@@ -408,7 +412,7 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 ## Files that matter
 
 - `DESIGN.md` (design system and every owner decision), `PRODUCT.md`, `CLAUDE.md`.
-- `docs/options.md`: every live option switch (`?hero=`, `?prime=` ...) and preview route,
+- `docs/options-archive.md`: every live option switch (`?hero=`, `?prime=` ...) and preview route,
   with its default.
 - Project skills (2026-10-11) in `.claude/skills/`: `preship-check` (build, SEO, CSP,
   errors, overflow, links, facts and wording on every route at 1440 and 390), `site-images`

@@ -5,12 +5,16 @@ description: How the Ares site keeps design and copy alternatives side by side f
 
 # Client options
 
+> **State as of 2026-10-19 (launch): no switches are live.** The owner had every `?…` option
+> removed; the alternatives are archived in tag `options-archive-2026-10-19` and
+> `docs/options-archive.md`. The pattern below still applies if the owner asks for options again.
+
 The owner often wants several versions of a piece live at once, so they and the client can
 compare them on the real site before choosing. This is the pattern already in use. Follow
 it so every option is discoverable, the default is always clear, and nothing is lost when
 a choice is made.
 
-**The list of what's live: `docs/options.md`.** Read it first and update it with every
+**The list of what's live: `docs/options-archive.md`.** Read it first and update it with every
 change. If the code and the list disagree, the code wins. Fix the list and say so.
 
 ## Three kinds of option
@@ -22,7 +26,7 @@ change. If the code and the list disagree, the code wins. Fix the list and say s
    of the sitemap, plus a git tag (`home-resend-option`) so it survives later cleanups. Use it
    when the alternative changes the layout of the whole page.
 3. **A tag only**: when an option is dropped but might come back, tag the commit before
-   removing it (`git tag <area>-<name>-option`). Note the tag in `docs/options.md`.
+   removing it (`git tag <area>-<name>-option`). Note the tag in `docs/options-archive.md`.
 
 ## Adding a query switch
 
@@ -69,7 +73,7 @@ node .claude/skills/client-options/scripts/options-gallery.mjs docs/options-gall
 open .playwright-mcp/gallery/all-options.html
 ```
 
-Keep the spec in step with `docs/options.md`, in the same commit as the code change:
+Keep the spec in step with `docs/options-archive.md`, in the same commit as the code change:
 - **New option or new switch:** add its entry (or a new group) with its copy and a
   one-line note. A whole-page preview is a group with its route as `page` and any unused
   `param` (see the `/home-next` group).
@@ -87,7 +91,7 @@ copy in the spec has no closing period, like the page. Older round galleries
 
 "Make X the default" or "she picked X":
 1. Change the fallback key in the component and update the comment (who, date).
-2. Update `DESIGN.md` (the section that describes the piece) and `docs/options.md`.
+2. Update `DESIGN.md` (the section that describes the piece) and `docs/options-archive.md`.
 3. Log any wording change in `docs/copy-changes.md`.
 4. **Don't delete the other options** unless asked. The owner has switched back before
    (A, then B, then B2 in one day).
@@ -97,7 +101,7 @@ copy in the spec has no closing period, like the page. Older round galleries
 1. Tag the commit first if any of them might come back.
 2. Delete the losing entries and the switch itself if only one is left. Keep the chosen
    copy where it was.
-3. Remove its lines from `docs/options.md`, `DESIGN.md`, and `docs/HANDOFF.md`.
+3. Remove its lines from `docs/options-archive.md`, `DESIGN.md`, and `docs/HANDOFF.md`.
 4. Run the `preship-check` skill: removed options often leave dead CSS or an unused image
    (the `site-images` audit finds those).
 

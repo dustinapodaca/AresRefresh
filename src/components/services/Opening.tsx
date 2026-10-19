@@ -1,175 +1,60 @@
-import { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { responsive } from '../../lib/responsive';
-import { heroTitle } from '../../lib/heroTitle';
-import OpeningForms, { FORMS, type Form } from './OpeningForms';
 
-// The opening photograph (owner, 2026-10-08): downtown Denver at sunset with the Front Range
-// (a real place, swapped with the Request a Quote page, which now has the generated towers).
-// The 2400px original of contact-hero.jpg (hero1.jpg), as WebP, graded down to match.
-// The opening photo. Default since 2026-10-12 (owner): the Colorado State Capitol and downtown
-// Denver at night. The other options stay for comparison at /services?photo=pikes|skyline
-// (pikes, downtown Colorado Springs with Pikes Peak, was the default earlier that day; the
-// Denver sunset moved to the Capability Statement hero). Each sets its
-// framing (dossier.css reads the vars): `pos` the object-position, `drop` how far the photo sits
-// below its box on phones and tablets, `dropD` and `ratio` (height / width) from 1024px, and
-// optionally `tint`, the black in the glass (default 0.55, 0.68 below 1024px; the blur stays).
-const PHOTOS = {
-  pikes: { src: '/images/services-hero/colorado-springs.webp', caption: 'Downtown Colorado Springs, Colorado', pos: '50% 100%', drop: '-200px', dropD: '-110px', ratio: 0.5231 },
-  // Measured so each subject (the skyline over the bridges; the dome and towers) centers in the
-  // clear area under the glass; from 1024px the drop scales with the width, like the photo.
-  skyline: { src: '/images/services-hero/denver-skyline-dusk.webp', caption: 'Downtown Denver, Colorado', pos: '50% 66%', drop: '-152px', dropD: 'calc(133px - 58.4vw)', ratio: 1.5 },
-  // The copper-glass tower (owner, 2026-10-15: moved from the Home hero). Not a named place, so
-  // no caption.
-  tower: { src: '/images/hero6.jpg', caption: '', pos: '50% 100%', drop: '0px', dropD: '0px', ratio: 0.6667 },
-  capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496, tint: 0.12 },
-} as const;
-
-// Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan, with
-// Home's headline since 2026-10-19 (owner); its own headline stays at /services?hero=officers, and
-// the audit's other options at /services?hero=a|b|c|current.
+// The Services opening: aperture (owner, 2026-10-15). The headline at the site's hero size, then the
+// copper-glass tower as a plate in the column that opens to the full width on scroll, with a liquid
+// glass card holding the lead across its top edge so the rim bends the photo's edge (Glide, Titan,
+// Vizcom). Only the headline and the lead: the services and industries stay in the page below, and
+// "Who we protect" sends the reader down to them.
+// The headline is Home's former one (owner, 2026-10-19). The curtain, sink, and lens forms
+// (/services?open=), the earlier glass that slid up over a held photo (?open=current, with its
+// ?photo= choices), and the other headlines (?hero=) were removed at launch (owner, 2026-10-19;
+// tag options-archive-2026-10-19, docs/options-archive.md).
 const COPY = {
-  plan: {
-    title: 'A prepared officer on every post.',
-    lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
-  },
-  officers: {
-    title: 'Security officers, patrol, and access control.',
-    lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
-  },
-  a: {
-    title: 'Security officers for every kind of post.',
-    lead: 'Armed and unarmed officers, patrol, and access control for federal, commercial, and industrial sites. Find the service or industry closest to yours.',
-  },
-  b: {
-    title: 'Armed, unarmed, patrol, and access control.',
-    lead: 'One standard of training and supervision behind every post, from federal installations to retail floors.',
-  },
-  c: {
-    title: 'What we staff, and how.',
-    lead: 'Six services, one process: every officer is trained on your post before the first shift.',
-  },
-  current: {
-    title: 'Security officers for six kinds of sites.',
-    lead: 'Armed and unarmed officers for federal, commercial, industrial, and institutional sites in Colorado Springs, Denver, and Pueblo. Find the division closest to your site.',
-  },
-} as const;
+  // The H1, no closing period like every hero headline (heroTitle), set as two lines.
+  lines: ['A prepared officer', 'on every post'],
+  lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
+};
 
-// The opening's form (OpeningForms.tsx). Aperture is the default (owner, 2026-10-15); curtain,
-// sink, and lens stay switchable at /services?open=curtain|sink|lens, and the earlier glass that
-// slid up over the held photo at /services?open=current (the only form that holds the scroll).
+const SRC = '/images/hero6.jpg';
+
+const Photo = () => (
+  <div className="ds-svx-photo ds-ap-photo" aria-hidden="true">
+    <img {...responsive(SRC)} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+  </div>
+);
+
+// Down to the first section of the page, the industries.
+const Down = () => (
+  <a href="#divisions" className="ds-link ds-svx-down">
+    Who we protect
+    <svg className="ds-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" />
+    </svg>
+  </a>
+);
+
 export default function Opening() {
-  const [params] = useSearchParams();
-  const askedForm = params.get('open');
-  if (askedForm === 'current') return <OpeningGlass />;
-  const form = (askedForm && (FORMS as readonly string[]).includes(askedForm) ? askedForm : 'aperture') as Form;
-  const asked = params.get('hero');
-  const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
-  return <OpeningForms form={form} copy={copy} />;
-}
-
-function OpeningGlass() {
-  const ref = useRef<HTMLElement>(null);
-  const [params] = useSearchParams();
-  const asked = params.get('hero');
-  const copy = COPY[(asked && asked in COPY ? asked : 'plan') as keyof typeof COPY];
-  const askedPhoto = params.get('photo');
-  const HERO = PHOTOS[(askedPhoto && askedPhoto in PHOTOS ? askedPhoto : 'tower') as keyof typeof PHOTOS];
-
-  // Owner, 2026-10-08: on scroll, only the glass slides up at first; the photo and the page
-  // below hold still until the glass's foot has cleared the nav, then everything scrolls as
-  // usual. Where scroll-driven animations exist, the hold is a compositor transform tied to
-  // the scroll (smooth: dossier.css, `html.svc-hold`); this effect only measures the distance
-  // (--svc-cap). Elsewhere a spacer under the glass grows with the scroll (--svc-hold).
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const root = document.documentElement;
-    const glass = el.querySelector<HTMLElement>('.ds-svc-open-glass');
-    const header = document.querySelector<HTMLElement>('[data-site-header]');
-    const smooth = CSS.supports('animation-timeline: scroll()');
-    const anchor = root.style.overflowAnchor;
-    root.style.overflowAnchor = 'none';
-    root.classList.add(smooth ? 'svc-hold' : 'svc-hold-js');
-    let cap = 0;
-    let frame = 0;
-    const measure = () => {
-      cap = Math.max(0, (glass?.offsetHeight ?? 0) - (header?.offsetHeight ?? 0));
-      root.style.setProperty('--svc-cap', `${cap}px`);
-    };
-    const update = () => {
-      frame = 0;
-      el.style.setProperty('--svc-hold', `${Math.min(Math.max(window.scrollY, 0), cap)}px`);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    const onResize = () => {
-      measure();
-      if (!smooth) onScroll();
-    };
-    measure();
-    if (!smooth) {
-      update();
-      window.addEventListener('scroll', onScroll, { passive: true });
-    }
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
-      if (frame) cancelAnimationFrame(frame);
-      root.classList.remove('svc-hold', 'svc-hold-js');
-      root.style.removeProperty('--svc-cap');
-      root.style.overflowAnchor = anchor;
-    };
-  }, []);
-
   return (
-    <section
-      ref={ref}
-      className="ds-svc-open"
-      aria-labelledby="services-title"
-      style={'tint' in HERO ? ({ '--svc-tint': HERO.tint } as React.CSSProperties) : undefined}
-    >
-      {/* The photo, anchored at its foot, with a mirror of it (flipped vertically) above so the
-          glass frosts real image to the top. It holds still while the glass slides away. */}
-      <div className="ds-svc-open-photo" aria-hidden="true">
-        <div
-          className="ds-svc-open-stack"
-          style={
-            {
-              '--svc-pos': HERO.pos,
-              '--svc-drop': HERO.drop,
-              '--svc-drop-d': HERO.dropD,
-              '--svc-ratio': HERO.ratio || undefined,
-            } as React.CSSProperties
-          }
-        >
-          <div className="ds-svc-open-mirror">
-            <img {...responsive(HERO.src)} alt="" decoding="sync" />
-          </div>
-          <img {...responsive(HERO.src)} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
-        </div>
+    <section className="ds-svx" data-form="aperture" aria-labelledby="services-title">
+      <div className="ds-container ds-ap-head">
+        {/* The site's hero headline size, as on every other page (owner, 2026-10-15). */}
+        {/* Two lines at every width (owner, 2026-10-19): "A prepared officer" / "on every post". The
+            space before the break keeps the words apart for search and screen readers. */}
+        <h1 id="services-title" className="ds-display-xl">
+          {COPY.lines[0]}{' '}
+          <br />
+          {COPY.lines[1]}
+        </h1>
       </div>
-
-      <div className="ds-svc-open-glass">
-        <div className="ds-container ds-svc-open-head">
-          <h1 id="services-title" className="ds-display-xl">
-            {heroTitle(copy.title)}
-          </h1>
-          <div className="ds-svc-open-side">
-            <p className="ds-lead">{copy.lead}</p>
+      <div className="ds-ap-stage">
+        <Photo />
+        <div className="ds-container ds-ap-wrap">
+          <div className="ds-ap-card">
+            <p className="ds-lead">{COPY.lead}</p>
+            <Down />
           </div>
         </div>
-        {/* The place, like the other photo heroes (owner, 2026-10-08): just under the glass's
-            edge on the right, riding up with the glass over the photo and out of view. */}
-        {HERO.caption && <p className="ds-caption ds-svc-open-cap">{HERO.caption}</p>}
       </div>
-
-      {/* Grows with the first scroll (--svc-hold) so the photo and the page below hold still. */}
-      <div className="ds-svc-open-spacer" aria-hidden="true" />
-      {/* The open, crisp part of the photograph below the glass. */}
-      <div className="ds-svc-band" aria-hidden="true" />
     </section>
   );
 }

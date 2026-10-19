@@ -1,29 +1,22 @@
 import type { CSSProperties } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
-import PrimeFlow from './PrimeFlow';
 import PrimePipeline from './PrimePipeline';
 import PrimeGlow from './PrimeGlow';
 
 // 02 Industries (copy audit round 2, 2026-10-10): the six industries in the owner's fixed
 // order, the first three larger (where the restricted-area and documented work lives), then
-// the prime-contractor block linking to /teaming. Two forms for the owner to compare at
-// /?industries=plates|rows; plates is the default until the owner picks, and the other form
-// and this switch come out then.
-//  plates  The first three as photographs set like the other photos in the column (4px
-//          corners, hairline edge, graded down; generated, so no caption), title and line
-//          beneath. The last three as a ruled strip.
-//  rows    Type only: the first three as large ruled rows, the last three as a ruled strip.
+// the prime-contractor block linking to /teaming. Plates (owner, 2026-10-10): the first three as
+// photographs set like the other photos in the column (4px corners, hairline edge, graded down),
+// title and line beneath; the last three as a ruled strip. The type-only rows (/?industries=rows)
+// were removed at launch (owner, 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
 
 const FEATURED = INDUSTRY_PAGES.slice(0, 3);
 const REST = INDUSTRY_PAGES.slice(3);
 
 export default function Industries() {
-  const [params] = useSearchParams();
-  const form = params.get('industries') === 'rows' ? 'rows' : 'plates';
-
   return (
     <section id="industries" className="ds-industries" aria-labelledby="industries-title">
       <div className="ds-sec-head">
@@ -36,7 +29,6 @@ export default function Industries() {
         </p>
       </div>
 
-      {form === 'plates' ? (
         <ul className="ds-ind-plates">
           {FEATURED.map((ind) => (
             <li key={ind.slug}>
@@ -73,20 +65,6 @@ export default function Industries() {
             </li>
           ))}
         </ul>
-      ) : (
-        <ul className="ds-ind-rows">
-          {FEATURED.map((ind, i) => (
-            <li key={ind.slug}>
-              <Link to={`/industries/${ind.slug}`}>
-                <span className="ds-data ds-ind-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <span className="ds-ind-name">{ind.name}</span>
-                <span className="ds-ind-line">{ind.short}</span>
-                <Arrow size={24} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
 
       <ul className="ds-mk-routes ds-ind-rest">
         {REST.map((ind) => (
@@ -100,24 +78,23 @@ export default function Industries() {
         ))}
       </ul>
 
-      <PrimesPanel form={params.get('prime')} />
+      <PrimesPanel />
     </section>
   );
 }
 
-// "For prime contractors." (copy audit round 3; second pass 2026-10-10 after Slash, Flora,
-// and Resend on Mobbin): a contained panel with three proof points and a solid button to
-// /teaming. Forms to compare at /?prime=split|diagram|vignettes|pipeline. Pipeline is the default
-// (owner, 2026-10-15, after gladia.io); diagram was the default from 2026-10-10. The one card container on Home besides the Record cards (owner exception).
+// "For prime contractors." (copy audit round 3; second pass 2026-10-10 after Slash, Flora, and
+// Resend on Mobbin): a contained panel with three proof points and a solid button to /teaming, beside
+// gladia.io's scroll pipeline (owner, 2026-10-15). The diagram, split, and vignettes forms (/?prime=)
+// were removed at launch (owner, 2026-10-19; tag options-archive-2026-10-19). The one card container
+// on Home besides the Record cards (owner exception).
 const PRIME_PROOF = [
   { label: 'Subcontracting credit', value: 'Woman-owned small business', id: 'WOSB250470 · WBE2303571' },
   { label: 'Restricted areas', value: 'Escort and access control on a Space Force base in Colorado', id: 'Subcontractor · 2025 to 2027' },
   { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021', id: 'On-call relief in every contract' },
 ];
 
-function PrimesPanel({ form }: { form: string | null }) {
-  // Pipeline is the default (owner, 2026-10-15); diagram, split, and vignettes stay at ?prime=.
-  const kind = form === 'split' || form === 'vignettes' || form === 'diagram' ? form : 'pipeline';
+function PrimesPanel() {
   const button = (
     <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
       Teaming & subcontracting
@@ -132,109 +109,23 @@ function PrimesPanel({ form }: { form: string | null }) {
     </p>
   );
   return (
-    <div className="ds-primes-panel" data-form={kind}>
+    <div className="ds-primes-panel" data-form="pipeline">
       <PrimeGlow />
-      {kind === 'split' && (
-        // Slash's stat-and-quote split: the ask on the left, the proof on the right, one
-        // vertical hairline between them.
-        <>
-          <div className="ds-primes-ask">
-            <h3 className="ds-display-md">For prime contractors.</h3>
-            {button}
-          </div>
-          <div className="ds-primes-proof">
-            {line}
-            <dl className="ds-primes-sheet">
-              {PRIME_PROOF.map((p) => (
-                <div key={p.label}>
-                  <dt>{p.label}</dt>
-                  <dd>
-                    <span>{p.value}</span>
-                    <span className="ds-data ds-primes-id">{p.id}</span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </>
-      )}
-      {kind === 'diagram' && (
-        // Slash's "Secure by design": a drawn diagram of how the work flows (the prime holds
-        // the contract, Ares staffs the posts) beside the proof.
-        <>
-          <div className="ds-primes-copy">
-            <h3 className="ds-display-md">For prime contractors.</h3>
-            {line}
-            <ul className="ds-primes-list">
-              {PRIME_PROOF.map((p) => (
-                <li key={p.label}>
-                  <span className="ds-primes-label">{p.label}</span>
-                  <span className="ds-primes-value">{p.value}</span>
-                </li>
-              ))}
-            </ul>
-            {button}
-          </div>
-          <PrimeFlow />
-        </>
-      )}
-      {kind === 'pipeline' && (
-        // gladia.io's scroll pipeline (owner, 2026-10-15): the copy holds still on desktop while
-        // the line grows down the cards beside it.
-        <>
-          <div className="ds-primes-copy">
-            <h3 className="ds-display-md">For prime contractors.</h3>
-            {line}
-            <ul className="ds-primes-list">
-              {PRIME_PROOF.map((p) => (
-                <li key={p.label}>
-                  <span className="ds-primes-label">{p.label}</span>
-                  <span className="ds-primes-value">{p.value}</span>
-                </li>
-              ))}
-            </ul>
-            {button}
-          </div>
-          <PrimePipeline />
-        </>
-      )}
-      {kind === 'vignettes' && (
-        // Flora's cards: a small working picture on top, the caption beneath.
-        <>
-          <div className="ds-primes-top">
-            <div>
-              <h3 className="ds-display-md">For prime contractors.</h3>
-              {line}
-            </div>
-            {button}
-          </div>
-          <ul className="ds-primes-vigs">
-            <li>
-              <div className="ds-vig ds-vig-ids" aria-hidden="true">
-                <span><b>SBA WOSB</b><span className="ds-data">WOSB250470</span></span>
-                <span><b>WBENC</b><span className="ds-data">WBE2303571</span></span>
-              </div>
-              <h4>{PRIME_PROOF[0].label}</h4>
-              <p>{PRIME_PROOF[0].value}</p>
+      {/* The copy holds still on desktop while the line grows down the cards beside it. */}
+      <div className="ds-primes-copy">
+        <h3 className="ds-display-md">For prime contractors.</h3>
+        {line}
+        <ul className="ds-primes-list">
+          {PRIME_PROOF.map((p) => (
+            <li key={p.label}>
+              <span className="ds-primes-label">{p.label}</span>
+              <span className="ds-primes-value">{p.value}</span>
             </li>
-            <li>
-              <div className="ds-vig ds-vig-term" aria-hidden="true">
-                <span className="ds-vig-bar"><span /></span>
-                <span className="ds-data ds-vig-years"><span>2025</span><span>2027</span></span>
-              </div>
-              <h4>{PRIME_PROOF[1].label}</h4>
-              <p>{PRIME_PROOF[1].value}</p>
-            </li>
-            <li>
-              <div className="ds-vig ds-vig-figure" aria-hidden="true">
-                <span className="ds-data">&lt;1%</span>
-              </div>
-              <h4>{PRIME_PROOF[2].label}</h4>
-              <p>{PRIME_PROOF[2].value}</p>
-            </li>
-          </ul>
-        </>
-      )}
+          ))}
+        </ul>
+        {button}
+      </div>
+      <PrimePipeline />
     </div>
   );
 }

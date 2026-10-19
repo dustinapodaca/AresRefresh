@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import Arrow from './Arrow';
 import PhoneIcon from './PhoneIcon';
 import { ROLE_PAGES, capabilityFor } from './market/roles';
@@ -127,22 +127,6 @@ const ITEMS: { label: string; menu?: string; to?: string }[] = [
   { label: 'Company', menu: 'Company' },
   { label: 'Capability Statement', to: '/capability-statement' },
 ];
-
-/** Which nav shows: the panel stretched edge to edge (default since 2026-10-13, owner), the
- *  floating card (?nav=float), or the previous bar (?nav=classic). Sticks for the session. */
-export type NavLayout = 'full' | 'float' | 'classic';
-export function useNavLayout(): NavLayout {
-  const [params] = useSearchParams();
-  const asked = params.get('nav');
-  let form: string | null = asked;
-  try {
-    if (asked) sessionStorage.setItem('ares-nav', asked);
-    else form = sessionStorage.getItem('ares-nav');
-  } catch {
-    // Storage blocked: the URL alone decides.
-  }
-  return form === 'classic' || form === 'float' ? form : 'full';
-}
 
 // The three profiles as small monochrome marks for the phone menu (owner, 2026-10-13).
 const PROFILE_ICONS: Record<string, JSX.Element> = {
@@ -442,13 +426,12 @@ function SlideMenu({
   );
 }
 
-export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float' }) {
-  const [navParams] = useSearchParams();
-  // The phone menu (owner, 2026-10-15): pages that slide over (after yucca.co.za), the default;
-  // the photo accordions at ?mnav=accordion; the plain lists at ?mnav=list.
-  const mnav = navParams.get('mnav');
-  const phoneMode: 'slide' | 'accordion' | 'list' = mnav === 'accordion' || mnav === 'list' ? mnav : 'slide';
-  const richPhone = phoneMode !== 'list';
+// The panel nav, edge to edge (owner, 2026-10-13). The phone menu is pages that slide over (owner,
+// 2026-10-15, after yucca.co.za). The floating card (?nav=float), the previous bar (?nav=classic,
+// Header.tsx), and the phone accordions and plain lists (?mnav=) were removed at launch (owner,
+// 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
+export default function NavPanel() {
+  const layout = 'full';
   const backRef = useRef<HTMLButtonElement>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -674,74 +657,10 @@ export default function NavPanel({ layout = 'full' }: { layout?: 'full' | 'float
             </div>
           </div>
 
-          {/* Phones: the list, with the three menus as accordions. */}
+          {/* Phones: the menu's pages, sliding over one another. */}
           <div id="np-mobile" className="ds-np-mobile" data-open={mobileOpen || undefined} {...(mobileOpen ? {} : { inert: '' })}>
             <div className="ds-np-drop-inner">
-              {phoneMode === 'slide' ? (
-                <SlideMenu panel={mobileMenu} setPanel={setMobileMenu} backRef={backRef} />
-              ) : (
-              <ul className="ds-np-mlist">
-                {ITEMS.map((item) =>
-                  item.menu ? (
-                    <li key={item.label}>
-                      <button
-                        type="button"
-                        className="ds-np-mitem"
-                        aria-expanded={mobileMenu === item.menu}
-                        onClick={() => setMobileMenu((m) => (m === item.menu ? null : item.menu!))}
-                      >
-                        {item.label}
-                        <Chevron open={mobileMenu === item.menu} />
-                      </button>
-                      <div className="ds-np-acc" data-open={mobileMenu === item.menu || undefined}>
-                        <div className="ds-np-drop-inner">
-                          {/* Phones (owner, 2026-10-13): Services and Industries open on their
-                              overview links, then a divider, then the six; Company shows its links
-                              only (no city links). */}
-                          <ul className="ds-np-sub">
-                            {MENUS[item.menu].phoneTop && (
-                              <>
-                                {MENUS[item.menu].phoneTop!.map((l) => (
-                                  <li key={'f' + l.to}>
-                                    <Link to={l.to} className="ds-np-sub-more">
-                                      {l.label}
-                                      <Arrow size={12} />
-                                    </Link>
-                                  </li>
-                                ))}
-                                <li className="ds-np-sub-rule" aria-hidden="true" />
-                              </>
-                            )}
-                            {richPhone && item.menu === 'Services' ? (
-                              <li className="ds-np-sub-wide">
-                                <PhoneServices />
-                              </li>
-                            ) : richPhone && item.menu === 'Industries' ? (
-                              <li className="ds-np-sub-wide">
-                                <PhoneIndustries />
-                              </li>
-                            ) : (
-                              MENUS[item.menu].columns.flatMap((c) => c.links).map((l) => (
-                                <li key={l.to + l.label}>
-                                  <Link to={l.to}>{l.label}</Link>
-                                </li>
-                              ))
-                            )}
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                  ) : (
-                    <li key={item.label}>
-                      <Link to={item.to!} className="ds-np-mitem">
-                        {item.label}
-                        <Arrow size={14} />
-                      </Link>
-                    </li>
-                  ),
-                )}
-              </ul>
-              )}
+              <SlideMenu panel={mobileMenu} setPanel={setMobileMenu} backRef={backRef} />
               {/* Phones (owner, 2026-10-13): pinned to the bottom of the open menu, so it stays on
                   screen while the list scrolls: the phone and the profiles, the email, then the main
                   button. (The PDF button was dropped from the phone menu.) */}

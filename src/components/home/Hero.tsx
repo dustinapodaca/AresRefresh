@@ -1,59 +1,20 @@
 import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
 import { terrainMode } from '../../lib/terrainSupport';
 
-// Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
-// /?hero=current|a|b|b1|b2|b3|b4|c|h1..h10. h1 is the default (owner, 2026-10-19; B2 before it,
-// 2026-10-10; A was the audit's recommendation); the losing options and this switch come out when the client picks. No eyebrow above the headline
-// (owner); the search phrase is carried by the title and description.
-const LEAD = 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.';
-const OPTIONS = {
-  current: {
-    title: 'Security guards for federal and commercial sites.',
-    lead: 'Ares is a minority woman-owned, employee-focused security firm in Colorado Springs, serving Denver and Pueblo. We bridge public-sector compliance and commercial reliability.',
-    proof: false,
-  },
-  a: {
-    title: 'Security for sites where every entry counts.',
-    // Escorts no longer lead the line, and the sites are named broadly (owner, 2026-10-10:
-    // not first, not twice, and not "military construction" up front).
-    lead: 'Armed and unarmed officers, access control, and restricted-area escorts along Colorado\u2019s Front Range, for government and critical sites as well as offices, retail, and campuses.',
-    proof: true,
-  },
-  b: {
-    title: 'Security guards and escorts for Colorado\u2019s controlled sites.',
-    lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.',
-    proof: true,
-  },
-  // Shorter headlines over B's lead (owner, 2026-10-10: B is too long, keep its line).
-  b1: { title: 'Security guards for Colorado sites.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
-  // The lead says "critical sites", not "data centers" (web audit, owner 2026-10-18: keep public copy broad).
-  b2: { title: 'A prepared officer on every post.', lead: 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.', proof: true },
-  b3: { title: 'Armed and unarmed, across Colorado.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
-  b4: { title: 'Every entry counts.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
-  // Ten new headlines over B2's lead (owner, 2026-10-19: "A prepared officer on every post." moved
-  // to the Services opening). /?hero=h1 to h10.
-  h1: { title: 'Security officers for Colorado\u2019s Front Range.', lead: LEAD, proof: true },
-  h2: { title: 'Officers who know your site before day one.', lead: LEAD, proof: true },
-  h3: { title: 'Guard services for federal and commercial sites.', lead: LEAD, proof: true },
-  h4: { title: 'Armed and unarmed officers, trained on your post.', lead: LEAD, proof: true },
-  h5: { title: 'Security guards in Colorado Springs, Denver, and Pueblo.', lead: LEAD, proof: true },
-  h6: { title: 'Minority woman-owned security for Colorado.', lead: LEAD, proof: true },
-  h7: { title: 'One standard, from restricted areas to retail floors.', lead: LEAD, proof: true },
-  h8: { title: 'Security that answers when you call.', lead: LEAD, proof: true },
-  h9: { title: 'Officers your site can count on.', lead: LEAD, proof: true },
-  h10: { title: 'Local officers, run by people who answer.', lead: LEAD, proof: true },
-  c: {
-    title: 'Escorts. Access control. Officers. One standard.',
-    lead: 'Every Ares post runs on written post orders, on-site training, and on-call relief, whether it\u2019s a restricted area or a retail floor.',
-    proof: true,
-  },
-} as const;
-type OptionKey = keyof typeof OPTIONS;
+// The headline (owner, 2026-10-19, picked from ten) over the lead ("critical sites", not "data
+// centers": web audit, owner 2026-10-18). No eyebrow above the headline (owner); the search phrase
+// is carried by the title and description. The other headlines (/?hero=) and the photo background
+// (/?herobg=photo) were removed at launch (owner, 2026-10-19; tag options-archive-2026-10-19,
+// docs/options-archive.md).
+const HERO = {
+  title: 'Security officers for Colorado\u2019s Front Range.',
+  lead: 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.',
+};
 
 // The terrain (WebGL2) loads on its own, only on Home and only once the page has mounted, so other
 // pages and the first paint don't carry its code (web audit, 2026-10-18).
@@ -63,12 +24,7 @@ const Topography = lazy(() => import('./Topography'));
 const TOPO_STILL = responsive('/images/hero-topo/terrain-desktop.webp');
 
 export default function Hero() {
-  const [params] = useSearchParams();
-  const asked = params.get('hero');
-  // h1 is the default (owner, 2026-10-19: "Security officers for Colorado’s Front Range." over
-  // B2's lead; B2's headline moved to the Services opening); the other options stay at /?hero=.
-  const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'h1') as OptionKey];
-  const bg = params.get('herobg') === 'photo' ? 'photo' : 'topo';
+  const hero = HERO;
   // The terrain is drawn in the browser only, after mount, and never for automated browsers:
   // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
   // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
@@ -89,7 +45,7 @@ export default function Hero() {
   }, []);
   useEffect(() => {
     const html = document.documentElement;
-    if (bg !== 'topo' || html.dataset.terrain !== 'live') return;
+    if (html.dataset.terrain !== 'live') return;
     setLive(true);
     // Counted only while the tab is showing: a background tab draws nothing yet.
     let left = 4000;
@@ -118,7 +74,7 @@ export default function Hero() {
       window.clearTimeout(timer);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [bg]);
+  }, []);
   // Desktop zooms out (owner, 2026-10-15): the component narrows its camera on wide screens, so
   // the land reads magnified there; smaller landforms from 900px. Phones keep the full size.
   const [wide, setWide] = useState(false);
@@ -152,14 +108,9 @@ export default function Hero() {
     <section ref={sectionRef} className="ds-hero" aria-labelledby="hero-title">
       {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
           in the site's rust drifting under the copy, the cursor lifting the land and a click
-          sending a ring out. The copper-glass tower photo (hero6.jpg) moved to the Services
-          opening and stays here at /?herobg=photo. Same box as the photo: full bleed from
-          900px, running down under 01 Record. */}
-      {bg === 'photo' ? (
-        <div className="ds-hero-photo" aria-hidden="true">
-          <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
-        </div>
-      ) : (
+          sending a ring out. The copper-glass tower photo (hero6.jpg) it replaced moved to the
+          Services opening. Same box as the photo had: full bleed from 900px, running down under
+          01 Record. */}
         <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
           <picture className="ds-hero-topo-still">
             <source media="(min-width: 900px)" srcSet={TOPO_STILL.srcSet} sizes="100vw" width={TOPO_STILL.width} height={TOPO_STILL.height} />
@@ -191,7 +142,6 @@ export default function Hero() {
             clickEffect="pulse"
           /></Suspense>}
         </div>
-      )}
 
       <div className="ds-container">
         <div ref={copyRef} className="ds-hero-copy">
@@ -207,33 +157,19 @@ export default function Hero() {
             </Link>
             {/* No call link here (owner, 2026-10-13): the nav's handset and menu carry the phone. */}
           </div>
-          {hero.proof ? (
-            // The proof row (audit): one line each, every one checkable on the linked page.
-            // The escort item came out (owner, 2026-10-10): the lead already names escorts.
-            <ul className="ds-hero-proof" aria-label="Proof">
-              <li>
-                <span>GSA MAS</span>{' '}
-                <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
-                  47QSMS25D009Q
-                  <Arrow external size={12} />
-                </a>
-              </li>
-              {/* Quiet facts, not links; GSA is the only route (copy audit round 3). */}
-              <li>Minority woman-owned (WOSB, WBENC)</li>
-              <li>Licensed in Colorado Springs, Denver, Pueblo</li>
-            </ul>
-          ) : (
-            <div className="ds-hero-gsa">
-              <img {...responsive('/images/gsa-contract-holder.png')} alt="GSA Contract Holder" width={125} height={30} />
-              <div>
-                <span className="ds-small">GSA Multiple Award Schedule</span>
-                <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-link ds-data">
-                  47QSMS25D009Q
-                  <Arrow external size={14} />
-                </a>
-              </div>
-            </div>
-          )}
+          {/* The proof row (audit): one line each, every one checkable on the linked page. */}
+          <ul className="ds-hero-proof" aria-label="Proof">
+            <li>
+              <span>GSA MAS</span>{' '}
+              <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
+                47QSMS25D009Q
+                <Arrow external size={12} />
+              </a>
+            </li>
+            {/* Quiet facts, not links; GSA is the only route (copy audit round 3). */}
+            <li>Minority woman-owned (WOSB, WBENC)</li>
+            <li>Licensed in Colorado Springs, Denver, Pueblo</li>
+          </ul>
         </div>
       </div>
     </section>
