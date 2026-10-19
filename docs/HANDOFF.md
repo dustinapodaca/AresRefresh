@@ -1,8 +1,36 @@
 # Handoff: Ares site redesign ("The Dossier")
 
-Last updated: 2026-10-13 (late). Branch `audit`, pushed through 8964159. **Read this first when starting a new chat.**
+Last updated: 2026-10-19. **The site is live on aressecurity.co** (DreamHost). `main` = `audit`
+(fast-forwarded at launch); keep working on `audit` and fast-forward `main` after each release.
+**Read this first when starting a new chat.**
 
-## Where we are (2026-10-13)
+## Live (2026-10-19)
+
+- **Hosting:** DreamHost (Apache), not Netlify. The owner uploads the build by hand in FileZilla
+  (SSH): everything inside `dist/` into the site's web folder, `public`, except `_headers` and
+  `_redirects` (Netlify's files). `public/.htaccess` gives Apache clean URLs, the 301s, the real
+  404, the CSP and security headers, caching, compression, and https on the bare domain
+  (www and http redirect). `deploy/dreamhost.sh` does the same upload over rsync if ever wanted.
+  FileZilla doesn't delete: when files are renamed or removed, tell the owner which to delete.
+- **Release steps:** make the change on `audit`, `npm run build`, run the preship check (full),
+  commit and push, fast-forward `main` (`git push origin audit:main`), then the owner uploads.
+- **Checked live at launch:** every route, the six 301s, the 404, www/http to https, headers and
+  caching, the files byte for byte against the build, no console errors on desktop or phone.
+- **Analytics:** GA4 `G-V4GCEJYB3L` via `.env.production` (reports only on aressecurity.co). GA
+  settings done (history page views off, form interactions off, signals off, 14-month retention);
+  key events generate_lead, phone_call, email_click, apply_click, file_download. A test quote
+  reached contact@ and showed as generate_lead in Realtime. Search Console set up.
+- **Since 10-13:** About rebuilt (founder with Deidre's photo and LinkedIn; What clients told us;
+  Who stands your post); Home headline "Security officers for Colorado's Front Range", Services
+  "A prepared officer on every post"; new capability statement PDF (1.53 MB, titled); Dustin
+  Apodaca is the site and Insights author; Careers no longer promises paid training or renewals;
+  icons renamed v3. The web audit's log (Claude Doc "AresRefresh Web Audit, October 2026") is
+  current: everything done or kept by choice.
+- **Still open:** pay range, benefits, and deadline per job (Colorado pay transparency; W1);
+  Deidre's sign-off on her story (fine for now); a named contact on Capability and Teaming;
+  Bing Webmaster import and Request indexing if not done; a photo shoot; more guides; a News page.
+
+## Where we were (2026-10-13)
 
 Work happens on `audit` (dev server http://localhost:5173). Everything is pushed. Recent work,
 newest first; the detail is in DESIGN.md, docs/copy-changes.md, and docs/options.md.
