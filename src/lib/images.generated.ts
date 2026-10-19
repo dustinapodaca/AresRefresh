@@ -159,8 +159,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 427
   },
   "/images/capability-page1.webp": {
-    "src": "/images/opt/capability-page1-1000.6631c392.webp",
-    "srcSet": "/images/opt/capability-page1-480.f7b6df9a.webp 480w, /images/opt/capability-page1-800.529f5602.webp 800w, /images/opt/capability-page1-1000.6631c392.webp 1000w",
+    "src": "/images/opt/capability-page1-1000.b4ee32aa.webp",
+    "srcSet": "/images/opt/capability-page1-480.5d6bb2f1.webp 480w, /images/opt/capability-page1-800.17a01185.webp 800w, /images/opt/capability-page1-1000.b4ee32aa.webp 1000w",
     "width": 1000,
     "height": 1295
   },

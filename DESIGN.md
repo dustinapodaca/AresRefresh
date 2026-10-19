@@ -491,7 +491,9 @@ exception to "no card containers" and "no glass" for this section.
   assets/generated/values/).
 
 ### Home hero copy and the proof row (copy audit round 2, owner 2026-10-10)
-"- **Current default: B2** (owner, 2026-10-10): "A prepared officer on every post." / "From
+"- **Current default: h1** (owner, 2026-10-19): "Security officers for Colorado's Front Range." over B2's lead
+  (two lines on desktop, three on phones), picked from ten at `/?hero=h1` to `h10`; B2's headline moved to the
+  Services opening. **B2** before it (owner, 2026-10-10): "A prepared officer on every post." / "From
   restricted areas and critical sites to offices and campuses: officers trained on your post
   before the first shift." ("data centers" until 2026-10-18; the web audit, owner: keep public copy broad.)
   Two lines at every width. Before it: B (too long), then
@@ -644,7 +646,9 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
   What follows is the earlier glass opening, kept at `/services?open=current`: headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
   2026-10-05). **Photo since 2026-10-15 (owner): the copper-glass tower (`hero6.jpg`, from the Home
   hero), anchored at its foot so the lit copper underside sits in the clear area below the glass,
-  no caption (not a named place); headline 6:1, lead 7:1 or better.** The Capitol is `?photo=capitol`. Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
+  no caption (not a named place); headline 6:1, lead 7:1 or better.** The Capitol is `?photo=capitol`. Headline since 2026-10-19
+  (owner): Home's "A prepared officer on every post." (Home now opens on "Security officers for Colorado's Front Range."); the
+  line before it stays at `/services?hero=officers`. Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
   control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in
   Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." The audit's
   options A, B, C and the old copy stay switchable for the client at `/services?hero=`
@@ -849,8 +853,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   quick facts and sections below carry it), a white "Download the PDF"
   button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
   it), and a mono spec line
-  (company, NAICS, 1 page, PDF, 1.6 MB for the owner's new statement of 2026-10-19 after the same lossless
-  shrink, 2.35 MB as exported; 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
+  (company, NAICS, 1 page, PDF, 1.5 MB for the owner's new statement of 2026-10-19 after the same lossless
+  shrink, 2.28 MB as exported; 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
   2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
 - **Services first (owner, 2026-10-18; web audit item G):** the six capability cards below now open

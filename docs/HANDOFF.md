@@ -63,7 +63,7 @@ phones once the running head shows (offered); type/radius tokens and the 375px c
     questions moved to the armed and unarmed pages, and Government's "What we deliver"
     leads with escort. No clearance wording on either page (Careers only). The PDF
     capability statement still lists Emergency Response until it is regenerated.
-    4 done: the owner chose Industries **plates** and hero **A**, then tried **B**, then picked **B2** "A prepared officer on every post." over B's line as the default (2026-10-10; all others at `/?hero=`).
+    4 done: the owner chose Industries **plates** and hero **A**, then tried **B**, then picked **B2** "A prepared officer on every post." over B's line as the default (2026-10-10; all others at `/?hero=`). Since 2026-10-19 the default is h1 "Security officers for Colorado's Front Range." over the same line; B2's headline moved to the Services opening.
     The other options stay in the code for the client (Deidre) to compare: `/?hero=current|b|c`
     and `/?industries=rows`; gallery `.playwright-mcp/gallery/hero-options.html` (scripts
     hero-opts.mjs, ind-opts.mjs). Home now runs Record, Industries (ending on "For prime

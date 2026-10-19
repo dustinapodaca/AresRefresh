@@ -1028,3 +1028,9 @@ Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews
 
 - About founder signature (owner, 2026-10-19): "Founder and CEO" is now "Founder & CEO" (also in the
   portrait's alt text).
+
+- Services opening headline (owner, 2026-10-19): "A prepared officer on every post." (Home's), was
+  "Security officers, patrol, and access control." (kept at /services?hero=officers). Home's
+  default stays B2 until a new headline is picked from ten at /?hero=h1 to h10, all over B2's lead.
+- Home hero headline (owner, 2026-10-19): "Security officers for Colorado’s Front Range." (h1), was
+  "A prepared officer on every post." (now the Services headline; kept at /?hero=b2). Same lead.

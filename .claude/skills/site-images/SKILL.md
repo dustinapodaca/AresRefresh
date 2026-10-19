@@ -114,8 +114,8 @@ breakpoint you were asked about.
 
 ## The capability statement PDF
 
-`public/files/Ares-Security-Capability-Statement-2026.pdf` (1.57 MB; the owner's new statement,
-2026-10-19, 2.35 MB as exported). The page thumbnail `capability-page1.webp` is page 1 rendered at
+`public/files/Ares-Security-Capability-Statement-2026.pdf` (1.53 MB; the owner's new statement,
+2026-10-19, 2.28 MB as exported). The page thumbnail `capability-page1.webp` is page 1 rendered at
 1000px from the PDF (pypdfium2), lossless; re-render it whenever the PDF changes. The owner builds it
 ("I'll do it on my own", 2026-10-10). Keep the path and filename. To shrink a new export
 without visible change, keep the original in `assets/files-src/` and run

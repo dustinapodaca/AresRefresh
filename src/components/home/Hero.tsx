@@ -7,9 +7,10 @@ import { heroTitle } from '../../lib/heroTitle';
 import { terrainMode } from '../../lib/terrainSupport';
 
 // Hero options from the copy audit (round 2, 2026-10-10), for the owner to compare at
-// /?hero=current|a|b|b1|b2|b3|b4|c. B2 is the default (owner, 2026-10-10; A was the audit's
-// recommendation); the losing options and this switch come out when the client picks. No eyebrow above the headline
+// /?hero=current|a|b|b1|b2|b3|b4|c|h1..h10. h1 is the default (owner, 2026-10-19; B2 before it,
+// 2026-10-10; A was the audit's recommendation); the losing options and this switch come out when the client picks. No eyebrow above the headline
 // (owner); the search phrase is carried by the title and description.
+const LEAD = 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.';
 const OPTIONS = {
   current: {
     title: 'Security guards for federal and commercial sites.',
@@ -34,6 +35,18 @@ const OPTIONS = {
   b2: { title: 'A prepared officer on every post.', lead: 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.', proof: true },
   b3: { title: 'Armed and unarmed, across Colorado.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
   b4: { title: 'Every entry counts.', lead: 'From restricted areas and data centers to offices and campuses: officers trained on your post before the first shift.', proof: true },
+  // Ten new headlines over B2's lead (owner, 2026-10-19: "A prepared officer on every post." moved
+  // to the Services opening). /?hero=h1 to h10.
+  h1: { title: 'Security officers for Colorado\u2019s Front Range.', lead: LEAD, proof: true },
+  h2: { title: 'Officers who know your site before day one.', lead: LEAD, proof: true },
+  h3: { title: 'Guard services for federal and commercial sites.', lead: LEAD, proof: true },
+  h4: { title: 'Armed and unarmed officers, trained on your post.', lead: LEAD, proof: true },
+  h5: { title: 'Security guards in Colorado Springs, Denver, and Pueblo.', lead: LEAD, proof: true },
+  h6: { title: 'Minority woman-owned security for Colorado.', lead: LEAD, proof: true },
+  h7: { title: 'One standard, from restricted areas to retail floors.', lead: LEAD, proof: true },
+  h8: { title: 'Security that answers when you call.', lead: LEAD, proof: true },
+  h9: { title: 'Officers your site can count on.', lead: LEAD, proof: true },
+  h10: { title: 'Local officers, run by people who answer.', lead: LEAD, proof: true },
   c: {
     title: 'Escorts. Access control. Officers. One standard.',
     lead: 'Every Ares post runs on written post orders, on-site training, and on-call relief, whether it\u2019s a restricted area or a retail floor.',
@@ -52,9 +65,9 @@ const TOPO_STILL = responsive('/images/hero-topo/terrain-desktop.webp');
 export default function Hero() {
   const [params] = useSearchParams();
   const asked = params.get('hero');
-  // B2 is the default for now (owner, 2026-10-10: "A prepared officer on every post." over
-  // B's line); the other options stay at /?hero=.
-  const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'b2') as OptionKey];
+  // h1 is the default (owner, 2026-10-19: "Security officers for Colorado’s Front Range." over
+  // B2's lead; B2's headline moved to the Services opening); the other options stay at /?hero=.
+  const hero = OPTIONS[(asked && asked in OPTIONS ? asked : 'h1') as OptionKey];
   const bg = params.get('herobg') === 'photo' ? 'photo' : 'topo';
   // The terrain is drawn in the browser only, after mount, and never for automated browsers:
   // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out

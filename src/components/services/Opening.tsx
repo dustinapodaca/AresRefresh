@@ -25,10 +25,15 @@ const PHOTOS = {
   capitol: { src: '/images/services-hero/denver-capitol-night.webp', caption: 'Colorado State Capitol, Denver', pos: '22% 62%', drop: '-255px', dropD: 'calc(132px - 36.5vw)', ratio: 0.7496, tint: 0.12 },
 } as const;
 
-// Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan;
-// the audit's other options stay switchable for the client at /services?hero=a|b|c|current.
+// Opening copy (copy audit round 2, 2026-10-10). The default is the audit's content plan, with
+// Home's headline since 2026-10-19 (owner); its own headline stays at /services?hero=officers, and
+// the audit's other options at /services?hero=a|b|c|current.
 const COPY = {
   plan: {
+    title: 'A prepared officer on every post.',
+    lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
+  },
+  officers: {
     title: 'Security officers, patrol, and access control.',
     lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
   },
