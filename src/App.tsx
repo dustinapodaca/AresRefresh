@@ -65,6 +65,10 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // blur smears the bend away; the dark tints keep the copy readable. The Home Record cards stay a
   // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
   { sel: '.ds-value', opts: { blur: 12 } },
+  // About's "What clients told us" cards (owner, 2026-10-18), at the Record cards' frost.
+  { sel: '.ds-heard-card', opts: { blur: 12 } },
+  // About's credential card (owner, 2026-10-18); phones keep the CSS frost (the Android seam).
+  { sel: '.ds-ab-cred-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
   // Not the Capability cards: they sit on plain black, so a backdrop filter showed nothing and cost
   // a phone dearly (owner, 2026-10-15, after a performance audit).
   // Full-width bands bend and light only the edges that read as glass, never their sides (they sit

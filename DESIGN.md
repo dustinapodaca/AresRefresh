@@ -761,7 +761,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
+docs/about-concepts.md. Rail marks (owner, 2026-10-18): 01 What clients told us, 02 Who stands your post.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -777,22 +777,49 @@ docs/about-concepts.md. Rail marks: 01 How we work, 02 Commitments, 03 People.
   (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
   "How we work →" right between hairlines). Until the photo arrives the portrait shows the
   Ares mark at 28%. The portrait opens from the bottom on scroll (clip-path).
-- **01 How we work** (renamed from "How we staff a post.", copy audit 2026-10-10; four plain
-  principles and a "See the four stages" link to Services): the pinned passage (see above; moved whole
-  from Home, owner 2026-10-06). The Company section ("Quality over quantity.", the facts,
-  and the patrol vehicles plate) moved to Home. Was: a facts ledger beside the patrol
-  vehicles as a captioned plate (square,
-  anchored to the photo's bottom at every width, no frame edge so the caption is not
-  boxed; owner, 2026-10-05).
-- **02 Commitments:** four to clients, four to our people, as ruled lists (name, one
-  line). Desktop and tablet: side by side. Phones: a two-tab switch with a sliding
-  underline (240ms), one list at a time.
-- **03 People:** the officer portrait (sticky on desktop) beside the five traits:
-  Approachable, Licensed, Experienced, Local, Steady (owner, 2026-10-10: the copy audit's
-  plainer words replaced Rooted and Tempered, so the initials no longer read ALERT; a column
-  of large initials was tried and dropped as too much, 2026-10-05). Each word in Inter Tight 600 at 28 to 38px, full width, its line
-  beneath. Phones: the traits swipe (72% slides; sideways only, a vertical swipe scrolls the page), with the Home staffing row's meter (a hairline that fills with the swipe, and "Swipe").
-- **No close** (owner, 2026-10-06): the page ends on 03 People and hands straight to the
+- **01 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
+  Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
+  guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
+  instead, each a liquid glass card (LIQUID at 12px; the CSS frost elsewhere): a mono "What we heard"
+  in ink faint, the complaint in display type, a hairline, a mono "What we do" in rust, the answer in
+  ink at lead size. Desktop: the headline, intro, and a mono counter (01 / 04, the card nearest the
+  center) hold still on the left (sticky under the nav); the cards pass on the right, 24vh apart so one
+  holds the center at a time, over a very soft rust light held at the middle of the screen (the prime
+  panel's CSS shapes, quieter). As a card reaches the center a rust line draws through each line of
+  the complaint (a background on the inline text, 600ms), the complaint dims from ink muted to ink
+  faint, and the answer rises 12px from 0.8 to full; passed cards stay resolved (the scroll observer's
+  center-and-once mode). Phones and tablets: one column, the same moment at the optical center. The
+  resolved state is the default (prerender, no JavaScript, reduced motion); the waiting state applies
+  only once armed after mount. Then "Those details are what clients thank us for most." and "Tell us
+  about your site →".
+- **02 Who stands your post.** (owner, 2026-10-18; replaced "What we commit to our officers." and
+  the five traits): an officer credential (`People.tsx`). Two real officers share one plate
+  (`officer-portrait.jpg` first, `backbone-officer.jpg` second; same 4:5 crop and dark grade, a soft
+  rust rim light from the lower right, a mono "Officer 01" / "Officer 02" caption, no names) while a
+  liquid glass card set like an ID checks off five standards a buyer can check (Screened, Licensed,
+  Trained, Qualified, Supervised): a mono bar "Officer standard" / "05 checks", five rows (mono number,
+  the word in display type, its line in ink muted, a circular check), a mono foot "Ares Security ·
+  Colorado". The card's wash is denser than other glass (64% to 54% black) and its mono labels ink muted
+  (the numbers #c4c8ce), so all stay AA over the photo. Desktop: a 260vh stage with a sticky frame; the
+  plate takes the left 55% and the card overlaps its right edge by about 15% (LIQUID at 12px); scroll
+  progress (--p, one passive rAF listener) eases the photo from 1.06 to 1 and checks the rows at 0.12,
+  0.30, 0.48, 0.66, and 0.84 (the ring fills and a rust mark draws in, 300ms; rows never uncheck); as
+  row 03 checks, the plate turns to the second officer (500ms crossfade, an 8px drift), and back to the
+  first on the way up (owner; the checks stay). Phones and
+  tablets (owner, 2026-10-18): the photo (4:5, at most 58% of the screen's height) holds under the nav
+  and running head while the card passes over it, from over the photo's foot by 72px at the start to the
+  photo clear below the card (144px, so officer 02 holds in full view a little longer) at the end, so the
+  officer passes behind the glass and comes out the other side, face in full view; the two officers crossfade with the scroll (--swap, an 8px drift) from
+  when the card covers about 85% of the first to when row 05 checks, so the second is whole before it comes
+  out, and it all reverses on the way up (CSS frost only below 768px, the Android seam). Officer 01's
+  caption sits at the top, officer 02's at the foot, the sides the card leaves open. The closing line follows the card
+  and holds 24px under the photo, so it is already there when the card clears; the photo and the line
+  let go together (owner). Rows check at the optical center (the page's scroll
+  observer, once). Without JavaScript, in the prerender, and under reduced
+  motion: both officers side by side above the card, every row checked; the motion is armed only after
+  mount. Then the closing line two-toned like the founder letter, and the Indeed proof as a small mono
+  link with the external arrow.
+- **No close** (owner, 2026-10-06): the page ends on 02 Who stands your post and hands straight to the
   footer. (04 Statement, the capability statement plate with its links, was removed; the
   Capability Statement page carries it.)
 

@@ -983,3 +983,42 @@ keeps "and" (e.g. "teaming and subcontract coverage" in a sentence).
 
 2026-10-18 (owner): Home Record, Personnel card line "Our officers rate us highest for management and work-life balance." became "On Indeed, our officers rate us highest for management and work-life balance." (a line longer, to sit closer to the other two cards).
 Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews are public, our officers rate us highest for management and work-life balance."
+
+## About: Deidre's story and "What clients told us." (owner, 2026-10-18)
+
+- Founder ("Why Ares exists."): lead "Before Ares, Deidre Herrera-Ruiz ran operations and HR for
+  another Colorado security company." Rest: "From her first weeks she was rebuilding the schedule,
+  taking the calls from sites whose guard never showed, and putting structure where there was none.
+  She stayed for years, through the pandemic, and learned the business from the inside. It showed
+  her what clients and officers live with when a security company has no structure. She founded
+  Ares in 2021 to fix it." (Was the audit's draft: "came up through operations at a Pueblo security
+  company" and "she still writes every post order and reviews every incident report".) Still waits
+  on Deidre's sign-off. The "note" form's link now reads "What clients told us" (to #heard).
+- "How we work." removed (the four steps; the process lives on Services).
+- New 01 "What clients told us.": intro "When we started bidding, skeptical clients asked how we’d
+  be any different. Then they told us about their last guard company. The stories were always the
+  same, so we built Ares around them." Four pairs, what we heard / what we do: the guard didn’t
+  show, and no one called / on-call coverage in every contract first, then officers call the site
+  with anything, down to an ETA, because not knowing is worse than bad news (owner, same day: don’t
+  lead with running late); we only heard from them when the invoice came / we email you when
+  staffing changes or something happens on a shift, and the line runs both ways; a new face every
+  week / the same officers whenever we can, and anyone new gets your SOPs and trains on site first
+  (owner, same day: no promise of the same officers, no weekly call); when something went wrong, nobody picked
+  up / a member of our leadership answers, owns it, and tells you what we’re changing. Close:
+  "Those details are what clients thank us for most." and "Tell us about your site" (to /contact).
+  The complaints are paraphrased, not testimonials: no quotation marks, no names.
+- "What we commit to our officers." and "Who stands your post." (the five traits) became one section
+  (owner, same day), "Who stands your post." with the lead "Every officer meets the same standard
+  before they reach your door.", five standards (Screened: background-checked before hire; Licensed:
+  by the city they work in, Colorado Springs, Denver, or Pueblo; Trained: on your site, by a member of
+  our leadership, before the first shift; Qualified: on armed posts, firearms-qualified by our veteran
+  NRA firearms instructor; Supervised: a chain of command on every shift), and the close "Officers
+  who are treated well stay, and officers who stay know your site: fair pay on time, and a supervisor
+  who answers. On Indeed they rate us 4.8 out of 5." The traits (Approachable, Licensed, Experienced,
+  Local, Steady) and the separate officer commitments came out. Rail: 01 What clients told us, 02 Who
+  stands your post.
+- Then (owner, same day) the layout became an officer credential with the same copy; new mono
+  labels: "Officer standard", "05 checks", "Ares Security · Colorado", and the photo captions "Officer
+  01" and "Officer 02" (no names).
+- llms.txt About line: "The founder’s story, the problems clients had with other guard companies
+  and how Ares answers them, and the standards every officer meets."

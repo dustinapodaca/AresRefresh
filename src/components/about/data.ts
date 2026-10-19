@@ -3,10 +3,11 @@ import { GSA_ELIBRARY } from '../home/links';
 
 // About content. Source: docs/about-content.md; copy changes: docs/copy-changes.md.
 
+// 01 replaced "How we work" (the process lives on Services); 02 merged the officer commitments
+// and the traits into one section (owner, 2026-10-18).
 export const ABOUT_MARKS: readonly Mark[] = [
-  { id: 'staffing', n: '01', label: 'How we work' },
-  { id: 'commitments', n: '02', label: 'Commitments' },
-  { id: 'people', n: '03', label: 'People' },
+  { id: 'heard', n: '01', label: 'What clients told us' },
+  { id: 'people', n: '02', label: 'Who stands your post' },
 ];
 
 export type Credential = { src: string; alt: string; label: string; id?: string; href?: string; tall?: boolean };
@@ -18,51 +19,39 @@ export const CREDENTIALS: Credential[] = [
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise", label: 'WBENC certified', id: 'WBE2303571', tall: true },
 ];
 
-// How we work (moved from Home, owner 2026-10-06; renamed from "How we staff a post" and
-// trimmed to plain sentences, copy audit 2026-10-10). The process itself lives on Services.
-export const STAFFING_STEPS: { title: string; body: string }[] = [
+// 01 What clients told us (owner, 2026-10-18): what clients said about their last guard
+// company, paraphrased (not testimonials: no quotation marks, no names), and what Ares does
+// instead. Heard.tsx.
+export type HeardItem = { heard: string; answer: string };
+
+export const HEARD: HeardItem[] = [
   {
-    title: 'Plan before we sign.',
-    body: 'We walk your site and learn its risks before any contract is signed.',
+    heard: 'The guard didn’t show, and no one called.',
+    answer: 'Every contract has on-call coverage behind it. Our officers call the site with anything, down to an ETA, because not knowing is worse than bad news.',
   },
   {
-    title: 'Write it down.',
-    body: 'Post orders, proposals, and reports are written for your site.',
+    heard: 'We only heard from them when the invoice came.',
+    answer: 'We email you when staffing changes or something happens on a shift, and the line runs both ways.',
   },
   {
-    title: 'Keep you informed.',
-    body: 'You get direct access to the people managing your account, and reports on a set schedule.',
+    heard: 'It was a new face every week.',
+    answer: 'We keep the same officers on your site whenever we can. When someone new steps in, they get your SOPs and train on site before their first shift.',
   },
   {
-    title: 'Train on the post.',
-    body: 'Every officer learns your post from a leader who has worked it.',
+    heard: 'When something went wrong, nobody picked up.',
+    answer: 'A member of our leadership answers, owns it, and tells you what we’re changing.',
   },
 ];
 
 export type Commitment = { name: string; line: string };
 
-export const FOR_CLIENTS: Commitment[] = [
-  { name: 'Presence', line: 'Leadership stands up each new post and trains officers on site.' },
-  { name: 'Consistency', line: 'Retained, familiar teams who know your site.' },
-  { name: 'Reachability', line: 'Supervisors stay reachable long after the start date.' },
-  { name: 'Accountability', line: 'When something goes wrong, we own it and resolve it fast.' },
+// 02 Who stands your post (owner, 2026-10-18): the standards every officer meets, each one a
+// buyer can check. Replaced FOR_PEOPLE (the commitments to officers, now the section's closing
+// line) and TRAITS (five adjectives: Approachable, Licensed, Experienced, Local, Steady).
+export const STANDARDS: Commitment[] = [
+  { name: 'Screened', line: 'Background-checked before hire.' },
+  { name: 'Licensed', line: 'Licensed by the city they work in: Colorado Springs, Denver, or Pueblo.' },
+  { name: 'Trained', line: 'On your site, by a member of our leadership, before the first shift.' },
+  { name: 'Qualified', line: 'On armed posts, firearms-qualified by our veteran NRA firearms instructor.' },
+  { name: 'Supervised', line: 'A chain of command on every shift.' },
 ];
-
-export const FOR_PEOPLE: Commitment[] = [
-  { name: 'Fair pay', line: 'What the post demands, on time and in full, with overtime honored.' },
-  { name: 'Trained first', line: 'Trained on the specific site before the first shift.' },
-  { name: 'Real support', line: 'A chain of command on every shift. When you call, someone answers.' },
-];
-
-// Five traits (owner, 2026-10-05; were Diverse, Experienced, Composed, Cleared, Courteous).
-// Their initials read ALERT until the copy audit's plainer words (owner, 2026-10-10):
-// Rooted became Local, Tempered became Steady.
-export const TRAITS: Commitment[] = [
-  { name: 'Approachable', line: 'People who treat clients and the public with respect.' },
-  // Colorado has no statewide license; cities license security (was "state-licensed").
-  { name: 'Licensed', line: 'Background-checked and licensed before they reach your post.' },
-  { name: 'Experienced', line: 'Seasoned officers who have stood the hard posts before.' },
-  { name: 'Local', line: 'People who live in the communities they protect.' },
-  { name: 'Steady', line: 'Calm and clear when a situation turns.' },
-];
-

@@ -7,6 +7,9 @@ import { useEffect } from 'react';
  * then mirror whatever the element's `hover:` styles would do — letting
  * touch-only devices see the same animations.
  *
+ * With both `data-scroll-once` and `data-scroll-center`, it is one-way and center-triggered:
+ * `data-in-view` turns "true" when it reaches the middle slice and then stays.
+ *
  * If an element also carries `data-scroll-once`, the observer flips its
  * `data-in-view` to `"true"` on its first intersection and then stops
  * watching it — useful for one-way reveal animations (e.g. staggered
@@ -46,6 +49,14 @@ export function useScrollInViewObserver() {
               .forEach((sibling) => {
                 sibling.setAttribute('data-in-view', sibling === el ? 'true' : 'false');
               });
+          } else if (el.hasAttribute('data-scroll-once')) {
+            // Center-triggered and one-way (`data-scroll-once` with `data-scroll-center`): once
+            // it has reached the center it stays resolved (About's "What clients told us",
+            // 2026-10-18).
+            if (entry.isIntersecting) {
+              el.setAttribute('data-in-view', 'true');
+              centerIo.unobserve(el);
+            }
           } else {
             el.setAttribute('data-in-view', entry.isIntersecting ? 'true' : 'false');
           }
@@ -93,7 +104,7 @@ export function useScrollInViewObserver() {
     );
 
     hoverTargets.forEach((el) => {
-      if (el.hasAttribute('data-scroll-once')) revealIo.observe(el);
+      if (el.hasAttribute('data-scroll-once') && !el.hasAttribute('data-scroll-center')) revealIo.observe(el);
       else centerIo.observe(el);
     });
     // Belt-and-suspenders: synchronously detect anything that's already in
