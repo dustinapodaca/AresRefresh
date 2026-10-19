@@ -126,7 +126,7 @@ Emergency Response, which was retired. The POC block stays generic.
 
 ## Icons
 
-`public/favicon-v2.svg` is the source (the mark in #c4c8ce, set up and left on purpose). Rebuild the PNGs,
+`public/favicon-v3.svg` is the source (the mark in #c4c8ce, set up and left on purpose). Rebuild the PNGs,
 ICO, Apple touch icon, and manifest with `node assets/tools/make-icons.mjs`.
 
 ## Performance context

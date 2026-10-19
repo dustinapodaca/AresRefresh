@@ -11,7 +11,7 @@
 #   DH_DIR   the site's folder, relative to that user's home (DreamHost names it after the domain)
 #   --dry-run    build and check, then list what would change on the server; changes nothing
 #   --no-build   upload the dist/ that is already there (only if nothing changed since the last build)
-#   VITE_GA_ID=G-XXXXXXX in front turns Google Analytics on for this build (docs/analytics.md).
+#   Google Analytics: .env.production gives every build the GA4 ID (docs/analytics.md).
 #
 # Each real upload first copies the server folder to <DH_DIR>-backup-<date-time> beside it. To roll
 # back: ssh in, then  mv aressecurity.co aressecurity.co-bad && mv aressecurity.co-backup-<stamp> aressecurity.co

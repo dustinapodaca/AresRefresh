@@ -191,7 +191,7 @@ phones once the running head shows (offered); type/radius tokens and the 375px c
   `public/images/og/ares-security.jpg` (the owner's LinkedIn banner cropped to 1200x630 by
   `node assets/tools/make-og-card.mjs`), set as `ogImage` in routes.json. The old street
   photo (`capabilities-hero.jpg`) is in `assets/images-unused/`.
-- **Icons:** `public/favicon-v2.svg` (the mark in #c4c8ce, set up and left of center on
+- **Icons:** `public/favicon-v3.svg` (the mark in #c4c8ce, set up and left of center on
   purpose so it fits circular crops) with PNGs, ICO, Apple touch icon, and
   `manifest.json`; rebuild all with `node assets/tools/make-icons.mjs`.
 - **AI discovery:** `public/llms.txt`, `public/.well-known/ard.json` and `ai-catalog.json`

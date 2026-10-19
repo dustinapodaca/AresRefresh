@@ -9,9 +9,10 @@ reports from aressecurity.co (never local dev, deploy previews, or the prerender
 1. **Create the property.** analytics.google.com > Admin > Create > Property: "Ares Security
    website", time zone Mountain, currency USD. Add a **Web** data stream for
    `https://aressecurity.co`. Copy its Measurement ID (`G-...`).
-2. **Give the site the ID.** Netlify > Site configuration > Environment variables > add
-   `VITE_GA_ID` = the `G-...` ID (all deploy contexts is fine: it only reports on the live
-   domain). Redeploy so the build picks it up.
+2. **Give the site the ID.** Done (2026-10-19): `.env.production` holds `VITE_GA_ID=G-V4GCEJYB3L`
+   (property "Ares Security website"), so every build carries it, on DreamHost or Netlify. Use
+   the snippet Google offers only for its ID: the site loads gtag.js itself, and an inline
+   script would break the Content-Security-Policy.
 3. **Enhanced measurement** (Admin > Data streams > the stream > Enhanced measurement > gear):
    - Keep on: Scrolls, Outbound clicks, File downloads (this is what counts the capability
      statement PDF).

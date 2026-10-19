@@ -1,5 +1,5 @@
-// Google Analytics 4 (owner, 2026-10-11). Off unless VITE_GA_ID (the G-... Measurement ID)
-// is set in Netlify, and only on the live domain, so local dev, deploy previews, and the
+// Google Analytics 4 (owner, 2026-10-11). Off unless VITE_GA_ID (the G-... Measurement ID) is set,
+// as .env.production does for every build (G-V4GCEJYB3L, 2026-10-19), and only on the live domain, so local dev, deploy previews, and the
 // prerender never report. Setup and the GA4 settings it expects: docs/analytics.md.
 //
 // Page views are sent here on every route change (the GA4 setting "Page changes based on
