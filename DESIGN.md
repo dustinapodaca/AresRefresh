@@ -394,7 +394,8 @@ every page.
   glass is lighter for it in the liquid mode (42% black over an 18px blur; was 50% over 24px, then 32% over 14px). On desktop it fades to black into 01 Record over a longer
   stretch than the photo did (transparent at the foot, 35% at a fifth of the way up, solid by 46%; owner, 2026-10-15). Below 900px the terrain runs on to the end of the
   lead, 16px above the quote button (owner, 2026-10-16; it ended at the headline): the box grows by the
-  measured headline-and-lead height and the copy is pulled up by the same, so the copy stays put. The copper-glass tower photo below moved
+  measured headline-and-lead height and the copy is pulled up by the same, so the copy stays put. 24px shorter
+  there since the headline went to three lines on phones (owner, 2026-10-19). The copper-glass tower photo below moved
   to the Services opening and stays here at `/?herobg=photo`. (One change to the React Bits source:
   its cleanup no longer destroys the WebGL context, which drew the hero white under React's
   development Strict Mode.)
@@ -777,7 +778,8 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
 - **Why Ares exists** (founder block, before 01; owner 2026-10-10, pass 2 after Slash,
   Flora, Resend; live with placeholder words and portrait): **`letter` (chosen, owner 2026-10-10)**: the
   headline in columns 1 to 4, the story in Inter 500 at 20 to 26px in two tones in columns 6
-  to 12, signed with a 48px portrait, the name in Inter Tight 600, role in mono) or `note`
+  to 12 (all of it ink muted but the last sentence, in ink; owner, 2026-10-19), signed with a 48px portrait, her name a quiet external link to her LinkedIn (owner, 2026-10-19; also the
+  founder Person in index.html's JSON-LD), the name in Inter Tight 600, role in mono) or `note`
   (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
   "How we work →" right between hairlines). The portrait is Deidre's photo (owner, 2026-10-19:
   `founder-deidre.jpg`, the owner's square crop of her full-length photo by the river); with no photo it

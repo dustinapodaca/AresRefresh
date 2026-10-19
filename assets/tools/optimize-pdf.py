@@ -54,6 +54,12 @@ for obj in pdf.objects:
             obj.write(out, filter=pikepdf.Name('/DCTDecode')); saved+=len(raw)-len(out)
 print('jpeg bytes saved',saved)
 if '/Metadata' in pdf.Root: del pdf.Root['/Metadata']
+# Title metadata (web audit, 2026-10-19): browser tabs and search results show the title, not
+# the file name. Doesn't change how the page looks.
+pdf.docinfo['/Title']='Ares Security Capability Statement 2026'
+pdf.docinfo['/Author']='Ares Security LLC'
+pdf.docinfo['/Subject']='Guard and patrol services, GSA MAS 47QSMS25D009Q, Colorado Springs'
+pdf.Root.ViewerPreferences=pikepdf.Dictionary(DisplayDocTitle=True)
 pdf.remove_unreferenced_resources()
 pdf.save(dst, compress_streams=True, recompress_flate=True, object_stream_mode=pikepdf.ObjectStreamMode.generate, linearize=True)
 print('content streams tidied:',changed)
