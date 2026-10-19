@@ -980,3 +980,5 @@ row (?close=ledger), the GSA insight's related link, the Capability Statement's 
 keeps "and" (e.g. "teaming and subcontract coverage" in a sentence).
 
 2026-10-18 (web audit, owner): Home hero lead (B2) "From restricted areas and data centers to offices and campuses: ..." became "From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift." The other hero options keep "data centers".
+
+2026-10-18 (owner): Home Record, Personnel card line "Our officers rate us highest for management and work-life balance." became "On Indeed, our officers rate us highest for management and work-life balance." (a line longer, to sit closer to the other two cards).

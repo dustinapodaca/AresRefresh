@@ -36,7 +36,7 @@ export const VALUES: {
     caption: 'Employee rating on Indeed',
     href: INDEED_REVIEWS,
     // Says what the 4.8 is about (copy audit round 3, 2026-10-10; Careers says the same).
-    line: 'Our officers rate us highest for management and work-life balance.',
+    line: 'On Indeed, our officers rate us highest for management and work-life balance.', // "On Indeed" added (owner, 2026-10-18) so the card runs a line longer
   },
 ];
 
