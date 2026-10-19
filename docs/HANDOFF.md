@@ -1,7 +1,7 @@
 # Handoff: Ares site redesign ("The Dossier")
 
 Last updated: 2026-10-19. **The site is live on aressecurity.co** (DreamHost). `main` = `audit`
-(fast-forwarded at launch); keep working on `audit` and fast-forward `main` after each release.
+as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owner says to merge.
 **Read this first when starting a new chat.**
 
 ## Live (2026-10-19)
@@ -12,8 +12,10 @@ Last updated: 2026-10-19. **The site is live on aressecurity.co** (DreamHost). `
   404, the CSP and security headers, caching, compression, and https on the bare domain
   (www and http redirect). `deploy/dreamhost.sh` does the same upload over rsync if ever wanted.
   FileZilla doesn't delete: when files are renamed or removed, tell the owner which to delete.
-- **Release steps:** make the change on `audit`, `npm run build`, run the preship check (full),
-  commit and push, fast-forward `main` (`git push origin audit:main`), then the owner uploads.
+- **Release steps (owner, 2026-10-19):** work on `audit`; `npm run build` and the preship check
+  (full); commit and push `audit`; the owner uploads `dist/` and checks it live. Merge to `main`
+  (`git push origin audit:main`, a fast-forward while `main` has no commits of its own) only when
+  the owner says to, once the release is confirmed working.
 - **Checked live at launch:** every route, the six 301s, the 404, www/http to https, headers and
   caching, the files byte for byte against the build, no console errors on desktop or phone.
 - **Analytics:** GA4 `G-V4GCEJYB3L` via `.env.production` (reports only on aressecurity.co). GA
