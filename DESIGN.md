@@ -394,8 +394,8 @@ every page.
   glass is lighter for it in the liquid mode (42% black over an 18px blur; was 50% over 24px, then 32% over 14px). On desktop it fades to black into 01 Record over a longer
   stretch than the photo did (transparent at the foot, 35% at a fifth of the way up, solid by 46%; owner, 2026-10-15). Below 900px the terrain runs on to the end of the
   lead, 16px above the quote button (owner, 2026-10-16; it ended at the headline): the box grows by the
-  measured headline-and-lead height and the copy is pulled up by the same, so the copy stays put. 58px shorter
-  there since the headline went to three lines on phones (owner, 2026-10-19; 24px, 20px, 16px, then 42px more). The copper-glass tower photo below moved
+  measured headline-and-lead height and the copy is pulled up by the same, so the copy stays put. 50px shorter
+  there since the headline went to three lines on phones (owner, 2026-10-19; after 24, 20, 16, and 58px). The copper-glass tower photo below moved
   to the Services opening and stays here at `/?herobg=photo`. (One change to the React Bits source:
   its cleanup no longer destroys the WebGL context, which drew the hero white under React's
   development Strict Mode.)
@@ -787,7 +787,8 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
 - **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
-  instead, each a liquid glass card (LIQUID at 12px from 768px; the CSS frost below, where Android Chrome drew a seam across
+  instead, each a liquid glass card, softer than the site's other glass (owner, 2026-10-19: CSS frost 30px at 1.2
+  color lift, the liquid 18px at 1.1, over a light about 40% dimmer) (LIQUID from 768px; the CSS frost below, where Android Chrome drew a seam across
   the card, owner 2026-10-19, and in other browsers): a mono "What we heard"
   in ink faint, the complaint in display type, a hairline, a mono "What we do" in rust, the answer in
   ink at lead size. Desktop: the headline, intro, and a mono counter (01 / 04, the card nearest the

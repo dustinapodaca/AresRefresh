@@ -2629,9 +2629,9 @@ html[data-cards] .ds-relief-panel {
 .ds-heard-glow { position: absolute; inset: 0; z-index: 0; overflow: clip; pointer-events: none; }
 .ds-heard-glow-in { position: sticky; top: 15vh; height: 70vh; }
 .ds-heard-glow i { position: absolute; display: block; border-radius: 50%; will-change: transform; }
-.ds-heard-glow i:nth-child(1) { left: 0; top: 8%; width: 100%; height: 84%; background: radial-gradient(closest-side, rgb(56 26 11 / 0.7), rgb(43 20 8 / 0.32) 55%, rgb(43 20 8 / 0) 100%); animation: ds-pg-a 38s ease-in-out infinite; }
-.ds-heard-glow i:nth-child(2) { left: 20%; top: 22%; width: 64%; height: 56%; background: radial-gradient(closest-side, rgb(104 51 22 / 0.48), rgb(89 43 18 / 0.18) 58%, rgb(89 43 18 / 0) 100%); animation: ds-pg-b 29s ease-in-out infinite; }
-.ds-heard-glow i:nth-child(3) { left: 38%; top: 34%; width: 40%; height: 34%; background: radial-gradient(closest-side, rgb(156 86 43 / 0.32), rgb(138 74 35 / 0.1) 60%, rgb(138 74 35 / 0) 100%); animation: ds-pg-c 23s ease-in-out infinite; }
+.ds-heard-glow i:nth-child(1) { left: 0; top: 8%; width: 100%; height: 84%; background: radial-gradient(closest-side, rgb(56 26 11 / 0.42), rgb(43 20 8 / 0.19) 55%, rgb(43 20 8 / 0) 100%); animation: ds-pg-a 38s ease-in-out infinite; }
+.ds-heard-glow i:nth-child(2) { left: 20%; top: 22%; width: 64%; height: 56%; background: radial-gradient(closest-side, rgb(104 51 22 / 0.29), rgb(89 43 18 / 0.11) 58%, rgb(89 43 18 / 0) 100%); animation: ds-pg-b 29s ease-in-out infinite; }
+.ds-heard-glow i:nth-child(3) { left: 38%; top: 34%; width: 40%; height: 34%; background: radial-gradient(closest-side, rgb(156 86 43 / 0.19), rgb(138 74 35 / 0.06) 60%, rgb(138 74 35 / 0) 100%); animation: ds-pg-c 23s ease-in-out infinite; }
 
 @media (min-width: 1024px) {
   .ds-heard-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
@@ -2644,14 +2644,15 @@ html[data-cards] .ds-relief-panel {
   .ds-heard-card { padding: 32px 32px 34px; }
 }
 
-/* Glass (the default): the site's glass card, frosted in CSS; Chromium adds the liquid rim
-   (App.tsx LIQUID, at the Record cards' 12px). */
+/* Glass (the default): the site's glass card, frosted in CSS; Chromium adds the liquid rim from
+   768px (App.tsx LIQUID). Softer than the other glass (owner, 2026-10-19): more blur (30px, the liquid
+   18px) and little color lift (1.2, the liquid 1.1), over a light about 40% dimmer than at first. */
 html[data-cards='glass'] .ds-heard-card {
   background: var(--ds-glass-wash);
   border: 1px solid var(--ds-glass-edge);
   box-shadow: var(--ds-glass-top), 0 12px 36px rgb(0 0 0 / 0.28);
-  -webkit-backdrop-filter: blur(22px) saturate(1.65);
-  backdrop-filter: blur(22px) saturate(1.65);
+  -webkit-backdrop-filter: blur(30px) saturate(1.2);
+  backdrop-filter: blur(30px) saturate(1.2);
 }
 @media (prefers-reduced-motion: reduce) {
   .ds-heard-glow i { animation: none; }
@@ -4817,8 +4818,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    lead's foot; the box grows by what that adds to the old 7rem overlap, and the copy is pulled up
    by the same, so it stays where it was. */
 @media (max-width: 899px) {
-  /* 58px shorter since the headline went to three lines on phones (owner, 2026-10-19; 24px, 20px, 16px, then 42px more). */
-  .ds-hero-topo { height: calc(58svh + var(--ds-header) + 100px + var(--topo-reach, 7rem) - 7rem - 58px); }
+  /* 50px shorter since the headline went to three lines on phones (owner, 2026-10-19; after 24, 20, 16, and 58px). */
+  .ds-hero-topo { height: calc(58svh + var(--ds-header) + 100px + var(--topo-reach, 7rem) - 7rem - 50px); }
   .ds-hero-topo + .ds-container .ds-hero-copy { margin-top: calc(-1 * var(--topo-reach, 7rem)); }
 }
 @media (min-width: 900px) {
