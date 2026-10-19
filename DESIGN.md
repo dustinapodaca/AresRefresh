@@ -796,7 +796,8 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
 - **03 Who stands your post.** (owner, 2026-10-18; replaced "What we commit to our officers." and
   the five traits): an officer credential (`People.tsx`). Two real officers share one plate
   (`officer-portrait.jpg` first, `backbone-officer.jpg` second; same 4:5 crop and dark grade, a soft
-  rust rim light from the lower right, a mono "Officer 01" / "Officer 02" caption, no names) while a
+  rust rim light from the lower right, no captions or names; the "Officer 01" / "Officer 02"
+  captions were removed, owner 2026-10-19) while a
   liquid glass card set like an ID checks off five standards a buyer can check (Screened, Licensed,
   Trained, Qualified, Supervised): a mono bar "Officer standard" / "05 checks", five rows (mono number,
   the word in display type, its line in ink muted, a circular check), a mono foot "Ares Security ·
@@ -812,8 +813,7 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   photo clear below the card (144px, so officer 02 holds in full view a little longer) at the end, so the
   officer passes behind the glass and comes out the other side, face in full view; the two officers crossfade with the scroll (--swap, an 8px drift) from
   when the card covers about 85% of the first to when row 05 checks, so the second is whole before it comes
-  out, and it all reverses on the way up (CSS frost only below 768px, the Android seam). Officer 01's
-  caption sits at the top, officer 02's at the foot, the sides the card leaves open. The closing line follows the card
+  out, and it all reverses on the way up (CSS frost only below 768px, the Android seam). The closing line follows the card
   and holds 24px under the photo, so it is already there when the card clears; the photo and the line
   let go together (owner). Rows check at the optical center (the page's scroll
   observer, once). Without JavaScript, in the prerender, and under reduced

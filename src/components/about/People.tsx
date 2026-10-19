@@ -161,7 +161,6 @@ export default function People() {
               {SHOTS.map((s, i) => (
                 <figure key={s.src} className="ds-ab-cred-shot" data-shot={i + 1}>
                   <img {...responsive(s.src, '(min-width: 1024px) 45vw, 100vw')} alt={s.alt} loading="lazy" decoding="async" />
-                  <figcaption className="ds-data ds-ab-cred-cap">Officer {n2(i)}</figcaption>
                 </figure>
               ))}
             </div>

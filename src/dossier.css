@@ -2686,7 +2686,6 @@ html[data-cards='glass'] .ds-heard-card {
 .ds-ab-cred-shot { position: relative; margin: 0; overflow: hidden; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
 .ds-ab-cred-shot img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; filter: saturate(0.85) brightness(0.8) contrast(1.05); }
 .ds-ab-cred-shot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0) 34%); pointer-events: none; }
-.ds-ab-cred-cap { position: absolute; z-index: 1; left: 14px; bottom: 12px; margin: 0; font-size: 12px; color: #c4c8ce; }
 @media (min-width: 768px) { .ds-ab-cred-shots { gap: 24px; } }
 
 /* The credential card. */
@@ -2761,10 +2760,6 @@ html[data-cards='glass'] .ds-ab-cred-card {
   .ds-ab-cred[data-anim='phone'] .ds-ab-cred-shot { height: 100%; }
   .ds-ab-cred[data-anim='phone'] .ds-ab-cred-shot img { height: 100%; aspect-ratio: auto; }
   .ds-ab-cred[data-anim='phone'] .ds-ab-cred-card { margin: calc(-96px - var(--after-h, 0px)) 12px 0; }
-  /* The card covers officer 01's foot at the start and officer 02's top at the end, so each caption
-     sits on the open side: 01 at the top, 02 at the foot. */
-  .ds-ab-cred[data-anim='phone'] .ds-ab-cred-shot[data-shot='1'] .ds-ab-cred-cap { top: 12px; bottom: auto; }
-  .ds-ab-cred[data-anim='phone'] .ds-ab-cred-shot[data-shot='1']::after { background: linear-gradient(to bottom, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0) 22%); }
 }
 
 /* Desktop, armed: a 260vh stage with a sticky frame; the plate (55%) at the left, the card over
