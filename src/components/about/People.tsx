@@ -29,7 +29,7 @@ function Check() {
   );
 }
 
-// 02 Who stands your post (owner, 2026-10-18): an officer credential. Two real officers share
+// 03 Who stands your post (owner, 2026-10-18): an officer credential. Two real officers share
 // one plate while a liquid glass card, set like an ID, checks off the five standards.
 // Desktop: a 260vh stage with a sticky frame; scroll progress (--p, one passive rAF listener)
 // eases the plate from 1.06 to 1 and checks the rows at AT; as row 03 checks, the plate turns to

@@ -1022,3 +1022,6 @@ Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews
   01" and "Officer 02" (no names).
 - llms.txt About line: "The founder’s story, the problems clients had with other guard companies
   and how Ares answers them, and the standards every officer meets."
+
+- About rail (owner, 2026-10-19): "Why Ares exists" is now the first mark, so the rail reads 01 Why Ares
+  exists, 02 What clients told us, 03 Who stands your post.

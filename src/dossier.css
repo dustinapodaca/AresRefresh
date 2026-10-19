@@ -2575,7 +2575,7 @@ html[data-cards] .ds-relief-panel {
 .ds-ab-creds[data-anim='ready'] li { transform: translateY(14px); opacity: 0.35; }
 .ds-ab-creds[data-anim='ready'] li::before { transform: scaleX(0.15); }
 
-/* ---------- 01 What clients told us (owner, 2026-10-18; Heard.tsx) ----------
+/* ---------- 02 What clients told us (owner, 2026-10-18; Heard.tsx) ----------
    What clients said about their last guard company, and what Ares does instead, as glass cards.
    The resolved state (strike drawn, complaint dimmed, answer in place) is the default; the
    waiting state applies only once the section is armed (data-anim), and transitions only at "on". */
@@ -2656,7 +2656,7 @@ html[data-cards='glass'] .ds-heard-card {
   .ds-heard-glow i { animation: none; }
 }
 
-/* ---------- 02 Who stands your post: the officer credential (owner, 2026-10-18; People.tsx) ----------
+/* ---------- 03 Who stands your post: the officer credential (owner, 2026-10-18; People.tsx) ----------
    Base rules are the fallback (prerender, no JavaScript, reduced motion): both officers side by
    side, the credential card below, every row checked. data-anim="desktop" pins a 260vh stage and
    checks rows by scroll progress (--p); data-anim="phone" overlaps the card on one photo and checks

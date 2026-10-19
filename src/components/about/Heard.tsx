@@ -5,7 +5,7 @@ import { HEARD } from './data';
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
 
-// 01 What clients told us (owner, 2026-10-18): the page's signature section. What clients said
+// 02 What clients told us (owner, 2026-10-18): the page's signature section. What clients said
 // about their last guard company, and what Ares does instead, as liquid glass cards.
 // Desktop: the headline, intro, and a counter hold still on the left while the cards pass the
 // center on the right, one at a time. As a card reaches the center, a rust line draws through

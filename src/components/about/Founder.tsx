@@ -9,10 +9,9 @@ import { responsive } from '../../lib/responsive';
 //          portrait, name, and role.
 //  note    Resend's "Meet the team": the headline left; on the right a portrait, the name
 //          and role, the story, and a route on to how we work, between hairlines.
-// PLACEHOLDER: the story is the audit's draft and every line still needs Deidre's sign-off;
-// the portrait shows the Ares mark until her photo arrives (set PORTRAIT to its image path,
-// run it through the WebP pipeline).
-const PORTRAIT: string | null = null;
+// PLACEHOLDER: every line of the story still needs Deidre's sign-off. Her portrait arrived
+// 2026-10-19 (owner); with PORTRAIT null the Ares mark shows instead.
+const PORTRAIT: string | null = '/images/founder-deidre.jpg';
 
 const FOUNDER = {
   name: 'Deidre Herrera-Ruiz',
@@ -40,7 +39,7 @@ export default function Founder() {
 
   if (form === 'note') {
     return (
-      <section className="ds-founder" data-form="note" aria-labelledby="founder-title">
+      <section id="founder" className="ds-founder" data-form="note" aria-labelledby="founder-title">
         <div className="ds-founder-head">
           <h2 id="founder-title" className="ds-display-lg">Why Ares exists.</h2>
           <p className="ds-lead">Founded in Colorado Springs in 2021.</p>
@@ -64,7 +63,7 @@ export default function Founder() {
   }
 
   return (
-    <section className="ds-founder" data-form="letter" aria-labelledby="founder-title">
+    <section id="founder" className="ds-founder" data-form="letter" aria-labelledby="founder-title">
       <h2 id="founder-title" className="ds-display-lg">Why Ares exists.</h2>
       <div className="ds-founder-letter">
         <p className="ds-founder-story">

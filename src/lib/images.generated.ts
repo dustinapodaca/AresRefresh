@@ -110,6 +110,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 733,
     "height": 900
   },
+  "/images/founder-deidre.jpg": {
+    "src": "/images/opt/founder-deidre-1200.1cd5103c.webp",
+    "srcSet": "/images/opt/founder-deidre-480.e65729ed.webp 480w, /images/opt/founder-deidre-800.be8e41d1.webp 800w, /images/opt/founder-deidre-1200.1cd5103c.webp 1200w, /images/opt/founder-deidre-1600.e9c765a9.webp 1600w, /images/opt/founder-deidre-1713.af9a76f4.webp 1713w",
+    "width": 1713,
+    "height": 1713
+  },
   "/images/matrix-government.jpg": {
     "src": "/images/opt/matrix-government-640.a0d270a6.webp",
     "srcSet": "/images/opt/matrix-government-480.e4f88b4b.webp 480w, /images/opt/matrix-government-640.a0d270a6.webp 640w",

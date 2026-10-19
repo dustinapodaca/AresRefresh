@@ -761,7 +761,7 @@ contents"). Nothing on Services repeats a Home layout except the rail and the fo
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks (owner, 2026-10-18): 01 What clients told us, 02 Who stands your post.
+docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 What clients told us, 03 Who stands your post.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -775,9 +775,10 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-18): 01 What clients told us,
   headline in columns 1 to 4, the story in Inter 500 at 20 to 26px in two tones in columns 6
   to 12, signed with a 48px portrait, the name in Inter Tight 600, role in mono) or `note`
   (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
-  "How we work →" right between hairlines). Until the photo arrives the portrait shows the
-  Ares mark at 28%. The portrait opens from the bottom on scroll (clip-path).
-- **01 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
+  "How we work →" right between hairlines). The portrait is Deidre's photo (owner, 2026-10-19:
+  `founder-deidre.jpg`, the owner's square crop of her full-length photo by the river); with no photo it
+  shows the Ares mark at 28%. The portrait opens from the bottom on scroll (clip-path).
+- **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
   instead, each a liquid glass card (LIQUID at 12px; the CSS frost elsewhere): a mono "What we heard"
@@ -792,7 +793,7 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-18): 01 What clients told us,
   resolved state is the default (prerender, no JavaScript, reduced motion); the waiting state applies
   only once armed after mount. Then "Those details are what clients thank us for most." and "Tell us
   about your site →".
-- **02 Who stands your post.** (owner, 2026-10-18; replaced "What we commit to our officers." and
+- **03 Who stands your post.** (owner, 2026-10-18; replaced "What we commit to our officers." and
   the five traits): an officer credential (`People.tsx`). Two real officers share one plate
   (`officer-portrait.jpg` first, `backbone-officer.jpg` second; same 4:5 crop and dark grade, a soft
   rust rim light from the lower right, a mono "Officer 01" / "Officer 02" caption, no names) while a
@@ -819,7 +820,7 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-18): 01 What clients told us,
   motion: both officers side by side above the card, every row checked; the motion is armed only after
   mount. Then the closing line two-toned like the founder letter, and the Indeed proof as a small mono
   link with the external arrow.
-- **No close** (owner, 2026-10-06): the page ends on 02 Who stands your post and hands straight to the
+- **No close** (owner, 2026-10-06): the page ends on 03 Who stands your post and hands straight to the
   footer. (04 Statement, the capability statement plate with its links, was removed; the
   Capability Statement page carries it.)
 

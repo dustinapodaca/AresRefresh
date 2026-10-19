@@ -6,8 +6,9 @@ import { GSA_ELIBRARY } from '../home/links';
 // 01 replaced "How we work" (the process lives on Services); 02 merged the officer commitments
 // and the traits into one section (owner, 2026-10-18).
 export const ABOUT_MARKS: readonly Mark[] = [
-  { id: 'heard', n: '01', label: 'What clients told us' },
-  { id: 'people', n: '02', label: 'Who stands your post' },
+  { id: 'founder', n: '01', label: 'Why Ares exists' },
+  { id: 'heard', n: '02', label: 'What clients told us' },
+  { id: 'people', n: '03', label: 'Who stands your post' },
 ];
 
 export type Credential = { src: string; alt: string; label: string; id?: string; href?: string; tall?: boolean };
@@ -19,7 +20,7 @@ export const CREDENTIALS: Credential[] = [
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise", label: 'WBENC certified', id: 'WBE2303571', tall: true },
 ];
 
-// 01 What clients told us (owner, 2026-10-18): what clients said about their last guard
+// 02 What clients told us (owner, 2026-10-18): what clients said about their last guard
 // company, paraphrased (not testimonials: no quotation marks, no names), and what Ares does
 // instead. Heard.tsx.
 export type HeardItem = { heard: string; answer: string };
@@ -45,7 +46,7 @@ export const HEARD: HeardItem[] = [
 
 export type Commitment = { name: string; line: string };
 
-// 02 Who stands your post (owner, 2026-10-18): the standards every officer meets, each one a
+// 03 Who stands your post (owner, 2026-10-18): the standards every officer meets, each one a
 // buyer can check. Replaced FOR_PEOPLE (the commitments to officers, now the section's closing
 // line) and TRAITS (five adjectives: Approachable, Licensed, Experienced, Local, Steady).
 export const STANDARDS: Commitment[] = [

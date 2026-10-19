@@ -63,6 +63,10 @@ PHOTOS = [
     # The About portrait, replaced 2026-10-09 (owner): a PNG original, so encode a touch higher.
     {'key': '/images/officer-portrait.jpg', 'source': 'assets/images-src/officer-portrait.png', 'q': 82},
     {'key': '/images/backbone-officer.jpg', 'source': 'assets/images-src/backbone-officer.jpg', 'q': 80},
+    # Deidre Herrera-Ruiz, the About founder portrait (owner, 2026-10-19): the owner's own square crop
+    # (1713 x 1713, tight on her face) of founder-deidre-full.jpg (3456 x 5184, by the river). The first, smaller
+    # close-up she sent is in images-unused.
+    {'key': '/images/founder-deidre.jpg', 'source': 'assets/images-src/founder-deidre.jpg', 'q': 82},
     {'key': '/images/matrix-government.jpg', 'source': 'assets/images-src/matrix-government.jpg', 'q': 80},
     {'key': '/images/matrix-government.webp', 'source': 'assets/images-src/matrix-government.webp', 'q': 82},
     {'key': '/images/matrix-specialized.jpg', 'source': 'assets/images-src/matrix-specialized.jpg', 'q': 80},
