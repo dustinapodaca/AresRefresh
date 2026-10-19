@@ -1025,3 +1025,6 @@ Then (owner, same day: 3 lines or more on phones): "On Indeed, where the reviews
 
 - About rail (owner, 2026-10-19): "Why Ares exists" is now the first mark, so the rail reads 01 Why Ares
   exists, 02 What clients told us, 03 Who stands your post.
+
+- About founder signature (owner, 2026-10-19): "Founder and CEO" is now "Founder & CEO" (also in the
+  portrait's alt text).

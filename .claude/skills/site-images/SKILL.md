@@ -114,11 +114,13 @@ breakpoint you were asked about.
 
 ## The capability statement PDF
 
-`public/files/Ares-Security-Capability-Statement-2026.pdf` (1.35 MB). The owner builds it
+`public/files/Ares-Security-Capability-Statement-2026.pdf` (1.57 MB; the owner's new statement,
+2026-10-19, 2.35 MB as exported). The page thumbnail `capability-page1.webp` is page 1 rendered at
+1000px from the PDF (pypdfium2), lossless; re-render it whenever the PDF changes. The owner builds it
 ("I'll do it on my own", 2026-10-10). Keep the path and filename. To shrink a new export
 without visible change, keep the original in `assets/files-src/` and run
 `python -I assets/tools/optimize-pdf.py assets/files-src/<name>.pdf public/files/<name>.pdf 3`
-(needs pikepdf and jpegtran). Then update the size in the Capability Statement hero's spec
+(needs pikepdf and jpegtran; pikepdf isn't in the system Python, so use a scratch venv). Then update the size in the Capability Statement hero's spec
 line. The PDF's content is still listed for review: "cleared", Buckley, badging, and
 Emergency Response, which was retired. The POC block stays generic.
 

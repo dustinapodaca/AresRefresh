@@ -15,7 +15,7 @@ const PORTRAIT: string | null = '/images/founder-deidre.jpg';
 
 const FOUNDER = {
   name: 'Deidre Herrera-Ruiz',
-  role: 'Founder and CEO',
+  role: 'Founder & CEO',
   // Her story (owner, 2026-10-18); still waiting on Deidre's sign-off (PLACEHOLDER, above).
   lead: 'Before Ares, Deidre Herrera-Ruiz ran operations and HR for another Colorado security company.',
   rest: 'From her first weeks she was rebuilding the schedule, taking the calls from sites whose guard never showed, and putting structure where there was none. She stayed for years, through the pandemic, and learned the business from the inside. It showed her what clients and officers live with when a security company has no structure. She founded Ares in 2021 to fix it.',

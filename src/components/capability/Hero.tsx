@@ -43,7 +43,7 @@ export default function Hero() {
           <p className="ds-data ds-cs-spec">
             <span>Ares Security LLC</span>
             <span>NAICS 561612</span>
-            <span>1 page · PDF · 1.3 MB</span>
+            <span>1 page · PDF · 1.6 MB</span>
             <span>2026</span>
           </p>
         </div>

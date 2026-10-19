@@ -849,7 +849,8 @@ Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Down
   quick facts and sections below carry it), a white "Download the PDF"
   button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
   it), and a mono spec line
-  (company, NAICS, 1 page, PDF, 1.3 MB since the lossless shrink of 2026-10-09, 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
+  (company, NAICS, 1 page, PDF, 1.6 MB for the owner's new statement of 2026-10-19 after the same lossless
+  shrink, 2.35 MB as exported; 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
   full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
   2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
 - **Services first (owner, 2026-10-18; web audit item G):** the six capability cards below now open
