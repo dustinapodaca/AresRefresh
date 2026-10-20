@@ -5,7 +5,7 @@
 
 .nx { background: var(--ds-canvas); color: var(--ds-fg); }
 .nx-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.nx-w { display: inline-block; will-change: transform, opacity; }
+.nx-w { display: inline-block; white-space: pre; will-change: transform, opacity; }
 .nx-edge { padding-inline: var(--ds-edge); }
 
 /* The Statement: much larger than the old section heads; scale contrast does the grouping. */

@@ -87,6 +87,8 @@ export function useScene(
       ctx = e.gsap.context(() => {
         extra = setup(e, root);
       }, root);
+      // Pins above change where everything below starts: measure in page order.
+      e.ScrollTrigger.sort();
       e.ScrollTrigger.refresh();
     });
     return () => {

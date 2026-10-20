@@ -1,0 +1,191 @@
+/* 01 The record (home-flora, 2026-10-20). Resolved default: three stacked proof moments, every
+   diagram built. [data-pin="on"] (set by the scene on desktop with motion): the stage holds the
+   screen and the three moments play one after another. */
+
+.nx-record {
+  position: relative;
+  padding-top: var(--ds-beat-open);
+  padding-bottom: var(--ds-beat);
+}
+.nx-rec-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 20px;
+  align-items: end;
+  margin-bottom: clamp(48px, 7vw, 96px);
+}
+.nx-rec-head h2 { grid-column: 1 / span 9; }
+.nx-rec-lead {
+  grid-column: 1 / span 5;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ds-fg-muted);
+  max-width: 40ch;
+}
+
+/* The three tabs and the meter only matter while the stage is pinned. */
+.nx-rec-tabs { display: none; }
+
+.nx-rec-moments { display: grid; gap: clamp(72px, 9vw, 128px); }
+.nx-rec-moment {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 40px;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--ds-rule);
+}
+.nx-rec-copy { grid-column: 1 / span 6; }
+.nx-rec-viz { grid-column: 8 / span 5; position: relative; }
+/* A low rust light behind each diagram, so the squares sit in the same warm air as the hero. */
+.nx-rec-viz::before {
+  content: '';
+  position: absolute;
+  inset: -30% -20% -40% -30%;
+  background: radial-gradient(closest-side, rgb(156 86 43 / 0.22), rgb(104 51 22 / 0.1) 50%, transparent 78%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nx-rec-num {
+  margin: 8px 0 0;
+  font-family: var(--ds-data);
+  font-weight: 400;
+  font-size: clamp(96px, 14vw, 232px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums slashed-zero;
+  color: var(--ds-fg);
+}
+.nx-rec-digits { display: inline-flex; align-items: flex-start; }
+.nx-odo { display: inline-block; height: 1em; overflow: hidden; }
+.nx-odo-strip { display: flex; flex-direction: column; transform: translateY(-75%); }
+.nx-odo-strip > span { display: block; height: 1em; line-height: 1; }
+.nx-rec-sym { display: inline-block; line-height: 1; }
+.nx-rec-num .nx-rec-sym:first-child { color: var(--ds-fg-muted); }
+.nx-rec-denom {
+  font-size: 0.42em;
+  line-height: 1;
+  margin-top: 0.12em;
+  margin-left: 0.04em;
+  letter-spacing: -0.04em;
+  color: var(--ds-fg-faint);
+}
+
+.nx-rec-cap { margin-top: 14px; }
+.nx-rec-caption {
+  font-size: 15px;
+  color: #c4c8ce;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+a.nx-rec-caption { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.2); text-underline-offset: 4px; }
+a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
+.nx-rec-line {
+  margin: 22px 0 0;
+  max-width: 46ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ds-fg-muted);
+}
+.nx-rec-mono {
+  margin: 18px 0 0;
+  font-family: var(--ds-data);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+}
+
+/* The diagrams: drawn only from each figure's own number. */
+.nx-rec-grid { display: grid; gap: clamp(4px, 0.5vw, 7px); }
+.nx-rec-grid[data-kind='hundred'] { grid-template-columns: repeat(10, minmax(0, 1fr)); max-width: 420px; }
+.nx-rec-grid[data-kind='criteria'] { grid-template-columns: repeat(15, minmax(0, 1fr)); max-width: 600px; }
+.nx-sq {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 1px;
+  background: var(--ds-fg);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.04);
+}
+.nx-sq[data-off] { background: transparent; box-shadow: inset 0 0 0 1px var(--ds-fg-muted); }
+/* The last lit square carries the rust light: where the count lands. */
+.nx-rec-grid[data-kind='hundred'] .nx-sq:last-child,
+.nx-rec-grid[data-kind='criteria'] .nx-sq:nth-child(43) { background: #f0c7a8; box-shadow: 0 0 14px rgb(188 111 64 / 0.75); }
+
+.nx-rec-bars { display: grid; gap: 12px; max-width: 520px; }
+.nx-bar {
+  display: block;
+  height: clamp(16px, 1.6vw, 22px);
+  border-radius: 1px;
+  box-shadow: inset 0 0 0 1px var(--ds-rule-strong);
+  overflow: hidden;
+}
+.nx-bar i {
+  display: block;
+  height: 100%;
+  width: calc(var(--f) * 100%);
+  background: var(--ds-fg);
+  transform-origin: left center;
+}
+.nx-bar:last-child i { background: linear-gradient(90deg, var(--ds-fg) 70%, #f0c7a8); box-shadow: 0 0 14px rgb(188 111 64 / 0.6); }
+
+/* ---- Pinned (desktop, motion) */
+.nx-record[data-pin='on'] .nx-rec-stage {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(var(--ds-header) + 28px);
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+.nx-record[data-pin='on'] .nx-rec-tabs {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  font-family: var(--ds-data);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+  position: relative;
+  padding-bottom: 16px;
+}
+.nx-rec-tab b { font-weight: 400; color: var(--ds-fg-faint); margin-right: 6px; transition: color 0.3s var(--ds-ease); }
+.nx-rec-tab { transition: color 0.3s var(--ds-ease); }
+.nx-rec-tab[data-live='true'] { color: var(--ds-fg); }
+.nx-rec-tab[data-live='true'] b { color: var(--ds-rust); }
+.nx-rec-meter {
+  position: absolute;
+  left: var(--ds-edge);
+  right: var(--ds-edge);
+  bottom: 0;
+  height: 1px;
+  background: var(--ds-rule-strong);
+}
+.nx-rec-meter i {
+  position: absolute;
+  inset: 0;
+  background: var(--ds-rust);
+  box-shadow: 0 0 10px rgb(188 111 64 / 0.8);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.nx-record[data-pin='on'] .nx-rec-moments { position: relative; flex: 1; display: block; }
+.nx-record[data-pin='on'] .nx-rec-moment {
+  position: absolute;
+  inset: 0 var(--ds-edge);
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .nx-rec-head h2, .nx-rec-lead { grid-column: 1 / -1; }
+  .nx-rec-copy, .nx-rec-viz { grid-column: 1 / -1; }
+  .nx-rec-num { font-size: clamp(88px, 26vw, 160px); }
+}

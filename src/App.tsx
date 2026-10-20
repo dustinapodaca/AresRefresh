@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
 import Home from './pages/Home';
-import HomeNext from './pages/HomeNext';
+// The reimagined Home preview loads on its own route only, so the live pages don't carry it.
+const HomeNext = lazy(() => import('./pages/HomeNext'));
 import About from './pages/About';
 import Services from './pages/Services';
 import CapabilityStatement from './pages/CapabilityStatement';
@@ -128,7 +129,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* The reimagined Home, previewed beside the live one (home-flora, 2026-10-20; noindex). */}
-        <Route path="/home-next" element={<HomeNext />} />
+        <Route path="/home-next" element={<Suspense fallback={null}><HomeNext /></Suspense>} />
         {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />

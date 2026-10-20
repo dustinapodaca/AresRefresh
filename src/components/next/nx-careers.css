@@ -1,0 +1,89 @@
+/* 05 Careers (home-flora, 2026-10-20). */
+
+.nx-careers { position: relative; padding-top: var(--ds-beat); }
+.nx-cr-stage {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+}
+.nx-cr-photo { position: absolute; inset: 0; will-change: clip-path; }
+.nx-cr-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+  filter: saturate(0.82) brightness(0.86);
+  will-change: transform;
+}
+.nx-cr-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 26%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.72) 70%, rgb(0 0 0 / 0.94) 100%);
+}
+.nx-cr-edge { display: none; }
+
+.nx-cr-copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 var(--ds-edge) clamp(36px, 6vh, 64px);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 28px;
+  align-items: end;
+}
+.nx-cr-title { grid-column: 1 / span 9; font-size: clamp(44px, 6.6vw, 116px); }
+.nx-cr-side { grid-column: 10 / span 3; }
+.nx-cr-side p { margin: 0; font-size: 18px; line-height: 1.5; color: #c4c8ce; max-width: 34ch; }
+.nx-cr-link { display: inline-flex; margin-top: 18px; gap: 8px; align-items: center; }
+
+.nx-cr-nodes {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.nx-cr-nodes li { border-top: 1px solid rgb(255 255 255 / 0.16); padding-top: 14px; }
+.nx-cr-nodes .nx-node-bar { margin: 0; }
+.nx-cr-nodes .nx-node-bar > span:last-child { color: var(--ds-fg); }
+
+@media (min-width: 768px) {
+  html[data-nx-motion='on'] .nx-cr-stage { height: 100svh; min-height: 620px; }
+  html[data-nx-motion='on'] .nx-cr-edge {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    z-index: 1;
+    background: linear-gradient(180deg, rgb(232 150 98 / 0), rgb(232 150 98 / 0.9) 30%, rgb(232 150 98 / 0.9) 70%, rgb(232 150 98 / 0));
+    box-shadow: 0 0 18px 2px rgb(188 111 64 / 0.55);
+    transform: translateX(-0.5px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .nx-cr-title { grid-column: 1 / -1; }
+  .nx-cr-side { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .nx-cr-stage { display: block; min-height: 0; }
+  .nx-cr-photo { position: relative; aspect-ratio: 4 / 5; }
+  .nx-cr-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 1) 100%); bottom: auto; height: calc(100vw * 1.25); }
+  .nx-cr-copy { margin-top: -88px; padding-bottom: 8px; }
+  .nx-cr-title { font-size: clamp(40px, 11.6vw, 64px); }
+  .nx-cr-nodes { grid-template-columns: 1fr; gap: 0; }
+  .nx-cr-nodes li { padding: 12px 0; }
+}
+
+/* The read-in words are inline blocks, which drop their trailing space; keep it. */
