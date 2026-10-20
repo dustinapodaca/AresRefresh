@@ -338,3 +338,55 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
 @media (min-width: 768px) {
   .hn-site-block { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 40px; align-items: center; }
 }
+
+/* ---------- 4.4 For prime contractors: the node canvas ---------- */
+.hn-primes { padding-top: var(--ds-beat); }
+.hn-primes-grid { display: grid; gap: 48px; }
+.hn-primes-copy { display: grid; gap: 22px; align-content: start; }
+.hn-primes-title { font-size: clamp(48px, 6.4vw, 112px); }
+.hn-primes-line { margin: 0; max-width: 40ch; font-size: 18px; line-height: 1.55; color: var(--ds-fg-muted); }
+.hn-primes-line > span { color: var(--ds-fg); }
+.hn-primes-copy .ds-btn { justify-self: start; }
+/* Stacked (phones, the static page): prime, Ares, the posts, the wires straight down between them. */
+.hn-canvas { position: relative; display: grid; gap: 40px; }
+.hn-pn { position: relative; }
+.hn-pn-node + .hn-pn-node::before { content: ''; position: absolute; left: 3px; top: -34px; height: 28px; width: 1px; background: var(--ds-rust); opacity: 0.7; }
+.hn-pn-photo { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px; }
+.hn-pn-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hn-pn-text { display: grid; gap: 6px; font-size: 18px; font-weight: 500; line-height: 1.35; color: var(--ds-fg); }
+.hn-pn-sub { font-size: 13px; font-weight: 400; color: #c4c8ce; }
+.hn-pn-proof { display: block; font-size: 15px; line-height: 1.45; color: #c4c8ce; }
+.hn-pn-proof .hn-node-bar, .hn-pn-proof { }
+@media (max-width: 1023px) {
+  .hn-pn-proof, .hn-pn-photo { max-width: 420px; }
+  .hn-pn-photo { aspect-ratio: 16 / 9; }
+}
+
+/* Desktop, pinned: the copy at the top left, the canvas across the rest, nodes placed on it. */
+.hn-primes[data-scene] { padding-top: 0; }
+.hn-primes[data-scene] .hn-primes-scene { height: 100svh; box-sizing: border-box; padding-top: calc(var(--ds-header) + 32px); }
+.hn-primes[data-scene] .hn-primes-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: 32px; height: calc(100svh - var(--ds-header) - 32px - 120px); }
+.hn-primes[data-scene] .hn-canvas { display: block; height: 100%; will-change: translate; }
+.hn-primes[data-scene] .hn-pn { position: absolute; left: var(--x); top: var(--y); width: var(--w); }
+.hn-primes[data-scene] .hn-pn-node + .hn-pn-node::before { content: none; }
+.hn-primes[data-scene] .hn-pn-photo { aspect-ratio: 16 / 10; }
+.hn-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.hn-wire { stroke: var(--ds-rust); stroke-width: 1; opacity: 0.85; }
+.hn-wire-end { fill: var(--ds-rust); }
+.hn-wire-tag {
+  position: absolute; left: 0; top: 0; padding: 3px 6px 4px; border-radius: 2px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  color: #9fd38a; background: rgb(124 184 95 / 0.1); box-shadow: inset 0 0 0 1px rgb(124 184 95 / 0.35);
+}
+/* The ambient pulse once built: prime to Ares, then down the three to the posts, every 4s. */
+.hn-pulse { stroke: #f1c49a; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.05 1; stroke-dashoffset: 0.05; opacity: 0; }
+@keyframes hn-pulse-a { 0% { stroke-dashoffset: 0.05; opacity: 1; } 28% { stroke-dashoffset: -1; opacity: 1; } 29%, 100% { opacity: 0; stroke-dashoffset: -1; } }
+@keyframes hn-pulse-b { 0%, 28% { stroke-dashoffset: 0.05; opacity: 0; } 29% { opacity: 1; } 58% { stroke-dashoffset: -1; opacity: 1; } 59%, 100% { opacity: 0; stroke-dashoffset: -1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hn-primes[data-built] .hn-pulse { animation: hn-pulse-b 4s linear infinite; }
+  .hn-primes[data-built] .hn-pulse:nth-of-type(5) { animation-name: hn-pulse-a; }
+}
+@media (max-width: 1279px) {
+  .hn-primes[data-scene] .hn-primes-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+  .hn-primes[data-scene] .hn-pn { width: calc(var(--w) * 0.82); }
+  .hn-primes-title { font-size: clamp(44px, 5.6vw, 72px); }
+}
