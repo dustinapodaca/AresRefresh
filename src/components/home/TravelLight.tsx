@@ -58,7 +58,7 @@ export default function TravelLight() {
       { at: '#contact', line: 'top 75%', x: 0.5, y: 1.08, s: 1.7, o: 0.32 },
       { at: '#contact', line: 'center 55%', x: 0.5, y: 0.84, s: 1.8, o: 0.7 },
       { at: '.ds-ft-stage', line: 'top bottom', x: 0.5, y: 0.92, s: 1.8, o: 0.6 },
-      { at: '.ds-ft-stage', line: 'top 45%', x: 0.5, y: 1.05, s: 1.6, o: 0 },
+      { at: '.ds-ft-stage', line: 'top 75%', x: 0.5, y: 1.05, s: 1.6, o: 0 },
     ];
 
     // Each key's scroll position, from a bare ScrollTrigger so pins earlier on the page count.
@@ -98,15 +98,15 @@ export default function TravelLight() {
       });
     };
 
-    ScrollTrigger.create({
-      start: 0,
-      end: 'max',
-      onRefresh: (self) => {
-        measureHq();
-        draw(self.scroll());
-      },
-      onUpdate: (self) => draw(self.scroll()),
-    });
+    const st = ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (self) => draw(self.scroll()) });
+    // Redrawn once every trigger has been measured again (its own refresh can come before the keys').
+    const onRefresh = () => {
+      measureHq();
+      draw(st.scroll());
+    };
+    ScrollTrigger.addEventListener('refresh', onRefresh);
+    onRefresh();
+    return () => ScrollTrigger.removeEventListener('refresh', onRefresh);
   });
 
   if (!engine) return null;

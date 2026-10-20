@@ -48,6 +48,9 @@ export function createEngine(): Engine {
   let alive = true;
   document.fonts?.ready.then(() => alive && ScrollTrigger.refresh());
 
+  // Development only: a handle for checking triggers from the browser console.
+  if (import.meta.env.DEV) (window as unknown as { __motion?: unknown }).__motion = { gsap, ScrollTrigger, lenis };
+
   return {
     gsap,
     ScrollTrigger,

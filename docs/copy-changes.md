@@ -1054,3 +1054,12 @@ before anything is signed, the scoped proposal, on-call scheduling in every cont
 the post by leadership, the GSA Schedule's ceiling prices, no statewide license. Links to Mobile
 Patrol and Commercial & Retail. Added to routes.json (sitemap), llms.txt, and the Insights index
 (first, dated October 19, 2026). Author Dustin Apodaca, as on the others.
+
+## Home as one scroll (v3design, 2026-10-19)
+
+No copy was rewritten. Two pieces of text went with the layouts they belonged to:
+- The close: the two card titles "Request a quote" and "Call us" are gone with the cards (the
+  headline "Request a quote, or call us." says both). The quote line, the button, the urgent-timelines
+  line, the phone, the email, and the base are unchanged.
+- 02 Industries: the list and the pinned scene add each industry's number (01 to 06), and the scene adds
+  "Open the page" under the industry in view (the name links to the same page).

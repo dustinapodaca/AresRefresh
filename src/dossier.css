@@ -5020,3 +5020,43 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .ds-map-pin-in, .ds-map-lit-ring, .ds-map-city { transition: none; }
 }
+
+/* ---------- 06 The close, open (owner, 2026-10-19; replaced the two glass cards) ----------
+   The headline, then from 768px two columns with one hairline between: the quote line and button
+   (5 parts), the phone as the close's largest element (7 parts, Plex Mono up to 80px). On hover the
+   phone's rust underline draws left to right and an arrow slides in. */
+.ds-contact[data-form='open']::before { background: radial-gradient(ellipse 56% 40% at 50% 74%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
+.ds-close { display: grid; gap: 48px; margin-top: 56px; }
+.ds-close-rule { display: none; }
+.ds-close-quote { display: grid; align-content: start; gap: 28px; }
+.ds-close-line { margin: 0; font-size: 20px; line-height: 1.5; color: var(--ds-fg); max-width: 34ch; text-wrap: pretty; }
+.ds-close-quote .ds-btn { justify-self: start; }
+.ds-close-call { display: grid; align-content: start; gap: 18px; min-width: 0; }
+.ds-close-note { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
+.ds-close-phone {
+  position: relative; justify-self: start; display: inline-flex; align-items: center;
+  font-family: var(--ds-data); font-weight: 400; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.05; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums slashed-zero; color: var(--ds-fg); white-space: nowrap;
+}
+.ds-close-phone::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--ds-rust);
+  transform: scaleX(0); transform-origin: left; transition: transform 300ms var(--ds-ease);
+}
+/* The arrow sits just past the number, out of the flow, so the number alone sets the width. */
+.ds-close-phone .ds-arrow { position: absolute; left: calc(100% + 0.16em); top: 50%; margin-top: -0.21em; width: 0.42em; height: 0.42em; opacity: 0; transform: translateX(-0.3em); transition: opacity 200ms var(--ds-ease), transform 260ms var(--ds-ease); }
+/* Without a pointer to hover with, the underline stays drawn so it still reads as a link. */
+@media (hover: none) { .ds-close-phone::after { transform: scaleX(1); background: var(--ds-rule-strong); } }
+@media (hover: hover) and (pointer: fine) {
+  .ds-close-phone:hover::after { transform: scaleX(1); }
+  .ds-close-phone:hover .ds-arrow { opacity: 1; transform: none; color: var(--ds-rust); }
+}
+.ds-close-phone:focus-visible::after { transform: scaleX(1); }
+.ds-close-call .ds-cta-meta { margin-top: 6px; }
+@media (min-width: 768px) {
+  .ds-close { grid-template-columns: minmax(0, 5fr) 1px minmax(0, 7fr); column-gap: clamp(32px, 4vw, 56px); margin-top: 72px; }
+  .ds-close-rule { display: block; align-self: stretch; background: var(--ds-rule-strong); transform-origin: top; }
+}
+@media (max-width: 767px) { .ds-close-quote .ds-btn { justify-self: stretch; } }
+@media (prefers-reduced-motion: reduce) {
+  .ds-close-phone::after, .ds-close-phone .ds-arrow { transition: none; }
+}

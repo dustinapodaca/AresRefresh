@@ -1,25 +1,37 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { RevealHeading } from './Reveal';
+import { useScene } from './motion';
 
-// The close (owner, 2026-10-16, after Linear's "How can we help?" and Grok's contact cards on
-// Mobbin): two glass cards, Request a quote and Call us. Its primes line was removed (owner,
-// 2026-10-16). The other four forms (/?close=current|centered|starter|ledger) were removed at launch
-// (owner, 2026-10-19; tag options-archive-2026-10-19, docs/options-archive.md).
+// The close, open (owner, 2026-10-19; REVERSES the two glass cards, `routes`, owner 2026-10-16: two
+// equal boxes ended the scroll on a component, not a moment). The headline reads itself in; beneath
+// it, from 768px, two columns with one hairline between them: the quote line and the button left,
+// the phone number right as the largest thing on the close, the email and base under it. The
+// traveling light rises behind it as the horizon and hands on to the footer's closing stage. Phone
+// taps and the quote form are measured as before (src/lib/analytics.ts listens for tel: clicks).
+// The earlier forms are in tag options-archive-2026-10-19 (docs/options-archive.md).
 const PHONE = '719-696-3966';
 const TEL = 'tel:+17196963966';
 const EMAIL = 'contact@aressecurity.co';
 
 export default function Contact() {
+  const ref = useRef<HTMLElement>(null);
+  // The hairline grows down between the columns and each column comes up, tied to the scroll.
+  useScene(ref, ({ gsap }, root) => {
+    const body = root.querySelector('.ds-close');
+    const range = { trigger: body, start: 'top 88%', end: 'top 50%', scrub: true };
+    gsap.fromTo(root.querySelector('.ds-close-rule'), { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: range });
+    gsap.fromTo(root.querySelectorAll('.ds-close > div'), { y: 32, opacity: 0.2 }, { y: 0, opacity: 1, ease: 'none', stagger: 0.15, scrollTrigger: range });
+  });
   return (
-    <section id="contact" className="ds-contact" data-form="routes" aria-labelledby="contact-title">
-      <RevealHeading id="contact-title" className="ds-display-xl ds-cta-routes-title">
+    <section ref={ref} id="contact" className="ds-contact" data-form="open" aria-labelledby="contact-title">
+      <RevealHeading id="contact-title" className="ds-display-xl">
         Request a quote, or call us.
       </RevealHeading>
-      <div className="ds-cta-routes">
-        <div className="ds-cta-card">
-          <h3 className="ds-cta-card-title">Request a quote</h3>
-          <p className="ds-cta-card-line">
+      <div className="ds-close">
+        <div className="ds-close-quote">
+          <p className="ds-close-line">
             Send a site, a shift pattern, and a deadline. We walk your site before anything is
             signed, then send a scoped proposal.
           </p>
@@ -28,11 +40,12 @@ export default function Contact() {
             <Arrow />
           </Link>
         </div>
-        <div className="ds-cta-card">
-          <h3 className="ds-cta-card-title">Call us</h3>
-          <p className="ds-cta-card-line">For urgent procurement timelines or active contracts.</p>
-          <a href={TEL} className="ds-phone ds-cta-phone">
-            {PHONE}
+        <span className="ds-close-rule" aria-hidden="true" />
+        <div className="ds-close-call">
+          <p className="ds-close-note">For urgent procurement timelines or active contracts.</p>
+          <a href={TEL} className="ds-close-phone">
+            <span>{PHONE}</span>
+            <Arrow />
           </a>
           <p className="ds-data ds-cta-meta">
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
