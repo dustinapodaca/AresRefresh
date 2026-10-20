@@ -488,7 +488,17 @@ exception to "no card containers" and "no glass" for this section.
   Client rating 43/45 criteria rated Very Good or Exceptional (across five past performance
   evaluations, none below Satisfactory; was "Integrity" 16/18); Personnel 4.8/5 on Indeed.
   The placeholder client quote card was removed (owner, 2026-10-10: it was not a real quote).
-- Desktop: three across; the cards rise 64px into place on scroll.
+- **One scroll (owner, 2026-10-19):** on desktop the cards rise with the scroll, a step apart
+  (card 1 leads, each of the others about 8% of the range behind), settling from 120px lower and a
+  slight 8deg tilt (perspective 1200) to flat. The figures are set large on desktop: 72px at 1024
+  to 1199px, `clamp(64px, 6.4vw, 96px)` from 1200 (they were 44 to 60px). Each figure's changing
+  digits roll into place once, like an odometer, as its card lands (its top passing 60% of the
+  screen on desktop; reaching the top of the pile on phones): 700ms, 60ms per digit, always from
+  nearby values, never from 0 (<4% to <1%, 38/45 to 43/45, 4.5/5 to 4.8/5; "<", "%", and "/45"
+  hold still). Readers get the final figure (the reels are hidden from them). Each card's rust
+  corner light comes up from 0.6 as its figure lands (600ms). Phones keep the pile exactly as
+  before.
+- Before 2026-10-19: desktop three across, the cards rising 64px into place on scroll.
   Phones: the three cards are sticky and pile up 16px apart, each frosting the one beneath,
   all one height (the tallest card's, measured in Record.tsx; owner, 2026-10-08), the quote
   at the top of its card and the attribution on its foot. The quote card stacks too, 16px
@@ -520,7 +530,26 @@ exception to "no card containers" and "no glass" for this section.
   (The escort line was removed, owner 2026-10-10.)
 
 ### 02 Industries (Home, copy audit round 2, owner 2026-10-10)
-- "The sites we protect." in the shared head, then the six industries in the owner's
+- **A pinned scene (owner, 2026-10-19; REVERSES the plates below, chosen 2026-10-10: a row of
+  photo cards was the most template-looking pattern on the page).** Desktop (1024px and up, at
+  least 640px tall) while the scroll engine runs: the section pins under the nav (and the running
+  head below 1200px) for about 75% of a screen of scroll per industry, and the rail holds
+  "02 Industries" throughout. Left (columns 1 to 5): the headline and lead, then all six in the
+  owner's order, each a mono number, the name (Inter Tight 600, 24 to 30px), and a real link to its
+  page; the names wait at 0.62, the one under the scroll is ink with the rail's 12px rust tick
+  beside it, and its short line and a quiet "Open the page →" open beneath it. Right (columns 6 to
+  12): one photo frame (4:5, 4px corners, white/8% inset edge, graded `saturate(0.78)
+  brightness(0.84)`, at most 72% of the screen's height) holding all six industry photos with their
+  card framing; the next photo wipes up from the frame's foot (clip-path) and settles from 1.12,
+  whole at its step's boundary, while the one beneath eases to 0.96 and darkens; a mono caption
+  beneath ("02 / 06  Critical & High-Liability Sites"). The name changes midway through its
+  photo's wipe, with a little give at each boundary. Clicking or tabbing to a name scrolls to its
+  step; clicking the one showing opens its page. The traveling light sits behind the frame.
+  Phones, tablets, reduced motion, the prerender, and no JavaScript: all six as one list, each row
+  the photo (16:10; left of the words from 768px), the number, the name with its arrow, and the
+  line, the photos opening upward from their foot with the scroll; all six are treated the same
+  on phones too. `Industries.tsx`.
+- Before 2026-10-19: "The sites we protect." in the shared head, then the six industries in the owner's
   order. **Chosen: plates**: the first three (Government & Defense; Critical &
   High-Liability Sites; Construction, Industrial & Logistics) as photographs in the column
   (the industry pages' generated images, 4:5, 16:10 on phones, 4px corners, white/8% inset
@@ -528,8 +557,7 @@ exception to "no card containers" and "no glass" for this section.
   (Inter Tight 600, 22 to 28px) with its arrow kept to the last word, and the short line.
   The other three as the ruled route strip. Then "For prime contractors." (display-md, its
   line and "Teaming and subcontracting →" in columns 8 to 12).
-- **Kept for the client to compare:** `/?industries=rows` (type only: the first three as
-  large numbered rows on hairline-strong rules). In `Industries.tsx`.
+- The type-only rows (`/?industries=rows`) were removed at launch (options archive).
 - The six-name list left 04 Coverage (this section replaces it).
 
 ### For prime contractors (Home, end of 02 Industries; owner 2026-10-10, pass 2)
@@ -592,6 +620,12 @@ exception to "no card containers" and "no glass" for this section.
   fills on scroll). The panel settles 24px on scroll. All static under reduced motion.
 
 ### Quality (Home 02, owner 2026-10-06)
+- **One scroll (owner, 2026-10-19):** "Quality over quantity." at display-xl as this entry says
+  (the code had display-lg), and on desktop its lead sits beneath it in columns 1 to 6 instead of
+  beside it, so this head breaks the shared pattern the others use. The vehicles plate opens from an
+  inset (`inset(6% 10%)`) to the full column as it travels from 90% to 40% of the screen, the photo
+  moving a little slower than its frame and settling from 1.08; the caption stays. Each fact's
+  hairline draws left to right, then its label and value rise 16px, 70ms apart.
 - Moved whole from About (photo and facts), in exchange for the staffing passage.
   "Quality over quantity." at display-xl in 7 columns with its paragraph beside it (5
   columns, aligned to the headline's foot); then, **since 2026-10-16 (owner), the `wide` form**:
@@ -617,7 +651,19 @@ exception to "no card containers" and "no glass" for this section.
   sheet; the ticks tighten in on hover (180ms) and turn ink when the card is open. Nowhere else.
 
 ### The close (Home 06 Contact; owner 2026-10-16)
-- **Two routes** (after Linear's "How can we help?" and Grok's contact cards, from Mobbin):
+- **Open, no cards (owner, 2026-10-19; REVERSES the two routes below: two equal boxed cards ended
+  the scroll on a component instead of a moment).** "Request a quote, or call us." at display-xl,
+  reading itself in; beneath it, from 768px, two columns (5 and 7 parts) with one 1px
+  hairline-strong rule between them that grows down with the scroll as the columns come up. Left:
+  the quote line ("Send a site, a shift pattern, and a deadline. We walk your site before anything
+  is signed, then send a scoped proposal.", Inter 20px, ink) and the primary Request a Quote →.
+  Right: "For urgent procurement timelines or active contracts." in ink muted, then the phone as
+  the close's largest element (Plex Mono, `clamp(40px, 5.6vw, 80px)`, a tel: link; on hover a 1px
+  rust underline draws left to right in 300ms and an arrow slides in past it; without hover the
+  underline stays drawn in hairline strong), the email and base in small mono beneath. Phones:
+  stacked, the button full width. The two card titles went with the cards (docs/copy-changes.md).
+  The traveling light rises behind it as the horizon and sets into the footer's closing stage.
+- Before 2026-10-19, **Two routes** (after Linear's "How can we help?" and Grok's contact cards, from Mobbin):
   "Request a quote, or call us." at display-xl, then two glass cards side by side from 768px
   (stacked on phones), the site's glass recipe (1px white/10% edge, white/14% top line, a dark
   wash over a 22px blur, 4px corners) over the rust light, moved to sit under them. "Request a
@@ -645,6 +691,15 @@ exception to "no card containers" and "no glass" for this section.
   On Home's map (owner, 2026-10-16) Pikes Peak in ink faint, drawn as on the location maps (an
   open triangle, its name to the left of it), at every width; not on the quote page. (DEN was
   tried the same day and removed.)
+- **On Home, one scroll (owner, 2026-10-19):** I-25 draws from north to south, scrubbed by the
+  scroll; each city's pin pops in as the line reaches it (scale 0 to 1.15 to 1, an overshoot, not a
+  bounce), its name with it, and COLORADO, I-25, and PIKES PEAK come in last; the HQ pulse stays.
+  The city list and the pins light each other: pointing at or tabbing to a city lights its pin
+  (1.4x, a rust ring, its name in ink, the others dimmed to 0.62), and pointing at a pin lights its
+  row (the row's hover look). Below 1024px the list under the map is a compact legend (names 22 to
+  26px), not a second map. The traveling light gathers on the HQ pin. The full-bleed photograph
+  after Coverage opens from a 7% inset at each side to full width with the photo moving slower than
+  its frame, and the Careers "See open roles" arrow nudges in once as its line lands.
 
 ### Services page ("The Schedule", 2026-10-05)
 Same system as Home, its own structures (owner: "similar but unique to the page
@@ -1301,7 +1356,41 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
 
 ## Motion
 
-Few, fast, and crisp. Four to six moments per page.
+Few, fast, and crisp. Four to six moments per page, **except on Home** (below).
+
+- **Home is one continuous, choreographed scroll (owner, 2026-10-19, branch v3design; after
+  Framer-built sites and flora.ai).** These rules are lifted for Home only:
+  - No fixed number of moments: every section has scroll-linked motion, and each section's
+    entrance starts while the one before is still leaving.
+  - The 300ms limit still holds for UI feedback (hover, press, menus); scroll-linked and entrance
+    motion may run longer (400 to 1200ms) or be scrubbed by the scroll.
+  - Entrances may start hidden (from opacity 0, words from 0.18), but only once armed after mount,
+    or, for the hero's load-in, by the inline script before the first paint where the terrain runs
+    live. The prerendered HTML, no JavaScript, reduced motion, and automated browsers show every
+    section whole and resolved.
+  - The engine: `lenis` (wheel and trackpad glide, lerp 0.1; touch scrolling stays native) driven
+    by GSAP's ticker, and `gsap` with ScrollTrigger for every pin and scrub on one shared clock, so
+    Firefox, Safari, and Chrome get the same choreography (the CSS scroll timelines never ran in
+    Firefox). `src/lib/motionEngine.ts`, loaded by dynamic import on Home only after the first
+    paint (about 51 kB gzip; its CSS, `components/home/motion.css`, about 1.6 kB, loads with it);
+    skipped under reduced motion and for automated browsers. Each section arms its own motion in
+    a GSAP context (`useScene`, `components/home/motion.tsx`) that is reverted before React
+    removes the DOM; in-page links glide through Lenis (`scrollToY` in `lib/scrollToSection.ts`)
+    and land where they always did. Scrubbed tweens ease `none`; entrances `power3.out` or
+    `expo.out`; state changes keep the house curve.
+  - **The through-line:** one traveling rust light (below), the hero's fly-over into 01 Record,
+    and every Home headline reading itself in word by word (from 0.18 and 0.4em, as it travels
+    from 85% to 55% of the screen; its lead a line at a time a beat behind; `Reveal.tsx`, the
+    words split only while the engine runs, the headline's text in aria-label).
+  - **The traveling light** (`TravelLight.tsx`): one fixed, CSS-drawn light behind the whole page
+    in the prime panel's ramp (umber, deep rust, rust; no pale clay), dim, moved by transform and
+    opacity on one ScrollTrigger: off over the hero (the terrain is the light there); low behind
+    the Record cards; behind the photo in the Industries scene; gone while the prime panel's own
+    light takes over; gathered on the Colorado Springs pin; then rising behind the close as its
+    horizon and setting into the footer's closing stage. The close's own light stands down while
+    it runs. The cards' own corner lights stay.
+  - Everything else here still holds on Home: colors, type, 2px controls, no pills, no gradient
+    text, no bounce or elastic easing, hover gated behind `(hover: hover) and (pointer: fine)`.
 
 - **Easing:** `cubic-bezier(0.2, 0.8, 0.2, 1)` for state changes and feedback; `linear`
   for anything driven by scroll position.
@@ -1312,7 +1401,8 @@ Few, fast, and crisp. Four to six moments per page.
   `prefers-reduced-motion: reduce` states are static and fully visible.
 - **Text is never hidden.** Scroll effects may move or dim text, but never below AA
   contrast: body copy dims no lower than 0.8 opacity (the hard floor for any text is 0.62). Opacity entrances from 0 are not allowed.
-- **Allowed moments on Home:** the hero photo drifts slightly slower than the page as the
+- **Allowed moments on Home (before 2026-10-19; replaced by the choreography in each Home
+  entry below, owner):** the hero photo drifts slightly slower than the page as the
   hero leaves (4%), while the hero's glass strip and its copy rise faster than the page (40svh, was 26svh until the owner asked for faster, 2026-10-08;
   over the hero's exit, desktop from 900px; owner, 2026-10-08), so three layers move apart; ledger hairlines draw from left to right as rows enter (the text is
   already there); the full-bleed photograph opens from a 7% side inset to full width; the
