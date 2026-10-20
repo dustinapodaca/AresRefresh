@@ -14,6 +14,22 @@
 const ID = import.meta.env.VITE_GA_ID;
 const HOSTS = ['aressecurity.co', 'www.aressecurity.co'];
 
+// Our own visits stay out of the numbers (owner, 2026-10-19): open aressecurity.co/?notrack once
+// on each phone, laptop, and browser, and that browser never loads Analytics again. /?track undoes
+// it, as does clearing the browser's site data.
+const OPT_OUT = 'ares-notrack';
+
+function optedOut() {
+  try {
+    const q = new URLSearchParams(window.location.search);
+    if (q.has('notrack')) localStorage.setItem(OPT_OUT, '1');
+    if (q.has('track')) localStorage.removeItem(OPT_OUT);
+    return localStorage.getItem(OPT_OUT) === '1';
+  } catch {
+    return false;
+  }
+}
+
 type Gtag = (...args: unknown[]) => void;
 declare global {
   interface Window {
@@ -25,7 +41,7 @@ declare global {
 let started = false;
 
 export function startAnalytics() {
-  if (started || !ID || !HOSTS.includes(window.location.hostname)) return;
+  if (started || !ID || !HOSTS.includes(window.location.hostname) || optedOut()) return;
   started = true;
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {

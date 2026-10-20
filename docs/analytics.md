@@ -43,6 +43,17 @@ The privacy policy (`/privacy`, effective October 11, 2026) describes this, the 
 cookies, and Google's opt-out add-on. No consent banner: the site serves a US audience and
 uses no advertising features. Revisit with counsel if Google Ads or remarketing is added.
 
+### Keeping our own visits out (owner, 2026-10-19)
+
+- Local dev, deploy previews, and the prerender never report: Analytics loads only on
+  aressecurity.co and www.aressecurity.co.
+- On the live site, open **aressecurity.co/?notrack** once on each phone, laptop, and browser
+  (Safari and Chrome on the same phone count separately). That browser then never loads
+  Analytics, on any page, until **aressecurity.co/?track** is opened or its site data is cleared.
+  Private windows forget it when closed.
+- To check it took: with the opt-out set, open GA4 > Reports > Realtime and browse the site; you
+  should not appear.
+
 ## Search Console (after launch)
 
 1. search.google.com/search-console > Add property > **Domain** `aressecurity.co`. Verify with
