@@ -4934,7 +4934,7 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-contact::before { opacity: 0; }
 /* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
    stand down. */
-.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel) { animation: none !important; }
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel, .ds-map-route) { animation: none !important; }
 /* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
 .ds-w { display: inline-block; }
 
@@ -4997,4 +4997,26 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-quality-facts div::before {
   content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--ds-rule);
   transform: scaleX(var(--rule, 1)); transform-origin: left;
+}
+
+/* ---------- 04 Coverage, one scroll (owner, 2026-10-19) ----------
+   A city in the list and its pin light each other: the pin grows to 1.4 with a rust ring, its name
+   in full ink, the other cities dimmed to 0.62; the row takes its hover look. */
+.ds-map-pin-in { transform-box: fill-box; transform-origin: center; transition: transform 180ms var(--ds-ease); }
+.ds-map-lit-ring { opacity: 0; transition: opacity 180ms var(--ds-ease); }
+.ds-map-city { transition: opacity 180ms var(--ds-ease); }
+.ds-map[data-lit] .ds-map-city { opacity: 0.62; }
+.ds-map[data-lit] .ds-map-city[data-on] { opacity: 1; }
+.ds-map-city[data-on] .ds-map-pin-in { transform: scale(1.4); }
+.ds-map-city[data-on] .ds-map-lit-ring { opacity: 1; }
+.ds-city[data-lit] .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+/* Below 1024px the list sits under the map: a compact legend, not a second map. */
+@media (max-width: 1023px) {
+  .ds-coverage-head .ds-cities { margin-top: 8px; }
+  .ds-coverage-head .ds-city { padding: 12px 0; }
+  .ds-coverage-head .ds-city-name { font-size: clamp(22px, 5.6vw, 26px); letter-spacing: -0.03em; }
+  .ds-coverage-head .ds-city .ds-arrow { width: 18px; height: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-map-pin-in, .ds-map-lit-ring, .ds-map-city { transition: none; }
 }

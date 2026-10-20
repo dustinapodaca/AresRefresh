@@ -31,12 +31,39 @@ for (let cy = STEP / 2; cy < H; cy += STEP) {
   for (let cx = STEP / 2; cx < W; cx += STEP) DOTS.push([cx, cy]);
 }
 
-export default function CoverageMap({ landmarks = false }: { landmarks?: boolean }) {
+// How far along I-25 (north to south, 0 to 1) each city sits, so Home's scroll can pop each pin in
+// as the line reaches it.
+const ROUTE_LEN = (() => {
+  const pts = I25.map(([lat, lon]) => [x(lon), y(lat)]);
+  const seg = pts.slice(1).map((p, i) => Math.hypot(p[0] - pts[i][0], p[1] - pts[i][1]));
+  const total = seg.reduce((a, b) => a + b, 0);
+  const at: Record<string, number> = {};
+  CITIES.forEach((c) => {
+    const k = I25.findIndex(([lat, lon]) => lat === c.lat && lon === c.lon);
+    at[c.name] = seg.slice(0, k).reduce((a, b) => a + b, 0) / total;
+  });
+  return at;
+})();
+export const cityAlongRoute = (name: string) => ROUTE_LEN[name] ?? 0;
+
+/**
+ * `lit` names the city to light (Home, owner 2026-10-19: the city list and the pins light each
+ * other); `onLight` reports a pin the pointer is over.
+ */
+export default function CoverageMap({
+  landmarks = false,
+  lit = null,
+  onLight,
+}: {
+  landmarks?: boolean;
+  lit?: string | null;
+  onLight?: (name: string | null) => void;
+}) {
   const route = I25.map(([lat, lon], i) => `${i ? 'L' : 'M'}${x(lon).toFixed(1)} ${y(lat).toFixed(1)}`).join(' ');
   const hq = CITIES.find((c) => c.hq)!;
 
   return (
-    <figure className="ds-map">
+    <figure className="ds-map" data-lit={lit ?? undefined}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
@@ -56,10 +83,10 @@ export default function CoverageMap({ landmarks = false }: { landmarks?: boolean
         </g>
         <circle cx={x(hq.lon)} cy={y(hq.lat)} r="120" fill="url(#ds-map-glow)" />
         <path className="ds-map-route" d={route} pathLength={1} fill="none" stroke="#5a6069" strokeWidth="1.25" />
-        <text className="ds-map-label-faint" x={x(-104.9) + 10} y={y(40.3)}>I-25</text>
-        <text className="ds-map-label-faint" x="14" y="24">COLORADO</text>
+        <text className="ds-map-label-faint ds-map-note" x={x(-104.9) + 10} y={y(40.3)}>I-25</text>
+        <text className="ds-map-label-faint ds-map-note" x="14" y="24">COLORADO</text>
         {landmarks && (
-          <g className="ds-map-landmarks">
+          <g className="ds-map-landmarks ds-map-note">
             <path
               d={`M${x(PIKES.lon)} ${y(PIKES.lat) - 6} L${x(PIKES.lon) + 5.5} ${y(PIKES.lat) + 4} L${x(PIKES.lon) - 5.5} ${y(PIKES.lat) + 4} Z`}
               fill="none"
@@ -74,20 +101,35 @@ export default function CoverageMap({ landmarks = false }: { landmarks?: boolean
           const cx = x(c.lon);
           const cy = y(c.lat);
           return (
-            <g key={c.name}>
-              {c.hq && (
-                <>
-                  <circle className="ds-map-ring" cx={cx} cy={cy} r="14" fill="none" stroke="#bc6f40" />
-                  <circle cx={cx} cy={cy} r="5" fill="#bc6f40" data-hq-pin />
-                </>
-              )}
-              {!c.hq && <circle cx={cx} cy={cy} r="4" fill="#eef0f2" />}
-              <text className="ds-map-label" x={cx + (c.hq ? 22 : 14)} y={cy + 5}>
-                {c.name}
-              </text>
-              {c.hq && (
-                <text className="ds-map-label-faint" x={cx + 22} y={cy + 24}>HQ</text>
-              )}
+            <g
+              key={c.name}
+              className="ds-map-city"
+              data-city={c.name}
+              data-on={lit === c.name ? 'true' : undefined}
+              onPointerEnter={onLight ? (e) => e.pointerType === 'mouse' && onLight(c.name) : undefined}
+              onPointerLeave={onLight ? (e) => e.pointerType === 'mouse' && onLight(null) : undefined}
+            >
+              {/* The pin pops in (outer) and grows when lit (inner), each with its own transform. */}
+              <g className="ds-map-pin">
+                <g className="ds-map-pin-in">
+                  <circle className="ds-map-lit-ring" cx={cx} cy={cy} r={c.hq ? 12 : 10} fill="none" stroke="#bc6f40" />
+                  {c.hq && (
+                    <>
+                      <circle className="ds-map-ring" cx={cx} cy={cy} r="14" fill="none" stroke="#bc6f40" />
+                      <circle cx={cx} cy={cy} r="5" fill="#bc6f40" data-hq-pin />
+                    </>
+                  )}
+                  {!c.hq && <circle cx={cx} cy={cy} r="4" fill="#eef0f2" />}
+                </g>
+              </g>
+              <g className="ds-map-city-label">
+                <text className="ds-map-label" x={cx + (c.hq ? 22 : 14)} y={cy + 5}>
+                  {c.name}
+                </text>
+                {c.hq && (
+                  <text className="ds-map-label-faint" x={cx + 22} y={cy + 24}>HQ</text>
+                )}
+              </g>
             </g>
           );
         })}
