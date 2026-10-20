@@ -535,3 +535,13 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
   .hn-statement { font-size: clamp(44px, 12vw, 64px); }
   .hn-section, .hn-sites, .hn-primes, .hn-quality, .hn-where, .hn-careers { padding-top: 88px; }
 }
+/* The stacked canvas on wider screens (reduced motion, the static page): the posts and the proofs in
+   three columns under the prime and Ares. */
+@media (min-width: 768px) {
+  .hn-primes:not([data-scene]) .hn-canvas { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; }
+  .hn-primes:not([data-scene]) [data-node='prime'], .hn-primes:not([data-scene]) [data-node='ares'] { grid-column: 1 / -1; max-width: 520px; }
+  .hn-primes:not([data-scene]) [data-node='escort']::before,
+  .hn-primes:not([data-scene]) [data-node='access']::before,
+  .hn-primes:not([data-scene]) [data-node='relief']::before { content: none; }
+  .hn-primes:not([data-scene]) .hn-pn-photo, .hn-primes:not([data-scene]) .hn-pn-proof { max-width: none; }
+}
