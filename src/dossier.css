@@ -4878,3 +4878,6 @@ html.lenis, html.lenis body { height: auto; }
 }
 /* The close's own light under the cards gives way to it. */
 .ds-page[data-motion] .ds-contact::before { opacity: 0; }
+/* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
+   stand down. */
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy) { animation: none !important; }

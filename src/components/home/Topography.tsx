@@ -731,7 +731,11 @@ const Topography = ({
   style,
   // Ares (2026-10-18): called once, after the first frame is drawn, so the hero can fade out the
   // still that stands in where WebGL2 is blocked, missing, or software only.
-  onReady
+  onReady,
+  // Ares (owner, 2026-10-19): a mutable { tilt, glide } the render loop reads every frame, so the
+  // scroll can steer the camera (the fly-over as the hero leaves) without re-rendering React.
+  // tilt replaces the tilt prop while set; glide multiplies the forward speed.
+  camera
 }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -766,7 +770,8 @@ const Topography = ({
     glitch: clamp(glitch, 0, 1),
     intro,
     lightMode,
-    dpr
+    dpr,
+    camera
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
@@ -1330,7 +1335,9 @@ const Topography = ({
       else if (state.intro < 1) state.intro = Math.min(1, state.intro + dt / INTRO_SECONDS);
       state.rise = smoother(state.intro);
       const ease = reduce ? 1 : 1 - Math.exp(-dt / 0.4);
-      state.tilt += (s.tilt - state.tilt) * ease;
+      const tiltTarget = s.camera?.tilt != null ? clamp(s.camera.tilt, 12, 90) : s.tilt;
+      const glide = s.camera?.glide ?? 1;
+      state.tilt += (tiltTarget - state.tilt) * ease;
       state.elevation += (s.elevation - state.elevation) * ease;
       state.scale = s.scale;
 
@@ -1359,8 +1366,8 @@ const Topography = ({
       } else glitchData.fill(0);
 
       if (!reduce) {
-        state.travelX += s.direction[0] * s.speed * 0.8 * dt;
-        state.travelZ += s.direction[1] * s.speed * 0.8 * dt;
+        state.travelX += s.direction[0] * s.speed * glide * 0.8 * dt;
+        state.travelZ += s.direction[1] * s.speed * glide * 0.8 * dt;
         state.morph += s.morph * 0.12 * dt;
       }
 
@@ -1415,7 +1422,7 @@ const Topography = ({
       }
 
       const settling =
-        Math.abs(s.tilt - state.tilt) > 0.01 ||
+        Math.abs(tiltTarget - state.tilt) > 0.01 ||
         Math.abs(s.elevation - state.elevation) > 1e-4 ||
         Math.abs(state.yaw - targetYaw) > 1e-4 ||
         Math.abs(state.pitch - targetPitch) > 1e-4 ||

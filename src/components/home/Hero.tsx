@@ -5,6 +5,7 @@ import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { heroTitle } from '../../lib/heroTitle';
 import { terrainMode } from '../../lib/terrainSupport';
+import { useScene } from './motion';
 
 // The headline (owner, 2026-10-19, picked from ten) over the lead ("critical sites", not "data
 // centers": web audit, owner 2026-10-18). No eyebrow above the headline (owner); the search phrase
@@ -104,6 +105,36 @@ export default function Hero() {
     ro.observe(copy);
     return () => ro.disconnect();
   }, []);
+  // As the hero leaves (owner, 2026-10-19): the camera tips forward and down over the land and the
+  // glide speeds up, so the reader flies on over the terrain instead of watching it fade; the copy
+  // and its glass strip rise faster than the page (desktop) and the still drifts slower, the three
+  // layers moving apart as before (they were CSS scroll timelines, which Firefox never ran).
+  const camera = useRef({ tilt: 32, glide: 1 }).current;
+  useScene(sectionRef, ({ gsap, ScrollTrigger }, root) => {
+    const copy = root.querySelector('.ds-hero-copy');
+    const still = root.querySelector('.ds-hero-photo img');
+    ScrollTrigger.create({
+      trigger: root,
+      start: 'top top',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        camera.tilt = 32 + 26 * self.progress;
+        camera.glide = 1 + 3 * self.progress;
+      },
+    });
+    const exit = { trigger: root, start: 'top top', end: 'bottom top', scrub: true };
+    if (still) gsap.fromTo(still, { yPercent: 0 }, { yPercent: 4, ease: 'none', scrollTrigger: exit });
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 900px)', () => {
+      if (copy) gsap.fromTo(copy, { y: 0 }, { y: () => -0.4 * window.innerHeight, ease: 'none', scrollTrigger: { ...exit, invalidateOnRefresh: true } });
+    });
+    return () => {
+      mm.revert();
+      camera.tilt = 32;
+      camera.glide = 1;
+    };
+  });
+
   return (
     <section ref={sectionRef} className="ds-hero" aria-labelledby="hero-title">
       {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
@@ -119,6 +150,7 @@ export default function Hero() {
           </picture>
           {live && <Suspense fallback={null}><Topography
             onReady={onDrawn}
+            camera={camera}
             color="#7a3c17"
             lineCount={22}
             lineWidth={1.2}
