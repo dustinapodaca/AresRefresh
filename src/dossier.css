@@ -4934,7 +4934,7 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-contact::before { opacity: 0; }
 /* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
    stand down. */
-.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel, .ds-map-route) { animation: none !important; }
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel, .ds-map-route, .ds-bleed img) { animation: none !important; }
 /* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
 .ds-w { display: inline-block; }
 

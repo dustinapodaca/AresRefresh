@@ -36,6 +36,13 @@ export default function Coverage() {
         .fromTo(label, { opacity: 0, x: -6 }, { opacity: 1, x: 0, duration: 0.1 }, at + 0.02);
     });
     tl.fromTo(map.querySelectorAll('.ds-map-note'), { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.03 }, 0.86);
+
+    // The bleed photo opens from a 7% inset at each side to the full width, the photo inside moving
+    // slower than its frame (in every browser; it was a CSS scroll timeline).
+    const bleed = root.querySelector('.ds-bleed');
+    const photo = root.querySelector('.ds-bleed img');
+    gsap.fromTo(bleed, { clipPath: 'inset(0% 7%)' }, { clipPath: 'inset(0% 0%)', ease: 'none', scrollTrigger: { trigger: bleed, start: 'top bottom', end: 'top 25%', scrub: true } });
+    gsap.fromTo(photo, { yPercent: -6, scale: 1.14 }, { yPercent: 6, scale: 1.14, ease: 'none', scrollTrigger: { trigger: bleed, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   return (
