@@ -731,7 +731,13 @@ const Topography = ({
   style,
   // Ares (2026-10-18): called once, after the first frame is drawn, so the hero can fade out the
   // still that stands in where WebGL2 is blocked, missing, or software only.
-  onReady
+  onReady,
+  // Ares (owner, 2026-10-19, /home-next): a mutable camera the render loop reads every frame, so the
+  // scroll can fly the camera over the page's one ground without re-rendering React. Every field is
+  // optional: tilt (degrees, replaces the tilt prop), height (camera distance, x1 at rest), glide
+  // (forward speed, x1), brightness (x1), flatten (0 to 1: the land sinks to a plane), paused (stop
+  // drawing while something covers the canvas). The component sets camera.wake to restart drawing.
+  camera
 }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -766,7 +772,8 @@ const Topography = ({
     glitch: clamp(glitch, 0, 1),
     intro,
     lightMode,
-    dpr
+    dpr,
+    camera
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
@@ -918,7 +925,8 @@ const Topography = ({
       clock: 0,
       tilt: settingsRef.current.tilt,
       elevation: settingsRef.current.elevation,
-      scale: settingsRef.current.scale
+      scale: settingsRef.current.scale,
+      height: 1
     };
     state.rise = smoother(state.intro);
     let raf = 0;
@@ -931,7 +939,7 @@ const Topography = ({
       const frame = orient(state.yaw, pitch);
       const lift = state.elevation * HEIGHT * state.rise * 0.18;
       const clearance = state.elevation * HEIGHT * state.rise * 1.3 + 0.9;
-      const distance = Math.max(ORBIT, (clearance - lift) / Math.sin(pitch));
+      const distance = Math.max(ORBIT, (clearance - lift) / Math.sin(pitch)) * state.height;
       return {
         ...frame,
         distance,
@@ -1130,7 +1138,7 @@ const Topography = ({
         gl.uniform1f(u.uLineWidth, s.lineWidth * pixel);
         gl.uniform1f(u.uMajor, s.majorLines ? 1 : 0);
         gl.uniform3fv(u.uColor, color);
-        gl.uniform1f(u.uBrightness, s.brightness);
+        gl.uniform1f(u.uBrightness, s.brightness * (s.camera?.brightness ?? 1));
         gl.uniform2f(u.uFade, fadeStart, fadeEnd);
         gl.uniform3f(u.uFocus, state.focus, focusScale * pixel, view.height * 0.03 * pixel);
         gl.uniform4f(u.uHeat, hitX, hitZ, 0.9 * s.mouseRadius, heatStrength);
@@ -1184,7 +1192,7 @@ const Topography = ({
           gl.uniform3fv(m.uColor, color);
           gl.uniform2f(m.uFade, fadeStart, fadeEnd);
           gl.uniform1f(m.uReveal, reveal);
-          gl.uniform1f(m.uBrightness, s.brightness);
+          gl.uniform1f(m.uBrightness, s.brightness * (s.camera?.brightness ?? 1));
           gl.uniform1f(m.uLightMode, s.lightMode ? 1 : 0);
           gl.uniform1f(m.uOpacity, s.opacity);
           gl.uniform1f(m.uStyle, s.markers);
@@ -1322,6 +1330,7 @@ const Topography = ({
       raf = 0;
       if (!visible || document.hidden) return;
       const s = settingsRef.current;
+      if (s.camera?.paused) return;
       if (s.dpr !== sizedDpr) resize();
       const dt = last ? clamp((now - last) / 1000, 0, 1 / 20) : 1 / 60;
       last = now;
@@ -1330,8 +1339,13 @@ const Topography = ({
       else if (state.intro < 1) state.intro = Math.min(1, state.intro + dt / INTRO_SECONDS);
       state.rise = smoother(state.intro);
       const ease = reduce ? 1 : 1 - Math.exp(-dt / 0.4);
-      state.tilt += (s.tilt - state.tilt) * ease;
-      state.elevation += (s.elevation - state.elevation) * ease;
+      const rig = s.camera || {};
+      const tiltTarget = rig.tilt != null ? clamp(rig.tilt, 12, 90) : s.tilt;
+      const elevationTarget = s.elevation * (1 - clamp(rig.flatten ?? 0, 0, 1));
+      const glide = rig.glide ?? 1;
+      state.tilt += (tiltTarget - state.tilt) * ease;
+      state.elevation += (elevationTarget - state.elevation) * ease;
+      state.height += ((rig.height ?? 1) - state.height) * ease;
       state.scale = s.scale;
 
       state.clock += dt;
@@ -1359,8 +1373,8 @@ const Topography = ({
       } else glitchData.fill(0);
 
       if (!reduce) {
-        state.travelX += s.direction[0] * s.speed * 0.8 * dt;
-        state.travelZ += s.direction[1] * s.speed * 0.8 * dt;
+        state.travelX += s.direction[0] * s.speed * glide * 0.8 * dt;
+        state.travelZ += s.direction[1] * s.speed * glide * 0.8 * dt;
         state.morph += s.morph * 0.12 * dt;
       }
 
@@ -1415,8 +1429,9 @@ const Topography = ({
       }
 
       const settling =
-        Math.abs(s.tilt - state.tilt) > 0.01 ||
-        Math.abs(s.elevation - state.elevation) > 1e-4 ||
+        Math.abs(tiltTarget - state.tilt) > 0.01 ||
+        Math.abs(elevationTarget - state.elevation) > 1e-4 ||
+        Math.abs((rig.height ?? 1) - state.height) > 1e-4 ||
         Math.abs(state.yaw - targetYaw) > 1e-4 ||
         Math.abs(state.pitch - targetPitch) > 1e-4 ||
         Math.abs(state.yawVelocity) > 1e-4 ||
@@ -1511,6 +1526,7 @@ const Topography = ({
     document.addEventListener('visibilitychange', onVisibility);
     resize();
     wakeRef.current = wake;
+    if (settingsRef.current.camera) settingsRef.current.camera.wake = wake;
 
     return () => {
       cancelAnimationFrame(raf);

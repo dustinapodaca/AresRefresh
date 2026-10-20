@@ -1,0 +1,51 @@
+/* Home, reimagined (owner, 2026-10-19; /home-next). Built from Ares's own objects, not cards: the
+   ground, the line, the post (Node), and the record. Same tokens and type as the rest of the site;
+   the hierarchy comes from scale (very large Statements, small mono labels), not from boxes. */
+
+.hn { position: relative; isolation: isolate; overflow-x: clip; }
+.hn-section { position: relative; }
+
+/* ---------- The Statement: one per section, the page's argument read top to bottom ---------- */
+.hn-statement {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(56px, 9vw, 168px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  color: var(--ds-fg);
+  text-wrap: balance;
+}
+
+/* ---------- One ground: the fixed terrain, its dot-grid plane, the dusk glow, and grain ---------- */
+.hn-ground { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict; }
+.hn-ground-terrain { position: absolute; inset: 0; will-change: opacity; }
+/* The terrain reads the pointer from the window, so it stays interactive under the page. */
+.hn-ground-terrain .topography-container { position: absolute; inset: 0; }
+.hn-plane {
+  position: absolute; left: -25%; right: -25%; top: 30%; bottom: -40%; opacity: 0;
+  background-image: radial-gradient(circle, rgb(238 240 242 / 0.22) 1.1px, transparent 1.7px);
+  background-size: 28px 28px;
+  transform: perspective(900px) rotateX(58deg);
+  transform-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+}
+.hn-dusk {
+  position: absolute; inset: 0; opacity: 0;
+  background:
+    radial-gradient(ellipse 80% 38% at 50% 100%, rgb(156 86 43 / 0.42), rgb(104 51 22 / 0.22) 45%, rgb(56 26 11 / 0) 80%),
+    linear-gradient(to top, rgb(56 26 11 / 0.3), rgb(0 0 0 / 0) 40%);
+}
+/* A faint static grain over the canvas, against banding in the dark gradients. */
+.hn-grain {
+  position: absolute; inset: 0; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* The page's own canvas stays black under the fixed ground. */
+.hn.ds-page { background: transparent; }
+html[data-ground='live'] body { background: var(--ds-canvas); }
+
+/* ---------- Placeholders (step 2 only: prove the camera) ---------- */
+.hn-placeholder { min-height: 150vh; display: flex; align-items: center; }
+#hn-hero.hn-placeholder { min-height: 100svh; align-items: flex-end; padding-bottom: 12vh; }
