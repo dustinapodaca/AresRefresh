@@ -523,3 +523,15 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
 .hn-close-row .ds-btn { justify-self: start; }
 @media (min-width: 900px) { .hn-close-row { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 48px; } }
 @media (max-width: 767px) { .hn-close-row .ds-btn { justify-self: stretch; } }
+
+/* ---------- Phones (step 6, owner 2026-10-19) ---------- */
+@media (max-width: 767px) {
+  .hn-city-node .hn-node-meta { display: none; }
+  .hn-city-node .hn-node-bar { font-size: 10px; padding: 3px 6px 4px 5px; }
+  .hn-city-node { margin-left: 10px; }
+  .hn-map-faint { font-size: 11px; }
+  .hn-phone-meta { flex-direction: column; gap: 6px; }
+  .hn-phone-meta span[aria-hidden] { display: none; }
+  .hn-statement { font-size: clamp(44px, 12vw, 64px); }
+  .hn-section, .hn-sites, .hn-primes, .hn-quality, .hn-where, .hn-careers { padding-top: 88px; }
+}
