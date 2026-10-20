@@ -5,6 +5,7 @@ import { responsive } from '../../lib/responsive';
 import { useMotion, useScene } from '../home/motion';
 import { useMediaQuery } from '../home/useMediaQuery';
 import { Node, Statement } from './objects';
+import GroundStill from './GroundStill';
 
 // 4.4 For prime contractors (owner, 2026-10-19; /home-next): a real node canvas, no panel. The
 // ground flattens into a dot-grid plane (Ground.tsx) and the section is the canvas, edge to edge:
@@ -148,6 +149,7 @@ export default function PrimesNext() {
 
   return (
     <section ref={ref} id="primes" className="hn-primes" data-scene={scene ? 'on' : undefined} aria-labelledby="primes-title">
+      <GroundStill name="plane" />
       <div className="hn-primes-scene">
         <div className="ds-container hn-primes-grid">
           <div className="hn-primes-copy">

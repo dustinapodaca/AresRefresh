@@ -4,6 +4,7 @@ import Arrow from '../Arrow';
 import { useMotion, useScene } from '../home/motion';
 import { useMediaQuery } from '../home/useMediaQuery';
 import { Statement } from './objects';
+import GroundStill from './GroundStill';
 
 // 4.6 Where we work (owner, 2026-10-19; /home-next): the ground becomes the map, the payoff of the
 // camera. As the camera reaches straight overhead (Ground.tsx), the contours give way to Colorado
@@ -113,6 +114,7 @@ export default function WhereNext() {
 
   return (
     <section ref={ref} id="coverage" className="hn-where" data-scene={scene ? 'on' : undefined} aria-labelledby="where-title">
+      <GroundStill name="coverage" />
       <div className="hn-where-scene">
         <div className="ds-container hn-where-grid">
           <div className="hn-where-copy">

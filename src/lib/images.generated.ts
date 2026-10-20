@@ -20,6 +20,42 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 780,
     "height": 1500
   },
+  "/images/hero-topo/ground-record-desktop.webp": {
+    "src": "/images/opt/hero-topo-ground-record-desktop-1200.4c96572d.webp",
+    "srcSet": "/images/opt/hero-topo-ground-record-desktop-480.96e1fd36.webp 480w, /images/opt/hero-topo-ground-record-desktop-800.e79ef693.webp 800w, /images/opt/hero-topo-ground-record-desktop-1200.4c96572d.webp 1200w, /images/opt/hero-topo-ground-record-desktop-1600.9dbedfd1.webp 1600w, /images/opt/hero-topo-ground-record-desktop-2000.2f9bd670.webp 2000w, /images/opt/hero-topo-ground-record-desktop-2160.d3b9b77f.webp 2160w",
+    "width": 2160,
+    "height": 1350
+  },
+  "/images/hero-topo/ground-record-phone.webp": {
+    "src": "/images/opt/hero-topo-ground-record-phone-780.b4c56054.webp",
+    "srcSet": "/images/opt/hero-topo-ground-record-phone-480.090c51c3.webp 480w, /images/opt/hero-topo-ground-record-phone-780.b4c56054.webp 780w",
+    "width": 780,
+    "height": 1688
+  },
+  "/images/hero-topo/ground-coverage-desktop.webp": {
+    "src": "/images/opt/hero-topo-ground-coverage-desktop-1200.008dfef2.webp",
+    "srcSet": "/images/opt/hero-topo-ground-coverage-desktop-480.7993c121.webp 480w, /images/opt/hero-topo-ground-coverage-desktop-800.e8835759.webp 800w, /images/opt/hero-topo-ground-coverage-desktop-1200.008dfef2.webp 1200w, /images/opt/hero-topo-ground-coverage-desktop-1600.57cbb116.webp 1600w, /images/opt/hero-topo-ground-coverage-desktop-2000.92148147.webp 2000w, /images/opt/hero-topo-ground-coverage-desktop-2160.e4bf35c7.webp 2160w",
+    "width": 2160,
+    "height": 1350
+  },
+  "/images/hero-topo/ground-coverage-phone.webp": {
+    "src": "/images/opt/hero-topo-ground-coverage-phone-780.c5c834df.webp",
+    "srcSet": "/images/opt/hero-topo-ground-coverage-phone-480.96763b4d.webp 480w, /images/opt/hero-topo-ground-coverage-phone-780.c5c834df.webp 780w",
+    "width": 780,
+    "height": 1688
+  },
+  "/images/hero-topo/ground-contact-desktop.webp": {
+    "src": "/images/opt/hero-topo-ground-contact-desktop-1200.d71359ed.webp",
+    "srcSet": "/images/opt/hero-topo-ground-contact-desktop-480.95774664.webp 480w, /images/opt/hero-topo-ground-contact-desktop-800.133e24e4.webp 800w, /images/opt/hero-topo-ground-contact-desktop-1200.d71359ed.webp 1200w, /images/opt/hero-topo-ground-contact-desktop-1600.0cb0101f.webp 1600w, /images/opt/hero-topo-ground-contact-desktop-2000.62e93867.webp 2000w, /images/opt/hero-topo-ground-contact-desktop-2160.a8be06e1.webp 2160w",
+    "width": 2160,
+    "height": 1350
+  },
+  "/images/hero-topo/ground-contact-phone.webp": {
+    "src": "/images/opt/hero-topo-ground-contact-phone-780.06fe60af.webp",
+    "srcSet": "/images/opt/hero-topo-ground-contact-phone-480.54c0bf9e.webp 480w, /images/opt/hero-topo-ground-contact-phone-780.06fe60af.webp 780w",
+    "width": 780,
+    "height": 1688
+  },
   "/images/about-hero.jpg": {
     "src": "/images/opt/about-hero-1200.e1a7cf60.webp",
     "srcSet": "/images/opt/about-hero-480.bb46fd6e.webp 480w, /images/opt/about-hero-800.4c4d6733.webp 800w, /images/opt/about-hero-1200.e1a7cf60.webp 1200w, /images/opt/about-hero-1600.38e439b7.webp 1600w, /images/opt/about-hero-2000.d31df26c.webp 2000w, /images/opt/about-hero-2400.1776d856.webp 2400w",

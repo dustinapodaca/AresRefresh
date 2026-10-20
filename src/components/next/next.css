@@ -547,3 +547,16 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
   .hn-primes:not([data-scene]) [data-node='relief']::before { content: none; }
   .hn-primes:not([data-scene]) .hn-pn-photo, .hn-primes:not([data-scene]) .hn-pn-proof { max-width: none; }
 }
+
+/* ---------- The ground as stills (step 9; GroundStill.tsx) ---------- */
+.hn-still { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); }
+.hn-still > picture, .hn-still > span { position: absolute; inset: -6% 0; display: block; will-change: transform; }
+.hn-still img { width: 100%; height: 100%; object-fit: cover; }
+.hn-still[data-still='record'] { opacity: 0.8; }
+.hn-still[data-still='coverage'] { opacity: 0.55; }
+.hn-still-plane > span {
+  background-image: radial-gradient(circle, rgb(238 240 242 / 0.18) 1.1px, transparent 1.7px); background-size: 26px 26px;
+  transform: perspective(900px) rotateX(58deg); transform-origin: 50% 0%; inset: 20% -30% -20%;
+}
+html[data-ground='live'] .hn-still { display: none; }
+.hn-record, .hn-primes, .hn-where, .hn-contact { position: relative; isolation: isolate; }

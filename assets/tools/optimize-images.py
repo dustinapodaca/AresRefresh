@@ -35,6 +35,14 @@ PHOTOS = [
     # Home hero terrain stills (2026-10-18): frames of the live WebGL terrain, shown where it can't run.
     {'key': '/images/hero-topo/terrain-desktop.webp', 'source': 'assets/images-src/hero-topo/terrain-desktop.png', 'q': 80},
     {'key': '/images/hero-topo/terrain-phone.webp', 'source': 'assets/images-src/hero-topo/terrain-phone.png', 'q': 80},
+    # /home-next's ground at three camera positions (owner, 2026-10-19): frames of the live terrain,
+    # the section backgrounds on phones and wherever the fixed ground can't run.
+    {'key': '/images/hero-topo/ground-record-desktop.webp', 'source': 'assets/images-src/hero-topo/ground-record-desktop.png', 'q': 78},
+    {'key': '/images/hero-topo/ground-record-phone.webp', 'source': 'assets/images-src/hero-topo/ground-record-phone.png', 'q': 78},
+    {'key': '/images/hero-topo/ground-coverage-desktop.webp', 'source': 'assets/images-src/hero-topo/ground-coverage-desktop.png', 'q': 78},
+    {'key': '/images/hero-topo/ground-coverage-phone.webp', 'source': 'assets/images-src/hero-topo/ground-coverage-phone.png', 'q': 78},
+    {'key': '/images/hero-topo/ground-contact-desktop.webp', 'source': 'assets/images-src/hero-topo/ground-contact-desktop.png', 'q': 78},
+    {'key': '/images/hero-topo/ground-contact-phone.webp', 'source': 'assets/images-src/hero-topo/ground-contact-phone.png', 'q': 78},
     {'key': '/images/about-hero.jpg', 'source': 'assets/images-src/about-hero.jpg', 'q': 80},
     {'key': '/images/careers-hero.jpg', 'source': 'assets/images-src/careers-hero.jpg', 'q': 80},
     {'key': '/images/about-security.jpg', 'source': 'assets/images-src/about-security.jpg', 'q': 80},

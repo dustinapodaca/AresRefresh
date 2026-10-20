@@ -4,6 +4,7 @@ import { VALUES } from '../home/Record';
 import { useMotion, useScene } from '../home/motion';
 import { useMediaQuery } from '../home/useMediaQuery';
 import { Statement } from './objects';
+import GroundStill from './GroundStill';
 
 // 4.2 Proof you can see (owner, 2026-10-19; /home-next). Not cards: three full-screen proof moments,
 // each its real number beside a diagram drawn only from that number. Reliability "<1%": a 10 by 10
@@ -186,6 +187,7 @@ export default function RecordNext() {
 
   return (
     <section ref={ref} id="record" className="hn-record" data-scene={scene ? 'on' : undefined} aria-labelledby="record-title">
+      <GroundStill name="record" />
       <div className="hn-record-wrap">
         <div className="hn-record-scene">
           <div className="ds-container hn-record-inner">

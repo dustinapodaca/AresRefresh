@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { useScene } from '../home/motion';
 import { Statement } from './objects';
+import GroundStill from './GroundStill';
 
 // 4.8 The close (owner, 2026-10-19; /home-next): the line ends at the phone number. The camera drops
 // back to the hero's angle at dusk (Ground.tsx), so the page ends where it began. The headline
@@ -25,6 +26,7 @@ export default function ContactNext() {
   });
   return (
     <section ref={ref} id="contact" className="hn-contact" aria-labelledby="contact-title">
+      <GroundStill name="contact" />
       <div className="ds-container">
         <Statement id="contact-title" className="hn-contact-title">
           Request a quote, or call us.
