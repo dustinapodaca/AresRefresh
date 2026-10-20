@@ -1054,3 +1054,22 @@ before anything is signed, the scoped proposal, on-call scheduling in every cont
 the post by leadership, the GSA Schedule's ceiling prices, no statewide license. Links to Mobile
 Patrol and Commercial & Retail. Added to routes.json (sitemap), llms.txt, and the Insights index
 (first, dated October 19, 2026). Author Dustin Apodaca, as on the others.
+
+## Home, reimagined: /home-next (branch home-reimagined, 2026-10-19)
+
+A preview beside the live Home; no live copy changed. The page reuses Home's copy and facts and adds
+short labels (mono field tags) taken from facts already on the site:
+- Hero evidence Nodes: GSA MAS · SIN 561612 · 47QSMS25D009Q; Pikes Peak · Colorado Springs; Minority
+  woman-owned · WOSB, WBENC · WOSB250470 · WBE2303571; Patrol · Colorado Springs; Officers on post ·
+  Ares Security; Licensed · City licenses · Colorado Springs, Denver, Pueblo; Missed shifts · Since
+  2021 · Fewer than 1%. A "Call 719-696-3966" link beside the lead.
+- Record captions (owner's brief): "Fewer than 1 in 100 shifts missed · since 2021"; "5 past
+  performance evaluations · 45 criteria · none below Satisfactory"; "Indeed · employee rating".
+- Industries: each post brief is labeled "Post brief 0X / 06", lists the roles from industries.ts
+  (deliver), the ask, "Open the [industry] page", and Request a Quote.
+- Prime contractors: the Ares node reads "Ares Security" with "WBENC · WBE2303571" (the two-tone line
+  stays in the copy beside the canvas, not repeated in the node); the proof nodes carry the panel's
+  labels and IDs (Subcontracting credit · SBA WOSB; Restricted areas · 2025 to 2027; Reliability ·
+  Since 2021).
+- Careers: the body line's three parts as Nodes (Training · For your city license; Schedules · Posted
+  ahead; Supervisors · Who answer), then "Veterans encouraged to apply."
