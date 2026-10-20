@@ -1,6 +1,8 @@
 import { Seo } from '../seo/Seo';
 import { MotionProvider, useMotionEngine } from '../components/home/motion';
 import Ground from '../components/next/Ground';
+import Thread from '../components/next/Thread';
+import RouteRail from '../components/next/RouteRail';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -29,15 +31,19 @@ export default function HomeNext() {
         <section id="hn-hero" className="hn-section hn-placeholder" aria-labelledby="hn-title">
           <div className="ds-container">
             <h1 id="hn-title" className="hn-statement">Security officers for Colorado’s Front Range</h1>
+            <i className="hn-mark" data-thread="start" />
           </div>
         </section>
         {PLACEHOLDERS.map(([id, t]) => (
           <section key={id} id={id} className="hn-section hn-placeholder">
             <div className="ds-container">
               <h2 className="hn-statement">{t}</h2>
+              <i className="hn-mark" data-thread={id === 'contact' ? 'end' : 'x'} style={{ marginLeft: id === 'record' ? 0 : undefined }} />
             </div>
           </section>
         ))}
+        <Thread />
+        <RouteRail />
       </main>
     </MotionProvider>
   );

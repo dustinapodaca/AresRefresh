@@ -49,3 +49,36 @@ html[data-ground='live'] body { background: var(--ds-canvas); }
 /* ---------- Placeholders (step 2 only: prove the camera) ---------- */
 .hn-placeholder { min-height: 150vh; display: flex; align-items: center; }
 #hn-hero.hn-placeholder { min-height: 100svh; align-items: flex-end; padding-bottom: 12vh; }
+
+/* ---------- One line: the rust thread down the page (Thread.tsx) ---------- */
+.hn-thread { position: absolute; left: 0; top: 0; width: 100%; z-index: 3; pointer-events: none; overflow: visible; }
+.hn-thread-tip { transition: opacity 200ms var(--ds-ease); }
+/* A marker: only its position counts. */
+.hn-mark { display: block; width: 1px; height: 1px; }
+
+/* ---------- The rail as a miniature of the line (RouteRail.tsx), desktop from 1200px ---------- */
+.hn-route {
+  position: fixed; right: 28px; top: 50%; z-index: 20; display: none; gap: 14px;
+  transform: translate(12px, -50%); opacity: 0; visibility: hidden;
+  transition: opacity 220ms var(--ds-ease), transform 220ms var(--ds-ease), visibility 0s 220ms;
+}
+@media (min-width: 1200px) { .hn-route { display: flex; } }
+.hn-route[data-visible] { opacity: 1; visibility: visible; transform: translate(0, -50%); transition: opacity 220ms var(--ds-ease), transform 220ms var(--ds-ease), visibility 0s; }
+.hn-route[data-ended] { opacity: 0; visibility: hidden; }
+.hn-route-list { position: relative; }
+/* The route: a 1px line through the stops, the dot riding it (set by the rail's script). */
+.hn-route-list::before { content: ''; position: absolute; left: 2px; top: 10px; bottom: 10px; width: 1px; background: var(--ds-rule-strong); }
+.hn-route-dot { position: absolute; left: -1px; top: -3.5px; width: 7px; height: 7px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.6); }
+.hn-route ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.hn-route a { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+.hn-route a i { position: relative; flex: none; width: 5px; height: 5px; border-radius: 1px; background: var(--ds-rule-strong); transition: background 180ms var(--ds-ease); }
+.hn-route a span:last-child { opacity: 0; transform: translateX(-4px); transition: opacity 180ms var(--ds-ease), transform 180ms var(--ds-ease); }
+.hn-route a[aria-current] { color: var(--ds-fg); }
+.hn-route a[aria-current] i { background: var(--ds-rust); }
+.hn-route a[aria-current] span:last-child,
+.hn-route:hover a span:last-child,
+.hn-route:focus-within a span:last-child { opacity: 1; transform: none; }
+.hn-route a:hover { color: var(--ds-fg); }
+/* The running head's progress line is set by the rail's script (no document timeline on this page). */
+.hn-runhead-fill { display: block; transform: scaleX(0); transform-origin: left; animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .hn-route, .hn-route * { transition: none; } }
