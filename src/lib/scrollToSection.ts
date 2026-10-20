@@ -6,6 +6,21 @@
 const reduceMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// While Home's scroll engine runs (src/lib/motionEngine.ts), its smooth scroller takes every
+// in-page glide, so the rail links and the skip link land the same way under it (owner, 2026-10-19).
+type Smooth = (y: number, immediate: boolean) => void;
+let smooth: Smooth | null = null;
+export function setSmoothScroll(fn: Smooth | null) {
+  smooth = fn;
+}
+
+/** Scroll the window to `y`: through the smooth scroller while one runs, else natively. */
+export function scrollToY(y: number, opts: { instant?: boolean } = {}) {
+  const instant = !!opts.instant || reduceMotion();
+  if (smooth) smooth(y, instant);
+  else window.scrollTo({ top: y, behavior: instant ? 'auto' : 'smooth' });
+}
+
 function px(value: string) {
   return parseFloat(value) || 0;
 }
@@ -31,7 +46,7 @@ export function sectionY(el: HTMLElement): number {
 export function scrollToSection(id: string, opts: { instant?: boolean; focus?: boolean } = {}) {
   const el = document.getElementById(id);
   if (!el) return false;
-  window.scrollTo({ top: sectionY(el), behavior: opts.instant || reduceMotion() ? 'auto' : 'smooth' });
+  scrollToY(sectionY(el), { instant: opts.instant });
   if (opts.focus) {
     // Move keyboard and screen-reader focus with the view, without a second jump.
     if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
