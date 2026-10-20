@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Arrow from '../Arrow';
 import { INDEED_REVIEWS } from '../careers/data';
+import { RevealHeading, RevealLead } from './Reveal';
 
 // 01 Record (owner, 2026-10-06; Mobbin: Lightdash and Ramp, proof cards over a wide quote).
 // One grid: the three things we stand for, each led by its proof as a figure in its own
@@ -75,13 +76,11 @@ export default function Record() {
   return (
     <section id="record" className="ds-record" aria-labelledby="record-title">
       <div className="ds-sec-head">
-        <h2 id="record-title" className="ds-display-lg">
+        <RevealHeading id="record-title" className="ds-display-lg">
           The record so far.
-        </h2>
-        <p className="ds-lead">
-          {/* Design review (2026-10-13): the old line repeated the hero's headline. */}
-          Federal agencies and commercial clients hold us to the same record.
-        </p>
+        </RevealHeading>
+        {/* Design review (2026-10-13): the old line repeated the hero's headline. */}
+        <RevealLead className="ds-lead">Federal agencies and commercial clients hold us to the same record.</RevealLead>
       </div>
 
       <ul ref={listRef} className="ds-values-list">

@@ -4881,3 +4881,5 @@ html.lenis, html.lenis body { height: auto; }
 /* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
    stand down. */
 .ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy) { animation: none !important; }
+/* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
+.ds-w { display: inline-block; }

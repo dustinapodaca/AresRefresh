@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import CoverageMap from './CoverageMap';
 import { responsive } from '../../lib/responsive';
+import { RevealHeading, RevealLead } from './Reveal';
 
 const CITIES = [
   { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
@@ -13,13 +14,12 @@ export default function Coverage() {
   return (
     <section id="coverage" className="ds-coverage" aria-labelledby="coverage-title">
       <div className="ds-coverage-head">
-        <h2 id="coverage-title" className="ds-display-lg">
+        <RevealHeading id="coverage-title" className="ds-display-lg">
           Where we work.
-        </h2>
-        <p className="ds-lead">
-          Armed and unarmed officers for federal, commercial, industrial, and
-          institutional sites, from our base in Colorado Springs.
-        </p>
+        </RevealHeading>
+        <RevealLead className="ds-lead">
+          {'Armed and unarmed officers for federal, commercial, industrial, and institutional sites, from our base in Colorado Springs.'}
+        </RevealLead>
         <CoverageMap landmarks />
         {/* In the head so desktop can set it under the lead, left of the map (owner, 2026-10-16);
             phones and tablets keep it below the map. */}

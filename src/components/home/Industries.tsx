@@ -5,6 +5,7 @@ import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
 import PrimePipeline from './PrimePipeline';
 import PrimeGlow from './PrimeGlow';
+import { RevealHeading, RevealLead } from './Reveal';
 
 // 02 Industries (copy audit round 2, 2026-10-10): the six industries in the owner's fixed
 // order, the first three larger (where the restricted-area and documented work lives), then
@@ -20,13 +21,12 @@ export default function Industries() {
   return (
     <section id="industries" className="ds-industries" aria-labelledby="industries-title">
       <div className="ds-sec-head">
-        <h2 id="industries-title" className="ds-display-lg">
+        <RevealHeading id="industries-title" className="ds-display-lg">
           The sites we protect.
-        </h2>
-        <p className="ds-lead">
-          Six industries, from government facilities and critical sites to offices and
-          campuses. Each has its own page: what the post covers and what to send us.
-        </p>
+        </RevealHeading>
+        <RevealLead className="ds-lead">
+          {'Six industries, from government facilities and critical sites to offices and campuses. Each has its own page: what the post covers and what to send us.'}
+        </RevealLead>
       </div>
 
         <ul className="ds-ind-plates">

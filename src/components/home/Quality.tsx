@@ -1,4 +1,5 @@
 import { responsive } from '../../lib/responsive';
+import { RevealHeading, RevealLead } from './Reveal';
 
 // 02 Quality (owner, 2026-10-06: moved whole from About, photo and all, and set for Home):
 // the principle as a large statement with its paragraph, then the patrol vehicles as a wide
@@ -21,13 +22,12 @@ export default function Quality() {
   return (
     <section id="quality" className="ds-quality" aria-labelledby="quality-title">
       <div className="ds-sec-head">
-        <h2 id="quality-title" className="ds-display-lg">
+        <RevealHeading id="quality-title" className="ds-display-lg">
           Quality over quantity.
-        </h2>
-        <p className="ds-lead">
-          We would rather staff fewer posts well than many posts thinly. That choice shapes
-          everyone we hire, the training they get, and the standards they carry onto every site.
-        </p>
+        </RevealHeading>
+        <RevealLead className="ds-lead">
+          {'We would rather staff fewer posts well than many posts thinly. That choice shapes everyone we hire, the training they get, and the standards they carry onto every site.'}
+        </RevealLead>
       </div>
 
       <div className="ds-quality-body" data-form="wide">

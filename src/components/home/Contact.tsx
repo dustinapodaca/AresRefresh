@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
+import { RevealHeading } from './Reveal';
 
 // The close (owner, 2026-10-16, after Linear's "How can we help?" and Grok's contact cards on
 // Mobbin): two glass cards, Request a quote and Call us. Its primes line was removed (owner,
@@ -12,9 +13,9 @@ const EMAIL = 'contact@aressecurity.co';
 export default function Contact() {
   return (
     <section id="contact" className="ds-contact" data-form="routes" aria-labelledby="contact-title">
-      <h2 id="contact-title" className="ds-display-xl ds-cta-routes-title">
+      <RevealHeading id="contact-title" className="ds-display-xl ds-cta-routes-title">
         Request a quote, or call us.
-      </h2>
+      </RevealHeading>
       <div className="ds-cta-routes">
         <div className="ds-cta-card">
           <h3 className="ds-cta-card-title">Request a quote</h3>
