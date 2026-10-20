@@ -94,8 +94,8 @@ html[data-ground='live'] body { background: var(--ds-canvas); }
 }
 .hn-node-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ds-fg-faint); transition: background 180ms var(--ds-ease), box-shadow 180ms var(--ds-ease); }
 .hn-node[data-status='active'] .hn-node-dot { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.6); }
-.hn-node-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.hn-node-meta { margin-left: auto; padding-left: 12px; white-space: nowrap; }
+.hn-node-label { flex: none; white-space: nowrap; }
+.hn-node-meta { min-width: 0; margin-left: auto; padding-left: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .hn-node-body { position: relative; display: block; transition: transform 220ms var(--ds-ease); }
 .hn-node-body[data-kind='photo'] img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
 .hn-node-body[data-kind='photo']::after { content: ''; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); pointer-events: none; }
@@ -134,3 +134,82 @@ html[data-ground='live'] body { background: var(--ds-canvas); }
 /* The page's one photo grade (owner, 2026-10-19): slightly cool shadows, rust-warm highlights, so every
    photo reads as one shoot. */
 .hn-grade { filter: saturate(0.82) contrast(1.06) brightness(0.9) sepia(0.12) hue-rotate(-6deg); }
+
+/* ---------- 4.1 The ground: the hero ---------- */
+.hn-hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: clip; }
+/* The hero's own ground: the still, or on phones the live terrain. Hidden while the page's fixed
+   ground runs (desktop). */
+.hn-hero-ground { position: absolute; inset: 0; z-index: -1; }
+.hn-hero-ground img, .hn-hero-ground .topography-container { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+html[data-ground='live'] .hn-hero-ground { display: none; }
+.hn-hero-ground:has(.topography-container) .hn-hero-still { display: none; }
+/* Legibility: a soft shade where the headline sits, and the land fading into the page at the foot. */
+.hn-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 70% 55% at 22% 80%, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0) 70%);
+}
+.hn-hero-copy { position: relative; padding-top: calc(var(--ds-header) + 24px); padding-bottom: 28px; }
+.hn-hero-title {
+  margin: 0; font-family: var(--ds-display); font-weight: 600; letter-spacing: -0.05em; line-height: 0.92; color: var(--ds-fg);
+  font-size: clamp(48px, 7.4vw, 128px);
+}
+.hn-line { display: block; overflow: clip; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.hn-line > span { display: block; }
+.hn-hero-under { display: grid; gap: 18px 32px; margin-top: 28px; align-items: end; }
+.hn-hero-lead { margin: 0; max-width: 40ch; color: #c4c8ce; }
+.hn-call { display: inline-flex; align-items: center; gap: 8px; justify-self: start; font-size: 15px; font-weight: 500; color: var(--ds-fg); text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 5px; transition: text-decoration-color 180ms var(--ds-ease); }
+.hn-call:hover { text-decoration-color: var(--ds-fg); }
+.hn-call .ds-data { font-size: 14px; }
+.hn .hn-hero-quote { justify-self: start; }
+@media (min-width: 1024px) {
+  .hn-hero-under { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .hn .hn-hero-quote { display: none; }
+}
+@media (max-width: 767px) { .hn .hn-hero-quote { justify-self: stretch; } }
+/* Where the line begins: a location point under the headline. */
+.hn-hero-point { display: block; margin-top: 26px; width: 7px; height: 7px; border-radius: 50%; background: var(--ds-rust); box-shadow: 0 0 0 4px rgb(188 111 64 / 0.18), 0 0 14px rgb(188 111 64 / 0.7); }
+
+/* The evidence Nodes: scattered over the terrain at depths, never over the headline. */
+.hn-ev-field { position: absolute; inset: 0; pointer-events: none; }
+.hn-ev { position: absolute; left: var(--x); top: var(--y); width: var(--w); pointer-events: auto; will-change: transform; }
+.hn-ev-in { will-change: translate; }
+.hn-ev-photo { position: relative; display: block; overflow: hidden; border-radius: 4px; }
+.hn-ev-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hn-ev-text { display: block; font-size: 17px; line-height: 1.35; color: var(--ds-fg); }
+.hn-ev-text.ds-data { font-size: 15px; }
+/* Depth reads as focus: far Nodes a little dimmer and smaller in feel. */
+.hn-ev[data-depth^='0.2'], .hn-ev[data-depth^='0.3'] { opacity: 0.78; }
+/* Phones: three text Nodes peek from the top; the photos wait for desktop. */
+@media (max-width: 899px) {
+  .hn-ev { display: none; }
+  .hn-ev[data-phone] { display: block; position: absolute; width: auto; max-width: 46vw; }
+  .hn-ev[data-phone]:nth-child(1) { left: var(--ds-gutter, 20px); top: calc(var(--ds-header) + 24px); }
+  .hn-ev[data-phone]:nth-child(3) { left: auto; right: var(--ds-gutter, 20px); top: calc(var(--ds-header) + 24px); }
+  .hn-ev[data-phone]:nth-child(6) { left: var(--ds-gutter, 20px); top: calc(var(--ds-header) + 112px); max-width: 70vw; }
+  .hn-ev-text, .hn-ev-text.ds-data { font-size: 14px; }
+  .hn-ev .hn-node-meta { display: none; }
+  .hn-ev[data-phone]:nth-child(1) { max-width: 42vw; }
+  .hn-ev[data-phone]:nth-child(3) { max-width: 44vw; text-align: right; }
+  .hn-ev[data-phone]:nth-child(3) .hn-node-bar { justify-content: flex-end; }
+  .hn-hero-title { font-size: clamp(38px, 10.4vw, 56px); }
+}
+
+/* The certification marquee at the hero's foot, at every width now. */
+.hn-marquee { position: relative; padding-bottom: 8px; }
+.hn .ds-strip { display: block; padding-block: 22px; }
+.hn .ds-strip-track img { height: 24px; opacity: 0.6; }
+
+/* The load-in, from the first paint (index.html's <noscript> and reduced motion show it whole). Each
+   holds its starting state only until it begins, so the scroll's transforms take over after. */
+@keyframes hn-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes hn-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes hn-node-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
+@keyframes hn-blink { 0%, 100% { opacity: 0; } 30%, 60% { opacity: 1; } 45% { opacity: 0.25; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hn-hero[data-arm] .hn-line > span { animation: hn-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+  .hn-hero[data-arm] .hn-line:nth-child(2) > span { animation-delay: 90ms; }
+  .hn-hero[data-arm] .hn-hero-under { animation: hn-in 700ms cubic-bezier(0.16, 1, 0.3, 1) 520ms backwards; }
+  .hn-hero[data-arm] .hn-hero-point { animation: hn-blink 900ms linear 900ms backwards; }
+  .hn-hero[data-arm] .hn-ev-in { animation: hn-node-in 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: calc(1000ms + var(--i) * 80ms); }
+  .hn-hero[data-arm] .hn-marquee { animation: hn-in 800ms cubic-bezier(0.16, 1, 0.3, 1) 1300ms backwards; }
+}

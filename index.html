@@ -32,6 +32,8 @@
     <meta name="author" content="Dustin Apodaca" />
     <!-- Without JavaScript, moments that wait to be seen (the location maps) play on load. -->
     <noscript><style>.ds-loc-map .ds-loc-route, .ds-loc-map .ds-loc-pulse { animation-play-state: running !important; }</style></noscript>
+    <!-- /home-next's load-in plays from the first paint in CSS ([data-arm]); without JavaScript it shows whole (owner, 2026-10-19). -->
+    <noscript><style>[data-arm] *, [data-arm] *::before, [data-arm] *::after { animation: none !important; }</style></noscript>
 
     <!-- Image loading strategy
          ----------------------

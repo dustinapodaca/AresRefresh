@@ -4,6 +4,7 @@ import Ground from '../components/next/Ground';
 import Thread from '../components/next/Thread';
 import RouteRail from '../components/next/RouteRail';
 import Details from '../components/next/Details';
+import HeroNext from '../components/next/HeroNext';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -29,12 +30,7 @@ export default function HomeNext() {
       <main id="main" tabIndex={-1} className="ds ds-page hn" data-motion={engine ? 'on' : undefined}>
         <Seo path="/home-next" />
         <Ground />
-        <section id="hn-hero" className="hn-section hn-placeholder" aria-labelledby="hn-title">
-          <div className="ds-container">
-            <h1 id="hn-title" className="hn-statement">Security officers for Colorado’s Front Range</h1>
-            <i className="hn-mark" data-thread="start" />
-          </div>
-        </section>
+        <HeroNext />
         {PLACEHOLDERS.map(([id, t]) => (
           <section key={id} id={id} className="hn-section hn-placeholder">
             <div className="ds-container">
