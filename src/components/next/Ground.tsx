@@ -56,7 +56,9 @@ export const WAYPOINTS: Waypoint[] = [
   // the authored map as it passes overhead.
   W('#coverage', 'top 85%', { tilt: 76, height: 1.2, glide: 0.25, bright: 0.6, flat: 0.3, grid: 0, dusk: 0, cover: 0 }),
   W('#coverage', 'top top', { tilt: 89, height: 1.5, glide: 0.1, bright: 0.75, flat: 0.15, grid: 0, dusk: 0, cover: 0 }),
-  W('#coverage', 'bottom 60%', { tilt: 89, height: 1.5, glide: 0.1, bright: 0.5, flat: 0.15, grid: 0, dusk: 0, cover: 0 }),
+  // As the map comes in over it, the land dims so the authored map reads as the same ground.
+  W('#coverage', 'top -40%', { tilt: 89, height: 1.5, glide: 0.1, bright: 0.28, flat: 0.15, grid: 0, dusk: 0, cover: 0 }),
+  W('#coverage', 'bottom 60%', { tilt: 89, height: 1.5, glide: 0.1, bright: 0.28, flat: 0.15, grid: 0, dusk: 0, cover: 0 }),
   // Careers: hidden behind the full-bleed photo.
   W('#careers', 'top 40%', { tilt: 60, height: 1.2, glide: 0.4, bright: 0.3, flat: 0, grid: 0, dusk: 0, cover: 1 }),
   W('#careers', 'bottom 60%', { tilt: 40, height: 1, glide: 0.6, bright: 0.5, flat: 0, grid: 0, dusk: 0.4, cover: 1 }),

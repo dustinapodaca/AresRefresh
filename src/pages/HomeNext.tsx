@@ -9,6 +9,7 @@ import RecordNext from '../components/next/RecordNext';
 import SitesNext from '../components/next/SitesNext';
 import PrimesNext from '../components/next/PrimesNext';
 import QualityNext from '../components/next/QualityNext';
+import WhereNext from '../components/next/WhereNext';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -18,7 +19,6 @@ import '../components/next/next.css';
 // untouched until the owner chooses to swap. Without JavaScript, under reduced motion, and in the
 // prerender it is a clean vertical page with stills in place.
 const PLACEHOLDERS = [
-  ['coverage', 'Where we work.'],
   ['careers', 'Now hiring armed and unarmed officers.'],
   ['contact', 'Request a quote, or call us.'],
 ] as const;
@@ -35,6 +35,7 @@ export default function HomeNext() {
         <SitesNext />
         <PrimesNext />
         <QualityNext />
+        <WhereNext />
         {PLACEHOLDERS.map(([id, t]) => (
           <section key={id} id={id} className="hn-section hn-placeholder">
             <div className="ds-container">

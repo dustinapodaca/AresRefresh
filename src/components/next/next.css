@@ -131,6 +131,7 @@ html[data-ground='live'] body { background: var(--ds-canvas); }
   opacity: 0; scale: 0.9; transition: opacity 160ms var(--ds-ease), scale 160ms var(--ds-ease);
 }
 .hn-cursor[data-on] { opacity: 1; scale: 1; }
+.hn-cursor.ds-data { color: var(--ds-canvas); }
 @media (prefers-reduced-motion: reduce) { .hn-node-body, .hn-crop { transition: none; } }
 
 /* The page's one photo grade (owner, 2026-10-19): slightly cool shadows, rust-warm highlights, so every
@@ -429,3 +430,46 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
 .hn-q-chip { position: absolute; z-index: 4; max-width: 280px; }
 .hn-q-para { position: absolute; z-index: 4; left: max(var(--ds-gutter, 32px), calc((100vw - 1280px) / 2 + 32px)); bottom: 8vh; max-width: 40ch; margin: 0; font-size: 20px; line-height: 1.5; color: var(--ds-fg); text-shadow: 0 1px 12px rgb(0 0 0 / 0.6); }
 .hn-q-cap { position: absolute; z-index: 4; right: 32px; bottom: 32px; font-size: 12px; color: #c4c8ce; }
+
+/* ---------- 4.6 Where we work: the ground becomes the map ---------- */
+.hn-where { padding-top: var(--ds-beat); }
+.hn-where-grid { display: grid; gap: 36px; }
+.hn-where-copy { display: grid; gap: 20px; }
+.hn-where-title { font-size: clamp(56px, 7.4vw, 132px); }
+.hn-where-lead { margin: 0; max-width: 42ch; color: #c4c8ce; }
+.hn-map { position: relative; margin: 0; aspect-ratio: 544 / 400; width: 100%; max-width: 760px; overflow: clip; border-radius: 2px; }
+.hn-map-pan { position: absolute; inset: 0; will-change: transform; }
+.hn-map svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.hn-map-route { stroke: var(--ds-rust); stroke-width: 1.6; filter: drop-shadow(0 0 4px rgb(188 111 64 / 0.6)); }
+.hn-map-faint { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.hn-map-pin { fill: var(--ds-fg); }
+.hn-map-pin[data-hq] { fill: var(--ds-rust); }
+.hn-where-mark { position: absolute; top: 0; }
+/* The cities as Nodes on the map: a label bar beside the pin. */
+.hn-city-node { position: absolute; transform-origin: 0 50%; margin: -7px 0 0 14px; transition: opacity 220ms var(--ds-ease); }
+/* The labels keep their size while the view zooms (GSAP owns the node's own transform). */
+.hn-city-node .hn-node-bar { scale: calc(1 / var(--z, 1)); transform-origin: 0 50%; }
+.hn-city-node .hn-node-bar { gap: 8px; padding: 4px 8px 5px 6px; border-radius: 2px; background: rgb(0 0 0 / 0.55); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); color: var(--ds-fg); }
+.hn-city-node .hn-node-bar[data-hq] .hn-node-dot { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.7); }
+.hn-city-node .hn-node-meta { color: var(--ds-fg-faint); }
+.hn-map[data-lit] .hn-city-node { opacity: 0.4; }
+.hn-map[data-lit] .hn-city-node[data-on] { opacity: 1; }
+.hn-map[data-lit] .hn-city-node[data-on] .hn-node-dot { background: var(--ds-rust); }
+/* The three cities, very large, each a link to its page. */
+.hn-where-cities { list-style: none; margin: 0; padding: 0; }
+.hn-where-cities li { border-top: 1px solid var(--ds-rule); }
+.hn-where-cities li:last-child { border-bottom: 1px solid var(--ds-rule); }
+.hn-where-cities a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; padding: 16px 0 18px; color: var(--ds-fg); }
+.hn-where-cities a > span:first-child { font-family: var(--ds-display); font-weight: 600; font-size: clamp(34px, 9vw, 56px); line-height: 1; letter-spacing: -0.045em; }
+.hn-where-cities .ds-data { grid-column: 1; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ds-fg-faint); }
+.hn-where-cities .ds-arrow { grid-column: 2; grid-row: 1 / span 2; transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+.hn-where-cities a[data-lit] .ds-arrow { transform: translateX(6px); color: var(--ds-rust); }
+
+/* Desktop, pinned: copy above the map on the left, the cities on the right. */
+.hn-where[data-scene] { padding-top: 0; }
+.hn-where[data-scene] .hn-where-scene { height: 100svh; box-sizing: border-box; padding-top: calc(var(--ds-header) + 28px); }
+.hn-where[data-scene] .hn-where-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: auto minmax(0, 1fr); column-gap: 48px; row-gap: 20px; height: calc(100svh - var(--ds-header) - 56px); }
+.hn-where[data-scene] .hn-map { grid-column: 1; grid-row: 2; height: 100%; width: auto; max-width: 100%; justify-self: start; }
+.hn-where[data-scene] .hn-where-cities { grid-column: 2; grid-row: 1 / -1; align-self: center; }
+.hn-where[data-scene] .hn-where-cities a > span:first-child { font-size: clamp(40px, 4.6vw, 80px); }
+@media (max-width: 1199px) { .hn-where[data-scene] .hn-where-scene { padding-top: calc(var(--ds-header) + var(--ds-runhead) + 20px); } }
