@@ -4847,3 +4847,12 @@ html[data-cards] .ds-primes-panel {
   .ds-pglow-css i:nth-child(4) { right: 10%; bottom: -4%; width: 46%; height: 15%; }
 }
 @media (prefers-reduced-motion: reduce) { .ds-pglow-css i { animation: none; } }
+
+/* ---------- Home's scroll engine (owner, 2026-10-19) ----------
+   Lenis's own rules: it scrolls the window itself, so the native smooth scroll stands down while it
+   runs, and the page holds still while it is stopped. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

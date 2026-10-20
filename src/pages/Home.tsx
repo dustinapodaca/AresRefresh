@@ -8,26 +8,33 @@ import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
 import Contact from '../components/home/Contact';
+import { MotionProvider, useMotionEngine } from '../components/home/motion';
 
 // Home: "The Dossier" (docs/concepts.md, Concept A). Design authority: DESIGN.md.
 // Content source: docs/home-content.md. Copy changes: docs/copy-changes.md.
+// One continuous, choreographed scroll (owner, 2026-10-19): the scroll engine loads after the first
+// paint and each section arms its own motion (components/home/motion.tsx). data-motion marks the
+// page while it runs, so the CSS-only scroll effects it replaces stand down.
 export default function Home() {
+  const engine = useMotionEngine();
   return (
-    <main id="main" tabIndex={-1} className="ds ds-page">
-      <Seo path="/" />
-      <Hero />
-      <CredentialStrip />
-      <div className="ds-container ds-doc">
-        <div className="ds-doc-body">
-          <Record />
-          <Industries />
-          <Quality />
-          <Coverage />
-          <Careers />
-          <Contact />
+    <MotionProvider engine={engine}>
+      <main id="main" tabIndex={-1} className="ds ds-page" data-motion={engine ? 'on' : undefined}>
+        <Seo path="/" />
+        <Hero />
+        <CredentialStrip />
+        <div className="ds-container ds-doc">
+          <div className="ds-doc-body">
+            <Record />
+            <Industries />
+            <Quality />
+            <Coverage />
+            <Careers />
+            <Contact />
+          </div>
+          <DocRail />
         </div>
-        <DocRail />
-      </div>
-    </main>
+      </main>
+    </MotionProvider>
   );
 }

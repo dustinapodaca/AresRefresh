@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { flushSync } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import { scrollToSection } from '../lib/scrollToSection';
+import { scrollToSection, scrollToY } from '../lib/scrollToSection';
 
 // How clicks move around the site (owner, 2026-10-09).
 // - Same-page "#" links glide to their section (src/lib/scrollToSection.ts).
@@ -51,7 +51,7 @@ export default function SmoothAnchors() {
       if (samePage) {
         e.preventDefault();
         if (menuOpen) window.dispatchEvent(new Event('ares:close-menu'));
-        window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
+        scrollToY(0);
         return;
       }
 
