@@ -1,4 +1,5 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
+import { useMotion } from './motion';
 
 // The prime contractor pipeline (owner, 2026-10-15, after gladia.io's "foundation of every voice
 // product"): the prime and Ares as cards on a vertical line that grows with the scroll. The
@@ -36,6 +37,10 @@ const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
 export default function PrimePipeline({ className = '' }: { className?: string }) {
   const ref = useRef<HTMLElement>(null);
   const postsRef = useRef<HTMLDivElement>(null);
+  // On Home the scroll engine's ScrollTrigger carries the tip (owner, 2026-10-19: one shared scroll),
+  // with every offset measured on refresh, not read each frame; elsewhere (/teaming) a passive scroll
+  // listener does the same.
+  const engine = useMotion();
   useEffect(() => {
     const el = ref.current;
     const posts = postsRef.current;
@@ -44,11 +49,20 @@ export default function PrimePipeline({ className = '' }: { className?: string }
     const tiles = Array.from(posts.querySelectorAll<HTMLElement>('.ds-pipe-post'));
     const drops = Array.from(posts.querySelectorAll<HTMLElement>('.ds-pipe-drop'));
     // Each drop runs straight down from the foot of Ares to the top of its tile.
-    const place = () =>
+    let lineH = 0;
+    let cardTops: number[] = [];
+    let tileLens: number[] = [];
+    const place = () => {
       tiles.forEach((t, i) => {
         drops[i].style.left = `${t.offsetLeft + t.offsetWidth / 2}px`;
         drops[i].style.height = `${t.offsetTop}px`;
       });
+      // The line runs from the top of the figure to the foot of Ares, where the wires begin.
+      lineH = posts.offsetTop;
+      cardTops = cards.map((c) => c.offsetTop);
+      tileLens = tiles.map((t) => t.offsetTop);
+      el.style.setProperty('--h', `${lineH}px`);
+    };
     place();
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (still) {
@@ -58,28 +72,40 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       drops.forEach((d) => d.style.setProperty('--q', '1'));
       return;
     }
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const r = el.getBoundingClientRect();
-      // The line runs from the top of the figure to the foot of Ares, where the wires begin.
-      const lineH = posts.offsetTop;
-      const tip = window.innerHeight * 0.7 - r.top; // the line's tip, in the figure's pixels
+    // `tip` is the line's tip, in the figure's pixels.
+    const draw = (tip: number) => {
       const p = Math.min(1, Math.max(0, tip / lineH));
       el.style.setProperty('--p', p.toFixed(4));
-      el.style.setProperty('--h', `${lineH}px`);
       // A card turns on once the tip passes its top edge, and stays on.
-      cards.forEach((c) => {
-        if (!c.dataset.on && tip >= c.offsetTop + 8) c.dataset.on = 'true';
+      cards.forEach((c, i) => {
+        if (!c.dataset.on && tip >= cardTops[i] + 8) c.dataset.on = 'true';
       });
       // Past the foot of Ares the tip carries on down the three drops; each tile turns on as its
       // drop reaches it (the left one first: it sits highest).
       const below = tip - lineH;
       tiles.forEach((t, i) => {
-        const len = t.offsetTop;
+        const len = tileLens[i];
         drops[i].style.setProperty('--q', Math.min(1, Math.max(0, below / len)).toFixed(4));
         if (!t.dataset.on && below >= len + 8) t.dataset.on = 'true';
       });
+    };
+    if (engine) {
+      // The tip rides at 70% of the window: it is how far the scroll has carried past the moment
+      // the figure's top crossed that line.
+      const st = engine.ScrollTrigger.create({
+        trigger: el,
+        start: 'top 70%',
+        end: () => `+=${lineH + Math.max(0, ...tileLens) + 40}`,
+        onRefreshInit: place,
+        onRefresh: (self) => draw(self.scroll() - self.start),
+        onUpdate: (self) => draw(self.scroll() - self.start),
+      });
+      return () => st.kill();
+    }
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      draw(window.innerHeight * 0.7 - el.getBoundingClientRect().top);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -96,7 +122,7 @@ export default function PrimePipeline({ className = '' }: { className?: string }
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [engine]);
 
   return (
     <figure

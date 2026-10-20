@@ -31,6 +31,8 @@ export default function SmoothAnchors() {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
       if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+      // Links that handle their own click (Home's Industries scene: a name scrolls to its step).
+      if (a.hasAttribute('data-own-click')) return;
       const url = new URL(a.href, location.href);
       if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
 

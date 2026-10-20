@@ -1112,30 +1112,84 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
    margin, so this section adds it back; the released cards then stop a full beat above the
    headline instead of running into it (owner, 2026-10-10). */
 @media (max-width: 1023px) { .ds-industries { padding-top: calc(var(--ds-beat) + 96px); } }
-.ds-ind-plates { list-style: none; margin: 44px 0 0; padding: 0; display: grid; }
-.ds-ind-plates { gap: 36px 24px; }
-@media (min-width: 768px) { .ds-ind-plates { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.ds-ind-plates a { display: grid; gap: 8px; color: var(--ds-fg); }
-.ds-ind-photo { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; margin-bottom: 12px; }
-@media (max-width: 767px) { .ds-ind-photo { aspect-ratio: 16 / 10; } }
+/* The six as a list (owner, 2026-10-19; replaced the three plates and the ruled strip): phones,
+   tablets, reduced motion, and the page without its scroll engine. Each row: the photo, then the
+   number, the name with its arrow, and the line; from 768px the photo sits left of the words. */
+.ds-ind-list { list-style: none; margin: 44px 0 0; padding: 0; }
+.ds-ind-row { display: grid; gap: 14px; padding: 22px 0 24px; border-top: 1px solid var(--ds-rule); color: var(--ds-fg); }
+.ds-ind-list > li:last-child .ds-ind-row { border-bottom: 1px solid var(--ds-rule); }
+.ds-ind-text { display: grid; gap: 6px; align-content: center; }
+.ds-ind-photo { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 4px; }
+@media (min-width: 768px) {
+  .ds-ind-row { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 24px; align-items: center; }
+}
 .ds-ind-photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
 .ds-ind-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) brightness(0.84); transition: transform 300ms var(--ds-ease); }
 /* Per-image framing from industries.ts (`card`), with its own desktop position where set. */
-.ds-ind-photo img { object-position: var(--card-pos, 50% 50%); }
-@media (min-width: 1024px) { .ds-ind-photo img { object-position: var(--card-pos-desktop, var(--card-pos, 50% 50%)); } }
-.ds-ind-name { display: flex; align-items: center; gap: 10px; font-family: var(--ds-display); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.12; letter-spacing: -0.03em; }
-.ds-ind-name .ds-arrow { flex: none; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
-.ds-ind-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
+.ds-ind-photo img, .ds-ind-shot img { object-position: var(--card-pos, 50% 50%); }
+@media (min-width: 1024px) { .ds-ind-photo img, .ds-ind-shot img { object-position: var(--card-pos-desktop, var(--card-pos, 50% 50%)); } }
+.ds-ind-name { display: block; font-family: var(--ds-display); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.12; letter-spacing: -0.03em; color: var(--ds-fg); }
+.ds-ind-name .ds-arrow { display: inline-block; margin-left: 10px; vertical-align: -1px; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+.ds-ind-line { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
 @media (hover: hover) and (pointer: fine) {
-  .ds-ind-plates a:hover img { transform: scale(1.03); }
-  .ds-ind-plates a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+  .ds-ind-row:hover img { transform: scale(1.03); }
+  .ds-ind-row:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
 }
 .ds-ind-n { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-industries .ds-ind-rest { margin-top: 56px; }
-/* Plates: the arrow follows the last word of the name, however it wraps. */
-.ds-ind-plates .ds-ind-name { display: block; }
 .ds-nowrap { white-space: nowrap; }
-.ds-ind-plates .ds-ind-name .ds-arrow { display: inline-block; margin-left: 10px; vertical-align: -1px; }
+
+/* The pinned scene (owner, 2026-10-19; desktop, while the scroll engine runs; Industries.tsx). The
+   scene fills the screen under the nav: the headline, lead, and six names in columns 1 to 5, one
+   photo frame (4:5, at most 72% of the screen's height) in columns 6 to 12 with its mono caption. */
+.ds-industries[data-scene] .ds-ind-scene {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: center;
+  height: calc(100svh - var(--ds-header));
+  padding: 24px 0;
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) {
+  .ds-industries[data-scene] .ds-ind-scene { height: calc(100svh - var(--ds-header) - var(--ds-runhead)); }
+}
+.ds-industries[data-scene] .ds-ind-left { grid-column: 1 / span 5; }
+.ds-industries[data-scene] .ds-sec-head { display: block; }
+.ds-industries[data-scene] .ds-sec-head .ds-lead { margin-top: 18px; font-size: 17px; }
+.ds-industries[data-scene] .ds-ind-list { margin-top: clamp(20px, 4vh, 40px); }
+.ds-industries[data-scene] .ds-ind-list > li { position: relative; }
+.ds-ind-step { display: flex; align-items: baseline; gap: 14px; padding: 7px 0; color: var(--ds-fg); opacity: 0.62; transition: opacity 220ms var(--ds-ease); }
+.ds-ind-step .ds-ind-name { font-size: clamp(24px, 2.1vw, 30px); }
+.ds-industries[data-scene] li[data-active] .ds-ind-step { opacity: 1; }
+/* The rail's rust tick, beside the name under the scroll. */
+.ds-industries[data-scene] .ds-ind-list > li::before {
+  content: ''; position: absolute; left: -22px; top: calc(7px + 0.62em); width: 12px; height: 2px; background: var(--ds-rust);
+  transform: scaleX(0); transform-origin: left; transition: transform 220ms var(--ds-ease);
+}
+.ds-industries[data-scene] .ds-ind-list > li[data-active]::before { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-industries[data-scene] .ds-ind-step:hover { opacity: 1; }
+}
+/* The line and "Open the page" open under the name under the scroll. */
+.ds-ind-more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 280ms var(--ds-ease), opacity 220ms var(--ds-ease); }
+.ds-ind-more > div { min-height: 0; overflow: hidden; padding-left: 37px; }
+li[data-active] > .ds-ind-more { grid-template-rows: 1fr; opacity: 1; }
+.ds-ind-more .ds-ind-line { padding-top: 2px; }
+.ds-ind-open { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 8px; font-size: 15px; }
+.ds-ind-frame { grid-column: 6 / -1; justify-self: end; margin: 0; display: grid; gap: 12px; }
+.ds-ind-shots {
+  position: relative; display: block; overflow: hidden; border-radius: 4px;
+  height: min(72vh, calc(100svh - var(--ds-header) - 96px)); aspect-ratio: 4 / 5;
+}
+.ds-ind-shots::after { content: ''; position: absolute; inset: 0; z-index: 10; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
+.ds-ind-shot { position: absolute; inset: 0; overflow: hidden; }
+.ds-ind-shot img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) brightness(0.84); will-change: transform; }
+.ds-ind-shade { position: absolute; inset: 0; background: #000; opacity: 0; }
+.ds-ind-caption { display: flex; gap: 16px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-ind-caption span:last-child { color: var(--ds-fg-muted); }
+@media (prefers-reduced-motion: reduce) {
+  .ds-ind-step, .ds-ind-more, .ds-industries .ds-ind-list > li::before { transition: none; }
+}
 .ds-primes-panel {
   /* Slash's panel: near-black with a soft light from above, a hairline edge, a light line on
      the top edge (second pass, owner 2026-10-10). */
@@ -4880,7 +4934,7 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-contact::before { opacity: 0; }
 /* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
    stand down. */
-.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value) { animation: none !important; }
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel) { animation: none !important; }
 /* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
 .ds-w { display: inline-block; }
 
