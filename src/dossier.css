@@ -4981,3 +4981,20 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-value {
   --ds-card-rust: radial-gradient(520px 420px at calc(100% + 64px) calc(100% + 104px), rgb(156 86 43 / calc(0.52 * var(--corner, 1))) 0%, rgb(104 51 22 / calc(0.42 * var(--corner, 1))) 28%, rgb(56 26 11 / calc(0.28 * var(--corner, 1))) 54%, rgb(56 26 11 / 0) 78%);
 }
+
+/* ---------- 03 Quality, one scroll (owner, 2026-10-19) ----------
+   The headline at display-xl (as DESIGN.md had it; the code had display-lg), the lead beneath it in
+   columns 1 to 6 on desktop, so this head breaks the shared pattern. The plate's frame clips the
+   photo so the scroll can open it; each fact's hairline is a ::before the scroll draws. */
+@media (min-width: 1024px) {
+  .ds-quality .ds-sec-head { align-items: start; }
+  .ds-quality .ds-sec-head h2 { grid-column: 1 / span 9; }
+  .ds-quality .ds-sec-head .ds-lead { grid-column: 1 / span 6; }
+}
+.ds-quality-frame { display: block; overflow: hidden; border-radius: 4px; }
+.ds-quality-frame img { will-change: transform; }
+.ds-page[data-motion] .ds-quality-facts div { position: relative; border-top-color: transparent; }
+.ds-page[data-motion] .ds-quality-facts div::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--ds-rule);
+  transform: scaleX(var(--rule, 1)); transform-origin: left;
+}
