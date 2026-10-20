@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { GSA_ELIBRARY } from './links';
@@ -177,8 +177,19 @@ export default function Hero() {
 
       <div className="ds-container">
         <div ref={copyRef} className="ds-hero-copy">
+          {/* Each word in a mask of its own, so the load-in can raise it into place (the text
+              reads as one line to every reader and crawler). */}
           <h1 id="hero-title" className="ds-display-xl">
-            {heroTitle(hero.title)}
+            {heroTitle(hero.title)
+              .split(' ')
+              .map((w, i, all) => (
+                <span key={i}>
+                  <span className="ds-hero-w" style={{ '--i': i } as CSSProperties}>
+                    <span>{w}</span>
+                  </span>
+                  {i < all.length - 1 ? ' ' : ''}
+                </span>
+              ))}
           </h1>
           <p ref={leadRef} className="ds-lead">{hero.lead}</p>
           {/* Below 1024px only: from there up the nav carries the quote button. */}
@@ -191,16 +202,20 @@ export default function Hero() {
           </div>
           {/* The proof row (audit): one line each, every one checkable on the linked page. */}
           <ul className="ds-hero-proof" aria-label="Proof">
-            <li>
-              <span>GSA MAS</span>{' '}
-              <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
-                47QSMS25D009Q
-                <Arrow external size={12} />
-              </a>
+            {/* Each line's words in a span of their own, so the load-in can bring them up after
+                the hairline above them has drawn. */}
+            <li style={{ '--i': 0 } as CSSProperties}>
+              <span className="ds-hero-proof-t">
+                <span>GSA MAS</span>{' '}
+                <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
+                  47QSMS25D009Q
+                  <Arrow external size={12} />
+                </a>
+              </span>
             </li>
             {/* Quiet facts, not links; GSA is the only route (copy audit round 3). */}
-            <li>Minority woman-owned (WOSB, WBENC)</li>
-            <li>Licensed in Colorado Springs, Denver, Pueblo</li>
+            <li style={{ '--i': 1 } as CSSProperties}><span className="ds-hero-proof-t">Minority woman-owned (WOSB, WBENC)</span></li>
+            <li style={{ '--i': 2 } as CSSProperties}><span className="ds-hero-proof-t">Licensed in Colorado Springs, Denver, Pueblo</span></li>
           </ul>
         </div>
       </div>

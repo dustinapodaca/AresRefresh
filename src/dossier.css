@@ -4883,3 +4883,27 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy) { animation: none !important; }
 /* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
 .ds-w { display: inline-block; }
+
+/* ---------- Home hero load-in (owner, 2026-10-19) ----------
+   Once, as Home opens, while the terrain rises from flat: the headline's words rise from their
+   masks one after another (900ms, expo out, 70ms apart), then the lead, then each proof line, its
+   hairline drawing left to right before its words come up. Only where the terrain runs live
+   (<html data-terrain="live">, set before the first paint by index.html's inline script: never in
+   the prerender, under reduced motion, or without JavaScript, which all show the hero whole), and
+   in CSS, so it plays from the first paint without waiting on the scroll engine. */
+.ds-hero-w { display: inline-block; vertical-align: top; overflow: clip; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.ds-hero-w > span { display: inline-block; }
+@keyframes ds-hero-word { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes ds-hero-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes ds-hero-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  html[data-terrain='live'] .ds-hero-w > span { animation: ds-hero-word 900ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(380ms + var(--i) * 70ms); }
+  html[data-terrain='live'] .ds-hero-copy .ds-lead,
+  html[data-terrain='live'] .ds-hero-actions { animation: ds-hero-in 800ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: 900ms; }
+  html[data-terrain='live'] .ds-hero-proof li { position: relative; border-top-color: transparent; }
+  html[data-terrain='live'] .ds-hero-proof li::before {
+    content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: rgb(255 255 255 / 0.12);
+    transform-origin: left; animation: ds-hero-rule 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(1150ms + var(--i) * 120ms);
+  }
+  html[data-terrain='live'] .ds-hero-proof-t { display: block; animation: ds-hero-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(1450ms + var(--i) * 120ms); }
+}
