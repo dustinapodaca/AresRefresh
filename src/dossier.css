@@ -4880,7 +4880,7 @@ html.lenis, html.lenis body { height: auto; }
 .ds-page[data-motion] .ds-contact::before { opacity: 0; }
 /* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
    stand down. */
-.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy) { animation: none !important; }
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value) { animation: none !important; }
 /* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
 .ds-w { display: inline-block; }
 
@@ -4906,4 +4906,24 @@ html.lenis, html.lenis body { height: auto; }
     transform-origin: left; animation: ds-hero-rule 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(1150ms + var(--i) * 120ms);
   }
   html[data-terrain='live'] .ds-hero-proof-t { display: block; animation: ds-hero-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(1450ms + var(--i) * 120ms); }
+}
+
+/* ---------- 01 Record, one scroll (owner, 2026-10-19) ----------
+   The figures are the strongest proof on the site, so they are set large on desktop (they were 44 to
+   60px). Each changing digit is an odometer reel one glyph tall (Record.tsx). */
+@media (min-width: 1024px) {
+  .ds-value-figure { font-size: 72px; }
+}
+@media (min-width: 1200px) {
+  .ds-value-figure { font-size: clamp(64px, 6.4vw, 96px); }
+}
+.ds-value-figure { font-variant-numeric: tabular-nums slashed-zero; }
+.ds-odo { display: inline-flex; align-items: flex-start; }
+.ds-odo > span { display: block; height: 1em; line-height: 1; }
+.ds-odo-col { overflow: clip; }
+.ds-odo-reel { display: flex; flex-direction: column; will-change: transform; }
+.ds-odo-reel > span { display: block; height: 1em; line-height: 1; }
+/* The corner light comes up as the figure lands: the same light, its strength scaled by --corner. */
+.ds-page[data-motion] .ds-value {
+  --ds-card-rust: radial-gradient(520px 420px at calc(100% + 64px) calc(100% + 104px), rgb(156 86 43 / calc(0.52 * var(--corner, 1))) 0%, rgb(104 51 22 / calc(0.42 * var(--corner, 1))) 28%, rgb(56 26 11 / calc(0.28 * var(--corner, 1))) 54%, rgb(56 26 11 / 0) 78%);
 }
