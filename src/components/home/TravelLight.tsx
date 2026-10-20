@@ -57,8 +57,11 @@ export default function TravelLight() {
       { at: '#careers', line: 'top 55%', x: 0.5, y: 0.62, s: 1.35, o: 0.2 },
       { at: '#contact', line: 'top 75%', x: 0.5, y: 1.08, s: 1.7, o: 0.32 },
       { at: '#contact', line: 'center 55%', x: 0.5, y: 0.84, s: 1.8, o: 0.7 },
-      { at: '.ds-ft-stage', line: 'top bottom', x: 0.5, y: 0.92, s: 1.8, o: 0.6 },
-      { at: '.ds-ft-stage', line: 'top 75%', x: 0.5, y: 1.05, s: 1.6, o: 0 },
+      // No still stretch at the end (owner, 2026-10-19: never scroll through still black): after the
+      // close's columns are in, the horizon keeps rising behind it, then sets into the footer's own
+      // light as the closing stage arrives.
+      { at: '.ds-ft-stage', line: 'top bottom', x: 0.5, y: 0.6, s: 2.3, o: 0.75 },
+      { at: '.ds-ft-stage', line: 'top 75%', x: 0.5, y: 1.05, s: 1.8, o: 0 },
     ];
 
     // Each key's scroll position, from a bare ScrollTrigger so pins earlier on the page count.
