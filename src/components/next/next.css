@@ -204,7 +204,9 @@ html[data-ground='live'] .hn-hero-ground { display: none; }
 @keyframes hn-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes hn-node-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: none; } }
 @keyframes hn-blink { 0%, 100% { opacity: 0; } 30%, 60% { opacity: 1; } 45% { opacity: 0.25; } }
-@media (prefers-reduced-motion: no-preference) {
+/* Desktop only (owner, 2026-10-19, performance pass): on phones the hero shows from the first paint,
+   so its words are the first thing drawn (the lead was the mobile LCP, held back by the load-in). */
+@media (prefers-reduced-motion: no-preference) and (min-width: 900px) {
   .hn-hero[data-arm] .hn-line > span { animation: hn-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) backwards; }
   .hn-hero[data-arm] .hn-line:nth-child(2) > span { animation-delay: 90ms; }
   .hn-hero[data-arm] .hn-hero-under { animation: hn-in 700ms cubic-bezier(0.16, 1, 0.3, 1) 520ms backwards; }
