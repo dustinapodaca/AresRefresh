@@ -3,6 +3,7 @@ import { MotionProvider, useMotionEngine } from '../components/home/motion';
 import Ground from '../components/next/Ground';
 import Thread from '../components/next/Thread';
 import RouteRail from '../components/next/RouteRail';
+import Details from '../components/next/Details';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -44,6 +45,7 @@ export default function HomeNext() {
         ))}
         <Thread />
         <RouteRail />
+        <Details />
       </main>
     </MotionProvider>
   );
