@@ -473,3 +473,28 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
 .hn-where[data-scene] .hn-where-cities { grid-column: 2; grid-row: 1 / -1; align-self: center; }
 .hn-where[data-scene] .hn-where-cities a > span:first-child { font-size: clamp(40px, 4.6vw, 80px); }
 @media (max-width: 1199px) { .hn-where[data-scene] .hn-where-scene { padding-top: calc(var(--ds-header) + var(--ds-runhead) + 20px); } }
+
+/* ---------- 4.7 Careers: the door opens ---------- */
+.hn-careers { padding-top: var(--ds-beat); }
+.hn-careers-scene { position: relative; }
+.hn-door { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+.hn-door img { width: 100%; height: 100%; object-fit: cover; object-position: 59% 35%; will-change: transform; }
+.hn-door::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.2) 45%, rgb(0 0 0 / 0) 70%); }
+.hn-careers-over { position: relative; margin-top: -40%; display: grid; gap: 28px; padding-bottom: 8px; }
+.hn-careers-title { font-size: clamp(44px, 7vw, 132px); max-width: 14ch; }
+.hn-careers-foot { display: grid; gap: 22px; }
+.hn-careers-nodes { display: flex; flex-wrap: wrap; gap: 20px 40px; }
+.hn-careers-node { font-size: 17px; color: var(--ds-fg); }
+.hn-careers-vets { margin: 0; font-size: 16px; color: #c4c8ce; }
+.hn-careers-link { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: 16px; }
+@media (min-width: 768px) {
+  .hn-door { aspect-ratio: 16 / 9; }
+  .hn-door img { object-position: 50% 35%; }
+  .hn-careers-over { margin-top: -26%; }
+}
+/* Desktop, pinned: the photo fills the screen; the copy over its lower third. */
+.hn-careers[data-scene] { padding-top: 0; }
+.hn-careers[data-scene] .hn-careers-scene { height: 100svh; overflow: hidden; }
+.hn-careers[data-scene] .hn-door { position: absolute; inset: 0; aspect-ratio: auto; }
+.hn-careers[data-scene] .hn-careers-over { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; padding-bottom: 48px; }
+.hn-careers[data-scene] .hn-careers-foot { grid-template-columns: minmax(0, 1fr) auto auto; align-items: end; column-gap: 40px; }
