@@ -49,7 +49,8 @@ export const WAYPOINTS: Waypoint[] = [
   W('#primes', 'bottom 70%', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.12, flat: 1, grid: 1, dusk: 0, cover: 0 }),
   // Quality: hidden behind the full-bleed photo.
   W('#quality', 'top 60%', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.1, flat: 0.8, grid: 0.2, dusk: 0, cover: 0 }),
-  W('#quality', 'top top', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.1, flat: 0.8, grid: 0, dusk: 0, cover: 1 }),
+  W('#quality', 'top top', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.1, flat: 0.8, grid: 0, dusk: 0, cover: 0 }),
+  W('#quality', 'top -70%', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.1, flat: 0.8, grid: 0, dusk: 0, cover: 1 }),
   W('#quality', 'bottom 80%', { tilt: 70, height: 1.05, glide: 0.2, bright: 0.1, flat: 0.8, grid: 0, dusk: 0, cover: 1 }),
   // Where we work: the camera rises to straight overhead; the section cross-fades the land into
   // the authored map as it passes overhead.
