@@ -6,6 +6,7 @@ import RouteRail from '../components/next/RouteRail';
 import Details from '../components/next/Details';
 import HeroNext from '../components/next/HeroNext';
 import RecordNext from '../components/next/RecordNext';
+import SitesNext from '../components/next/SitesNext';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -15,7 +16,6 @@ import '../components/next/next.css';
 // untouched until the owner chooses to swap. Without JavaScript, under reduced motion, and in the
 // prerender it is a clean vertical page with stills in place.
 const PLACEHOLDERS = [
-  ['industries', 'The sites we protect.'],
   ['primes', 'For prime contractors.'],
   ['quality', 'Quality over quantity.'],
   ['coverage', 'Where we work.'],
@@ -32,6 +32,7 @@ export default function HomeNext() {
         <Ground />
         <HeroNext />
         <RecordNext />
+        <SitesNext />
         {PLACEHOLDERS.map(([id, t]) => (
           <section key={id} id={id} className="hn-section hn-placeholder">
             <div className="ds-container">

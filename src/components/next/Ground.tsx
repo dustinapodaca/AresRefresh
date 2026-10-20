@@ -40,7 +40,8 @@ export const WAYPOINTS: Waypoint[] = [
   W('#record', 'top top', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.15 }),
   // The sites: nearly black behind full-bleed photography, then covered while the scene is pinned.
   W('#industries', 'top 70%', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.06 }),
-  W('#industries', 'top top', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.06, cover: 1 }),
+  W('.hn-sites-scene', 'top 40%', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.06, cover: 0 }),
+  W('.hn-sites-scene', 'top top', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.06, cover: 1 }),
   W('#industries', 'bottom bottom', { ...HERO, tilt: 58, height: 0.85, glide: 0.4, bright: 0.06, cover: 1 }),
   // For prime contractors: the land flattens to a dot-grid plane, the canvas for the nodes.
   W('#primes', 'top 85%', { tilt: 64, height: 1, glide: 0.3, bright: 0.25, flat: 0.6, grid: 0.4, dusk: 0, cover: 0 }),
