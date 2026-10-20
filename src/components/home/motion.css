@@ -1,0 +1,110 @@
+/* Home's motion styles (owner, 2026-10-19): the rules that apply only while the scroll engine runs.
+   They load with the engine (src/lib/motionEngine.ts imports this file), so they never block the
+   first paint: the pinned Industries scene, Lenis's own rules, the traveling light, the CSS scroll
+   timelines standing down, the headline reveal's words, the odometer, and the drawn fact hairlines.
+   Everything the page needs without the engine stays in src/dossier.css. */
+
+/* The pinned scene (owner, 2026-10-19; desktop, while the scroll engine runs; Industries.tsx). The
+   scene fills the screen under the nav: the headline, lead, and six names in columns 1 to 5, one
+   photo frame (4:5, at most 72% of the screen's height) in columns 6 to 12 with its mono caption. */
+.ds-industries[data-scene] .ds-ind-scene {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: center;
+  height: calc(100svh - var(--ds-header));
+  padding: 24px 0;
+  box-sizing: border-box;
+}
+@media (max-width: 1199px) {
+  .ds-industries[data-scene] .ds-ind-scene { height: calc(100svh - var(--ds-header) - var(--ds-runhead)); }
+}
+.ds-industries[data-scene] .ds-ind-left { grid-column: 1 / span 5; }
+.ds-industries[data-scene] .ds-sec-head { display: block; }
+.ds-industries[data-scene] .ds-sec-head .ds-lead { margin-top: 18px; font-size: 17px; }
+.ds-industries[data-scene] .ds-ind-list { margin-top: clamp(20px, 4vh, 40px); }
+.ds-industries[data-scene] .ds-ind-list > li { position: relative; }
+.ds-ind-step { display: flex; align-items: baseline; gap: 14px; padding: 7px 0; color: var(--ds-fg); opacity: 0.62; transition: opacity 220ms var(--ds-ease); }
+.ds-ind-step .ds-ind-name { font-size: clamp(24px, 2.1vw, 30px); }
+.ds-industries[data-scene] li[data-active] .ds-ind-step { opacity: 1; }
+/* The rail's rust tick, beside the name under the scroll. */
+.ds-industries[data-scene] .ds-ind-list > li::before {
+  content: ''; position: absolute; left: -22px; top: calc(7px + 0.62em); width: 12px; height: 2px; background: var(--ds-rust);
+  transform: scaleX(0); transform-origin: left; transition: transform 220ms var(--ds-ease);
+}
+.ds-industries[data-scene] .ds-ind-list > li[data-active]::before { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-industries[data-scene] .ds-ind-step:hover { opacity: 1; }
+}
+/* The line and "Open the page" open under the name under the scroll. */
+.ds-ind-more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 280ms var(--ds-ease), opacity 220ms var(--ds-ease); }
+.ds-ind-more > div { min-height: 0; overflow: hidden; padding-left: 37px; }
+li[data-active] > .ds-ind-more { grid-template-rows: 1fr; opacity: 1; }
+.ds-ind-more .ds-ind-line { padding-top: 2px; }
+.ds-ind-open { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 8px; font-size: 15px; }
+.ds-ind-frame { grid-column: 6 / -1; justify-self: end; margin: 0; display: grid; gap: 12px; }
+.ds-ind-shots {
+  position: relative; display: block; overflow: hidden; border-radius: 4px;
+  height: min(72vh, calc(100svh - var(--ds-header) - 96px)); aspect-ratio: 4 / 5;
+}
+.ds-ind-shots::after { content: ''; position: absolute; inset: 0; z-index: 10; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
+.ds-ind-shot { position: absolute; inset: 0; overflow: hidden; }
+.ds-ind-shot img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) brightness(0.84); will-change: transform; }
+.ds-ind-shade { position: absolute; inset: 0; background: #000; opacity: 0; }
+.ds-ind-caption { display: flex; gap: 16px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-ind-caption span:last-child { color: var(--ds-fg-muted); }
+@media (prefers-reduced-motion: reduce) {
+  .ds-ind-step, .ds-ind-more, .ds-industries .ds-ind-list > li::before { transition: none; }
+}
+
+/* ---------- Home's scroll engine (owner, 2026-10-19) ----------
+   Lenis's own rules: it scrolls the window itself, so the native smooth scroll stands down while it
+   runs, and the page holds still while it is stopped. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* The traveling light (owner, 2026-10-19; TravelLight.tsx): fixed behind the whole page, above
+   the canvas and under every section (a negative layer inside Home's own stacking context). Its
+   two shapes are the prime panel's ramp (umber, deep rust, rust; no pale clay), kept dim. */
+.ds-page[data-motion] { isolation: isolate; }
+.ds-light { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict; }
+.ds-light-in { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; will-change: transform, opacity; }
+.ds-light-in i { position: absolute; border-radius: 50%; }
+.ds-light-in i:first-child {
+  width: 1400px; height: 900px; left: -700px; top: -450px;
+  background: radial-gradient(closest-side, rgb(104 51 22 / 0.42), rgb(56 26 11 / 0.26) 52%, rgb(56 26 11 / 0) 100%);
+}
+.ds-light-in i:last-child {
+  width: 640px; height: 420px; left: -300px; top: -230px;
+  background: radial-gradient(closest-side, rgb(156 86 43 / 0.5), rgb(104 51 22 / 0.3) 50%, rgb(104 51 22 / 0) 100%);
+}
+@media (max-width: 767px) {
+  .ds-light-in i:first-child { width: 820px; height: 620px; left: -410px; top: -310px; }
+  .ds-light-in i:last-child { width: 380px; height: 280px; left: -180px; top: -150px; }
+}
+/* The close's own light under the cards gives way to it. */
+.ds-page[data-motion] .ds-contact::before { opacity: 0; }
+/* While the engine runs, it moves these itself (in every browser), so their CSS scroll timelines
+   stand down. */
+.ds-page[data-motion] :is(.ds-hero-photo img, .ds-hero-copy, .ds-value, .ds-primes-panel, .ds-map-route, .ds-bleed img) { animation: none !important; }
+/* The headline reveal's words (Reveal.tsx): boxes of their own so each can rise. */
+.ds-w { display: inline-block; }
+
+.ds-odo { display: inline-flex; align-items: flex-start; }
+.ds-odo > span { display: block; height: 1em; line-height: 1; }
+.ds-odo-col { overflow: clip; }
+.ds-odo-reel { display: flex; flex-direction: column; will-change: transform; }
+.ds-odo-reel > span { display: block; height: 1em; line-height: 1; }
+/* The corner light comes up as the figure lands: the same light, its strength scaled by --corner. */
+.ds-page[data-motion] .ds-value {
+  --ds-card-rust: radial-gradient(520px 420px at calc(100% + 64px) calc(100% + 104px), rgb(156 86 43 / calc(0.52 * var(--corner, 1))) 0%, rgb(104 51 22 / calc(0.42 * var(--corner, 1))) 28%, rgb(56 26 11 / calc(0.28 * var(--corner, 1))) 54%, rgb(56 26 11 / 0) 78%);
+}
+
+.ds-page[data-motion] .ds-quality-facts div { position: relative; border-top-color: transparent; }
+.ds-page[data-motion] .ds-quality-facts div::before {
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--ds-rule);
+  transform: scaleX(var(--rule, 1)); transform-origin: left;
+}

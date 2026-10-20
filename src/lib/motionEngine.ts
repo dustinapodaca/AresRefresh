@@ -8,6 +8,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { setSmoothScroll } from './scrollToSection';
+import '../components/home/motion.css';
 
 export type Engine = {
   gsap: typeof gsap;
