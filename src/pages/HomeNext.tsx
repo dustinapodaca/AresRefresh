@@ -11,6 +11,7 @@ import PrimesNext from '../components/next/PrimesNext';
 import QualityNext from '../components/next/QualityNext';
 import WhereNext from '../components/next/WhereNext';
 import CareersNext from '../components/next/CareersNext';
+import ContactNext from '../components/next/ContactNext';
 import '../components/next/next.css';
 
 // Home, reimagined (owner, 2026-10-19; blue-sky brief): the whole page built from Ares's own objects,
@@ -19,9 +20,6 @@ import '../components/next/next.css';
 // through it, one camera moved by the scroll. A noindex preview at /home-next; the live Home is
 // untouched until the owner chooses to swap. Without JavaScript, under reduced motion, and in the
 // prerender it is a clean vertical page with stills in place.
-const PLACEHOLDERS = [
-  ['contact', 'Request a quote, or call us.'],
-] as const;
 
 export default function HomeNext() {
   const engine = useMotionEngine();
@@ -29,7 +27,6 @@ export default function HomeNext() {
     <MotionProvider engine={engine}>
       <main id="main" tabIndex={-1} className="ds ds-page hn" data-motion={engine ? 'on' : undefined}>
         <Seo path="/home-next" />
-        <Ground />
         <HeroNext />
         <RecordNext />
         <SitesNext />
@@ -37,14 +34,9 @@ export default function HomeNext() {
         <QualityNext />
         <WhereNext />
         <CareersNext />
-        {PLACEHOLDERS.map(([id, t]) => (
-          <section key={id} id={id} className="hn-section hn-placeholder">
-            <div className="ds-container">
-              <h2 className="hn-statement">{t}</h2>
-              <i className="hn-mark" data-thread={id === 'contact' ? 'end' : 'x'} />
-            </div>
-          </section>
-        ))}
+        <ContactNext />
+        {/* After the sections: their pins exist before the ground's waypoints and the line are measured. */}
+        <Ground />
         <Thread />
         <RouteRail />
         <Details />

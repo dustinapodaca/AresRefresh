@@ -65,6 +65,8 @@ export const WAYPOINTS: Waypoint[] = [
   // The close and the footer: back to the hero's angle, at dusk. The page ends where it began.
   W('#contact', 'top 70%', { ...HERO, bright: 0.7, dusk: 0.8 }),
   W('#contact', 'center center', { ...HERO, bright: 0.85, dusk: 1 }),
+  // Under the footer the land dims so its text reads.
+  W('.ds-footer', 'top 70%', { ...HERO, bright: 0.4, dusk: 1, glide: 0.6 }),
 ];
 
 const smooth = (t: number) => t * t * (3 - 2 * t);

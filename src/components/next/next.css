@@ -46,10 +46,6 @@
 .hn.ds-page { background: transparent; }
 html[data-ground='live'] body { background: var(--ds-canvas); }
 
-/* ---------- Placeholders (step 2 only: prove the camera) ---------- */
-.hn-placeholder { min-height: 150vh; display: flex; align-items: center; }
-#hn-hero.hn-placeholder { min-height: 100svh; align-items: flex-end; padding-bottom: 12vh; }
-
 /* ---------- One line: the rust thread down the page (Thread.tsx) ---------- */
 .hn-thread { position: absolute; left: 0; top: 0; width: 100%; z-index: 3; pointer-events: none; overflow: visible; }
 .hn-thread-tip { transition: opacity 200ms var(--ds-ease); }
@@ -498,3 +494,32 @@ a.hn-moment-cap:hover { color: var(--ds-fg); }
 .hn-careers[data-scene] .hn-door { position: absolute; inset: 0; aspect-ratio: auto; }
 .hn-careers[data-scene] .hn-careers-over { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; padding-bottom: 48px; }
 .hn-careers[data-scene] .hn-careers-foot { grid-template-columns: minmax(0, 1fr) auto auto; align-items: end; column-gap: 40px; }
+
+/* ---------- 4.8 The close: the line ends at the phone number ---------- */
+.hn-contact { padding-top: var(--ds-beat-open); padding-bottom: var(--ds-beat); }
+.hn-contact-title { font-size: clamp(52px, 8.6vw, 168px); max-width: 16ch; }
+.hn-phone-block { display: grid; gap: 14px; margin-top: clamp(40px, 7vh, 80px); }
+.hn-phone-bar { text-transform: none; letter-spacing: 0; }
+.hn-phone-note { font-family: var(--ds-data); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ds-fg-faint); white-space: normal; }
+.hn-phone-bar .hn-node-dot { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.6); }
+.hn-phone {
+  position: relative; justify-self: start; display: inline-flex; align-items: center; padding-bottom: 0.08em;
+  font-family: var(--ds-data); font-weight: 400; font-size: clamp(52px, 10vw, 180px); line-height: 1; letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums slashed-zero; color: var(--ds-fg); white-space: nowrap;
+}
+.hn-phone .ds-arrow { position: absolute; left: calc(100% + 0.12em); top: 50%; width: 0.32em; height: 0.32em; margin-top: -0.2em; opacity: 0; transform: translateX(-0.2em); transition: opacity 220ms var(--ds-ease), transform 260ms var(--ds-ease); color: var(--ds-rust); }
+/* The underline is the page's line arriving: 1px rust, drawn left to right with the scroll. */
+.hn-phone-line { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ds-rust); transform-origin: left; transition: box-shadow 260ms var(--ds-ease), height 260ms var(--ds-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .hn-phone:hover .hn-phone-line { box-shadow: 0 0 14px rgb(188 111 64 / 0.9), 0 0 2px rgb(241 196 154 / 0.9); }
+  .hn-phone:hover .ds-arrow { opacity: 1; transform: none; }
+}
+.hn-phone:focus-visible .hn-phone-line { box-shadow: 0 0 14px rgb(188 111 64 / 0.9); }
+.hn-phone-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 6px 0 0; font-size: 13px; color: var(--ds-fg-faint); }
+.hn-phone-meta a { color: var(--ds-fg-muted); }
+.hn-phone-meta a:hover { color: var(--ds-fg); }
+.hn-close-row { display: grid; gap: 22px; margin-top: clamp(56px, 9vh, 96px); padding-top: 28px; border-top: 1px solid var(--ds-rule); }
+.hn-close-line { margin: 0; max-width: 46ch; font-size: 18px; line-height: 1.55; color: #c4c8ce; }
+.hn-close-row .ds-btn { justify-self: start; }
+@media (min-width: 900px) { .hn-close-row { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 48px; } }
+@media (max-width: 767px) { .hn-close-row .ds-btn { justify-self: stretch; } }
