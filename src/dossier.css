@@ -4856,3 +4856,25 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: clip; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* The traveling light (owner, 2026-10-19; TravelLight.tsx): fixed behind the whole page, above
+   the canvas and under every section (a negative layer inside Home's own stacking context). Its
+   two shapes are the prime panel's ramp (umber, deep rust, rust; no pale clay), kept dim. */
+.ds-page[data-motion] { isolation: isolate; }
+.ds-light { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict; }
+.ds-light-in { position: absolute; left: 0; top: 0; width: 0; height: 0; opacity: 0; will-change: transform, opacity; }
+.ds-light-in i { position: absolute; border-radius: 50%; }
+.ds-light-in i:first-child {
+  width: 1400px; height: 900px; left: -700px; top: -450px;
+  background: radial-gradient(closest-side, rgb(104 51 22 / 0.42), rgb(56 26 11 / 0.26) 52%, rgb(56 26 11 / 0) 100%);
+}
+.ds-light-in i:last-child {
+  width: 640px; height: 420px; left: -300px; top: -230px;
+  background: radial-gradient(closest-side, rgb(156 86 43 / 0.5), rgb(104 51 22 / 0.3) 50%, rgb(104 51 22 / 0) 100%);
+}
+@media (max-width: 767px) {
+  .ds-light-in i:first-child { width: 820px; height: 620px; left: -410px; top: -310px; }
+  .ds-light-in i:last-child { width: 380px; height: 280px; left: -180px; top: -150px; }
+}
+/* The close's own light under the cards gives way to it. */
+.ds-page[data-motion] .ds-contact::before { opacity: 0; }

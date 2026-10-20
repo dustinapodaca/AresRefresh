@@ -78,7 +78,7 @@ export default function CoverageMap({ landmarks = false }: { landmarks?: boolean
               {c.hq && (
                 <>
                   <circle className="ds-map-ring" cx={cx} cy={cy} r="14" fill="none" stroke="#bc6f40" />
-                  <circle cx={cx} cy={cy} r="5" fill="#bc6f40" />
+                  <circle cx={cx} cy={cy} r="5" fill="#bc6f40" data-hq-pin />
                 </>
               )}
               {!c.hq && <circle cx={cx} cy={cy} r="4" fill="#eef0f2" />}

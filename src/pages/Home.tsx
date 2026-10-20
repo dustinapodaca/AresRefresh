@@ -9,6 +9,7 @@ import Coverage from '../components/home/Coverage';
 import Careers from '../components/home/Careers';
 import Contact from '../components/home/Contact';
 import { MotionProvider, useMotionEngine } from '../components/home/motion';
+import TravelLight from '../components/home/TravelLight';
 
 // Home: "The Dossier" (docs/concepts.md, Concept A). Design authority: DESIGN.md.
 // Content source: docs/home-content.md. Copy changes: docs/copy-changes.md.
@@ -34,6 +35,8 @@ export default function Home() {
           </div>
           <DocRail />
         </div>
+        {/* Last, so its keys are measured after every section's pins. */}
+        <TravelLight />
       </main>
     </MotionProvider>
   );
