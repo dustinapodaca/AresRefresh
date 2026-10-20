@@ -1,0 +1,181 @@
+/* /home-next (home-flora, 2026-10-20): the reimagined Home. One ground, one line, one camera.
+   Every section's resolved layout is the default; [data-nx-motion="on"] on <html> (set when the
+   scroll engine loads) switches on the pinned and scrubbed layouts. Section styles live in their
+   own files (nx-*.css) beside this one. */
+
+.nx { background: var(--ds-canvas); color: var(--ds-fg); }
+.nx-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.nx-w { display: inline-block; will-change: transform, opacity; }
+.nx-edge { padding-inline: var(--ds-edge); }
+
+/* The Statement: much larger than the old section heads; scale contrast does the grouping. */
+.nx-statement {
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(48px, 8.4vw, 150px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: var(--ds-fg);
+  margin: 0;
+  text-wrap: balance;
+}
+.nx-statement-sm { font-size: clamp(40px, 5.8vw, 96px); letter-spacing: -0.05em; }
+
+/* The Node: a label bar above an object (after flora's nodes, in an Ares post-tag voice). */
+.nx-node { position: relative; }
+.nx-node-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  font-family: var(--ds-data);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+  margin-bottom: 10px;
+}
+.nx-node-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg-muted); }
+.nx-node-bar > span:first-child::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--ds-fg-faint);
+}
+.nx-node[data-live='true'] .nx-node-bar > span:first-child::before { background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
+
+/* ------------------------------------------------------------------ Hero */
+.nx-hero { position: relative; }
+.nx-hero-stage {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+}
+.nx-hero-ground { position: absolute; inset: 0; isolation: isolate; }
+/* The light inside the letters: a warm field, brightest low and to the right, so the cut-out
+   type reads as lit copper with the contours running through it. */
+.nx-hero-light {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 14% 18%, rgb(214 122 70 / 0.75) 0%, rgb(214 122 70 / 0) 70%),
+    radial-gradient(120% 90% at 82% 96%, rgb(240 164 112) 0%, rgb(206 112 62) 26%, rgb(150 70 32) 55%, rgb(104 46 20) 100%),
+    #6a2e13;
+}
+.nx-hero-still,
+.nx-hero-ground .topography-container {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+}
+.nx-hero-still img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.7) contrast(1.15); }
+html[data-terrain='live'] .nx-hero-still { display: none; }
+
+.nx-hero-mask {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  mix-blend-mode: multiply;
+  padding: calc(var(--ds-header) + clamp(28px, 6vh, 72px)) var(--ds-edge) 0;
+  will-change: transform;
+}
+.nx-hero-title {
+  margin: 0;
+  color: #fff;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(54px, 12.2vw, 188px);
+  line-height: 0.88;
+  letter-spacing: -0.058em;
+  /* Three lines on desktop: "Security officers / for Colorado's / Front Range". */
+  max-width: 7em;
+}
+/* The words "Front Range" never part; the F is the stroke the camera flies into. */
+.nx-nowrap { white-space: nowrap; }
+.nx-hero-title .nx-fly { display: inline; }
+
+.nx-hero-copy {
+  position: absolute;
+  left: var(--ds-edge);
+  right: var(--ds-edge);
+  bottom: clamp(24px, 4.5vh, 48px);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 24px;
+  align-items: end;
+  z-index: 2;
+}
+.nx-hero-lead {
+  grid-column: 1 / span 5;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #c4c8ce;
+  max-width: 44ch;
+}
+.nx-hero-actions { grid-column: 8 / span 5; display: flex; gap: 22px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+.nx-hero-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-size: 15px; }
+.nx-hero-call .ds-phone-icon { width: 18px; height: 18px; }
+.nx-hero-proof {
+  grid-column: 1 / -1;
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+.nx-hero-proof li {
+  border-top: 1px solid rgb(255 255 255 / 0.14);
+  padding-top: 12px;
+  font-size: 14px;
+  color: var(--ds-fg-muted);
+}
+.nx-hero-proof a { white-space: nowrap; color: inherit; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.2); text-underline-offset: 4px; }
+.nx-hero-cue {
+  position: absolute;
+  right: var(--ds-edge);
+  top: calc(var(--ds-header) + clamp(28px, 6vh, 72px));
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+  writing-mode: vertical-rl;
+  z-index: 2;
+}
+
+/* Load-in (motion only): the letters start dark and the light comes up inside them. */
+.nx-hero[data-arm='true'] .nx-hero-light { opacity: 0; transform: scale(1.08); }
+.nx-hero[data-arm='true'] .nx-hero-lift { opacity: 0; transform: translateY(18px); }
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-light {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s, transform 2.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-lift {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s var(--ds-ease), transform 0.9s var(--ds-ease);
+}
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-lead { transition-delay: 0.9s; }
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-actions { transition-delay: 1.02s; }
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-proof { transition-delay: 1.14s; }
+.nx-hero[data-arm='true'][data-in='true'] .nx-hero-cue { transition-delay: 1.4s; }
+
+@media (max-width: 1023px) {
+  .nx-hero-lead { grid-column: 1 / -1; }
+  .nx-hero-actions { grid-column: 1 / -1; justify-content: flex-start; }
+  .nx-hero-proof { grid-template-columns: 1fr; gap: 10px; }
+  .nx-hero-proof li { padding-top: 8px; font-size: 13px; }
+  .nx-hero-cue { display: none; }
+}
+@media (max-width: 599px) {
+  .nx-hero-title { font-size: clamp(48px, 14.4vw, 80px); max-width: none; }
+  .nx-hero-lead { font-size: 16px; }
+}

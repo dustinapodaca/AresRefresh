@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
 import Home from './pages/Home';
+import HomeNext from './pages/HomeNext';
 import About from './pages/About';
 import Services from './pages/Services';
 import CapabilityStatement from './pages/CapabilityStatement';
@@ -126,6 +127,8 @@ export default function App() {
       <NavPanel />
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* The reimagined Home, previewed beside the live one (home-flora, 2026-10-20; noindex). */}
+        <Route path="/home-next" element={<HomeNext />} />
         {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
