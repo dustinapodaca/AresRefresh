@@ -19,6 +19,8 @@ import { motionAllowed, useScene } from './engine';
 const Topography = lazy(() => import('./Topography'));
 const STILL = responsive('/images/hero-topo/terrain-desktop.webp');
 const TEL = 'tel:+17196963966';
+// The most the headline layer is ever scaled on the fly-in (see measure()).
+const MAX_ZOOM = 40;
 
 type Control = { current: Record<string, unknown> & { wake?: () => void } };
 
@@ -41,7 +43,15 @@ export default function Hero() {
   // The headline settles in on first paint (CSS); the motion version is armed by the engine.
   useEffect(() => {
     const id = requestAnimationFrame(() => ref.current?.setAttribute('data-in', 'true'));
-    return () => cancelAnimationFrame(id);
+    // After the load-in (its last step ends about 2.3s in), drop its transitions so they never
+    // smooth or delay the scroll's own motion.
+    const done = window.setTimeout(() => {
+      if (ref.current?.dataset.in === 'true') ref.current.dataset.in = 'done';
+    }, 2600);
+    return () => {
+      cancelAnimationFrame(id);
+      window.clearTimeout(done);
+    };
   }, []);
 
   useScene(ref, ({ gsap, ScrollTrigger }, root) => {
@@ -52,8 +62,10 @@ export default function Hero() {
     const copy = root.querySelectorAll<HTMLElement>('.nx-hero-lift');
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
 
-    // Where to fly: the middle of the F's stem, and how far to scale so that stroke covers the
-    // whole window (its width about 0.15em).
+    // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
+    // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
+    // (the headline came back as a fragment and the nav blanked). The black fades out while it
+    // grows, so the land is all there is without the stroke having to cover the window.
     let px = 0;
     let py = 0;
     let scale = 60;
@@ -65,7 +77,7 @@ export default function Hero() {
       px = f.left - m.left + size * 0.15;
       py = f.top - m.top + f.height * 0.56;
       const stem = size * 0.13;
-      scale = (Math.hypot(window.innerWidth, window.innerHeight) * 2.6) / stem;
+      scale = Math.min(MAX_ZOOM, (window.innerWidth * 1.1) / stem);
       mask.style.transformOrigin = `${px}px ${py}px`;
     };
     measure();
@@ -83,13 +95,17 @@ export default function Hero() {
         onUpdate: (self) => {
           // The camera pitches down and speeds up as we dive in.
           const p = self.progress;
+          // Once the reader scrolls, the scroll owns the copy: end the load-in's transitions.
+          if (p > 0 && root.dataset.in === 'true') root.dataset.in = 'done';
           control.current.tilt = 32 + 30 * p;
           control.current.speed = 0.25 + 1.4 * p * p;
           control.current.wake?.();
         },
       },
     });
-    tl.to(copy, { yPercent: -40, opacity: 0, stagger: 0.04, duration: 0.25 }, 0)
+    // From explicit values, not whatever the load-in had reached: scrolling before it finished
+    // recorded the copy half faded (or hidden), and scrolling back up returned it to that.
+    tl.fromTo(copy, { yPercent: 0, opacity: 1 }, { yPercent: -40, opacity: 0, stagger: 0.04, duration: 0.25, immediateRender: false }, 0)
       .to(
         mask,
         {
@@ -100,10 +116,12 @@ export default function Hero() {
           y: () => stage.clientHeight / 2 - py,
           duration: 0.8,
           ease: 'power2.in',
+          force3D: true,
         },
         0.08,
       )
-      .to(mask, { opacity: 0, duration: 0.16 }, 0.7)
+      // autoAlpha: hidden once faded, so the browser stops drawing the zoomed layer.
+      .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
       .to(ground, { opacity: 0.22, duration: 0.2 }, 0.8);
 
     return () => ScrollTrigger.refresh();

@@ -167,6 +167,10 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
 .nx-hero[data-arm='true'][data-in='true'] .nx-hero-actions { transition-delay: 1.02s; }
 .nx-hero[data-arm='true'][data-in='true'] .nx-hero-proof { transition-delay: 1.14s; }
 .nx-hero[data-arm='true'][data-in='true'] .nx-hero-cue { transition-delay: 1.4s; }
+/* Done (2026-10-20): the load-in has finished or the reader has scrolled; no transitions, so the
+   scroll's motion is never smoothed or delayed by them. */
+.nx-hero[data-arm='true'][data-in='done'] .nx-hero-light,
+.nx-hero[data-arm='true'][data-in='done'] .nx-hero-lift { opacity: 1; transform: none; transition: none; }
 
 @media (max-width: 1023px) {
   .nx-hero-lead { grid-column: 1 / -1; }
