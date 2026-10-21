@@ -3,7 +3,7 @@ import type { gsap as GsapType } from 'gsap';
 import type { ScrollTrigger as ScrollTriggerType } from 'gsap/ScrollTrigger';
 import type Lenis from 'lenis';
 
-// The scroll engine for /home-next (home-flora, 2026-10-20): Lenis for the inertial glide and
+// The scroll engine for Home (home-flora, 2026-10-20): Lenis for the inertial glide and
 // GSAP ScrollTrigger for pins and scrubbed timelines, on one ticker. Loaded on this page only,
 // after first paint, so no other page carries it.
 //

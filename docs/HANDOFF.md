@@ -1,8 +1,22 @@
 # Handoff: Ares site redesign ("The Dossier")
 
-Last updated: 2026-10-19. **The site is live on aressecurity.co** (DreamHost). `main` = `audit`
+Last updated: 2026-10-20. **The site is live on aressecurity.co** (DreamHost). `main` = `audit`
 as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owner says to merge.
 **Read this first when starting a new chat.**
+
+## Home: "The Ground" (2026-10-20, branch `home-flora`)
+
+- **The owner made the `home-flora` design the official Home** (2026-10-20). It was imported from
+  a git bundle (two commits on audit `44e1f8f`), then folded in: `/` renders it (no preview
+  route), the Dossier Home's components and its CSS in `dossier.css` were removed, and DESIGN.md
+  describes it (Components, "Home"). The old Home is in `docs/home-dossier.md` and git tag
+  `home-dossier-final`. The two other candidates were deleted as local branches (tags
+  `archive/v3design`, `archive/home-reimagined`; their GitHub branches were left as they are).
+- **Adds `lenis` and `gsap`** (loaded on Home only, after the first paint). Preship: PASS, 0
+  errors and 0 warnings across 38 pages at 1440 and 390; the prerendered `/` holds every section.
+- **Not live and not on `audit` or `main` yet.** To release: merge `home-flora` into `audit` (a
+  fast-forward while `audit` has no new commits), build, preship, push, and the owner uploads
+  `dist/`. FileZilla doesn't delete, so old hashed assets stay on the server harmlessly.
 
 ## Live (2026-10-19)
 

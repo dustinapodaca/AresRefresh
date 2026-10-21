@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
@@ -7,8 +7,6 @@ import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
 import Home from './pages/Home';
-// The reimagined Home preview loads on its own route only, so the live pages don't carry it.
-const HomeNext = lazy(() => import('./pages/HomeNext'));
 import About from './pages/About';
 import Services from './pages/Services';
 import CapabilityStatement from './pages/CapabilityStatement';
@@ -48,10 +46,8 @@ function useCardStyle() {
 // showing and keeps up as pages change.
 const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // The frost is lighter than the CSS frost these surfaces had (22 to 26px), as on Gladia, or the
-  // blur smears the bend away; the dark tints keep the copy readable. The Home Record cards stay a
-  // little denser (owner, 2026-10-15: too see-through on phones; the phone pile uses the CSS frost).
-  { sel: '.ds-value', opts: { blur: 12 } },
-  // About's "What clients told us" cards (owner, 2026-10-18), at the Record cards' frost.
+  // blur smears the bend away; the dark tints keep the copy readable.
+  // About's "What clients told us" cards (owner, 2026-10-18), at 18px.
   // CSS frost below 768px: Android Chrome tiles the filter and drew a seam across the card (owner, 2026-10-19).
   { sel: '.ds-heard-card', opts: { blur: 18, saturate: 1.1 }, media: '(min-width: 768px)' },
   // About's credential card (owner, 2026-10-18); phones keep the CSS frost (the Android seam).
@@ -61,7 +57,6 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // Full-width bands bend and light only the edges that read as glass, never their sides (they sit
   // on the screen's edges) and never an edge that only shows when a phone's address bar slides away
   // (owner, 2026-10-15).
-  { sel: '.ds-hero-copy', opts: { pseudo: '::before', blur: 10, edges: { top: true, bottom: true } } },
   // More frost on the Services opening, the footer, and the Capability hero (owner, 2026-10-15; was 10).
   { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18, edges: { top: true } } },
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
@@ -71,7 +66,7 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   { sel: '.ds-nf-card', opts: { blur: 10 } },
   // Not the Services card panels (owner, 2026-10-15): the live filter on six panels glitched on fast
   // scrolls; each panel now carries its own blurred copy of its photo (.ds-svc-glass).
-  // The Services opening's aperture card (owner, 2026-10-15), at the Home Record cards' 12px.
+  // The Services opening's aperture card (owner, 2026-10-15), at 12px.
   // Not on phones (owner, 2026-10-15): Android Chrome drew a seam down the card where it tiles the
   // filter (a laptop's phone view never shows it); phones keep the CSS frost.
   { sel: '.ds-ap-card', opts: { blur: 12 }, media: '(min-width: 768px)' },
@@ -128,9 +123,6 @@ export default function App() {
       <NavPanel />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* The reimagined Home, previewed beside the live one (home-flora, 2026-10-20; noindex). */}
-        <Route path="/home-next" element={<Suspense fallback={null}><HomeNext /></Suspense>} />
-        {/* Fresh Home pass, a preview beside the current one (owner, 2026-10-10). */}
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/capability-statement" element={<CapabilityStatement />} />

@@ -1054,3 +1054,28 @@ before anything is signed, the scoped proposal, on-call scheduling in every cont
 the post by leadership, the GSA Schedule's ceiling prices, no statewide license. Links to Mobile
 Patrol and Commercial & Retail. Added to routes.json (sitemap), llms.txt, and the Insights index
 (first, dated October 19, 2026). Author Dustin Apodaca, as on the others.
+
+## Home: "The Ground" becomes the official Home (owner, 2026-10-20)
+
+The `home-flora` design replaced the Dossier Home at `/`. The headlines, leads, figures, captions,
+facts, and the close's lines carry over word for word. What is new or gone:
+
+- Hero: the quote button now shows on desktop too (it was below 1024px only), with the phone
+  link beside it at every width (new); a mono "Scroll" cue at the top right on desktop. The credential strip (phones) is gone.
+- 01 Record: tabs "01 Reliability", "02 Client rating", "03 Personnel"; a mono line under each
+  diagram: "Fewer than 1 in 100 shifts missed · since 2021", "5 past performance evaluations · 45
+  criteria · none below Satisfactory", "Indeed · employee rating".
+- 02 Industries: each industry's "Post brief" carries its short line, "What we staff" (its roles
+  from the industry page), "What to send us" (the industry page's ask), "Open the <industry> page"
+  and Request a Quote. All of it is copy the industry pages already use.
+- For prime contractors: node labels "Prime contractor / Holds the contract", "Needs: Posts covered
+  under its contract", "Ares Security / Subcontractor", "Post 01" to "Post 03" (Restricted-Area
+  Escort, Access Control, Relief & Surge), tags "Teaming" and "Subcontracting credit", and three
+  notes: "Subcontracting credit: Woman-owned small business, WOSB250470 · WBE2303571"; "Restricted
+  areas: Escort and access control on a Space Force base in Colorado, Subcontractor · 2025 to
+  2027"; "Reliability: Fewer than 1% of shifts missed since 2021, On-call relief in every contract".
+- 04 Coverage: "HQ" and "Service area" beside the cities.
+- 05 Careers: three nodes, "Training: For your city license", "Schedules: Posted ahead",
+  "Supervisors: Who answer".
+- 06 Contact: the two card titles ("Request a quote", "Call us") are gone; "Call us" is now the
+  phone's label bar.

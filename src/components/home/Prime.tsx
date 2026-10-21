@@ -16,7 +16,7 @@ const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
 
 type Wire = { id: string; d: string; x1: number; y1: number; x2: number; y2: number };
 
-export default function NxPrime() {
+export default function Prime() {
   const ref = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [wires, setWires] = useState<Wire[]>([]);
@@ -117,7 +117,7 @@ export default function NxPrime() {
   });
 
   return (
-    <section ref={ref} id="nx-prime" className="nx-prime" aria-labelledby="nx-prime-title">
+    <section ref={ref} id="prime" className="nx-prime" aria-labelledby="nx-prime-title">
       <div className="nx-prime-grid nx-edge">
         <div className="nx-prime-copy">
           <h2 id="nx-prime-title" className="nx-statement nx-statement-sm">

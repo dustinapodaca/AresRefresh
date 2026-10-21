@@ -31,7 +31,7 @@ export function sectionY(el: HTMLElement): number {
 export function scrollToSection(id: string, opts: { instant?: boolean; focus?: boolean } = {}) {
   const el = document.getElementById(id);
   if (!el) return false;
-  // /home-next (home-flora, 2026-10-20) runs Lenis; a native smooth scroll would fight it.
+  // Home runs Lenis (home-flora, 2026-10-20); a native smooth scroll would fight it.
   const lenis = (window as unknown as { __lenis?: { scrollTo: (y: number, o?: object) => void } }).__lenis;
   if (lenis) lenis.scrollTo(sectionY(el), { immediate: !!opts.instant || reduceMotion(), duration: 1.2 });
   else window.scrollTo({ top: sectionY(el), behavior: opts.instant || reduceMotion() ? 'auto' : 'smooth' });
