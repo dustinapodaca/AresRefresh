@@ -81,7 +81,9 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   background: #000;
   mix-blend-mode: multiply;
   padding: calc(var(--ds-header) + clamp(28px, 6vh, 72px)) var(--ds-edge) 0;
-  will-change: transform;
+  /* No will-change here (2026-10-20): with it, Chrome on a Mac kept the tiles it drew at the
+     fly-in's zoom, so scrolling back up showed only "Fro" and blanked the nav. Without it Chrome
+     redraws the headline at whatever size the scroll leaves it. */
 }
 .nx-hero-title {
   margin: 0;
