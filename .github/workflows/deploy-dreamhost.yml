@@ -1,15 +1,21 @@
 # Deploy to DreamHost whenever main changes (owner, 2026-10-19). Builds the site, runs the SEO
 # check, backs up the server folder, then mirrors dist/ onto it with rsync --delete, so the server
 # matches the build exactly: changed files are replaced and files the build no longer has are
-# removed. deploy/dreamhost.sh does the work; this only gives it SSH access.
+# removed. deploy/dreamhost.sh does the work; this only gives it SSH access. Only the web directory
+# changes: DNS, email (Microsoft 365), and the domain are never touched.
 #
 # Repository secrets (Settings > Secrets and variables > Actions):
 #   DH_SSH          the SFTP/SSH user @ its server, e.g. username@iad1-shared-b7-01.dreamhost.com
-#   DH_DIR          the web folder, relative to that user's home, e.g. aressecurity.co
+#   DH_DIR          the web directory, relative to that user's home, as the panel shows it under
+#                   Websites > Manage > Settings > Web directory: aressecurity.co/public
 #   DH_SSH_KEY      the private half of a key made for this deploy (its .pub is on DreamHost)
 #   DH_KNOWN_HOSTS  the server's host key: the output of  ssh-keyscan <server>
 #
 # Run it by hand from the Actions tab too (Run workflow); tick "dry run" to see what would change.
+#
+# Pushes to main deploy only once the repository variable DREAMHOST_AUTODEPLOY is "on"
+# (Settings > Secrets and variables > Actions > Variables). Until then only a manual run deploys,
+# so the first runs can be a dry run and a watched real run.
 name: Deploy to DreamHost
 
 on:
@@ -29,6 +35,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.DREAMHOST_AUTODEPLOY == 'on'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

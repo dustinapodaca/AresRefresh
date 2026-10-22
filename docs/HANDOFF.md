@@ -23,16 +23,22 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
 
 ## Live (2026-10-19)
 
-- **Hosting:** DreamHost (Apache), not Netlify. The owner uploads the build by hand in FileZilla
-  (SSH): everything inside `dist/` into the site's web folder, `public`, except `_headers` and
-  `_redirects` (Netlify's files). `public/.htaccess` gives Apache clean URLs, the 301s, the real
-  404, the CSP and security headers, caching, compression, and https on the bare domain
-  (www and http redirect). `deploy/dreamhost.sh` does the same upload over rsync if ever wanted.
-  FileZilla doesn't delete: when files are renamed or removed, tell the owner which to delete.
-- **Release steps (owner, 2026-10-19):** work on `audit`; `npm run build` and the preship check
-  (full); commit and push `audit`; the owner uploads `dist/` and checks it live. Merge to `main`
-  (`git push origin audit:main`, a fast-forward while `main` has no commits of its own) only when
-  the owner says to, once the release is confirmed working.
+- **Hosting:** DreamHost (Apache), not Netlify. Web directory `aressecurity.co/public` (the panel's
+  Websites > Manage > Settings). `public/.htaccess` gives Apache clean
+  URLs, the 301s, the real 404, the CSP and security headers, caching, compression, and https on the
+  bare domain (www and http redirect).
+- **Deploy (2026-10-22):** `.github/workflows/deploy-dreamhost.yml` runs `deploy/dreamhost.sh` on every
+  push to `main`: build, SEO check, back up `public` to `public-backup-<stamp>` (five kept), mirror
+  `dist/` with `rsync --delete` (never `_headers`/`_redirects`; never deletes under `.well-known`), check
+  live URLs. Secrets: `DH_SSH`, `DH_DIR=aressecurity.co/public` (never `aressecurity.co`: the script
+  refuses it), `DH_SSH_KEY`, `DH_KNOWN_HOSTS`. Run it from the Actions tab with "dry run" to preview.
+  Pushes deploy only while the repo variable `DREAMHOST_AUTODEPLOY` is `on`; otherwise run it by hand.
+  Only the web directory changes; DNS and Microsoft 365 email are never touched. FileZilla is the
+  fallback (it doesn't delete: when files are renamed or removed, tell the owner which to delete).
+- **Release steps (2026-10-22):** work on `audit`; `npm run build` and the preship check (full);
+  commit and push `audit`. When the owner says to release, fast-forward `main`
+  (`git push origin audit:main`, while `main` has no commits of its own): that push deploys to
+  DreamHost. Pushing `audit` alone deploys nothing.
 - **Checked live at launch:** every route, the six 301s, the 404, www/http to https, headers and
   caching, the files byte for byte against the build, no console errors on desktop or phone.
 - **Analytics:** GA4 `G-V4GCEJYB3L` via `.env.production` (reports only on aressecurity.co). GA
@@ -399,7 +405,7 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
   404, security headers, caching, https and the bare domain), tested on Apache 2.4 against the build.
 - In the DreamHost panel: turn on SSH for the site's user and confirm the site has its free
   Let's Encrypt certificate. Add aressecurity.co to Web3Forms' allowed websites.
-- `DH_SSH=user@server.dreamhost.com DH_DIR=aressecurity.co ./deploy/dreamhost.sh --dry-run`, read what
+- `DH_SSH=user@server.dreamhost.com DH_DIR=aressecurity.co/public ./deploy/dreamhost.sh --dry-run`, read what
   would change, then run it without `--dry-run`. It builds, checks, backs up the server folder, uploads,
   and checks a few live URLs. Roll back by renaming the backup folder (see the script's header).
 - Then: one test quote, Search Console and Bing with the sitemap, and an IndexNow ping by hand.
