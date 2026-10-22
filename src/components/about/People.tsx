@@ -160,7 +160,7 @@ export default function People() {
             <div className="ds-ab-cred-shots">
               {SHOTS.map((s, i) => (
                 <figure key={s.src} className="ds-ab-cred-shot" data-shot={i + 1}>
-                  <img {...responsive(s.src, '(min-width: 1024px) 45vw, 100vw')} alt={s.alt} loading="lazy" decoding="async" />
+                  <img {...responsive(s.src, '(min-width: 1024px) 45vw, (min-width: 768px) 100vw, 124vw')} alt={s.alt} loading="lazy" decoding="async" />
                 </figure>
               ))}
             </div>

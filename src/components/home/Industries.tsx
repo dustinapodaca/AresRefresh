@@ -70,6 +70,24 @@ function Brief({ ind, i, scene }: { ind: IndustryPageData; i: number; scene?: bo
 
 const framing = (ind: IndustryPageData): CSSProperties => ({ objectPosition: ind.image.position ?? '50% 60%' });
 
+// How wide each photo is drawn (measured 2026-10-22), so the browser fetches a file to match. The
+// photos are wider than their boxes and fill them (object-fit: cover), so the drawn width is the
+// box's height times the photo's own aspect ratio wherever that is more than the box's width.
+const aspect = (ind: IndustryPageData) => {
+  const r = responsive(ind.image.src);
+  return r.width && r.height ? r.width / r.height : 1.5;
+};
+const r2 = (n: number) => Math.round(n * 100) / 100;
+// The scene: the window.
+const sceneSizes = (ind: IndustryPageData) => `max(100vw, ${r2(aspect(ind) * 100)}vh)`;
+// The list: from 1024px half the container (628px at most), 4:5 but no taller than the window
+// under the nav; below, the full column at 16:10.
+const listSizes = (ind: IndustryPageData) => {
+  const a = aspect(ind);
+  const col = 'min(628px, 50vw - 44px)';
+  return `(min-width: 1024px) max(${col}, calc(min(${col} * 1.25, 100vh - 120px) * ${r2(a)})), calc((100vw - 40px) * ${r2(Math.max(1, a / 1.6))})`;
+};
+
 export default function Industries() {
   const ref = useRef<HTMLElement>(null);
 
@@ -176,7 +194,7 @@ export default function Industries() {
         <div className="nx-ind-shots" aria-hidden="true">
           {INDUSTRY_PAGES.map((ind) => (
             <div key={ind.slug} className="nx-ind-shot">
-              <img {...responsive(ind.image.src, '100vw')} alt="" loading="lazy" decoding="async" style={framing(ind)} />
+              <img {...responsive(ind.image.src, sceneSizes(ind))} alt="" loading="lazy" decoding="async" style={framing(ind)} />
             </div>
           ))}
         </div>
@@ -222,7 +240,7 @@ export default function Industries() {
         {INDUSTRY_PAGES.map((ind, i) => (
           <li key={ind.slug} className="nx-ind-item">
             <div className="nx-ind-photo">
-              <img {...responsive(ind.image.src, '(min-width: 1024px) 50vw, 100vw')} alt="" loading="lazy" decoding="async" style={framing(ind)} />
+              <img {...responsive(ind.image.src, listSizes(ind))} alt="" loading="lazy" decoding="async" style={framing(ind)} />
               <span className="nx-ind-photo-idx ds-data" aria-hidden="true">
                 {n2(i)} / {n2(N - 1)}
               </span>

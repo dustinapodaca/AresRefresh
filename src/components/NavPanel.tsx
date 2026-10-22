@@ -294,13 +294,21 @@ function PhoneServices() {
   );
 }
 
+// The swipe cards are 72% of the menu's width at 16:10; a photo wider than that fills the card by
+// its height, so it is drawn wider (measured 2026-10-22).
+function cardSizes(src: string) {
+  const r = responsive(src);
+  const k = r.width && r.height ? Math.max(1, r.width / r.height / 1.6) : 1;
+  return `calc((100vw - 40px) * ${Math.round(72 * k) / 100})`;
+}
+
 function PhoneIndustries() {
   return (
     <div className="ds-np-swipe" role="list" aria-label="Industries">
       {INDUSTRY_PAGES.map((i) => (
         <Link key={i.slug} to={`/industries/${i.slug}`} className="ds-np-ind" role="listitem">
           <span className="ds-np-ind-photo">
-            <img {...responsive(i.image.src, '72vw')} alt="" loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
+            <img {...responsive(i.image.src, cardSizes(i.image.src))} alt="" loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
           </span>
           <b>{i.name}</b>
           <small>{i.short}</small>
@@ -356,7 +364,7 @@ function CompanyPane() {
         {COMPANY_TILES.map((t) => (
           <li key={t.to}>
             <Link to={t.to} className="ds-np-tile">
-              <img {...responsive(t.src, '100vw')} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
+              <img {...responsive(t.src, 'calc(100vw - 40px)')} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
               <span>{t.label}</span>
               <Arrow size={18} />
             </Link>
@@ -539,20 +547,33 @@ export default function NavPanel() {
     };
   }, [pathname]);
 
-  // Fetch the three menu photos once the page has settled, so a menu never opens on a blank
-  // frame (they are small: the 288px-wide file of each).
+  // Fetch the desktop menus' photos once the page has loaded and settled, so a menu never opens on a
+  // blank frame (they are small: the 288px-wide file of each). sizes goes in before srcset
+  // (2026-10-22): the browser picks a file as soon as srcset is set, and with no sizes yet it
+  // took the full-width file (up to 3200px) as well as the small one.
   useEffect(() => {
-    const t = window.setTimeout(() => {
-      const srcs = new Set(Object.values(MENUS).flatMap((m) => [m.image.src, ...Object.values(m.linkImages ?? {}).map((im) => im.src)]));
-      for (const src of srcs) {
-        const r = responsive(src, '288px');
-        const img = new Image();
-        if (r.srcSet) img.srcset = r.srcSet;
-        img.sizes = '288px';
-        img.src = r.src;
-      }
-    }, 1200);
-    return () => window.clearTimeout(t);
+    // Desktop only (2026-10-22): phones and tablets never show these menus, and fetched about
+    // 700 KB of photos on every page for them; their own menu loads its photos as it opens.
+    if (!window.matchMedia('(min-width: 1024px)').matches) return;
+    let t = 0;
+    const warm = () => {
+      t = window.setTimeout(() => {
+        const srcs = new Set(Object.values(MENUS).flatMap((m) => [m.image.src, ...Object.values(m.linkImages ?? {}).map((im) => im.src)]));
+        for (const src of srcs) {
+          const r = responsive(src, '288px');
+          const img = new Image();
+          img.sizes = '288px';
+          if (r.srcSet) img.srcset = r.srcSet;
+          img.src = r.src;
+        }
+      }, 1200);
+    };
+    if (document.readyState === 'complete') warm();
+    else window.addEventListener('load', warm, { once: true });
+    return () => {
+      window.removeEventListener('load', warm);
+      window.clearTimeout(t);
+    };
   }, []);
 
   // The menu that was last open stays rendered while the card closes, so it shrinks with content.

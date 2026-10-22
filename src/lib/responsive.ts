@@ -30,5 +30,7 @@ export function responsive(path: string, sizes?: string) {
   if (!e) return { src: path };
   if (!e.srcSet) return { src: e.src, width: e.width, height: e.height };
   const s = sizes ?? SIZES[path] ?? (path.startsWith('/images/market/') ? MARKET_HERO : '100vw');
-  return { src: e.src, srcSet: e.srcSet, sizes: s, width: e.width, height: e.height };
+  // sizes before srcSet (2026-10-22): React sets attributes in this order, and the browser picks a
+  // file as soon as srcset is set; without sizes yet it took the full-width file as well.
+  return { sizes: s, srcSet: e.srcSet, src: e.src, width: e.width, height: e.height };
 }

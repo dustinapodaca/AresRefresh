@@ -52,7 +52,9 @@ export default function Careers() {
     <section ref={ref} id="careers" className="nx-careers" aria-labelledby="nx-careers-title">
       <div className="nx-cr-stage">
         <div className="nx-cr-photo">
-          <img {...responsive(PHOTO, '100vw')} alt="" loading="lazy" decoding="async" />
+          {/* The photo fills a 4:5 frame on phones and the window from 768px, so it is drawn by its
+              height (measured 2026-10-22). */}
+          <img {...responsive(PHOTO, '(max-width: 767px) 240vw, max(100vw, 192vh)')} alt="" loading="lazy" decoding="async" />
         </div>
         <span className="nx-cr-edge" aria-hidden="true" />
         <span className="nx-cr-edge" aria-hidden="true" />

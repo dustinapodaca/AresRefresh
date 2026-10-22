@@ -163,7 +163,9 @@ export default function Quality() {
             Quality
           </span>{' '}
           <span className="nx-q-slot" aria-hidden="true">
-            <img {...responsive(PHOTO, '320px')} alt="" loading="lazy" decoding="async" />
+            {/* 1.9em of the headline, which sets at the Statement's clamp(48px, 8.4vw, 150px)
+                (measured 2026-10-22): 92px to 285px wide. */}
+            <img {...responsive(PHOTO, '(max-width: 575px) 92px, (min-width: 1786px) 285px, 16vw')} alt="" loading="lazy" decoding="async" />
           </span>{' '}
           <span className="nx-w" aria-hidden="true">
             over
