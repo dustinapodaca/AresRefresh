@@ -139,6 +139,8 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   color: var(--ds-fg-muted);
 }
 .nx-hero-proof a { white-space: nowrap; color: inherit; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.2); text-underline-offset: 4px; }
+/* Tailwind's preflight makes SVGs blocks, which dropped the arrow under the number (owner, 2026-10-22). */
+.nx-hero-proof a .ds-arrow { display: inline-block; margin-left: 4px; vertical-align: -1px; }
 .nx-hero-cue {
   position: absolute;
   right: var(--ds-edge);
@@ -179,7 +181,10 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   .nx-hero-actions { grid-column: 1 / -1; justify-content: flex-start; }
   .nx-hero-proof { grid-template-columns: 1fr; gap: 10px; }
   .nx-hero-proof li { padding-top: 8px; font-size: 13px; }
-  .nx-hero-cue { display: none; }
+}
+/* Phones (owner, 2026-10-22): no phone number under the lead; the nav's handset is the call link. */
+@media (max-width: 767px) {
+  .nx-hero-actions .nx-hero-call { display: none; }
 }
 @media (max-width: 599px) {
   .nx-hero-title { font-size: clamp(48px, 14.4vw, 80px); max-width: none; }

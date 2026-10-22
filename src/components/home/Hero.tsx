@@ -59,7 +59,8 @@ export default function Hero() {
     const mask = root.querySelector<HTMLElement>('.nx-hero-mask')!;
     const title = root.querySelector<HTMLElement>('.nx-hero-title')!;
     const fly = root.querySelector<HTMLElement>('.nx-fly')!;
-    const copy = root.querySelectorAll<HTMLElement>('.nx-hero-lift');
+    const copy = root.querySelectorAll<HTMLElement>('.nx-hero-copy .nx-hero-lift');
+    const cue = root.querySelector<HTMLElement>('.nx-hero-cue')!;
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
 
     // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
@@ -123,6 +124,13 @@ export default function Hero() {
       // autoAlpha: hidden once faded, so the browser stops drawing the zoomed layer.
       .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
       .to(ground, { opacity: 0.22, duration: 0.2 }, 0.8);
+
+    // The Scroll cue goes first (owner, 2026-10-22): gone over the first 160px at any screen height.
+    gsap.fromTo(
+      cue,
+      { opacity: 1 },
+      { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: root, start: 'top top', end: '+=160', scrub: SCRUB } },
+    );
 
     return () => ScrollTrigger.refresh();
   });
