@@ -96,18 +96,15 @@ export default function Hero() {
         onUpdate: (self) => {
           // The camera pitches down and speeds up as we dive in.
           const p = self.progress;
-          // Once the reader scrolls, the scroll owns the copy: end the load-in's transitions.
-          if (p > 0 && root.dataset.in === 'true') root.dataset.in = 'done';
+          // Once the reader scrolls, the scroll owns the copy.
+          if (p > 0.002) attachCopy();
           control.current.tilt = 32 + 30 * p;
           control.current.speed = 0.25 + 1.4 * p * p;
           control.current.wake?.();
         },
       },
     });
-    // From explicit values, not whatever the load-in had reached: scrolling before it finished
-    // recorded the copy half faded (or hidden), and scrolling back up returned it to that.
-    tl.fromTo(copy, { yPercent: 0, opacity: 1 }, { yPercent: -40, opacity: 0, stagger: 0.04, duration: 0.25, immediateRender: false }, 0)
-      .to(
+    tl.to(
         mask,
         {
           scale: () => scale,
@@ -125,14 +122,36 @@ export default function Hero() {
       .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
       .to(ground, { opacity: 0.22, duration: 0.2 }, 0.8);
 
-    // The Scroll cue goes first (owner, 2026-10-22): gone over the first 160px at any screen height.
-    gsap.fromTo(
-      cue,
-      { opacity: 1 },
-      { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: root, start: 'top top', end: '+=160', scrub: SCRUB } },
-    );
+    // The copy joins the scroll only once the load-in has finished, or at the first scroll if that
+    // comes first (2026-10-22): built mid-load-in (arriving on Home from another page), GSAP
+    // recorded the button and proof half faded and held them at opacity 0 until the reader
+    // scrolled. So the load-in ends first, then the tweens start from the copy fully shown.
+    let attached = false;
+    const later = gsap.context(() => {}, root);
+    function attachCopy() {
+      if (attached) return;
+      attached = true;
+      root.dataset.in = 'done';
+      tl.fromTo(copy, { yPercent: 0, opacity: 1 }, { yPercent: -40, opacity: 0, stagger: 0.04, duration: 0.25, immediateRender: false }, 0);
+      tl.render(tl.time(), false, true);
+      // The Scroll cue goes first (owner, 2026-10-22): gone over the first 160px at any screen height.
+      later.add(() => {
+        gsap.fromTo(
+          cue,
+          { opacity: 1 },
+          { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: root, start: 'top top', end: '+=160', scrub: SCRUB } },
+        );
+      });
+    }
+    if (root.dataset.in === 'done') attachCopy();
+    const watch = new MutationObserver(() => root.dataset.in === 'done' && attachCopy());
+    watch.observe(root, { attributes: true, attributeFilter: ['data-in'] });
 
-    return () => ScrollTrigger.refresh();
+    return () => {
+      watch.disconnect();
+      later.revert();
+      ScrollTrigger.refresh();
+    };
   });
 
   return (

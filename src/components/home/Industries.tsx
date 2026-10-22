@@ -1,11 +1,15 @@
-import { useRef, type CSSProperties } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
-import { roleBySlug } from '../market/roles';
+import { Brief, N, n2 } from './industryBrief';
 import { responsive } from '../../lib/responsive';
 import { readIn, useScene, words, SCRUB, scrollToY } from './engine';
 import './nx-industries.css';
+
+// Phones and tablets (owner, 2026-10-22: the stacked list ran too long): a swipe deck, loaded on
+// its own below 1024px so desktop never fetches its motion library.
+const IndustryDeck = lazy(() => import('./IndustryDeck'));
 
 // 02 The sites we protect (home-flora, 2026-10-20): flora's category scene, made for Ares.
 // Desktop with motion: the scene holds the screen while the six industries pass through it in the
@@ -13,60 +17,12 @@ import './nx-industries.css';
 // wipes up from the foot), the six names slide up a giant list so the active one sits at the
 // optical center with a rust tick beside it, and a glass post brief on the right carries that
 // industry's line, the roles we staff there, what to send us, and the way in.
-// Everywhere else (phones, tablets, reduced motion, the prerender, no JavaScript): the same
-// content as six stacked blocks, photo and brief, nothing pinned.
+// Phones and tablets with JavaScript: a swipe deck of short post briefs (IndustryDeck). Everywhere
+// else (reduced motion on desktop, the prerender, no JavaScript): the same content as six stacked
+// blocks, photo and brief, nothing pinned; the deck replaces them once it has drawn.
 
-const N = INDUSTRY_PAGES.length;
-const n2 = (i: number) => String(i + 1).padStart(2, '0');
 // Hold the first and last industry a little before and after the passes.
 const HOLD = 0.35;
-
-function Roles({ ind }: { ind: IndustryPageData }) {
-  return (
-    <ul className="nx-ind-roles">
-      {ind.deliver.map((d) => {
-        const r = roleBySlug(d.role);
-        return (
-          <li key={d.role}>
-            <Link to={`/services/${d.role}`} className="nx-ind-role">
-              {r?.name ?? d.role}
-            </Link>
-            <span>{d.line}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function Brief({ ind, i, scene }: { ind: IndustryPageData; i: number; scene?: boolean }) {
-  return (
-    <>
-      <p className="nx-node-bar">
-        <span>Post brief</span>
-        <span>
-          {n2(i)} / {n2(N - 1)}
-        </span>
-      </p>
-      {scene && <h3 className="nx-ind-brief-name">{ind.name}</h3>}
-      <p className="nx-ind-short">{ind.short}</p>
-      <p className="nx-ind-label">What we staff</p>
-      <Roles ind={ind} />
-      <p className="nx-ind-label">What to send us</p>
-      <p className="nx-ind-ask">{ind.ask}</p>
-      <div className="nx-ind-actions">
-        <Link to={`/industries/${ind.slug}`} className="ds-link">
-          Open the {ind.name} page
-          <Arrow />
-        </Link>
-        <Link to={`/contact?industry=${ind.slug}`} className="ds-btn ds-btn-primary nx-ind-quote">
-          Request a Quote
-          <Arrow />
-        </Link>
-      </div>
-    </>
-  );
-}
 
 const framing = (ind: IndustryPageData): CSSProperties => ({ objectPosition: ind.image.position ?? '50% 60%' });
 
@@ -90,6 +46,14 @@ const listSizes = (ind: IndustryPageData) => {
 
 export default function Industries() {
   const ref = useRef<HTMLElement>(null);
+  const [deck, setDeck] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const on = () => setDeck(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
 
   useScene(ref, (engine, root) => {
     const { gsap, ScrollTrigger } = engine;
@@ -254,6 +218,12 @@ export default function Industries() {
           </li>
         ))}
       </ol>
+
+      {deck && (
+        <Suspense fallback={null}>
+          <IndustryDeck />
+        </Suspense>
+      )}
     </section>
   );
 }

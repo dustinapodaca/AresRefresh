@@ -511,9 +511,21 @@ and `nx-*.css` (class prefix `nx-`).
   others fading with distance; a glass post brief on the right (22px blur) carries that
   industry's name, short line, "What we staff" (its roles, each a link to the role page), "What
   to send us", "Open the <industry> page →" and a Request a Quote prefilled with the industry; a
-  counter and six segments along the foot. Clicking a name glides to its step. Everywhere else:
-  six stacked blocks, the photo (16:10, 4px corners, its number in mono) beside or above the
-  same brief.
+  counter and six segments along the foot. Clicking a name glides to its step. Phones and tablets
+  (below 1024px; owner, 2026-10-22, from a bundle: the stacked list ran about 6,400px on a phone):
+  a swipe deck (`IndustryDeck.tsx` on `ui/image-stack-carousel.tsx`, framer-motion, loaded on its
+  own below 1024px so desktop never fetches it). One card on a fanned pile of the six; drag it
+  sideways (it turns as it goes) or use the arrows, and it goes to the back. Each card is the
+  industry's photo full bleed with a short post brief over its foot: the Node bar ("Post brief",
+  01 / 06), the name in ink, its one line in #c4c8ce, and "Open the page →" (the industry page holds
+  the roles and what to send us). The active photo, blurred, is the section's backdrop; a counter, a
+  six-step meter (rust for the current), and two 44px arrows under it; "Swipe the card for the next
+  industry" in mono. Text on the cards is 4.5:1 or better at the brightest point on all six photos
+  from 360px (measured 2026-10-22): the photo graded down (brightness 0.78), a shade behind the bar,
+  and a shade that rides above the brief, so a three-line name is covered too. The pile deals in once
+  when first seen. Everywhere else (desktop without motion, the prerender, no JavaScript; on phones
+  until the deck has drawn): six stacked blocks, the photo (16:10, 4px corners, its number in mono)
+  beside or above the same brief.
 - **For prime contractors:** the copy (the two-tone line and "Teaming & subcontracting →") beside
   a node canvas on the dot grid, no panel around it: Prime contractor (Needs posts covered under
   its contract) to Ares Security (SBA WOSB WOSB250470, WBENC WBE2303571) to three posts
