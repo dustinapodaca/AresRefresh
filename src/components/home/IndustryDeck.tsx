@@ -5,7 +5,7 @@ import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
 import { responsive } from '../../lib/responsive';
 import { SwipeCards, type SwipeCardItem } from '../ui/image-stack-carousel';
 import { N, n2 } from './industryBrief';
-import { motionAllowed } from './engine';
+import { loadEngine, motionAllowed } from './engine';
 import './nx-ind-deck.css';
 
 // 02 on phones and tablets (owner, 2026-10-22, second form): the six industries as a swipe
@@ -63,6 +63,28 @@ export default function IndustryDeck() {
     fit();
     window.addEventListener('resize', fit);
     return () => window.removeEventListener('resize', fit);
+  }, []);
+
+  // The deck replaces the long stacked list after the scroll engine has measured the page, so every
+  // scene below it would start in the wrong place (headlines stuck faint, I-25 never drawn;
+  // 2026-10-22). Measure again once it has drawn, and whenever its height changes.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    let t = 0;
+    let last = -1;
+    const ro = new ResizeObserver(() => {
+      const h = Math.round(root.getBoundingClientRect().height);
+      if (h === last) return;
+      last = h;
+      window.clearTimeout(t);
+      t = window.setTimeout(() => loadEngine().then((e) => e?.ScrollTrigger.refresh()), 120);
+    });
+    ro.observe(root);
+    return () => {
+      ro.disconnect();
+      window.clearTimeout(t);
+    };
   }, []);
 
   // The pile deals itself in, once, when it first comes into view.
