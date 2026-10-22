@@ -57,6 +57,19 @@ esac
 if [ "$BUILD" = 1 ]; then npm run build; fi
 npm run check:seo
 
+# The quote form needs its Web3Forms key in the build (owner, 2026-10-22): it lives in .env.local
+# (not in git) or, on GitHub, the VITE_WEB3FORMS_KEY secret. A build without it shows "The form is
+# not set up yet", so never upload one.
+form_key=${VITE_WEB3FORMS_KEY:-$(sed -n 's/^VITE_WEB3FORMS_KEY=//p' .env.local .env.production 2>/dev/null | head -n 1 | tr -d '"\r ')}
+if [ -z "$form_key" ]; then
+  echo "No VITE_WEB3FORMS_KEY (.env.local, or the GitHub secret): the quote form would not send." >&2
+  exit 1
+fi
+if ! grep -qF "$form_key" dist/assets/*.js; then
+  echo "dist/ was built without the quote form's key. Build again with VITE_WEB3FORMS_KEY set." >&2
+  exit 1
+fi
+
 # The Apache file must ship, and its Content-Security-Policy must match Netlify's _headers.
 [ -f dist/.htaccess ] || { echo "dist/.htaccess is missing (public/.htaccess)" >&2; exit 1; }
 csp_netlify=$(sed -n 's/^[[:space:]]*Content-Security-Policy:[[:space:]]*//p' dist/_headers)

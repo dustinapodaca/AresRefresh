@@ -10,6 +10,8 @@
 #                   Websites > Manage > Settings > Web directory: aressecurity.co/public
 #   DH_SSH_KEY      the private half of a key made for this deploy (its .pub is on DreamHost)
 #   DH_KNOWN_HOSTS  the server's host key: the output of  ssh-keyscan <server>
+#   VITE_WEB3FORMS_KEY  the quote form's Web3Forms key (the value in .env.local), so the build's form
+#                   sends; without it the form says it is not set up, and the deploy refuses to upload
 #
 # Run it by hand from the Actions tab too (Run workflow); tick "dry run" to see what would change.
 #
@@ -61,6 +63,7 @@ jobs:
         env:
           DH_SSH: ${{ secrets.DH_SSH }}
           DH_DIR: ${{ secrets.DH_DIR }}
+          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
         run: |
           if [ "${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}" = "true" ]; then
             ./deploy/dreamhost.sh --dry-run
