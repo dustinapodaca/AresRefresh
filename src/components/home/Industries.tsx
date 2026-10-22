@@ -4,7 +4,7 @@ import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
 import { roleBySlug } from '../market/roles';
 import { responsive } from '../../lib/responsive';
-import { readIn, useScene, words } from './engine';
+import { readIn, useScene, words, SCRUB, scrollToY } from './engine';
 import './nx-industries.css';
 
 // 02 The sites we protect (home-flora, 2026-10-20): flora's category scene, made for Ares.
@@ -73,8 +73,9 @@ const framing = (ind: IndustryPageData): CSSProperties => ({ objectPosition: ind
 export default function Industries() {
   const ref = useRef<HTMLElement>(null);
 
-  useScene(ref, ({ gsap, ScrollTrigger, lenis }, root) => {
-    readIn({ gsap, ScrollTrigger, lenis }, root.querySelector('.nx-ind-title'));
+  useScene(ref, (engine, root) => {
+    const { gsap, ScrollTrigger } = engine;
+    readIn(engine, root.querySelector('.nx-ind-title'));
 
     const mm = gsap.matchMedia();
     mm.add('(min-width: 1024px)', () => {
@@ -134,7 +135,7 @@ export default function Industries() {
         start: 'top top',
         end: () => `+=${Math.round(window.innerHeight * 0.8 * (N - 1 + 2 * HOLD))}`,
         pin: true,
-        scrub: 0.7,
+        scrub: SCRUB,
         animation: tl,
         invalidateOnRefresh: true,
       });
@@ -150,7 +151,7 @@ export default function Industries() {
         const i = Number(a.dataset.i);
         const total = N - 1 + 2 * HOLD;
         const y = st.start + ((HOLD + i) / total) * (st.end - st.start);
-        lenis.scrollTo(y, { duration: 1.4 });
+        scrollToY(y);
       };
       list.addEventListener('click', onClick);
       return () => list.removeEventListener('click', onClick);

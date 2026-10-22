@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
-import { readIn, useScene, words } from './engine';
+import { readIn, useScene, words, SCRUB } from './engine';
 import './nx-prime.css';
 
 // For prime contractors (home-flora, 2026-10-20): a real node canvas, after flora's workflow
@@ -84,7 +84,7 @@ export default function Prime() {
           trigger: canvas,
           start: 'top 78%',
           end: 'bottom 62%',
-          scrub: 0.6,
+          scrub: SCRUB,
           invalidateOnRefresh: true,
           onRefreshInit: setDash,
           onUpdate: (self) => {

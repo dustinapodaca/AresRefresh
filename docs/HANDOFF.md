@@ -11,8 +11,11 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
   route), the Dossier Home's components and its CSS in `dossier.css` were removed, and DESIGN.md
   describes it (Components, "Home"). The old Home is in `docs/home-dossier.md` and git tag
   `home-dossier-final`. The two other candidates were deleted as local branches (tags
-  `archive/v3design`, `archive/home-reimagined`; their GitHub branches were left as they are).
-- **Adds `lenis` and `gsap`** (loaded on Home only, after the first paint). Preship: PASS, 0
+  `archive/v3design`, `archive/home-reimagined`; deleted on GitHub too).
+- **Native scrolling since 2026-10-21** (owner, from a second bundle, `fc0abc5`, ported onto the
+  renamed files): the Lenis glide felt weighted, so the page scrolls natively and only the
+  animations ease (0.2s scrub); `?glide` brings Lenis back to compare.
+- **Adds `gsap` (and `lenis`, fetched only at `?glide`)** (loaded on Home only, after the first paint). Preship: PASS, 0
   errors and 0 warnings across 38 pages at 1440 and 390; the prerendered `/` holds every section.
 - **Not live and not on `audit` or `main` yet.** To release: merge `home-flora` into `audit` (a
   fast-forward while `audit` has no new commits), build, preship, push, and the owner uploads

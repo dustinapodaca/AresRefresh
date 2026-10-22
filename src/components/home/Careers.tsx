@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { responsive } from '../../lib/responsive';
-import { useScene, words } from './engine';
+import { useScene, words, SCRUB } from './engine';
 import './nx-careers.css';
 
 // 05 Careers (home-flora, 2026-10-20): the door opens. Two Ares officers seen from behind, the
@@ -32,7 +32,7 @@ export default function Careers() {
       const ws = root.querySelectorAll('.nx-cr-title .nx-w');
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
-        scrollTrigger: { trigger: stage, start: 'top top', end: '+=150%', pin: true, scrub: 0.6 },
+        scrollTrigger: { trigger: stage, start: 'top top', end: '+=150%', pin: true, scrub: SCRUB },
       });
       tl.fromTo(photo, { clipPath: 'inset(0% 48.5% 0% 48.5%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'power2.inOut', duration: 0.5 }, 0)
         .fromTo(img, { scale: 1.35 }, { scale: 1, ease: 'power2.inOut', duration: 0.5 }, 0)

@@ -5,7 +5,7 @@ import PhoneIcon from '../PhoneIcon';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { terrainMode } from '../../lib/terrainSupport';
-import { motionAllowed, useScene } from './engine';
+import { motionAllowed, useScene, SCRUB } from './engine';
 
 // Hero, "The ground" (home-flora, 2026-10-20). One visual, no floating images (owner): the
 // headline is cut out of the black, a window onto the rust terrain moving behind it. Scrolling
@@ -89,7 +89,7 @@ export default function Hero() {
         start: 'top top',
         end: '+=140%',
         pin: stage,
-        scrub: 0.6,
+        scrub: SCRUB,
         invalidateOnRefresh: true,
         onRefreshInit: measure,
         onUpdate: (self) => {

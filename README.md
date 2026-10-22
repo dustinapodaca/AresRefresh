@@ -51,7 +51,7 @@ saved so any of them can be revisited. Full details: `_archive/design-passes/VER
 | v11 | Clean slate: "The Dossier" (new DESIGN.md, Mobbin board, new nav and footer) | `git checkout home-v11-dossier` (branch `redesign-b-fresh`) |
 | v12 | The Dossier Home as launched (live 2026-10-19) | `git checkout home-dossier-final` |
 | v13a / v13b | Two candidates, not picked: one continuous scroll; "Home, Reimagined" | `git checkout archive/v3design` / `archive/home-reimagined` |
-| **v14** | **"The Ground": cut-out terrain hero, one scroll engine (Lenis + GSAP); the official Home since 2026-10-20** | branch `home-flora` |
+| **v14** | **"The Ground": cut-out terrain hero, one scroll engine (GSAP on native scroll); the official Home since 2026-10-20** | branch `home-flora` |
 
 To view a version: check out its tag, then `npm run dev`. To return to the current work:
 `git checkout redesign-b-fresh`. Clean-slate docs: `DESIGN.md`, `docs/home-content.md`,

@@ -550,10 +550,13 @@ and `nx-*.css` (class prefix `nx-`).
   line draws in as its underline, an arrow at its end; the email and base in mono beneath. Then,
   quieter, the quote line and Request a Quote, and a low rust horizon that comes up as the page
   ends and hands over to the footer's closing light.
-- **Motion and the resolved page.** The scroll engine (`components/home/engine.tsx`): Lenis for
-  the wheel and trackpad glide (lerp 0.09) on GSAP's ticker, with ScrollTrigger for every pin and
-  scrub, loaded by dynamic import on Home only, after the first paint, and torn down when Home
-  unmounts; in-page links glide through it (`scrollToSection`). Every headline reads in word by
+- **Motion and the resolved page.** The scroll engine (`components/home/engine.tsx`): GSAP
+  ScrollTrigger for every pin and scrub on the browser's own scrolling, loaded by dynamic import on
+  Home only, after the first paint, and torn down when Home unmounts. Native scroll since
+  2026-10-21 (owner: the Lenis glide felt weighted; flora.ai scrolls like any page): the wheel and
+  trackpad move the page directly and only the animations ease, trailing the scroll by 0.2s
+  (`SCRUB`; was 0.4 to 0.7). The Lenis glide (lerp 0.09) stays at `?glide` to compare; in-page
+  links glide through it when it runs (`scrollToSection`), the browser's smooth scroll otherwise. Every headline reads in word by
   word with the scroll (from 0.12 opacity and 38% lower), scrubbed so scrolling back un-reads it.
   The resolved page is the default and is what the prerender, no JavaScript, reduced motion, and
   automated browsers get: every section laid out and fully visible, nothing pinned or scrubbed

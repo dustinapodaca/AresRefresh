@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
-import { readIn, useScene, words } from './engine';
+import { readIn, useScene, words, SCRUB } from './engine';
 import './nx-coverage.css';
 
 // 04 Coverage (home-flora, 2026-10-20): the line becomes I-25. Colorado drawn to scale (the Home
@@ -63,7 +63,7 @@ export default function Coverage() {
         trigger: map,
         start: 'top 78%',
         end: 'bottom 45%',
-        scrub: 0.6,
+        scrub: SCRUB,
         onUpdate: (self) => {
           const p = route.getPointAtLength(len * Math.min(1, self.progress / 0.86));
           tip.setAttribute('transform', `translate(${p.x} ${p.y})`);
@@ -90,7 +90,7 @@ export default function Coverage() {
         opacity: 1,
         ease: 'none',
         stagger: 0.12,
-        scrollTrigger: { trigger: root.querySelector('.nx-cv-cities'), start: 'top 90%', end: 'top 45%', scrub: 0.6 },
+        scrollTrigger: { trigger: root.querySelector('.nx-cv-cities'), start: 'top 90%', end: 'top 45%', scrub: SCRUB },
       },
     );
     e.ScrollTrigger.sort();

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { responsive } from '../../lib/responsive';
-import { readIn, useScene } from './engine';
+import { readIn, useScene, SCRUB } from './engine';
 import './nx-quality.css';
 
 // 03 Quality (home-flora, 2026-10-20): the photo becomes the spec sheet. The patrol vehicles sit
@@ -107,7 +107,7 @@ export default function Quality() {
           start: 'top top',
           end: '+=240%',
           pin: true,
-          scrub: 0.7,
+          scrub: SCRUB,
           invalidateOnRefresh: true,
           onRefreshInit: measure,
         },

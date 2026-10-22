@@ -1,7 +1,7 @@
 import { useRef, type ReactNode } from 'react';
 import Arrow from '../Arrow';
 import { INDEED_REVIEWS } from '../careers/data';
-import { readIn, useScene, words } from './engine';
+import { readIn, useScene, words, SCRUB } from './engine';
 import './nx-record.css';
 
 // 01 The record (home-flora, 2026-10-20): "Proof you can see." Each of the three figures gets a
@@ -154,7 +154,7 @@ export default function Record() {
           start: 'top top',
           end: '+=' + moments.length * 95 + '%',
           pin: true,
-          scrub: 0.5,
+          scrub: SCRUB,
           onUpdate: (self) => {
             const at = Math.min(moments.length - 1, Math.floor(self.progress * moments.length * 0.9999));
             if (stage.dataset.at !== String(at)) {
@@ -200,7 +200,7 @@ export default function Record() {
     mm.add('(max-width: 1023px)', () => {
       moments.forEach((m) => {
         const { sq, bars } = build(m);
-        const st = { trigger: m, start: 'top 80%', end: 'top 30%', scrub: 0.4 };
+        const st = { trigger: m, start: 'top 80%', end: 'top 30%', scrub: SCRUB };
         if (sq.length)
           gsap.fromTo(sq, { opacity: 0.08, scale: 0.4 }, { opacity: 1, scale: 1, ease: 'none', stagger: 0.01, scrollTrigger: st });
         if (bars.length) gsap.fromTo(bars, { scaleX: 0 }, { scaleX: 1, ease: 'none', stagger: 0.08, scrollTrigger: st });

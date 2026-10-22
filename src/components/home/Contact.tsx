@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
-import { readIn, useScene, words } from './engine';
+import { readIn, useScene, words, SCRUB } from './engine';
 import './nx-contact.css';
 
 // 06 Contact (home-flora, 2026-10-20): the line ends at the phone number. The headline across the
@@ -23,22 +23,22 @@ export default function Contact() {
     gsap.fromTo(
       root.querySelector('.nx-ct-line'),
       { scaleX: 0 },
-      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: phone, start: 'top 88%', end: 'top 52%', scrub: 0.6 } },
+      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: phone, start: 'top 88%', end: 'top 52%', scrub: SCRUB } },
     );
     gsap.fromTo(
       phone.querySelectorAll('.nx-ct-digit'),
       { opacity: 0.16, yPercent: 30 },
-      { opacity: 1, yPercent: 0, ease: 'none', stagger: 0.05, scrollTrigger: { trigger: phone, start: 'top 95%', end: 'top 60%', scrub: 0.6 } },
+      { opacity: 1, yPercent: 0, ease: 'none', stagger: 0.05, scrollTrigger: { trigger: phone, start: 'top 95%', end: 'top 60%', scrub: SCRUB } },
     );
     gsap.fromTo(
       root.querySelectorAll('.nx-ct-rise'),
       { opacity: 0, y: 32 },
-      { opacity: 1, y: 0, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: root.querySelector('.nx-ct-quote'), start: 'top 95%', end: 'top 70%', scrub: 0.6 } },
+      { opacity: 1, y: 0, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: root.querySelector('.nx-ct-quote'), start: 'top 95%', end: 'top 70%', scrub: SCRUB } },
     );
     gsap.fromTo(
       root.querySelector('.nx-ct-horizon'),
       { yPercent: 38, opacity: 0.25, scaleX: 0.8 },
-      { yPercent: 0, opacity: 1, scaleX: 1, ease: 'none', scrollTrigger: { trigger: root, start: 'center bottom', end: 'bottom bottom', scrub: 0.6 } },
+      { yPercent: 0, opacity: 1, scaleX: 1, ease: 'none', scrollTrigger: { trigger: root, start: 'center bottom', end: 'bottom bottom', scrub: SCRUB } },
     );
     e.ScrollTrigger.sort();
   });

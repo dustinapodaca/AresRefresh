@@ -12,8 +12,8 @@ import { destroyEngine, loadEngine } from '../components/home/engine';
 import '../components/home/home.css';
 
 // Home (home-flora, 2026-10-20; the official Home since 2026-10-20, owner): one ground (the
-// terrain), one line (a rust thread through every section), one camera (Lenis + GSAP
-// ScrollTrigger), studied from flora.ai and Framer-built sites. Design authority: DESIGN.md
+// terrain), one line (a rust thread through every section), one camera (GSAP ScrollTrigger on
+// native scroll), studied from flora.ai and Framer-built sites. Design authority: DESIGN.md
 // ("Home"). Copy changes: docs/copy-changes.md.
 export default function Home() {
   useEffect(() => {
