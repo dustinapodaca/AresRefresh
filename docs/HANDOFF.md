@@ -30,8 +30,10 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
 - **Deploy (2026-10-22):** `.github/workflows/deploy-dreamhost.yml` runs `deploy/dreamhost.sh` on every
   push to `main`: build, SEO check, back up `public` to `public-backup-<stamp>` (five kept), mirror
   `dist/` with `rsync --delete` (never `_headers`/`_redirects`; never deletes under `.well-known`), check
-  live URLs. Secrets: `DH_SSH`, `DH_DIR=aressecurity.co/public` (never `aressecurity.co`: the script
-  refuses it), `DH_SSH_KEY`, `DH_KNOWN_HOSTS`. Run it from the Actions tab with "dry run" to preview.
+  live URLs. Secrets (set 2026-10-22): `DH_SSH`, `DH_DIR=aressecurity.co/public` (never `aressecurity.co`: the
+  script refuses it), `DH_SSH_KEY`, `DH_KNOWN_HOSTS`, and `VITE_WEB3FORMS_KEY` (the quote form's key from
+  `.env.local`, which is not in git: a build without it shows "The form is not set up yet", so the script
+  refuses to upload one). Run it from the Actions tab with "dry run" to preview.
   Pushes deploy only while the repo variable `DREAMHOST_AUTODEPLOY` is `on`; otherwise run it by hand.
   Only the web directory changes; DNS and Microsoft 365 email are never touched. FileZilla is the
   fallback (it doesn't delete: when files are renamed or removed, tell the owner which to delete).
