@@ -23,9 +23,11 @@ const PROFILES = [
 // of each new year.
 const YEAR = new Date().getFullYear();
 
-// The certification marks, in the order the email signature uses.
+// The contract vehicle, on its own above the certifications (owner, 2026-10-23).
+const GSA = { src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' };
+
+// The certification marks, in the order the email signature uses (GSA moved above them).
 const CERTS = [
-  { src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' },
   { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
   { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
   { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
@@ -142,10 +144,14 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* GSA on its own between two hairlines (owner, 2026-10-23), then the certifications. */}
+        <p className="ds-certs-lead">
+          <img {...responsive(GSA.src)} alt={GSA.alt} loading="lazy" />
+        </p>
         {/* The marks and the lines between them share the row evenly (owner, 2026-10-10): every
-            gap is the same, each line sits midway, and GSA starts on the text's left edge. The
-            lines are their own (hidden) items so the spacing can do that. */}
-        <ul className="ds-certs" aria-label="Certifications and contract vehicles">
+            gap is the same and each line sits midway. The lines are their own (hidden) items so
+            the spacing can do that. */}
+        <ul className="ds-certs" aria-label="Certifications">
           {CERTS.map((c, i) => (
             <Fragment key={c.src}>
               {i > 0 && <li className="ds-certs-rule" aria-hidden="true" />}

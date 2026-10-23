@@ -1318,8 +1318,9 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   live status: the green light (#7cb85f) and "Active on SAM.gov", "Through March 26,
   2027", and a Verify route. Four columns on desktop; an even 2x2 on phones, the
   identifiers stacked label over value.
-- Then the certification marks (GSA, SBA, Women Owned, WBENC, Denver Economic Development &
-  Opportunity) and the thin vertical lines between them spread across the footer's full
+- Then GSA (the contract vehicle) on its own, centered between two hairlines across the footer (owner,
+  2026-10-23; it led the row), and under it the certification marks (SBA, Women Owned, WBENC, Denver
+  Economic Development & Opportunity; a 2x2 cross on phones) and the thin vertical lines between them spread across the footer's full
   width (owner, 2026-10-19; was up to 980px) with every gap the same, each line midway, and GSA starting on the footer's left
   text edge (owner, 2026-10-10; the lines are hidden list items so the spacing can do
   this). Marks 26px tall below 1024px (22px from 700 to 899px, owner 2026-10-19). Phones (below 700px): a 2x2 cross with the fifth mark
