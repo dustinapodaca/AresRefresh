@@ -56,6 +56,33 @@
   background: #000;
 }
 .nx-hero-ground { position: absolute; inset: 0; isolation: isolate; }
+/* The Ares mark in black, dead center of the screen, faded in by the scroll once the headline layer
+   has gone (owner, 2026-10-22). Hidden wherever the scroll scene does not run. */
+.nx-hero-logo {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 1;
+  /* Centered by its box, not a translate: GSAP owns this element's transform. */
+  width: clamp(132px, 24vmin, 260px);
+  height: calc(clamp(132px, 24vmin, 260px) * 425.9 / 407.7);
+  background: #000;
+  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
+  mask: url(/ares-logo.svg) center / contain no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+/* The stage's foot as it scrolls away: a shade rising into the black below (2026-10-22). */
+.nx-hero-foot {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 55%;
+  background: linear-gradient(180deg, rgb(0 0 0 / 0) 0%, rgb(0 0 0 / 0.55) 45%, #000 100%);
+  opacity: 0;
+  pointer-events: none;
+}
 /* The light inside the letters: a warm field, brightest low and to the right, so the cut-out
    type reads as lit copper with the contours running through it. */
 .nx-hero-light {

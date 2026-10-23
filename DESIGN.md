@@ -487,10 +487,13 @@ and `nx-*.css` (class prefix `nx-`).
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
   since 2026-10-22, owner), fading out over the first 160px of scroll.
   Load-in where motion runs: the light comes up inside the letters (1.8s) and the copy rises 18px
-  after it (0.9s, from 0.9s). On scroll the screen holds for 140% of a screen: the copy lifts
+  after it (0.9s, from 0.9s). On scroll the screen holds for 165% of a screen: the copy lifts
   away, the camera flies into the F of "Front" (the headline layer scaling up to 40x about the F's
   stem while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
-  62 and speeding up), then the ground dims to 22% under 01. The layer carries no `will-change`:
+  62 and speeding up). Then the Ares mark in black comes up dead center of the screen (owner,
+  2026-10-22: like a title card in a film; `clamp(132px, 24vmin, 260px)`, rising from 0.94) once most of
+  the land shows, holds for a beat, and scrolls away with the land as the stage lets go: the land
+  dims to 22% as it leaves and a shade rises from its foot, so it melts into the black above 01. The layer carries no `will-change`:
   with it, Chrome on a Mac kept its zoomed tiles and drew only "Fro" on the way back up
   (2026-10-20).
 - **01 Record:** "The record so far." with one lead line ("Federal agencies and commercial
