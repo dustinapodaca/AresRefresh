@@ -257,7 +257,7 @@ export default function Prime() {
           ))}
 
           <p className="nx-pnote" data-note="restricted">
-            <span className="nx-pnote-k">Restricted areas</span>
+            <span className="nx-pnote-k">Restricted-area experience</span>
             Escort and access control on a Space Force base in Colorado
             <span className="nx-pnote-id">Subcontractor · 2025 to 2027</span>
           </p>
