@@ -70,6 +70,22 @@ const Slides = memo(function Slides() {
   );
 });
 
+// The intro's stack (owner, 2026-10-23: show there are more cards behind): copies of the next two
+// cards peek out above the first as it deals in, hold a beat, then tuck in behind it and go.
+// Decoration only (not slides): hidden from everyone, and still where the deal-in does not run.
+const Ghosts = memo(function Ghosts() {
+  return (
+    <div className="nx-sk-ghosts" aria-hidden="true" {...{ inert: "" }}>
+      {/* The furthest first, so the nearer one lies over it. */}
+      {[2, 1].map((k) => (
+        <div key={k} className="nx-sk-ghost" style={{ '--k': k } as CSSProperties}>
+          <Card ind={INDUSTRY_PAGES[k]} i={k} />
+        </div>
+      ))}
+    </div>
+  );
+});
+
 export default function IndustryDeck() {
   const rootRef = useRef<HTMLDivElement>(null);
   const swRef = useRef<HTMLDivElement>(null);
@@ -203,6 +219,7 @@ export default function IndustryDeck() {
       <div className="nx-sk-stage" role="group" aria-roledescription="carousel" aria-label="Industries">
         <div ref={swRef} className="swiper nx-sw">
           <Slides />
+          <Ghosts />
         </div>
       </div>
 

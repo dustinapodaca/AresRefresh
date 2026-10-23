@@ -187,6 +187,28 @@
 .nx-sk { padding-bottom: 40px; }
 .nx-sk-hint { margin: 14px 0 0; font-size: 11.5px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 
+/* The intro's stack: copies of the next two cards behind the first (behind Swiper's slides, inside
+   its box), peeking out above it as it deals in, then tucked in behind it and gone (owner,
+   2026-10-23). Only when the deal-in runs. */
+.nx-sk-ghosts { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.nx-sk-ghost { position: absolute; inset: 0; border-radius: 4px; overflow: hidden; opacity: 0; transform-origin: 50% 100%; }
+.nx-sk[data-arm='true'][data-in='true'] .nx-sk-ghost {
+  animation: nx-sk-fan 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.12s + var(--k) * 0.08s);
+}
+@keyframes nx-sk-fan {
+  0% { opacity: 0; transform: none; }
+  22% { opacity: 1; }
+  38%, 62% {
+    opacity: 1;
+    /* Stacked behind, each a step smaller and peeking out above the first (the cards fill the column,
+       so there is no room to fan sideways). */
+    transform: translateY(calc(var(--k) * -10%)) scale(calc(1 - var(--k) * 0.05));
+  }
+  92% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+
 /* The pile deals itself in, once. */
 .nx-sk[data-arm='true'] .nx-sk-stage { opacity: 0; transform: translateY(48px) rotate(-3deg) scale(0.94); }
 .nx-sk[data-arm='true'][data-in='true'] .nx-sk-stage {

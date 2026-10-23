@@ -538,8 +538,10 @@ and `nx-*.css` (class prefix `nx-`).
   the roles and what to send us). Every card is the same height, the photo plus the longest brief,
   so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
   counter, a six-step meter (rust for the current), and two 44px arrows under it; "Swipe the card
-  for the next industry" in mono. The pile deals in once
-  when first seen. Everywhere else (desktop without motion, the prerender, no JavaScript; on phones
+  for the next industry" in mono. The first card deals in
+  once when first seen, and as it does (owner, 2026-10-23) the next two peek out above it as a stack,
+  each a step smaller (about 24 and 47px showing), hold a beat, and tuck in behind it, so the reader
+  sees there are more to swipe to. Everywhere else (desktop without motion, the prerender, no JavaScript; on phones
   until the deck has drawn): six stacked blocks, the photo (16:10, 4px corners, its number in mono)
   beside or above the same brief.
 - **For prime contractors:** the copy (the two-tone line and "Teaming & subcontracting →") beside
