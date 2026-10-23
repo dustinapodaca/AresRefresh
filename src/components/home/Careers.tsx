@@ -44,6 +44,23 @@ export default function Careers() {
         .fromTo(root.querySelectorAll('.nx-cr-rise'), { opacity: 0, y: 28 }, { opacity: 1, y: 0, stagger: 0.04, duration: 0.1 }, 0.66)
         .to({}, { duration: 0.12 });
     });
+    // Phones (owner, 2026-10-23: some of desktop's opening, like the Services hero): no pin; as the
+    // photo comes up the screen it opens from a narrow window to the full width, settling from 1.25,
+    // the rust edges riding out with it and fading. Scrubbed, so scrolling back closes it.
+    mm.add('(max-width: 767px)', () => {
+      const photo = root.querySelector<HTMLElement>('.nx-cr-photo')!;
+      const img = photo.querySelector('img')!;
+      const edges = root.querySelectorAll<HTMLElement>('.nx-cr-edge');
+      const tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: { trigger: photo, start: 'top 92%', end: 'top 22%', scrub: SCRUB },
+      });
+      tl.fromTo(photo, { clipPath: 'inset(0% 30% 0% 30%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo(edges[0], { left: '30%' }, { left: '0%', ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo(edges[1], { left: '70%' }, { left: '100%', ease: 'power2.inOut', duration: 1 }, 0)
+        .fromTo(edges, { opacity: 1 }, { opacity: 0, duration: 0.18 }, 0.84);
+    });
     e.ScrollTrigger.sort();
     return () => mm.revert();
   });

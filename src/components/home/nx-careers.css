@@ -78,6 +78,19 @@
 }
 @media (max-width: 767px) {
   .nx-cr-stage { display: block; min-height: 0; }
+  /* The opening's rust edges, the height of the photo (motion only; owner, 2026-10-23). */
+  html[data-nx-motion='on'] .nx-cr-edge {
+    display: block;
+    position: absolute;
+    top: 0;
+    height: calc(100vw * 1.25);
+    width: 1px;
+    z-index: 1;
+    background: linear-gradient(180deg, rgb(232 150 98 / 0), rgb(232 150 98 / 0.9) 30%, rgb(232 150 98 / 0.9) 70%, rgb(232 150 98 / 0));
+    box-shadow: 0 0 14px 2px rgb(188 111 64 / 0.5);
+    transform: translateX(-0.5px);
+    pointer-events: none;
+  }
   .nx-cr-photo { position: relative; aspect-ratio: 4 / 5; }
   .nx-cr-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 1) 100%); bottom: auto; height: calc(100vw * 1.25); }
   .nx-cr-copy { margin-top: -88px; padding-bottom: 8px; }
