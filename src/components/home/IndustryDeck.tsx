@@ -11,13 +11,12 @@ import { N, n2 } from './industryBrief';
 import { loadEngine, motionAllowed, refreshWhenSettled } from './engine';
 import './nx-ind-deck.css';
 
-// 02 on phones and tablets (owner, 2026-10-22): the six industries as a swipe stack, one card on a
-// fanned pile; swipe it away (or tap the arrows) for the next. Since 2026-10-23 (owner, after
+// 02 on phones and tablets (owner, 2026-10-22): the six industries as swipeable cards; swipe (or tap
+// the arrows) for the next. Since 2026-10-23 (owner, after
 // skiper-ui's card carousel) the stack runs on Swiper's touch handling, with its momentum and
-// snap-back. The motion is Swiper's creative effect set up as a deck (owner: the cards effect felt
-// like "1, 2"; it swapped the next card over the one being flicked mid-swipe): the flicked card
-// flies off to the left, tilting and fading, and stays on top until it is gone, while the next
-// rises from the pile and the fan behind it moves up a place. It rewinds to the first card from the last. Each card is a short post brief:
+// snap-back. The motion is Swiper's creative effect after skiper-ui's creative carousel (owner,
+// 2026-10-23; the cards effect felt like "1, 2", and the deck after it was replaced by this): the
+// card in front, its neighbours folding back at its edges. It rewinds to the first card from the last. Each card is a short post brief:
 // the industry, its one line, and the way to the industry page, which holds the roles, what to send
 // us, and the rest (owner: streamline the text on phones; the full briefs stay on desktop). The
 // active photo, blurred, is the section's backdrop.
@@ -87,16 +86,16 @@ export default function IndustryDeck() {
     const sw = new Swiper(el, {
       modules: [EffectCreative],
       effect: 'creative',
+      // After skiper-ui's creative carousel (skiper50; owner, 2026-10-23): the card in front, its
+      // neighbours folding away at its edges like doors swinging back. No pile beside it, so the
+      // card takes the full column.
+      centeredSlides: true,
       creativeEffect: {
-        limitProgress: 3,
-        // Gone: off to the left, turned and faded.
-        prev: { translate: ['-118%', '4%', 0], rotate: [0, 0, -12], opacity: 0 },
-        // Waiting: fanned to the right, each a step smaller and more turned (per place in the pile).
-        next: { translate: ['5%', '1.5%', 0], rotate: [0, 0, 3], scale: 0.95 },
+        prev: { shadow: true, origin: 'left center', translate: ['-5%', 0, -200], rotate: [0, 100, 0] },
+        next: { origin: 'right center', translate: ['5%', 0, -200], rotate: [0, -100, 0] },
       },
-      // Rewind, not loop: Swiper's loop re-shuffles the cards mid-drag under the cards effect, so a
-      // swipe skipped a card or snapped back. Past the last card the arrows and a swipe come back to
-      // the first.
+      // Rewind, not loop: Swiper's loop re-shuffles the cards mid-drag, so a swipe skipped a card or
+      // snapped back. Past the last card the arrows and a swipe come back to the first.
       rewind: true,
       // Slower and eased out (the curve is set on the slides in CSS): a glide, not a snap.
       speed: 650,
@@ -106,18 +105,6 @@ export default function IndustryDeck() {
       threshold: 6,
     });
     swiper.current = sw;
-    // The card being flicked away stays above the one coming forward until it has gone, so the next
-    // card never cuts in over it (Swiper orders them by rounded progress, which swapped mid-swipe).
-    // Swiper reports where the cards will end up as soon as a swipe is let go, so the card thrown
-    // forward is held on top by hand until its exit has played out.
-    let leaving: HTMLElement | null = null;
-    const order = () =>
-      sw.slides.forEach((s) => {
-        if (s === leaving) return;
-        const p = (s as HTMLElement & { progress: number }).progress;
-        // Swiper counts cards still to come below zero and cards gone above it.
-        s.style.zIndex = String(p >= 0 ? 100 - Math.round(p * 10) : 50 + Math.round(p * 10));
-      });
     // The counter and meter move at once; the rest waits for the card to settle.
     const sync = () => setActive(sw.activeIndex);
     const settle = () => {
@@ -130,7 +117,8 @@ export default function IndustryDeck() {
       });
     };
     const fit = () => {
-      const width = Math.round(Math.min(window.innerWidth - 40 - 28, 400));
+      // The full column on phones, up to 480px on tablets.
+      const width = Math.round(Math.min(window.innerWidth - 40, 480));
       const bodies = Array.from(el.querySelectorAll<HTMLElement>('.nx-sk-body'));
       el.style.width = `${width}px`;
       // Each brief at its own height, out of the card's flow for the moment it is measured.
@@ -148,20 +136,8 @@ export default function IndustryDeck() {
     fit();
     sync();
     settle();
-    order();
-    sw.on('slideChange', () => {
-      sync();
-      leaving = sw.activeIndex > sw.previousIndex ? sw.slides[sw.previousIndex] : null;
-      if (leaving) leaving.style.zIndex = '200';
-      order();
-    });
-    sw.on('slideChangeTransitionEnd', () => {
-      leaving = null;
-      order();
-      settle();
-    });
-    sw.on('setTranslate', order);
-    sw.on('progress', order);
+    sw.on('slideChange', sync);
+    sw.on('slideChangeTransitionEnd', settle);
     window.addEventListener('resize', fit);
     document.fonts?.ready.then(fit);
     return () => {
