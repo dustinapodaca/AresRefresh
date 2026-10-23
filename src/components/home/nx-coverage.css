@@ -26,7 +26,9 @@
   align-items: center;
 }
 .nx-cv-cities { grid-column: 1 / span 5; align-self: end; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
-.nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; }
+/* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
+   its tip (owner, 2026-10-22: it was cut off). */
+.nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
 .nx-cv-city {
   display: grid;
   grid-template-columns: 1fr auto auto;
