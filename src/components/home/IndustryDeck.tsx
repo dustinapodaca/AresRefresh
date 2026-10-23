@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { memo, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import Swiper from 'swiper';
 import { EffectCreative } from 'swiper/modules';
@@ -184,21 +184,34 @@ export default function IndustryDeck() {
     };
   }, []);
 
-  // The pile deals itself in, once, when it first comes into view.
-  useEffect(() => {
+  // The pile deals itself in, once, when it first comes into view, and only once its photos are ready
+  // (owner, 2026-10-23: on a phone the card came in before its photo had loaded, then the photo
+  // popped in, so it read as a snap). Armed before the first paint so a half-ready card never shows;
+  // the front card's and the two peeking cards' photos start decoding as soon as the deck mounts; the
+  // deal-in waits for them, 1.2s at most so a slow connection never leaves the space empty.
+  useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root || !motionAllowed()) return;
     root.dataset.arm = 'true';
+    const imgs = Array.from(root.querySelectorAll<HTMLImageElement>('.nx-sw .swiper-slide:first-child img, .nx-sk-ghost img'));
+    const decoded = Promise.all(imgs.map((img) => img.decode().catch(() => undefined)));
+    const ready = Promise.race([decoded, new Promise((r) => window.setTimeout(r, 1200))]);
+    let gone = false;
     const io = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) return;
         io.disconnect();
-        requestAnimationFrame(() => requestAnimationFrame(() => (root.dataset.in = 'true')));
+        ready.then(() => {
+          if (!gone) requestAnimationFrame(() => requestAnimationFrame(() => (root.dataset.in = 'true')));
+        });
       },
       { threshold: 0.3 },
     );
     io.observe(root);
-    return () => io.disconnect();
+    return () => {
+      gone = true;
+      io.disconnect();
+    };
   }, []);
 
   return (
