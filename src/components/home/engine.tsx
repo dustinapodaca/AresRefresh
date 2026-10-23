@@ -32,11 +32,35 @@ export function motionAllowed(): boolean {
   return true;
 }
 
+/** Resolves once the page has loaded and the browser is idle, or at the reader's first scroll, touch,
+ * or key if that comes first (2026-10-22): the engine's start-up (about 0.7s of CPU on a slow phone)
+ * no longer competes with the first paint of the hero, and it is always ready before the reader moves. */
+function whenReady(): Promise<void> {
+  return new Promise((resolve) => {
+    const events = ['wheel', 'touchstart', 'pointerdown', 'keydown', 'scroll'] as const;
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      events.forEach((ev) => window.removeEventListener(ev, go, true));
+      resolve();
+    };
+    events.forEach((ev) => window.addEventListener(ev, go, { capture: true, passive: true }));
+    const idle = () => {
+      // Safari has no requestIdleCallback: a short timeout after load stands in.
+      if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(go, { timeout: 1200 });
+      else setTimeout(go, 300);
+    };
+    if (document.readyState === 'complete') idle();
+    else window.addEventListener('load', idle, { once: true });
+  });
+}
+
 export function loadEngine(): Promise<Engine | null> {
   if (enginePromise) return enginePromise;
   if (!motionAllowed()) return (enginePromise = Promise.resolve(null));
   const glide = new URLSearchParams(window.location.search).has('glide');
-  enginePromise = Promise.all([
+  enginePromise = whenReady().then(() => Promise.all([
     import('gsap'),
     import('gsap/ScrollTrigger'),
     glide ? import('lenis') : Promise.resolve(null),
@@ -60,7 +84,7 @@ export function loadEngine(): Promise<Engine | null> {
       document.fonts?.ready.then(() => ScrollTrigger.refresh());
       return engine;
     },
-  );
+  ));
   return enginePromise;
 }
 

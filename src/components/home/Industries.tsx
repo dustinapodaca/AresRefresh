@@ -48,6 +48,9 @@ export default function Industries() {
   const ref = useRef<HTMLElement>(null);
   const [deck, setDeck] = useState(false);
   useEffect(() => {
+    // Not in the prerender (2026-10-22): its snapshot is narrower than 1024px, so the deck mounted
+    // and its script and stylesheet were baked into index.html for every visitor, render-blocking.
+    if (navigator.webdriver) return;
     const mq = window.matchMedia('(max-width: 1023px)');
     const on = () => setDeck(mq.matches);
     on();
