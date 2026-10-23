@@ -1079,3 +1079,21 @@ facts, and the close's lines carry over word for word. What is new or gone:
   "Supervisors: Who answer".
 - 06 Contact: the two card titles ("Request a quote", "Call us") are gone; "Call us" is now the
   phone's label bar.
+
+## About: "Why Ares exists." in company voice (owner, 2026-10-23)
+
+Deidre doesn't want the section to be about her or read as her firsthand account, so it now speaks
+as the company. Heading and letter layout unchanged (story muted, last line in ink).
+- Story: "Ares was built from inside the guard business. Before 2021, our leadership ran operations,
+  HR and scheduling at another Colorado security company, and worked alongside several more. The same
+  things were missing at every one: structure, oversight, and the human element. Officers were sent to
+  posts they had never seen, schedules were patched day to day, and managers went from one fire to the
+  next. Clients and officers paid for it."
+- Close (ink): "Ares was founded to fix it from the top down."
+- Was: "Before Ares, Deidre Herrera-Ruiz ran operations and HR for another Colorado security company.
+  From her first weeks she was rebuilding the schedule, ... She founded Ares in 2021 to fix it."
+- The signature is gone: her portrait, her name (with its LinkedIn link), and "Founder & CEO ·
+  Colorado Springs". `public/images/founder-deidre.jpg` stays in the repo, unused. The founder Person
+  in index.html's JSON-LD is unchanged.
+- llms.txt About line: "Why Ares was founded, the problems clients had with other guard companies and
+  how Ares answers them, and the standards every officer meets." (was "The founder’s story, ...").

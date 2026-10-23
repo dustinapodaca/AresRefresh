@@ -772,38 +772,18 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
 }
 
-/* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait; second pass
-   after Slash, Flora, and Resend). Two forms: letter (default) and note. */
+/* Why Ares exists (About; owner, 2026-10-10; second pass after Slash, Flora, and Resend). The
+   letter: the story set large in two tones (Flora); no signature since 2026-10-23 (owner). */
 .ds-founder { display: grid; gap: 28px; padding-top: var(--ds-beat); }
 .ds-founder h2 { margin: 0; }
-.ds-founder-face { position: relative; display: block; flex: none; overflow: hidden; border-radius: 4px; background: #121418; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); }
-.ds-founder-face[data-size='sm'] { width: 48px; height: 48px; }
-.ds-founder-face[data-size='md'] { width: 88px; height: 88px; }
-.ds-founder-face img { width: 100%; height: 100%; object-fit: cover; }
-/* Until the portrait arrives: the Ares mark, quiet. */
-.ds-founder-mark { position: absolute; inset: 0; margin: auto; width: 42%; aspect-ratio: 407.7 / 425.9; background: var(--ds-fg); opacity: 0.28; -webkit-mask: url(/ares-logo.svg) center / contain no-repeat; mask: url(/ares-logo.svg) center / contain no-repeat; }
-.ds-founder-name { display: block; font-family: var(--ds-display); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--ds-fg); }
-.ds-founder-name .ds-link { font: inherit; letter-spacing: inherit; gap: 6px; text-underline-offset: 4px; }
-.ds-founder-role { display: block; margin-top: 4px; font-size: 12.5px; color: var(--ds-fg-faint); }
-
-/* letter: the story set large in two tones, signed with a small portrait (Slash, Flora). */
 .ds-founder-story { margin: 0; font-family: var(--ds-text); font-size: clamp(20px, 1.9vw, 26px); font-weight: 500; line-height: 1.35; letter-spacing: -0.02em; color: var(--ds-fg-muted); max-width: 34ch; text-wrap: pretty; }
 .ds-founder-story > span { color: var(--ds-fg); }
-.ds-founder-letter .ds-founder-sig { display: flex; align-items: center; gap: 14px; margin: 32px 0 0; }
 
 @media (min-width: 1024px) {
   .ds-founder { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-founder[data-form='letter'] h2 { grid-column: 1 / span 4; }
   .ds-founder-letter { grid-column: 6 / span 7; }
 }
-/* One moment (Emil): the portrait opens from the bottom as it scrolls in (clip-path, from an
-   already-visible sliver); static under reduced motion. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .ds-founder-face { animation: ds-founder-open linear both; animation-timeline: view(); animation-range: entry 0% entry 90%; }
-  }
-}
-@keyframes ds-founder-open { from { clip-path: inset(30% 0 0 0 round 4px); } to { clip-path: inset(0 0 0 0 round 4px); } }
 .ds-handoff { margin-top: var(--ds-beat-tight); color: var(--ds-fg); font-size: 20px; line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; max-width: 30ch; }
 
 /* ---------- Prime contractors panel (industry pages) ---------- */
@@ -3209,7 +3189,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    lit brightest along the top (--ds-card-edge), drawn as a gradient border so it reads like
    light catching a glass edge. No glow, no gradient fill, no blur. Later in the file than each
    original rule, so it wins at equal specificity. */
-.ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face {
+.ds-primes-panel, .ds-cs-card, .ds-cs-vehicle {
   /* A solid layer under the lit edge, so a card that overlaps another (the phone pile) never
      lets the edge or content beneath show through its border (owner, 2026-10-10). */
   background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box, linear-gradient(#000, #000) border-box;

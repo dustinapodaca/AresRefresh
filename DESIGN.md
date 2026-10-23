@@ -826,14 +826,12 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   apart, once, when the row is seen (never from 0; static without JS or under reduced
   motion).
 - **Why Ares exists** (founder block, before 01; owner 2026-10-10, pass 2 after Slash,
-  Flora, Resend; live with placeholder words and portrait): **`letter` (chosen, owner 2026-10-10)**: the
-  headline in columns 1 to 4, the story in Inter 500 at 20 to 26px in two tones in columns 6
-  to 12 (all of it ink muted but the last sentence, in ink; owner, 2026-10-19), signed with a 48px portrait, her name a quiet external link to her LinkedIn (owner, 2026-10-19; also the
-  founder Person in index.html's JSON-LD), the name in Inter Tight 600, role in mono) or `note`
-  (`/about?founder=note`: headline and founding line left; 88px portrait, name, role, story,
-  "How we work →" right between hairlines). The portrait is Deidre's photo (owner, 2026-10-19:
-  `founder-deidre.jpg`, the owner's square crop of her full-length photo by the river); with no photo it
-  shows the Ares mark at 28%. The portrait opens from the bottom on scroll (clip-path).
+  Flora, Resend): **`letter` (chosen, owner 2026-10-10)**: the headline in columns 1 to 4, the story
+  in Inter 500 at 20 to 26px in two tones in columns 6 to 12 (all of it ink muted but the last
+  sentence, in ink; owner, 2026-10-19). Since 2026-10-23 (owner) it speaks in company voice, not as
+  Deidre's own story, and has no signature: the portrait, her name and LinkedIn link, and the role
+  line were removed (`founder-deidre.jpg` stays in the repo, unused; the founder Person in
+  index.html's JSON-LD stays).
 - **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
