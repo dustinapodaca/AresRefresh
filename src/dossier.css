@@ -370,7 +370,12 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   border-bottom: 1px solid var(--ds-rule-strong);
 }
 .ds-certs-lead img { display: block; height: 34px; width: auto; max-width: 100%; opacity: 0.9; }
-@media (max-width: 699px) { .ds-certs-lead { padding: 18px 0; } .ds-certs-lead img { height: 30px; } }
+/* Phones: GSA's band is one more row of the grid below, the same height as each of its rows, its
+   foot line running straight into the cross (owner, 2026-10-23). */
+@media (max-width: 699px) {
+  .ds-certs-lead { align-items: center; min-height: 77px; padding: 16px 12px; }
+  .ds-certs-lead img { height: 30px; }
+}
 .ds-certs li { display: flex; align-items: center; }
 .ds-certs-rule { flex: none; width: 1px; height: 30px; background: var(--ds-rule-strong); }
 .ds-certs img { display: block; height: 32px; width: auto; max-width: 100%; object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
@@ -388,7 +393,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 }
 /* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
 @media (max-width: 699px) {
-  .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; margin-top: 6px; }
+  .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; margin-top: 0; }
   .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs .ds-certs-rule { display: none; }
   /* Four marks (GSA sits above them since 2026-10-23): the left column's lines on the right, the top

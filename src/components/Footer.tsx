@@ -26,13 +26,14 @@ const YEAR = new Date().getFullYear();
 // The contract vehicle, on its own above the certifications (owner, 2026-10-23).
 const GSA = { src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' };
 
-// The certification marks, in the order the email signature uses (GSA moved above them).
+// The certification marks (GSA moved above them).
 const CERTS = [
+  // Owner, 2026-10-23: SBA, Denver, Women Owned, WBENC.
   { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
-  { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
-  { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
   // Denver M/WBE and SBE, approved Sept 25, 2026 (copy audit round 2).
   { src: '/images/cert-denver-edo.webp', alt: 'Denver Economic Development & Opportunity, M/WBE and SBE certified' },
+  { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
+  { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
 ];
 
 export default function Footer() {
