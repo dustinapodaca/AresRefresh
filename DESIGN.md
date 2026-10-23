@@ -524,8 +524,12 @@ and `nx-*.css` (class prefix `nx-`).
   a swipe deck (`IndustryDeck.tsx` on Swiper's cards effect since 2026-10-23, owner, after
   skiper-ui's card carousel: Swiper's touch handling with momentum and snap-back; was framer-motion;
   loaded on its own below 1024px so desktop never fetches it, and not in the prerender). One card on
-  a fanned pile of the six; swipe it away (it tilts as it goes) or use the arrows for the next; past
-  the last card it rewinds to the first. Each card (owner, 2026-10-22: the text and its shade hid most
+  a fanned pile of the six; swipe it away or use the arrows for the next; past the last card it
+  rewinds to the first. The motion (owner, 2026-10-23: the cards effect felt like "1, 2", the next card
+  cutting in over the one being flicked) is Swiper's creative effect set up as a deck: the flicked card
+  flies off to the left, turning to 12 degrees and fading, and stays on top until it has gone, while the
+  next rises from the pile (95% to full, 3 degrees to straight) and the fan behind moves up a place;
+  650ms on an ease-out curve. The backdrop crossfade and the focus change wait until the card settles. Each card (owner, 2026-10-22: the text and its shade hid most
   of the photo) is the industry's photo on top in a 3:2 frame with nothing over it (the Home
   industry grade, saturate 0.78, brightness 0.84), then the short post brief under it on the card
   surface (`--ds-card`): the Node bar ("Post brief" in ink muted, 01 / 06 in ink faint), the name in
