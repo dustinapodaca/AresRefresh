@@ -32,35 +32,35 @@ export function motionAllowed(): boolean {
   return true;
 }
 
-/** Resolves once the page has loaded and the browser is idle, or at the reader's first scroll, touch,
- * or key if that comes first (2026-10-22): the engine's start-up (about 0.7s of CPU on a slow phone)
- * no longer competes with the first paint of the hero, and it is always ready before the reader moves. */
-function whenReady(): Promise<void> {
-  return new Promise((resolve) => {
-    const events = ['wheel', 'touchstart', 'pointerdown', 'keydown', 'scroll'] as const;
-    let done = false;
-    const go = () => {
-      if (done) return;
-      done = true;
-      events.forEach((ev) => window.removeEventListener(ev, go, true));
-      resolve();
-    };
-    events.forEach((ev) => window.addEventListener(ev, go, { capture: true, passive: true }));
-    const idle = () => {
-      // Safari has no requestIdleCallback: a short timeout after load stands in.
-      if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(go, { timeout: 1200 });
-      else setTimeout(go, 300);
-    };
-    if (document.readyState === 'complete') idle();
-    else window.addEventListener('load', idle, { once: true });
-  });
+/** ScrollTrigger.refresh, keeping the reader where they are (2026-10-23). A refresh sets the page to
+ * the top to measure, then restores the position it last cached; a reader who had just scrolled
+ * (in the first moments after load, while the scenes and the phone deck settle) was sent back up. */
+export function refreshInPlace(ScrollTrigger: typeof ScrollTriggerType) {
+  const y = window.scrollY;
+  ScrollTrigger.refresh();
+  if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
+}
+
+// When the reader last scrolled, so a re-measure can wait for them to stop: a refresh mid-fling
+// cancels the fling (and can put the page back where it was).
+let lastScroll = 0;
+if (typeof window !== 'undefined') window.addEventListener('scroll', () => (lastScroll = performance.now()), { passive: true });
+
+/** refreshInPlace, once the reader has not scrolled for a quarter of a second (2026-10-23). For the
+ * re-measures that can wait: fonts landing, the phone deck replacing the stacked list. */
+export function refreshWhenSettled(ScrollTrigger: typeof ScrollTriggerType) {
+  const attempt = () => {
+    if (performance.now() - lastScroll < 250) window.setTimeout(attempt, 150);
+    else refreshInPlace(ScrollTrigger);
+  };
+  attempt();
 }
 
 export function loadEngine(): Promise<Engine | null> {
   if (enginePromise) return enginePromise;
   if (!motionAllowed()) return (enginePromise = Promise.resolve(null));
   const glide = new URLSearchParams(window.location.search).has('glide');
-  enginePromise = whenReady().then(() => Promise.all([
+  enginePromise = Promise.all([
     import('gsap'),
     import('gsap/ScrollTrigger'),
     glide ? import('lenis') : Promise.resolve(null),
@@ -68,7 +68,10 @@ export function loadEngine(): Promise<Engine | null> {
     ([g, st, l]) => {
       const gsap = g.gsap;
       const ScrollTrigger = st.ScrollTrigger;
+      // Registering measures the page too (and jumps it to the top and back): keep the reader's place.
+      const y = window.scrollY;
       gsap.registerPlugin(ScrollTrigger);
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
       let lenis: Lenis | null = null;
       if (l) {
         lenis = new l.default({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9 });
@@ -81,10 +84,10 @@ export function loadEngine(): Promise<Engine | null> {
       document.documentElement.dataset.nxMotion = 'on';
       engine = { gsap, ScrollTrigger, lenis };
       // Fonts change line lengths and section heights: measure again once they land.
-      document.fonts?.ready.then(() => ScrollTrigger.refresh());
+      document.fonts?.ready.then(() => refreshWhenSettled(ScrollTrigger));
       return engine;
     },
-  ));
+  );
   return enginePromise;
 }
 
@@ -128,12 +131,16 @@ export function useScene(
     loadEngine().then((e) => {
       const root = ref.current;
       if (!e || cancelled || !root) return;
+      // Building a scene measures each of its triggers, and each measure jumps to the top and back to
+      // a cached position: keep the reader where they were through all of it (2026-10-23).
+      const y = window.scrollY;
       ctx = e.gsap.context(() => {
         extra = setup(e, root);
       }, root);
       // Pins above change where everything below starts: measure in page order.
       e.ScrollTrigger.sort();
       e.ScrollTrigger.refresh();
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
     });
     return () => {
       cancelled = true;

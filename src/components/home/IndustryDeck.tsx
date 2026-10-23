@@ -1,22 +1,25 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { memo, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import Swiper from 'swiper';
+import { EffectCards } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
 import { responsive } from '../../lib/responsive';
-import { SwipeCards, type SwipeCardItem } from '../ui/image-stack-carousel';
 import { N, n2 } from './industryBrief';
-import { loadEngine, motionAllowed } from './engine';
+import { loadEngine, motionAllowed, refreshWhenSettled } from './engine';
 import './nx-ind-deck.css';
 
-// 02 on phones and tablets (owner, 2026-10-22, second form): the six industries as a swipe
-// stack, after the 21st.dev image stack carousel. One card at a time on top of a fanned pile;
-// drag it sideways (it turns as it goes) or tap the arrows, and it goes to the back of the pile.
-// Each card is a short post brief: the industry, its one line, and the way to the industry page,
-// which holds the roles, what to send us, and the rest (owner: streamline the text on phones; the
-// full briefs stay on desktop). The active photo, blurred, is the section's backdrop.
+// 02 on phones and tablets (owner, 2026-10-22): the six industries as a swipe stack, one card on a
+// fanned pile; swipe it away (or tap the arrows) for the next. Since 2026-10-23 (owner, after
+// skiper-ui's card carousel) the stack is Swiper's cards effect: Swiper's touch handling, with its
+// momentum and snap-back, in place of a hand-rolled drag. It rewinds to the first card from the last. Each card is a short post brief:
+// the industry, its one line, and the way to the industry page, which holds the roles, what to send
+// us, and the rest (owner: streamline the text on phones; the full briefs stay on desktop). The
+// active photo, blurred, is the section's backdrop.
 
 const framing = (ind: IndustryPageData): CSSProperties => ({ objectPosition: ind.image.position ?? '50% 60%' });
-const INDEX = new Map(INDUSTRY_PAGES.map((ind, i) => [ind.slug, i]));
 
 function Card({ ind, i }: { ind: IndustryPageData; i: number }) {
   return (
@@ -51,42 +54,82 @@ function Card({ ind, i }: { ind: IndustryPageData; i: number }) {
   );
 }
 
+// The slides render once and are never re-rendered; Swiper owns them after mount (their size is
+// set on the element, not through props).
+const Slides = memo(function Slides() {
+  return (
+    <div className="swiper-wrapper">
+      {INDUSTRY_PAGES.map((ind, i) => (
+        <div key={ind.slug} className="swiper-slide nx-sw-slide" data-i={i}>
+          <Card ind={ind} i={i} />
+        </div>
+      ))}
+    </div>
+  );
+});
+
 export default function IndustryDeck() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [order, setOrder] = useState<(string | number)[]>(() => INDUSTRY_PAGES.map((ind) => ind.slug));
-  const [size, setSize] = useState({ width: 320, height: 416 });
-  const active = INDEX.get(String(order[0])) ?? 0;
+  const swRef = useRef<HTMLDivElement>(null);
+  const swiper = useRef<Swiper | null>(null);
+  const [active, setActive] = useState(0);
 
-  // The card fills the phone's width, less room for the pile to fan out to the right.
+  // The stack, and its size: the card fills the phone's width less room for the pile to fan out to
+  // the right; every card the same height (the 3:2 photo, then room for the longest brief).
   useEffect(() => {
+    const el = swRef.current;
+    if (!el) return;
+    const sw = new Swiper(el, {
+      modules: [EffectCards],
+      effect: 'cards',
+      cardsEffect: { perSlideOffset: 9, perSlideRotate: 3, rotate: true, slideShadows: false },
+      // Rewind, not loop: Swiper's loop re-shuffles the cards mid-drag under the cards effect, so a
+      // swipe skipped a card or snapped back. Past the last card the arrows and a swipe come back to
+      // the first.
+      rewind: true,
+      speed: 420,
+      grabCursor: true,
+      // Sideways only, so a finger moving up or down still scrolls the page.
+      touchAngle: 40,
+      threshold: 6,
+    });
+    swiper.current = sw;
+    const sync = () => {
+      setActive(sw.activeIndex);
+      // Only the front card takes focus and the screen reader's attention.
+      sw.slides.forEach((s) => {
+        const front = s.classList.contains('swiper-slide-active');
+        s.toggleAttribute('inert', !front);
+        s.setAttribute('aria-hidden', String(!front));
+      });
+    };
     const fit = () => {
       const width = Math.round(Math.min(window.innerWidth - 40 - 28, 400));
-      setSize((s) => (s.width === width ? s : { width, height: s.height }));
+      const bodies = Array.from(el.querySelectorAll<HTMLElement>('.nx-sk-body'));
+      el.style.width = `${width}px`;
+      // Each brief at its own height, out of the card's flow for the moment it is measured.
+      const tallest = Math.max(
+        ...bodies.map((b) => {
+          b.style.cssText = 'position:absolute;left:0;right:0;top:0;height:auto';
+          const h = b.offsetHeight;
+          b.style.cssText = '';
+          return h;
+        }),
+      );
+      el.style.height = `${Math.round(width / 1.5 + 1 + tallest)}px`;
+      sw.update();
     };
     fit();
+    sync();
+    sw.on('slideChange', sync);
     window.addEventListener('resize', fit);
-    return () => window.removeEventListener('resize', fit);
-  }, []);
-
-  // Every card the same height (2026-10-22): the 3:2 photo, then room for the longest brief, so the
-  // photos match from card to card and no brief is cut off.
-  useLayoutEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    const bodies = Array.from(root.querySelectorAll<HTMLElement>('.nx-sk-body'));
-    if (!bodies.length) return;
-    // Each brief at its own height, out of the card's flow for the moment it is measured (inside
-    // the card it fills the space left, which would read the card's own height back).
-    const natural = (b: HTMLElement) => {
-      b.style.cssText = 'position:absolute;left:0;right:0;top:0;height:auto';
-      const h = b.offsetHeight;
-      b.style.cssText = '';
-      return h;
+    document.fonts?.ready.then(fit);
+    return () => {
+      window.removeEventListener('resize', fit);
+      sw.destroy(true, true);
+      swiper.current = null;
     };
-    const tallest = Math.max(...bodies.map(natural));
-    const height = Math.round(size.width / 1.5 + 1 + tallest);
-    if (height !== size.height) setSize({ width: size.width, height });
-  }, [size]);
+  }, []);
 
   // The deck replaces the long stacked list after the scroll engine has measured the page, so every
   // scene below it would start in the wrong place (headlines stuck faint, I-25 never drawn;
@@ -101,7 +144,7 @@ export default function IndustryDeck() {
       if (h === last) return;
       last = h;
       window.clearTimeout(t);
-      t = window.setTimeout(() => loadEngine().then((e) => e?.ScrollTrigger.refresh()), 120);
+      t = window.setTimeout(() => loadEngine().then((e) => e && refreshWhenSettled(e.ScrollTrigger)), 120);
     });
     ro.observe(root);
     return () => {
@@ -127,18 +170,6 @@ export default function IndustryDeck() {
     return () => io.disconnect();
   }, []);
 
-  const next = () => setOrder((o) => [...o.slice(1), o[0]]);
-  const back = () => setOrder((o) => [o[o.length - 1], ...o.slice(0, -1)]);
-  const goTo = (i: number) => {
-    const slug = INDUSTRY_PAGES[i].slug;
-    setOrder((o) => {
-      const at = o.indexOf(slug);
-      return [...o.slice(at), ...o.slice(0, at)];
-    });
-  };
-
-  const cards: SwipeCardItem[] = INDUSTRY_PAGES.map((ind, i) => ({ id: ind.slug, content: <Card ind={ind} i={i} /> }));
-
   return (
     <div ref={rootRef} className="nx-dk nx-sk">
       <div className="nx-dk-ambient" aria-hidden="true">
@@ -156,7 +187,9 @@ export default function IndustryDeck() {
       </div>
 
       <div className="nx-sk-stage" role="group" aria-roledescription="carousel" aria-label="Industries">
-        <SwipeCards cards={cards} order={order} onOrderChange={setOrder} settings={size} />
+        <div ref={swRef} className="swiper nx-sw">
+          <Slides />
+        </div>
       </div>
 
       <div className="nx-dk-controls nx-edge">
@@ -172,17 +205,17 @@ export default function IndustryDeck() {
               className="nx-dk-seg"
               data-on={i === active}
               data-past={i < active}
-              onClick={() => goTo(i)}
+              onClick={() => swiper.current?.slideTo(i)}
             >
               <i />
             </button>
           ))}
         </div>
         <div className="nx-dk-arrows">
-          <button type="button" className="nx-dk-arrow" aria-label="Previous industry" onClick={back}>
+          <button type="button" className="nx-dk-arrow" aria-label="Previous industry" onClick={() => swiper.current?.slidePrev()}>
             <Arrow size={18} />
           </button>
-          <button type="button" className="nx-dk-arrow" aria-label="Next industry" onClick={next}>
+          <button type="button" className="nx-dk-arrow" aria-label="Next industry" onClick={() => swiper.current?.slideNext()}>
             <Arrow size={18} />
           </button>
         </div>

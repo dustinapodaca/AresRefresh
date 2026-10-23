@@ -1,7 +1,7 @@
 /* 02 on phones and tablets (home-flora, 2026-10-22): the swipe stack. Shown below 1024px, where it
-   replaces the stacked list; the desktop scene and list are unchanged. The stack itself (drag,
-   tilt, the fanned pile) is src/components/ui/image-stack-carousel.tsx; this file styles the
-   cards, the backdrop, and the controls. */
+   replaces the stacked list; the desktop scene and list are unchanged. The stack itself is
+   Swiper's cards effect (IndustryDeck.tsx); this file styles the cards, the backdrop, and the
+   controls. */
 
 .nx-dk { display: none; }
 
@@ -98,9 +98,12 @@
 .nx-dk-arrow:disabled { opacity: 0.35; cursor: default; }
 .nx-dk-arrow:not(:disabled):active { transform: scale(0.96); }
 
-/* The stage: room for the pile to fan to the right and down. */
+/* The stage: room for the pile to fan to the right and down. The stack is Swiper's cards effect
+   (2026-10-23); its own sheet clips the slider, so the pile is let out, and the card sits left of
+   center by half the fan so the whole pile is centered. */
 .nx-sk-stage { position: relative; padding: 8px 0 34px; }
-.nx-sk-stage > div { padding-right: 28px; }
+.nx-sw.swiper { overflow: visible; margin: 0 auto; translate: -14px 0; }
+.nx-sw .swiper-slide { border-radius: 4px; overflow: hidden; }
 
 /* A card (owner, 2026-10-22): the photo on top with nothing over it, the post brief under it on
    the card's own surface. */
