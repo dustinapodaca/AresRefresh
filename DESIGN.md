@@ -1244,7 +1244,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   2026-10-15): the open card is a column whose menu part grows to fill it.
   Home on desktop (owner, 2026-10-23): the nav's Request a Quote waits until the wordmark folds in at
   01 (the hero carries its own), or a menu opens. It comes out of a line, the mirror of the wordmark
-  going into the mark: a hairline draws in at its left edge, the button opens out of it to the right,
+  going into the mark: a hairline draws in at its right edge, the button opens out of it to the left,
   and the line goes; on the way back up the button folds into the line and the line goes.
   On phones and desktop, once the reader reaches the page's sections (when the running head
   would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
