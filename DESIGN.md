@@ -483,7 +483,8 @@ and `nx-*.css` (class prefix `nx-`).
   elevation 0.3, scale 0.7, detail 0.14; phones 0.5, 1, 0.35), or the captured still where the
   terrain can't run (the same `data-terrain` check as before, in index.html). Below the
   headline, across the foot of the screen: the lead in #c4c8ce (5 columns, 44ch), Request a
-  Quote and the phone link at the right (the phone link hidden on phones, owner 2026-10-22: the nav's
+  Quote and the phone link at the right (on desktop the phone link first, then the button at the far
+  right; owner, 2026-10-23) (the phone link hidden on phones, owner 2026-10-22: the nav's
   handset carries it), then the proof row (the GSA mark in white, 16px, then GSA MAS 47QSMS25D009Q to eLibrary;
   Minority woman-owned (WOSB, WBENC, M/WBE: Denver's certification, owner 2026-10-23); Licensed in Colorado Springs, Denver, Pueblo) on white/14%
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
@@ -1241,6 +1242,10 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   after another, then an X that draws in stroke by stroke; the reverse on close. The strip with the phone, email, and Request a Quote
   always sits on the bottom of the screen while the menu is open, however short the list (owner,
   2026-10-15): the open card is a column whose menu part grows to fill it.
+  Home on desktop (owner, 2026-10-23): the nav's Request a Quote waits until the wordmark folds in at
+  01 (the hero carries its own), or a menu opens. It comes out of a line, the mirror of the wordmark
+  going into the mark: a hairline draws in at its left edge, the button opens out of it to the right,
+  and the line goes; on the way back up the button folds into the line and the line goes.
   On phones and desktop, once the reader reaches the page's sections (when the running head
   would slide out; on desktop the rail shows instead), the divider folds away and the wordmark
   slides left into the mark (shrinking, fading, clipped behind it), and the mark grows (to about

@@ -588,6 +588,16 @@ export default function NavPanel() {
   }, [openMenu]);
 
   const isOpen = Boolean(openMenu) || mobileOpen;
+  // The quote button on Home: 'idle' until it first comes in (so its exit line does not play on load).
+  const ctaShown = compact || isOpen;
+  const ctaSeen = useRef(false);
+  const ctaPath = useRef(pathname);
+  if (ctaPath.current !== pathname) {
+    ctaPath.current = pathname;
+    ctaSeen.current = false;
+  }
+  if (ctaShown) ctaSeen.current = true;
+  const ctaState = ctaShown ? 'in' : ctaSeen.current ? 'out' : 'idle';
 
   return (
     <>
@@ -595,7 +605,17 @@ export default function NavPanel() {
       {/* Desktop (owner, 2026-10-15): while a menu is open, a light glass softly mutes the whole
           page under the nav, fading in and out with the menu. Clicks pass through it. */}
       <div className="ds-np-scrim" data-open={Boolean(openMenu) || undefined} aria-hidden="true" />
-      <header className="ds ds-np" data-site-header data-open={isOpen} data-layout={layout} data-compact={(compact && !isOpen) || undefined}>
+      <header
+        className="ds ds-np"
+        data-site-header
+        data-open={isOpen}
+        data-layout={layout}
+        data-compact={(compact && !isOpen) || undefined}
+        // Home on desktop (owner, 2026-10-23): the nav's quote button waits until the wordmark folds
+        // in at 01 (the hero carries its own), and shows whenever a menu is open.
+        data-home={pathname === '/' || undefined}
+        data-cta={ctaState}
+      >
         <div
           ref={cardRef}
           className="ds-np-card"
@@ -645,10 +665,12 @@ export default function NavPanel() {
             </nav>
 
             <div className="ds-np-actions">
-              <Link to={cta.to} className="ds-btn ds-btn-primary ds-np-cta">
-                {cta.label}
-                <Arrow size={14} />
-              </Link>
+              <span className="ds-np-cta-wrap">
+                <Link to={cta.to} className="ds-btn ds-btn-primary ds-np-cta">
+                  {cta.label}
+                  <Arrow size={14} />
+                </Link>
+              </span>
               <a href="tel:+17196963966" className="ds-np-phone" aria-label="Call 719-696-3966">
                 <PhoneIcon />
               </a>

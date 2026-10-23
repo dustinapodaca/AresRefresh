@@ -3579,6 +3579,59 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np-brand .ds-mark { transition: none; }
 }
 
+/* Home on desktop (owner, 2026-10-23): the quote button waits for the wordmark to fold in at 01 (the
+   hero has its own and the phone number). It comes out of a line, the mirror of the wordmark going
+   into the mark: a hairline draws in at its left edge, the button opens out of it to the right, and
+   the line goes; on the way back the button folds into the line and the line goes. */
+.ds-np-cta-wrap { position: relative; display: inline-flex; }
+@media (min-width: 1024px) {
+  .ds-np[data-home] .ds-np-cta-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 30px;
+    margin-top: -15px;
+    background: rgb(255 255 255 / 0.85);
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .ds-np[data-home] .ds-np-cta {
+    transform-origin: left center;
+    transition: clip-path 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease-out, visibility 0s linear 0s;
+  }
+  .ds-np[data-home]:is([data-cta='out'], [data-cta='idle']) .ds-np-cta {
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-10px) scale(0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: clip-path 300ms cubic-bezier(0.55, 0, 0.75, 0.2), transform 300ms cubic-bezier(0.55, 0, 0.75, 0.2), opacity 220ms ease-in 80ms, visibility 0s linear 300ms;
+  }
+  .ds-np[data-home][data-cta='in'] .ds-np-cta { clip-path: inset(0 0 0 0); transition-delay: 160ms, 160ms, 160ms, 0s; }
+  /* The line: in, it draws first, then fades as the button opens; out, it shows as the button folds
+     into it, then draws away. */
+  .ds-np[data-home][data-cta='in'] .ds-np-cta-wrap::before { animation: ds-np-cta-line 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .ds-np[data-home][data-cta='out'] .ds-np-cta-wrap::before { animation: ds-np-cta-line-out 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+@keyframes ds-np-cta-line {
+  0% { transform: scaleY(0); opacity: 1; }
+  25% { transform: scaleY(1); opacity: 1; }
+  60% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+@keyframes ds-np-cta-line-out {
+  0% { transform: scaleY(1); opacity: 0; }
+  20% { transform: scaleY(1); opacity: 1; }
+  55% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-np[data-home] .ds-np-cta { transition: opacity 120ms linear, visibility 0s linear 120ms !important; clip-path: none !important; transform: none !important; }
+  .ds-np[data-home] .ds-np-cta-wrap::before { display: none; }
+}
+
 .ds-np-sub-more { gap: 8px !important; font-size: 16px !important; font-weight: 500; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.4); text-underline-offset: 5px; }
 /* Desktop: the menus always fit, so the card is not a scroll container at all; a stray wheel or
    trackpad swipe over it scrolls the page instead of bouncing the card (owner, 2026-10-13). */
