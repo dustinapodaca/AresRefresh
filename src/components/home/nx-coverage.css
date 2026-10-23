@@ -87,7 +87,7 @@
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 12px; }
-  .nx-cv-name { font-size: 17px; }
+  .nx-cv-name { font-size: 19px; } /* a tad larger on phones (owner, 2026-10-23; was 17) */
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */

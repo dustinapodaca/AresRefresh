@@ -535,7 +535,12 @@ export default function NavPanel() {
         mo = new MutationObserver(sync);
         mo.observe(head, { attributes: true, attributeFilter: ['data-visible'] });
       } else {
-        onScroll = () => setCompact(window.scrollY > window.innerHeight * 0.8);
+        // Home (owner, 2026-10-23): not during the hero and its fly-in, only once 01 The record so far
+        // reaches the nav.
+        const record = pathname === '/' ? document.getElementById('record') : null;
+        onScroll = record
+          ? () => setCompact(record.getBoundingClientRect().top <= 80)
+          : () => setCompact(window.scrollY > window.innerHeight * 0.8);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
       }
