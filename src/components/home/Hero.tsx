@@ -62,7 +62,7 @@ export default function Hero() {
     const copy = root.querySelectorAll<HTMLElement>('.nx-hero-copy .nx-hero-lift');
     const cue = root.querySelector<HTMLElement>('.nx-hero-cue')!;
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
-    const logo = root.querySelector<HTMLElement>('.nx-hero-logo')!;
+    const card = root.querySelector<HTMLElement>('.nx-hero-card')!;
 
     // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
     // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
@@ -123,7 +123,7 @@ export default function Hero() {
       .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
       // The Ares mark in white, dead center, once most of the land shows (owner, 2026-10-22: like a
       // title card in a film), then a beat on it before the stage lets go.
-      .fromTo(logo, { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power1.out' }, 0.72)
+      .fromTo(card, { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power1.out' }, 0.72)
       .to({}, { duration: 0.18 }, 0.86);
 
     // The land and the mark scroll away together, the land dimming as it goes (it dimmed under the
@@ -208,7 +208,11 @@ export default function Hero() {
           </h1>
         </div>
 
-        <span className="nx-hero-logo" aria-hidden="true" />
+        {/* The title card: the mark, and a second Scroll cue at its lower right (owner, 2026-10-22). */}
+        <span className="nx-hero-card" aria-hidden="true">
+          <span className="nx-hero-logo" />
+          <span className="nx-hero-card-cue ds-data">Scroll</span>
+        </span>
         <span className="nx-hero-foot" aria-hidden="true" />
 
         <div className="nx-hero-copy">

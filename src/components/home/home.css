@@ -56,22 +56,40 @@
   background: #000;
 }
 .nx-hero-ground { position: absolute; inset: 0; isolation: isolate; }
-/* The Ares mark in white, dead center of the screen, faded in by the scroll once the headline layer
-   has gone (owner, 2026-10-22; was black, then on a silver glass tile). Hidden wherever the scroll scene does not run. */
-.nx-hero-logo {
+/* The title card: the Ares mark in white, dead center of the screen, faded in by the scroll once the
+   headline layer has gone (owner, 2026-10-22; was black, then on a silver glass tile), with a
+   second Scroll cue at its lower right, its foot level with the mark's. Hidden wherever the scroll
+   scene does not run. */
+.nx-hero-card {
   position: absolute;
   inset: 0;
   margin: auto;
   z-index: 1;
-  /* Centered by its box, not a translate: GSAP owns this element's transform. */
+  /* Centered by its box (the mark's), not a translate: GSAP owns this element's transform. */
   width: clamp(132px, 24vmin, 260px);
   height: calc(clamp(132px, 24vmin, 260px) * 425.9 / 407.7);
-  background: #fff;
-  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
-  mask: url(/ares-logo.svg) center / contain no-repeat;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+.nx-hero-logo {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
+  mask: url(/ares-logo.svg) center / contain no-repeat;
+}
+.nx-hero-card-cue {
+  position: absolute;
+  left: calc(100% + clamp(10px, 1.6vmin, 18px));
+  bottom: 0;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.9);
+  writing-mode: vertical-rl;
 }
 /* The stage's foot as it scrolls away: a shade rising into the black below (2026-10-22). */
 .nx-hero-foot {
