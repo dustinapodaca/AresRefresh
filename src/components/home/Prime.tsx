@@ -115,6 +115,51 @@ export default function Prime() {
         delete canvas.dataset.pulse;
       };
     });
+    // Phones and tablets (owner, 2026-10-23: so the reader can follow how it works): the rail draws
+    // down the column with a bright tip at its end, and each step (the prime, Ares, the posts, and
+    // the notes that prove them) lights as the tip reaches it. Scrubbed, so scrolling back rewinds it.
+    mm.add('(max-width: 1023px)', () => {
+      const items = gsap.utils.toArray<HTMLElement>(':scope > .nx-pn, :scope > .nx-pnote', canvas);
+      let at: number[] = [];
+      // Where along the rail each step sits (the rail runs 30px in from the canvas's top and foot).
+      const measure = () => {
+        const len = Math.max(1, canvas.clientHeight - 60);
+        at = items.map((el) => Math.min(1, Math.max(0, (el.offsetTop + 34 - 30) / len)));
+      };
+      measure();
+      canvas.dataset.mbuild = 'on';
+      const light = (p: number) =>
+        items.forEach((el, k) => {
+          const on = p >= at[k] - 0.01;
+          el.dataset.lit = String(on);
+          if (el.classList.contains('nx-pn')) el.dataset.live = String(on);
+        });
+      const st = e.ScrollTrigger.create({
+        trigger: canvas,
+        start: 'top 80%',
+        end: 'bottom 62%',
+        scrub: SCRUB,
+        invalidateOnRefresh: true,
+        onRefresh: measure,
+        onUpdate: (self) => {
+          canvas.style.setProperty('--rail', self.progress.toFixed(4));
+          canvas.style.setProperty('--tipo', self.progress > 0.001 && self.progress < 0.999 ? '1' : '0');
+          light(self.progress);
+        },
+      });
+      light(st.progress);
+      canvas.style.setProperty('--rail', st.progress.toFixed(4));
+      return () => {
+        st.kill();
+        delete canvas.dataset.mbuild;
+        canvas.style.removeProperty('--rail');
+        canvas.style.removeProperty('--tipo');
+        items.forEach((el) => {
+          delete el.dataset.lit;
+          if (el.classList.contains('nx-pn')) el.dataset.live = 'true';
+        });
+      };
+    });
     return () => mm.revert();
   });
 
@@ -146,6 +191,8 @@ export default function Prime() {
               </g>
             ))}
           </svg>
+          {/* Phones and tablets: the bright tip riding the rail as it draws. */}
+          <i className="nx-prail-tip" aria-hidden="true" />
           {/* The ambient pulse: small rust lights that ride each wire once the canvas is built. */}
           {wires.map((w, i) => (
             <i key={w.id} className="nx-ppulse" aria-hidden="true" style={{ offsetPath: `path("${w.d}")`, animationDelay: `${i === 0 ? 0 : 1.1 + (i - 1) * 0.18}s` }} />

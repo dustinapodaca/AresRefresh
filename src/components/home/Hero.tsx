@@ -238,7 +238,7 @@ export default function Hero() {
                 <Arrow external size={12} />
               </a>
             </li>
-            <li>Minority woman-owned (WOSB, WBENC)</li>
+            <li>Minority woman-owned (WOSB, WBENC, M/WBE)</li>
             <li>Licensed in Colorado Springs, Denver, Pueblo</li>
           </ul>
         </div>

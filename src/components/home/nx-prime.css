@@ -182,6 +182,9 @@
 }
 
 /* ---- Phones and tablets: one column on a straight rail */
+/* The phone rail's tip (below). */
+.nx-prail-tip { display: none; }
+
 @media (max-width: 1023px) {
   .nx-prime-copy { grid-column: 1 / -1; position: static; }
   .nx-prime-canvas {
@@ -211,6 +214,32 @@
     background: var(--ds-rust);
   }
   .nx-prime-wires, .nx-ppulse, .nx-ptag[data-tag='teaming'] { display: none; }
+  /* The build (owner, 2026-10-23), only where the scroll engine runs: the rail draws down from the
+     top with a bright tip, and each step lights as the tip reaches it. */
+  .nx-prime-canvas::before { transform-origin: 50% 0; transform: scaleY(var(--rail, 1)); }
+  .nx-prail-tip {
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: calc(30px + var(--rail, 0) * (100% - 60px));
+    width: 7px;
+    height: 7px;
+    margin-top: -3.5px;
+    border-radius: 50%;
+    background: #f2b98e;
+    box-shadow: 0 0 12px rgb(232 150 95 / 0.9);
+    opacity: var(--tipo, 0);
+    transition: opacity 0.25s var(--ds-ease);
+    pointer-events: none;
+  }
+  .nx-prime-canvas[data-mbuild='on'] > :is(.nx-pn, .nx-pnote) {
+    opacity: 0.3;
+    transform: translateX(-10px);
+    transition: opacity 0.45s var(--ds-ease), transform 0.45s var(--ds-ease);
+  }
+  .nx-prime-canvas[data-mbuild='on'] > :is(.nx-pn, .nx-pnote)[data-lit='true'] { opacity: 1; transform: none; }
+  .nx-prime-canvas[data-mbuild='on'] .nx-pn::before { background: var(--ds-fg-faint); transition: background-color 0.3s var(--ds-ease), box-shadow 0.3s var(--ds-ease); }
+  .nx-prime-canvas[data-mbuild='on'] .nx-pn[data-lit='true']::before { background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
   .nx-pnote, .nx-pnote[data-note] { margin-top: 0; }
   .nx-ptag[data-tag='credit'] { position: static; justify-self: start; margin-top: 10px; display: inline-block; }
   .nx-pn[data-node='ares'] { display: grid; }

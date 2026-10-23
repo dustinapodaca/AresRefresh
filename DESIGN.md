@@ -485,7 +485,7 @@ and `nx-*.css` (class prefix `nx-`).
   headline, across the foot of the screen: the lead in #c4c8ce (5 columns, 44ch), Request a
   Quote and the phone link at the right (the phone link hidden on phones, owner 2026-10-22: the nav's
   handset carries it), then the proof row (GSA MAS 47QSMS25D009Q to eLibrary;
-  Minority woman-owned (WOSB, WBENC); Licensed in Colorado Springs, Denver, Pueblo) on white/14%
+  Minority woman-owned (WOSB, WBENC, M/WBE: Denver's certification, owner 2026-10-23); Licensed in Colorado Springs, Denver, Pueblo) on white/14%
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
   since 2026-10-22, owner), fading out over the first 160px of scroll.
   Load-in where motion runs: the light comes up inside the letters (1.8s) and the copy rises 18px
@@ -552,7 +552,9 @@ and `nx-*.css` (class prefix `nx-`).
   (crop-mark corners), the "Teaming" and "Subcontracting credit" tags come up, and three proof
   notes hang beside the nodes they prove (subcontracting credit; restricted areas on a Space
   Force base in Colorado, 2025 to 2027; fewer than 1% of shifts missed since 2021); once built a
-  small rust pulse rides each wire. Below 1024px one column on a straight rail. The
+  small rust pulse rides each wire. Below 1024px one column on a straight rail; where motion runs it builds as you
+  scroll (owner, 2026-10-23): the rail draws down with a bright tip, and each step (the prime, Ares, the
+  posts, and their notes) lights as the tip reaches it, from 30% and 10px aside, its rust marker glowing. The
   Government & Defense page keeps its own panel (below).
 - **03 Quality:** "Quality [photo] over quantity.": the patrol vehicles sit in the headline as a
   word-sized photo (`clamp(48px, 11.4vw, 196px)`). Desktop with motion: the stage pins for 270%
