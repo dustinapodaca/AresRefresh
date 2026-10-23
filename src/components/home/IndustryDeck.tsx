@@ -2,7 +2,8 @@ import { memo, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import Swiper from 'swiper';
 import { EffectCreative } from 'swiper/modules';
-import 'swiper/css';
+// Swiper's core styles without its icon font (a data: URL the site's CSP blocks): swiper-core.css.
+import './swiper-core.css';
 import 'swiper/css/effect-creative';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
