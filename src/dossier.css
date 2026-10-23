@@ -382,14 +382,18 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
 /* The WBENC mark has fine print that blurs at 32px; give it a little more room and ink. */
 .ds-certs img[src*='cert-wbenc'] { height: 38px; opacity: 0.85; }
+/* Denver's bold, wide wordmark read larger than the others at the same height (owner, 2026-10-23). */
+.ds-certs img[src*='cert-denver'] { height: 28px; }
 @media (max-width: 1023px) {
   .ds-certs img { height: 26px; }
   .ds-certs img[src*='cert-wbenc'] { height: 32px; }
+  .ds-certs img[src*='cert-denver'] { height: 23px; }
 }
 /* Narrow tablets: the widest mark (Denver) nearly met its lines (owner, 2026-10-19). */
 @media (min-width: 700px) and (max-width: 899px) {
   .ds-certs img { height: 22px; }
   .ds-certs img[src*='cert-wbenc'] { height: 28px; }
+  .ds-certs img[src*='cert-denver'] { height: 19px; }
 }
 /* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
 @media (max-width: 699px) {
@@ -402,6 +406,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-certs li:not(.ds-certs-rule):nth-of-type(-n + 3) { border-bottom: 1px solid var(--ds-rule-strong); }
   .ds-certs img { height: 30px; max-width: 100%; }
   .ds-certs img[src*='cert-wbenc'] { height: 36px; }
+  .ds-certs img[src*='cert-denver'] { height: 26px; }
 }
 
 /* The close of every page: the ARES letters of the text logo across the container over a slow rust and
