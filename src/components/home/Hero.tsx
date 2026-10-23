@@ -62,7 +62,7 @@ export default function Hero() {
     const copy = root.querySelectorAll<HTMLElement>('.nx-hero-copy .nx-hero-lift');
     const cue = root.querySelector<HTMLElement>('.nx-hero-cue')!;
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
-    const tile = root.querySelector<HTMLElement>('.nx-hero-tile')!;
+    const logo = root.querySelector<HTMLElement>('.nx-hero-logo')!;
 
     // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
     // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
@@ -121,15 +121,13 @@ export default function Hero() {
       )
       // autoAlpha: hidden once faded, so the browser stops drawing the zoomed layer.
       .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
-      // The Ares mark in black on a silver glass tile, dead center, once most of the land shows
-      // (owner, 2026-10-22: like a title card in a film); the light slides across the glass as it
-      // arrives, then a beat on it before the stage lets go.
-      .fromTo(tile, { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power1.out' }, 0.72)
-      .fromTo(tile, { backgroundPosition: '70% 0%, 0% 0%' }, { backgroundPosition: '30% 0%, 0% 0%', duration: 0.3 }, 0.72)
+      // The Ares mark in white, dead center, once most of the land shows (owner, 2026-10-22: like a
+      // title card in a film), then a beat on it before the stage lets go.
+      .fromTo(logo, { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power1.out' }, 0.72)
       .to({}, { duration: 0.18 }, 0.86);
 
     // The land and the mark scroll away together, the land dimming as it goes (it dimmed under the
-    // pin before the mark, which would have hidden a black mark), and a shade rising from its foot so
+    // pin before the mark, which would have swallowed it), and a shade rising from its foot so
     // its lower edge melts into the black below instead of a hard line.
     const away = { trigger: root, start: 'bottom bottom', end: 'bottom top', scrub: SCRUB };
     gsap.fromTo(ground, { opacity: 1 }, { opacity: 0.22, ease: 'none', immediateRender: false, scrollTrigger: away });
@@ -210,9 +208,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        <span className="nx-hero-tile" aria-hidden="true">
-          <span className="nx-hero-logo" />
-        </span>
+        <span className="nx-hero-logo" aria-hidden="true" />
         <span className="nx-hero-foot" aria-hidden="true" />
 
         <div className="nx-hero-copy">

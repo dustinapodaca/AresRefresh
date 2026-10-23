@@ -56,53 +56,22 @@
   background: #000;
 }
 .nx-hero-ground { position: absolute; inset: 0; isolation: isolate; }
-/* The title card (owner, 2026-10-22, after a reference of the mark on a brushed-silver glass tile):
-   the site's glass over the land, blurred and drained of its color so it reads as silver, vertical
-   bands of light like brushed metal, the lit glass edge (--ds-card-edge) and the top line, and the
-   Ares mark in black at its center. Dead center of the screen; faded in by the scroll once the
-   headline layer has gone. Hidden wherever the scroll scene does not run. */
-.nx-hero-tile {
+/* The Ares mark in white, dead center of the screen, faded in by the scroll once the headline layer
+   has gone (owner, 2026-10-22; was black, then on a silver glass tile). Hidden wherever the scroll scene does not run. */
+.nx-hero-logo {
   position: absolute;
   inset: 0;
   margin: auto;
   z-index: 1;
   /* Centered by its box, not a translate: GSAP owns this element's transform. */
-  width: clamp(224px, 42vmin, 440px);
-  height: clamp(224px, 42vmin, 440px);
-  display: grid;
-  place-items: center;
-  border-radius: 4px;
-  background:
-    linear-gradient(90deg, rgb(40 44 50 / 0.34) 0%, rgb(255 255 255 / 0.4) 20%, rgb(60 64 72 / 0.22) 36%, rgb(255 255 255 / 0.54) 52%, rgb(70 74 82 / 0.2) 68%, rgb(255 255 255 / 0.36) 85%, rgb(40 44 50 / 0.34) 100%),
-    linear-gradient(180deg, rgb(214 218 224 / 0.5), rgb(150 156 166 / 0.4));
-  background-size: 180% 100%, 100% 100%;
-  background-position: 30% 0%, 0% 0%;
-  -webkit-backdrop-filter: blur(26px) saturate(0) brightness(1.25);
-  backdrop-filter: blur(26px) saturate(0) brightness(1.25);
-  box-shadow: var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.28);
+  width: clamp(132px, 24vmin, 260px);
+  height: calc(clamp(132px, 24vmin, 260px) * 425.9 / 407.7);
+  background: #fff;
+  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
+  mask: url(/ares-logo.svg) center / contain no-repeat;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-}
-/* The lit glass edge, as a masked ring over the frost. */
-.nx-hero-tile::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: var(--ds-card-edge);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-}
-.nx-hero-logo {
-  display: block;
-  width: 54%;
-  aspect-ratio: 407.7 / 425.9;
-  background: #000;
-  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
-  mask: url(/ares-logo.svg) center / contain no-repeat;
 }
 /* The stage's foot as it scrolls away: a shade rising into the black below (2026-10-22). */
 .nx-hero-foot {
