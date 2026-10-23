@@ -184,6 +184,7 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   color: var(--ds-fg-muted);
 }
 .nx-hero-proof a { white-space: nowrap; color: inherit; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.2); text-underline-offset: 4px; }
+.nx-hero-gsa { display: inline-block; width: 16px; height: 16px; margin-right: 8px; vertical-align: -3px; }
 /* Tailwind's preflight makes SVGs blocks, which dropped the arrow under the number (owner, 2026-10-22). */
 .nx-hero-proof a .ds-arrow { display: inline-block; margin-left: 4px; vertical-align: -1px; }
 .nx-hero-cue {
