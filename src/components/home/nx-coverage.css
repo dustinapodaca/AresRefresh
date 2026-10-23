@@ -62,6 +62,8 @@
 .nx-cv-ring { fill: none; stroke: rgb(238 240 242 / 0.35); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
 .nx-cv-pin[data-hq] .nx-cv-ring { stroke: var(--ds-rust); }
 .nx-cv-pin { transition: opacity 260ms var(--ds-ease); }
+/* The ping that ripples out from a city as the line reaches it (motion only; hidden at rest). */
+.nx-cv-ping { fill: none; stroke: #e8965f; stroke-width: 1.2; opacity: 0; pointer-events: none; }
 .nx-cv-pin .nx-cv-ring,
 .nx-cv-pin .nx-cv-dot { transition: r 260ms var(--ds-ease), stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease); }
 .nx-cv-map[data-active] .nx-cv-pin:not([data-on]) { opacity: 0.28; }

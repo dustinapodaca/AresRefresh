@@ -105,7 +105,7 @@ export default function Quality() {
         scrollTrigger: {
           trigger: stage,
           start: 'top top',
-          end: '+=240%',
+          end: '+=270%',
           pin: true,
           scrub: SCRUB,
           invalidateOnRefresh: true,
@@ -142,10 +142,13 @@ export default function Quality() {
           .fromTo(lines[i], { strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.06 }, at + 0.01)
           .fromTo(f, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.05 }, at + 0.05);
       });
-      // Last beat: the photo and its callouts step back and the principle comes forward.
-      tl.fromTo(dim, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.8)
-        .to([...facts, svg], { opacity: 0.14, duration: 0.1 }, 0.8)
-        .fromTo(para, { opacity: 0, y: 56 }, { opacity: 1, y: 0, duration: 0.12 }, 0.84)
+      // A beat on the full spec sheet once the last fact is in (owner, 2026-10-22: linger on the
+      // cars and their callouts), then the photo and its callouts step back and the principle
+      // comes forward.
+      const BEAT = 0.12;
+      tl.fromTo(dim, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.8 + BEAT)
+        .to([...facts, svg], { opacity: 0.14, duration: 0.1 }, 0.8 + BEAT)
+        .fromTo(para, { opacity: 0, y: 56 }, { opacity: 1, y: 0, duration: 0.12 }, 0.84 + BEAT)
         .to({}, { duration: 0.08 });
     });
     // Sections set up in whatever order their code arrives; sort every trigger by its place on

@@ -544,11 +544,12 @@ and `nx-*.css` (class prefix `nx-`).
   small rust pulse rides each wire. Below 1024px one column on a straight rail. The
   Government & Defense page keeps its own panel (below).
 - **03 Quality:** "Quality [photo] over quantity.": the patrol vehicles sit in the headline as a
-  word-sized photo (`clamp(48px, 11.4vw, 196px)`). Desktop with motion: the stage pins for 240%
+  word-sized photo (`clamp(48px, 11.4vw, 196px)`). Desktop with motion: the stage pins for 270%
   of a screen; the photo grows out of the line to fill the screen while the headline blurs away;
   the four facts (Established, Primary NAICS, Longest client, Post training) come in as small
-  glass chips, each with a rust leader line drawn to a point on the cars; then the photo dims and
-  the principle ("We would rather staff fewer posts well...") rises. Resolved: the headline with
+  glass chips, each with a rust leader line drawn to a point on the cars; then a beat on the finished
+  spec sheet (owner, 2026-10-22: about a quarter of a screen), then the photo dims and the principle
+  ("We would rather staff fewer posts well...") rises. Resolved: the headline with
   its inline photo, the principle, the photo full width (16:10; 4:5 on phones) captioned "Ares
   patrol vehicles", and the facts as a ledger with rust ticks (four across, two on tablets, one
   on phones).
@@ -556,7 +557,9 @@ and `nx-*.css` (class prefix `nx-`).
   (`clamp(36px, 4.3vw, 72px)`, Colorado Springs first as HQ), each a link to its city page, and
   Colorado to scale on the right (the coverage map's projection, its dot grid, a rust glow on
   Colorado Springs, Pikes Peak as an open triangle). I-25 draws north to south with the scroll, a
-  bright tip riding it, and each city's pin comes up as the line reaches it; pointing at or
+  bright tip riding it, and each city comes up as the line reaches it (owner, 2026-10-22: the dot grows in place, one
+  sonar ping ripples out from it, the ring opens around it, the name rises 6px into place; radii, not
+  scale, so nothing flies in from the map's corner); pointing at or
   focusing a city lights its pin and dims the others. Resolved: the route drawn, every pin lit.
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a

@@ -75,12 +75,21 @@ export default function Coverage() {
       .fromTo(tip, { opacity: 0 }, { opacity: 1, duration: 0.03 }, 0)
       .to(tip, { opacity: 0, duration: 0.06 }, 0.88)
       .fromTo(map.querySelectorAll('.nx-cv-faint'), { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.04 }, 0.8);
+    // Each city as the line reaches it (owner, 2026-10-22: the scaled pins flew in from the map's
+    // corner): the dot grows in place, one sonar ping ripples out from it, the ring opens around it,
+    // and the name comes up. Radii, not transforms, so everything grows from the city itself.
     CITIES.forEach((c) => {
       const g = map.querySelector(`[data-city="${c.slug}"]`)!;
       const at = c.at * 0.86;
-      tl.fromTo(g.querySelector('.nx-cv-dot'), { scale: 0, transformOrigin: '50% 50%' }, { scale: 1, ease: 'back.out(3)', duration: 0.05 }, at)
-        .fromTo(g.querySelectorAll('.nx-cv-label'), { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.06 }, at + 0.02)
-        .fromTo(g.querySelector('.nx-cv-ring'), { scale: 0.2, opacity: 0, transformOrigin: '50% 50%' }, { scale: 1, opacity: 1, duration: 0.08 }, at);
+      const dotR = c.hq ? 5.5 : 4.2;
+      const ringR = c.hq ? 15 : 11;
+      tl.fromTo(g.querySelector('.nx-cv-dot'), { attr: { r: 0 }, opacity: 0 }, { attr: { r: dotR }, opacity: 1, ease: 'power2.out', duration: 0.04 }, at)
+        // The ping shows only from the moment the line arrives (a set, so scrolling back above the
+        // city hides it again rather than leaving a small ring waiting there).
+        .set(g.querySelector('.nx-cv-ping'), { attr: { r: dotR }, opacity: 0.7 }, at + 0.01)
+        .to(g.querySelector('.nx-cv-ping'), { attr: { r: ringR * 3 }, opacity: 0, ease: 'power1.out', duration: 0.12 }, at + 0.01)
+        .fromTo(g.querySelector('.nx-cv-ring'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: ringR }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02)
+        .fromTo(g.querySelectorAll('.nx-cv-label'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
     });
     gsap.fromTo(
       root.querySelectorAll('.nx-cv-city'),
@@ -188,6 +197,7 @@ export default function Coverage() {
               const cy = py(c.lat);
               return (
                 <g key={c.slug} className="nx-cv-pin" data-city={c.slug} data-hq={c.hq || undefined} data-on={active === c.slug || undefined}>
+                  <circle className="nx-cv-ping" cx={cx} cy={cy} r={c.hq ? 5.5 : 4.2} />
                   <circle className="nx-cv-ring" cx={cx} cy={cy} r={c.hq ? 15 : 11} />
                   <circle className="nx-cv-dot" cx={cx} cy={cy} r={c.hq ? 5.5 : 4.2} />
                   <text className="nx-cv-label nx-cv-name" x={cx + (c.hq ? 24 : 16)} y={cy + 6}>
