@@ -352,29 +352,12 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
      mark sits on the page's center (owner, 2026-10-19; was space-between up to 980px, GSA on
      the text's left edge). */
   display: grid;
-  grid-template-columns: minmax(0, 1fr) repeat(3, 1px minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) repeat(4, 1px minmax(0, 1fr));
   align-items: center;
   justify-items: center;
   list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-}
-/* GSA, the contract vehicle, on its own above the certifications: centered between two hairlines
-   across the footer (owner, 2026-10-23; it led the row). */
-.ds-certs-lead {
-  display: flex;
-  justify-content: center;
   margin: var(--ds-beat-tight) 0 0;
-  padding: 22px 0;
-  border-top: 1px solid var(--ds-rule-strong);
-  border-bottom: 1px solid var(--ds-rule-strong);
-}
-.ds-certs-lead img { display: block; height: 34px; width: auto; max-width: 100%; opacity: 0.9; }
-/* Phones: GSA's band is one more row of the grid below, the same height as each of its rows, its
-   foot line running straight into the cross (owner, 2026-10-23). */
-@media (max-width: 699px) {
-  .ds-certs-lead { align-items: center; min-height: 77px; padding: 16px 12px; }
-  .ds-certs-lead img { height: 30px; }
+  padding: 0;
 }
 .ds-certs li { display: flex; align-items: center; }
 .ds-certs-rule { flex: none; width: 1px; height: 30px; background: var(--ds-rule-strong); }
@@ -382,28 +365,27 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-certs img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
 /* The WBENC mark has fine print that blurs at 32px; give it a little more room and ink. */
 .ds-certs img[src*='cert-wbenc'] { height: 38px; opacity: 0.85; }
-/* Denver's bold, wide wordmark read larger than the others at the same height (owner, 2026-10-23). */
-.ds-certs img[src*='cert-denver'] { height: 28px; }
 @media (max-width: 1023px) {
   .ds-certs img { height: 26px; }
   .ds-certs img[src*='cert-wbenc'] { height: 32px; }
-  .ds-certs img[src*='cert-denver'] { height: 23px; }
 }
-/* Narrow tablets: the widest mark (Denver) nearly met its lines (owner, 2026-10-19). */
+/* Narrow tablets: the widest marks (GSA, Denver) nearly met their lines (owner, 2026-10-19). */
 @media (min-width: 700px) and (max-width: 899px) {
   .ds-certs img { height: 22px; }
   .ds-certs img[src*='cert-wbenc'] { height: 28px; }
-  .ds-certs img[src*='cert-denver'] { height: 19px; }
 }
-/* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
+/* Phones (owner, 2026-10-23): GSA, the contract vehicle, on its own band across the top between two
+   hairlines, the same height as each row below it, then a 2x2 cross of SBA, Denver, Women Owned,
+   WBENC (Denver a touch smaller: its bold, wide wordmark read larger at the same height). */
 @media (max-width: 699px) {
-  .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; margin-top: 0; }
+  .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; }
   .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs .ds-certs-rule { display: none; }
-  /* Four marks (GSA sits above them since 2026-10-23): the left column's lines on the right, the top
-     row's underneath. The hidden rules count among the items, so the marks are 1st, 3rd, 5th, 7th. */
-  .ds-certs li:not(.ds-certs-rule):nth-of-type(4n + 1) { border-right: 1px solid var(--ds-rule-strong); }
-  .ds-certs li:not(.ds-certs-rule):nth-of-type(-n + 3) { border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='gsa'] { grid-column: 1 / -1; order: 0; min-height: 77px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='sba'] { order: 1; border-right: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='denver'] { order: 2; border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='women'] { order: 3; border-right: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='wbenc'] { order: 4; }
   .ds-certs img { height: 30px; max-width: 100%; }
   .ds-certs img[src*='cert-wbenc'] { height: 36px; }
   .ds-certs img[src*='cert-denver'] { height: 26px; }
