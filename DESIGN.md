@@ -831,7 +831,18 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   sentence, in ink; owner, 2026-10-19). Since 2026-10-23 (owner) it speaks in company voice, not as
   Deidre's own story, and has no signature: the portrait, her name and LinkedIn link, and the role
   line were removed (`founder-deidre.jpg` stays in the repo, unused; the founder Person in
-  index.html's JSON-LD stays).
+  index.html's JSON-LD stays). In its place, under the story, a "Since 2021" timeline (owner,
+  2026-10-23): the label in mono 13px ink faint, then an ordered list of five years (2021 Founded in
+  Colorado Springs; 2022 Longest client on post, continuously since; 2023 Registered on SAM.gov ·
+  WBENC certified; 2025 Restricted-area escort and access control on a Space Force base; 2026 Denver
+  M/WBE and SBE · Colorado Verified Diverse and Small Business) as 2px ticks on a hairline-strong
+  rule, each year in mono above its tick and its line beneath in ink muted (14px). From 768px
+  horizontal, the five evenly across the letter's width; below, vertical with the rule on the left.
+  As it reaches the middle of the screen (the page's scroll observer, center and once) the rule
+  draws from the first tick to the last (900ms, the standard ease; on phones one segment per year
+  along the same timing), and each tick and year turns rust as the rule reaches it; the 2026 tick
+  keeps a soft rust glow. Drawn and rust by default (prerender, no JavaScript, reduced motion); the
+  waiting state is armed only after mount. The rule and ticks are decorative.
 - **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does

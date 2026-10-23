@@ -784,6 +784,49 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-founder[data-form='letter'] h2 { grid-column: 1 / span 4; }
   .ds-founder-letter { grid-column: 6 / span 7; }
 }
+/* Since 2021 (owner, 2026-10-23): in the letter under the story, a mono label and the five years as
+   ticks on a hairline, each year in mono above its tick and its line beneath. Horizontal from
+   768px, vertical with the rule on the left below. The rule and ticks are pseudo-elements
+   (decorative); the list is an <ol>. Drawn and every year rust by default; once armed
+   (data-anim), it waits until the page's center observer sets data-in-view, then the rule draws
+   (900ms, --ds-ease) and each tick and year turns rust as the rule reaches it (--at). */
+.ds-since { margin-top: 44px; }
+.ds-since-label { margin: 0 0 18px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-since-list { position: relative; display: grid; margin: 0; padding: 0; list-style: none; }
+.ds-since-list li { position: relative; }
+.ds-since-year { display: block; font-size: 13px; line-height: 20px; color: var(--ds-rust); }
+.ds-since-line { display: block; font-size: 14px; line-height: 1.45; color: var(--ds-fg-muted); text-wrap: pretty; }
+/* The tick (2px, rust), and on 2026 a soft rust glow. */
+.ds-since-list li::after { content: ''; position: absolute; background: var(--ds-rust); }
+.ds-since-list li:last-child::after { box-shadow: 0 0 10px 1px rgb(188 111 64 / 0.55); }
+
+@media (min-width: 768px) {
+  .ds-since-list { --gap: 20px; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gap); }
+  .ds-since-year { margin-bottom: 30px; }
+  .ds-since-list li::after { top: 32px; left: 0; width: 2px; height: 11px; }
+  /* One rule from the first tick to the last (the fifth column starts at 80% + 0.8 of a gap). */
+  .ds-since-list::before { content: ''; position: absolute; top: 37px; left: 0; width: calc(80% + 0.8 * var(--gap) + 2px); height: 1px; background: var(--ds-rule-strong); transform-origin: left center; }
+}
+@media (max-width: 767px) {
+  .ds-since-list { row-gap: 22px; }
+  .ds-since-list li { padding-left: 28px; }
+  .ds-since-list li::after { top: 9px; left: 0; width: 11px; height: 2px; }
+  /* The rule on the left, drawn as one segment per year down to the next tick, each over its share
+     of the same eased timeline (--at to the next --at). */
+  .ds-since-list li:not(:last-child)::before { content: ''; position: absolute; top: 10px; left: 5px; width: 1px; height: calc(100% + 22px); background: var(--ds-rule-strong); transform-origin: center top; }
+}
+
+/* Armed and waiting: no rule yet, ticks and years at rest. */
+.ds-since[data-anim]:not([data-in-view='true']) .ds-since-list::before { transform: scaleX(0); }
+.ds-since[data-anim]:not([data-in-view='true']) .ds-since-list li::before { transform: scaleY(0); }
+.ds-since[data-anim]:not([data-in-view='true']) .ds-since-list li::after { background: var(--ds-rule-strong); box-shadow: none; }
+.ds-since[data-anim]:not([data-in-view='true']) .ds-since-year { color: var(--ds-fg-muted); }
+/* Reached: the rule draws, and each tick and year turns as it gets there. */
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list::before { transition: transform 900ms var(--ds-ease); }
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::before { transition: transform var(--seg) linear var(--at); }
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::after { transition: background-color 180ms var(--ds-ease) var(--at), box-shadow 600ms var(--ds-ease) var(--at); }
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-year { transition: color 180ms var(--ds-ease) var(--at); }
+
 .ds-handoff { margin-top: var(--ds-beat-tight); color: var(--ds-fg); font-size: 20px; line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; max-width: 30ch; }
 
 /* ---------- Prime contractors panel (industry pages) ---------- */

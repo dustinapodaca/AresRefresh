@@ -1097,3 +1097,7 @@ as the company. Heading and letter layout unchanged (story muted, last line in i
   in index.html's JSON-LD is unchanged.
 - llms.txt About line: "Why Ares was founded, the problems clients had with other guard companies and
   how Ares answers them, and the standards every officer meets." (was "The founder’s story, ...").
+- Then (owner, same day) a "Since 2021" timeline under the story, where the signature was: "2021
+  Founded in Colorado Springs", "2022 Longest client on post, continuously since", "2023 Registered on
+  SAM.gov · WBENC certified", "2025 Restricted-area escort and access control on a Space Force base",
+  "2026 Denver M/WBE and SBE · Colorado Verified Diverse and Small Business".
