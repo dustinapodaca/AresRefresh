@@ -188,14 +188,22 @@ export default function IndustryDeck() {
   // (owner, 2026-10-23: on a phone the card came in before its photo had loaded, then the photo
   // popped in, so it read as a snap). Armed before the first paint so a half-ready card never shows;
   // the front card's and the two peeking cards' photos start decoding as soon as the deck mounts; the
-  // deal-in waits for them, 1.2s at most so a slow connection never leaves the space empty.
+  // deal-in waits for them, 2.5s at most so a slow connection never leaves the space empty.
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root || !motionAllowed()) return;
     root.dataset.arm = 'true';
     const imgs = Array.from(root.querySelectorAll<HTMLImageElement>('.nx-sw .swiper-slide:first-child img, .nx-sk-ghost img'));
-    const decoded = Promise.all(imgs.map((img) => img.decode().catch(() => undefined)));
-    const ready = Promise.race([decoded, new Promise((r) => window.setTimeout(r, 1200))]);
+    // Loaded, then decoded: decode() alone can settle before a slow photo has arrived.
+    const loaded = (img: HTMLImageElement) =>
+      img.complete && img.naturalWidth
+        ? Promise.resolve()
+        : new Promise<void>((res) => {
+            img.addEventListener('load', () => res(), { once: true });
+            img.addEventListener('error', () => res(), { once: true });
+          });
+    const decoded = Promise.all(imgs.map((img) => loaded(img).then(() => img.decode().catch(() => undefined))));
+    const ready = Promise.race([decoded, new Promise((r) => window.setTimeout(r, 2500))]);
     let gone = false;
     const io = new IntersectionObserver(
       ([e]) => {
