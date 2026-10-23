@@ -484,7 +484,7 @@ and `nx-*.css` (class prefix `nx-`).
   terrain can't run (the same `data-terrain` check as before, in index.html). Below the
   headline, across the foot of the screen: the lead in #c4c8ce (5 columns, 44ch), Request a
   Quote and the phone link at the right (the phone link hidden on phones, owner 2026-10-22: the nav's
-  handset carries it), then the proof row (the GSA mark, 16px, then GSA MAS 47QSMS25D009Q to eLibrary;
+  handset carries it), then the proof row (the GSA mark in white, 16px, then GSA MAS 47QSMS25D009Q to eLibrary;
   Minority woman-owned (WOSB, WBENC, M/WBE: Denver's certification, owner 2026-10-23); Licensed in Colorado Springs, Denver, Pueblo) on white/14%
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
   since 2026-10-22, owner), fading out over the first 160px of scroll.
