@@ -17,17 +17,14 @@ const SINCE = [
   { year: '2022', line: 'Longest client on post, continuously since' },
   { year: '2023', line: 'Registered on SAM.gov · WBENC certified' },
   { year: '2025', line: 'Restricted-area escort and access control on a Space Force base' },
-  { year: '2026', line: 'Denver M/WBE and SBE · Colorado Verified Diverse and Small Business' },
+  { year: '2026', line: 'Denver M/WBE and SBE · Colorado Verified' },
 ];
-
-// When the rule reaches each tick: the rule draws in 900ms on --ds-ease (0.2, 0.8, 0.2, 1), which
-// passes the five evenly spaced ticks at about these times (the last at 99% of the way).
-const AT = [0, 56, 117, 215, 660];
 
 // The timeline is drawn and every year rust by default (prerendered HTML, no JavaScript, reduced
 // motion). The motion is armed only after mount, as in Heard: data-anim="ready" sets the waiting
 // state, then "on" (a frame later) turns the transitions on. The page's scroll observer
-// (useScrollInViewObserver, center and once) sets data-in-view when it reaches the middle.
+// (useScrollInViewObserver, center and once) sets data-in-view when it reaches the middle; then the
+// years come in one after another, 90ms apart (--i), as the rule reaches each one.
 function Since() {
   const ref = useRef<HTMLDivElement>(null);
   const [anim, setAnim] = useState<'ready' | 'on' | null>(null);
@@ -60,7 +57,7 @@ function Since() {
       <p id="since-title" className="ds-data ds-since-label">Since 2021</p>
       <ol className="ds-since-list" aria-labelledby="since-title">
         {SINCE.map((s, i) => (
-          <li key={s.year} style={{ '--at': `${AT[i]}ms`, '--seg': `${(AT[i + 1] ?? AT[i]) - AT[i]}ms` } as CSSProperties}>
+          <li key={s.year} style={{ '--i': i } as CSSProperties}>
             <span className="ds-data ds-since-year">{s.year}</span>{' '}
             <span className="ds-since-line">{s.line}</span>
           </li>

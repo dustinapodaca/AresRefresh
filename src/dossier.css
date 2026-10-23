@@ -788,9 +788,11 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
    ticks on a hairline, each year in mono above its tick and its line beneath. Horizontal from
    768px, vertical with the rule on the left below. The rule and ticks are pseudo-elements
    (decorative); the list is an <ol>. Drawn and every year rust by default; once armed
-   (data-anim), it waits until the page's center observer sets data-in-view, then the rule draws
-   (900ms, --ds-ease) and each tick and year turns rust as the rule reaches it (--at). */
-.ds-since { margin-top: 44px; }
+   (data-anim), it waits until the page's center observer sets data-in-view, then the years come
+   in one after another in quick succession (owner): the rule runs at an even speed and reaches
+   each tick on the beat (--i x --since-step); the tick draws in and turns rust, and the year and
+   its line rise into place. */
+.ds-since { --since-step: 90ms; --since-ease: cubic-bezier(0.23, 1, 0.32, 1); margin-top: 44px; }
 .ds-since-label { margin: 0 0 18px; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-since-list { position: relative; display: grid; margin: 0; padding: 0; list-style: none; }
 .ds-since-list li { position: relative; }
@@ -803,29 +805,37 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 @media (min-width: 768px) {
   .ds-since-list { --gap: 20px; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: var(--gap); }
   .ds-since-year { margin-bottom: 30px; }
-  .ds-since-list li::after { top: 32px; left: 0; width: 2px; height: 11px; }
+  .ds-since-list li::after { top: 32px; left: 0; width: 2px; height: 11px; transform-origin: center 5.5px; }
   /* One rule from the first tick to the last (the fifth column starts at 80% + 0.8 of a gap). */
   .ds-since-list::before { content: ''; position: absolute; top: 37px; left: 0; width: calc(80% + 0.8 * var(--gap) + 2px); height: 1px; background: var(--ds-rule-strong); transform-origin: left center; }
 }
 @media (max-width: 767px) {
   .ds-since-list { row-gap: 22px; }
   .ds-since-list li { padding-left: 28px; }
-  .ds-since-list li::after { top: 9px; left: 0; width: 11px; height: 2px; }
-  /* The rule on the left, drawn as one segment per year down to the next tick, each over its share
-     of the same eased timeline (--at to the next --at). */
+  .ds-since-list li::after { top: 9px; left: 0; width: 11px; height: 2px; transform-origin: 5.5px center; }
+  /* The rule on the left, one segment per year down to the next tick, each drawn in its own step. */
   .ds-since-list li:not(:last-child)::before { content: ''; position: absolute; top: 10px; left: 5px; width: 1px; height: calc(100% + 22px); background: var(--ds-rule-strong); transform-origin: center top; }
 }
 
-/* Armed and waiting: no rule yet, ticks and years at rest. */
+/* Armed and waiting: no rule or ticks yet, the years a little low and dimmed (never below 0.62). */
 .ds-since[data-anim]:not([data-in-view='true']) .ds-since-list::before { transform: scaleX(0); }
 .ds-since[data-anim]:not([data-in-view='true']) .ds-since-list li::before { transform: scaleY(0); }
-.ds-since[data-anim]:not([data-in-view='true']) .ds-since-list li::after { background: var(--ds-rule-strong); box-shadow: none; }
+.ds-since[data-anim]:not([data-in-view='true']) .ds-since-list li::after { transform: scale(0); background: var(--ds-rule-strong); box-shadow: none; }
+.ds-since[data-anim]:not([data-in-view='true']) :is(.ds-since-year, .ds-since-line) { opacity: 0.62; transform: translateY(10px); }
 .ds-since[data-anim]:not([data-in-view='true']) .ds-since-year { color: var(--ds-fg-muted); }
-/* Reached: the rule draws, and each tick and year turns as it gets there. */
-.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list::before { transition: transform 900ms var(--ds-ease); }
-.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::before { transition: transform var(--seg) linear var(--at); }
-.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::after { transition: background-color 180ms var(--ds-ease) var(--at), box-shadow 600ms var(--ds-ease) var(--at); }
-.ds-since[data-anim='on'][data-in-view='true'] .ds-since-year { transition: color 180ms var(--ds-ease) var(--at); }
+/* Reached: the rule runs at an even speed, so it meets each tick on its step. */
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list::before { transition: transform calc(4 * var(--since-step)) linear; }
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::before { transition: transform var(--since-step) linear calc(var(--i) * var(--since-step)); }
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li::after {
+  transition: transform 240ms var(--since-ease) calc(var(--i) * var(--since-step)), background-color 180ms var(--ds-ease) calc(var(--i) * var(--since-step));
+}
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-list li:last-child::after {
+  transition: transform 240ms var(--since-ease) calc(4 * var(--since-step)), background-color 180ms var(--ds-ease) calc(4 * var(--since-step)), box-shadow 600ms var(--ds-ease) calc(4 * var(--since-step) + 120ms);
+}
+.ds-since[data-anim='on'][data-in-view='true'] :is(.ds-since-year, .ds-since-line) {
+  transition: opacity 360ms var(--since-ease) calc(var(--i) * var(--since-step)), transform 360ms var(--since-ease) calc(var(--i) * var(--since-step)), color 180ms var(--ds-ease) calc(var(--i) * var(--since-step));
+}
+.ds-since[data-anim='on'][data-in-view='true'] .ds-since-line { transition-delay: calc(var(--i) * var(--since-step) + 40ms); }
 
 .ds-handoff { margin-top: var(--ds-beat-tight); color: var(--ds-fg); font-size: 20px; line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; max-width: 30ch; }
 
@@ -1571,13 +1581,23 @@ html[data-cards] .ds-relief-panel {
 @media (min-width: 900px) {
   .ds-ab-creds { margin-top: var(--ds-beat-tight); padding-bottom: 8px; }
 }
-/* The entrance (About.tsx sets data-anim, then data-in when the row is seen): marks rise
-   14px from 35% and their rules draw, one after another. Never from zero; without JS or
-   under reduced motion the row is simply there. */
-.ds-ab-creds[data-anim] li { transition: transform 420ms var(--ds-ease), opacity 420ms var(--ds-ease); transition-delay: calc(var(--i) * 80ms); }
-.ds-ab-creds[data-anim] li::before { transition: transform 520ms var(--ds-ease); transition-delay: calc(var(--i) * 80ms); }
-.ds-ab-creds[data-anim='ready'] li { transform: translateY(14px); opacity: 0.35; }
-.ds-ab-creds[data-anim='ready'] li::before { transform: scaleX(0.15); }
+/* The entrance (Opening.tsx sets data-anim="ready" on the row, then data-in on each mark as it comes
+   on screen), one mark after another in quick succession (owner, 2026-10-23): the hairlines draw
+   left to right at an even speed, one step each (--cred-step), so they read as one line running
+   across what is on screen, and as the line reaches each mark the logo rises into place out of
+   nothing, then its number or label (from opacity 0: an owner exception, 2026-10-23). --k is the
+   mark's place in its batch. Without JS or under reduced motion the row is simply there. */
+.ds-ab-creds { --cred-step: 110ms; --cred-ease: cubic-bezier(0.23, 1, 0.32, 1); }
+.ds-ab-creds[data-anim] li:not([data-in])::before { transform: scaleX(0); }
+.ds-ab-creds[data-anim] li:not([data-in]) > img { opacity: 0; transform: translateY(12px); }
+.ds-ab-creds[data-anim] li:not([data-in]) > :not(img) { opacity: 0; transform: translateY(8px); }
+.ds-ab-creds[data-anim] li[data-in]::before { transition: transform var(--cred-step) linear calc(var(--k) * var(--cred-step)); }
+.ds-ab-creds[data-anim] li[data-in] > img {
+  transition: opacity 420ms var(--cred-ease) calc(var(--k) * var(--cred-step) + 30ms), transform 420ms var(--cred-ease) calc(var(--k) * var(--cred-step) + 30ms);
+}
+.ds-ab-creds[data-anim] li[data-in] > :not(img) {
+  transition: opacity 420ms var(--cred-ease) calc(var(--k) * var(--cred-step) + 100ms), transform 420ms var(--cred-ease) calc(var(--k) * var(--cred-step) + 100ms);
+}
 
 /* ---------- 02 What clients told us (owner, 2026-10-18; Heard.tsx) ----------
    What clients said about their last guard company, and what Ares does instead, as glass cards.

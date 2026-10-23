@@ -1101,3 +1101,6 @@ as the company. Heading and letter layout unchanged (story muted, last line in i
   Founded in Colorado Springs", "2022 Longest client on post, continuously since", "2023 Registered on
   SAM.gov · WBENC certified", "2025 Restricted-area escort and access control on a Space Force base",
   "2026 Denver M/WBE and SBE · Colorado Verified Diverse and Small Business".
+- Then (owner, same day) the 2026 line is shorter, so it wraps less on desktop (6 lines at 1440, now
+  4): "Denver M/WBE and SBE · Colorado Verified" (was "... · Colorado Verified Diverse and Small
+  Business").

@@ -822,9 +822,14 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
   certification marks on hairlines, each with its identifier in mono (GSA links to
   eLibrary); a label shows only where the mark says less than we do ("Minority
-  woman-owned"). Entrance: marks rise 14px from 0.35 opacity and their rules draw, 80ms
-  apart, once, when the row is seen (never from 0; static without JS or under reduced
-  motion).
+  woman-owned"). Entrance (owner, 2026-10-23: one after another, in quick succession): the hairlines draw left
+  to right at an even speed, 110ms each, so they read as one line running across the row, and as it
+  reaches each mark the logo rises 12px into place, then its number or label (8px), both out of
+  nothing (from opacity 0: an owner exception to "no entrance from opacity 0", 2026-10-23), 420ms on
+  a strong ease-out; once. Each mark plays once 40% of it is on screen, and whatever comes on
+  screen together cascades together, after a short beat at load: on desktop all four at load; on
+  phones the first two at load (they sit at the foot of the first screen) and the second two as they
+  scroll up (owner, 2026-10-23). Static without JS or under reduced motion.
 - **Why Ares exists** (founder block, before 01; owner 2026-10-10, pass 2 after Slash,
   Flora, Resend): **`letter` (chosen, owner 2026-10-10)**: the headline in columns 1 to 4, the story
   in Inter 500 at 20 to 26px in two tones in columns 6 to 12 (all of it ink muted but the last
@@ -835,13 +840,14 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   2026-10-23): the label in mono 13px ink faint, then an ordered list of five years (2021 Founded in
   Colorado Springs; 2022 Longest client on post, continuously since; 2023 Registered on SAM.gov ·
   WBENC certified; 2025 Restricted-area escort and access control on a Space Force base; 2026 Denver
-  M/WBE and SBE · Colorado Verified Diverse and Small Business) as 2px ticks on a hairline-strong
+  M/WBE and SBE · Colorado Verified) as 2px ticks on a hairline-strong
   rule, each year in mono above its tick and its line beneath in ink muted (14px). From 768px
   horizontal, the five evenly across the letter's width; below, vertical with the rule on the left.
-  As it reaches the middle of the screen (the page's scroll observer, center and once) the rule
-  draws from the first tick to the last (900ms, the standard ease; on phones one segment per year
-  along the same timing), and each tick and year turns rust as the rule reaches it; the 2026 tick
-  keeps a soft rust glow. Drawn and rust by default (prerender, no JavaScript, reduced motion); the
+  As it reaches the middle of the screen (the page's scroll observer, center and once) the years
+  come in one after another in quick succession (owner, 2026-10-23): the rule runs from the first
+  tick to the last at an even speed, 90ms a step (on phones one segment per step), and as it reaches
+  each year its tick draws in and turns rust (240ms) while the year and its line rise 10px from 0.62
+  opacity (360ms, a strong ease-out); the 2026 tick then keeps a soft rust glow. Drawn and rust by default (prerender, no JavaScript, reduced motion); the
   waiting state is armed only after mount. The rule and ticks are decorative.
 - **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last

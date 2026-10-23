@@ -5,7 +5,7 @@ import { responsive } from '../../lib/responsive';
 
 // The opening: Pikes Peak behind Garden of the Gods, full bleed (a real place, so it
 // carries a caption), the headline low on it, then the four certification marks, each
-// with its number, sliding in one after another.
+// with its number, coming in one after another as a hairline runs across the row.
 export default function Opening() {
   const creds = useRef<HTMLUListElement>(null);
 
@@ -15,17 +15,46 @@ export default function Opening() {
     const row = creds.current;
     if (!row || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     row.dataset.anim = 'ready';
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        // Two frames so the start state is painted before it changes.
-        requestAnimationFrame(() => requestAnimationFrame(() => (row.dataset.anim = 'in')));
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(row);
-    return () => io.disconnect();
+    // Each mark plays once 40% of it is on screen (or it is already scrolled past, so none is
+    // ever left hidden), in batches: whatever is on screen together cascades together, left to
+    // right (--k). Desktop: all four at load. Phones (owner, 2026-10-23): the first two, already at
+    // the foot of the first screen, at load; the second two as they scroll up into view.
+    // At load, wait a beat so the cascade plays after the page has settled, not during the first
+    // paint.
+    const items = Array.from(row.querySelectorAll<HTMLElement>(':scope > li'));
+    const armed = performance.now();
+    const timers: number[] = [];
+    const queued = new Set<HTMLElement>();
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      const batch = items.filter((li) => !queued.has(li) && li.getBoundingClientRect().top + li.offsetHeight * 0.4 <= vh);
+      if (!batch.length) return;
+      batch.forEach((li, k) => {
+        queued.add(li);
+        li.style.setProperty('--k', String(k));
+      });
+      if (queued.size === items.length) stop();
+      const wait = Math.max(0, 450 - (performance.now() - armed));
+      // Two frames so the start state is painted before it changes.
+      timers.push(window.setTimeout(() => requestAnimationFrame(() => requestAnimationFrame(() => batch.forEach((li) => (li.dataset.in = '')))), wait));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    const stop = () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    check();
+    return () => {
+      stop();
+      cancelAnimationFrame(raf);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
