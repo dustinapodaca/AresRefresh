@@ -90,6 +90,8 @@ export default function Coverage() {
         .to(g.querySelector('.nx-cv-ping'), { attr: { r: ringR * 3 }, opacity: 0, ease: 'power1.out', duration: 0.12 }, at + 0.01)
         .fromTo(g.querySelector('.nx-cv-ring'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: ringR }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02)
         .fromTo(g.querySelectorAll('.nx-cv-label'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
+      // Pikes Peak comes in with Colorado Springs, its mountain (owner, 2026-10-22).
+      if (c.hq) tl.fromTo(map.querySelector('.nx-cv-pikes'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
     });
     gsap.fromTo(
       root.querySelectorAll('.nx-cv-city'),
@@ -180,7 +182,7 @@ export default function Coverage() {
             <text className="nx-cv-faint nx-cv-mono" x="14" y="26">
               COLORADO
             </text>
-            <g className="nx-cv-faint">
+            <g className="nx-cv-pikes">
               <path
                 d={`M${px(PIKES.lon)} ${py(PIKES.lat) - 6} L${px(PIKES.lon) + 5.5} ${py(PIKES.lat) + 4} L${px(PIKES.lon) - 5.5} ${py(PIKES.lat) + 4} Z`}
                 fill="none"

@@ -558,8 +558,8 @@ and `nx-*.css` (class prefix `nx-`).
   Colorado to scale on the right (the coverage map's projection, its dot grid, a rust glow on
   Colorado Springs, Pikes Peak as an open triangle). I-25 draws north to south with the scroll, a
   bright tip riding it, and each city comes up as the line reaches it (owner, 2026-10-22: the dot grows in place, one
-  sonar ping ripples out from it, the ring opens around it, the name rises 6px into place; radii, not
-  scale, so nothing flies in from the map's corner); pointing at or
+  sonar ping ripples out from it, the ring opens around it, the name rises 6px into place, Pikes Peak with
+  Colorado Springs; radii, not scale, so nothing flies in from the map's corner); pointing at or
   focusing a city lights its pin and dims the others. Resolved: the route drawn, every pin lit.
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a
