@@ -83,7 +83,9 @@ export default function Prime() {
         scrollTrigger: {
           trigger: canvas,
           start: 'top 78%',
-          end: 'bottom 62%',
+          // Built by the time the canvas is in the middle of the screen (owner, 2026-10-23: Relief &
+          // Surge was still coming in there; was 'bottom 62%').
+          end: 'center 55%',
           scrub: SCRUB,
           invalidateOnRefresh: true,
           onRefreshInit: setDash,
