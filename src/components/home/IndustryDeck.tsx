@@ -75,8 +75,6 @@ export default function IndustryDeck() {
   const swRef = useRef<HTMLDivElement>(null);
   const swiper = useRef<Swiper | null>(null);
   const [active, setActive] = useState(0);
-  // The backdrop follows once the card has settled, so its crossfade never lands mid-swipe.
-  const [shown, setShown] = useState(0);
 
   // The stack, and its size: the card fills the phone's width less room for the pile to fan out to
   // the right; every card the same height (the 3:2 photo, then room for the longest brief).
@@ -105,10 +103,10 @@ export default function IndustryDeck() {
       threshold: 6,
     });
     swiper.current = sw;
-    // The counter and meter move at once; the rest waits for the card to settle.
+    // The counter, the meter, and the backdrop's color move with the card (owner, 2026-10-23: the
+    // backdrop waited for the card to settle and lagged); focus waits for the card to settle.
     const sync = () => setActive(sw.activeIndex);
     const settle = () => {
-      setShown(sw.activeIndex);
       // Only the front card takes focus and the screen reader's attention.
       sw.slides.forEach((s) => {
         const front = s.classList.contains('swiper-slide-active');
@@ -196,7 +194,7 @@ export default function IndustryDeck() {
             alt=""
             loading="lazy"
             decoding="async"
-            data-on={i === shown}
+            data-on={i === active}
             style={framing(ind)}
           />
         ))}

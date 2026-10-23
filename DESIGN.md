@@ -529,8 +529,8 @@ and `nx-*.css` (class prefix `nx-`).
   carousel, skiper50; the cards effect felt like "1, 2", and a deck version came between) is Swiper's
   creative effect: the neighbours fold back at the front card's edges like doors, turned 100 degrees
   and 200px deep, the outgoing one shaded, so a swipe swings the card away around its left edge as the
-  next swings in from the right; 650ms on an ease-out curve. The backdrop crossfade and the focus
-  change wait until the card settles. Each card (owner, 2026-10-22: the text and its shade hid most
+  next swings in from the right; 650ms on an ease-out curve. The backdrop's color follows the card at once
+  (a 0.3s crossfade from the moment the swipe is let go; owner, 2026-10-23); focus waits until it settles. Each card (owner, 2026-10-22: the text and its shade hid most
   of the photo) is the industry's photo on top in a 3:2 frame with nothing over it (the Home
   industry grade, saturate 0.78, brightness 0.84), then the short post brief under it on the card
   surface (`--ds-card`): the Node bar ("Post brief" in ink muted, 01 / 06 in ink faint), the name in
