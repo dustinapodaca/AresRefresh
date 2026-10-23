@@ -515,14 +515,15 @@ and `nx-*.css` (class prefix `nx-`).
   (below 1024px; owner, 2026-10-22, from a bundle: the stacked list ran about 6,400px on a phone):
   a swipe deck (`IndustryDeck.tsx` on `ui/image-stack-carousel.tsx`, framer-motion, loaded on its
   own below 1024px so desktop never fetches it). One card on a fanned pile of the six; drag it
-  sideways (it turns as it goes) or use the arrows, and it goes to the back. Each card is the
-  industry's photo full bleed with a short post brief over its foot: the Node bar ("Post brief",
-  01 / 06), the name in ink, its one line in #c4c8ce, and "Open the page →" (the industry page holds
-  the roles and what to send us). The active photo, blurred, is the section's backdrop; a counter, a
-  six-step meter (rust for the current), and two 44px arrows under it; "Swipe the card for the next
-  industry" in mono. Text on the cards is 4.5:1 or better at the brightest point on all six photos
-  from 360px (measured 2026-10-22): the photo graded down (brightness 0.78), a shade behind the bar,
-  and a shade that rides above the brief, so a three-line name is covered too. The pile deals in once
+  sideways (it turns as it goes) or use the arrows, and it goes to the back. Each card (owner, 2026-10-22: the text and its shade hid most
+  of the photo) is the industry's photo on top in a 3:2 frame with nothing over it (the Home
+  industry grade, saturate 0.78, brightness 0.84), then the short post brief under it on the card
+  surface (`--ds-card`): the Node bar ("Post brief" in ink muted, 01 / 06 in ink faint), the name in
+  ink, its one line in ink muted, and "Open the page →" at the card's foot (the industry page holds
+  the roles and what to send us). Every card is the same height, the photo plus the longest brief,
+  so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
+  counter, a six-step meter (rust for the current), and two 44px arrows under it; "Swipe the card
+  for the next industry" in mono. The pile deals in once
   when first seen. Everywhere else (desktop without motion, the prerender, no JavaScript; on phones
   until the deck has drawn): six stacked blocks, the photo (16:10, 4px corners, its number in mono)
   beside or above the same brief.

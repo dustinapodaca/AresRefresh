@@ -102,17 +102,20 @@
 .nx-sk-stage { position: relative; padding: 8px 0 34px; }
 .nx-sk-stage > div { padding-right: 28px; }
 
-/* A card: the photo full bleed, the post brief over its foot. */
+/* A card (owner, 2026-10-22): the photo on top with nothing over it, the post brief under it on
+   the card's own surface. */
 .nx-sk-card {
   position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
-  background: #0b0b0c;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--ds-card, #060708);
   color: var(--ds-fg);
   box-shadow: 0 18px 40px rgb(0 0 0 / 0.55);
 }
-/* The rim sits over the photo and the shade, so the card's edge reads against the black page. */
+/* The rim sits over the photo, so the card's edge reads against the black page. */
 .nx-sk-card::after {
   content: '';
   position: absolute;
@@ -121,65 +124,49 @@
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.22);
   pointer-events: none;
 }
-.nx-sk-card img {
+.nx-sk-photo { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-bottom: 1px solid rgb(255 255 255 / 0.08); }
+.nx-sk-photo img {
   position: absolute;
   inset: 0;
   width: 100%;
   max-width: none;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.8) brightness(0.78);
+  /* The industry photos' grade elsewhere on Home. */
+  filter: saturate(0.78) brightness(0.84);
   pointer-events: none;
   -webkit-user-drag: none;
 }
-.nx-sk-shade {
-  position: absolute;
-  inset: 0;
-  /* Behind the bar at the top. The brief's own shade (below) follows its height, so a three-line
-     name is covered as well as a one-line one. Measured (2026-10-22): every line of text 4.5:1
-     or better at the brightest point behind it, on all six photos from 360px up. */
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.78) 0%, rgb(0 0 0 / 0.6) 7%, rgb(0 0 0 / 0.3) 14%, rgb(0 0 0 / 0) 24%);
-}
+.nx-sk-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 18px 12px; }
+/* The Node bar, as on the rest of Home. */
 .nx-sk-bar {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  right: 16px;
-  margin: 0;
+  margin: 0 0 4px;
   display: flex;
   justify-content: space-between;
   font-family: var(--ds-data);
   font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #c4c8ce;
+  color: var(--ds-fg-muted);
 }
+.nx-sk-bar > span:last-child { color: var(--ds-fg-faint); }
 .nx-sk-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; }
 .nx-sk-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
-.nx-sk-body { position: absolute; left: 18px; right: 18px; bottom: 18px; display: grid; gap: 10px; isolation: isolate; }
-.nx-sk-body::before {
-  content: '';
-  position: absolute;
-  inset: -104px -18px -18px;
-  z-index: -1;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0) 0, rgb(0 0 0 / 0.36) 40px, rgb(0 0 0 / 0.68) 76px, rgb(0 0 0 / 0.84) 104px, rgb(0 0 0 / 0.92) 100%);
-  pointer-events: none;
-}
 .nx-sk-name {
   margin: 0;
-  /* The site's base h3 rule paints headings in the old light-theme ink; on the photo it is the
-     page's ink (2026-10-22). */
+  /* The site's base h3 rule paints headings in the old light-theme ink; here it is the page's ink. */
   color: var(--ds-fg);
   font-family: var(--ds-display);
   font-weight: 600;
-  font-size: clamp(30px, 9vw, 42px);
-  line-height: 0.96;
-  letter-spacing: -0.045em;
+  font-size: clamp(26px, 7.2vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.04em;
   text-wrap: balance;
 }
-.nx-sk-short { margin: 0; font-size: 15px; line-height: 1.45; color: #c4c8ce; }
+.nx-sk-short { margin: 0; font-size: 15px; line-height: 1.45; color: var(--ds-fg-muted); }
 .nx-sk-link {
-  justify-self: start;
+  align-self: flex-start;
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: 8px;

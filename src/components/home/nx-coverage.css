@@ -80,6 +80,8 @@
 @media (max-width: 1023px) {
   .nx-cv-title, .nx-cv-lead { grid-column: 1 / -1; }
   .nx-cv-body { display: flex; flex-direction: column-reverse; gap: 40px; align-items: stretch; }
+  /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
+  .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 12px; }
   .nx-cv-name { font-size: 17px; }
 }
