@@ -31,7 +31,10 @@ export function sectionY(el: HTMLElement): number {
 export function scrollToSection(id: string, opts: { instant?: boolean; focus?: boolean } = {}) {
   const el = document.getElementById(id);
   if (!el) return false;
-  window.scrollTo({ top: sectionY(el), behavior: opts.instant || reduceMotion() ? 'auto' : 'smooth' });
+  // Home at ?glide runs Lenis (home-flora, 2026-10-21); a native smooth scroll would fight it.
+  const lenis = (window as unknown as { __lenis?: { scrollTo: (y: number, o?: object) => void } }).__lenis;
+  if (lenis) lenis.scrollTo(sectionY(el), { immediate: !!opts.instant || reduceMotion(), duration: 1.2 });
+  else window.scrollTo({ top: sectionY(el), behavior: opts.instant || reduceMotion() ? 'auto' : 'smooth' });
   if (opts.focus) {
     // Move keyboard and screen-reader focus with the view, without a second jump.
     if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');

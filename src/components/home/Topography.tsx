@@ -731,7 +731,11 @@ const Topography = ({
   style,
   // Ares (2026-10-18): called once, after the first frame is drawn, so the hero can fade out the
   // still that stands in where WebGL2 is blocked, missing, or software only.
-  onReady
+  onReady,
+  // Ares (home-flora, 2026-10-20): a mutable object the page can write to every scroll frame
+  // (tilt, brightness, speed, opacity...). Its keys override the props without a React render;
+  // the terrain sets control.current.wake so the writer can restart a sleeping loop.
+  control
 }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
@@ -770,6 +774,15 @@ const Topography = ({
   };
   const settingsRef = useRef(settings);
   settingsRef.current = settings;
+  const controlRef = useRef(control);
+  controlRef.current = control;
+  // The live settings: the props, with any scroll-driven overrides on top.
+  const live = () => {
+    const c = controlRef.current?.current;
+    if (!c) return settingsRef.current;
+    const { wake: _wake, ...over } = c;
+    return { ...settingsRef.current, ...over };
+  };
   const onReadyRef = useRef(onReady);
   onReadyRef.current = onReady;
 
@@ -1042,7 +1055,7 @@ const Topography = ({
     };
 
     const render = () => {
-      const s = settingsRef.current;
+      const s = live();
       const cam = camera();
       viewProjection(cam, view.width / view.height, matrix);
 
@@ -1307,7 +1320,7 @@ const Topography = ({
     let ready = false;
 
     const resize = () => {
-      const s = settingsRef.current;
+      const s = live();
       sizedDpr = s.dpr;
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
@@ -1321,7 +1334,7 @@ const Topography = ({
     const frame = now => {
       raf = 0;
       if (!visible || document.hidden) return;
-      const s = settingsRef.current;
+      const s = live();
       if (s.dpr !== sizedDpr) resize();
       const dt = last ? clamp((now - last) / 1000, 0, 1 / 20) : 1 / 60;
       last = now;
@@ -1461,7 +1474,7 @@ const Topography = ({
     };
 
     const onPointerDown = event => {
-      const s = settingsRef.current;
+      const s = live();
       const { x, y, inside } = locate(event);
       if (!inside) return;
       pointer.x = x;
@@ -1511,6 +1524,7 @@ const Topography = ({
     document.addEventListener('visibilitychange', onVisibility);
     resize();
     wakeRef.current = wake;
+    if (controlRef.current?.current) controlRef.current.current.wake = wake;
 
     return () => {
       cancelAnimationFrame(raf);

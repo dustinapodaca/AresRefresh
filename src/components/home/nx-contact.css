@@ -1,0 +1,112 @@
+/* 06 Contact (home-flora, 2026-10-20). */
+
+.nx-contact {
+  position: relative;
+  overflow: hidden;
+  padding: var(--ds-beat-open) var(--ds-edge) clamp(160px, 26vh, 300px);
+  isolation: isolate;
+}
+.nx-ct-inner { position: relative; z-index: 1; }
+.nx-ct-title { font-size: clamp(48px, 8.6vw, 156px); max-width: 12em; }
+
+.nx-ct-call { margin-top: clamp(56px, 8vw, 120px); }
+.nx-ct-call .nx-node-bar { justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
+.nx-ct-call .nx-node-bar > span:last-child { text-transform: none; letter-spacing: 0.01em; font-size: 13px; }
+
+.nx-ct-phone {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+  padding-bottom: 0.08em;
+  font-family: var(--ds-data);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: min(11.6vw, 180px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ds-fg);
+  text-decoration: none;
+}
+.nx-ct-digits { display: inline-flex; }
+.nx-ct-digit { display: inline-block; }
+.nx-ct-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #8b4920, #e8965f 70%, #f2b98e);
+  box-shadow: 0 0 14px rgb(232 150 98 / 0.55), 0 0 2px rgb(242 185 142 / 0.9);
+  transition: box-shadow 300ms var(--ds-ease);
+}
+.nx-ct-go {
+  display: inline-flex;
+  width: 0.34em;
+  overflow: hidden;
+  color: var(--ds-rust);
+  opacity: 0;
+  transform: translateX(-0.2em);
+  transition: opacity 300ms var(--ds-ease), transform 300ms var(--ds-ease);
+}
+.nx-ct-go .ds-arrow { width: 0.3em; height: 0.3em; }
+@media (hover: hover) and (pointer: fine) {
+  .nx-ct-phone:hover .nx-ct-go { opacity: 1; transform: none; }
+  .nx-ct-phone:hover .nx-ct-line { box-shadow: 0 0 26px rgb(232 150 98 / 0.9), 0 0 4px rgb(242 185 142 / 1); }
+}
+.nx-ct-phone:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 8px; }
+
+.nx-ct-meta { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; font-size: 14px; color: var(--ds-fg-muted); }
+.nx-ct-meta a { color: var(--ds-fg); text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
+.nx-ct-meta a:hover { text-decoration-color: var(--ds-fg); }
+
+.nx-ct-quote {
+  margin-top: clamp(56px, 7vw, 104px);
+  padding-top: 24px;
+  border-top: 1px solid var(--ds-rule);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 24px;
+  align-items: center;
+}
+.nx-ct-quote p { grid-column: 1 / span 6; margin: 0; font-size: 18px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 46ch; }
+.nx-ct-quote .ds-btn { grid-column: 10 / span 3; justify-self: end; }
+
+/* A low horizon of rust light: light, not a fill, coming up as the page ends. */
+.nx-ct-horizon {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 0;
+  height: clamp(380px, 58vh, 560px);
+  z-index: 0;
+  pointer-events: none;
+  /* Brightest on the horizon line (70% down) and gone before the section's foot, so it never
+     meets the footer as an edge. */
+  background:
+    radial-gradient(42% 34% at 50% 70%, rgb(242 185 142 / 0.5) 0%, rgb(232 150 98 / 0.3) 26%, rgb(188 111 64 / 0.14) 52%, rgb(0 0 0 / 0) 100%),
+    radial-gradient(70% 28% at 50% 71%, rgb(139 73 32 / 0.22) 0%, rgb(0 0 0 / 0) 100%);
+  transform-origin: 50% 70%;
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+}
+.nx-ct-horizon::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  top: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(242 185 142 / 0), rgb(242 185 142 / 0.8) 50%, rgb(242 185 142 / 0));
+  box-shadow: 0 0 22px 2px rgb(232 150 98 / 0.4);
+}
+
+@media (max-width: 767px) {
+  .nx-ct-quote p, .nx-ct-quote .ds-btn { grid-column: 1 / -1; justify-self: stretch; }
+  .nx-ct-phone { letter-spacing: -0.06em; }
+  .nx-ct-call .nx-node-bar > span:last-child { font-size: 12px; }
+}
+
+/* The read-in words are inline blocks, which drop their trailing space; keep it. */

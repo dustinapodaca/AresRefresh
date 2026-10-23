@@ -85,19 +85,6 @@ body:has(.ds-page) {
 .ds-display-md { font-size: clamp(26px, 2.6vw, 38px); line-height: 1.15; letter-spacing: -0.03em; font-weight: 500; }
 /* Sub-heads are Inter, not Inter Tight. */
 .ds-title { font-family: var(--ds-text); font-size: 22px; line-height: 1.25; letter-spacing: -0.02em; }
-/* The city list: display at its largest. */
-.ds-city-name {
-  font-family: var(--ds-display);
-  font-weight: 600;
-  font-size: clamp(36px, 6vw, 88px);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: var(--ds-fg);
-}
-/* Desktop: a step smaller (owner, 2026-10-05); phones and tablets unchanged. */
-@media (min-width: 1024px) {
-  .ds-city-name { font-size: clamp(48px, 4.6vw, 68px); }
-}
 
 .ds-lead,
 .ds-body,
@@ -387,17 +374,21 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-certs img { height: 22px; }
   .ds-certs img[src*='cert-wbenc'] { height: 28px; }
 }
-/* Mobile: a centered 2x2 with hairlines between the marks (a cross, no outer box). */
+/* Phones (owner, 2026-10-23): GSA, the contract vehicle, on its own band across the top between two
+   hairlines, the same height as each row below it, then a 2x2 cross of SBA, Denver, Women Owned,
+   WBENC (Denver a touch smaller: its bold, wide wordmark read larger at the same height). */
 @media (max-width: 699px) {
   .ds-certs { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: stretch; gap: 0; }
   .ds-certs li { justify-content: center; min-height: 76px; padding: 16px 12px; }
   .ds-certs .ds-certs-rule { display: none; }
-  .ds-certs li:not(.ds-certs-rule):nth-of-type(4n + 1) { border-right: 1px solid var(--ds-rule-strong); }
-  .ds-certs li:not(.ds-certs-rule):nth-of-type(-n + 7) { border-bottom: 1px solid var(--ds-rule-strong); }
-  /* The fifth mark sits alone across the bottom row, centered. */
-  .ds-certs li:not(.ds-certs-rule):last-child { grid-column: 1 / -1; border-right: 0; }
+  .ds-certs [data-mark='gsa'] { grid-column: 1 / -1; order: 0; min-height: 77px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='sba'] { order: 1; border-right: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='denver'] { order: 2; border-bottom: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='women'] { order: 3; border-right: 1px solid var(--ds-rule-strong); }
+  .ds-certs [data-mark='wbenc'] { order: 4; }
   .ds-certs img { height: 30px; max-width: 100%; }
   .ds-certs img[src*='cert-wbenc'] { height: 36px; }
+  .ds-certs img[src*='cert-denver'] { height: 26px; }
 }
 
 /* The close of every page: the ARES letters of the text logo across the container over a slow rust and
@@ -510,149 +501,6 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-page section[id],
   .ds-page article[id],
   .ds-page li[id] { scroll-margin-top: calc(var(--ds-header) + 24px); }
-}
-
-/* ---------- Hero ---------- */
-.ds-hero { position: relative; isolation: isolate; }
-.ds-hero-photo {
-  position: relative;
-  z-index: -1;
-  height: calc(58svh + var(--ds-header));
-  min-height: 400px;
-  overflow: clip;
-}
-.ds-hero-photo img {
-  position: absolute;
-  inset-inline: 0;
-  top: -12%;
-  width: 100%;
-  height: 112%;
-  object-fit: cover;
-  object-position: 62% 40%;
-  filter: saturate(0.9) brightness(0.8);
-}
-/* Phones: the photo sits 36px further right (owner, 2026-10-12). */
-@media (max-width: 767px) {
-  .ds-hero-photo img { object-position: calc(62% + 36px) 40%; }
-}
-.ds-hero-photo {
-  /* Masks, not overlays: the photo dissolves into the canvas with no edge. */
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 48%);
-  mask-image: linear-gradient(to top, transparent 0%, #000 48%);
-}
-.ds-hero-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgb(0 0 0 / 0.7) 0%, rgb(0 0 0 / 0) 32%);
-}
-.ds-hero-copy { position: relative; margin-top: -7rem; padding-bottom: var(--ds-beat-tight); }
-.ds-hero-copy .ds-lead { margin-top: 24px; }
-.ds-hero-actions { margin-top: 32px; }
-@media (min-width: 1024px) {
-  .ds-hero-actions { display: none; }
-}
-/* The proof row (copy audit options, 2026-10-10): four checkable lines on hairlines, in place
-   of the GSA mark. Two by two on phones, four across from 1024px. */
-.ds-hero-proof {
-  list-style: none;
-  margin: 40px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 20px;
-}
-@media (max-width: 1023px) { .ds-hero-proof li:last-child:nth-child(odd) { grid-column: 1 / -1; } }
-.ds-hero-proof li {
-  border-top: 1px solid rgb(255 255 255 / 0.12);
-  padding-top: 12px;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--ds-fg-muted);
-}
-.ds-hero-proof a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: rgb(255 255 255 / 0.2);
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  transition: color 180ms var(--ds-ease), text-decoration-color 180ms var(--ds-ease);
-}
-.ds-hero-proof a:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
-.ds-hero-proof .ds-data { font-size: 13px; color: var(--ds-fg); }
-.ds-hero-proof .ds-data { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
-
-@media (min-width: 900px) {
-  .ds-hero {
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-  }
-  /* Full bleed: the whole photograph sits behind the hero and runs past it, ending under
-     the opening of 01 Verify. */
-  .ds-hero-photo {
-    position: absolute;
-    inset: 0;
-    height: auto;
-    bottom: calc(-1 * clamp(4rem, 9vh, 7rem));
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 26%);
-    mask-image: linear-gradient(to top, transparent 0%, #000 26%);
-  }
-  /* Brighter (owner, 2026-10-08): the towers and the copper at their foot carry the hero;
-     readability comes from the glass band behind the copy, not from darkening the photo. */
-  /* Fit, not zoom (owner, 2026-10-08): the box runs only a little past the hero and the
-     image keeps just 4% of headroom for its drift, so cover shows nearly the photo's full
-     width. */
-  .ds-hero-photo img {
-    top: -4%;
-    height: 104%;
-    object-position: 50% 50%;
-    filter: saturate(0.95) brightness(0.8) contrast(1.06);
-  }
-  /* A vignette (owner, 2026-10-08: the photo read too bright), lighter than About's: the
-     sky under the nav shaded from the top, and the edges and corners darkened, so the
-     towers in the middle stay lit. */
-  .ds-hero-photo::after {
-    background:
-      linear-gradient(to bottom, rgb(0 0 0 / 0.7) 0%, rgb(0 0 0 / 0.3) 24%, rgb(0 0 0 / 0) 44%),
-      radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%);
-  }
-  /* The glass strip (owner, 2026-10-08): full bleed from a little above the headline to the
-     foot of the hero, crisp white/10% edges top and bottom; the photo runs on below it into
-     01 Record. The copper glows up through it. */
-  .ds-hero-copy::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: calc(var(--ds-header) + var(--ds-beat-tight) - 56px);
-    bottom: 0;
-    left: calc(-1 * var(--ds-edge));
-    width: 100vw;
-    /* A touch darker behind the copy on the left, clearer toward the right. */
-    background: linear-gradient(to right, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.62) 45%, rgb(0 0 0 / 0.48) 100%);
-    -webkit-backdrop-filter: blur(24px) saturate(1.3);
-    backdrop-filter: blur(24px) saturate(1.3);
-    border-top: 1px solid rgb(255 255 255 / 0.1);
-    border-bottom: 1px solid rgb(255 255 255 / 0.1);
-    pointer-events: none;
-  }
-  /* The headline runs wide (two lines at desktop, as in v10) over the photo's faded edge. */
-  .ds-hero-copy { margin-top: 0; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); padding-bottom: clamp(3rem, 9vh, 6rem); }
-  .ds-hero-copy h1 { max-width: 10.6em; }
-  .ds-hero-copy .ds-lead { max-width: 40ch; color: #c4c8ce; }
-  .ds-hero-proof li { color: #c4c8ce; }
-}
-/* Desktop has no hero actions (the nav carries the quote), so the copy is lifted most of
-   the way back to where they held it (they were 80px). */
-@media (min-width: 1024px) {
-  .ds-hero-copy { padding-bottom: calc(clamp(3rem, 9vh, 6rem) + 56px); }
-  /* In the strip: the headline across, then the lead left and the GSA mark right, on one
-     row below it. */
-  .ds-hero-copy { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-bottom: clamp(2.5rem, 6vh, 4rem); }
-  .ds-hero-copy h1 { grid-column: 1 / -1; grid-row: 1; }
-  .ds-hero-copy .ds-lead { grid-column: 1 / span 6; grid-row: 2; }
-  .ds-hero-copy .ds-hero-proof { grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; margin-top: 44px; }
-  .ds-hero-copy .ds-lead { max-width: 46ch; }
 }
 
 /* ---------- Document column + rail ---------- */
@@ -872,91 +720,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-runhead { display: none; }
 }
 
-/* ---------- 01 Record (owner, 2026-10-06; was 01 Verify, the federal ledger) ---------- */
-.ds-record { padding-top: var(--ds-beat); }
-/* The shared section head on Home: the headline in 7 columns, the lead in the last 5,
-   aligned to the headline's foot (Record, Quality). */
-.ds-sec-head { display: grid; gap: 20px; }
-@media (min-width: 1024px) {
-  .ds-sec-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-sec-head h2 { grid-column: 1 / span 7; }
-  .ds-sec-head .ds-lead { grid-column: 8 / span 5; }
-}
-
-/* ---------- 01 Record: proof cards over a wide quote (owner, 2026-10-06; sleeker 2026-10-08) ----------
-   Mobbin: Lightdash and Ramp. Black frosted glass, no colored light (owner, 2026-10-08):
-   a faint dot grid lies behind the grid so the glass has something to frost; it shows in
-   the gaps and softens to nothing under each card. Each card: the figure and its caption,
-   a hairline, then the value's name and line. Then the client's words as a wide card.
-   Desktop: three across over the quote, rising into place on scroll. Phones: they pile up,
-   each card frosting the one beneath it. */
-.ds-values-list { position: relative; isolation: isolate; display: grid; gap: 16px; list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
-.ds-values-list::before {
-  content: '';
-  position: absolute;
-  inset: -48px calc(-1 * var(--ds-gutter));
-  z-index: -1;
-  background-image: radial-gradient(circle, rgb(238 240 242 / 0.14) 1.1px, transparent 1.6px);
-  background-size: 16px 16px;
-  background-position: center;
-  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 40%, transparent 100%);
-  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 40%, transparent 100%);
-  pointer-events: none;
-}
-.ds-value {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: 4px;
-  /* The prime panel's soft light from above (owner, 2026-10-10: match the Diagram panel),
-     over the same frosted fill. */
-  background: radial-gradient(120% 70% at 50% 0%, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 60%), rgb(12 13 16 / 0.72);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  backdrop-filter: blur(14px) saturate(1.2);
-  /* A crisp edge and a single brighter line along the top, like light on a glass edge. */
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
-  transition: box-shadow 180ms var(--ds-ease);
-}
-.ds-value-light { padding: 26px 24px 22px; }
-.ds-value-figure { margin: 0; font-size: clamp(44px, 4.2vw, 60px); line-height: 1; letter-spacing: -0.05em; color: var(--ds-fg); font-variant-numeric: tabular-nums; }
-.ds-value-caption { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; font-size: 14px; color: #c4c8ce; }
-a.ds-value-caption { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px; }
-a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
-.ds-value-glass { flex: 1; display: flex; flex-direction: column; padding: 22px 24px 26px; border-top: 1px solid rgb(255 255 255 / 0.08); }
-.ds-value-glass h3 { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
-.ds-value-glass > p { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: #c4c8ce; text-wrap: pretty; }
-@media (hover: hover) and (pointer: fine) {
-  .ds-value:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.2); }
-}
-@media (min-width: 1024px) {
-  .ds-values-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-  .ds-value-light { padding: 32px 30px 26px; }
-  .ds-value-glass { padding: 24px 30px 30px; }
-}
-/* Phones and tablets: the cards stick under the nav and running head and pile up, each a
-   step lower than the one before, so a sliver of each stays in view. */
-@media (max-width: 1023px) {
-  /* One height for all three (owner, 2026-10-08), the tallest card's, measured in Record.tsx
-     (--ds-value-h); the quote sits at the top of its card and the attribution on its foot. */
-  .ds-values-list { --pile-hold: 96px; display: flex; flex-direction: column; margin-bottom: calc(-1 * var(--pile-hold)); }
-  .ds-value { min-height: var(--ds-value-h, 0px); }
-  /* Each card on its own layer, so the pile slides smoothly instead of repainting. */
-  .ds-value { position: sticky; top: calc(var(--ds-header) + var(--ds-runhead) + 16px); transform: translateZ(0); backface-visibility: hidden; }
-  .ds-value:nth-child(2) { top: calc(var(--ds-header) + var(--ds-runhead) + 32px); }
-  .ds-value:nth-child(3) { top: calc(var(--ds-header) + var(--ds-runhead) + 48px); }
-  /* The pile holds, then leaves as one (owner, 2026-10-08). A sticky card lets go when the
-     foot of its margin box meets the list's end, so each card carries a bottom margin of its
-     16px steps to the last card, and the next card takes it back with a negative top margin
-     (the layout is unchanged): all four let go together, still fanned. A spacer after the
-     last card is the hold (--pile-hold of scroll with the pile complete); the list's
-     negative bottom margin returns that space to the page below. */
-  .ds-values-list::after { content: ''; flex: none; height: calc(var(--pile-hold) - 16px); }
-  /* Three cards since the placeholder quote was removed (2026-10-10). */
-  .ds-value:nth-child(1) { margin-bottom: 32px; }
-  .ds-value:nth-child(2) { margin-top: -32px; margin-bottom: 16px; }
-  .ds-value:nth-child(3) { margin-top: -16px; }
-}
-
+/* ---------- Key row and ledger (Capability Statement, city pages, policies) ---------- */
 .ds-keyrow {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1008,58 +772,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   .ds-ledger-route { margin-top: 0; justify-self: end; text-align: right; }
 }
 
-/* ---------- 02 Quality (owner, 2026-10-06; moved whole from About; Staffing went there) ----------
-   The principle as a large statement with the paragraph beside it. Opens after the quote
-   with an open beat. */
-.ds-quality { padding-top: var(--ds-beat-open); }
-/* The patrol vehicles as a wide plate (anchored to the photo's foot, so the vehicles lead)
-   beside the company facts on hairlines. Owner, 2026-10-06: vehicles are allowed on Home
-   here. */
-.ds-quality-body { display: grid; gap: 36px; margin-top: var(--ds-beat-tight); }
-.ds-quality-photo img { aspect-ratio: 1; object-fit: cover; object-position: 50% 100%; } /* anchored at the photo's foot (owner, 2026-10-12) */
-/* No frame edge: the plate's edge was drawn around the caption too (owner, 2026-10-12). The
-   doubled class outranks .ds-plate::after, which comes later. */
-.ds-plate.ds-quality-photo::after { content: none; }
-.ds-quality-facts { margin: 0; }
-.ds-quality-facts div { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--ds-rule); }
-.ds-quality-facts div:last-child { border-bottom: 1px solid var(--ds-rule); }
-.ds-quality-facts dt { font-size: 14px; color: var(--ds-fg-muted); }
-.ds-quality-facts dd { margin: 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
-@media (min-width: 768px) and (max-width: 1023px) {
-  .ds-quality-facts div { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: 20px; align-items: baseline; }
-}
-@media (min-width: 768px) { .ds-quality-photo img { aspect-ratio: 16 / 10; } }
-/* Desktop: the picture sits 24px lower in its frame, so the cars ride lower (owner, 2026-10-12). */
-@media (min-width: 1024px) { .ds-quality-photo img { object-position: 50% calc(100% + 24px); } }
-@media (min-width: 1024px) {
-  /* The facts' top and bottom rules line up with the photo's top and bottom edges (owner,
-     2026-10-12): the caption hangs below the photo outside its box, the facts stretch to the
-     photo's height, and the rows share it evenly. */
-  .ds-quality-body { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: stretch; }
-  .ds-quality-photo { grid-column: 1 / span 7; }
-  .ds-quality-photo figcaption { position: absolute; top: 100%; left: 0; }
-  /* Five columns, label over value with room between rows. */
-  .ds-quality-facts { grid-column: 8 / span 5; display: flex; flex-direction: column; }
-  .ds-quality-facts div { flex: 1; align-content: start; gap: 4px; padding: 14px 0; }
-  .ds-quality-facts dd { font-size: 17px; line-height: 1.5; }
-}
-/* 1200 to 1279: the rail column takes room and the photo is at its shortest, so the facts
-   tighten to stay within it. */
-@media (min-width: 1200px) and (max-width: 1279px) {
-  .ds-quality-facts div { padding: 10px 0; }
-  .ds-quality-facts dd { font-size: 16px; line-height: 1.45; }
-}
-@media (min-width: 1024px) {
-  /* wide (the default since 2026-10-16, owner): the photo across the whole column, the four facts
-     in a row beneath it; the cars sit 44px lower in the frame (owner; 32px until 2026-10-18). */
-  .ds-quality-body[data-form='wide'] { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 48px; }
-  .ds-quality-body[data-form='wide'] .ds-quality-photo { grid-column: 1 / -1; }
-  .ds-quality-body[data-form='wide'] .ds-quality-photo img { aspect-ratio: 21 / 9; object-position: 50% calc(92% + 44px); }
-  .ds-quality-body[data-form='wide'] .ds-quality-photo figcaption { position: static; margin-top: 12px; }
-  .ds-quality-body[data-form='wide'] .ds-quality-facts { display: contents; }
-  .ds-quality-body[data-form='wide'] .ds-quality-facts div { grid-column: auto; padding: 16px 0 0; border-bottom: 0; }
-}
-
 /* Why Ares exists (About; owner, 2026-10-10, placeholder words and portrait; second pass
    after Slash, Flora, and Resend). Two forms: letter (default) and note. */
 .ds-founder { display: grid; gap: 28px; padding-top: var(--ds-beat); }
@@ -1092,50 +804,12 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   }
 }
 @keyframes ds-founder-open { from { clip-path: inset(30% 0 0 0 round 4px); } to { clip-path: inset(0 0 0 0 round 4px); } }
-.ds-plate { position: relative; margin: 0; }
-.ds-plate img { display: block; width: 100%; height: auto; border-radius: 4px; }
-.ds-plate::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 4px;
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
-  pointer-events: none;
-}
 .ds-handoff { margin-top: var(--ds-beat-tight); color: var(--ds-fg); font-size: 20px; line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; max-width: 30ch; }
 
-/* ---------- 03 Coverage ---------- */
-/* 02 Industries (copy audit, 2026-10-10): the first three larger, the last three as a ruled
-   strip, then the prime-contractor block. */
-.ds-industries { padding-top: var(--ds-beat); }
-/* Phones and tablets: the Record pile hands back its 96px hold (--pile-hold) with a negative
-   margin, so this section adds it back; the released cards then stop a full beat above the
-   headline instead of running into it (owner, 2026-10-10). */
-@media (max-width: 1023px) { .ds-industries { padding-top: calc(var(--ds-beat) + 96px); } }
-.ds-ind-plates { list-style: none; margin: 44px 0 0; padding: 0; display: grid; }
-.ds-ind-plates { gap: 36px 24px; }
-@media (min-width: 768px) { .ds-ind-plates { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.ds-ind-plates a { display: grid; gap: 8px; color: var(--ds-fg); }
-.ds-ind-photo { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; margin-bottom: 12px; }
-@media (max-width: 767px) { .ds-ind-photo { aspect-ratio: 16 / 10; } }
-.ds-ind-photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
-.ds-ind-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.78) brightness(0.84); transition: transform 300ms var(--ds-ease); }
-/* Per-image framing from industries.ts (`card`), with its own desktop position where set. */
-.ds-ind-photo img { object-position: var(--card-pos, 50% 50%); }
-@media (min-width: 1024px) { .ds-ind-photo img { object-position: var(--card-pos-desktop, var(--card-pos, 50% 50%)); } }
-.ds-ind-name { display: flex; align-items: center; gap: 10px; font-family: var(--ds-display); font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.12; letter-spacing: -0.03em; }
-.ds-ind-name .ds-arrow { flex: none; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
-.ds-ind-line { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
-@media (hover: hover) and (pointer: fine) {
-  .ds-ind-plates a:hover img { transform: scale(1.03); }
-  .ds-ind-plates a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
-}
+/* ---------- Prime contractors panel (industry pages) ---------- */
+
 .ds-ind-n { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-industries .ds-ind-rest { margin-top: 56px; }
-/* Plates: the arrow follows the last word of the name, however it wraps. */
-.ds-ind-plates .ds-ind-name { display: block; }
-.ds-nowrap { white-space: nowrap; }
-.ds-ind-plates .ds-ind-name .ds-arrow { display: inline-block; margin-left: 10px; vertical-align: -1px; }
+
 .ds-primes-panel {
   /* Slash's panel: near-black with a soft light from above, a hairline edge, a light line on
      the top edge (second pass, owner 2026-10-10). */
@@ -1151,12 +825,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 .ds-primes-line { margin: 14px 0 0; font-size: 17px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 52ch; text-wrap: pretty; }
 .ds-primes-line > span { color: var(--ds-fg); }
 .ds-primes-btn { margin-top: 24px; }
-.ds-primes-label { display: block; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-primes-value { display: block; margin-top: 4px; font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ds-fg); }
-
-/* diagram */
-.ds-primes-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.1); }
-.ds-primes-list li { padding: 13px 0 14px; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
 
 @media (min-width: 768px) {
   .ds-primes-panel { padding: 40px; }
@@ -1170,107 +838,9 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
   }
 }
 @keyframes ds-primes-settle { from { transform: translate3d(0, 24px, 0); } to { transform: translate3d(0, 0, 0); } }
-.ds-coverage { padding-top: var(--ds-beat); }
-.ds-coverage-head { display: grid; gap: 20px; }
-@media (min-width: 1024px) {
-  .ds-coverage-head { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto 1fr; column-gap: 24px; row-gap: 20px; align-items: start; }
-  .ds-coverage-head h2 { grid-column: 1 / span 6; grid-row: 1; }
-  .ds-coverage-head p { grid-column: 1 / span 5; grid-row: 2; align-self: start; }
-  .ds-coverage-head .ds-map { grid-column: 7 / span 6; grid-row: 1 / span 3; margin: 0; }
-}
-/* The cities sit in the head (the grid's gap is already there on phones and tablets). */
-.ds-coverage-head .ds-cities { margin-top: calc(var(--ds-beat-tight) - 20px); }
-/* Desktop: smaller, under the lead and left of the map (owner, 2026-10-16). */
-@media (min-width: 1024px) {
-  .ds-coverage-head .ds-cities { grid-column: 1 / span 5; grid-row: 3; margin-top: 28px; }
-  .ds-coverage-head .ds-city { padding: 14px 0; }
-  .ds-coverage-head .ds-city-name { font-size: clamp(26px, 2.2vw, 32px); letter-spacing: -0.04em; }
-  .ds-coverage-head .ds-city .ds-arrow { width: 20px; height: 20px; }
-}
-.ds-cities { list-style: none; margin: var(--ds-beat-tight) 0 0; padding: 0; }
-.ds-cities li { border-top: 1px solid var(--ds-rule); }
-.ds-cities li:last-child { border-bottom: 1px solid var(--ds-rule); }
-.ds-city {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 4px 24px;
-  padding: clamp(1rem, 2.4vw, 1.75rem) 0;
-  color: var(--ds-fg);
-}
-.ds-city:hover { color: var(--ds-fg); }
-.ds-city .ds-city-name { grid-column: 1; }
-.ds-city .ds-small { grid-column: 1; }
-.ds-city .ds-arrow { grid-column: 2; grid-row: 1; align-self: center; }
-@media (min-width: 768px) {
-  .ds-city { grid-template-columns: minmax(0, 1fr) auto auto; }
-  .ds-city .ds-small { grid-column: 2; grid-row: 1; }
-  .ds-city .ds-arrow { grid-column: 3; }
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-city:hover .ds-arrow { transform: translateX(4px); }
-}
 
-/* Full-bleed photograph: starts under the end of 03 Coverage and ends under the
-   opening of 04 Careers (the Careers block is pulled up over its lower fade). */
-.ds-bleed {
-  position: relative;
-  view-timeline: --ds-bleed block;
-  width: 100vw;
-  margin-left: calc(-1 * var(--ds-edge));
-  margin-top: var(--ds-beat);
-  height: clamp(22rem, 66svh, 46rem);
-  overflow: clip;
-}
-.ds-bleed img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 59% 35%; filter: brightness(0.85); }
-@media (min-width: 768px) { .ds-bleed img { object-position: 50% 35%; } }
-.ds-bleed::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, var(--ds-canvas) 0%, rgb(0 0 0 / 0) 24%),
-    linear-gradient(to top, var(--ds-canvas) 0%, rgb(0 0 0 / 0.75) 22%, rgb(0 0 0 / 0) 52%);
-}
+/* ---------- The large phone or email link ---------- */
 
-/* ---------- 04 Careers ---------- */
-.ds-careers {
-  position: relative;
-  z-index: 1;
-  margin-top: calc(-1 * clamp(7rem, 20svh, 12rem));
-}
-.ds-careers-grid { display: grid; gap: 40px; }
-.ds-careers-copy .ds-body { margin-top: 24px; }
-.ds-careers-copy .ds-link { margin-top: 28px; }
-.ds-careers .ds-handoff { margin-top: var(--ds-beat-tight); }
-@media (min-width: 1024px) {
-  .ds-careers-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .ds-careers-copy { grid-column: 1 / span 7; }
-}
-
-/* ---------- 05 Contact ---------- */
-.ds-contact {
-  position: relative;
-  isolation: isolate;
-  padding-top: var(--ds-beat-open);
-  padding-bottom: var(--ds-beat);
-}
-/* Rust horizon light, sampled from the hero's copper glass. Light, not a fill:
-   it fades to nothing before the section's edges. */
-.ds-contact::before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: calc(-1 * var(--ds-edge));
-  width: 100vw;
-  background:
-    radial-gradient(ellipse 48% 42% at 36% 66%, rgb(188 111 64 / 0.24) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 62%, transparent 100%);
-  pointer-events: none;
-}
 .ds-phone {
   display: inline-block;
   margin-top: 28px;
@@ -1289,66 +859,6 @@ a.ds-value-caption:hover { color: var(--ds-fg); text-decoration-color: var(--ds-
 }
 @media (min-width: 640px) { .ds-phone { font-size: 44px; } }
 .ds-phone:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
-.ds-contact .ds-actions { margin-top: 44px; }
-.ds-contact:is([data-form='starter'], [data-form='ledger'])::before { background: radial-gradient(ellipse 44% 46% at 70% 62%, rgb(188 111 64 / 0.24) 0%, rgb(139 73 32 / 0.11) 48%, rgb(139 73 32 / 0) 100%); }
-.ds-contact[data-form='routes']::before { background: radial-gradient(ellipse 56% 40% at 50% 74%, rgb(188 111 64 / 0.26) 0%, rgb(139 73 32 / 0.12) 48%, rgb(139 73 32 / 0) 100%); }
-
-.ds-cta-meta { display: flex; flex-wrap: wrap; justify-content: inherit; gap: 6px 12px; margin: 0; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-cta-meta a { color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
-.ds-cta-meta a:hover { color: var(--ds-fg); }
-@media (max-width: 767px) {
-  /* Phones: email and base on their own lines, no dangling separator. */
-  .ds-cta-meta { flex-direction: column; gap: 6px; }
-  .ds-cta-meta span[aria-hidden] { display: none; }
-}
-
-/* A glass card on the close, the site's glass recipe at its own scale. */
-.ds-cta-card {
-  display: grid;
-  align-content: start;
-  gap: 16px;
-  padding: 28px 24px;
-  border: 1px solid var(--ds-glass-edge, rgb(255 255 255 / 0.1));
-  border-radius: 4px;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.36) 60%, rgb(0 0 0 / 0.3));
-  box-shadow: var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.28);
-  -webkit-backdrop-filter: blur(22px) saturate(1.5);
-  backdrop-filter: blur(22px) saturate(1.5);
-}
-@media (min-width: 768px) { .ds-cta-card { padding: 36px 36px 40px; } }
-.ds-cta-card-title { margin: 0; font-family: var(--ds-text); font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: var(--ds-fg); }
-.ds-cta-card-line { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 44ch; }
-.ds-cta-card .ds-btn { justify-self: start; margin-top: 8px; }
-
-/* routes: the headline, then two cards. */
-.ds-cta-routes { display: grid; gap: 16px; margin-top: 48px; }
-@media (min-width: 768px) { .ds-cta-routes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
-.ds-cta-phone { margin-top: 0; font-size: 30px; }
-@media (min-width: 640px) { .ds-cta-phone { font-size: 36px; } }
-.ds-cta-routes .ds-cta-meta { margin-top: 4px; }
-@media (max-width: 767px) { .ds-cta-routes .ds-btn { justify-self: stretch; } }
-
-/* ---------- Credential strip (between the hero and 01 Verify) ---------- */
-.ds-strip {
-  position: relative;
-  z-index: 1;
-  overflow: clip;
-  padding-block: 28px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-}
-/* Phones only; tablet and desktop go straight from the hero to 01 Verify. */
-@media (min-width: 768px) { .ds-strip { display: none; } }
-.ds-strip-belt { display: flex; width: max-content; }
-.ds-strip-track { display: flex; align-items: center; gap: 72px; padding: 0 72px 0 0; margin: 0; list-style: none; }
-@media (min-width: 768px) { .ds-strip-track { gap: 112px; padding-right: 112px; } }
-.ds-strip-track li { flex: none; display: flex; align-items: center; }
-.ds-strip-track img { display: block; height: 28px; width: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.7; }
-.ds-strip-track img[src*='cert-gsa-footer'] { filter: none; opacity: 0.9; }
-/* The Denver and Colorado Verified marks are wide with small lines of text; give them
-   more height so the text reads. */
-.ds-strip-track img[src*='cert-denver'] { height: 32px; }
-.ds-strip-track img[src*='cert-co-'] { height: 36px; }
 
 /* ---------- Coverage map ---------- */
 .ds-map { margin: 12px 0 0; }
@@ -3589,63 +3099,24 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    unsupported, and under prefers-reduced-motion. Text never drops
    below 0.62 opacity.
    ============================================================ */
-/* Translate only (2026-10-12): a scale made the browser redraw the 1px glass edge every frame,
-   and it shimmered on scroll. */
-@keyframes ds-value-rise { from { transform: translate3d(0, 64px, 0); } to { transform: translate3d(0, 0, 0); } }
-@keyframes ds-hero-drift { from { transform: translateY(0); } to { transform: translateY(4%); } }
-@keyframes ds-hero-rise { from { transform: translateY(0); } to { transform: translateY(-40svh); } }
+
 @keyframes ds-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes ds-svc-bar-end { 0%, 94% { opacity: 0; transform: scaleY(0); } 100% { opacity: 1; transform: scaleY(1); } }
 @keyframes ds-fill-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes ds-fill-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes ds-marquee { to { transform: translateX(-50%); } }
 @keyframes ds-ring { from { transform: scale(1); opacity: 0.6; } to { transform: scale(2.2); opacity: 0; } }
 @keyframes ds-route { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes ds-bar { from { transform: scaleX(0.25); } to { transform: scaleX(1); } }
-@keyframes ds-open { from { transform: scale(1.08); } to { transform: scale(1); } }
 @keyframes ds-plate { from { transform: scale(1.06); } to { transform: scale(1); } }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .ds-hero-photo img {
-      animation: ds-hero-drift linear both;
-      animation-timeline: view();
-      animation-range: exit 0% exit 100%;
-    }
-    /* Home hero, desktop (owner, 2026-10-08): a third layer. As the hero leaves, the glass
-       strip and its copy rise faster than the page (the photo drifts slower), so the strip
-       climbs over the towers. Text and glass move together, so it stays readable. */
-    @media (min-width: 900px) {
-      .ds-hero { view-timeline: --ds-hero block; }
-      .ds-hero-copy {
-        animation: ds-hero-rise linear both;
-        animation-timeline: --ds-hero;
-        animation-range: exit 0% exit 100%;
-      }
-    }
     .ds-ledger-row::after {
       animation: ds-draw linear both;
       animation-timeline: --ds-row;
       animation-range: cover 0% cover 15%;
     }
-    .ds-bleed img {
-      animation: ds-open linear both;
-      animation-timeline: --ds-bleed;
-      animation-range: entry 0% contain 0%;
-    }
-    /* Home values: the cards rise into place as they scroll in, a step apart (desktop). */
-    @media (min-width: 1024px) {
-      .ds-value {
-        animation: ds-value-rise linear both;
-        animation-timeline: view();
-        animation-range: entry 0% cover 30%;
-        /* Its own layer: the card, edge and all, is drawn once and slides as an image. */
-        will-change: transform;
-      }
-      .ds-value:nth-child(2) { animation-range: entry 10% cover 36%; }
-      .ds-value:nth-child(3) { animation-range: entry 20% cover 42%; }
-      .ds-value:nth-child(4) { animation-range: entry 0% cover 30%; }
-    }
+
     /* Services: the band drifts as the opening leaves; stage bars draw in; the Denver
        photo settles inside its frame. */
     /* View timelines read the layout box and ignore the opening's hold, which carries the
@@ -3700,17 +3171,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ds-strip-belt { animation: ds-marquee 60s linear infinite; }
   .ds-map-ring { animation: ds-ring 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-strip:hover .ds-strip-belt { animation-play-state: paused; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* The strip holds still and can be swiped instead; the loop copy is dropped. */
-  .ds-strip { overflow-x: auto; scrollbar-width: none; }
-  .ds-strip-track[aria-hidden] { display: none; }
   .ds-header,
 .ds-runhead,
 .ds-rail a::before,
@@ -3745,7 +3209,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    lit brightest along the top (--ds-card-edge), drawn as a gradient border so it reads like
    light catching a glass edge. No glow, no gradient fill, no blur. Later in the file than each
    original rule, so it wins at equal specificity. */
-.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face {
+.ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face {
   /* A solid layer under the lit edge, so a card that overlaps another (the phone pile) never
      lets the edge or content beneath show through its border (owner, 2026-10-10). */
   background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box, linear-gradient(#000, #000) border-box;
@@ -3782,9 +3246,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
     -webkit-mask-image: linear-gradient(to right, transparent 34%, #000 58%), radial-gradient(ellipse 62% 92% at 74% 50%, #000 42%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 34%, #000 58%), radial-gradient(ellipse 62% 92% at 74% 50%, #000 42%, transparent 100%);
   }
-}
-@media (hover: hover) and (pointer: fine) {
-  .ds-value:hover { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box, linear-gradient(#000, #000) border-box; box-shadow: none; }
 }
 /* Services cards hold a photo, so the lit edge is drawn on top of it as a masked ring. */
 .ds-svc-card { background: var(--ds-card); }
@@ -4118,6 +3579,60 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np-brand .ds-mark { transition: none; }
 }
 
+/* Home on desktop (owner, 2026-10-23): the quote button waits for the wordmark to fold in at 01 (the
+   hero has its own and the phone number). It comes out of a line, the mirror of the wordmark going
+   into the mark: a hairline draws in at its left edge, the button opens out of it to the right, and
+   the line goes; on the way back the button folds into the line and the line goes. The line is at its
+   right edge and the button opens out to the left (owner, 2026-10-23). */
+.ds-np-cta-wrap { position: relative; display: inline-flex; }
+@media (min-width: 1024px) {
+  .ds-np[data-home] .ds-np-cta-wrap::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 1px;
+    height: 30px;
+    margin-top: -15px;
+    background: rgb(255 255 255 / 0.85);
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .ds-np[data-home] .ds-np-cta {
+    transform-origin: right center;
+    transition: clip-path 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease-out, visibility 0s linear 0s;
+  }
+  .ds-np[data-home]:is([data-cta='out'], [data-cta='idle']) .ds-np-cta {
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(10px) scale(0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: clip-path 300ms cubic-bezier(0.55, 0, 0.75, 0.2), transform 300ms cubic-bezier(0.55, 0, 0.75, 0.2), opacity 220ms ease-in 80ms, visibility 0s linear 300ms;
+  }
+  .ds-np[data-home][data-cta='in'] .ds-np-cta { clip-path: inset(0 0 0 0); transition-delay: 160ms, 160ms, 160ms, 0s; }
+  /* The line: in, it draws first, then fades as the button opens; out, it shows as the button folds
+     into it, then draws away. */
+  .ds-np[data-home][data-cta='in'] .ds-np-cta-wrap::before { animation: ds-np-cta-line 760ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .ds-np[data-home][data-cta='out'] .ds-np-cta-wrap::before { animation: ds-np-cta-line-out 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+@keyframes ds-np-cta-line {
+  0% { transform: scaleY(0); opacity: 1; }
+  25% { transform: scaleY(1); opacity: 1; }
+  60% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+@keyframes ds-np-cta-line-out {
+  0% { transform: scaleY(1); opacity: 0; }
+  20% { transform: scaleY(1); opacity: 1; }
+  55% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-np[data-home] .ds-np-cta { transition: opacity 120ms linear, visibility 0s linear 120ms !important; clip-path: none !important; transform: none !important; }
+  .ds-np[data-home] .ds-np-cta-wrap::before { display: none; }
+}
+
 .ds-np-sub-more { gap: 8px !important; font-size: 16px !important; font-weight: 500; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.4); text-underline-offset: 5px; }
 /* Desktop: the menus always fit, so the card is not a scroll container at all; a stray wheel or
    trackpad swipe over it scrolls the page instead of bouncing the card (owner, 2026-10-13). */
@@ -4214,48 +3729,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-primes-panel[data-form='pipeline'] .ds-pipe { grid-column: 7 / span 6; margin-top: 0; padding-top: 30px; }
 }
 
-/* Home hero terrain (owner, 2026-10-15): no shade from the top (the photo's, to keep its sky from
-   glaring under the nav), so the contour lines run up behind the nav and show through its glass.
-   Desktop keeps the photo's edge vignette. */
-.ds-hero-topo::after { background: none; }
-/* The terrain starts above the window, so mid-distance land (not the dark horizon) sits behind the
-   nav. Phones: the box grows upward by as much as it moves up, so the copy below stays put. */
-.ds-hero-topo { margin-top: -100px; height: calc(58svh + var(--ds-header) + 100px); }
-/* Phones and tablets (owner, 2026-10-16): the terrain runs on to the end of the lead, 16px above
-   the quote button (it ended at the headline). --topo-reach (Hero.tsx) is the copy's top to the
-   lead's foot; the box grows by what that adds to the old 7rem overlap, and the copy is pulled up
-   by the same, so it stays where it was. */
-@media (max-width: 899px) {
-  /* 50px shorter since the headline went to three lines on phones (owner, 2026-10-19; after 24, 20, 16, and 58px). */
-  .ds-hero-topo { height: calc(58svh + var(--ds-header) + 100px + var(--topo-reach, 7rem) - 7rem - 50px); }
-  .ds-hero-topo + .ds-container .ds-hero-copy { margin-top: calc(-1 * var(--topo-reach, 7rem)); }
-}
-@media (min-width: 900px) {
-  .ds-hero-topo { top: -160px; margin-top: 0; height: auto; }
-  .ds-hero-topo::after { background: radial-gradient(ellipse 85% 75% at 55% 45%, rgb(0 0 0 / 0) 40%, rgb(0 0 0 / 0.38) 78%, rgb(0 0 0 / 0.62) 100%); }
-}
-/* The terrain's still (2026-10-18): a captured frame of the live terrain, for wherever it can't
-   run. <html data-terrain> decides from the first paint (index.html, lib/terrainSupport.ts):
-   'live' hides the still (it isn't even fetched), 'still' or no value (no JavaScript) shows it,
-   and 'fallback' (the terrain was expected but drew nothing) fades it in. No swap otherwise
-   (owner, 2026-10-18). It fills the box like the canvas, without the photo's drift or grade. */
-.ds-hero-topo .ds-hero-topo-still img {
-  top: 0; height: 100%; object-fit: cover; object-position: 50% 50%; filter: none; animation: none;
-}
-html[data-terrain='live'] .ds-hero-topo-still { display: none; }
-html[data-terrain='fallback'] .ds-hero-topo .ds-hero-topo-still img { animation: ds-topo-still-in 600ms var(--ds-ease) both; }
-@keyframes ds-topo-still-in { from { opacity: 0; } }
-.ds-hero-topo .topography-container { position: absolute; inset: 0; }
-
-/* Home hero terrain, desktop (owner, 2026-10-15): a longer, stronger black fade into 01 Record
-   than the photo's (it was transparent to solid over the last 26%). */
-@media (min-width: 900px) {
-  .ds-hero-topo {
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgb(0 0 0 / 0.35) 20%, #000 46%);
-    mask-image: linear-gradient(to top, transparent 0%, rgb(0 0 0 / 0.35) 20%, #000 46%);
-  }
-}
-
 /* The page under an open desktop menu (owner, 2026-10-15): light glass, a soft blur with very
    little black, fading in and out with the menu. Desktop only; the phone menu covers the screen. */
 .ds-np-scrim { display: none; }
@@ -4297,17 +3770,6 @@ html[data-cards='glass'] {
   --ds-glass-top: inset 0 1px 0 rgb(255 255 255 / 0.14);
   --ds-glass-wash: linear-gradient(180deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.4) 55%, rgb(0 0 0 / 0.32));
 }
-html[data-cards='glass'] :is(.ds-value, .ds-primes-panel, .ds-cs-card, .ds-cs-vehicle, .ds-founder-face) {
-  background: var(--ds-glass-wash);
-  border: 1px solid var(--ds-glass-edge);
-  box-shadow: var(--ds-glass-top), 0 12px 36px rgb(0 0 0 / 0.28);
-  -webkit-backdrop-filter: blur(22px) saturate(1.65);
-  backdrop-filter: blur(22px) saturate(1.65);
-  transition: border-color 320ms var(--ds-ease), box-shadow 320ms var(--ds-ease);
-}
-@media (hover: hover) and (pointer: fine) {
-  html[data-cards='glass'] :is(.ds-value, .ds-cs-card, .ds-cs-vehicle):hover { border-color: rgb(255 255 255 / 0.16); }
-}
 /* Cards inside a card (the pipeline, the diagram, an opened card): lighter glass, same stroke. */
 html[data-cards='glass'] :is(.ds-pipe-card, .ds-pipe-post, .ds-flow-node, .ds-flow-posts span, .ds-cs-card[data-open='true']) {
   background: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02) 60%, rgb(255 255 255 / 0.015));
@@ -4326,11 +3788,6 @@ html[data-cards='glass'] .ds-primes-panel { background: linear-gradient(180deg, 
    stays a step darker than the prime panel's copper. */
 html[data-cards='glass'] {
   --ds-card-rust: radial-gradient(520px 420px at calc(100% + 64px) calc(100% + 104px), rgb(156 86 43 / 0.52) 0%, rgb(104 51 22 / 0.42) 28%, rgb(56 26 11 / 0.28) 54%, rgb(56 26 11 / 0) 78%);
-}
-html[data-cards='glass'] .ds-value {
-  background:
-    var(--ds-card-rust),
-    var(--ds-glass-wash);
 }
 /* The six service cards (on Services since 2026-10-18) carry the same light on a layer of its own,
    so it can fade (owner, 2026-10-18): on hover it fades out and the card goes plain dark (instead
@@ -4373,7 +3830,6 @@ html[data-cards='glass'] .ds-cs-card[data-open='true']::before { transition: opa
    any glass with a top edge. */
 html[data-cards='glass'] .ds-header::before { border-bottom-color: var(--ds-glass-edge); }
 html[data-cards='glass'] .ds-np[data-layout='full'] .ds-np-card { border-bottom-color: var(--ds-glass-edge); }
-html[data-cards='glass'] .ds-hero-copy::before { border-top-color: var(--ds-glass-edge); border-bottom-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-svc-card-text { box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-cs-facts::before { border-top-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
 html[data-cards='glass'] .ds-ft-glass { border-top-color: var(--ds-glass-edge); box-shadow: var(--ds-glass-top); }
@@ -4385,13 +3841,6 @@ html[data-cards='glass'] .ds-nf-card { border-color: var(--ds-glass-edge); box-s
    stronger bend (lib/liquidGlass.ts). The hero strip takes its filter through --ds-liquid. */
 html[data-liquid='true'] {
   --ds-glass-wash: linear-gradient(180deg, rgb(0 0 0 / 0.36), rgb(0 0 0 / 0.26) 55%, rgb(0 0 0 / 0.2));
-}
-@media (min-width: 900px) {
-  html[data-liquid='true'] .ds-hero-copy::before {
-    background: linear-gradient(to right, rgb(0 0 0 / 0.5) 0%, rgb(0 0 0 / 0.42) 45%, rgb(0 0 0 / 0.3) 100%);
-    -webkit-backdrop-filter: var(--ds-liquid, blur(24px) saturate(1.3));
-    backdrop-filter: var(--ds-liquid, blur(24px) saturate(1.3));
-  }
 }
 /* The nav keeps its CSS frost (24px), with less black. The phone menu's open sheet stays nearly
    solid (its own rule is more specific). */
@@ -4406,31 +3855,9 @@ html[data-liquid='true'] .ds-np-card {
   html[data-liquid='true'] .ds-np[data-open='true'] .ds-np-card { background: rgb(8 9 11 / 0.82); }
 }
 
-/* Liquid on every glass surface (owner, 2026-10-15): the Capability hero's frost band takes its
-   filter through --ds-liquid like the Home hero strip (the others are set on the element). */
-html[data-liquid='true'] .ds-cs-facts::before {
-  -webkit-backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
-  backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
-}
-/* The Home Record cards: a little more black than the other liquid cards, so they read as glass,
-   not a window, especially where they pile up on phones (owner, 2026-10-15). */
-html[data-liquid='true'] .ds-value {
-  background:
-    var(--ds-card-rust),
-    linear-gradient(180deg, rgb(0 0 0 / 0.46), rgb(0 0 0 / 0.36) 55%, rgb(0 0 0 / 0.3));
-}
-/* Phones and tablets: the cards pile up (they're sticky), so each one hides the one beneath a
-   little more. The liquid filter doesn't run on sticky or fixed glass in Chrome (the page showed
-   through sharp, as on the nav), so the pile uses the CSS frost at the same strength. */
-@media (max-width: 1023px) {
-  html[data-liquid='true'] .ds-value {
-    -webkit-backdrop-filter: blur(26px) saturate(1.45) !important;
-    backdrop-filter: blur(26px) saturate(1.45) !important;
-    background:
-      var(--ds-card-rust),
-      linear-gradient(180deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.54) 55%, rgb(0 0 0 / 0.5));
-  }
-}
+/* The Capability hero's frost band was liquid too (2026-10-15) until 2026-10-22: over the full
+   width it re-ran on every scroll frame and the top of the page stuttered. It keeps its CSS frost. */
+
 /* The prime pipeline's cards and tiles are solid, not glass (owner, 2026-10-15): a near-black
    fill under the glass stroke, no see-through, no blur. */
 html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {

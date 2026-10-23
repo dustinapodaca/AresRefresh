@@ -179,7 +179,7 @@ export default function Divisions() {
               <div className="ds-svc-card-media" aria-hidden="true">
                 {/* Stock photographs, not Ares sites, so they carry no exhibit caption. */}
                 <img
-                  {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
+                  {...responsive(d.photo.src, '(min-width: 1024px) 50vw, (min-width: 768px) 62vw, 100vw')}
                   alt=""
                   loading={i < 2 ? 'eager' : 'lazy'}
                   decoding="async"
@@ -207,7 +207,7 @@ export default function Divisions() {
                     {[0, 1].map((k) => (
                       <img
                         key={k}
-                        {...responsive(d.photo.src, '(min-width: 768px) 50vw, 100vw')}
+                        {...responsive(d.photo.src, '(min-width: 1024px) 50vw, (min-width: 768px) 62vw, 100vw')}
                         alt=""
                         loading={i < 2 ? 'eager' : 'lazy'}
                         decoding="async"

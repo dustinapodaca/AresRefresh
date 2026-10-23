@@ -1,0 +1,93 @@
+/* 04 Coverage (home-flora, 2026-10-20). */
+
+.nx-coverage { position: relative; padding: var(--ds-beat-open) var(--ds-edge) var(--ds-beat); }
+.nx-cv-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 24px;
+  align-items: end;
+}
+.nx-cv-title { grid-column: 1 / -1; }
+.nx-cv-lead {
+  grid-column: 1 / span 5;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ds-fg-muted);
+  max-width: 36ch;
+}
+
+.nx-cv-body {
+  margin-top: clamp(48px, 7vw, 104px);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: center;
+}
+.nx-cv-cities { grid-column: 1 / span 5; align-self: end; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
+/* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
+   its tip (owner, 2026-10-22: it was cut off). */
+.nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
+.nx-cv-city {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+  padding: clamp(14px, 2vw, 26px) 0;
+  color: var(--ds-fg);
+  text-decoration: none;
+}
+.nx-cv-city-name {
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(36px, 4.3vw, 72px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease);
+}
+.nx-cv-city-note { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
+.nx-cv-city .ds-arrow { color: var(--ds-fg-faint); transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
+.nx-cv-city:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
+.nx-cv-city[data-on] .nx-cv-city-name { transform: translateX(10px); }
+.nx-cv-city[data-on] .ds-arrow { color: var(--ds-rust); transform: translateX(6px); }
+.nx-cv-cities:has(.nx-cv-city[data-on]) .nx-cv-city:not([data-on]) .nx-cv-city-name { color: var(--ds-fg-faint); }
+
+.nx-cv-map { grid-column: 6 / span 7; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
+.nx-cv-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.nx-cv-route { stroke: #d9864f; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
+.nx-cv-tip { opacity: 0; pointer-events: none; }
+.nx-cv-mono { font-family: var(--ds-data); font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.nx-cv-name { font-family: var(--ds-text); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
+.nx-cv-dot { fill: var(--ds-fg); transform-box: fill-box; transform-origin: center; }
+.nx-cv-pin[data-hq] .nx-cv-dot { fill: var(--ds-rust); }
+.nx-cv-ring { fill: none; stroke: rgb(238 240 242 / 0.35); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
+.nx-cv-pin[data-hq] .nx-cv-ring { stroke: var(--ds-rust); }
+.nx-cv-pin { transition: opacity 260ms var(--ds-ease); }
+/* The ping that ripples out from a city as the line reaches it (motion only; hidden at rest). */
+.nx-cv-ping { fill: none; stroke: #e8965f; stroke-width: 1.2; opacity: 0; pointer-events: none; }
+.nx-cv-pin .nx-cv-ring,
+.nx-cv-pin .nx-cv-dot { transition: r 260ms var(--ds-ease), stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease); }
+.nx-cv-map[data-active] .nx-cv-pin:not([data-on]) { opacity: 0.28; }
+.nx-cv-pin[data-on] .nx-cv-ring { stroke: #e8965f; r: 22; }
+.nx-cv-pin[data-on] .nx-cv-dot { fill: #f2b98e; }
+.nx-cv-pin[data-on] .nx-cv-name { fill: #fff; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .nx-cv-pin[data-hq] .nx-cv-ring { animation: nx-cv-pulse 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+}
+@keyframes nx-cv-pulse {
+  0% { stroke-opacity: 0.9; stroke-width: 1; }
+  70%, 100% { stroke-opacity: 0; stroke-width: 6; }
+}
+
+@media (max-width: 1023px) {
+  .nx-cv-title, .nx-cv-lead { grid-column: 1 / -1; }
+  .nx-cv-body { display: flex; flex-direction: column-reverse; gap: 40px; align-items: stretch; }
+  /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
+  .nx-cv-map { margin: 0; }
+  .nx-cv-mono { font-size: 12px; }
+  .nx-cv-name { font-size: 19px; } /* a tad larger on phones (owner, 2026-10-23; was 17) */
+}
+
+/* The read-in words are inline blocks, which drop their trailing space; keep it. */

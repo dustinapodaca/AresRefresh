@@ -1,176 +1,252 @@
-import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
+import PhoneIcon from '../PhoneIcon';
 import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
-import { heroTitle } from '../../lib/heroTitle';
 import { terrainMode } from '../../lib/terrainSupport';
+import { motionAllowed, useScene, SCRUB } from './engine';
 
-// The headline (owner, 2026-10-19, picked from ten) over the lead ("critical sites", not "data
-// centers": web audit, owner 2026-10-18). No eyebrow above the headline (owner); the search phrase
-// is carried by the title and description. The other headlines (/?hero=) and the photo background
-// (/?herobg=photo) were removed at launch (owner, 2026-10-19; tag options-archive-2026-10-19,
-// docs/options-archive.md).
-const HERO = {
-  title: 'Security officers for Colorado\u2019s Front Range.',
-  lead: 'From restricted areas and critical sites to offices and campuses: officers trained on your post before the first shift.',
-};
+// Hero, "The ground" (home-flora, 2026-10-20). One visual, no floating images (owner): the
+// headline is cut out of the black, a window onto the rust terrain moving behind it. Scrolling
+// holds the screen, lifts the copy away, and flies the camera into the F of "Front" until the
+// stroke fills the window and the land is all there is; then the land dims under 01 Record.
+//
+// How the window works: the ground (a rust light with the terrain screened over it) sits under a
+// black layer that holds the headline in white with mix-blend-mode: multiply. Black times the
+// ground is black; white times the ground is the ground. The h1 is real text throughout.
 
-// The terrain (WebGL2) loads on its own, only on Home and only once the page has mounted, so other
-// pages and the first paint don't carry its code (web audit, 2026-10-18).
 const Topography = lazy(() => import('./Topography'));
+const STILL = responsive('/images/hero-topo/terrain-desktop.webp');
+const TEL = 'tel:+17196963966';
+// The most the headline layer is ever scaled on the fly-in (see measure()).
+const MAX_ZOOM = 40;
 
-// The terrain's still frames (2026-10-18), captured from the live terrain at 1440 and 390.
-const TOPO_STILL = responsive('/images/hero-topo/terrain-desktop.webp');
+type Control = { current: Record<string, unknown> & { wake?: () => void } };
 
 export default function Hero() {
-  const hero = HERO;
-  // The terrain is drawn in the browser only, after mount, and never for automated browsers:
-  // the build's prerender (headless Chrome on Netlify, no GPU) drew it in software and timed out
-  // on Home (2026-10-15). The snapshot keeps the empty dark box; the terrain fills it on load.
-  // Where it can't run (WebGL2 blocked or missing, a software renderer, no JavaScript, the
-  // prerender, reduced motion) a still frame of it shows instead, from the first paint (owner,
-  // 2026-10-18: no still-then-terrain swap). <html data-terrain> says which; the inline script in
-  // index.html sets it before the first paint, and lib/terrainSupport.ts when Home is reached
-  // from another page. If the terrain was expected but draws nothing within a few seconds, the
-  // still comes in its place ('fallback'), the only time it fades.
+  const ref = useRef<HTMLElement>(null);
   const [live, setLive] = useState(false);
-  const drawn = useRef(false);
-  const onDrawn = useCallback(() => {
-    drawn.current = true;
-  }, []);
+  const [wide, setWide] = useState(false);
+  const control = useRef<Control>({ current: {} }).current;
+
   useLayoutEffect(() => {
     const html = document.documentElement;
     if (!html.dataset.terrain) html.dataset.terrain = terrainMode();
+    setLive(html.dataset.terrain === 'live');
+    setWide(window.matchMedia('(min-width: 900px)').matches);
+    // Arm the load-in before the first paint, only where motion runs; the prerender and reduced
+    // motion keep the lit headline from the start.
+    if (motionAllowed()) ref.current?.setAttribute('data-arm', 'true');
   }, []);
+
+  // The headline settles in on first paint (CSS); the motion version is armed by the engine.
   useEffect(() => {
-    const html = document.documentElement;
-    if (html.dataset.terrain !== 'live') return;
-    setLive(true);
-    // Counted only while the tab is showing: a background tab draws nothing yet.
-    let left = 4000;
-    let started = 0;
-    let timer = 0;
-    const fail = () => {
-      if (drawn.current) return;
-      html.dataset.terrain = 'fallback';
-      setLive(false);
-    };
-    const run = () => {
-      if (document.hidden || timer) return;
-      started = performance.now();
-      timer = window.setTimeout(fail, left);
-    };
-    const pause = () => {
-      if (!document.hidden || !timer) return;
-      window.clearTimeout(timer);
-      timer = 0;
-      left -= performance.now() - started;
-    };
-    const onVisibility = () => (document.hidden ? pause() : run());
-    run();
-    document.addEventListener('visibilitychange', onVisibility);
+    const id = requestAnimationFrame(() => ref.current?.setAttribute('data-in', 'true'));
+    // After the load-in (its last step ends about 2.3s in), drop its transitions so they never
+    // smooth or delay the scroll's own motion.
+    const done = window.setTimeout(() => {
+      if (ref.current?.dataset.in === 'true') ref.current.dataset.in = 'done';
+    }, 2600);
     return () => {
-      window.clearTimeout(timer);
-      document.removeEventListener('visibilitychange', onVisibility);
+      cancelAnimationFrame(id);
+      window.clearTimeout(done);
     };
   }, []);
-  // Desktop zooms out (owner, 2026-10-15): the component narrows its camera on wide screens, so
-  // the land reads magnified there; smaller landforms from 900px. Phones keep the full size.
-  const [wide, setWide] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 900px)');
-    const sync = () => setWide(mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  }, []);
-  // Phones and tablets (owner, 2026-10-16): the terrain reaches down to the end of the lead, just
-  // above the quote button (it ended at the headline). How far the copy's top sits above the
-  // lead's foot goes in --topo-reach; the CSS grows the box by that and pulls the copy up by the
-  // same, so the copy stays put. Without JS the box keeps its old 7rem reach.
-  const sectionRef = useRef<HTMLElement>(null);
-  const copyRef = useRef<HTMLDivElement>(null);
-  const leadRef = useRef<HTMLParagraphElement>(null);
-  useEffect(() => {
-    const section = sectionRef.current, copy = copyRef.current, lead = leadRef.current;
-    if (!section || !copy || !lead) return;
+
+  useScene(ref, ({ gsap, ScrollTrigger }, root) => {
+    const stage = root.querySelector<HTMLElement>('.nx-hero-stage')!;
+    const mask = root.querySelector<HTMLElement>('.nx-hero-mask')!;
+    const title = root.querySelector<HTMLElement>('.nx-hero-title')!;
+    const fly = root.querySelector<HTMLElement>('.nx-fly')!;
+    const copy = root.querySelectorAll<HTMLElement>('.nx-hero-copy .nx-hero-lift');
+    const cue = root.querySelector<HTMLElement>('.nx-hero-cue')!;
+    const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
+    const card = root.querySelector<HTMLElement>('.nx-hero-card')!;
+
+    // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
+    // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
+    // (the headline came back as a fragment and the nav blanked). The black fades out while it
+    // grows, so the land is all there is without the stroke having to cover the window.
+    let px = 0;
+    let py = 0;
+    let scale = 60;
     const measure = () => {
-      const reach = lead.offsetTop + lead.offsetHeight + 16;
-      section.style.setProperty('--topo-reach', `${reach}px`);
+      gsap.set(mask, { clearProps: 'transform' });
+      const m = mask.getBoundingClientRect();
+      const f = fly.getBoundingClientRect();
+      const size = parseFloat(getComputedStyle(title).fontSize);
+      px = f.left - m.left + size * 0.15;
+      py = f.top - m.top + f.height * 0.56;
+      const stem = size * 0.13;
+      scale = Math.min(MAX_ZOOM, (window.innerWidth * 1.1) / stem);
+      mask.style.transformOrigin = `${px}px ${py}px`;
     };
     measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(copy);
-    return () => ro.disconnect();
-  }, []);
+
+    const tl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: root,
+        start: 'top top',
+        end: '+=165%',
+        pin: stage,
+        scrub: SCRUB,
+        invalidateOnRefresh: true,
+        onRefreshInit: measure,
+        onUpdate: (self) => {
+          // The camera pitches down and speeds up as we dive in.
+          const p = self.progress;
+          // Once the reader scrolls, the scroll owns the copy.
+          if (p > 0.002) attachCopy();
+          control.current.tilt = 32 + 30 * p;
+          control.current.speed = 0.25 + 1.4 * p * p;
+          control.current.wake?.();
+        },
+      },
+    });
+    tl.to(
+        mask,
+        {
+          scale: () => scale,
+          // Bring the stem's middle to the middle of the window while it grows (the stage is
+          // pinned at the top-left of the window).
+          x: () => window.innerWidth / 2 - px,
+          y: () => stage.clientHeight / 2 - py,
+          duration: 0.8,
+          ease: 'power2.in',
+          force3D: true,
+        },
+        0.08,
+      )
+      // autoAlpha: hidden once faded, so the browser stops drawing the zoomed layer.
+      .to(mask, { autoAlpha: 0, duration: 0.24 }, 0.6)
+      // The Ares mark in white, dead center, once most of the land shows (owner, 2026-10-22: like a
+      // title card in a film), then a beat on it before the stage lets go.
+      .fromTo(card, { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power1.out' }, 0.72)
+      .to({}, { duration: 0.18 }, 0.86);
+
+    // The land and the mark scroll away together, the land dimming as it goes (it dimmed under the
+    // pin before the mark, which would have swallowed it), and a shade rising from its foot so
+    // its lower edge melts into the black below instead of a hard line.
+    const away = { trigger: root, start: 'bottom bottom', end: 'bottom top', scrub: SCRUB };
+    gsap.fromTo(ground, { opacity: 1 }, { opacity: 0.22, ease: 'none', immediateRender: false, scrollTrigger: away });
+    gsap.fromTo(root.querySelector('.nx-hero-foot'), { opacity: 0 }, { opacity: 1, ease: 'power1.out', immediateRender: false, scrollTrigger: { ...away, end: 'bottom 75%' } });
+
+    // The copy joins the scroll only once the load-in has finished, or at the first scroll if that
+    // comes first (2026-10-22): built mid-load-in (arriving on Home from another page), GSAP
+    // recorded the button and proof half faded and held them at opacity 0 until the reader
+    // scrolled. So the load-in ends first, then the tweens start from the copy fully shown.
+    let attached = false;
+    const later = gsap.context(() => {}, root);
+    function attachCopy() {
+      if (attached) return;
+      attached = true;
+      root.dataset.in = 'done';
+      tl.fromTo(copy, { yPercent: 0, opacity: 1 }, { yPercent: -40, opacity: 0, stagger: 0.04, duration: 0.25, immediateRender: false }, 0);
+      tl.render(tl.time(), false, true);
+      // The Scroll cue goes first (owner, 2026-10-22): gone over the first 160px at any screen height.
+      later.add(() => {
+        gsap.fromTo(
+          cue,
+          { opacity: 1 },
+          { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: root, start: 'top top', end: '+=160', scrub: SCRUB } },
+        );
+      });
+    }
+    if (root.dataset.in === 'done') attachCopy();
+    const watch = new MutationObserver(() => root.dataset.in === 'done' && attachCopy());
+    watch.observe(root, { attributes: true, attributeFilter: ['data-in'] });
+
+    return () => {
+      watch.disconnect();
+      later.revert();
+      ScrollTrigger.refresh();
+    };
+  });
+
   return (
-    <section ref={sectionRef} className="ds-hero" aria-labelledby="hero-title">
-      {/* The background (owner, 2026-10-15): React Bits' Topography, contour lines of a terrain
-          in the site's rust drifting under the copy, the cursor lifting the land and a click
-          sending a ring out. The copper-glass tower photo (hero6.jpg) it replaced moved to the
-          Services opening. Same box as the photo had: full bleed from 900px, running down under
-          01 Record. */}
-        <div className="ds-hero-photo ds-hero-topo" aria-hidden="true">
-          <picture className="ds-hero-topo-still">
-            <source media="(min-width: 900px)" srcSet={TOPO_STILL.srcSet} sizes="100vw" width={TOPO_STILL.width} height={TOPO_STILL.height} />
-            {/* Lazy: hidden while the terrain runs, so it is only fetched where it shows. */}
-            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" loading="lazy" decoding="async" />
+    <section ref={ref} className="nx-hero" aria-labelledby="nx-hero-title">
+      <div className="nx-hero-stage">
+        <div className="nx-hero-ground" aria-hidden="true">
+          <div className="nx-hero-light" />
+          <picture className="nx-hero-still">
+            <source media="(min-width: 900px)" srcSet={STILL.srcSet} sizes="100vw" />
+            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" decoding="async" />
           </picture>
-          {live && <Suspense fallback={null}><Topography
-            onReady={onDrawn}
-            color="#7a3c17"
-            lineCount={22}
-            lineWidth={1.2}
-            // Elevation 0.5 (owner, 2026-10-15; was 1.15, then 0.65). Desktop's smaller landforms
-            // scale the height down with them (0.5 x 0.55), or the hills keep their old steepness.
-            // Desktop (owner, 2026-10-15): zoomed out a tad (0.65; was 0.55, then 0.75) with rounder,
-            // lower hills (the height scaled with it) and less fine detail, like Colorado's rolling
-            // high plains, not busy or pointy.
-            elevation={wide ? 0.26 : 0.5}
-            scale={wide ? 0.65 : 1}
-            detail={wide ? 0.12 : 0.35}
-            foreground={0.2}
-            tilt={32}
-            speed={0.25}
-            direction="forward"
-            glow={0.6}
-            depthOfField={0.4}
-            // Less distance fog (owner, 2026-10-15; was 0.35), so the far land reaches up behind the nav.
-            fog={0.12}
-            hoverEffect="lift"
-            clickEffect="pulse"
-          /></Suspense>}
+          {live && (
+            <Suspense fallback={null}>
+              <Topography
+                color="#9c4f22"
+                lineCount={26}
+                lineWidth={1.4}
+                elevation={wide ? 0.3 : 0.5}
+                scale={wide ? 0.7 : 1}
+                detail={wide ? 0.14 : 0.35}
+                foreground={0.2}
+                tilt={32}
+                speed={0.25}
+                direction="forward"
+                glow={0.9}
+                brightness={1.5}
+                depthOfField={0.3}
+                fog={0.1}
+                hoverEffect="lift"
+                clickEffect="pulse"
+                control={control}
+              />
+            </Suspense>
+          )}
         </div>
 
-      <div className="ds-container">
-        <div ref={copyRef} className="ds-hero-copy">
-          <h1 id="hero-title" className="ds-display-xl">
-            {heroTitle(hero.title)}
+        <div className="nx-hero-mask">
+          <h1 id="nx-hero-title" className="nx-hero-title">
+            Security officers for Colorado’s{' '}
+            <span className="nx-nowrap">
+              <span className="nx-fly">F</span>ront Range
+            </span>
           </h1>
-          <p ref={leadRef} className="ds-lead">{hero.lead}</p>
-          {/* Below 1024px only: from there up the nav carries the quote button. */}
-          <div className="ds-actions ds-hero-actions">
+        </div>
+
+        {/* The title card: the mark, and a second Scroll cue at its lower right (owner, 2026-10-22). */}
+        <span className="nx-hero-card" aria-hidden="true">
+          <span className="nx-hero-logo" />
+          <span className="nx-hero-card-cue ds-data">Scroll</span>
+        </span>
+        <span className="nx-hero-foot" aria-hidden="true" />
+
+        <div className="nx-hero-copy">
+          <p className="nx-hero-lead nx-hero-lift">
+            From restricted areas and critical sites to offices and campuses: officers trained on your
+            post before the first shift.
+          </p>
+          <div className="nx-hero-actions nx-hero-lift">
             <Link to="/contact" className="ds-btn ds-btn-primary">
               Request a Quote
               <Arrow />
             </Link>
-            {/* No call link here (owner, 2026-10-13): the nav's handset and menu carry the phone. */}
+            <a href={TEL} className="ds-link nx-hero-call">
+              <PhoneIcon />
+              719-696-3966
+            </a>
           </div>
-          {/* The proof row (audit): one line each, every one checkable on the linked page. */}
-          <ul className="ds-hero-proof" aria-label="Proof">
+          <ul className="nx-hero-proof nx-hero-lift" aria-label="Proof">
             <li>
+              {/* The GSA mark (owner, 2026-10-23): the official logo, cropped to its square, 96px for 3x screens. */}
+              <img className="nx-hero-gsa" src="/images/gsa-mark.webp" alt="" width={16} height={16} decoding="async" />
               <span>GSA MAS</span>{' '}
               <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
                 47QSMS25D009Q
                 <Arrow external size={12} />
               </a>
             </li>
-            {/* Quiet facts, not links; GSA is the only route (copy audit round 3). */}
-            <li>Minority woman-owned (WOSB, WBENC)</li>
+            <li>Minority woman-owned (WOSB, WBENC, M/WBE)</li>
             <li>Licensed in Colorado Springs, Denver, Pueblo</li>
           </ul>
         </div>
+        <p className="nx-hero-cue ds-data nx-hero-lift" aria-hidden="true">
+          Scroll
+        </p>
       </div>
     </section>
   );

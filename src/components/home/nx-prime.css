@@ -1,0 +1,255 @@
+/* For prime contractors (home-flora, 2026-10-20): a node canvas on a dot-grid plane. Resolved
+   default: built and still. [data-build="on"] (desktop with motion): the wires draw and the nodes
+   light with the scroll; [data-pulse="on"]: the rust pulse rides the wires. */
+
+/* Headline words keep their spaces inside the read-in spans. */
+
+.nx-prime {
+  position: relative;
+  padding-top: var(--ds-beat-open);
+  padding-bottom: var(--ds-beat);
+  overflow: hidden;
+}
+/* The plane: the site's faint dot grid, fading out toward every edge. */
+.nx-prime::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 64% 54%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 62% 58% at 64% 54%, #000 30%, transparent 78%);
+  pointer-events: none;
+}
+/* A low warm light under the canvas, so the plane reads as lit from the posts. */
+.nx-prime::after {
+  content: '';
+  position: absolute;
+  right: -10%;
+  bottom: -20%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(closest-side, rgb(156 86 43 / 0.28), rgb(104 51 22 / 0.14) 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.nx-prime-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 56px;
+  align-items: start;
+}
+.nx-prime-copy { grid-column: 1 / span 4; position: sticky; top: calc(var(--ds-header) + 48px); }
+.nx-prime-line {
+  margin: 28px 0 32px;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ds-fg-muted);
+  max-width: 34ch;
+}
+.nx-prime-line span { color: var(--ds-fg); }
+
+.nx-prime-canvas {
+  grid-column: 5 / span 8;
+  margin-left: clamp(0px, 2vw, 40px);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 120px;
+  padding-top: 8px;
+}
+.nx-prime-wires { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.nx-pw-base { fill: none; stroke: var(--ds-rule-strong); stroke-width: 1; }
+.nx-pw { fill: none; stroke: var(--ds-rust); stroke-width: 1.25; filter: drop-shadow(0 0 4px rgb(188 111 64 / 0.7)); }
+.nx-pend { fill: var(--ds-rust); }
+
+/* Nodes */
+.nx-pn { position: relative; z-index: 1; }
+.nx-pn-body {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: 4px;
+  background: rgb(6 7 8 / 0.92);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.08);
+  transition: box-shadow 0.4s var(--ds-ease);
+}
+/* Crop-mark corners when a node is live (the + card's spec-sheet ticks). */
+.nx-pn-body::before,
+.nx-pn-body::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 0 solid var(--ds-rust);
+  opacity: 0;
+  transition: opacity 0.4s var(--ds-ease);
+}
+.nx-pn-body::before { left: -4px; top: -4px; border-left-width: 1px; border-top-width: 1px; }
+.nx-pn-body::after { right: -4px; bottom: -4px; border-right-width: 1px; border-bottom-width: 1px; }
+.nx-pn[data-live='true'] .nx-pn-body::before,
+.nx-pn[data-live='true'] .nx-pn-body::after { opacity: 1; }
+.nx-pn[data-live='true'] .nx-pn-body { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.12), 0 18px 40px rgb(0 0 0 / 0.5); }
+.nx-pn-k { font-size: 12.5px; color: var(--ds-fg-faint); }
+.nx-pn-v { font-size: 17px; font-weight: 500; color: var(--ds-fg); line-height: 1.35; }
+.nx-pn-row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.nx-pn-id { font-family: var(--ds-data); font-size: 14px; color: var(--ds-fg); font-variant-numeric: tabular-nums slashed-zero; }
+
+.nx-pn[data-node='prime'] { grid-column: 1 / span 6; grid-row: 1; }
+.nx-pn[data-node='ares'] { grid-column: 4 / span 6; grid-row: 2; }
+.nx-pnote[data-note='credit'] { grid-column: 10 / span 3; grid-row: 2; align-self: center; }
+.nx-pn[data-node='post-0'] { grid-column: 1 / span 4; grid-row: 3; }
+.nx-pn[data-node='post-1'] { grid-column: 5 / span 4; grid-row: 3; }
+.nx-pn[data-node='post-2'] { grid-column: 9 / span 4; grid-row: 3; }
+.nx-pnote[data-note='restricted'] { grid-column: 1 / span 5; grid-row: 4; margin-top: -76px; }
+.nx-pnote[data-note='reliability'] { grid-column: 9 / span 4; grid-row: 4; margin-top: -76px; }
+.nx-pn-post .nx-pn-body { padding: 14px 16px; }
+
+/* Tags: small mono labels in the status voice; square, never pills. */
+.nx-ptag {
+  font-family: var(--ds-data);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f0c7a8;
+  padding: 4px 7px;
+  border-radius: 2px;
+  background: rgb(10 6 4 / 0.95);
+  box-shadow: inset 0 0 0 1px rgb(188 111 64 / 0.55);
+  white-space: nowrap;
+}
+.nx-ptag[data-tag='teaming'] { position: absolute; z-index: 2; transform: translate(-50%, -50%); }
+.nx-ptag[data-tag='credit'] { position: absolute; right: 14px; bottom: -11px; z-index: 2; }
+
+/* Proof notes: text that hangs beside the node it proves, on a short dashed leader. */
+.nx-pnote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-left: 14px;
+  border-left: 1px dashed rgb(188 111 64 / 0.6);
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ds-fg);
+}
+.nx-pnote-k {
+  font-family: var(--ds-data);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+}
+.nx-pnote-id { font-family: var(--ds-data); font-size: 12px; color: var(--ds-fg-muted); }
+
+/* While building, unlit nodes wait dim (the timeline moves them; this is the resting look). */
+.nx-prime-canvas[data-build='on'] .nx-pn[data-live='false'] .nx-pn-body { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+
+/* The pulse */
+.nx-ppulse {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 1px;
+  background: #f6d2b4;
+  box-shadow: 0 0 10px 2px rgb(232 150 98 / 0.9);
+  offset-rotate: 0deg;
+  offset-distance: 0%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.nx-prime-canvas[data-pulse='on'] .nx-ppulse { animation: nx-ppulse 4s linear infinite; }
+@keyframes nx-ppulse {
+  0% { offset-distance: 0%; opacity: 0; }
+  4% { opacity: 1; }
+  24% { opacity: 1; }
+  28% { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nx-ppulse { display: none; }
+}
+
+/* ---- Phones and tablets: one column on a straight rail */
+/* The phone rail's tip (below). */
+.nx-prail-tip { display: none; }
+
+@media (max-width: 1023px) {
+  .nx-prime-copy { grid-column: 1 / -1; position: static; }
+  .nx-prime-canvas {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-left: 28px;
+  }
+  .nx-prime-canvas::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 30px;
+    bottom: 30px;
+    width: 1px;
+    background: linear-gradient(var(--ds-rust), rgb(188 111 64 / 0.25));
+    box-shadow: 0 0 6px rgb(188 111 64 / 0.6);
+  }
+  .nx-pn::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 34px;
+    width: 5px;
+    height: 5px;
+    background: var(--ds-rust);
+  }
+  .nx-prime-wires, .nx-ppulse, .nx-ptag[data-tag='teaming'] { display: none; }
+  /* The build (owner, 2026-10-23), only where the scroll engine runs: the rail draws down from the
+     top with a bright tip, and each step lights as the tip reaches it. */
+  .nx-prime-canvas::before { transform-origin: 50% 0; transform: scaleY(var(--rail, 1)); }
+  .nx-prail-tip {
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: calc(30px + var(--rail, 0) * (100% - 60px));
+    width: 7px;
+    height: 7px;
+    margin-top: -3.5px;
+    border-radius: 50%;
+    background: #f2b98e;
+    box-shadow: 0 0 12px rgb(232 150 95 / 0.9);
+    opacity: var(--tipo, 0);
+    transition: opacity 0.25s var(--ds-ease);
+    pointer-events: none;
+  }
+  .nx-prime-canvas[data-mbuild='on'] > :is(.nx-pn, .nx-pnote) {
+    opacity: 0.3;
+    transform: translateX(-10px);
+    transition: opacity 0.45s var(--ds-ease), transform 0.45s var(--ds-ease);
+  }
+  .nx-prime-canvas[data-mbuild='on'] > :is(.nx-pn, .nx-pnote)[data-lit='true'] { opacity: 1; transform: none; }
+  .nx-prime-canvas[data-mbuild='on'] .nx-pn::before { background: var(--ds-fg-faint); transition: background-color 0.3s var(--ds-ease), box-shadow 0.3s var(--ds-ease); }
+  .nx-prime-canvas[data-mbuild='on'] .nx-pn[data-lit='true']::before { background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
+  .nx-pnote, .nx-pnote[data-note] { margin-top: 0; }
+  .nx-ptag[data-tag='credit'] { position: static; justify-self: start; margin-top: 10px; display: inline-block; }
+  .nx-pn[data-node='ares'] { display: grid; }
+  .nx-pn[data-node='prime'] { order: 1; }
+  .nx-pn[data-node='ares'] { order: 2; }
+  .nx-pnote[data-note='credit'] { order: 3; }
+  .nx-pn[data-node='post-0'] { order: 4; }
+  .nx-pnote[data-note='restricted'] { order: 5; }
+  .nx-pn[data-node='post-1'] { order: 6; }
+  .nx-pn[data-node='post-2'] { order: 7; }
+  .nx-pnote[data-note='reliability'] { order: 8; }
+  .nx-pnote { margin-left: 4px; }
+}

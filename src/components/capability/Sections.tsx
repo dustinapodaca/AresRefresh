@@ -386,7 +386,7 @@ export function Download() {
   return (
     <section id="download" className="ds-cs-close" aria-labelledby="dl-title">
       <a href={PDF_URL} className="ds-cs-thumb" target="_blank" rel="noopener noreferrer" aria-label="Open the capability statement PDF (new tab)">
-        <img {...responsive('/images/capability-page1.webp', '(min-width: 1024px) 420px, 80vw')} alt="" loading="lazy" decoding="async" />
+        <img {...responsive('/images/capability-page1.webp', '(min-width: 1138px) 248px, (min-width: 1024px) 22vw, (min-width: 533px) 200px, 38vw')} alt="" loading="lazy" decoding="async" />
       </a>
       <div className="ds-cs-close-copy">
         <h2 id="dl-title" className="ds-display-lg">

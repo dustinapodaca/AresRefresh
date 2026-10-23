@@ -23,14 +23,15 @@ const PROFILES = [
 // of each new year.
 const YEAR = new Date().getFullYear();
 
-// The certification marks, in the order the email signature uses.
+// The certification marks, in the order the email signature uses. On phones (owner, 2026-10-23) GSA
+// sits on its own above the others and they run SBA, Denver, Women Owned, WBENC; CSS does that.
 const CERTS = [
-  { src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' },
-  { src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
-  { src: '/images/cert-women-owned.png', alt: 'Women Owned' },
-  { src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
+  { key: 'gsa', src: '/images/cert-gsa-footer.png', alt: 'GSA Contract Holder' },
+  { key: 'sba', src: '/images/cert-sba-footer.png', alt: 'U.S. Small Business Administration' },
+  { key: 'women', src: '/images/cert-women-owned.png', alt: 'Women Owned' },
+  { key: 'wbenc', src: '/images/cert-wbenc.png', alt: "Certified WBENC Women's Business Enterprise" },
   // Denver M/WBE and SBE, approved Sept 25, 2026 (copy audit round 2).
-  { src: '/images/cert-denver-edo.webp', alt: 'Denver Economic Development & Opportunity, M/WBE and SBE certified' },
+  { key: 'denver', src: '/images/cert-denver-edo.webp', alt: 'Denver Economic Development & Opportunity, M/WBE and SBE certified' },
 ];
 
 export default function Footer() {
@@ -143,13 +144,13 @@ export default function Footer() {
         </div>
 
         {/* The marks and the lines between them share the row evenly (owner, 2026-10-10): every
-            gap is the same, each line sits midway, and GSA starts on the text's left edge. The
-            lines are their own (hidden) items so the spacing can do that. */}
+            gap is the same and each line sits midway. The lines are their own (hidden) items so
+            the spacing can do that. Phones lay the same list out as GSA on its own band over a 2x2. */}
         <ul className="ds-certs" aria-label="Certifications and contract vehicles">
           {CERTS.map((c, i) => (
             <Fragment key={c.src}>
               {i > 0 && <li className="ds-certs-rule" aria-hidden="true" />}
-              <li><img {...responsive(c.src)} alt={c.alt} loading="lazy" /></li>
+              <li data-mark={c.key}><img {...responsive(c.src)} alt={c.alt} loading="lazy" /></li>
             </Fragment>
           ))}
         </ul>
