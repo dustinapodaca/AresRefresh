@@ -4,7 +4,7 @@ Last updated: 2026-10-20. **The site is live on aressecurity.co** (DreamHost). `
 as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owner says to merge.
 **Read this first when starting a new chat.**
 
-## Home: "The Ground" (2026-10-20, branch `home-flora`)
+## Home: "The Ground" (2026-10-20, branch `home-flora`; live 2026-10-23)
 
 - **The owner made the `home-flora` design the official Home** (2026-10-20). It was imported from
   a git bundle (two commits on audit `44e1f8f`), then folded in: `/` renders it (no preview
@@ -17,9 +17,12 @@ as of launch (3c19eb2). Keep working on `audit`; `main` moves only when the owne
   animations ease (0.2s scrub); `?glide` brings Lenis back to compare.
 - **Adds `gsap` (and `lenis`, fetched only at `?glide`)** (loaded on Home only, after the first paint). Preship: PASS, 0
   errors and 0 warnings across 38 pages at 1440 and 390; the prerendered `/` holds every section.
-- **Not live and not on `audit` or `main` yet.** To release: merge `home-flora` into `audit` (a
-  fast-forward while `audit` has no new commits), build, preship, push, and the owner uploads
-  `dist/`. FileZilla doesn't delete, so old hashed assets stay on the server harmlessly.
+- **Live since 2026-10-23** (owner): `home-flora` merged into `audit`, `main` fast-forwarded to it, and
+  deployed by the GitHub Action (Actions > Deploy to DreamHost > Run workflow; a dry run first, then a
+  real run). `home-flora`, `audit`, and `main` all at `f86e2da`. Backups on the server:
+  `public-backup-20261023-045308` (the Dossier Home, before the first deploy) and
+  `public-backup-20261023-050011`. Auto-deploy on push to `main` is still off (`DREAMHOST_AUTODEPLOY`
+  not set); deploy by running the workflow.
 
 ## Live (2026-10-19)
 
