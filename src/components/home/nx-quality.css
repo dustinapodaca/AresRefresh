@@ -90,6 +90,9 @@
 
 @media (max-width: 1023px) {
   .nx-q-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Stacked in rows, each fact sits midway between its line and the next one's (owner, 2026-10-23:
+     it was 16px above and 6px below, close to the line under it). */
+  .nx-q-fact { padding: 16px 0; }
 }
 @media (max-width: 599px) {
   .nx-q-title { font-size: clamp(44px, 13.4vw, 72px); }
