@@ -203,7 +203,8 @@
     opacity: 1;
     /* Stacked behind, each a step smaller and peeking out above the first (the cards fill the column,
        so there is no room to fan sideways). */
-    transform: translateY(calc(var(--k) * -10%)) scale(calc(1 - var(--k) * 0.05));
+    /* The third a touch less far than the second: being narrower it read as further back (owner, 2026-10-23). */
+    transform: translateY(calc(var(--k) * -10% + (var(--k) - 1) * 0.6%)) scale(calc(1 - var(--k) * 0.05));
   }
   92% { opacity: 1; transform: none; }
   100% { opacity: 0; transform: none; }
