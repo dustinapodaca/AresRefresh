@@ -490,9 +490,12 @@ and `nx-*.css` (class prefix `nx-`).
   after it (0.9s, from 0.9s). On scroll the screen holds for 165% of a screen: the copy lifts
   away, the camera flies into the F of "Front" (the headline layer scaling up to 40x about the F's
   stem while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
-  62 and speeding up). Then the Ares mark in black comes up dead center of the screen (owner,
-  2026-10-22: like a title card in a film; `clamp(132px, 24vmin, 260px)`, rising from 0.94) once most of
-  the land shows, holds for a beat, and scrolls away with the land as the stage lets go: the land
+  62 and speeding up). Then a title card comes up dead center of the screen (owner, 2026-10-22,
+  after a reference of the mark on a brushed-silver glass tile): the site's glass over the land
+  (`clamp(224px, 42vmin, 440px)` square, 4px corners), blurred 26px and drained of its color so it
+  reads as silver, vertical bands of light like brushed metal that slide across it as it arrives,
+  the lit glass edge (`--ds-card-edge`) and top line, a soft shadow, and the Ares mark in black at
+  54% of its width. It rises from 0.94 once most of the land shows, holds for a beat, and scrolls away with the land as the stage lets go: the land
   dims to 22% as it leaves and a shade rises from its foot, so it melts into the black above 01. The layer carries no `will-change`:
   with it, Chrome on a Mac kept its zoomed tiles and drew only "Fro" on the way back up
   (2026-10-20).
