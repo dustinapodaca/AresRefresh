@@ -514,9 +514,11 @@ and `nx-*.css` (class prefix `nx-`).
   slide up a large list so the active one sits at the optical center beside a rust tick, the
   others fading with distance; a glass post brief on the right (22px blur) carries that
   industry's name, short line, "What we staff" (its roles, each a link to the role page), "What
-  to send us", "Open the <industry> page →" and a Request a Quote prefilled with the industry; a
+  to send us", and ends on "Open the <industry> page →" (the per-industry Request a Quote was
+  removed, owner 2026-10-22); a
   counter and six segments along the foot. Clicking a name glides to its step. Phones and tablets
-  (below 1024px; owner, 2026-10-22, from a bundle: the stacked list ran about 6,400px on a phone):
+  (below 1024px; owner, 2026-10-22; "All services & how a post starts →" to /services under the lead,
+  above the cards, from a bundle: the stacked list ran about 6,400px on a phone):
   a swipe deck (`IndustryDeck.tsx` on `ui/image-stack-carousel.tsx`, framer-motion, loaded on its
   own below 1024px so desktop never fetches it). One card on a fanned pile of the six; drag it
   sideways (it turns as it goes) or use the arrows, and it goes to the back. Each card (owner, 2026-10-22: the text and its shade hid most

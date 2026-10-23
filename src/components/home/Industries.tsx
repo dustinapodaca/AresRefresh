@@ -151,6 +151,11 @@ export default function Industries() {
           Six industries, from government facilities and critical sites to offices and campuses. Each has
           its own page: what the post covers and what to send us.
         </p>
+        {/* Phones and tablets (owner, 2026-10-22): the way to every service, above the cards. */}
+        <Link to="/services" className="ds-link nx-ind-all">
+          All services &amp; how a post starts
+          <Arrow />
+        </Link>
       </header>
 
       {/* The scene (desktop, with motion). */}

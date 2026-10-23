@@ -43,12 +43,9 @@ export function Brief({ ind, i, scene }: { ind: IndustryPageData; i: number; sce
       <p className="nx-ind-label">What to send us</p>
       <p className="nx-ind-ask">{ind.ask}</p>
       <div className="nx-ind-actions">
+        {/* Each brief ends on its industry page (owner, 2026-10-22: no quote button per industry). */}
         <Link to={`/industries/${ind.slug}`} className="ds-link">
           Open the {ind.name} page
-          <Arrow />
-        </Link>
-        <Link to={`/contact?industry=${ind.slug}`} className="ds-btn ds-btn-primary nx-ind-quote">
-          Request a Quote
           <Arrow />
         </Link>
       </div>
