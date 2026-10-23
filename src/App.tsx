@@ -57,8 +57,10 @@ const LIQUID: { sel: string; opts?: LiquidOptions; media?: string }[] = [
   // Full-width bands bend and light only the edges that read as glass, never their sides (they sit
   // on the screen's edges) and never an edge that only shows when a phone's address bar slides away
   // (owner, 2026-10-15).
-  // More frost on the Services opening, the footer, and the Capability hero (owner, 2026-10-15; was 10).
-  { sel: '.ds-cs-facts', opts: { pseudo: '::before', blur: 18, edges: { top: true } } },
+  // More frost on the Services opening and the footer (owner, 2026-10-15; was 10). Not the
+  // Capability hero's frost band since 2026-10-22: a full-width liquid filter re-ran on every scroll
+  // frame and dropped the top of that page to about 92fps on a 120Hz Mac (owner: not smooth until
+  // past Core competencies); its CSS frost holds 120.
   // Not the quote toast: it floats fixed, and the filter doesn't run on fixed or sticky glass.
   // The footer only: a lighter frost along its rim (14px easing into its 18px) so the bend shows
   // a little (owner, 2026-10-15; was 3px).

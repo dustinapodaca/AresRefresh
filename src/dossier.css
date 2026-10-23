@@ -3797,12 +3797,8 @@ html[data-liquid='true'] .ds-np-card {
   html[data-liquid='true'] .ds-np[data-open='true'] .ds-np-card { background: rgb(8 9 11 / 0.82); }
 }
 
-/* Liquid on every glass surface (owner, 2026-10-15): the Capability hero's frost band takes its
-   filter through --ds-liquid like the Home hero strip (the others are set on the element). */
-html[data-liquid='true'] .ds-cs-facts::before {
-  -webkit-backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
-  backdrop-filter: var(--ds-liquid, blur(22px) saturate(140%));
-}
+/* The Capability hero's frost band was liquid too (2026-10-15) until 2026-10-22: over the full
+   width it re-ran on every scroll frame and the top of the page stuttered. It keeps its CSS frost. */
 
 /* The prime pipeline's cards and tiles are solid, not glass (owner, 2026-10-15): a near-black
    fill under the glass stroke, no see-through, no blur. */

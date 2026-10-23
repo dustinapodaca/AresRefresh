@@ -326,8 +326,10 @@ Cards and glass are part of the system, not exceptions.
   (its 24px blur, through `--ds-liquid` on its ::before), and the nav bar 50% (was 72%; 82% with a
   desktop menu open). The nav keeps its CSS frost: on its thin bar the liquid filter didn't take and
   the page showed through sharp. Since 2026-10-15 (owner) the liquid is on every glass surface,
-  each at its CSS blur: the Home hero strip and the Capability hero's frost band (both through
-  `--ds-liquid` on their ::before), the Services opening and its card panels, the footer band, and
+  each at its CSS blur: the Home hero strip (through `--ds-liquid` on its ::before; the
+  Capability hero's frost band was too, until 2026-10-22: full width, it re-ran on every scroll frame
+  and dropped the top of the page to about 92fps on a 120Hz Mac, so it keeps its CSS frost and holds
+  120), the Services opening and its card panels, the footer band, and
   the 404 card, each checked to frost (fine detail behind cut by half or more). Chrome doesn't run
   the filter on fixed or sticky glass. Performance (owner, 2026-10-15, after an audit: the Capability
   page stuttered on phones from the hero through the cards, where liquid glass covered up to 88% of
