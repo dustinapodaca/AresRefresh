@@ -19,8 +19,8 @@
   color: var(--ds-fg-muted);
   max-width: 40ch;
 }
-/* The all-services link, phones and tablets only (owner, 2026-10-22). */
-.nx-ind-head .nx-ind-all { display: none; }
+/* The all-services link under the lead (owner: phones and tablets 2026-10-22, desktop 2026-10-23). */
+.nx-ind-head .nx-ind-all { grid-column: 9 / span 4; justify-self: start; font-size: 15px; }
 
 /* Shared brief type (scene and list). */
 .nx-ind-short { margin: 0 0 22px; font-size: 19px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: var(--ds-fg); }
@@ -104,7 +104,7 @@
 
 @media (max-width: 1023px) {
   .nx-ind-title, .nx-ind-lead { grid-column: 1 / -1; }
-  .nx-ind-head .nx-ind-all { display: inline-flex; grid-column: 1 / -1; justify-self: start; font-size: 15px; }
+  .nx-ind-head .nx-ind-all { grid-column: 1 / -1; }
   .nx-ind-photo, .nx-ind-copy { grid-column: 1 / -1; }
 }
 @media (max-width: 599px) {

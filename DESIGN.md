@@ -520,7 +520,7 @@ and `nx-*.css` (class prefix `nx-`).
   removed, owner 2026-10-22); a
   counter and six segments along the foot. Clicking a name glides to its step. Phones and tablets
   (below 1024px; owner, 2026-10-22; "All services & how a post starts →" to /services under the lead,
-  above the cards, from a bundle: the stacked list ran about 6,400px on a phone):
+  above the cards (under the lead on desktop too since 2026-10-23), from a bundle: the stacked list ran about 6,400px on a phone):
   a swipe deck (`IndustryDeck.tsx` on Swiper's cards effect since 2026-10-23, owner, after
   skiper-ui's card carousel: Swiper's touch handling with momentum and snap-back; was framer-motion;
   loaded on its own below 1024px so desktop never fetches it, and not in the prerender). One card on
