@@ -22,9 +22,11 @@ const SINCE = [
 
 // The timeline is drawn and every year rust by default (prerendered HTML, no JavaScript, reduced
 // motion). The motion is armed only after mount, as in Heard: data-anim="ready" sets the waiting
-// state, then "on" (a frame later) turns the transitions on. The page's scroll observer
-// (useScrollInViewObserver, center and once) sets data-in-view when it reaches the middle; then the
-// years come in one after another, 90ms apart (--i), as the rule reaches each one.
+// state, then "on" (a frame later) turns the transitions on. data-in-view is set once its top passes
+// 72% of the way down the screen, a little before the middle (owner, 2026-10-23: it was the page's
+// center observer); then the years come in one after another, 90ms apart (--i), as the rule
+// reaches each one.
+const START = 0.72;
 function Since() {
   const ref = useRef<HTMLDivElement>(null);
   const [anim, setAnim] = useState<'ready' | 'on' | null>(null);
@@ -32,9 +34,8 @@ function Since() {
   useEffect(() => {
     const el = ref.current;
     if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // Already at or past the middle on mount (a reload mid-page), or jumped past it between two
-    // observer checks: drawn, without waiting for the center band.
-    const past = () => el.getBoundingClientRect().top < window.innerHeight / 2;
+    // Already past the start on mount (a reload mid-page): drawn, without the motion.
+    const past = () => el.getBoundingClientRect().top < window.innerHeight * START;
     if (past()) {
       el.setAttribute('data-in-view', 'true');
       return;
@@ -53,7 +54,7 @@ function Since() {
   }, []);
 
   return (
-    <div ref={ref} className="ds-since" data-anim={anim ?? undefined} data-scroll-active="" data-scroll-once="" data-scroll-center="">
+    <div ref={ref} className="ds-since" data-anim={anim ?? undefined}>
       <p id="since-title" className="ds-data ds-since-label">Since 2021</p>
       <ol className="ds-since-list" aria-labelledby="since-title">
         {SINCE.map((s, i) => (

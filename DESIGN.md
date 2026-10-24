@@ -843,7 +843,7 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   M/WBE and SBE · Colorado Verified) as 2px ticks on a hairline-strong
   rule, each year in mono above its tick and its line beneath in ink muted (14px). From 768px
   horizontal, the five evenly across the letter's width; below, vertical with the rule on the left.
-  As it reaches the middle of the screen (the page's scroll observer, center and once) the years
+  As its top passes 72% of the way down the screen, a little before the middle (owner, 2026-10-23; it was the middle), the years
   come in one after another in quick succession (owner, 2026-10-23): the rule runs from the first
   tick to the last at an even speed, 90ms a step (on phones one segment per step), and as it reaches
   each year its tick draws in and turns rust (240ms) while the year and its line rise 10px from 0.62
