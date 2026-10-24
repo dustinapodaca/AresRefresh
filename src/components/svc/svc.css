@@ -319,7 +319,7 @@
   .sv-hero-copy { flex: 1 1 auto; display: flex; flex-direction: column; max-width: none; }
   .sv-hero-stage::before, .sv-hero-nodes { display: none; }
   .sv-hero-copy { text-align: left; } /* left aligned like the earlier hero (owner, 2026-10-23) */
-  .sv-hero-title { font-size: 44px; line-height: 0.94; letter-spacing: -0.05em; } /* the earlier hero's phone size: two lines at every width (owner) */
+  .sv-hero-title { font-size: clamp(54px, 16vw, 72px); line-height: 0.94; letter-spacing: -0.05em; text-align: center; } /* bigger now it is three short lines, and centered (owner, 2026-10-23) */
   /* The photo ends above the hero's foot, so its copper canopy rises to the card: some above its top
      edge, the rest behind its upper half, lifting the glass (owner, 2026-10-23). Brighter, with the
      shade only dark behind the headline and at the very foot. */
