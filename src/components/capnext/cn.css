@@ -416,6 +416,10 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
     pointer-events: none;
   }
   .cx-mbar[data-show='true'] { transform: none; opacity: 1; pointer-events: auto; }
+  /* A few pixels of the bar tucked up behind the nav (which sits above it), so no hairline of the
+     page can show between the two on a phone: iOS moves fixed bars by fractions of a pixel as its
+     toolbar slides, and the nav's frost thins at its edge (owner, 2026-10-23). */
+  .cx-mbar::before { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 6px; background: #000; pointer-events: none; }
   .cx-mbar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px var(--ds-edge) 6px; }
   .cx-mbar-sec {
     display: inline-flex;
