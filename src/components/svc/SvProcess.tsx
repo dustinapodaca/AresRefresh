@@ -68,31 +68,47 @@ export default function SvProcess() {
     // reverses on the way up. Resolved without the engine (the default).
     mm.add('(max-width: 1023px)', () => {
       const list = root.querySelector<HTMLElement>('.sv-pr-stages')!;
-      const fill = root.querySelector<HTMLElement>('.sv-pr-rail i')!;
-      const tip = root.querySelector<HTMLElement>('.sv-pr-rail b')!;
+      const track = root.querySelector<HTMLElement>('.sv-pr-track')!;
+      const rail = root.querySelector<HTMLElement>('.sv-pr-rail')!;
+      const fill = rail.querySelector<HTMLElement>('i')!;
+      const tip = rail.querySelector<HTMLElement>('b')!;
+      const handoff = root.querySelector<HTMLElement>('.sv-pr-handoff')!;
       const nodes = Array.from(list.querySelectorAll<HTMLElement>(':scope > .sv-pr-node'));
       root.dataset.arm = 'true';
       let span = 1;
       let stops: number[] = [];
+      // The wire runs past stage 04 to the closing line (owner, 2026-10-23): when the tip gets there
+      // it stays and spreads into a bar pointing into "The same four stages run at every post",
+      // which lights up: the end, deployed.
       const measure = () => {
-        span = Math.max(1, list.offsetHeight - 16);
+        const lh = parseFloat(getComputedStyle(handoff).lineHeight) || 26;
+        const end = handoff.getBoundingClientRect().top + lh / 2 - track.getBoundingClientRect().top;
+        span = Math.max(1, end - 8);
+        rail.style.bottom = 'auto';
+        rail.style.height = `${span}px`;
         stops = nodes.map((n) => n.offsetTop + 4);
       };
       const paint = (p: number) => {
         const y = p * span;
         fill.style.transform = `scaleY(${p.toFixed(4)})`;
         tip.style.transform = `translateY(${y.toFixed(1)}px)`;
-        tip.style.opacity = p > 0.002 && p < 0.998 ? '1' : '0';
+        tip.style.opacity = p > 0.002 ? '1' : '0';
         nodes.forEach((n, i) => {
           const on = p > 0.001 && y + 8 >= stops[i];
           if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
         });
+        const done = p >= 0.995;
+        if ((root.dataset.done === 'true') !== done) {
+          if (done) root.dataset.done = 'true';
+          else delete root.dataset.done;
+        }
       };
       measure();
       const st = engine.ScrollTrigger.create({
         trigger: list,
         start: 'top 72%',
-        end: 'bottom 72%',
+        endTrigger: handoff,
+        end: 'top 72%',
         scrub: SCRUB,
         onRefresh: (self) => {
           measure();
@@ -104,10 +120,13 @@ export default function SvProcess() {
       return () => {
         st.kill();
         delete root.dataset.arm;
+        delete root.dataset.done;
         nodes.forEach((n) => delete n.dataset.lit);
         fill.style.transform = '';
         tip.style.transform = '';
         tip.style.opacity = '';
+        rail.style.bottom = '';
+        rail.style.height = '';
       };
     });
     mm.add('(min-width: 1024px)', () => {

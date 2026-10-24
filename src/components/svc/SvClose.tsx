@@ -92,9 +92,15 @@ export default function SvClose() {
             <li key={c.to} className="sv-close-city">
               <Link to={c.to}>
                 <span className="sv-close-note ds-data">{c.note}</span>
+                {/* The arrow rides with the last word, so it stays beside the name when a long one
+                    (Colorado Springs) wraps (owner, 2026-10-23). */}
                 <span className="sv-close-name">
-                  {c.name}
-                  <Arrow size={22} />
+                  {c.name.split(' ').slice(0, -1).join(' ')}
+                  {c.name.includes(' ') && ' '}
+                  <span className="sv-close-last">
+                    {c.name.split(' ').at(-1)}
+                    <Arrow size={22} />
+                  </span>
                 </span>
               </Link>
             </li>

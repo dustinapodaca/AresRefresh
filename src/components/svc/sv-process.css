@@ -123,6 +123,12 @@
   .sv-pr[data-arm='true'] .sv-pr-node > * { transition: opacity 0.5s var(--ds-ease), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
   .sv-pr[data-arm='true'] .sv-pr-node:not([data-lit='true']) > * { opacity: 0.62; transform: translateY(12px); }
   .sv-pr[data-arm='true'] .sv-pr-syslist li::before { transition: background-color 0.24s var(--ds-ease), box-shadow 0.24s var(--ds-ease); }
+  /* The end (owner, 2026-10-23): the tip stays at the closing line and spreads into a thick rust bar
+     pointing into it, and the line lights from 0.62 to full. Reverses on the way up. */
+  .sv-pr-rail b { transition: opacity 0.2s, width 0.42s cubic-bezier(0.23, 1, 0.32, 1), height 0.42s cubic-bezier(0.23, 1, 0.32, 1), top 0.42s cubic-bezier(0.23, 1, 0.32, 1), left 0.42s cubic-bezier(0.23, 1, 0.32, 1), border-radius 0.42s, background 0.3s; }
+  .sv-pr[data-done='true'] .sv-pr-rail b { left: -1px; top: -2px; width: 22px; height: 4px; border-radius: 1px; background: linear-gradient(90deg, #f3d3bb, var(--ds-rust)); box-shadow: 0 0 14px 2px rgb(232 150 98 / 0.8); }
+  .sv-pr[data-arm='true'] .sv-pr-handoff { opacity: 0.62; transition: opacity 0.5s var(--ds-ease); }
+  .sv-pr[data-done='true'] .sv-pr-handoff { opacity: 1; }
   .sv-pr[data-arm='true'] .sv-pr-node[data-lit='true'] .sv-pr-syslist li::before { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.6); transition-delay: calc(0.35s + var(--k) * 0.09s); }
 }
 @media (max-width: 1023px) and (prefers-reduced-motion: reduce) {

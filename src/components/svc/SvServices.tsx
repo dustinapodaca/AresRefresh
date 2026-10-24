@@ -334,7 +334,7 @@ export default function SvServices() {
     <section ref={ref} id="sv-services" className="svs" aria-labelledby="svs-title">
       <header className="svs-head nx-edge">
         <h2 id="svs-title" className="nx-statement nx-statement-sm svs-title">
-          {words('Pick a service.')}
+          {words('What we staff.')}
         </h2>
         <p className="svs-lead">
           Armed and unarmed coverage, access control, escort, relief, and patrol. Each service has its own

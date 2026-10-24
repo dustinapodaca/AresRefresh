@@ -90,15 +90,14 @@
 .sv-close-city:first-child .sv-close-note { display: inline-flex; align-items: center; gap: 8px; }
 .sv-close-city:first-child .sv-close-note::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
 .sv-close-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   font-family: var(--ds-display);
   font-weight: 600;
   font-size: clamp(30px, 3.6vw, 56px);
   line-height: 1;
   letter-spacing: -0.045em;
 }
+.sv-close-last { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
 .sv-close-name .ds-arrow { transition: transform 0.18s var(--ds-ease), color 0.18s; }
 @media (hover: hover) and (pointer: fine) {
   .sv-close-city a:hover { border-top-color: rgb(255 255 255 / 0.5); }

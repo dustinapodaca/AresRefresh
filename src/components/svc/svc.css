@@ -150,6 +150,7 @@
   .sv-node-name { font-size: 16px; }
 }
 @media (max-width: 599px) {
+  .sv-hero-copy { text-align: left; } /* left aligned like the earlier hero (owner, 2026-10-23) */
   .sv-hero-title { font-size: clamp(44px, 12.6vw, 64px); }
   .sv-hero-lead { font-size: 16px; }
 }
@@ -182,4 +183,185 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .sv-hero-wires path[data-l] { animation: none !important; }
+}
+
+
+/* ------------------------------------------------ Hero, second form (owner, 2026-10-23) */
+/* The establishing shot: the copper-glass towers under the headline and the canvas. */
+.sv-photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: #000; }
+.sv-photo-open { position: absolute; inset: 0; overflow: hidden; }
+.sv-photo-drift { position: absolute; inset: -3%; transition: translate 0.2s linear; }
+.sv-photo img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 62%;
+  filter: saturate(0.92) brightness(0.62) contrast(1.06);
+  transform-origin: 50% 80%;
+}
+/* Readability: darkest behind the headline, black at the foot so the page carries on from it. */
+.sv-photo-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55% 48% at 50% 44%, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.18) 70%, transparent),
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0.05) 26%, rgb(0 0 0 / 0.1) 62%, #000 100%);
+}
+/* The dot grid now sits over the photo, very faint, as the canvas the nodes live on. */
+.sv-hero-grid { opacity: 0.55; }
+.sv-hero-stage::before { top: 82%; background: radial-gradient(closest-side, rgb(188 111 64 / 0.3), rgb(139 73 32 / 0.1) 55%, transparent); }
+.sv-hero-title { font-size: clamp(48px, 7.8vw, 128px); }
+.sv-hero-lead { color: #c4c8ce; }
+.sv-line { display: block; overflow: hidden; padding-bottom: 0.2em; margin-bottom: -0.2em; } /* room for descenders (the y of every; owner, 2026-10-23) */
+.sv-line > span { display: inline-block; }
+/* The nodes over the photograph: a deep tint (no backdrop blur, so they render the same everywhere). */
+.sv-hero-node a {
+  background: linear-gradient(180deg, rgb(14 15 18 / 0.86), rgb(8 9 11 / 0.8));
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.12), 0 14px 34px rgb(0 0 0 / 0.45);
+}
+/* Desktop (owner, 2026-10-23): the nodes are the site's dark glass, as plain CSS frost (a moderate
+   blur, a light color lift), not the Chrome-only liquid filter, so it stays light on the GPU. */
+@media (min-width: 1024px) {
+  .sv-hero-node a {
+    background: var(--ds-glass-wash, linear-gradient(180deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.4) 55%, rgb(0 0 0 / 0.32)));
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: inset 0 0 0 1px var(--ds-glass-edge, rgb(255 255 255 / 0.1)), var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.28);
+  }
+}
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .sv-hero-node a:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.24), var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.32), 0 0 0 4px rgb(188 111 64 / 0.12); }
+}
+.sv-hero-wires path[data-w] { stroke: rgb(255 255 255 / 0.3); }
+.sv-hero-post-bar { background: rgb(8 9 11 / 0.84); }
+
+/* The opener (motion only): a slit of light opens to the full photo while the camera looks up
+   at the towers; the headline rises line by line; the lead and actions follow; then the nodes and
+   wires come in (their timings are above). After it settles, the photo keeps a slow breath. */
+.sv-hero[data-arm='true'] .sv-photo-open { clip-path: inset(0 50% 0 50%); }
+.sv-hero[data-arm='true'] .sv-photo img { transform: scale(1.34) translateY(7%); }
+.sv-hero[data-arm='true'] .sv-line > span { transform: translateY(140%); } /* clear of the line's descender room, so nothing peeks before it rises */
+.sv-hero[data-arm='true'] .sv-hero-lead,
+.sv-hero[data-arm='true'] .sv-hero-actions,
+.sv-hero[data-arm='true'] .sv-hero-post { opacity: 0; transform: translateY(16px); }
+.sv-hero[data-arm='true'] .sv-hero-grid { opacity: 0; }
+
+.sv-hero[data-arm='true'][data-in='true'] .sv-photo-open { clip-path: inset(0 0% 0 0%); transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1) 0.1s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-photo img { transform: none; transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-line > span { transform: none; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1); }
+.sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(1) > span { transition-delay: 0.85s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(2) > span { transition-delay: 0.97s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(3) > span { transition-delay: 1.09s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-lead,
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-actions,
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-post { opacity: 1; transform: none; transition: opacity 0.9s var(--ds-ease), transform 0.9s var(--ds-ease); }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-lead { transition-delay: 1.3s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-actions { transition-delay: 1.42s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-post { transition-delay: 1.7s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-grid { opacity: 0.55; transition: opacity 1.4s var(--ds-ease) 1.6s; }
+/* The nodes and wires wait for the photo and headline. The node opener runs on the link inside
+   each node: the scroll timeline owns the node itself. */
+.sv-hero[data-arm='true'] .sv-hero-node,
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-node { opacity: 1; transform: none; transition: none; }
+.sv-hero[data-arm='true'] .sv-hero-node > a { opacity: 0; transform: translateY(14px) scale(0.96); }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-node > a {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s var(--ds-ease), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s var(--ds-ease);
+  transition-delay: calc(1.75s + var(--i) * 90ms);
+}
+/* Settled: the links answer hover at once (the opener's delays would hold the lift back 2s). */
+.sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-node > a { transition-delay: 0s; }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-w] { transition-delay: calc(2.2s + var(--i) * 110ms); }
+.sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-l] { animation-delay: calc(3.6s + var(--i) * 0.53s); }
+/* The breath, once the opener has settled. */
+.sv-hero[data-arm='true'][data-in='true'] .sv-photo-drift { animation: sv-breathe 22s ease-in-out 3s infinite alternate; }
+@keyframes sv-breathe {
+  from { transform: scale(1); }
+  to { transform: scale(1.06) translateY(-1.5%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-photo-drift { animation: none !important; }
+}
+
+@media (max-width: 1023px) {
+  .sv-hero-stage { padding-top: calc(var(--ds-header) + 56px); }
+  .sv-photo-shade {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0.35) 30%, rgb(0 0 0 / 0.55) 60%, #000 100%);
+  }
+  .sv-photo img { object-position: 58% 60%; }
+}
+@media (max-width: 599px) {
+  .sv-hero-copy { text-align: left; } /* left aligned like the earlier hero (owner, 2026-10-23) */
+  .sv-hero-title { font-size: clamp(44px, 12.6vw, 64px); }
+}
+
+/* The hold (desktop, motion on): an empty block after the stage gives the hero 90vh more to scroll,
+   and the stage sticks while the aperture closes. Sticky, not a pinned spacer, so the opener is
+   never interrupted. (Padding wouldn't do: sticky stays inside the parent's content box.) */
+@media (min-width: 1024px) {
+  html[data-nx-motion='on'] .sv-hero-hold { height: 90vh; }
+  html[data-nx-motion='on'] .sv-hero-stage { position: sticky; top: 0; }
+}
+
+
+.sv-link-phone { display: none !important; }
+
+/* ------------------------------------------------ Phones (owner, 2026-10-23)
+   The establishing shot as on desktop (the towers full bleed behind the headline, the slit opener,
+   the breath), framed a little wider, with no service nodes (the services follow right below), and
+   the lead with the two actions on a card of the site's black glass. */
+@media (max-width: 767px) {
+  /* A little taller than the screen (the earlier hero ran about 1,100px; this stops well short),
+     the headline at the top and the card at the foot (owner, 2026-10-23). */
+  .sv-hero-stage { display: flex; flex-direction: column; align-items: stretch; min-height: clamp(780px, 108svh, 960px); padding: calc(var(--ds-header) + 48px) var(--ds-edge) 48px; }
+  .sv-hero-copy { flex: 1 1 auto; display: flex; flex-direction: column; max-width: none; }
+  .sv-hero-stage::before, .sv-hero-nodes { display: none; }
+  .sv-hero-copy { text-align: left; } /* left aligned like the earlier hero (owner, 2026-10-23) */
+  .sv-hero-title { font-size: 44px; line-height: 0.94; letter-spacing: -0.05em; } /* the earlier hero's phone size: two lines at every width (owner) */
+  /* The photo ends above the hero's foot, so its copper canopy rises to the card: some above its top
+     edge, the rest behind its upper half, lifting the glass (owner, 2026-10-23). Brighter, with the
+     shade only dark behind the headline and at the very foot. */
+  .sv-photo { bottom: 200px; }
+  .sv-photo img { object-position: 50% 100%; transform-origin: 50% 80%; filter: saturate(1) brightness(0.8) contrast(1.06); }
+  .sv-photo-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.6) 30%, rgb(0 0 0 / 0.28) 54%, rgb(0 0 0 / 0) 76%, rgb(0 0 0 / 0.55) 93%, #000 100%); } /* darker behind the headline (owner) */
+
+  /* The black glass card. */
+  .sv-hero-panel {
+    margin-top: auto; /* at the foot of the hero, so the towers show between it and the headline (owner) */
+    padding: 22px 20px;
+    border-radius: 4px;
+    background: var(--ds-glass-wash, linear-gradient(180deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.4) 55%, rgb(0 0 0 / 0.32)));
+    -webkit-backdrop-filter: blur(22px) saturate(1.65);
+    backdrop-filter: blur(22px) saturate(1.65);
+    box-shadow: inset 0 0 0 1px var(--ds-glass-edge, rgb(255 255 255 / 0.1)), var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14)), 0 12px 36px rgb(0 0 0 / 0.28);
+  }
+  .sv-hero-lead { margin: 0; font-size: 16.5px; color: var(--ds-fg); }
+  .sv-hero-title { margin-bottom: 140px; }
+  .sv-hero-actions { margin-top: 18px; gap: 14px 22px; justify-content: flex-start; }
+  /* No quote button here: the nav carries it (and the phone) on every phone screen (owner). */
+  .sv-hero-actions .ds-btn { display: none; }
+  .sv-link-wide { display: none !important; }
+  .sv-link-phone { display: inline-flex !important; }
+
+  /* The card comes up with the lead (it would sit empty while the photo opens otherwise). */
+  .sv-hero[data-arm='true'] .sv-hero-panel { opacity: 0; transform: translateY(18px); }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-hero-panel { opacity: 1; transform: none; transition: opacity 0.8s var(--ds-ease) 1.15s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.15s; }
+}
+
+/* ------------------------------------------------ Phones: the section rhythm (owner, 2026-10-23)
+   Less dark space between the sections: about 88 to 112px from one section's last line to the
+   next one's first (was up to 184px). */
+@media (max-width: 767px) {
+  main.sv .svs { padding-bottom: 40px; }
+  main.sv .sv-ind { padding-top: 72px; padding-bottom: 40px; }
+  main.sv .sv-pr { padding-top: 72px; }
+  main.sv .sv-rl { padding-top: 88px; }
+  main.sv .sv-close { padding-top: 88px; }
+}
+
+/* Narrow desktops (1024 to 1279px): the lead fits between the side nodes (it ran under 02 and 05). */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .sv-hero-lead { max-width: 36ch; }
 }
