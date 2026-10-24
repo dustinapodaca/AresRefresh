@@ -1,0 +1,292 @@
+/* 01 Services (home-flora, 2026-10-22): FLORA's numbered panels, each with a working example of
+   the post inside. The demos are still and fully drawn by default; .svs[data-arm] (motion allowed)
+   turns their animations on, paused unless the panel has data-play="true" (in view). */
+
+.svs { position: relative; padding: clamp(40px, 5vw, 72px) 0 clamp(80px, 10vw, 144px); }
+.svs-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 20px;
+  align-items: end;
+  margin-bottom: clamp(44px, 6vw, 80px);
+}
+.svs-title { grid-column: 1 / span 7; }
+.svs-lead { grid-column: 8 / span 5; margin: 0; font-size: 17px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 42ch; }
+
+/* The panels. */
+.svs-grid {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.svs-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  padding: 26px 26px 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #08090a;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  transition: box-shadow 0.25s var(--ds-ease);
+}
+/* The faint dot grid inside each panel, strongest behind the demo. */
+.svs-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.09) 1px, transparent 1.2px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 48%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 55% at 50% 48%, #000 30%, transparent 100%);
+}
+/* One low warm light in the corner, brighter on hover. */
+.svs-panel::after {
+  content: '';
+  position: absolute;
+  right: -30%;
+  bottom: -30%;
+  width: 80%;
+  height: 60%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgb(188 111 64 / 0.16), transparent);
+  opacity: 0.6;
+  transition: opacity 0.35s var(--ds-ease);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .svs-panel:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.24), 0 0 0 4px rgb(188 111 64 / 0.08); }
+  .svs-panel:hover::after { opacity: 1; }
+  .svs-panel:hover .svs-link .ds-arrow { color: var(--ds-rust); transform: translateX(3px); }
+}
+
+.svs-top {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(38px, 3.6vw, 58px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+.svs-n { color: rgb(255 255 255 / 0.28); }
+.svs-word { color: var(--ds-fg); }
+
+.svs-demo {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 22px 0 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.svs-bar {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--ds-data);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+}
+.svs-bar > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--ds-fg-muted); }
+.svs-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.8); }
+.svs-foot {
+  margin: 0;
+  font-family: var(--ds-data);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Shared check mark. */
+.svs svg path[d^='M2.5'] { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* A demo's surface: rows on a slightly raised dark sheet. */
+.svs-q, .svs-r, .svs-v {
+  list-style: none;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 3px;
+  background: rgb(14 15 18 / 0.92);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.svs-q li, .svs-r li, .svs-v li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  font-size: 13px;
+  border-top: 1px solid rgb(255 255 255 / 0.06);
+}
+.svs-q li:first-child, .svs-r li:first-child, .svs-v li:first-child { border-top: 0; }
+
+/* Armed: qualification. */
+.svs-q-who { display: inline-flex; align-items: center; gap: 9px; flex: 1 1 auto; color: var(--ds-fg); }
+.svs-q-who i { width: 20px; height: 20px; border-radius: 2px; background: linear-gradient(160deg, #2a2c31, #15161a); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+.svs-q-state { position: relative; display: grid; justify-items: end; font-family: var(--ds-data); font-size: 11px; letter-spacing: 0.02em; }
+.svs-q-state > span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.svs-q-wait { color: var(--ds-fg-faint); opacity: 0; }
+.svs-q-ok { color: #d9dde2; }
+.svs-q-ok svg { width: 12px; height: 12px; color: var(--ds-rust); }
+
+/* Unarmed: patrol round. */
+.svs-r-box { width: 16px; height: 16px; flex: 0 0 auto; border-radius: 2px; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.22); color: #0b0b0c; background: var(--ds-rust); }
+.svs-r-box svg { width: 11px; height: 11px; }
+.svs-r-name { flex: 1 1 auto; color: var(--ds-fg); }
+.svs-r-name b { font-family: var(--ds-data); font-weight: 400; font-size: 11px; color: var(--ds-fg-faint); margin-right: 4px; }
+.svs-r-time { font-family: var(--ds-data); font-size: 11.5px; color: var(--ds-fg-muted); }
+
+/* Access: visitor log. */
+.svs-v { overflow: hidden; }
+.svs-v-time { font-family: var(--ds-data); font-size: 11.5px; color: var(--ds-fg-faint); width: 40px; }
+.svs-v-who { flex: 1 1 auto; color: var(--ds-fg); }
+.svs-v-tag {
+  font-family: var(--ds-data);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  padding: 3px 7px;
+  border-radius: 2px;
+  color: #cfe3d4;
+  background: rgb(84 160 110 / 0.14);
+  box-shadow: inset 0 0 0 1px rgb(84 160 110 / 0.3);
+}
+.svs-v-tag[data-kind='esc'] { color: #f0c9ad; background: rgb(188 111 64 / 0.14); box-shadow: inset 0 0 0 1px rgb(188 111 64 / 0.4); }
+.svs-v-tag[data-kind='no'] { color: #f2b8b0; background: rgb(196 80 66 / 0.14); box-shadow: inset 0 0 0 1px rgb(196 80 66 / 0.35); }
+
+/* SVG demos. */
+.svs-svg { display: block; width: 100%; height: auto; max-height: 100%; overflow: visible; }
+.svs-e-zone { fill: rgb(188 111 64 / 0.05); stroke: rgb(188 111 64 / 0.55); stroke-width: 1; stroke-dasharray: 4 4; }
+.svs-e-label, .svs-p-name, .svs-p-time { font-family: var(--ds-data); font-size: 8.5px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.svs-p-time { fill: #e9c3a6; font-size: 9px; }
+.svs-e-gate { fill: #0b0b0c; stroke: rgb(255 255 255 / 0.5); }
+.svs-e-path, .svs-p-route { fill: none; stroke: rgb(255 255 255 / 0.28); stroke-width: 1; stroke-dasharray: 2 5; stroke-linecap: round; }
+.svs-e-dest { fill: none; stroke: rgb(255 255 255 / 0.45); }
+.svs-e-esc { fill: var(--ds-fg); }
+.svs-e-vis { fill: none; stroke: var(--ds-rust); stroke-width: 1.5; }
+.svs-p-pin { fill: #0b0b0c; stroke: rgb(255 255 255 / 0.55); }
+.svs-p-car rect { fill: var(--ds-rust); filter: drop-shadow(0 0 5px rgb(188 111 64 / 0.9)); }
+.svs-e-sight i { width: 6px; height: 6px; border-radius: 1px; background: #6fbf8a; box-shadow: 0 0 8px rgb(111 191 138 / 0.8); }
+
+/* Relief: the week. */
+.svs-w { display: grid; grid-template-columns: 44px repeat(7, minmax(0, 1fr)); gap: 5px; align-items: center; }
+.svs-w-row { display: contents; }
+.svs-w-day, .svs-w-shift { font-family: var(--ds-data); font-size: 10px; letter-spacing: 0.05em; color: var(--ds-fg-faint); text-align: center; }
+.svs-w-shift { text-align: left; text-transform: uppercase; }
+.svs-w-cell { position: relative; height: 22px; border-radius: 2px; background: rgb(255 255 255 / 0.12); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+.svs-w-cell[data-hit='true'] { background: rgb(188 111 64 / 0.85); box-shadow: 0 0 14px rgb(188 111 64 / 0.6); }
+.svs-w-note { display: grid; }
+.svs-w-note > span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 7px; }
+.svs-w-out { color: #f2b8b0; opacity: 0; }
+.svs-w-in { color: #e9c3a6; }
+.svs-w-in svg { width: 12px; height: 12px; }
+
+/* The caption at the foot. */
+.svs-cap { display: grid; gap: 6px; }
+.svs-name { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: 21px; line-height: 1.15; letter-spacing: -0.02em; }
+.svs-link { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg); text-decoration: none; }
+/* The whole panel is the link's hit area. */
+.svs-link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.svs-link .ds-arrow { transition: transform 0.18s var(--ds-ease), color 0.18s var(--ds-ease); }
+.svs-link:focus-visible { outline: none; }
+.svs-panel:has(.svs-link:focus-visible) { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3), 0 0 0 2px var(--ds-rust); }
+.svs-line { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ds-fg-muted); }
+.svs-keys { margin: 4px 0 0; font-family: var(--ds-data); font-size: 11px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+
+.svs-count { display: none; }
+
+/* ---------------------------------------------------- Motion (armed, in view) */
+.svs[data-arm='true'] .svs-panel * { animation-play-state: paused; }
+.svs[data-arm='true'] .svs-panel[data-play='true'] * { animation-play-state: running; }
+
+/* Armed: each row waits, then reads qualified and current. */
+.svs[data-arm='true'] .svs-q-wait { animation: svs-q-wait 6s infinite; animation-delay: calc(var(--i) * 0.7s); }
+.svs[data-arm='true'] .svs-q-ok { animation: svs-q-ok 6s infinite; animation-delay: calc(var(--i) * 0.7s); }
+@keyframes svs-q-wait { 0%, 18% { opacity: 1; } 24%, 92% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes svs-q-ok { 0%, 18% { opacity: 0; transform: translateX(6px); } 26%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+
+/* Unarmed: checkpoints check off in turn. */
+.svs[data-arm='true'] .svs-r-box { animation: svs-r-box 7s infinite; animation-delay: calc(var(--i) * 0.9s); }
+.svs[data-arm='true'] .svs-r-time { animation: svs-r-time 7s infinite; animation-delay: calc(var(--i) * 0.9s); }
+@keyframes svs-r-box {
+  0%, 8% { background-color: transparent; color: transparent; }
+  12%, 86% { background-color: var(--ds-rust); color: #0b0b0c; }
+  100% { background-color: transparent; color: transparent; }
+}
+@keyframes svs-r-time { 0%, 8% { opacity: 0; } 14%, 86% { opacity: 1; } 100% { opacity: 0; } }
+
+/* Access: rows slide in from the top, one after another. */
+.svs[data-arm='true'] .svs-v li { animation: svs-v-in 7s infinite; animation-delay: calc(var(--i) * 0.8s); }
+@keyframes svs-v-in {
+  0%, 4% { opacity: 0; transform: translateY(-10px); }
+  10%, 88% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: none; }
+}
+
+/* Relief: Thursday night empties, then fills from on-call. */
+.svs[data-arm='true'] .svs-w-cell[data-hit='true'] { animation: svs-w-hit 6s infinite; }
+.svs[data-arm='true'] .svs-w-out { animation: svs-w-out 6s infinite; }
+.svs[data-arm='true'] .svs-w-in { animation: svs-w-in 6s infinite; }
+@keyframes svs-w-hit {
+  0%, 20% { background-color: rgb(255 255 255 / 0.12); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+  26%, 50% { background-color: transparent; box-shadow: inset 0 0 0 1px rgb(196 80 66 / 0.8); }
+  58%, 92% { background-color: rgb(188 111 64 / 0.85); box-shadow: 0 0 14px rgb(188 111 64 / 0.6); }
+  100% { background-color: rgb(255 255 255 / 0.12); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
+}
+@keyframes svs-w-out { 0%, 22% { opacity: 0; } 28%, 50% { opacity: 1; } 56%, 100% { opacity: 0; } }
+@keyframes svs-w-in { 0%, 54% { opacity: 0; } 60%, 92% { opacity: 1; } 100% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .svs * { animation: none !important; }
+}
+
+/* ---------------------------------------------------- Layouts */
+@media (max-width: 1199px) {
+  .svs-panel { padding: 22px 20px 20px; }
+  .svs-name { font-size: 19px; }
+}
+@media (max-width: 1023px) {
+  .svs-title, .svs-lead { grid-column: 1 / -1; }
+  .svs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Phones: one swipe row with a counter. */
+@media (max-width: 767px) {
+  .svs-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+    scroll-padding-inline: var(--ds-edge);
+  }
+  .svs-grid::-webkit-scrollbar { display: none; }
+  .svs-panel { flex: 0 0 82vw; aspect-ratio: auto; min-height: 520px; scroll-snap-align: center; }
+  .svs-top { font-size: 44px; }
+  .svs-count {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin: 16px 0 0;
+    font-size: 13px;
+    color: var(--ds-fg-faint);
+  }
+  .svs-count b { font-weight: 400; color: var(--ds-fg); }
+  .svs-count span { margin-left: auto; font-size: 11px; letter-spacing: 0.04em; }
+}

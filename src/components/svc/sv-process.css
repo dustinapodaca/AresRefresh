@@ -1,0 +1,262 @@
+/* 03 Process, the workflow canvas (home-flora, 2026-10-22). The stacked list is the default; the
+   panning canvas switches on at 1024px and up once the scroll engine runs. */
+
+.sv-pr { position: relative; padding-top: clamp(96px, 13vw, 184px); }
+.sv-pr-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 22px;
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.sv-pr-title { grid-column: 1 / span 7; }
+.sv-pr-intro { grid-column: 9 / span 4; margin: 0; font-size: 17px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 42ch; }
+
+/* Node pieces, shared by both layouts. */
+.sv-pr-bar {
+  margin: 0 0 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-family: var(--ds-data);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+}
+.sv-pr-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg-muted); }
+.sv-pr-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
+.sv-pr-card {
+  position: relative;
+  padding: 22px 22px 24px;
+  border-radius: 4px;
+  background: rgb(10 11 13 / 0.94);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), 0 18px 40px rgb(0 0 0 / 0.45);
+}
+.sv-pr-name {
+  margin: 0 0 12px;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(26px, 2.3vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ds-fg);
+}
+.sv-pr-body { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); }
+.sv-pr-syslist {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+.sv-pr-syslist li {
+  position: relative;
+  padding-left: 14px;
+  font-family: var(--ds-data);
+  font-size: 11.5px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--ds-fg-muted);
+}
+.sv-pr-syslist li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; border-radius: 1px; background: rgb(255 255 255 / 0.32); }
+
+.sv-pr-handoff {
+  margin: clamp(40px, 5vw, 72px) 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ds-fg);
+}
+
+/* ------------------------------------------------ The stacked default */
+.sv-pr-grid, .sv-pr-wires, .sv-pr-phase, .sv-pr-sats { display: none; }
+.sv-pr-view { padding-inline: var(--ds-edge); }
+.sv-pr-stages {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 30px;
+  position: relative;
+  display: grid;
+  gap: 26px;
+}
+/* The rust wire down the left, with a square stop at each node. */
+.sv-pr-stages::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, rgb(188 111 64 / 0.9), rgb(188 111 64 / 0.35));
+  box-shadow: 0 0 8px rgb(188 111 64 / 0.4);
+}
+.sv-pr-node { position: relative; }
+.sv-pr-node::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 1px;
+  background: #000;
+  box-shadow: inset 0 0 0 1px var(--ds-rust), 0 0 10px rgb(188 111 64 / 0.6);
+}
+
+/* Desktop without the engine: the four as a row. */
+@media (min-width: 1024px) {
+  .sv-pr-stages { padding: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .sv-pr-stages::before, .sv-pr-node::before { display: none; }
+  .sv-pr-syslist { grid-template-columns: 1fr; }
+}
+@media (max-width: 1023px) {
+  .sv-pr-title, .sv-pr-intro { grid-column: 1 / -1; }
+  .sv-pr-handoff { padding-left: calc(var(--ds-edge) + 30px); }
+}
+@media (max-width: 599px) {
+  .sv-pr-card { padding: 18px 18px 20px; }
+  .sv-pr-syslist { gap: 8px 12px; }
+  .sv-pr-handoff { font-size: 18px; }
+}
+
+/* ------------------------------------------------ The canvas (desktop, with motion) */
+@media (min-width: 1024px) {
+  html[data-nx-motion='on'] .sv-pr-view {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+  }
+  html[data-nx-motion='on'] .sv-pr-track {
+    /* Lead-in so stage 01 starts well inside the window, and a tail long enough for stage 04 to
+       reach the arrival line before the pin lets go. */
+    --pad: max(var(--ds-edge), 14vw);
+    --tail: 26vw;
+    position: absolute;
+    left: 0;
+    top: var(--ds-header);
+    height: calc(100% - var(--ds-header));
+    width: calc(var(--pad) + 1930px + var(--node-w) + var(--tail));
+    will-change: transform;
+  }
+  html[data-nx-motion='on'] .sv-pr-grid {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgb(255 255 255 / 0.11) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  html[data-nx-motion='on'] .sv-pr-wires {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  html[data-nx-motion='on'] .sv-pr-wires path { fill: none; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+  html[data-nx-motion='on'] .sv-pr-wires path[data-main] { stroke: rgb(255 255 255 / 0.3); stroke-width: 1.2; }
+  html[data-nx-motion='on'] .sv-pr-wires path[data-sat] { stroke: rgb(255 255 255 / 0.2); stroke-width: 1; }
+  html[data-nx-motion='on'] .sv-pr-wires path[data-light] {
+    stroke: var(--ds-rust);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 34 1000;
+    stroke-dashoffset: 34;
+    filter: drop-shadow(0 0 4px rgb(188 111 64 / 0.9));
+    opacity: 0;
+  }
+  html[data-nx-motion='on'] .sv-pr-wires path[data-light][data-on='true'] {
+    animation: sv-pr-light 2.6s linear infinite;
+    animation-delay: calc(var(--i) * 0.4s);
+  }
+
+  html[data-nx-motion='on'] .sv-pr-phase {
+    display: block;
+    position: absolute;
+    left: calc(var(--pad) + var(--x));
+    top: var(--y);
+    margin: 0;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ds-fg-faint);
+    opacity: 0.45;
+    transition: opacity 0.5s var(--ds-ease);
+  }
+  html[data-nx-motion='on'] .sv-pr-phase::before { content: '/ '; color: var(--ds-rust); }
+  html[data-nx-motion='on'] .sv-pr-phase[data-lit='true'] { opacity: 1; }
+
+  html[data-nx-motion='on'] .sv-pr-stages { display: block; padding: 0; position: static; }
+  html[data-nx-motion='on'] .sv-pr-node {
+    position: absolute;
+    left: calc(var(--pad) + var(--x));
+    top: var(--y);
+    width: var(--node-w);
+    opacity: 0.42;
+    transform: translateY(10px);
+    transition: opacity 0.6s var(--ds-ease), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  html[data-nx-motion='on'] .sv-pr-node[data-lit='true'] { opacity: 1; transform: none; }
+  html[data-nx-motion='on'] .sv-pr-node[data-lit='true'] .sv-pr-card {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), 0 18px 40px rgb(0 0 0 / 0.5), 0 0 0 5px rgb(188 111 64 / 0.07);
+  }
+  /* The satellites carry the systems on the canvas; the in-card list is for readers only here. */
+  html[data-nx-motion='on'] .sv-pr-syslist {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  html[data-nx-motion='on'] .sv-pr-sats { display: block; list-style: none; margin: 0; padding: 0; }
+  html[data-nx-motion='on'] .sv-pr-sat {
+    position: absolute;
+    left: calc(var(--pad) + var(--x));
+    top: var(--y);
+    width: var(--sat-w);
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px 12px;
+    border-radius: 4px;
+    background: rgb(10 11 13 / 0.94);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.09);
+    opacity: 0.28;
+    transform: translateY(8px) scale(0.97);
+    transition: opacity 0.5s var(--ds-ease), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s var(--ds-ease);
+  }
+  html[data-nx-motion='on'] .sv-pr-sat[data-lit='true'] { opacity: 1; transform: none; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14); }
+  html[data-nx-motion='on'] .sv-pr-sat[data-lit='true'] .sv-pr-sat-bar::before { background: var(--ds-rust); }
+  html[data-nx-motion='on'] .sv-pr-sat-bar {
+    font-family: var(--ds-data);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ds-fg-faint);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  html[data-nx-motion='on'] .sv-pr-sat-bar::before { content: ''; width: 5px; height: 5px; border-radius: 1px; background: rgb(255 255 255 / 0.4); }
+  html[data-nx-motion='on'] .sv-pr-sat-name { font-size: 14px; line-height: 1.3; color: var(--ds-fg); }
+}
+
+@keyframes sv-pr-light {
+  0% { stroke-dashoffset: 34; opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { stroke-dashoffset: -1000; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-pr-wires path[data-light] { animation: none !important; }
+}

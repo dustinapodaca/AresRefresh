@@ -1,32 +1,36 @@
+import { useEffect } from 'react';
 import Seo from '../seo/Seo';
-import DocRail from '../components/home/DocRail';
-import Opening from '../components/services/Opening';
-import Divisions from '../components/services/Divisions';
-import Process from '../components/services/Process';
-import { Capabilities } from '../components/capability/Sections';
-import Relief from '../components/services/Relief';
-import Areas from '../components/services/Areas';
-import { SERVICE_MARKS } from '../components/services/data';
+import SvHero from '../components/svc/SvHero';
+import SvServices from '../components/svc/SvServices';
+import SvIndustries from '../components/svc/SvIndustries';
+import SvProcess from '../components/svc/SvProcess';
+import SvRelief from '../components/svc/SvRelief';
+import SvClose from '../components/svc/SvClose';
+import { destroyEngine, loadEngine } from '../components/home/engine';
+import '../components/home/home.css';
+import '../components/svc/svc.css';
 
-// Services: "The Schedule" (docs/services-concepts.md, Concept A). Design authority:
-// DESIGN.md. Content source: docs/services-content.md. Copy changes: docs/copy-changes.md.
+// Services in flora.ai's language (home-flora bundle 3, 2026-10-22; trying it at /services,
+// owner 2026-10-23, uncommitted: the page before it is tag safe-2026-10-23-931e70d). Studied from
+// FLORA on Mobbin: the hero canvas of labeled nodes joined by wires, the numbered panels with a
+// working piece of the product inside each, the card rows, the workflow canvas, the cursors, and
+// the one-line close. Ares's content only (the six services, the six industries, the four stages,
+// the relief schedule, the three cities), on the Home's scroll engine. The industries section
+// keeps the old page's #divisions and the close #areas, so links from other pages still land.
 export default function Services() {
+  useEffect(() => {
+    loadEngine();
+    return () => destroyEngine();
+  }, []);
   return (
-    <main id="main" tabIndex={-1} className="ds ds-page ds-svc">
+    <main id="main" tabIndex={-1} className="ds nx sv">
       <Seo path="/services" />
-      <Opening />
-      <div className="ds-container ds-doc">
-        <div className="ds-doc-body">
-          {/* The six services first (owner, 2026-10-18, web audit): the Capability Statement's
-              cards, which replace the "By role." list; the industries follow. */}
-          <Capabilities onServices />
-          <Divisions />
-          <Process />
-          <Relief />
-          <Areas />
-        </div>
-        <DocRail marks={SERVICE_MARKS} variant="dock" />
-      </div>
+      <SvHero />
+      <SvServices />
+      <SvIndustries />
+      <SvProcess />
+      <SvRelief />
+      <SvClose />
     </main>
   );
 }
