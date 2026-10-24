@@ -1104,3 +1104,10 @@ as the company. Heading and letter layout unchanged (story muted, last line in i
 - Then (owner, same day) the 2026 line is shorter, so it wraps less on desktop (6 lines at 1440, now
   4): "Denver M/WBE and SBE · Colorado Verified" (was "... · Colorado Verified Diverse and Small
   Business").
+
+## Capability Statement, Why Ares (owner, 2026-10-23; the "company card" page from the home-flora (4) bundle)
+- The second figure reads "4-stage deployment" on two lines on desktop (was "4 stages"), so it sits
+  beside "Restricted areas", also on two lines; phones keep "4 stages".
+- Its source line names the stages: "Audit · Compliance · Training · Deployment · Trained on post by
+  leadership" (was "Trained on post by leadership"), so it carries as much as the restricted-area
+  card's. The shared data (`DIFFERENTIATORS` in `capability/data.ts`) is unchanged.

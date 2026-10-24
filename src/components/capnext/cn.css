@@ -1,0 +1,527 @@
+/* The Capability Statement (from the bundle's /capability-next, third start (home-flora, 2026-10-23): "The company card." The hero is the
+   Denver photo with the company's identifiers set as a credential card in glass; below, a document:
+   a sticky rail (a small copy of the card, the index, the PDF) beside a reading column of large
+   headlines and hairline ledgers. Quiet motion: the card's tilt, one fade-up per block. */
+
+.cx { --cx-edge: rgb(255 255 255 / 0.1); --cx-edge-2: rgb(255 255 255 / 0.16); --cx-ok: #4fd18b; color: var(--ds-fg); }
+.cx-title, .cx-h2, .cx-why-title, .cx-caps-title, .cc-legal { color: var(--ds-fg); }
+.cx[data-rv-arm='true'] [data-rv] { opacity: 0; transform: translateY(14px); }
+.cx[data-rv-arm='true'] [data-rv][data-in='true'] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ds-ease), transform 0.75s var(--ds-ease);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* ------------------------------------------------------------------ Hero */
+.cx-hero {
+  position: relative;
+  min-height: max(100svh, 760px);
+  display: flex;
+  align-items: center;
+  padding: calc(var(--ds-header) + 48px) var(--ds-edge) 96px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cx-hero-photo { position: absolute; inset: 0; z-index: -1; }
+.cx-hero-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 58%; filter: saturate(0.95) brightness(0.72) contrast(1.05); }
+/* Dark from the left (the copy) and into the page at the foot; the sky stays lit behind the card. */
+.cx-hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.86) 0%, rgb(0 0 0 / 0.55) 38%, rgb(0 0 0 / 0.1) 70%, rgb(0 0 0 / 0.25) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 22%, rgb(0 0 0 / 0) 62%, #000 100%);
+}
+.cx-hero-grid {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.cx-title {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(52px, 7.4vw, 124px);
+  line-height: 0.9;
+  letter-spacing: -0.058em;
+}
+.cx-lead { margin: 28px 0 0; max-width: 44ch; font-size: 18px; line-height: 1.55; color: #c4c8ce; }
+.cx-actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+.cx-spec { margin: 28px 0 0; font-size: 12px; letter-spacing: 0.04em; color: rgb(255 255 255 / 0.5); }
+
+/* ------------------------------------------------------------- The card */
+.cc-stage { perspective: 1400px; }
+.cc {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  aspect-ratio: 85.6 / 53.98; /* CR80, the size of a badge */
+  width: 100%;
+  padding: clamp(18px, 2.2vw, 28px);
+  border-radius: 4px; /* the site's card corners: a business card, not a badge (owner, 2026-10-23) */
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: clamp(10px, 1.4vw, 16px);
+  /* No glow (owner, 2026-10-23: the rust corner light and the cursor sheen were removed). */
+  background: linear-gradient(150deg, rgb(28 30 34 / 0.72), rgb(10 11 13 / 0.78));
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  backdrop-filter: blur(22px) saturate(1.3);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.16),
+    inset 0 1px 0 rgb(255 255 255 / 0.22),
+    0 40px 90px rgb(0 0 0 / 0.55),
+    0 10px 24px rgb(0 0 0 / 0.35);
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+.cc > * { position: relative; }
+.cc-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.cc-logo { display: inline-flex; align-items: center; gap: 12px; }
+.cc-mark {
+  display: inline-block;
+  width: 26px;
+  aspect-ratio: 407.7 / 425.9;
+  background: var(--ds-fg);
+  -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
+  mask: url(/ares-logo.svg) center / contain no-repeat;
+}
+.cc-word {
+  display: inline-block;
+  width: 84px;
+  height: 22px;
+  background: var(--ds-fg);
+  -webkit-mask: url(/images/ares-text.svg) left center / contain no-repeat;
+  mask: url(/images/ares-text.svg) left center / contain no-repeat;
+}
+.cc-kind { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.55); }
+.cc-legal { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(22px, 2.2vw, 30px); line-height: 1; letter-spacing: -0.03em; }
+.cc-sub { margin: 6px 0 0; font-size: 12.5px; color: rgb(238 240 242 / 0.7); }
+.cc-fields { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 18px; align-content: end; }
+.cc-field[data-wide] { grid-column: span 2; }
+.cc-field dt { font-family: var(--ds-data); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
+.cc-field dd { margin: 3px 0 0; display: flex; align-items: center; gap: 4px; min-width: 0; }
+.cc-field dd .ds-data { font-size: clamp(12.5px, 1.1vw, 14.5px); color: var(--ds-fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cc-field dd .ds-data[data-live]::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.8); vertical-align: 1px; }
+.cc .ds-copy { width: 22px; height: 22px; flex: 0 0 auto; }
+.cc-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.12); }
+/* A contact chip, drawn: the one warm metal on the card. */
+.cc-chip {
+  width: 36px;
+  height: 27px;
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, transparent 32%, rgb(0 0 0 / 0.25) 32% 34%, transparent 34% 66%, rgb(0 0 0 / 0.25) 66% 68%, transparent 68%),
+    linear-gradient(0deg, transparent 46%, rgb(0 0 0 / 0.25) 46% 54%, transparent 54%),
+    linear-gradient(135deg, #e9b27f, #bc6f40 55%, #8b4920);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+}
+.cc-certs { font-size: 11px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }
+
+@media (max-width: 1023px) {
+  .cx-hero { min-height: 0; padding-bottom: 72px; }
+  .cx-hero-grid { grid-template-columns: 1fr; }
+  .cx-hero-photo::after { background: linear-gradient(180deg, rgb(0 0 0 / 0.75) 0%, rgb(0 0 0 / 0.45) 40%, rgb(0 0 0 / 0.6) 75%, #000 100%); }
+  .cc-stage { max-width: 560px; }
+}
+@media (max-width: 599px) {
+  .cx-title { font-size: clamp(46px, 13vw, 64px); }
+  .cx-lead { font-size: 16px; }
+  /* On a phone the card can't hold six fields at badge size: it grows taller. */
+  .cc { aspect-ratio: auto; }
+  .cc-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cc-kind { display: none; }
+}
+
+/* ------------------------------------------------------- Document layout */
+.cx-doc {
+  /* The site container: 1280px of content between the same edges as the nav (it also took the
+     full-screen edge as padding, which squeezed it on wide screens; owner, 2026-10-23). */
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: 0 var(--ds-gutter);
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.cx-rail { position: sticky; top: calc(var(--ds-header) + 32px); display: grid; gap: 22px; padding-top: clamp(80px, 9vw, 128px); }
+.cc-compact {
+  aspect-ratio: auto;
+  border-radius: 4px;
+  padding: 16px 16px 14px;
+  gap: 14px;
+  grid-template-rows: auto auto;
+  transform: none;
+  background: linear-gradient(150deg, rgb(22 24 28), rgb(10 11 13));
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.cc-compact .cc-top { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); }
+.cc-compact .cc-mark { width: 16px; }
+.cc-compact .cc-fields { grid-template-columns: 1fr; gap: 0; }
+.cc-compact .cc-field { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid rgb(255 255 255 / 0.08); }
+.cc-compact .cc-field dd { margin: 0; }
+.cc-compact .cc-field dd .ds-data { font-size: 13px; }
+.cx-index { display: grid; gap: 2px; }
+.cx-index a {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: var(--ds-fg-faint);
+  text-decoration: none;
+  transition: color 0.18s, background-color 0.18s;
+}
+.cx-index a .ds-data { font-size: 11.5px; color: var(--ds-rule-strong); transition: color 0.18s; }
+.cx-index a:hover { color: var(--ds-fg); }
+.cx-index a[data-on='true'] { color: var(--ds-fg); background: rgb(255 255 255 / 0.04); box-shadow: inset 2px 0 0 var(--ds-rust); }
+.cx-index a[data-on='true'] .ds-data { color: var(--ds-rust); }
+.cx-rail-pdf { width: 100%; }
+
+@media (max-width: 1099px) {
+  .cx-doc { grid-template-columns: minmax(0, 1fr); gap: 0; } /* minmax: the phone swipe row must not widen the column */
+  .cx-rail { display: none; }
+}
+
+/* ------------------------------------------------------------- Sections */
+.cx-sec { padding-top: clamp(80px, 9vw, 128px); scroll-margin-top: calc(var(--ds-header) + 24px); }
+/* The page ends on Codes and certifications (the Download section was removed, owner 2026-10-23).
+   The space before the footer sits outside the document, so the sticky rail lets go and rides up
+   with the page once its foot meets the end of the last section (owner). */
+main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin on .cx-doc: a margin leaked past the page's black */
+.cx-head { margin-bottom: clamp(32px, 4vw, 48px); }
+.cx-n { margin: 0 0 16px; font-size: 12px; color: var(--ds-rust); }
+.cx-n span { color: var(--ds-fg-faint); }
+.cx-h2 {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--ds-fg);
+  text-wrap: balance;
+}
+.cx-head-lead { margin: 18px 0 0; max-width: 54ch; font-size: 18px; line-height: 1.55; color: var(--ds-fg-muted); }
+.cx-sub { margin: 0 0 12px; font-weight: 400; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
+
+/* 01 Core competencies: a typographic list, each service a row. */
+.cx-caps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--cx-edge-2); }
+.cx-caps > li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  padding: 26px 0 28px;
+  border-bottom: 1px solid var(--cx-edge);
+}
+.cx-caps-n { padding-top: 8px; font-size: 12px; color: var(--ds-fg-faint); }
+.cx-caps-title { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.08; letter-spacing: -0.03em; }
+.cx-caps-title a { display: inline-flex; align-items: baseline; gap: 10px; color: var(--ds-fg); text-decoration: none; }
+.cx-caps-title a .ds-arrow { transition: transform 0.18s var(--ds-ease), color 0.18s; }
+.cx-caps-title a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+.cx-caps-line { margin: 10px 0 0; max-width: 44ch; font-size: 15.5px; line-height: 1.5; color: var(--ds-fg-muted); }
+.cx-caps-inc { list-style: none; margin: 0; padding: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px; align-content: start; }
+.cx-caps-inc li {
+  padding: 5px 9px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--cx-edge);
+  font-family: var(--ds-data);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--ds-fg-muted);
+}
+@media (max-width: 767px) {
+  .cx-caps > li { grid-template-columns: 32px minmax(0, 1fr); gap: 8px 14px; }
+  .cx-caps-inc { grid-column: 2; }
+}
+
+/* 02 Why Ares: two by two, the evidence first as a large figure. */
+.cx-why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--cx-edge); border: 1px solid var(--cx-edge); border-radius: 4px; overflow: hidden; }
+.cx-why > li { display: grid; grid-template-rows: auto auto 1fr auto; padding: 30px 30px 26px; background: var(--ds-canvas); }
+/* The grid's hairlines are its grey background showing through 1px gaps, so a fading card showed
+   grey: the cards stay solid black and their contents rise in instead (owner, 2026-10-23). */
+.cx[data-rv-arm='true'] .cx-why > li[data-rv] { opacity: 1; transform: none; }
+.cx[data-rv-arm='true'] .cx-why > li[data-rv] > * { opacity: 0; transform: translateY(14px); }
+.cx[data-rv-arm='true'] .cx-why > li[data-rv][data-in='true'] > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ds-ease), transform 0.75s var(--ds-ease);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.cx-why-fig {
+  margin: 0 0 22px;
+  font-family: var(--ds-data);
+  font-size: clamp(36px, 3.8vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ds-fg);
+  background: linear-gradient(180deg, #fff, #9aa0a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Room under the last line so descenders (the g of "stages") stay inside the clipped fill. */
+  padding-bottom: 0.14em;
+  margin-bottom: calc(22px - 0.14em);
+}
+/* Desktop: each word group on its own line, so the first two figures are both two lines. */
+.cx-why-fig-full > span { display: block; }
+.cx-why-fig-short { display: none; }
+@media (max-width: 767px) {
+  .cx-why-fig-full > span { display: inline; }
+  .cx-why-fig:has(.cx-why-fig-short) .cx-why-fig-full { display: none; }
+  .cx-why-fig-short { display: inline; }
+}
+.cx-why-title { margin: 0 0 10px; font-family: var(--ds-display); font-weight: 600; font-size: 21px; line-height: 1.15; letter-spacing: -0.02em; }
+.cx-why-body { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); }
+.cx-why-src { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--cx-edge); font-size: 11.5px; letter-spacing: 0.02em; color: var(--ds-fg); }
+.cx-why-src > span:first-child { color: var(--ds-fg-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+.cx-why-src a { display: inline-flex; gap: 5px; align-items: center; color: inherit; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 3px; }
+@media (max-width: 767px) {
+  .cx-why { grid-template-columns: 1fr; }
+  .cx-why > li { padding: 24px 20px; }
+  /* Phones: a swipe row (owner, 2026-10-23), each card with its own edge, the next one peeking, and
+     the site's swipe meter under it (a scroll timeline, as on the earlier page). */
+  .cx-why {
+    display: flex;
+    gap: 12px;
+    margin-inline: calc(-1 * var(--ds-gutter));
+    padding: 0 var(--ds-gutter);
+    scroll-padding-inline: var(--ds-gutter);
+    background: none;
+    border: 0;
+    border-radius: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .cx-why::-webkit-scrollbar { display: none; }
+  .cx-why > li { flex: 0 0 86%; scroll-snap-align: start; border: 1px solid var(--cx-edge); border-radius: 4px; }
+  /* The Home industry deck's controls (nx-ind-deck.css), drawn here so this page doesn't load Swiper. */
+  .cx-why-ctl { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .cx-why-count { margin: 0; font-size: 13px; color: var(--ds-fg-faint); min-width: 64px; }
+  .cx-why-count b { font-weight: 400; color: var(--ds-fg); }
+  .cx-why-meter { display: flex; gap: 5px; flex: 1 1 auto; }
+  .cx-why-seg { flex: 1 1 0; height: 20px; padding: 9px 0; border: 0; background: none; cursor: pointer; }
+  .cx-why-seg i { display: block; position: relative; height: 2px; overflow: hidden; background: rgb(255 255 255 / 0.16); }
+  .cx-why-seg i::after { content: ''; position: absolute; inset: 0; background: var(--ds-fg); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ds-ease), background-color 0.3s; }
+  .cx-why-seg[data-past='true'] i::after { transform: scaleX(1); background: rgb(255 255 255 / 0.5); }
+  .cx-why-seg[data-on='true'] i::after { transform: scaleX(1); background: var(--ds-rust); }
+  .cx-why-arrows { display: flex; gap: 8px; }
+  .cx-why-arrow { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: 2px; border: 1px solid rgb(255 255 255 / 0.16); background: rgb(0 0 0 / 0.35); color: var(--ds-fg); cursor: pointer; transition: border-color 0.18s var(--ds-ease), opacity 0.18s; }
+  .cx-why-arrow:first-child svg { transform: rotate(180deg); }
+  .cx-why-arrow:disabled { opacity: 0.35; cursor: default; }
+  .cx-why-arrow:not(:disabled):active { transform: scale(0.96); }
+  .cx-why-hint { margin: 14px 0 0; font-size: 11.5px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+}
+@media (min-width: 768px) { .cx-why-ctl, .cx-why-hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .cx-why-seg i::after { transition: none; } }
+
+/* Ledgers: hairline rows, label left, value in mono, a note where there is one. */
+.cx-ledger { margin: 0; border-top: 1px solid var(--cx-edge-2); }
+.cx-ledger-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.9fr); gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--cx-edge); }
+.cx-ledger-row dt { font-size: 16px; color: var(--ds-fg); display: flex; align-items: center; gap: 12px; }
+/* More room between a mark and its label (owner, 2026-10-23). */
+.cx-ledger-ids .cx-ledger-row dt { gap: 32px; }
+.cx-ledger-row dd { margin: 0; font-size: 15px; color: var(--ds-fg-muted); }
+.cx-ledger-term { color: var(--ds-fg) !important; font-size: 13.5px !important; }
+.cx-ledger-2 .cx-ledger-row { grid-template-columns: 200px minmax(0, 1fr); }
+.cx-ledger-2 .cx-ledger-row dd { color: var(--ds-fg); }
+@media (max-width: 767px) {
+  .cx-ledger-row, .cx-ledger-2 .cx-ledger-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* 03 Past performance. */
+.cx-past-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: end; margin-bottom: 36px; }
+.cx-past-fig { margin: 0; display: grid; gap: 8px; }
+.cx-past-num { font-size: clamp(56px, 7vw, 104px); line-height: 0.9; letter-spacing: -0.03em; color: var(--ds-fg); }
+.cx-past-cap { font-family: var(--ds-data); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
+.cx-past-lead { margin: 0; max-width: 46ch; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
+@media (max-width: 767px) { .cx-past-top { grid-template-columns: 1fr; } }
+
+/* 04 How to buy: the GSA number set large, its terms as a ledger; the other paths as status rows. */
+.cx-gsa {
+  position: relative;
+  margin-bottom: 44px;
+  padding: 28px 30px 30px;
+  border-radius: 4px;
+  background: radial-gradient(90% 120% at 100% 0%, rgb(188 111 64 / 0.14), transparent 55%), #08090b;
+  box-shadow: inset 0 0 0 1px var(--cx-edge-2);
+}
+.cx-gsa-label { display: flex; justify-content: space-between; align-items: center; margin: 0; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-muted); }
+.cx-gsa-number { display: flex; align-items: center; gap: 10px; margin: 18px 0 26px; font-size: clamp(30px, 4.2vw, 56px); line-height: 1; color: var(--ds-fg); }
+.cx-gsa-number .ds-data { letter-spacing: -0.01em; }
+.cx-gsa .cx-ledger { margin-bottom: 22px; }
+.cx-status { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; text-transform: none; letter-spacing: 0.02em; color: var(--ds-fg); }
+.cx-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.7); }
+.cx-status[data-state='request'] { color: var(--ds-fg-muted); }
+.cx-status[data-state='request'] i { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ds-fg-faint); }
+.cx-paths { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--cx-edge-2); }
+.cx-paths li { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--cx-edge); }
+.cx-path { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; color: var(--ds-fg); text-decoration: none; }
+a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 5px; }
+.cx-note { margin: 18px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--ds-fg-muted); }
+.cx-note strong { color: var(--ds-fg); font-weight: 500; }
+
+/* 05 Codes and certifications: three ledgers, the marks inline. */
+.cx-group + .cx-group { margin-top: 44px; }
+.cx-ledger-ids .cx-ledger-row { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; }
+.cx-id { display: inline-flex; align-items: center; gap: 6px; color: var(--ds-fg) !important; font-size: 15px; }
+.cx-id [data-live]::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.7); vertical-align: 1px; }
+.cx-id-note { font-size: 13px !important; line-height: 1.45; }
+/* The marks as white silhouettes on the black, as on the earlier page; the square GSA mark keeps its
+   own colors (owner, 2026-10-23: no white tiles). */
+.cx-mark { flex: 0 0 auto; width: 56px; display: grid; place-items: center start; }
+.cx-mark img { display: block; max-width: 56px; max-height: 46px; width: auto; height: auto; filter: grayscale(1) brightness(0) invert(1); opacity: 0.85; }
+.cx-mark img[data-color] { filter: none; opacity: 1; max-width: 40px; max-height: 40px; } /* the square GSA mark, a tad smaller (owner) */
+@media (max-width: 767px) {
+  .cx-ledger-ids .cx-ledger-row { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------- Phones and tablets (owner, 2026-10-23) */
+.cx-mbar { display: none; }
+@media (max-width: 1099px) {
+  .cx-mbar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--ds-header);
+    z-index: 40;
+    background: rgb(0 0 0 / 0.86);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+    border-bottom: 1px solid var(--cx-edge);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.32s var(--ds-ease), opacity 0.2s;
+    pointer-events: none;
+  }
+  .cx-mbar[data-show='true'] { transform: none; opacity: 1; pointer-events: auto; }
+  .cx-mbar-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px var(--ds-edge) 6px; }
+  .cx-mbar-sec {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ds-fg);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .cx-mbar-sec .ds-data { font-size: 12px; color: var(--ds-rust); }
+  .cx-mbar-sec svg { color: var(--ds-fg-faint); transition: transform 0.2s var(--ds-ease); }
+  .cx-mbar[data-open='true'] .cx-mbar-sec svg { transform: rotate(180deg); }
+  .cx-mbar-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background: var(--ds-fg);
+    color: var(--ds-canvas);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .cx-mbar-ids {
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--ds-edge) 8px;
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+  .cx-mbar-ids::-webkit-scrollbar { display: none; }
+  .cx-mbar-ids li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .cx-mbar-l { font-family: var(--ds-data); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ds-fg-faint); }
+  .cx-mbar-ids .ds-data { font-size: 13px; color: var(--ds-fg); }
+  .cx-mbar-ids li:last-child { padding-right: 24px; }
+  .cx-mbar .ds-copy { width: 30px; height: 30px; }
+  .cx-mbar-menu {
+    display: grid;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 var(--ds-edge);
+    transition: max-height 0.3s var(--ds-ease), padding 0.3s var(--ds-ease);
+  }
+  .cx-mbar[data-open='true'] .cx-mbar-menu { max-height: 340px; padding: 4px var(--ds-edge) 12px; border-top: 1px solid var(--cx-edge); }
+  .cx-mbar-menu a { display: flex; gap: 12px; align-items: baseline; min-height: 44px; align-items: center; font-size: 15px; color: var(--ds-fg-muted); text-decoration: none; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
+  .cx-mbar-menu a:last-child { border-bottom: 0; }
+  .cx-mbar-menu a .ds-data { font-size: 12px; color: var(--ds-fg-faint); }
+  .cx-mbar-menu a[data-on='true'] { color: var(--ds-fg); }
+  .cx-mbar-menu a[data-on='true'] .ds-data { color: var(--ds-rust); }
+  /* Section anchors land below the nav and the bar. */
+  .cx-sec { scroll-margin-top: calc(var(--ds-header) + 92px); }
+}
+
+@media (max-width: 767px) {
+  /* Hero: tighter, the two actions side by side, so the card starts on the first screen. */
+  /* Room for the photo above the headline, closer to the earlier page (owner, 2026-10-23; was 28px). */
+  .cx-hero { padding: calc(var(--ds-header) + clamp(140px, 24svh, 220px)) var(--ds-edge) 56px; }
+  .cx-hero-grid { gap: 28px; }
+  .cx-lead { margin-top: 18px; font-size: 16px; }
+  .cx-actions { margin-top: 22px; gap: 14px 20px; }
+  .cx-actions .ds-btn { height: 46px; padding: 0 18px; }
+  .cx-spec { display: none; }
+
+  /* Sections. */
+  .cx-sec { padding-top: 72px; }
+  .cx-h2 { font-size: clamp(36px, 10.4vw, 48px); }
+  .cx-head-lead { font-size: 16px; }
+
+  /* Competencies: what each includes as one quiet line instead of a stack of tags. */
+  .cx-caps > li { padding: 20px 0 22px; }
+  .cx-caps-title { font-size: 23px; }
+  .cx-caps-line { font-size: 15px; }
+  /* Streamlined on phones (owner, 2026-10-23): no list of what each includes; the service page has it. */
+  .cx-caps-inc { display: none; }
+
+  /* Why: the figures a size down. */
+  .cx-why-fig { font-size: clamp(30px, 9vw, 40px); margin-bottom: 16px; }
+
+  /* Past performance. */
+  .cx-past-num { font-size: clamp(52px, 16vw, 72px); }
+  .cx-past-top { gap: 18px; margin-bottom: 28px; }
+
+  /* How to buy: the number still large, on one line. */
+  .cx-gsa { padding: 22px 18px 22px; }
+  .cx-gsa-number { font-size: clamp(24px, 7.6vw, 32px); margin: 14px 0 18px; }
+  .cx-path { font-size: 15.5px; }
+
+  /* Codes as two-up tiles, so the identifiers read at a glance. */
+  .cx-group:first-of-type .cx-ledger-ids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 0; gap: 1px; background: var(--cx-edge); border: 1px solid var(--cx-edge); border-radius: 4px; overflow: hidden; }
+  .cx-group:first-of-type .cx-ledger-row { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 6px; padding: 14px 14px 16px; border: 0; background: var(--ds-canvas); }
+  .cx-group:first-of-type .cx-ledger-row:first-child { grid-column: 1 / -1; }
+  .cx-group:first-of-type .cx-ledger-row dt { font-family: var(--ds-data); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
+  .cx-group:first-of-type .cx-ledger-row dt .cx-mark { display: none; }
+  .cx-group:first-of-type .cx-id { font-size: 15px; }
+  .cx-group:first-of-type .cx-id-note { font-size: 12px !important; }
+
+  /* Certifications and licenses: the mark beside the name, the number under it, aligned. */
+  .cx-ledger-ids .cx-ledger-row { gap: 2px; padding: 14px 0; }
+  .cx-ledger-ids .cx-ledger-row dt { align-items: center; font-size: 15px; }
+  .cx-ledger-ids .cx-ledger-row:has(.cx-mark) dd { padding-left: 88px; }
+  .cx-mark { width: 56px; min-height: 30px; }
+}
+@media (max-width: 767px) {
+  /* The code tiles hide their marks, so their values don't step in. */
+  .cx-group:first-of-type .cx-ledger-row dd { padding-left: 0 !important; }
+}
