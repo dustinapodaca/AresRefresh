@@ -245,6 +245,7 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   .nx-hero-actions .nx-hero-call { display: none; }
 }
 @media (max-width: 599px) {
-  .nx-hero-title { font-size: clamp(48px, 14.4vw, 80px); max-width: none; }
+  /* 6px up on phones (owner, 2026-10-23); the Services hero headline keeps the size before it (svc.css). */
+  .nx-hero-title { font-size: calc(clamp(48px, 14.4vw, 80px) + 6px); max-width: none; }
   .nx-hero-lead { font-size: 16px; }
 }

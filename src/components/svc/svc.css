@@ -319,7 +319,9 @@
   .sv-hero-copy { flex: 1 1 auto; display: flex; flex-direction: column; max-width: none; }
   .sv-hero-stage::before, .sv-hero-nodes { display: none; }
   .sv-hero-copy { text-align: left; } /* left aligned like the earlier hero (owner, 2026-10-23) */
-  .sv-hero-title { font-size: clamp(54px, 16vw, 72px); line-height: 0.94; letter-spacing: -0.05em; text-align: center; } /* bigger now it is three short lines, and centered (owner, 2026-10-23) */
+  /* The Home hero headline's sizes (owner, 2026-10-23; home.css .nx-hero-title): its 600px-up size
+     here, and below 600px its phone size without the 6px Home took after. Centered, three lines. */
+  .sv-hero-title { font-size: clamp(54px, 12.2vw, 188px); line-height: 0.94; letter-spacing: -0.05em; text-align: center; }
   /* The photo ends above the hero's foot, so its copper canopy rises to the card: some above its top
      edge, the rest behind its upper half, lifting the glass (owner, 2026-10-23). Brighter, with the
      shade only dark behind the headline and at the very foot. */
@@ -359,6 +361,10 @@
   main.sv .sv-pr { padding-top: 72px; }
   main.sv .sv-rl { padding-top: 88px; }
   main.sv .sv-close { padding-top: 88px; }
+}
+
+@media (max-width: 599px) {
+  .sv-hero-title { font-size: clamp(48px, 14.4vw, 80px); } /* Home's phone size before its 6px bump: Services stays the smaller (owner) */
 }
 
 /* Narrow desktops (1024 to 1279px): the lead fits between the side nodes (it ran under 02 and 05). */
