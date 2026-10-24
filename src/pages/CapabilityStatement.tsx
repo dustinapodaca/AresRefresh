@@ -139,6 +139,8 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
           <span className="cc-logo" aria-hidden="true">
             <span className="cc-mark" />
             <span className="cc-word" />
+            {/* Phones: the rail card's lockup, the name in mono caps beside the mark (owner, 2026-10-23). */}
+            <span className="cc-tag ds-data">Ares Security LLC</span>
           </span>
           <span className="cc-kind ds-data">Capability statement · 2026</span>
         </div>
@@ -337,11 +339,11 @@ function Competencies() {
 }
 
 // The proof of each reason as a large figure, so a reader scanning the page gets the evidence first.
-// On desktop the first two set as two lines each, so they match side by side (owner, 2026-10-23);
-// phones show `short`.
-const FIGURES: { lines: string[]; short?: string }[] = [
+// On desktop the first two set as two lines each, so they match side by side (owner, 2026-10-23;
+// phones too, where they wrap on their own).
+const FIGURES: { lines: string[] }[] = [
   { lines: ['Restricted', 'areas'] },
-  { lines: ['4-stage', 'deployment'], short: '4 stages' },
+  { lines: ['4-stage', 'deployment'] },
   { lines: ['43 / 45'] },
   { lines: ['4.8 / 5'] },
 ];
@@ -349,6 +351,11 @@ const FIGURES: { lines: string[]; short?: string }[] = [
 // (owner, 2026-10-23; the shared data keeps "Trained on post by leadership").
 const PROOF: Record<string, string> = {
   'Four-stage deployment': 'Audit · Compliance · Training · Deployment · Trained on post by leadership',
+};
+// The figure above already says "4-stage deployment", so the title says what the stages achieve
+// (owner, 2026-10-23; the shared data keeps "Four-stage deployment").
+const TITLE: Record<string, string> = {
+  'Four-stage deployment': 'Ready before the first shift',
 };
 
 // Phones: the four are a swipe row (owner, 2026-10-23) with the Home industry deck's controls: a
@@ -406,9 +413,8 @@ function Why() {
                   </span>
                 ))}
               </span>
-              {FIGURES[i].short && <span className="cx-why-fig-short">{FIGURES[i].short}</span>}
             </p>
-            <h3 className="cx-why-title">{say(d.title)}</h3>
+            <h3 className="cx-why-title">{TITLE[d.title] ?? say(d.title)}</h3>
             <p className="cx-why-body">{say(d.body)}</p>
             <p className="cx-why-src ds-data">
               <span>Source</span>
