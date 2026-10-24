@@ -199,10 +199,109 @@
   .sv-ind-card { flex-basis: min(78vw, 400px); }
   .sv-ind-track { cursor: auto; }
 }
-@media (max-width: 599px) {
-  .sv-ind-link { aspect-ratio: 4 / 5.4; }
+/* The phone site file's own parts, hidden elsewhere. */
+.sv-ind-nbar, .sv-ind-crop, .sv-ind-short { display: none; }
+
+/* ------------------------------------------------ Phones: the site file (owner, 2026-10-23)
+   Words never sit on the photo. The card is the site's card surface; the photo is a plate inside it
+   with crop marks; the site types hang on a wire like the hero's nodes. */
+@media (max-width: 767px) {
+  .sv-ind-card { display: flex; flex-basis: min(84vw, 400px); }
+  .sv-ind-link {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    padding: 12px 12px 0;
+    border-radius: 4px;
+    background: var(--ds-card, #060708);
+  }
+  .sv-ind-link::after { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12); }
+
+  /* The node bar, after the hero's boxes. */
+  .sv-ind-nbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 4px 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ds-fg-faint);
+  }
+  .sv-ind-nbar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg); }
+  .sv-ind-nbar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
+  .sv-ind-nbar em { font-style: normal; color: var(--ds-fg-faint); }
+
+  /* The photo as a plate, nothing over it but the crop marks. */
+  .sv-ind-photo { position: relative; inset: auto; aspect-ratio: 16 / 10; border-radius: 2px; }
+  .sv-ind-photo img { position: absolute; inset: 0; filter: saturate(0.82) brightness(0.9); transform: none; }
+  .sv-ind-shade, .sv-ind-idx { display: none; }
+  .sv-ind-crop { display: block; position: absolute; inset: 8px; pointer-events: none; }
+  .sv-ind-crop i { position: absolute; width: 12px; height: 12px; border: 0 solid rgb(255 255 255 / 0.85); transition: transform 0.42s cubic-bezier(0.23, 1, 0.32, 1); }
+  .sv-ind-crop i:nth-child(1) { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
+  .sv-ind-crop i:nth-child(2) { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+  .sv-ind-crop i:nth-child(3) { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
+  .sv-ind-crop i:nth-child(4) { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+
+  /* The words on the card. */
+  .sv-ind-cap { position: static; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0; padding: 18px 8px 0; }
+  .sv-ind-name { font-size: 23px; }
+  .sv-ind-body { display: none; }
+  .sv-ind-short { display: block; margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: var(--ds-fg-muted); }
+  .sv-ind-more, .sv-ind-more-in { display: flex; flex-direction: column; flex: 1 1 auto; opacity: 1; overflow: visible; }
+
+  /* The site types on a wire, a node at each. */
+  .sv-ind-covers {
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 11px;
+    margin: 18px 0 0;
+    padding: 4px 0 4px 22px;
+    border-top: 0;
+    font-size: 12px;
+    color: rgb(238 240 242 / 0.82);
+  }
+  .sv-ind-covers::before,
+  .sv-ind-covers::after { content: ''; position: absolute; left: 3px; top: 0; bottom: 0; width: 1px; background: rgb(255 255 255 / 0.16); transform-origin: top; }
+  .sv-ind-covers::after { background: var(--ds-rust); }
+  .sv-ind-covers > span { position: relative; }
+  .sv-ind-covers > span::before {
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    margin-top: -3.5px;
+    border-radius: 1px;
+    background: var(--ds-rust);
+    box-shadow: 0 0 0 3px var(--ds-card, #060708);
+    transition: background-color 0.24s var(--ds-ease), box-shadow 0.24s var(--ds-ease);
+  }
+
+  /* The way in, at the foot of every card (all six the same height). */
+  .sv-ind-more-in { gap: 0; }
+  .sv-ind-covers { margin-bottom: 22px; }
+  .sv-ind-open {
+    margin: auto -8px 0;
+    padding: 16px 8px 18px;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    text-decoration: none;
+  }
+
+  /* Armed after mount: each card waits with its marks out and its wire undrawn, then, as it
+     settles in view, the marks close in and the wire draws down, lighting each node in turn. */
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(1) { transform: translate(-6px, -6px); }
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(2) { transform: translate(6px, -6px); }
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(3) { transform: translate(-6px, 6px); }
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(4) { transform: translate(6px, 6px); }
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers::after { transform: scaleY(0); }
+  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers > span::before { background: var(--ds-card, #060708); box-shadow: 0 0 0 3px var(--ds-card, #060708), inset 0 0 0 1px rgb(255 255 255 / 0.3); }
+  .sv-ind[data-arm='true'] .sv-ind-card[data-live] .sv-ind-covers::after { transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.2s; }
+  .sv-ind[data-arm='true'] .sv-ind-card[data-live] .sv-ind-covers > span::before { transition-delay: calc(0.3s + var(--k) * 0.16s); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sv-ind-photo img, .sv-ind-more, .sv-ind-bar i { transition: none; }
+  .sv-ind-photo img, .sv-ind-more, .sv-ind-bar i, .sv-ind-crop i, .sv-ind-covers::after, .sv-ind-covers > span::before { transition: none; }
 }

@@ -62,6 +62,54 @@ export default function SvProcess() {
     readIn(engine, root.querySelector('.sv-pr-title'));
 
     const mm = engine.gsap.matchMedia();
+    // Phones and tablets (owner, 2026-10-23): the stacked list builds with the scroll. The rust
+    // wire draws down with a bright tip; each stage's stop lights as the tip reaches it, and its
+    // card rises 12px from 0.62 into full; stage 03's systems tick on in turn. Scrubbed, so it
+    // reverses on the way up. Resolved without the engine (the default).
+    mm.add('(max-width: 1023px)', () => {
+      const list = root.querySelector<HTMLElement>('.sv-pr-stages')!;
+      const fill = root.querySelector<HTMLElement>('.sv-pr-rail i')!;
+      const tip = root.querySelector<HTMLElement>('.sv-pr-rail b')!;
+      const nodes = Array.from(list.querySelectorAll<HTMLElement>(':scope > .sv-pr-node'));
+      root.dataset.arm = 'true';
+      let span = 1;
+      let stops: number[] = [];
+      const measure = () => {
+        span = Math.max(1, list.offsetHeight - 16);
+        stops = nodes.map((n) => n.offsetTop + 4);
+      };
+      const paint = (p: number) => {
+        const y = p * span;
+        fill.style.transform = `scaleY(${p.toFixed(4)})`;
+        tip.style.transform = `translateY(${y.toFixed(1)}px)`;
+        tip.style.opacity = p > 0.002 && p < 0.998 ? '1' : '0';
+        nodes.forEach((n, i) => {
+          const on = p > 0.001 && y + 8 >= stops[i];
+          if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
+        });
+      };
+      measure();
+      const st = engine.ScrollTrigger.create({
+        trigger: list,
+        start: 'top 72%',
+        end: 'bottom 72%',
+        scrub: SCRUB,
+        onRefresh: (self) => {
+          measure();
+          paint(self.progress);
+        },
+        onUpdate: (self) => paint(self.progress),
+      });
+      paint(st.progress);
+      return () => {
+        st.kill();
+        delete root.dataset.arm;
+        nodes.forEach((n) => delete n.dataset.lit);
+        fill.style.transform = '';
+        tip.style.transform = '';
+        tip.style.opacity = '';
+      };
+    });
     mm.add('(min-width: 1024px)', () => {
       const { gsap, ScrollTrigger } = engine;
       const view = root.querySelector<HTMLElement>('.sv-pr-view')!;
@@ -206,6 +254,11 @@ export default function SvProcess() {
             </p>
           ))}
 
+          {/* The phone and tablet wire that draws with the scroll (decorative). */}
+          <span className="sv-pr-rail" aria-hidden="true">
+            <i />
+            <b />
+          </span>
           <ol className="sv-pr-stages">
             {STAGES.map((s, i) => (
               <li
@@ -223,8 +276,10 @@ export default function SvProcess() {
                   <p className="sv-pr-body">{s.body}</p>
                   {s.systems && (
                     <ul className="sv-pr-syslist" aria-label="Systems officers learn before their first shift">
-                      {SYSTEMS.map((name) => (
-                        <li key={name}>{name}</li>
+                      {SYSTEMS.map((name, k) => (
+                        <li key={name} style={{ ['--k' as string]: k } as CSSProperties}>
+                          {name}
+                        </li>
                       ))}
                     </ul>
                   )}

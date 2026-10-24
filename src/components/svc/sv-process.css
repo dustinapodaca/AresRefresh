@@ -107,6 +107,28 @@
   box-shadow: inset 0 0 0 1px var(--ds-rust), 0 0 10px rgb(188 111 64 / 0.6);
 }
 
+/* The scroll-drawn wire (phones and tablets, with the engine): hidden until armed. */
+.sv-pr-rail { display: none; }
+@media (max-width: 1023px) {
+  .sv-pr-track { position: relative; }
+  .sv-pr[data-arm='true'] .sv-pr-stages::before { background: rgb(255 255 255 / 0.12); box-shadow: none; }
+  .sv-pr[data-arm='true'] .sv-pr-rail { display: block; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; z-index: 1; pointer-events: none; }
+  .sv-pr-rail i { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(188 111 64 / 0.95), rgb(188 111 64 / 0.6)); box-shadow: 0 0 8px rgb(188 111 64 / 0.45); transform: scaleY(0); transform-origin: top; will-change: transform; }
+  .sv-pr-rail b { position: absolute; left: -3px; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: #f3d3bb; box-shadow: 0 0 10px 2px rgb(232 150 98 / 0.85); opacity: 0; transition: opacity 0.2s; will-change: transform; }
+
+  /* Each stage waits a little dim and low, its stop unlit, until the tip reaches it. */
+  .sv-pr[data-arm='true'] .sv-pr-node::before { z-index: 2; transition: background-color 0.3s var(--ds-ease), box-shadow 0.3s var(--ds-ease); }
+  .sv-pr[data-arm='true'] .sv-pr-node:not([data-lit='true'])::before { background: #000; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3); }
+  .sv-pr[data-arm='true'] .sv-pr-node[data-lit='true']::before { background: var(--ds-rust); box-shadow: 0 0 0 3px #000, 0 0 14px rgb(188 111 64 / 0.85); }
+  .sv-pr[data-arm='true'] .sv-pr-node > * { transition: opacity 0.5s var(--ds-ease), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+  .sv-pr[data-arm='true'] .sv-pr-node:not([data-lit='true']) > * { opacity: 0.62; transform: translateY(12px); }
+  .sv-pr[data-arm='true'] .sv-pr-syslist li::before { transition: background-color 0.24s var(--ds-ease), box-shadow 0.24s var(--ds-ease); }
+  .sv-pr[data-arm='true'] .sv-pr-node[data-lit='true'] .sv-pr-syslist li::before { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.6); transition-delay: calc(0.35s + var(--k) * 0.09s); }
+}
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  .sv-pr-rail { display: none !important; }
+}
+
 /* Desktop without the engine: the four as a row. */
 @media (min-width: 1024px) {
   .sv-pr-stages { padding: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }

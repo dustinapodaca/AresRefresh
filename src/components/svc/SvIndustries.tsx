@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { DIVISIONS } from '../services/data';
+import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
-import { readIn, useScene, words, SCRUB } from '../home/engine';
+import { motionAllowed, readIn, useScene, words, SCRUB } from '../home/engine';
 import './sv-industries.css';
 
 // 02 Industries on /services-next (home-flora, 2026-10-22), after FLORA's "Hear about us." row:
@@ -13,6 +14,15 @@ import './sv-industries.css';
 // or the arrows), snaps card by card, and drifts a little to the left as the page scrolls past.
 
 const n2 = (i: number) => String(i + 1).padStart(2, '0');
+const shortFor = (to?: string) => INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.short;
+
+// Phones (owner, 2026-10-23: the text over the photos was hard to read, and Services should not
+// copy Home's deck): each card is a site file in the page's own node language, after the hero.
+// A mono bar (number, site count), the photo in its own frame with crop marks and nothing over it,
+// the name and the industry's short line on the card, the site types on a wire with a node each,
+// and the way to the page at the foot. As a card settles in the row, its crop marks close in and
+// the wire draws down, lighting each node. Drawn by default (prerender, no JS, reduced motion);
+// armed after mount. Desktop keeps the caption over the photo.
 
 export default function SvIndustries() {
   const ref = useRef<HTMLElement>(null);
@@ -100,6 +110,27 @@ export default function SvIndustries() {
     };
   }, []);
 
+  // Phones: each card plays once, as most of it comes on screen (the row clips the ones beside it).
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || !motionAllowed() || !window.matchMedia('(max-width: 767px)').matches) return;
+    root.dataset.arm = 'true';
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          (e.target as HTMLElement).dataset.live = 'true';
+          io.unobserve(e.target);
+        }),
+      { threshold: 0.6 },
+    );
+    root.querySelectorAll('.sv-ind-card').forEach((c) => io.observe(c));
+    return () => {
+      io.disconnect();
+      delete root.dataset.arm;
+    };
+  }, []);
+
   const step = (dir: 1 | -1) => {
     const t = trackRef.current;
     const card = t?.querySelector<HTMLElement>('.sv-ind-card');
@@ -162,6 +193,12 @@ export default function SvIndustries() {
           {DIVISIONS.map((d, i) => (
             <li key={d.id} className="sv-ind-card">
               <Link to={d.page?.to ?? '/services'} className="sv-ind-link" draggable={false}>
+                <span className="sv-ind-nbar ds-data" aria-hidden="true">
+                  <span>
+                    {n2(i)} <em>/ {n2(DIVISIONS.length - 1)}</em>
+                  </span>
+                  <span>{d.covers.length} site types</span>
+                </span>
                 <span className="sv-ind-photo" aria-hidden="true">
                   <img
                     {...responsive(d.photo.src, '(min-width: 1024px) 400px, 78vw')}
@@ -171,17 +208,26 @@ export default function SvIndustries() {
                     decoding="async"
                     style={{ objectPosition: d.photo.position ?? '50% 50%' }}
                   />
+                  <span className="sv-ind-crop">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </span>
                 </span>
                 <span className="sv-ind-shade" aria-hidden="true" />
                 <span className="sv-ind-idx ds-data">{n2(i)}</span>
                 <span className="sv-ind-cap">
                   <span className="sv-ind-name">{d.title}</span>
                   <span className="sv-ind-body">{d.body}</span>
+                  {shortFor(d.page?.to) && <span className="sv-ind-short">{shortFor(d.page?.to)}</span>}
                   <span className="sv-ind-more">
                     <span className="sv-ind-more-in">
                     <span className="sv-ind-covers">
-                      {d.covers.map((c) => (
-                        <span key={c.name}>{c.name}</span>
+                      {d.covers.map((c, k) => (
+                        <span key={c.name} style={{ ['--k' as string]: k } as React.CSSProperties}>
+                          {c.name}
+                        </span>
                       ))}
                     </span>
                     <span className="sv-ind-open">
