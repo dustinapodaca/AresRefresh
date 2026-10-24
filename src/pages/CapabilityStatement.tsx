@@ -15,6 +15,7 @@ import {
   SAM_ACTIVE_THROUGH,
   SAM_VERIFY,
   THIRD_PERSON,
+  type PastRow,
 } from '../components/capability/data';
 import { ROLE_PAGES } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
@@ -457,26 +458,78 @@ function Why() {
   );
 }
 
+// Past performance (owner, 2026-10-24): no revenue figure (revenue is company data, not past
+// performance); the contracts lead. The featured contract (the current Space Force subcontract) as a
+// card, the rest as a ledger with their status. Clients and the base stay unnamed, and the list
+// stays a selection. Role and value show only where data.ts has them; nothing is estimated.
+const STATUS_LABEL = { current: 'Current', completed: 'Completed' } as const;
+
+function PastStatus({ status }: { status?: PastRow['status'] }) {
+  if (!status) return null;
+  return (
+    <span className="cx-status" data-state={status}>
+      <i aria-hidden="true" />
+      {STATUS_LABEL[status]}
+    </span>
+  );
+}
+
 function Past() {
+  const featured = PAST_PERFORMANCE.rows.find((r) => r.featured);
+  const rest = PAST_PERFORMANCE.rows.filter((r) => r !== featured);
+  const values = rest.some((r) => r.value);
   return (
     <section id="past" className="cx-sec" aria-labelledby="cx-past">
-      <Head id="cx-past" i={2} title="Past performance." />
-      <div className="cx-past-top" data-rv>
-        <p className="cx-past-fig">
-          <span className="cx-past-num ds-data">$2.1M+</span>
-          <span className="cx-past-cap">Revenue, 2021 through 2025</span>
+      <Head id="cx-past" i={2} title="Past performance." lead={PAST_PERFORMANCE.leadNext} />
+      {featured && (
+        <article className="cx-past-feature" data-rv aria-labelledby="cx-past-feature">
+          <p className="cx-past-bar ds-data">
+            <PastStatus status={featured.status} />
+            {featured.role && <span>{featured.role}</span>}
+          </p>
+          <h3 id="cx-past-feature" className="cx-past-title">
+            {featured.scope}
+          </h3>
+          <p className="cx-past-where">{featured.where}</p>
+          <dl className="cx-past-foot ds-data">
+            <div>
+              <dt>Term</dt>
+              <dd>{featured.term}</dd>
+            </div>
+            {featured.value && (
+              <div>
+                <dt>Contract value</dt>
+                <dd>{featured.value}</dd>
+              </div>
+            )}
+          </dl>
+        </article>
+      )}
+      <div className="cx-past-list" data-rv data-values={values || undefined}>
+        <p className="cx-past-cols ds-data" aria-hidden="true">
+          <span>Scope</span>
+          <span>Where</span>
+          <span>Term</span>
+          {values && <span>Value</span>}
+          <span>Status</span>
         </p>
-        <p className="cx-past-lead">{PAST_PERFORMANCE.lead}</p>
+        <dl className="cx-ledger cx-past-ledger">
+          {rest.map((p) => (
+            <div key={p.scope} className="cx-ledger-row">
+              <dt>{p.scope}</dt>
+              <dd>{p.where}</dd>
+              <dd className="ds-data cx-ledger-term">{p.term}</dd>
+              {values && <dd className="ds-data cx-ledger-term">{p.value ?? ''}</dd>}
+              <dd className="ds-data cx-past-status">
+                <PastStatus status={p.status} />
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
-      <dl className="cx-ledger" data-rv>
-        {PAST_PERFORMANCE.rows.map((p) => (
-          <div key={p.scope} className="cx-ledger-row">
-            <dt>{p.scope}</dt>
-            <dd>{p.where}</dd>
-            <dd className="ds-data cx-ledger-term">{p.term}</dd>
-          </div>
-        ))}
-      </dl>
+      <p className="cx-past-refs ds-data">
+        <Link to="/contact">References available on request.</Link>
+      </p>
     </section>
   );
 }

@@ -17,15 +17,33 @@ export const CAP_MARKS: readonly Mark[] = [
 // or the clients; the completed contracts and the Denver client are cannabis dispensaries,
 // and the site carries no cannabis references. The Pueblo retail client is not named until
 // Deidre approves it.
-export const PAST_PERFORMANCE = {
+// The redesigned Capability Statement (owner, 2026-10-24) drops the revenue line: revenue is company
+// data, not past performance, so the contracts lead there (`leadNext`, the featured row). The
+// revenue sentence in `lead` is kept only for the earlier page (components/capability/Sections.tsx,
+// what aressecurity.co runs) until the owner signs off on removing it there too.
+export type PastRow = {
+  scope: string;
+  where: string;
+  term: string;
+  status?: 'current' | 'completed';
+  role?: 'Prime' | 'Subcontractor';
+  /** e.g. '$400K+'. Leave unset until Deidre supplies it. Never estimate. */
+  value?: string;
+  featured?: boolean;
+};
+export const PAST_PERFORMANCE: { lead: string; leadNext: string; rows: PastRow[] } = {
   // $2.1M is Ares revenue 2021 to 2025 from the tax returns (owner), so it reads as revenue,
   // not as a combined contract value.
   lead: 'Selected contracts since 2021. Ares earned more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request.',
+  // "References are available on request" is the footnote under the list on the redesigned page.
+  leadNext: 'Selected contracts since 2021. Clients are not named here.',
+  // TODO(owner): Deidre to supply the role (prime or subcontractor) for the last three rows and an
+  // approximate value for each contract; once set here they render on the redesigned page.
   rows: [
-    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027' },
-    { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals' },
-    { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing' },
-    { scope: 'Seven completed armed security contracts', where: 'Colorado', term: '2021 to 2025' },
+    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027', status: 'current', role: 'Subcontractor', featured: true },
+    { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals', status: 'current' },
+    { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing', status: 'current' },
+    { scope: 'Seven completed armed security contracts', where: 'Colorado', term: '2021 to 2025', status: 'completed' },
   ],
 };
 

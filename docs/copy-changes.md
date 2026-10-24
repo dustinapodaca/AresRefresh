@@ -1113,3 +1113,8 @@ as the company. Heading and letter layout unchanged (story muted, last line in i
   card's. The shared data (`DIFFERENTIATORS` in `capability/data.ts`) is unchanged.
 - Its title reads "Ready before the first shift" (was "Four-stage deployment", which repeated the
   figure above it). Same shared data, unchanged.
+
+## Capability Statement, Past performance (owner, 2026-10-24; the redesigned page only)
+| Section | Was | Now | Why |
+|---|---|---|---|
+| Past performance lead | "Selected contracts since 2021. Ares earned more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request." (and a "$2.1M+ / Revenue, 2021 through 2025" figure above it) | "Selected contracts since 2021. Clients are not named here." The figure is removed; "References available on request." moved to a footnote under the list, linked to /contact | Revenue is company data, not past performance; contracts lead (owner, 2026-10-24); the earlier page (`capability/Sections.tsx`, what aressecurity.co runs) is unchanged pending owner sign-off |
