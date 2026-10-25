@@ -163,13 +163,6 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
         {variant === 'counter' && (
           <nav className="ds-rail-nav">
             <div className="ds-count" data-idle={!current || undefined}>
-              <p className="ds-count-head" aria-hidden="true">
-                <span className="ds-count-n">
-                  {/* Keyed, so each new number rolls up into place. */}
-                  <span key={(current ?? marks[0]).n}>{(current ?? marks[0]).n}</span>
-                </span>
-                <span className="ds-count-total">/ {total}</span>
-              </p>
               <p className="ds-count-label" aria-hidden="true">
                 {(current ?? marks[0]).label}
               </p>
@@ -214,7 +207,6 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
       <div className="ds-runhead" data-visible={Boolean(current)} aria-hidden="true">
         <div className="ds-container">
           <span>{current ? current.label : ''}</span>
-          <span>{current ? `${current.n} / ${total}` : ''}</span>
         </div>
         <span className="ds-runhead-fill" />
       </div>

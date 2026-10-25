@@ -31,7 +31,7 @@ const POS_Y = 0.74;
 // Each fact's callout: where its chip sits on the stage (fractions of the stage) and the point
 // on the photo it points at (fractions of the source image).
 const CALLOUTS: { chip: [number, number]; point: [number, number] }[] = [
-  { chip: [0.045, 0.5], point: [0.19, 0.792] }, // Established: the lead car's nose
+  { chip: [0.045, 0.44], point: [0.19, 0.792] }, // Established: the lead car's nose (raised 2026-10-25 to clear the principle)
   { chip: [0.1, 0.2], point: [0.452, 0.624] }, // Primary NAICS: the light bar
   { chip: [0.67, 0.16], point: [0.82, 0.703] }, // Longest client: the second vehicle
   { chip: [0.56, 0.42], point: [0.534, 0.742] }, // Post training: the door mark
@@ -147,7 +147,10 @@ export default function Quality() {
       // comes forward.
       const BEAT = 0.12;
       tl.fromTo(dim, { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.8 + BEAT)
-        .to([...facts, svg], { opacity: 0.14, duration: 0.1 }, 0.8 + BEAT)
+        // The four facts stay in view, legible, but step back into darker glass (owner, 2026-10-25:
+        // they faded away); their leader lines dim further.
+        .fromTo(facts, { '--q-dark': 0 }, { '--q-dark': 1, duration: 0.1 }, 0.8 + BEAT)
+        .to(svg, { opacity: 0.35, duration: 0.1 }, 0.8 + BEAT)
         .fromTo(para, { opacity: 0, y: 56 }, { opacity: 1, y: 0, duration: 0.12 }, 0.84 + BEAT)
         .to({}, { duration: 0.08 });
     });

@@ -8,7 +8,7 @@ import 'swiper/css/effect-creative';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
 import { responsive } from '../../lib/responsive';
-import { N, n2 } from './industryBrief';
+import { N } from './industryBrief';
 import { loadEngine, motionAllowed, refreshWhenSettled } from './engine';
 import './nx-ind-deck.css';
 
@@ -40,12 +40,6 @@ function Card({ ind, i }: { ind: IndustryPageData; i: number }) {
         />
       </div>
       <div className="nx-sk-body">
-        <p className="nx-sk-bar">
-          <span>Post brief</span>
-          <span>
-            {n2(i)} / {n2(N - 1)}
-          </span>
-        </p>
         <h3 className="nx-sk-name">{ind.name}</h3>
         <p className="nx-sk-short">{ind.short}</p>
         <Link to={`/industries/${ind.slug}`} className="nx-sk-link" draggable={false}>
@@ -246,8 +240,8 @@ export default function IndustryDeck() {
       </div>
 
       <div className="nx-dk-controls nx-edge">
-        <p className="nx-dk-count ds-data" aria-live="polite">
-          <b>{n2(active)}</b> / {n2(N - 1)}
+        <p className="sr-only" aria-live="polite">
+          {INDUSTRY_PAGES[active]?.name}, {active + 1} of {N}
         </p>
         <div className="nx-dk-meter" aria-hidden="true">
           {INDUSTRY_PAGES.map((ind, i) => (

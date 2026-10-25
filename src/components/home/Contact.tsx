@@ -51,10 +51,7 @@ export default function Contact() {
         </h2>
 
         <div className="nx-ct-call nx-node" data-live="true">
-          <p className="nx-node-bar">
-            <span>Call us</span>
-            <span>For urgent procurement timelines or active contracts.</span>
-          </p>
+          <p className="nx-node-bar">Call us for urgent procurement timelines or active contracts.</p>
           <a href={TEL} className="nx-ct-phone" aria-label={`Call ${PHONE}`}>
             <span className="nx-ct-digits" aria-hidden="true">
               {PHONE.split('').map((d, i) => (

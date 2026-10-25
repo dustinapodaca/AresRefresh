@@ -113,18 +113,6 @@
   background: linear-gradient(180deg, rgb(0 0 0 / 0.42) 0%, rgb(0 0 0 / 0) 24%, rgb(0 0 0 / 0) 42%, rgb(0 0 0 / 0.82) 78%, rgb(0 0 0 / 0.9) 100%);
   transition: background-color 0.5s var(--ds-ease);
 }
-.sv-ind-idx {
-  position: absolute;
-  top: 16px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  color: rgb(255 255 255 / 0.72);
-}
-.sv-ind-idx::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
 
 /* The caption at the foot; its extra rows (sites and the way in) open on hover or focus. */
 .sv-ind-cap { position: absolute; left: 20px; right: 20px; bottom: 20px; display: grid; gap: 8px; }
@@ -200,11 +188,12 @@
   .sv-ind-track { cursor: auto; }
 }
 /* The phone site file's own parts, hidden elsewhere. */
-.sv-ind-nbar, .sv-ind-crop, .sv-ind-short { display: none; }
+.sv-ind-short { display: none; }
 
 /* ------------------------------------------------ Phones: the site file (owner, 2026-10-23)
-   Words never sit on the photo. The card is the site's card surface; the photo is a plate inside it
-   with crop marks; the site types hang on a wire like the hero's nodes. */
+   Words never sit on the photo. The card is the site's card surface; the photo is a plate inside it;
+   the site types hang on a wire like the hero's nodes. (Crop marks and the numbered bar were removed,
+   owner 2026-10-25.) */
 @media (max-width: 767px) {
   .sv-ind-card { display: flex; flex-basis: min(84vw, 400px); }
   .sv-ind-link {
@@ -218,31 +207,10 @@
   }
   .sv-ind-link::after { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12); }
 
-  /* The node bar, after the hero's boxes. */
-  .sv-ind-nbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2px 4px 12px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ds-fg-faint);
-  }
-  .sv-ind-nbar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg); }
-  .sv-ind-nbar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
-  .sv-ind-nbar em { font-style: normal; color: var(--ds-fg-faint); }
-
-  /* The photo as a plate, nothing over it but the crop marks. */
+  /* The photo as a plate, nothing over it. */
   .sv-ind-photo { position: relative; inset: auto; aspect-ratio: 16 / 10; border-radius: 2px; }
   .sv-ind-photo img { position: absolute; inset: 0; filter: saturate(0.82) brightness(0.9); transform: none; }
-  .sv-ind-shade, .sv-ind-idx { display: none; }
-  .sv-ind-crop { display: block; position: absolute; inset: 8px; pointer-events: none; }
-  .sv-ind-crop i { position: absolute; width: 12px; height: 12px; border: 0 solid rgb(255 255 255 / 0.85); transition: transform 0.42s cubic-bezier(0.23, 1, 0.32, 1); }
-  .sv-ind-crop i:nth-child(1) { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
-  .sv-ind-crop i:nth-child(2) { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
-  .sv-ind-crop i:nth-child(3) { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
-  .sv-ind-crop i:nth-child(4) { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+  .sv-ind-shade { display: none; }
 
   /* The words on the card. */
   .sv-ind-cap { position: static; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0; padding: 18px 8px 0; }
@@ -291,11 +259,7 @@
   }
 
   /* Armed after mount: each card waits with its marks out and its wire undrawn, then, as it
-     settles in view, the marks close in and the wire draws down, lighting each node in turn. */
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(1) { transform: translate(-6px, -6px); }
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(2) { transform: translate(6px, -6px); }
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(3) { transform: translate(-6px, 6px); }
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-crop i:nth-child(4) { transform: translate(6px, 6px); }
+     settles in view, the wire draws down, lighting each node in turn. */
   .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers::after { transform: scaleY(0); }
   .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers > span::before { background: var(--ds-card, #060708); box-shadow: 0 0 0 3px var(--ds-card, #060708), inset 0 0 0 1px rgb(255 255 255 / 0.3); }
   .sv-ind[data-arm='true'] .sv-ind-card[data-live] .sv-ind-covers::after { transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.2s; }
@@ -303,5 +267,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sv-ind-photo img, .sv-ind-more, .sv-ind-bar i, .sv-ind-crop i, .sv-ind-covers::after, .sv-ind-covers > span::before { transition: none; }
+  .sv-ind-photo img, .sv-ind-more, .sv-ind-bar i, .sv-ind-covers::after, .sv-ind-covers > span::before { transition: none; }
 }

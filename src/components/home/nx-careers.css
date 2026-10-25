@@ -44,19 +44,6 @@
 .nx-cr-side p { margin: 0; font-size: 18px; line-height: 1.5; color: #c4c8ce; max-width: 34ch; }
 .nx-cr-link { display: inline-flex; margin-top: 18px; gap: 8px; align-items: center; }
 
-.nx-cr-nodes {
-  grid-column: 1 / -1;
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-.nx-cr-nodes li { border-top: 1px solid rgb(255 255 255 / 0.16); padding-top: 14px; }
-.nx-cr-nodes .nx-node-bar { margin: 0; }
-.nx-cr-nodes .nx-node-bar > span:last-child { color: var(--ds-fg); }
-
 @media (min-width: 768px) {
   html[data-nx-motion='on'] .nx-cr-stage { height: 100svh; min-height: 620px; }
   html[data-nx-motion='on'] .nx-cr-edge {
@@ -95,8 +82,6 @@
   .nx-cr-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / 1) 100%); bottom: auto; height: calc(100vw * 1.25); }
   .nx-cr-copy { margin-top: -88px; padding-bottom: 8px; }
   .nx-cr-title { font-size: clamp(40px, 11.6vw, 64px); }
-  .nx-cr-nodes { grid-template-columns: 1fr; gap: 0; }
-  .nx-cr-nodes li { padding: 12px 0; }
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */

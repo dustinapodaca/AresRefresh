@@ -4,13 +4,14 @@ import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
 import './nx-prime.css';
 
-// For prime contractors (home-flora, 2026-10-20): a real node canvas, after flora's workflow
-// canvas, on a plain dot-grid plane with no panel around it. The prime, Ares, and the three posts
-// are nodes with label bars, joined by curved wires that draw with the scroll; each node lights as
-// its wire reaches it, and the three proof points sit as small notes beside the node they prove.
-// Once built, a rust pulse runs prime to Ares to the posts. Every fact is one already on the live
-// Home's panel. Resolved default (prerender, reduced motion): built and still. Phones: one column
-// on a straight rail.
+// For prime contractors (home-flora, 2026-10-20): the prime, Ares, and the three posts as cards with
+// black label tabs, joined by wires; the three proof points sit as small notes beside the card they
+// prove. Every fact is one already on the live Home's panel. Desktop with motion: the wires draw and
+// the cards light with the scroll. Phones and tablets with motion (owner, 2026-10-25): the cards sit
+// in a row on a rail, the row holds the screen and slides sideways as the reader scrolls (like the
+// Services stages on desktop), and each card lights as it reaches the reading line. Resolved default
+// (prerender, reduced motion): built and still; one column on phones. The dot grid, the rust pulses,
+// the wire end squares, and the boxed capital tags were removed in the AI-tells pass (2026-10-25).
 
 const POSTS = ['Restricted-Area Escort', 'Access Control', 'Relief & Surge'];
 
@@ -34,9 +35,15 @@ export default function Prime() {
         const r = el.getBoundingClientRect();
         return { l: r.left - c.left, t: r.top - c.top, r: r.right - c.left, b: r.bottom - c.top, cx: r.left - c.left + r.width / 2 };
       };
-      const prime = box('[data-node="prime"] .nx-pn-body');
-      const ares = box('[data-node="ares"] .nx-pn-body');
-      const posts = POSTS.map((_, i) => box(`[data-node="post-${i}"] .nx-pn-body`));
+      // The label is a tab on the card's top, so a wire meets the tab.
+      const top = (n: string) => {
+        const b = box(`${n} .nx-pn-body`);
+        const tab = box(`${n} .nx-node-bar`);
+        return b && tab ? { ...b, t: tab.t } : b;
+      };
+      const prime = top('[data-node="prime"]');
+      const ares = top('[data-node="ares"]');
+      const posts = POSTS.map((_, i) => top(`[data-node="post-${i}"]`));
       if (!prime || !ares || posts.some((p) => !p)) return;
       const curve = (id: string, x1: number, y1: number, x2: number, y2: number): Wire => {
         const dy = (y2 - y1) * 0.55;
@@ -91,7 +98,6 @@ export default function Prime() {
           onRefreshInit: setDash,
           onUpdate: (self) => {
             nodes.forEach((n, k) => (n.dataset.live = self.progress >= lightAt[k] ? 'true' : 'false'));
-            if (self.progress >= 0.999) canvas.dataset.pulse = 'on';
           },
         },
       });
@@ -99,7 +105,6 @@ export default function Prime() {
       tl.fromTo('.nx-pw[data-w="w-prime"]', { strokeDashoffset: (_: number, t: SVGPathElement) => Number(t.dataset.len) }, { strokeDashoffset: 0, duration: 0.24 }, 0.1);
       tl.fromTo(tags[0], { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.06 }, 0.2);
       tl.fromTo(nodes[1], { opacity: 0.25, y: 24 }, { opacity: 1, y: 0, duration: 0.12 }, 0.3);
-      tl.fromTo(tags[1], { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.06 }, 0.4);
       tl.fromTo(notes[0], { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.1 }, 0.42);
       tl.fromTo(
         '.nx-pw[data-w^="w-post"]',
@@ -109,51 +114,100 @@ export default function Prime() {
       );
       tl.fromTo(nodes.slice(2), { opacity: 0.25, y: 24 }, { opacity: 1, y: 0, duration: 0.1, stagger: 0.05 }, 0.68);
       tl.fromTo(notes.slice(1), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.1, stagger: 0.06 }, 0.86);
-      tl.fromTo('.nx-pend', { scale: 0 }, { scale: 1, duration: 0.04, stagger: 0.03, transformOrigin: '50% 50%' }, 0.12);
       return () => {
         delete canvas.dataset.build;
-        delete canvas.dataset.pulse;
       };
     });
-    // Phones and tablets (owner, 2026-10-23: so the reader can follow how it works): the rail draws
-    // down the column with a bright tip at its end, and each step (the prime, Ares, the posts, and
-    // the notes that prove them) lights as the tip reaches it. Scrubbed, so scrolling back rewinds it.
+    // Phones and tablets (owner, 2026-10-25; was a rail drawing down one column): the cards sit in a
+    // row on a rail, the row holds the screen and slides sideways with the scroll, and each card and
+    // the note under it light as they reach the reading line. Scrubbed, so scrolling back rewinds it.
     mm.add('(max-width: 1023px)', () => {
+      const view = root.querySelector<HTMLElement>('.nx-prime-view')!;
       const items = gsap.utils.toArray<HTMLElement>(':scope > .nx-pn, :scope > .nx-pnote', canvas);
-      let at: number[] = [];
-      // Where along the rail each step sits (the rail runs 30px in from the canvas's top and foot).
-      const measure = () => {
-        const len = Math.max(1, canvas.clientHeight - 60);
-        at = items.map((el) => Math.min(1, Math.max(0, (el.offsetTop + 34 - 30) / len)));
+      const nodes = items.filter((el) => el.classList.contains('nx-pn'));
+      view.dataset.hpan = 'on';
+      canvas.dataset.hpan = 'on';
+      const distance = () => Math.max(0, canvas.scrollWidth - view.clientWidth);
+      const ares = canvas.querySelector<HTMLElement>('[data-node="ares"]')!;
+      const fit = () => canvas.style.setProperty('--ares-h', `${ares.offsetHeight}px`);
+      fit();
+      const posts = [0, 1, 2].map((k) => canvas.querySelector<HTMLElement>(`[data-node="post-${k}"]`)!);
+      // The scroll is split in two: the row slides until the posts' column is in view (PAN), then the
+      // row holds while the posts fall out of one another and the rail runs on to its end.
+      const PAN = 0.68;
+      const geo = () => {
+        const start = nodes[0].offsetLeft;
+        const line = Math.max(1, canvas.scrollWidth - 2 * start);
+        const postsAt = (posts[0].offsetLeft + 24 - start) / line;
+        return { start, line, postsAt };
       };
-      measure();
-      canvas.dataset.mbuild = 'on';
-      const light = (p: number) =>
-        items.forEach((el, k) => {
-          const on = p >= at[k] - 0.01;
+      let tl: gsap.core.Timeline;
+      const paint = () => {
+        const prog = tl ? tl.progress() : 0;
+        const tx = Number(gsap.getProperty(canvas, 'x')) || 0;
+        const { start, line, postsAt } = geo();
+        // The reading line, 62% across the screen, in the row's own coordinates.
+        const at = view.clientWidth * 0.62 - tx;
+        let rail: number;
+        if (prog < PAN) {
+          rail = Math.max(0, Math.min(1, (at - start) / Math.max(1, postsAt * line))) * postsAt;
+        } else {
+          rail = postsAt + (1 - postsAt) * ((prog - PAN) / (1 - PAN));
+        }
+        const tip = start + rail * line;
+        items.forEach((el) => {
+          const on = prog >= PAN || el.offsetLeft + 24 <= Math.max(at, tip);
           el.dataset.lit = String(on);
           if (el.classList.contains('nx-pn')) el.dataset.live = String(on);
         });
-      const st = e.ScrollTrigger.create({
-        trigger: canvas,
-        start: 'top 80%',
-        end: 'bottom 62%',
-        scrub: SCRUB,
-        invalidateOnRefresh: true,
-        onRefresh: measure,
-        onUpdate: (self) => {
-          canvas.style.setProperty('--rail', self.progress.toFixed(4));
-          canvas.style.setProperty('--tipo', self.progress > 0.001 && self.progress < 0.999 ? '1' : '0');
-          light(self.progress);
+        canvas.style.setProperty('--rail', rail.toFixed(4));
+        canvas.style.setProperty('--tipo', rail > 0.001 && rail < 0.999 ? '1' : '0');
+      };
+      // Each post falls out of the one above it: the second slides down from behind the first, then
+      // the third from behind the second (it rides behind the second until then).
+      const gap = (a: number, b: number) => () => -(posts[b].offsetTop - posts[a].offsetTop);
+      tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        onUpdate: paint,
+        scrollTrigger: {
+          trigger: view,
+          // Centered on the screen, but never under the nav (the posts' stack is tall on short phones).
+          start: () => {
+            const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ds-header')) || 64;
+            return `top ${Math.round(Math.max(nav + 12, (window.innerHeight - view.offsetHeight) / 2))}px`;
+          },
+          end: () => `+=${Math.round((distance() * 1.2) / PAN)}`,
+          pin: view,
+          scrub: SCRUB,
+          invalidateOnRefresh: true,
+          onRefreshInit: () => {
+            gsap.set(canvas, { x: 0 });
+            gsap.set(posts, { y: 0 });
+            fit();
+          },
+          onRefresh: paint,
         },
       });
-      light(st.progress);
-      canvas.style.setProperty('--rail', st.progress.toFixed(4));
+      tl.fromTo(canvas, { x: 0 }, { x: () => -distance(), duration: PAN }, 0);
+      tl.fromTo(posts[1], { y: gap(0, 1) }, { y: 0, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
+      tl.fromTo(posts[2], { y: gap(0, 2) }, { y: gap(1, 2), duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
+      tl.to(posts[2], { y: 0, duration: 0.13, ease: 'power2.out' }, PAN + 0.17);
+      // The escort note comes up once the posts have landed.
+      const note = canvas.querySelector<HTMLElement>('[data-note="restricted"]')!;
+      tl.fromTo(note, { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.07, ease: 'power2.out' }, PAN + 0.29);
+      tl.to({}, { duration: 1 - (PAN + 0.36) }, PAN + 0.36);
+      paint();
       return () => {
-        st.kill();
-        delete canvas.dataset.mbuild;
+        tl.scrollTrigger?.kill();
+        tl.kill();
+        gsap.set(canvas, { clearProps: 'x' });
+        gsap.set(posts, { clearProps: 'transform' });
+        gsap.set(canvas.querySelector('[data-note="restricted"]'), { clearProps: 'opacity,visibility,transform' });
+        delete view.dataset.hpan;
+        delete canvas.dataset.hpan;
         canvas.style.removeProperty('--rail');
         canvas.style.removeProperty('--tipo');
+        canvas.style.removeProperty('--ares-h');
         items.forEach((el) => {
           delete el.dataset.lit;
           if (el.classList.contains('nx-pn')) el.dataset.live = 'true';
@@ -180,92 +234,86 @@ export default function Prime() {
           </Link>
         </div>
 
-        <div ref={canvasRef} className="nx-prime-canvas">
-          <svg className="nx-prime-wires" width={size.w} height={size.h} viewBox={`0 0 ${size.w || 1} ${size.h || 1}`} aria-hidden="true">
-            {wires.map((w) => (
-              <g key={w.id}>
-                <path className="nx-pw-base" d={w.d} />
-                <path className="nx-pw" data-w={w.id} d={w.d} />
-                <rect className="nx-pend" x={w.x1 - 2.5} y={w.y1 - 2.5} width={5} height={5} />
-                <rect className="nx-pend" x={w.x2 - 2.5} y={w.y2 - 2.5} width={5} height={5} />
-              </g>
-            ))}
-          </svg>
-          {/* Phones and tablets: the bright tip riding the rail as it draws. */}
-          <i className="nx-prail-tip" aria-hidden="true" />
-          {/* The ambient pulse: small rust lights that ride each wire once the canvas is built. */}
-          {wires.map((w, i) => (
-            <i key={w.id} className="nx-ppulse" aria-hidden="true" style={{ offsetPath: `path("${w.d}")`, animationDelay: `${i === 0 ? 0 : 1.1 + (i - 1) * 0.18}s` }} />
-          ))}
+        <div className="nx-prime-view">
+          <div ref={canvasRef} className="nx-prime-canvas">
+            <svg className="nx-prime-wires" width={size.w} height={size.h} viewBox={`0 0 ${size.w || 1} ${size.h || 1}`} aria-hidden="true">
+              {wires.map((w) => (
+                <g key={w.id}>
+                  <path className="nx-pw-base" d={w.d} />
+                  <path className="nx-pw" data-w={w.id} d={w.d} />
+                </g>
+              ))}
+            </svg>
+            {/* Phones and tablets: the bright tip riding the rail. */}
+            <i className="nx-prail-tip" aria-hidden="true" />
 
-          <div className="nx-pn nx-node" data-node="prime" data-live="true">
-            <p className="nx-node-bar">
-              <span>Prime contractor</span>
-              <span>Holds the contract</span>
-            </p>
-            <div className="nx-pn-body">
-              <span className="nx-pn-k">Needs</span>
-              <span className="nx-pn-v">Posts covered under its contract</span>
-            </div>
-          </div>
-
-          <span
-            className="nx-ptag"
-            data-tag="teaming"
-            aria-hidden="true"
-            style={wires[0] ? { left: (wires[0].x1 + wires[0].x2) / 2, top: (wires[0].y1 + wires[0].y2) / 2 } : undefined}
-          >
-            Teaming
-          </span>
-
-          <div className="nx-pn nx-node" data-node="ares" data-live="true">
-            <p className="nx-node-bar">
-              <span>Ares Security</span>
-              <span>Subcontractor</span>
-            </p>
-            <div className="nx-pn-body">
-              <span className="nx-pn-row">
-                <span className="nx-pn-k">SBA WOSB</span>
-                <span className="nx-pn-id">WOSB250470</span>
-              </span>
-              <span className="nx-pn-row">
-                <span className="nx-pn-k">WBENC</span>
-                <span className="nx-pn-id">WBE2303571</span>
-              </span>
-            </div>
-            <span className="nx-ptag" data-tag="credit">
-              Subcontracting credit
-            </span>
-          </div>
-
-          <p className="nx-pnote" data-note="credit">
-            <span className="nx-pnote-k">Subcontracting credit</span>
-            Woman-owned small business
-            <span className="nx-pnote-id">WOSB250470 · WBE2303571</span>
-          </p>
-
-          {POSTS.map((p, i) => (
-            <div key={p} className="nx-pn nx-node nx-pn-post" data-node={`post-${i}`} data-live="true">
+            <div className="nx-pn nx-node" data-node="prime" data-live="true">
               <p className="nx-node-bar">
-                <span>Post</span>
-                <span>0{i + 1}</span>
+                <span>Prime contractor</span>
+                <span>Holds the contract</span>
               </p>
               <div className="nx-pn-body">
-                <span className="nx-pn-v">{p}</span>
+                <span className="nx-pn-k">Needs</span>
+                <span className="nx-pn-v">Posts covered under its contract</span>
               </div>
             </div>
-          ))}
 
-          <p className="nx-pnote" data-note="restricted">
-            <span className="nx-pnote-k">Restricted-area experience</span>
-            Escort and access control on a Space Force base in Colorado
-            <span className="nx-pnote-id">Subcontractor · 2025 to 2027</span>
-          </p>
-          <p className="nx-pnote" data-note="reliability">
-            <span className="nx-pnote-k">Reliability</span>
-            Fewer than 1% of shifts missed since 2021
-            <span className="nx-pnote-id">On-call relief in every contract</span>
-          </p>
+            <span
+              className="nx-ptag"
+              data-tag="teaming"
+              aria-hidden="true"
+              style={
+                wires[0]
+                  ? {
+                      left: (wires[0].x1 + wires[0].x2) / 2,
+                      top: (wires[0].y1 + wires[0].y2) / 2,
+                    }
+                  : undefined
+              }
+            >
+              Teaming
+            </span>
+
+            <div className="nx-pn nx-node" data-node="ares" data-live="true">
+              <p className="nx-node-bar">
+                <span>Ares Security</span>
+                <span>Subcontractor</span>
+              </p>
+              <div className="nx-pn-body">
+                <span className="nx-pn-row">
+                  <span className="nx-pn-k">SBA WOSB</span>
+                  <span className="nx-pn-id">WOSB250470</span>
+                </span>
+                <span className="nx-pn-row">
+                  <span className="nx-pn-k">WBENC</span>
+                  <span className="nx-pn-id">WBE2303571</span>
+                </span>
+              </div>
+            </div>
+
+            <p className="nx-pnote" data-note="credit">
+              <span className="nx-pnote-k">Subcontracting credit</span>
+              Woman-owned small business
+              <span className="nx-pnote-id">WOSB250470 · WBE2303571</span>
+            </p>
+
+            {POSTS.map((p, i) => (
+              <div key={p} className="nx-pn nx-node nx-pn-post" data-node={`post-${i}`} data-live="true">
+                <p className="nx-node-bar">
+                  <span>Post</span>
+                </p>
+                <div className="nx-pn-body">
+                  <span className="nx-pn-v">{p}</span>
+                </div>
+              </div>
+            ))}
+
+            <p className="nx-pnote" data-note="restricted">
+              <span className="nx-pnote-k">Restricted-area experience</span>
+              Escort and access control on a Space Force base in Colorado
+              <span className="nx-pnote-id">Subcontractor · 2025 to 2027</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

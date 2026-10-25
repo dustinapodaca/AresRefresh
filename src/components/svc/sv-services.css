@@ -96,18 +96,13 @@
   justify-content: space-between;
   font-family: var(--ds-data);
   font-size: 10.5px;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
   color: var(--ds-fg-faint);
 }
 .svs-bar > span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--ds-fg-muted); }
-.svs-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.8); }
 .svs-foot {
   margin: 0;
   font-family: var(--ds-data);
   font-size: 10.5px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
   color: var(--ds-fg-faint);
   display: flex;
   align-items: center;
@@ -287,6 +282,5 @@
     font-size: 13px;
     color: var(--ds-fg-faint);
   }
-  .svs-count b { font-weight: 400; color: var(--ds-fg); }
   .svs-count span { margin-left: auto; font-size: 11px; letter-spacing: 0.04em; }
 }

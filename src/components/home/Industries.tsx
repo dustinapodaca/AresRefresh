@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
-import { Brief, N, n2 } from './industryBrief';
+import { Brief, N } from './industryBrief';
 import { responsive } from '../../lib/responsive';
 import { readIn, useScene, words, SCRUB, scrollToY } from './engine';
 import './nx-industries.css';
@@ -71,7 +71,6 @@ export default function Industries() {
       const names = gsap.utils.toArray<HTMLElement>('.nx-ind-name', scene);
       const briefs = gsap.utils.toArray<HTMLElement>('.nx-ind-brief', scene);
       const segs = gsap.utils.toArray<HTMLElement>('.nx-ind-seg i', scene);
-      const count = scene.querySelector<HTMLElement>('.nx-ind-count b')!;
 
       // The scene is shown only now, so start every photo loading (they were lazy and hidden).
       imgs.forEach((img) => img.setAttribute('loading', 'eager'));
@@ -111,7 +110,6 @@ export default function Industries() {
             b.inert = i !== now;
           });
           names.forEach((el, i) => el.classList.toggle('is-on', i === now));
-          count.textContent = n2(now);
         }
       };
 
@@ -178,7 +176,6 @@ export default function Industries() {
               {INDUSTRY_PAGES.map((ind, i) => (
                 <li key={ind.slug}>
                   <a href={`/industries/${ind.slug}`} className="nx-ind-name" data-i={i}>
-                    <span className="nx-ind-idx">{n2(i)}</span>
                     {ind.name}
                   </a>
                 </li>
@@ -194,9 +191,6 @@ export default function Industries() {
           </div>
         </div>
         <div className="nx-ind-foot nx-edge" aria-hidden="true">
-          <p className="nx-ind-count ds-data">
-            <b>01</b> / {n2(N - 1)}
-          </p>
           <div className="nx-ind-seg">
             {INDUSTRY_PAGES.map((ind) => (
               <span key={ind.slug}>
@@ -213,9 +207,6 @@ export default function Industries() {
           <li key={ind.slug} className="nx-ind-item">
             <div className="nx-ind-photo">
               <img {...responsive(ind.image.src, listSizes(ind))} alt="" loading="lazy" decoding="async" style={framing(ind)} />
-              <span className="nx-ind-photo-idx ds-data" aria-hidden="true">
-                {n2(i)} / {n2(N - 1)}
-              </span>
             </div>
             <div className="nx-ind-copy nx-node" data-live="true">
               <h3 className="nx-ind-item-name">

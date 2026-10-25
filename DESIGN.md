@@ -60,25 +60,25 @@ typography:
     fontWeight: 400
     lineHeight: 1.45
   data:
-    fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
+    fontFamily: "'PP Fraktion Mono', ui-monospace, Menlo, monospace"
     fontSize: "15px, 18px desktop (ledger values 17px)"
     fontWeight: 400
     lineHeight: 1.4
     letterSpacing: "0.01em"
     fontFeature: "'tnum' 1, 'zero' 1"
   figure:
-    fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
+    fontFamily: "'PP Fraktion Mono', ui-monospace, Menlo, monospace"
     fontSize: "clamp(96px, 11vw, 160px)"
     fontWeight: 400
     lineHeight: 0.85
     letterSpacing: "-0.06em"
   phone:
-    fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
+    fontFamily: "'PP Fraktion Mono', ui-monospace, Menlo, monospace"
     fontSize: "30px, 44px from 640px"
     fontWeight: 400
     letterSpacing: "-0.01em"
   mark:
-    fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace"
+    fontFamily: "'PP Fraktion Mono', ui-monospace, Menlo, monospace"
     fontSize: "14px rail, 12px running head and footer"
     fontWeight: 400
     letterSpacing: "0.02em (footer column titles: uppercase, 0.1em)"
@@ -128,6 +128,12 @@ components:
 > the Home rail, or the Home close describe the Dossier Home it replaced, kept in
 > `docs/home-dossier.md` and git tag `home-dossier-final`.
 
+> **Services and Capability Statement replaced (owner, 2026-10-24).** Both pages are now the
+> home-flora designs (Components, "Services page" and "Capability Statement page"). Other entries that
+> mention the Services dock, division cards, opening, schedule chart, or relief panel, or the Capability
+> ticks rail, cards, frost band, or Download close, describe the pages they replaced, kept in
+> `docs/services-schedule.md` and `docs/capability-served.md` (live through commit `931e70d`).
+
 > **Option switches removed (owner, 2026-10-19).** Where this file says an alternative "stays at
 > `?…`" or lists forms "to compare at `?…`", that alternative is no longer on the site: only the
 > chosen version ships. Each is archived in git tag `options-archive-2026-10-19` and described in
@@ -155,10 +161,11 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 
 **Key Characteristics:**
 - One true-black canvas from header to footer. No bands, no fills, no dividers.
-- Three faces with fixed jobs: Inter Tight states, Inter explains, Plex Mono proves.
+- Three faces with fixed jobs: Inter Tight states, Inter explains, Fraktion Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
-- A running document rail on desktop and a running head on mobile (Services, About, Capability
-  Statement, Careers; Home reads as one scene without them since 2026-10-20).
+- A running document rail on desktop and a running head on mobile (About, Careers; Home since
+  2026-10-20 and Services since 2026-10-24 read as one scene without them; the Capability Statement
+  has its own rail and phone bar).
 - Uneven rhythm on purpose: dense, open, image, tight.
 - Square-shouldered controls (2px corners). Nothing is a pill.
 
@@ -206,12 +213,13 @@ sizes are unchanged.
   - The pull quote is Inter 500 at display-md size.
   - Lead and intro paragraphs 18px; body 16px (steps 17px); labels 13 to 15px.
   - Hand-off lines 20px / 500. Links 15px / 500. Nav 14px / 400; buttons 14px / 500.
-- **Data: IBM Plex Mono 400** with tabular, slashed-zero numerals: identifiers, phone
+- **Data: PP Fraktion Mono 400** (owner, 2026-10-25, after a font trial; was IBM Plex Mono) with
+  slashed-zero numerals: identifiers, phone
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
-- **Figure:** "<1%" in Plex Mono 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
+- **Figure:** "<1%" in the data face 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
   (owner, 2026-10-05), top-aligned with its note.
-- **Phone in the close:** Plex Mono at 30px, 44px from 640px. The Contact headline carries
+- **Phone in the close:** the data face at 30px, 44px from 640px. The Contact headline carries
   the size.
 - **Hero headlines (every H1) carry no closing period** (owner, 2026-10-10, `heroTitle()` in
   src/lib); section headlines (H2) keep theirs.
@@ -220,8 +228,9 @@ sizes are unchanged.
   owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
   strong, from the same trail as the BreadcrumbList JSON-LD. On phones one line, a long
   current page ending in an ellipsis; owner, 2026-10-16.)
-- Font loading: Google Fonts, `display=swap`: Inter (300 to 800), Inter Tight (500, 600),
-  IBM Plex Mono (400, 500).
+- Font loading: self-hosted Latin subsets (`src/fonts.css`), `display=swap`: Inter (300 to 800),
+  Inter Tight (500, 600), PP Fraktion Mono (400 and 700 only, so text set at 500 shows as 400; Pangram
+  Pangram, licensed by the owner).
 
 ## Layout
 
@@ -243,8 +252,8 @@ sizes are unchanged.
 
 - Desktop only (1200px and up). A sticky column on the right edge of the document, from
   the first section to Contact, in mono at 14px. Each page sets its own marks. Home has no rail
-  since 2026-10-20 (it had `01 Record` to `06 Contact`). Services:
-  `01 Divisions`, `02 Process`, `03 Areas` (no close since 2026-10-06).
+  since 2026-10-20 (it had `01 Record` to `06 Contact`). Services none since 2026-10-24
+  (the earlier page had `01 Divisions`, `02 Process`, `03 Areas`).
 - A 1px vertical track (hairline strong) runs beside the marks. The current mark turns
   ink and gains a 12px rust tick on the track. Marks are links to their section.
 - These are the only section numbers on the page. Section numbers never appear above
@@ -254,17 +263,18 @@ sizes are unchanged.
   flat, typographic, and on the canvas (references: Linear's edge minimap, Intercom's
   dimmed list, Raw Materials' status line, Shupatto's counter). `DocRail variant=`:
   - `rail` (the Dossier Home; unused since 2026-10-20): the track and rust tick above.
-  - `dock` (Services): a 44px bar fixed at the bottom center (solid canvas, hairline-strong
+  - `dock` (the earlier Services page, unused since 2026-10-24): a 44px bar fixed at the bottom center (solid canvas, hairline-strong
     edge, 2px corners) with the current mark left, a 44px segment per section filling
     with the reading position (like the page's stage meter), and `02 / 03` right. Slides
     up once the first section is reached and away once the footer comes into view; it
     counts every section (the close was removed, owner, 2026-10-06). With nothing
     on the side, Services drops the rail column: its sections run the full container,
     centered like the opening (owner, 2026-10-05).
-  - `counter` (About): the section number in Plex Mono at 72px, rolling up into place
+  - `counter` (About): the section number in the data face at 72px, rolling up into place
     (260ms) when it changes, `/ 04` beside it, the name beneath, and a 24px bar per
     section to jump with.
-  - `ticks` (Capability Statement): a column of 1px dashes, one per ~360px of each section
+  - `ticks` (the earlier Capability Statement, unused since 2026-10-24; the live page has its own rail
+    and phone bar): a column of 1px dashes, one per ~360px of each section
     (3 to 9, the first longer); dashes already read turn ink muted and the current one is
     the rust tick. Only the current label shows at rest; all show on hover or focus.
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the
@@ -433,7 +443,7 @@ every page.
 
 ### Ledger (the proof table)
 - A `<dl>`-style table on hairline rows. Three columns on desktop: label (Inter,
-  ink muted, 3 cols), value (Plex Mono, ink, 5 cols), verification route (quiet link,
+  ink muted, 3 cols), value (the data face, ink, 5 cols), verification route (quiet link,
   right-aligned, remaining cols).
 - Rows are grouped (Contract vehicle, Registration, Certification); each group opens with
   its name in the Inter `title` style on a hairline-strong rule.
@@ -470,9 +480,13 @@ and `nx-*.css` (class prefix `nx-`).
 - **Two shared objects.** The Statement: every headline is Inter Tight 600 at
   `clamp(48px, 8.4vw, 150px)`, leading 0.92, -0.055em (`clamp(40px, 5.8vw, 96px)` for the prime
   contractors line), much larger than the other pages' heads, so scale does the grouping. The
-  Node (after flora's nodes, in a post-tag voice): a mono label bar above an object, 11.5px
-  uppercase, the name in ink muted with a 6px square that turns rust with a soft glow when the
-  node is live, a note at the right in ink faint. Tags are square (2px corners), never pills.
+  card label (AI-tells pass, owner 2026-10-25; replaced flora's "Node" bar of a rust square, tracked
+  mono capitals, and a counter at the right): a pure black tab across the card's top, Inter 12.5px /
+  500 in white, a fainter note at the right in white 58%; the card keeps its own surface. On the
+  prime diagram a tab's type is ink faint until its node lights, then white, and the wires meet the
+  tab. The industry post brief carries "Post brief / Ares Security"; the phone deck's cards have no
+  tab and the deck no blurred-photo glow. Elsewhere a label is plain data-face text in sentence case.
+  Tags are square (2px corners), never pills.
 - **Hero:** the headline "Security officers for Colorado's Front Range" (no period) is cut out of
   the black, a window onto the rust terrain moving behind it: a black layer holds the headline
   in white over the ground with `mix-blend-mode: multiply`, so the letters show the land and the
@@ -501,15 +515,20 @@ and `nx-*.css` (class prefix `nx-`).
   with it, Chrome on a Mac kept its zoomed tiles and drew only "Fro" on the way back up
   (2026-10-20).
 - **01 Record:** "The record so far." with one lead line ("Federal agencies and commercial
-  clients hold us to the same record."). Each proof gets its own moment: the figure in Plex Mono
+  clients hold us to the same record."). Each proof gets its own moment: the figure in the data face
   at `clamp(96px, 14vw, 232px)` (the "/45" and "/5" quieter at 0.42em), its caption (Personnel's
   links to Indeed), its line, and a diagram drawn only from its own number, never a count we
   don't have: <1% as a 10 by 10 field, 43/45 as 45 criteria with 43 lit and 2 outlined, 4.8/5 as
   five bars with the last at 80%, each under a mono line and over a low rust light. Desktop with
-  motion: the section pins for about a screen per figure, with three tabs (01 Reliability, 02
-  Client rating, 03 Personnel) and a meter across the top; the moments cross over, the diagrams
+  motion: the section pins for about a screen per figure, with a meter across the top and the three names (Reliability, Client rating,
+  Personnel; no numbers since 2026-10-25) each set where its stretch of the meter starts, on a tick
+  that drops to the line: as the rust fill reaches a tick, the tick lights with a small glowing point
+  on the line and its name turns ink; names already passed stay ink muted (owner, 2026-10-25); the moments cross over, the diagrams
   build, and each figure's digits roll into place from nearby values (never from 0) as its
-  moment arrives. Phones, tablets, and the resolved page: the three stacked, every diagram built.
+  moment arrives. Phones and tablets pin the same way since 2026-10-25 (owner; they had the three stacked), about 80% of a
+  screen per figure, everything a step smaller so each figure, its lines, and its diagram fit one screen
+  (checked at 390 by 664, Safari with its bars showing). The resolved page: the three stacked, every
+  diagram built.
 - **02 Industries:** "The sites we protect." and its lead. Desktop with motion (1024px and up):
   the scene pins for about 80% of a screen per industry in the owner's order; the active
   industry's photo (its industry page's photo and framing) fills the window behind everything,
@@ -546,24 +565,33 @@ and `nx-*.css` (class prefix `nx-`).
   until the deck has drawn): six stacked blocks, the photo (16:10, 4px corners, its number in mono)
   beside or above the same brief.
 - **For prime contractors:** the copy (the two-tone line and "Teaming & subcontracting →") beside
-  a node canvas on the dot grid, no panel around it: Prime contractor (Needs posts covered under
-  its contract) to Ares Security (SBA WOSB WOSB250470, WBENC WBE2303571) to three posts
-  (Restricted-Area Escort, Access Control, Relief & Surge), joined by curved wires measured from
-  the nodes. On desktop the wires draw with the scroll, each node lights as its wire reaches it
-  (crop-mark corners), the "Teaming" and "Subcontracting credit" tags come up, and three proof
-  notes hang beside the nodes they prove (subcontracting credit; restricted areas on a Space
-  Force base in Colorado, 2025 to 2027; fewer than 1% of shifts missed since 2021); once built a
-  small rust pulse rides each wire. Below 1024px one column on a straight rail; where motion runs it builds as you
-  scroll (owner, 2026-10-23): the rail draws down with a bright tip, and each step (the prime, Ares, the
-  posts, and their notes) lights as the tip reaches it, from 30% and 10px aside, its rust marker glowing. The
-  Government & Defense page keeps its own panel (below).
+  cards joined by wires, no panel around them: Prime contractor (Needs posts covered under its
+  contract) to Ares Security (SBA WOSB WOSB250470, WBENC WBE2303571) to three posts
+  (Restricted-Area Escort, Access Control, Relief & Surge). Each card carries the black label tab
+  (Home's card label, above); "Teaming" sits on the first wire as plain data-face text on the black,
+  and two proof notes sit beside the cards they prove (subcontracting credit; restricted areas on a
+  Space Force base in Colorado, 2025 to 2027; the reliability note was removed, owner 2026-10-25). No dot
+  grid, no rust pulses, no wire end squares, no boxed capital tags, no dashed leaders (AI-tells pass,
+  owner 2026-10-25). The low rust light stays. On desktop the wires draw with the scroll and each card
+  lights as its wire reaches it. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing
+  down one column): the row holds the screen (centered, never under the nav) and slides sideways with
+  the scroll, like the Services stages on desktop, in three stops: the prime; Ares with its note under
+  it; the three posts in one column. The row slides for about two thirds of the hold, then stops while
+  the posts fall out of one another with the scroll (the second slides down from behind the first,
+  then the third from behind the second; solid cards, so nothing shows through), the escort note comes
+  up last, and the rail runs on to its far end before the section lets go. The rail runs across the
+  card tops and fills rust to the reading line (62% across) with a bright tip; each stop lights as it
+  reaches the line. No rust light behind the row on phones (owner, 2026-10-25). Reduced motion and the
+  resolved page: one column, built. The Government & Defense page keeps its own panel (below).
 - **03 Quality:** "Quality [photo] over quantity.": the patrol vehicles sit in the headline as a
   word-sized photo (`clamp(48px, 11.4vw, 196px)`). Desktop with motion: the stage pins for 270%
   of a screen; the photo grows out of the line to fill the screen while the headline blurs away;
   the four facts (Established, Primary NAICS, Longest client, Post training) come in as small
   glass chips, each with a rust leader line drawn to a point on the cars; then a beat on the finished
   spec sheet (owner, 2026-10-22: about a quarter of a screen), then the photo dims and the principle
-  ("We would rather staff fewer posts well...") rises. Resolved: the headline with
+  ("We would rather staff fewer posts well...") rises, while the four facts stay in view and step back into darker glass (their
+  leader lines dimmed; owner, 2026-10-25: they faded away before; Established raised to clear the
+  principle). Resolved: the headline with
   its inline photo, the principle, the photo full width (16:10; 4:5 on phones) captioned "Ares
   patrol vehicles", and the facts as a ledger with rust ticks (four across, two on tablets, one
   on phones).
@@ -585,7 +613,7 @@ and `nx-*.css` (class prefix `nx-`).
   comes up the screen, no pin: from a centered window 40% wide to the full width, settling from 1.25, the
   rust edges riding out and fading.
 - **06 Contact:** "Request a quote, or call us." across the width, then the phone as the largest
-  object on the page (Plex Mono, `min(11.6vw, 180px)`, a tel: link under a "Call us" node bar
+  object on the page (the data face, `min(11.6vw, 180px)`, a tel: link under a "Call us" node bar
   with "For urgent procurement timelines or active contracts."): its digits read in and a rust
   line draws in as its underline, an arrow at its end; the email and base in mono beneath. Then,
   quieter, the quote line and Request a Quote, and a low rust horizon that comes up as the page
@@ -689,130 +717,69 @@ and `nx-*.css` (class prefix `nx-`).
   open triangle, its name to the left of it), at every width; not on the quote page. (DEN was
   tried the same day and removed.)
 
-### Services page ("The Schedule", 2026-10-05)
-Same system as Home, its own structures (owner: "similar but unique to the page
-contents"). Nothing on Services repeats a Home layout except the rail and the footer.
-- **Opening: aperture, the default since 2026-10-15 (owner)**, described under "Four openings" below.
-  What follows is the earlier glass opening, kept at `/services?open=current`: headline (display-xl, 7 columns) with the lead beside it (no buttons; owner,
-  2026-10-05). **Photo since 2026-10-15 (owner): the copper-glass tower (`hero6.jpg`, from the Home
-  hero), anchored at its foot so the lit copper underside sits in the clear area below the glass,
-  no caption (not a named place); headline 6:1, lead 7:1 or better.** The Capitol is `?photo=capitol`. Headline since 2026-10-19
-  (owner): Home's "A prepared officer on every post." (Home now opens on "Security officers for Colorado's Front Range."); the
-  line before it stays at `/services?hero=officers`. Copy (copy audit round 2, 2026-10-10): "Security officers, patrol, and access
-  control." / "Armed and unarmed coverage for federal, commercial, and industrial sites in
-  Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry." The audit's
-  options A, B, C and the old copy stay switchable for the client at `/services?hero=`
-  (`COPY` in `Opening.tsx`). The photograph (owner, 2026-10-12: the Colorado State Capitol and downtown Denver at night, from above, `services-hero/denver-capitol-night.webp` (Unsplash, Kevin Bree), 2400px, framed so the dome and towers sit in the clear area (`22% 62%`, set lower by `calc(132px - 36.5vw)` from 1024px at its own proportions, 255px lower below), caption "Colorado State Capitol, Denver"; the glass over it is much lighter, canvas at 12% instead of 55% (68% on phones) with the same 22px blur, since the photo is already dark (`tint` in `PHOTOS`; the other options keep the darker glass). Earlier that day: downtown Colorado Springs at dusk with Pikes Peak in alpenglow, now `?photo=pikes`, `services-hero/colorado-springs.webp`, 2527px, same grade; set 200px lower on phones and tablets, and at its own proportions 110px lower from 1024px, so the lit skyline and the mountains sit in the clear area while the peak glows through the glass; caption "Downtown Colorado Springs, Colorado". A stormy-day view of downtown was tried first, kept in images-unused. Two Denver options stay switchable for the owner at `/services?photo=skyline|capitol` (`PHOTOS` in `Opening.tsx`, each with its own framing and caption). Before it, owner 2026-10-08: downtown Denver at sunset with the Front Range, swapped from the Request a Quote page, now from its 2400px original `hero1.jpg` as `services-hero/denver-sunset.webp`, 509KB, graded `saturate(0.8) sepia(0.1) brightness(0.78) contrast(1.12)` (owner, 2026-10-08: a tad brighter and crisper; was brightness 0.68, contrast 1.04); earlier the generated Denver towers, which now open the quote page; before that the tower `hero6.jpg`, now back on Home) fills the whole opening from the top of the page, behind the nav, like the other heroes; it sat 164px lower then; a vertically flipped copy of itself directly above so the glass frosts real image all the way to the top (owner, 2026-10-08; lead 5.1:1 or better, headline 6:1). On scroll only the glass and copy move at first: they slide up over the photo while the photo and everything below hold still, and once the glass's foot reaches the nav the whole page scrolls as usual (owner, 2026-10-08; the hold is a scroll-driven transform on the photo, the page below, and the footer over the first `--svc-cap` of scroll, measured in `Opening.tsx`, so it rides the compositor without jitter; browsers without scroll timelines get a JS spacer; without JS the page scrolls normally; replaces the drift). Because the held page sits `--svc-cap` below its layout box, the page's view-timeline ranges (stage bars, Denver plate) start that much later, and the dock hides once the footer's first line of content appears (owner: not at its top padding), not on the document box (2026-10-08: both had fired early).
-  (owner, 2026-10-06): anchored to its bottom edge, graded down, masked into the canvas
-  only at the bottom, drifting slightly as it leaves. Dark glass (the footer's: canvas at
-  55% over a 22px blur; 68% below 1024px) covers it from the top down to a white/10% edge
-  where the crisp photo begins (`clamp(15rem, 38svh, 28rem)` above the opening's foot).
-  The headline and lead sit on the glass; the lead is #c4c8ce there (AA at the brightest
-  point, 6:1 or better at every width). The place caption "Downtown Colorado Springs, Colorado" (mono, full ink with a slight dark text shadow; owner: it is just a subtitle) sits on the right just under the glass's edge and rides up with the glass, out of view (owner, 2026-10-08). No division index in the opening (owner, 2026-10-05): the
-  division containers start a short scroll below.
-- **Four openings with glass, no scroll hold** (owner, 2026-10-15: "another home page hero that
-  needs to wow"; from Mobbin, Emil, and Impeccable), to compare at `/services?open=`. Each uses the
-  copper-glass tower (graded like the Home hero) and holds only the headline, the lead, and a quiet
-  "Who we protect ↓" link to the industries: the services and industries stay in the page below, so
-  the opening sends the reader down to them (owner, 2026-10-15; versions with the six services in the
-  opening, including `index`, are tagged `services-open-roles-option`; three plainer forms, `plate`,
-  `split`, `overlap`, were dropped as too basic). **Aperture is the default (owner, 2026-10-15)**;
-  curtain, sink, and lens stay at `?open=curtain|sink|lens`, and the earlier sliding glass, the only
-  form with the scroll hold, at `?open=current`.
-  - `curtain`: the photo seen through tall frosted panes like the tower's own curtain wall (six from
-    1024px, three below), 1px mullions between them, the headline (8 columns) and the lead (in ink)
-    over their tops. A pane is a blurred copy of the photo laid exactly over it (no backdrop filter,
-    so cheap on phones) under a tint dark at the top behind the copy and clear through the middle;
-    under the pointer the frost fades (260ms) to the crisp photo. On the first view the glass forms
-    pane by pane (900ms, 80ms apart). The opening fades into the canvas at its foot.
-  - `aperture`: the headline at display-xl, the same size as every other page's, set as two lines at
-    every width, "A prepared officer" / "on every post" (owner, 2026-10-19) (owner, 2026-10-15;
-    it was up to 116px), then the photo as a plate in the column (4px
-    corners) that opens to the screen's edges over the first 70% of a screen of scroll, the photo
-    settling from 1.1 inside it (tied to the scroll; static without scroll timelines or under reduced
-    motion). A liquid glass card with the lead straddles the plate's top edge on the right, beside the
-    headline's foot, so its rim bends the photo's edge. The card is the site's glass card, the Home
-    Record cards' recipe without their rust corner light (owner, 2026-10-15: just the dark liquid
-    glass): 1px glass edge and top line, soft shadow, liquid at 12px with a darker wash (56% to 44% black) because it crosses the
-    bright sky (lead 5.2:1 at the brightest point). Phones (owner, 2026-10-15: too dark, no copper
-    coming through): the card overlaps only the photo's last 56px and its wash is much lighter, so the copper underside shows above it and glows into it (lead 16:1). On phones the card keeps the CSS
-    frost, not the liquid filter, with more color through it (owner, 2026-10-15: a 4% to 24% black
-    wash, a 14px blur, no saturation boost): Android Chrome drew a seam down the card where it tiles the
-    filter, which a laptop's phone view never shows (owner, 2026-10-15). Phones: the card over the plate's foot.
-  - `sink`: the headline huge (up to 148px) low over the photo, its last line resting in a full-width
-    band of liquid glass (18px frost, its top edge bent and lit, like the footer's ARES letters) that
-    holds the lead and the link. A shade over the photo keeps the headline 6:1 or better.
-  - `lens`: one tall liquid glass slab (6 columns, from under the nav to 56px above the foot, the
-    site's glass edge, a wider 32px rim and a light 7px frost) with the headline at its top and the
-    lead at its foot, clear glass between where the towers bend through. The photo drifts slowly
-    behind it on desktop (26s, ambient, off under reduced motion) so the bend moves. Phones: the photo
-    above, the slab over its lower part.
-- **One set of six industries (owner, 2026-10-10):** the divisions and the separate four-link
-  Industries list were the same list shown twice, so the section is now "Who we protect."
-  ("Open one to see the sites we staff."): six cards in the owner's fixed order (overrides the audit): Government &
-  Military; Critical & High-Liability Sites; Construction, Industrial & Logistics; Airport &
-  Transportation; Commercial & Retail; Institutional & Community. The same order wherever
-  the six appear (the six services also keep one order, owner 2026-10-10: Armed, Unarmed,
-  Access control, Restricted-area escort, Relief and surge coverage, Mobile patrol; Mobile
-  Patrol is that card's name on the Capability Statement too) (Home, industry pages, the quote form, llms.txt). Each opens to its summary and
-  site types; the open card shows "Open the full page →" (owner, 2026-10-10; screen readers hear the industry name) to its industry page in its heading area, under the description (hidden while closed). "By role." keeps only the
-  services. **One name per industry** on Home ("Six industries"), Services, the industry
-  pages, the city-page tags, and the quote form's site types. "Specialized & Armed
-  Protection" became Critical & High-Liability Sites (a kind of site, not a service; data
-  centers one example), its page moved from /industries/data-centers (301 redirect) to
-  /industries/critical-infrastructure. Two new industry pages: /industries/
-  institutional-community and /industries/airport-transportation ("ready to staff", no
-  airport client named), with generated images in the same style.
-- **Divisions as a bento of cards that open in place** (owner requests, 2026-10-05; the
-  one exception to "no card containers", and with the nav the only glass). Desktop and
-  tablet: two equal columns (owner, 2026-10-05; the earlier 4+2 / 2+4 bento spans were
-  dropped); 4px corners on every card (the 10px / 28px plate corners were retired). Phones: one column. Each card: near-black fill (`#050607`), a white/10% edge and a
-  faint inner light from below (drawn on top), the photo across the top (growing to
-  fill when a row-mate is taller, slight 1.03 zoom on hover), and a frosted panel
-  riding up over the photo's foot. Its frost is not a live backdrop filter (owner, 2026-10-15: the
-  liquid filter on six panels re-filtered on every scroll frame and glitched on fast scrolls): each
-  panel carries its own copy of the card's photo with the photo flipped beneath it (its reflection,
-  fading out, so the frost runs all the way down instead of hitting black), laid exactly where the
-  photo sits behind the panel and blurred once (14px, the color lifted 1.6), under a dark tint (46%
-  to 76% black; every card's text 5.1:1 or better) and a light along its top. It paints once and
-  scrolls as a picture, so nothing re-filters while the page moves. With the number beside
-  the title (Inter 500, 22 to 24px), the division's one-line description, and the +.
-  The + (or the photo; since 2026-10-18, owner, anywhere on the card, with the number turning rust and the +
-  animating on card hover) opens one card at a time: it takes its row's full width (its
-  row-mate moves down and the cards after it re-pair beneath; a last odd card sits at
-  half width), the + turns into an x, and the detail appears under the
-  description (Government's GSA ledger row, then each site type with one plain line).
-  Desktop opened: photo left (5/12) top to bottom, detail right on plain card fill.
-  At every width (owner, 2026-10-05) the opened card glides to just under the nav (and the
-  running head where it shows), one grid gap below it, so the card above is never seen. Detail is
-  always in the HTML (`hidden` until opened).
-- **Process head** (owner, 2026-10-16): on desktop the site's section head, the headline in 7
-  columns and its lead in the last 5 at the headline's foot (was the headline across with the lead
-  beneath, which left the right side empty; the others at `/services?stagehead=current|column|wide`).
-- **Process as a schedule chart:** a mono axis (Pre-contract, Contract execution,
-  Operational) over hairline rows. Each stage: number and title, a faint scope line, then a
-  hairline bar with its quarter drawn in ink, one quarter further right per stage, and the
-  body. The bars draw in as each row arrives, and a 2px by 13px rust tick comes up at the end of
-  each quarter as its draw reaches it (owner, 2026-10-16; desktop, shown and still without scroll
-  timelines or under reduced motion). No pinned passage on this page.
-  Below 1024px (owner, 2026-10-05) the stages become a swipe row (scroll snap, 84%
-  slides on phones and 62% on tablets, so the next one peeks), under a process meter:
-  stage numbers 01 to 04 over a hairline split into quarters with ticks, the phase labels
-  beneath, and a 3px ink fill tied to the swipe position (from one quarter to full). Each
-  number sits at the end of its quarter, over where the fill stops for that stage, 04 at the right
-  edge; the current stage's number is rust and the ones passed ink (owner, 2026-10-15; was each
-  number turning ink as reached, at the start of its quarter); tapping a number swipes to it. Two swipe cues:
-  a one-time nudge when the row first comes into view (the slides slide 44px toward the
-  next stage and settle back, 900ms; skipped under reduced motion or once touched), and a
-  quiet "Next stage" link under the row ("Back to the first stage" on the last). The per-stage
-  bars step aside there. The meter is a position indicator, so it stays on under reduced
-  motion.
-- **Areas:** the Denver skyline as a wide plate in the column (21:9, 16:10 on phones) with
-  a mono caption (it documents a real place), then the three cities as a three-column
-  strip (Inter Tight 600, 24 to 32px) with arrows.
-- **No close** (owner, 2026-10-06): the page ends on the three cities and hands straight
-  to the footer; the nav carries the quote. ("Tell us about your site." with the phone,
-  email, and actions was removed.)
+### Services page ("The Post", live since 2026-10-24, owner)
+From the home-flora bundles (3) and (5), on Home's language and scroll engine (`src/pages/Services.tsx`,
+the sections in `src/components/svc/`, styles in `svc.css` and `sv-*.css`). It replaced "The
+Schedule" (archived in `docs/services-schedule.md`; live through `931e70d`). No rail, dock, or running
+head: the page reads as one scene like Home. Section ids `sv-services`, `divisions` (industries; old
+`/services#divisions` links still land), `sv-process`, `sv-relief`, `areas` (the close).
+- **Hero, "the establishing shot":** the copper-glass towers (`hero6.jpg`, the route's preload) full
+  bleed behind the headline "A prepared / officer on / every post" (three lines at every width; owner
+  2026-10-23), Inter Tight 600, centered. Load-in where motion runs: the photo opens out of a slit of
+  light in the middle of the black (1.5s) while it settles from a close, low framing; the three lines
+  rise in turn from behind masks with room for descenders (the waiting lines sit fully below their
+  masks, so nothing peeks); the lead and actions follow; then the six services come in as nodes with
+  wires to a "Your post · Colorado Springs · Denver · Pueblo" bar; a rust light runs each wire. After it
+  settles the photo breathes (22s) and leans from the cursor.
+  - Desktop: the six nodes around the headline (mono bar with number and key, the title, keys) are the
+    site's dark glass as plain CSS frost (14px blur, saturate 1.2; not the liquid filter, light on the
+    GPU), drift with the cursor by depth, and each links down to its card in "What we staff." (it
+    glides; the card is `svc-<id>`). Wires leave from the middle of each node's foot (from its top for
+    the two below the post bar) and curve into the bar's side; they redraw as the leave runs so they
+    meet the nodes on the way back up. Lead in #c4c8ce, Request a Quote and "See the six industries →"
+    (to `#divisions`); 1024 to 1279px the lead narrows to 36ch so it clears the side nodes. Scrolling:
+    the stage holds (sticky, 90vh) while the photo closes to a framed window and dims, the nodes spread
+    out and fade, and the copy lifts away.
+  - Phones (below 768px): no nodes. The headline centered at Home's phone size before Home's 6px bump
+    (`clamp(48px, 14.4vw, 80px)` below 600px, about 56px on a 390 phone; Home's
+    `clamp(54px, 12.2vw, 188px)` from 600 to 767px) over a darker shade (4.5:1 or better on the
+    brightest sky). The hero runs a little past the screen (`clamp(780px, 108svh, 960px)`); the photo
+    ends 200px above its foot so the lit copper canopy sits just above a card of the site's black glass
+    at the foot, holding the lead (left aligned) and "Who we protect ↓" (no quote button: the nav
+    carries it). The card rises faster than the page as the hero scrolls away (220px extra).
+- **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
+  lead right; six tall panels (armed, unarmed, access, escort, relief, patrol), each a big number and
+  one word at the top, a small working example of the post in the middle (a qualification card, a
+  patrol round, a visitor log, an escort plan, a relief week, a patrol route; labeled "Example", running
+  only in view, still under reduced motion), and the service's name (a link to its page), line, and
+  keys at the foot. Desktop three by two; phones a swipe row with "01 / 06" and "Swipe for more".
+- **02 The sites we protect.** (`divisions`): the six industries. Desktop: a row of 4:5 photo cards
+  running off the right edge (swipe, wheel, drag, arrows, a progress bar), the name and short line over
+  the photo's foot, hovering lifts the site types and "Open the page"; the row drifts left as the page
+  passes. Phones (below 768px; owner, 2026-10-23: the words over the photos were hard to read): each
+  card a site file in the page's node language, no words on the photo: a mono bar ("01 / 06", the site
+  count), the photo as a 16:10 plate with crop marks, the name and the industry page's short line, the
+  site types on a rust wire with a node each, and "Open the page →" at the foot; all six the same
+  height. As a card settles in view its crop marks close in and the wire draws, lighting each node.
+- **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
+  canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
+  faint phase labels. Phones and tablets: the stages stacked on a rust wire that draws down with the
+  scroll and a bright tip; each stage's stop lights and its card rises 12px from 0.62 as the tip reaches
+  it, stage 03's systems tick on in turn; the wire runs on to the closing line ("The same four stages
+  run at every post, in every city we cover."), where the tip stays and spreads into a 22px rust bar
+  pointing into it and the line lights (owner, 2026-10-23). Scrubbed, so it all reverses.
+- **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
+  it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
+  from this week's on-call slot and it locks in green ("Covered the same shift from this week's on-call
+  schedule"), a quieter "Supervisor" cursor drifting over the week. Finished and still by default.
+- **The close** (`areas`): "Armed and unarmed officers in **Colorado Springs**, **Denver**, and
+  **Pueblo**." with the call link and Request a Quote, then Denver in front of the Front Range dissolving
+  into the black with the three cities as large links over its foot (each arrow stays beside the last
+  word when a name wraps). Desktop with motion: the photo opens from an inset as it scrolls in.
+- **Phones:** about 88 to 120px between one section's last line and the next one's first (owner,
+  2026-10-23).
+- The resolved page (prerender, no JavaScript, reduced motion, automated browsers) shows every section
+  built and still.
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
@@ -897,83 +864,58 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   footer. (04 Statement, the capability statement plate with its links, was removed; the
   Capability Statement page carries it.)
 
-### Capability Statement page ("The Statement, Served", 2026-10-05)
-The most important page after Home; it must stand out like Home. Concept and Mobbin
-board: docs/capability-concepts.md. Every piece of the old page's content carries over.
-Rail marks: 01 Capabilities, 02 Why Ares, 03 How to buy, 04 Credentials, 05 Download.
-- **Hero:** downtown Denver at sunset (owner, 2026-10-12: `services-hero/denver-sunset.webp`, the Services opening's photo until then, in the same frame and shades, with the place caption "Downtown Denver, Colorado" top right under the nav like About; the fins image moved to `assets/images-unused/capability-hero/`). Before it, generated copper fins on a building at dusk (owner, 2026-10-08:
-  `capability-hero/cs-fins.webp`, 2752px at its native size, quality 82 with sharp YUV, 227KB, from the Services hero option
-  `s4-fins`; generated, so no place caption; earlier the federal facade `cs-facade` and the
-  glass-panels light `hero-panels.webp`, both kept, with the other options in
-  `assets/generated/capability/`) shown whole (never cropped; full width at its own
-  proportions, fading only at its very foot (2%; the frost softens the edge) so its color runs on under the
-  facts' glass and the frost reads; below 900px a taller frame, clamp(27rem, 66svh, 38rem),
-  cropped at the sides with the photo set further right (60%), under an evenly eased shade from the left (a kink in it read as a dark band), fading from 55% under the copy, with the lead in
-  #c4c8ce there; from 900px the copy, the facts' glass, and the codes sit 40px higher and the
-  photo 24px higher, owner 2026-10-08, the hero height unchanged; the photo is never
-  shorter than the window less 96px, so narrower desktop and tablet windows crop its sides
-  on the fins (66%) instead of leaving black under it, while 1440 and wider still show the
-  whole frame), black from the left; below 900px a softer shade from the left keeps the lit fins
-  off the lead. The spec line is ink muted on the photo. Since 2026-10-13 (owner) the shade from the left is lighter on desktop, the lightest
-  eased shade that keeps 4.5:1 (78% at the edge, easing to 0 at the right; was 100% to 0 by
-  72%), with the lead and spec line in #c4c8ce: headline 4.51:1, lead 4.79:1, spec 4.55:1 at
-  the brightest point (the Denver sunset). "Capability
-  statement." at display-xl, a two-sentence offer (no credential line; owner, 2026-10-05: the
-  quick facts and sections below carry it), a white "Download the PDF"
-  button with an authored download icon (no quote link; owner, 2026-10-06: the nav carries
-  it), and a mono spec line
-  (company, NAICS, 1 page, PDF, 1.5 MB for the owner's new statement of 2026-10-19 after the same lossless
-  shrink, 2.28 MB as exported; 2026). No floating document (removed by the owner, 2026-10-05). Under the hero, the four quick facts with notes and the SAM.gov route sit on one
-  full-width hairline over a long band of frost (22px blur, a light 10%-to-0 tint since
-  2026-10-08 so the photo's color shows through; was 28%; about 26rem past the row) that fades out downward (owner, 2026-10-05).
-- **Services first (owner, 2026-10-18; web audit item G):** the six capability cards below now open
-  the Services page under "What we staff." (owner), right after the opening and before "Who we protect.", in the site's "we" voice,
-  each open card with "Open the full page →" to its service page (as the industry cards do). They
-  replace Services' "By role." list. The Capability Statement's "Core competencies." is now that
-  plain list: the six as ruled routes to their service pages (title and one line), in the page's
-  third person. The earlier layout is tagged `services-before-capability-cards`.
-- **Capabilities (second pass, 2026-10-05):** six cards named as on the service pages (owner, 2026-10-10: Armed Security Officers, Unarmed Security Officers, Access Control Officers, Restricted-Area Escort, Relief & Surge Coverage, Mobile Patrol; the PDF follows) in the Services card language
-  without photos (#0e1013 fill, white/8% edge, faint light from below, 4px corners): mono
-  number, Inter 600 title, a + that turns to an x, a line on who it is for, mono keys
-  (hidden on phones). Three columns on
-  desktop, two on tablet, one on phones. The + opens one card at a time in place: it
-  spans its row and moves (in the DOM) to the start of it, so tab order matches; the
-  closed cards after it widen to fill the last row (six-track grid on desktop). It lists
-  four included services in
-  two columns (one on phones). FLIP motion as on Services; at every width the opened card
-  glides under the nav (and running head). The h3 holds the disclosure button.
-- **Why Ares (second pass):** four differentiators, each with a mono proof line:
-  restricted-area experience, four-stage deployment, client rating, officer rating (the
-  Indeed proof links to the reviews).
-  2x2 on hairlines on desktop; a swipe row with the Home meter on phones.
-- **How to buy:** the GSA MAS as a spec block (title, mono status "● Active", spec rows,
-  eLibrary route) beside the four procurement paths with mono status (13px, sentence
-  case) and the set-aside note. Status lights kept from the old page (owner): green
-  (#7cb85f) for active and available, amber (#f2b84b) for on request, each with a soft
-  halo and one pulse outward when the section is first seen. These are the page's only
-  functional colors.
-- **Past performance (rail 03, owner 2026-10-11):** "Selected contracts since 2021." (a selection, never worded as a full count), with more than $2.1 million in revenue 2021 through 2025, as ledger rows (scope, where, mono term): the Space Force base subcontract, armed
-  multi-site Denver metro, retail Pueblo, and seven completed armed contracts in Colorado
-  (2021 to 2025). Clients never named (the dispensaries never mentioned).
-- **Credentials ("Certifications and codes.", owner 2026-10-11, from the copy audit):** one
-  grouped ledger, each identifier once: Contract vehicle (the square GSA mark
-  `cert-gsa-square`, in its own colors), Registration (SAM status with the footer's green
-  light, UEI, CAGE, DUNS, NAICS, PSC), Certifications (SBA WOSB, WBENC, Denver M/WBE and SBE,
-  the two Colorado marks; no separate SAM-registered small business row), Licenses and service
-  area. Each group opens with its name in the `title` style on a hairline-strong rule; rows on
-  hairlines with the mark (white silhouette) in an 88px slot, label, mono value, faint note.
-  Phones: mark, label, and value on one line (value right), the note beneath; not folded.
-  The earlier marks-then-listing layout stays at `?creds=marks`.
-- **Copy (design review, owner 2026-10-13):** a copy icon (two overlapping sheets, 15px, drawn
-  like the arrows, ink muted; a check for 1.6s once copied, announced; 28px target) beside the
-  UEI and CAGE in the hero facts, the GSA contract number in the How to buy block, and the GSA,
-  UEI, and CAGE rows of the credentials table. With the handset, an owner exception to arrows
-  only.
-- **Voice (owner 2026-10-11, copy audit):** this page, like the PDF, speaks as Ares in formal
-  third person ("Ares has…", "How to buy from Ares."); the rest of the site says "we".
-  The first-person lines stay at `?voice=first`.
-- **Download (the close):** the PDF thumbnail beside "Take this capability statement
-  with you.", Download and Open in a new tab, over the closing rust light (the quote and phone links came out, owner 2026-10-15).
+### Capability Statement page ("The company card", live since 2026-10-24, owner)
+From the home-flora bundle (4) (`src/pages/CapabilityStatement.tsx`, `src/components/capnext/cn.css`,
+content from `components/capability/data.ts`). It replaced "The Statement, Served" (archived in
+`docs/capability-served.md`; live through `931e70d`). For people who just need the information: one
+striking object, then a document. Formal third person ("Ares"), as the PDF. Low motion: the card's
+tilt and one fade-up per block (`data-rv`, once).
+- **Hero:** downtown Denver at sunset (`services-hero/denver-sunset.webp`) full bleed with the place
+  caption "Downtown Denver, Colorado" top right under the nav (the site's `ds-caption ds-cs-hero-cap`,
+  as on the other photo heroes); "Capability Statement" (Inter Tight 600, no period), a two-sentence
+  lead, Download the PDF and "Verify on SAM.gov ↗", the spec line "1 page · PDF · 1.5 MB · 2026"
+  (hidden on phones; on phones the headline sits lower, about 200px under the nav). Beside it (under it
+  below 1024px) **the company card**: the CR80 badge ratio on desktop, the site's black glass (wash,
+  edge, top line, 22px blur at 1.65, soft shadow; every line 4.96:1 or better over the sunset), 4px
+  corners, no glow or sheen; the logo and wordmark with "Capability statement · 2026", "Ares Security
+  LLC" and its line, then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
+  Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with a drawn contact chip and the
+  WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones: the rail card's
+  lockup (the mark at 26px and "ARES SECURITY LLC" in mono caps, 13px) instead of the wordmark and big
+  name, fields two across, more air.
+- **The document:** the site container (the same edges as the nav). Desktop (1100px and up): a sticky
+  left rail (280px) with a compact copy of the card (UEI, CAGE, GSA, NAICS, SAM), the section index (the
+  current one lit), and Download the PDF; it lets go when its foot meets the end of the last section.
+  Below 1100px the rail is replaced by a slim bar that slides down under the nav once the hero card has
+  scrolled away: the current section (opens the index), a PDF button, and a row of the identifiers that
+  copy with a tap (a 6px strip tucked under the nav so no seam shows). Five sections, "01 / 05" to
+  "05 / 05"; no closing Download section (owner, 2026-10-23: the hero, rail, and bar carry the PDF).
+- **01 Core competencies.** The six as a ruled list: mono number, the title as a link to its service
+  page, one line, and what it includes as small tags (dropped on phones).
+- **02 Why Ares.** Four cards in a 2x2 grid on hairlines, each led by a large mono figure: "Restricted
+  areas", "4-stage deployment" (both two lines at every width), "43 / 45", "4.8 / 5", then the title
+  (the second reads "Ready before the first shift"; owner), the body, and a mono source line (the
+  second names the stages: "Audit · Compliance · Training · Deployment · Trained on post by
+  leadership"). The cards stay black while their contents rise in. Phones: a swipe row with the Home
+  industry deck's controls (counter, a meter with the current step in rust, two arrows) and "Swipe for
+  the next reason".
+- **03 Past performance.** (owner, 2026-10-24: no revenue figure; revenue is company data, not past
+  performance.) The lead "Selected contracts since 2021. Clients are not named here."; the featured
+  contract (the current Space Force subcontract) as a card (2px corners, a step above the page): a mono
+  bar with the rust status light and "Current" and "Subcontractor", the scope as the title, where, and
+  the term; then the rest in a Scope / Where / Term / Status ledger (current a rust light, completed a
+  neutral dot; a Value column only once a row has a value), and "References available on request." to
+  /contact. Role and value render only where `data.ts` has them (values wait on Deidre). Phones: rows
+  stack, term and status on one mono line. The earlier page's `lead` (with the revenue sentence) stays in
+  `data.ts`, unused on the live site.
+- **04 How to buy from Ares.** The GSA MAS block: label and a green "Active" light, the contract number
+  large with a copy button, SIN, schedule, and period as a ledger, "View on GSA eLibrary ↗"; then the
+  other procurement paths with status lights (green available, an outlined dot on request) and the
+  WOSB set-aside note.
+- **05 Codes and certifications.** "All data matches our SAM.gov registration." Three groups (Codes and
+  registration, Certifications, Licensing) as ledgers: the mark, label, value (copy where useful), note.
+  Marks are white silhouettes in a 56px slot with the label 32px past it; the square GSA mark keeps its
+  colors at 40px. Phones: the first group as two-column tiles, the GSA mark at its tile's top right.
 
 ### Request a Quote page ("The Intake", 2026-10-05)
 A short form page, so no rail and no scroll effects (owner). Concept and Mobbin board:
@@ -1381,7 +1323,8 @@ Few, fast, and crisp. Four to six moments per page.
   scroll-linked and entrance motion (UI feedback keeps it), and "no entrance from opacity 0" are
   lifted, but only where motion runs: the resolved page (prerender, no JavaScript, reduced motion,
   automated browsers) shows every section whole. No bounce or elastic easing there either.
-- **Allowed moments on Services (2026-10-05):** the opening band drifts as it leaves;
+- **Allowed moments on the earlier Services page (2026-10-05; the live page runs on Home's engine,
+  Components, "Services page"):** the opening band drifts as it leaves;
   the stage bars draw along the axis; the Denver photo settles inside its frame. The
   division cards open with a FLIP on the real cards (320ms, drawer curve
   `cubic-bezier(0.32, 0.72, 0, 1)`): every card glides from where it was to where it is;

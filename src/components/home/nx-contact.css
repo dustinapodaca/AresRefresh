@@ -10,8 +10,6 @@
 .nx-ct-title { font-size: clamp(48px, 8.6vw, 156px); max-width: 12em; }
 
 .nx-ct-call { margin-top: clamp(56px, 8vw, 120px); }
-.nx-ct-call .nx-node-bar { justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
-.nx-ct-call .nx-node-bar > span:last-child { text-transform: none; letter-spacing: 0.01em; font-size: 13px; }
 
 .nx-ct-phone {
   position: relative;
@@ -106,7 +104,6 @@
 @media (max-width: 767px) {
   .nx-ct-quote p, .nx-ct-quote .ds-btn { grid-column: 1 / -1; justify-self: stretch; }
   .nx-ct-phone { letter-spacing: -0.06em; }
-  .nx-ct-call .nx-node-bar > span:last-child { font-size: 12px; }
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */

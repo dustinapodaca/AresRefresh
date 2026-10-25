@@ -53,8 +53,6 @@
   gap: 16px;
   margin-top: 4px;
 }
-.nx-dk-count { margin: 0; font-size: 13px; color: var(--ds-fg-faint); min-width: 64px; }
-.nx-dk-count b { font-weight: 400; color: var(--ds-fg); }
 .nx-dk-meter { display: flex; gap: 5px; flex: 1 1 auto; }
 .nx-dk-seg {
   flex: 1 1 0;
@@ -141,20 +139,6 @@
   -webkit-user-drag: none;
 }
 .nx-sk-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 18px 12px; }
-/* The Node bar, as on the rest of Home. */
-.nx-sk-bar {
-  margin: 0 0 4px;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--ds-data);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ds-fg-muted);
-}
-.nx-sk-bar > span:last-child { color: var(--ds-fg-faint); }
-.nx-sk-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; }
-.nx-sk-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
 .nx-sk-name {
   margin: 0;
   /* The site's base h3 rule paints headings in the old light-theme ink; here it is the page's ink. */

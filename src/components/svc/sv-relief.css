@@ -12,7 +12,6 @@
 .sv-rl-copy { grid-column: 1 / span 5; }
 .sv-rl-body { margin: 26px 0 0; font-size: 17px; line-height: 1.6; color: var(--ds-fg-muted); max-width: 46ch; }
 .sv-rl-proof { margin: 26px 0 0; display: flex; align-items: center; gap: 10px; color: var(--ds-fg); }
-.sv-rl-proof i { width: 7px; height: 7px; border-radius: 1px; background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.8); }
 .sv-rl-proof .ds-data { font-size: 13px; }
 
 /* The canvas card. */
@@ -52,12 +51,9 @@
   gap: 12px;
   font-family: var(--ds-data);
   font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--ds-fg-faint);
 }
 .sv-rl-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg-muted); }
-.sv-rl-bar > span:first-child::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--ds-rust); }
 
 .sv-rl-week {
   display: grid;

@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react';
+import { useRef, type CSSProperties, type ReactNode } from 'react';
 import Arrow from '../Arrow';
 import { INDEED_REVIEWS } from '../careers/data';
 import { readIn, useScene, words, SCRUB } from './engine';
@@ -43,7 +43,6 @@ const VALUES: {
   },
 ];
 
-const n2 = (i: number) => String(i + 1).padStart(2, '0');
 
 // Nearby values each digit rolls through (ending on its own), never counting up from 0.
 // "<1%" rolls down toward 1, the rest roll up into place.
@@ -144,22 +143,39 @@ export default function Record() {
     };
 
     const mm = gsap.matchMedia();
-    mm.add('(min-width: 1024px)', () => {
+    // Pinned at every width where motion runs (phones and tablets too since 2026-10-25, owner; they
+    // had the three stacked): about a screen per figure on desktop, a little less on a phone.
+    mm.add({ wide: '(min-width: 1024px)', narrow: '(max-width: 1023px)' }, (ctx) => {
+      const narrow = !!ctx.conditions?.narrow;
       root.dataset.pin = 'on';
+      // Narrow screens: every slide's words take the tallest one's height, so the three line up.
+      const evenUp = () => {
+        stage.style.removeProperty('--rec-copy-h');
+        stage.style.removeProperty('--rec-viz-h');
+        if (!narrow) return;
+        const tallest = (sel: string) => Math.max(...moments.map((m) => m.querySelector<HTMLElement>(sel)?.offsetHeight ?? 0));
+        stage.style.setProperty('--rec-copy-h', `${tallest('.nx-rec-copy')}px`);
+        stage.style.setProperty('--rec-viz-h', `${tallest('.nx-rec-viz')}px`);
+      };
+      evenUp();
+      e.ScrollTrigger.addEventListener('refreshInit', evenUp);
       gsap.set(moments.slice(1), { autoAlpha: 0 });
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
           trigger: stage,
           start: 'top top',
-          end: '+=' + moments.length * 95 + '%',
+          end: '+=' + moments.length * (narrow ? 80 : 95) + '%',
           pin: true,
           scrub: SCRUB,
           onUpdate: (self) => {
             const at = Math.min(moments.length - 1, Math.floor(self.progress * moments.length * 0.9999));
             if (stage.dataset.at !== String(at)) {
               stage.dataset.at = String(at);
-              tabs.forEach((t, k) => (t.dataset.live = k === at ? 'true' : 'false'));
+              tabs.forEach((t, k) => {
+                t.dataset.live = k === at ? 'true' : 'false';
+                t.dataset.past = k < at ? 'true' : 'false';
+              });
               roll(moments[at]);
             }
             if (meter) meter.style.transform = `scaleX(${self.progress})`;
@@ -193,19 +209,12 @@ export default function Record() {
       roll(moments[0]);
       tabs[0] && (tabs[0].dataset.live = 'true');
       return () => {
+        e.ScrollTrigger.removeEventListener('refreshInit', evenUp);
+        stage.style.removeProperty('--rec-copy-h');
+        stage.style.removeProperty('--rec-viz-h');
         delete root.dataset.pin;
         delete stage.dataset.at;
       };
-    });
-    mm.add('(max-width: 1023px)', () => {
-      moments.forEach((m) => {
-        const { sq, bars } = build(m);
-        const st = { trigger: m, start: 'top 80%', end: 'top 30%', scrub: SCRUB };
-        if (sq.length)
-          gsap.fromTo(sq, { opacity: 0.08, scale: 0.4 }, { opacity: 1, scale: 1, ease: 'none', stagger: 0.01, scrollTrigger: st });
-        if (bars.length) gsap.fromTo(bars, { scaleX: 0 }, { scaleX: 1, ease: 'none', stagger: 0.08, scrollTrigger: st });
-        gsap.timeline({ scrollTrigger: { trigger: m, start: 'top 75%', onEnter: () => roll(m) } });
-      });
     });
     return () => mm.revert();
   });
@@ -222,8 +231,8 @@ export default function Record() {
       <div className="nx-rec-stage">
         <div className="nx-rec-tabs nx-edge" aria-hidden="true">
           {VALUES.map((v, i) => (
-            <span key={v.name} className="nx-rec-tab" data-live={i === 0}>
-              <b>{n2(i)}</b> {v.name}
+            <span key={v.name} className="nx-rec-tab" data-live={i === 0} style={{ ['--k' as string]: i, ['--n' as string]: VALUES.length } as CSSProperties}>
+              {v.name}
             </span>
           ))}
           <span className="nx-rec-meter">
@@ -234,10 +243,6 @@ export default function Record() {
           {VALUES.map((v, i) => (
             <figure key={v.name} className="nx-rec-moment nx-node" data-live="true">
               <div className="nx-rec-copy">
-                <p className="nx-node-bar">
-                  <span>{v.name}</span>
-                  <span>{n2(i)} / 03</span>
-                </p>
                 <Figure figure={v.figure} />
                 <figcaption className="nx-rec-cap">
                   {v.href ? (

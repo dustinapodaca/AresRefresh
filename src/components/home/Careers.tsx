@@ -12,11 +12,6 @@ import './nx-careers.css';
 // (stacked under it on phones).
 
 const PHOTO = '/images/about-security.jpg';
-const OFFERS = [
-  { k: 'Training', v: 'For your city license' },
-  { k: 'Schedules', v: 'Posted ahead' },
-  { k: 'Supervisors', v: 'Who answer' },
-];
 
 export default function Careers() {
   const ref = useRef<HTMLElement>(null);
@@ -91,16 +86,6 @@ export default function Careers() {
               <Arrow />
             </Link>
           </div>
-          <ul className="nx-cr-nodes" aria-label="What the job offers">
-            {OFFERS.map((o) => (
-              <li key={o.k} className="nx-node nx-cr-rise" data-live="true">
-                <p className="nx-node-bar">
-                  <span>{o.k}</span>
-                  <span>{o.v}</span>
-                </p>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

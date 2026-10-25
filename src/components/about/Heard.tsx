@@ -97,9 +97,6 @@ export default function Heard() {
             told us about their last guard company. The stories were always the same, so we built
             Ares around them.
           </p>
-          <p className="ds-data ds-heard-count" aria-hidden="true">
-            <span>{n2(current)}</span> / {n2(HEARD.length - 1)}
-          </p>
         </div>
 
         <div className="ds-heard-cards">

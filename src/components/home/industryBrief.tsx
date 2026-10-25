@@ -7,7 +7,17 @@ import { roleBySlug } from '../market/roles';
 // desktop list, and the phone deck (2026-10-22).
 
 export const N = INDUSTRY_PAGES.length;
-export const n2 = (i: number) => String(i + 1).padStart(2, '0');
+
+// The card's label, a black tab across the card's top (owner, 2026-10-25): the name, a fainter note
+// at the right.
+export function CardLabel({ label, note }: { label: string; note?: string }) {
+  return (
+    <p className="nx-card-label" aria-hidden="true">
+      <span>{label}</span>
+      {note && <span>{note}</span>}
+    </p>
+  );
+}
 
 export function Roles({ ind }: { ind: IndustryPageData }) {
   return (
@@ -30,12 +40,7 @@ export function Roles({ ind }: { ind: IndustryPageData }) {
 export function Brief({ ind, i, scene }: { ind: IndustryPageData; i: number; scene?: boolean }) {
   return (
     <>
-      <p className="nx-node-bar">
-        <span>Post brief</span>
-        <span>
-          {n2(i)} / {n2(N - 1)}
-        </span>
-      </p>
+      {scene && <CardLabel label="Post brief" note="Ares Security" />}
       {scene && <h3 className="nx-ind-brief-name">{ind.name}</h3>}
       <p className="nx-ind-short">{ind.short}</p>
       <p className="nx-ind-label">What we staff</p>

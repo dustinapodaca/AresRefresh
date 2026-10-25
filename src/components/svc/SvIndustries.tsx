@@ -13,15 +13,14 @@ import './sv-industries.css';
 // it covers and the way to its page. The row scrolls on its own (swipe, wheel, drag with the mouse,
 // or the arrows), snaps card by card, and drifts a little to the left as the page scrolls past.
 
-const n2 = (i: number) => String(i + 1).padStart(2, '0');
 const shortFor = (to?: string) => INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.short;
 
 // Phones (owner, 2026-10-23: the text over the photos was hard to read, and Services should not
 // copy Home's deck): each card is a site file in the page's own node language, after the hero.
-// A mono bar (number, site count), the photo in its own frame with crop marks and nothing over it,
-// the name and the industry's short line on the card, the site types on a wire with a node each,
-// and the way to the page at the foot. As a card settles in the row, its crop marks close in and
-// the wire draws down, lighting each node. Drawn by default (prerender, no JS, reduced motion);
+// The photo in its own frame with nothing over it, the name and the industry's short line on the
+// card, the site types on a wire with a node each, and the way to the page at the foot (the numbered
+// bar and crop marks were removed, owner 2026-10-25). As a card settles in the row, the wire draws
+// down, lighting each node. Drawn by default (prerender, no JS, reduced motion);
 // armed after mount. Desktop keeps the caption over the photo.
 
 export default function SvIndustries() {
@@ -193,12 +192,6 @@ export default function SvIndustries() {
           {DIVISIONS.map((d, i) => (
             <li key={d.id} className="sv-ind-card">
               <Link to={d.page?.to ?? '/services'} className="sv-ind-link" draggable={false}>
-                <span className="sv-ind-nbar ds-data" aria-hidden="true">
-                  <span>
-                    {n2(i)} <em>/ {n2(DIVISIONS.length - 1)}</em>
-                  </span>
-                  <span>{d.covers.length} site types</span>
-                </span>
                 <span className="sv-ind-photo" aria-hidden="true">
                   <img
                     {...responsive(d.photo.src, '(min-width: 1024px) 400px, 78vw')}
@@ -208,15 +201,8 @@ export default function SvIndustries() {
                     decoding="async"
                     style={{ objectPosition: d.photo.position ?? '50% 50%' }}
                   />
-                  <span className="sv-ind-crop">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
-                  </span>
                 </span>
                 <span className="sv-ind-shade" aria-hidden="true" />
-                <span className="sv-ind-idx ds-data">{n2(i)}</span>
                 <span className="sv-ind-cap">
                   <span className="sv-ind-name">{d.title}</span>
                   <span className="sv-ind-body">{d.body}</span>

@@ -21,29 +21,15 @@
 }
 .nx-statement-sm { font-size: clamp(40px, 5.8vw, 96px); letter-spacing: -0.05em; }
 
-/* The Node: a label bar above an object (after flora's nodes, in an Ares post-tag voice). */
+/* A plain label above an object. The flora "Node" bar (a rust square, tracked capitals, a note at the
+   right edge) was removed with the AI-tells pass (owner, 2026-10-25). */
 .nx-node { position: relative; }
 .nx-node-bar {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: center;
   font-family: var(--ds-data);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ds-fg-faint);
-  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--ds-fg-muted);
+  margin: 0 0 10px;
 }
-.nx-node-bar > span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ds-fg-muted); }
-.nx-node-bar > span:first-child::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 1px;
-  background: var(--ds-fg-faint);
-}
-.nx-node[data-live='true'] .nx-node-bar > span:first-child::before { background: var(--ds-rust); box-shadow: 0 0 10px rgb(188 111 64 / 0.7); }
 
 /* ------------------------------------------------------------------ Hero */
 .nx-hero { position: relative; }
@@ -248,4 +234,47 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   /* 6px up on phones (owner, 2026-10-23); the Services hero headline keeps the size before it (svc.css). */
   .nx-hero-title { font-size: calc(clamp(48px, 14.4vw, 80px) + 6px); max-width: none; }
   .nx-hero-lead { font-size: 16px; }
+}
+
+/* ------------------------------------------------- Card labels (owner, 2026-10-25)
+   The "dossier" form, chosen from three (plain, flora, dossier) in the AI-tells pass: a card's label
+   is a pure black tab across its top, white type, a fainter note at the right; the card keeps its own
+   surface. On the prime diagram a tab's type is dim until its node lights. The phone deck's cards
+   have no tab, and the deck has no blurred-photo glow behind it. */
+.nx-card-label { display: none; }
+.nx :is(.nx-pn .nx-node-bar, .nx-ind-brief > .nx-card-label) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 18px;
+  border-radius: 4px 4px 0 0;
+  font-family: var(--ds-text);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  background: #000;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14);
+}
+.nx :is(.nx-pn .nx-node-bar, .nx-ind-brief > .nx-card-label) > span + span { font-weight: 400; color: rgb(255 255 255 / 0.58); }
+.nx .nx-pn .nx-pn-body { border-radius: 0 0 4px 4px; }
+.nx .nx-pn .nx-node-bar { color: var(--ds-fg-faint); transition: color 0.4s var(--ds-ease); }
+.nx .nx-pn[data-live='true'] .nx-node-bar { color: #fff; }
+.nx .nx-pn-post .nx-node-bar { padding-inline: 16px; }
+.nx .nx-ind-brief { padding-top: 0; overflow: hidden; }
+/* The tab sits 1px inside the card's edge, so the card's own 1px edge (glass, lit by whatever is
+   behind it) runs past the tab unbroken; a stroke drawn on the black tab could not match it (owner,
+   2026-10-25: the tab read a pixel wider). */
+.nx .nx-ind-brief > .nx-card-label {
+  margin: 1px -25px 20px;
+  padding: 8px 25px 9px;
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.14);
+}
+.nx .nx-dk-ambient { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nx .nx-pn .nx-node-bar { transition: none; }
 }

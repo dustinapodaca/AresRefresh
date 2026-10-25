@@ -167,14 +167,10 @@ export default function People() {
           </div>
 
           <div className="ds-ab-cred-card">
-            <p className="ds-data ds-ab-cred-bar">
-              <span>Officer standard</span>
-              <span>{n2(STANDARDS.length - 1)} checks</span>
-            </p>
+            <p className="ds-data ds-ab-cred-bar">Officer standard</p>
             <ol className="ds-ab-cred-rows">
               {STANDARDS.map((s, i) => (
                 <li key={s.name} className="ds-ab-cred-row">
-                  <span className="ds-data ds-ab-cred-n" aria-hidden="true">{n2(i)}</span>
                   <span className="ds-ab-cred-text">
                     <span className="ds-ab-cred-word">{s.name}</span>
                     <span className="ds-ab-cred-line">{s.line}</span>

@@ -26,7 +26,7 @@
   --ds-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
   --ds-text: 'Inter', system-ui, -apple-system, sans-serif;
   --ds-features: 'cv01', 'cv05', 'cv09', 'cv11', 'ss03';
-  --ds-data: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --ds-data: 'PP Fraktion Mono', ui-monospace, Menlo, monospace;
 
   --ds-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ds-header: 68px; /* 8px slimmer (owner, 2026-10-08; was 76) */
@@ -635,7 +635,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-count-n span { display: block; animation: ds-count-roll 260ms var(--ds-ease) both; }
 @keyframes ds-count-roll { from { transform: translateY(70%); } to { transform: none; } }
 .ds-count-total { padding-top: 6px; font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-faint); }
-.ds-count-label { margin: 14px 0 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
+.ds-count-label { margin: 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
 .ds-count[data-idle] .ds-count-n,
 .ds-count[data-idle] .ds-count-label { color: var(--ds-fg-faint); }
 .ds-count-bars { list-style: none; display: flex; gap: 6px; margin: 18px 0 0; padding: 0; }
@@ -1606,7 +1606,6 @@ html[data-cards] .ds-relief-panel {
 .ds-heard { padding-top: var(--ds-beat-open); }
 .ds-heard-grid { display: grid; gap: 40px; }
 .ds-heard-head .ds-lead { margin-top: 20px; max-width: 46ch; }
-.ds-heard-count { display: none; }
 .ds-heard-cards { position: relative; min-width: 0; }
 .ds-heard-list { position: relative; z-index: 1; display: grid; gap: 16px; list-style: none; margin: 0; padding: 0; }
 .ds-heard-card {
@@ -1659,8 +1658,6 @@ html[data-cards] .ds-relief-panel {
 @media (min-width: 1024px) {
   .ds-heard-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
   .ds-heard-head { grid-column: 1 / span 5; position: sticky; top: calc(var(--ds-header) + 48px); }
-  .ds-heard-count { display: block; margin: 40px 0 0; font-size: 14px; color: var(--ds-fg-faint); }
-  .ds-heard-count span { color: var(--ds-fg); }
   .ds-heard-cards { grid-column: 7 / span 6; }
   /* Spaced so one card holds the middle of the screen at a time. */
   .ds-heard-list { gap: 24vh; padding: 6vh 0 18vh; }
@@ -1732,8 +1729,7 @@ html[data-cards='glass'] .ds-ab-cred-card {
 }
 .ds-ab-cred-bar { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--ds-rule); font-size: 12px; color: var(--ds-fg-muted); }
 .ds-ab-cred-rows { list-style: none; margin: 0; padding: 0; }
-.ds-ab-cred-row { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 28px; column-gap: 12px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--ds-rule); }
-.ds-ab-cred-n { align-self: start; padding-top: 0.55em; font-size: 12px; color: #c4c8ce; } /* the light grey for text over photos: the numbers sit over the plate (AA) */
+.ds-ab-cred-row { display: grid; grid-template-columns: minmax(0, 1fr) 28px; column-gap: 12px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--ds-rule); }
 .ds-ab-cred-word { display: block; font-family: var(--ds-display); font-size: clamp(22px, 2vw, 28px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: var(--ds-fg); }
 .ds-ab-cred-line { display: block; margin-top: 4px; font-size: 15px; line-height: 1.45; color: var(--ds-fg-muted); }
 .ds-ab-cred-foot { margin: 0; padding-top: 14px; font-size: 12px; color: var(--ds-fg-muted); }

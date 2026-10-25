@@ -316,7 +316,6 @@ export default function SvProcess() {
                 className="sv-pr-sat"
                 style={{ ['--x' as string]: `${SAT_SPOTS[i].x}px`, ['--y' as string]: `${SAT_SPOTS[i].y}%` } as CSSProperties}
               >
-                <span className="sv-pr-sat-bar">System</span>
                 <span className="sv-pr-sat-name">{name}</span>
               </li>
             ))}

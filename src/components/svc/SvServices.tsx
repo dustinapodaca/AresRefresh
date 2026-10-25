@@ -370,7 +370,6 @@ export default function SvServices() {
         })}
       </ol>
       <p className="svs-count ds-data nx-edge" aria-hidden="true">
-        <b>{n2(at)}</b> / {n2(CAPABILITIES.length - 1)}
         <span>Swipe for more</span>
       </p>
     </section>

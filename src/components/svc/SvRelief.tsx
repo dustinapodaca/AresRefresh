@@ -152,7 +152,6 @@ export default function SvRelief() {
             and dates that outgrow your normal staffing.
           </p>
           <p className="sv-rl-proof">
-            <i aria-hidden="true" />
             <span className="ds-data">Fewer than 1% of shifts missed since 2021</span>
           </p>
         </div>

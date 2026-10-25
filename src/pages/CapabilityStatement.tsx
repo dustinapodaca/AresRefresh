@@ -40,7 +40,6 @@ import '../components/capnext/cn.css';
 
 const say = (line: string) => THIRD_PERSON[line] ?? line;
 const slugFor = (capabilityId: string) => ROLE_PAGES.find((r) => r.capabilityId === capabilityId)?.slug;
-const n2 = (i: number) => String(i + 1).padStart(2, '0');
 
 const IDS = {
   uei: 'XQXDN6E33SF4',
@@ -210,7 +209,6 @@ function Rail({ active }: { active: string }) {
       <nav className="cx-index">
         {SECTIONS.map((s, i) => (
           <a key={s.id} href={`#${s.id}`} data-on={active === s.id}>
-            <span className="ds-data">{n2(i)}</span>
             {s.label}
           </a>
         ))}
@@ -251,7 +249,6 @@ function MobileBar({ active, show }: { active: string; show: boolean }) {
     <div className="cx-mbar" data-show={show} data-open={open} aria-hidden={!show}>
       <div className="cx-mbar-row">
         <button type="button" className="cx-mbar-sec" onClick={() => setOpen((o) => !o)} aria-expanded={open} tabIndex={show ? 0 : -1}>
-          <span className="ds-data">{n2(i)}</span>
           <span className="cx-mbar-sec-label">{SECTIONS[i].label}</span>
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M4 6l4 4 4-4" />
@@ -279,7 +276,6 @@ function MobileBar({ active, show }: { active: string; show: boolean }) {
       <nav className="cx-mbar-menu" aria-label="On this page">
         {SECTIONS.map((sct, k) => (
           <a key={sct.id} href={`#${sct.id}`} data-on={active === sct.id} onClick={(e) => jump(e, sct.id)} tabIndex={open ? 0 : -1}>
-            <span className="ds-data">{n2(k)}</span>
             {sct.label}
           </a>
         ))}
@@ -291,9 +287,6 @@ function MobileBar({ active, show }: { active: string; show: boolean }) {
 function Head({ id, i, title, lead }: { id: string; i: number; title: string; lead?: string }) {
   return (
     <header className="cx-head" data-rv>
-      <p className="cx-n ds-data">
-        {n2(i)} <span>/ {n2(SECTIONS.length - 1)}</span>
-      </p>
       <h2 id={id} className="cx-h2">
         {title}
       </h2>
@@ -312,7 +305,6 @@ function Competencies() {
           const slug = slugFor(c.id);
           return (
             <li key={c.id} data-rv>
-              <span className="cx-caps-n ds-data">{n2(i)}</span>
               <div className="cx-caps-main">
                 <h3 className="cx-caps-title">
                   {slug ? (
@@ -432,8 +424,8 @@ function Why() {
         ))}
       </ol>
       <div className="cx-why-ctl">
-        <p className="cx-why-count ds-data" aria-live="polite">
-          <b>{n2(at)}</b> / {n2(N - 1)}
+        <p className="sr-only" aria-live="polite">
+          Reason {at + 1} of {N}
         </p>
         <div className="cx-why-meter" aria-hidden="true">
           {DIFFERENTIATORS.map((d, i) => (

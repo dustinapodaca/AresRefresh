@@ -21,7 +21,6 @@ import { responsive } from '../../lib/responsive';
 // leaves, the nodes spread out and fade. Phones: the headline, then the six as a compact grid,
 // no wires. The default (no JavaScript, prerender, reduced motion) is the built, still canvas.
 
-const n2 = (i: number) => String(i + 1).padStart(2, '0');
 
 // The six nodes take the reader down to that service's card in "What we staff." on this page
 // (owner, 2026-10-23), not to its own page; the card links on to the full page. The page glides
@@ -293,12 +292,8 @@ export default function SvHero() {
                 style={{ ['--x' as string]: `${SPOTS[i].x}%`, ['--y' as string]: `${SPOTS[i].y}%`, ['--i' as string]: i } as React.CSSProperties}
               >
                 <a href={`#svc-${c.id}`} onClick={() => showPanel(c.id)}>
-                  <span className="sv-node-bar">
-                    <span>{n2(i)}</span>
-                    <span>{c.keys[0]}</span>
-                  </span>
                   <span className="sv-node-name">{c.title}</span>
-                  <span className="sv-node-keys">{c.keys.slice(1).join(' · ')}</span>
+                  <span className="sv-node-keys">{c.keys.join(' · ')}</span>
                 </a>
               </li>
             );

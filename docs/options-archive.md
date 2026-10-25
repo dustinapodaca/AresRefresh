@@ -1,6 +1,10 @@
 # Options archive
 
-**No option switches are live.** Every `?…` switch below was removed from the site at launch
+**No option switches are live (2026-10-25).** The AI-tells pass's `?card=` (plain, flora, dossier: dossier
+chosen) and `?mono=` font trial (PP Fraktion Mono chosen) were removed the same day. On the dev server a
+Before / Now switch (`src/components/CompareSwitch.tsx`, dev only) jumps between this copy (:5173) and
+a worktree at `../react-before` on a382ed4, the site before the pass (`npx vite --port 5175` there).
+Everything below was removed at launch
 (owner, 2026-10-19). The site ships only the chosen version of each; the alternatives exist only
 here and in git.
 
