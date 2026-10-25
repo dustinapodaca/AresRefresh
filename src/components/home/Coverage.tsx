@@ -62,7 +62,9 @@ export default function Coverage() {
       scrollTrigger: {
         trigger: map,
         start: 'top 78%',
-        end: 'bottom 45%',
+        // I-25 reaches Pueblo with the whole map still in view (owner, 2026-10-25: it finished as the
+        // map's top was leaving; was 'bottom 45%').
+        end: 'bottom 75%',
         scrub: SCRUB,
         onUpdate: (self) => {
           const p = route.getPointAtLength(len * Math.min(1, self.progress / 0.86));

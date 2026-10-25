@@ -78,7 +78,14 @@
   line-height: 0.95;
   letter-spacing: -0.05em;
 }
-.svs-n { color: rgb(255 255 255 / 0.28); }
+/* The number in the data face, the word in display type (owner, 2026-10-25). */
+.svs-n {
+  color: rgb(255 255 255 / 0.28);
+  font-family: var(--ds-data);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums slashed-zero;
+}
 .svs-word { color: var(--ds-fg); }
 
 .svs-demo {
