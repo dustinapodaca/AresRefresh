@@ -523,7 +523,7 @@ and `nx-*.css` (class prefix `nx-`).
   motion: the section pins for about a screen per figure, with a meter across the top and the three names (Reliability, Client rating,
   Personnel; no numbers since 2026-10-25) each set where its stretch of the meter starts, on a tick
   that drops to the line: as the rust fill reaches a tick, the tick lights with a small glowing point
-  on the line and its name turns ink; names already passed stay ink muted (owner, 2026-10-25); the moments cross over, the diagrams
+  on the tick just above the line and its name turns ink; names already passed stay ink muted (owner, 2026-10-25); the moments cross over, the diagrams
   build, and each figure's digits roll into place from nearby values (never from 0) as its
   moment arrives. Phones and tablets pin the same way since 2026-10-25 (owner; they had the three stacked), about 80% of a
   screen per figure, everything a step smaller so each figure, its lines, and its diagram fit one screen
@@ -574,11 +574,18 @@ and `nx-*.css` (class prefix `nx-`).
   grid, no rust pulses, no wire end squares, no boxed capital tags, no dashed leaders (AI-tells pass,
   owner 2026-10-25). The low rust light stays. On desktop the wires draw with the scroll and each card
   lights as its wire reaches it. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing
-  down one column): the row holds the screen (centered, never under the nav) and slides sideways with
+  down one column): the heading and its line hold the screen together with the row beneath them
+  (owner, 2026-10-25, after Midday's and Stripe's how-it-works: the row alone left the screen mostly
+  black), centered in the room under the nav and tightened on short phones. Below 1024px "Teaming &
+  subcontracting →" is a text link under the line (like the industries' all-services link), not the
+  button (owner, 2026-10-25). The row slides sideways with
   the scroll, like the Services stages on desktop, in three stops: the prime; Ares with its note under
   it; the three posts in one column. The row slides for about two thirds of the hold, then stops while
   the posts fall out of one another with the scroll (the second slides down from behind the first,
-  then the third from behind the second; solid cards, so nothing shows through), the escort note comes
+  then the third from behind the second). Until then they wait as a deck: only the lower edges of the
+  second and third show under the first, 7px apart, each a step narrower (after Superpower's stacked
+  steps); the cards are solid and the waiting stack dims by brightness, not opacity, so no text shows
+  through (owner, 2026-10-25). The escort note comes
   up last, and the rail runs on to its far end before the section lets go. The rail runs across the
   card tops and fills rust to the reading line (62% across) with a bright tip; each stop lights as it
   reaches the line. No rust light behind the row on phones (owner, 2026-10-25). Reduced motion and the

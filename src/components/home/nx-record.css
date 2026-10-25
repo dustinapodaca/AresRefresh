@@ -180,12 +180,13 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-rec-tab[data-past='true']::before { background: rgb(188 111 64 / 0.6); transform: scaleY(0.5); }
 .nx-rec-tab[data-live='true'] { color: var(--ds-fg); }
 .nx-rec-tab[data-live='true']::before { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.9); transform: none; }
-/* Where the live name's tick meets the line: a small lit point. */
+/* The live name's lit point, on its tick just above the line (owner, 2026-10-25: it sat on the line
+   and read as below it). The tabs row is 28px tall and the line is its last pixel. */
 .nx-rec-tab::after {
   content: '';
   position: absolute;
   left: -2.5px;
-  bottom: -18.5px;
+  top: 19px;
   width: 6px;
   height: 6px;
   border-radius: 50%;

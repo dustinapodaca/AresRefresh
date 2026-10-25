@@ -46,6 +46,9 @@
 .nx-prime-line span { color: var(--ds-fg); }
 
 .nx-prime-view { grid-column: 5 / span 8; margin-left: clamp(0px, 2vw, 40px); }
+/* The frame only matters while the row pins on phones (below); elsewhere it steps aside. */
+.nx-prime-frame { display: contents; }
+.nx-prime-copy .nx-prime-cta-text { display: none; }
 .nx-prime-canvas {
   position: relative;
   display: grid;
@@ -123,6 +126,9 @@
 
 @media (max-width: 1023px) {
   .nx-prime-copy { grid-column: 1 / -1; position: static; }
+  /* A text link here, not the button (owner, 2026-10-25). */
+  .nx-prime-copy .nx-prime-cta { display: none; }
+  .nx-prime-copy .nx-prime-cta-text { display: inline-flex; font-size: 15px; }
   .nx-prime-view { grid-column: 1 / -1; margin-left: 0; }
   .nx-prime-canvas {
     display: flex;
@@ -167,6 +173,10 @@
    sit on a rail across their tops; the rail fills rust up to the reading line with a bright tip, and
    each card (and the note under it) lights as it reaches the line. */
 @media (max-width: 1023px) {
+  /* The frame: the heading, its line, and the text link over the row, pinned together. */
+  .nx-prime-frame[data-hpan='on'] { display: block; grid-column: 1 / -1; }
+  .nx-prime-frame[data-hpan='on'] .nx-prime-line { margin: 18px 0 4px; font-size: 17px; }
+
   /* Full bleed: the row runs to both edges of the screen. */
   .nx-prime-view[data-hpan='on'] {
     width: 100vw;
@@ -183,7 +193,7 @@
     column-gap: 28px;
     row-gap: 20px;
     width: max-content;
-    padding: 40px var(--ds-edge) 8px;
+    padding: 36px var(--ds-edge) 8px;
   }
   .nx-prime-canvas[data-hpan='on'] > * { order: 0; }
   /* Three stops: the prime; Ares with its note; the three posts stacked in one column with their two
@@ -210,7 +220,7 @@
     position: absolute;
     left: var(--ds-edge);
     right: var(--ds-edge);
-    top: 18px;
+    top: 14px;
     bottom: auto;
     width: auto;
     height: 1px;
@@ -235,7 +245,7 @@
     transition: opacity 0.25s var(--ds-ease);
     pointer-events: none;
     z-index: 2;
-    top: 18px;
+    top: 14px;
     left: calc(var(--ds-edge) + var(--rail, 0) * (100% - 2 * var(--ds-edge)));
     margin: -3.5px 0 0 -3.5px;
   }
@@ -260,11 +270,27 @@
   .nx-prime-canvas[data-hpan='on'] > .nx-pn[data-node='post-0'] { z-index: 3; }
   .nx-prime-canvas[data-hpan='on'] > .nx-pn[data-node='post-1'] { z-index: 2; }
   .nx-prime-canvas[data-hpan='on'] > .nx-pn[data-node='post-2'] { z-index: 1; }
-  /* Solid, so the posts waiting behind don't show through. */
+  /* Solid, so the posts waiting behind don't show through; and while the stack waits it dims by
+     brightness, not opacity, so the deck behind never shows through the first card. */
   .nx-prime-canvas[data-hpan='on'] .nx-pn-post .nx-pn-body { background: #060708; }
+  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post { transition-property: opacity, filter; transition-duration: 0.45s; }
+  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post:not([data-lit='true']) { opacity: 1; filter: brightness(0.42); }
   /* No rust light behind the row on phones (owner, 2026-10-25). */
   .nx-prime:has(.nx-prime-view[data-hpan='on'])::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nx-prime-canvas[data-hpan='on'] > *, .nx-prime-canvas[data-hpan='on'] .nx-pn::before { transition: none; }
+}
+
+/* Short phones (Safari with its bars showing): the pinned frame tightens so the heading, the row, and
+   the posts with their note fit under the nav. */
+@media (max-width: 1023px) and (max-height: 760px) {
+  .nx-prime-frame[data-hpan='on'] .nx-statement-sm { font-size: 32px; }
+  .nx-prime-frame[data-hpan='on'] .nx-prime-line { margin-top: 12px; font-size: 15px; line-height: 1.45; }
+  .nx-prime-canvas[data-hpan='on'] { padding-top: 32px; row-gap: 14px; }
+  .nx-prime-canvas[data-hpan='on'] .nx-pn::before { top: -20.5px; }
+  .nx-prime-canvas[data-hpan='on'] .nx-pn-post .nx-pn-body { padding: 9px 14px; }
+  .nx-prime-canvas[data-hpan='on'] .nx-pn-post .nx-pn-v { font-size: 16px; }
+  .nx-prime-canvas[data-hpan='on'] .nx-pn-post .nx-node-bar { padding-block: 5px; }
+  .nx-prime-canvas[data-hpan='on'] .nx-pnote { font-size: 13px; }
 }

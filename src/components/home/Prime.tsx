@@ -123,6 +123,8 @@ export default function Prime() {
     // the note under it light as they reach the reading line. Scrubbed, so scrolling back rewinds it.
     mm.add('(max-width: 1023px)', () => {
       const view = root.querySelector<HTMLElement>('.nx-prime-view')!;
+      const frame = root.querySelector<HTMLElement>('.nx-prime-frame')!;
+      frame.dataset.hpan = 'on';
       const items = gsap.utils.toArray<HTMLElement>(':scope > .nx-pn, :scope > .nx-pnote', canvas);
       const nodes = items.filter((el) => el.classList.contains('nx-pn'));
       view.dataset.hpan = 'on';
@@ -170,28 +172,36 @@ export default function Prime() {
         defaults: { ease: 'none' },
         onUpdate: paint,
         scrollTrigger: {
-          trigger: view,
-          // Centered on the screen, but never under the nav (the posts' stack is tall on short phones).
+          // The heading and the row hold together (owner, 2026-10-25: the row alone left the screen
+          // mostly black), centered in the room under the nav, never under it.
+          trigger: frame,
           start: () => {
             const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ds-header')) || 64;
-            return `top ${Math.round(Math.max(nav + 12, (window.innerHeight - view.offsetHeight) / 2))}px`;
+            const room = window.innerHeight - nav;
+            return `top ${Math.round(nav + Math.max(12, (room - frame.offsetHeight) / 2))}px`;
           },
           end: () => `+=${Math.round((distance() * 1.2) / PAN)}`,
-          pin: view,
+          pin: frame,
           scrub: SCRUB,
           invalidateOnRefresh: true,
           onRefreshInit: () => {
             gsap.set(canvas, { x: 0 });
-            gsap.set(posts, { y: 0 });
+            gsap.set(posts, { y: 0, scale: 1 });
             fit();
           },
           onRefresh: paint,
         },
       });
       tl.fromTo(canvas, { x: 0 }, { x: () => -distance(), duration: PAN }, 0);
-      tl.fromTo(posts[1], { y: gap(0, 1) }, { y: 0, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
-      tl.fromTo(posts[2], { y: gap(0, 2) }, { y: gap(1, 2), duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
-      tl.to(posts[2], { y: 0, duration: 0.13, ease: 'power2.out' }, PAN + 0.17);
+      // Before they fall, the two waiting posts sit as a deck behind the first, only their lower
+      // edges showing, each a step narrower (after Superpower's stacked steps; owner, 2026-10-25).
+      // Then each falls out of the one above it: the second slides down from behind the first, then
+      // the third from behind the second (riding behind the second until then).
+      const PEEK = 7;
+      gsap.set(posts, { transformOrigin: '50% 100%' });
+      tl.fromTo(posts[1], { y: () => gap(0, 1)() + PEEK, scale: 0.94 }, { y: 0, scale: 1, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
+      tl.fromTo(posts[2], { y: () => gap(0, 2)() + 2 * PEEK, scale: 0.88 }, { y: () => gap(1, 2)() + PEEK, scale: 0.94, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
+      tl.to(posts[2], { y: 0, scale: 1, duration: 0.13, ease: 'power2.out' }, PAN + 0.17);
       // The escort note comes up once the posts have landed.
       const note = canvas.querySelector<HTMLElement>('[data-note="restricted"]')!;
       tl.fromTo(note, { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.07, ease: 'power2.out' }, PAN + 0.29);
@@ -201,10 +211,11 @@ export default function Prime() {
         tl.scrollTrigger?.kill();
         tl.kill();
         gsap.set(canvas, { clearProps: 'x' });
-        gsap.set(posts, { clearProps: 'transform' });
+        gsap.set(posts, { clearProps: 'transform,opacity,visibility' });
         gsap.set(canvas.querySelector('[data-note="restricted"]'), { clearProps: 'opacity,visibility,transform' });
         delete view.dataset.hpan;
         delete canvas.dataset.hpan;
+        delete frame.dataset.hpan;
         canvas.style.removeProperty('--rail');
         canvas.style.removeProperty('--tipo');
         canvas.style.removeProperty('--ares-h');
@@ -220,6 +231,9 @@ export default function Prime() {
   return (
     <section ref={ref} id="prime" className="nx-prime" aria-labelledby="nx-prime-title">
       <div className="nx-prime-grid nx-edge">
+        {/* The frame holds the heading and the row together while the row pins on phones; elsewhere it
+            steps aside (display: contents) and the copy and the canvas are the grid's own columns. */}
+        <div className="nx-prime-frame">
         <div className="nx-prime-copy">
           <h2 id="nx-prime-title" className="nx-statement nx-statement-sm">
             {words('For prime contractors.')}
@@ -228,7 +242,13 @@ export default function Prime() {
             <span>A woman-owned subcontractor for Front Range work.</span> Restricted-area escorts,
             access control officers, and relief, overflow, and surge coverage under your contract.
           </p>
-          <Link to="/teaming" className="ds-btn ds-btn-primary">
+          <Link to="/teaming" className="ds-btn ds-btn-primary nx-prime-cta">
+            Teaming & subcontracting
+            <Arrow />
+          </Link>
+          {/* Phones and tablets: a text link under the line, like the all-services link above it (owner,
+              2026-10-25), so the pinned frame holds no button. */}
+          <Link to="/teaming" className="ds-link nx-prime-cta-text">
             Teaming & subcontracting
             <Arrow />
           </Link>
@@ -314,6 +334,7 @@ export default function Prime() {
               <span className="nx-pnote-id">Subcontractor · 2025 to 2027</span>
             </p>
           </div>
+        </div>
         </div>
       </div>
     </section>
