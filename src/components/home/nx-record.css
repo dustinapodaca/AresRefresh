@@ -162,6 +162,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   top: 0;
   left: calc(var(--ds-edge) + (100% - 2 * var(--ds-edge)) * var(--k) / var(--n));
   padding-left: 10px;
+  z-index: 1;
   transition: color 0.3s var(--ds-ease);
 }
 .nx-rec-tab::before {
@@ -180,13 +181,14 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-rec-tab[data-past='true']::before { background: rgb(188 111 64 / 0.6); transform: scaleY(0.5); }
 .nx-rec-tab[data-live='true'] { color: var(--ds-fg); }
 .nx-rec-tab[data-live='true']::before { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.9); transform: none; }
-/* The live name's lit point, on its tick just above the line (owner, 2026-10-25: it sat on the line
-   and read as below it). The tabs row is 28px tall and the line is its last pixel. */
+/* The live name's lit point, centered on the line where its tick meets it and drawn over the line
+   (owner, 2026-10-25: the rust line showed through it). The tabs row is 28px tall and the line is its
+   last pixel; the tabs sit above the meter (z-index on .nx-rec-tab). */
 .nx-rec-tab::after {
   content: '';
   position: absolute;
   left: -2.5px;
-  top: 19px;
+  top: 24.5px;
   width: 6px;
   height: 6px;
   border-radius: 50%;

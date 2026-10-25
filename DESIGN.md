@@ -523,7 +523,7 @@ and `nx-*.css` (class prefix `nx-`).
   motion: the section pins for about a screen per figure, with a meter across the top and the three names (Reliability, Client rating,
   Personnel; no numbers since 2026-10-25) each set where its stretch of the meter starts, on a tick
   that drops to the line: as the rust fill reaches a tick, the tick lights with a small glowing point
-  on the tick just above the line and its name turns ink; names already passed stay ink muted (owner, 2026-10-25); the moments cross over, the diagrams
+  where the tick meets the line, drawn over the line so the fill passes behind it, and its name turns ink; names already passed stay ink muted (owner, 2026-10-25); the moments cross over, the diagrams
   build, and each figure's digits roll into place from nearby values (never from 0) as its
   moment arrives. Phones and tablets pin the same way since 2026-10-25 (owner; they had the three stacked), about 80% of a
   screen per figure, everything a step smaller so each figure, its lines, and its diagram fit one screen
