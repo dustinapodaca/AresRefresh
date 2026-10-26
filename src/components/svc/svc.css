@@ -363,7 +363,7 @@
   main.sv .svs { padding-bottom: 40px; }
   main.sv .sv-ind { padding-top: 72px; padding-bottom: 40px; }
   main.sv .sv-pr { padding-top: 72px; }
-  main.sv .sv-rl { padding-top: 88px; }
+  main.sv .sv-rl { padding-top: 72px; } /* even with the four stages' close (owner, 2026-10-25; was 88) */
   main.sv .sv-close { padding-top: 88px; }
 }
 
