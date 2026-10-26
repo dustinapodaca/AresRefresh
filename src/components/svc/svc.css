@@ -277,6 +277,13 @@
   transition: transform 0.18s var(--ds-ease), box-shadow 0.18s var(--ds-ease);
   transition-delay: 0s;
 }
+/* Scrolled before the opener finished: the scroll scene owns the links at once, so they follow the
+   scroll instead of waiting out the opener's delay on every frame (owner, 2026-10-26; the scene's
+   own side of this is in SvHero.tsx). */
+.sv-hero[data-arm='true'][data-in='true'][data-scrolled] .sv-hero-node > a {
+  transition: transform 0.18s var(--ds-ease), box-shadow 0.18s var(--ds-ease);
+  transition-delay: 0s;
+}
 .sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-w] { transition-delay: calc(2.2s + var(--i) * 110ms); }
 .sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-l] { animation-delay: calc(3.6s + var(--i) * 0.53s); }
 /* The breath, once the opener has settled. */

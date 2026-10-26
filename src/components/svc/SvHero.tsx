@@ -288,7 +288,10 @@ export default function SvHero() {
         // so the panel's blur saw nothing behind it and went see-through mid-fade, showing the wire
         // through it (owner, 2026-10-25). The panel's own opacity keeps the frost to the end.
         tl.fromTo(n, { x: 0, y: 0 }, { x: (left ? -1 : 1) * (90 + 70 * SPOTS[i].depth), y: -30 * SPOTS[i].depth, duration: 0.6, ...from }, 0.05);
-        tl.fromTo(n.querySelector('a'), { opacity: 1 }, { opacity: 0, duration: 0.6, ...from }, 0.05);
+        // From 0, not 0.05 (owner, 2026-10-26): a tween the playhead backs out of puts back the
+        // opacity it found when it first ran, which mid-opener was 0, so the links never came back.
+        // One that starts at 0 is never backed out of; at the top it renders its own start, 1.
+        tl.fromTo(n.querySelector('a'), { opacity: 1 }, { opacity: 0, duration: 0.65, ...from }, 0);
       });
       tl.fromTo(root.querySelector('.sv-hero-wires'), { opacity: 1 }, { opacity: 0, duration: 0.25, ...from }, 0)
         .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.8, ...from }, 0.2);
