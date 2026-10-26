@@ -132,9 +132,8 @@ export default function DocRail({ marks = MARKS, variant = 'rail' }: { marks?: r
                           <span key={t} data-lit={t < lit || undefined} data-now={(i === index && t === lit - 1) || undefined} />
                         ))}
                       </span>
-                      <span className="ds-tk-label">
-                        <span>{m.n}</span> {m.label}
-                      </span>
+                      {/* The name only, no section number (owner, 2026-10-25). */}
+                      <span className="ds-tk-label">{m.label}</span>
                     </a>
                   </li>
                 );

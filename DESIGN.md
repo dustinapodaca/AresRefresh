@@ -282,7 +282,8 @@ sizes are unchanged.
   - `ticks` (About since 2026-10-25, owner: "lines like a book"; was the earlier Capability Statement's,
     whose live page has its own rail and phone bar): a column of 1px dashes, one per ~360px of each section
     (3 to 9, the first longer); dashes already read turn ink muted and the current one is
-    the rust tick. Only the current label shows at rest; all show on hover or focus.
+    the rust tick. Only the current label shows at rest; all show on hover or focus. Labels are the
+    section names only, no numbers (owner, 2026-10-25).
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the
   current mark (`02 Quality`) left, its count (`02 / 05`) right, and a 1px progress line
   along its bottom edge. It appears once the first section reaches the top and is solid
