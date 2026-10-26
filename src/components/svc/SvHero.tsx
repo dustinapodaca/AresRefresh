@@ -1,9 +1,12 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { CAPABILITIES } from '../capability/data';
 import { motionAllowed, useScene, SCRUB } from '../home/engine';
 import { responsive } from '../../lib/responsive';
+
+// Phones only: the glass Ares mark in the window (WebGL, so it loads on its own and never on desktop).
+const SvGlassMark = lazy(() => import('./SvGlassMark'));
 
 // Services hero, second form (owner, 2026-10-23: keep our image, animate it, as impactful on open as
 // Home). "The establishing shot": the copper-glass towers (the live Services photo, hero6.jpg) open
@@ -47,6 +50,14 @@ const SPOTS = [
 
 export default function SvHero() {
   const ref = useRef<HTMLElement>(null);
+  const [phone, setPhone] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const on = () => setPhone(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.
   useLayoutEffect(() => {
@@ -228,7 +239,9 @@ export default function SvHero() {
         .fromTo(edge, { '--edge-o': 1 }, { '--edge-o': 0, duration: 0.2, ...from }, 0)
         .fromTo(img, { scale: 1 }, { scale: 1.1, duration: 1, ...from }, 0)
         .fromTo(title, { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.55, ...from }, 0.05)
-        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3);
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3)
+        // The glass mark goes with the headline.
+        .fromTo(root.querySelector('.sv-glass'), { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.92, duration: 0.45, ...from }, 0.05);
       return () => {
         tl.scrollTrigger?.kill();
         tl.kill();
@@ -286,6 +299,13 @@ export default function SvHero() {
             </div>
             <div className="sv-photo-shade" />
           </div>
+        </div>
+        <div className="sv-glass" aria-hidden="true">
+          {phone && (
+            <Suspense fallback={null}>
+              <SvGlassMark />
+            </Suspense>
+          )}
         </div>
         <div className="sv-hero-grid" aria-hidden="true" />
         <svg className="sv-hero-wires" aria-hidden="true">

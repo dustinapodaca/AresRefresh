@@ -461,3 +461,19 @@
   .sv-hero[data-arm='true'][data-in='true'] .sv-hero-stage::before { opacity: var(--edge-o, 1); transition: opacity 1s var(--ds-ease) 1.3s; }
   .sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-stage::before { transition: none; }
 }
+
+/* The glass Ares mark in the window (phones; SvGlassMark). */
+.sv-glass { display: none; }
+@media (max-width: 767px) {
+  .sv-glass {
+    display: block;
+    position: absolute;
+    top: var(--wt);
+    bottom: var(--wb);
+    left: var(--ds-edge);
+    right: var(--ds-edge);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .sv-glass .liquid-glass-logo { min-height: 0; }
+}
