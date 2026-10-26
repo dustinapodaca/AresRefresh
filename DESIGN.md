@@ -952,14 +952,15 @@ tilt and one fade-up per block (`data-rv`, once).
   arrows since 2026-10-25, owner) and "Swipe for
   the next reason".
 - **03 Past performance.** (owner, 2026-10-24: no revenue figure; revenue is company data, not past
-  performance.) The lead "Selected contracts since 2021. Clients are not named here."; the featured
-  contract (the current Space Force subcontract) as a card (2px corners, a step above the page): a mono
-  bar with the rust status light and "Current" and "Subcontractor", the scope as the title, where, and
-  the term; then the rest in a Scope / Where / Term / Status ledger (current a rust light, completed a
-  neutral dot; a Value column only once a row has a value), and "References available on request." to
-  /contact. Role and value render only where `data.ts` has them (values wait on Deidre). Phones: rows
-  stack, term and status on one mono line. The earlier page's `lead` (with the revenue sentence) stays in
-  `data.ts`, unused on the live site.
+  performance.) The lead "Selected contracts since 2021. Clients are not named here."; then, reading
+  like the PDF and without the AI tells (owner, 2026-10-25: was a featured card with a status light and
+  a Scope / Where / Term / Status ledger with status dots and mono heads), one list in the PDF's order on
+  hairlines: each contract's scope (Inter 500) and where it was beneath ("Space Force base, Colorado ·
+  Subcontractor on a federal construction program", "Denver metro · Multiple contract renewals",
+  "Pueblo"), its term at the right in the data face ("2025 to late 2027", "Since 2022, ongoing", "Since
+  2024, ongoing"; under the where on phones); then the PDF's footnote, "Plus seven completed armed
+  security contracts in Colorado, 2021 to 2025.", and "References available on request." to /contact.
+  A value renders only where `data.ts` has one (values wait on Deidre).
 - **04 How to buy from Ares.** The GSA MAS block: label and a green "Active" light, the contract number
   large with a copy button, SIN, schedule, and period as a ledger, "View on GSA eLibrary ↗"; then the
   other procurement paths with status lights (green available, an outlined dot on request) and the

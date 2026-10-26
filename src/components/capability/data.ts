@@ -41,9 +41,9 @@ export const PAST_PERFORMANCE: { lead: string; leadNext: string; rows: PastRow[]
   // approximate value for each contract; once set here they render on the redesigned page.
   rows: [
     // Terms as the PDF has them (owner, 2026-10-25): "2025 to late 2027", "Since <year>".
-    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to late 2027', status: 'current', role: 'Subcontractor', featured: true },
-    { scope: 'Armed multi-site security', where: 'Denver metro, multiple contract renewals', term: 'Since 2022', status: 'current' },
-    { scope: 'Retail security', where: 'Pueblo', term: 'Since 2024', status: 'current' },
+    { scope: 'Restricted-area escort and access control', where: 'Space Force base, Colorado · Subcontractor on a federal construction program', term: '2025 to late 2027', status: 'current', role: 'Subcontractor', featured: true },
+    { scope: 'Armed multi-site security', where: 'Denver metro · Multiple contract renewals', term: 'Since 2022, ongoing', status: 'current' },
+    { scope: 'Retail security', where: 'Pueblo', term: 'Since 2024, ongoing', status: 'current' },
   ],
   // The completed contracts as the PDF's footnote under the list (owner, 2026-10-25; was a row).
   completed: 'Plus seven completed armed security contracts in Colorado, 2021 to 2025.',

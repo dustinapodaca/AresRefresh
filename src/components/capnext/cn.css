@@ -372,6 +372,18 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
 .cx-status[data-state='current'] i { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.8); }
 .cx-status[data-state='completed'] { color: var(--ds-fg-muted); }
 .cx-status[data-state='completed'] i { background: rgb(255 255 255 / 0.35); box-shadow: none; }
+/* Past performance as the PDF reads (owner, 2026-10-25): rows on hairlines, the scope and where on
+   the left, the term on the right. */
+.cx-pp { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--cx-edge); }
+.cx-pp-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid var(--cx-edge); }
+.cx-pp-scope { margin: 0; font-family: var(--ds-text); font-size: 17px; font-weight: 500; line-height: 1.35; color: var(--ds-fg); }
+.cx-pp-where { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); }
+.cx-pp-term { margin: 0; font-size: 14px; color: var(--ds-fg-muted); white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums slashed-zero; }
+.cx-pp-value { display: block; margin-top: 4px; color: var(--ds-fg); }
+@media (max-width: 767px) {
+  .cx-pp-row { grid-template-columns: 1fr; padding: 18px 0; }
+  .cx-pp-term { text-align: left; white-space: normal; }
+}
 .cx-past-more { margin: 18px 0 0; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); } /* the PDF's footnote (owner, 2026-10-25) */
 .cx-past-refs { margin: 10px 0 0; font-size: 13px; color: var(--ds-fg-faint); }
 .cx-past-refs a { color: var(--ds-fg-muted); text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 4px; transition: color 0.18s var(--ds-ease), text-decoration-color 0.18s var(--ds-ease); }

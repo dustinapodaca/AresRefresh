@@ -15,7 +15,6 @@ import {
   SAM_ACTIVE_THROUGH,
   SAM_VERIFY,
   THIRD_PERSON,
-  type PastRow,
 } from '../components/capability/data';
 import { ROLE_PAGES } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
@@ -454,74 +453,29 @@ function Why() {
 }
 
 // Past performance (owner, 2026-10-24): no revenue figure (revenue is company data, not past
-// performance); the contracts lead. The featured contract (the current Space Force subcontract) as a
-// card, the rest as a ledger with their status. Clients and the base stay unnamed, and the list
-// stays a selection. Role and value show only where data.ts has them; nothing is estimated.
-const STATUS_LABEL = { current: 'Current', completed: 'Completed' } as const;
-
-function PastStatus({ status }: { status?: PastRow['status'] }) {
-  if (!status) return null;
-  return (
-    <span className="cx-status" data-state={status}>
-      <i aria-hidden="true" />
-      {STATUS_LABEL[status]}
-    </span>
-  );
-}
-
+// performance). Read like the PDF and without the AI tells (owner, 2026-10-25: was a featured card
+// with a status light and a ledger with status dots and mono column heads): one list in the PDF's
+// order, each contract a row on a hairline, its scope and where it was on the left, its term on the
+// right in the data face, then the PDF's footnote. Clients and the base stay unnamed, and the list
+// stays a selection. A value shows only where data.ts has one; nothing is estimated.
 function Past() {
-  const featured = PAST_PERFORMANCE.rows.find((r) => r.featured);
-  const rest = PAST_PERFORMANCE.rows.filter((r) => r !== featured);
-  const values = rest.some((r) => r.value);
   return (
     <section id="past" className="cx-sec" aria-labelledby="cx-past">
       <Head id="cx-past" i={2} title="Past performance." lead={PAST_PERFORMANCE.leadNext} />
-      {featured && (
-        <article className="cx-past-feature" data-rv aria-labelledby="cx-past-feature">
-          <p className="cx-past-bar ds-data">
-            <PastStatus status={featured.status} />
-            {featured.role && <span>{featured.role}</span>}
-          </p>
-          <h3 id="cx-past-feature" className="cx-past-title">
-            {featured.scope}
-          </h3>
-          <p className="cx-past-where">{featured.where}</p>
-          <dl className="cx-past-foot ds-data">
-            <div>
-              <dt>Term</dt>
-              <dd>{featured.term}</dd>
+      <ol className="cx-pp" data-rv>
+        {PAST_PERFORMANCE.rows.map((p) => (
+          <li key={p.scope} className="cx-pp-row">
+            <div className="cx-pp-what">
+              <h3 className="cx-pp-scope">{p.scope}</h3>
+              <p className="cx-pp-where">{p.where}</p>
             </div>
-            {featured.value && (
-              <div>
-                <dt>Contract value</dt>
-                <dd>{featured.value}</dd>
-              </div>
-            )}
-          </dl>
-        </article>
-      )}
-      <div className="cx-past-list" data-rv data-values={values || undefined}>
-        <p className="cx-past-cols ds-data" aria-hidden="true">
-          <span>Scope</span>
-          <span>Where</span>
-          <span>Term</span>
-          {values && <span>Value</span>}
-          <span>Status</span>
-        </p>
-        <dl className="cx-ledger cx-past-ledger">
-          {rest.map((p) => (
-            <div key={p.scope} className="cx-ledger-row">
-              <dt>{p.scope}</dt>
-              <dd>{p.where}</dd>
-              <dd className="ds-data cx-ledger-term">{p.term}</dd>
-              {values && <dd className="ds-data cx-ledger-term">{p.value ?? ''}</dd>}
-              <dd className="ds-data cx-past-status">
-                <PastStatus status={p.status} />
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+            <p className="cx-pp-term ds-data">
+              {p.term}
+              {p.value && <span className="cx-pp-value">{p.value}</span>}
+            </p>
+          </li>
+        ))}
+      </ol>
       <p className="cx-past-more">{PAST_PERFORMANCE.completed}</p>
       <p className="cx-past-refs ds-data">
         <Link to="/contact">References available on request.</Link>
