@@ -150,7 +150,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   display: block;
   font-family: var(--ds-data);
   font-variant-numeric: tabular-nums slashed-zero;
-  font-size: 13px;
+  font-size: 15px; /* owner, 2026-10-25: was 13 */
   line-height: 1;
   color: var(--ds-fg-faint);
   position: relative;
@@ -172,7 +172,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   position: absolute;
   left: 0;
   top: -2px;
-  bottom: -16px;
+  height: 30px; /* to the line at the row's foot (28px), whatever the type size */
   width: 1px;
   background: var(--ds-rule-strong);
   transform-origin: bottom;
@@ -236,9 +236,10 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   /* Pinned on phones and tablets (owner, 2026-10-25): each figure, its lines, and its diagram fit one
      screen under the nav and the meter, so everything is a step smaller than in the stacked list. */
   .nx-record[data-pin='on'] .nx-rec-stage { padding-top: calc(var(--ds-header) + 20px); padding-bottom: 24px; }
-  /* 13px, down to 12px on the narrowest phones so "Client rating" clears the next tick (2026-10-25). */
-  .nx-record[data-pin='on'] .nx-rec-tabs { font-size: clamp(12px, 3.33vw, 13px); }
-  .nx-record[data-pin='on'] .nx-rec-tab { padding-left: 8px; }
+  /* As large as the three names fit: about 13.3px on a 390 phone, 12.2px at 360, a hair tighter and
+     closer to their ticks so "Client rating" clears the next tick (owner, 2026-10-25). */
+  .nx-record[data-pin='on'] .nx-rec-tabs { font-size: clamp(12px, 3.4vw, 13.5px); letter-spacing: -0.01em; }
+  .nx-record[data-pin='on'] .nx-rec-tab { padding-left: 6px; }
   /* One layout for all three (owner, 2026-10-25): the figure at the same height at the top, the
      diagram across the full width at the foot, every diagram about the same height. */
   .nx-record[data-pin='on'] .nx-rec-moment {
