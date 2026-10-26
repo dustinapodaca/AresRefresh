@@ -41,7 +41,8 @@ const SRC = {
   // GSA has already found schedule prices fair and reasonable; agencies may still ask for discounts.
   far8404: { label: 'FAR 8.404, Use of Federal Supply Schedules (Acquisition.gov)', url: 'https://www.acquisition.gov/far/8.404' },
   wageDeterminations: { label: 'Service Contract Act wage determinations (SAM.gov)', url: 'https://sam.gov/content/wage-determinations' },
-  coWage: { label: 'Colorado minimum wage (Colorado Department of Labor and Employment)', url: 'https://cdle.colorado.gov/dlss' },
+  coWage: { label: '2026 COMPS Order poster: Colorado minimum wage (CDLE)', url: 'https://cdle.colorado.gov/sites/cdle/files/2026_comps_order_poster_english_%5Baccessible%5D.pdf' },
+  blsState: { label: 'May 2025 state occupational employment and wage estimates (BLS)', url: 'https://www.bls.gov/oes/2025/may/oessrcst.htm' },
   denverWage: { label: 'Denver citywide minimum wage (Denver Labor)', url: 'https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage' },
   denverGuards: { label: 'Denver security guard licensing FAQ (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services/Frequently-asked-questions-security-guards' },
   denverSecurity: { label: 'Denver security services licenses (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services' },
@@ -52,6 +53,75 @@ const SRC = {
 const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
+  {
+    // Fourth monthly article (2026-10-26): contractor escorts on military installations, the work
+    // Ares is growing toward. Rules from DoDM 5200.08 Volume 3 (installation access, escorts) and
+    // AFFARS 5352.242-9000 (contractor access to Air Force and Space Force installations). Ares
+    // facts as on the site: a Space Force base in Colorado (never named), alongside installation
+    // security, as a subcontractor on a federal construction program, since 2025. No clearance
+    // levels and no "cleared officers" (DESIGN.md, Clearances).
+    slug: 'contractor-escorts-military-bases',
+    title: 'Escorts for contractors on military bases: how they work.',
+    category: 'Operations',
+    date: '2026-10-26',
+    dateLabel: 'October 26, 2026',
+    summary: 'Contractors who cannot get unescorted access to a base, or to a restricted area inside it, can often still do the work with an escort. Who may escort, what an escort does on a shift, and what to line up before a crew mobilizes.',
+    body: [
+      { p: 'Contractors working on a military installation need two things before the work starts: access to the installation, and permission to be where the work is. Workers who cannot get unescorted access, or who need to enter a restricted area they are not authorized for, can often still do the work with an escort. On a construction or maintenance job, that can mean escorted crews every day, and someone has to provide the escorts.' },
+      { h: 'Why contractors need escorts' },
+      { p: 'Under the Defense Department’s installation access manual (DoDM 5200.08, Volume 3), unescorted access to an installation takes three things: proof of identity, a determination of fitness (that the person is not likely a risk to the installation, from a review of their records), and an acceptable purpose. People who do not meet those requirements but are visiting for an official purpose may be escorted instead.' },
+      { p: 'Restricted areas inside a base have rules of their own. On Department of the Air Force installations, which include the Space Force’s, contract work that needs unescorted entry to controlled or restricted areas must follow the Air Force’s personnel security and integrated defense rules. Anyone who does not meet them enters only as the installation allows, often under escort.' },
+      { h: 'Who can serve as an escort' },
+      { p: 'The same manual sets the baseline. An escort:' },
+      { list: [
+        'Holds an acceptable credential and meets the requirements for unescorted access to the installation.',
+        'Comes from the organization being visited. People with no DoD affiliation cannot escort others onto an installation.',
+        'Stays within reasonable visual contact of the people they escort at all times.',
+      ] },
+      { p: 'Installations add rules of their own, such as how many people one escort may take and what training escorts need, so the installation’s security office is the place to start.' },
+      { h: 'What an escort does on a shift' },
+      { list: [
+        'Meets the crew or delivery at entry and checks who is coming in against the access list.',
+        'Keeps every escorted person in line of sight for the whole time inside the area.',
+        'Keeps the crew to the areas and routes the work allows.',
+        'Logs who came in, with whom, and when they left.',
+        'Reports anything outside the rules to installation security right away.',
+      ] },
+      { h: 'Why contractors hire escort officers' },
+      { p: 'Escorting takes people off the work. A crew lead who is escorting cannot also run the crew, and a job with several crews, shifts, or restricted areas can need several escorts at once. Many prime contractors staff escorts as a security post instead, with post orders built around the installation’s rules, so the trades keep working and the escort ratio holds. On a federal contract, a small-business escort subcontractor can also count toward the prime’s small-business subcontracting goals.' },
+      { h: 'What to line up before a crew mobilizes' },
+      { list: [
+        'The installation’s access process for every worker: base passes, the visitor control center, and who sponsors the request. On Air Force and Space Force installations, the contractor requests passes in writing through the contracting officer.',
+        'The escort ratio and any escort training the installation requires.',
+        'Which areas need escorts, and for whom: the whole site, or only its restricted areas.',
+        'Shift times, start dates, and how far ahead the escort schedule has to be set.',
+        'Who the escorts report to on site, and who they call when something is outside the rules.',
+        'Relief for call-outs, so a missing escort does not stop the crew.',
+      ] },
+      { h: 'Colorado installations' },
+      { p: 'Colorado’s Front Range has a dense cluster of military installations, among them Peterson, Schriever, and Buckley Space Force Bases, Cheyenne Mountain Space Force Station, Fort Carson, and the U.S. Air Force Academy. Each sets its own access and escort rules within DoD and service policy, so the escort plan starts with the installation’s security office.' },
+      { h: 'Ares on military installations' },
+      { p: 'Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, alongside installation security, as a subcontractor on a federal construction program. We build the post orders around the installation’s rules, train each officer on the post before the first shift, and back every contract with on-call scheduling.' },
+      { p: 'Ares is an SBA-certified woman-owned small business (WOSB250470) and a WBENC-certified Women’s Business Enterprise (WBE2303571), and holds GSA MAS contract 47QSMS25D009Q.' },
+    ],
+    faq: [
+      { q: 'Do contractors need an escort on a military base?', a: 'Not always. Contractors with unescorted access to the installation can work without one, outside any restricted area they are not authorized for. Workers who do not meet the identity, fitness, and purpose requirements for unescorted access may be escorted if they are there for an official purpose, and restricted areas have entry rules of their own.' },
+      { q: 'Who can be an escort on a DoD installation?', a: 'Under DoDM 5200.08, Volume 3, someone who holds an acceptable credential and meets the requirements for installation access, from the organization being visited. People with no DoD affiliation cannot escort. The escort must stay within reasonable visual contact of the people they escort at all times.' },
+      { q: 'How many people can one escort take?', a: 'It depends on the installation. Ask its security office about escort ratios and any escort training before you plan crews and shifts.' },
+      { q: 'Can a security company provide escorts for a construction contractor?', a: 'Yes. Escorts are often staffed by a security subcontractor as a post, under post orders built around the installation’s rules, so the trades keep working.' },
+    ],
+    sources: [
+      { label: 'DoDM 5200.08, Volume 3: Physical Security Program: Access to DoD Installations', url: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/520008_vol3.pdf' },
+      { label: 'AFFARS 5352.242-9000, Contractor Access to Department of the Air Force Installations (Acquisition.gov)', url: 'https://www.acquisition.gov/node/57328/printable/print' },
+      { label: 'DoD Installation Access Guide (U.S. Army)', url: 'https://api.army.mil/e2/c/downloads/2025/08/19/a79c298c/dod-installation-access-guide.pdf' },
+    ],
+    related: [
+      { label: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
+      { label: 'Government & Defense', to: '/industries/government-defense' },
+      { label: 'Teaming & subcontracting', to: '/teaming' },
+      { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
+    ],
+  },
   {
     // Third monthly article (2026-10-26): the vetting checklist, written for the questions
     // buyers ask AI assistants ("how do I choose a security company in Denver"). Every Ares fact
@@ -143,7 +213,12 @@ export const INSIGHTS: Insight[] = [
       ] },
       { p: 'Each one adds skill or time, and so cost. Each one is also a reason the cheapest officer may not be the right one for the post.' },
       { h: 'Wage rules set a floor' },
-      { p: 'Officer pay is most of the price, and the law sets its minimum. Denver sets its own minimum wage, above the state’s. Federal service contracts usually fall under the Service Contract Act, which sets the wages and benefits for each area from the Department of Labor’s wage determination.' },
+      // Figures added 2026-10-26: the 2026 minimum wages from CDLE and Denver Labor, and the BLS
+      // May 2025 state estimate for security guards (33-9032; confirmed in the BLS API on import:
+      // Colorado $45,870 a year, $22.05 an hour; national $20.42 an hour). Recheck every January 1.
+      { p: 'Officer pay is most of the price, and the law sets its floor. In 2026 Colorado’s minimum wage is $15.16 an hour, and Denver’s is $19.29, so the same post costs more inside Denver. At Denver’s minimum, the officer pay alone for a post staffed around the clock is more than $3,200 a week, before payroll taxes, insurance, overtime, training, and supervision.' },
+      { p: 'Market pay sits above the minimum. The Bureau of Labor Statistics’ May 2025 estimates put the average Colorado security guard at $45,870 a year, about $22 an hour, against $20.42 an hour nationally. Federal service contracts usually fall under the Service Contract Act, which sets the wages and benefits for each area from the Department of Labor’s wage determination.' },
+      { p: 'Minimum wages change every January 1, so check the current figure for the city where your site is.' },
       { h: 'Relief and supervision belong in the price' },
       { p: 'A low hourly rate can leave out what keeps a post covered: relief officers for call-outs and vacations, supervision, and training on the site. Ask what happens when an officer calls out, and whether that cover is part of the rate. At Ares, every contract has on-call scheduling behind it, and a member of our leadership trains each officer on the post before the first shift.' },
       { h: 'How to compare quotes' },
@@ -156,13 +231,15 @@ export const INSIGHTS: Insight[] = [
       { p: 'We walk every site before anything is signed, then send a scoped proposal for that site. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
     ],
     faq: [
+      { q: 'What is the minimum wage for a security guard in Denver?', a: 'Denver’s citywide minimum wage, $19.29 an hour in 2026, applies to security officers working in Denver. The statewide minimum is $15.16. Both change every January 1.' },
+      { q: 'How much do security guards make in Colorado?', a: 'The Bureau of Labor Statistics’ May 2025 estimates put the average Colorado security guard at $45,870 a year, about $22 an hour, against $20.42 an hour nationally.' },
       { q: 'Why doesn’t Ares publish security guard rates?', a: 'Two posts with the same title can differ in hours, armed or unarmed coverage, and duties, so we walk each site and quote it. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
       { q: 'How many officers does a 24/7 security post take?', a: 'A post staffed around the clock is 168 hours a week, the work of more than four full-time officers, before relief for call-outs and vacations.' },
       { q: 'Do federal security contracts set officer wages?', a: 'Usually. Federal service contracts generally fall under the Service Contract Act, which sets wages and benefits for each area from the Department of Labor’s wage determination.' },
     ],
-    // Each source backs a claim in the article (2026-10-26): the Denver and state minimum wages, the
-    // Service Contract Act wage determinations, and GSA's pre-negotiated schedule prices.
-    sources: [SRC.denverWage, SRC.coWage, SRC.wageDeterminations, SRC.far8404],
+    // Each source backs a claim in the article (2026-10-26): the state and Denver minimum wages, the
+    // BLS pay estimates, the Service Contract Act wage determinations, and GSA's schedule prices.
+    sources: [SRC.coWage, SRC.denverWage, SRC.blsState, SRC.wageDeterminations, SRC.far8404],
     related: [
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
       { label: 'Commercial & Retail', to: '/industries/commercial-property' },

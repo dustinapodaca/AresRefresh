@@ -292,6 +292,16 @@
       "title": "Insights: Buying Security in Colorado | Ares Security",
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
+    "/insights/contractor-escorts-military-bases": {
+      "title": "Contractor Escorts on Military Bases: How They Work | Ares",
+      "description": "Who may escort contractors on a DoD installation, what an escort does on a shift, and what to line up before a crew mobilizes on a Colorado base.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
     "/insights/how-to-choose-a-security-company-colorado": {
       "title": "How to Choose a Security Company in Colorado | Ares",
       "description": "What to check before hiring a security company in Colorado: the city license, insurance, who the officers work for, call-out coverage, and red flags.",
@@ -304,7 +314,7 @@
     },
     "/insights/security-guard-cost-colorado": {
       "title": "How Much Do Security Guards Cost in Colorado? | Ares",
-      "description": "What drives the price of a security officer in Colorado: hours, armed or unarmed, a post or a patrol, wage rules, and what to compare in quotes.",
+      "description": "Security guard costs in Colorado: 2026 minimum wages ($15.16 state, $19.29 Denver), BLS pay data, and what drives the price of a post.",
       "breadcrumbs": [
         {
           "name": "Insights",

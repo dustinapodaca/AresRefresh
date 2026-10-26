@@ -1187,3 +1187,31 @@ patch said the employer makes the request).
   Denver's minimum wage ($19.29 in 2026), Colorado's (CDLE, $15.16 in 2026), the Service Contract Act
   wage determinations, and FAR 8.404, which says GSA has already found schedule prices fair and
   reasonable and lets agencies ask for discounts (the article's "pre-negotiated ceiling prices").
+
+## Insights: cost figures and the base escort article (2026-10-26)
+
+- `/insights/security-guard-cost-colorado`: "Wage rules set a floor" now gives the 2026 minimum
+  wages (Colorado $15.16 from the CDLE COMPS poster, Denver $19.29 from Denver Labor), the officer
+  pay floor of a 24/7 post at Denver's minimum (168 x $19.29, more than $3,200 a week), and the BLS
+  May 2025 estimate for Colorado security guards ($45,870 a year, about $22 an hour, against $20.42
+  nationally). Two more questions and two more sources. New description. Recheck every January 1.
+  The BLS figure came through two secondary summaries of the May 2025 state file; confirm it at
+  data.bls.gov (Colorado, 33-9032) before launch.
+- New: `/insights/contractor-escorts-military-bases`, "Escorts for contractors on military bases:
+  how they work." (Operations): why contractors need escorts (DoDM 5200.08 Vol. 3; AFFARS
+  5352.242-9000 for Air Force and Space Force installations), who may escort, what an escort does
+  on a shift, why primes staff escorts as a post, what to line up before mobilizing, Colorado's
+  Front Range installations, and Ares' escort work as on the site (a Space Force base in Colorado,
+  not named; since 2025; no clearance levels). Four questions, two sources. Added to routes.json,
+  llms.txt, and the index (first).
+Imported 2026-10-26 and checked against the sources. The BLS figures match the BLS API (Colorado
+33-9032: $45,870 a year, $22.05 an hour; national $20.42 an hour), and the 2026 minimum wages match
+the CDLE poster and Denver Labor. The cost article keeps FAR 8.404 in place of GSA eLibrary (above).
+In the escort article, three escort rules could not be confirmed from a source we could open (DoD's
+issuance site blocks automated reads), so they were cut or softened to what the DoD installation
+access guide and GAO-19-649 quote from the manual: escorts must be U.S. citizens, escorts can be held
+personally accountable, and each installation sets the escort ratio. The escort now "holds an
+acceptable credential and meets the requirements for unescorted access", comes from the organization
+being visited (no DoD affiliation, no escorting), and stays in reasonable visual contact; ratios and
+training are left to the installation's security office. Fitness is described as the guide does (a
+review of records), not "criminal and terrorism databases". The DoD guide was added as a source.
