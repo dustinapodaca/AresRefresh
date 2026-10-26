@@ -9,8 +9,10 @@ import './sv-process.css';
 // before their first shift as small satellite nodes. Faint mono annotations mark the phases.
 // Desktop with motion: the section holds the screen and the canvas pans sideways with the scroll;
 // each wire draws as the pan carries it to the middle, and each node lights as it arrives.
-// Everywhere else (phones, tablets, reduced motion, the prerender, no JavaScript): the four nodes
-// stacked on a rust wire, the systems as a two-column list inside stage 03.
+// Phones and tablets with motion (owner, 2026-10-25): the same idea in one row, the stage cards
+// panning sideways under a rust wire across their tops. Everywhere else (reduced motion, the
+// prerender, no JavaScript): the four nodes stacked on a rust wire, the systems as a two-column list
+// inside stage 03.
 
 // The six systems (services/Systems.tsx; names only here).
 const SYSTEMS = [
@@ -62,71 +64,84 @@ export default function SvProcess() {
     readIn(engine, root.querySelector('.sv-pr-title'));
 
     const mm = engine.gsap.matchMedia();
-    // Phones and tablets (owner, 2026-10-23): the stacked list builds with the scroll. The rust
-    // wire draws down with a bright tip; each stage's stop lights as the tip reaches it, and its
-    // card rises 12px from 0.62 into full; stage 03's systems tick on in turn. Scrubbed, so it
-    // reverses on the way up. Resolved without the engine (the default).
+    // Phones and tablets (owner, 2026-10-25; was the stacked list drawing down a rail): like desktop,
+    // the stages hold the screen and pan sideways with the scroll, one card at a time in a row. The
+    // rust wire runs across the card tops and fills to a reading line (62% across) with a bright tip;
+    // each stage's stop lights as the tip reaches it, and stage 03's systems tick on in turn.
+    // Scrubbed, so it reverses on the way up. The stacked list stays the resolved default.
     mm.add('(max-width: 1023px)', () => {
-      const list = root.querySelector<HTMLElement>('.sv-pr-stages')!;
+      const { gsap, ScrollTrigger } = engine;
+      const view = root.querySelector<HTMLElement>('.sv-pr-view')!;
       const track = root.querySelector<HTMLElement>('.sv-pr-track')!;
+      const list = root.querySelector<HTMLElement>('.sv-pr-stages')!;
       const rail = root.querySelector<HTMLElement>('.sv-pr-rail')!;
       const fill = rail.querySelector<HTMLElement>('i')!;
       const tip = rail.querySelector<HTMLElement>('b')!;
-      const handoff = root.querySelector<HTMLElement>('.sv-pr-handoff')!;
       const nodes = Array.from(list.querySelectorAll<HTMLElement>(':scope > .sv-pr-node'));
       root.dataset.arm = 'true';
+      root.dataset.hpan = 'on';
+      let first = 0;
       let span = 1;
       let stops: number[] = [];
-      // The wire runs past stage 04 to the closing line (owner, 2026-10-23): when the tip gets there
-      // it stays and spreads into a bar pointing into "The same four stages run at every post",
-      // which lights up: the end, deployed.
+      // Track coordinates: the rail runs from the first stage's stop to the last one's.
       const measure = () => {
-        const lh = parseFloat(getComputedStyle(handoff).lineHeight) || 26;
-        const end = handoff.getBoundingClientRect().top + lh / 2 - track.getBoundingClientRect().top;
-        span = Math.max(1, end - 8);
-        rail.style.bottom = 'auto';
-        rail.style.height = `${span}px`;
-        stops = nodes.map((n) => n.offsetTop + 4);
+        stops = nodes.map((n) => list.offsetLeft + n.offsetLeft + 4);
+        first = stops[0];
+        span = Math.max(1, stops[stops.length - 1] - first);
+        rail.style.left = `${first}px`;
+        rail.style.width = `${span}px`;
       };
-      const paint = (p: number) => {
-        const y = p * span;
-        fill.style.transform = `scaleY(${p.toFixed(4)})`;
-        tip.style.transform = `translateY(${y.toFixed(1)}px)`;
+      const distance = () => Math.max(0, track.scrollWidth - view.clientWidth);
+      const paint = () => {
+        const tx = Number(gsap.getProperty(track, 'x')) || 0;
+        const at = view.clientWidth * 0.62 - tx;
+        const p = Math.max(0, Math.min(1, (at - first) / span));
+        fill.style.transform = `scaleX(${p.toFixed(4)})`;
+        tip.style.transform = `translateX(${(p * span).toFixed(1)}px)`;
         tip.style.opacity = p > 0.002 ? '1' : '0';
         nodes.forEach((n, i) => {
-          const on = p > 0.001 && y + 8 >= stops[i];
+          const on = stops[i] <= at;
           if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
         });
-        const done = p >= 0.995;
+        const done = p >= 0.999;
         if ((root.dataset.done === 'true') !== done) {
           if (done) root.dataset.done = 'true';
           else delete root.dataset.done;
         }
       };
       measure();
-      const st = engine.ScrollTrigger.create({
-        trigger: list,
-        start: 'top 72%',
-        endTrigger: handoff,
-        end: 'top 72%',
-        scrub: SCRUB,
-        onRefresh: (self) => {
-          measure();
-          paint(self.progress);
+      const tween = gsap.to(track, {
+        x: () => -distance(),
+        ease: 'none',
+        onUpdate: paint,
+        scrollTrigger: {
+          trigger: view,
+          start: 'top top',
+          end: () => `+=${Math.round(distance() * 1.15)}`,
+          pin: true,
+          scrub: SCRUB,
+          invalidateOnRefresh: true,
+          onRefreshInit: () => gsap.set(track, { x: 0 }),
+          onRefresh: () => {
+            measure();
+            paint();
+          },
         },
-        onUpdate: (self) => paint(self.progress),
       });
-      paint(st.progress);
+      paint();
       return () => {
-        st.kill();
+        tween.scrollTrigger?.kill();
+        tween.kill();
+        gsap.set(track, { clearProps: 'transform' });
         delete root.dataset.arm;
+        delete root.dataset.hpan;
         delete root.dataset.done;
         nodes.forEach((n) => delete n.dataset.lit);
-        fill.style.transform = '';
-        tip.style.transform = '';
+        for (const el of [fill, tip]) el.style.transform = '';
         tip.style.opacity = '';
-        rail.style.bottom = '';
-        rail.style.height = '';
+        rail.style.left = '';
+        rail.style.width = '';
+        ScrollTrigger.refresh();
       };
     });
     mm.add('(min-width: 1024px)', () => {

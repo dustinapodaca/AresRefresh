@@ -780,11 +780,13 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   height. As a card settles in view its crop marks close in and the wire draws, lighting each node.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
-  faint phase labels. Phones and tablets: the stages stacked on a rust wire that draws down with the
-  scroll and a bright tip; each stage's stop lights and its card rises 12px from 0.62 as the tip reaches
-  it, stage 03's systems tick on in turn; the wire runs on to the closing line ("The same four stages
-  run at every post, in every city we cover."), where the tip stays and spreads into a 22px rust bar
-  pointing into it and the line lights (owner, 2026-10-23). Scrubbed, so it all reverses.
+  faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
+  stacked list): the same pan in one row. The stages hold the screen under the nav and the four cards
+  slide sideways with the scroll, one at a time with the next peeking; a rust wire across the card tops
+  fills to a reading line (62% across) with a bright tip, each stage's stop lights and its card rises
+  12px from 0.62 as the tip reaches it, and stage 03's systems tick on in turn. Then the section lets
+  go and the closing line ("The same four stages run at every post, in every city we cover.") follows.
+  Scrubbed, so it all reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
   it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
   from this week's on-call slot and it locks in green ("Covered the same shift from this week's on-call

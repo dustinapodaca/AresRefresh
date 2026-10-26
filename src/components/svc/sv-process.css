@@ -280,3 +280,39 @@
 @media (max-width: 767px) {
   .sv-pr-bar, .sv-pr-syslist li { font-size: 11.5px; }
 }
+
+/* ------------------------------------------------ Phones and tablets with motion: the row pans
+   (owner, 2026-10-25). The view holds the screen under the nav; the four stage cards sit in one row
+   that slides sideways with the scroll, a rust wire across their tops with a stop on each. */
+@media (max-width: 1023px) {
+  .sv-pr[data-hpan='on'] .sv-pr-view {
+    height: 100svh;
+    padding: var(--ds-header) 0 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sv-pr[data-hpan='on'] .sv-pr-track { width: max-content; padding-inline: var(--ds-edge); }
+  .sv-pr[data-hpan='on'] .sv-pr-stages {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 30px 0 0;
+  }
+  /* The wire across the card tops (the stops sit on it). */
+  .sv-pr[data-hpan='on'] .sv-pr-stages::before { left: 4px; right: 4px; top: 6px; bottom: auto; width: auto; height: 1px; }
+  .sv-pr[data-hpan='on'] .sv-pr-node {
+    flex: 0 0 min(82vw, 420px);
+    display: flex;
+    flex-direction: column;
+  }
+  .sv-pr[data-hpan='on'] .sv-pr-node::before { left: 0; top: -28px; }
+  .sv-pr[data-hpan='on'] .sv-pr-rail { top: 6px; bottom: auto; height: 1px; }
+  .sv-pr[data-hpan='on'] .sv-pr-rail i {
+    background: linear-gradient(90deg, rgb(188 111 64 / 0.6), rgb(188 111 64 / 0.95));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .sv-pr[data-hpan='on'] .sv-pr-handoff { padding-left: var(--ds-edge); }
+}
