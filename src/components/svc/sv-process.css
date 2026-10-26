@@ -197,8 +197,8 @@
     stroke: var(--ds-rust);
     stroke-width: 1.8;
     stroke-linecap: round;
-    stroke-dasharray: 34 1000;
-    stroke-dashoffset: 34;
+    stroke-dasharray: 85 1000; /* 2.5x longer (owner, 2026-10-25; was 34) */
+    stroke-dashoffset: 85;
     filter: drop-shadow(0 0 4px rgb(188 111 64 / 0.9));
     opacity: 0;
   }
@@ -266,7 +266,7 @@
 }
 
 @keyframes sv-pr-light {
-  0% { stroke-dashoffset: 34; opacity: 0; }
+  0% { stroke-dashoffset: 85; opacity: 0; }
   10% { opacity: 1; }
   85% { opacity: 1; }
   100% { stroke-dashoffset: -1000; opacity: 0; }
