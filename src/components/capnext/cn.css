@@ -540,7 +540,7 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   /* Each value runs straight from its size at a 320px phone to its full size at 390px. */
   .cx-actions { margin-top: 22px; flex-wrap: nowrap; align-items: center; gap: clamp(8px, 17.14vw - 46.86px, 20px); }
   .cx-actions .ds-btn { flex: none; height: 46px; padding: 0 clamp(10px, 11.43vw - 26.57px, 18px); gap: clamp(6px, 2.86vw - 3.14px, 8px); font-size: clamp(12px, 2.86vw + 2.86px, 14px); }
-  .cx-actions .ds-link { flex: none; white-space: nowrap; font-size: clamp(12px, 4.29vw - 1.71px, 15px); }
+  .cx-actions .ds-link { flex: none; white-space: nowrap; font-size: clamp(12px, 1.43vw + 7.43px, 13px); /* smaller (owner, 2026-10-26; was up to 15px) */ }
   .cx-spec { display: none; }
 
   /* Sections. */

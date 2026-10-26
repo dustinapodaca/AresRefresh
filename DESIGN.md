@@ -964,7 +964,7 @@ tilt and one fade-up per block (`data-rv`, once).
   as on the other photo heroes); "Capability Statement" (Inter Tight 600, no period), a two-sentence
   lead, Download the PDF and "Verify on SAM.gov ↗" (on phones always side by side, the link centered
   on the button; the gap, the button's padding, and both labels step down from their full size at 390px
-  to 12px type at 320px so the pair fits; owner, 2026-10-25), the spec line "1 page · PDF · 1.5 MB · 2026"
+  to 12px type at 320px so the pair fits; owner, 2026-10-25; the link smaller, 13px at 390px, owner 2026-10-26), the spec line "1 page · PDF · 1.5 MB · 2026"
   (hidden on phones; on phones the headline sits lower, about 200px under the nav). Beside it (under it
   below 1024px) **the company card**: the CR80 badge ratio on desktop, the site's black glass (wash,
   edge, top line, 22px blur at 1.65, soft shadow; every line 4.96:1 or better over the sunset), 4px
