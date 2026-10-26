@@ -842,8 +842,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   from it to the relief schedule: one even step on phones) (the site's
   glass edge and top line on pure black like the "What we staff" panels, 4px corners; no lit edge;
   owner 2026-10-26, was a faint white wash), held with them (owner, 2026-10-25). The card waits until
-  stage 04 lights, then fades up 14px like the Capability Statement's blocks (owner, 2026-10-26: an
-  exception to "no entrance from opacity 0"), and goes again if scrolled back before 04. Each stage is an open column with no box: its number in the data face (faint,
+  the pan has finished, as the section lets go, then fades up 14px like the Capability Statement's
+  blocks (owner, 2026-10-26: an exception to "no entrance from opacity 0"), and goes again if
+  scrolled back into the pan. Each stage is an open column with no box: its number in the data face (faint,
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row, to the far edge of stage 04,
   fills rust to a reading line (62% across, easing out to the line's end as the pan finishes; the
   section lets go the moment it is full, no hold; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes

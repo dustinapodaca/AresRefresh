@@ -319,14 +319,15 @@
     background: #000;
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.14);
   }
-  /* It waits until stage 04 lights, then fades up like the Capability Statement's blocks (owner,
-     2026-10-26; an owner exception to "no entrance from opacity 0"); SvProcess sets data-intro. */
+  /* It waits until the pan has finished, as the section lets go (data-done, the rail full), then
+     fades up like the Capability Statement's blocks (owner, 2026-10-26; an owner exception to "no
+     entrance from opacity 0"). */
   .sv-pr[data-hpan='on'][data-arm='true'] .sv-pr-intro {
     opacity: 0;
     transform: translateY(14px);
     transition: opacity 0.3s var(--ds-ease), transform 0.3s var(--ds-ease);
   }
-  .sv-pr[data-hpan='on'][data-arm='true'][data-intro='true'] .sv-pr-intro {
+  .sv-pr[data-hpan='on'][data-arm='true'][data-done='true'] .sv-pr-intro {
     opacity: 1;
     transform: none;
     transition: opacity 0.6s var(--ds-ease), transform 0.75s var(--ds-ease);
