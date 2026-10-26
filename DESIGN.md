@@ -796,8 +796,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   glass edge and top line on a faint white wash, 4px corners; no lit edge), held with them (owner,
   2026-10-25). Each stage is an open column with no box: its number in the data face (faint,
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row, to the far edge of stage 04,
-  fills rust to a reading line (62% across, easing out to the line's end as the pan finishes, then a
-  short hold on the full line before the section lets go; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes
+  fills rust to a reading line (62% across, easing out to the line's end as the pan finishes; the
+  section lets go the moment it is full, no hold; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes
   up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter. Scrubbed, so it
   reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view

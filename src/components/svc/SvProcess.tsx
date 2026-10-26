@@ -127,7 +127,7 @@ export default function SvProcess() {
         }
       };
       measure();
-      // The pan, then a short hold on the full line before the section lets go.
+      // The pan; the section lets go the moment the line is full (owner, 2026-10-25: no hold).
       const tween = gsap.timeline({
         defaults: { ease: 'none' },
         onUpdate: paint,
@@ -135,7 +135,7 @@ export default function SvProcess() {
           // The section holds once its heading reaches its place in the frame.
           trigger: title,
           start: () => `top ${pinTop()}px`,
-          end: () => `+=${Math.round(distance() * 1.32)}`,
+          end: () => `+=${Math.round(distance() * 1.15)}`,
           pin: root,
           scrub: SCRUB,
           invalidateOnRefresh: true,
@@ -146,7 +146,7 @@ export default function SvProcess() {
           },
         },
       });
-      tween.to(track, { x: () => -distance(), duration: 1 }).to({}, { duration: 0.15 });
+      tween.to(track, { x: () => -distance(), duration: 1 });
       paint();
       return () => {
         tween.scrollTrigger?.kill();
