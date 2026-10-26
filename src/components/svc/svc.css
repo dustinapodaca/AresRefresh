@@ -496,7 +496,9 @@
     transition: opacity 0.3s var(--ds-ease);
     pointer-events: none;
   }
-  .sv-glass-in .liquid-glass-logo { transition: opacity 0.3s var(--ds-ease); }
+  /* No crossfade: two half-faded layers dip in the middle and the logo blinks (owner, 2026-10-25).
+     The SVG fades in on top of the canvas, which stays whole beneath it and is hidden once the SVG
+     is fully in. */
   .sv-glass-in[data-done='true'] .sv-glass-crisp { opacity: 1; }
-  .sv-glass-in[data-done='true'] .liquid-glass-logo { opacity: 0; }
+  .sv-glass-in[data-done='true'] .liquid-glass-logo { opacity: 0; transition: opacity 0s linear 0.3s; }
 }
