@@ -47,7 +47,9 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // defense page (security as part of the mission), without its clearance claims. The slug stays.
     slug: 'government-defense',
     name: 'Government & Defense',
-    short: 'Federal agencies, military bases, and defense contractors, through GSA.',
+    // Owner, 2026-10-25: not only agencies and defense contractors; any company with work on a base
+    // (construction, power, water) that needs escorts or posts, restricted areas included.
+    short: 'For agencies and any contractor with work on a base, restricted areas included.',
     title: 'Security for government, military bases, and defense contractors.',
     lead: 'Officers for federal, state, and local agencies, military installations, and the defense contractors that support them: restricted-area escort, access control, and armed posts, available to agencies through our GSA Multiple Award Schedule.',
     // A real photo (owner, 2026-10-16): radomes behind a barbed-wire fence on a Space Force base in
