@@ -1639,7 +1639,8 @@ html[data-cards] .ds-relief-panel {
 .ds-heard-label-do { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--ds-rule); color: var(--ds-rust); }
 .ds-heard-answer { margin: 10px 0 0; font-size: 18px; line-height: 1.5; color: var(--ds-fg); max-width: 44ch; }
 .ds-heard-close { margin-top: var(--ds-beat-tight); }
-.ds-heard-close .ds-handoff { margin-top: 0; }
+.ds-heard-close .ds-handoff { margin-top: 0; font-size: 22px; } /* a tad larger (owner, 2026-10-25; was 20) */
+@media (min-width: 1024px) { .ds-heard-close .ds-handoff { font-size: 24px; max-width: none; } } /* one line on desktop */
 .ds-heard-cta { display: inline-flex; margin-top: 16px; }
 
 /* Waiting (armed, not yet reached): the complaint in muted ink, no line, the answer 12px low. */
