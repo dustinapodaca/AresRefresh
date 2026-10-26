@@ -157,8 +157,8 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
         a: 'Yes, where the post calls for it. Armed officers are licensed and firearms-qualified by Ares, and the post orders say when and why the post is armed.',
       },
       {
-        q: 'Do you staff hospitals?',
-        a: 'Yes: officers at main and emergency entrances, visitor screening and check-in, and patrol of parking and grounds, with every entry logged. Officers are trained to calm a situation before anything else, and are armed only where the post calls for it.',
+        q: 'Do you staff hospitals and clinics?',
+        a: 'Yes. At a hospital: officers at main and emergency entrances, visitor screening and check-in, and patrol of parking and grounds, with every entry logged. At an outpatient clinic or community health center: a calm presence at the entrance and in the waiting room, and staff walked to their cars at closing. Officers are trained to calm a situation before anything else, and are armed only where the post calls for it.',
       },
       {
         q: 'Will your officers learn our systems and rules?',
@@ -311,14 +311,15 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     slug: 'institutional-community',
     name: 'Institutional & Community',
     // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
-    // to Critical & High-Liability Sites.
-    short: 'Apartment communities, HOAs, schools, campuses, places of worship, and community centers.',
-    title: 'Security for apartments, schools, campuses, and communities.',
-    lead: 'Officers for apartment communities, HOAs, schools, campuses, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
+    // to Critical & High-Liability Sites. Community health centers and outpatient clinics added here
+    // (owner, 2026-10-26, for the Peak Vista RFP): a customer-service post, not a hospital's.
+    short: 'Apartment communities, HOAs, schools, campuses, community health centers, and places of worship.',
+    title: 'Security for apartments, schools, clinics, and communities.',
+    lead: 'Officers for apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
     // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
     image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
     stake: [
-      'At a school, an apartment community, or a place of worship, the officer is part of daily life. Students, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
+      'At a school, a health center, an apartment community, or a place of worship, the officer is part of daily life. Students, patients, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
       'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
     ],
     deliver: [
@@ -342,6 +343,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Will we see the same officers?',
         a: 'As much as schedules allow. Each post is staffed with officers trained on that site, and on-call relief is written into every contract, so a shift is never left open.',
+      },
+      {
+        q: 'Do you staff community health centers and clinics?',
+        a: 'Yes: a calm, visible officer at the entrance and in the waiting room, patrols of the building and parking lot, staff walked to their cars at closing, and the doors locked at the end of the day. Officers are trained to calm a situation before anything else, and they keep patient information private.',
       },
       {
         q: 'Do you cover apartment communities and HOAs?',

@@ -19,7 +19,7 @@ Ask only for what the person has not already said:
   contractors); Critical & High-Liability Sites (data centers, utilities, hospitals,
   cash-handling); Construction, Industrial & Logistics; Airport & Transportation; Commercial &
   Retail (stores, grocery, shopping centers, banks, hotels, offices); Institutional & Community
-  (apartments, HOAs, schools, campuses, community centers, places of worship); something else.
+  (apartments, HOAs, schools, campuses, community health centers and clinics, community centers, places of worship); something else.
 - **Coverage:** armed or unarmed officers, access control, restricted-area escort, relief
   and surge coverage, mobile patrol, or teaming and subcontract coverage (for primes and guard
   companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to

@@ -121,13 +121,13 @@ export const DIVISIONS: Division[] = [
     n: '06',
     title: 'Institutional & Community',
     // Apartments, schools, campuses, and local community sites; hospitals moved to Critical &
-    // High-Liability Sites (owner, 2026-10-16).
-    body: 'A calm, trained presence for apartment communities, HOAs, schools, campuses, and places of worship. Consistent officers people get to know, trained on each building\u2019s entry points and daily rhythm.',
+    // High-Liability Sites (owner, 2026-10-16). Health centers and clinics added (owner, 2026-10-26).
+    body: 'A calm, trained presence for apartment communities, HOAs, schools, campuses, community health centers, places of worship, and community centers. Consistent officers people get to know, trained on each building\u2019s entry points and daily rhythm.',
     covers: [
       { name: 'Apartments and HOAs', detail: 'Consistent officers residents can get to know, and after-hours patrol of the grounds.' },
       { name: 'Schools and campuses', detail: 'Officers trained on the campus, its entry points, and its daily rhythm.' },
       { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
-      { name: 'Community centers', detail: 'Front desk, events, and after-hours checks.' },
+      { name: 'Health centers and clinics', detail: 'A calm presence at the entrance and waiting room, and staff walked to their cars at closing.' },
     ],
     photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
     page: { to: '/industries/institutional-community', label: 'institutional and community' },

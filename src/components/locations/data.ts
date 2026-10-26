@@ -88,7 +88,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters since 2021' } },
   ],
-  local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, so leadership is a short drive from any post in El Paso County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, and campuses. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
+  local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, so leadership is a short drive from any post in El Paso County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, campuses, and community health centers. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
   sectorsTitle: 'Sites we are ready to staff here.',
   faq: [
     {
@@ -109,6 +109,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
     { name: 'Airport-area development', division: 'Airport & Transportation', divisionId: 'airport' },
     { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Community health centers and clinics', division: 'Institutional & Community', divisionId: 'community' },
   ],
   landmarks: [{ label: 'Pikes Peak', note: '14,115 FT', lat: 38.8409, lon: -105.0442, side: 'left' }],
 };
