@@ -789,7 +789,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`):
     nothing shows on load; on the reader's first scroll (owner, 2026-10-25) it plays once with
     ReactDrops' own setup (owner, 2026-10-25, replacing a glass card held mid-sequence): the
-    sphere-to-tile glass entrance with chromatic edges, then the glass clears and leaves the original
+    sphere-to-tile glass entrance with chromatic edges, its plate see-through so the towers show through the
+    glass as it forms (owner, 2026-10-26: was a dark navy tile), then the glass clears and leaves the original
     mark alone at its normal size, white on the dark setting, `logoScale` 0.93, no text reveal. The
     ARES / SECURITY text logo (`ares-text.svg`; owner, 2026-10-25, was the mark) on a 288px tile (the
     glass's box runs past the window so the component has room to draw it that size; once the glass

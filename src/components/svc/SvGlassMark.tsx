@@ -9,7 +9,10 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // logoScale 0.93, with no second text reveal. The ARES / SECURITY text logo (owner, 2026-10-25; was
 // the mark), on a 288px tile (was the default 256 fitted down to about 184 by the window's width).
 // The page behind is set to black for the shader (its dark-page fade); the canvas stays transparent
-// around the glass, so the towers show.
+// around the glass, so the towers show. The glass plate is see-through (tile off; owner, 2026-10-26,
+// after ReactDrops' backgroundImage setup, which turns the plate off the same way): the towers show
+// through the glass as it forms, keeping its bevel, refraction, and chromatic edges, instead of a
+// dark navy tile hiding them.
 //
 // Nothing shows until the reader first scrolls (owner, 2026-10-25: it came in on load); then it plays
 // once. A page opened already scrolled starts it at once. Reduced motion: the component shows its
@@ -73,6 +76,7 @@ export default function SvGlassMark() {
         ending='logo'
         logoScale={LOGO_SCALE}
         background='#00000000'
+        tile={false}
         paused={paused}
         aria-label='Ares Security'
         style={{ height: '100%', minHeight: 0 }}
