@@ -130,12 +130,17 @@ export default function Record() {
     const tabs = gsap.utils.toArray<HTMLElement>('.nx-rec-tab', root);
     const meter = root.querySelector<HTMLElement>('.nx-rec-meter i');
 
-    const roll = (m: HTMLElement) =>
-      gsap.fromTo(
-        m.querySelectorAll('.nx-odo-strip'),
-        { y: 0, yPercent: 0 },
-        { yPercent: -75, duration: 0.7, ease: 'power3.out', stagger: 0.06, overwrite: true },
-      );
+    const roll = (m: HTMLElement) => {
+      const strips = m.querySelectorAll('.nx-odo-strip');
+      // Below the screen a figure waits at its first digit instead (the first one is the only one
+      // that can be asked to roll there): it rolls once it is seen, never before.
+      const num = m.querySelector('.nx-rec-num');
+      if ((num ?? stage).getBoundingClientRect().top >= window.innerHeight) {
+        gsap.set(strips, { y: 0, yPercent: 0, overwrite: true });
+        return;
+      }
+      gsap.fromTo(strips, { y: 0, yPercent: 0 }, { yPercent: -75, duration: 0.7, ease: 'power3.out', stagger: 0.06, overwrite: true });
+    };
     const build = (m: HTMLElement) => {
       const sq = m.querySelectorAll('.nx-sq');
       const bars = m.querySelectorAll('.nx-bar i');
@@ -206,7 +211,22 @@ export default function Record() {
         );
         tl.to({}, { duration: 0.3 }, at + 0.6);
       });
-      roll(moments[0]);
+      // The first figure rolls once, as the section peeks into view (owner, 2026-10-25: it rolled at
+      // setup, off screen, then rolled again from the start when the pin's first update came, so it
+      // showed its final digit, ticked down, and came back). It waits at its first digit off screen,
+      // the pin's first update knows it is already the live one, and it is set back when the reader
+      // scrolls above the section.
+      const firstStrips = moments[0].querySelectorAll('.nx-odo-strip');
+      // y as well: GSAP reads the CSS resting offset (translateY(-75%)) into y on first touch.
+      gsap.set(firstStrips, { y: 0, yPercent: 0 });
+      stage.dataset.at = '0';
+      e.ScrollTrigger.create({
+        // The figure itself, as it comes into view (the stage's top shows well before the number).
+        trigger: moments[0].querySelector('.nx-rec-num') ?? stage,
+        start: 'top 88%',
+        onEnter: () => roll(moments[0]),
+        onLeaveBack: () => gsap.set(firstStrips, { y: 0, yPercent: 0, overwrite: true }),
+      });
       tabs[0] && (tabs[0].dataset.live = 'true');
       return () => {
         e.ScrollTrigger.removeEventListener('refreshInit', evenUp);
