@@ -2,6 +2,7 @@
    panning canvas switches on at 1024px and up once the scroll engine runs. */
 
 .sv-pr { position: relative; padding-top: clamp(96px, 13vw, 184px); }
+.sv-pr-runway { display: none; }
 .sv-pr-head {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -296,7 +297,12 @@
    one hairline across the row that fills rust as you read (after the editorial step rows of Craft
    Agency and Trawelt on Mobbin; no glows, tip, or keyword triplets, the AI-tells pass). */
 @media (max-width: 1023px) {
-  .sv-pr[data-hpan='on'] { display: flex; flex-direction: column; }
+  .sv-pr[data-hpan='on'] .sv-pr-stick { display: flex; flex-direction: column; }
+  /* Where scroll-driven animations run (SvProcess.tsx, lib/stickyPan.ts): the frame holds by sticky
+     over a runway as long as the pan; the slide and the fill run on this view timeline. */
+  .sv-pr[data-pan='css'] { view-timeline: --svpr block; }
+  .sv-pr[data-pan='css'] .sv-pr-stick { position: sticky; }
+  .sv-pr[data-pan='css'] .sv-pr-runway { display: block; }
   .sv-pr[data-hpan='on'] .sv-pr-head { display: contents; }
   .sv-pr[data-hpan='on'] .sv-pr-title { order: 1; padding-inline: var(--ds-edge); margin: 0; }
   .sv-pr[data-hpan='on'] .sv-pr-view { order: 2; margin-top: 24px; padding: 0; overflow: hidden; }

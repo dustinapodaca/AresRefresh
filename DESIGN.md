@@ -596,7 +596,11 @@ and `nx-*.css` (class prefix `nx-`).
   through (owner, 2026-10-25). The escort note comes
   up last, and the rail runs on to its far end before the section lets go. The rail runs across the
   card tops and fills rust to the reading line (62% across) with a bright tip; each stop lights as it
-  reaches the line. No rust light behind the row on phones (owner, 2026-10-25). Reduced motion and the
+  reaches the line. No rust light behind the row on phones (owner, 2026-10-25). Where the browser has scroll-driven animations (owner, 2026-10-25: the scripted pan was choppy on an
+  iPhone), the frame holds with `position: sticky` over a runway as long as the pan, and the row's slide,
+  the rail and its tip, the posts falling, and the note are CSS animations on the section's view timeline, so they move with the scroll itself; script
+  only measures on load and resize and flips the lit states (`lib/stickyPan.ts`). Other browsers keep the
+  GSAP pin. Reduced motion and the
   resolved page: one column, built. The Government & Defense page keeps its own panel (below).
 - **03 Quality:** "Quality [photo] over quantity.": the patrol vehicles sit in the headline as a
   word-sized photo (`clamp(48px, 11.4vw, 196px)`). Desktop with motion: the stage pins for 270%
@@ -818,7 +822,11 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   fills rust to a reading line (62% across, easing out to the line's end as the pan finishes; the
   section lets go the moment it is full, no hold; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes
   up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter, each with its icon. Scrubbed, so it
-  reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
+  reverses. Where the browser has scroll-driven animations (owner, 2026-10-25: the scripted pan was choppy on an
+  iPhone), the frame holds with `position: sticky` over a runway as long as the pan, and the row's slide
+  and the rust fill are CSS animations on the section's view timeline, so they move with the scroll itself; script
+  only measures on load and resize and flips the lit states (`lib/stickyPan.ts`). Other browsers keep the
+  GSAP pin. Reduced motion and the resolved page: the four stacked on a rust wire.
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
   it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
   from this week's on-call slot and it locks in green ("Covered the same shift from this week's on-call

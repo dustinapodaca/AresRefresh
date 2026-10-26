@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
+import { cssPanSupported, frames, panRange, panSheet } from '../../lib/stickyPan';
 import './nx-prime.css';
 
 // For prime contractors (home-flora, 2026-10-20): the prime, Ares, and the three posts as cards with
@@ -62,7 +63,7 @@ export default function Prime() {
   }, []);
 
   useScene(ref, (e, root) => {
-    const { gsap } = e;
+    const { gsap, ScrollTrigger } = e;
     readIn(e, root.querySelector('.nx-prime-copy h2'), 'top 85%', 'top 45%');
     const canvas = root.querySelector<HTMLElement>('.nx-prime-canvas')!;
 
@@ -142,7 +143,7 @@ export default function Prime() {
       // heavier than the rest of the page).
       const fill = canvas.querySelector<HTMLElement>('.nx-prail-fill')!;
       const tipEl = canvas.querySelector<HTMLElement>('.nx-prail-tip')!;
-      let g = { start: 0, line: 1, postsAt: 0, viewW: 1, railW: 1, lefts: [] as number[] };
+      let g = { start: 0, line: 1, postsAt: 0, viewW: 1, railW: 1, dist: 0, lefts: [] as number[] };
       const measure = () => {
         const start = nodes[0].offsetLeft;
         const line = Math.max(1, canvas.scrollWidth - 2 * start);
@@ -152,10 +153,139 @@ export default function Prime() {
           postsAt: (posts[0].offsetLeft + 24 - start) / line,
           viewW: view.clientWidth,
           railW: fill.offsetWidth,
+          dist: Math.max(0, canvas.scrollWidth - view.clientWidth),
           lefts: items.map((el) => el.offsetLeft + 24),
         };
       };
       measure();
+      // The pinned frame's place: centered in the room under the nav, never under it.
+      const holdTop = () => {
+        const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ds-header')) || 64;
+        const room = window.innerHeight - nav;
+        return Math.round(nav + Math.max(12, (room - frame.offsetHeight) / 2));
+      };
+      const PEEK = 7;
+      // The rail's fill (0 to 1) at a point of the hold: up to the reading line while the row slides,
+      // held at the posts while they fall, then on to its end.
+      const railAt = (prog: number) => {
+        const { start, line, postsAt, viewW, dist } = g;
+        if (prog >= PAN) return postsAt + (1 - postsAt) * ((prog - PAN) / (1 - PAN));
+        const at = viewW * 0.62 + dist * (Math.max(0, prog) / PAN);
+        return Math.max(0, Math.min(1, (at - start) / Math.max(1, postsAt * line))) * postsAt;
+      };
+
+      // Where scroll-driven animations run (owner, 2026-10-25: the scripted pan was choppy on an
+      // iPhone): the frame holds with position: sticky over a runway as long as the pan, and the row's
+      // slide, the rail, the posts falling, and the escort note are CSS animations on the section's view
+      // timeline (lib/stickyPan.ts). Script measures on load and resize and flips the lit states as the
+      // scroll passes them. The same numbers as the scripted version below.
+      if (cssPanSupported()) {
+        const grid = root.querySelector<HTMLElement>('.nx-prime-grid')!;
+        const runway = root.querySelector<HTMLElement>('.nx-prime-runway')!;
+        const note = canvas.querySelector<HTMLElement>('[data-note="restricted"]')!;
+        const sheet = panSheet('nx-prime');
+        root.dataset.pan = 'css';
+        let top = 0;
+        let padT = 0;
+        let run = 1;
+        let dist = 0;
+        let tipShown = '';
+        const lit = () => {
+          const prog = Math.max(0, Math.min(1, (top - padT - grid.getBoundingClientRect().top) / run));
+          const rail = railAt(prog);
+          const at = g.viewW * 0.62 + dist * (Math.min(prog, PAN) / PAN);
+          const tip = g.start + rail * g.line;
+          items.forEach((el, k) => {
+            const on = String(prog >= PAN || g.lefts[k] <= Math.max(at, tip));
+            if (el.dataset.lit !== on) {
+              el.dataset.lit = on;
+              if (el.classList.contains('nx-pn')) el.dataset.live = on;
+            }
+          });
+          const o = rail > 0.001 && rail < 0.999 ? '1' : '0';
+          if (o !== tipShown) tipEl.style.opacity = tipShown = o;
+        };
+        const layout = () => {
+          fit();
+          measure();
+          dist = g.dist;
+          top = holdTop();
+          run = Math.max(1, Math.round((dist * 1.2) / PAN));
+          const cs = getComputedStyle(grid);
+          padT = parseFloat(cs.paddingTop) || 0;
+          frame.style.top = `${top}px`;
+          runway.style.height = `${run}px`;
+          const endS = top + frame.offsetHeight + (parseFloat(cs.paddingBottom) || 0);
+          // The scripted timeline's tweens are placed in its own seconds, and it runs PAN + 0.36 long (a
+          // little past 1), so their stretches of the hold are those times over its length.
+          const T = Math.max(1, PAN + 0.36);
+          const range = (a: number, b: number) => `animation-timeline: --nxprime; animation-range: ${panRange(endS, run, a / T, b / T)};`;
+          // The rail is straight lines between these points, so its keyframes are exact.
+          const { start, line, postsAt, viewW } = g;
+          const pts = new Set([0, PAN, 1]);
+          const zeroAt = (PAN * (start - viewW * 0.62)) / Math.max(1, dist);
+          const fullAt = (PAN * (postsAt * line - (viewW * 0.62 - start))) / Math.max(1, dist);
+          for (const f of [zeroAt, fullAt]) if (f > 0 && f < PAN) pts.add(f);
+          const stops = [...pts].sort((a, b) => a - b);
+          const fillKf = frames(stops.map((f) => [f, `transform: scaleX(${railAt(f).toFixed(4)});`]));
+          const tipKf = frames(stops.map((f) => [f, `transform: translate3d(${(railAt(f) * g.railW).toFixed(1)}px, 0, 0);`]));
+          const gap = (a: number, b: number) => -(posts[b].offsetTop - posts[a].offsetTop);
+          const out = 'animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);'; // GSAP's power2.out
+          const sel = ".nx-prime[data-pan='css']";
+          sheet.set(
+            [
+              `@keyframes nx-prime-pan { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(${-dist}px, 0, 0); } }`,
+              `@keyframes nx-prime-fill { ${fillKf} }`,
+              `@keyframes nx-prime-tip { ${tipKf} }`,
+              // Each post falls out of the one above it; the third rides behind the second until then.
+              `@keyframes nx-prime-post1 { from { transform: translate3d(0, ${gap(0, 1) + PEEK}px, 0) scale(0.94); ${out} } to { transform: translate3d(0, 0, 0) scale(1); } }`,
+              `@keyframes nx-prime-post2 { 0% { transform: translate3d(0, ${gap(0, 2) + 2 * PEEK}px, 0) scale(0.88); ${out} } 50% { transform: translate3d(0, ${gap(1, 2) + PEEK}px, 0) scale(0.94); } 53.571% { transform: translate3d(0, ${gap(1, 2) + PEEK}px, 0) scale(0.94); ${out} } 100% { transform: translate3d(0, 0, 0) scale(1); } }`,
+              `@keyframes nx-prime-note { from { opacity: 0; visibility: hidden; transform: translate3d(0, -10px, 0); ${out} } to { opacity: 1; visibility: visible; transform: translate3d(0, 0, 0); } }`,
+              `${sel} .nx-prime-canvas { animation: nx-prime-pan linear both; ${range(0, PAN)} }`,
+              `${sel} .nx-prail-fill { animation: nx-prime-fill linear both; ${range(0, T)} }`,
+              `${sel} .nx-prail-tip { animation: nx-prime-tip linear both; ${range(0, T)} }`,
+              `${sel} [data-node='post-1'] { animation: nx-prime-post1 linear both; ${range(PAN + 0.02, PAN + 0.16)} }`,
+              `${sel} [data-node='post-2'] { animation: nx-prime-post2 linear both; ${range(PAN + 0.02, PAN + 0.3)} }`,
+              `${sel} [data-note='restricted'] { animation: nx-prime-note linear both; ${range(PAN + 0.29, PAN + 0.36)} }`,
+            ].join('\n'),
+          );
+          lit();
+        };
+        layout();
+        let width = window.innerWidth;
+        // Width changes only: Safari's bars sliding away change the height, and the hold shouldn't jump.
+        const onResize = () => {
+          if (window.innerWidth === width) return;
+          width = window.innerWidth;
+          layout();
+          ScrollTrigger.refresh();
+        };
+        const ro = new ResizeObserver(() => layout());
+        ro.observe(canvas);
+        window.addEventListener('scroll', lit, { passive: true });
+        window.addEventListener('resize', onResize);
+        ScrollTrigger.refresh();
+        return () => {
+          ro.disconnect();
+          window.removeEventListener('scroll', lit);
+          window.removeEventListener('resize', onResize);
+          sheet.remove();
+          delete root.dataset.pan;
+          delete view.dataset.hpan;
+          delete canvas.dataset.hpan;
+          delete frame.dataset.hpan;
+          frame.style.top = '';
+          runway.style.height = '';
+          tipEl.style.removeProperty('opacity');
+          canvas.style.removeProperty('--ares-h');
+          items.forEach((el) => {
+            delete el.dataset.lit;
+            if (el.classList.contains('nx-pn')) el.dataset.live = 'true';
+          });
+          ScrollTrigger.refresh();
+        };
+      }
+
       let tl: gsap.core.Timeline;
       let tipOn = '';
       const paint = () => {
@@ -194,11 +324,7 @@ export default function Prime() {
           // The heading and the row hold together (owner, 2026-10-25: the row alone left the screen
           // mostly black), centered in the room under the nav, never under it.
           trigger: frame,
-          start: () => {
-            const nav = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ds-header')) || 64;
-            const room = window.innerHeight - nav;
-            return `top ${Math.round(nav + Math.max(12, (room - frame.offsetHeight) / 2))}px`;
-          },
+          start: () => `top ${holdTop()}px`,
           end: () => `+=${Math.round((distance() * 1.2) / PAN)}`,
           pin: frame,
           scrub: SCRUB,
@@ -221,7 +347,6 @@ export default function Prime() {
       // edges showing, each a step narrower (after Superpower's stacked steps; owner, 2026-10-25).
       // Then each falls out of the one above it: the second slides down from behind the first, then
       // the third from behind the second (riding behind the second until then).
-      const PEEK = 7;
       gsap.set(posts, { transformOrigin: '50% 100%' });
       tl.fromTo(posts[1], { y: () => gap(0, 1)() + PEEK, scale: 0.94 }, { y: 0, scale: 1, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
       tl.fromTo(posts[2], { y: () => gap(0, 2)() + 2 * PEEK, scale: 0.88 }, { y: () => gap(1, 2)() + PEEK, scale: 0.94, duration: 0.14, ease: 'power2.out' }, PAN + 0.02);
@@ -364,6 +489,8 @@ export default function Prime() {
           </div>
         </div>
         </div>
+        {/* Phones: the runway the frame holds over while the row slides (sticky, where supported). */}
+        <div className="nx-prime-runway" aria-hidden="true" />
       </div>
     </section>
   );

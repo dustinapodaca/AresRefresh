@@ -2,6 +2,7 @@ import { useRef, type CSSProperties } from 'react';
 import { STAGES } from '../services/data';
 import { SystemIcon } from '../services/Systems';
 import { readIn, useScene, words, SCRUB } from '../home/engine';
+import { cssPanSupported, panRange, panSheet } from '../../lib/stickyPan';
 import './sv-process.css';
 
 // 03 Process, "The workflow canvas" (home-flora, 2026-10-22), after FLORA's workflow canvas (media
@@ -116,6 +117,89 @@ export default function SvProcess() {
       const pinTop = () =>
         (parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64) +
         Math.round(Math.max(36, Math.min(88, (window.innerHeight - 640) * 0.45)));
+      // Where scroll-driven animations run (owner, 2026-10-25: the scripted pan was choppy on an
+      // iPhone): the section's frame holds with position: sticky over a runway as long as the pan, and
+      // the row's slide and the rust fill are CSS animations on the section's view timeline
+      // (lib/stickyPan.ts). Script measures on load and resize and flips the lit states as the scroll
+      // passes them. The same numbers as the scripted version below.
+      if (cssPanSupported()) {
+        const stick = root.querySelector<HTMLElement>('.sv-pr-stick')!;
+        const runway = root.querySelector<HTMLElement>('.sv-pr-runway')!;
+        const sheet = panSheet('sv-pr');
+        root.dataset.pan = 'css';
+        let top = 0;
+        let padT = 0;
+        let run = 1;
+        let litAt: number[] = [];
+        let doneAt = 1;
+        const lit = () => {
+          const prog = Math.max(0, Math.min(1, (top - padT - root.getBoundingClientRect().top) / run));
+          nodes.forEach((n, i) => {
+            const on = prog >= litAt[i];
+            if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
+          });
+          const done = prog >= doneAt;
+          if ((root.dataset.done === 'true') !== done) {
+            if (done) root.dataset.done = 'true';
+            else delete root.dataset.done;
+          }
+        };
+        const layout = () => {
+          measure();
+          top = pinTop();
+          run = Math.max(1, Math.round(dist * 1.15));
+          const cs = getComputedStyle(root);
+          padT = parseFloat(cs.paddingTop) || 0;
+          stick.style.top = `${top}px`;
+          runway.style.height = `${run}px`;
+          // From the hold's end to where the section's foot leaves the screen.
+          const endS = top + stick.offsetHeight + (parseFloat(cs.paddingBottom) || 0);
+          // The reading line (62% across) runs from base to the hairline's far end over the pan.
+          const base = viewW * 0.62;
+          const k = Math.max(1, dist + Math.max(0, end - (base + dist)));
+          const p0 = Math.max(0, Math.min(1, (base - first) / span));
+          const fullAt = Math.max(0, Math.min(1, (span - (base - first)) / k));
+          litAt = stops.map((x) => (x - base) / k);
+          doneAt = (first + 0.999 * span - base) / k;
+          sheet.set(
+            `@keyframes sv-pr-pan { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(${-dist}px, 0, 0); } }\n` +
+              `@keyframes sv-pr-fill { from { transform: scaleX(${p0.toFixed(4)}); } to { transform: scaleX(1); } }\n` +
+              `.sv-pr[data-pan='css'] .sv-pr-track { animation: sv-pr-pan linear both; animation-timeline: --svpr; animation-range: ${panRange(endS, run, 0, 1)}; }\n` +
+              `.sv-pr[data-pan='css'] .sv-pr-rail i { animation: sv-pr-fill linear both; animation-timeline: --svpr; animation-range: ${panRange(endS, run, 0, fullAt)}; }`,
+          );
+          lit();
+        };
+        layout();
+        let width = window.innerWidth;
+        // Width changes only: Safari's bars sliding away change the height, and the hold shouldn't jump.
+        const onResize = () => {
+          if (window.innerWidth === width) return;
+          width = window.innerWidth;
+          layout();
+          ScrollTrigger.refresh();
+        };
+        const ro = new ResizeObserver(() => layout());
+        ro.observe(track);
+        window.addEventListener('scroll', lit, { passive: true });
+        window.addEventListener('resize', onResize);
+        ScrollTrigger.refresh();
+        return () => {
+          ro.disconnect();
+          window.removeEventListener('scroll', lit);
+          window.removeEventListener('resize', onResize);
+          sheet.remove();
+          delete root.dataset.pan;
+          delete root.dataset.arm;
+          delete root.dataset.hpan;
+          delete root.dataset.done;
+          nodes.forEach((n) => delete n.dataset.lit);
+          stick.style.top = '';
+          runway.style.height = '';
+          rail.style.left = '';
+          rail.style.width = '';
+          ScrollTrigger.refresh();
+        };
+      }
       const paint = () => {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
         // The reading line sits 62% across, and eases out to the hairline's far end as the pan
@@ -281,6 +365,8 @@ export default function SvProcess() {
 
   return (
     <section ref={ref} id="sv-process" className="sv-pr" aria-labelledby="sv-pr-title">
+      {/* The frame that holds on phones while the row pans (sticky over the runway below). */}
+      <div className="sv-pr-stick">
       <header className="sv-pr-head nx-edge">
         <h2 id="sv-pr-title" className="nx-statement nx-statement-sm sv-pr-title">
           {words('Four stages, from site walk to first shift.')}
@@ -384,6 +470,8 @@ export default function SvProcess() {
       </div>
 
       <p className="sv-pr-handoff nx-edge">The same four stages run at every post, in every city we cover.</p>
+      </div>
+      <div className="sv-pr-runway" aria-hidden="true" />
     </section>
   );
 }

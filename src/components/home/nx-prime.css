@@ -125,6 +125,15 @@
 /* ---- Phones and tablets: one column on a straight rail */
 /* The phone rail's tip (below). */
 .nx-prail-tip, .nx-prail-fill { display: none; }
+.nx-prime-runway { display: none; }
+/* Where scroll-driven animations run (Prime.tsx, lib/stickyPan.ts): the frame holds by sticky over the
+   runway, and the slide, the rail, the posts, and the note run on the grid's view timeline. Clip, not
+   hidden, so the section isn't a scroll box and sticky can hold. */
+.nx-prime[data-pan='css'] { overflow: clip; }
+.nx-prime[data-pan='css'] .nx-prime-grid { display: block; view-timeline: --nxprime block; }
+.nx-prime[data-pan='css'] .nx-prime-frame { position: sticky; }
+.nx-prime[data-pan='css'] .nx-prime-runway { display: block; }
+.nx-prime[data-pan='css'] .nx-pn-post { transform-origin: 50% 100%; }
 
 @media (max-width: 1023px) {
   .nx-prime-copy { grid-column: 1 / -1; position: static; }
