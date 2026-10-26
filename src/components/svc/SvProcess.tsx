@@ -1,5 +1,6 @@
 import { useRef, type CSSProperties } from 'react';
 import { STAGES } from '../services/data';
+import { SystemIcon } from '../services/Systems';
 import { readIn, useScene, words, SCRUB } from '../home/engine';
 import './sv-process.css';
 
@@ -14,7 +15,7 @@ import './sv-process.css';
 // prerender, no JavaScript): the four nodes stacked on a rust wire, the systems as a two-column list
 // inside stage 03.
 
-// The six systems (services/Systems.tsx; names only here).
+// The six systems, each with its authored icon from services/Systems.tsx (owner, 2026-10-25).
 const SYSTEMS = [
   'Card readers and access panels',
   'CCTV monitors',
@@ -198,7 +199,8 @@ export default function SvProcess() {
           const b = box(sat);
           const x1 = s3.x + s3.w * (0.22 + i * 0.11);
           const y1 = s3.y + s3.h;
-          const x2 = b.x + b.w / 2;
+          // The box is centered on its left edge (CSS translate -50%, which offsetLeft leaves out).
+          const x2 = b.x;
           const y2 = b.y;
           const k = (y2 - y1) * 0.5;
           satWires[i].setAttribute('d', `M${x1} ${y1} C${x1} ${y1 + k} ${x2} ${y2 - k} ${x2} ${y2}`);
@@ -331,7 +333,8 @@ export default function SvProcess() {
                     <ul className="sv-pr-syslist" aria-label="Systems officers learn before their first shift">
                       {SYSTEMS.map((name, k) => (
                         <li key={name} style={{ ['--k' as string]: k } as CSSProperties}>
-                          {name}
+                          <SystemIcon name={name} />
+                          <span>{name}</span>
                         </li>
                       ))}
                     </ul>
@@ -350,6 +353,7 @@ export default function SvProcess() {
                 className="sv-pr-sat"
                 style={{ ['--x' as string]: `${SAT_SPOTS[i].x}px`, ['--y' as string]: `${SAT_SPOTS[i].y}%` } as CSSProperties}
               >
+                <SystemIcon name={name} />
                 <span className="sv-pr-sat-name">{name}</span>
               </li>
             ))}

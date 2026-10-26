@@ -4,7 +4,7 @@
 // caps, like the site's arrows. Decorative; the words carry the meaning.
 // `short` is the name on phones and tablets, where the tags sit in the stages' swipe row and the
 // full names stacked one per line (owner, 2026-10-16).
-const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
+export const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
   {
     name: 'Card readers and access panels',
     short: 'Card readers',
@@ -69,6 +69,17 @@ const SYSTEMS: { name: string; short: string; icon: JSX.Element }[] = [
     ),
   },
 ];
+
+// One system's icon, for the Services page's four stages (owner, 2026-10-25).
+export function SystemIcon({ name, size = 16 }: { name: string; size?: number }) {
+  const icon = SYSTEMS.find((s) => s.name === name)?.icon;
+  if (!icon) return null;
+  return (
+    <svg className="ds-sys-icon" width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {icon}
+    </svg>
+  );
+}
 
 export default function SystemTags() {
   return (

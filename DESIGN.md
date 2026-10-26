@@ -802,8 +802,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   the ends), and "Swipe for the next service" / "Swipe for the next industry" in the data face. On
   phones the industries' header bar and arrows give way to these; wider screens keep them.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
-  canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
-  faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
+  canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites
+  (each a pure black box with the glass edge that hugs its authored icon and name, centered on its
+  spot; owner 2026-10-25), faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
   stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the
   editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds about 88px under
   the nav (less on short phones; owner, 2026-10-25: halfway between centered and 20px) with the row
@@ -814,7 +815,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row, to the far edge of stage 04,
   fills rust to a reading line (62% across, easing out to the line's end as the pan finishes; the
   section lets go the moment it is full, no hold; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes
-  up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter. Scrubbed, so it
+  up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter, each with its icon. Scrubbed, so it
   reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
   it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
