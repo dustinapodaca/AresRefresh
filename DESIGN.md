@@ -605,7 +605,7 @@ and `nx-*.css` (class prefix `nx-`).
 - **04 Coverage:** "Where we work." and its lead, the three cities set large on the left
   (`clamp(36px, 4.3vw, 72px)`, Colorado Springs first as HQ), each a link to its city page, and
   Colorado to scale on the right (the coverage map's projection, its dot grid, a rust glow on
-  Colorado Springs, Pikes Peak as an open triangle). I-25 draws north to south with the scroll (reaching Pueblo with the whole map still in view; owner, 2026-10-25), a
+  Colorado Springs, Pikes Peak as an open triangle). I-25 draws north to south with the scroll while the whole map is on screen (from when its foot comes into view to before its top meets the nav; owner, 2026-10-25), a
   bright tip riding it, and each city comes up as the line reaches it (owner, 2026-10-22: the dot grows in place, one
   sonar ping ripples out from it, the ring opens around it, the name rises 6px into place, Pikes Peak with
   Colorado Springs; radii, not scale, so nothing flies in from the map's corner); pointing at or
