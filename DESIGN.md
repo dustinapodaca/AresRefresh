@@ -1292,7 +1292,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   coming up in turn. Services and Industries keep the
   photo list and the swipe row; Company is four photo tiles (About Ares with Pikes Peak, Careers
   with the two officers from the Home careers band, Capability Statement with Denver at sunset,
-  Insights with the owner's LinkedIn banner, `/images/nav/insights.png`; 83px (20% thinner, owner 2026-10-26; was 104), 4px corners, a dark
+  Insights with the owner's LinkedIn banner, `/images/nav/insights.png`; 90px (thinner, owner 2026-10-26; was 104), 4px corners, a dark
   wash from the foot). Teaming and Request a Quote aren't repeated there on phones: Teaming is on the
   Services page and the quote button is always pinned at the foot (owner, 2026-10-15). The pages reset to the main one when the menu closes. While a page scrolls, the logo bar stays at the top and the Back bar
   just under it, both solid, the content scrolling behind them (owner, 2026-10-15). The photo accordions stay at

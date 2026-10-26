@@ -331,7 +331,7 @@ const COMPANY_TILES = [
   { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
   // The owner's LinkedIn banner (2026-10-15), its frosted logo card centered in the tile on a phone
   // (owner, 2026-10-26: it sat a little low at 50%).
-  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 63%' },
+  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 68%' },
 ];
 
 function ArrowBack() {
