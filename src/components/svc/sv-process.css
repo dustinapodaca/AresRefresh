@@ -20,7 +20,7 @@
   justify-content: space-between;
   gap: 14px;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ds-fg-faint);
 }
 /* The data face's zero is slashed (owner, 2026-10-25: Fraktion's own zero is dotted). */
@@ -56,7 +56,7 @@
   position: relative;
   padding-left: 14px;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.45;
   letter-spacing: 0.02em;
   color: var(--ds-fg-muted);
@@ -211,7 +211,7 @@
     left: calc(var(--pad) + var(--x));
     top: var(--y);
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--ds-fg-faint);
     opacity: 0.45;
     transition: opacity 0.5s var(--ds-ease);

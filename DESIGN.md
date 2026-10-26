@@ -218,9 +218,11 @@ sizes are unchanged.
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
   Its own zero is dotted, so each use should set the slashed zero (`font-variant-numeric:
-  slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 12px or
-  larger, and labels inside drawings are sized to show at about 12px on screen (owner, 2026-10-25: at
-  8.5 to 11.5px it read as shrunk; text already 12px or larger keeps its size).
+  slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 13px or
+  larger (12px only where a narrow phone needs it, like Home's Record names at 360px), and a mono line
+  set beside Inter is one step above it (14px by 13px Inter) so the two read the same size; Fraktion's
+  letters are shorter than Inter's. Inter labels are 13px or larger. Labels inside drawings show at
+  about 12px on screen (owner, 2026-10-25).
 - **Figure:** "<1%" in the data face 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** the data face at 30px, 44px from 640px. The Contact headline carries

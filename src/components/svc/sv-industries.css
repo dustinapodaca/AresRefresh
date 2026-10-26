@@ -147,7 +147,7 @@
   border-top: 1px solid rgb(255 255 255 / 0.14);
   margin-top: 4px;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.02em;
   color: rgb(238 240 242 / 0.7);
 }
@@ -228,7 +228,7 @@
     margin: 18px 0 0;
     padding: 4px 0 4px 22px;
     border-top: 0;
-    font-size: 12px;
+    font-size: 13px;
     color: rgb(238 240 242 / 0.82);
   }
   .sv-ind-covers::before,

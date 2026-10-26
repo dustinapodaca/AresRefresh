@@ -354,7 +354,15 @@ export default function SvServices() {
                   </Link>
                 </h3>
                 <p className="svs-line">{c.line}</p>
-                <p className="svs-keys">{c.keys.join(' · ')}</p>
+                {/* Each key stays whole, so the line wraps between keys, never inside "GPS-verified". */}
+                <p className="svs-keys">
+                  {c.keys.map((k, j) => (
+                    <span key={k}>
+                      {j > 0 && ' · '}
+                      <span className="svs-key">{k}</span>
+                    </span>
+                  ))}
+                </p>
               </div>
             </li>
           );
