@@ -115,6 +115,7 @@ uniform float uDpr;
 uniform float uUnit;
 // Ares, 2026-10-26: extra plate width on each side, as a fraction of the plate edge (0 = square).
 uniform float uStretch;
+uniform float uStretchY;
 uniform vec2 uLogoBox;
 uniform vec2 uTextBox;
 uniform float uTextWidth;
@@ -365,12 +366,12 @@ vec4 iconLens(vec2 p) {
   float collapse = 1.0 - ease(1.33, 1.52, t);
   float lensScale = max(0.001, mix(expand * mix(0.48, 1.0, collapse), 1.0, settle));
   float halfSize = uUnit * 0.5 * lensScale;
-  // Ares, 2026-10-26: a wider plate. The square is elongated sideways by uStretch of the plate edge
-  // on each side (the shape is measured from q, the point with that width taken out of |x|), so its
-  // distance field, normals, and rim stay exact; it grows in as the sphere squares off. The logo is
-  // still sampled at p.
-  float stretch = uStretch * uUnit * lensScale * ease(0.29, 0.36, t);
-  vec2 q = vec2(sign(p.x) * max(abs(p.x) - stretch, 0.0), p.y);
+  // Ares, 2026-10-26: a rectangular plate. The square is elongated by uStretch of the plate edge on
+  // each side, and by uStretchY above and below (the shape is measured from q, the point with that
+  // much taken out of |x| and |y|), so its distance field, normals, and rim stay exact; it grows in
+  // as the sphere squares off. The logo is still sampled at p.
+  vec2 stretch = vec2(uStretch, uStretchY) * uUnit * lensScale * ease(0.29, 0.36, t);
+  vec2 q = sign(p) * max(abs(p) - stretch, 0.0);
   float radius = superRadius(q / halfSize, shape);
   float sd = (radius - 1.0) * halfSize;
   float aa = max(fwidth(sd), 0.65);
@@ -448,7 +449,7 @@ vec4 iconLens(vec2 p) {
   // Two separated walls, not two strokes at the same edge. The back wall is
   // inset by 7% of a tile edge, leaving a curved transmission channel between them.
   vec2 insetPoint = p - vec2(0.002, -0.002) * uUnit * lensScale;
-  vec2 insetQ = vec2(sign(insetPoint.x) * max(abs(insetPoint.x) - stretch, 0.0), insetPoint.y);
+  vec2 insetQ = sign(insetPoint) * max(abs(insetPoint) - stretch, 0.0);
   float wallGap = (0.055 - 0.023 * ease(0.18, 0.34, t)) + 0.050 * ease(0.14, 0.50, t) * (1.0 - 0.5 * ease(0.80, 1.22, t));
   float insetHalf = halfSize - wallGap * uUnit * lensScale;
   // The back face rounds off slightly later, giving the sphere and tile two visible
@@ -696,6 +697,7 @@ uniform vec2 uResolution;
 uniform float uDpr;
 uniform float uUnit;
 uniform float uStretch;
+uniform float uStretchY;
 uniform float uSettle;
 uniform float uBloom;
 uniform float uTime;
@@ -734,9 +736,9 @@ void main() {
     float lensScale = mix(expand * mix(0.48, 1.0, collapse), 1.0, smoothstep(0.0, 1.0, uSettle));
     float halfSize = max(0.001, uUnit * lensScale * 0.5);
     float shape = 2.0 + 3.0 * smoothstep(0.29, 0.36, uTime);
-    float stretch = uStretch * uUnit * lensScale * smoothstep(0.29, 0.36, uTime);
+    vec2 stretch = vec2(uStretch, uStretchY) * uUnit * lensScale * smoothstep(0.29, 0.36, uTime);
     vec2 p = abs((gl_FragCoord.xy - uResolution * 0.5) / uDpr);
-    p.x = max(p.x - stretch, 0.0);
+    p = max(p - stretch, 0.0);
     p /= halfSize;
     float radius = pow(pow(p.x, shape) + pow(p.y, shape), 1.0 / shape);
     float distance = (radius - 1.0) * halfSize;

@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-logo';
 
 // The Ares mark in glass, in the phone hero's window (owner, 2026-10-25). ReactDrops' Liquid Glass
-// Logo (src/components/liquid-glass-logo*, the registry's 0.1.0, unchanged but for a `stretch` setting
-// we added on 2026-10-26 for a rectangular plate; it defaults to 0, the original square)
+// Logo (src/components/liquid-glass-logo*, the registry's 0.1.0, unchanged but for the `stretch` and
+// `stretchY` settings we added on 2026-10-26 for a rectangular plate; they default to 0, the original
+// square)
 // with ReactDrops' own setup for it (owner, 2026-10-25: "try it like this instead", replacing the
 // glass card held mid-sequence): the sphere-to-tile glass entrance plays through, then the glass
 // clears and leaves the original mark alone at its normal size, white on the dark setting, at
@@ -26,10 +27,13 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // takes the same fit, measured whenever the box changes (owner, 2026-10-25: on a short phone it landed
 // far bigger than the canvas had drawn it).
 const LOGO_SIZE = 288;
-// The glass is a rectangle, wider than the square by this much on each side (owner, 2026-10-26),
-// through the stretch setting we added to the component; it stays this many CSS pixels whatever the fit.
-const STRETCH_PX = 24;
 const LOGO_SCALE = 0.93;
+// The glass plate fills the window it sits in, whatever the phone (owner, 2026-10-26; was a square
+// 24px wider a side). The plate grows to about 1.05 of its resting size while the glass shows (the
+// shader's expand), so it is sized to the window at that size, not past it.
+const GLASS_SWELL = 1.05;
+// How far .sv-glass runs past the window above and below (svc.css).
+const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
 
 export default function SvGlassMark() {
@@ -39,15 +43,27 @@ export default function SvGlassMark() {
   const [done, setDone] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const [fit, setFit] = useState(1);
+  const [stretch, setStretch] = useState<[number, number]>([0, 0]);
 
+  // The renderer's fit (the logo's size in its box), and the stretch that takes the plate out to the
+  // window: the stage less its side padding across, the box less its room above and below down.
   useEffect(() => {
     const el = box.current;
-    if (!el) return;
-    const measure = () =>
-      setFit(Math.min(1, (el.clientWidth - 2 * STRETCH_PX) / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5)));
+    const stage = el?.closest<HTMLElement>('.sv-hero-stage');
+    if (!el || !stage) return;
+    const measure = () => {
+      const f = Math.min(1, el.clientWidth / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5));
+      const unit = LOGO_SIZE * f;
+      const w = stage.clientWidth - 2 * (parseFloat(getComputedStyle(stage).paddingLeft) || 0);
+      const h = el.clientHeight - 2 * ROOM_Y;
+      const side = (size: number) => Math.max(0, (size / GLASS_SWELL - unit) / (2 * unit));
+      setFit(f);
+      setStretch([side(w), side(h)]);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
+    ro.observe(stage);
     return () => ro.disconnect();
   }, []);
 
@@ -79,7 +95,8 @@ export default function SvGlassMark() {
         logoSize={LOGO_SIZE}
         ending='logo'
         logoScale={LOGO_SCALE}
-        stretch={STRETCH_PX / (LOGO_SIZE * fit)}
+        stretch={stretch[0]}
+        stretchY={stretch[1]}
         background='#00000000'
         tile={false}
         paused={paused}
