@@ -3989,7 +3989,7 @@ html[data-cards='glass'] .ds-pipe :is(.ds-pipe-card, .ds-pipe-post) {
 .ds-np-pane-sub[data-on] > :nth-child(4) { transition-delay: 120ms; }
 /* Company: photo tiles where a picture says something, then plain rows. */
 .ds-np-tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.ds-np-tile { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; height: 104px; padding: 14px 16px; border-radius: 4px; overflow: hidden; color: #fff !important; isolation: isolate; }
+.ds-np-tile { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; height: 83px; /* 20% thinner (owner, 2026-10-26; was 104) */ padding: 14px 16px; border-radius: 4px; overflow: hidden; color: #fff !important; isolation: isolate; }
 .ds-np-tile img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) brightness(0.8); }
 .ds-np-tile::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.15) 70%); }
 .ds-np-tile::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1); pointer-events: none; }
