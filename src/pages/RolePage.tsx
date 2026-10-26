@@ -7,6 +7,10 @@ import { ROLE_PAGES, SHEET_NOTE, capabilityFor, roleBySlug, sheetFor } from '../
 import { industryBySlug } from '../components/market/industries';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { heroTitle } from '../lib/heroTitle';
+import RoleTerrain from '../components/market/RoleTerrain';
+
+// The topographic background, one page at a time (owner, 2026-10-26: Armed first, to see it).
+const TERRAIN = new Set(['armed-security-officers']);
 
 // A role page ("The Post Sheet", docs/market-concepts.md): the service named as buyers
 // search for it, its spec sheet, what the post covers, where we post it, questions, and the
@@ -23,6 +27,8 @@ export default function RolePage() {
     <main id="main" tabIndex={-1} className="ds ds-page ds-mk">
       <Seo path={`/services/${role.slug}`} />
 
+      <div className="ds-mk-hero" data-terrain={TERRAIN.has(role.slug) || undefined}>
+      {TERRAIN.has(role.slug) && <RoleTerrain />}
       <section className="ds-container ds-mk-open" aria-labelledby="mk-title">
         <div className="ds-mk-open-copy">
           <Crumbs path={`/services/${role.slug}`} current={role.name} />
@@ -43,6 +49,7 @@ export default function RolePage() {
           <p className="ds-mk-sheet-note">{SHEET_NOTE}</p>
         </div>
       </section>
+      </div>
 
       <div className="ds-container">
         {/* Written only for this service (copy audit service template, 2026-10-10). */}

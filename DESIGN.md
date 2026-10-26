@@ -1145,7 +1145,12 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
 From the CenCore review (docs/market-concepts.md). One shared vocabulary (`ds-mk-*`), no
 rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Role pages (`/services/<slug>`):** the search phrase as the headline (display-xl, 7
-  columns), lead, quote button (`/contact?service=<slug>`) and call link; beside it a spec
+  columns), lead, quote button (`/contact?service=<slug>`) and call link; behind the opening (owner,
+  2026-10-26, Armed Security Officers first, to judge it before the rest) ReactDrops' Topographic Flow
+  (`components/topographic-*`, unchanged; `market/RoleTerrain.tsx`): grey contour lines with deep rust
+  (#8b4920) accents drifting on the black at 0.38 opacity, faint (owner), rings where the pointer moves,
+  running up behind the nav and masked into the canvas at its foot; loaded on its own after the page,
+  not in the prerender or automated browsers, still under reduced motion; beside it a spec
   sheet on hairlines (label 13px faint over value 16px ink; GSA routes to eLibrary). Then
   "What the post covers." (four duties two by two, the mono number on the title's line),
   "Where it is asked for." (industry routes), questions, an ask strip, "More services.".

@@ -2975,6 +2975,20 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
    questions as an accordion (Linear and Dovetail on Mobbin). No rail, no cards.
    ============================================================ */
 .ds-mk-open { display: grid; gap: 48px; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+/* The topographic background behind a role page's hero (owner, 2026-10-26; RoleTerrain). It runs up
+   behind the nav and dissolves into the canvas at its foot with a mask, never an overlay edge. The
+   hero's copy lets the pointer through to it (for its rings), except its links and buttons. */
+.ds-mk-hero { position: relative; }
+.ds-mk-hero > .ds-mk-open { position: relative; z-index: 1; }
+.ds-mk-terrain {
+  position: absolute;
+  inset: 0 0 -64px;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 100%);
+}
+.ds-mk-hero[data-terrain] > .ds-mk-open { pointer-events: none; }
+.ds-mk-hero[data-terrain] > .ds-mk-open :is(a, button, summary, input, select, textarea) { pointer-events: auto; }
 .ds-mk-open-copy .ds-lead { margin-top: 24px; max-width: 46ch; }
 .ds-mk-open-copy .ds-actions { margin-top: 32px; }
 @media (min-width: 1024px) {
