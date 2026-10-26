@@ -325,9 +325,9 @@ function PhoneIndustries() {
 // repeated there on phones: Teaming is on the Services page and the quote button is always pinned
 // at the foot of the menu.
 const COMPANY_TILES = [
-  { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 59%' },
+  { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 60%' },
   // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
-  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 55%' },
+  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 63%' },
   { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
   // The owner's LinkedIn banner (2026-10-15), its frosted logo card centered in the tile on a phone
   // (owner, 2026-10-26: it sat a little low at 50%).
