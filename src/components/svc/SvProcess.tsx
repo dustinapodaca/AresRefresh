@@ -83,13 +83,16 @@ export default function SvProcess() {
       root.dataset.arm = 'true';
       root.dataset.hpan = 'on';
       let first = 0;
+      let end = 1;
       let span = 1;
       let stops: number[] = [];
-      // Track coordinates: the rail runs from the first stage's stop to the last one's.
+      // Track coordinates: the rail runs the whole hairline, from the first stage's left edge to the far
+      // edge of stage 04 (owner, 2026-10-25: it stopped at 04's start).
       const measure = () => {
         stops = nodes.map((n) => list.offsetLeft + n.offsetLeft + 4);
-        first = stops[0];
-        span = Math.max(1, stops[stops.length - 1] - first);
+        first = list.offsetLeft;
+        end = list.offsetLeft + list.offsetWidth;
+        span = Math.max(1, end - first);
         rail.style.left = `${first}px`;
         rail.style.width = `${span}px`;
       };
@@ -103,7 +106,12 @@ export default function SvProcess() {
         Math.round(Math.max(36, Math.min(88, (window.innerHeight - 640) * 0.45)));
       const paint = () => {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
-        const at = view.clientWidth * 0.62 - tx;
+        // The reading line sits 62% across, and eases out to the hairline's far end as the pan
+        // finishes, so the line is full when the row stops.
+        const d = distance();
+        const prog = d > 0 ? Math.min(1, -tx / d) : 1;
+        const base = view.clientWidth * 0.62;
+        const at = base - tx + Math.max(0, end - (base + d)) * prog;
         const p = Math.max(0, Math.min(1, (at - first) / span));
         fill.style.transform = `scaleX(${p.toFixed(4)})`;
         tip.style.transform = `translateX(${(p * span).toFixed(1)}px)`;
@@ -119,15 +127,15 @@ export default function SvProcess() {
         }
       };
       measure();
-      const tween = gsap.to(track, {
-        x: () => -distance(),
-        ease: 'none',
+      // The pan, then a short hold on the full line before the section lets go.
+      const tween = gsap.timeline({
+        defaults: { ease: 'none' },
         onUpdate: paint,
         scrollTrigger: {
           // The section holds once its heading reaches its place in the frame.
           trigger: title,
           start: () => `top ${pinTop()}px`,
-          end: () => `+=${Math.round(distance() * 1.15)}`,
+          end: () => `+=${Math.round(distance() * 1.32)}`,
           pin: root,
           scrub: SCRUB,
           invalidateOnRefresh: true,
@@ -138,6 +146,7 @@ export default function SvProcess() {
           },
         },
       });
+      tween.to(track, { x: () => -distance(), duration: 1 }).to({}, { duration: 0.15 });
       paint();
       return () => {
         tween.scrollTrigger?.kill();
