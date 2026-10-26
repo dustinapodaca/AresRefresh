@@ -113,6 +113,8 @@ export type LiquidGlassLogoTuning = {
   logoSize: number;
   /** Logo width or height as a fraction of the plate edge. */
   logoScale: number;
+  /** Extra plate width on each side, as a fraction of the plate edge; 0 keeps it square (Ares). */
+  stretch: number;
   /** Resting logo scale; 1 holds its normal size while the glass disappears. */
   finalLogoScale: number;
   /** Draw the logo on an icon plate. */
@@ -180,6 +182,7 @@ export const liquidGlassLogoDefaults: LiquidGlassLogoTuning = {
   ending: 'logo',
   logoSize: 256,
   logoScale: 0.72,
+  stretch: 0,
   finalLogoScale: 1,
   tile: true,
   fontSize: 64,
@@ -345,6 +348,7 @@ export function normalizeLiquidGlassLogo(value: LiquidGlassLogoTuning): LiquidGl
     theme: value.theme === 'light' ? 'light' : 'dark',
     logoSize: finite(value.logoSize, d.logoSize, 24, 1024),
     logoScale: finite(value.logoScale, d.logoScale, 0.1, 1),
+    stretch: finite(value.stretch, d.stretch, 0, 1),
     finalLogoScale: finite(value.finalLogoScale, d.finalLogoScale, 0.1, 1),
     fontSize: finite(value.fontSize, d.fontSize, 8, 400),
     fontWeight: finite(value.fontWeight, d.fontWeight, 100, 1000),
@@ -615,6 +619,7 @@ export function createLiquidGlassLogoRenderer(
       'uResolution',
       'uDpr',
       'uUnit',
+      'uStretch',
       'uSettle',
       'uBloom',
       'uTime',
@@ -703,7 +708,7 @@ export function createLiquidGlassLogoRenderer(
     Math.min(
       1,
       // Reserve room for the side reflections as they travel away from the plate.
-      width / Math.max(tuning.logoSize * 1.9, tuning.ending === 'wordmark' ? textWidth * 1.22 : 0),
+      width / Math.max(tuning.logoSize * (1.9 + 2 * tuning.stretch), tuning.ending === 'wordmark' ? textWidth * 1.22 : 0),
       height / (tuning.logoSize * 1.5),
     );
   const draw = () => {
@@ -723,6 +728,7 @@ export function createLiquidGlassLogoRenderer(
     gl.uniform2f(uniform('uResolution'), canvas.width, canvas.height);
     gl.uniform1f(uniform('uDpr'), canvas.width / width);
     gl.uniform1f(uniform('uUnit'), tuning.logoSize * scale);
+    gl.uniform1f(uniform('uStretch'), tuning.stretch);
     // The logo always occupies one plate edge. Its bounds must follow the
     // current size immediately, even while a sharper texture loads asynchronously.
     gl.uniform2f(uniform('uLogoBox'), tuning.logoSize * scale, tuning.logoSize * scale);
@@ -800,6 +806,7 @@ export function createLiquidGlassLogoRenderer(
     gl.uniform2f(compositeUniform.uResolution, canvas.width, canvas.height);
     gl.uniform1f(compositeUniform.uDpr, canvas.width / width);
     gl.uniform1f(compositeUniform.uUnit, unitPx);
+    gl.uniform1f(compositeUniform.uStretch, tuning.stretch);
     gl.uniform1f(compositeUniform.uSettle, settle);
     gl.uniform1f(compositeUniform.uBloom, tuning.bloom);
     gl.uniform1f(compositeUniform.uPageLight, pageLight);

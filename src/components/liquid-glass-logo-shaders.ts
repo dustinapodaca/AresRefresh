@@ -113,6 +113,8 @@ uniform sampler2D uText;
 uniform vec2 uResolution;
 uniform float uDpr;
 uniform float uUnit;
+// Ares, 2026-10-26: extra plate width on each side, as a fraction of the plate edge (0 = square).
+uniform float uStretch;
 uniform vec2 uLogoBox;
 uniform vec2 uTextBox;
 uniform float uTextWidth;
@@ -363,7 +365,13 @@ vec4 iconLens(vec2 p) {
   float collapse = 1.0 - ease(1.33, 1.52, t);
   float lensScale = max(0.001, mix(expand * mix(0.48, 1.0, collapse), 1.0, settle));
   float halfSize = uUnit * 0.5 * lensScale;
-  float radius = superRadius(p / halfSize, shape);
+  // Ares, 2026-10-26: a wider plate. The square is elongated sideways by uStretch of the plate edge
+  // on each side (the shape is measured from q, the point with that width taken out of |x|), so its
+  // distance field, normals, and rim stay exact; it grows in as the sphere squares off. The logo is
+  // still sampled at p.
+  float stretch = uStretch * uUnit * lensScale * ease(0.29, 0.36, t);
+  vec2 q = vec2(sign(p.x) * max(abs(p.x) - stretch, 0.0), p.y);
+  float radius = superRadius(q / halfSize, shape);
   float sd = (radius - 1.0) * halfSize;
   float aa = max(fwidth(sd), 0.65);
   float mask = (1.0 - smoothstep(-aa, aa, sd));
@@ -371,17 +379,17 @@ vec4 iconLens(vec2 p) {
   float shown = ease(0.12, 0.165, t) * (1.0 - ease(1.39, 1.53, t));
   // Nothing is drawn beyond the thin echo just outside the rim.
   if (sd > uUnit * 0.10) return vec4(0.0);
-  vec2 outward = superNormal(p / halfSize, shape);
+  vec2 outward = superNormal(q / halfSize, shape);
   // A flat center rolls into a thick, curved shoulder. The normal continuously bends
   // source rays into the plate and folds them at its rim, whatever the source image.
-  vec2 radial = normalize(p + vec2(0.001));
+  vec2 radial = normalize(q + vec2(0.001));
   float diagonal = max(0.0, 2.0 * radial.x * radial.y);
   float shoulderStart = 0.6 + 0.18 * ease(0.66, 1.15, t) * (1.0 - diagonal) + 0.16 * ease(1.0, 1.22, t) * diagonal;
   float shoulder = ease(shoulderStart, 1.0, radius);
   float slope = (0.04 * radius + (0.85 + 0.2 * (1.0 - ease(0.28, 0.75, t))) * shoulder * shoulder) * glass * uDropStrength;
   // The early sphere is rounder and more strongly magnifying than the settled tile.
   slope += (1.0 - ease(0.18, 0.42, t)) * radius * 0.32 * uDropStrength;
-  vec2 opticalDirection = normalize(mix(outward, normalize(p + vec2(0.001)), 0.95));
+  vec2 opticalDirection = normalize(mix(outward, normalize(q + vec2(0.001)), 0.95));
   // A mild astigmatic shoulder carries the image into opposite corners.
   float astigmatism = 0.8 + 0.4 * radial.x * radial.y;
   vec2 n = opticalDirection * slope * astigmatism * (1.0 - settle);
@@ -400,7 +408,7 @@ vec4 iconLens(vec2 p) {
   float alpha = max(ink.a, plateFade * uTileEnabled);
   // A broad studio light is reflected by the curved front face of the sphere.
   // It fades as the face flattens, revealing the dark glass beneath the artwork.
-  vec2 spherePoint = p / halfSize;
+  vec2 spherePoint = q / halfSize;
   vec3 sphereNormal = normalize(vec3(spherePoint, sqrt(max(0.001, 1.0 - dot(spherePoint, spherePoint)))));
   vec3 sphereRay = reflect(vec3(0.0, 0.0, -1.0), sphereNormal);
   float lightTravel = mix(-0.12, 0.20, ease(0.13, 0.30, t));
@@ -440,19 +448,20 @@ vec4 iconLens(vec2 p) {
   // Two separated walls, not two strokes at the same edge. The back wall is
   // inset by 7% of a tile edge, leaving a curved transmission channel between them.
   vec2 insetPoint = p - vec2(0.002, -0.002) * uUnit * lensScale;
+  vec2 insetQ = vec2(sign(insetPoint.x) * max(abs(insetPoint.x) - stretch, 0.0), insetPoint.y);
   float wallGap = (0.055 - 0.023 * ease(0.18, 0.34, t)) + 0.050 * ease(0.14, 0.50, t) * (1.0 - 0.5 * ease(0.80, 1.22, t));
   float insetHalf = halfSize - wallGap * uUnit * lensScale;
   // The back face rounds off slightly later, giving the sphere and tile two visible
   // moving boundaries rather than scaling a second outline with the front face.
   float insetShape = max(2.0, 2.0 + (shape - 2.0) * ease(0.20, 0.55, t) - 0.45);
-  float insetRadius = superRadius(insetPoint / insetHalf, insetShape);
+  float insetRadius = superRadius(insetQ / insetHalf, insetShape);
   float insetSd = (insetRadius - 1.0) * insetHalf + sharedWarp * 0.4 + edgeWarp(arc, 151.0) * reliefScale * 0.7;
   float channel = ease(-uUnit * 0.008, uUnit * 0.025, insetSd) * mask;
   float echoMask = channel * lowerRight * glass * (1.0 - settle);
   vec3 backFace = vec3(0.0);
   float logoLight = 0.0;
   if (echoMask * uRelief > 0.002) {
-    vec2 backNormal = normalize(mix(superNormal(insetPoint / insetHalf, insetShape), radial, 0.6));
+    vec2 backNormal = normalize(mix(superNormal(insetQ / insetHalf, insetShape), radial, 0.6));
     float backSlope = ease(0.90, 1.10, insetRadius) * 1.55 * glass * uDropStrength;
     // Sample a separate transmitted image across the whole bevel channel. Its
     // changing normal pulls a second, chromatically split copy of the logo into it.
@@ -461,7 +470,7 @@ vec4 iconLens(vec2 p) {
     // this corner from its own nearest shape; a logo with ink at the corner (like
     // X) is found on the first step and keeps its direct image.
     // The search starts where the wall already sends the ray, not at the wall.
-    vec2 inward = -normalize(insetPoint + vec2(0.001));
+    vec2 inward = -normalize(insetQ + vec2(0.001));
     vec3 backRay = refract(vec3(0.0, 0.0, -1.0), normalize(vec3(backNormal * backSlope, 1.0)), 1.0 / 1.38);
     vec2 landing = insetPoint + backRay.xy / max(-backRay.z, 0.25) * uUnit * uDepth * 0.80 * lensScale;
     float reach = 0.0;
@@ -686,6 +695,7 @@ uniform sampler2D uScene;
 uniform vec2 uResolution;
 uniform float uDpr;
 uniform float uUnit;
+uniform float uStretch;
 uniform float uSettle;
 uniform float uBloom;
 uniform float uTime;
@@ -724,7 +734,10 @@ void main() {
     float lensScale = mix(expand * mix(0.48, 1.0, collapse), 1.0, smoothstep(0.0, 1.0, uSettle));
     float halfSize = max(0.001, uUnit * lensScale * 0.5);
     float shape = 2.0 + 3.0 * smoothstep(0.29, 0.36, uTime);
-    vec2 p = abs((gl_FragCoord.xy - uResolution * 0.5) / uDpr) / halfSize;
+    float stretch = uStretch * uUnit * lensScale * smoothstep(0.29, 0.36, uTime);
+    vec2 p = abs((gl_FragCoord.xy - uResolution * 0.5) / uDpr);
+    p.x = max(p.x - stretch, 0.0);
+    p /= halfSize;
     float radius = pow(pow(p.x, shape) + pow(p.y, shape), 1.0 / shape);
     float distance = (radius - 1.0) * halfSize;
     waveMask = smoothstep(0.0, max(0.75, uUnit * 0.004), distance) * wavePhase;

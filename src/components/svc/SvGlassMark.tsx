@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-logo';
 
 // The Ares mark in glass, in the phone hero's window (owner, 2026-10-25). ReactDrops' Liquid Glass
-// Logo (src/components/liquid-glass-logo*, installed unchanged; identical to the registry's 0.1.0)
+// Logo (src/components/liquid-glass-logo*, the registry's 0.1.0, unchanged but for a `stretch` setting
+// we added on 2026-10-26 for a rectangular plate; it defaults to 0, the original square)
 // with ReactDrops' own setup for it (owner, 2026-10-25: "try it like this instead", replacing the
 // glass card held mid-sequence): the sphere-to-tile glass entrance plays through, then the glass
 // clears and leaves the original mark alone at its normal size, white on the dark setting, at
@@ -25,6 +26,9 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // takes the same fit, measured whenever the box changes (owner, 2026-10-25: on a short phone it landed
 // far bigger than the canvas had drawn it).
 const LOGO_SIZE = 288;
+// The glass is a rectangle, wider than the square by this much on each side (owner, 2026-10-26),
+// through the stretch setting we added to the component; it stays this many CSS pixels whatever the fit.
+const STRETCH_PX = 24;
 const LOGO_SCALE = 0.93;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
 
@@ -40,7 +44,7 @@ export default function SvGlassMark() {
     const el = box.current;
     if (!el) return;
     const measure = () =>
-      setFit(Math.min(1, el.clientWidth / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5)));
+      setFit(Math.min(1, (el.clientWidth - 2 * STRETCH_PX) / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5)));
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
@@ -75,6 +79,7 @@ export default function SvGlassMark() {
         logoSize={LOGO_SIZE}
         ending='logo'
         logoScale={LOGO_SCALE}
+        stretch={STRETCH_PX / (LOGO_SIZE * fit)}
         background='#00000000'
         tile={false}
         paused={paused}
