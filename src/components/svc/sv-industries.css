@@ -75,7 +75,7 @@
 
 /* Each industry: an open column, no box (AI-tells pass, owner 2026-10-25; after Dropbox's and
    Beside's industry rows on Mobbin). The photo with the site's photo edge and nothing over it, then
-   on the black: the name, its one line in full, the sites as a plain line, and the way to the page. */
+   on the black: the name, its one line in full, and the way to the page. */
 .sv-ind-card { flex: 0 0 clamp(300px, 27vw, 400px); scroll-snap-align: start; display: flex; }
 /* The way in sits at the foot of every column, so the six line up. */
 .sv-ind-link { flex: 1 1 auto; display: flex; flex-direction: column; color: var(--ds-fg); text-decoration: none; }
@@ -110,7 +110,6 @@
   letter-spacing: -0.03em;
 }
 .sv-ind-short { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
-.sv-ind-sites { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ds-fg-faint); max-width: 40ch; }
 .sv-ind-open {
   align-self: flex-start;
   display: inline-flex;

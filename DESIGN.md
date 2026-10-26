@@ -775,17 +775,18 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   Redrawn 2026-10-25 (owner: the AI-tells pass; after the industry rows of Dropbox and Beside on
   Mobbin), the same at every width: each industry an open column with no box and nothing over the
   photo. The photo (4:3, 4px corners, the hairline photo edge, the stock grade), then on the black:
-  the name (Inter Tight 600), its one line in full (no clipped paragraph), the sites it covers as one
-  plain sentence-case line in ink faint (no mono chips, rust squares, or wire and nodes), and "Open
-  the page →" as the standard underlined link at the foot, so the six line up. Nothing reveals on
+  the name (Inter Tight 600), its one line in full (no clipped paragraph; it names the sites, so the
+  separate site line was folded into it, owner 2026-10-25), and "Open the page →" as the standard
+  underlined link at the foot, so the six line up. No mono chips, rust squares, or wire and nodes. Nothing reveals on
   hover; the one pointer response is the photo easing up 2% in its frame, the underline turning ink,
   and the arrow nudging (mouse only).
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
   faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
   stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the
-  editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds 20px under the nav
-  with the row beneath it, and the intro sits 28px under the row in a clean black card (the site's
+  editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds about 88px under
+  the nav (less on short phones; owner, 2026-10-25: halfway between centered and 20px) with the row
+  beneath it, and the intro sits 28px under the row in a clean black card (the site's
   glass edge and top line on a faint white wash, 4px corners; no lit edge), held with them (owner,
   2026-10-25). Each stage is an open column with no box: its number in the data face (faint,
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row fills

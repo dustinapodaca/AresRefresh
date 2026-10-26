@@ -94,9 +94,13 @@ export default function SvProcess() {
         rail.style.width = `${span}px`;
       };
       const distance = () => Math.max(0, track.scrollWidth - view.clientWidth);
-      // The held frame (owner, 2026-10-25): the heading 20px under the nav, the row under it, and the
-      // intro in a black card under the row.
-      const pinTop = () => (parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64) + 20;
+      // The held frame (owner, 2026-10-25): the heading under the nav, the row under it, and the intro
+      // in a black card under the row.
+      // About 88px under the nav on a regular phone (owner, 2026-10-25: halfway between centered and
+      // 20px), less on short screens so the row stays in view.
+      const pinTop = () =>
+        (parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64) +
+        Math.round(Math.max(36, Math.min(88, (window.innerHeight - 640) * 0.45)));
       const paint = () => {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
         const at = view.clientWidth * 0.62 - tx;

@@ -49,7 +49,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     name: 'Government & Defense',
     // Owner, 2026-10-25: agencies, bases, and defense contractors directly, and also any company with
     // work on a base (construction, power, water) that needs escorts or posts. No client or base names.
-    short: 'Federal agencies, military bases, and defense contractors, through GSA, and security escorts for any crew working on base.',
+    short: 'Federal agencies, military bases, and defense contractors, through GSA, and security escorts for any crew working on base, restricted areas included.',
     title: 'Security for government, military bases, defense contractors, and crews on base.',
     lead: 'Officers for federal, state, and local agencies, military installations, and the defense contractors that support them: restricted-area escort, access control, and armed posts, available to agencies through our GSA Multiple Award Schedule. Construction, utility, and other companies with work on a base hire us directly for security escorts and posts.',
     // A real photo (owner, 2026-10-16): radomes behind a barbed-wire fence on a Space Force base in
@@ -175,7 +175,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'construction-industrial',
     name: 'Construction, Industrial & Logistics',
-    short: 'Gate control, perimeter rounds, and after-hours patrol for builds and yards.',
+    short: 'Gate control, perimeter rounds, and after-hours patrol for builds, military construction, warehouses, and industrial yards.',
     title: 'Security for construction and industrial sites.',
     lead: 'Gate control, perimeter rounds, and after-hours patrol for active builds, yards, warehouses, and industrial sites, while the site is being built and after.',
     // A real photo (owner, 2026-10-12): framed high so the crane and roofline show.
@@ -216,7 +216,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // is a contract.
     slug: 'airport-transportation',
     name: 'Airport & Transportation',
-    short: 'Airport-area sites, transit and parking facilities, and cargo operations.',
+    short: 'Airport-area and aviation sites, transit and parking facilities, and cargo operations.',
     title: 'Security for airport and transportation sites.',
     lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',
     // A real photo (owner, 2026-10-12): the terminal sits low in the frame. Desktop frames near the
@@ -312,7 +312,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     name: 'Institutional & Community',
     // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
     // to Critical & High-Liability Sites.
-    short: 'Apartment communities, HOAs, schools, campuses, and community centers.',
+    short: 'Apartment communities, HOAs, schools, campuses, places of worship, and community centers.',
     title: 'Security for apartments, schools, campuses, and communities.',
     lead: 'Officers for apartment communities, HOAs, schools, campuses, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
     // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.

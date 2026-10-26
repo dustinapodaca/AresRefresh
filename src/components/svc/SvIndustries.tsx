@@ -11,16 +11,11 @@ import './sv-industries.css';
 // industry rows of Dropbox and Beside on Mobbin). The six industries in the owner's order, in a row that
 // runs off the right edge and scrolls on its own (swipe, wheel, drag with the mouse, or the arrows),
 // snapping card by card. Each industry is an open column, no box and no text on the photo: the
-// photo, the name, its one line in full, the sites it covers as a plain line, and the way to its
-// page. Everything shows at once (no hover reveal); on desktop the row drifts a little to the left
+// photo, the name, its one line in full (it names the sites; the separate site line was folded into
+// it, owner 2026-10-25), and the way to its page. Everything shows at once (no hover reveal); on desktop the row drifts a little to the left
 // as the page scrolls past.
 
 const shortFor = (to?: string) => INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.short;
-
-// The site types as one sentence-case line: "Military bases, defense contractors, ...". A name
-// that starts with an acronym (HOAs) keeps its capitals.
-const sitesLine = (names: string[]) =>
-  names.map((n, k) => (k === 0 || /^[A-Z]{2}/.test(n) ? n : n.charAt(0).toLowerCase() + n.slice(1))).join(', ');
 
 export default function SvIndustries() {
   const ref = useRef<HTMLElement>(null);
@@ -182,7 +177,6 @@ export default function SvIndustries() {
                 </span>
                 <span className="sv-ind-name">{d.title}</span>
                 <span className="sv-ind-short">{shortFor(d.page?.to) ?? d.body}</span>
-                <span className="sv-ind-sites">{sitesLine(d.covers.map((c) => c.name))}</span>
                 <span className="sv-ind-open">
                   Open the page
                   <Arrow size={16} />
