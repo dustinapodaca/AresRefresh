@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
+import SwipeControls, { useSwipeRow } from '../SwipeControls';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { CAPABILITIES } from '../capability/data';
@@ -8,7 +9,7 @@ import './sv-services.css';
 
 // 01 Services (home-flora, 2026-10-22), after FLORA's "01 Ideate / 02 Iterate / 03 Scale" panels:
 // six tall panels, each a big number and one word at the top, a small working piece of the post
-// in the middle, and the service at the foot. The pieces are examples, labeled so in their bars,
+// in the middle, and the service at the foot. The pieces are examples (no longer labeled so, owner 2026-10-25),
 // never records: a qualification card, a patrol round, a visitor log, an escort plan, a relief
 // week, and a patrol route. They run only while their panel is in view; with reduced motion, no
 // JavaScript, or the prerender they sit still, fully drawn. Desktop: three across, two rows, rising
@@ -235,7 +236,6 @@ const DEMOS: Record<string, () => JSX.Element> = {
 export default function SvServices() {
   const ref = useRef<HTMLElement>(null);
   const rowRef = useRef<HTMLOListElement>(null);
-  const [at, setAt] = useState(0);
 
   // Each demo runs only while its panel is in view (and never under reduced motion). The SVG
   // demos are SMIL, paused and resumed with their panel; without JavaScript they simply run.
@@ -269,36 +269,8 @@ export default function SvServices() {
     return () => io.disconnect();
   }, []);
 
-  // Phones: the counter follows the panel nearest the middle of the row.
-  useEffect(() => {
-    const row = rowRef.current;
-    if (!row) return;
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const box = row.getBoundingClientRect();
-      const mid = box.left + box.width / 2;
-      let best = 0;
-      let bestD = Infinity;
-      Array.from(row.children).forEach((c, i) => {
-        const r = c.getBoundingClientRect();
-        const d = Math.abs(r.left + r.width / 2 - mid);
-        if (d < bestD) {
-          bestD = d;
-          best = i;
-        }
-      });
-      setAt(best);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    row.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      row.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
+  // Phones: the swipe controls under the row follow the panel nearest its middle.
+  const { at: showing, go } = useSwipeRow(rowRef, CAPABILITIES.length);
 
   useScene(ref, (engine, root) => {
     readIn(engine, root.querySelector('.svs-title'));
@@ -368,9 +340,7 @@ export default function SvServices() {
           );
         })}
       </ol>
-      <p className="svs-count ds-data nx-edge" aria-hidden="true">
-        <span>Swipe for more</span>
-      </p>
+      <SwipeControls count={CAPABILITIES.length} at={showing} go={go} noun="service" hint="Swipe for the next service" names={CAPABILITIES.map((c) => c.title)} />
     </section>
   );
 }

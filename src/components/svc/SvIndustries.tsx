@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
+import SwipeControls, { useSwipeRow } from '../SwipeControls';
 import { DIVISIONS } from '../services/data';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
@@ -103,6 +104,9 @@ export default function SvIndustries() {
     };
   }, []);
 
+  // Phones: the swipe controls under the row (the header's bar and arrows stay for wider screens).
+  const { at: showing, go } = useSwipeRow(trackRef, DIVISIONS.length);
+
   const step = (dir: 1 | -1) => {
     const t = trackRef.current;
     const card = t?.querySelector<HTMLElement>('.sv-ind-card');
@@ -186,6 +190,7 @@ export default function SvIndustries() {
           ))}
         </ol>
       </div>
+      <SwipeControls count={DIVISIONS.length} at={showing} go={go} noun="industry" hint="Swipe for the next industry" names={DIVISIONS.map((d) => d.title)} />
     </section>
   );
 }

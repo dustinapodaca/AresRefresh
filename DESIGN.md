@@ -769,7 +769,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   one word at the top, a small working example of the post in the middle (a qualification card, a
   patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
-  keys at the foot. Desktop three by two; phones a swipe row with "01 / 06" and "Swipe for more".
+  keys at the foot. Desktop three by two; phones a swipe row with the shared swipe controls under it (below).
 - **02 The sites we protect.** (`divisions`): the six industries in a row running off the right edge
   (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes.
   Redrawn 2026-10-25 (owner: the AI-tells pass; after the industry rows of Dropbox and Beside on
@@ -780,6 +780,11 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   underlined link at the foot, so the six line up. No mono chips, rust squares, or wire and nodes. Nothing reveals on
   hover; the one pointer response is the photo easing up 2% in its frame, the underline turning ink,
   and the arrow nudging (mouse only).
+- **Phone swipe controls** (both rows above; owner, 2026-10-25; `SwipeControls.tsx`): under the row,
+  the same as Home's industry deck and the Capability Statement's reasons: a meter with one step per
+  card (passed steps white, the current one rust; tap a step to go there), two 44px arrows (dimmed at
+  the ends), and "Swipe for the next service" / "Swipe for the next industry" in the data face. On
+  phones the industries' header bar and arrows give way to these; wider screens keep them.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
   faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the

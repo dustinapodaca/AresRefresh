@@ -145,6 +145,8 @@
   .sv-ind-track { cursor: auto; }
 }
 @media (max-width: 767px) {
+  /* The swipe controls sit under the row on phones (SwipeControls). */
+  .sv-ind-controls { display: none; }
   .sv-ind-card { flex-basis: min(82vw, 400px); }
   .sv-ind-name { margin-top: 16px; font-size: 23px; }
 }

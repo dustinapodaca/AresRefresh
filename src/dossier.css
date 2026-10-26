@@ -4318,3 +4318,24 @@ html[data-cards] .ds-primes-panel {
   .ds-pglow-css i:nth-child(4) { right: 10%; bottom: -4%; width: 46%; height: 15%; }
 }
 @media (prefers-reduced-motion: reduce) { .ds-pglow-css i { animation: none; } }
+
+/* ---------- Phone swipe controls under a card row (SwipeControls.tsx; owner, 2026-10-25): the same
+   as Home's industry deck and the Capability Statement's reasons. Phones only. */
+.ds-sw { display: none; }
+@media (max-width: 767px) {
+  .ds-sw { display: block; margin-top: 18px; }
+  .ds-sw-ctl { display: flex; align-items: center; gap: 16px; }
+  .ds-sw-meter { display: flex; gap: 5px; flex: 1 1 auto; }
+  .ds-sw-seg { flex: 1 1 0; height: 20px; padding: 9px 0; border: 0; background: none; cursor: pointer; }
+  .ds-sw-seg i { display: block; position: relative; height: 2px; overflow: hidden; background: rgb(255 255 255 / 0.16); }
+  .ds-sw-seg i::after { content: ''; position: absolute; inset: 0; background: var(--ds-fg); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ds-ease), background-color 0.3s; }
+  .ds-sw-seg[data-past='true'] i::after { transform: scaleX(1); background: rgb(255 255 255 / 0.5); }
+  .ds-sw-seg[data-on='true'] i::after { transform: scaleX(1); background: var(--ds-rust); }
+  .ds-sw-arrows { display: flex; gap: 8px; }
+  .ds-sw-arrow { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: 2px; border: 1px solid rgb(255 255 255 / 0.16); background: rgb(0 0 0 / 0.35); color: var(--ds-fg); cursor: pointer; transition: border-color 0.18s var(--ds-ease), opacity 0.18s; }
+  .ds-sw-arrow:first-child svg { transform: rotate(180deg); }
+  .ds-sw-arrow:disabled { opacity: 0.35; cursor: default; }
+  .ds-sw-arrow:not(:disabled):active { transform: scale(0.96); }
+  .ds-sw-hint { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+}
+@media (prefers-reduced-motion: reduce) { .ds-sw-seg i::after { transition: none; } }

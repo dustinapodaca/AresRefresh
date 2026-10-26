@@ -216,7 +216,6 @@
 .svs-bar, .svs-foot, .svs-q-state, .svs-r-name b, .svs-r-time, .svs-v-time, .svs-v-tag,
 .svs-e-label, .svs-p-name, .svs-p-time, .svs-w-day, .svs-w-shift, .svs-keys { font-variant-numeric: tabular-nums slashed-zero; }
 
-.svs-count { display: none; }
 
 /* ---------------------------------------------------- Motion (armed, in view) */
 .svs[data-arm='true'] .svs-panel * { animation-play-state: paused; }
@@ -287,15 +286,6 @@
   .svs-grid::-webkit-scrollbar { display: none; }
   .svs-panel { flex: 0 0 82vw; aspect-ratio: auto; min-height: 520px; scroll-snap-align: center; }
   .svs-top { font-size: 44px; }
-  .svs-count {
-    display: flex;
-    gap: 8px;
-    align-items: baseline;
-    margin: 16px 0 0;
-    font-size: 13px;
-    color: var(--ds-fg-faint);
-  }
-  .svs-count span { margin-left: auto; font-size: 13px; letter-spacing: 0.04em; }
   /* The cards' mono back to its sizes before 2026-10-25 on phones (owner): desktop keeps the larger
      sizes. */
   .svs-bar, .svs-foot, .svs-v-tag { font-size: 10.5px; }
