@@ -770,8 +770,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
   keys at the foot. Desktop three by two; phones a swipe row with the shared swipe controls under it (below). On phones
-  (owner, 2026-10-25) the piece sits 20px under the header and the text 24px under the piece, the six
-  one height with any spare room at the foot, and each piece waits at its start until its card is
+  (owner, 2026-10-25) the six are one height with the text at the foot of every card and each piece
+  centered between the header and the text (at least 20px and 24px clear), and each piece waits at its start until its card is
   swiped in (most of it on screen), then runs; it pauses when swiped away and picks up where it was.
 - **02 The sites we protect.** (`divisions`): the six industries in a row running off the right edge
   (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes.
