@@ -164,7 +164,6 @@ export default function SvRelief() {
           data-live={live || undefined}
           aria-label="An example week of day, swing, and night shifts: an officer is out on Thursday night, and the shift is covered from the on-call schedule"
         >
-          <div className="sv-rl-dots" aria-hidden="true" />
           <p className="sv-rl-bar" aria-hidden="true">
             <span>Example week</span>
             <span>Day · Swing · Night · On-call</span>

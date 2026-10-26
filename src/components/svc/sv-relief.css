@@ -23,26 +23,10 @@
   border-radius: 4px;
   overflow: hidden;
   isolation: isolate;
-  background: rgb(10 11 13 / 0.96);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), 0 24px 60px rgb(0 0 0 / 0.55);
-}
-.sv-rl-card::before {
-  content: '';
-  position: absolute;
-  right: -120px;
-  bottom: -160px;
-  width: 520px;
-  height: 380px;
-  z-index: -1;
-  background: radial-gradient(closest-side, rgb(188 111 64 / 0.16), transparent);
-  pointer-events: none;
-}
-.sv-rl-dots {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(circle, rgb(255 255 255 / 0.08) 1px, transparent 1.2px);
-  background-size: 18px 18px;
+  /* Pure black with the site's glass edge and top line, like the Services cards (owner, 2026-10-25:
+     was a lifted black with a dot grid and a rust corner light). */
+  background: #000;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.14);
 }
 .sv-rl-bar {
   margin: 0 0 16px;
