@@ -177,7 +177,7 @@
 @media (max-width: 1023px) {
   /* The frame: the heading, its line, and the text link over the row, pinned together. */
   .nx-prime-frame[data-hpan='on'] { display: block; grid-column: 1 / -1; }
-  .nx-prime-frame[data-hpan='on'] .nx-prime-line { margin: 18px 0 4px; font-size: 17px; }
+  .nx-prime-frame[data-hpan='on'] .nx-prime-line { margin: 18px 0 12px; /* 12px to the Teaming link (owner, 2026-10-25; was 4) */ font-size: 17px; }
 
   /* Full bleed: the row runs to both edges of the screen. */
   .nx-prime-view[data-hpan='on'] {
