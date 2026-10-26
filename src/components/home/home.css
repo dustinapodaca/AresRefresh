@@ -285,6 +285,9 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
    the next (was 168 to 216px). The Contact foot keeps its room for the light rising into the footer. */
 @media (max-width: 767px) {
   .nx .nx-record { padding-top: 104px; padding-bottom: 64px; }
+  /* Pinned, the frame already ends on room below its figure (it is centered in a full screen), so the
+     section adds none (owner, 2026-10-26: a slightly smaller gap to 02). */
+  .nx .nx-record[data-pin='on'] { padding-bottom: 0; }
   .nx .nx-ind { padding-top: 72px; }
   .nx .nx-prime { padding-top: 96px; padding-bottom: 64px; }
   .nx .nx-quality { padding-top: 88px; }

@@ -535,7 +535,7 @@ and `nx-*.css` (class prefix `nx-`).
   build, and each figure's digits roll into place from nearby values (never from 0) as its
   moment arrives. Phones and tablets pin the same way since 2026-10-25 (owner; they had the three stacked), about 80% of a
   screen per figure, everything a step smaller so each figure, its lines, and its diagram fit one screen
-  (checked at 390 by 664, Safari with its bars showing); 64px from the lead to the meter (owner, 2026-10-26; was about 136). The resolved page: the three stacked, every
+  (checked at 390 by 664, Safari with its bars showing); 64px from the lead to the meter (owner, 2026-10-26; was about 136), and no bottom padding once pinned, since the frame ends on its own room (owner, 2026-10-26: about 245px from the last diagram to 02's headline, was 310). The resolved page: the three stacked, every
   diagram built.
 - **02 Industries:** "The sites we protect." and its lead. Desktop with motion (1024px and up):
   the scene pins for about 80% of a screen per industry in the owner's order; the active
