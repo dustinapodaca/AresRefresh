@@ -781,8 +781,13 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the lead (left aligned) and "Who we protect ↓" (no quote button: the nav carries it). On load the
     window's shutter rises while the camera settles. With motion on, the stage holds while scrolling
     opens the window out to the whole screen (the reverse of the desktop aperture); the headline lifts
-    away and a shade comes up under the lead. (Was the towers dimmed behind a centered headline with the
-    lead in a black glass card.)
+    away and a shade comes up under the lead. In the window the Ares mark comes in as glass (owner,
+    2026-10-25, from the same Cowork work; ReactDrops' Liquid Glass Logo, its license kept in the four
+    `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`): once the shutter has
+    risen it drops in as a glass tile with chromatic edges and holds on the formed frosted tile, the
+    towers showing through, rather than letting the glass clear; it fades with the headline as the window
+    opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
+    still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or
   corner light; owner 2026-10-25) (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
