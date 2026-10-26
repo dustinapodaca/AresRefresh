@@ -781,12 +781,14 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
   faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
-  stacked list): the same pan in one row. The stages hold the screen under the nav and the four cards
-  slide sideways with the scroll, one at a time with the next peeking; a rust wire across the card tops
-  fills to a reading line (62% across) with a bright tip, each stage's stop lights and its card rises
-  12px from 0.62 as the tip reaches it, and stage 03's systems tick on in turn. Then the section lets
-  go and the closing line ("The same four stages run at every post, in every city we cover.") follows.
-  Scrubbed, so it all reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
+  stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the
+  editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds with the row,
+  centered in the room under the nav; the intro moves under the row and waits off screen until the
+  section lets go. Each stage is an open column with no box: its number in the data face (faint,
+  rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row fills
+  rust to a reading line (62% across), no glow or tip; a stage not yet reached rests at 0.62 and comes
+  up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter. Scrubbed, so it
+  reverses. Reduced motion and the resolved page: the four stacked on a rust wire.
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
   it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
   from this week's on-call slot and it locks in green ("Covered the same shift from this week's on-call

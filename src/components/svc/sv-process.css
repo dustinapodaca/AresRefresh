@@ -282,37 +282,50 @@
 }
 
 /* ------------------------------------------------ Phones and tablets with motion: the row pans
-   (owner, 2026-10-25). The view holds the screen under the nav; the four stage cards sit in one row
-   that slides sideways with the scroll, a rust wire across their tops with a stop on each. */
+   (owner, 2026-10-25). The heading holds under the nav with the row beneath it; the intro moves
+   under the row. Each stage is an open column, no box: its number, its title, its paragraph, under
+   one hairline across the row that fills rust as you read (after the editorial step rows of Craft
+   Agency and Trawelt on Mobbin; no glows, tip, or keyword triplets, the AI-tells pass). */
 @media (max-width: 1023px) {
-  .sv-pr[data-hpan='on'] .sv-pr-view {
-    height: 100svh;
-    padding: var(--ds-header) 0 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
+  .sv-pr[data-hpan='on'] { display: flex; flex-direction: column; }
+  .sv-pr[data-hpan='on'] .sv-pr-head { display: contents; }
+  .sv-pr[data-hpan='on'] .sv-pr-title { order: 1; padding-inline: var(--ds-edge); margin: 0; }
+  .sv-pr[data-hpan='on'] .sv-pr-view { order: 2; margin-top: clamp(24px, 4svh, 40px); padding: 0; overflow: hidden; }
+  .sv-pr[data-hpan='on'] .sv-pr-intro { order: 3; padding-inline: var(--ds-edge); margin: 40px 0 0; max-width: 44ch; }
+  .sv-pr[data-hpan='on'] .sv-pr-handoff { order: 4; padding-left: var(--ds-edge); }
+
   .sv-pr[data-hpan='on'] .sv-pr-track { width: max-content; padding-inline: var(--ds-edge); }
-  .sv-pr[data-hpan='on'] .sv-pr-stages {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 30px 0 0;
+  .sv-pr[data-hpan='on'] .sv-pr-stages { display: flex; align-items: flex-start; gap: 32px; padding: 24px 0 0; }
+  /* The hairline across the row; the rail fills it rust. */
+  .sv-pr[data-hpan='on'] .sv-pr-stages::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 1px; background: rgb(255 255 255 / 0.16); box-shadow: none; }
+  .sv-pr[data-hpan='on'] .sv-pr-node { flex: 0 0 min(78vw, 400px); }
+  .sv-pr[data-hpan='on'] .sv-pr-node::before { display: none; }
+  .sv-pr[data-hpan='on'] .sv-pr-rail { top: 0; bottom: auto; height: 1px; }
+  .sv-pr[data-hpan='on'] .sv-pr-rail i { background: var(--ds-rust); box-shadow: none; transform: scaleX(0); transform-origin: left; }
+  .sv-pr[data-hpan='on'] .sv-pr-rail b { display: none; }
+
+  /* The stage: its number (the data face, rust once reached), the title, the paragraph. */
+  .sv-pr[data-hpan='on'] .sv-pr-bar { margin: 0 0 14px; color: var(--ds-fg-faint); transition: color 0.3s var(--ds-ease); }
+  .sv-pr[data-hpan='on'] .sv-pr-bar > span:first-child { color: inherit; }
+  .sv-pr[data-hpan='on'] .sv-pr-bar > span:last-child { display: none; }
+  .sv-pr[data-hpan='on'] .sv-pr-node[data-lit='true'] .sv-pr-bar { color: var(--ds-rust); }
+  .sv-pr[data-hpan='on'] .sv-pr-card { padding: 0; background: none; box-shadow: none; border-radius: 0; }
+  .sv-pr[data-hpan='on'] .sv-pr-name { margin-bottom: 10px; font-size: 26px; }
+
+  /* Stage 03's systems: a plain list on hairlines, like the site's division lists. */
+  .sv-pr[data-hpan='on'] .sv-pr-syslist { margin-top: 18px; padding-top: 0; border-top: 0; gap: 0 18px; }
+  .sv-pr[data-hpan='on'] .sv-pr-syslist li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+    font-family: var(--ds-text);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1.35;
+    color: var(--ds-fg-muted);
   }
-  /* The wire across the card tops (the stops sit on it). */
-  .sv-pr[data-hpan='on'] .sv-pr-stages::before { left: 4px; right: 4px; top: 6px; bottom: auto; width: auto; height: 1px; }
-  .sv-pr[data-hpan='on'] .sv-pr-node {
-    flex: 0 0 min(82vw, 420px);
-    display: flex;
-    flex-direction: column;
-  }
-  .sv-pr[data-hpan='on'] .sv-pr-node::before { left: 0; top: -28px; }
-  .sv-pr[data-hpan='on'] .sv-pr-rail { top: 6px; bottom: auto; height: 1px; }
-  .sv-pr[data-hpan='on'] .sv-pr-rail i {
-    background: linear-gradient(90deg, rgb(188 111 64 / 0.6), rgb(188 111 64 / 0.95));
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  .sv-pr[data-hpan='on'] .sv-pr-handoff { padding-left: var(--ds-edge); }
+  .sv-pr[data-hpan='on'] .sv-pr-syslist li::before { display: none; }
+
+  /* A stage not yet reached rests at 0.62 and comes up as the line reaches it; no rise. */
+  .sv-pr[data-hpan='on'] .sv-pr-node > * { transform: none; transition: opacity 0.3s var(--ds-ease); }
+  .sv-pr[data-hpan='on'] .sv-pr-node:not([data-lit='true']) > * { transform: none; }
 }

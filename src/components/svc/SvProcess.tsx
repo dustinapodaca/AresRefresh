@@ -65,14 +65,16 @@ export default function SvProcess() {
 
     const mm = engine.gsap.matchMedia();
     // Phones and tablets (owner, 2026-10-25; was the stacked list drawing down a rail): like desktop,
-    // the stages hold the screen and pan sideways with the scroll, one card at a time in a row. The
-    // rust wire runs across the card tops and fills to a reading line (62% across) with a bright tip;
-    // each stage's stop lights as the tip reaches it, and stage 03's systems tick on in turn.
-    // Scrubbed, so it reverses on the way up. The stacked list stays the resolved default.
+    // the stages pan sideways with the scroll, one at a time. The heading holds above the row (the
+    // intro moves under it: the three don't fit one phone screen), and a hairline across the stage
+    // tops fills rust to a reading line (62% across); each stage comes up as the line reaches it.
+    // No card boxes, glows, or tip (AI-tells pass, owner 2026-10-25). Scrubbed, so it reverses on the
+    // way up. The stacked list stays the resolved default.
     mm.add('(max-width: 1023px)', () => {
       const { gsap, ScrollTrigger } = engine;
       const view = root.querySelector<HTMLElement>('.sv-pr-view')!;
       const track = root.querySelector<HTMLElement>('.sv-pr-track')!;
+      const title = root.querySelector<HTMLElement>('.sv-pr-title')!;
       const list = root.querySelector<HTMLElement>('.sv-pr-stages')!;
       const rail = root.querySelector<HTMLElement>('.sv-pr-rail')!;
       const fill = rail.querySelector<HTMLElement>('i')!;
@@ -92,6 +94,18 @@ export default function SvProcess() {
         rail.style.width = `${span}px`;
       };
       const distance = () => Math.max(0, track.scrollWidth - view.clientWidth);
+      // The held frame: the heading and the row centered in the room under the nav, and the view
+      // filling the rest of the screen, so the intro below waits off screen until the section lets
+      // go (it sat still under the moving row before).
+      let pinTop = 88;
+      const frame = () => {
+        view.style.minHeight = '';
+        const nav = parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64;
+        const gap = parseFloat(getComputedStyle(view).marginTop) || 0;
+        const group = title.offsetHeight + gap + view.offsetHeight;
+        pinTop = nav + Math.max(24, (window.innerHeight - nav - group) / 2);
+        view.style.minHeight = `${Math.max(0, window.innerHeight - pinTop - title.offsetHeight - gap)}px`;
+      };
       const paint = () => {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
         const at = view.clientWidth * 0.62 - tx;
@@ -115,10 +129,14 @@ export default function SvProcess() {
         ease: 'none',
         onUpdate: paint,
         scrollTrigger: {
-          trigger: view,
-          start: 'top top',
+          // The section holds once its heading reaches its place in the frame.
+          trigger: title,
+          start: () => {
+            frame();
+            return `top ${pinTop}px`;
+          },
           end: () => `+=${Math.round(distance() * 1.15)}`,
-          pin: true,
+          pin: root,
           scrub: SCRUB,
           invalidateOnRefresh: true,
           onRefreshInit: () => gsap.set(track, { x: 0 }),
@@ -141,6 +159,7 @@ export default function SvProcess() {
         tip.style.opacity = '';
         rail.style.left = '';
         rail.style.width = '';
+        view.style.minHeight = '';
         ScrollTrigger.refresh();
       };
     });
