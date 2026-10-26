@@ -116,6 +116,7 @@ uniform float uUnit;
 // Ares, 2026-10-26: extra plate width on each side, as a fraction of the plate edge (0 = square).
 uniform float uStretch;
 uniform float uStretchY;
+uniform float uCorner;
 uniform vec2 uLogoBox;
 uniform vec2 uTextBox;
 uniform float uTextWidth;
@@ -359,7 +360,9 @@ vec4 iconLens(vec2 p) {
   vec4 source = imageAt(uLogo, p, uLogoBox * uArtScale);
   if (t > 1.58) return source * settle;
   if (enter < 0.001) return vec4(0.0);
-  float shape = 2.0 + 3.0 * ease(0.29, 0.36, t);
+  // Ares, 2026-10-26: the settled plate's superellipse exponent is uCorner (the original 5; higher
+  // squares the corners off).
+  float shape = 2.0 + (uCorner - 2.0) * ease(0.29, 0.36, t);
   // The sphere appears quickly, then the glass continues expanding after the
   // corners have squared off. Completing both motions at once feels abrupt.
   float expand = enter * (0.64 + 0.41 * (1.0 - exp(-max(t - 0.16, 0.0) * 5.8)));
@@ -698,6 +701,7 @@ uniform float uDpr;
 uniform float uUnit;
 uniform float uStretch;
 uniform float uStretchY;
+uniform float uCorner;
 uniform float uSettle;
 uniform float uBloom;
 uniform float uTime;
@@ -735,7 +739,7 @@ void main() {
     float collapse = 1.0 - smoothstep(1.33, 1.52, uTime);
     float lensScale = mix(expand * mix(0.48, 1.0, collapse), 1.0, smoothstep(0.0, 1.0, uSettle));
     float halfSize = max(0.001, uUnit * lensScale * 0.5);
-    float shape = 2.0 + 3.0 * smoothstep(0.29, 0.36, uTime);
+    float shape = 2.0 + (uCorner - 2.0) * smoothstep(0.29, 0.36, uTime);
     vec2 stretch = vec2(uStretch, uStretchY) * uUnit * lensScale * smoothstep(0.29, 0.36, uTime);
     vec2 p = abs((gl_FragCoord.xy - uResolution * 0.5) / uDpr);
     p = max(p - stretch, 0.0);

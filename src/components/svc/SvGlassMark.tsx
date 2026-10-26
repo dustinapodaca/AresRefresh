@@ -32,6 +32,8 @@ const LOGO_SCALE = 0.93;
 // 24px wider a side). The plate grows to about 1.05 of its resting size while the glass shows (the
 // shader's expand), so it is sized to the window at that size, not past it.
 const GLASS_SWELL = 1.05;
+// Squarer corners than the component's own rounded square (5), nearer the window's 4px (owner, 2026-10-26).
+const CORNER = 12;
 // How far .sv-glass runs past the window above and below (svc.css).
 const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
@@ -97,6 +99,7 @@ export default function SvGlassMark() {
         logoScale={LOGO_SCALE}
         stretch={stretch[0]}
         stretchY={stretch[1]}
+        corner={CORNER}
         background='#00000000'
         tile={false}
         paused={paused}

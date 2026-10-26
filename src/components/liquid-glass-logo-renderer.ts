@@ -117,6 +117,8 @@ export type LiquidGlassLogoTuning = {
   stretch: number;
   /** Extra plate height above and below, as a fraction of the plate edge; 0 keeps it square (Ares). */
   stretchY: number;
+  /** The settled plate's superellipse exponent: 5 is the original rounded square, higher squares the corners (Ares). */
+  corner: number;
   /** Resting logo scale; 1 holds its normal size while the glass disappears. */
   finalLogoScale: number;
   /** Draw the logo on an icon plate. */
@@ -186,6 +188,7 @@ export const liquidGlassLogoDefaults: LiquidGlassLogoTuning = {
   logoScale: 0.72,
   stretch: 0,
   stretchY: 0,
+  corner: 5,
   finalLogoScale: 1,
   tile: true,
   fontSize: 64,
@@ -353,6 +356,7 @@ export function normalizeLiquidGlassLogo(value: LiquidGlassLogoTuning): LiquidGl
     logoScale: finite(value.logoScale, d.logoScale, 0.1, 1),
     stretch: finite(value.stretch, d.stretch, 0, 4),
     stretchY: finite(value.stretchY, d.stretchY, 0, 4),
+    corner: finite(value.corner, d.corner, 2, 24),
     finalLogoScale: finite(value.finalLogoScale, d.finalLogoScale, 0.1, 1),
     fontSize: finite(value.fontSize, d.fontSize, 8, 400),
     fontWeight: finite(value.fontWeight, d.fontWeight, 100, 1000),
@@ -625,6 +629,7 @@ export function createLiquidGlassLogoRenderer(
       'uUnit',
       'uStretch',
       'uStretchY',
+      'uCorner',
       'uSettle',
       'uBloom',
       'uTime',
@@ -737,6 +742,7 @@ export function createLiquidGlassLogoRenderer(
     gl.uniform1f(uniform('uUnit'), tuning.logoSize * scale);
     gl.uniform1f(uniform('uStretch'), tuning.stretch);
     gl.uniform1f(uniform('uStretchY'), tuning.stretchY);
+    gl.uniform1f(uniform('uCorner'), tuning.corner);
     // The logo always occupies one plate edge. Its bounds must follow the
     // current size immediately, even while a sharper texture loads asynchronously.
     gl.uniform2f(uniform('uLogoBox'), tuning.logoSize * scale, tuning.logoSize * scale);
@@ -816,6 +822,7 @@ export function createLiquidGlassLogoRenderer(
     gl.uniform1f(compositeUniform.uUnit, unitPx);
     gl.uniform1f(compositeUniform.uStretch, tuning.stretch);
     gl.uniform1f(compositeUniform.uStretchY, tuning.stretchY);
+    gl.uniform1f(compositeUniform.uCorner, tuning.corner);
     gl.uniform1f(compositeUniform.uSettle, settle);
     gl.uniform1f(compositeUniform.uBloom, tuning.bloom);
     gl.uniform1f(compositeUniform.uPageLight, pageLight);
