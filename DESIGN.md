@@ -803,8 +803,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   phones the industries' header bar and arrows give way to these; wider screens keep them.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right (each in Home's dossier form since
-  2026-10-25, owner: the number and the stage's keys in a pure black tab across the card's top, white
-  Inter with the keys fainter at the right, the card under it pure black with the glass edge), stage 03's six systems as satellites
+  2026-10-25, owner: the number (the data face) and the stage's keys (Inter, fainter, at the right) in a
+  pure black tab across the card's top, the card under it pure black with the glass edge), stage 03's six systems as satellites
   (each a pure black box with the glass edge that hugs its authored icon and name, centered on its
   spot; owner 2026-10-25), faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
   stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the

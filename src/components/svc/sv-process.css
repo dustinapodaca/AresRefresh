@@ -370,7 +370,8 @@
     color: #fff;
     box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.14), inset -1px 0 0 rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.2);
   }
-  .sv-pr-bar > span:first-child { color: #fff; }
+  /* The number in the data face (owner, 2026-10-25), the keys in Inter. */
+  .sv-pr-bar > span:first-child { color: #fff; font-family: var(--ds-data); font-weight: 400; font-variant-numeric: tabular-nums slashed-zero; }
   .sv-pr-bar > span + span { font-weight: 400; color: rgb(255 255 255 / 0.58); }
   .sv-pr-card {
     border-radius: 0 0 4px 4px;
