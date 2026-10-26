@@ -94,18 +94,9 @@ export default function SvProcess() {
         rail.style.width = `${span}px`;
       };
       const distance = () => Math.max(0, track.scrollWidth - view.clientWidth);
-      // The held frame: the heading and the row centered in the room under the nav, and the view
-      // filling the rest of the screen, so the intro below waits off screen until the section lets
-      // go (it sat still under the moving row before).
-      let pinTop = 88;
-      const frame = () => {
-        view.style.minHeight = '';
-        const nav = parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64;
-        const gap = parseFloat(getComputedStyle(view).marginTop) || 0;
-        const group = title.offsetHeight + gap + view.offsetHeight;
-        pinTop = nav + Math.max(24, (window.innerHeight - nav - group) / 2);
-        view.style.minHeight = `${Math.max(0, window.innerHeight - pinTop - title.offsetHeight - gap)}px`;
-      };
+      // The held frame (owner, 2026-10-25): the heading 20px under the nav, the row under it, and the
+      // intro in a black card under the row.
+      const pinTop = () => (parseFloat(getComputedStyle(root).getPropertyValue('--ds-header')) || 64) + 20;
       const paint = () => {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
         const at = view.clientWidth * 0.62 - tx;
@@ -131,10 +122,7 @@ export default function SvProcess() {
         scrollTrigger: {
           // The section holds once its heading reaches its place in the frame.
           trigger: title,
-          start: () => {
-            frame();
-            return `top ${pinTop}px`;
-          },
+          start: () => `top ${pinTop()}px`,
           end: () => `+=${Math.round(distance() * 1.15)}`,
           pin: root,
           scrub: SCRUB,
@@ -159,7 +147,6 @@ export default function SvProcess() {
         tip.style.opacity = '';
         rail.style.left = '';
         rail.style.width = '';
-        view.style.minHeight = '';
         ScrollTrigger.refresh();
       };
     });

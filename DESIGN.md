@@ -782,9 +782,10 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
   faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
   stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the
-  editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds with the row,
-  centered in the room under the nav; the intro moves under the row and waits off screen until the
-  section lets go. Each stage is an open column with no box: its number in the data face (faint,
+  editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds 20px under the nav
+  with the row beneath it, and the intro sits 28px under the row in a clean black card (the site's
+  glass edge and top line on a faint white wash, 4px corners; no lit edge), held with them (owner,
+  2026-10-25). Each stage is an open column with no box: its number in the data face (faint,
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row fills
   rust to a reading line (62% across), no glow or tip; a stage not yet reached rests at 0.62 and comes
   up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter. Scrubbed, so it
