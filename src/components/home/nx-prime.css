@@ -91,6 +91,7 @@
 /* The wire's word: plain text on the black, where the wire passes under it. */
 .nx-ptag {
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: #f0c7a8;
   padding: 2px 8px;
@@ -112,10 +113,11 @@
 }
 .nx-pnote-k {
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: var(--ds-fg-faint);
 }
-.nx-pnote-id { font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-muted); }
+.nx-pnote-id { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; color: var(--ds-fg-muted); }
 
 /* While building, unlit nodes wait dim (the timeline moves them; this is the resting look). */
 .nx-prime-canvas[data-build='on'] .nx-pn[data-live='false'] .nx-pn-body { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }

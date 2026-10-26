@@ -77,6 +77,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: var(--ds-fg-faint);
 }

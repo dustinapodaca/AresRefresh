@@ -147,6 +147,7 @@
   border-top: 1px solid rgb(255 255 255 / 0.14);
   margin-top: 4px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   letter-spacing: 0.02em;
   color: rgb(238 240 242 / 0.7);

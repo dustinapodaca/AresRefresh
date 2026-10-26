@@ -102,6 +102,7 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: var(--ds-fg-faint);
 }
@@ -109,6 +110,7 @@
 .svs-foot {
   margin: 0;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: var(--ds-fg-faint);
   display: flex;
@@ -141,7 +143,7 @@
 /* Armed: qualification. */
 .svs-q-who { display: inline-flex; align-items: center; gap: 9px; flex: 1 1 auto; color: var(--ds-fg); }
 .svs-q-who i { width: 20px; height: 20px; border-radius: 2px; background: linear-gradient(160deg, #2a2c31, #15161a); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); }
-.svs-q-state { position: relative; display: grid; justify-items: end; font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.02em; }
+.svs-q-state { position: relative; display: grid; justify-items: end; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.02em; }
 .svs-q-state > span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .svs-q-wait { color: var(--ds-fg-faint); opacity: 0; }
 .svs-q-ok { color: #d9dde2; }
@@ -151,15 +153,16 @@
 .svs-r-box { width: 16px; height: 16px; flex: 0 0 auto; border-radius: 2px; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.22); color: #0b0b0c; background: var(--ds-rust); }
 .svs-r-box svg { width: 11px; height: 11px; }
 .svs-r-name { flex: 1 1 auto; color: var(--ds-fg); }
-.svs-r-name b { font-family: var(--ds-data); font-weight: 400; font-size: 13px; color: var(--ds-fg-faint); margin-right: 4px; }
-.svs-r-time { font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-muted); }
+.svs-r-name b { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-weight: 400; font-size: 13px; color: var(--ds-fg-faint); margin-right: 4px; }
+.svs-r-time { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; color: var(--ds-fg-muted); }
 
 /* Access: visitor log. */
 .svs-v { overflow: hidden; }
-.svs-v-time { font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-faint); width: 40px; }
+.svs-v-time { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; color: var(--ds-fg-faint); width: 40px; }
 .svs-v-who { flex: 1 1 auto; color: var(--ds-fg); }
 .svs-v-tag {
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   letter-spacing: 0.03em;
   padding: 3px 7px;
@@ -174,7 +177,7 @@
 /* SVG demos. */
 .svs-svg { display: block; width: 100%; height: auto; max-height: 100%; overflow: visible; }
 .svs-e-zone { fill: rgb(188 111 64 / 0.05); stroke: rgb(188 111 64 / 0.55); stroke-width: 1; stroke-dasharray: 4 4; }
-.svs-e-label, .svs-p-name, .svs-p-time { font-family: var(--ds-data); font-size: 8.8px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.svs-e-label, .svs-p-name, .svs-p-time { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 8.8px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
 .svs-p-time { fill: #e9c3a6; font-size: 9px; }
 .svs-e-gate { fill: #0b0b0c; stroke: rgb(255 255 255 / 0.5); }
 .svs-e-path, .svs-p-route { fill: none; stroke: rgb(255 255 255 / 0.28); stroke-width: 1; stroke-dasharray: 2 5; stroke-linecap: round; }
@@ -187,7 +190,7 @@
 /* Relief: the week. */
 .svs-w { display: grid; grid-template-columns: 44px repeat(7, minmax(0, 1fr)); gap: 5px; align-items: center; }
 .svs-w-row { display: contents; }
-.svs-w-day, .svs-w-shift { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.05em; color: var(--ds-fg-faint); text-align: center; }
+.svs-w-day, .svs-w-shift { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.05em; color: var(--ds-fg-faint); text-align: center; }
 .svs-w-shift { text-align: left; text-transform: uppercase; }
 .svs-w-cell { position: relative; height: 22px; border-radius: 2px; background: rgb(255 255 255 / 0.12); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06); }
 .svs-w-cell[data-hit='true'] { background: rgb(188 111 64 / 0.85); box-shadow: 0 0 14px rgb(188 111 64 / 0.6); }
@@ -207,7 +210,7 @@
 .svs-link:focus-visible { outline: none; }
 .svs-panel:has(.svs-link:focus-visible) { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3), 0 0 0 2px var(--ds-rust); }
 .svs-line { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--ds-fg-muted); }
-.svs-keys { margin: 4px 0 0; font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+.svs-keys { margin: 4px 0 0; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 .svs-key { white-space: nowrap; }
 /* The data face's zero is slashed (owner, 2026-10-25: Fraktion's own zero is dotted and read as Plex). */
 .svs-bar, .svs-foot, .svs-q-state, .svs-r-name b, .svs-r-time, .svs-v-time, .svs-v-tag,

@@ -108,7 +108,7 @@
 .cc-field[data-wide] { grid-column: span 2; }
 /* 13px (owner, 2026-10-25; was 9.5px), untracked; from 600px the SAM date runs into the gap rather
    than wrap (phones wrap it). */
-.cc-field dt { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
+.cc-field dt { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
 @media (min-width: 600px) { .cc-field dt { white-space: nowrap; } }
 .cc-field dd { margin: 3px 0 0; display: flex; align-items: center; gap: 4px; min-width: 0; }
 .cc-field dd .ds-data { font-size: clamp(13px, 1.1vw, 14.5px); color: var(--ds-fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -244,6 +244,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   border-radius: 2px;
   box-shadow: inset 0 0 0 1px var(--cx-edge);
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   letter-spacing: 0.02em;
   color: var(--ds-fg-muted);
@@ -268,6 +269,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
 .cx-why-fig {
   margin: 0 0 22px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: clamp(36px, 3.8vw, 56px);
   line-height: 1;
   letter-spacing: -0.02em;
@@ -498,7 +500,7 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   }
   .cx-mbar-ids::-webkit-scrollbar { display: none; }
   .cx-mbar-ids li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .cx-mbar-l { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.06em; color: var(--ds-fg-faint); }
+  .cx-mbar-l { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.06em; color: var(--ds-fg-faint); }
   .cx-mbar-ids .ds-data { font-size: 14px; color: var(--ds-fg); }
   .cx-mbar-ids li:last-child { padding-right: 24px; }
   .cx-mbar .ds-copy { width: 30px; height: 30px; }
@@ -552,7 +554,7 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   .cx-group:first-of-type .cx-ledger-ids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 0; gap: 1px; background: var(--cx-edge); border: 1px solid var(--cx-edge); border-radius: 4px; overflow: hidden; }
   .cx-group:first-of-type .cx-ledger-row { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 6px; padding: 14px 14px 16px; border: 0; background: var(--ds-canvas); }
   .cx-group:first-of-type .cx-ledger-row:first-child { grid-column: 1 / -1; }
-  .cx-group:first-of-type .cx-ledger-row dt { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
+  .cx-group:first-of-type .cx-ledger-row dt { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ds-fg-faint); }
   /* The GSA mark at the tile's top right (owner, 2026-10-23: it was hidden on phones). */
   .cx-group:first-of-type .cx-ledger-row { position: relative; }
   .cx-group:first-of-type .cx-ledger-row dt .cx-mark { position: absolute; top: 14px; right: 14px; width: auto; }

@@ -309,7 +309,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-footer-cols { display: grid; gap: 40px 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .ds-footer-cols > div { padding-left: 20px; border-left: 1px solid var(--ds-rule-strong); }
 /* Column labels are plain text, not headings (design review, owner 2026-10-13). */
-.ds-footer-cols .ds-ft-label { font-family: var(--ds-data); font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg-faint); margin: 0 0 18px; }
+.ds-footer-cols .ds-ft-label { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-fg-faint); margin: 0 0 18px; }
 .ds-footer-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .ds-footer-cols a { color: var(--ds-fg); font-size: 18px; letter-spacing: -0.01em; transition: color 180ms var(--ds-ease); }
 .ds-footer-cols a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
@@ -467,6 +467,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   gap: 12px 28px;
   padding-bottom: 32px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   letter-spacing: 0.02em;
   color: #c4c8ce; /* lighter than ink muted so it reads on the lit glass */
@@ -534,6 +535,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   gap: 10px;
   padding: 8px 0;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
@@ -582,6 +584,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-tk-dashes span:first-child[data-now] { transform: none; }
 .ds-tk-label {
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
@@ -634,7 +637,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 }
 .ds-count-n span { display: block; animation: ds-count-roll 260ms var(--ds-ease) both; }
 @keyframes ds-count-roll { from { transform: translateY(70%); } to { transform: none; } }
-.ds-count-total { padding-top: 6px; font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-faint); }
+.ds-count-total { padding-top: 6px; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; color: var(--ds-fg-faint); }
 .ds-count-label { margin: 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); }
 .ds-count[data-idle] .ds-count-n,
 .ds-count[data-idle] .ds-count-label { color: var(--ds-fg-faint); }
@@ -676,7 +679,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 }
 .ds-dock[data-visible] { transform: translate(-50%, 0); visibility: visible; transition: transform 220ms var(--ds-ease), visibility 0s; }
 .ds-dock-label,
-.ds-dock-count { font-family: var(--ds-data); font-size: 12px; font-weight: 500; white-space: nowrap; }
+.ds-dock-count { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 12px; font-weight: 500; white-space: nowrap; }
 .ds-dock-label { min-width: 9.5em; color: var(--ds-fg); }
 .ds-dock-label span,
 .ds-dock-count { color: var(--ds-fg-faint); }
@@ -704,7 +707,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 /* Hidden fully (not just tucked under the header), since the header is transparent at the top. */
 .ds-runhead[data-visible='true'] { transform: translateY(0); visibility: visible; transition: transform 180ms var(--ds-ease), visibility 0s; }
 .ds-runhead .ds-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-.ds-runhead span { font-family: var(--ds-data); font-size: 12px; font-weight: 500; color: var(--ds-fg); }
+.ds-runhead span { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 12px; font-weight: 500; color: var(--ds-fg); }
 .ds-runhead span + span { color: var(--ds-fg-faint); }
 .ds-runhead-fill {
   display: none;
@@ -888,7 +891,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   text-decoration-color: var(--ds-rule-strong);
   text-underline-offset: 0.14em;
   transition: text-decoration-color 180ms var(--ds-ease);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums slashed-zero;
 }
 @media (min-width: 640px) { .ds-phone { font-size: 44px; } }
 .ds-phone:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); }
@@ -897,7 +900,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 .ds-map { margin: 12px 0 0; }
 .ds-map svg { display: block; width: 100%; height: auto; }
 .ds-map-label { font-family: var(--ds-text); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
-.ds-map-label-faint { font-family: var(--ds-data); font-size: 19px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.ds-map-label-faint { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 19px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
 .ds-map-ring { opacity: 0.6; transform-box: fill-box; transform-origin: center; }
 @media (min-width: 1024px) {
   .ds-map-label { font-size: 15px; }
@@ -918,7 +921,7 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
    Same system as Home, its own structures: a photo band under the headline, the
    divisions as a schedule of services, the process as a schedule chart.
    ============================================================ */
-.ds-caption { margin: 10px 0 0; font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.02em; color: var(--ds-fg-faint); }
+.ds-caption { margin: 10px 0 0; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.02em; color: var(--ds-fg-faint); }
 
 /* The number hangs beside its title on the baseline (never above it). */
 .ds-svc-title-row { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); align-items: baseline; gap: 0 6px; }
@@ -2574,7 +2577,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-cr-apply .ds-link { display: inline-flex; align-items: center; gap: 6px; }
 @media (min-width: 1024px) {
   .ds-cr-row { grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) minmax(0, 1fr); column-gap: 24px; padding: 26px 0; }
-  .ds-cr-row-head { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; padding: 0 0 12px; border-top: 0; font-family: var(--ds-data); font-size: 13px; color: var(--ds-fg-faint); }
+  .ds-cr-row-head { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; padding: 0 0 12px; border-top: 0; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; color: var(--ds-fg-faint); }
   .ds-cr-role, .ds-cr-apply { grid-column: auto; }
   .ds-cr-apply { justify-self: end; }
 }
@@ -2703,7 +2706,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 @media (min-width: 1280px) { .ds-loc-focus { font-size: 20px; } }
 .ds-loc-other { font-family: var(--ds-text); font-size: 15px; font-weight: 500; color: var(--ds-fg-muted); }
 .ds-loc-landmark { font-family: var(--ds-text); font-size: 14px; color: var(--ds-fg-muted); }
-.ds-loc-faint { font-family: var(--ds-data); font-size: 13px; letter-spacing: 0.08em; color: var(--ds-fg-faint); }
+.ds-loc-faint { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.08em; color: var(--ds-fg-faint); }
 .ds-loc-pin-note { margin-left: 8px; }
 /* The narrowest phones (under 360px): both city names step down to stay inside the plate. */
 @media (max-width: 359px) {

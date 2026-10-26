@@ -50,6 +50,7 @@
   justify-content: space-between;
   gap: 12px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   color: var(--ds-fg-faint);
 }
@@ -84,6 +85,7 @@
   place-items: center;
   border-radius: 2px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 10.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -159,6 +161,7 @@
   padding: 3px 7px;
   border-radius: 2px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.04em;

@@ -23,7 +23,7 @@
 }
 .sv-close-line b { font-weight: 600; color: var(--ds-fg); }
 .sv-close-actions { display: flex; align-items: center; gap: 26px; flex: 0 0 auto; }
-.sv-close-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-size: 15px; }
+.sv-close-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 15px; }
 .sv-close-call .ds-phone-icon { width: 18px; height: 18px; }
 
 /* The band: Denver, dissolving into the black at both ends, with the cities over its foot. */

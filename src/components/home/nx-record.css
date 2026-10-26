@@ -99,6 +99,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-rec-mono {
   margin: 18px 0 0;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 14px;
   color: var(--ds-fg-faint);
 }
@@ -148,6 +149,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-record[data-pin='on'] .nx-rec-tabs {
   display: block;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 13px;
   line-height: 1;
   color: var(--ds-fg-faint);

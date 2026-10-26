@@ -217,8 +217,8 @@ sizes are unchanged.
   slashed-zero numerals: identifiers, phone
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
-  Its own zero is dotted, so each use should set the slashed zero (`font-variant-numeric:
-  slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 13px or
+  Its own zero is dotted, so every rule that sets the data face also sets the slashed zero
+  (`font-variant-numeric: tabular-nums slashed-zero`; site-wide since 2026-10-25, owner). Labels in it are 13px or
   larger (12px only where a narrow phone needs it, like Home's Record names at 360px), and a mono line
   set beside Inter is one step above it (14px by 13px Inter) so the two read the same size; Fraktion's
   letters are shorter than Inter's. Inter labels are 13px or larger. Labels inside drawings show at

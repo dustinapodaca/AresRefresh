@@ -27,6 +27,7 @@
 .nx-ind-label {
   margin: 0 0 10px;
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 14px;
   color: var(--ds-fg-faint);
 }
@@ -44,6 +45,7 @@
 .nx-ind-roles li:last-child { border-bottom: 1px solid rgb(255 255 255 / 0.09); }
 .nx-ind-role {
   font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
   font-size: 12.5px;
   line-height: 1.5;
   color: var(--ds-fg);

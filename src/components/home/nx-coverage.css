@@ -57,7 +57,7 @@
 .nx-cv-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .nx-cv-route { stroke: #d9864f; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
 .nx-cv-tip { opacity: 0; pointer-events: none; }
-.nx-cv-mono { font-family: var(--ds-data); font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.nx-cv-mono { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
 .nx-cv-name { font-family: var(--ds-text); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
 .nx-cv-dot { fill: var(--ds-fg); transform-box: fill-box; transform-origin: center; }
 .nx-cv-pin[data-hq] .nx-cv-dot { fill: var(--ds-rust); }
