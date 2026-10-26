@@ -296,7 +296,12 @@
     color: var(--ds-fg-faint);
   }
   .svs-count span { margin-left: auto; font-size: 13px; letter-spacing: 0.04em; }
-  /* The drawings render smaller here, so their labels go up to stay about 12px on screen (owner,
-     2026-10-25). */
-  .svs-e-label, .svs-p-name, .svs-p-time { font-size: 11.5px; }
+  /* The cards' mono back to its sizes before 2026-10-25 on phones (owner): desktop keeps the larger
+     sizes. */
+  .svs-bar, .svs-foot, .svs-v-tag { font-size: 10.5px; }
+  .svs-q-state, .svs-r-name b, .svs-keys { font-size: 11px; }
+  .svs-r-time, .svs-v-time { font-size: 11.5px; }
+  .svs-w-day, .svs-w-shift { font-size: 10px; }
+  .svs-e-label, .svs-p-name { font-size: 8.5px; }
+  .svs-p-time { font-size: 9px; }
 }

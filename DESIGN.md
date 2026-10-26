@@ -222,7 +222,8 @@ sizes are unchanged.
   larger (12px only where a narrow phone needs it, like Home's Record names at 360px), and a mono line
   set beside Inter is one step above it (14px by 13px Inter) so the two read the same size; Fraktion's
   letters are shorter than Inter's. Inter labels are 13px or larger. Labels inside drawings show at
-  about 12px on screen (owner, 2026-10-25).
+  about 12px on screen (owner, 2026-10-25). Exception: on phones the Services "What we staff" cards keep their
+  original mono sizes (10 to 11.5px, the drawing labels 8.5 to 9; owner, 2026-10-25).
 - **Figure:** "<1%" in the data face 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** the data face at 30px, 44px from 640px. The Contact headline carries
