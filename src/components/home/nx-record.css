@@ -236,6 +236,9 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   /* Pinned on phones and tablets (owner, 2026-10-25): each figure, its lines, and its diagram fit one
      screen under the nav and the meter, so everything is a step smaller than in the stacked list. */
   .nx-record[data-pin='on'] .nx-rec-stage { padding-top: calc(var(--ds-header) + 20px); padding-bottom: 24px; }
+  /* Less black between the lead and the meter (owner, 2026-10-26: about 136px, now 64): the stage's top
+     padding (room for the nav once pinned) tucks up under the lead; it paints nothing there. */
+  .nx-record[data-pin='on'] .nx-rec-head { margin-bottom: -24px; }
   /* About 12.3px on a 390 phone, 11.2px at 360 (owner, 2026-10-25: 1px under the largest that fit), a
      hair tighter and closer to their ticks so "Client rating" clears the next tick. */
   .nx-record[data-pin='on'] .nx-rec-tabs { font-size: clamp(11px, calc(3.4vw - 1px), 12.5px); letter-spacing: -0.01em; }
