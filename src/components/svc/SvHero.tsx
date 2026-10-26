@@ -170,9 +170,18 @@ export default function SvHero() {
     if (motionAllowed()) ref.current?.setAttribute('data-arm', 'true');
     const id = requestAnimationFrame(() => requestAnimationFrame(() => ref.current?.setAttribute('data-in', 'true')));
     const done = window.setTimeout(() => ref.current?.setAttribute('data-settled', 'true'), 3300);
+    // Once the reader scrolls, the window's outline and light follow the scroll, not the opener's
+    // delayed fades (owner, 2026-10-25: scrolling right away, the outline lingered).
+    const onScroll = () => {
+      const on = window.scrollY > 2;
+      if (ref.current && ref.current.hasAttribute('data-scrolled') !== on) ref.current.toggleAttribute('data-scrolled', on);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(id);
       window.clearTimeout(done);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 

@@ -781,7 +781,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the lead (left aligned) and "Who we protect ↓" (no quote button: the nav carries it). On load the
     window's shutter rises while the camera settles. With motion on, the stage holds while scrolling
     opens the window out to the whole screen (the reverse of the desktop aperture; its hairline outline
-    gone within the first 5% of the scroll, owner 2026-10-25); the headline lifts
+    gone within the first 5% of the scroll, at once however soon the reader scrolls, owner 2026-10-25); the headline lifts
     away and a shade comes up under the lead. In the window the Ares mark comes in as glass (owner,
     2026-10-25, from the same Cowork work; ReactDrops' Liquid Glass Logo, its license kept in the four
     `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`):

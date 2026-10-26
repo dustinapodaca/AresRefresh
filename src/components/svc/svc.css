@@ -460,6 +460,11 @@
   .sv-hero[data-arm='true'] .sv-hero-stage::before { opacity: 0; }
   .sv-hero[data-arm='true'][data-in='true'] .sv-hero-stage::before { opacity: var(--edge-o, 1); transition: opacity 1s var(--ds-ease) 1.3s; }
   .sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-stage::before { transition: none; }
+  /* Scrolling: the outline and light follow the scroll at once, whatever the opener was doing. */
+  .sv-hero[data-arm='true'][data-in='true'][data-scrolled] .sv-hero-stage::after,
+  .sv-hero[data-arm='true'][data-in='true'][data-scrolled] .sv-hero-stage::before { transition: opacity 0.15s linear; }
+  /* Scrolled before the opener finished: the outline never comes in (it would fade up, then out). */
+  .sv-hero[data-arm='true'][data-in='true'][data-scrolled]:not([data-settled]) .sv-hero-stage::after { opacity: 0; }
 }
 
 /* The glass Ares mark in the window (phones; SvGlassMark). */
