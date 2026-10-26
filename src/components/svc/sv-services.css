@@ -284,7 +284,11 @@
     scroll-padding-inline: var(--ds-edge);
   }
   .svs-grid::-webkit-scrollbar { display: none; }
-  .svs-panel { flex: 0 0 82vw; aspect-ratio: auto; min-height: 520px; scroll-snap-align: center; }
+  /* The piece close under the header and the text close under the piece (owner, 2026-10-25: was a
+     520px card with the piece centered in the room). The six stay one height; a shorter card's spare
+     room sits at its foot. */
+  .svs-panel { flex: 0 0 82vw; aspect-ratio: auto; min-height: 0; scroll-snap-align: center; }
+  .svs-demo { flex: 0 0 auto; margin: 20px 0 24px; }
   .svs-top { font-size: 44px; }
   /* The cards' mono back to its sizes before 2026-10-25 on phones (owner): desktop keeps the larger
      sizes. */
