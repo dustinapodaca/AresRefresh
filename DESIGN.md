@@ -218,8 +218,8 @@ sizes are unchanged.
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
   Fraktion draws 6% larger than its set size (`size-adjust: 106%` in `src/fonts.css`), so it matches
-  Plex: its lowercase is 6% shorter. Its own zero is dotted, so every use sets the slashed zero
-  (`font-variant-numeric: slashed-zero`). Labels in it are 12px or larger (11px only in tracked capitals,
+  Plex: its lowercase is 6% shorter. Its own zero is dotted, so each use should set the slashed zero
+  (`font-variant-numeric: slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 12px or larger (11px only in tracked capitals,
   as on the company card), and labels inside drawings are sized to show at about 12px on screen (owner,
   2026-10-25: at 8.5 to 11.5px it read as shrunk).
 - **Figure:** "<1%" in the data face 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
