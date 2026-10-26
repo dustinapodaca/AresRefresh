@@ -165,31 +165,75 @@ export default function SvHero() {
     };
   }, []);
 
+  // Phones: the window runs from just under the headline to just above the lead (--wt, --wb).
+  useLayoutEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const stage = root.querySelector<HTMLElement>('.sv-hero-stage')!;
+    const title = root.querySelector<HTMLElement>('.sv-hero-title')!;
+    const panel = root.querySelector<HTMLElement>('.sv-hero-panel')!;
+    const copy = root.querySelector<HTMLElement>('.sv-hero-copy')!;
+    const phone = window.matchMedia('(max-width: 767px)');
+    const measure = () => {
+      if (!phone.matches) return;
+      // Layout boxes, not the transformed ones: the headline lines rise and the scroll lifts it.
+      const top = copy.offsetTop + title.offsetTop + title.offsetHeight + 22;
+      const foot = stage.offsetHeight - (copy.offsetTop + panel.offsetTop) + 26;
+      root.style.setProperty('--wt', `${Math.round(top)}px`);
+      root.style.setProperty('--wb', `${Math.round(foot)}px`);
+    };
+    measure();
+    document.fonts?.ready.then(measure);
+    const ro = new ResizeObserver(measure);
+    ro.observe(stage);
+    phone.addEventListener('change', measure);
+    return () => {
+      ro.disconnect();
+      phone.removeEventListener('change', measure);
+    };
+  }, []);
+
   // Leaving: the nodes spread out and fade; the headline lifts a little. Every tween names its
   // start, so scrolling back always returns to the built hero: a plain .to() reads the start the
   // first time it renders, which on a reload mid-page (or a quick scroll away) caught the nodes
   // mid load-in at opacity 0, and they never came back (2026-10-23).
   useScene(ref, ({ gsap }, root) => {
     const mm = gsap.matchMedia();
-    // Phones (owner, 2026-10-23): the glass card rises faster than the page as the hero scrolls
-    // away, like the old desktop Home glass. It moves on the separate translate property, so the
-    // card's own rise-in on load (a CSS transform transition) never trails it.
+    // Phones (2026-10-25, "the window"): the stage holds (CSS sticky) while the window opens out to
+    // the whole screen; the headline lifts away and the shade comes up under the lead.
     mm.add('(max-width: 767px)', () => {
-      const panel = root.querySelector<HTMLElement>('.sv-hero-panel')!;
-      const t = gsap.fromTo(
-        panel,
-        { translate: '0px 0px' },
-        {
-          translate: '0px -220px',
-          ease: 'none',
-          immediateRender: false,
-          scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: SCRUB },
-        },
-      );
+      const photo = root.querySelector<HTMLElement>('.sv-photo')!;
+      const edge = root.querySelector<HTMLElement>('.sv-hero-stage')!;
+      const title = root.querySelector<HTMLElement>('.sv-hero-title')!;
+      const shade = root.querySelector<HTMLElement>('.sv-photo-shade')!;
+      const img = root.querySelector<HTMLElement>('.sv-photo img')!;
+      const from = { immediateRender: false };
+      // GSAP can't tween through var(), so the window's start is read as numbers (and read again on
+      // every refresh, after the headline or the lead reflow).
+      const px = (name: string) => parseFloat(getComputedStyle(root).getPropertyValue(name)) || 0;
+      const shut = () => {
+        const g = parseFloat(getComputedStyle(edge).paddingLeft) || 16;
+        return `inset(${px('--wt')}px ${g}px ${px('--wb')}px ${g}px round 4px)`;
+      };
+      const tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: { trigger: root, start: 'top top', end: 'bottom bottom', scrub: SCRUB, invalidateOnRefresh: true },
+      });
+      tl.fromTo(
+        photo,
+        { clipPath: shut },
+        { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 1, ease: 'power1.inOut', ...from },
+        0,
+      )
+        .fromTo(edge, { '--edge-o': 1 }, { '--edge-o': 0, duration: 0.2, ...from }, 0)
+        .fromTo(img, { scale: 1 }, { scale: 1.1, duration: 1, ...from }, 0)
+        .fromTo(title, { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.55, ...from }, 0.05)
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3);
       return () => {
-        t.scrollTrigger?.kill();
-        t.kill();
-        panel.style.translate = '';
+        tl.scrollTrigger?.kill();
+        tl.kill();
+        gsap.set([photo, title, shade, img], { clearProps: 'all' });
+        edge.style.removeProperty('--edge-o');
       };
     });
     mm.add('(min-width: 1024px)', () => {

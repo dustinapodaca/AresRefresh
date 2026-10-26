@@ -375,3 +375,89 @@
 @media (min-width: 1024px) and (max-width: 1279px) {
   .sv-hero-lead { max-width: 36ch; }
 }
+
+/* ------------------------------------------------ Phones, third form: "The window" (2026-10-25)
+   The phone hero stopped being a dim backdrop with a box of text on it. The headline sits at the
+   top, left aligned like Home; under it the copper-glass towers stand in a tall window of their
+   own, the lead and the link at the foot on the black. On load the window's shutter rises while
+   the camera settles. Scrolling (motion on) holds the stage and opens the window out to the whole
+   screen, the reverse of the desktop aperture: the headline lifts away and the towers take over
+   before the page moves on. The window's top and foot are measured from the headline and the lead
+   (SvHero sets --wt and --wb); the fallbacks fit a 390px phone. */
+@media (max-width: 767px) {
+  .sv-hero { --wt: 300px; --wb: 236px; --wg: var(--ds-edge); }
+  .sv-hero-stage { min-height: max(640px, 100svh); padding: calc(var(--ds-header) + 28px) var(--ds-edge) 32px; }
+  .sv-hero-title { margin-bottom: 0; font-size: clamp(50px, 14.2vw, 80px); line-height: 0.9; letter-spacing: -0.052em; text-align: left; }
+  .sv-hero-copy { text-align: left; }
+
+  /* The window: the photo layer is clipped to it; the layer itself still spans the stage, so the
+     scroll can open the clip out to the edges. */
+  .sv-photo { bottom: 0; clip-path: inset(var(--wt) var(--wg) var(--wb) var(--wg) round 4px); }
+  .sv-photo-drift { inset: -3% -3% calc(var(--wb) - 2%) -3%; }
+  .sv-photo img { object-position: 50% 100%; filter: saturate(1.05) brightness(0.86) contrast(1.08); }
+  /* Inside the window the photo needs no darkening; the shade only grows in as the window opens
+     (the lead then reads over the photo). */
+  .sv-photo-shade { opacity: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.7) 0%, rgb(0 0 0 / 0.2) 34%, rgb(0 0 0 / 0.25) 58%, rgb(0 0 0 / 0.85) 82%, #000 100%); }
+  /* A hairline edge so the window reads as an object on the black. */
+  .sv-hero-stage::after {
+    content: '';
+    position: absolute;
+    inset: var(--wt) var(--wg) var(--wb) var(--wg);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.18);
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--edge-o, 1);
+  }
+  .sv-hero-grid { display: none; }
+
+  /* The lead and link: plain on the black at the foot, no glass card. */
+  .sv-hero-panel {
+    margin-top: auto;
+    padding: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+  }
+  .sv-hero-lead { font-size: 16.5px; line-height: 1.5; color: var(--ds-fg-muted, #c4c8ce); max-width: 34ch; }
+  .sv-hero-actions { margin-top: 16px; }
+
+  /* Opener: the shutter rises inside the window (the middle layer), the camera settles (the image),
+     then the lead and link come up. The headline's line rise is the shared rule above. */
+  .sv-hero[data-arm='true'] .sv-photo-open { clip-path: inset(100% 0 0 0); }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-photo-open { clip-path: inset(0 0 0 0); transition: clip-path 1.25s cubic-bezier(0.62, 0.05, 0.2, 1) 0.35s; }
+  .sv-hero[data-arm='true'] .sv-hero-stage::after { opacity: 0; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-hero-stage::after { opacity: var(--edge-o, 1); transition: opacity 0.6s var(--ds-ease) 1.5s; }
+  .sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-stage::after { transition: none; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(1) > span { transition-delay: 0.15s; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(2) > span { transition-delay: 0.25s; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-line:nth-child(3) > span { transition-delay: 0.35s; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-hero-panel { transition-delay: 1.25s, 1.25s; }
+}
+/* The hold (phones, motion on): the stage sticks while the window opens out. */
+@media (max-width: 767px) {
+  html[data-nx-motion='on'] .sv-hero-hold { height: 75svh; }
+  html[data-nx-motion='on'] .sv-hero-stage { position: sticky; top: 0; height: max(640px, 100svh); }
+}
+/* The copper canopy's light spills onto the black under the window (light, never a fill). */
+@media (max-width: 767px) {
+  .sv-hero .sv-hero-stage::before {
+    display: block;
+    top: auto;
+    bottom: calc(var(--wb) - 92px);
+    width: 130%;
+    height: 190px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgb(188 111 64 / 0.26), rgb(139 73 32 / 0.08) 60%, transparent);
+    opacity: var(--edge-o, 1);
+  }
+}
+@media (max-width: 767px) {
+  /* The light waits for the window it comes from. */
+  .sv-hero[data-arm='true'] .sv-hero-stage::before { opacity: 0; }
+  .sv-hero[data-arm='true'][data-in='true'] .sv-hero-stage::before { opacity: var(--edge-o, 1); transition: opacity 1s var(--ds-ease) 1.3s; }
+  .sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-stage::before { transition: none; }
+}
