@@ -185,8 +185,13 @@
 .sv-rl-status[data-state='idle'] i { background: rgb(255 255 255 / 0.3); box-shadow: none; }
 .sv-rl-status[data-state='out'] i { background: #e5534b; box-shadow: 0 0 0 3px rgb(229 83 75 / 0.22); }
 .sv-rl-status .ds-data { font-size: 13px; }
+/* The current line sits over a hidden copy of the longest one, so the caption's height never
+   changes as the lines swap (2026-10-26). */
+.sv-rl-status-text { flex: 1; min-width: 0; display: grid; }
+.sv-rl-status-text > span { grid-area: 1 / 1; align-self: center; }
+.sv-rl-status-size { visibility: hidden; }
 @media (prefers-reduced-motion: no-preference) {
-  .sv-rl-status span { animation: sv-rl-swap 0.32s cubic-bezier(0.23, 1, 0.32, 1); }
+  .sv-rl-status-now { animation: sv-rl-swap 0.32s cubic-bezier(0.23, 1, 0.32, 1); }
 }
 @keyframes sv-rl-swap { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 

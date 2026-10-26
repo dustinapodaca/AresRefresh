@@ -25,6 +25,10 @@ const STATUS: Record<Step, string> = {
   done: 'Covered the same shift from this week’s on-call schedule',
   rest: 'Covered the same shift from this week’s on-call schedule',
 };
+// The caption always holds room for its longest line (owner, 2026-10-26): on a phone the covered line
+// wraps to two lines and the others take one, so the card grew and shrank every loop, moving the page
+// under the reader and throwing off the scroll scene below it.
+const LONGEST = Object.values(STATUS).reduce((a, b) => (b.length > a.length ? b : a));
 const STATE: Record<Step, 'idle' | 'out' | 'covered'> = {
   idle: 'idle',
   out: 'out',
@@ -210,8 +214,13 @@ export default function SvRelief() {
 
           <figcaption className="sv-rl-status" data-state={state}>
             <i aria-hidden="true" />
-            <span key={STATUS[step]} className="ds-data">
-              {STATUS[step]}
+            <span className="sv-rl-status-text">
+              <span className="ds-data sv-rl-status-size" aria-hidden="true">
+                {LONGEST}
+              </span>
+              <span key={STATUS[step]} className="ds-data sv-rl-status-now">
+                {STATUS[step]}
+              </span>
             </span>
           </figcaption>
         </figure>
