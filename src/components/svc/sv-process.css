@@ -295,7 +295,7 @@
      or glow (owner, 2026-10-25). */
   .sv-pr[data-hpan='on'] .sv-pr-intro {
     order: 3;
-    margin: 28px var(--ds-edge) 0;
+    margin: 64px var(--ds-edge) 0; /* owner, 2026-10-25: was 28 */
     padding: 18px 20px 20px;
     max-width: none;
     font-size: 16px;

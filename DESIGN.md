@@ -786,7 +786,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   stacked list): the same pan in one row, without the canvas's tells (AI-tells pass; after the
   editorial step rows of Craft Agency and Trawelt on Mobbin). The heading holds about 88px under
   the nav (less on short phones; owner, 2026-10-25: halfway between centered and 20px) with the row
-  beneath it, and the intro sits 28px under the row in a clean black card (the site's
+  beneath it, and the intro sits 64px under the row in a clean black card (the site's
   glass edge and top line on a faint white wash, 4px corners; no lit edge), held with them (owner,
   2026-10-25). Each stage is an open column with no box: its number in the data face (faint,
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row fills
