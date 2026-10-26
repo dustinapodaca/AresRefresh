@@ -395,7 +395,8 @@
   .sv-hero { --wt: 300px; --wb: 236px; --wg: var(--ds-edge); }
   /* Less black under the nav (owner, 2026-10-25: about 59px to the letters, then 30, now about 40). */
   .sv-hero-stage { min-height: max(640px, 100svh); padding: calc(var(--ds-header) + 9px) var(--ds-edge) 32px; }
-  .sv-hero-title { margin-bottom: 0; font-size: clamp(50px, 14.2vw, 80px); line-height: 0.9; letter-spacing: -0.052em; text-align: left; }
+  /* Centered, as on desktop (owner, 2026-10-26; was left aligned like Home). */
+  .sv-hero-title { margin-bottom: 0; font-size: clamp(50px, 14.2vw, 80px); line-height: 0.9; letter-spacing: -0.052em; text-align: center; }
   .sv-hero-copy { text-align: left; z-index: auto; }
   /* The headline sits behind the photo (owner, 2026-10-25): the photo is clipped to its window, so
      at rest nothing overlaps; as the window opens upward it slides over the words and cuts them off

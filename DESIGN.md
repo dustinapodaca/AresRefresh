@@ -775,7 +775,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the stage holds (sticky, 90vh) while the photo closes to a framed window and dims, the nodes spread
     out and fade, and the copy lifts away.
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
-    at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), left aligned like Home, at Home's phone size before Home's 6px bump
+    at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), centered as on desktop (owner, 2026-10-26; was left aligned like Home), at Home's phone size before Home's 6px bump
     (`clamp(48px, 14.4vw, 80px)` below 600px). Under it the copper-glass towers stand in a window of
     their own (4px corners, the hairline photo edge), measured from just under the headline to just
     above the lead (`--wt`, `--wb`), with the canopy's copper light spilling onto the black below; then
