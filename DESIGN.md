@@ -783,9 +783,10 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     opens the window out to the whole screen (the reverse of the desktop aperture); the headline lifts
     away and a shade comes up under the lead. In the window the Ares mark comes in as glass (owner,
     2026-10-25, from the same Cowork work; ReactDrops' Liquid Glass Logo, its license kept in the four
-    `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`): once the shutter has
-    risen it drops in as a glass tile with chromatic edges and holds on the formed frosted tile, the
-    towers showing through, rather than letting the glass clear; it fades with the headline as the window
+    `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`):
+    nothing shows on load; on the reader's first scroll (owner, 2026-10-25) it drops in once as a
+    glass tile with chromatic edges and holds on the formed frosted tile, the towers showing through,
+    rather than letting the glass clear, and stays over the photo as a glass card while the window
     opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the

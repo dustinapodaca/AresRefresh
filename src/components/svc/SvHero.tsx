@@ -239,9 +239,8 @@ export default function SvHero() {
         .fromTo(edge, { '--edge-o': 1 }, { '--edge-o': 0, duration: 0.2, ...from }, 0)
         .fromTo(img, { scale: 1 }, { scale: 1.1, duration: 1, ...from }, 0)
         .fromTo(title, { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.55, ...from }, 0.05)
-        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3)
-        // The glass mark goes with the headline.
-        .fromTo(root.querySelector('.sv-glass'), { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.92, duration: 0.45, ...from }, 0.05);
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3);
+        // The glass mark stays over the photo as the window opens (owner, 2026-10-25; SvGlassMark).
       return () => {
         tl.scrollTrigger?.kill();
         tl.kill();

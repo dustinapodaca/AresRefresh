@@ -476,4 +476,7 @@
     pointer-events: none;
   }
   .sv-glass .liquid-glass-logo { min-height: 0; }
+  /* Hidden until the reader first scrolls; then the glass comes in (SvGlassMark). */
+  .sv-glass-in { height: 100%; opacity: 0; transition: opacity 0.2s var(--ds-ease); }
+  .sv-glass-in[data-shown='true'] { opacity: 1; }
 }
