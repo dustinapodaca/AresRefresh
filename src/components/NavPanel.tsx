@@ -329,8 +329,9 @@ const COMPANY_TILES = [
   // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
   { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 40%' },
   { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
-  // The owner's LinkedIn banner (2026-10-15).
-  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 50%' },
+  // The owner's LinkedIn banner (2026-10-15), its frosted logo card centered in the tile on a phone
+  // (owner, 2026-10-26: it sat a little low at 50%).
+  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 63%' },
 ];
 
 function ArrowBack() {
