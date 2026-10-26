@@ -957,7 +957,7 @@ tilt and one fade-up per block (`data-rv`, once).
   a Scope / Where / Term / Status ledger with status dots and mono heads), one list in the PDF's order on
   hairlines: each contract's scope (Inter 500) and where it was beneath ("Space Force base, Colorado ·
   Subcontractor on a federal construction program", "Denver metro · Multiple contract renewals",
-  "Pueblo"), its term at the right in the data face ("2025 to late 2027", "Since 2022, ongoing", "Since
+  "Pueblo" under "Unarmed retail security"), its term at the right in the data face ("2025 to late 2027", "Since 2022, ongoing", "Since
   2024, ongoing"; under the where on phones); then the PDF's footnote, "Plus seven completed armed
   security contracts in Colorado, 2021 to 2025.", and "References available on request." to /contact.
   A value renders only where `data.ts` has one (values wait on Deidre).
