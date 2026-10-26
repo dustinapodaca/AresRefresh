@@ -27,7 +27,7 @@
 .nx-ind-label {
   margin: 0 0 10px;
   font-family: var(--ds-data);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ds-fg-faint);
 }
 .nx-ind-roles { list-style: none; margin: 0 0 22px; padding: 0; }
@@ -221,7 +221,7 @@
 .nx-ind-brief .nx-ind-short { font-size: 16px; margin-bottom: 16px; color: #d6d9dd; }
 .nx-ind-brief .nx-ind-roles { margin-bottom: 16px; }
 .nx-ind-brief .nx-ind-roles li { grid-template-columns: 1fr; gap: 1px; padding: 7px 0; font-size: 13px; line-height: 1.4; }
-.nx-ind-brief .nx-ind-role { font-size: 12px; }
+.nx-ind-brief .nx-ind-role { font-size: 14px; }
 .nx-ind-brief .nx-ind-ask { font-size: 13.5px; margin-bottom: 18px; }
 .nx-ind-brief .nx-ind-label { margin-bottom: 8px; }
 

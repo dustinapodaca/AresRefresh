@@ -169,7 +169,7 @@
 .nx-sk-link:hover .ds-arrow { color: var(--ds-rust); }
 
 .nx-sk { padding-bottom: 40px; }
-.nx-sk-hint { margin: 14px 0 0; font-size: 12px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+.nx-sk-hint { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 
 /* The intro's stack: copies of the next two cards behind the first (behind Swiper's slides, inside
    its box), peeking out above it as it deals in, then tucked in behind it and gone (owner,

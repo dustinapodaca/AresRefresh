@@ -26,7 +26,7 @@
 .nx-node { position: relative; }
 .nx-node-bar {
   font-family: var(--ds-data);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ds-fg-muted);
   margin: 0 0 10px;
 }
@@ -190,7 +190,7 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   right: var(--ds-edge);
   top: calc(var(--ds-header) + clamp(28px, 6vh, 72px));
   margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ds-fg-faint);
@@ -224,7 +224,7 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   .nx-hero-lead { grid-column: 1 / -1; }
   .nx-hero-actions { grid-column: 1 / -1; justify-content: flex-start; }
   .nx-hero-proof { grid-template-columns: 1fr; gap: 10px; }
-  .nx-hero-proof li { padding-top: 8px; font-size: 13px; }
+  .nx-hero-proof li { padding-top: 8px; font-size: 14px; }
 }
 /* Phones (owner, 2026-10-22): no phone number under the lead; the nav's handset is the call link. */
 @media (max-width: 767px) {
@@ -251,7 +251,7 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   padding: 8px 18px;
   border-radius: 4px 4px 0 0;
   font-family: var(--ds-text);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: -0.005em;
   background: #000;

@@ -99,7 +99,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-rec-mono {
   margin: 18px 0 0;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ds-fg-faint);
 }
 
@@ -148,7 +148,7 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
 .nx-record[data-pin='on'] .nx-rec-tabs {
   display: block;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   color: var(--ds-fg-faint);
   position: relative;
@@ -234,7 +234,8 @@ a.nx-rec-caption:hover { text-decoration-color: var(--ds-fg); }
   /* Pinned on phones and tablets (owner, 2026-10-25): each figure, its lines, and its diagram fit one
      screen under the nav and the meter, so everything is a step smaller than in the stacked list. */
   .nx-record[data-pin='on'] .nx-rec-stage { padding-top: calc(var(--ds-header) + 20px); padding-bottom: 24px; }
-  .nx-record[data-pin='on'] .nx-rec-tabs { font-size: 12px; }
+  /* 13px, down to 12px on the narrowest phones so "Client rating" clears the next tick (2026-10-25). */
+  .nx-record[data-pin='on'] .nx-rec-tabs { font-size: clamp(12px, 3.33vw, 13px); }
   .nx-record[data-pin='on'] .nx-rec-tab { padding-left: 8px; }
   /* One layout for all three (owner, 2026-10-25): the figure at the same height at the top, the
      diagram across the full width at the foot, every diagram about the same height. */

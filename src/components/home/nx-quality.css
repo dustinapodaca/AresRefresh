@@ -58,7 +58,7 @@
   position: absolute;
   left: 16px;
   bottom: 14px;
-  font-size: 12px;
+  font-size: 13px;
   color: rgb(238 240 242 / 0.72);
 }
 .nx-q-leaders { display: none; }
@@ -77,7 +77,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--ds-data);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ds-fg-faint);
 }
 .nx-q-fact dd { margin: 8px 0 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
