@@ -101,12 +101,14 @@
   -webkit-mask: url(/images/ares-text.svg) left center / contain no-repeat;
   mask: url(/images/ares-text.svg) left center / contain no-repeat;
 }
-.cc-kind { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.55); }
+.cc-kind { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.55); }
 .cc-legal { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(22px, 2.2vw, 30px); line-height: 1; letter-spacing: -0.03em; }
 .cc-sub { margin: 6px 0 0; font-size: 12.5px; color: rgb(238 240 242 / 0.7); }
 .cc-fields { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 18px; align-content: end; }
 .cc-field[data-wide] { grid-column: span 2; }
-.cc-field dt { font-family: var(--ds-data); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
+/* 11px in capitals reads as large as the 12px lowercase labels; tracked tight so the SAM date stays on
+   one line on desktop (phones wrap it; 2026-10-25). */
+.cc-field dt { font-family: var(--ds-data); font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; color: rgb(255 255 255 / 0.5); }
 .cc-field dd { margin: 3px 0 0; display: flex; align-items: center; gap: 4px; min-width: 0; }
 .cc-field dd .ds-data { font-size: clamp(12.5px, 1.1vw, 14.5px); color: var(--ds-fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cc-field dd .ds-data[data-live]::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.8); vertical-align: 1px; }
@@ -123,7 +125,7 @@
     linear-gradient(135deg, #e9b27f, #bc6f40 55%, #8b4920);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
 }
-.cc-certs { font-size: 11px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }
+.cc-certs { font-size: 12px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }
 
 @media (max-width: 1023px) {
   .cx-hero { min-height: 0; padding-bottom: 72px; }
@@ -174,7 +176,7 @@
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
-.cc-compact .cc-top { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); }
+.cc-compact .cc-top { margin: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); }
 .cc-compact .cc-mark { width: 16px; }
 .cc-compact .cc-fields { grid-template-columns: 1fr; gap: 0; }
 .cc-compact .cc-field { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid rgb(255 255 255 / 0.08); }
@@ -241,7 +243,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   border-radius: 2px;
   box-shadow: inset 0 0 0 1px var(--cx-edge);
   font-family: var(--ds-data);
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 0.02em;
   color: var(--ds-fg-muted);
 }
@@ -284,7 +286,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
 }
 .cx-why-title { margin: 0 0 10px; font-family: var(--ds-display); font-weight: 600; font-size: 21px; line-height: 1.15; letter-spacing: -0.02em; }
 .cx-why-body { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); }
-.cx-why-src { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--cx-edge); font-size: 11.5px; letter-spacing: 0.02em; color: var(--ds-fg); }
+.cx-why-src { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--cx-edge); font-size: 12px; letter-spacing: 0.02em; color: var(--ds-fg); }
 .cx-why-src > span:first-child { color: var(--ds-fg-faint); }
 .cx-why-src a { display: inline-flex; gap: 5px; align-items: center; color: inherit; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 3px; }
 @media (max-width: 767px) {
@@ -322,7 +324,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   .cx-why-arrow:first-child svg { transform: rotate(180deg); }
   .cx-why-arrow:disabled { opacity: 0.35; cursor: default; }
   .cx-why-arrow:not(:disabled):active { transform: scale(0.96); }
-  .cx-why-hint { margin: 14px 0 0; font-size: 11.5px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+  .cx-why-hint { margin: 14px 0 0; font-size: 12px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 }
 @media (min-width: 768px) { .cx-why-ctl, .cx-why-hint { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cx-why-seg i::after { transition: none; } }
@@ -352,19 +354,19 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   background: #08090b;
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
 }
-.cx-past-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 0 0 22px; font-size: 11.5px; color: var(--ds-fg-faint); white-space: nowrap; }
+.cx-past-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 0 0 22px; font-size: 12px; color: var(--ds-fg-faint); white-space: nowrap; }
 .cx-past-bar .cx-status { font-size: inherit; letter-spacing: inherit; text-transform: inherit; }
 .cx-past-title { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.02; letter-spacing: -0.035em; color: var(--ds-fg); text-wrap: balance; }
 .cx-past-where { margin: 14px 0 0; max-width: 52ch; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
 .cx-past-foot { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--cx-edge); }
 .cx-past-foot div { display: flex; align-items: baseline; gap: 12px; }
-.cx-past-foot dt { font-size: 11.5px; color: var(--ds-fg-faint); }
+.cx-past-foot dt { font-size: 12px; color: var(--ds-fg-faint); }
 .cx-past-foot dd { margin: 0; font-size: 14px; color: var(--ds-fg); }
 
 /* The ledger: Scope | Where | Term | (Value, only when a row has one) | Status. */
 .cx-past-list { --cx-past-cols: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 0.6fr); }
 .cx-past-list[data-values] { --cx-past-cols: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 0.6fr) minmax(0, 0.6fr); }
-.cx-past-cols { display: grid; grid-template-columns: var(--cx-past-cols); gap: 24px; margin: 0 0 10px; font-size: 11px; color: var(--ds-fg-faint); }
+.cx-past-cols { display: grid; grid-template-columns: var(--cx-past-cols); gap: 24px; margin: 0 0 10px; font-size: 12px; color: var(--ds-fg-faint); }
 .cx-past-ledger .cx-ledger-row { grid-template-columns: var(--cx-past-cols); }
 .cx-past-status .cx-status { font-size: 13.5px; }
 /* Status lights: current is the rust light, completed a neutral dot. */
@@ -399,7 +401,7 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   background: radial-gradient(90% 120% at 100% 0%, rgb(188 111 64 / 0.14), transparent 55%), #08090b;
   box-shadow: inset 0 0 0 1px var(--cx-edge-2);
 }
-.cx-gsa-label { display: flex; justify-content: space-between; align-items: center; margin: 0; font-size: 11.5px; color: var(--ds-fg-muted); }
+.cx-gsa-label { display: flex; justify-content: space-between; align-items: center; margin: 0; font-size: 12px; color: var(--ds-fg-muted); }
 .cx-gsa-number { display: flex; align-items: center; gap: 10px; margin: 18px 0 26px; font-size: clamp(30px, 4.2vw, 56px); line-height: 1; color: var(--ds-fg); }
 .cx-gsa-number .ds-data { letter-spacing: -0.01em; }
 .cx-gsa .cx-ledger { margin-bottom: 22px; }
@@ -495,7 +497,7 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   }
   .cx-mbar-ids::-webkit-scrollbar { display: none; }
   .cx-mbar-ids li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .cx-mbar-l { font-family: var(--ds-data); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ds-fg-faint); }
+  .cx-mbar-l { font-family: var(--ds-data); font-size: 12px; letter-spacing: 0.06em; color: var(--ds-fg-faint); }
   .cx-mbar-ids .ds-data { font-size: 13px; color: var(--ds-fg); }
   .cx-mbar-ids li:last-child { padding-right: 24px; }
   .cx-mbar .ds-copy { width: 30px; height: 30px; }

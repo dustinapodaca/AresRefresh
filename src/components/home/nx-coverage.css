@@ -86,7 +86,7 @@
   .nx-cv-body { display: flex; flex-direction: column-reverse; gap: 40px; align-items: stretch; }
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
-  .nx-cv-mono { font-size: 12px; }
+  .nx-cv-mono { font-size: 18px; } /* about 12px on a phone's map (owner, 2026-10-25; was 12) */
   .nx-cv-name { font-size: 19px; } /* a tad larger on phones (owner, 2026-10-23; was 17) */
 }
 
