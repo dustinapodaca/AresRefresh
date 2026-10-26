@@ -97,6 +97,12 @@ export default function SvProcess() {
         const n = nodes[sysIndex];
         if (n && (n.dataset.sys === 'true') !== on) n.dataset.sys = String(on);
       };
+      // The intro card waits until stage 04 lights, then fades up like the Capability Statement's
+      // blocks (owner, 2026-10-26); it goes again if the reader scrolls back before 04. CSS does the motion.
+      const setIntro = () => {
+        const on = nodes[nodes.length - 1]?.dataset.lit === 'true';
+        if ((root.dataset.intro === 'true') !== on) root.dataset.intro = String(on);
+      };
       root.dataset.arm = 'true';
       root.dataset.hpan = 'on';
       let first = 0;
@@ -148,6 +154,7 @@ export default function SvProcess() {
             const on = prog >= litAt[i];
             if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
           });
+          setIntro();
           setSys(prog >= sysAt);
           const done = prog >= doneAt;
           if ((root.dataset.done === 'true') !== done) {
@@ -205,6 +212,7 @@ export default function SvProcess() {
           delete root.dataset.arm;
           delete root.dataset.hpan;
           delete root.dataset.done;
+          delete root.dataset.intro;
           nodes.forEach((n) => {
             delete n.dataset.lit;
             delete n.dataset.sys;
@@ -232,6 +240,7 @@ export default function SvProcess() {
           const on = stops[i] <= at;
           if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
         });
+        setIntro();
         if (sysIndex >= 0) setSys(stops[sysIndex] + tx <= viewW * SYS_AT);
         const done = p >= 0.999;
         if ((root.dataset.done === 'true') !== done) {
@@ -269,6 +278,7 @@ export default function SvProcess() {
         delete root.dataset.arm;
         delete root.dataset.hpan;
         delete root.dataset.done;
+        delete root.dataset.intro;
         nodes.forEach((n) => {
           delete n.dataset.lit;
           delete n.dataset.sys;
