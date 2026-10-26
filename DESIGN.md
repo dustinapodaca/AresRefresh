@@ -1146,7 +1146,7 @@ From the CenCore review (docs/market-concepts.md). One shared vocabulary (`ds-mk
 rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Role pages (`/services/<slug>`):** the search phrase as the headline (display-xl, 7
   columns), lead, quote button (`/contact?service=<slug>`) and call link; behind the opening (owner,
-  2026-10-26, Armed Security Officers first, to judge it before the rest) ReactDrops' Topographic Flow
+  2026-10-26, on all six after a trial on Armed Security Officers) ReactDrops' Topographic Flow
   (`components/topographic-*`, unchanged; `market/RoleTerrain.tsx`): grey contour lines with deep rust
   (#8b4920) accents drifting on the black at 0.38 opacity, faint (owner), rings where the pointer moves,
   running up behind the nav and masked into the canvas at its foot; loaded on its own after the page,

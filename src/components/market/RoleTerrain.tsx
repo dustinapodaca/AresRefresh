@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 // ReactDrops' Topographic Flow (src/components/topographic-*, the registry's 3.1.2, installed
-// unchanged) behind a role page's hero (owner, 2026-10-26: trying it on Armed first). Faint grey
+// unchanged) behind every role page's hero (owner, 2026-10-26; tried on Armed first). Faint grey
 // contour and survey lines with deep rust accents drift on the black (opacity 0.38, owner: was 1), and the pointer pushes rings
 // through them. It loads on its own after the page, and only in a real browser: the prerender and
 // automated checks (unless ?motion) keep the plain black hero, so the static page never changes.
