@@ -41,7 +41,7 @@ export const INSIGHTS: Insight[] = [
       { h: 'Armed or unarmed' },
       { p: 'Armed officers cost more. They need firearms training and current qualifications, and they carry more liability. Most sites are well served by unarmed officers; some contracts, insurers, and risks call for armed ones.' },
       { h: 'A fixed post or a patrol' },
-      { p: 'A fixed post keeps one officer on site for the whole shift. A mobile patrol visits on a schedule, checks the site, and responds to alarms, so its cost is shared with other stops on the route. A site that needs eyes on it a few times a night may not need a full post.' },
+      { p: 'A fixed post keeps one officer on site for the whole shift. A mobile patrol visits on a schedule and checks the site, so its cost is shared with other stops on the route. A site that needs eyes on it a few times a night may not need a full post.' },
       { h: 'What the post asks of the officer' },
       { list: [
         'Access control, visitor screening, or an access system to run.',

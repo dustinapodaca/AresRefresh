@@ -146,10 +146,10 @@ export const CAPABILITIES: Capability[] = [
     // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
     title: 'Mobile Patrol',
     line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
-    keys: ['Marked vehicles', 'Alarm response', 'GPS-verified'],
+    // Owner, 2026-10-25: no alarm response; lead with the patrol cars.
+    keys: ['Ares patrol cars', 'Set routes', 'GPS-verified'],
     includes: [
-      { name: 'Marked-vehicle patrol', detail: 'Ares-marked vehicles as a visible deterrent on every pass.' },
-      { name: 'Alarm response', detail: 'An officer on site to check the property when an alarm trips.' },
+      { name: 'Marked-vehicle patrol', detail: 'Ares-marked patrol cars, a visible deterrent on every pass.' },
       { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
       { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with GPS-verified routes and time-stamped reports per property.' },
     ],
