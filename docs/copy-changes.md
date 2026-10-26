@@ -1122,3 +1122,22 @@ as the company. Heading and letter layout unchanged (story muted, last line in i
 ## Services, services section headline (owner, 2026-10-24; the redesigned Services page)
 - "What we staff." (was "Pick a service.", from the bundle), the headline the live Services page
   uses for the six services. The hero's lead still ends "Pick a service, or find your industry."
+
+## Insights: third monthly article (draft, 2026-10-26)
+
+New: `/insights/how-to-choose-a-security-company-colorado`, "How to choose a security company in
+Colorado." (Buying security), written to answer the vetting question buyers put to AI assistants.
+Sections: the city license, the insurance certificate, who the officers work for (employees or
+independent contractors), how a post starts, who covers a call-out, the same officers, who answers
+when something goes wrong, checks for federal agencies and primes (SAM.gov, GSA eLibrary,
+certifiers, references), red flags, and how Ares answers these. Ares facts only from the site: the
+three city licenses, the site walk, post orders and training on the post, on-call scheduling and
+fewer than 1% missed shifts since 2021, the same officers whenever we can, GSA MAS, UEI, CAGE,
+WOSB. Ares staffs posts with both W-2 and 1099 officers (owner, 2026-10-26), so the
+employment section is neutral and the Ares paragraph says every officer, employee or contractor,
+trains on the post. Related: the licensing and call-out articles and the
+Capability Statement. Added to routes.json (sitemap), llms.txt, and the Insights index (first,
+dated October 26, 2026). For the owner to read before launch.
+Imported from a Cowork patch (2026-10-26). One line changed on import: "each license can be
+verified from our city pages" now says the city pages list each number, with a lookup in the city's
+own records for Colorado Springs and Denver (Pueblo has no public record; its page offers a copy).

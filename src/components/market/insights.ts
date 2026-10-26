@@ -23,6 +23,61 @@ const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
   {
+    // Third monthly article (2026-10-26): the vetting checklist, written for the questions
+    // buyers ask AI assistants ("how do I choose a security company in Denver"). Every Ares fact
+    // is already on the site: the city licenses, the site walk, post orders and training on the
+    // post by leadership, on-call scheduling and the missed-shift record, the same officers on a
+    // site (About, "What clients told us"), and the federal identifiers. Ares staffs posts with
+    // both W-2 and 1099 officers (owner, 2026-10-26), so the employment section stays neutral.
+    // The rest is general, checkable practice.
+    slug: 'how-to-choose-a-security-company-colorado',
+    title: 'How to choose a security company in Colorado.',
+    category: 'Buying security',
+    date: '2026-10-26',
+    dateLabel: 'October 26, 2026',
+    summary: 'Most security companies look alike on paper. What to check before you sign: the city license, the insurance certificate, who the officers work for, and who covers the post when something goes wrong.',
+    body: [
+      { p: 'Most security companies look alike on paper: licensed, insured, trained, available around the clock. The differences show up after the contract starts, when an officer calls out, a post order changes, or something goes wrong on a shift. These questions find those differences before you sign.' },
+      { h: 'Check the license for the city your site is in' },
+      { p: 'Colorado has no statewide license for security companies or officers. Cities such as Denver, Colorado Springs, and Pueblo license them instead, so a company licensed in one city is not automatically licensed in another. Ask for the license number in the city where your site is, and look it up yourself. If the post is armed, confirm the license covers armed work.' },
+      { h: 'Ask for the insurance certificate, not a promise' },
+      { p: 'Ask for a certificate of insurance before the first shift, and ask to be named as an additional insured if your lease, lender, or contract requires it. Check general liability and workers’ compensation, and for an armed post, that the coverage includes armed work. Compare the limits to what your own contracts and insurer require.' },
+      { h: 'Ask who the officers work for' },
+      { p: 'Security companies staff posts with their own employees, independent contractors, or both. Either can work. What matters is that the answers are the same for every officer on your post: who trains them on your site, who supervises them, who covers for them when they call out, and whose insurance applies if one is hurt on your property. Ask the company to answer for every officer it would send, not only its employees.' },
+      { h: 'Ask how a post starts' },
+      { p: 'A good company walks your site before anything is signed, then sends a proposal scoped to that site: posts, hours, duties, armed or unarmed. A quote sent without a site walk is a guess. Ask who writes the post orders, and who trains the officer on them before the first shift.' },
+      { h: 'Ask who covers a call-out' },
+      { p: 'Every roster runs short sometimes. Ask what happens when an officer calls out at 2 a.m.: who finds the replacement, how fast, and whether the relief officer has ever seen your site. Ask for the company’s missed-shift record if it keeps one.' },
+      { h: 'Ask whether you will see the same officers' },
+      { p: 'Officers who know a site notice what is out of place. Officers who rotate every week do not. Ask whether the company keeps the same officers on a post, and how a new officer learns the site when someone does step in.' },
+      { h: 'Ask who answers when something goes wrong' },
+      { p: 'Ask for the name of the person you will call, and whether someone in leadership answers after hours. Ask how you will hear about a late officer, a staffing change, or an incident: a call, an email, a report, or the next invoice.' },
+      { h: 'For federal agencies and prime contractors' },
+      { list: [
+        'Look up the company’s UEI on SAM.gov to confirm its registration is active.',
+        'If it says it holds a GSA Schedule, look up the contract number on GSA eLibrary.',
+        'If you need small-business or diverse-supplier credit, get the certificate numbers and confirm them with the certifier: the SBA for WOSB, WBENC for WBE, the city for local certifications.',
+        'Ask for past performance on similar posts, and references you can call.',
+      ] },
+      { h: 'Red flags' },
+      { list: [
+        'No license number for the city where your site is, or one you cannot verify.',
+        'A price quoted without anyone seeing the site.',
+        'No clear answer on who covers a call-out.',
+        'No certificate of insurance before the first shift.',
+        'A contact who can only be reached during business hours.',
+      ] },
+      { h: 'How Ares answers these' },
+      { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs, Denver, and Pueblo. Our city pages list each license number, with a link to look up the Colorado Springs and Denver licenses in the city’s own records. A member of our leadership walks every site before anything is signed, and we write the post orders for every post. Every officer we send, employee or contractor, trains on them with our leadership, on the post, before the first shift. Every contract has on-call scheduling behind it, and since 2021 we have missed fewer than 1% of shifts. We keep the same officers on a site whenever we can.' },
+      { p: 'For federal buyers, Ares holds GSA MAS contract 47QSMS25D009Q, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
+    ],
+    related: [
+      { label: 'Security licensing in Colorado', to: '/insights/colorado-security-licensing' },
+      { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
+      { label: 'Capability Statement', to: '/capability-statement' },
+    ],
+  },
+  {
     // Topic 1 of the copy audit's Insights list (2026-10-19): what drives the price, with no
     // rates (the audit's note). Every Ares fact is already on the site: the site walk before
     // anything is signed, the scoped proposal, training on the post, on-call relief, the GSA
