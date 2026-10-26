@@ -31,7 +31,6 @@ function Bar({ label }: { label: string }) {
   return (
     <p className="svs-bar">
       <span>{label}</span>
-      <span>Example</span>
     </p>
   );
 }
@@ -146,10 +145,6 @@ function EscortPlan() {
           <animateMotion dur="6s" repeatCount="indefinite" path={ESCORT_PATH} keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear" />
         </g>
       </svg>
-      <p className="svs-foot svs-e-sight">
-        <i aria-hidden="true" />
-        In line of sight
-      </p>
     </>
   );
 }
@@ -224,10 +219,6 @@ function PatrolRoute() {
           <animateMotion dur="6s" repeatCount="indefinite" path={ROUTE} />
         </g>
       </svg>
-      <p className="svs-foot svs-e-sight">
-        <i aria-hidden="true" />
-        GPS-verified
-      </p>
     </>
   );
 }

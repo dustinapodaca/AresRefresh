@@ -757,7 +757,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
   one word at the top, a small working example of the post in the middle (a qualification card, a
-  patrol round, a visitor log, an escort plan, a relief week, a patrol route; labeled "Example", running
+  patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
   keys at the foot. Desktop three by two; phones a swipe row with "01 / 06" and "Swipe for more".
 - **02 The sites we protect.** (`divisions`): the six industries. Desktop: a row of 4:5 photo cards

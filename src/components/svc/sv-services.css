@@ -183,7 +183,6 @@
 .svs-e-vis { fill: none; stroke: var(--ds-rust); stroke-width: 1.5; }
 .svs-p-pin { fill: #0b0b0c; stroke: rgb(255 255 255 / 0.55); }
 .svs-p-car rect { fill: var(--ds-rust); filter: drop-shadow(0 0 5px rgb(188 111 64 / 0.9)); }
-.svs-e-sight i { width: 6px; height: 6px; border-radius: 1px; background: #6fbf8a; box-shadow: 0 0 8px rgb(111 191 138 / 0.8); }
 
 /* Relief: the week. */
 .svs-w { display: grid; grid-template-columns: 44px repeat(7, minmax(0, 1fr)); gap: 5px; align-items: center; }
