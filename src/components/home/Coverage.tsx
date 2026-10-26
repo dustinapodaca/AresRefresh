@@ -63,9 +63,12 @@ export default function Coverage() {
         // I-25 draws while the whole map is on screen (owner, 2026-10-25): it starts as the map's foot
         // comes into view and reaches Pueblo before its top meets the nav. It ran from 'top 78%' to
         // 'bottom 45%' (finished as the top was leaving), then to 'bottom 75%' (mostly drawn before
-        // the map was in view).
+        // the map was in view). Ends as the map's top reaches 25% of the screen since 2026-10-26
+        // (owner: I-25 still had a little to go with the top at about 22%; it was 'top 12%'), but
+        // never in less than 15% of a screen of scrolling: on a short laptop the map fills most of
+        // the screen, and the draw would have popped in over a few pixels.
         start: 'bottom bottom',
-        end: 'top 12%',
+        end: () => `+=${Math.max(window.innerHeight * 0.75 - map.getBoundingClientRect().height, window.innerHeight * 0.15)}`,
         scrub: SCRUB,
       },
     });
