@@ -386,9 +386,14 @@
    (SvHero sets --wt and --wb); the fallbacks fit a 390px phone. */
 @media (max-width: 767px) {
   .sv-hero { --wt: 300px; --wb: 236px; --wg: var(--ds-edge); }
-  .sv-hero-stage { min-height: max(640px, 100svh); padding: calc(var(--ds-header) + 28px) var(--ds-edge) 32px; }
+  /* Half the black under the nav it had (owner, 2026-10-25: about 59px to the letters, now about 30). */
+  .sv-hero-stage { min-height: max(640px, 100svh); padding: calc(var(--ds-header) - 1px) var(--ds-edge) 32px; }
   .sv-hero-title { margin-bottom: 0; font-size: clamp(50px, 14.2vw, 80px); line-height: 0.9; letter-spacing: -0.052em; text-align: left; }
-  .sv-hero-copy { text-align: left; }
+  .sv-hero-copy { text-align: left; z-index: auto; }
+  /* The headline sits behind the photo (owner, 2026-10-25): the photo is clipped to its window, so
+     at rest nothing overlaps; as the window opens upward it slides over the words and cuts them off
+     while they fade. The copy no longer makes its own layer, so the lead (z 1) stays above the photo. */
+  .sv-hero-title { position: relative; z-index: -2; }
 
   /* The window: the photo layer is clipped to it; the layer itself still spans the stage, so the
      scroll can open the clip out to the edges. */
