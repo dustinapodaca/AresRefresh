@@ -1180,3 +1180,10 @@ $2,000,000 general liability, $1,000,000 workers' compensation and employer's li
 $1,000,000 auto (the patch had $1,000,000, $100,000, and $500,000; fixed in the body and the
 question), and Denver's endorsements, which take a letter from the employer signed by both (the
 patch said the employer makes the request).
+
+## Insights: cost article sources (owner, 2026-10-26)
+- The cost article cited GSA eLibrary, which backs nothing it says (eLibrary is a contract lookup;
+  the choosing and GSA articles keep it, since they tell readers to look a contract up there). Now:
+  Denver's minimum wage ($19.29 in 2026), Colorado's (CDLE, $15.16 in 2026), the Service Contract Act
+  wage determinations, and FAR 8.404, which says GSA has already found schedule prices fair and
+  reasonable and lets agencies ask for discounts (the article's "pre-negotiated ceiling prices").

@@ -38,7 +38,10 @@ const SRC = {
   sam: { label: 'SAM.gov entity registrations', url: 'https://sam.gov' },
   elibrary: { label: 'GSA eLibrary', url: 'https://www.gsaelibrary.gsa.gov/' },
   far84: { label: 'FAR subpart 8.4, Federal Supply Schedules (Acquisition.gov)', url: 'https://www.acquisition.gov/far/subpart-8.4' },
+  // GSA has already found schedule prices fair and reasonable; agencies may still ask for discounts.
+  far8404: { label: 'FAR 8.404, Use of Federal Supply Schedules (Acquisition.gov)', url: 'https://www.acquisition.gov/far/8.404' },
   wageDeterminations: { label: 'Service Contract Act wage determinations (SAM.gov)', url: 'https://sam.gov/content/wage-determinations' },
+  coWage: { label: 'Colorado minimum wage (Colorado Department of Labor and Employment)', url: 'https://cdle.colorado.gov/dlss' },
   denverWage: { label: 'Denver citywide minimum wage (Denver Labor)', url: 'https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage' },
   denverGuards: { label: 'Denver security guard licensing FAQ (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services/Frequently-asked-questions-security-guards' },
   denverSecurity: { label: 'Denver security services licenses (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services' },
@@ -157,7 +160,9 @@ export const INSIGHTS: Insight[] = [
       { q: 'How many officers does a 24/7 security post take?', a: 'A post staffed around the clock is 168 hours a week, the work of more than four full-time officers, before relief for call-outs and vacations.' },
       { q: 'Do federal security contracts set officer wages?', a: 'Usually. Federal service contracts generally fall under the Service Contract Act, which sets wages and benefits for each area from the Department of Labor’s wage determination.' },
     ],
-    sources: [SRC.denverWage, SRC.wageDeterminations, SRC.elibrary],
+    // Each source backs a claim in the article (2026-10-26): the Denver and state minimum wages, the
+    // Service Contract Act wage determinations, and GSA's pre-negotiated schedule prices.
+    sources: [SRC.denverWage, SRC.coWage, SRC.wageDeterminations, SRC.far8404],
     related: [
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
       { label: 'Commercial & Retail', to: '/industries/commercial-property' },
