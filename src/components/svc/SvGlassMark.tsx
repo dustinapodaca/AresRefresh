@@ -18,7 +18,10 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 //
 // Crisp at the end (owner, 2026-10-25): the canvas draws the logo from a bitmap at no more than 2x, so
 // it read soft on a phone. Once the sequence has settled (DONE), the real SVG takes its place, set at
-// the size and spot the canvas leaves it (logoSize x logoScale wide, centered), with a short crossfade.
+// the size and spot the canvas leaves it, with a short crossfade. The canvas shrinks the logo to fit
+// its box (the renderer's fit(): room for the side reflections across, 1.5 tiles down), so the SVG
+// takes the same fit, measured whenever the box changes (owner, 2026-10-25: on a short phone it landed
+// far bigger than the canvas had drawn it).
 const LOGO_SIZE = 288;
 const LOGO_SCALE = 0.93;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
@@ -28,6 +31,19 @@ export default function SvGlassMark() {
   const [paused, setPaused] = useState(true);
   const [shown, setShown] = useState(false);
   const [done, setDone] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  const [fit, setFit] = useState(1);
+
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const measure = () =>
+      setFit(Math.min(1, el.clientWidth / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5)));
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     const pin = new URLSearchParams(window.location.search).get('glass');
@@ -60,7 +76,7 @@ export default function SvGlassMark() {
   }, []);
 
   return (
-    <div className="sv-glass-in" data-shown={shown} data-done={done}>
+    <div ref={box} className="sv-glass-in" data-shown={shown} data-done={done}>
       <LiquidGlassLogo
         ref={glass}
         logo='/images/ares-text.svg'
@@ -72,7 +88,7 @@ export default function SvGlassMark() {
         aria-label='Ares Security'
         style={{ height: '100%', minHeight: 0 }}
       />
-      <span className="sv-glass-crisp" aria-hidden="true" style={{ width: LOGO_SIZE * LOGO_SCALE }} />
+      <span className="sv-glass-crisp" aria-hidden="true" style={{ width: LOGO_SIZE * LOGO_SCALE * fit }} />
     </div>
   );
 }

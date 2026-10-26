@@ -791,7 +791,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     mark alone at its normal size, white on the dark setting, `logoScale` 0.93, no text reveal. The
     ARES / SECURITY text logo (`ares-text.svg`; owner, 2026-10-25, was the mark) on a 288px tile (the
     glass's box runs past the window so the component has room to draw it that size; once the glass
-    has settled, 2.6s in, the real SVG crossfades in over 0.3s at the same size and spot, since the
+    has settled, 2.6s in, the real SVG crossfades in over 0.3s at the same size (the canvas's own fit
+    to its box) and spot, since the
     canvas draws it from a bitmap at 2x and read soft on a phone; owner, 2026-10-25), centered in the
     window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
