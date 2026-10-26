@@ -481,4 +481,22 @@
   /* Hidden until the reader first scrolls; then the glass comes in (SvGlassMark). */
   .sv-glass-in { height: 100%; opacity: 0; transition: opacity 0.2s var(--ds-ease); }
   .sv-glass-in[data-shown='true'] { opacity: 1; }
+  /* The crisp SVG takes over from the canvas once the glass has settled (SvGlassMark). */
+  .sv-glass-in { position: relative; }
+  .sv-glass-crisp {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    aspect-ratio: 576 / 174.87;
+    background: #fff;
+    -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
+    mask: url(/images/ares-text.svg) center / contain no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s var(--ds-ease);
+    pointer-events: none;
+  }
+  .sv-glass-in .liquid-glass-logo { transition: opacity 0.3s var(--ds-ease); }
+  .sv-glass-in[data-done='true'] .sv-glass-crisp { opacity: 1; }
+  .sv-glass-in[data-done='true'] .liquid-glass-logo { opacity: 0; }
 }
