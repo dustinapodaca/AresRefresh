@@ -217,11 +217,10 @@ sizes are unchanged.
   slashed-zero numerals: identifiers, phone
   numbers, the measured figure, rail marks, and the footer's column titles and legal
   line (uppercase only for the column titles). Never prose or headings.
-  Fraktion draws 6% larger than its set size (`size-adjust: 106%` in `src/fonts.css`), so it matches
-  Plex: its lowercase is 6% shorter. Its own zero is dotted, so each use should set the slashed zero
-  (`font-variant-numeric: slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 12px or larger (11px only in tracked capitals,
-  as on the company card), and labels inside drawings are sized to show at about 12px on screen (owner,
-  2026-10-25: at 8.5 to 11.5px it read as shrunk).
+  Its own zero is dotted, so each use should set the slashed zero (`font-variant-numeric:
+  slashed-zero`); the Services page does, the rest of the site not yet. Labels in it are 12px or
+  larger, and labels inside drawings are sized to show at about 12px on screen (owner, 2026-10-25: at
+  8.5 to 11.5px it read as shrunk; text already 12px or larger keeps its size).
 - **Figure:** "<1%" in the data face 400 at clamp(96px, 11vw, 160px), clamp(88px, 8.4vw, 124px) on desktop
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** the data face at 30px, 44px from 640px. The Contact headline carries

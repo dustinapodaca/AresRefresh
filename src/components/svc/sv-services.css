@@ -174,7 +174,7 @@
 /* SVG demos. */
 .svs-svg { display: block; width: 100%; height: auto; max-height: 100%; overflow: visible; }
 .svs-e-zone { fill: rgb(188 111 64 / 0.05); stroke: rgb(188 111 64 / 0.55); stroke-width: 1; stroke-dasharray: 4 4; }
-.svs-e-label, .svs-p-name, .svs-p-time { font-family: var(--ds-data); font-size: 8.5px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
+.svs-e-label, .svs-p-name, .svs-p-time { font-family: var(--ds-data); font-size: 8.8px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
 .svs-p-time { fill: #e9c3a6; font-size: 9px; }
 .svs-e-gate { fill: #0b0b0c; stroke: rgb(255 255 255 / 0.5); }
 .svs-e-path, .svs-p-route { fill: none; stroke: rgb(255 255 255 / 0.28); stroke-width: 1; stroke-dasharray: 2 5; stroke-linecap: round; }
@@ -294,6 +294,5 @@
   .svs-count span { margin-left: auto; font-size: 12px; letter-spacing: 0.04em; }
   /* The drawings render smaller here, so their labels go up to stay about 12px on screen (owner,
      2026-10-25). */
-  .svs-e-label, .svs-p-name { font-size: 11px; }
-  .svs-p-time { font-size: 11.5px; }
+  .svs-e-label, .svs-p-name, .svs-p-time { font-size: 11.5px; }
 }
