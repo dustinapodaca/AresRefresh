@@ -56,7 +56,6 @@ export default function Coverage() {
     const map = root.querySelector<SVGSVGElement>('.nx-cv-svg')!;
     const route = map.querySelector<SVGPathElement>('.nx-cv-route')!;
     const tip = map.querySelector<SVGGElement>('.nx-cv-tip')!;
-    const len = route.getTotalLength();
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -68,14 +67,14 @@ export default function Coverage() {
         start: 'bottom bottom',
         end: 'top 12%',
         scrub: SCRUB,
-        onUpdate: (self) => {
-          const p = route.getPointAtLength(len * Math.min(1, self.progress / 0.86));
-          tip.setAttribute('transform', `translate(${p.x} ${p.y})`);
-        },
       },
     });
     // pathLength 1000, not 1: GSAP rounds px values to whole numbers, so 0 to 1 only jumps.
+    // The tip is a dot-sized dash on the same route, so it rides the line's end by its dash offset:
+    // moving it by a transform made the browser lay the map out again on every frame of the draw,
+    // and a dash offset only repaints (2026-10-26).
     tl.fromTo(route, { strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.86 }, 0)
+      .fromTo(tip.querySelectorAll('path'), { strokeDashoffset: 0 }, { strokeDashoffset: -1000, duration: 0.86 }, 0)
       .fromTo(tip, { opacity: 0 }, { opacity: 1, duration: 0.03 }, 0)
       .to(tip, { opacity: 0, duration: 0.06 }, 0.88)
       .fromTo(map.querySelectorAll('.nx-cv-faint'), { opacity: 0 }, { opacity: 1, duration: 0.12, stagger: 0.04 }, 0.8);
@@ -92,7 +91,7 @@ export default function Coverage() {
         // city hides it again rather than leaving a small ring waiting there).
         .set(g.querySelector('.nx-cv-ping'), { attr: { r: dotR }, opacity: 0.7 }, at + 0.01)
         .to(g.querySelector('.nx-cv-ping'), { attr: { r: ringR * 3 }, opacity: 0, ease: 'power1.out', duration: 0.12 }, at + 0.01)
-        .fromTo(g.querySelector('.nx-cv-ring'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: ringR }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02)
+        .fromTo(g.querySelectorAll('.nx-cv-ring, .nx-cv-halo'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: ringR }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02)
         .fromTo(g.querySelectorAll('.nx-cv-label'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
       // Pikes Peak comes in with Colorado Springs, its mountain (owner, 2026-10-22).
       if (c.hq) tl.fromTo(map.querySelector('.nx-cv-pikes'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
@@ -177,8 +176,8 @@ export default function Coverage() {
             <path d={ROUTE} fill="none" stroke="#2c3037" strokeWidth="1" strokeDasharray="3 5" />
             <path className="nx-cv-route" d={ROUTE} pathLength={1000} fill="none" filter="url(#nx-cv-bloom)" />
             <g className="nx-cv-tip">
-              <circle r="9" fill="#e8965f" opacity="0.25" />
-              <circle r="3.2" fill="#f2b98e" />
+              <path className="nx-cv-tip-glow" d={ROUTE} pathLength={1000} />
+              <path className="nx-cv-tip-dot" d={ROUTE} pathLength={1000} />
             </g>
             <text className="nx-cv-faint nx-cv-mono" x={px(-104.9) + 12} y={py(40.3)}>
               I-25
@@ -204,6 +203,7 @@ export default function Coverage() {
               return (
                 <g key={c.slug} className="nx-cv-pin" data-city={c.slug} data-hq={c.hq || undefined} data-on={active === c.slug || undefined}>
                   <circle className="nx-cv-ping" cx={cx} cy={cy} r={c.hq ? 5.5 : 4.2} />
+                  {c.hq && <circle className="nx-cv-halo" cx={cx} cy={cy} r={15} />}
                   <circle className="nx-cv-ring" cx={cx} cy={cy} r={c.hq ? 15 : 11} />
                   <circle className="nx-cv-dot" cx={cx} cy={cy} r={c.hq ? 5.5 : 4.2} />
                   <text className="nx-cv-label nx-cv-name" x={cx + (c.hq ? 24 : 16)} y={cy + 6}>

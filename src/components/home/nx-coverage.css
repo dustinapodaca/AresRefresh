@@ -57,6 +57,10 @@
 .nx-cv-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .nx-cv-route { stroke: #d9864f; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
 .nx-cv-tip { opacity: 0; pointer-events: none; }
+/* Two dot-sized dashes on the route (round caps make them dots), moved by their dash offset. */
+.nx-cv-tip path { fill: none; stroke-linecap: round; stroke-dasharray: 0.5 2000; }
+.nx-cv-tip-glow { stroke: #e8965f; stroke-opacity: 0.25; stroke-width: 18; }
+.nx-cv-tip-dot { stroke: #f2b98e; stroke-width: 6.4; }
 .nx-cv-mono { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
 .nx-cv-name { font-family: var(--ds-text); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
 .nx-cv-dot { fill: var(--ds-fg); transform-box: fill-box; transform-origin: center; }
@@ -66,19 +70,37 @@
 .nx-cv-pin { transition: opacity 260ms var(--ds-ease); }
 /* The ping that ripples out from a city as the line reaches it (motion only; hidden at rest). */
 .nx-cv-ping { fill: none; stroke: #e8965f; stroke-width: 1.2; opacity: 0; pointer-events: none; }
+.nx-cv-halo { fill: none; stroke: var(--ds-rust); stroke-width: 5; stroke-opacity: 0; pointer-events: none; }
 .nx-cv-pin .nx-cv-ring,
-.nx-cv-pin .nx-cv-dot { transition: r 260ms var(--ds-ease), stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease); }
+.nx-cv-pin .nx-cv-halo,
+.nx-cv-pin .nx-cv-dot { transition: stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease); }
+/* The pin's hover growth eases only while the pointer or focus is on the cities or the map: on all
+   the time, every radius the scroll draw set started a 260ms transition, which kept the map being laid
+   out again frame after frame (2026-10-26). */
+.nx-cv-body:is(:hover, :focus-within) .nx-cv-pin :is(.nx-cv-ring, .nx-cv-halo, .nx-cv-dot) {
+  transition: r 260ms var(--ds-ease), stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease);
+}
 .nx-cv-map[data-active] .nx-cv-pin:not([data-on]) { opacity: 0.28; }
-.nx-cv-pin[data-on] .nx-cv-ring { stroke: #e8965f; r: 22; }
+.nx-cv-pin[data-on] .nx-cv-ring,
+.nx-cv-pin[data-on] .nx-cv-halo { stroke: #e8965f; r: 22; }
 .nx-cv-pin[data-on] .nx-cv-dot { fill: #f2b98e; }
 .nx-cv-pin[data-on] .nx-cv-name { fill: #fff; }
 
+/* The HQ pulse: the ring fades as a wider, fainter halo over it swells in and out, so it reads as
+   the ring thickening away. Fades only: it animated the ring's stroke width, which made the browser
+   lay the map out again on every frame, for as long as the page was open (2026-10-26). */
 @media (prefers-reduced-motion: no-preference) {
   .nx-cv-pin[data-hq] .nx-cv-ring { animation: nx-cv-pulse 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+  .nx-cv-halo { animation: nx-cv-halo 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
 }
 @keyframes nx-cv-pulse {
-  0% { stroke-opacity: 0.9; stroke-width: 1; }
-  70%, 100% { stroke-opacity: 0; stroke-width: 6; }
+  0% { stroke-opacity: 0.9; }
+  70%, 100% { stroke-opacity: 0; }
+}
+@keyframes nx-cv-halo {
+  0% { stroke-opacity: 0; }
+  18% { stroke-opacity: 0.22; }
+  70%, 100% { stroke-opacity: 0; }
 }
 
 @media (max-width: 1023px) {
