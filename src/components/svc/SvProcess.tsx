@@ -88,6 +88,15 @@ export default function SvProcess() {
       const fill = rail.querySelector<HTMLElement>('i')!;
       const tip = rail.querySelector<HTMLElement>('b')!;
       const nodes = Array.from(list.querySelectorAll<HTMLElement>(':scope > .sv-pr-node'));
+      // Stage 03's systems fall in one after another (owner, 2026-10-26), once the stage is well on
+      // screen: when its left edge reaches 45% across, so the cascade plays in view (at the reading
+      // line, 62%, only about 100px of the stage showed). data-sys on the stage; the motion is CSS.
+      const sysIndex = nodes.findIndex((n) => n.querySelector('.sv-pr-syslist'));
+      const SYS_AT = 0.45;
+      const setSys = (on: boolean) => {
+        const n = nodes[sysIndex];
+        if (n && (n.dataset.sys === 'true') !== on) n.dataset.sys = String(on);
+      };
       root.dataset.arm = 'true';
       root.dataset.hpan = 'on';
       let first = 0;
@@ -131,6 +140,7 @@ export default function SvProcess() {
         let padT = 0;
         let run = 1;
         let litAt: number[] = [];
+        let sysAt = 1;
         let doneAt = 1;
         const lit = () => {
           const prog = Math.max(0, Math.min(1, (top - padT - root.getBoundingClientRect().top) / run));
@@ -138,6 +148,7 @@ export default function SvProcess() {
             const on = prog >= litAt[i];
             if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
           });
+          setSys(prog >= sysAt);
           const done = prog >= doneAt;
           if ((root.dataset.done === 'true') !== done) {
             if (done) root.dataset.done = 'true';
@@ -160,6 +171,8 @@ export default function SvProcess() {
           const p0 = Math.max(0, Math.min(1, (base - first) / span));
           const fullAt = Math.max(0, Math.min(1, (span - (base - first)) / k));
           litAt = stops.map((x) => (x - base) / k);
+          // The row moves by dist over the hold, so a stage's left edge is at stops[i] - dist * prog.
+          sysAt = sysIndex < 0 ? 2 : Math.min(1, (stops[sysIndex] - viewW * SYS_AT) / Math.max(1, dist));
           doneAt = (first + 0.999 * span - base) / k;
           sheet.set(
             `@keyframes sv-pr-pan { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(${-dist}px, 0, 0); } }\n` +
@@ -192,7 +205,10 @@ export default function SvProcess() {
           delete root.dataset.arm;
           delete root.dataset.hpan;
           delete root.dataset.done;
-          nodes.forEach((n) => delete n.dataset.lit);
+          nodes.forEach((n) => {
+            delete n.dataset.lit;
+            delete n.dataset.sys;
+          });
           stick.style.top = '';
           runway.style.height = '';
           rail.style.left = '';
@@ -216,6 +232,7 @@ export default function SvProcess() {
           const on = stops[i] <= at;
           if ((n.dataset.lit === 'true') !== on) n.dataset.lit = String(on);
         });
+        if (sysIndex >= 0) setSys(stops[sysIndex] + tx <= viewW * SYS_AT);
         const done = p >= 0.999;
         if ((root.dataset.done === 'true') !== done) {
           if (done) root.dataset.done = 'true';
@@ -252,7 +269,10 @@ export default function SvProcess() {
         delete root.dataset.arm;
         delete root.dataset.hpan;
         delete root.dataset.done;
-        nodes.forEach((n) => delete n.dataset.lit);
+        nodes.forEach((n) => {
+          delete n.dataset.lit;
+          delete n.dataset.sys;
+        });
         for (const el of [fill, tip]) el.style.transform = '';
         tip.style.opacity = '';
         rail.style.left = '';

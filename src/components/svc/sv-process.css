@@ -357,6 +357,22 @@
   /* A stage not yet reached rests at 0.62 and comes up as the line reaches it; no rise. */
   .sv-pr[data-hpan='on'] .sv-pr-node > * { transform: none; transition: opacity 0.3s var(--ds-ease); }
   .sv-pr[data-hpan='on'] .sv-pr-node:not([data-lit='true']) > * { transform: none; }
+
+  /* Stage 03's systems fall into place one after another as the stage comes in (owner, 2026-10-26):
+     when the stage's left edge reaches 45% across (data-sys, SvProcess), each drops 14px from above,
+     in the order they read (--o), 70ms apart;
+     scrolling back lifts them out together, quickly. Motion only (data-hpan); the resolved list and
+     reduced motion show them in place. An owner exception to "no entrance from opacity 0". */
+  .sv-pr[data-hpan='on'] .sv-pr-syslist li {
+    transition: opacity 0.42s var(--ds-ease), transform 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+    transition-delay: calc(0.15s + var(--o, 0) * 0.07s);
+  }
+  .sv-pr[data-hpan='on'] .sv-pr-node:not([data-sys='true']) .sv-pr-syslist li {
+    opacity: 0;
+    transform: translateY(-14px);
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+  }
 }
 
 /* ------------------------------------------------ Desktop: the stage cards in Home's dossier form
@@ -390,10 +406,11 @@
    management, gate and dock controls, intercoms and radios, CCTV, alarm panels (desktop keeps the
    satellites' order). */
 @media (max-width: 1023px) {
-  .sv-pr-syslist li:nth-child(1) { order: 1; }
-  .sv-pr-syslist li:nth-child(3) { order: 2; }
-  .sv-pr-syslist li:nth-child(5) { order: 3; }
-  .sv-pr-syslist li:nth-child(4) { order: 4; }
-  .sv-pr-syslist li:nth-child(2) { order: 5; }
-  .sv-pr-syslist li:nth-child(6) { order: 6; }
+  /* --o: the place each reads in, for the fall-in stagger (2026-10-26). */
+  .sv-pr-syslist li:nth-child(1) { order: 1; --o: 0; }
+  .sv-pr-syslist li:nth-child(3) { order: 2; --o: 1; }
+  .sv-pr-syslist li:nth-child(5) { order: 3; --o: 2; }
+  .sv-pr-syslist li:nth-child(4) { order: 4; --o: 3; }
+  .sv-pr-syslist li:nth-child(2) { order: 5; --o: 4; }
+  .sv-pr-syslist li:nth-child(6) { order: 6; --o: 5; }
 }
