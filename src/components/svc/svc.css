@@ -474,6 +474,7 @@
     right: var(--ds-edge);
     z-index: 1;
     pointer-events: none;
+    translate: 0 -56px; /* the card sits high in the window (owner, 2026-10-25) */
   }
   .sv-glass .liquid-glass-logo { min-height: 0; }
   /* Hidden until the reader first scrolls; then the glass comes in (SvGlassMark). */

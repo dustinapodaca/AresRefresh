@@ -785,8 +785,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     2026-10-25, from the same Cowork work; ReactDrops' Liquid Glass Logo, its license kept in the four
     `src/components/liquid-glass-logo*` files, set up by `svc/SvGlassMark.tsx`):
     nothing shows on load; on the reader's first scroll (owner, 2026-10-25) it drops in once as a
-    glass tile with chromatic edges and holds on the formed frosted tile, the towers showing through,
-    rather than letting the glass clear, and stays over the photo as a glass card while the window
+    glass tile with chromatic edges and holds just as the plate begins to clear (1.2s of its 1.8s;
+    owner, 2026-10-25: the formed frosted tile at 1.16s read too white), a see-through glass card with
+    a clean edge and the crisp mark, set 56px above the window's middle, and stays over the photo as a glass card while the window
     opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the

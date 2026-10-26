@@ -15,7 +15,9 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // glass clears away (chosen from frames 0.4 to 1.3s, 2026-10-25). ?glass=<seconds> pins any moment
 // (dev).
 
-const HOLD = 1.16;
+// 1.2 (owner, 2026-10-25: 1.16 left the tile too white): the plate has begun to clear, so the towers
+// read through it and the mark is crisp, while the tile's edge still holds.
+const HOLD = 1.2;
 
 export default function SvGlassMark() {
   const glass = useRef<LiquidGlassLogoHandle>(null);
