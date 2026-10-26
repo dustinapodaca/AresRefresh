@@ -1141,3 +1141,42 @@ dated October 26, 2026). For the owner to read before launch.
 Imported from a Cowork patch (2026-10-26). One line changed on import: "each license can be
 verified from our city pages" now says the city pages list each number, with a lookup in the city's
 own records for Colorado Springs and Denver (Pueblo has no public record; its page offers a copy).
+
+## Insights: refresh for AI search visibility (2026-10-26)
+
+- Every article can now carry questions (FaqSection with FAQPage JSON-LD, under the article),
+  primary sources (a "Sources" list above Related, external links), and an updated date (shown
+  beside the date as "Updated ..." and sent as the Article's dateModified). The Article JSON-LD
+  also carries the share image.
+- Questions on seven articles (licensing comes with its expansion), from facts already in each
+  article or its sources. The armed article's third answer adds the city firearm rules: Denver
+  and Colorado Springs firearm endorsements on the individual license, Pueblo's armed guard license.
+- Sources on the cost, armed, GSA, and choosing articles: Denver Labor's minimum wage page,
+  SAM.gov wage determinations, GSA eLibrary, FAR 8.4, SAM.gov, the Denver security guard FAQ and
+  security services pages, the Colorado Springs Contract Security Agency License page, and the
+  Pueblo PD guard license application.
+- Related now links each article to its nearest one or two articles, not only service pages.
+- routes.json: the armed and construction descriptions were cut off mid-sentence; rewritten
+  under 160 characters. The armed title is now title case like the others.
+- Six older articles show "Updated October 26, 2026".
+
+## Insights: licensing article expanded (2026-10-26)
+
+`/insights/colorado-security-licensing` (slug unchanged) is now "Security guard licensing in
+Colorado: what each city requires." with the SEO title "Colorado Security Guard License
+Requirements by City". New: the statewide question settled (the state's 2023 sunrise review
+recommended minimum training, not a state license; HB25-1262 postponed indefinitely April 7,
+2025); what Denver, Colorado Springs, and Pueblo each require of companies and officers, armed
+included, from the cities' own pages (Denver's security guard FAQ, the Colorado Springs Contract
+Security Agency License page, the Pueblo PD guard license application); Greeley noted from the
+2023 review; vendor questions on individual licenses and firearm endorsements; a section for
+officers; Ares' three license numbers as on the city pages. Four questions, six sources, related
+adds the armed and choosing articles and Careers. llms.txt and related labels follow the new title.
+Recheck the city rules and HB25 status each January.
+Checked against the sources on import (2026-10-26): Denver's FAQ, the Colorado Springs license
+page, the Pueblo application, the 2023 sunrise review, and HB25-1262 (House Finance, April 7, 2025,
+13-0) all match, except Colorado Springs' insurance minimums, which the city lists as $1,000,000/
+$2,000,000 general liability, $1,000,000 workers' compensation and employer's liability, and
+$1,000,000 auto (the patch had $1,000,000, $100,000, and $500,000; fixed in the body and the
+question), and Denver's endorsements, which take a letter from the employer signed by both (the
+patch said the employer makes the request).

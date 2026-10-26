@@ -16,12 +16,34 @@ export type Insight = {
   /** ISO date and its display form. */
   date: string;
   dateLabel: string;
+  /** The last real content change, when there has been one after publishing (2026-10-26):
+   *  shown beside the date and sent as the Article's dateModified, so refreshes read as fresh. */
+  updated?: string;
+  updatedLabel?: string;
   summary: string;
   body: Block[];
-  /** Optional questions after the article, in the site's questions block with FAQPage
-   *  structured data (owner, 2026-10-26): short answers an assistant can quote whole. */
+  /** Questions under the article, with FAQPage structured data (2026-10-26). Answers repeat
+   *  facts from the body or its sources only. */
   faq?: Faq[];
+  /** Primary sources the article relies on, listed under it (2026-10-26). */
+  sources?: { label: string; url: string }[];
   related: { label: string; to: string }[];
+};
+
+// The refresh that added questions, sources, and related articles to every insight.
+const U = { updated: '2026-10-26', updatedLabel: 'October 26, 2026' };
+
+// Primary sources, shared across articles.
+const SRC = {
+  sam: { label: 'SAM.gov entity registrations', url: 'https://sam.gov' },
+  elibrary: { label: 'GSA eLibrary', url: 'https://www.gsaelibrary.gsa.gov/' },
+  far84: { label: 'FAR subpart 8.4, Federal Supply Schedules (Acquisition.gov)', url: 'https://www.acquisition.gov/far/subpart-8.4' },
+  wageDeterminations: { label: 'Service Contract Act wage determinations (SAM.gov)', url: 'https://sam.gov/content/wage-determinations' },
+  denverWage: { label: 'Denver citywide minimum wage (Denver Labor)', url: 'https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage' },
+  denverGuards: { label: 'Denver security guard licensing FAQ (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services/Frequently-asked-questions-security-guards' },
+  denverSecurity: { label: 'Denver security services licenses (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services' },
+  cosAgency: { label: 'Contract Security Agency License (City of Colorado Springs)', url: 'https://coloradosprings.gov/node/47636' },
+  puebloGuard: { label: 'Security guard license application (Pueblo Police Department)', url: 'https://www.pueblo.us/DocumentCenter/View/29092/Security-Guard--Hack-License-Application' },
 };
 
 const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
@@ -77,21 +99,13 @@ export const INSIGHTS: Insight[] = [
       { p: 'For federal buyers, Ares holds GSA MAS contract 47QSMS25D009Q, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
     faq: [
-      {
-        q: 'Does a security company need a state license in Colorado?',
-        a: 'No. Colorado has no statewide license for security companies or officers. Cities license them instead, including Denver, Colorado Springs, and Pueblo, so check the license for the city your site is in.',
-      },
-      {
-        q: 'What insurance should a security company carry?',
-        a: 'Ask for a certificate of insurance showing general liability and workers’ compensation, with coverage for armed work if the post is armed, and limits that meet your own contracts. Ask to be named as an additional insured if your lease, lender, or contract requires it.',
-      },
-      {
-        q: 'Should a security company visit my site before quoting?',
-        a: 'Yes. A quote sent without a site walk is a guess. The company should see the site first, then propose the posts, hours, duties, and armed or unarmed coverage it needs.',
-      },
+      { q: 'Does a security company need a state license in Colorado?', a: 'No. Colorado has no statewide license for security companies or officers. Cities such as Denver, Colorado Springs, and Pueblo license them instead, so check the license for the city where your site is.' },
+      { q: 'What insurance should a security company carry?', a: 'Ask for a certificate of insurance before the first shift showing general liability and workers’ compensation, with coverage for armed work on an armed post, and limits that meet what your own contracts and insurer require.' },
+      { q: 'Should a security company see my site before quoting?', a: 'Yes. A quote sent without a site walk is a guess. A good company walks the site first, then sends a proposal scoped to its posts, hours, and duties.' },
     ],
+    sources: [SRC.sam, SRC.elibrary, SRC.denverSecurity, SRC.cosAgency],
     related: [
-      { label: 'Security licensing in Colorado', to: '/insights/colorado-security-licensing' },
+      { label: 'Security guard licensing in Colorado', to: '/insights/colorado-security-licensing' },
       { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
       { label: 'Capability Statement', to: '/capability-statement' },
     ],
@@ -106,6 +120,7 @@ export const INSIGHTS: Insight[] = [
     category: 'Buying security',
     date: '2026-10-19',
     dateLabel: 'October 19, 2026',
+    ...U,
     summary: 'The price of a security officer comes down to a handful of choices: the hours, armed or unarmed, a post or a patrol, and what the site asks of the officer. What drives each one, and how to compare quotes.',
     body: [
       { p: 'The price of security comes down to a handful of choices: how many hours the post is staffed, whether the officer is armed, whether the site needs a fixed post or a patrol, and what the site asks of the officer. Two posts with the same title can differ on most of them, which is why we quote each site rather than publish rates.' },
@@ -137,9 +152,17 @@ export const INSIGHTS: Insight[] = [
       ] },
       { p: 'We walk every site before anything is signed, then send a scoped proposal for that site. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
     ],
+    faq: [
+      { q: 'Why doesn’t Ares publish security guard rates?', a: 'Two posts with the same title can differ in hours, armed or unarmed coverage, and duties, so we walk each site and quote it. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
+      { q: 'How many officers does a 24/7 security post take?', a: 'A post staffed around the clock is 168 hours a week, the work of more than four full-time officers, before relief for call-outs and vacations.' },
+      { q: 'Do federal security contracts set officer wages?', a: 'Usually. Federal service contracts generally fall under the Service Contract Act, which sets wages and benefits for each area from the Department of Labor’s wage determination.' },
+    ],
+    sources: [SRC.denverWage, SRC.wageDeterminations, SRC.elibrary],
     related: [
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
       { label: 'Commercial & Retail', to: '/industries/commercial-property' },
+      { label: 'Armed or unarmed security: how to decide', to: '/insights/armed-or-unarmed-security' },
+      { label: 'How to choose a security company in Colorado', to: '/insights/how-to-choose-a-security-company-colorado' },
     ],
   },
   {
@@ -152,6 +175,7 @@ export const INSIGHTS: Insight[] = [
     category: 'Operations',
     date: '2026-10-11',
     dateLabel: 'October 11, 2026',
+    ...U,
     summary: 'Every security roster runs short sometimes. What to arrange before a call-out, an inspection, or a contract change leaves a post empty.',
     body: [
       { p: 'Every security roster runs short sometimes. An officer calls out, a vacation lands on a holiday week, an inspection needs extra posts, or a contract changes hands. The sites that handle it well arranged the coverage before the gap opened.' },
@@ -178,10 +202,16 @@ export const INSIGHTS: Insight[] = [
       { h: 'For prime contractors and other security companies' },
       { p: 'Relief and surge work is often subcontracted. If you hold the contract, check that the subcontractor is licensed in the city where the site is, will work under your post orders, and counts toward your small-business goals. Ares is an SBA-certified woman-owned small business (WOSB250470) and a WBENC-certified Women\u2019s Business Enterprise (WBE2303571), licensed and bonded in Colorado Springs, Denver, and Pueblo.' },
     ],
+    faq: [
+      { q: 'How fast can Ares cover a call-out?', a: 'Posts we already staff are covered the same shift from our relief schedule. A new post usually takes about a week, because every officer trains on the site first.' },
+      { q: 'What is the difference between relief and surge coverage?', a: 'Relief covers a regular post when its officer is out. Surge staffs a short, busy stretch, such as an inspection, an outage or storm event, a construction phase, or a contract transition.' },
+      { q: 'Can a prime contractor subcontract relief coverage?', a: 'Yes. Check that the subcontractor is licensed in the city where the site is, will work under your post orders, and counts toward your small-business goals.' },
+    ],
     related: [
       { label: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
       { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
       { label: 'Teaming & subcontracting', to: '/teaming' },
+      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
     ],
   },
   {
@@ -189,6 +219,7 @@ export const INSIGHTS: Insight[] = [
     title: 'Armed or unarmed security: how to decide.',
     category: 'Buying security',
     ...D,
+    ...U,
     summary: 'Most sites need unarmed officers. Some need armed ones. The difference is what the officer may have to stop, and what the contract, the insurer, and the law require.',
     body: [
       { p: 'Most sites need unarmed officers. Some need armed ones. The difference is not how serious a site is. It is what the officer may have to stop, and what the contract, the insurer, and the law require.' },
@@ -210,9 +241,17 @@ export const INSIGHTS: Insight[] = [
       { h: 'If you are not sure' },
       { p: 'Walk the site with the security company before anything is signed. A good vendor will tell you when unarmed coverage is enough.' },
     ],
+    faq: [
+      { q: 'Do most sites need armed security?', a: 'No. Lobbies, offices, most retail, and construction sites are usually well served by trained, visible unarmed officers. Armed coverage is usually considered for cash handling, high-value or regulated goods, isolated night posts, or a history of violence.' },
+      { q: 'Who decides whether a post must be armed?', a: 'Often the contract, the lease, or the insurer. Some federal posts specify armed officers, and some properties and insurers prohibit firearms on site. Either requirement settles the question.' },
+      { q: 'What does an armed security officer need in Colorado?', a: 'It depends on the city. Denver and Colorado Springs each require a firearm endorsement on the officer’s individual license, backed by a firearms training certificate. Pueblo issues an armed guard license that requires firearms training on top of basic guard training.' },
+    ],
+    sources: [SRC.denverGuards, SRC.cosAgency, SRC.puebloGuard],
     related: [
       { label: 'Armed Security Officers', to: '/services/armed-security-officers' },
       { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
+      { label: 'Security guard licensing in Colorado', to: '/insights/colorado-security-licensing' },
+      { label: 'How much do security guards cost in Colorado?', to: '/insights/security-guard-cost-colorado' },
     ],
   },
   {
@@ -220,6 +259,7 @@ export const INSIGHTS: Insight[] = [
     title: 'What a post order is, and why every site needs one.',
     category: 'Operations',
     ...D,
+    ...U,
     summary: 'A post order is the written instruction set for one security post. It is how a site gets the same coverage on every shift, whoever is standing the post.',
     body: [
       { p: 'A post order is the written instruction set for one security post. It is how a site gets the same coverage on every shift, whoever is standing the post.' },
@@ -238,9 +278,15 @@ export const INSIGHTS: Insight[] = [
       { h: 'Keep it current' },
       { p: 'A post order is only as good as its last update. Change it when gates, hours, tenants, or contacts change, and retrain the officers who stand the post.' },
     ],
+    faq: [
+      { q: 'What is a security post order?', a: 'The written instruction set for one security post: its location and hours, the duties in order, access rules, patrol routes and checkpoints, who to call for each kind of problem, and what to report.' },
+      { q: 'Who writes post orders?', a: 'The security company writes them with the client. The client knows the site and its rules; the security company turns them into instructions an officer can follow on any shift.' },
+      { q: 'How often should post orders be updated?', a: 'Whenever gates, hours, tenants, or contacts change, with the officers who stand the post retrained on the change.' },
+    ],
     related: [
       { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
       { label: 'Access Control Officers', to: '/services/access-control' },
+      { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
     ],
   },
   {
@@ -248,6 +294,7 @@ export const INSIGHTS: Insight[] = [
     title: 'Construction site security: what to cover during a build.',
     category: 'Operations',
     ...D,
+    ...U,
     summary: 'An active build is open in ways a finished building is not. What to cover at the gate, on the perimeter, and after hours, and how coverage should change as the site does.',
     body: [
       { p: 'An active build is open in ways a finished building is not. Fences move, gates change, and equipment and materials sit on the ground overnight. Most theft and trespass happen in the hours nobody is there.' },
@@ -260,9 +307,15 @@ export const INSIGHTS: Insight[] = [
       { h: 'Change coverage as the site changes' },
       { p: 'A build at excavation needs different coverage than a build at fit-out. Revisit the post orders and staffing whenever gates, hours, or the value on site change.' },
     ],
+    faq: [
+      { q: 'When does construction site theft usually happen?', a: 'Most theft and trespass on a build happen after hours, when nobody is on site. That is when an officer on post or a scheduled patrol matters most.' },
+      { q: 'Does a construction site need a guard or a patrol?', a: 'It depends on the phase and the value on site. A staffed gate controls who enters during work hours; after hours, a site needs an officer on post or a patrol that checks it on a schedule and responds to alarms. Many builds use both at different phases.' },
+      { q: 'What should a construction gate officer log?', a: 'Every person, vehicle, and delivery that enters, checked against a list, with the time.' },
+    ],
     related: [
       { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
+      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
     ],
   },
   {
@@ -270,6 +323,7 @@ export const INSIGHTS: Insight[] = [
     title: 'How agencies can buy security services through a GSA Schedule.',
     category: 'Buying security',
     ...D,
+    ...U,
     summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated ceiling prices through streamlined procedures. How it works, and how to check a vendor.',
     body: [
       { p: 'The GSA Multiple Award Schedule (MAS) is a set of long-term, government-wide contracts with pre-negotiated ceiling prices. Security guard and patrol services sit under SIN 561612.' },
@@ -286,39 +340,91 @@ export const INSIGHTS: Insight[] = [
       { h: 'Ares on the schedule' },
       { p: 'Ares holds GSA MAS contract 47QSMS25D009Q under SIN 561612, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
+    faq: [
+      { q: 'Which GSA Schedule SIN covers security guard services?', a: 'SIN 561612 under the GSA Multiple Award Schedule covers security guard and patrol services.' },
+      { q: 'Does an agency need full and open competition to order from a GSA Schedule?', a: 'No. Orders follow the procedures in FAR subpart 8.4, often through a request for quotes sent to schedule holders on GSA eBuy, and agencies can still ask for a price reduction on a specific order.' },
+      { q: 'Can GSA Schedule orders be set aside for small businesses?', a: 'Yes. Agencies may set aside orders under the schedule for small businesses, including women-owned small businesses, at their discretion.' },
+    ],
+    sources: [SRC.far84, SRC.elibrary, SRC.sam],
     related: [
       { label: 'Government & Defense', to: '/industries/government-defense' },
       { label: 'Capability Statement', to: '/capability-statement' },
+      { label: 'How to choose a security company in Colorado', to: '/insights/how-to-choose-a-security-company-colorado' },
     ],
   },
   {
+    // Expanded 2026-10-26 for AI search: the article now answers what each city requires of
+    // companies and officers, from the cities' own pages, and settles the statewide question with
+    // the state's 2023 sunrise review and HB25-1262 (postponed indefinitely, April 7, 2025). The
+    // slug stays; the title now names the guard license, the way people search for it.
     slug: 'colorado-security-licensing',
-    title: 'Security licensing in Colorado: why the city matters.',
+    title: 'Security guard licensing in Colorado: what each city requires.',
     category: 'Licensing',
     ...D,
-    summary: 'Colorado has no statewide license for security companies or officers. Cities license them instead, so the right license depends on where your site is.',
+    ...U,
+    summary: 'Colorado has no statewide security license. Denver, Colorado Springs, and Pueblo license security companies and individual officers themselves. What each city requires, including for armed officers, and how to check.',
     body: [
-      { p: 'Colorado has no statewide license for security companies or security officers. Instead, several cities license security themselves, so the license that matters depends on where your site is.' },
-      { h: 'How the three biggest Front Range cities do it' },
+      { p: 'Colorado has no statewide license for security companies or security officers. Cities license them instead, so the rules that apply depend on where the post is. Denver, Colorado Springs, and Pueblo each license the individual officer, and each has its own training, background, and firearm rules.' },
+      { h: 'Is there a statewide security license?' },
+      { p: 'No. In 2023 the state’s Office of Policy, Research and Regulatory Reform studied a request to license security guards statewide. It did not recommend a state license; it recommended standard minimum training instead. A 2025 bill to create state licenses, HB25-1262, was postponed indefinitely in committee in April 2025 and did not become law. For now, the city is the licensing authority.' },
+      { h: 'Denver' },
       { list: [
-        'Denver issues a Private Security Employer license to companies.',
-        'Colorado Springs issues a Contract Security Agency license.',
-        'Pueblo licenses security through the Pueblo Police Department.',
+        'Security companies need a Private Security Employer license. A guard’s firearm, plainclothes, or explosive-detection canine endorsement needs a letter from the guard’s employer, signed by both.',
+        'Each officer needs an individual security guard license before starting work.',
+        'A new license takes a 16-hour course from an eligible training provider, and each renewal an 8-hour refresher. Both cover a guard’s duties, communication, working with law enforcement, and use of force.',
+        'Applicants need an FBI background check, five years of employment or education history, and a certificate of physical and mental fitness from a physician, physician assistant, or registered nurse.',
+        'An armed officer needs a firearm endorsement: at least five hours of classroom instruction and three hours of live fire, taught by a POST- or NRA-certified instructor, with a range score of at least 80% within the last six months. It renews every year.',
       ] },
-      { p: 'Some other cities may license security too. If your site is somewhere else, check with that city before you hire.' },
+      { h: 'Colorado Springs' },
+      { list: [
+        'Companies that provide officers on contract need a Contract Security Agency license, renewed every year. The agency must carry commercial general liability of $1,000,000/$2,000,000, workers’ compensation and employer’s liability of $1,000,000, and automobile liability of $1,000,000, with the city as certificate holder.',
+        'Each officer needs a Private Security Officer license, renewed every year, with a background check, a certificate from a security officer training program, and a request for issuance from the agency.',
+        'Carrying a firearm takes a firearm endorsement, backed by a firearm safety and familiarization course. Concealed carry and conducted energy weapons each take their own endorsement.',
+        'Any firearm or conducted energy weapon discharge must be reported by the end of the next business day.',
+      ] },
+      { h: 'Pueblo' },
+      { list: [
+        'The Pueblo Police Department licenses security guards, with separate unarmed and armed licenses.',
+        'An unarmed license takes a basic security guard training certificate from an approved training company, two reference letters from local residents, fingerprints, and a records check. A felony in the last 10 years is grounds for denial.',
+        'An armed license adds a firearms training certificate.',
+        'Licenses expire on December 31 of the year they are issued, so Pueblo guards renew every year.',
+      ] },
+      { h: 'Other cities' },
+      { p: 'The state’s 2023 review also found Greeley licensing security guards. Other cities may license security too, or change their rules, so check with the city where your site is before you hire.' },
       { h: 'What to ask a vendor' },
       { list: [
-        'Its license number in the city where your site is, and where you can verify it.',
+        'Its company license number in the city where your site is, and where you can verify it.',
+        'Whether every officer it would send holds an individual license in that city.',
+        'For an armed post, whether each officer holds a current firearm endorsement or armed license.',
         'Whether it is bonded and insured for armed or unarmed work, as your post requires.',
         'Who trains its officers, and whether it is an approved training provider in that city.',
       ] },
+      { h: 'For officers: do you need a license to work security in Colorado?' },
+      { p: 'In Denver, Colorado Springs, and Pueblo, yes. You need the city’s individual license before you stand a post there, and a firearm endorsement or armed license to carry on duty. The training comes first, from a provider the city approves; some security companies, Ares included, are approved providers.' },
       { h: 'Ares’ licenses' },
-      { p: 'Ares is licensed and bonded for armed and unarmed security, and is a training provider for armed and unarmed officers, in Colorado Springs, Denver, and Pueblo. Each license is listed on our city pages, with a way to verify it or request a copy.' },
+      { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs (Contract Security Agency license 0850744L), Denver (Private Security Employer license 2021-BFN-0001984), and Pueblo (merchant patrol and security license 26422, through the Pueblo Police Department), and is an approved training provider for armed and unarmed officers in all three cities. Each license is listed on our city pages, with a way to verify it or request a copy.' },
+    ],
+    faq: [
+      { q: 'Does Colorado have a statewide security guard license?', a: 'No. Colorado has no statewide license for security companies or officers. A 2025 bill to create one, HB25-1262, was postponed indefinitely in committee and did not become law. Cities such as Denver, Colorado Springs, and Pueblo license security themselves.' },
+      { q: 'How many training hours does a Denver security guard license take?', a: 'A 16-hour course from an eligible training provider for a new license, and an 8-hour refresher for each renewal. An armed officer’s firearm endorsement adds at least five hours of classroom instruction and three hours of live fire.' },
+      { q: 'What insurance does Colorado Springs require of a security company?', a: 'A contract security agency must carry commercial general liability of $1,000,000/$2,000,000, workers’ compensation and employer’s liability of $1,000,000, and automobile liability of $1,000,000, with the City of Colorado Springs as certificate holder.' },
+      { q: 'Who issues security guard licenses in Pueblo?', a: 'The Pueblo Police Department, with separate unarmed and armed licenses. Licenses expire on December 31 of the year they are issued.' },
+    ],
+    sources: [
+      SRC.denverGuards,
+      SRC.denverSecurity,
+      SRC.cosAgency,
+      SRC.puebloGuard,
+      { label: '2023 Sunrise Review: Private Security Guards (Colorado DORA, COPRRR)', url: 'https://coprrr.colorado.gov/sites/coprrr/files/documents/2023-Sunrise-Private-Security-Guards.pdf' },
+      { label: 'HB25-1262, Regulate Private Security Officers & Agencies (Colorado General Assembly)', url: 'https://leg.colorado.gov/bills/hb25-1262' },
     ],
     related: [
       { label: 'Colorado Springs', to: '/locations/colorado-springs' },
       { label: 'Denver', to: '/locations/denver' },
       { label: 'Pueblo', to: '/locations/pueblo' },
+      { label: 'Armed or unarmed security: how to decide', to: '/insights/armed-or-unarmed-security' },
+      { label: 'How to choose a security company in Colorado', to: '/insights/how-to-choose-a-security-company-colorado' },
+      { label: 'Careers', to: '/careers' },
     ],
   },
 ];

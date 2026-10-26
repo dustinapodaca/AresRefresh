@@ -24,7 +24,10 @@ export default function InsightPage() {
     headline: a.title.replace(/\.$/, ''),
     description: a.summary,
     datePublished: a.date,
-    dateModified: a.date,
+    // The last real content change (2026-10-26), so a refreshed article reads as fresh.
+    dateModified: a.updated ?? a.date,
+    // The site's share image; Article results want one (2026-10-26).
+    image: `${HOST}/images/og/ares-security.jpg`,
     // The articles' author (owner, 2026-10-19): the same Person as in index.html's JSON-LD.
     author: { '@type': 'Person', '@id': `${HOST}/#dustin-apodaca`, name: 'Dustin Apodaca', sameAs: [AUTHOR_LINKEDIN] },
     publisher: { '@id': `${HOST}/#localbusiness` },
@@ -40,6 +43,7 @@ export default function InsightPage() {
         <p className="ds-data ds-mk-article-meta">
           <span>{a.category}</span>
           <time dateTime={a.date}>{a.dateLabel}</time>
+          {a.updated && <time dateTime={a.updated}>Updated {a.updatedLabel}</time>}
           <a href={AUTHOR_LINKEDIN} target="_blank" rel="noopener noreferrer" className="ds-link" aria-label="Dustin Apodaca on LinkedIn (new tab)">
             Dustin Apodaca
             <Arrow external size={12} />
@@ -56,6 +60,22 @@ export default function InsightPage() {
             ),
           )}
         </div>
+        {/* Primary sources (2026-10-26): the checkable record behind the article. */}
+        {a.sources && a.sources.length > 0 && (
+          <div className="ds-mk-article-related">
+            <p className="ds-mk-article-related-title">Sources</p>
+            <ul>
+              {a.sources.map((s) => (
+                <li key={s.url}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="ds-link">
+                    {s.label}
+                    <Arrow external size={14} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="ds-mk-article-related">
           <p className="ds-mk-article-related-title">Related</p>
           <ul>
@@ -72,9 +92,14 @@ export default function InsightPage() {
         <JsonLd data={ld} />
       </article>
 
+      {/* The article's questions (2026-10-26), with FAQPage structured data. */}
+      {a.faq && a.faq.length > 0 && (
+        <div className="ds-container">
+          <FaqSection items={a.faq} />
+        </div>
+      )}
+
       <div className="ds-container">
-        {/* The article's questions, where it has them (owner, 2026-10-26). */}
-        {a.faq?.length ? <FaqSection items={a.faq} /> : null}
         <nav className="ds-mk-sec" aria-labelledby="mk-more">
           <h2 id="mk-more" className="ds-display-md">More insights.</h2>
           <RouteRow label="More insights" items={others.map((o) => ({ to: `/insights/${o.slug}`, title: o.title.replace(/\.$/, ''), line: o.category }))} />
