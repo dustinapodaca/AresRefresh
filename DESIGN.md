@@ -276,11 +276,11 @@ sizes are unchanged.
     counts every section (the close was removed, owner, 2026-10-06). With nothing
     on the side, Services drops the rail column: its sections run the full container,
     centered like the opening (owner, 2026-10-05).
-  - `counter` (About): the section number in the data face at 72px, rolling up into place
+  - `counter` (About until 2026-10-25, unused since; About now draws `ticks`, owner): the section number in the data face at 72px, rolling up into place
     (260ms) when it changes, `/ 04` beside it, the name beneath, and a 24px bar per
     section to jump with.
-  - `ticks` (the earlier Capability Statement, unused since 2026-10-24; the live page has its own rail
-    and phone bar): a column of 1px dashes, one per ~360px of each section
+  - `ticks` (About since 2026-10-25, owner: "lines like a book"; was the earlier Capability Statement's,
+    whose live page has its own rail and phone bar): a column of 1px dashes, one per ~360px of each section
     (3 to 9, the first longer); dashes already read turn ink muted and the current one is
     the rust tick. Only the current label shows at rest; all show on hover or focus.
 - **Running head (below 1200px):** a 36px strip fixed under the header showing the

@@ -23,7 +23,7 @@ export default function About() {
           <Heard />
           <People />
         </div>
-        <DocRail marks={ABOUT_MARKS} variant="counter" />
+        <DocRail marks={ABOUT_MARKS} variant="ticks" />
       </div>
     </main>
   );

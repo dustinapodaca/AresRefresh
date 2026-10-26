@@ -5,11 +5,11 @@ export type Mark = { id: string; n: string; label: string };
 // How the desktop rail is drawn. Every page shares the marks, the active section, and the
 // mobile running head; each redesigned page has its own form (DESIGN.md, "The document rail").
 //  rail     Home: mono marks on a track with the rust tick.
-//  ticks    Capability Statement: a column of dashes sized to each section; read dashes
+//  ticks    About (was the earlier Capability Statement): a column of dashes sized to each section; read dashes
 //           light, the current one is rust, labels show on hover.
 //  dock     Services: a bar fixed at the bottom center, a segment per section filling
 //           as you read, like the page's own stage meter.
-//  counter  About: the section number large, rolling to the next, with its name and bars.
+//  counter  (unused; was About): the section number large, rolling to the next, with its name and bars.
 //  list     Careers: the section names in Inter, dimmed, the current one in ink with a
 //           small dot that moves to it (Intercom's list on Mobbin).
 export type RailVariant = 'rail' | 'ticks' | 'dock' | 'counter' | 'list';
