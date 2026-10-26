@@ -95,11 +95,25 @@ export default function SvHero() {
     document.fonts?.ready.then(schedule);
     const ro = new ResizeObserver(schedule);
     ro.observe(stage);
+    // Through the opener, follow every frame: the post rises 16px into place (1.7s to 2.6s) after the
+    // wires were first measured, so they ended 16px low and snapped up on the first cursor move
+    // (owner, 2026-10-25). Once more when its rise ends, in case a frame was missed.
+    const until = performance.now() + 3200;
+    let follow = requestAnimationFrame(function step(t) {
+      draw();
+      follow = t < until ? requestAnimationFrame(step) : 0;
+    });
+    const onRise = (e: TransitionEvent) => {
+      if (e.target === post && e.propertyName === 'transform') schedule();
+    };
+    post.addEventListener('transitionend', onRise);
     // __draw redraws now, for callers that just moved the nodes (the cursor drift, the scroll scene);
     // __redraw waits for the next frame.
     Object.assign(root, { __redraw: schedule, __draw: draw });
     return () => {
       cancelAnimationFrame(raf);
+      cancelAnimationFrame(follow);
+      post.removeEventListener('transitionend', onRise);
       ro.disconnect();
     };
   }, []);
