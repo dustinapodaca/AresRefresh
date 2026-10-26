@@ -1215,3 +1215,7 @@ acceptable credential and meets the requirements for unescorted access", comes f
 being visited (no DoD affiliation, no escorting), and stays in reasonable visual contact; ratios and
 training are left to the installation's security office. Fitness is described as the guide does (a
 review of records), not "criminal and terrorism databases". The DoD guide was added as a source.
+Owner exception (2026-10-26): the escort article's "Colorado installations" paragraph names the Front
+Range bases (Peterson, Schriever, Buckley, Cheyenne Mountain, Fort Carson, the Air Force Academy) as
+general context. Ares' own base stays unnamed; the preship check's "installations stay unnamed"
+warnings on that page are expected.
