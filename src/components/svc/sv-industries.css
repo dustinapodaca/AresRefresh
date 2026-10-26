@@ -73,112 +73,69 @@
 .sv-ind-track[data-dragging='true'] { cursor: grabbing; scroll-snap-type: none; }
 .sv-ind-track[data-dragging='true'] .sv-ind-link { pointer-events: none; }
 
-.sv-ind-card { flex: 0 0 clamp(300px, 27vw, 400px); scroll-snap-align: start; }
-.sv-ind-link {
+/* Each industry: an open column, no box (AI-tells pass, owner 2026-10-25; after Dropbox's and
+   Beside's industry rows on Mobbin). The photo with the site's photo edge and nothing over it, then
+   on the black: the name, its one line in full, the sites as a plain line, and the way to the page. */
+.sv-ind-card { flex: 0 0 clamp(300px, 27vw, 400px); scroll-snap-align: start; display: flex; }
+/* The way in sits at the foot of every column, so the six line up. */
+.sv-ind-link { flex: 1 1 auto; display: flex; flex-direction: column; color: var(--ds-fg); text-decoration: none; }
+.sv-ind-photo {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 5;
-  border-radius: 6px;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
   overflow: hidden;
   background: #0b0c0e;
-  color: var(--ds-fg);
-  text-decoration: none;
-  isolation: isolate;
 }
-/* A thin rim over everything, so the card's edge reads on black. */
-.sv-ind-link::after {
-  content: '';
+/* The site's photo edge: a 1px hairline, inset. */
+.sv-ind-photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
+.sv-ind-photo img {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12);
-  pointer-events: none;
-  transition: box-shadow 0.3s var(--ds-ease);
-}
-.sv-ind-photo { position: absolute; inset: 0; overflow: hidden; }
-.sv-ind-photo img {
   width: 100%;
   max-width: none;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.78) brightness(0.8);
-  transform: scale(1.02);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s var(--ds-ease);
+  filter: saturate(0.78) brightness(0.84);
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   -webkit-user-drag: none;
   user-select: none;
 }
-.sv-ind-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.42) 0%, rgb(0 0 0 / 0) 24%, rgb(0 0 0 / 0) 42%, rgb(0 0 0 / 0.82) 78%, rgb(0 0 0 / 0.9) 100%);
-  transition: background-color 0.5s var(--ds-ease);
-}
-
-/* The caption at the foot; its extra rows (sites and the way in) open on hover or focus. */
-.sv-ind-cap { position: absolute; left: 20px; right: 20px; bottom: 20px; display: grid; gap: 8px; }
 .sv-ind-name {
+  margin-top: 20px;
   font-family: var(--ds-display);
   font-weight: 600;
-  font-size: clamp(22px, 1.9vw, 28px);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(22px, 1.8vw, 26px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
-.sv-ind-body {
-  font-size: 14px;
-  line-height: 1.45;
-  color: rgb(238 240 242 / 0.74);
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* was 2: the Government & Defense line ends on its crews on base (2026-10-25) */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.sv-ind-more {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition: grid-template-rows 0.45s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.3s var(--ds-ease);
-}
-.sv-ind-more-in { min-height: 0; overflow: hidden; display: grid; }
-.sv-ind-covers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px 14px;
-  padding-top: 10px;
-  border-top: 1px solid rgb(255 255 255 / 0.14);
-  margin-top: 4px;
-  font-family: var(--ds-data);
-  font-variant-numeric: tabular-nums slashed-zero;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  color: rgb(238 240 242 / 0.7);
-}
-.sv-ind-covers > span { display: inline-flex; align-items: center; gap: 7px; }
-.sv-ind-covers > span::before { content: ''; width: 4px; height: 4px; border-radius: 1px; background: var(--ds-rust); }
+.sv-ind-short { margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
+.sv-ind-sites { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ds-fg-faint); max-width: 40ch; }
 .sv-ind-open {
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 18px;
   font-size: 15px;
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: rgb(255 255 255 / 0.3);
-  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--ds-rule-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.18s var(--ds-ease);
 }
-.sv-ind-open .ds-arrow { transition: transform 0.18s var(--ds-ease), color 0.18s; }
+.sv-ind-open .ds-arrow { transition: transform 0.18s var(--ds-ease), color 0.18s var(--ds-ease); }
 
-.sv-ind-link:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
-.sv-ind-link:focus-visible .sv-ind-more,
-.sv-ind-link:focus-within .sv-ind-more { grid-template-rows: 1fr; opacity: 1; }
+.sv-ind-link:focus-visible { outline: none; }
+.sv-ind-link:focus-visible .sv-ind-photo { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
+/* One response to the pointer: the photo eases up 2% in its frame, the link underlines in ink, the
+   arrow nudges. Mouse only. */
 @media (hover: hover) and (pointer: fine) {
-  .sv-ind-link:hover .sv-ind-more { grid-template-rows: 1fr; opacity: 1; }
-  .sv-ind-link:hover .sv-ind-photo img { transform: scale(1.07); filter: saturate(0.88) brightness(0.72); }
-  .sv-ind-link:hover::after { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.24), inset 0 1px 0 rgb(255 255 255 / 0.2); }
+  .sv-ind-link:hover .sv-ind-photo img { transform: scale(1.02); }
+  .sv-ind-link:hover .sv-ind-open { text-decoration-color: var(--ds-fg); }
   .sv-ind-link:hover .sv-ind-open .ds-arrow { transform: translateX(3px); color: var(--ds-rust); }
-}
-/* Touch has no hover: the sites and the link stay open. */
-@media (hover: none) {
-  .sv-ind-more { grid-template-rows: 1fr; opacity: 1; }
 }
 
 @media (max-width: 1023px) {
@@ -188,85 +145,11 @@
   .sv-ind-card { flex-basis: min(78vw, 400px); }
   .sv-ind-track { cursor: auto; }
 }
-/* The phone site file's own parts, hidden elsewhere. */
-.sv-ind-short { display: none; }
-
-/* ------------------------------------------------ Phones: the site file (owner, 2026-10-23)
-   Words never sit on the photo. The card is the site's card surface; the photo is a plate inside it;
-   the site types hang on a wire like the hero's nodes. (Crop marks and the numbered bar were removed,
-   owner 2026-10-25.) */
 @media (max-width: 767px) {
-  .sv-ind-card { display: flex; flex-basis: min(84vw, 400px); }
-  .sv-ind-link {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    aspect-ratio: auto;
-    padding: 12px 12px 0;
-    border-radius: 4px;
-    background: var(--ds-card, #060708);
-  }
-  .sv-ind-link::after { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.12); }
-
-  /* The photo as a plate, nothing over it. */
-  .sv-ind-photo { position: relative; inset: auto; aspect-ratio: 16 / 10; border-radius: 2px; }
-  .sv-ind-photo img { position: absolute; inset: 0; filter: saturate(0.82) brightness(0.9); transform: none; }
-  .sv-ind-shade { display: none; }
-
-  /* The words on the card. */
-  .sv-ind-cap { position: static; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0; padding: 18px 8px 0; }
-  .sv-ind-name { font-size: 23px; }
-  .sv-ind-body { display: none; }
-  .sv-ind-short { display: block; margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: var(--ds-fg-muted); }
-  .sv-ind-more, .sv-ind-more-in { display: flex; flex-direction: column; flex: 1 1 auto; opacity: 1; overflow: visible; }
-
-  /* The site types on a wire, a node at each. */
-  .sv-ind-covers {
-    position: relative;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 11px;
-    margin: 18px 0 0;
-    padding: 4px 0 4px 22px;
-    border-top: 0;
-    font-size: 13px;
-    color: rgb(238 240 242 / 0.82);
-  }
-  .sv-ind-covers::before,
-  .sv-ind-covers::after { content: ''; position: absolute; left: 3px; top: 0; bottom: 0; width: 1px; background: rgb(255 255 255 / 0.16); transform-origin: top; }
-  .sv-ind-covers::after { background: var(--ds-rust); }
-  .sv-ind-covers > span { position: relative; }
-  .sv-ind-covers > span::before {
-    position: absolute;
-    left: -22px;
-    top: 50%;
-    width: 7px;
-    height: 7px;
-    margin-top: -3.5px;
-    border-radius: 1px;
-    background: var(--ds-rust);
-    box-shadow: 0 0 0 3px var(--ds-card, #060708);
-    transition: background-color 0.24s var(--ds-ease), box-shadow 0.24s var(--ds-ease);
-  }
-
-  /* The way in, at the foot of every card (all six the same height). */
-  .sv-ind-more-in { gap: 0; }
-  .sv-ind-covers { margin-bottom: 22px; }
-  .sv-ind-open {
-    margin: auto -8px 0;
-    padding: 16px 8px 18px;
-    border-top: 1px solid rgb(255 255 255 / 0.1);
-    text-decoration: none;
-  }
-
-  /* Armed after mount: each card waits with its marks out and its wire undrawn, then, as it
-     settles in view, the wire draws down, lighting each node in turn. */
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers::after { transform: scaleY(0); }
-  .sv-ind[data-arm='true'] .sv-ind-card:not([data-live]) .sv-ind-covers > span::before { background: var(--ds-card, #060708); box-shadow: 0 0 0 3px var(--ds-card, #060708), inset 0 0 0 1px rgb(255 255 255 / 0.3); }
-  .sv-ind[data-arm='true'] .sv-ind-card[data-live] .sv-ind-covers::after { transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.2s; }
-  .sv-ind[data-arm='true'] .sv-ind-card[data-live] .sv-ind-covers > span::before { transition-delay: calc(0.3s + var(--k) * 0.16s); }
+  .sv-ind-card { flex-basis: min(82vw, 400px); }
+  .sv-ind-name { margin-top: 16px; font-size: 23px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sv-ind-photo img, .sv-ind-more, .sv-ind-bar i, .sv-ind-covers::after, .sv-ind-covers > span::before { transition: none; }
+  .sv-ind-photo img, .sv-ind-bar i, .sv-ind-open .ds-arrow { transition: none; }
 }

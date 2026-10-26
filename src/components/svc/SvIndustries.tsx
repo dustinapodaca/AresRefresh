@@ -4,24 +4,23 @@ import Arrow from '../Arrow';
 import { DIVISIONS } from '../services/data';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
-import { motionAllowed, readIn, useScene, words, SCRUB } from '../home/engine';
+import { readIn, useScene, words, SCRUB } from '../home/engine';
 import './sv-industries.css';
 
-// 02 Industries on /services-next (home-flora, 2026-10-22), after FLORA's "Hear about us." row:
-// dark photo cards with the caption at the foot, in a row that runs off the right edge. The six
-// industries in the owner's order. Hovering or focusing a card lifts its caption to show the sites
-// it covers and the way to its page. The row scrolls on its own (swipe, wheel, drag with the mouse,
-// or the arrows), snaps card by card, and drifts a little to the left as the page scrolls past.
+// 02 Industries (home-flora, 2026-10-22; redrawn 2026-10-25, owner: the AI-tells pass, after the
+// industry rows of Dropbox and Beside on Mobbin). The six industries in the owner's order, in a row that
+// runs off the right edge and scrolls on its own (swipe, wheel, drag with the mouse, or the arrows),
+// snapping card by card. Each industry is an open column, no box and no text on the photo: the
+// photo, the name, its one line in full, the sites it covers as a plain line, and the way to its
+// page. Everything shows at once (no hover reveal); on desktop the row drifts a little to the left
+// as the page scrolls past.
 
 const shortFor = (to?: string) => INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.short;
 
-// Phones (owner, 2026-10-23: the text over the photos was hard to read, and Services should not
-// copy Home's deck): each card is a site file in the page's own node language, after the hero.
-// The photo in its own frame with nothing over it, the name and the industry's short line on the
-// card, the site types on a wire with a node each, and the way to the page at the foot (the numbered
-// bar and crop marks were removed, owner 2026-10-25). As a card settles in the row, the wire draws
-// down, lighting each node. Drawn by default (prerender, no JS, reduced motion);
-// armed after mount. Desktop keeps the caption over the photo.
+// The site types as one sentence-case line: "Military bases, defense contractors, ...". A name
+// that starts with an acronym (HOAs) keeps its capitals.
+const sitesLine = (names: string[]) =>
+  names.map((n, k) => (k === 0 || /^[A-Z]{2}/.test(n) ? n : n.charAt(0).toLowerCase() + n.slice(1))).join(', ');
 
 export default function SvIndustries() {
   const ref = useRef<HTMLElement>(null);
@@ -109,27 +108,6 @@ export default function SvIndustries() {
     };
   }, []);
 
-  // Phones: each card plays once, as most of it comes on screen (the row clips the ones beside it).
-  useEffect(() => {
-    const root = ref.current;
-    if (!root || !motionAllowed() || !window.matchMedia('(max-width: 767px)').matches) return;
-    root.dataset.arm = 'true';
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          (e.target as HTMLElement).dataset.live = 'true';
-          io.unobserve(e.target);
-        }),
-      { threshold: 0.6 },
-    );
-    root.querySelectorAll('.sv-ind-card').forEach((c) => io.observe(c));
-    return () => {
-      io.disconnect();
-      delete root.dataset.arm;
-    };
-  }, []);
-
   const step = (dir: 1 | -1) => {
     const t = trackRef.current;
     const card = t?.querySelector<HTMLElement>('.sv-ind-card');
@@ -202,26 +180,12 @@ export default function SvIndustries() {
                     style={{ objectPosition: d.photo.position ?? '50% 50%' }}
                   />
                 </span>
-                <span className="sv-ind-shade" aria-hidden="true" />
-                <span className="sv-ind-cap">
-                  <span className="sv-ind-name">{d.title}</span>
-                  <span className="sv-ind-body">{d.body}</span>
-                  {shortFor(d.page?.to) && <span className="sv-ind-short">{shortFor(d.page?.to)}</span>}
-                  <span className="sv-ind-more">
-                    <span className="sv-ind-more-in">
-                    <span className="sv-ind-covers">
-                      {d.covers.map((c, k) => (
-                        <span key={c.name} style={{ ['--k' as string]: k } as React.CSSProperties}>
-                          {c.name}
-                        </span>
-                      ))}
-                    </span>
-                    <span className="sv-ind-open">
-                      Open the page
-                      <Arrow size={16} />
-                    </span>
-                    </span>
-                  </span>
+                <span className="sv-ind-name">{d.title}</span>
+                <span className="sv-ind-short">{shortFor(d.page?.to) ?? d.body}</span>
+                <span className="sv-ind-sites">{sitesLine(d.covers.map((c) => c.name))}</span>
+                <span className="sv-ind-open">
+                  Open the page
+                  <Arrow size={16} />
                 </span>
               </Link>
             </li>

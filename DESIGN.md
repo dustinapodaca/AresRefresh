@@ -770,14 +770,16 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
   keys at the foot. Desktop three by two; phones a swipe row with "01 / 06" and "Swipe for more".
-- **02 The sites we protect.** (`divisions`): the six industries. Desktop: a row of 4:5 photo cards
-  running off the right edge (swipe, wheel, drag, arrows, a progress bar), the name and short line over
-  the photo's foot, hovering lifts the site types and "Open the page"; the row drifts left as the page
-  passes. Phones (below 768px; owner, 2026-10-23: the words over the photos were hard to read): each
-  card a site file in the page's node language, no words on the photo: a mono bar ("01 / 06", the site
-  count), the photo as a 16:10 plate with crop marks, the name and the industry page's short line, the
-  site types on a rust wire with a node each, and "Open the page →" at the foot; all six the same
-  height. As a card settles in view its crop marks close in and the wire draws, lighting each node.
+- **02 The sites we protect.** (`divisions`): the six industries in a row running off the right edge
+  (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes.
+  Redrawn 2026-10-25 (owner: the AI-tells pass; after the industry rows of Dropbox and Beside on
+  Mobbin), the same at every width: each industry an open column with no box and nothing over the
+  photo. The photo (4:3, 4px corners, the hairline photo edge, the stock grade), then on the black:
+  the name (Inter Tight 600), its one line in full (no clipped paragraph), the sites it covers as one
+  plain sentence-case line in ink faint (no mono chips, rust squares, or wire and nodes), and "Open
+  the page →" as the standard underlined link at the foot, so the six line up. Nothing reveals on
+  hover; the one pointer response is the photo easing up 2% in its frame, the underline turning ink,
+  and the arrow nudging (mouse only).
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right, stage 03's six systems as satellites,
   faint phase labels. Phones and tablets with motion (owner, 2026-10-25; was a rail drawing down the
