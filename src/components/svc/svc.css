@@ -468,13 +468,14 @@
   .sv-glass {
     display: block;
     position: absolute;
-    top: var(--wt);
-    bottom: var(--wb);
-    left: var(--ds-edge);
-    right: var(--ds-edge);
+    /* Wider and taller than the window: the component sizes its tile to the room it has, keeping
+       nearly twice the tile's width for the side reflections. The canvas is clear outside the glass. */
+    top: calc(var(--wt) - 40px);
+    bottom: calc(var(--wb) - 40px);
+    left: -40%;
+    right: -40%;
     z-index: 1;
     pointer-events: none;
-    translate: 0 -56px; /* the card sits high in the window (owner, 2026-10-25) */
   }
   .sv-glass .liquid-glass-logo { min-height: 0; }
   /* Hidden until the reader first scrolls; then the glass comes in (SvGlassMark). */

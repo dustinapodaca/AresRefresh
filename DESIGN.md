@@ -787,8 +787,10 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     nothing shows on load; on the reader's first scroll (owner, 2026-10-25) it plays once with
     ReactDrops' own setup (owner, 2026-10-25, replacing a glass card held mid-sequence): the
     sphere-to-tile glass entrance with chromatic edges, then the glass clears and leaves the original
-    mark alone at its normal size, white on the dark setting, `logoScale` 0.93, no text reveal; set
-    56px above the window's middle, it stays over the photo while the window opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
+    mark alone at its normal size, white on the dark setting, `logoScale` 0.93, no text reveal. The
+    ARES / SECURITY text logo (`ares-text.svg`; owner, 2026-10-25, was the mark) on a 288px tile (the
+    glass's box runs past the window so the component has room to draw it that size), centered in the
+    window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or

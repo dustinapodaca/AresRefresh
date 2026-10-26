@@ -6,8 +6,10 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // with ReactDrops' own setup for it (owner, 2026-10-25: "try it like this instead", replacing the
 // glass card held mid-sequence): the sphere-to-tile glass entrance plays through, then the glass
 // clears and leaves the original mark alone at its normal size, white on the dark setting, at
-// logoScale 0.93, with no second text reveal. The page behind is set to black for the shader (its
-// dark-page fade); the canvas stays transparent around the glass, so the towers show.
+// logoScale 0.93, with no second text reveal. The ARES / SECURITY text logo (owner, 2026-10-25; was
+// the mark), on a 288px tile (was the default 256 fitted down to about 184 by the window's width).
+// The page behind is set to black for the shader (its dark-page fade); the canvas stays transparent
+// around the glass, so the towers show.
 //
 // Nothing shows until the reader first scrolls (owner, 2026-10-25: it came in on load); then it plays
 // once. A page opened already scrolled starts it at once. Reduced motion: the component shows its
@@ -44,7 +46,8 @@ export default function SvGlassMark() {
     <div className="sv-glass-in" data-shown={shown}>
       <LiquidGlassLogo
         ref={glass}
-        logo='/ares-logo.svg'
+        logo='/images/ares-text.svg'
+        logoSize={288}
         ending='logo'
         logoScale={0.93}
         background='#00000000'
