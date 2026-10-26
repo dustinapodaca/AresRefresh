@@ -6,7 +6,6 @@ import { GSA_ELIBRARY } from './links';
 import { responsive } from '../../lib/responsive';
 import { terrainMode } from '../../lib/terrainSupport';
 import { motionAllowed, useScene, SCRUB } from './engine';
-import type { LiquidGlassLogoHandle } from '../liquid-glass-logo/liquid-glass-logo';
 
 // Hero, "The ground" (home-flora, 2026-10-20). One visual, no floating images (owner): the
 // headline is cut out of the black, a window onto the rust terrain moving behind it. Scrolling
@@ -18,14 +17,6 @@ import type { LiquidGlassLogoHandle } from '../liquid-glass-logo/liquid-glass-lo
 // ground is black; white times the ground is the ground. The h1 is real text throughout.
 
 const Topography = lazy(() => import('./Topography'));
-// The title card's mark forms as liquid glass (owner, 2026-10-25; ReactDrops "Liquid Glass Logo"):
-// a droplet becomes a glass tile, then the glass and its waves clear, leaving the white mark at its
-// normal size. Driven by the scroll, not a clock. Loaded only where the scroll scene runs.
-const LiquidGlassLogo = lazy(() => import('../liquid-glass-logo/liquid-glass-logo').then((m) => ({ default: m.LiquidGlassLogo })));
-// The glass sequence's length when it ends on the logo (logoFinishTime in the renderer), and the
-// share of the renderer's logo box the logo fills (logoScale).
-const GLASS_END = 1.8;
-const GLASS_LOGO_SCALE = 0.72;
 const STILL = responsive('/images/hero-topo/terrain-desktop.webp');
 const TEL = 'tel:+17196963966';
 // The most the headline layer is ever scaled on the fly-in (see measure()).
@@ -38,10 +29,6 @@ export default function Hero() {
   const [live, setLive] = useState(false);
   const [wide, setWide] = useState(false);
   const control = useRef<Control>({ current: {} }).current;
-  // The glass mark: on where the scroll scene runs, sized from the title card's mark.
-  const [glass, setGlass] = useState(false);
-  const [markH, setMarkH] = useState(0);
-  const glassRef = useRef<LiquidGlassLogoHandle>(null);
 
   useLayoutEffect(() => {
     const html = document.documentElement;
@@ -51,20 +38,7 @@ export default function Hero() {
     // Arm the load-in before the first paint, only where motion runs; the prerender and reduced
     // motion keep the lit headline from the start.
     if (motionAllowed()) ref.current?.setAttribute('data-arm', 'true');
-    setGlass(motionAllowed());
   }, []);
-
-  // The mark's height, for the glass's logo size (the card is sized in CSS from the window).
-  useEffect(() => {
-    if (!glass) return;
-    const card = ref.current?.querySelector<HTMLElement>('.nx-hero-card');
-    if (!card) return;
-    const read = () => setMarkH(card.offsetHeight);
-    read();
-    const ro = new ResizeObserver(read);
-    ro.observe(card);
-    return () => ro.disconnect();
-  }, [glass]);
 
   // The headline settles in on first paint (CSS); the motion version is armed by the engine.
   useEffect(() => {
@@ -112,12 +86,6 @@ export default function Hero() {
 
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
-      // The glass mark follows the scrubbed timeline: the droplet forms as the card comes up (0.7)
-      // and the mark has settled before the beat ends (0.98), in both directions.
-      onUpdate: () => {
-        const t = Math.max(0, Math.min(1, (tl.time() - 0.7) / 0.28));
-        glassRef.current?.seek(t * GLASS_END);
-      },
       scrollTrigger: {
         trigger: root,
         start: 'top top',
@@ -242,27 +210,7 @@ export default function Hero() {
 
         {/* The title card: the mark, and a second Scroll cue at its lower right (owner, 2026-10-22). */}
         <span className="nx-hero-card" aria-hidden="true">
-          {glass && markH > 0 ? (
-            <Suspense fallback={<span className="nx-hero-logo" />}>
-              <span
-                className="nx-hero-glass"
-                style={{ width: (markH / GLASS_LOGO_SCALE) * 1.9, height: (markH / GLASS_LOGO_SCALE) * 1.5 }}
-              >
-                <LiquidGlassLogo
-                  ref={glassRef}
-                  logo="/images/ares-mark-white.svg"
-                  ending="logo"
-                  theme="dark"
-                  paused
-                  logoSize={Math.round(markH / GLASS_LOGO_SCALE)}
-                  style={{ background: 'transparent', minHeight: 0 }}
-                  aria-label=""
-                />
-              </span>
-            </Suspense>
-          ) : (
-            <span className="nx-hero-logo" />
-          )}
+          <span className="nx-hero-logo" />
           <span className="nx-hero-card-cue ds-data">Scroll</span>
         </span>
         <span className="nx-hero-foot" aria-hidden="true" />

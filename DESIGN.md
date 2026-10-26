@@ -516,12 +516,7 @@ and `nx-*.css` (class prefix `nx-`).
   away, the camera flies into the F of "Front" (the headline layer scaling up to 40x about the F's
   stem while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
   62 and speeding up). Then the Ares mark in white comes up dead center of the screen (owner,
-  2026-10-22: like a title card in a film; since 2026-10-25 it forms as liquid glass, ReactDrops'
-  Liquid Glass Logo in `src/components/liquid-glass-logo/` with its license: a droplet swells into a
-  glass tile with chromatic edge streaks over the land, then the glass and its waves clear to the white
-  mark at its normal size, the sequence scrubbed by the scroll (0.70 to 0.98 of the hero timeline) on a
-  transparent canvas, loaded only where the scroll scene runs, the component's image fallback without
-  WebGL2; `clamp(132px, 24vmin, 260px)`, rising from 0.94; a second vertical mono "Scroll" cue in white 90% sits
+  2026-10-22: like a title card in a film; `clamp(132px, 24vmin, 260px)`, rising from 0.94; a second vertical mono "Scroll" cue in white 90% sits
   at its lower right, its foot level with the mark's, 10 to 18px away, and travels with it) once most of
   the land shows, holds for a beat, and scrolls away with the land as the stage lets go: the land
   dims to 22% as it leaves and a shade rises from its foot, so it melts into the black above 01. The layer carries no `will-change`:
