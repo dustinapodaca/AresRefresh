@@ -522,6 +522,7 @@ function Past() {
           ))}
         </dl>
       </div>
+      <p className="cx-past-more">{PAST_PERFORMANCE.completed}</p>
       <p className="cx-past-refs ds-data">
         <Link to="/contact">References available on request.</Link>
       </p>

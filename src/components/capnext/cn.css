@@ -372,7 +372,8 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
 .cx-status[data-state='current'] i { background: var(--ds-rust); box-shadow: 0 0 8px rgb(188 111 64 / 0.8); }
 .cx-status[data-state='completed'] { color: var(--ds-fg-muted); }
 .cx-status[data-state='completed'] i { background: rgb(255 255 255 / 0.35); box-shadow: none; }
-.cx-past-refs { margin: 18px 0 0; font-size: 13px; color: var(--ds-fg-faint); }
+.cx-past-more { margin: 18px 0 0; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); } /* the PDF's footnote (owner, 2026-10-25) */
+.cx-past-refs { margin: 10px 0 0; font-size: 13px; color: var(--ds-fg-faint); }
 .cx-past-refs a { color: var(--ds-fg-muted); text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 4px; transition: color 0.18s var(--ds-ease), text-decoration-color 0.18s var(--ds-ease); }
 @media (hover: hover) and (pointer: fine) { .cx-past-refs a:hover { color: var(--ds-fg); text-decoration-color: var(--ds-fg); } }
 

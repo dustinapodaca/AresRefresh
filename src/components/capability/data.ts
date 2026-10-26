@@ -31,7 +31,7 @@ export type PastRow = {
   value?: string;
   featured?: boolean;
 };
-export const PAST_PERFORMANCE: { lead: string; leadNext: string; rows: PastRow[] } = {
+export const PAST_PERFORMANCE: { lead: string; leadNext: string; rows: PastRow[]; completed: string } = {
   // $2.1M is Ares revenue 2021 to 2025 from the tax returns (owner), so it reads as revenue,
   // not as a combined contract value.
   lead: 'Selected contracts since 2021. Ares earned more than $2.1 million in revenue from 2021 through 2025. Clients are not named here; references are available on request.',
@@ -40,11 +40,13 @@ export const PAST_PERFORMANCE: { lead: string; leadNext: string; rows: PastRow[]
   // TODO(owner): Deidre to supply the role (prime or subcontractor) for the last three rows and an
   // approximate value for each contract; once set here they render on the redesigned page.
   rows: [
-    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to 2027', status: 'current', role: 'Subcontractor', featured: true },
-    { scope: 'Armed multi-site security', where: 'Denver metro', term: 'Since 2022, through multiple renewals', status: 'current' },
-    { scope: 'Retail security', where: 'Pueblo', term: 'Two years, ongoing', status: 'current' },
-    { scope: 'Seven completed armed security contracts', where: 'Colorado', term: '2021 to 2025', status: 'completed' },
+    // Terms as the PDF has them (owner, 2026-10-25): "2025 to late 2027", "Since <year>".
+    { scope: 'Restricted-area escort and access control', where: 'A Space Force base in Colorado, as a subcontractor on a federal construction program', term: '2025 to late 2027', status: 'current', role: 'Subcontractor', featured: true },
+    { scope: 'Armed multi-site security', where: 'Denver metro, multiple contract renewals', term: 'Since 2022', status: 'current' },
+    { scope: 'Retail security', where: 'Pueblo', term: 'Since 2024', status: 'current' },
   ],
+  // The completed contracts as the PDF's footnote under the list (owner, 2026-10-25; was a row).
+  completed: 'Plus seven completed armed security contracts in Colorado, 2021 to 2025.',
 };
 
 export const PDF_URL = '/files/Ares-Security-Capability-Statement-2026.pdf';
