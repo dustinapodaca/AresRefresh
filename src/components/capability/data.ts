@@ -147,7 +147,7 @@ export const CAPABILITIES: Capability[] = [
     title: 'Mobile Patrol',
     line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
     // Owner, 2026-10-25: no alarm response; lead with the patrol cars.
-    keys: ['Ares patrol cars', 'Set routes', 'GPS-verified'],
+    keys: ['Patrol cars', 'Routes', 'GPS-verified'], // short enough for one line on every card (owner)
     includes: [
       { name: 'Marked-vehicle patrol', detail: 'Ares-marked patrol cars, a visible deterrent on every pass.' },
       { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
