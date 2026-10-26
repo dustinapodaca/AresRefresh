@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
 import NavPanel from './components/NavPanel';
-import CompareSwitch from './components/CompareSwitch';
 import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
@@ -124,7 +123,6 @@ export default function App() {
       <SmoothAnchors />
       <Analytics />
       <NavPanel />
-      <CompareSwitch />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

@@ -644,8 +644,9 @@ and `nx-*.css` (class prefix `nx-`).
   Home only, after the first paint, and torn down when Home unmounts. Native scroll since
   2026-10-21 (owner: the Lenis glide felt weighted; flora.ai scrolls like any page): the wheel and
   trackpad move the page directly and only the animations ease, trailing the scroll by 0.2s
-  (`SCRUB`; was 0.4 to 0.7). The Lenis glide (lerp 0.09) stays at `?glide` to compare; in-page
-  links glide through it when it runs (`scrollToSection`), the browser's smooth scroll otherwise. Every headline reads in word by
+  (`SCRUB`; was 0.4 to 0.7). The Lenis glide's `?glide` switch and the package were removed with
+  the other option switches (owner, 2026-10-25); in-page links use the browser's smooth scroll
+  (`scrollToSection`). Every headline reads in word by
   word with the scroll (from 0.12 opacity and 38% lower), scrubbed so scrolling back un-reads it.
   The resolved page is the default and is what the prerender, no JavaScript, reduced motion, and
   automated browsers get: every section laid out and fully visible, nothing pinned or scrubbed

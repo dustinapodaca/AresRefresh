@@ -1,13 +1,13 @@
 import { useEffect, type RefObject } from 'react';
 import type { gsap as GsapType } from 'gsap';
 import type { ScrollTrigger as ScrollTriggerType } from 'gsap/ScrollTrigger';
-import type Lenis from 'lenis';
 
 // The scroll engine for Home (home-flora, 2026-10-20): GSAP ScrollTrigger for pins and
 // scrubbed timelines, on the browser's own scrolling. Loaded on this page only, after first
 // paint, so no other page carries it. Native scroll (owner, 2026-10-21): the Lenis glide felt
 // weighted; flora.ai scrolls like any page, so the wheel and trackpad move the page directly and
-// only the animations ease. `?glide` turns the Lenis glide back on to compare.
+// only the animations ease. (The `?glide` switch to compare the Lenis glide was removed with the
+// other option switches, owner 2026-10-25.)
 //
 // The resolved page is the default: the prerender (an automated browser), no JavaScript, and
 // reduced motion get every section laid out and fully visible, with nothing pinned or scrubbed.
@@ -18,7 +18,6 @@ import type Lenis from 'lenis';
 export type Engine = {
   gsap: typeof GsapType;
   ScrollTrigger: typeof ScrollTriggerType;
-  lenis: Lenis | null;
 };
 
 let enginePromise: Promise<Engine | null> | null = null;
@@ -59,30 +58,16 @@ export function refreshWhenSettled(ScrollTrigger: typeof ScrollTriggerType) {
 export function loadEngine(): Promise<Engine | null> {
   if (enginePromise) return enginePromise;
   if (!motionAllowed()) return (enginePromise = Promise.resolve(null));
-  const glide = new URLSearchParams(window.location.search).has('glide');
-  enginePromise = Promise.all([
-    import('gsap'),
-    import('gsap/ScrollTrigger'),
-    glide ? import('lenis') : Promise.resolve(null),
-  ]).then(
-    ([g, st, l]) => {
+  enginePromise = Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(
+    ([g, st]) => {
       const gsap = g.gsap;
       const ScrollTrigger = st.ScrollTrigger;
       // Registering measures the page too (and jumps it to the top and back): keep the reader's place.
       const y = window.scrollY;
       gsap.registerPlugin(ScrollTrigger);
       if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
-      let lenis: Lenis | null = null;
-      if (l) {
-        lenis = new l.default({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9 });
-        lenis.on('scroll', ScrollTrigger.update);
-        const glider = lenis;
-        gsap.ticker.add((t: number) => glider.raf(t * 1000));
-        gsap.ticker.lagSmoothing(0);
-        (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
-      }
       document.documentElement.dataset.nxMotion = 'on';
-      engine = { gsap, ScrollTrigger, lenis };
+      engine = { gsap, ScrollTrigger };
       // Fonts change line lengths and section heights: measure again once they land.
       document.fonts?.ready.then(() => refreshWhenSettled(ScrollTrigger));
       return engine;
@@ -98,17 +83,14 @@ export function destroyEngine() {
     return;
   }
   engine.ScrollTrigger.getAll().forEach((t) => t.kill());
-  engine.lenis?.destroy();
-  delete (window as unknown as { __lenis?: Lenis }).__lenis;
   delete document.documentElement.dataset.nxMotion;
   engine = null;
   enginePromise = null;
 }
 
-/** Glide to a scroll position: Lenis when it runs (`?glide`), the browser's smooth scroll otherwise. */
+/** Glide to a scroll position with the browser's smooth scroll. */
 export function scrollToY(y: number) {
-  if (engine?.lenis) engine.lenis.scrollTo(y, { duration: 1.2 });
-  else window.scrollTo({ top: y, behavior: 'smooth' });
+  window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
 /** How far the animations trail the scroll: a short ease, so they settle softly without the page

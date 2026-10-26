@@ -14,7 +14,6 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // Nothing shows until the reader first scrolls (owner, 2026-10-25: it came in on load); then it plays
 // once. A page opened already scrolled starts it at once. Reduced motion: the component shows its
 // own still ending (the mark alone) on that first scroll, and without WebGL its image fallback.
-// ?glass=<seconds> pins any moment (dev).
 //
 // Crisp at the end (owner, 2026-10-25): the canvas draws the logo from a bitmap at no more than 2x, so
 // it read soft on a phone. Once the sequence has settled (DONE), the real SVG takes its place, set at
@@ -46,16 +45,6 @@ export default function SvGlassMark() {
   }, []);
 
   useEffect(() => {
-    const pin = new URLSearchParams(window.location.search).get('glass');
-    if (pin !== null) {
-      setShown(true);
-      const t = Number(pin) || 0;
-      const id = window.setTimeout(() => {
-        glass.current?.seek(t);
-        setDone(t >= DONE);
-      }, 300);
-      return () => window.clearTimeout(id);
-    }
     let timer = 0;
     const start = () => {
       window.removeEventListener('scroll', onScroll);
