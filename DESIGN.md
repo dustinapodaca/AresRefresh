@@ -631,6 +631,8 @@ and `nx-*.css` (class prefix `nx-`).
   line draws in as its underline, an arrow at its end; the email and base in mono beneath. Then,
   quieter, the quote line and Request a Quote, and a low rust horizon that comes up as the page
   ends and hands over to the footer's closing light.
+- **Phones:** about 130 to 150px between one section and the next (owner, 2026-10-25, as on Services; was
+  168 to 216px); the Contact foot keeps its room for the light rising into the footer.
 - **Motion and the resolved page.** The scroll engine (`components/home/engine.tsx`): GSAP
   ScrollTrigger for every pin and scrub on the browser's own scrolling, loaded by dynamic import on
   Home only, after the first paint, and torn down when Home unmounts. Native scroll since
