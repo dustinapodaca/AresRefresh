@@ -236,7 +236,8 @@ export default function SvHero() {
         { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 1, ease: 'power1.inOut', ...from },
         0,
       )
-        .fromTo(edge, { '--edge-o': 1 }, { '--edge-o': 0, duration: 0.2, ...from }, 0)
+        // The window's outline goes almost at once (owner, 2026-10-25: was over the first 20%).
+        .fromTo(edge, { '--edge-o': 1 }, { '--edge-o': 0, duration: 0.05, ...from }, 0)
         .fromTo(img, { scale: 1 }, { scale: 1.1, duration: 1, ...from }, 0)
         .fromTo(title, { y: 0, opacity: 1 }, { y: -60, opacity: 0, duration: 0.55, ...from }, 0.05)
         .fromTo(shade, { opacity: 0 }, { opacity: 1, duration: 0.7, ...from }, 0.3);
