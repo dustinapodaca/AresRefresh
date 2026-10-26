@@ -131,7 +131,7 @@ function EscortPlan() {
   return (
     <>
       <Bar label="Escort plan" />
-      <svg className="svs-svg svs-e" viewBox="0 0 260 180" aria-hidden="true">
+      <svg className="svs-svg svs-e" viewBox="0 14 260 166" aria-hidden="true">
         <rect className="svs-e-zone" x="52" y="24" width="196" height="146" rx="2" />
         <text className="svs-e-label" x="236" y="40" textAnchor="end">
           RESTRICTED
@@ -194,7 +194,7 @@ function PatrolRoute() {
   return (
     <>
       <Bar label="Patrol route" />
-      <svg className="svs-svg svs-p" viewBox="0 0 260 186" aria-hidden="true">
+      <svg className="svs-svg svs-p" viewBox="0 32 260 154" aria-hidden="true">
         <path className="svs-p-route" d={ROUTE} />
         {PINS.map((p, i) => (
           <g key={i} transform={`translate(${p.x} ${p.y})`}>
