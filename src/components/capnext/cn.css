@@ -315,19 +315,15 @@ main.cx { padding-bottom: clamp(96px, 12vw, 168px); } /* padding, not a margin o
   .cx-why::-webkit-scrollbar { display: none; }
   .cx-why > li { flex: 0 0 86%; scroll-snap-align: start; border: 1px solid var(--cx-edge); border-radius: 4px; }
   /* The Home industry deck's controls (nx-ind-deck.css), drawn here so this page doesn't load Swiper. */
-  .cx-why-ctl { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .cx-why-ctl { display: flex; align-items: center; gap: 16px; margin-top: 6px; } /* the 44px steps carry 21px above their line */
   .cx-why-meter { display: flex; gap: 5px; flex: 1 1 auto; }
-  .cx-why-seg { flex: 1 1 0; height: 20px; padding: 9px 0; border: 0; background: none; cursor: pointer; }
+  .cx-why-seg { flex: 1 1 0; height: 44px; padding: 21px 0; border: 0; background: none; cursor: pointer; }
+  .cx-why-seg:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: -10px; }
   .cx-why-seg i { display: block; position: relative; height: 2px; overflow: hidden; background: rgb(255 255 255 / 0.16); }
   .cx-why-seg i::after { content: ''; position: absolute; inset: 0; background: var(--ds-fg); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ds-ease), background-color 0.3s; }
   .cx-why-seg[data-past='true'] i::after { transform: scaleX(1); background: rgb(255 255 255 / 0.5); }
   .cx-why-seg[data-on='true'] i::after { transform: scaleX(1); background: var(--ds-rust); }
-  .cx-why-arrows { display: flex; gap: 8px; }
-  .cx-why-arrow { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: 2px; border: 1px solid rgb(255 255 255 / 0.16); background: rgb(0 0 0 / 0.35); color: var(--ds-fg); cursor: pointer; transition: border-color 0.18s var(--ds-ease), opacity 0.18s; }
-  .cx-why-arrow:first-child svg { transform: rotate(180deg); }
-  .cx-why-arrow:disabled { opacity: 0.35; cursor: default; }
-  .cx-why-arrow:not(:disabled):active { transform: scale(0.96); }
-  .cx-why-hint { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+  .cx-why-hint { margin: 2px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 }
 @media (min-width: 768px) { .cx-why-ctl, .cx-why-hint { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cx-why-seg i::after { transition: none; } }

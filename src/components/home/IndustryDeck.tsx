@@ -243,28 +243,23 @@ export default function IndustryDeck() {
         <p className="sr-only" aria-live="polite">
           {INDUSTRY_PAGES[active]?.name}, {active + 1} of {N}
         </p>
-        <div className="nx-dk-meter" aria-hidden="true">
+        {/* No arrows (owner, 2026-10-25): the swipe carries it, and each step is a 44px tap target
+            named for its industry, the tap alternative to the drag. */}
+        <div className="nx-dk-meter" role="group" aria-label="Choose an industry">
           {INDUSTRY_PAGES.map((ind, i) => (
             <button
               key={ind.slug}
               type="button"
-              tabIndex={-1}
               className="nx-dk-seg"
               data-on={i === active}
               data-past={i < active}
+              aria-label={`Go to ${ind.name}`}
+              aria-current={i === active ? 'true' : undefined}
               onClick={() => swiper.current?.slideTo(i)}
             >
               <i />
             </button>
           ))}
-        </div>
-        <div className="nx-dk-arrows">
-          <button type="button" className="nx-dk-arrow" aria-label="Previous industry" onClick={() => swiper.current?.slidePrev()}>
-            <Arrow size={18} />
-          </button>
-          <button type="button" className="nx-dk-arrow" aria-label="Next industry" onClick={() => swiper.current?.slideNext()}>
-            <Arrow size={18} />
-          </button>
         </div>
       </div>
       <p className="nx-sk-hint ds-data nx-edge" aria-hidden="true">

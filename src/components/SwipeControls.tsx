@@ -1,10 +1,10 @@
 import { useEffect, useState, type RefObject } from 'react';
-import Arrow from './Arrow';
 
 // The phone swipe controls under a row of cards, the same as Home's industry deck and the Capability
 // Statement's reasons (owner, 2026-10-25): a meter with one step per card (passed steps white, the
-// current one rust; tap a step to go there), two arrows, and a hint in the data face. Phones only;
-// the row itself scrolls natively with snap.
+// current one rust; tap a step to go there, each a 44px target with its card's name), and a hint in
+// the data face. No arrows on phones (owner, 2026-10-25): the swipe and the peeking card carry it,
+// and the steps are the tap alternative. Phones only; the row scrolls natively with snap.
 
 // Which card is showing (the one nearest the row's middle), and a way to bring a card into place.
 export function useSwipeRow(rowRef: RefObject<HTMLElement>, count: number) {
@@ -75,20 +75,21 @@ export default function SwipeControls({ count, at, go, noun, hint, names }: Prop
           {names?.[at] ? `${names[at]}, ` : ''}
           {at + 1} of {count}
         </p>
-        <div className="ds-sw-meter" aria-hidden="true">
+        <div className="ds-sw-meter" role="group" aria-label={`Choose ${/^[aeiou]/.test(noun) ? 'an' : 'a'} ${noun}`}>
           {Array.from({ length: count }, (_, i) => (
-            <button key={i} type="button" tabIndex={-1} className="ds-sw-seg" data-on={i === at} data-past={i < at} onClick={() => go(i)}>
+            <button
+              key={i}
+              type="button"
+              className="ds-sw-seg"
+              data-on={i === at}
+              data-past={i < at}
+              aria-label={`Go to ${names?.[i] ?? `${noun} ${i + 1}`}`}
+              aria-current={i === at ? 'true' : undefined}
+              onClick={() => go(i)}
+            >
               <i />
             </button>
           ))}
-        </div>
-        <div className="ds-sw-arrows">
-          <button type="button" className="ds-sw-arrow" aria-label={`Previous ${noun}`} disabled={at === 0} onClick={() => go(at - 1)}>
-            <Arrow size={18} />
-          </button>
-          <button type="button" className="ds-sw-arrow" aria-label={`Next ${noun}`} disabled={at === count - 1} onClick={() => go(at + 1)}>
-            <Arrow size={18} />
-          </button>
         </div>
       </div>
       <p className="ds-sw-hint ds-data" aria-hidden="true">

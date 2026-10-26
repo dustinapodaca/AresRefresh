@@ -427,20 +427,23 @@ function Why() {
         <p className="sr-only" aria-live="polite">
           Reason {at + 1} of {N}
         </p>
-        <div className="cx-why-meter" aria-hidden="true">
+        {/* No arrows on phones (owner, 2026-10-25): each step is a 44px tap target named for its
+            reason. */}
+        <div className="cx-why-meter" role="group" aria-label="Choose a reason">
           {DIFFERENTIATORS.map((d, i) => (
-            <button key={d.title} type="button" tabIndex={-1} className="cx-why-seg" data-on={i === at} data-past={i < at} onClick={() => go(i)}>
+            <button
+              key={d.title}
+              type="button"
+              className="cx-why-seg"
+              data-on={i === at}
+              data-past={i < at}
+              aria-label={`Go to reason ${i + 1} of ${N}`}
+              aria-current={i === at ? 'true' : undefined}
+              onClick={() => go(i)}
+            >
               <i />
             </button>
           ))}
-        </div>
-        <div className="cx-why-arrows">
-          <button type="button" className="cx-why-arrow" aria-label="Previous reason" disabled={at === 0} onClick={() => go(at - 1)}>
-            <Arrow size={18} />
-          </button>
-          <button type="button" className="cx-why-arrow" aria-label="Next reason" disabled={at === N - 1} onClick={() => go(at + 1)}>
-            <Arrow size={18} />
-          </button>
         </div>
       </div>
       <p className="cx-why-hint ds-data" aria-hidden="true">

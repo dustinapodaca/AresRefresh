@@ -565,7 +565,7 @@ and `nx-*.css` (class prefix `nx-`).
   ink, its one line in ink muted, and "Open the page →" at the card's foot (the industry page holds
   the roles and what to send us). Every card is the same height, the photo plus the longest brief,
   so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
-  counter, a six-step meter (rust for the current), and two 44px arrows under it; "Swipe the card
+  counter, a six-step meter (rust for the current), and no arrows (owner, 2026-10-25: each step is a 44px tap target named for its industry); "Swipe the card
   for the next industry" in mono. The first card deals in
   once when first seen, and as it does (owner, 2026-10-23) the next two peek out above it as a stack,
   each a step smaller (about 24 and 47px showing), hold a beat, and tuck in behind it, so the reader
@@ -798,8 +798,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   and the arrow nudging (mouse only).
 - **Phone swipe controls** (both rows above; owner, 2026-10-25; `SwipeControls.tsx`): under the row,
   the same as Home's industry deck and the Capability Statement's reasons: a meter with one step per
-  card (passed steps white, the current one rust; tap a step to go there), two 44px arrows (dimmed at
-  the ends), and "Swipe for the next service" / "Swipe for the next industry" in the data face. On
+  card (passed steps white, the current one rust; tap a step to go there), no arrows (owner, 2026-10-25:
+  each step is a 44px tap target named for its card, the tap alternative to the swipe), and "Swipe for the next service" / "Swipe for the next industry" in the data face. On
   phones the industries' header bar and arrows give way to these; wider screens keep them.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right (each in Home's dossier form since
@@ -948,7 +948,8 @@ tilt and one fade-up per block (`data-rv`, once).
   (the second reads "Ready before the first shift"; owner), the body, and a mono source line (the
   second names the stages: "Audit · Compliance · Training · Deployment · Trained on post by
   leadership"). The cards stay black while their contents rise in. Phones: a swipe row with the Home
-  industry deck's controls (counter, a meter with the current step in rust, two arrows) and "Swipe for
+  industry deck's controls (a meter with the current step in rust, each step a 44px tap target; no
+  arrows since 2026-10-25, owner) and "Swipe for
   the next reason".
 - **03 Past performance.** (owner, 2026-10-24: no revenue figure; revenue is company data, not past
   performance.) The lead "Selected contracts since 2021. Clients are not named here."; the featured

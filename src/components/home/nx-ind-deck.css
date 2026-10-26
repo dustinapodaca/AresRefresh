@@ -51,13 +51,13 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 4px;
+  margin-top: -8px; /* the 44px steps carry 21px above their line */
 }
 .nx-dk-meter { display: flex; gap: 5px; flex: 1 1 auto; }
 .nx-dk-seg {
   flex: 1 1 0;
-  height: 20px;
-  padding: 9px 0;
+  height: 44px;
+  padding: 21px 0;
   border: 0;
   background: none;
   cursor: pointer;
@@ -80,22 +80,7 @@
 }
 .nx-dk-seg[data-past='true'] i::after { transform: scaleX(1); background: rgb(255 255 255 / 0.5); }
 .nx-dk-seg[data-on='true'] i::after { transform: scaleX(1); background: var(--ds-rust); }
-.nx-dk-arrows { display: flex; gap: 8px; }
-.nx-dk-arrow {
-  width: 44px;
-  height: 44px;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 2px;
-  border: 1px solid rgb(255 255 255 / 0.16);
-  background: rgb(0 0 0 / 0.35);
-  color: var(--ds-fg);
-  cursor: pointer;
-  transition: border-color 0.18s var(--ds-ease), opacity 0.18s;
-}
-.nx-dk-arrow:first-child svg { transform: rotate(180deg); }
-.nx-dk-arrow:disabled { opacity: 0.35; cursor: default; }
-.nx-dk-arrow:not(:disabled):active { transform: scale(0.96); }
+.nx-dk-seg:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: -10px; }
 
 /* The stage. The cards are Swiper's creative effect after skiper-ui's creative carousel
    (2026-10-23): the neighbours fold back at the front card's edges, so the slider is not clipped. */
@@ -169,7 +154,7 @@
 .nx-sk-link:hover .ds-arrow { color: var(--ds-rust); }
 
 .nx-sk { padding-bottom: 40px; }
-.nx-sk-hint { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+.nx-sk-hint { margin: 2px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 
 /* The intro's stack: copies of the next two cards behind the first (behind Swiper's slides, inside
    its box), peeking out above it as it deals in, then tucked in behind it and gone (owner,
