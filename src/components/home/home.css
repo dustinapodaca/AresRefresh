@@ -66,6 +66,9 @@
   -webkit-mask: url(/ares-logo.svg) center / contain no-repeat;
   mask: url(/ares-logo.svg) center / contain no-repeat;
 }
+/* The glass mark's canvas: centered on the card and larger than it, so the glass's side reflections
+   have room; the logo it ends on is the card's size exactly (Hero.tsx). */
+.nx-hero-glass { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; }
 .nx-hero-card-cue {
   position: absolute;
   left: calc(100% + clamp(10px, 1.6vmin, 18px));
