@@ -25,6 +25,12 @@ const SYSTEMS = [
   'Alarm panels',
 ];
 
+// Two of the satellite names break onto two lines on the canvas (owner, 2026-10-25).
+const SAT_LINES: Record<string, [string, string]> = {
+  'Card readers and access panels': ['Card readers and', 'access panels'],
+  'Visitor management software': ['Visitor management', 'software'],
+};
+
 const PHASES = [
   { label: 'Pre-contract', at: 0 },
   { label: 'Contract execution', at: 2 },
@@ -354,7 +360,17 @@ export default function SvProcess() {
                 style={{ ['--x' as string]: `${SAT_SPOTS[i].x}px`, ['--y' as string]: `${SAT_SPOTS[i].y}%` } as CSSProperties}
               >
                 <SystemIcon name={name} />
-                <span className="sv-pr-sat-name">{name}</span>
+                <span className="sv-pr-sat-name">
+                  {SAT_LINES[name] ? (
+                    <>
+                      {SAT_LINES[name][0]}
+                      <br />
+                      {SAT_LINES[name][1]}
+                    </>
+                  ) : (
+                    name
+                  )}
+                </span>
               </li>
             ))}
           </ul>
