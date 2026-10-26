@@ -843,7 +843,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   rust once reached), the title, the paragraph; no keyword triplets. One hairline across the row, to the far edge of stage 04,
   fills rust to a reading line (62% across, easing out to the line's end as the pan finishes; the
   section lets go the moment it is full, no hold; owner 2026-10-25), no glow or tip; a stage not yet reached rests at 0.62 and comes
-  up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter, each with its icon. As stage 03 comes in (its left edge 45% across;
+  up over 300ms. Stage 03's systems are a plain two-column list on hairlines in Inter, each with its icon. As stage 03 comes in (its left edge 52% across;
   owner, 2026-10-26) the six fall into place one after another in reading order, each dropping 14px from
   above, 70ms apart, and lift back out together when scrolled back (an owner exception to "no entrance
   from opacity 0"; motion only). Scrubbed, so it

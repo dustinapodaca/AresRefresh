@@ -359,7 +359,7 @@
   .sv-pr[data-hpan='on'] .sv-pr-node:not([data-lit='true']) > * { transform: none; }
 
   /* Stage 03's systems fall into place one after another as the stage comes in (owner, 2026-10-26):
-     when the stage's left edge reaches 45% across (data-sys, SvProcess), each drops 14px from above,
+     when the stage's left edge reaches 52% across (data-sys, SvProcess), each drops 14px from above,
      in the order they read (--o), 70ms apart;
      scrolling back lifts them out together, quickly. Motion only (data-hpan); the resolved list and
      reduced motion show them in place. An owner exception to "no entrance from opacity 0". */

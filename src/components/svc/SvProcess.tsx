@@ -89,10 +89,10 @@ export default function SvProcess() {
       const tip = rail.querySelector<HTMLElement>('b')!;
       const nodes = Array.from(list.querySelectorAll<HTMLElement>(':scope > .sv-pr-node'));
       // Stage 03's systems fall in one after another (owner, 2026-10-26), once the stage is well on
-      // screen: when its left edge reaches 45% across, so the cascade plays in view (at the reading
+      // screen: when its left edge reaches 52% across (owner, 2026-10-26: was 45%, a touch sooner), so the cascade plays in view (at the reading
       // line, 62%, only about 100px of the stage showed). data-sys on the stage; the motion is CSS.
       const sysIndex = nodes.findIndex((n) => n.querySelector('.sv-pr-syslist'));
-      const SYS_AT = 0.45;
+      const SYS_AT = 0.52;
       const setSys = (on: boolean) => {
         const n = nodes[sysIndex];
         if (n && (n.dataset.sys === 'true') !== on) n.dataset.sys = String(on);
