@@ -131,6 +131,7 @@
 .sv-node-keys { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 13px; letter-spacing: 0.03em; color: var(--ds-fg-muted); }
 /* The data face's zero is slashed (owner, 2026-10-25). */
 .sv-node-bar, .sv-hero-post-bar, .sv-node-keys { font-variant-numeric: tabular-nums slashed-zero; }
+.sv-node-key { white-space: nowrap; } /* each key whole: never "GPS-" over "verified" */
 @media (hover: hover) and (pointer: fine) {
   .sv-hero-node a:hover { box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.28), 0 14px 34px rgb(0 0 0 / 0.5), 0 0 0 4px rgb(188 111 64 / 0.12); transform: translateY(-2px); }
 }
@@ -271,7 +272,11 @@
   transition-delay: calc(1.75s + var(--i) * 90ms);
 }
 /* Settled: the links answer hover at once (the opener's delays would hold the lift back 2s). */
-.sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-node > a { transition-delay: 0s; }
+.sv-hero[data-arm='true'][data-in='true'][data-settled] .sv-hero-node > a {
+  /* Hover only from here: the scroll scene fades the link, with no opacity transition trailing it. */
+  transition: transform 0.18s var(--ds-ease), box-shadow 0.18s var(--ds-ease);
+  transition-delay: 0s;
+}
 .sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-w] { transition-delay: calc(2.2s + var(--i) * 110ms); }
 .sv-hero[data-arm='true'][data-in='true'] .sv-hero-wires path[data-l] { animation-delay: calc(3.6s + var(--i) * 0.53s); }
 /* The breath, once the opener has settled. */

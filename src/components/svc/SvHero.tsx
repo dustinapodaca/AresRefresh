@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { CAPABILITIES } from '../capability/data';
@@ -47,7 +47,6 @@ const SPOTS = [
 
 export default function SvHero() {
   const ref = useRef<HTMLElement>(null);
-  const [lens, setLens] = useState<number[]>([]);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.
   useLayoutEffect(() => {
@@ -65,7 +64,6 @@ export default function SvHero() {
       if (!wide.matches) return;
       const s = stage.getBoundingClientRect();
       const p = post.getBoundingClientRect();
-      const out: number[] = [];
       nodes.forEach((n, i) => {
         // From the middle of each node's foot (owner, 2026-10-23): the wire leaves straight down,
         // then bends into the post's side. A node that sits below the post wires from the middle of
@@ -82,9 +80,13 @@ export default function SvHero() {
         const d = `M${x1.toFixed(1)} ${y1.toFixed(1)} C${x1.toFixed(1)} ${(y1 + turn).toFixed(1)} ${(x2 + (left ? -k : k)).toFixed(1)} ${y2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`;
         paths[i].setAttribute('d', d);
         lights[i].setAttribute('d', d);
-        out.push(paths[i].getTotalLength());
+        // The length goes straight onto the paths with the shape, in the same frame: through React
+        // state it landed a frame late, so a growing wire lost its end and the light skipped while
+        // the cursor moved (owner, 2026-10-25).
+        const len = paths[i].getTotalLength().toFixed(1);
+        paths[i].style.setProperty('--len', len);
+        lights[i].style.setProperty('--len', len);
       });
-      setLens((prev) => (prev.length === out.length && prev.every((v, i) => Math.abs(v - out[i]) < 1) ? prev : out));
     };
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(draw);
@@ -93,7 +95,9 @@ export default function SvHero() {
     document.fonts?.ready.then(schedule);
     const ro = new ResizeObserver(schedule);
     ro.observe(stage);
-    (root as HTMLElement & { __redraw?: () => void }).__redraw = schedule;
+    // __draw redraws now, for callers that just moved the nodes (the cursor drift, the scroll scene);
+    // __redraw waits for the next frame.
+    Object.assign(root, { __redraw: schedule, __draw: draw });
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
@@ -118,7 +122,8 @@ export default function SvHero() {
         n.style.translate = `${(now.x * 22 * d).toFixed(2)}px ${(now.y * 16 * d).toFixed(2)}px`;
       });
       photo?.style.setProperty('translate', `${(-now.x * 18).toFixed(2)}px ${(-now.y * 12).toFixed(2)}px`);
-      (root as HTMLElement & { __redraw?: () => void }).__redraw?.();
+      // Redrawn in the same frame the nodes moved, so the wires never trail them.
+      (root as HTMLElement & { __draw?: () => void }).__draw?.();
       raf = Math.abs(target.x - now.x) + Math.abs(target.y - now.y) > 0.001 ? requestAnimationFrame(tick) : 0;
     };
     const onMove = (e: PointerEvent) => {
@@ -185,7 +190,7 @@ export default function SvHero() {
         // runs while they still show, so on the way back up they meet the nodes again without
         // waiting for the cursor to move (owner, 2026-10-23).
         onUpdate: () => {
-          if (tl.progress() < 0.4) (root as HTMLElement & { __redraw?: () => void }).__redraw?.();
+          if (tl.progress() < 0.4) (root as HTMLElement & { __draw?: () => void }).__draw?.();
         },
       });
       const from = { immediateRender: false };
@@ -199,7 +204,11 @@ export default function SvHero() {
       );
       nodes.forEach((n, i) => {
         const left = SPOTS[i].x < 50;
-        tl.fromTo(n, { x: 0, y: 0, opacity: 1 }, { x: (left ? -1 : 1) * (90 + 70 * SPOTS[i].depth), y: -30 * SPOTS[i].depth, opacity: 0, duration: 0.6, ...from }, 0.05);
+        // The node spreads out; its glass panel fades. Fading the node itself made it a backdrop root,
+        // so the panel's blur saw nothing behind it and went see-through mid-fade, showing the wire
+        // through it (owner, 2026-10-25). The panel's own opacity keeps the frost to the end.
+        tl.fromTo(n, { x: 0, y: 0 }, { x: (left ? -1 : 1) * (90 + 70 * SPOTS[i].depth), y: -30 * SPOTS[i].depth, duration: 0.6, ...from }, 0.05);
+        tl.fromTo(n.querySelector('a'), { opacity: 1 }, { opacity: 0, duration: 0.6, ...from }, 0.05);
       });
       tl.fromTo(root.querySelector('.sv-hero-wires'), { opacity: 1 }, { opacity: 0, duration: 0.25, ...from }, 0)
         .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.8, ...from }, 0.2);
@@ -226,14 +235,14 @@ export default function SvHero() {
             <path
               key={`w-${c.id}`}
               data-w={i}
-              style={lens[i] ? ({ ['--len' as string]: lens[i], ['--i' as string]: i } as React.CSSProperties) : undefined}
+              style={{ ['--i' as string]: i } as React.CSSProperties}
             />
           ))}
           {CAPABILITIES.map((c, i) => (
             <path
               key={`l-${c.id}`}
               data-l={i}
-              style={lens[i] ? ({ ['--len' as string]: lens[i], ['--i' as string]: i } as React.CSSProperties) : undefined}
+              style={{ ['--i' as string]: i } as React.CSSProperties}
             />
           ))}
         </svg>
@@ -293,7 +302,14 @@ export default function SvHero() {
               >
                 <a href={`#svc-${c.id}`} onClick={() => showPanel(c.id)}>
                   <span className="sv-node-name">{c.title}</span>
-                  <span className="sv-node-keys">{c.keys.join(' · ')}</span>
+                  <span className="sv-node-keys">
+                    {c.keys.map((k, j) => (
+                      <span key={k}>
+                        {j > 0 && ' · '}
+                        <span className="sv-node-key">{k}</span>
+                      </span>
+                    ))}
+                  </span>
                 </a>
               </li>
             );
