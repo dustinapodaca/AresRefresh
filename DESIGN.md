@@ -773,13 +773,16 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     (to `#divisions`); 1024 to 1279px the lead narrows to 36ch so it clears the side nodes. Scrolling:
     the stage holds (sticky, 90vh) while the photo closes to a framed window and dims, the nodes spread
     out and fade, and the copy lifts away.
-  - Phones (below 768px): no nodes. The headline centered at Home's phone size before Home's 6px bump
-    (`clamp(48px, 14.4vw, 80px)` below 600px, about 56px on a 390 phone; Home's
-    `clamp(54px, 12.2vw, 188px)` from 600 to 767px) over a darker shade (4.5:1 or better on the
-    brightest sky). The hero runs a little past the screen (`clamp(780px, 108svh, 960px)`); the photo
-    ends 200px above its foot so the lit copper canopy sits just above a card of the site's black glass
-    at the foot, holding the lead (left aligned) and "Who we protect ↓" (no quote button: the nav
-    carries it). The card rises faster than the page as the hero scrolls away (220px extra).
+  - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
+    at the top, left aligned like Home, at Home's phone size before Home's 6px bump
+    (`clamp(48px, 14.4vw, 80px)` below 600px). Under it the copper-glass towers stand in a window of
+    their own (4px corners, the hairline photo edge), measured from just under the headline to just
+    above the lead (`--wt`, `--wb`), with the canopy's copper light spilling onto the black below; then
+    the lead (left aligned) and "Who we protect ↓" (no quote button: the nav carries it). On load the
+    window's shutter rises while the camera settles. With motion on, the stage holds while scrolling
+    opens the window out to the whole screen (the reverse of the desktop aperture); the headline lifts
+    away and a shade comes up under the lead. (Was the towers dimmed behind a centered headline with the
+    lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or
   corner light; owner 2026-10-25) (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
