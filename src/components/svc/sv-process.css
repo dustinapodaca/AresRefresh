@@ -379,3 +379,15 @@
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), 0 18px 40px rgb(0 0 0 / 0.45);
   }
 }
+
+/* Phones and tablets: the systems list in the owner's order (2026-10-25): card readers, visitor
+   management, gate and dock controls, intercoms and radios, CCTV, alarm panels (desktop keeps the
+   satellites' order). */
+@media (max-width: 1023px) {
+  .sv-pr-syslist li:nth-child(1) { order: 1; }
+  .sv-pr-syslist li:nth-child(3) { order: 2; }
+  .sv-pr-syslist li:nth-child(5) { order: 3; }
+  .sv-pr-syslist li:nth-child(4) { order: 4; }
+  .sv-pr-syslist li:nth-child(2) { order: 5; }
+  .sv-pr-syslist li:nth-child(6) { order: 6; }
+}
