@@ -5,7 +5,7 @@ import Arrow from '../components/Arrow';
 import NotFound from './NotFound';
 import { HOST } from '../seo/routes';
 import { INSIGHTS, insightBySlug } from '../components/market/insights';
-import { JsonLd, RouteRow } from '../components/market/parts';
+import { FaqSection, JsonLd, RouteRow } from '../components/market/parts';
 import { heroTitle } from '../lib/heroTitle';
 
 // One insight: a read-mode article at a 68ch measure, its related pages, and the other
@@ -73,6 +73,8 @@ export default function InsightPage() {
       </article>
 
       <div className="ds-container">
+        {/* The article's questions, where it has them (owner, 2026-10-26). */}
+        {a.faq?.length ? <FaqSection items={a.faq} /> : null}
         <nav className="ds-mk-sec" aria-labelledby="mk-more">
           <h2 id="mk-more" className="ds-display-md">More insights.</h2>
           <RouteRow label="More insights" items={others.map((o) => ({ to: `/insights/${o.slug}`, title: o.title.replace(/\.$/, ''), line: o.category }))} />

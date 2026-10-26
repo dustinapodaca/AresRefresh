@@ -2,6 +2,8 @@
 // 2026-10-08). Written from facts already on the site and general, checkable practice.
 // No invented statistics, clients, or response times. Drafts for the owner to review.
 
+import type { Faq } from './roles';
+
 export type Block =
   | { p: string }
   | { list: string[] }
@@ -16,6 +18,9 @@ export type Insight = {
   dateLabel: string;
   summary: string;
   body: Block[];
+  /** Optional questions after the article, in the site's questions block with FAQPage
+   *  structured data (owner, 2026-10-26): short answers an assistant can quote whole. */
+  faq?: Faq[];
   related: { label: string; to: string }[];
 };
 
@@ -70,6 +75,20 @@ export const INSIGHTS: Insight[] = [
       { h: 'How Ares answers these' },
       { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs, Denver, and Pueblo. Our city pages list each license number, with a link to look up the Colorado Springs and Denver licenses in the city’s own records. A member of our leadership walks every site before anything is signed, and we write the post orders for every post. Every officer we send, employee or contractor, trains on them with our leadership, on the post, before the first shift. Every contract has on-call scheduling behind it, and since 2021 we have missed fewer than 1% of shifts. We keep the same officers on a site whenever we can.' },
       { p: 'For federal buyers, Ares holds GSA MAS contract 47QSMS25D009Q, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
+    ],
+    faq: [
+      {
+        q: 'Does a security company need a state license in Colorado?',
+        a: 'No. Colorado has no statewide license for security companies or officers. Cities license them instead, including Denver, Colorado Springs, and Pueblo, so check the license for the city your site is in.',
+      },
+      {
+        q: 'What insurance should a security company carry?',
+        a: 'Ask for a certificate of insurance showing general liability and workers’ compensation, with coverage for armed work if the post is armed, and limits that meet your own contracts. Ask to be named as an additional insured if your lease, lender, or contract requires it.',
+      },
+      {
+        q: 'Should a security company visit my site before quoting?',
+        a: 'Yes. A quote sent without a site walk is a guess. The company should see the site first, then propose the posts, hours, duties, and armed or unarmed coverage it needs.',
+      },
     ],
     related: [
       { label: 'Security licensing in Colorado', to: '/insights/colorado-security-licensing' },

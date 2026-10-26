@@ -1182,7 +1182,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   from 768px, arrows nudge on hover.
 - **Insights:** the index as ruled rows (title, summary, category and date in a right
   column on desktop); articles in one 46rem reading column, 17px / 1.7, the first paragraph
-  in ink, related links, more insights. Article JSON-LD.
+  in ink, related links, then (where an article has them; owner, 2026-10-26) its questions in the
+  shared questions block with FAQPage JSON-LD, then more insights. Article JSON-LD.
 - **Jobs by city (`/careers/<city>`):** open roles on hairlines with Apply (email with the
   role and city), licensing handled, why people stay (two by two) with the Indeed rating,
   other cities.
