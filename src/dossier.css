@@ -4339,3 +4339,26 @@ html[data-cards] .ds-primes-panel {
   .ds-sw-hint { margin: 14px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
 }
 @media (prefers-reduced-motion: reduce) { .ds-sw-seg i::after { transition: none; } }
+
+/* ---------- How teaming works (TeamingChain.tsx; owner, 2026-10-25, the AI-tells pass): three plain
+   steps on one hairline, on /teaming and the Government & Defense page. */
+.ds-tc { position: relative; list-style: none; margin: 0; padding: 0 0 0 28px; display: grid; gap: 28px; --tc: 1; }
+.ds-tc::before,
+.ds-tc::after { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; }
+.ds-tc::before { background: rgb(255 255 255 / 0.16); }
+.ds-tc::after { background: var(--ds-rust); transform: scaleY(var(--tc)); transform-origin: top; }
+.ds-tc-step { position: relative; max-width: 44ch; }
+.ds-tc-who { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
+.ds-tc-what { margin: 8px 0 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
+.ds-tc-what .ds-data { color: var(--ds-fg); font-size: 15px; }
+/* Armed after mount: a step not yet reached rests at 0.62 and comes up as the fill reaches it. */
+.ds-tc[data-live] .ds-tc-step { transition: opacity 0.3s var(--ds-ease); }
+.ds-tc[data-live] .ds-tc-step:not([data-on='true']) { opacity: 0.62; }
+@media (prefers-reduced-motion: reduce) { .ds-tc-step { transition: none; } }
+/* The Government & Defense prime section: the copy left, the chain right (desktop); stacked on phones. */
+.ds-primes-plain .ds-primes-copy h2 { margin: 0; }
+@media (min-width: 768px) {
+  .ds-mk-split.ds-primes-plain > .ds-primes-copy { grid-column: 1 / span 5; }
+  .ds-mk-split.ds-primes-plain > .ds-tc { grid-column: 7 / span 6; }
+}
+@media (max-width: 767px) { .ds-primes-plain .ds-tc { margin-top: 16px; } }

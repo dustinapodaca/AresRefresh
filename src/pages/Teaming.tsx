@@ -4,7 +4,7 @@ import Arrow from '../components/Arrow';
 import { AskStrip, FaqSection, Sheet } from '../components/market/parts';
 import type { Faq, SheetRow } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
-import PrimePipeline from '../components/home/PrimePipeline';
+import TeamingChain from '../components/market/TeamingChain';
 import { PDF_URL, SAM_VERIFY } from '../components/capability/data';
 
 // Teaming and subcontracting (copy audit round 2, owner 2026-10-10): the landing page for
@@ -133,10 +133,10 @@ export default function Teaming() {
         <section className="ds-mk-sec ds-mk-split ds-tm-gets" aria-labelledby="tm-gets">
           <h2 id="tm-gets" className="ds-display-lg">What the prime gets.</h2>
           <Sheet rows={GETS} label="What the prime gets" />
-          {/* The Home prime panel's pipeline and its scroll animation (owner, 2026-10-15; was the
-              diagram), on the plain black page: under the heading on desktop, after the sheet on
-              phones. */}
-          <PrimePipeline className="ds-tm-flow" />
+          {/* How teaming works, three plain steps on a hairline that fills with the scroll (owner,
+              2026-10-25: replaced the pipeline cards in the AI-tells pass): under the heading on
+              desktop, after the sheet on phones. */}
+          <TeamingChain className="ds-tm-flow" />
         </section>
 
         <section className="ds-mk-sec" aria-labelledby="tm-how">

@@ -2,14 +2,13 @@ import { Link, useParams } from 'react-router-dom';
 import Crumbs from '../components/market/Crumbs';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
-import PrimeStrip from '../components/market/PrimeStrip';
+import TeamingChain from '../components/market/TeamingChain';
 import NotFound from './NotFound';
 import { INDUSTRY_PAGES, industryBySlug } from '../components/market/industries';
 import { roleBySlug } from '../components/market/roles';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { responsive } from '../lib/responsive';
 import { heroTitle } from '../lib/heroTitle';
-import PrimeGlow from '../components/home/PrimeGlow';
 
 // An industry page ("The Sector File", docs/market-concepts.md): what is at stake in this
 // environment, what we deliver there, why Ares, a specific ask, and questions.
@@ -85,25 +84,21 @@ export default function IndustryPage() {
         </section>
 
         {ind.primes && (
-          // A smaller version of Home's prime panel (design review, owner 2026-10-13): the same
-          // card, the two-tone line, the button, and the pipeline drawn thin in one row (owner,
-          // 2026-10-15: Home and /teaming carry the full one), without the proof list. Its other
-          // forms (?prime=, ?pstrip=) were removed at launch (owner, 2026-10-19).
-          <section className="ds-mk-sec" aria-labelledby="mk-primes">
-            <div className="ds-primes-panel ds-primes-compact" data-form="strip">
-              <PrimeGlow />
-              <div className="ds-primes-copy">
-                <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
-                <p className="ds-primes-line">
-                  <span>A woman-owned subcontractor for federal work.</span> {ind.primes}
-                </p>
-                <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
-                  Teaming & subcontracting
-                  <Arrow />
-                </Link>
-              </div>
-              <PrimeStrip />
+          // For prime contractors (owner, 2026-10-25, the AI-tells pass: was the glowing panel with the
+          // prime strip): the two-tone line and the way to /teaming on the left, how teaming works on
+          // the right, the same three steps as /teaming.
+          <section className="ds-mk-sec ds-mk-split ds-primes-plain" aria-labelledby="mk-primes">
+            <div className="ds-primes-copy">
+              <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
+              <p className="ds-primes-line">
+                <span>A woman-owned subcontractor for federal work.</span> {ind.primes}
+              </p>
+              <Link to="/teaming" className="ds-btn ds-btn-primary ds-primes-btn">
+                Teaming & subcontracting
+                <Arrow />
+              </Link>
             </div>
+            <TeamingChain />
           </section>
         )}
 

@@ -648,6 +648,18 @@ and `nx-*.css` (class prefix `nx-`).
   (`?motion` forces the engine on in an automated browser for checks).
 
 ### Prime contractors panel (Government & Defense page and /teaming; was Home, end of 02 Industries; owner 2026-10-10, pass 2)
+- **Replaced 2026-10-25 (owner, the AI-tells pass) on both pages by "How teaming works"**
+  (`src/components/market/TeamingChain.tsx`): three plain steps on one hairline, the prime contractor
+  (holds the contract and needs posts covered under it), Ares Security as subcontractor (SBA
+  WOSB250470 and WBENC WBE2303571 in the data face, the work counting toward the prime's
+  small-business subcontracting goals), and the posts. Each step a title in Inter Tight 600 and a
+  line in ink muted; no boxes, green tags, dots, tiles, or glow. The hairline on the left fills rust
+  with the scroll (from the chain's top at 75% of the window to its foot at 35%) and each step comes
+  up from 0.62 as the fill reaches it; scrubbed both ways; drawn and lit without JavaScript or under
+  reduced motion. On /teaming it sits under "What the prime gets." (after the sheet on phones); on the
+  Government & Defense page the panel and its glow are gone: the heading, the two-tone line, and the
+  Teaming & subcontracting button on the left, the chain on the right (stacked on phones).
+  `PrimePipeline`, `PrimeStrip`, and `PrimeGlow` were deleted; what follows describes them.
 - **Since 2026-10-20 Home has its own prime section** (the node canvas, under "Home" above). This
   entry stays for the Government & Defense page's strip (`PrimeStrip`, `PrimeGlow`) and the /teaming
   pipeline (`PrimePipeline`); where it says "Home" it describes the Dossier Home.
