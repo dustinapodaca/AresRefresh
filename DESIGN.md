@@ -777,7 +777,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     at the foot, holding the lead (left aligned) and "Who we protect ↓" (no quote button: the nav
     carries it). The card rises faster than the page as the hero scrolls away (220px extra).
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
-  lead right; six tall panels (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
+  lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or
+  corner light; owner 2026-10-25) (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
   one word at the top, a small working example of the post in the middle (a qualification card, a
   patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
