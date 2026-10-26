@@ -1,23 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-logo';
 
-// The Ares mark in glass, in the middle of the phone hero's window (owner, 2026-10-25). ReactDrops'
-// Liquid Glass Logo (src/components/liquid-glass-logo*, installed unchanged) draws a drop of glass
-// that becomes a square tile around the mark. Its "logo" ending would then clear the glass and
-// leave the mark alone; here the sequence holds on the finished tile instead, so the mark stays
-// behind glass in a square. Nothing shows until the reader first scrolls (owner, 2026-10-25: it came
-// in on load); then the glass comes in once and stays over the photo as a glass card while the
-// window opens. A page opened already scrolled starts it at once. Reduced motion: the component shows
-// its own still ending (the mark alone) on that first scroll, and without WebGL its image fallback.
+// The Ares mark in glass, in the phone hero's window (owner, 2026-10-25). ReactDrops' Liquid Glass
+// Logo (src/components/liquid-glass-logo*, installed unchanged; identical to the registry's 0.1.0)
+// with ReactDrops' own setup for it (owner, 2026-10-25: "try it like this instead", replacing the
+// glass card held mid-sequence): the sphere-to-tile glass entrance plays through, then the glass
+// clears and leaves the original mark alone at its normal size, white on the dark setting, at
+// logoScale 0.93, with no second text reveal. The page behind is set to black for the shader (its
+// dark-page fade); the canvas stays transparent around the glass, so the towers show.
 //
-// HOLD is the moment in the component's 1.8s logo sequence where the tile has formed and turned to
-// frosted glass, the towers showing through and the chromatic streaks still on its rim, before the
-// glass clears away (chosen from frames 0.4 to 1.3s, 2026-10-25). ?glass=<seconds> pins any moment
-// (dev).
-
-// 1.2 (owner, 2026-10-25: 1.16 left the tile too white): the plate has begun to clear, so the towers
-// read through it and the mark is crisp, while the tile's edge still holds.
-const HOLD = 1.2;
+// Nothing shows until the reader first scrolls (owner, 2026-10-25: it came in on load); then it plays
+// once. A page opened already scrolled starts it at once. Reduced motion: the component shows its
+// own still ending (the mark alone) on that first scroll, and without WebGL its image fallback.
+// ?glass=<seconds> pins any moment (dev).
 
 export default function SvGlassMark() {
   const glass = useRef<LiquidGlassLogoHandle>(null);
@@ -27,47 +22,36 @@ export default function SvGlassMark() {
   useEffect(() => {
     const pin = new URLSearchParams(window.location.search).get('glass');
     if (pin !== null) {
-      const t = Number(pin) || HOLD;
       setShown(true);
-      const id = window.setTimeout(() => glass.current?.seek(t), 300);
+      const id = window.setTimeout(() => glass.current?.seek(Number(pin) || 0), 300);
       return () => window.clearTimeout(id);
     }
-    let timer = 0;
     const start = () => {
       window.removeEventListener('scroll', onScroll);
       setShown(true);
       glass.current?.replay();
       setPaused(false);
-      // Stop on the tile. The clock runs at speed 1 from here; the seek lands it exactly.
-      timer = window.setTimeout(() => {
-        glass.current?.pause();
-        glass.current?.seek(HOLD);
-        setPaused(true);
-      }, HOLD * 1000);
     };
     const onScroll = () => {
       if (window.scrollY > 2) start();
     };
     if (window.scrollY > 2) start();
     else window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.clearTimeout(timer);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <div className="sv-glass-in" data-shown={shown}>
-    <LiquidGlassLogo
-      ref={glass}
-      logo='/ares-logo.svg'
-      ending='logo'
-      theme='light'
-      background='#ffffff00'
-      paused={paused}
-      aria-label='Ares Security'
-      style={{ height: '100%', minHeight: 0 }}
-    />
+      <LiquidGlassLogo
+        ref={glass}
+        logo='/ares-logo.svg'
+        ending='logo'
+        logoScale={0.93}
+        background='#00000000'
+        paused={paused}
+        aria-label='Ares Security'
+        style={{ height: '100%', minHeight: 0 }}
+      />
     </div>
   );
 }
