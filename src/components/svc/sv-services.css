@@ -234,6 +234,11 @@
 }
 @keyframes svs-w-out { 0%, 22% { opacity: 0; } 28%, 50% { opacity: 1; } 56%, 100% { opacity: 0; } }
 @keyframes svs-w-in { 0%, 54% { opacity: 0; } 60%, 92% { opacity: 1; } 100% { opacity: 0; } }
+/* While a row waits out its stagger it holds its first frame, not the finished state it rests in
+   without motion: otherwise a card first reached showed every row done, then emptied them one by
+   one before building them (owner, 2026-10-25: "like reverse"). After the shorthands above, so it
+   wins. */
+.svs[data-arm='true'] .svs-grid .svs-panel * { animation-fill-mode: backwards; }
 
 @media (prefers-reduced-motion: reduce) {
   .svs * { animation: none !important; }
