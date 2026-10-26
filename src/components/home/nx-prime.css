@@ -124,7 +124,7 @@
 
 /* ---- Phones and tablets: one column on a straight rail */
 /* The phone rail's tip (below). */
-.nx-prail-tip { display: none; }
+.nx-prail-tip, .nx-prail-fill { display: none; }
 
 @media (max-width: 1023px) {
   .nx-prime-copy { grid-column: 1 / -1; position: static; }
@@ -228,13 +228,25 @@
     height: 1px;
   }
   .nx-prime-canvas[data-hpan='on']::after { background: var(--ds-rule-strong); }
-  .nx-prime-canvas[data-hpan='on']::before {
+  /* The rust fill is its own element (.nx-prail-fill), moved by its own transform. */
+  .nx-prime-canvas[data-hpan='on']::before { content: none; }
+  .nx-prime-canvas[data-hpan='on'] .nx-prail-fill {
+    display: block;
+    position: absolute;
+    left: var(--ds-edge);
+    right: var(--ds-edge);
+    top: 14px;
+    height: 1px;
     z-index: 1;
     background: var(--ds-rust);
     box-shadow: 0 0 6px rgb(188 111 64 / 0.6);
     transform-origin: 0 50%;
-    transform: scaleX(var(--rail, 0));
+    transform: scaleX(0);
+    will-change: transform;
+    pointer-events: none;
   }
+  /* The sliding row on its own layer while it pans. */
+  .nx-prime-canvas[data-hpan='on'] { will-change: transform; }
   .nx-prime-canvas[data-hpan='on'] .nx-prail-tip {
     display: block;
     position: absolute;
@@ -243,13 +255,14 @@
     border-radius: 50%;
     background: #f2b98e;
     box-shadow: 0 0 12px rgb(232 150 95 / 0.9);
-    opacity: var(--tipo, 0);
+    opacity: 0;
     transition: opacity 0.25s var(--ds-ease);
     pointer-events: none;
     z-index: 2;
     top: 14px;
-    left: calc(var(--ds-edge) + var(--rail, 0) * (100% - 2 * var(--ds-edge)));
+    left: var(--ds-edge);
     margin: -3.5px 0 0 -3.5px;
+    will-change: transform;
   }
   /* Each card's point on the rail. */
   .nx-prime-canvas[data-hpan='on'] .nx-pn::before {
@@ -275,8 +288,21 @@
   /* Solid, so the posts waiting behind don't show through; and while the stack waits it dims by
      brightness, not opacity, so the deck behind never shows through the first card. */
   .nx-prime-canvas[data-hpan='on'] .nx-pn-post .nx-pn-body { background: #060708; }
-  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post { transition-property: opacity, filter; transition-duration: 0.45s; }
-  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post:not([data-lit='true']) { opacity: 1; filter: brightness(0.42); }
+  /* The waiting stack dims under a black veil (an opacity fade on the compositor), not a brightness
+     filter, which repainted the cards every frame of its fade; it reads the same. */
+  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post:not([data-lit='true']) { opacity: 1; }
+  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    border-radius: 4px;
+    background: #000;
+    opacity: 0;
+    transition: opacity 0.45s var(--ds-ease);
+    pointer-events: none;
+  }
+  .nx-prime-canvas[data-hpan='on'] > .nx-pn-post:not([data-lit='true'])::after { opacity: 0.58; }
   /* No rust light behind the row on phones (owner, 2026-10-25). */
   .nx-prime:has(.nx-prime-view[data-hpan='on'])::after { display: none; }
 }

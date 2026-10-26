@@ -137,19 +137,33 @@ export default function Prime() {
       // The scroll is split in two: the row slides until the posts' column is in view (PAN), then the
       // row holds while the posts fall out of one another and the rail runs on to its end.
       const PAN = 0.68;
-      const geo = () => {
+      // Geometry is measured once per layout (refresh), never per frame: reading it each frame, right
+      // after the row moved, forced a layout every frame on phones (owner, 2026-10-25: the pan felt
+      // heavier than the rest of the page).
+      const fill = canvas.querySelector<HTMLElement>('.nx-prail-fill')!;
+      const tipEl = canvas.querySelector<HTMLElement>('.nx-prail-tip')!;
+      let g = { start: 0, line: 1, postsAt: 0, viewW: 1, railW: 1, lefts: [] as number[] };
+      const measure = () => {
         const start = nodes[0].offsetLeft;
         const line = Math.max(1, canvas.scrollWidth - 2 * start);
-        const postsAt = (posts[0].offsetLeft + 24 - start) / line;
-        return { start, line, postsAt };
+        g = {
+          start,
+          line,
+          postsAt: (posts[0].offsetLeft + 24 - start) / line,
+          viewW: view.clientWidth,
+          railW: fill.offsetWidth,
+          lefts: items.map((el) => el.offsetLeft + 24),
+        };
       };
+      measure();
       let tl: gsap.core.Timeline;
+      let tipOn = '';
       const paint = () => {
         const prog = tl ? tl.progress() : 0;
         const tx = Number(gsap.getProperty(canvas, 'x')) || 0;
-        const { start, line, postsAt } = geo();
+        const { start, line, postsAt, viewW, railW, lefts } = g;
         // The reading line, 62% across the screen, in the row's own coordinates.
-        const at = view.clientWidth * 0.62 - tx;
+        const at = viewW * 0.62 - tx;
         let rail: number;
         if (prog < PAN) {
           rail = Math.max(0, Math.min(1, (at - start) / Math.max(1, postsAt * line))) * postsAt;
@@ -157,13 +171,18 @@ export default function Prime() {
           rail = postsAt + (1 - postsAt) * ((prog - PAN) / (1 - PAN));
         }
         const tip = start + rail * line;
-        items.forEach((el) => {
-          const on = prog >= PAN || el.offsetLeft + 24 <= Math.max(at, tip);
-          el.dataset.lit = String(on);
-          if (el.classList.contains('nx-pn')) el.dataset.live = String(on);
+        items.forEach((el, k) => {
+          const on = String(prog >= PAN || lefts[k] <= Math.max(at, tip));
+          // Only on a change: rewriting the attributes every frame restyled the row every frame.
+          if (el.dataset.lit !== on) {
+            el.dataset.lit = on;
+            if (el.classList.contains('nx-pn')) el.dataset.live = on;
+          }
         });
-        canvas.style.setProperty('--rail', rail.toFixed(4));
-        canvas.style.setProperty('--tipo', rail > 0.001 && rail < 0.999 ? '1' : '0');
+        fill.style.transform = `scaleX(${rail.toFixed(4)})`;
+        tipEl.style.transform = `translateX(${(rail * railW).toFixed(1)}px)`;
+        const o = rail > 0.001 && rail < 0.999 ? '1' : '0';
+        if (o !== tipOn) tipEl.style.opacity = tipOn = o;
       };
       // Each post falls out of the one above it: the second slides down from behind the first, then
       // the third from behind the second (it rides behind the second until then).
@@ -189,10 +208,15 @@ export default function Prime() {
             gsap.set(posts, { y: 0, scale: 1 });
             fit();
           },
-          onRefresh: paint,
+          onRefresh: () => {
+            measure();
+            paint();
+          },
         },
       });
-      tl.fromTo(canvas, { x: 0 }, { x: () => -distance(), duration: PAN }, 0);
+      // force3D: the row stays on its GPU layer at rest too (GSAP's auto flips it back to 2D when the
+      // scroll stops, and iOS re-rasterizes the wide row each time it starts again).
+      tl.fromTo(canvas, { x: 0 }, { x: () => -distance(), duration: PAN, force3D: true }, 0);
       // Before they fall, the two waiting posts sit as a deck behind the first, only their lower
       // edges showing, each a step narrower (after Superpower's stacked steps; owner, 2026-10-25).
       // Then each falls out of the one above it: the second slides down from behind the first, then
@@ -211,6 +235,8 @@ export default function Prime() {
         tl.scrollTrigger?.kill();
         tl.kill();
         gsap.set(canvas, { clearProps: 'x' });
+        for (const el of [fill, tipEl]) el.style.removeProperty('transform');
+        tipEl.style.removeProperty('opacity');
         gsap.set(posts, { clearProps: 'transform,opacity,visibility' });
         gsap.set(canvas.querySelector('[data-note="restricted"]'), { clearProps: 'opacity,visibility,transform' });
         delete view.dataset.hpan;
@@ -264,7 +290,9 @@ export default function Prime() {
                 </g>
               ))}
             </svg>
-            {/* Phones and tablets: the bright tip riding the rail. */}
+            {/* Phones and tablets: the rail's rust fill and the bright tip riding it, moved by their own
+                transforms (not a variable on the whole row), so the pan stays on the compositor. */}
+            <i className="nx-prail-fill" aria-hidden="true" />
             <i className="nx-prail-tip" aria-hidden="true" />
 
             <div className="nx-pn nx-node" data-node="prime" data-live="true">

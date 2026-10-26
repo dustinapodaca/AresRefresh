@@ -93,6 +93,9 @@ export default function SvProcess() {
       let end = 1;
       let span = 1;
       let stops: number[] = [];
+      // Measured once per layout, never per frame (owner, 2026-10-25: the pan felt heavier on phones).
+      let viewW = 1;
+      let dist = 0;
       // Track coordinates: the rail runs the whole hairline, from the first stage's left edge to the far
       // edge of stage 04 (owner, 2026-10-25: it stopped at 04's start).
       const measure = () => {
@@ -102,6 +105,8 @@ export default function SvProcess() {
         span = Math.max(1, end - first);
         rail.style.left = `${first}px`;
         rail.style.width = `${span}px`;
+        viewW = view.clientWidth;
+        dist = Math.max(0, track.scrollWidth - viewW);
       };
       const distance = () => Math.max(0, track.scrollWidth - view.clientWidth);
       // The held frame (owner, 2026-10-25): the heading under the nav, the row under it, and the intro
@@ -115,9 +120,9 @@ export default function SvProcess() {
         const tx = Number(gsap.getProperty(track, 'x')) || 0;
         // The reading line sits 62% across, and eases out to the hairline's far end as the pan
         // finishes, so the line is full when the row stops.
-        const d = distance();
+        const d = dist;
         const prog = d > 0 ? Math.min(1, -tx / d) : 1;
-        const base = view.clientWidth * 0.62;
+        const base = viewW * 0.62;
         const at = base - tx + Math.max(0, end - (base + d)) * prog;
         const p = Math.max(0, Math.min(1, (at - first) / span));
         fill.style.transform = `scaleX(${p.toFixed(4)})`;
@@ -153,7 +158,8 @@ export default function SvProcess() {
           },
         },
       });
-      tween.to(track, { x: () => -distance(), duration: 1 });
+      // force3D: the row stays on its GPU layer at rest too (see Prime.tsx).
+      tween.to(track, { x: () => -distance(), duration: 1, force3D: true });
       paint();
       return () => {
         tween.scrollTrigger?.kill();

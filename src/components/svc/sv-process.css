@@ -317,7 +317,7 @@
      one even step (owner, 2026-10-25). */
   .sv-pr[data-hpan='on'] .sv-pr-handoff { order: 4; margin-top: 72px; padding-left: var(--ds-edge); }
 
-  .sv-pr[data-hpan='on'] .sv-pr-track { width: max-content; padding-inline: var(--ds-edge); }
+  .sv-pr[data-hpan='on'] .sv-pr-track { width: max-content; padding-inline: var(--ds-edge); will-change: transform; } /* its own layer while it pans */
   .sv-pr[data-hpan='on'] .sv-pr-stages { display: flex; align-items: flex-start; gap: 32px; padding: 24px 0 0; }
   /* The hairline across the row; the rail fills it rust. */
   .sv-pr[data-hpan='on'] .sv-pr-stages::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 1px; background: rgb(255 255 255 / 0.16); box-shadow: none; }
