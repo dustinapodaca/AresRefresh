@@ -128,7 +128,7 @@
   line-height: 1.45;
   color: rgb(238 240 242 / 0.74);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3; /* was 2: the Government & Defense line ends on its crews on base (2026-10-25) */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

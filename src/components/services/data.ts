@@ -42,11 +42,12 @@ export const DIVISIONS: Division[] = [
     // Government & Defense (owner, 2026-10-16; was Government & Military). "Without opening a new
     // competition" came out with it (the CenCore finish review called it overstated).
     title: 'Government & Defense',
-    // Owner, 2026-10-25: any company with work on a base, not only agencies and defense contractors.
-    body: 'Officers for agencies and for any contractor with work on a base, from escorts into restricted areas to access control. Agencies can order through our GSA Schedule.',
+    // Owner, 2026-10-25: agencies, bases, and defense contractors, and also any company with work on a base.
+    body: 'Federal agencies, military bases, and defense contractors, through GSA, and security escorts for any crew working on base, plus access control and armed posts.',
     covers: [
       { name: 'Military bases', detail: 'Officers trained on the post by a member of our leadership who has worked it.' },
-      { name: 'Contractors on base', detail: 'Escorts and posts for construction, utility, and other crews working on a base, and teaming with primes.' },
+      { name: 'Defense contractors', detail: 'Access control, visitor screening, and escorts at contractor sites, and teaming with primes.' },
+      { name: 'Contractors on base', detail: 'Escorts and posts for construction, utility, and other crews working on a base.' },
       { name: 'Federal buildings', detail: 'Agencies can order through our GSA Schedule.' },
       { name: 'Restricted areas', detail: 'Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces.' },
     ],

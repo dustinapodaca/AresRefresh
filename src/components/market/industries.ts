@@ -47,11 +47,11 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // defense page (security as part of the mission), without its clearance claims. The slug stays.
     slug: 'government-defense',
     name: 'Government & Defense',
-    // Owner, 2026-10-25: not only agencies and defense contractors; any company with work on a base
-    // (construction, power, water) that needs escorts or posts, restricted areas included.
-    short: 'For agencies and any contractor with work on a base, restricted areas included.',
-    title: 'Security for government, military bases, and defense contractors.',
-    lead: 'Officers for federal, state, and local agencies, military installations, and the defense contractors that support them: restricted-area escort, access control, and armed posts, available to agencies through our GSA Multiple Award Schedule.',
+    // Owner, 2026-10-25: agencies, bases, and defense contractors directly, and also any company with
+    // work on a base (construction, power, water) that needs escorts or posts. No client or base names.
+    short: 'Federal agencies, military bases, and defense contractors, through GSA, and security escorts for any crew working on base.',
+    title: 'Security for government, military bases, defense contractors, and crews on base.',
+    lead: 'Officers for federal, state, and local agencies, military installations, and the defense contractors that support them: restricted-area escort, access control, and armed posts, available to agencies through our GSA Multiple Award Schedule. Construction, utility, and other companies with work on a base hire us directly for security escorts and posts.',
     // A real photo (owner, 2026-10-16): radomes behind a barbed-wire fence on a Space Force base in
     // Colorado. The strip sits low (whole radomes, the mountains, the fence line along its foot);
     // Home's card shows the left radome and the low buildings behind the fence.
@@ -64,6 +64,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     },
     stake: [
       'On a military installation or a defense contractor’s site, security is part of the mission. One missed check at a gate, or one unescorted visitor in a restricted area, becomes a finding, a stop-work, or a delay to the program.',
+      'The same goes for a contractor’s crew working inside the fence, on power, water, or a new building. Every worker in a restricted area needs an escort, and a crew without one does not work that day.',
       'Agencies and primes also need a contracting path that already exists. Ares holds a GSA Multiple Award Schedule contract, is active on SAM.gov, and is an SBA-certified woman-owned small business, so an agency can order directly and a prime can count our work toward its small-business subcontracting goals.',
     ],
     deliver: [
@@ -83,7 +84,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ],
     // The detail half of the prime panel's two-tone line (the claim is in IndustryPage.tsx).
     primes: 'Subcontracting credit, restricted-area escorts, and relief, overflow, and surge coverage under your contract.',
-    ask: 'Send us the installation or facility, the post requirements, and the period of performance. We will come back with a staffing plan, under our GSA Schedule or your contract.',
+    ask: 'Send us the installation, facility, or project on base, the post requirements, and the period of performance. We will come back with a staffing plan, under our GSA Schedule or your contract.',
     faq: [
       {
         q: 'How can an agency buy from Ares?',
@@ -100,6 +101,10 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Do you work with defense contractors?',
         a: 'Yes. We can post officers for access control, visitor screening, and escorts at contractor facilities and on the installations where they work, and we team with primes as a woman-owned small business subcontractor for relief, overflow, and surge coverage under their contracts.',
+      },
+      {
+        q: 'Can a contractor working on a base hire you directly?',
+        a: 'Yes. Construction, utility, environmental, and other companies doing work on a base hire us directly for escorts into restricted areas and posts at their work sites, for as long as the project runs. We work alongside base security forces, on post procedures we write.',
       },
       {
         q: 'Have you worked on military installations?',
