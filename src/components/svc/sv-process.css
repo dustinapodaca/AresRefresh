@@ -274,3 +274,9 @@
 @media (prefers-reduced-motion: reduce) {
   .sv-pr-wires path[data-light] { animation: none !important; }
 }
+
+/* Phones: the stage bars and the systems list back to their sizes before 2026-10-25 (owner); desktop
+   keeps the larger sizes. */
+@media (max-width: 767px) {
+  .sv-pr-bar, .sv-pr-syslist li { font-size: 11.5px; }
+}
