@@ -256,19 +256,14 @@ export default function SvServices() {
     }
     root.dataset.arm = 'true';
     panels.forEach((p) => svgs(p).forEach((s) => s.pauseAnimations()));
-    // A panel starts its piece from the beginning each time it comes into view (owner, 2026-10-25: on
-    // phones a card swiped in had already run part way); on phones "in view" means most of the card,
-    // so the neighbours peeking at the edges wait.
+    // A panel's piece runs only while it is in view; on phones "in view" means most of the card, so
+    // the neighbours peeking at the edges wait to start until they are swiped in (owner, 2026-10-25).
     const phone = window.matchMedia('(max-width: 767px)').matches;
     const io = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
           const p = e.target as HTMLElement;
           const on = e.isIntersecting;
-          if (on && p.dataset.play !== 'true') {
-            p.getAnimations({ subtree: true }).forEach((a) => (a.currentTime = 0));
-            svgs(p).forEach((s) => s.setCurrentTime(0));
-          }
           p.dataset.play = String(on);
           svgs(p).forEach((s) => (on ? s.unpauseAnimations() : s.pauseAnimations()));
         }),

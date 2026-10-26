@@ -218,8 +218,9 @@
 
 
 /* ---------------------------------------------------- Motion (armed, in view) */
-.svs[data-arm='true'] .svs-panel * { animation-play-state: paused; }
-.svs[data-arm='true'] .svs-panel[data-play='true'] * { animation-play-state: running; }
+/* Paused until the panel is in view: specific enough to beat the animation shorthands below, which
+   reset the play state to running (so every piece ran from page load; owner, 2026-10-25). */
+.svs[data-arm='true'] .svs-grid .svs-panel:not([data-play='true']) * { animation-play-state: paused; }
 
 /* Armed: each row waits, then reads qualified and current. */
 .svs[data-arm='true'] .svs-q-wait { animation: svs-q-wait 6s infinite; animation-delay: calc(var(--i) * 0.7s); }

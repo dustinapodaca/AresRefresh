@@ -771,8 +771,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
   keys at the foot. Desktop three by two; phones a swipe row with the shared swipe controls under it (below). On phones
   (owner, 2026-10-25) the piece sits 20px under the header and the text 24px under the piece, the six
-  one height with any spare room at the foot, and each piece starts from the beginning when its card
-  is swiped in (most of it on screen), not before.
+  one height with any spare room at the foot, and each piece waits at its start until its card is
+  swiped in (most of it on screen), then runs; it pauses when swiped away and picks up where it was.
 - **02 The sites we protect.** (`divisions`): the six industries in a row running off the right edge
   (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes.
   Redrawn 2026-10-25 (owner: the AI-tells pass; after the industry rows of Dropbox and Beside on
