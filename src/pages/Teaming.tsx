@@ -17,8 +17,8 @@ import '../components/teaming/tb.css';
 // and no clearance wording here (clearance requirements live on Careers only, owner 2026-10-10).
 //
 // The Capability Statement is about one company, so its object is one card. Teaming is about two
-// companies, so the hero is two: the prime's site on the left (the steel-frame build in downtown
-// Colorado Springs) and Ares officers on the right (About's two officers seen from behind), split by a
+// companies, so the hero is two: the prime's site on the left (a Space Force base in Colorado, zoomed
+// in on its domes) and Ares officers on the right (About's two officers seen from behind), split by a
 // seam with a rust wire across it marked "Teaming", Home's prime-section language. On load the halves
 // close in toward the seam and the wire draws across. The identifiers stay on the Capability
 // Statement (linked); what a prime buys, the subcontracting credit, is set large in its own section.
@@ -129,7 +129,14 @@ function Hero() {
       <div className="tb-pair">
         <figure className="tb-half tb-half-a">
           <div className="tb-half-photo">
-            <img {...responsive('/images/market/construction-industrial.webp')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+            {/* The Space Force base, zoomed in on the domes at its left (owner, 2026-10-26; was the
+                steel-frame build). Drawn about 2.6x the panel, so the sizes ask for that much. */}
+            <img
+              {...responsive('/images/market/government-schriever.jpg', '(min-width: 768px) 130vw, 260vw')}
+              alt=""
+              decoding="sync"
+              {...{ fetchpriority: 'high' }}
+            />
           </div>
           <figcaption className="tb-half-copy">
             <p className="tb-half-name">Your contract</p>
