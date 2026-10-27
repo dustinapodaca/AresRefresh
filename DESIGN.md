@@ -1035,7 +1035,7 @@ sheet, Roles we fill, the How teaming works chain, How we work). Every fact is t
 Teaming is two companies, so the hero is two photos, not one card.
 - **Hero:** two panels side by side (stacked on phones, the headline above them), 4px corners and the
   hairline photo edge: a Space Force base from the air, its row of domes and a C-17 on the apron,
-  Denver and the Front Range behind (owner, 2026-10-26; brightness 0.8; tried before it the same day:
+  Denver and the Front Range behind (owner, 2026-10-26; zoomed 1.12x, brightness 0.88; tried before it the same day:
   the base at golden hour zoomed on its domes; the bundle had the steel-frame build downtown), "Your contract" / "You hold the
   contract and the posts under it."; About's two Ares officers seen from behind, "Our officers" /
   "Trained on your post, with relief behind every shift." A 2px rust wire with a soft glow crosses the
