@@ -1,0 +1,294 @@
+/* /teaming-split, "Your contract, our officers" (home-flora, 2026-10-26). A second form of the
+   teaming page: a two-photo hero joined by a rust wire, wide partner rows with photo strips, the
+   subcontracting credit set large. Class prefix tb-. */
+
+.tb { --tb-edge: rgb(255 255 255 / 0.1); --tb-edge-2: rgb(255 255 255 / 0.16); color: var(--ds-fg); }
+.tb h1, .tb h2, .tb h3 { color: var(--ds-fg); }
+
+/* One fade-up per block, once (motion only). */
+.tb[data-rv-arm='true'] [data-rv] { opacity: 0; transform: translateY(14px); }
+.tb[data-rv-arm='true'] [data-rv][data-in='true'] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ds-ease), transform 0.75s var(--ds-ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* ------------------------------------------------------------------ Hero */
+.tb-hero {
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: calc(var(--ds-header) + 24px) var(--ds-gutter) 0;
+  display: grid;
+  gap: 0;
+}
+.tb-hero-text { display: contents; }
+.tb-pair {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  height: clamp(380px, 56svh, 620px);
+}
+.tb-half {
+  position: relative;
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+}
+.tb-half-photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.tb-half-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; transform-origin: 50% 50%; }
+.tb-half-a .tb-half-photo img { object-position: 60% 38%; filter: saturate(0.72) brightness(0.62) contrast(1.1); }
+.tb-half-b .tb-half-photo img { object-position: 50% 8%; filter: saturate(0.8) brightness(0.72) contrast(1.06); }
+.tb-half-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.25) 0%, rgb(0 0 0 / 0) 35%, rgb(0 0 0 / 0.72) 100%); }
+.tb-half-copy { position: absolute; left: clamp(20px, 2.4vw, 36px); right: clamp(20px, 2.4vw, 36px); bottom: clamp(20px, 2.4vw, 32px); }
+.tb-half-name {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(32px, 3.6vw, 60px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: #fff;
+}
+.tb-half-line { margin: 10px 0 0; max-width: 36ch; text-wrap: balance; font-size: 15px; line-height: 1.5; color: rgb(238 240 242 / 0.82); }
+.tb-half-b .tb-half-copy { text-align: right; }
+.tb-half-b .tb-half-line { margin-left: auto; }
+
+/* The seam: one rust wire across it at the middle, "Teaming" where it crosses. Light, not paint. */
+.tb-seam { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.tb-wire {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  top: 46%;
+  height: 2px;
+  margin-top: -1px;
+  background: linear-gradient(90deg, rgb(188 111 64 / 0), var(--ds-rust) 18%, #e3a06f 50%, var(--ds-rust) 82%, rgb(188 111 64 / 0));
+  box-shadow: 0 0 16px rgb(188 111 64 / 0.7), 0 0 3px rgb(227 160 111 / 0.9);
+  transform-origin: 50% 50%;
+}
+.tb-tie {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  padding: 7px 12px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+  background: rgb(8 9 11 / 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.14);
+}
+
+.tb-title {
+  margin: clamp(28px, 3.4vw, 48px) 0 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(48px, 6.8vw, 112px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.tb-hero-side { margin-top: 24px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; }
+.tb-lead { margin: 0; max-width: 54ch; font-size: 18px; line-height: 1.55; color: #c4c8ce; }
+.tb-actions { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; }
+.tb-actions .ds-link svg { width: 14px; height: 14px; }
+
+/* The opener (motion only): the halves close in on the seam while the photos settle, the wire
+   draws out from the middle, then "Teaming" comes up on it. */
+.tb[data-rv-arm='true'] .tb-half-a { transform: translateX(-28px); }
+.tb[data-rv-arm='true'] .tb-half-b { transform: translateX(28px); }
+.tb[data-rv-arm='true'] .tb-half-photo img { transform: scale(1.08); }
+.tb[data-rv-arm='true'] .tb-wire { transform: scaleX(0); }
+.tb[data-rv-arm='true'] .tb-tie { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+.tb[data-rv-arm='true'] :is(.tb-half-copy, .tb-title, .tb-hero-side) { opacity: 0; transform: translateY(16px); }
+.tb[data-hero-in] .tb-half { transform: none; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.tb[data-hero-in] .tb-half-photo img { transform: none; transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.tb[data-hero-in] .tb-wire { transform: none; transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.8s; }
+.tb[data-hero-in] .tb-tie { opacity: 1; transform: translate(-50%, -50%); transition: opacity 0.5s var(--ds-ease) 1.45s, transform 0.6s var(--ds-ease) 1.45s; }
+.tb[data-hero-in] :is(.tb-half-copy, .tb-title, .tb-hero-side) { opacity: 1; transform: none; transition: opacity 0.8s var(--ds-ease), transform 0.9s var(--ds-ease); }
+.tb[data-hero-in] .tb-half-copy { transition-delay: 0.45s; }
+.tb[data-hero-in] .tb-title { transition-delay: 0.6s; }
+.tb[data-hero-in] .tb-hero-side { transition-delay: 0.75s; }
+
+/* ------------------------------------------------------- The document */
+.tb-doc {
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: 0 var(--ds-gutter);
+}
+.tb-sec { padding-top: clamp(104px, 12vw, 176px); }
+.tb-head { margin-bottom: clamp(32px, 4vw, 56px); }
+.tb-h2 {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+.tb-head-lead { margin: 18px 0 0; max-width: 52ch; font-size: 18px; line-height: 1.55; color: var(--ds-fg-muted); }
+
+/* Who we team with: wide rows, a photo strip, the partner, and the posts it needs. */
+.tb-rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--tb-edge); }
+.tb-row {
+  display: grid;
+  grid-template-columns: minmax(0, 4.4fr) minmax(0, 4fr) minmax(0, 3.6fr);
+  gap: clamp(24px, 3.4vw, 56px);
+  align-items: start;
+  padding: clamp(24px, 2.6vw, 36px) 0;
+  border-top: 1px solid var(--tb-edge-2);
+}
+.tb-row-photo { aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); position: relative; }
+.tb-row-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; filter: saturate(0.78) brightness(0.84); transition: transform 0.5s var(--ds-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .tb-row:hover .tb-row-photo img { transform: scale(1.02); }
+}
+.tb-row-name { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.02; letter-spacing: -0.04em; text-wrap: balance; }
+.tb-row-line { margin: 14px 0 0; max-width: 40ch; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
+.tb-row-roles { list-style: none; margin: 0; padding: 0; }
+.tb-row-roles li { border-top: 1px solid var(--tb-edge); }
+.tb-row-roles li:last-child { border-bottom: 1px solid var(--tb-edge); }
+.tb-row-roles a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 0; font-size: 15px; font-weight: 500; color: var(--ds-fg); text-decoration: none; }
+@media (hover: hover) and (pointer: fine) {
+  .tb-row-roles a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+}
+
+/* What the prime gets: the three certification numbers large, then the rest in a short ledger. */
+.tb-credit { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--tb-edge-2); }
+.tb-credit > div { display: flex; flex-direction: column; padding: 28px 24px 30px 0; }
+.tb-credit > div + div { padding-left: 24px; border-left: 1px solid var(--tb-edge); }
+.tb-credit-value { margin: 0; order: 1; font-size: clamp(32px, 3.7vw, 56px); line-height: 1; letter-spacing: -0.02em; color: var(--ds-fg); font-variant-numeric: tabular-nums slashed-zero; white-space: nowrap; }
+.tb-credit-label { order: 2; margin-top: 14px; font-size: 15px; line-height: 1.45; color: var(--ds-fg-muted); }
+.tb-more { margin: clamp(40px, 5vw, 64px) 0 0; border-top: 1px solid var(--tb-edge-2); }
+.tb-more-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--tb-edge); }
+.tb-more-row dt { font-size: 14px; line-height: 1.5; color: var(--ds-fg-faint); }
+.tb-more-row dd { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ds-fg); }
+.tb-more-row .ds-link svg { margin-left: 4px; }
+
+/* Five steps on one hairline. */
+.tb-steps { --fill: 1; position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); }
+.tb-steps::before,
+.tb-steps::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; }
+.tb-steps::before { background: var(--tb-edge-2); }
+.tb-steps::after { background: var(--ds-rust); transform: scaleX(var(--fill)); transform-origin: left; }
+.tb-step { padding-top: 28px; }
+.tb-step-n { display: block; font-size: 14px; color: var(--ds-fg-faint); transition: color 0.3s var(--ds-ease); }
+.tb-step[data-on='true'] .tb-step-n,
+.tb-steps:not([data-live]) .tb-step-n { color: var(--ds-rust); }
+.tb-step-title { margin: 14px 0 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.15; letter-spacing: -0.02em; }
+.tb-step-line { margin: 10px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--ds-fg-muted); }
+.tb-steps[data-live] .tb-step { transition: opacity 0.3s var(--ds-ease); }
+.tb-steps[data-live] .tb-step:not([data-on='true']) { opacity: 0.62; }
+
+.tb-doc .ds-mk-faq { padding-top: clamp(104px, 12vw, 176px); }
+
+/* ------------------------------------------------------------- The close */
+.tb-close {
+  position: relative;
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: clamp(120px, 14vw, 208px) var(--ds-gutter) clamp(120px, 12vw, 176px);
+  isolation: isolate;
+  overflow-x: clip;
+}
+.tb-close-title { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(48px, 8.4vw, 150px); line-height: 0.92; letter-spacing: -0.055em; }
+.tb-close-line { margin: 28px 0 0; max-width: 44ch; font-size: 20px; line-height: 1.5; font-weight: 500; color: var(--ds-fg-muted); }
+.tb-close-call { margin-top: clamp(48px, 6vw, 88px); }
+.tb-close-phone { position: relative; display: inline-flex; align-items: center; gap: clamp(12px, 2vw, 28px); padding-bottom: 14px; color: var(--ds-fg); text-decoration: none; }
+.tb-close-phone .ds-data { font-size: min(11.6vw, 168px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums slashed-zero; white-space: nowrap; }
+.tb-close-phone .ds-arrow { width: clamp(24px, 3vw, 40px); height: auto; }
+.tb-close-rule { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ds-rust); transform-origin: left; }
+.tb[data-rv-arm='true'] .tb-close-call .tb-close-rule { transform: scaleX(0); }
+.tb[data-rv-arm='true'] .tb-close-call[data-in='true'] .tb-close-rule { transform: scaleX(1); transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.35s; }
+@media (hover: hover) and (pointer: fine) {
+  .tb-close-phone:hover .ds-arrow { transform: translateX(6px); color: var(--ds-rust); }
+}
+.tb-close-meta { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 14px; color: var(--ds-fg-muted); }
+.tb-close-meta a { color: var(--ds-fg); }
+.tb-close-actions { margin-top: clamp(40px, 5vw, 64px); }
+.tb-close-horizon {
+  position: absolute;
+  left: 50%;
+  bottom: -120px;
+  width: min(1400px, 140%);
+  height: 360px;
+  transform: translateX(-50%);
+  z-index: -1;
+  background: radial-gradient(closest-side, rgb(188 111 64 / 0.26), rgb(139 73 32 / 0.1) 55%, transparent);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------- Tablets and phones */
+@media (max-width: 1023px) {
+  .tb-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .tb-row-photo { grid-row: span 2; }
+  .tb-steps { grid-template-columns: 1fr; gap: 28px; padding-left: 28px; }
+  .tb-steps::before,
+  .tb-steps::after { left: 0; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; }
+  .tb-steps::after { transform: scaleY(var(--fill)); transform-origin: top; }
+  .tb-step { padding-top: 0; max-width: 46ch; }
+  .tb-step-title { margin-top: 6px; }
+}
+@media (max-width: 767px) {
+  /* Phones: the headline first, then the two halves stacked with the wire running down the seam. */
+  .tb-hero { padding-top: calc(var(--ds-header) + 28px); }
+  .tb-title { order: -1; margin: 0 0 24px; font-size: clamp(46px, 13vw, 64px); }
+  .tb-pair { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; gap: 10px; height: clamp(440px, 74svh, 600px); }
+  .tb-half-b .tb-half-copy { text-align: left; }
+  .tb-half-b .tb-half-line { margin-left: 0; }
+  .tb-wire {
+    left: auto;
+    right: 26px;
+    top: 24%;
+    bottom: 24%;
+    width: 2px;
+    height: auto;
+    margin-top: 0;
+    background: linear-gradient(180deg, rgb(188 111 64 / 0), var(--ds-rust) 18%, #e3a06f 50%, var(--ds-rust) 82%, rgb(188 111 64 / 0));
+  }
+  .tb-tie { left: auto; right: 26px; top: 50%; transform: translate(50%, -50%); }
+  .tb[data-rv-arm='true'] .tb-half-a { transform: translateY(-20px); }
+  .tb[data-rv-arm='true'] .tb-half-b { transform: translateY(20px); }
+  .tb[data-rv-arm='true'] .tb-wire { transform: scaleY(0); }
+  .tb[data-rv-arm='true'] .tb-tie { transform: translate(50%, calc(-50% + 8px)); }
+  .tb[data-hero-in] .tb-tie { transform: translate(50%, -50%); }
+  /* The settled state again, after the phone's starting offsets (same weight, so order decides):
+     without it the halves stayed 20px apart (the first one up against the headline) and the wire
+     never drew. */
+  .tb[data-hero-in] :is(.tb-half-a, .tb-half-b, .tb-wire) { transform: none; }
+  .tb-hero-side { margin-top: 28px; flex-direction: column; align-items: flex-start; }
+  .tb-lead { font-size: 16px; }
+  .tb-half-name { font-size: clamp(30px, 9vw, 40px); }
+  .tb-half-line { font-size: 14px; max-width: 26ch; }
+
+  .tb-sec, .tb-doc .ds-mk-faq { padding-top: 104px; }
+  .tb-head-lead { font-size: 16px; }
+  .tb-row { grid-template-columns: 1fr; gap: 18px; }
+  .tb-row-photo { grid-row: auto; }
+  .tb-credit { grid-template-columns: 1fr; }
+  .tb-credit > div { padding: 22px 0; }
+  .tb-credit > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--tb-edge); }
+  .tb-credit-value { font-size: clamp(34px, 10vw, 44px); }
+  .tb-more-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+  .tb-more-row dd { font-size: 16px; }
+  .tb-close { padding-top: 120px; }
+  .tb-close-line { font-size: 17px; }
+  .tb-close-phone { gap: 10px; }
+  .tb-close-phone .ds-data { font-size: 11.4vw; }
+  .tb-close-phone .ds-arrow { width: 22px; }
+  /* The email and the city stack; the dot between them would dangle at the end of the first line. */
+  .tb-close-meta { flex-direction: column; gap: 6px; }
+  .tb-close-meta > span[aria-hidden] { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tb-step, .tb-step-n { transition: none !important; }
+}

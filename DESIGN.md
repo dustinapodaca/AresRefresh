@@ -672,8 +672,8 @@ and `nx-*.css` (class prefix `nx-`).
   line in ink muted; no boxes, green tags, dots, tiles, or glow. The hairline on the left fills rust
   with the scroll (from the chain's top at 75% of the window to its foot at 35%) and each step comes
   up from 0.62 as the fill reaches it; scrubbed both ways; drawn and lit without JavaScript or under
-  reduced motion. On /teaming it sits under "What the prime gets." (after the sheet on phones); on the
-  Government & Defense page the panel and its glow are gone: the heading, the two-tone line, and the
+  reduced motion. On /teaming it sat under "What the prime gets." until 2026-10-26, when the page was
+  rebuilt (Components, "Teaming page"); on the Government & Defense page the panel and its glow are gone: the heading, the two-tone line, and the
   Teaming & subcontracting button on the left, the chain on the right (stacked on phones).
   `PrimePipeline`, `PrimeStrip`, and `PrimeGlow` were deleted; what follows describes them.
 - **Since 2026-10-20 Home has its own prime section** (the node canvas, under "Home" above). This
@@ -1026,6 +1026,37 @@ tilt and one fade-up per block (`data-rv`, once).
   registration, Certifications, Licensing) as ledgers: the mark, label, value (copy where useful), note.
   Marks are white silhouettes in a 56px slot with the label 32px past it; the square GSA mark keeps its
   colors at 40px. Phones: the first group as two-column tiles, the GSA mark at its tile's top right.
+
+### Teaming page ("Your contract, our officers", live since 2026-10-26, owner)
+The second of two forms in the owner's teaming-previews bundle (the first, "The teaming sheet", read
+too close to the Capability Statement and was not built). `src/pages/Teaming.tsx`,
+`src/components/teaming/tb.css` (class prefix `tb-`). It replaced the market-parts page (identifiers
+sheet, Roles we fill, the How teaming works chain, How we work). Every fact is the previous page's.
+Teaming is two companies, so the hero is two photos, not one card.
+- **Hero:** two panels side by side (stacked on phones, the headline above them), 4px corners and the
+  hairline photo edge: the steel-frame build in downtown Colorado Springs, "Your contract" / "You hold the
+  contract and the posts under it."; About's two Ares officers seen from behind, "Our officers" /
+  "Trained on your post, with relief behind every shift." A 2px rust wire with a soft glow crosses the
+  seam (down the right edge on phones) with a small glass "Teaming" label where it crosses (2px corners,
+  sentence case). Under the panels, "Teaming & subcontracting" on one line on desktop, then the lead with
+  Talk teaming and the PDF. On load (motion only) the halves close in on the seam while the photos
+  settle, the wire draws out from the middle, then the label comes up.
+- **Who we team with.** Three wide rows on hairlines: a 16:9 photo strip (the radomes for primes, an
+  Ares officer for guard companies, the data center campus for builders), the partner and its line, and
+  the posts it needs as ruled links.
+- **What the prime gets.** The line on subcontracting goals as the lead, then the three certification
+  numbers large in the data face (WOSB250470, WBE2303571, 21353671) with their labels, then a short
+  ledger: licensed, reliability, past performance, the GSA MAS contract vehicle, and the identifiers as
+  a link to the Capability Statement (they live there, not here).
+- **From the contract to the first shift.** Five steps (send the contract; who we can staff and when;
+  post orders written with you, with mutual non-solicitation; trained on your post; relief behind every
+  post) on a hairline that fills rust with the scroll, each number turning rust as it is reached
+  (across on desktop, down on phones).
+- **Questions,** the shared questions block, then the close: "Send us the contract." with the phone as
+  the largest object (the data face, a rust rule drawing under it), the email and city in mono (stacked
+  on phones), Talk teaming, and a low rust horizon into the footer.
+- Quiet motion: the hero opener, one fade-up per block (`data-rv`, once), the step line. The resolved
+  page (prerender, no JavaScript, reduced motion) shows everything, the wire drawn.
 
 ### Request a Quote page ("The Intake", 2026-10-05)
 A short form page, so no rail and no scroll effects (owner). Concept and Mobbin board:

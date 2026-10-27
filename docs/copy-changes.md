@@ -1244,3 +1244,22 @@ Officers; Access Control Officers; Restricted-Area Escort; Mobile Patrol; Relief
   `?service=` slugs.
 - `index.html`: the LocalBusiness description and the OfferCatalog's last two offers.
 - The quote form's services, and the six `/services/*` entries in `src/seo/routes.json`.
+
+## Teaming page rebuilt, "Your contract, our officers" (owner, 2026-10-26)
+From the owner's teaming-previews bundle (the second form; the first was not built). Every fact is the
+previous page's. New framing copy (N):
+- Hero panels: "Your contract" / "You hold the contract and the posts under it."; "Our officers" /
+  "Trained on your post, with relief behind every shift."; "Teaming" on the wire.
+- "Who we team with." now lists the posts each partner needs (Prime contractors: Restricted-Area
+  Escort, Access Control Officers, Relief & Surge Coverage; Guard companies: Relief & Surge Coverage,
+  Armed and Unarmed Security Officers; Builders and general contractors: Restricted-Area Escort, Access
+  Control Officers). "Roles we fill." was folded into it.
+- "What the prime gets." leads with "The work Ares does under your contract counts toward your
+  small-business subcontracting goals." and sets WOSB250470, WBE2303571, and 21353671 large; the
+  identifiers sheet (GSA, UEI, CAGE, NAICS) moved off the page, linked as "UEI, CAGE, NAICS, and every
+  certification" to the Capability Statement.
+- "How we work." became "From the contract to the first shift.", five steps: Send us the contract; Who
+  we can staff, and when; Post orders, written with you (with the mutual non-solicitation line);
+  Trained on your post; Relief behind every post (on-call coverage and the logs).
+- The ask strip became the close: "Send us the contract." and "The contract, the posts, and the
+  coverage you need. We will come back with who we can staff and when."
