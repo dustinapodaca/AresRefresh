@@ -1040,7 +1040,9 @@ Teaming is two companies, so the hero is two photos, not one card.
   contract and the posts under it."; About's two Ares officers seen from behind, "Our officers" /
   "Trained on your post, with relief behind every shift." A 2px rust wire with a soft glow crosses the
   seam (down the right edge on phones) with a small glass "Teaming" label where it crosses (2px corners,
-  sentence case). Under the panels, "Teaming & subcontracting" on one line on desktop, then the lead with
+  sentence case; a 34% wash over a 20px blur at 1.6 color, the glass edge and top line; owner,
+  2026-10-26, was 72% and read as solid; on phones the wire and label sit 48px in from the edge so the
+  label is wholly on the photos). Under the panels, "Teaming & subcontracting" on one line on desktop, then the lead with
   Talk teaming and the PDF. On phones each panel has a soft dark corner at its foot left behind the
   copy (owner, 2026-10-26). On load (motion only) the halves close in on the seam while the photos
   settle, the wire draws out from the middle, then the label comes up.

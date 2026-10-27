@@ -82,9 +82,11 @@
   font-weight: 500;
   color: #fff;
   white-space: nowrap;
-  background: rgb(8 9 11 / 0.72);
-  -webkit-backdrop-filter: blur(14px) saturate(1.3);
-  backdrop-filter: blur(14px) saturate(1.3);
+  /* Glass (owner, 2026-10-26: it read as a solid chip at 72% black): a light wash over a blur that
+     lifts the color behind it, with the site's glass edge and top line. */
+  background: rgb(8 9 11 / 0.34);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.14);
 }
 
@@ -258,7 +260,7 @@
   .tb-half-b .tb-half-line { margin-left: 0; }
   .tb-wire {
     left: auto;
-    right: 26px;
+    right: 48px; /* in far enough that the label centered on it sits wholly on the photo */
     top: 24%;
     bottom: 24%;
     width: 2px;
@@ -266,7 +268,7 @@
     margin-top: 0;
     background: linear-gradient(180deg, rgb(188 111 64 / 0), var(--ds-rust) 18%, #e3a06f 50%, var(--ds-rust) 82%, rgb(188 111 64 / 0));
   }
-  .tb-tie { left: auto; right: 26px; top: 50%; transform: translate(50%, -50%); }
+  .tb-tie { left: auto; right: 48px; top: 50%; transform: translate(50%, -50%); }
   .tb[data-rv-arm='true'] .tb-half-a { transform: translateY(-20px); }
   .tb[data-rv-arm='true'] .tb-half-b { transform: translateY(20px); }
   .tb[data-rv-arm='true'] .tb-wire { transform: scaleY(0); }
