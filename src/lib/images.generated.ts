@@ -176,6 +176,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 3200,
     "height": 1800
   },
+  "/images/market/government-schriever.jpg": {
+    "src": "/images/opt/market-government-schriever-1200.3157ee6b.webp",
+    "srcSet": "/images/opt/market-government-schriever-480.34eb2bc3.webp 480w, /images/opt/market-government-schriever-800.5cd365d2.webp 800w, /images/opt/market-government-schriever-1200.3157ee6b.webp 1200w, /images/opt/market-government-schriever-1600.e51ac84c.webp 1600w, /images/opt/market-government-schriever-2000.7b8265e4.webp 2000w, /images/opt/market-government-schriever-2400.bfce7f1c.webp 2400w, /images/opt/market-government-schriever-3200.ded64a2c.webp 3200w",
+    "width": 3200,
+    "height": 2133
+  },
   "/images/market/construction-industrial.webp": {
     "src": "/images/opt/market-construction-industrial-1200.74e7ff8c.webp",
     "srcSet": "/images/opt/market-construction-industrial-480.1fbe50a0.webp 480w, /images/opt/market-construction-industrial-800.540967a2.webp 800w, /images/opt/market-construction-industrial-1200.74e7ff8c.webp 1200w, /images/opt/market-construction-industrial-1600.7f364862.webp 1600w, /images/opt/market-construction-industrial-2000.cd326cc4.webp 2000w",

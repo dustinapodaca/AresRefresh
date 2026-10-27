@@ -83,6 +83,8 @@ PHOTOS = [
     # Colorado (DVIDS 7084760, via Wikimedia Commons). Master downsized from 3840px to 3200px. The
     # golden-hour base photo it replaced (and its cloud-free edit) is in images-unused.
     {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-radomes.jpg', 'q': 80},
+    # The Space Force base at golden hour, cloud-free edit (owner, 2026-10-26: Teaming's prime contractors row).
+    {'key': '/images/market/government-schriever.jpg', 'source': 'assets/images-src/market/government-schriever-clean.jpg', 'q': 80},
     # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
     # only); the untouched original is construction-colorado-springs.jpg beside it.

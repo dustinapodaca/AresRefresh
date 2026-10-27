@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
@@ -33,8 +33,9 @@ const PARTNERS = [
   {
     name: 'Prime contractors',
     line: 'On federal and commercial contracts that need a woman-owned security subcontractor, or more officers than the prime can staff.',
-    photo: '/images/market/government-military.webp',
-    pos: '50% 88%',
+    // The Space Force base at golden hour (owner, 2026-10-26; was the radomes behind the fence).
+    photo: '/images/market/government-schriever.jpg',
+    pos: '50% 56%',
     roles: [
       { name: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
       { name: 'Access Control Officers', to: '/services/access-control' },
@@ -71,9 +72,23 @@ const CREDIT = [
   { value: '21353671', label: 'Denver M/WBE and SBE, B2G vendor' },
 ];
 
-type Row = { label: string; value: string; to?: string; href?: string };
+type Row = { label: string; value: ReactNode; to?: string; href?: string };
+// Each city links to its own page (owner, 2026-10-26; the whole line went to Denver's).
+const CITY = (to: string, name: string) => (
+  <Link to={to} className="ds-link">
+    {name}
+  </Link>
+);
 const MORE: Row[] = [
-  { label: 'Licensed', value: 'Armed and unarmed, in Colorado Springs, Denver, and Pueblo', to: '/locations/denver' },
+  {
+    label: 'Licensed',
+    value: (
+      <>
+        Armed and unarmed, in {CITY('/locations/colorado-springs', 'Colorado Springs')}, {CITY('/locations/denver', 'Denver')}, and{' '}
+        {CITY('/locations/pueblo', 'Pueblo')}
+      </>
+    ),
+  },
   { label: 'Reliability', value: 'Fewer than 1% of shifts missed since 2021' },
   { label: 'Past performance', value: 'Restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor, 2025 to 2027', to: '/capability-statement#past' },
   { label: 'Contract vehicle', value: 'GSA MAS 47QSMS25D009Q, SIN 561612', href: GSA_ELIBRARY },

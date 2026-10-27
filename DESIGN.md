@@ -1041,13 +1041,15 @@ Teaming is two companies, so the hero is two photos, not one card.
   sentence case). Under the panels, "Teaming & subcontracting" on one line on desktop, then the lead with
   Talk teaming and the PDF. On load (motion only) the halves close in on the seam while the photos
   settle, the wire draws out from the middle, then the label comes up.
-- **Who we team with.** Three wide rows on hairlines: a 16:9 photo strip (the radomes for primes, the
+- **Who we team with.** Three wide rows on hairlines: a 16:9 photo strip (the Space Force base at golden hour, cloud-free edit, for primes (owner, 2026-10-26; was the
+  radomes behind the fence), the
   Ares patrol vehicles for guard companies (owner, 2026-10-26; was an Ares officer), the data center
   campus for builders), the partner and its line, and
   the posts it needs as ruled links.
 - **What the prime gets.** The line on subcontracting goals as the lead, then the three certification
   numbers large in the data face (WOSB250470, WBE2303571, 21353671) with their labels, then a short
-  ledger: licensed, reliability, past performance, the GSA MAS contract vehicle, and the identifiers as
+  ledger (links in it take the row's type): licensed (each city a link to its own page; owner,
+  2026-10-26), reliability, past performance, the GSA MAS contract vehicle, and the identifiers as
   a link to the Capability Statement (they live there, not here).
 - **From the contract to the first shift.** Five steps (send the contract; who we can staff and when;
   post orders written with you, with mutual non-solicitation; trained on your post; relief behind every

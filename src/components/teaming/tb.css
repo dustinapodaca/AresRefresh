@@ -172,6 +172,9 @@
 .tb-more-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--tb-edge); }
 .tb-more-row dt { font-size: 14px; line-height: 1.5; color: var(--ds-fg-faint); }
 .tb-more-row dd { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ds-fg); }
+/* Links in a value take the row's type, so a linked city reads the same size as the words around it
+   (owner, 2026-10-26: each city links to its own page). */
+.tb-more-row dd .ds-link { font: inherit; }
 .tb-more-row .ds-link svg { margin-left: 4px; }
 
 /* Five steps on one hairline. */
