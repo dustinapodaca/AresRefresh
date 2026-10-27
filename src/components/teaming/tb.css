@@ -40,9 +40,8 @@
 }
 .tb-half-photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .tb-half-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; transform-origin: 50% 50%; }
-/* The base, zoomed well in on the domes at its left (owner, 2026-10-26). The zoom is the separate
-   `scale` property, so the opener's transform (1.08 settling to none) still runs on top of it. */
-.tb-half-a .tb-half-photo img { object-position: 0% 50%; scale: 2.6; transform-origin: 22% 54%; filter: saturate(0.82) brightness(0.74) contrast(1.06); }
+/* The base from the air (owner, 2026-10-26), framed on the row of domes with the skyline above. */
+.tb-half-a .tb-half-photo img { object-position: 55% 50%; filter: saturate(0.85) brightness(0.8) contrast(1.04); }
 .tb-half-b .tb-half-photo img { object-position: 50% 8%; filter: saturate(0.8) brightness(0.72) contrast(1.06); }
 .tb-half-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.25) 0%, rgb(0 0 0 / 0) 35%, rgb(0 0 0 / 0.72) 100%); }
 .tb-half-copy { position: absolute; left: clamp(20px, 2.4vw, 36px); right: clamp(20px, 2.4vw, 36px); bottom: clamp(20px, 2.4vw, 32px); }

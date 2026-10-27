@@ -182,6 +182,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 3200,
     "height": 2133
   },
+  "/images/market/base-aerial.jpg": {
+    "src": "/images/opt/market-base-aerial-1200.d9ac1497.webp",
+    "srcSet": "/images/opt/market-base-aerial-480.62c34aa4.webp 480w, /images/opt/market-base-aerial-800.2af3de99.webp 800w, /images/opt/market-base-aerial-1200.d9ac1497.webp 1200w, /images/opt/market-base-aerial-1600.b2f2047d.webp 1600w, /images/opt/market-base-aerial-2000.26e9c724.webp 2000w, /images/opt/market-base-aerial-2048.d4a129e7.webp 2048w",
+    "width": 2048,
+    "height": 1462
+  },
   "/images/market/office-pikes-peak.jpg": {
     "src": "/images/opt/market-office-pikes-peak-1200.cbc56733.webp",
     "srcSet": "/images/opt/market-office-pikes-peak-480.646387fb.webp 480w, /images/opt/market-office-pikes-peak-800.acfa2ed7.webp 800w, /images/opt/market-office-pikes-peak-1200.cbc56733.webp 1200w, /images/opt/market-office-pikes-peak-1600.6a2354ae.webp 1600w, /images/opt/market-office-pikes-peak-1920.abbe377f.webp 1920w",

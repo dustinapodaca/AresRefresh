@@ -88,6 +88,9 @@ PHOTOS = [
     # Offices in Colorado Springs under Pikes Peak, the builder's sign removed by a masked edit (owner,
     # 2026-10-26: Teaming's builders row). Another company's name stays on the brick building at the
     # left; the row crops it out (Teaming.tsx).
+    # A Space Force base from the air, its domes and a C-17, Denver and the Front Range behind (owner,
+    # 2026-10-26, Untitled-14.jpg: the Teaming hero's Your contract panel).
+    {'key': '/images/market/base-aerial.jpg', 'source': 'assets/images-src/market/base-aerial-denver.jpg', 'q': 80},
     {'key': '/images/market/office-pikes-peak.jpg', 'source': 'assets/images-src/market/office-pikes-peak-clean.png', 'q': 82},
     # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch

@@ -1034,9 +1034,9 @@ too close to the Capability Statement and was not built). `src/pages/Teaming.tsx
 sheet, Roles we fill, the How teaming works chain, How we work). Every fact is the previous page's.
 Teaming is two companies, so the hero is two photos, not one card.
 - **Hero:** two panels side by side (stacked on phones, the headline above them), 4px corners and the
-  hairline photo edge: the Space Force base at golden hour, zoomed about 2.6x in on the domes at its
-  left (the CSS `scale` property, so the opener's transform runs on top; brightness 0.74; owner,
-  2026-10-26; was the steel-frame build in downtown Colorado Springs), "Your contract" / "You hold the
+  hairline photo edge: a Space Force base from the air, its row of domes and a C-17 on the apron,
+  Denver and the Front Range behind (owner, 2026-10-26; brightness 0.8; tried before it the same day:
+  the base at golden hour zoomed on its domes; the bundle had the steel-frame build downtown), "Your contract" / "You hold the
   contract and the posts under it."; About's two Ares officers seen from behind, "Our officers" /
   "Trained on your post, with relief behind every shift." A 2px rust wire with a soft glow crosses the
   seam (down the right edge on phones) with a small glass "Teaming" label where it crosses (2px corners,
