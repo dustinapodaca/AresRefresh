@@ -571,7 +571,7 @@ and `nx-*.css` (class prefix `nx-`).
   the roles and what to send us). Every card is the same height, the photo plus the longest brief,
   so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
   counter, a six-step meter (rust for the current), and no arrows (owner, 2026-10-25: each step is a 44px tap target named for its industry); "Swipe the card
-  for the next industry" in mono. Above the deck, the six industries' short names (Government, Commercial, Critical sites, Institutional,
+  for the next industry" in mono. Above the deck, the six industries' short names (Government, Commercial, Critical sites, Community,
   Construction, Airport) three across and two down, every name the same size and evenly spaced,
   Inter 13px on 2px-cornered boxes: the active one in ink with an ink edge, the rest ink muted on a
   hairline; each a button (44px to tap) that jumps to its card through the row's own control, the
@@ -834,7 +834,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   separate site line was folded into it, owner 2026-10-25), and "Open the page →" as the standard
   underlined link at the foot, so the six line up. No mono chips, rust squares, or wire and nodes. Nothing reveals on
   hover; the one pointer response is the photo easing up 2% in its frame, the underline turning ink,
-  and the arrow nudging (mouse only). Phones and tablets: above the row, the six industries' short names (Government, Commercial, Critical sites, Institutional,
+  and the arrow nudging (mouse only). Phones and tablets: above the row, the six industries' short names (Government, Commercial, Critical sites, Community,
   Construction, Airport) three across and two down, every name the same size and evenly spaced,
   Inter 13px on 2px-cornered boxes: the active one in ink with an ink edge, the rest ink muted on a
   hairline; each a button (44px to tap) that jumps to its card through the row's own control, the

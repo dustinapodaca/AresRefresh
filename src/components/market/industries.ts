@@ -223,7 +223,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // New (owner, 2026-10-10).
     slug: 'institutional-community',
     name: 'Institutional & Community',
-    indexName: 'Institutional',
+    indexName: 'Community',
     // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
     // to Critical & High-Liability Sites. Community health centers and outpatient clinics added here
     // (owner, 2026-10-26, for the Peak Vista RFP): a customer-service post, not a hospital's.
