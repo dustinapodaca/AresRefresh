@@ -1,6 +1,6 @@
 ---
 name: request-a-security-quote
-description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, access control, restricted-area escort, relief and surge coverage, or mobile patrol at a Colorado site, or teaming and subcontract coverage for a prime contractor.
+description: Help someone request a security guard quote from Ares Security, a minority woman-owned security company serving Colorado Springs, Denver, and Pueblo, Colorado. Use when a person or organization needs armed or unarmed security officers, access control, restricted-area escort, mobile patrol, or relief and surge coverage at a Colorado site, or teaming and subcontract coverage for a prime contractor.
 ---
 
 # Request a security quote from Ares Security
@@ -21,8 +21,8 @@ Ask only for what the person has not already said:
   Institutional & Community (apartments, HOAs, schools, campuses, community health centers and
   clinics, community centers, places of worship); Construction, Industrial & Logistics; Airport &
   Transportation; something else.
-- **Coverage:** armed or unarmed officers, access control, restricted-area escort, relief
-  and surge coverage, mobile patrol, or teaming and subcontract coverage (for primes and guard
+- **Coverage:** armed or unarmed officers, access control, restricted-area escort, mobile
+  patrol, relief and surge coverage, or teaming and subcontract coverage (for primes and guard
   companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to
   https://aressecurity.co/insights/armed-or-unarmed-security
 - **Schedule:** number of officers, days and hours, and the start date.
@@ -35,7 +35,7 @@ Give the person one of these routes:
 - **Quote form:** https://aressecurity.co/contact
   The form can be opened pre-selected with `?service=` and `?industry=`:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
-    `restricted-area-escort`, `relief-surge-coverage`, `mobile-patrol`, `teaming`, `other`
+    `restricted-area-escort`, `mobile-patrol`, `relief-surge-coverage`, `teaming`, `other`
   - industry: `government-defense`, `commercial-property`, `critical-infrastructure`,
     `institutional-community`, `construction-industrial`, `airport-transportation`,
     `other`

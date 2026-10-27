@@ -59,6 +59,8 @@ const GSA_FAQ: Faq = {
 
 // Service names are proper nouns: Title Case with "&" wherever a name appears (design review,
 // owner 2026-10-13); prose that describes the work stays in sentence case.
+// In the services' fixed order (owner, 2026-10-26): Armed, Unarmed, Access Control, Restricted-Area
+// Escort, Mobile Patrol, Relief & Surge Coverage.
 export const ROLE_PAGES: RolePageData[] = [
   {
     slug: 'armed-security-officers',
@@ -184,6 +186,40 @@ export const ROLE_PAGES: RolePageData[] = [
     ],
   },
   {
+    slug: 'mobile-patrol',
+    noGsa: true,
+    capabilityId: 'vehicle',
+    name: 'Mobile Patrol',
+    title: 'Mobile Patrol.',
+    lead: 'Patrols in Ares-marked patrol cars on set routes, with a time-stamped report for every property.',
+    sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
+    how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property.',
+    ask: 'Tell us the properties, when you want them checked, and what to check.',
+    industries: ['commercial-property', 'construction-industrial'],
+    faq: [
+      {
+        q: 'Mobile patrol or a posted officer?',
+        a: 'A posted officer stays on one site. A patrol covers one or more sites on a schedule. Patrol suits sites that need regular checks and a visible presence rather than an officer on post every hour.',
+      },
+      {
+        q: 'Do you patrol in your own vehicles?',
+        a: 'Yes. Patrols run in Ares-marked patrol cars, so every pass is a visible presence on the property.',
+      },
+      {
+        q: 'How do we know the patrol happened?',
+        a: 'Every property gets a time-stamped report, and routes are GPS-verified.',
+      },
+      {
+        q: 'Can one patrol cover several properties?',
+        a: 'Yes. One route can cover a portfolio, with a separate report for each property.',
+      },
+      {
+        q: 'Where do your patrols run?',
+        a: 'Across Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
+      },
+    ],
+  },
+  {
     // Replaced Event security (copy audit round 2, owner 2026-10-10). No fill time is
     // stated until the owner confirms one Ares can stand behind.
     slug: 'relief-surge-coverage',
@@ -221,40 +257,6 @@ export const ROLE_PAGES: RolePageData[] = [
         a: 'Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded for armed and unarmed security. Guard companies and primes elsewhere on the Front Range can ask; we will tell you plainly which posts and dates we can staff.',
       },
 
-    ],
-  },
-  {
-    slug: 'mobile-patrol',
-    noGsa: true,
-    capabilityId: 'vehicle',
-    name: 'Mobile Patrol',
-    title: 'Mobile Patrol.',
-    lead: 'Patrols in Ares-marked patrol cars on set routes, with a time-stamped report for every property.',
-    sheet: { label: 'Vehicles', value: 'Ares-marked patrol vehicles' },
-    how: 'A patrol is planned around your properties and what needs checking: doors, gates, perimeters, and the hours a site is most exposed. We set the route and the schedule with you, run it in Ares-marked vehicles, and verify each pass by GPS. Every property gets its own time-stamped report, so one patrol across a portfolio still gives each site manager a record of their own property.',
-    ask: 'Tell us the properties, when you want them checked, and what to check.',
-    industries: ['commercial-property', 'construction-industrial'],
-    faq: [
-      {
-        q: 'Mobile patrol or a posted officer?',
-        a: 'A posted officer stays on one site. A patrol covers one or more sites on a schedule. Patrol suits sites that need regular checks and a visible presence rather than an officer on post every hour.',
-      },
-      {
-        q: 'Do you patrol in your own vehicles?',
-        a: 'Yes. Patrols run in Ares-marked patrol cars, so every pass is a visible presence on the property.',
-      },
-      {
-        q: 'How do we know the patrol happened?',
-        a: 'Every property gets a time-stamped report, and routes are GPS-verified.',
-      },
-      {
-        q: 'Can one patrol cover several properties?',
-        a: 'Yes. One route can cover a portfolio, with a separate report for each property.',
-      },
-      {
-        q: 'Where do your patrols run?',
-        a: 'Across Colorado Springs, the Denver metro area, and Pueblo, where Ares is licensed and bonded. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
-      },
     ],
   },
 ];

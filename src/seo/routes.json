@@ -138,6 +138,22 @@
         "Pueblo"
       ]
     },
+    "/services/restricted-area-escort": {
+      "title": "Restricted-Area Escort in Colorado | Ares Security",
+      "description": "Restricted-area escort for crews, visitors, and deliveries in Colorado: people and vehicles verified, every escort in line of sight, and custody logs.",
+      "breadcrumbs": [
+        {
+          "name": "Services",
+          "path": "/services"
+        }
+      ],
+      "serviceType": "Restricted-area escort",
+      "areaServed": [
+        "Colorado Springs",
+        "Denver",
+        "Pueblo"
+      ]
+    },
     "/services/mobile-patrol": {
       "title": "Mobile Security Patrol in Colorado | Ares Security",
       "description": "Mobile patrol in Ares-marked patrol cars across Colorado: after-hours checks and multi-property routes with time-stamped reports.",
@@ -164,22 +180,6 @@
         }
       ],
       "serviceType": "Relief and surge security coverage",
-      "areaServed": [
-        "Colorado Springs",
-        "Denver",
-        "Pueblo"
-      ]
-    },
-    "/services/restricted-area-escort": {
-      "title": "Restricted-Area Escort in Colorado | Ares Security",
-      "description": "Restricted-area escort for crews, visitors, and deliveries in Colorado: people and vehicles verified, every escort in line of sight, and custody logs.",
-      "breadcrumbs": [
-        {
-          "name": "Services",
-          "path": "/services"
-        }
-      ],
-      "serviceType": "Restricted-area escort",
       "areaServed": [
         "Colorado Springs",
         "Denver",

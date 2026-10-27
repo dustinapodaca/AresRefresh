@@ -74,6 +74,8 @@ export type Capability = {
   includes: { name: string; detail: string }[];
 };
 
+// The owner's fixed order (2026-10-26; Mobile Patrol was last): Armed, Unarmed, Access Control,
+// Restricted-Area Escort, Mobile Patrol, Relief & Surge Coverage, everywhere the six services appear.
 export const CAPABILITIES: Capability[] = [
   {
     id: 'armed',
@@ -130,6 +132,19 @@ export const CAPABILITIES: Capability[] = [
     ],
   },
   {
+    id: 'vehicle',
+    // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
+    title: 'Mobile Patrol',
+    line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
+    // Owner, 2026-10-25: no alarm response; lead with the patrol cars.
+    keys: ['Patrol cars', 'Routes', 'GPS-verified'], // short enough for one line on every card (owner)
+    includes: [
+      { name: 'Marked-vehicle patrol', detail: 'Ares-marked patrol cars, a visible deterrent on every pass.' },
+      { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
+      { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with GPS-verified routes and time-stamped reports per property.' },
+    ],
+  },
+  {
     // Replaced Event Security (copy audit round 2, owner 2026-10-10): the relief and
     // subcontract coverage every outreach email already sells.
     id: 'relief',
@@ -141,19 +156,6 @@ export const CAPABILITIES: Capability[] = [
       { name: 'Overflow posts', detail: 'Officers for the entrances, phases, or hours a site adds.' },
       { name: 'Surge staffing', detail: 'Inspections, outages and storm events, construction phases, and contract transitions.' },
       { name: 'Subcontract coverage', detail: 'Officers under your post orders, from a woman-owned small business.' },
-    ],
-  },
-  {
-    id: 'vehicle',
-    // Was "Patrol Vehicle Security"; one name with Services (owner, 2026-10-10).
-    title: 'Mobile Patrol',
-    line: 'Marked mobile patrol across multi-building sites, yards, and campuses.',
-    // Owner, 2026-10-25: no alarm response; lead with the patrol cars.
-    keys: ['Patrol cars', 'Routes', 'GPS-verified'], // short enough for one line on every card (owner)
-    includes: [
-      { name: 'Marked-vehicle patrol', detail: 'Ares-marked patrol cars, a visible deterrent on every pass.' },
-      { name: 'After-hours checks', detail: 'Door, gate, and perimeter checks once a site is closed.' },
-      { name: 'Multi-property routes', detail: 'One patrol covering a portfolio, with GPS-verified routes and time-stamped reports per property.' },
     ],
   },
 ];

@@ -1233,3 +1233,14 @@ community buyers see themselves within a swipe or two; Government stays first. N
 - The quote form's site types, the Colorado Springs page's "Sites we are ready to staff here." (same
   entries, grouped in the new order; Denver's and Pueblo's lists are ordered by what each city has
   and were left alone), and the six `/industries/*` entries in `src/seo/routes.json`.
+
+## The six services: Mobile Patrol before Relief & Surge Coverage (owner, 2026-10-26)
+New fixed order, everywhere the six services appear: Armed Security Officers; Unarmed Security
+Officers; Access Control Officers; Restricted-Area Escort; Mobile Patrol; Relief & Surge Coverage
+(Mobile Patrol was last). No wording changed.
+- `public/llms.txt`: the summary line ("…restricted-area escort, mobile patrol, and relief and surge
+  coverage…") and the two service lines swapped.
+- `public/skills/request-a-security-quote/SKILL.md`: the description, the Coverage list, and the
+  `?service=` slugs.
+- `index.html`: the LocalBusiness description and the OfferCatalog's last two offers.
+- The quote form's services, and the six `/services/*` entries in `src/seo/routes.json`.

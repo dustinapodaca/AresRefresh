@@ -817,9 +817,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or
-  corner light; owner 2026-10-25) (armed, unarmed, access, escort, relief, patrol), each a big number (the data face; owner, 2026-10-25) and
+  corner light; owner 2026-10-25) (armed, unarmed, access, escort, patrol, relief; owner 2026-10-26: Mobile Patrol before Relief & Surge Coverage, everywhere the six services appear), each a big number (the data face; owner, 2026-10-25) and
   one word at the top, a small working example of the post in the middle (a qualification card, a
-  patrol round, a visitor log, an escort plan, a relief week, a patrol route; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
+  patrol round, a visitor log, an escort plan, a patrol route, a relief week; no "Example" label and no status lines under the escort plan or patrol route (owner, 2026-10-25); running
   only in view, still under reduced motion), and the service's name (a link to its page), line, and
   keys at the foot. Desktop three by two; phones a swipe row with the shared swipe controls under it (below). On phones
   (owner, 2026-10-25) the six are one height with the text at the foot of every card and each piece
@@ -1297,8 +1297,8 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   three menus as accordions (Services opens on "All services and how a post starts" and Teaming, Industries on "All industries and how a post starts" (also to /services), each then a divider and the six; Company lists its links, no city links; owner 2026-10-13), then a solid strip pinned to the bottom of the open menu so it stays on screen while the list scrolls: the phone (mono) with LinkedIn, Google, and Indeed as small monochrome marks on the right, the email, and the main button. No PDF button in the phone menu (owner, 2026-10-13). Company lists its links only. Closing the menu resets every section to folded. Since 2026-10-15 (owner, after gigaenergy.com's
   phone menu) the open sections carry photos: Services lists the six with a 56px real Ares photo
   beside each (the officer at the range for Armed, the officer with the badge for Unarmed, the
-  officer portrait for Access Control, the Space Force base for Restricted-Area Escort, the team at
-  the range for Relief & Surge, the patrol cars for Mobile Patrol), its name, and its tags in mono;
+  officer portrait for Access Control, the Space Force base for Restricted-Area Escort, the patrol cars for
+  Mobile Patrol, the team at the range for Relief & Surge), its name, and its tags in mono;
   Industries is a row of photo cards (the industry pages' photos, 16:10, 72% wide so the next one
   peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
   Since later on 2026-10-15 (owner, a hybrid with yucca.co.za) the phone menu is pages that slide

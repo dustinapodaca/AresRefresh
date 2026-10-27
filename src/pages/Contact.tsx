@@ -18,8 +18,8 @@ const NEEDS: { slug: string; label: string }[] = [
   { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers' },
   { slug: 'access-control', label: 'Access Control Officers' },
   { slug: 'restricted-area-escort', label: 'Restricted-Area Escort' },
-  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage' },
   { slug: 'mobile-patrol', label: 'Mobile Patrol' },
+  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage' },
   { slug: 'teaming', label: 'Teaming or subcontract coverage' }, // for primes and guard companies (/teaming)
   { slug: 'other', label: 'Not sure, or something else' },
 ];
