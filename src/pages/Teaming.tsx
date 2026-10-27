@@ -36,6 +36,8 @@ const PARTNERS = [
     // The Space Force base at golden hour (owner, 2026-10-26; was the radomes behind the fence).
     photo: '/images/market/government-schriever.jpg',
     pos: '50% 56%',
+    // In a bit toward the domes at the left (owner, 2026-10-26).
+    zoom: { scale: 1.45, origin: '14% 56%' },
     roles: [
       { name: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
       { name: 'Access Control Officers', to: '/services/access-control' },
@@ -47,7 +49,7 @@ const PARTNERS = [
     line: 'Relief, overflow, and surge shifts on posts you already hold, staffed to your post orders.',
     // Ares patrol vehicles (owner, 2026-10-26; was an Ares officer).
     photo: '/images/mission-vehicle.jpg',
-    pos: '50% 80%',
+    pos: '50% 86%',
     roles: [
       { name: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
       { name: 'Armed Security Officers', to: '/services/armed-security-officers' },
