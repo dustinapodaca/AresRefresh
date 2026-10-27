@@ -279,6 +279,13 @@
      never drew. */
   .tb[data-hero-in] :is(.tb-half-a, .tb-half-b, .tb-wire) { transform: none; }
   .tb-hero-side { margin-top: 28px; flex-direction: column; align-items: flex-start; }
+  /* Talk teaming and the PDF link side by side on one row at every phone width, the link centered on
+     the button, as on the Capability Statement (owner, 2026-10-26). The gap, the button's padding, and
+     both labels step down from their full size at 390px to their smallest at 320px so the pair fits. */
+  .tb-actions { flex-wrap: nowrap; gap: clamp(8px, 11.43vw - 28.57px, 16px); }
+  .tb-actions .ds-btn { flex: none; height: 46px; padding: 0 clamp(10px, 8.57vw - 17.43px, 16px); gap: clamp(6px, 2.86vw - 3.14px, 8px); font-size: clamp(12px, 2.86vw + 2.86px, 14px); }
+  .tb-actions .ds-link { flex: none; white-space: nowrap; font-size: clamp(12px, 1.43vw + 7.43px, 13px); }
+  .tb-actions .ds-link svg { width: 12px; height: 12px; }
   .tb-lead { font-size: 16px; }
   .tb-half-name { font-size: clamp(30px, 9vw, 40px); }
   .tb-half-line { font-size: 14px; max-width: 26ch; }

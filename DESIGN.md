@@ -1043,7 +1043,8 @@ Teaming is two companies, so the hero is two photos, not one card.
   sentence case; a 34% wash over a 20px blur at 1.6 color, the glass edge and top line; owner,
   2026-10-26, was 72% and read as solid; on phones the wire and label sit 48px in from the edge so the
   label is wholly on the photos). Under the panels, "Teaming & subcontracting" on one line on desktop, then the lead with
-  Talk teaming and the PDF. On phones each panel has a soft dark corner at its foot left behind the
+  Talk teaming and "Capability Statement (PDF)" (on phones side by side on one row, the link centered on
+  the button, stepping down to 12px type at 320px like the Capability Statement hero; owner, 2026-10-26). On phones each panel has a soft dark corner at its foot left behind the
   copy (owner, 2026-10-26). On load (motion only) the halves close in on the seam while the photos
   settle, the wire draws out from the middle, then the label comes up.
 - **Who we team with.** Three wide rows on hairlines: a 16:9 photo strip (the Space Force base at golden hour, cloud-free edit, for primes (owner, 2026-10-26; was the

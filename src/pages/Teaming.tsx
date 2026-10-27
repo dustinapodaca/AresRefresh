@@ -182,7 +182,7 @@ function Hero() {
               <Arrow />
             </Link>
             <a href={PDF_URL} className="ds-link" download>
-              Capability statement (PDF)
+              Capability Statement (PDF)
               <DownloadIcon />
             </a>
           </div>
