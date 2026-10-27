@@ -44,8 +44,9 @@ const PARTNERS = [
   {
     name: 'Guard companies',
     line: 'Relief, overflow, and surge shifts on posts you already hold, staffed to your post orders.',
-    photo: '/images/backbone-officer.jpg',
-    pos: '50% 12%',
+    // Ares patrol vehicles (owner, 2026-10-26; was an Ares officer).
+    photo: '/images/mission-vehicle.jpg',
+    pos: '50% 80%',
     roles: [
       { name: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
       { name: 'Armed Security Officers', to: '/services/armed-security-officers' },
