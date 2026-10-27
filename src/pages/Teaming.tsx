@@ -57,8 +57,10 @@ const PARTNERS = [
   {
     name: 'Builders and general contractors',
     line: 'Escorts, gate control, and access control while a site is built, including on military construction.',
-    photo: '/images/market/data-centers.webp',
-    pos: '50% 70%',
+    // The steel-frame build in downtown Colorado Springs, the contractor's name edited out (owner,
+    // 2026-10-26; was the data center campus).
+    photo: '/images/market/construction-industrial.webp',
+    pos: '50% 40%',
     roles: [
       { name: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
       { name: 'Access Control Officers', to: '/services/access-control' },
