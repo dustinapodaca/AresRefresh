@@ -103,13 +103,13 @@ export const COLORADO_SPRINGS: LocationFile = {
   ],
   sectors: [
     { name: 'Defense contractors and military-adjacent sites', division: 'Government & Defense', divisionId: 'government' },
-    { name: 'Data centers', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
-    { name: 'Construction and industrial sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
-    { name: 'Utilities and critical infrastructure', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
-    { name: 'Airport-area development', division: 'Airport & Transportation', divisionId: 'airport' },
+    { name: 'Data centers', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Utilities and critical infrastructure', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
     { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
     { name: 'Community health centers and clinics', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Construction and industrial sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Airport-area development', division: 'Airport & Transportation', divisionId: 'airport' },
   ],
   landmarks: [{ label: 'Pikes Peak', note: '14,115 FT', lat: 38.8409, lon: -105.0442, side: 'left' }],
 };

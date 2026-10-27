@@ -33,15 +33,16 @@ const CHIPS: { name: string; legend: string; options: string[] }[] = [
 ];
 
 // The six industries, one name each, with the same slugs as their pages (an industry page
-// links here with ?industry=<slug>; owner, 2026-10-10), plus anything else. Event security
+// links here with ?industry=<slug>; owner, 2026-10-10), plus anything else, in the fixed order
+// (owner, 2026-10-26). Event security
 // left the site (owner, 2026-10-10), so the event site type went with it.
 const SITE_TYPES: { slug: string; label: string }[] = [
   { slug: 'government-defense', label: 'Government & Defense' },
+  { slug: 'commercial-property', label: 'Commercial & Retail' },
   { slug: 'critical-infrastructure', label: 'Critical & High-Liability Sites' },
+  { slug: 'institutional-community', label: 'Institutional & Community' },
   { slug: 'construction-industrial', label: 'Construction, Industrial & Logistics' },
   { slug: 'airport-transportation', label: 'Airport & Transportation' },
-  { slug: 'commercial-property', label: 'Commercial & Retail' },
-  { slug: 'institutional-community', label: 'Institutional & Community' },
   { slug: 'other', label: 'Something else' },
 ];
 

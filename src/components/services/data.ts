@@ -32,8 +32,9 @@ export type Division = {
 };
 
 // The six industries, one set (owner, 2026-10-10: the divisions and the industries were the
-// same list shown twice). The owner's fixed order (2026-10-10): Government, Critical,
-// Construction, Airport, Commercial, Institutional, everywhere the six appear. Each
+// same list shown twice). The owner's fixed order (2026-10-26; was Government, Critical,
+// Construction, Airport, Commercial, Institutional): Government, Commercial, Critical, Institutional,
+// Construction, Airport, everywhere the six appear. Each
 // opens to its sites and links to the industry's own page.
 export const DIVISIONS: Division[] = [
   {
@@ -58,8 +59,22 @@ export const DIVISIONS: Division[] = [
     page: { to: '/industries/government-defense', label: 'government and defense' },
   },
   {
-    id: 'critical',
+    id: 'commercial',
     n: '02',
+    title: 'Commercial & Retail',
+    body: 'Visible deterrence and loss prevention for stores, grocery, shopping centers, banks, hotels, and offices, scaled to foot traffic. Patrol can cover a whole portfolio, with one report per property.',
+    covers: [
+      { name: 'Retail, grocery, and shopping centers', detail: 'Visible deterrence and loss prevention on the sales floor.' },
+      { name: 'Banks', detail: 'Officers for cash-handling and high-liability settings.' },
+      { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
+      { name: 'Corporate and tech offices', detail: 'Lobby officers, and patrol across several properties with a report for each.' },
+    ],
+    photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
+    page: { to: '/industries/commercial-property', label: 'commercial and retail' },
+  },
+  {
+    id: 'critical',
+    n: '03',
     title: 'Critical & High-Liability Sites',
     body: 'Officers for data centers, utilities, hospitals, cash-handling, and other regulated or high-liability sites, where every entry is documented, unarmed or armed as each post requires. Armed officers are licensed and firearms-qualified by Ares.',
     covers: [
@@ -73,8 +88,24 @@ export const DIVISIONS: Division[] = [
     page: { to: '/industries/critical-infrastructure', label: 'critical and high-liability site' },
   },
   {
+    id: 'community',
+    n: '04',
+    title: 'Institutional & Community',
+    // Apartments, schools, campuses, and local community sites; hospitals moved to Critical &
+    // High-Liability Sites (owner, 2026-10-16). Health centers and clinics added (owner, 2026-10-26).
+    body: 'A calm, trained presence for apartment communities, HOAs, schools, campuses, community health centers, places of worship, and community centers. Consistent officers people get to know, trained on each building\u2019s entry points and daily rhythm.',
+    covers: [
+      { name: 'Apartments and HOAs', detail: 'Consistent officers residents can get to know, and after-hours patrol of the grounds.' },
+      { name: 'Schools and campuses', detail: 'Officers trained on the campus, its entry points, and its daily rhythm.' },
+      { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
+      { name: 'Health centers and clinics', detail: 'A calm presence at the entrance and waiting room, and staff walked to their cars at closing.' },
+    ],
+    photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
+    page: { to: '/industries/institutional-community', label: 'institutional and community' },
+  },
+  {
     id: 'industrial',
-    n: '03',
+    n: '05',
     title: 'Construction, Industrial & Logistics',
     // Two sentences and three or four site types per card (copy audit card summaries, 2026-10-10).
     body: 'Gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses, with checkpoint logs you can audit. Coverage changes as a build moves from phase to phase, including escorts on military construction.',
@@ -89,7 +120,7 @@ export const DIVISIONS: Division[] = [
   },
   {
     id: 'airport',
-    n: '04',
+    n: '06',
     title: 'Airport & Transportation',
     // Ready to staff, as the industry page says (copy audit, 2026-10-10: "around the clock"
     // and "staffed on every shift" read as current posts).
@@ -101,36 +132,6 @@ export const DIVISIONS: Division[] = [
     ],
     photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
     page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
-  },
-  {
-    id: 'commercial',
-    n: '05',
-    title: 'Commercial & Retail',
-    body: 'Visible deterrence and loss prevention for stores, grocery, shopping centers, banks, hotels, and offices, scaled to foot traffic. Patrol can cover a whole portfolio, with one report per property.',
-    covers: [
-      { name: 'Retail, grocery, and shopping centers', detail: 'Visible deterrence and loss prevention on the sales floor.' },
-      { name: 'Banks', detail: 'Officers for cash-handling and high-liability settings.' },
-      { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
-      { name: 'Corporate and tech offices', detail: 'Lobby officers, and patrol across several properties with a report for each.' },
-    ],
-    photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
-    page: { to: '/industries/commercial-property', label: 'commercial and retail' },
-  },
-  {
-    id: 'community',
-    n: '06',
-    title: 'Institutional & Community',
-    // Apartments, schools, campuses, and local community sites; hospitals moved to Critical &
-    // High-Liability Sites (owner, 2026-10-16). Health centers and clinics added (owner, 2026-10-26).
-    body: 'A calm, trained presence for apartment communities, HOAs, schools, campuses, community health centers, places of worship, and community centers. Consistent officers people get to know, trained on each building\u2019s entry points and daily rhythm.',
-    covers: [
-      { name: 'Apartments and HOAs', detail: 'Consistent officers residents can get to know, and after-hours patrol of the grounds.' },
-      { name: 'Schools and campuses', detail: 'Officers trained on the campus, its entry points, and its daily rhythm.' },
-      { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
-      { name: 'Health centers and clinics', detail: 'A calm presence at the entrance and waiting room, and staff walked to their cars at closing.' },
-    ],
-    photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
-    page: { to: '/industries/institutional-community', label: 'institutional and community' },
   },
 ];
 

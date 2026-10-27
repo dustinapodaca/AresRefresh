@@ -38,8 +38,9 @@ const RELIEF: SheetRow = { label: 'Relief', value: 'On-call coverage written int
 const LOGS: SheetRow = { label: 'Records', value: 'Checkpoint, visitor, and incident logs you can audit' };
 const GSA: SheetRow = { label: 'GSA MAS', value: '47QSMS25D009Q, SIN 561612', href: GSA_ELIBRARY, external: true };
 
-// The owner's fixed order (2026-10-10): Government, Critical, Construction, Airport,
-// Commercial, Institutional.
+// The owner's fixed order (2026-10-26; was Government, Critical, Construction, Airport, Commercial,
+// Institutional): Government, Commercial, Critical, Institutional, Construction, Airport. Commercial
+// and community buyers see themselves within a swipe or two; Government stays first.
 export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     // Government & Defense (owner, 2026-10-16; was Government & Military): federal agencies,
@@ -113,6 +114,47 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     ],
   },
   {
+    slug: 'commercial-property',
+    name: 'Commercial & Retail',
+    // Businesses, stores, and loss prevention (owner, 2026-10-16).
+    short: 'Retail stores, grocery, shopping centers, banks, hotels, and offices.',
+    title: 'Security for commercial property and retail.',
+    lead: 'Officers for stores, grocery, shopping centers, banks, hotels, and corporate and tech offices: loss prevention and a visible, courteous presence that deters, screens, and helps.',
+    // A real photo (owner, 2026-10-16): the Denver Pavilions sign, framed on the D and the tower.
+    image: { src: '/images/market/commercial-property.webp', alt: '', position: '50% 50%' },
+    stake: [
+      'In a lobby, on a sales floor, or at a store entrance, the officer is the first person many visitors meet. They have to deter theft and trouble without making the space feel guarded.',
+      'Property managers also need the work reported the same way across one building or a portfolio, so they can read one summary instead of chasing several.',
+    ],
+    deliver: [
+      { role: 'unarmed-security-officers', line: 'Lobby, front desk, and foot patrol, uniformed or plainclothes.' },
+      { role: 'mobile-patrol', line: 'One patrol across several properties, with a report for each.' },
+      { role: 'armed-security-officers', line: 'Armed officers for banks and cash-handling sites.' },
+    ],
+    why: [
+      { label: 'Client rating', value: 'Very Good or Exceptional on 43 of 45 client criteria', href: '/capability-statement' },
+      { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
+      { label: 'Portfolios', value: 'One patrol across several properties, with a report for each', href: '/services/mobile-patrol' },
+      // Owner, 2026-10-10: true; the client is not named.
+      { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
+    ],
+    ask: 'Send us the properties, the hours, and what you want officers to watch for. We will come back with a staffing plan for one site or the whole portfolio.',
+    faq: [
+      {
+        q: 'Do you provide retail loss prevention?',
+        a: 'Yes. Uniformed officers deter on the sales floor, and plainclothes officers work where a uniform would change how the store feels.',
+      },
+      {
+        q: 'Can you cover several properties under one contract?',
+        a: 'Yes, with posted officers, a patrol route across the portfolio, or both, and a report for each property.',
+      },
+      {
+        q: 'Can you cover extra posts during a busy season or a renovation?',
+        a: 'Yes. We staff extra posts from our relief schedule for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first.',
+      },
+    ],
+  },
+  {
     // Was /industries/data-centers, "Data centers and critical infrastructure" (owner,
     // 2026-10-10: renamed so it names a kind of site, not a service; data centers are one
     // example among several). /industries/data-centers redirects here (public/_redirects).
@@ -170,6 +212,62 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       // The GSA question was cut here (design review, owner 2026-10-13): agencies aren't the
       // usual buyer for critical and high-liability sites; the Government page carries it.
+    ],
+  },
+  {
+    // New (owner, 2026-10-10).
+    slug: 'institutional-community',
+    name: 'Institutional & Community',
+    // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
+    // to Critical & High-Liability Sites. Community health centers and outpatient clinics added here
+    // (owner, 2026-10-26, for the Peak Vista RFP): a customer-service post, not a hospital's.
+    short: 'Apartment communities, HOAs, schools, campuses, community health centers, and places of worship.',
+    title: 'Security for apartments, schools, clinics, and communities.',
+    lead: 'Officers for apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
+    // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
+    image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
+    stake: [
+      'At a school, a health center, an apartment community, or a place of worship, the officer is part of daily life. Students, patients, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
+      'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
+    ],
+    deliver: [
+      { role: 'unarmed-security-officers', line: 'Uniformed or plainclothes officers at entrances, front desks, and public areas.' },
+      { role: 'access-control', line: 'Visitor check-in and entry control, with every entry logged.' },
+      { role: 'mobile-patrol', line: 'Patrol across a campus or several buildings, with after-hours checks.' },
+    ],
+    why: [
+      { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
+      // Owner, 2026-10-10: de-escalation first is how Ares trains. (Ares is not an AASC member.)
+      { label: 'De-escalation', value: 'Officers trained to calm a situation before anything else' },
+      { label: 'Uniform', value: 'Uniformed or plainclothes, as the setting calls for' },
+      { label: 'First shift', value: 'A member of leadership works the first shift on every new post' },
+    ],
+    ask: 'Send us the site, its entry points, and the hours you need covered. We will come back with a staffing plan and post orders.',
+    faq: [
+      {
+        q: 'Can officers be plainclothes in a school or on a campus?',
+        a: 'Yes. Uniformed officers deter at entrances, and plainclothes officers work where a uniform would change how the space feels. Many sites use both.',
+      },
+      {
+        q: 'Will we see the same officers?',
+        a: 'As much as schedules allow. Each post is staffed with officers trained on that site, and on-call relief is written into every contract, so a shift is never left open.',
+      },
+      {
+        q: 'Do you staff community health centers and clinics?',
+        a: 'Yes: a calm, visible officer at the entrance and in the waiting room, patrols of the building and parking lot, staff walked to their cars at closing, and the doors locked at the end of the day. Officers are trained to calm a situation before anything else, and they keep patient information private.',
+      },
+      {
+        q: 'Do you cover apartment communities and HOAs?',
+        a: 'Yes: posted officers, patrol across buildings and grounds, and after-hours checks, with a report for each property.',
+      },
+      {
+        q: 'Do you cover places of worship and community centers?',
+        a: 'Yes: a calm, respectful presence during services and events, and patrol of parking and grounds.',
+      },
+      {
+        q: 'Where in Colorado do you work?',
+        a: 'The Denver metro area, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
+      },
     ],
   },
   {
@@ -262,103 +360,6 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       {
         q: 'Where in Colorado do you work?',
         a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
-      },
-    ],
-  },
-  {
-    slug: 'commercial-property',
-    name: 'Commercial & Retail',
-    // Businesses, stores, and loss prevention (owner, 2026-10-16).
-    short: 'Retail stores, grocery, shopping centers, banks, hotels, and offices.',
-    title: 'Security for commercial property and retail.',
-    lead: 'Officers for stores, grocery, shopping centers, banks, hotels, and corporate and tech offices: loss prevention and a visible, courteous presence that deters, screens, and helps.',
-    // A real photo (owner, 2026-10-16): the Denver Pavilions sign, framed on the D and the tower.
-    image: { src: '/images/market/commercial-property.webp', alt: '', position: '50% 50%' },
-    stake: [
-      'In a lobby, on a sales floor, or at a store entrance, the officer is the first person many visitors meet. They have to deter theft and trouble without making the space feel guarded.',
-      'Property managers also need the work reported the same way across one building or a portfolio, so they can read one summary instead of chasing several.',
-    ],
-    deliver: [
-      { role: 'unarmed-security-officers', line: 'Lobby, front desk, and foot patrol, uniformed or plainclothes.' },
-      { role: 'mobile-patrol', line: 'One patrol across several properties, with a report for each.' },
-      { role: 'armed-security-officers', line: 'Armed officers for banks and cash-handling sites.' },
-    ],
-    why: [
-      { label: 'Client rating', value: 'Very Good or Exceptional on 43 of 45 client criteria', href: '/capability-statement' },
-      { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
-      { label: 'Portfolios', value: 'One patrol across several properties, with a report for each', href: '/services/mobile-patrol' },
-      // Owner, 2026-10-10: true; the client is not named.
-      { label: 'Longest client', value: 'On post continuously since 2022, through multiple renewals' },
-    ],
-    ask: 'Send us the properties, the hours, and what you want officers to watch for. We will come back with a staffing plan for one site or the whole portfolio.',
-    faq: [
-      {
-        q: 'Do you provide retail loss prevention?',
-        a: 'Yes. Uniformed officers deter on the sales floor, and plainclothes officers work where a uniform would change how the store feels.',
-      },
-      {
-        q: 'Can you cover several properties under one contract?',
-        a: 'Yes, with posted officers, a patrol route across the portfolio, or both, and a report for each property.',
-      },
-      {
-        q: 'Can you cover extra posts during a busy season or a renovation?',
-        a: 'Yes. We staff extra posts from our relief schedule for busy seasons, renovations, and dates that outgrow your normal staffing, with each officer trained on your site first.',
-      },
-    ],
-  },
-  {
-    // New (owner, 2026-10-10).
-    slug: 'institutional-community',
-    name: 'Institutional & Community',
-    // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
-    // to Critical & High-Liability Sites. Community health centers and outpatient clinics added here
-    // (owner, 2026-10-26, for the Peak Vista RFP): a customer-service post, not a hospital's.
-    short: 'Apartment communities, HOAs, schools, campuses, community health centers, and places of worship.',
-    title: 'Security for apartments, schools, clinics, and communities.',
-    lead: 'Officers for apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
-    // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
-    image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
-    stake: [
-      'At a school, a health center, an apartment community, or a place of worship, the officer is part of daily life. Students, patients, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
-      'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
-    ],
-    deliver: [
-      { role: 'unarmed-security-officers', line: 'Uniformed or plainclothes officers at entrances, front desks, and public areas.' },
-      { role: 'access-control', line: 'Visitor check-in and entry control, with every entry logged.' },
-      { role: 'mobile-patrol', line: 'Patrol across a campus or several buildings, with after-hours checks.' },
-    ],
-    why: [
-      { label: 'Officer rating', value: '4.8 / 5 from our employees on Indeed', href: INDEED_REVIEWS, external: true },
-      // Owner, 2026-10-10: de-escalation first is how Ares trains. (Ares is not an AASC member.)
-      { label: 'De-escalation', value: 'Officers trained to calm a situation before anything else' },
-      { label: 'Uniform', value: 'Uniformed or plainclothes, as the setting calls for' },
-      { label: 'First shift', value: 'A member of leadership works the first shift on every new post' },
-    ],
-    ask: 'Send us the site, its entry points, and the hours you need covered. We will come back with a staffing plan and post orders.',
-    faq: [
-      {
-        q: 'Can officers be plainclothes in a school or on a campus?',
-        a: 'Yes. Uniformed officers deter at entrances, and plainclothes officers work where a uniform would change how the space feels. Many sites use both.',
-      },
-      {
-        q: 'Will we see the same officers?',
-        a: 'As much as schedules allow. Each post is staffed with officers trained on that site, and on-call relief is written into every contract, so a shift is never left open.',
-      },
-      {
-        q: 'Do you staff community health centers and clinics?',
-        a: 'Yes: a calm, visible officer at the entrance and in the waiting room, patrols of the building and parking lot, staff walked to their cars at closing, and the doors locked at the end of the day. Officers are trained to calm a situation before anything else, and they keep patient information private.',
-      },
-      {
-        q: 'Do you cover apartment communities and HOAs?',
-        a: 'Yes: posted officers, patrol across buildings and grounds, and after-hours checks, with a report for each property.',
-      },
-      {
-        q: 'Do you cover places of worship and community centers?',
-        a: 'Yes: a calm, respectful presence during services and events, and patrol of parking and grounds.',
-      },
-      {
-        q: 'Where in Colorado do you work?',
-        a: 'The Denver metro area, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
       },
     ],
   },

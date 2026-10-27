@@ -23,7 +23,7 @@ Key facts, each checkable on the linked pages:
 
 ## Services
 
-- [All security services](https://aressecurity.co/services): Six services, the six industries Ares protects (Government & Defense; Critical & High-Liability Sites; Construction, Industrial & Logistics; Airport & Transportation; Commercial & Retail; Institutional & Community), and how a contract starts.
+- [All security services](https://aressecurity.co/services): Six services, the six industries Ares protects (Government & Defense; Commercial & Retail; Critical & High-Liability Sites; Institutional & Community; Construction, Industrial & Logistics; Airport & Transportation), and how a contract starts.
 - [Armed Security Officers](https://aressecurity.co/services/armed-security-officers): Licensed, firearms-qualified armed officers.
 - [Unarmed Security Officers](https://aressecurity.co/services/unarmed-security-officers): Uniformed and plainclothes officers for lobbies, perimeters, and public areas.
 - [Access Control Officers](https://aressecurity.co/services/access-control): Credential checks, visitor screening, and gate, dock, and lobby control, with auditable logs.
@@ -34,11 +34,11 @@ Key facts, each checkable on the linked pages:
 ## Industries
 
 - [Government & Defense](https://aressecurity.co/industries/government-defense): Officers for federal agencies, military installations, and defense contractors, available through GSA MAS.
+- [Commercial & Retail](https://aressecurity.co/industries/commercial-property): Retail stores, grocery, shopping centers, banks, hotels, and offices: loss prevention, and patrol across a portfolio.
 - [Critical & High-Liability Sites](https://aressecurity.co/industries/critical-infrastructure): Data centers, utilities, hospitals, cash-handling, and other regulated sites where every entry is documented; armed posts where required.
+- [Institutional & Community](https://aressecurity.co/industries/institutional-community): Apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship.
 - [Construction, Industrial & Logistics](https://aressecurity.co/industries/construction-industrial): Gate control, perimeter rounds, and after-hours patrol for builds, yards, and warehouses.
 - [Airport & Transportation](https://aressecurity.co/industries/airport-transportation): Airport-area sites, transit and parking facilities, and cargo operations Ares is ready to staff.
-- [Commercial & Retail](https://aressecurity.co/industries/commercial-property): Retail stores, grocery, shopping centers, banks, hotels, and offices: loss prevention, and patrol across a portfolio.
-- [Institutional & Community](https://aressecurity.co/industries/institutional-community): Apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship.
 
 ## Locations
 

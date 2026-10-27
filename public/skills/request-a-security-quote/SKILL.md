@@ -16,10 +16,11 @@ Ask only for what the person has not already said:
 - **Location:** the site's city (Colorado Springs, Denver, Pueblo, or nearby on the Front
   Range) and address if they are ready to share it.
 - **Industry:** Government & Defense (agencies, military installations, defense
-  contractors); Critical & High-Liability Sites (data centers, utilities, hospitals,
-  cash-handling); Construction, Industrial & Logistics; Airport & Transportation; Commercial &
-  Retail (stores, grocery, shopping centers, banks, hotels, offices); Institutional & Community
-  (apartments, HOAs, schools, campuses, community health centers and clinics, community centers, places of worship); something else.
+  contractors); Commercial & Retail (stores, grocery, shopping centers, banks, hotels, offices);
+  Critical & High-Liability Sites (data centers, utilities, hospitals, cash-handling);
+  Institutional & Community (apartments, HOAs, schools, campuses, community health centers and
+  clinics, community centers, places of worship); Construction, Industrial & Logistics; Airport &
+  Transportation; something else.
 - **Coverage:** armed or unarmed officers, access control, restricted-area escort, relief
   and surge coverage, mobile patrol, or teaming and subcontract coverage (for primes and guard
   companies; see https://aressecurity.co/teaming). If they are unsure about armed or unarmed, point them to
@@ -35,8 +36,8 @@ Give the person one of these routes:
   The form can be opened pre-selected with `?service=` and `?industry=`:
   - service: `armed-security-officers`, `unarmed-security-officers`, `access-control`,
     `restricted-area-escort`, `relief-surge-coverage`, `mobile-patrol`, `teaming`, `other`
-  - industry: `government-defense`, `critical-infrastructure`, `construction-industrial`,
-    `airport-transportation`, `commercial-property`, `institutional-community`,
+  - industry: `government-defense`, `commercial-property`, `critical-infrastructure`,
+    `institutional-community`, `construction-industrial`, `airport-transportation`,
     `other`
   - Example: https://aressecurity.co/contact?service=armed-security-officers&industry=critical-infrastructure
 - **Email:** contact@aressecurity.co (include the details gathered above).

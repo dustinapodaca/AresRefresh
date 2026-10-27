@@ -538,7 +538,12 @@ and `nx-*.css` (class prefix `nx-`).
   (checked at 390 by 664, Safari with its bars showing); 64px from the lead to the meter (owner, 2026-10-26; was about 136), and no bottom padding once pinned, since the frame ends on its own room (owner, 2026-10-26: about 245px from the last diagram to 02's headline, was 310). The resolved page: the three stacked, every
   diagram built.
 - **02 Industries:** "The sites we protect." and its lead. Desktop with motion (1024px and up):
-  the scene pins for about 80% of a screen per industry in the owner's order; the active
+  the scene pins for about 80% of a screen per industry in the owner's order (Government & Defense;
+  Commercial & Retail; Critical & High-Liability Sites; Institutional & Community; Construction,
+  Industrial & Logistics; Airport & Transportation. Owner, 2026-10-26: Commercial & Retail and
+  Institutional & Community brought into the first half so commercial and community buyers see
+  themselves within a swipe or two; Government stays first. The same order everywhere the six
+  appear); the active
   industry's photo (its industry page's photo and framing) fills the window behind everything,
   each new one wiping up from the foot and settling from 1.12; the six names (with mono numbers)
   slide up a large list so the active one sits at the optical center beside a rust tick, the

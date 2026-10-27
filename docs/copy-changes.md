@@ -1219,3 +1219,17 @@ Owner exception (2026-10-26): the escort article's "Colorado installations" para
 Range bases (Peterson, Schriever, Buckley, Cheyenne Mountain, Fort Carson, the Air Force Academy) as
 general context. Ares' own base stays unnamed; the preship check's "installations stay unnamed"
 warnings on that page are expected.
+
+## The six industries reordered (owner, 2026-10-26)
+New fixed order, everywhere the six appear: Government & Defense; Commercial & Retail; Critical &
+High-Liability Sites; Institutional & Community; Construction, Industrial & Logistics; Airport &
+Transportation (was Government, Critical, Construction, Airport, Commercial, Institutional).
+Commercial & Retail and Institutional & Community were brought into the first half so commercial and
+community buyers see themselves within a swipe or two; Government stays first. No wording changed.
+- `public/llms.txt`: the parenthetical list on the All security services line, and the six lines
+  under Industries, in the new order.
+- `public/skills/request-a-security-quote/SKILL.md`: the Industry list in step 1 and the `?industry=`
+  slugs in step 2, in the new order.
+- The quote form's site types, the Colorado Springs page's "Sites we are ready to staff here." (same
+  entries, grouped in the new order; Denver's and Pueblo's lists are ordered by what each city has
+  and were left alone), and the six `/industries/*` entries in `src/seo/routes.json`.
