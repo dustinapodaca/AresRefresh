@@ -6,6 +6,7 @@ import { EffectCreative } from 'swiper/modules';
 import './swiper-core.css';
 import 'swiper/css/effect-creative';
 import Arrow from '../Arrow';
+import IndustryIndex from '../IndustryIndex';
 import { INDUSTRY_PAGES, type IndustryPageData } from '../market/industries';
 import { responsive } from '../../lib/responsive';
 import { N } from './industryBrief';
@@ -231,6 +232,14 @@ export default function IndustryDeck() {
           />
         ))}
       </div>
+
+      {/* The six names above the deck, to jump to one in a tap (owner, 2026-10-26). */}
+      <IndustryIndex
+        names={INDUSTRY_PAGES.map((ind) => ind.indexName)}
+        labels={INDUSTRY_PAGES.map((ind) => ind.name)}
+        at={active}
+        go={(i) => swiper.current?.slideTo(i)}
+      />
 
       <div className="nx-sk-stage" role="group" aria-roledescription="carousel" aria-label="Industries">
         <div ref={swRef} className="swiper nx-sw">

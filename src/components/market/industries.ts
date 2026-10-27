@@ -9,6 +9,8 @@ import type { Faq, SheetRow } from './roles';
 export type IndustryPageData = {
   slug: string;
   name: string;
+  /** A short name for the phone industry index above the swipe rows (owner, 2026-10-26). */
+  indexName: string;
   /** One line for lists. */
   short: string;
   title: string;
@@ -48,6 +50,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // defense page (security as part of the mission), without its clearance claims. The slug stays.
     slug: 'government-defense',
     name: 'Government & Defense',
+    indexName: 'Government',
     // Owner, 2026-10-25: agencies, bases, and defense contractors directly, and also any company with
     // work on a base (construction, power, water) that needs escorts or posts. No client or base names.
     short: 'Federal agencies, military bases, and defense contractors, through GSA, and security escorts for any crew working on base, restricted areas included.',
@@ -116,6 +119,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'commercial-property',
     name: 'Commercial & Retail',
+    indexName: 'Commercial',
     // Businesses, stores, and loss prevention (owner, 2026-10-16).
     short: 'Retail stores, grocery, shopping centers, banks, hotels, and offices.',
     title: 'Security for commercial property and retail.',
@@ -160,6 +164,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // example among several). /industries/data-centers redirects here (public/_redirects).
     slug: 'critical-infrastructure',
     name: 'Critical & High-Liability Sites',
+    indexName: 'Critical sites',
     // Hospitals moved here from Institutional & Community (owner, 2026-10-16): their security is
     // about liability and documented entry, like the rest of this page.
     short: 'Data centers, utilities, hospitals, cash-handling, and other sites where every entry is documented.',
@@ -218,6 +223,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // New (owner, 2026-10-10).
     slug: 'institutional-community',
     name: 'Institutional & Community',
+    indexName: 'Institutional',
     // Apartments, schools, campuses, and local community sites (owner, 2026-10-16); hospitals moved
     // to Critical & High-Liability Sites. Community health centers and outpatient clinics added here
     // (owner, 2026-10-26, for the Peak Vista RFP): a customer-service post, not a hospital's.
@@ -273,6 +279,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
   {
     slug: 'construction-industrial',
     name: 'Construction, Industrial & Logistics',
+    indexName: 'Construction',
     short: 'Gate control, perimeter rounds, and after-hours patrol for builds, military construction, warehouses, and industrial yards.',
     title: 'Security for construction and industrial sites.',
     lead: 'Gate control, perimeter rounds, and after-hours patrol for active builds, yards, warehouses, and industrial sites, while the site is being built and after.',
@@ -314,6 +321,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // is a contract.
     slug: 'airport-transportation',
     name: 'Airport & Transportation',
+    indexName: 'Airport',
     short: 'Airport-area and aviation sites, transit and parking facilities, and cargo operations.',
     title: 'Security for airport and transportation sites.',
     lead: 'Officers we are ready to staff at airport-area sites, transit and parking facilities, and cargo and logistics operations, uniformed or plainclothes, on every shift.',

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import SwipeControls, { useSwipeRow } from '../SwipeControls';
+import IndustryIndex from '../IndustryIndex';
 import { DIVISIONS } from '../services/data';
 import { INDUSTRY_PAGES } from '../market/industries';
 import { responsive } from '../../lib/responsive';
@@ -17,6 +18,8 @@ import './sv-industries.css';
 // as the page scrolls past.
 
 const shortFor = (to?: string) => INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.short;
+const indexNameFor = (to: string | undefined, title: string) =>
+  INDUSTRY_PAGES.find((p) => `/industries/${p.slug}` === to)?.indexName ?? title;
 
 export default function SvIndustries() {
   const ref = useRef<HTMLElement>(null);
@@ -106,6 +109,10 @@ export default function SvIndustries() {
 
   // Phones: the swipe controls under the row (the header's bar and arrows stay for wider screens).
   const { at: showing, go } = useSwipeRow(trackRef, DIVISIONS.length);
+  // The name row above the row (phones; owner, 2026-10-26) needs the script to move the row, so it
+  // shows only once the page is running (not in the prerender or without JavaScript).
+  const [live, setLive] = useState(false);
+  useEffect(() => setLive(true), []);
 
   const step = (dir: 1 | -1) => {
     const t = trackRef.current;
@@ -163,6 +170,15 @@ export default function SvIndustries() {
           </button>
         </div>
       </header>
+
+      {live && (
+        <IndustryIndex
+          names={DIVISIONS.map((d) => indexNameFor(d.page?.to, d.title))}
+          labels={DIVISIONS.map((d) => d.title)}
+          at={showing}
+          go={go}
+        />
+      )}
 
       <div className="sv-ind-drift">
         <ol ref={trackRef} className="sv-ind-track" aria-label="Industries">

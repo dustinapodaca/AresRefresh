@@ -1,0 +1,34 @@
+/* The industry name row above the phone swipe rows (IndustryIndex.tsx; owner, 2026-10-26). */
+.ds-ind-index { display: none; }
+@media (max-width: 1023px) {
+  /* Three across, two down, every name the same size and evenly spaced (owner, 2026-10-26). */
+  .ds-ind-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 8px; margin: 0 0 22px; }
+  .ds-ind-index-name {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    padding: 0 4px;
+    text-align: center;
+    white-space: nowrap;
+    border: 0;
+    border-radius: 2px;
+    background: none;
+    font: 400 13px/1 var(--ds-text);
+    font-feature-settings: 'cv01', 'cv05', 'cv09', 'cv11', 'ss03';
+    color: var(--ds-fg-muted);
+    box-shadow: inset 0 0 0 1px var(--ds-rule-strong);
+    cursor: pointer;
+    transition: color 180ms var(--ds-ease), box-shadow 180ms var(--ds-ease);
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* 44px to tap: the hit area reaches into the gaps (7px above and below, 4px to each side). */
+  .ds-ind-index-name::before { content: ''; position: absolute; inset: -7px -4px; }
+  .ds-ind-index-name[aria-current='true'] { color: var(--ds-fg); box-shadow: inset 0 0 0 1px var(--ds-fg); }
+  .ds-ind-index-name:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 2px; }
+}
+@media (max-width: 1023px) and (hover: hover) and (pointer: fine) {
+  .ds-ind-index-name:hover { color: var(--ds-fg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-ind-index-name { transition: none; }
+}

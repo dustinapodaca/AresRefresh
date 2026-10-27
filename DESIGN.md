@@ -571,7 +571,13 @@ and `nx-*.css` (class prefix `nx-`).
   the roles and what to send us). Every card is the same height, the photo plus the longest brief,
   so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
   counter, a six-step meter (rust for the current), and no arrows (owner, 2026-10-25: each step is a 44px tap target named for its industry); "Swipe the card
-  for the next industry" in mono. The first card deals in
+  for the next industry" in mono. Above the deck, the six industries' short names (Government, Commercial, Critical sites, Institutional,
+  Construction, Airport) three across and two down, every name the same size and evenly spaced,
+  Inter 13px on 2px-cornered boxes: the active one in ink with an ink edge, the rest ink muted on a
+  hairline; each a button (44px to tap) that jumps to its card through the row's own control, the
+  same as the meter's steps, and follows the swipe (owner, 2026-10-26; `IndustryIndex.tsx`). No
+  counters, capitals, dots, or glow. It sits 50px above the deck so the
+  peeking cards clear it. The first card deals in
   once when first seen, and as it does (owner, 2026-10-23) the next two peek out above it as a stack,
   each a step smaller (about 24 and 47px showing), hold a beat, and tuck in behind it, so the reader
   sees there are more to swipe to. Everywhere else (desktop without motion, the prerender, no JavaScript; on phones
@@ -828,7 +834,13 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   separate site line was folded into it, owner 2026-10-25), and "Open the page →" as the standard
   underlined link at the foot, so the six line up. No mono chips, rust squares, or wire and nodes. Nothing reveals on
   hover; the one pointer response is the photo easing up 2% in its frame, the underline turning ink,
-  and the arrow nudging (mouse only).
+  and the arrow nudging (mouse only). Phones and tablets: above the row, the six industries' short names (Government, Commercial, Critical sites, Institutional,
+  Construction, Airport) three across and two down, every name the same size and evenly spaced,
+  Inter 13px on 2px-cornered boxes: the active one in ink with an ink edge, the rest ink muted on a
+  hairline; each a button (44px to tap) that jumps to its card through the row's own control, the
+  same as the meter's steps, and follows the swipe (owner, 2026-10-26; `IndustryIndex.tsx`). No
+  counters, capitals, dots, or glow. It shows only once the
+  page's script runs (the prerender and no-JavaScript page have no row to move).
 - **Phone swipe controls** (both rows above; owner, 2026-10-25; `SwipeControls.tsx`): under the row,
   the same as Home's industry deck and the Capability Statement's reasons: a meter with one step per
   card (passed steps white, the current one rust; tap a step to go there), no arrows (owner, 2026-10-25:
