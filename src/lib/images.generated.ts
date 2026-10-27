@@ -182,6 +182,12 @@ export const IMAGES: Record<string, ImageEntry> = {
     "width": 3200,
     "height": 2133
   },
+  "/images/market/office-pikes-peak.jpg": {
+    "src": "/images/opt/market-office-pikes-peak-1200.cbc56733.webp",
+    "srcSet": "/images/opt/market-office-pikes-peak-480.646387fb.webp 480w, /images/opt/market-office-pikes-peak-800.acfa2ed7.webp 800w, /images/opt/market-office-pikes-peak-1200.cbc56733.webp 1200w, /images/opt/market-office-pikes-peak-1600.6a2354ae.webp 1600w, /images/opt/market-office-pikes-peak-1920.abbe377f.webp 1920w",
+    "width": 1920,
+    "height": 1080
+  },
   "/images/market/construction-industrial.webp": {
     "src": "/images/opt/market-construction-industrial-1200.74e7ff8c.webp",
     "srcSet": "/images/opt/market-construction-industrial-480.1fbe50a0.webp 480w, /images/opt/market-construction-industrial-800.540967a2.webp 800w, /images/opt/market-construction-industrial-1200.74e7ff8c.webp 1200w, /images/opt/market-construction-industrial-1600.7f364862.webp 1600w, /images/opt/market-construction-industrial-2000.cd326cc4.webp 2000w",

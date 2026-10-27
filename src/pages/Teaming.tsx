@@ -57,10 +57,11 @@ const PARTNERS = [
   {
     name: 'Builders and general contractors',
     line: 'Escorts, gate control, and access control while a site is built, including on military construction.',
-    // The steel-frame build in downtown Colorado Springs, the contractor's name edited out (owner,
-    // 2026-10-26; was the data center campus).
-    photo: '/images/market/construction-industrial.webp',
-    pos: '50% 40%',
+    // Offices under Pikes Peak, the builder's sign edited out (owner, 2026-10-26; was the data center
+    // campus). Cropped in from the left so the name on the brick building there stays out of frame.
+    photo: '/images/market/office-pikes-peak.jpg',
+    pos: '50% 50%',
+    zoom: { scale: 1.16, origin: '100% 40%' },
     roles: [
       { name: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
       { name: 'Access Control Officers', to: '/services/access-control' },
@@ -209,7 +210,16 @@ function Partners() {
         {PARTNERS.map((p) => (
           <li key={p.name} className="tb-row" data-rv>
             <div className="tb-row-photo" aria-hidden="true">
-              <img {...responsive(p.photo)} alt="" loading="lazy" style={{ objectPosition: p.pos }} />
+              <img
+                {...responsive(p.photo)}
+                alt=""
+                loading="lazy"
+                style={{
+                  objectPosition: p.pos,
+                  // A crop for one photo: the `scale` property, so the hover's transform still runs.
+                  ...('zoom' in p && p.zoom ? { scale: String(p.zoom.scale), transformOrigin: p.zoom.origin } : {}),
+                }}
+              />
             </div>
             <div className="tb-row-text">
               <h3 className="tb-row-name">{p.name}</h3>

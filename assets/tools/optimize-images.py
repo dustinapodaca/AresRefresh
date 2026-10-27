@@ -85,6 +85,10 @@ PHOTOS = [
     {'key': '/images/market/government-military.webp', 'source': 'assets/images-src/market/government-radomes.jpg', 'q': 80},
     # The Space Force base at golden hour, cloud-free edit (owner, 2026-10-26: Teaming's prime contractors row).
     {'key': '/images/market/government-schriever.jpg', 'source': 'assets/images-src/market/government-schriever-clean.jpg', 'q': 80},
+    # Offices in Colorado Springs under Pikes Peak, the builder's sign removed by a masked edit (owner,
+    # 2026-10-26: Teaming's builders row). Another company's name stays on the brick building at the
+    # left; the row crops it out (Teaming.tsx).
+    {'key': '/images/market/office-pikes-peak.jpg', 'source': 'assets/images-src/market/office-pikes-peak-clean.png', 'q': 82},
     # A real photo (owner, 2026-10-12): a steel-frame build in downtown Colorado Springs, winter.
     # The contractor's name on the elevator core was removed (OpenAI masked edit of that patch
     # only); the untouched original is construction-colorado-springs.jpg beside it.
