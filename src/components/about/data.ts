@@ -7,7 +7,7 @@ import { GSA_ELIBRARY } from '../home/links';
 // and the traits into one section (owner, 2026-10-18).
 export const ABOUT_MARKS: readonly Mark[] = [
   { id: 'founder', n: '01', label: 'Why Ares exists' },
-  { id: 'heard', n: '02', label: 'What clients told us' },
+  { id: 'heard', n: '02', label: 'What we fixed' },
   { id: 'people', n: '03', label: 'Who stands your post' },
 ];
 

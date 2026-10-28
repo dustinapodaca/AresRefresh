@@ -90,7 +90,7 @@ export default function Heard() {
       <div className="ds-heard-grid">
         <div className="ds-heard-head">
           <h2 id="heard-title" className="ds-display-lg">
-            What clients told us.
+            The problems we built around.
           </h2>
           <p className="ds-lead">
             When we started bidding, skeptical clients asked how we’d be any different. Then they

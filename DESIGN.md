@@ -889,7 +889,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
 
 ### About page ("The Company File", 2026-10-05)
 Home argues, Services schedules, About introduces. Concept and Mobbin board:
-docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 What clients told us, 03 Who stands your post.
+docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 What we fixed (owner, 2026-10-28; was What clients told us), 03 Who stands your post.
 - **Opening:** Pikes Peak and Garden of the Gods (`about-hero.jpg`, a real place, so a
   mono caption, top right under the nav) full bleed behind the headline, with a heavy
   shade from the top so the overcast sky stays in the canvas. Under the copy, the four
@@ -922,7 +922,7 @@ docs/about-concepts.md. Rail marks (owner, 2026-10-19): 01 Why Ares exists, 02 W
   each year its tick draws in and turns rust (240ms) while the year and its line rise 10px from 0.62
   opacity (360ms, a strong ease-out); the 2026 tick then keeps a soft rust glow. Drawn and rust by default (prerender, no JavaScript, reduced motion); the
   waiting state is armed only after mount. The rule and ticks are decorative.
-- **02 What clients told us.** (owner, 2026-10-18; replaced "How we work.", whose process lives on
+- **02 The problems we built around.** (owner, 2026-10-28: Deidre found "What clients told us." corny; owner, 2026-10-18; replaced "How we work.", whose process lives on
   Services): the page's signature section, `Heard.tsx`. Four things clients said about their last
   guard company (paraphrased, not testimonials: no quotation marks, no names) and what Ares does
   instead, each a liquid glass card, softer than the site's other glass (owner, 2026-10-19: CSS frost 30px at 1.2
