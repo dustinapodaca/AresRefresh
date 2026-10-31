@@ -30,11 +30,14 @@ const EMAIL = 'contact@aressecurity.co';
 // The route, in the photo's own units (800 by 600, the 2400 by 1799 file at a third).
 // It leaves from the Capitol's door, runs east to the avenue, and turns northeast up it, out toward
 // the city lights on the horizon (owner, 2026-10-30; was drawn the other way, ending at the door).
-const ROUTE = 'M 292 330 L 330 322 L 404 321 L 452 328 L 500 292 L 548 262 L 600 234 L 652 212';
+// Past Route B the line takes the streets: up the avenue, a rounded turn east, then north toward the
+// lights, instead of one straight run (owner, 2026-10-30).
+const ROUTE =
+  'M 292 330 L 330 322 L 404 321 L 452 328 L 500 292 L 538 267 Q 549 259 562 260 L 594 262 Q 606 263 613 254 L 627 237 Q 634 229 645 229 L 662 229 Q 673 229 675 220 L 676 214';
 const STOPS = [
   { x: 292, y: 330, time: '07:40', name: 'Depart' },
   { x: 500, y: 292, time: '07:52', name: 'Route B' },
-  { x: 652, y: 212, time: '08:05', name: 'Arrive' },
+  { x: 676, y: 214, time: '08:05', name: 'Arrive' },
 ];
 
 const WHO = [
@@ -159,7 +162,7 @@ function Hero() {
           <svg className="ep-route" viewBox="0 0 800 600" preserveAspectRatio="none">
             {/* Fainter as it goes off into the distance. */}
             <defs>
-              <linearGradient id="ep-fade" gradientUnits="userSpaceOnUse" x1="460" y1="0" x2="660" y2="0">
+              <linearGradient id="ep-fade" gradientUnits="userSpaceOnUse" x1="480" y1="0" x2="680" y2="0">
                 <stop offset="0" stopColor="#e3a06f" />
                 <stop offset="1" stopColor="#e3a06f" stopOpacity="0.35" />
               </linearGradient>
@@ -188,7 +191,7 @@ function Hero() {
 
       <div className="ep-hero-text">
         <h1 id="ep-title" className="ep-title">
-          Executive protection.
+          Executive protection
         </h1>
         <div className="ep-hero-side">
           <p className="ep-lead">
