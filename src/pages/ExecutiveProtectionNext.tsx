@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import { FaqSection } from '../components/market/parts';
 import type { Faq } from '../components/market/roles';
@@ -466,10 +466,7 @@ export default function ExecutiveProtectionNext() {
 
   return (
     <main ref={ref} id="main" tabIndex={-1} className="ds ds-page ep" data-hero-in={inHero || undefined}>
-      <Helmet>
-        <title>Executive Protection | Ares Security</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <Seo path="/executive-protection-next" />
       <Hero />
       <div className="ep-doc">
         <Who />

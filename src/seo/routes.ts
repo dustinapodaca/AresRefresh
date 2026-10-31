@@ -29,6 +29,8 @@ export type RouteMeta = {
   areaServed?: string[];
   /** LCP hero for this route; emitted as <link rel="preload" as="image">. */
   preloadImage?: string;
+  /** A preview page: built, prerendered, and checked only on the dev server and Netlify (lib/previewPages.ts). */
+  preview?: boolean;
 };
 
 export const HOST: string = data.host;

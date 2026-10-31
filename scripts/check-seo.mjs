@@ -34,6 +34,8 @@ const decode = (s) =>
 
 for (const p of Object.keys(routes)) {
   const meta = routes[p];
+  // Preview pages are built only where VITE_PREVIEW_PAGES is set (Netlify; src/lib/previewPages.ts).
+  if (meta.preview && process.env.VITE_PREVIEW_PAGES !== 'true') continue;
   const file = p === '/' ? join(distDir, 'index.html') : join(distDir, `${p.replace(/^\//, '')}.html`);
   const rel = file.replace(`${root}/`, '');
 

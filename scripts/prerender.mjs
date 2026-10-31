@@ -32,7 +32,8 @@ const distDir = join(root, 'dist');
 const PORT = 4183;
 
 const { routes } = JSON.parse(readFileSync(join(root, 'src/seo/routes.json'), 'utf8'));
-const paths = Object.keys(routes);
+// Preview pages only where the build includes them (Netlify; src/lib/previewPages.ts).
+const paths = Object.keys(routes).filter((p) => !routes[p].preview || process.env.VITE_PREVIEW_PAGES === 'true');
 
 /** '/' -> dist/index.html ; '/locations/denver' -> dist/locations/denver.html */
 function outFile(p) {

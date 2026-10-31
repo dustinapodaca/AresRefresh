@@ -9,6 +9,8 @@
   # Keep Chromium inside the repo so Netlify's build cache retains it
   # between deploys instead of re-downloading on every build.
   PUPPETEER_CACHE_DIR = "/opt/build/repo/.cache/puppeteer"
+  # Preview pages (src/lib/previewPages.ts): shown on Netlify, left out of the DreamHost release build.
+  VITE_PREVIEW_PAGES = "true"
 
 # IndexNow ping on successful production deploys. Self-gates to a
 # no-op until aressecurity.co is the primary domain - see the plugin.
