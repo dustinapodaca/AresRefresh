@@ -59,21 +59,30 @@
 .ep-stop[data-end] .ep-stop-dot { transform: scale(0.7); }
 .ep-stop-label {
   position: absolute;
-  left: 14px;
-  top: -9px;
+  left: 16px;
+  top: -15px;
   display: inline-flex;
   gap: 8px;
   align-items: baseline;
+  padding: 7px 11px;
   white-space: nowrap;
   font-size: 13px;
   font-weight: 500;
-  color: rgb(255 255 255 / 0.9);
-  text-shadow: 0 1px 10px rgb(0 0 0 / 0.9), 0 0 2px rgb(0 0 0 / 0.8);
+  color: #fff;
+  /* Glass, like the Teaming label on the /teaming hero (owner, 2026-10-30: easier to read): a light
+     wash over a blur that lifts the color behind it, with the site's glass edge and top line. */
+  border-radius: 2px;
+  background: rgb(8 9 11 / 0.34);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.14);
 }
 .ep-stop-label .ds-data { font-size: 12px; color: #ffd7b8; }
 /* The arrival's label reads to the left, toward the Capitol's door. */
 /* The departure's label sits under its dot, clear of the line, which leaves up and to the right. */
-.ep-stop[data-start] .ep-stop-label { left: -6px; top: 12px; }
+.ep-stop[data-start] .ep-stop-label { left: -12px; top: 14px; }
+/* Route B's label a little below center, clear of the line climbing away from it. */
+.ep-stop:nth-of-type(2) .ep-stop-label { top: -6px; }
 
 .ep-shade {
   position: absolute;
@@ -249,7 +258,7 @@
 @media (max-width: 1023px) {
   /* Tall tablets show a narrow slice: set right enough to hold the door and the far stop. */
   .ep-media { --px: 0.68; }
-  .ep-stop[data-end] .ep-stop-label { left: auto; right: 12px; top: -28px; }
+  .ep-stop[data-end] .ep-stop-label { left: auto; right: 12px; top: -38px; }
   .ep-phases { grid-template-columns: 1fr; }
   .ep-phase-line { min-height: 0; }
   .ep-phase-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 24px; }
@@ -274,7 +283,7 @@
   .ep-lead { font-size: 16px; }
   .ep-stop-label { font-size: 12px; }
   /* Route B's label sits just below its line on phones. */
-  .ep-stop:nth-of-type(2) .ep-stop-label { top: 6px; }
+  .ep-stop:nth-of-type(2) .ep-stop-label { top: 10px; }
 
   .ep-sec, .ep-doc .ds-mk-faq { padding-top: 104px; }
   .ep-head-lead { font-size: 16px; }
