@@ -465,7 +465,9 @@ export default function NavPanel() {
       ? { label: 'Talk teaming', to: '/contact?service=teaming' }
       : pathname === '/careers' || pathname.startsWith('/careers/')
         ? { label: 'Apply', to: '/careers#apply' }
-        : { label: 'Request a Quote', to: '/contact' };
+        : pathname === '/executive-protection-next'
+          ? { label: 'Request a consultation', to: '/contact?service=executive-protection' }
+          : { label: 'Request a Quote', to: '/contact' };
 
   // Everything closes on a page change, on Escape, and on a click outside the card.
   useEffect(() => {

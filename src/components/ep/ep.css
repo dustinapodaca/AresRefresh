@@ -1,0 +1,296 @@
+/* /executive-protection-next (2026-10-30): a mock of an Executive Protection division page. The
+   Colorado Capitol at night with one route drawn to its door, then who the division protects, what
+   a detail covers (before, on the day, after), the detail lead, discretion, where, the steps, and
+   the phone close. Class prefix ep-. */
+
+.ep { --ep-edge: rgb(255 255 255 / 0.1); --ep-edge-2: rgb(255 255 255 / 0.16); color: var(--ds-fg); }
+.ep h1, .ep h2, .ep h3, .ep h4 { color: var(--ds-fg); }
+
+/* One fade-up per block, once (motion only). */
+.ep[data-rv-arm='true'] [data-rv] { opacity: 0; transform: translateY(14px); }
+.ep[data-rv-arm='true'] [data-rv][data-in='true'] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ds-ease), transform 0.75s var(--ds-ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+/* ------------------------------------------------------------------ Hero */
+.ep-hero {
+  position: relative;
+  min-height: max(640px, min(100svh, 980px));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* The photo is drawn as cover by hand (a 4:3 stage sized off the hero with container units), so
+   the route and its stops, set in the photo's own units, stay on the streets at every size.
+   --px and --py are the object-position. */
+.ep-media { position: absolute; inset: 0; z-index: -1; container-type: size; overflow: hidden; --px: 0.5; --py: 0.75; }
+.ep-stage {
+  position: absolute;
+  width: max(100cqw, 133.4cqh);
+  height: max(100cqh, 74.96cqw);
+  left: calc((100cqw - max(100cqw, 133.4cqh)) * var(--px));
+  top: calc((100cqh - max(100cqh, 74.96cqw)) * var(--py));
+}
+.ep-stage img { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; filter: saturate(0.82) brightness(0.8) contrast(1.06); transform-origin: 40% 55%; }
+.ep-route { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ep-route path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+/* In the photo's units: the stage is always 4:3, so the line scales evenly (about 2px wide on a laptop). */
+.ep-route-line { stroke-width: 1.15; }
+.ep-route-glow { stroke: var(--ds-rust); stroke-width: 5; opacity: 0.35; filter: blur(3px); -webkit-mask-image: linear-gradient(90deg, #000 55%, transparent 82%); mask-image: linear-gradient(90deg, #000 55%, transparent 82%); }
+
+.ep-stop { position: absolute; z-index: 2; width: 0; height: 0; }
+.ep-stop-dot {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f4d2b8;
+  box-shadow: 0 0 0 3px rgb(188 111 64 / 0.45), 0 0 14px rgb(227 160 111 / 0.8);
+}
+.ep-stop[data-start] .ep-stop-dot { background: #fff; box-shadow: 0 0 0 4px rgb(188 111 64 / 0.55), 0 0 22px rgb(227 160 111 / 0.9); }
+/* The arrival is far off, so its mark is smaller. */
+.ep-stop[data-end] .ep-stop-dot { transform: scale(0.7); }
+.ep-stop-label {
+  position: absolute;
+  left: 14px;
+  top: -9px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+  text-shadow: 0 1px 10px rgb(0 0 0 / 0.9), 0 0 2px rgb(0 0 0 / 0.8);
+}
+.ep-stop-label .ds-data { font-size: 12px; color: #ffd7b8; }
+/* The arrival's label reads to the left, toward the Capitol's door. */
+/* The departure's label sits above it, on the Capitol. */
+.ep-stop[data-start] .ep-stop-label { top: -30px; }
+
+.ep-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0) 22%),
+    linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0.86) 20%, rgb(0 0 0 / 0.2) 48%, rgb(0 0 0 / 0) 62%);
+}
+
+.ep-hero-text {
+  width: 100%;
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: 0 var(--ds-gutter) clamp(40px, 5vw, 72px);
+}
+.ep-title {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(52px, 8vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.ep-hero-side { margin-top: 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; }
+.ep-lead { margin: 0; max-width: 56ch; font-size: 18px; line-height: 1.55; color: #c9cdd3; text-wrap: pretty; }
+.ep-actions { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+.ep-actions .ds-link .ds-data { font-size: 16px; }
+
+/* The opener (motion only): the photo settles, the departure comes up at the Capitol's door, and the
+   route draws east and then northeast up the avenue, each stop coming up as the line reaches it. */
+.ep[data-rv-arm='true'] .ep-stage img { transform: scale(1.06); }
+.ep[data-rv-arm='true'] .ep-route path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ep[data-rv-arm='true'] .ep-stop { opacity: 0; }
+.ep[data-rv-arm='true'] :is(.ep-title, .ep-hero-side) { opacity: 0; transform: translateY(16px); }
+.ep[data-hero-in] .ep-stage img { transform: none; transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.ep[data-hero-in] .ep-route path { stroke-dashoffset: 0; transition: stroke-dashoffset 2.2s cubic-bezier(0.55, 0, 0.3, 1) 0.5s; }
+.ep[data-hero-in] .ep-stop { opacity: 1; transition: opacity 0.5s var(--ds-ease); }
+.ep[data-hero-in] .ep-stop:nth-of-type(1) { transition-delay: 0.4s; }
+.ep[data-hero-in] .ep-stop:nth-of-type(2) { transition-delay: 1.7s; }
+.ep[data-hero-in] .ep-stop:nth-of-type(3) { transition-delay: 2.6s; }
+.ep[data-hero-in] :is(.ep-title, .ep-hero-side) { opacity: 1; transform: none; transition: opacity 0.8s var(--ds-ease), transform 0.9s var(--ds-ease); }
+.ep[data-hero-in] .ep-title { transition-delay: 0.25s; }
+.ep[data-hero-in] .ep-hero-side { transition-delay: 0.45s; }
+
+/* ------------------------------------------------------- The document */
+.ep-doc {
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: 0 var(--ds-gutter);
+}
+.ep-sec { padding-top: clamp(104px, 12vw, 176px); }
+.ep-head { margin-bottom: clamp(32px, 4vw, 56px); }
+.ep-h2 {
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+.ep-head-lead { margin: 18px 0 0; max-width: 52ch; font-size: 18px; line-height: 1.55; color: var(--ds-fg-muted); text-wrap: pretty; }
+
+/* Who we protect: four names, two across, each on its own hairline. */
+.ep-who { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(32px, 5vw, 80px); }
+.ep-who li { padding: clamp(24px, 2.6vw, 34px) 0 clamp(32px, 3.4vw, 48px); border-top: 1px solid var(--ep-edge-2); }
+.ep-who-name { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(28px, 3vw, 44px); line-height: 1; letter-spacing: -0.045em; text-wrap: balance; }
+.ep-who-line { margin: 16px 0 0; max-width: 44ch; font-size: 16.5px; line-height: 1.55; color: var(--ds-fg-muted); }
+
+/* What a detail covers: three phases, side by side, each a column of what happens in it. */
+.ep-phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ep-phase {
+  padding: clamp(24px, 2.4vw, 34px);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0.015));
+  box-shadow: inset 0 0 0 1px var(--ep-edge), inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+.ep-phase:nth-child(2) { background: linear-gradient(180deg, rgb(188 111 64 / 0.12), rgb(188 111 64 / 0.03) 70%); box-shadow: inset 0 0 0 1px rgb(188 111 64 / 0.3), inset 0 1px 0 rgb(240 199 166 / 0.18); }
+.ep-phase-name { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(30px, 2.8vw, 40px); line-height: 1; letter-spacing: -0.045em; }
+.ep-phase-line { margin: 12px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--ds-fg-muted); min-height: 3em; }
+.ep-phase-items { list-style: none; margin: 24px 0 0; padding: 0; }
+.ep-phase-items li { padding: 18px 0; border-top: 1px solid var(--ep-edge); }
+.ep-phase-items li:last-child { padding-bottom: 0; }
+.ep-item-title { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.ep-item-line { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); }
+
+/* The detail lead: the statement beside one glass card over the Capitol's dome. */
+.ep-lead-sec { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.ep-card { position: relative; margin: 0; aspect-ratio: 4 / 5; max-height: 640px; border-radius: 4px; overflow: hidden; isolation: isolate; box-shadow: inset 0 0 0 1px var(--ep-edge); }
+.ep-card-photo { position: absolute; inset: 0; z-index: -1; }
+.ep-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--ep-edge-2); pointer-events: none; }
+.ep-card-photo img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 21% 62%; transform: scale(1.9); transform-origin: 21% 62%; filter: saturate(0.82) brightness(0.8); }
+.ep-card-body {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 22px 22px 8px;
+  border-radius: 4px;
+  background: var(--ds-glass-wash, linear-gradient(180deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.4) 55%, rgb(0 0 0 / 0.32)));
+  -webkit-backdrop-filter: blur(22px) saturate(1.65);
+  backdrop-filter: blur(22px) saturate(1.65);
+  box-shadow: inset 0 0 0 1px var(--ds-glass-edge, rgb(255 255 255 / 0.1)), var(--ds-glass-top, inset 0 1px 0 rgb(255 255 255 / 0.14));
+}
+.ep-card-role { margin: 0 0 14px; font-family: var(--ds-display); font-weight: 600; font-size: 22px; line-height: 1.15; letter-spacing: -0.03em; color: #fff; }
+.ep-card-rows { margin: 0; }
+.ep-card-rows > div { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px; padding: 12px 0; border-top: 1px solid rgb(255 255 255 / 0.12); }
+.ep-card-rows dt { font-size: 13.5px; line-height: 1.45; color: rgb(238 240 242 / 0.6); }
+.ep-card-rows dd { margin: 0; font-size: 14.5px; line-height: 1.45; color: #fff; }
+
+/* Discreet by default: a short ledger. */
+.ep-ledger { margin: 0; border-top: 1px solid var(--ep-edge-2); }
+.ep-ledger-row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--ep-edge); }
+.ep-ledger-row dt { font-family: var(--ds-display); font-weight: 600; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.2; letter-spacing: -0.025em; color: var(--ds-fg); }
+.ep-ledger-row dd { margin: 0; max-width: 56ch; font-size: 17px; line-height: 1.55; color: var(--ds-fg-muted); }
+
+/* Where we work: two places, now and next. */
+.ep-places { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ep-place { padding: clamp(24px, 2.6vw, 36px); border-radius: 4px; box-shadow: inset 0 0 0 1px var(--ep-edge-2); }
+.ep-place + .ep-place { box-shadow: inset 0 0 0 1px var(--ep-edge); }
+.ep-place-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.ep-place-name { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(36px, 4vw, 60px); line-height: 0.95; letter-spacing: -0.05em; }
+.ep-place-status { font-size: 14px; color: var(--ds-rust); white-space: nowrap; }
+.ep-place + .ep-place .ep-place-status { color: var(--ds-fg-faint); }
+.ep-place-line { margin: 18px 0 0; max-width: 44ch; font-size: 16.5px; line-height: 1.55; color: var(--ds-fg-muted); }
+.ep-place-cities { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--ds-fg); }
+.ep-place + .ep-place .ep-place-cities { color: var(--ds-fg-muted); }
+
+/* Five steps on one hairline. */
+.ep-steps { --fill: 1; position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); }
+.ep-steps::before,
+.ep-steps::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; }
+.ep-steps::before { background: var(--ep-edge-2); }
+.ep-steps::after { background: var(--ds-rust); transform: scaleX(var(--fill)); transform-origin: left; }
+.ep-step { padding-top: 28px; }
+.ep-step-n { display: block; font-size: 14px; color: var(--ds-fg-faint); transition: color 0.3s var(--ds-ease); }
+.ep-step[data-on='true'] .ep-step-n,
+.ep-steps:not([data-live]) .ep-step-n { color: var(--ds-rust); }
+.ep-step-title { margin: 14px 0 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.15; letter-spacing: -0.02em; }
+.ep-step-line { margin: 10px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--ds-fg-muted); }
+.ep-steps[data-live] .ep-step { transition: opacity 0.3s var(--ds-ease); }
+.ep-steps[data-live] .ep-step:not([data-on='true']) { opacity: 0.62; }
+
+.ep-doc .ds-mk-faq { padding-top: clamp(104px, 12vw, 176px); }
+
+/* ------------------------------------------------------------- The close */
+.ep-close {
+  position: relative;
+  max-width: calc(var(--ds-max) + 2 * var(--ds-gutter));
+  margin: 0 auto;
+  padding: clamp(120px, 14vw, 208px) var(--ds-gutter) clamp(120px, 12vw, 176px);
+  overflow-x: clip;
+}
+.ep-close-title { margin: 0; max-width: 14ch; font-family: var(--ds-display); font-weight: 600; font-size: clamp(48px, 7.6vw, 132px); line-height: 0.92; letter-spacing: -0.055em; text-wrap: balance; }
+.ep-close-line { margin: 28px 0 0; max-width: 44ch; font-size: 20px; line-height: 1.5; font-weight: 500; color: var(--ds-fg-muted); }
+.ep-close-call { margin-top: clamp(48px, 6vw, 88px); }
+.ep-close-phone { position: relative; display: inline-flex; align-items: center; gap: clamp(12px, 2vw, 28px); padding-bottom: 14px; color: var(--ds-fg); text-decoration: none; }
+.ep-close-phone .ds-data { font-size: min(11.6vw, 168px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums slashed-zero; white-space: nowrap; }
+.ep-close-phone .ds-arrow { width: clamp(24px, 3vw, 40px); height: auto; }
+.ep-close-rule { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ds-rust); transform-origin: left; }
+.ep[data-rv-arm='true'] .ep-close-call .ep-close-rule { transform: scaleX(0); }
+.ep[data-rv-arm='true'] .ep-close-call[data-in='true'] .ep-close-rule { transform: scaleX(1); transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.35s; }
+@media (hover: hover) and (pointer: fine) {
+  .ep-close-phone:hover .ds-arrow { transform: translateX(6px); color: var(--ds-rust); }
+}
+.ep-close-meta { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 14px; color: var(--ds-fg-muted); }
+.ep-close-meta a { color: var(--ds-fg); }
+.ep-close-actions { margin-top: clamp(40px, 5vw, 64px); }
+
+/* ------------------------------------------------------------- Tablets and phones */
+@media (max-width: 1023px) {
+  /* Tall tablets show a narrow slice: set right enough to hold the door and the far stop. */
+  .ep-media { --px: 0.68; }
+  .ep-stop[data-end] .ep-stop-label { left: auto; right: 12px; top: -28px; }
+  .ep-phases { grid-template-columns: 1fr; }
+  .ep-phase-line { min-height: 0; }
+  .ep-phase-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 24px; }
+  .ep-lead-sec { grid-template-columns: 1fr; }
+  .ep-card { max-width: 520px; aspect-ratio: 4 / 4.4; }
+  .ep-steps { grid-template-columns: 1fr; gap: 28px; padding-left: 28px; }
+  .ep-steps::before,
+  .ep-steps::after { left: 0; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; }
+  .ep-steps::after { transform: scaleY(var(--fill)); transform-origin: top; }
+  .ep-step { padding-top: 0; max-width: 46ch; }
+  .ep-step-title { margin-top: 6px; }
+}
+@media (max-width: 767px) {
+  /* Phones: the photo as a tall window, the route on it, then the headline below on black. */
+  .ep-hero { min-height: 0; display: block; padding-top: var(--ds-header); }
+  /* Shorter, and set to the right, so the whole route fits: the Capitol's door to the far stop. */
+  .ep-media { position: relative; inset: auto; height: clamp(360px, 52svh, 480px); --px: 0.8; --py: 0.5; }
+  .ep-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0.5) 0%, rgb(0 0 0 / 0) 26%, rgb(0 0 0 / 0) 70%, #000 100%); }
+  .ep-hero-text { padding-top: 8px; padding-bottom: 8px; }
+  .ep-title { font-size: clamp(46px, 13.4vw, 64px); }
+  .ep-hero-side { margin-top: 22px; flex-direction: column; align-items: flex-start; }
+  .ep-lead { font-size: 16px; }
+  .ep-stop-label { font-size: 12px; }
+  /* Route B's label sits just below its line on phones. */
+  .ep-stop:nth-of-type(2) .ep-stop-label { top: 6px; }
+
+  .ep-sec, .ep-doc .ds-mk-faq { padding-top: 104px; }
+  .ep-head-lead { font-size: 16px; }
+  .ep-who { grid-template-columns: 1fr; }
+  .ep-who-name { font-size: clamp(28px, 8.4vw, 34px); }
+  .ep-phase-items { display: block; }
+  .ep-card { aspect-ratio: 4 / 5; }
+  .ep-ledger-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  .ep-ledger-row dd { font-size: 16px; }
+  .ep-places { grid-template-columns: 1fr; }
+  .ep-close { padding-top: 120px; }
+  .ep-close-line { font-size: 17px; }
+  .ep-close-phone { gap: 10px; }
+  .ep-close-phone .ds-data { font-size: 11.4vw; }
+  .ep-close-phone .ds-arrow { width: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ep-step, .ep-step-n { transition: none !important; }
+}

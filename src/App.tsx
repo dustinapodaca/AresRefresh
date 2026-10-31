@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { attachLiquid, liquidSupported, type LiquidOptions } from './lib/liquidGlass';
 import ScrollToTop from './components/ScrollToTop';
@@ -25,6 +25,11 @@ import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
+// Executive Protection division mock (2026-10-30): a test page on the local dev server only. Not in
+// routes.json, so it is never prerendered or in the sitemap, and the route is left out of builds.
+const ExecutiveProtectionNext = import.meta.env.DEV
+  ? lazy(() => import('./pages/ExecutiveProtectionNext'))
+  : null;
 
 // The card surface (owner, 2026-10-15): liquid glass, the glass cards plus the liquid rim. Sets
 // <html data-cards="glass" data-liquid="true">; the styles are in dossier.css ("Glass cards"). The
@@ -135,6 +140,16 @@ export default function App() {
         <Route path="/services/:slug" element={<RolePage />} />
         <Route path="/industries/:slug" element={<IndustryPage />} />
         <Route path="/teaming" element={<Teaming />} />
+        {ExecutiveProtectionNext && (
+          <Route
+            path="/executive-protection-next"
+            element={
+              <Suspense fallback={null}>
+                <ExecutiveProtectionNext />
+              </Suspense>
+            }
+          />
+        )}
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<InsightPage />} />
         <Route path="/careers/:city" element={<CityJobsPage />} />
