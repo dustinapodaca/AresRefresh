@@ -280,7 +280,8 @@
   /* Shorter, and set to the right, so the whole route fits: the Capitol's door to the far stop. */
   .ep-media { position: relative; inset: auto; height: clamp(360px, 52svh, 480px); --px: 0.8; --py: 0.5; }
   .ep-shade { background: linear-gradient(180deg, rgb(0 0 0 / 0.5) 0%, rgb(0 0 0 / 0) 26%, rgb(0 0 0 / 0) 70%, #000 100%); }
-  .ep-hero-text { padding-top: 8px; padding-bottom: 8px; }
+  /* Up 32px onto the photo's black foot (owner, 2026-10-30), above the photo window. */
+  .ep-hero-text { position: relative; z-index: 1; margin-top: -32px; padding-top: 8px; padding-bottom: 8px; }
   .ep-title { font-size: clamp(46px, 13.4vw, 64px); }
   .ep-hero-side { margin-top: 22px; flex-direction: column; align-items: flex-start; }
   .ep-lead { font-size: 16px; }
