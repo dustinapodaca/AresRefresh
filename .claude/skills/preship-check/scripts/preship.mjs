@@ -113,7 +113,8 @@ console.log(`\nServing dist/ on ${BASE} (${HEADER_RULES.length} header rules${cs
 
 // ---------- 3. Browser pass ----------
 const { routes } = JSON.parse(readFileSync(join(ROOT, 'src/seo/routes.json'), 'utf8'));
-let pages = Object.keys(routes);
+// Preview pages are built only where VITE_PREVIEW_PAGES is set (Netlify; src/lib/previewPages.ts).
+let pages = Object.keys(routes).filter((p) => !routes[p].preview || process.env.VITE_PREVIEW_PAGES === 'true');
 const only = opt('--pages', null);
 if (only) pages = only.split(',').map((s) => s.trim());
 pages.push(BOGUS);

@@ -1283,3 +1283,6 @@ previous page's. New framing copy (N):
   primary source we could open: the SBA size standard for NAICS 561612.
 - Recheck when the FAR overhaul rewrites Part 19 (the section numbers and the $900,000 threshold may
   move).
+- Preship (2026-11-09): the five "the owner is not a veteran" warnings on this article are the FAR's
+  goal categories ("veteran-owned and service-disabled veteran-owned small businesses"), not a claim
+  about Ares; left as written.

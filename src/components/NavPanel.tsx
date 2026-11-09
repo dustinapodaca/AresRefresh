@@ -470,7 +470,7 @@ export default function NavPanel() {
       ? { label: 'Talk teaming', to: '/contact?service=teaming' }
       : pathname === '/careers' || pathname.startsWith('/careers/')
         ? { label: 'Apply', to: '/careers#apply' }
-        : pathname === '/executive-protection-next'
+        : PREVIEW_PAGES && pathname === '/executive-protection-next'
           ? { label: 'Request a consultation', to: '/contact?service=executive-protection' }
           : { label: 'Request a Quote', to: '/contact' };
 
