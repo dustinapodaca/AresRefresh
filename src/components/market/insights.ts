@@ -54,6 +54,82 @@ const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
   {
+    // Topic 6 of the copy audit's Insights list (owner picked it, 2026-11-09): what primes check before
+    // naming a security subcontractor. Rules from the FAR as published on Acquisition.gov (FAC 2026-01):
+    // 19.702 (plan thresholds), 52.219-9 (goals, eSRS, good faith, relying on representations), 52.219-14
+    // and 19.001 (limitations on subcontracting, similarly situated), 52.222-41 (SCA flow-down); the 5%
+    // goal from SBA's WOSB page; Denver's goals from DSBO. Ares facts as on /teaming and the Capability
+    // Statement; the base stays unnamed and there are no clearance claims (DESIGN.md, Clearances).
+    slug: 'what-primes-look-for-security-subcontractor',
+    title: 'What prime contractors look for in a small-business security subcontractor.',
+    category: 'Buying security',
+    date: '2026-11-09',
+    dateLabel: 'November 9, 2026',
+    summary: 'Primes bring in a security subcontractor to staff posts and to meet small-business goals. What they check before naming one in a proposal: whether the work counts, whether the status can be verified, and whether the posts will be covered.',
+    body: [
+      { p: 'Prime contractors bring in a security subcontractor for two reasons: to staff posts they cannot cover with their own people, and to meet the small-business goals in their contract. A good subcontractor does both, and a prime checks both before it names one in a proposal.' },
+      { h: 'Does the work count toward the prime’s goals?' },
+      { p: 'On a federal contract expected to exceed $900,000 ($2 million for construction), a prime that is not a small business must have a small-business subcontracting plan. The plan sets separate goals for small businesses and for women-owned, small disadvantaged, HUBZone, veteran-owned, and service-disabled veteran-owned small businesses. The prime reports what it actually paid them in the Electronic Subcontracting Reporting System (eSRS).' },
+      { p: 'The goals carry weight. Failing to make a good-faith effort to meet the plan is a material breach of the contract, and it can count against the prime in past performance evaluations. A women-owned small business counts toward both the small-business goal and the women-owned goal. Government-wide, the goal is to award at least 5% of federal contracting dollars to women-owned small businesses.' },
+      { h: 'When the prime is a small business' },
+      { p: 'On a small-business set-aside the rule runs the other way. A small prime on a services contract may not pay more than 50% of what the government pays it to subcontractors that are not similarly situated. A similarly situated subcontractor has the same small-business status that qualified the prime for the award, and is small under the NAICS code the prime assigns to the subcontract.' },
+      { list: [
+        'On a small-business set-aside, any small business is similarly situated.',
+        'On a women-owned small business set-aside, a women-owned small business is.',
+        'Work a similarly situated subcontractor passes on to another company still counts toward the prime’s 50%.',
+      ] },
+      { h: 'Can its status be checked?' },
+      { p: 'A prime takes a subcontractor’s status on its word only as far as the rules allow. It may rely on a current written representation or on the subcontractor’s representations in SAM.gov, and a prime acting in good faith is not liable for a subcontractor’s misrepresentation. Most primes check anyway:' },
+      { list: [
+        'SAM.gov, for an active registration, the UEI, and the size and status the company represents.',
+        'SBA’s Small Business Search, for the company’s profile, NAICS codes, and SBA certifications such as WOSB.',
+        'The certifier itself for other certifications: WBENC for a Women’s Business Enterprise, the City and County of Denver for Denver M/WBE and SBE.',
+      ] },
+      { h: 'Commercial and city work' },
+      { p: 'Outside federal contracts, the goals come from the client. Companies with supplier-diversity programs may ask for certified women- or minority-owned suppliers. The City and County of Denver sets M/WBE participation goals on projects funded with city dollars or on city land, including contracts for goods and services.' },
+      { h: 'Can it staff the posts?' },
+      { p: 'Credit does not help a prime whose posts go empty. Before naming a security subcontractor, primes look for:' },
+      { list: [
+        'Licenses in the city where the work is. Colorado has no statewide security license, so the subcontractor needs that city’s license, and armed posts need the city’s armed endorsement or license.',
+        'Past performance on similar work, and references the prime can call.',
+        'Officers it can put on the posts, and the date they can start.',
+        'Relief for call-outs, so a missing officer does not become the prime’s problem.',
+        'Insurance that meets what the prime’s contract requires of its subcontractors.',
+      ] },
+      { h: 'Will it work under the prime’s contract?' },
+      { p: 'A subcontractor works to the prime’s contract, not its own habits. On a federal service contract, the Service Contract Labor Standards clause goes into every subcontract the statute covers, so the subcontractor pays the wages and benefits in the contract’s wage determination. Primes also look for a subcontractor that writes the post orders with them, trains its officers on the post, keeps the logs the contract calls for, and will sign a mutual non-solicitation agreement for the people on the shared contract.' },
+      { h: 'Can it answer before the proposal is due?' },
+      { p: 'Teaming often happens on a proposal deadline. A subcontractor that can send its capability statement, identifiers, past performance, and pricing for the posts in time is easier to name in a bid.' },
+      { h: 'How Ares answers these' },
+      { p: 'Ares is a minority woman-owned small business: SBA-certified as a woman-owned small business (WOSB250470), WBENC-certified as a Women’s Business Enterprise (WBE2303571), and certified by Denver as an M/WBE and SBE (B2G vendor 21353671). We are active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18) and hold GSA MAS contract 47QSMS25D009Q under SIN 561612.' },
+      { p: 'Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program. We are licensed and bonded for armed and unarmed security in Colorado Springs, Denver, and Pueblo. We write the post orders with the prime, a member of our leadership trains each officer on the post before the first shift, and every contract has on-call coverage behind it. Since 2021 we have missed fewer than 1% of shifts, and we are open to a mutual non-solicitation agreement on a shared contract.' },
+    ],
+    faq: [
+      { q: 'When does a prime contractor need a small-business subcontracting plan?', a: 'On a federal contract expected to exceed $900,000 ($2 million for construction), unless the prime is itself a small business. The plan sets goals for small businesses and for women-owned, small disadvantaged, HUBZone, veteran-owned, and service-disabled veteran-owned small businesses.' },
+      { q: 'Does a woman-owned security subcontractor count toward a prime’s goals?', a: 'Yes. Work subcontracted to a women-owned small business counts toward both the small-business goal and the women-owned small business goal in the prime’s subcontracting plan.' },
+      { q: 'How much of a set-aside services contract can a small prime subcontract?', a: 'A small prime on a set-aside services contract may not pay more than 50% of what the government pays it to subcontractors that are not similarly situated. A small-business subcontractor is similarly situated on a small-business set-aside, and a women-owned small business on a women-owned set-aside.' },
+      { q: 'How does a prime check a subcontractor’s small-business status?', a: 'It may rely on the subcontractor’s current representations in writing or in SAM.gov. Most primes also look the company up on SAM.gov and SBA’s Small Business Search, and confirm other certifications, such as WBENC or Denver M/WBE, with the certifier.' },
+    ],
+    sources: [
+      { label: 'FAR 19.702, Statutory requirements (subcontracting plans) (Acquisition.gov)', url: 'https://www.acquisition.gov/far/19.702' },
+      { label: 'FAR 52.219-9, Small Business Subcontracting Plan (Acquisition.gov)', url: 'https://www.acquisition.gov/far/52.219-9' },
+      { label: 'FAR 52.219-14, Limitations on Subcontracting (Acquisition.gov)', url: 'https://www.acquisition.gov/far/52.219-14' },
+      { label: 'FAR 19.001, Definitions: similarly situated entity (Acquisition.gov)', url: 'https://www.acquisition.gov/far/19.001' },
+      { label: 'FAR 52.222-41, Service Contract Labor Standards (Acquisition.gov)', url: 'https://www.acquisition.gov/far/52.222-41' },
+      { label: 'Women-Owned Small Business Federal Contract program (SBA)', url: 'https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program' },
+      { label: 'Prime and subcontracting (SBA)', url: 'https://www.sba.gov/federal-contracting/contracting-guide/prime-subcontracting' },
+      { label: 'Small Business Search (SBA)', url: 'https://search.certifications.sba.gov/' },
+      { label: 'Certified Business Utilization (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Economic-Development-Opportunity/Business-Support/Navigate-City-Services-and-Requirements/Do-Business-With-the-City/Certified-Business-Utilization' },
+      SRC.sam,
+    ],
+    related: [
+      { label: 'Teaming & subcontracting', to: '/teaming' },
+      { label: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
+      { label: 'Escorts for contractors on military bases: how they work', to: '/insights/contractor-escorts-military-bases' },
+      { label: 'Capability Statement', to: '/capability-statement' },
+    ],
+  },
+  {
     // Fourth monthly article (2026-10-26): contractor escorts on military installations, the work
     // Ares is growing toward. Rules from DoDM 5200.08 Volume 3 (installation access, escorts) and
     // AFFARS 5352.242-9000 (contractor access to Air Force and Space Force installations). Ares

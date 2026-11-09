@@ -1263,3 +1263,23 @@ previous page's. New framing copy (N):
   Trained on your post; Relief behind every post (on-call coverage and the logs).
 - The ask strip became the close: "Send us the contract." and "The contract, the posts, and the
   coverage you need. We will come back with who we can staff and when."
+
+## Insights: what primes look for in a security subcontractor (owner, 2026-11-09)
+- New: `/insights/what-primes-look-for-security-subcontractor`, "What prime contractors look for in
+  a small-business security subcontractor." (Buying security; topic 6 of the copy audit's Insights
+  list, picked by the owner ahead of 2 and 5). Sections: whether the work counts (subcontracting
+  plans over $900,000, $2 million for construction; the six goal categories; eSRS; good-faith effort
+  as a material breach; the 5% government-wide WOSB goal), when the prime is small (the 50% services
+  limit and "similarly situated"), checking status (SAM.gov representations, SBA's Small Business
+  Search, WBENC and Denver for their own certifications), commercial and city work (Denver's M/WBE
+  goals), staffing (city licenses, past performance, start dates, relief, insurance), working under
+  the prime's contract (the SCA clause flows down; post orders, training, logs, mutual
+  non-solicitation), answering before the proposal is due, and Ares' answers as on /teaming and the
+  Capability Statement (the base unnamed; no clearance claims). Four questions, ten sources. Added to
+  routes.json, llms.txt, and the index (first).
+- Checked against the sources on 2026-11-09: FAR 19.702, 52.219-9, 52.219-14, 19.001, and 52.222-41 as
+  published on Acquisition.gov (FAC 2026-01, effective March 13, 2026); SBA's WOSB program and prime
+  and subcontracting pages; Denver's Certified Business Utilization page. Left out for lack of a
+  primary source we could open: the SBA size standard for NAICS 561612.
+- Recheck when the FAR overhaul rewrites Part 19 (the section numbers and the $900,000 threshold may
+  move).

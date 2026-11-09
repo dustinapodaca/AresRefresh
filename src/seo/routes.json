@@ -298,6 +298,16 @@
       "title": "Insights: Buying Security in Colorado | Ares Security",
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
+    "/insights/what-primes-look-for-security-subcontractor": {
+      "title": "What Primes Look For in a Security Subcontractor | Ares",
+      "description": "What prime contractors check before naming a small-business security subcontractor: subcontracting goals, set-aside limits, verifiable status, and staffing.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
     "/insights/contractor-escorts-military-bases": {
       "title": "Contractor Escorts on Military Bases: How They Work | Ares",
       "description": "Who may escort contractors on a DoD installation, what an escort does on a shift, and what to line up before a crew mobilizes on a Colorado base.",
