@@ -61,6 +61,33 @@ const SECTIONS = [
 // No closing Download section (owner, 2026-10-23): the hero, the rail, and the phone bar carry the PDF.
 
 // ------------------------------------------------------------------ the card
+// A ridgeline in one white line, drawn left to right on load by a rust point that fades when it is done
+// (owner, 2026-11-13; after "line mountain range" drawings). A Front Range profile with Pikes Peak the
+// high point, in a 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion
+// shows it drawn and still (cn.css).
+const RIDGE =
+  'M0 96 L58 94 L92 87 L118 78 L138 83 L172 60 L192 68 L226 38 L246 50 L266 44 L298 18 L316 28 ' +
+  'L344 4 L360 16 L376 12 L404 40 L424 33 L456 60 L480 50 L522 26 L542 38 L562 24 L594 58 L618 49 ' +
+  'L654 70 L684 42 L704 53 L736 34 L766 62 L792 55 L834 78 L862 71 L904 89 L944 86 L1000 96';
+const RIDGE_ANIM = { begin: '0.5s', dur: '2.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
+
+function Ridge() {
+  return (
+    <svg className="cc-ridge" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+        <animate attributeName="stroke-dashoffset" from="1" to="0" {...RIDGE_ANIM} />
+      </path>
+      <g className="cc-ridge-dot" opacity="0">
+        <circle r="9" className="cc-ridge-halo" />
+        <circle r="4.5" className="cc-ridge-pt" />
+        <animateMotion path={RIDGE} keyPoints="0;1" {...RIDGE_ANIM} />
+        <set attributeName="opacity" to="1" begin={RIDGE_ANIM.begin} />
+        <animate attributeName="opacity" from="1" to="0" begin="3.1s" dur="0.5s" fill="freeze" />
+      </g>
+    </svg>
+  );
+}
+
 function Field({ label, value, copy, live, wide }: { label: string; value: string; copy?: string; live?: boolean; wide?: boolean }) {
   return (
     <div className="cc-field" data-wide={wide || undefined}>
@@ -150,6 +177,7 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
           <p className="cc-legal">Ares Security LLC</p>
           <p className="cc-sub">Minority woman-owned small business · Colorado Springs, CO</p>
         </div>
+        <Ridge />
         <dl className="cc-fields">
           <Field label="UEI" value={IDS.uei} copy="UEI" />
           <Field label="CAGE code" value={IDS.cage} copy="CAGE code" />

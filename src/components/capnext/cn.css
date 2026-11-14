@@ -66,7 +66,7 @@
   padding: clamp(18px, 2.2vw, 28px);
   border-radius: 4px; /* the site's card corners: a business card, not a badge (owner, 2026-10-23) */
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto auto; /* the ridge takes the room between the name and the fields */
   gap: clamp(10px, 1.4vw, 16px);
   /* The site's black glass (owner, 2026-10-23; dossier.css "Glass cards"): its wash, a 22px blur with
      the color lifted, the 1px glass edge with its top line, and the soft shadow. No glow (the rust
@@ -126,6 +126,22 @@
   .cc-word { width: 118px; height: 32px; }
   .cc-legal { display: none; }
   .cc-sub { margin-top: 0; }
+}
+/* The ridgeline (owner, 2026-11-13): one white line drawn by a rust point, from 600px where the card
+   has room for it; reduced motion shows it drawn, with no point. */
+.cc-ridge { display: none; }
+@media (min-width: 600px) {
+  /* Edge to edge across the card, through its padding (owner, 2026-11-13), as tall as the room between
+     the name and the fields allows less 10px each side (up to 60px), so on a short card the range
+     flattens a little instead of crowding the text. */
+  .cc-ridge { display: block; justify-self: center; align-self: center; width: calc(100% + 2 * clamp(18px, 2.2vw, 28px)); max-width: none; height: calc(100% + 2 * clamp(10px, 1.4vw, 16px) - 20px); max-height: 60px; min-height: 0; margin-block: calc(-1 * clamp(10px, 1.4vw, 16px) + 10px); overflow: visible; }
+}
+.cc-ridge-line { fill: none; stroke: rgb(255 255 255 / 0.72); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.cc-ridge-pt { fill: var(--ds-rust); }
+.cc-ridge-halo { fill: var(--ds-rust); opacity: 0.28; }
+@media (prefers-reduced-motion: reduce) {
+  .cc-ridge-line { stroke-dashoffset: 0 !important; }
+  .cc-ridge-dot { display: none; }
 }
 .cc-certs { font-size: 13px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }
 
