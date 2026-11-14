@@ -3496,7 +3496,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   /* No + on the menus (owner, 2026-11-13); hovered or open an item takes a band of black that fades
      out toward the top and bottom (was a black box). Rules between the items were tried and removed. */
   .ds-np-item { position: relative; display: inline-flex; align-items: center; padding: 0 18px; border: 0; background: none; font: 400 15px/1 var(--ds-text); letter-spacing: -0.01em; color: rgb(238 240 242 / 0.78); cursor: pointer; transition: color 180ms var(--ds-ease); }
-  .ds-np-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / 0), rgb(0 0 0 / 0.55) 38%, rgb(0 0 0 / 0.55) 62%, rgb(0 0 0 / 0)); /* 55% black at the center (owner, 2026-11-13; was solid) */ opacity: 0; transition: opacity 180ms var(--ds-ease); z-index: -1; }
+  .ds-np-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / 0), rgb(0 0 0 / 0.75) 38%, rgb(0 0 0 / 0.75) 62%, rgb(0 0 0 / 0)); /* 75% black at the center (owner, 2026-11-13; was solid) */ opacity: 0; transition: opacity 180ms var(--ds-ease); z-index: -1; }
   .ds-np-nav { isolation: isolate; }
   .ds-np-item[data-active], .ds-np-item[aria-current='page'] { color: #fff; }
   .ds-np-item[data-active]::after, .ds-np-item[aria-current='page']::after { opacity: 1; }

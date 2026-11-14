@@ -1329,7 +1329,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   desktop, inside the same `--ds-header` height (64px and 72px since 2026-10-13, owner). The lockup is the footer's scaled down: the
   mark, a 1px divider at ink 50% a little taller than it, and the wordmark nearly its height
   (owner, 2026-10-13). Desktop: the lockup, then
-  Services, Industries, and Company as menu buttons (on hover and when open a band of 55% black the bar's full height that fades out toward its top and bottom; owner, 2026-11-13, was a 2px-cornered black box, before that a lighter tint) and
+  Services, Industries, and Company as menu buttons (on hover and when open a band of 75% black the bar's full height that fades out toward its top and bottom; owner, 2026-11-13, was a 2px-cornered black box, before that a lighter tint) and
   Capability Statement as a link, held in a centered column so they never shift when the
   context button at the right changes length; no phone number on desktop (owner). A
   menu grows the card downward (grid rows, 350ms): a 288px real photo with a mono caption beneath on the
