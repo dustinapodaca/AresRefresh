@@ -1329,7 +1329,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   desktop, inside the same `--ds-header` height (64px and 72px since 2026-10-13, owner). The lockup is the footer's scaled down: the
   mark, a 1px divider at ink 50% a little taller than it, and the wordmark nearly its height
   (owner, 2026-10-13). Desktop: the lockup, then
-  Services, Industries, and Company as menu buttons (a 2px-cornered box of full black on hover and when open; owner, 2026-10-19, was a lighter tint) and
+  Services, Industries, and Company as menu buttons (on hover and when open a band of black that fades out toward the top and bottom; owner, 2026-11-13, was a 2px-cornered black box, before that a lighter tint) and
   Capability Statement as a link, held in a centered column so they never shift when the
   context button at the right changes length; no phone number on desktop (owner). A
   menu grows the card downward (grid rows, 350ms): a 288px real photo with a mono caption beneath on the
@@ -1390,10 +1390,11 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   the 18px arrow at the right, like the main list, no underline (were 16px, underlined), with a
   hairline between them. On desktop the row is two columns like the menu's, so Teaming sits over the
   right-hand links (owner, 2026-10-16). The menu links have no underline: on hover the text slides 24px right and a rust → comes
-  in on its left (260ms; rust since 2026-10-19, owner), sliding back out after; the current page holds that state. The menu
-  toggles are a + whose upright stroke rotates flat into a - when open (300ms; in the desktop bar it
-  turns rust on hover and while open, owner 2026-10-19), on desktop and in
-  the phone accordions (was a caret).
+  in on its left (260ms; rust since 2026-10-19, owner), sliding back out after; the current page holds that state. The desktop
+  bar's items carry no + (owner, 2026-11-13; it was a + that turned into a -): they are set apart by 1px
+  rules like the one between the mark and the wordmark (37px, ink 50%). Each menu's caption slot holds
+  two lines, every caption stacked in it, so a longer caption never grows the menu and all three open
+  to one height (owner, 2026-11-13).
   While a desktop menu is open, a frosted glass covers the page under the nav (after Figma's
   Glass: a 22px blur with the color lifted, a pale white frost over 12% black, a sheen from the top,
   and a fine grain), fading in and out with the menu (320ms); clicks pass through it.

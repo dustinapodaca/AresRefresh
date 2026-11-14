@@ -3471,10 +3471,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-burger[data-open] .ds-np-x i { transform: none; }
 .ds-np-burger[data-open] .ds-np-x i:nth-child(1) { transition-delay: 0.26s; }
 .ds-np-burger[data-open] .ds-np-x i:nth-child(2) { transition-delay: 0.36s; }
-.ds-np-chev { flex: none; }
 /* The + turns into a - (owner, 2026-10-15): its upright stroke rotates flat. */
-.ds-np-chev-v { transform-box: fill-box; transform-origin: center; transition: transform 300ms var(--ds-ease); }
-.ds-np-chev[data-open] .ds-np-chev-v { transform: rotate(90deg); }
 
 /* Growing panels: grid rows from 0fr to 1fr, so height animates to its content. */
 .ds-np-drop, .ds-np-mobile { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1); }
@@ -3495,18 +3492,23 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-np-divider { height: 37px; }
   .ds-np-wordmark { width: 89px; height: 27px; }
   .ds-np-actions { justify-self: end; }
-  .ds-np-nav { display: flex; align-items: center; gap: 2px; }
-  .ds-np-item { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; border: 0; border-radius: 2px; background: none; font: 400 15px/1 var(--ds-text); letter-spacing: -0.01em; color: rgb(238 240 242 / 0.78); cursor: pointer; transition: color 180ms var(--ds-ease), background-color 180ms var(--ds-ease); }
-  .ds-np-item[data-active], .ds-np-item[aria-current='page'] { color: #fff; background: #000; } /* full black, not a lighter tint (owner, 2026-10-19; was white 8%) */
-  .ds-np-item .ds-np-chev { transition: color 180ms var(--ds-ease); }
-  .ds-np-item[data-active] .ds-np-chev { color: var(--ds-rust); } /* the + turns rust with the arrows (owner, 2026-10-19) */
+  .ds-np-nav { display: flex; align-items: center; }
+  /* No + on the menus (owner, 2026-11-13): the items are set apart by 1px rules like the one between
+     the mark and the wordmark, and hovered or open an item takes a band of black that fades out
+     toward the top and bottom (was a black box). */
+  .ds-np-item { position: relative; display: inline-flex; align-items: center; height: 36px; padding: 0 18px; border: 0; background: none; font: 400 15px/1 var(--ds-text); letter-spacing: -0.01em; color: rgb(238 240 242 / 0.78); cursor: pointer; transition: color 180ms var(--ds-ease); }
+  .ds-np-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / 0), #000 38%, #000 62%, rgb(0 0 0 / 0)); opacity: 0; transition: opacity 180ms var(--ds-ease); z-index: -1; }
+  .ds-np-item + .ds-np-item::before { content: ''; position: absolute; left: -0.5px; top: 50%; width: 1px; height: 37px; translate: 0 -50%; background: rgb(238 240 242 / 0.5); }
+  .ds-np-nav { isolation: isolate; }
+  .ds-np-item[data-active], .ds-np-item[aria-current='page'] { color: #fff; }
+  .ds-np-item[data-active]::after, .ds-np-item[aria-current='page']::after { opacity: 1; }
   .ds-np-cta { display: inline-flex; height: 40px; padding: 0 16px; }
   .ds-np-phone, .ds-np-burger, .ds-np-mobile { display: none; }
   .ds-np-drop { display: grid; }
 }
 @media (hover: hover) and (pointer: fine) {
-  .ds-np-item:hover { color: #fff; background: #000; }
-  .ds-np-item:hover .ds-np-chev { color: var(--ds-rust); }
+  .ds-np-item:hover { color: #fff; }
+  .ds-np-item:hover::after { opacity: 1; }
 }
 
 /* The menu: the photo on the left (owner, 2026-10-19; was on the right), two columns of large links,
@@ -3547,6 +3549,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-photo-frame img { position: absolute; inset: 0; opacity: 0; transition: opacity 220ms var(--ds-ease); }
 .ds-np-photo-frame img[data-on] { opacity: 1; }
 .ds-np-photo figcaption { margin: 10px 0 0; }
+.ds-np-caps { display: grid; min-height: 3em; } /* two lines on every menu, so all three open to one height */
+.ds-np-caps > span { grid-area: 1 / 1; visibility: hidden; }
+.ds-np-caps > span[data-on] { visibility: visible; }
 .ds-np-photo::after { content: ''; position: absolute; inset: 0 0 auto; height: 190px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); pointer-events: none; }
 .ds-np-foot { grid-column: 2 / 4; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; margin-top: 28px; padding-top: 14px; border-top: 1px solid rgb(255 255 255 / 0.08); font-size: 14px; }
 .ds-np-foot .ds-link { color: var(--ds-fg-muted); }
@@ -3573,7 +3578,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-np-mbtns .ds-btn { justify-content: center; }
 
 @media (prefers-reduced-motion: reduce) {
-  .ds-np-drop, .ds-np-mobile, .ds-np-chev, .ds-np-chev-v, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-photo-frame img, .ds-np-burger i { transition: none !important; }
+  .ds-np-drop, .ds-np-mobile, .ds-np-big, .ds-np-big-in, .ds-np-big-arrow, .ds-np-photo-frame img, .ds-np-burger i { transition: none !important; }
   .ds-np-menu { animation: none; }
 }
 

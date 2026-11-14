@@ -157,17 +157,6 @@ const PROFILE_ICONS: Record<string, JSX.Element> = {
   ),
 };
 
-// The menu toggle (owner, 2026-10-15; was a caret): a + whose upright stroke turns flat into a -
-// when the menu opens.
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <svg className="ds-np-chev" data-open={open || undefined} width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-      <path d="M1.5 5h7" />
-      <path className="ds-np-chev-v" d="M5 1.5v7" />
-    </svg>
-  );
-}
-
 // The overview links' arrow: the site's arrow, pointing down and to the right, drawn as large as
 // the 18px arrows in the phone menu (owner, 2026-10-16; it was a small 6px glyph).
 function ArrowDownRight() {
@@ -237,7 +226,15 @@ function MenuBody({ menu }: { menu: Menu }) {
             />
           ))}
         </span>
-        <figcaption className="ds-caption">{shown.caption || '\u00a0'}</figcaption>
+        {/* Every caption sits in the same cell, so the slot is as tall as the longest one and the
+            menu never grows when a longer caption comes up (owner, 2026-11-13). */}
+        <figcaption className="ds-caption ds-np-caps">
+          {photos.map((im) => (
+            <span key={im.src} data-on={im === shown || undefined} aria-hidden={im === shown ? undefined : true}>
+              {im.caption || '\u00a0'}
+            </span>
+          ))}
+        </figcaption>
       </figure>
       {(menu.footer || menu.profiles) && (
         <div className="ds-np-foot">
@@ -656,7 +653,6 @@ export default function NavPanel() {
                     onMouseEnter={() => hoverTo(item.menu!, openMenu ? 0 : 90)}
                   >
                     {item.label}
-                    <Chevron open={openMenu === item.menu} />
                   </button>
                 ) : (
                   <NavLink
