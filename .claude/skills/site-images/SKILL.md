@@ -126,7 +126,8 @@ Emergency Response, which was retired. The POC block stays generic.
 
 ## Icons
 
-`public/favicon-v3.svg` is the source (the mark in #c4c8ce, set up and left on purpose). Rebuild the PNGs,
+`public/favicon-v4.svg` is the source (the mark in #c4c8ce, set up and left on purpose; a full black square since
+2026-11-13, no rounded corners, so Google's circle crop shows black, not a white ring). Rebuild the PNGs,
 ICO, Apple touch icon, and manifest with `node assets/tools/make-icons.mjs`.
 
 ## Performance context

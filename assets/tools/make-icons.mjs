@@ -1,17 +1,18 @@
-// Renders the tab and home-screen icons from public/favicon-v3.svg (2026-10-09; renamed from v2 on
-// 2026-10-19, owner: the live site served a darker mark under the v2 names, and new names make browsers
-// and Google fetch the icon again; rename again whenever the icon changes):
-// favicon-v3-48/192/512.png and the ICO (16, 32, 48, 64) keep the rounded black square with
-// transparent corners; apple-touch-icon-v3.png (180) is a full black square, since iOS rounds
-// it itself. Run after changing the SVG: node assets/tools/make-icons.mjs
+// Renders the tab and home-screen icons from public/favicon-v4.svg (2026-10-09; renamed from v2 on
+// 2026-10-19 and to v4 on 2026-11-13, owner: new names make browsers and Google fetch the icon again;
+// rename again whenever the icon changes):
+// every size is a full black square with the light grey mark, no rounded or transparent corners
+// (owner, 2026-11-13: Google sets each icon on a white circle, and the v3 tile's transparent rounded
+// corners showed as a white ring around a smaller dark square). PNGs 48/192/512, the ICO (16, 32,
+// 48, 64), and apple-touch-icon-v4.png (180; iOS rounds it itself). Run after changing the SVG:
+// node assets/tools/make-icons.mjs
 // The mark is placed up and left of the box's center on purpose (owner, 2026-10-09): it is
-// set to sit inside the circle that launchers and some browsers crop icons to. Keep the SVG's
-// translate(82.19 75.00).
+// set to sit inside the circle that launchers, Google, and some browsers crop icons to. Keep the
+// SVG's translate(82.19 75.00).
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 
-const svg = fs.readFileSync('public/favicon-v3.svg', 'utf8');
-const square = svg.replace(/rx="96" ry="96"/, 'rx="0" ry="0"');
+const svg = fs.readFileSync('public/favicon-v4.svg', 'utf8');
 const b = await puppeteer.launch();
 const p = await b.newPage();
 
@@ -22,8 +23,8 @@ async function render(source, size) {
   return p.screenshot({ omitBackground: true, clip: { x: 0, y: 0, width: size, height: size } });
 }
 
-for (const s of [48, 192, 512]) fs.writeFileSync(`public/favicon-v3-${s}.png`, await render(svg, s));
-fs.writeFileSync('public/apple-touch-icon-v3.png', await render(square, 180));
+for (const s of [48, 192, 512]) fs.writeFileSync(`public/favicon-v4-${s}.png`, await render(svg, s));
+fs.writeFileSync('public/apple-touch-icon-v4.png', await render(svg, 180));
 
 // ICO with PNG-encoded images (supported by every current browser and Windows).
 const sizes = [16, 32, 48, 64];
