@@ -99,7 +99,51 @@ const RIDGE_ANIM = { begin: '1.3s', dur: '2.6s', calcMode: 'spline', keyTimes: '
 // Each range's fill, closed down to the foot of the box: it hides the lines of the ranges behind it.
 const closed = (d: string) => `${d} L1040 100 L-40 100 Z`;
 
-function RidgeLayers() {
+// Alpenglow's pieces, shared by ?ridge=glow and ?ridge=both: the sweep gradient (a band of warm light
+// carried across once from `start`), the warmth that stays on the summit, and a soft blur under both.
+function GlowDefs({ start }: { start: string }) {
+  const sweep = { begin: start, dur: '2s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.4 0 0.4 1', fill: 'freeze' } as const;
+  return (
+    <>
+      <linearGradient id="ccg-sweep" gradientUnits="userSpaceOnUse" x1="-460" y1="0" x2="-100" y2="0">
+        <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
+        <stop offset="0.45" stopColor="#e2925a" stopOpacity="0.9" />
+        <stop offset="0.55" stopColor="#f1c49a" stopOpacity="1" />
+        <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
+        <animate attributeName="x1" from="-460" to="1100" {...sweep} />
+        <animate attributeName="x2" from="-100" to="1460" {...sweep} />
+      </linearGradient>
+      <linearGradient id="ccg-warm" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="700" y2="0">
+        <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
+        <stop offset="0.47" stopColor="#e2925a" stopOpacity="0.85" />
+        <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
+      </linearGradient>
+      <filter id="ccg-soft" x="-5%" y="-40%" width="110%" height="180%">
+        <feGaussianBlur stdDeviation="4 2.5" />
+      </filter>
+    </>
+  );
+}
+// The light on one ridge: the sweep passing along it, then (with `warmFrom`) the warmth fading in to stay.
+function GlowOn({ d, warmFrom }: { d: string; warmFrom?: string }) {
+  return (
+    <>
+      <g className="cc-glow-sweep">
+        <path className="cc-glow-halo" d={d} stroke="url(#ccg-sweep)" filter="url(#ccg-soft)" />
+        <path className="cc-glow-edge" d={d} stroke="url(#ccg-sweep)" />
+      </g>
+      {warmFrom && (
+        <g className="cc-glow-warm" opacity="0">
+          <path className="cc-glow-halo" d={d} stroke="url(#ccg-warm)" filter="url(#ccg-soft)" />
+          <path className="cc-glow-edge" d={d} stroke="url(#ccg-warm)" />
+          <animate attributeName="opacity" from="0" to="1" begin={warmFrom} dur="1.4s" fill="freeze" />
+        </g>
+      )}
+    </>
+  );
+}
+
+function RidgeLayers({ glow = false }: { glow?: boolean }) {
   const far = { begin: '0.3s', dur: '1.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
   const mid = { ...far, begin: '0.75s', dur: '1.9s' };
   // A range and its fill; the fill is uncovered left to right with the line, by a growing clip.
@@ -127,13 +171,19 @@ function RidgeLayers() {
         <mask id="ccr-fade" maskUnits="userSpaceOnUse" x="-40" y="0" width="1080" height="100">
           <rect x="-40" y="0" width="1080" height="100" fill="url(#ccr-fade-g)" />
         </mask>
+        {glow && <GlowDefs start="3.8s" />}
       </defs>
       <g className="cc-ridge-layer cc-ridge-far">{layer('far', RIDGE_FAR, far)}</g>
-      <g className="cc-ridge-layer cc-ridge-mid">{layer('mid', RIDGE_MID, mid)}</g>
+      <g className="cc-ridge-layer cc-ridge-mid">
+        {layer('mid', RIDGE_MID, mid)}
+        {/* With the light (?ridge=both) the middle ridge catches it too, more faintly. */}
+        {glow && <g className="cc-glow-far"><GlowOn d={RIDGE_MID} /></g>}
+      </g>
       <g className="cc-ridge-layer cc-ridge-near">
         {/* The near range sits lowest in the box, so the ranges behind rise over it. */}
         <g transform="translate(0 34) scale(1 0.66)">
           {layer('near', RIDGE, RIDGE_ANIM)}
+          {glow && <GlowOn d={RIDGE} warmFrom="4.8s" />}
           {RIDGE_DETAIL.map(([d, begin, dur]) => (
             <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
               <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
@@ -162,24 +212,7 @@ function RidgeGlow() {
   return (
     <svg className="cc-ridge cc-glow" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        {/* The sweep: a band of light about a fifth of the width, carried across once. */}
-        <linearGradient id="ccg-sweep" gradientUnits="userSpaceOnUse" x1="-460" y1="0" x2="-100" y2="0">
-          <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
-          <stop offset="0.45" stopColor="#e2925a" stopOpacity="0.9" />
-          <stop offset="0.55" stopColor="#f1c49a" stopOpacity="1" />
-          <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
-          <animate attributeName="x1" from="-460" to="1100" begin="3s" dur="2s" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.4 1" fill="freeze" />
-          <animate attributeName="x2" from="-100" to="1460" begin="3s" dur="2s" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.4 1" fill="freeze" />
-        </linearGradient>
-        {/* What stays: warmth on the summit and the peaks beside it, fading out to either side. */}
-        <linearGradient id="ccg-warm" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="700" y2="0">
-          <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
-          <stop offset="0.47" stopColor="#e2925a" stopOpacity="0.85" />
-          <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
-        </linearGradient>
-        <filter id="ccg-soft" x="-5%" y="-40%" width="110%" height="180%">
-          <feGaussianBlur stdDeviation="4 2.5" />
-        </filter>
+        <GlowDefs start="3s" />
       </defs>
       <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
         <animate attributeName="stroke-dashoffset" from="1" to="0" {...GLOW_DRAW} />
@@ -189,15 +222,7 @@ function RidgeGlow() {
           <animate attributeName="stroke-dashoffset" from="1" to="0" begin={shifted(begin)} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
         </path>
       ))}
-      <g className="cc-glow-sweep">
-        <path className="cc-glow-halo" d={RIDGE} stroke="url(#ccg-sweep)" filter="url(#ccg-soft)" />
-        <path className="cc-glow-edge" d={RIDGE} stroke="url(#ccg-sweep)" />
-      </g>
-      <g className="cc-glow-warm" opacity="0">
-        <path className="cc-glow-halo" d={RIDGE} stroke="url(#ccg-warm)" filter="url(#ccg-soft)" />
-        <path className="cc-glow-edge" d={RIDGE} stroke="url(#ccg-warm)" />
-        <animate attributeName="opacity" from="0" to="1" begin="4s" dur="1.4s" fill="freeze" />
-      </g>
+      <GlowOn d={RIDGE} warmFrom="4s" />
       <g className="cc-ridge-dot" opacity="0">
         <circle r="9" className="cc-ridge-halo" />
         <circle r="4.5" className="cc-ridge-pt" />
@@ -209,15 +234,16 @@ function RidgeGlow() {
   );
 }
 
-// The card's drawing, for the owner to compare at /capability-statement?ridge=glow|layers (2026-11-13):
-// glow (the one-line range, then a sweep of warm light along it) or layers (three ranges in depth, drawn
-// back to front). Glow is the default while the owner tries it (owner, 2026-11-13); layers was built first.
-// (Topographic contours were tried the same day and dropped; in git at cc62092.)
-const RIDGES = { glow: RidgeGlow, layers: RidgeLayers } as const;
+// The card's drawing, for the owner to compare at /capability-statement?ridge=both|glow|layers (2026-11-13):
+// both (the layered ranges, then the alpenglow along the near ridge and faintly the middle one), glow (the
+// one-line range and its light), or layers (three ranges in depth, drawn back to front). Both is the default
+// while the owner tries it (owner, 2026-11-13: "combine elements from 1 and 2"). Topographic contours were
+// tried the same day and dropped; in git at cc62092.
+const RIDGES = { both: () => <RidgeLayers glow />, glow: RidgeGlow, layers: () => <RidgeLayers /> } as const;
 function Ridge() {
   const [params] = useSearchParams();
   const asked = params.get('ridge');
-  const R = RIDGES[(asked && asked in RIDGES ? asked : 'glow') as keyof typeof RIDGES];
+  const R = RIDGES[(asked && asked in RIDGES ? asked : 'both') as keyof typeof RIDGES];
   return <R />;
 }
 

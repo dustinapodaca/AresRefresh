@@ -11,9 +11,14 @@
       "selector": ".cc",
       "options": [
         {
+          "value": "both",
+          "label": "Both",
+          "tag": "default",
+          "note": "The layered ranges drawn back to front, then the alpenglow sweep along the near ridge (and faintly the middle one), leaving a warm edge on the summit."
+        },
+        {
           "value": "glow",
           "label": "Alpenglow",
-          "tag": "default",
           "note": "The one-line range drawn by the rust point, then a band of warm light sweeps along the ridge once and leaves a warm edge on the summit."
         },
         {

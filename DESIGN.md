@@ -988,9 +988,11 @@ tilt and one fade-up per block (`data-rv`, once).
   corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
-  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of two forms to compare at
-  `?ridge=` (owner, 2026-11-13). **`glow` (alpenglow, the default while the owner tries it):** the
-  one-line range below drawn by its rust point, then a band of warm light (rust to amber #f1c49a, softly
+  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of three forms to compare at
+  `?ridge=` (owner, 2026-11-13). **`both` (the default while the owner tries it):** the `layers` below, then
+  the `glow` light along the near ridge from 3.8s and, at 45%, along the middle ridge, the warmth on the near
+  summit fading in from 4.8s and staying. **`glow` (alpenglow):** the
+  one-line range of `layers`' near range drawn by its rust point, then a band of warm light (rust to amber #f1c49a, softly
   blurred) carried along the ridge once, left to right over 2s from 3s, like sunrise on the Front Range,
   leaving a warm edge on the summit and the peaks beside it that fades in and stays (topographic contours
   were tried the same day and dropped). **`layers`:** three mountain ranges layered in depth, edge to edge across the card: a far range of broad faint peaks, a middle range, and the

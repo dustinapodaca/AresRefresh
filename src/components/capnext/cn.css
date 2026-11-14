@@ -154,6 +154,7 @@
    the summit that stays. */
 .cc-glow-edge { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
 .cc-glow-halo { fill: none; stroke-width: 9; stroke-linejoin: round; opacity: 0.55; }
+.cc-glow-far { opacity: 0.45; } /* the middle ridge catches the light more faintly (?ridge=both) */
 .cc-ridge-halo { fill: var(--ds-rust); opacity: 0.28; }
 @media (prefers-reduced-motion: reduce) {
   .cc-ridge-line { stroke-dashoffset: 0 !important; }
