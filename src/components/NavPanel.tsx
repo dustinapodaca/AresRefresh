@@ -5,7 +5,6 @@ import PhoneIcon from './PhoneIcon';
 import { ROLE_PAGES, capabilityFor } from './market/roles';
 import { INDUSTRY_PAGES } from './market/industries';
 import { responsive } from '../lib/responsive';
-import { PREVIEW_PAGES } from '../lib/previewPages';
 
 // The panel nav (owner, 2026-10-13; from a 21st.dev "navbar2" the owner picked, rebuilt for this
 // site: Vite and React Router instead of Next.js, CSS instead of motion, the site's own thin
@@ -58,8 +57,6 @@ const industryImages: Record<string, MenuImage> = Object.fromEntries(
   ]),
 );
 
-// The Executive Protection preview page (dev server and Netlify only; lib/previewPages.ts).
-const EP_LINK: MenuLink[] = PREVIEW_PAGES ? [{ label: 'Executive protection', to: '/executive-protection-next' }] : [];
 
 const MENUS: Record<string, Menu> = {
   Services: {
@@ -83,13 +80,12 @@ const MENUS: Record<string, Menu> = {
       { label: 'Who we protect', links: industries.slice(0, 3) },
       { links: industries.slice(3) },
     ],
-    // The overview link, as on phones (owner, 2026-10-13; was the city pages). Executive protection
-    // beside it, as Teaming sits beside All services, on preview builds only (owner, 2026-10-30).
-    top: [{ label: 'All industries & how a post starts', to: '/services' }, ...EP_LINK],
+    // The overview link, as on phones (owner, 2026-10-13; was the city pages).
+    top: [{ label: 'All industries & how a post starts', to: '/services' }],
     image: GOV_IMAGE,
     linkImages: industryImages,
     // The industries live on the Services page too (owner, 2026-10-13).
-    phoneTop: [{ label: 'All industries & how a post starts', to: '/services' }, ...EP_LINK],
+    phoneTop: [{ label: 'All industries & how a post starts', to: '/services' }],
   },
   Company: {
     columns: [
@@ -467,9 +463,7 @@ export default function NavPanel() {
       ? { label: 'Talk teaming', to: '/contact?service=teaming' }
       : pathname === '/careers' || pathname.startsWith('/careers/')
         ? { label: 'Apply', to: '/careers#apply' }
-        : PREVIEW_PAGES && pathname === '/executive-protection-next'
-          ? { label: 'Request a consultation', to: '/contact?service=executive-protection' }
-          : { label: 'Request a Quote', to: '/contact' };
+        : { label: 'Request a Quote', to: '/contact' };
 
   // Everything closes on a page change, on Escape, and on a click outside the card.
   useEffect(() => {

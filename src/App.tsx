@@ -25,11 +25,6 @@ import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import Teaming from './pages/Teaming';
-import { PREVIEW_PAGES } from './lib/previewPages';
-// Executive Protection division mock (2026-10-30): a preview page, on the dev server and Netlify only
-// (lib/previewPages.ts); left out of the DreamHost release build. Imported, not lazy: the prerender
-// saves React's first render, and a lazy page's is empty, which broke hydration on a direct load.
-import ExecutiveProtectionNext from './pages/ExecutiveProtectionNext';
 
 // The card surface (owner, 2026-10-15): liquid glass, the glass cards plus the liquid rim. Sets
 // <html data-cards="glass" data-liquid="true">; the styles are in dossier.css ("Glass cards"). The
@@ -140,7 +135,6 @@ export default function App() {
         <Route path="/services/:slug" element={<RolePage />} />
         <Route path="/industries/:slug" element={<IndustryPage />} />
         <Route path="/teaming" element={<Teaming />} />
-        {PREVIEW_PAGES && <Route path="/executive-protection-next" element={<ExecutiveProtectionNext />} />}
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<InsightPage />} />
         <Route path="/careers/:city" element={<CityJobsPage />} />
