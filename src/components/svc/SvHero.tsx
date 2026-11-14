@@ -61,37 +61,83 @@ export default function SvHero() {
   }, []);
   // Desktop (owner, 2026-11-13): the glass mark loads and plays once the scroll has closed the
   // aperture in past the headline (the desktop timeline below calls __glass with the spot where the
-  // window is fully closed). The page glides there and holds, wheel, touch, and keys blocked, until the
-  // mark has played (SvGlassMark's onDone), then lets go; it fades with the scroll on the way back up.
+  // window is fully closed). The page glides there and holds until the glass has played (SvGlassMark's
+  // onDone), then lets go; it fades with the scroll on the way back up. While it holds, the reader's
+  // scrolling still moves something (owner, 2026-11-13): the camera pushes into the photo behind the
+  // glass (up to 14%, eased), and scrolling up pulls it back. It stays pushed as the page scrolls on,
+  // and settles back if the reader returns to the top of the hero.
   const [deskGlass, setDeskGlass] = useState(false);
   const unlock = useRef<() => void>(() => {});
   useEffect(() => {
     const root = ref.current as (HTMLElement & { __glass?: (top: number) => void }) | null;
     if (!root) return;
-    const keys = new Set([' ', 'PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End']);
-    const block = (e: Event) => e.preventDefault();
-    const blockKey = (e: KeyboardEvent) => {
+    const photo = root.querySelector<HTMLElement>('.sv-photo-open');
+    const keys: Record<string, number> = { ' ': 1, PageDown: 1, ArrowDown: 0.5, PageUp: -1, ArrowUp: -0.5, Home: -1, End: 1 };
+    let push = 0;
+    let shown = 0;
+    let raf = 0;
+    let holdAt = 0;
+    const tick = () => {
+      raf = 0;
+      shown += (push - shown) * 0.12;
+      if (Math.abs(push - shown) < 0.001) shown = push;
+      if (photo) photo.style.scale = shown ? String(1 + 0.14 * shown) : '';
+      if (shown !== push) raf = requestAnimationFrame(tick);
+    };
+    const nudge = (d: number) => {
+      push = Math.max(0, Math.min(1, push + d));
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      nudge(e.deltaY / 1600); // about the whole hold's worth of steady scrolling to reach the full push
+    };
+    let touchY = 0;
+    const onTouchStart = (e: TouchEvent) => {
+      touchY = e.touches[0]?.clientY ?? 0;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      const y = e.touches[0]?.clientY ?? touchY;
+      nudge((touchY - y) / 600);
+      touchY = y;
+    };
+    const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
-      if (keys.has(e.key) && !t?.closest('input, textarea, select, [contenteditable]')) e.preventDefault();
+      if (!(e.key in keys) || t?.closest('input, textarea, select, [contenteditable]')) return;
+      e.preventDefault();
+      nudge(keys[e.key] * 0.15);
+    };
+    // Back near the top of the hero, the push settles away.
+    const onScroll = () => {
+      if (holdAt && window.scrollY < holdAt * 0.7 && push) nudge(-push);
     };
     let safety = 0;
     const release = () => {
       window.clearTimeout(safety);
-      window.removeEventListener('wheel', block);
-      window.removeEventListener('touchmove', block);
-      window.removeEventListener('keydown', blockKey);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('keydown', onKey);
     };
     unlock.current = release;
     root.__glass = (top: number) => {
-      window.addEventListener('wheel', block, { passive: false });
-      window.addEventListener('touchmove', block, { passive: false });
-      window.addEventListener('keydown', blockKey);
+      holdAt = top;
+      window.addEventListener('wheel', onWheel, { passive: false });
+      window.addEventListener('touchstart', onTouchStart, { passive: true });
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
+      window.addEventListener('keydown', onKey);
+      window.addEventListener('scroll', onScroll, { passive: true });
       // Never held for long if the mark can't play (no WebGL, a slow load).
       safety = window.setTimeout(release, 6000);
       window.scrollTo({ top, behavior: 'smooth' });
       setDeskGlass(true);
     };
-    return release;
+    return () => {
+      release();
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.

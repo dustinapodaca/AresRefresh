@@ -788,7 +788,10 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     plays once: a 340px logo on a plate about 470px wide, centered, on a 720 by 560 canvas (not the whole
     window, which bogged down). The page glides to where the window has fully closed and holds there,
     wheel, touch, and scroll keys blocked, until the glass has played (1.8s, the renderer's logo finish; the crisp swap follows as it scrolls on; let go after 6s at most),
-    then scrolls on. Fetched once the close is under way; the hold grew from 90vh to 140vh; it fades with
+    then scrolls on. While it holds, scrolling still moves something (owner, 2026-11-13): the camera pushes
+    into the photo behind the glass, up to 14% over about a hold's worth of steady scrolling (eased; scrolling
+    up pulls it back), and it stays pushed as the page scrolls on, settling back near the top of the hero.
+    Fetched once the close is under way; the hold grew from 90vh to 140vh; it fades with
     the scroll on the way back up.
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
     at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), centered as on desktop (owner, 2026-10-26; was left aligned like Home), at Home's phone size before Home's 6px bump
