@@ -137,6 +137,8 @@ uniform float uHighlights;
 uniform float uEchoTint;
 // 0 draws the full inner wall; 1 keeps it to the upper-left and lower-right arcs.
 uniform float uInnerWallFocus;
+// Ares, 2026-11-13: 0 drops the back wall and the nested lines inside the rim (one pane, one rim).
+uniform float uWalls;
 uniform float uDropSize;
 uniform float uDropStrength;
 uniform float uDecay;
@@ -443,8 +445,8 @@ vec4 iconLens(vec2 p) {
   float rim = bell(rimLineSd + uUnit * 0.002, uUnit * 0.0018 * thickness + aa * 0.3) * (0.6 + 0.8 * shimmer);
   // The nested lines nearer the center clear first; the outer rim lingers.
   float centerFade = 1.0 - ease(0.62, 0.92, t);
-  float inner = centerFade * bell(innerSd + uUnit * 0.012, uUnit * 0.0025 / thickness + aa * 0.2) * (0.55 + 0.9 * contourNoise(arc / grainScale + 41.0));
-  float inner2 = centerFade * bell(inner2Sd + uUnit * 0.022, uUnit * 0.0018 * thickness + aa * 0.1) * (0.5 + contourNoise(arc / grainScale + 83.0));
+  float inner = uWalls * centerFade * bell(innerSd + uUnit * 0.012, uUnit * 0.0025 / thickness + aa * 0.2) * (0.55 + 0.9 * contourNoise(arc / grainScale + 41.0));
+  float inner2 = uWalls * centerFade * bell(inner2Sd + uUnit * 0.022, uUnit * 0.0018 * thickness + aa * 0.1) * (0.5 + contourNoise(arc / grainScale + 83.0));
   float key = pow(illumination, 5.0);
   float rimVisibility = 1.0 - 0.55 * ease(0.75, 1.22, t);
   float lowerRight = pow(0.5 + 0.5 * dot(outward, normalize(vec2(0.8, -0.6))), 5.0);
@@ -490,13 +492,13 @@ vec4 iconLens(vec2 p) {
     logoLight = ease(0.05, 0.6, backImage.a);
   }
   lowerRight *= logoLight;
-  float wallRim = centerFade * bell(insetSd, uUnit * 0.0028 + aa * 0.25);
-  float wallShadow = centerFade * bell(insetSd + uUnit * 0.008, uUnit * 0.005);
+  float wallRim = uWalls * centerFade * bell(insetSd, uUnit * 0.0028 + aa * 0.25);
+  float wallShadow = uWalls * centerFade * bell(insetSd + uUnit * 0.008, uUnit * 0.005);
   vec2 pores = vec2(0.0);
   if (developed * cornerExposure > 0.001) {
     pores = glassPores(arc, (rimSd + uUnit * 0.003) / lensScale, 313.0);
-    pores += glassPores(arc, insetSd / lensScale, 617.0) * 0.6 * centerFade;
-    pores += glassPores(arc, (inner2Sd + uUnit * 0.027) / lensScale, 919.0) * 0.8 * centerFade;
+    pores += glassPores(arc, insetSd / lensScale, 617.0) * 0.6 * centerFade * uWalls;
+    pores += glassPores(arc, (inner2Sd + uUnit * 0.027) / lensScale, 919.0) * 0.8 * centerFade * uWalls;
     pores *= developed * cornerExposure;
   }
   float angle = atan(p.y, p.x);
@@ -518,7 +520,7 @@ vec4 iconLens(vec2 p) {
   // by the glass it passes through.
   // Filaments run parallel to the edge; their brightness drifts slowly along it.
   float drift = 0.7 + 0.6 * contourNoise(arc / (uUnit * 0.09) + 7.0);
-  float filaments = (bell(innerSd + uUnit * 0.021, uUnit * 0.0035 * thickness) * 0.9 + bell(inner2Sd + uUnit * 0.028, uUnit * 0.004 / thickness) * 0.7) * centerFade + bell(rimSd + uUnit * 0.035, uUnit * 0.003 * thickness) * 0.5;
+  float filaments = (bell(innerSd + uUnit * 0.021, uUnit * 0.0035 * thickness) * 0.9 + bell(inner2Sd + uUnit * 0.028, uUnit * 0.004 / thickness) * 0.7) * centerFade * uWalls + bell(rimSd + uUnit * 0.035, uUnit * 0.003 * thickness) * 0.5;
   vec3 lowerRelief = (
     vec3(0.03, 0.32, 1.0) * bell(sd + uUnit * 0.038, uUnit * 0.022 + aa * 0.2) * 0.55 +
     vec3(0.22, 0.62, 1.0) * bell(sd + uUnit * 0.027, uUnit * 0.012 + aa * 0.1) * 0.7 +
@@ -539,8 +541,8 @@ vec4 iconLens(vec2 p) {
   // Micro-bubbles along the lit edges, strongest where the key and the lower fill land.
   float speckSize = max(uUnit * 0.0042, 0.8 / uDpr);
   float bubbles = driftingSpecks(arc, rimLineSd + uUnit * 0.002, speckSize, 0.0, t) * 0.9;
-  bubbles += specks(arc, innerSd + uUnit * 0.012, speckSize * 0.8, 97.0) * 0.6 * centerFade;
-  bubbles += specks(arc, insetSd, speckSize * 0.9, 191.0) * 0.5 * centerFade;
+  bubbles += specks(arc, innerSd + uUnit * 0.012, speckSize * 0.8, 97.0) * 0.6 * centerFade * uWalls;
+  bubbles += specks(arc, insetSd, speckSize * 0.9, 191.0) * 0.5 * centerFade * uWalls;
   rimLight += bubbles * (0.04 + key * 0.5 + lowerRight * 0.45);
   rimLight = rimLight * (1.0 - pores.x * 0.35) + pores.y * (key * 0.16 + lowerRight * 0.12);
   vec3 spectralRim = vec3(0.0);
@@ -555,12 +557,12 @@ vec4 iconLens(vec2 p) {
   vec3 reflection = (vec3(0.6, 0.76, 0.9) * rimLight * 1.15 + spectralRim * (0.02 + ink.a * 0.32)) * uHighlights * glass * mix(rimVisibility, 1.2, key);
   float sphericalRim = (
     bell(sd + uUnit * lensScale * 0.008, uUnit * lensScale * 0.009) * 0.60 +
-    bell(insetSd, uUnit * lensScale * 0.008) * 0.40
+    bell(insetSd, uUnit * lensScale * 0.008) * 0.40 * uWalls
   ) * (0.25 + 0.75 * abs(outward.y)) * (1.0 - ease(0.235, 0.34, t));
   reflection += vec3(0.65, 0.80, 0.90) * sphericalRim * 1.4 * uHighlights * glass;
   float cyanKey = pow(max(0.0, -outward.x), 8.0) * (1.0 - ease(0.235, 0.34, t));
   float cyanLip = bell(sd + uUnit * lensScale * 0.020, uUnit * lensScale * 0.009);
-  cyanLip += bell(insetSd, uUnit * lensScale * 0.005) * 0.35;
+  cyanLip += bell(insetSd, uUnit * lensScale * 0.005) * 0.35 * uWalls;
   reflection += vec3(0.015, 0.68, 1.0) * cyanLip * cyanKey * glass * uHighlights * 0.85;
   // The young drop is full of scattered light: a milky glow behind the artwork.
   float youth = 1.0 - ease(0.25, 0.37, t);

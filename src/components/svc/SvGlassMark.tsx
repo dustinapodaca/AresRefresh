@@ -38,6 +38,8 @@ const LOGO_SCALE = 0.93;
 // 24px wider a side). The plate grows to about 1.05 of its resting size while the glass shows (the
 // shader's expand), so it is sized to the window at that size, not past it.
 const GLASS_SWELL = 1.05;
+// No back wall or nested lines inside the rim (owner, 2026-11-13: they read as a border ~20px in); the
+// `walls` setting we added to the component, 0 here, one pane with a single rim.
 // Squarer corners than the component's own rounded square (5), nearer the window's 4px (owner, 2026-10-26).
 const CORNER = 18;
 // How far .sv-glass runs past the window above and below (svc.css).
@@ -118,6 +120,7 @@ export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone'
         stretch={stretch[0]}
         stretchY={stretch[1]}
         corner={CORNER}
+        walls={0}
         background='#00000000'
         tile={false}
         paused={paused}

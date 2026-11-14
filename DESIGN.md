@@ -810,7 +810,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     measured on every phone (owner, 2026-10-26; was a rectangle 24px wider than the square on each side;
     `stretch` and `stretchY` settings we added to the component elongate the shape so its rim and
     refraction stay exact; the sphere stays round and widens as it squares off; the logo keeps its size; squarer corners than
-    the component's own, through a `corner` setting we added, 18 for its rounded square's 5, owner 2026-10-26), then the glass clears and leaves the original
+    the component's own, through a `corner` setting we added, 18 for its rounded square's 5, owner 2026-10-26); no back wall or
+    nested lines inside the rim, through a `walls` setting we added, 0 here (owner, 2026-11-13: they read as a
+    border about 20px in), so the plate is one pane with a single rim, then the glass clears and leaves the original
     mark alone at its normal size, white on the dark setting, `logoScale` 0.93, no text reveal. The
     ARES / SECURITY text logo (`ares-text.svg`; owner, 2026-10-25, was the mark) on a 288px tile (the
     glass's box runs past the window so the component has room to draw it that size; once the glass

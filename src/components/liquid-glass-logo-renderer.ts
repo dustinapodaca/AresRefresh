@@ -161,6 +161,9 @@ export type LiquidGlassLogoTuning = {
   echoTint: number;
   /** 0 draws the full inner wall; 1 keeps it to the upper-left and lower-right corners. */
   innerWallFocus: number;
+  /** Ares, 2026-11-13: 1 draws the plate's back wall and the faint nested lines inside the rim (the
+   *  original); 0 leaves one pane with a single rim. */
+  walls: number;
   /** Seconds for the secondary glass rings to fade. */
   decay: number;
   speed: number;
@@ -213,6 +216,7 @@ export const liquidGlassLogoDefaults: LiquidGlassLogoTuning = {
   dropStrength: 1,
   echoTint: 0.5,
   innerWallFocus: 0,
+  walls: 1,
   decay: 1.4,
   speed: 1,
   loop: false,
@@ -373,6 +377,7 @@ export function normalizeLiquidGlassLogo(value: LiquidGlassLogoTuning): LiquidGl
     echoTint: finite(value.echoTint, d.echoTint, 0, 1),
     logoRelief: finite(value.logoRelief, d.logoRelief, 0, 1),
     innerWallFocus: finite(value.innerWallFocus, d.innerWallFocus, 0, 1),
+    walls: finite(value.walls, d.walls, 0, 1),
     decay: finite(value.decay, d.decay, 0.1, 10),
     speed: finite(value.speed, d.speed, 0.1, 4),
     loopDelay: finite(value.loopDelay, d.loopDelay, 0, 30),
@@ -806,6 +811,7 @@ export function createLiquidGlassLogoRenderer(
     gl.uniform1f(uniform('uHighlights'), tuning.highlights);
     gl.uniform1f(uniform('uEchoTint'), tuning.echoTint);
     gl.uniform1f(uniform('uInnerWallFocus'), tuning.innerWallFocus);
+    gl.uniform1f(uniform('uWalls'), tuning.walls);
     gl.uniform1f(uniform('uDropSize'), tuning.dropSize);
     gl.uniform1f(uniform('uDropStrength'), tuning.dropStrength);
     gl.uniform1f(uniform('uDecay'), tuning.decay);
