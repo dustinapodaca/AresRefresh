@@ -115,7 +115,7 @@ function GlowDefs({ start }: { start: string }) {
       </linearGradient>
       <linearGradient id="ccg-warm" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="700" y2="0">
         <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
-        <stop offset="0.47" stopColor="#e2925a" stopOpacity="0.85" />
+        <stop offset="0.47" stopColor="#e2925a" stopOpacity="0.68" /> {/* a tad less (owner, 2026-11-13; was 0.85) */}
         <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
       </linearGradient>
       <filter id="ccg-soft" x="-5%" y="-40%" width="110%" height="180%">
