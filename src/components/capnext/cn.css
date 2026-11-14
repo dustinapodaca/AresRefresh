@@ -150,10 +150,16 @@
 .cc-ridge-mid { --d: 12; }
 .cc-ridge-near { --d: 28; }
 .cc-ridge-pt { fill: var(--ds-rust); }
+/* Contours (?ridge=contours): faint survey lines, every fifth brighter, and the rust summit point that
+   stays, with one ping out from it as the rings begin. */
+.cc-topo-line { stroke: rgb(255 255 255 / 0.28); stroke-width: 1.6; stroke-linecap: butt; } /* butt: a round cap shows a dot before a ring draws */
+.cc-topo-line[data-index] { stroke: rgb(255 255 255 / 0.6); stroke-width: 2.2; }
+.cc-topo-ping { fill: none; stroke: var(--ds-rust); stroke-width: 1.5; }
 .cc-ridge-halo { fill: var(--ds-rust); opacity: 0.28; }
 @media (prefers-reduced-motion: reduce) {
   .cc-ridge-line { stroke-dashoffset: 0 !important; }
   .cc-ridge-clip rect { width: 1080px !important; }
+  .cc-topo-ping { display: none; }
   .cc-ridge-dot { display: none; }
 }
 .cc-certs { font-size: 13px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }

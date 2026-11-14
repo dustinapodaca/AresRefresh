@@ -1,6 +1,27 @@
 {
   "name": "all-options",
   "title": "Every live option for Deidre",
-  "intro": "No option switches are live (2026-10-25). Add a group here when the owner asks for options again.",
-  "groups": []
+  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13).",
+  "groups": [
+    {
+      "heading": "Capability Statement card: the drawing between the line and the codes",
+      "intro": "From 600px wide; phones have no room for it. Captured drawn and still (reduced motion).",
+      "page": "/capability-statement",
+      "param": "ridge",
+      "selector": ".cc",
+      "options": [
+        {
+          "value": "contours",
+          "label": "Contours",
+          "tag": "default",
+          "note": "The massif from above: contour rings draw outward from a rust summit point, every fifth line brighter."
+        },
+        {
+          "value": "layers",
+          "label": "Layers",
+          "note": "Three ranges in depth, drawn back to front; each hides the ones behind it and shifts with the card's turn."
+        }
+      ]
+    }
+  ]
 }

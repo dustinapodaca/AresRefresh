@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import CopyButton from '../components/capability/CopyButton';
@@ -22,6 +22,7 @@ import { responsive } from '../lib/responsive';
 import { motionAllowed } from '../components/home/engine';
 import '../components/home/home.css';
 import '../components/capnext/cn.css';
+import { CONTOURS, CONTOUR_LEVELS, CONTOUR_SUMMIT } from '../components/capnext/contours';
 
 // Capability Statement, "The company card" (from the home-flora (4) bundle's /capability-next, third start, 2026-10-23; owner: "start over", for people who just
 // need the information, fitting the new Home and Services).
@@ -99,7 +100,7 @@ const RIDGE_ANIM = { begin: '1.3s', dur: '2.6s', calcMode: 'spline', keyTimes: '
 // Each range's fill, closed down to the foot of the box: it hides the lines of the ranges behind it.
 const closed = (d: string) => `${d} L1040 100 L-40 100 Z`;
 
-function Ridge() {
+function RidgeLayers() {
   const far = { begin: '0.3s', dur: '1.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
   const mid = { ...far, begin: '0.75s', dur: '1.9s' };
   // A range and its fill; the fill is uncovered left to right with the line, by a growing clip.
@@ -150,6 +151,50 @@ function Ridge() {
       </g>
     </svg>
   );
+}
+
+// Topographic contours (owner, 2026-11-13): the massif seen from above, its contour lines drawing in
+// ring by ring from a rust point at the summit outward; every fifth line brighter, like a survey map.
+function RidgeContours() {
+  const top = CONTOUR_LEVELS - 1;
+  return (
+    <svg className="cc-ridge cc-topo" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      {CONTOURS.map((c, i) => (
+        <path
+          key={i}
+          className="cc-ridge-line cc-topo-line"
+          data-index={c.index || undefined}
+          d={c.d}
+          pathLength={1}
+          strokeDasharray="1 1"
+          strokeDashoffset="1"
+        >
+          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={`${(0.45 + (top - c.level) * 0.13).toFixed(2)}s`} dur="1s" calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.2 1" fill="freeze" />
+        </path>
+      ))}
+      <g className="cc-topo-summit" transform={`translate(${CONTOUR_SUMMIT.x} ${CONTOUR_SUMMIT.y})`}>
+        {/* Drawn as ellipses that cancel the box's stretch, so the point reads round. */}
+        <ellipse className="cc-topo-ping" rx="0" ry="0" opacity="0">
+          <animate attributeName="rx" from="4" to="40" begin="0.3s" dur="1.4s" fill="freeze" />
+          <animate attributeName="ry" from="5" to="50" begin="0.3s" dur="1.4s" fill="freeze" />
+          <animate attributeName="opacity" values="0;0.7;0" keyTimes="0;0.15;1" begin="0.3s" dur="1.4s" fill="freeze" />
+        </ellipse>
+        <ellipse className="cc-ridge-halo" rx="9" ry="11" />
+        <ellipse className="cc-ridge-pt" rx="4.5" ry="5.6" />
+      </g>
+    </svg>
+  );
+}
+
+// The card's drawing, for the owner to compare at /capability-statement?ridge=contours|layers (2026-11-13):
+// contours (topographic, from above) or layers (three ranges in depth, drawn back to front). Contours is
+// the default while the owner tries it (owner, 2026-11-13); layers was the one before.
+const RIDGES = { contours: RidgeContours, layers: RidgeLayers } as const;
+function Ridge() {
+  const [params] = useSearchParams();
+  const asked = params.get('ridge');
+  const R = RIDGES[(asked && asked in RIDGES ? asked : 'contours') as keyof typeof RIDGES];
+  return <R />;
 }
 
 function Field({ label, value, copy, live, wide }: { label: string; value: string; copy?: string; live?: boolean; wide?: boolean }) {

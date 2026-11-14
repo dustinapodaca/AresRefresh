@@ -1,5 +1,10 @@
 # Options archive
 
+**Live switch (2026-11-13):** `/capability-statement?ridge=contours|layers`, the drawing in the hero
+company card (`RIDGES` in `src/pages/CapabilityStatement.tsx`, styles in `src/components/capnext/cn.css`,
+contour data generated into `src/components/capnext/contours.ts`). `contours` is the default while the
+owner tries it; `layers` was built first. In the gallery spec `docs/options-gallery.json`.
+
 **No option switches are live (2026-10-25).** The AI-tells pass's `?card=` (plain, flora, dossier: dossier
 chosen) and `?mono=` font trial (PP Fraktion Mono chosen) were removed the same day. On the dev server a
 Before / Now switch (`src/components/CompareSwitch.tsx`, dev only) jumps between this copy (:5173) and

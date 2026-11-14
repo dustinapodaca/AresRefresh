@@ -988,8 +988,10 @@ tilt and one fade-up per block (`data-rv`, once).
   corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
-  2026-11-13); from 600px, in the room under that line, three mountain ranges layered in depth (owner,
-  2026-11-13), edge to edge across the card: a far range of broad faint peaks, a middle range, and the
+  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of two forms to compare at
+  `?ridge=` (owner, 2026-11-13). **`contours` (the default while the owner tries it):** the massif seen
+  from above, contour rings drawing outward from a rust summit point (one ping as they begin), every fifth
+  line brighter, edge to edge. **`layers`:** three mountain ranges layered in depth, edge to edge across the card: a far range of broad faint peaks, a middle range, and the
   near range (a one-line drawing after the owner's reference, drawn fresh: a flat horizon, low foothills,
   a cluster of sharp peaks, Pikes Peak the high one, short lines down the peak faces and a lower ridge in
   front). Each is a white line over a dark fill that hides the ranges behind it and fades toward the foot.
