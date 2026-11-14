@@ -60,11 +60,38 @@ export default function SvHero() {
     return () => mq.removeEventListener('change', on);
   }, []);
   // Desktop (owner, 2026-11-13): the glass mark loads and plays once the scroll has closed the
-  // aperture in past the headline (the desktop timeline below calls __glass); it fades with the scroll.
+  // aperture in past the headline (the desktop timeline below calls __glass with the spot where the
+  // window is fully closed). The page glides there and holds, wheel, touch, and keys blocked, until the
+  // mark has played (SvGlassMark's onDone), then lets go; it fades with the scroll on the way back up.
   const [deskGlass, setDeskGlass] = useState(false);
+  const unlock = useRef<() => void>(() => {});
   useEffect(() => {
-    const root = ref.current as (HTMLElement & { __glass?: () => void }) | null;
-    if (root) root.__glass = () => setDeskGlass(true);
+    const root = ref.current as (HTMLElement & { __glass?: (top: number) => void }) | null;
+    if (!root) return;
+    const keys = new Set([' ', 'PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', 'Home', 'End']);
+    const block = (e: Event) => e.preventDefault();
+    const blockKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (keys.has(e.key) && !t?.closest('input, textarea, select, [contenteditable]')) e.preventDefault();
+    };
+    let safety = 0;
+    const release = () => {
+      window.clearTimeout(safety);
+      window.removeEventListener('wheel', block);
+      window.removeEventListener('touchmove', block);
+      window.removeEventListener('keydown', blockKey);
+    };
+    unlock.current = release;
+    root.__glass = (top: number) => {
+      window.addEventListener('wheel', block, { passive: false });
+      window.addEventListener('touchmove', block, { passive: false });
+      window.addEventListener('keydown', blockKey);
+      // Never held for long if the mark can't play (no WebGL, a slow load).
+      safety = window.setTimeout(release, 6000);
+      window.scrollTo({ top, behavior: 'smooth' });
+      setDeskGlass(true);
+    };
+    return release;
   }, []);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.
@@ -278,13 +305,25 @@ export default function SvHero() {
         // runs while they still show, so on the way back up they meet the nodes again without
         // waiting for the cursor to move (owner, 2026-10-23).
         onUpdate: () => {
-          const r = root as HTMLElement & { __draw?: () => void; __glass?: () => void };
+          const r = root as HTMLElement & { __draw?: () => void; __glass?: (top: number) => void };
           if (tl.progress() < 0.4) r.__draw?.();
-          // The glass mark plays once the headline has gone (owner, 2026-11-13).
-          if (tl.time() > 0.85) r.__glass?.();
+          // Fetch the glass mark early, so it's ready when it plays.
+          if (!fetched && tl.time() > 0.3) {
+            fetched = true;
+            void import('./SvGlassMark');
+          }
+          // The glass mark plays once the headline has gone (owner, 2026-11-13), the page held where
+          // the window has fully closed (time 1 of the timeline) until it has.
+          const st = tl.scrollTrigger;
+          if (!played && st && tl.time() > 0.85) {
+            played = true;
+            r.__glass?.(st.start + ((st.end - st.start) * 1) / tl.duration());
+          }
         },
       });
       const from = { immediateRender: false };
+      let fetched = false;
+      let played = false;
       // The aperture closes: the full-bleed photo draws in to a framed window and dims.
       tl.fromTo(
         photo,
@@ -331,7 +370,7 @@ export default function SvHero() {
         <div className="sv-glass" aria-hidden="true">
           {(phone || deskGlass) && (
             <Suspense fallback={null}>
-              <SvGlassMark mode={phone ? 'phone' : 'desktop'} />
+              <SvGlassMark mode={phone ? 'phone' : 'desktop'} onDone={() => unlock.current()} />
             </Suspense>
           )}
         </div>

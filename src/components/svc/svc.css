@@ -496,16 +496,18 @@
     pointer-events: none;
   }
 }
-/* Desktop: the framed window the aperture closes to (inset 9% 6% 11%, SvHero), with 40px of room above
-   and below; its opacity follows the scroll (SvHero). */
+/* Desktop: centered in the framed window the aperture closes to (inset 9% 6% 11%, SvHero, so its middle
+   is 49% down), only as big as the renderer needs for a 340px logo (1.9 tiles across, 1.5 down, and room):
+   not the whole window (owner, 2026-11-13: smaller; the big canvas bogged down). Its opacity follows the
+   scroll (SvHero). */
 @media (min-width: 1024px) {
   html[data-nx-motion='on'] .sv-glass {
     display: block;
     position: absolute;
-    top: calc(9% - 40px);
-    bottom: calc(11% - 40px);
-    left: 6%;
-    right: 6%;
+    top: calc(49% - 280px);
+    left: calc(50% - 360px);
+    width: 720px;
+    height: 560px;
     z-index: 1;
     opacity: 0;
     pointer-events: none;

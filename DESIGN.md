@@ -784,10 +784,12 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     (to `#divisions`); 1024 to 1279px the lead narrows to 36ch so it clears the side nodes. Scrolling:
     the stage holds (sticky) while the photo closes to a framed window and dims, the nodes spread
     out and fade, and the copy lifts away (gone by 0.8 of the close; was 1.0). Then (owner, 2026-11-13)
-    the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`, a 400px logo, the plate sized to
-    the window) comes up in the closed window and plays once, loaded only then; the hold grew from 90vh
-    to 140vh so the closed window holds about half a screen while it forms, and it fades with the scroll
-    on the way back up.
+    the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`) comes up in the closed window and
+    plays once: a 340px logo on a plate about 470px wide, centered, on a 720 by 560 canvas (not the whole
+    window, which bogged down). The page glides to where the window has fully closed and holds there,
+    wheel, touch, and scroll keys blocked, until the mark has played (about 3s; let go after 6s at most),
+    then scrolls on. Fetched once the close is under way; the hold grew from 90vh to 140vh; it fades with
+    the scroll on the way back up.
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
     at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), centered as on desktop (owner, 2026-10-26; was left aligned like Home), at Home's phone size before Home's 6px bump
     (`clamp(48px, 14.4vw, 80px)` below 600px). Under it the copper-glass towers stand in a window of

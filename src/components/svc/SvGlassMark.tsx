@@ -29,7 +29,10 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 const LOGO_SIZE = 288;
 // Desktop (owner, 2026-11-13): the same sequence in the framed window the aperture closes to, played as
 // soon as it mounts (SvHero mounts it once the window has closed in past the headline), the logo larger.
-const LOGO_SIZE_DESK = 400;
+const LOGO_SIZE_DESK = 340;
+// Desktop: not the whole window (owner, 2026-11-13: smaller, and the big canvas bogged down): a plate a
+// little wider than the logo, on a canvas just big enough for the renderer (cn: .sv-glass, svc.css).
+const PLATE_DESK = 470;
 const LOGO_SCALE = 0.93;
 // The glass plate fills the window it sits in, whatever the phone (owner, 2026-10-26; was a square
 // 24px wider a side). The plate grows to about 1.05 of its resting size while the glass shows (the
@@ -41,7 +44,7 @@ const CORNER = 18;
 const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
 
-export default function SvGlassMark({ mode = 'phone' }: { mode?: 'phone' | 'desktop' }) {
+export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone' | 'desktop'; onDone?: () => void }) {
   const desk = mode === 'desktop';
   const size = desk ? LOGO_SIZE_DESK : LOGO_SIZE;
   const glass = useRef<LiquidGlassLogoHandle>(null);
@@ -62,9 +65,9 @@ export default function SvGlassMark({ mode = 'phone' }: { mode?: 'phone' | 'desk
       const f = Math.min(1, el.clientWidth / (size * 1.9), el.clientHeight / (size * 1.5));
       const unit = size * f;
       // Phones: the stage less its side padding (the box runs past the window for the reflections).
-      // Desktop: the box is the window across.
-      const w = desk ? el.clientWidth : stage.clientWidth - 2 * (parseFloat(getComputedStyle(stage).paddingLeft) || 0);
-      const h = el.clientHeight - 2 * ROOM_Y;
+      // Desktop: a plate a little wider than the logo, square in height.
+      const w = desk ? PLATE_DESK * f : stage.clientWidth - 2 * (parseFloat(getComputedStyle(stage).paddingLeft) || 0);
+      const h = desk ? 0 : el.clientHeight - 2 * ROOM_Y;
       const side = (size: number) => Math.max(0, (size / GLASS_SWELL - unit) / (2 * unit));
       setFit(f);
       setStretch([side(w), side(h)]);
@@ -76,14 +79,21 @@ export default function SvGlassMark({ mode = 'phone' }: { mode?: 'phone' | 'desk
     return () => ro.disconnect();
   }, [desk, size]);
 
+  const onDoneRef = useRef(onDone);
+  onDoneRef.current = onDone;
   useEffect(() => {
     let timer = 0;
+    let doneTimer = 0;
     const start = () => {
       window.removeEventListener('scroll', onScroll);
       setShown(true);
       glass.current?.replay();
       setPaused(false);
-      timer = window.setTimeout(() => setDone(true), DONE * 1000);
+      timer = window.setTimeout(() => {
+        setDone(true);
+        // The crisp logo's fade (0.3s) done too, the page may move on (SvHero holds it on desktop).
+        doneTimer = window.setTimeout(() => onDoneRef.current?.(), 350);
+      }, DONE * 1000);
     };
     const onScroll = () => {
       if (window.scrollY > 2) start();
@@ -93,6 +103,7 @@ export default function SvGlassMark({ mode = 'phone' }: { mode?: 'phone' | 'desk
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.clearTimeout(timer);
+      window.clearTimeout(doneTimer);
     };
   }, [desk]);
 
