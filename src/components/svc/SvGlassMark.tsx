@@ -46,8 +46,8 @@ const CORNER = 18;
 const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
 // When the page may move on (SvHero holds it on desktop until then): a tad before the renderer's logo
-// finish at 1.8s, as the glass is clearing (owner, 2026-11-13: was the crisp swap, then 1.8s).
-const GLASS_DONE = 1.4;
+// finish at 1.8s, as the glass is clearing (owner, 2026-11-13: was the crisp swap, then 1.8s, then 1.4s).
+const GLASS_DONE = 1.1;
 
 export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone' | 'desktop'; onDone?: () => void }) {
   const desk = mode === 'desktop';

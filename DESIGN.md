@@ -790,7 +790,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`) comes up in the closed window and
     plays once: a 340px logo on a plate about 470px wide, centered, on a 720 by 560 canvas (not the whole
     window, which bogged down). The page glides to where the window has fully closed and holds there,
-    wheel, touch, and scroll keys blocked, until the glass is clearing (1.4s, a tad before the renderer's logo finish at 1.8s; the crisp swap follows as it scrolls on; let go after 6s at most),
+    wheel, touch, and scroll keys blocked, until the glass is clearing (1.1s, before the renderer's logo finish at 1.8s; the crisp swap follows as it scrolls on; let go after 6s at most),
     then scrolls on. While it holds, scrolling still moves something (owner, 2026-11-13): the camera pushes
     into the photo behind the glass, up to 14% over about a hold's worth of steady scrolling (eased; scrolling
     up pulls it back), and it stays pushed as the page scrolls on, settling back near the top of the hero.
