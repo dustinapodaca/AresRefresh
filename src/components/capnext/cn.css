@@ -116,9 +116,7 @@
 .cc-field dd .ds-data[data-live]::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.8); vertical-align: 1px; }
 .cc .ds-copy { width: 22px; height: 22px; flex: 0 0 auto; }
 .cc-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.12); }
-.cc-marks { display: flex; align-items: center; gap: 18px; }
 .cc-gsa { display: block; width: 30px; height: 30px; filter: grayscale(1) invert(1) contrast(3); opacity: 0.9; }
-.cc-sba { display: block; width: auto; height: 28px; filter: grayscale(1) brightness(0) invert(1); opacity: 0.9; }
 /* From 600px (owner, 2026-11-13): the lockup larger, with a rule between the mark and the wordmark
    like the nav's; no big "Ares Security LLC" under it; the GSA mark in white for the chip. */
 @media (min-width: 600px) {
@@ -153,13 +151,8 @@
   .cc-tag { display: inline; font-size: 16px; /* a tad bigger (owner, 2026-11-13; was 14px) */ letter-spacing: 0.06em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); }
   .cc-sub { margin-top: 0; font-size: 13px; line-height: 1.45; }
   .cc-fields { gap: 18px 20px; }
-  .cc-foot { padding-top: 16px; flex-wrap: wrap; gap: 10px 12px; }
-  /* The numbers keep one line; on the narrowest phones they drop under the marks, at the right. */
-  .cc-certs { margin-left: auto; white-space: nowrap; }
-  /* Both marks on phones too (owner, 2026-11-13), a step smaller so the numbers keep their line. */
-  .cc-marks { gap: 14px; }
+  .cc-foot { padding-top: 16px; }
   .cc-gsa { width: 26px; height: 26px; }
-  .cc-sba { height: 24px; }
 }
 
 /* ------------------------------------------------------- Document layout */
