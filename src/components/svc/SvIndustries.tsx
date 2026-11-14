@@ -206,7 +206,7 @@ export default function SvIndustries() {
           ))}
         </ol>
       </div>
-      <SwipeControls count={DIVISIONS.length} at={showing} go={go} noun="industry" hint="Swipe for the next industry" names={DIVISIONS.map((d) => d.title)} />
+      <SwipeControls count={DIVISIONS.length} at={showing} go={go} noun="industry" hint="Swipe" names={DIVISIONS.map((d) => d.title)} />
     </section>
   );
 }

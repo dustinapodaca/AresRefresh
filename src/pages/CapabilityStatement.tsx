@@ -694,7 +694,7 @@ function Why() {
         </div>
       </div>
       <p className="cx-why-hint ds-data" aria-hidden="true">
-        Swipe for the next reason
+        Swipe
       </p>
     </section>
   );

@@ -272,7 +272,7 @@ export default function IndustryDeck() {
         </div>
       </div>
       <p className="nx-sk-hint ds-data nx-edge" aria-hidden="true">
-        Swipe the card for the next industry
+        Swipe
       </p>
     </div>
   );

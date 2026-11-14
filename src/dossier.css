@@ -4350,7 +4350,7 @@ html[data-cards] .ds-primes-panel {
   .ds-sw-seg i::after { content: ''; position: absolute; inset: 0; background: var(--ds-fg); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ds-ease), background-color 0.3s; }
   .ds-sw-seg[data-past='true'] i::after { transform: scaleX(1); background: rgb(255 255 255 / 0.5); }
   .ds-sw-seg[data-on='true'] i::after { transform: scaleX(1); background: var(--ds-rust); }
-  .ds-sw-hint { margin: 2px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+  .ds-sw-hint { position: relative; margin: -15px 0 0; text-align: right; font-size: 12px; letter-spacing: 0.04em; color: var(--ds-fg-faint); pointer-events: none; } /* just "Swipe", small at the right under the meter's last step, like a caption (owner, 2026-11-13; was a sentence at the left) */
 }
 @media (prefers-reduced-motion: reduce) { .ds-sw-seg i::after { transition: none; } }
 

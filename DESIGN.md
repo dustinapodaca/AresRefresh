@@ -570,8 +570,7 @@ and `nx-*.css` (class prefix `nx-`).
   ink, its one line in ink muted, and "Open the page →" at the card's foot (the industry page holds
   the roles and what to send us). Every card is the same height, the photo plus the longest brief,
   so the photos match from card to card. The active photo, blurred, is the section's backdrop; a
-  counter, a six-step meter (rust for the current), and no arrows (owner, 2026-10-25: each step is a 44px tap target named for its industry); "Swipe the card
-  for the next industry" in mono. Above the deck, the six industries' short names (Government, Commercial, Critical sites, Community,
+  counter, a six-step meter (rust for the current), and no arrows (owner, 2026-10-25: each step is a 44px tap target named for its industry); "Swipe" (owner, 2026-11-13: one word on every swipe row, 12px in the data face, ink faint, at the right just under the meter's last step, like a caption). Above the deck, the six industries' short names (Government, Commercial, Critical sites, Community,
   Construction, Airport) three across and two down, every name the same size and evenly spaced,
   Inter 13px on 2px-cornered boxes: the active one in ink with an ink edge, the rest ink muted on a
   hairline; each a button (44px to tap) that jumps to its card through the row's own control, the
@@ -844,7 +843,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
 - **Phone swipe controls** (both rows above; owner, 2026-10-25; `SwipeControls.tsx`): under the row,
   the same as Home's industry deck and the Capability Statement's reasons: a meter with one step per
   card (passed steps white, the current one rust; tap a step to go there), no arrows (owner, 2026-10-25:
-  each step is a 44px tap target named for its card, the tap alternative to the swipe), and "Swipe for the next service" / "Swipe for the next industry" in the data face. On
+  each step is a 44px tap target named for its card, the tap alternative to the swipe), and "Swipe" (owner, 2026-11-13: one word on every swipe row, 12px in the data face, ink faint, at the right just under the meter's last step, like a caption). On
   phones the industries' header bar and arrows give way to these; wider screens keep them.
 - **03 Four stages, from site walk to first shift.** Desktop with motion: the section holds and a wide
   canvas pans sideways: four stage nodes wired left to right (each in Home's dossier form since
@@ -1029,8 +1028,7 @@ tilt and one fade-up per block (`data-rv`, once).
   second names the stages: "Audit · Compliance · Training · Deployment · Trained on post by
   leadership"). The cards stay black while their contents rise in. Phones: a swipe row with the Home
   industry deck's controls (a meter with the current step in rust, each step a 44px tap target; no
-  arrows since 2026-10-25, owner) and "Swipe for
-  the next reason".
+  arrows since 2026-10-25, owner) and "Swipe" (owner, 2026-11-13: one word on every swipe row, 12px in the data face, ink faint, at the right just under the meter's last step, like a caption).
 - **03 Past performance.** (owner, 2026-10-24: no revenue figure; revenue is company data, not past
   performance.) The lead "Selected contracts since 2021. Clients are not named here."; then, reading
   like the PDF and without the AI tells (owner, 2026-10-25: was a featured card with a status light and

@@ -344,7 +344,7 @@ export default function SvServices() {
           );
         })}
       </ol>
-      <SwipeControls count={CAPABILITIES.length} at={showing} go={go} noun="service" hint="Swipe for the next service" names={CAPABILITIES.map((c) => c.title)} />
+      <SwipeControls count={CAPABILITIES.length} at={showing} go={go} noun="service" hint="Swipe" names={CAPABILITIES.map((c) => c.title)} />
     </section>
   );
 }

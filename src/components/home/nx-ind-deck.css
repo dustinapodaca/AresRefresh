@@ -157,7 +157,7 @@
 .nx-sk-link:hover .ds-arrow { color: var(--ds-rust); }
 
 .nx-sk { padding-bottom: 40px; }
-.nx-sk-hint { margin: 2px 0 0; font-size: 13px; letter-spacing: 0.04em; color: var(--ds-fg-faint); }
+.nx-sk-hint { position: relative; margin: -15px 0 0; text-align: right; font-size: 12px; letter-spacing: 0.04em; color: var(--ds-fg-faint); pointer-events: none; } /* just "Swipe", small at the right under the meter's last step, like a caption (owner, 2026-11-13; was a sentence at the left) */
 
 /* The intro's stack: copies of the next two cards behind the first (behind Swiper's slides, inside
    its box), peeking out above it as it deals in, then tucked in behind it and gone (owner,
