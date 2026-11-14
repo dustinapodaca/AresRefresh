@@ -200,6 +200,12 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
 }
 
 /* Load-in (motion only): the letters start dark and the light comes up inside them. */
+/* Dark from the first paint (owner, 2026-11-13: on a first load the prerendered hero showed lit, went
+   black when the script armed the load-in, then came back up). index.html's inline script marks <html>
+   before anything paints, on Home where the load-in will run (not reduced motion or an automated
+   browser), and takes the mark off after 5s if the page's script never started the load-in. */
+html[data-hero-arm] .nx-hero:not([data-in]) .nx-hero-light { opacity: 0; transform: scale(1.08); }
+html[data-hero-arm] .nx-hero:not([data-in]) .nx-hero-lift { opacity: 0; transform: translateY(18px); }
 .nx-hero[data-arm='true'] .nx-hero-light { opacity: 0; transform: scale(1.08); }
 .nx-hero[data-arm='true'] .nx-hero-lift { opacity: 0; transform: translateY(18px); }
 .nx-hero[data-arm='true'][data-in='true'] .nx-hero-light {

@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <!-- Home hero: can this browser run the terrain? Sets <html data-terrain> before the first
          paint, so the hero shows the terrain or its still from the start, never one then the
-         other (2026-10-18). The same check as src/lib/terrainSupport.ts, minified; its sha256 is
-         allowed in public/_headers, so update that hash whenever this line changes. -->
-    <script>(function(){if(location.pathname!=='/')return;var m='still';try{if(!navigator.webdriver&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var g=document.createElement('canvas').getContext('webgl2');if(g){var i=g.getExtension('WEBGL_debug_renderer_info'),r=i?String(g.getParameter(i.UNMASKED_RENDERER_WEBGL)):'',l=g.getExtension('WEBGL_lose_context');l&&l.loseContext();if(!/swiftshader|llvmpipe|software/i.test(r))m='live'}}}catch(e){}document.documentElement.setAttribute('data-terrain',m)})();</script>
+         other (2026-10-18). The same check as src/lib/terrainSupport.ts, minified. Where the load-in
+         will run it also sets <html data-hero-arm>, so the hero starts dark instead of showing the
+         prerendered lit hero and then going black (home.css; owner, 2026-11-13). Its sha256 is
+         allowed in public/_headers and public/.htaccess, so update both whenever this line changes. -->
+    <script>(function(){if(location.pathname!=='/')return;var d=document.documentElement,m='still';try{if(!navigator.webdriver&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.setAttribute('data-hero-arm','');setTimeout(function(){if(!document.querySelector('.nx-hero[data-in]'))d.removeAttribute('data-hero-arm')},5000);var g=document.createElement('canvas').getContext('webgl2');if(g){var i=g.getExtension('WEBGL_debug_renderer_info'),r=i?String(g.getParameter(i.UNMASKED_RENDERER_WEBGL)):'',l=g.getExtension('WEBGL_lose_context');l&&l.loseContext();if(!/swiftshader|llvmpipe|software/i.test(r))m='live'}}}catch(e){}d.setAttribute('data-terrain',m)})();</script>
     <!-- Browser tab, bookmark, and home-screen icons (the set began as a copy of the live site's,
          2026-10-09; its mark is #c4c8ce, lighter than the old live site's #8a8a8a). New file names
          whenever the icon changes (v3, 2026-10-19), so browsers and Google fetch it again. -->

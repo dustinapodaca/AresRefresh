@@ -512,7 +512,10 @@ and `nx-*.css` (class prefix `nx-`).
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
   since 2026-10-22, owner), fading out over the first 160px of scroll.
   Load-in where motion runs: the light comes up inside the letters (1.8s) and the copy rises 18px
-  after it (0.9s, from 0.9s). On scroll the screen holds for 165% of a screen: the copy lifts
+  after it (0.9s, from 0.9s). On a first load the hero starts dark from the first paint (owner, 2026-11-13: the
+  prerendered lit hero showed, went black when the script armed the load-in, then came back): index.html's
+  inline script sets <html data-hero-arm> where the load-in will run and takes it off after 5s if the
+  page's script never starts it; its hash is in public/_headers and public/.htaccess. On scroll the screen holds for 165% of a screen: the copy lifts
   away, the camera flies into the F of "Front" (the headline layer scaling up to 40x about the F's
   stem while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
   62 and speeding up). Then the Ares mark in white comes up dead center of the screen (owner,
