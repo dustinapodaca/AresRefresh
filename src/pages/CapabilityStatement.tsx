@@ -61,14 +61,27 @@ const SECTIONS = [
 // No closing Download section (owner, 2026-10-23): the hero, the rail, and the phone bar carry the PDF.
 
 // ------------------------------------------------------------------ the card
-// A ridgeline in one white line, drawn left to right on load by a rust point that fades when it is done
-// (owner, 2026-11-13; after "line mountain range" drawings). A Front Range profile with Pikes Peak the
-// high point, in a 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion
-// shows it drawn and still (cn.css).
+// A mountain range in white line, drawn left to right on load by a rust point that fades when it is
+// done (owner, 2026-11-13, after a one-line mountain range drawing): a flat horizon, low foothills, and
+// a cluster of sharp peaks with curved flanks, Pikes Peak the high one. The point draws the skyline;
+// the shorter lines down the peak faces and the lower ridge in front draw in as it passes them. In a
+// 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion shows it drawn and
+// still (cn.css).
 const RIDGE =
-  'M0 96 L58 94 L92 87 L118 78 L138 83 L172 60 L192 68 L226 38 L246 50 L266 44 L298 18 L316 28 ' +
-  'L344 4 L360 16 L376 12 L404 40 L424 33 L456 60 L480 50 L522 26 L542 38 L562 24 L594 58 L618 49 ' +
-  'L654 70 L684 42 L704 53 L736 34 L766 62 L792 55 L834 78 L862 71 L904 89 L944 86 L1000 96';
+  'M0 92 L70 92 C95 92 110 88 130 86 C150 84 160 80 175 79 C190 78 195 82 210 81 C225 80 232 74 246 72 ' +
+  'C256 71 262 76 272 75 C290 73 300 70 318 69 C330 68 338 64 350 60 L395 34 C400 38 405 42 412 44 ' +
+  'L425 40 L452 30 C460 33 466 37 472 38 L520 8 C528 12 540 18 552 22 L568 26 L592 20 ' +
+  'C604 24 618 32 632 36 L650 40 L676 30 C690 38 712 50 735 58 C752 64 768 66 784 64 C800 62 812 66 826 69 ' +
+  'C842 72 856 70 870 72 C892 76 920 84 945 90 C960 92 980 92 1000 92';
+// [path, begin (s), duration (s)]: each starts as the point passes it.
+const RIDGE_DETAIL: [string, string, string][] = [
+  ['M150 93 C190 91 230 89 270 87', '1.12s', '0.6s'],
+  ['M280 88 C320 84 360 81 400 77 C430 73 460 67 490 63 C520 59 545 67 570 72 C600 77 620 71 650 65 C680 60 700 67 730 75 C760 83 790 88 820 90', '1.28s', '1.4s'],
+  ['M395 34 C392 44 386 52 380 60', '1.4s', '0.6s'],
+  ['M520 8 C514 18 518 26 508 34 C500 42 494 48 486 52', '1.53s', '0.7s'],
+  ['M592 20 C584 28 578 36 566 44', '1.61s', '0.6s'],
+  ['M676 30 C670 40 664 46 652 52', '1.72s', '0.6s'],
+];
 const RIDGE_ANIM = { begin: '0.5s', dur: '2.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
 
 function Ridge() {
@@ -77,6 +90,11 @@ function Ridge() {
       <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
         <animate attributeName="stroke-dashoffset" from="1" to="0" {...RIDGE_ANIM} />
       </path>
+      {RIDGE_DETAIL.map(([d, begin, dur]) => (
+        <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
+        </path>
+      ))}
       <g className="cc-ridge-dot" opacity="0">
         <circle r="9" className="cc-ridge-halo" />
         <circle r="4.5" className="cc-ridge-pt" />
