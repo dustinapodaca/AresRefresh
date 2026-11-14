@@ -782,8 +782,12 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the two below the post bar) and curve into the bar's side; they redraw as the leave runs so they
     meet the nodes on the way back up. Lead in #c4c8ce, Request a Quote and "See the six industries →"
     (to `#divisions`); 1024 to 1279px the lead narrows to 36ch so it clears the side nodes. Scrolling:
-    the stage holds (sticky, 90vh) while the photo closes to a framed window and dims, the nodes spread
-    out and fade, and the copy lifts away.
+    the stage holds (sticky) while the photo closes to a framed window and dims, the nodes spread
+    out and fade, and the copy lifts away (gone by 0.8 of the close; was 1.0). Then (owner, 2026-11-13)
+    the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`, a 400px logo, the plate sized to
+    the window) comes up in the closed window and plays once, loaded only then; the hold grew from 90vh
+    to 140vh so the closed window holds about half a screen while it forms, and it fades with the scroll
+    on the way back up.
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
     at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), centered as on desktop (owner, 2026-10-26; was left aligned like Home), at Home's phone size before Home's 6px bump
     (`clamp(48px, 14.4vw, 80px)` below 600px). Under it the copper-glass towers stand in a window of
@@ -812,7 +816,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     which blinked), at the same size (the canvas's own fit
     to its box) and spot, since the
     canvas draws it from a bitmap at 2x and read soft on a phone; owner, 2026-10-25), centered in the
-    window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
+    window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Lazy-loaded (on desktop only once the window has closed, since 2026-11-13); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or

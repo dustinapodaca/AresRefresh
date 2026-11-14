@@ -5,7 +5,8 @@ import { CAPABILITIES } from '../capability/data';
 import { motionAllowed, useScene, SCRUB } from '../home/engine';
 import { responsive } from '../../lib/responsive';
 
-// Phones only: the glass Ares mark in the window (WebGL, so it loads on its own and never on desktop).
+// The glass Ares mark in the window (WebGL, so it loads on its own): phones on their first scroll, desktop
+// once the aperture has closed in past the headline (owner, 2026-11-13).
 const SvGlassMark = lazy(() => import('./SvGlassMark'));
 
 // Services hero, second form (owner, 2026-10-23: keep our image, animate it, as impactful on open as
@@ -57,6 +58,13 @@ export default function SvHero() {
     on();
     mq.addEventListener('change', on);
     return () => mq.removeEventListener('change', on);
+  }, []);
+  // Desktop (owner, 2026-11-13): the glass mark loads and plays once the scroll has closed the
+  // aperture in past the headline (the desktop timeline below calls __glass); it fades with the scroll.
+  const [deskGlass, setDeskGlass] = useState(false);
+  useEffect(() => {
+    const root = ref.current as (HTMLElement & { __glass?: () => void }) | null;
+    if (root) root.__glass = () => setDeskGlass(true);
   }, []);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.
@@ -270,7 +278,10 @@ export default function SvHero() {
         // runs while they still show, so on the way back up they meet the nodes again without
         // waiting for the cursor to move (owner, 2026-10-23).
         onUpdate: () => {
-          if (tl.progress() < 0.4) (root as HTMLElement & { __draw?: () => void }).__draw?.();
+          const r = root as HTMLElement & { __draw?: () => void; __glass?: () => void };
+          if (tl.progress() < 0.4) r.__draw?.();
+          // The glass mark plays once the headline has gone (owner, 2026-11-13).
+          if (tl.time() > 0.85) r.__glass?.();
         },
       });
       const from = { immediateRender: false };
@@ -293,8 +304,13 @@ export default function SvHero() {
         // One that starts at 0 is never backed out of; at the top it renders its own start, 1.
         tl.fromTo(n.querySelector('a'), { opacity: 1 }, { opacity: 0, duration: 0.65, ...from }, 0);
       });
+      // The glass mark comes up once the headline has gone, and goes again on the way back up; then the
+      // closed window holds while it plays (owner, 2026-11-13: the hold grew from 90vh to 140vh, so the
+      // aperture closes over the same scroll as before and the rest is the hold).
+      tl.fromTo(root.querySelector('.sv-glass'), { opacity: 0 }, { opacity: 1, duration: 0.15, ...from }, 0.85);
+      tl.to({}, { duration: 0.55 }, 1);
       tl.fromTo(root.querySelector('.sv-hero-wires'), { opacity: 1 }, { opacity: 0, duration: 0.25, ...from }, 0)
-        .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.8, ...from }, 0.2);
+        .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.6, ...from }, 0.2);
     });
     return () => mm.revert();
   });
@@ -313,9 +329,9 @@ export default function SvHero() {
           </div>
         </div>
         <div className="sv-glass" aria-hidden="true">
-          {phone && (
+          {(phone || deskGlass) && (
             <Suspense fallback={null}>
-              <SvGlassMark />
+              <SvGlassMark mode={phone ? 'phone' : 'desktop'} />
             </Suspense>
           )}
         </div>

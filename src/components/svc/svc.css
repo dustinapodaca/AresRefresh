@@ -312,7 +312,7 @@
    and the stage sticks while the aperture closes. Sticky, not a pinned spacer, so the opener is
    never interrupted. (Padding wouldn't do: sticky stays inside the parent's content box.) */
 @media (min-width: 1024px) {
-  html[data-nx-motion='on'] .sv-hero-hold { height: 90vh; }
+  html[data-nx-motion='on'] .sv-hero-hold { height: 140vh; } /* 90vh for the aperture, then 50vh holding the closed window while the glass mark plays (owner, 2026-11-13) */
   html[data-nx-motion='on'] .sv-hero-stage { position: sticky; top: 0; }
 }
 
@@ -480,7 +480,7 @@
   .sv-hero[data-arm='true'][data-in='true'][data-scrolled]:not([data-settled]) .sv-hero-stage::after { opacity: 0; }
 }
 
-/* The glass Ares mark in the window (phones; SvGlassMark). */
+/* The glass Ares mark in the window (SvGlassMark): phones, and desktop since 2026-11-13 (owner). */
 .sv-glass { display: none; }
 @media (max-width: 767px) {
   .sv-glass {
@@ -495,28 +495,42 @@
     z-index: 1;
     pointer-events: none;
   }
-  .sv-glass .liquid-glass-logo { min-height: 0; }
-  /* Hidden until the reader first scrolls; then the glass comes in (SvGlassMark). */
-  .sv-glass-in { height: 100%; opacity: 0; transition: opacity 0.2s var(--ds-ease); }
-  .sv-glass-in[data-shown='true'] { opacity: 1; }
-  /* The crisp SVG takes over from the canvas once the glass has settled (SvGlassMark). */
-  .sv-glass-in { position: relative; }
-  .sv-glass-crisp {
+}
+/* Desktop: the framed window the aperture closes to (inset 9% 6% 11%, SvHero), with 40px of room above
+   and below; its opacity follows the scroll (SvHero). */
+@media (min-width: 1024px) {
+  html[data-nx-motion='on'] .sv-glass {
+    display: block;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    aspect-ratio: 576 / 174.87;
-    background: #fff;
-    -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
-    mask: url(/images/ares-text.svg) center / contain no-repeat;
+    top: calc(9% - 40px);
+    bottom: calc(11% - 40px);
+    left: 6%;
+    right: 6%;
+    z-index: 1;
     opacity: 0;
-    transition: opacity 0.3s var(--ds-ease);
     pointer-events: none;
   }
-  /* No crossfade: two half-faded layers dip in the middle and the logo blinks (owner, 2026-10-25).
-     The SVG fades in on top of the canvas, which stays whole beneath it and is hidden once the SVG
-     is fully in. */
-  .sv-glass-in[data-done='true'] .sv-glass-crisp { opacity: 1; }
-  .sv-glass-in[data-done='true'] .liquid-glass-logo { opacity: 0; transition: opacity 0s linear 0.3s; }
 }
+.sv-glass .liquid-glass-logo { min-height: 0; }
+/* Hidden until it plays; then the glass comes in (SvGlassMark). */
+.sv-glass-in { position: relative; height: 100%; opacity: 0; transition: opacity 0.2s var(--ds-ease); }
+.sv-glass-in[data-shown='true'] { opacity: 1; }
+/* The crisp SVG takes over from the canvas once the glass has settled (SvGlassMark). */
+.sv-glass-crisp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  aspect-ratio: 576 / 174.87;
+  background: #fff;
+  -webkit-mask: url(/images/ares-text.svg) center / contain no-repeat;
+  mask: url(/images/ares-text.svg) center / contain no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s var(--ds-ease);
+  pointer-events: none;
+}
+/* No crossfade: two half-faded layers dip in the middle and the logo blinks (owner, 2026-10-25).
+   The SVG fades in on top of the canvas, which stays whole beneath it and is hidden once the SVG
+   is fully in. */
+.sv-glass-in[data-done='true'] .sv-glass-crisp { opacity: 1; }
+.sv-glass-in[data-done='true'] .liquid-glass-logo { opacity: 0; transition: opacity 0s linear 0.3s; }
