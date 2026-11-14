@@ -5,8 +5,7 @@ import { CAPABILITIES } from '../capability/data';
 import { motionAllowed, useScene, SCRUB } from '../home/engine';
 import { responsive } from '../../lib/responsive';
 
-// The glass Ares mark in the window (WebGL, so it loads on its own): phones on their first scroll, desktop
-// once the aperture has closed in past the headline (owner, 2026-11-13).
+// Phones only: the glass Ares mark in the window (WebGL, so it loads on its own and never on desktop).
 const SvGlassMark = lazy(() => import('./SvGlassMark'));
 
 // Services hero, second form (owner, 2026-10-23: keep our image, animate it, as impactful on open as
@@ -58,86 +57,6 @@ export default function SvHero() {
     on();
     mq.addEventListener('change', on);
     return () => mq.removeEventListener('change', on);
-  }, []);
-  // Desktop (owner, 2026-11-13): the glass mark loads and plays once the scroll has closed the
-  // aperture in past the headline (the desktop timeline below calls __glass with the spot where the
-  // window is fully closed). The page glides there and holds until the glass has played (SvGlassMark's
-  // onDone), then lets go; it fades with the scroll on the way back up. While it holds, the reader's
-  // scrolling still moves something (owner, 2026-11-13): the camera pushes into the photo behind the
-  // glass (up to 14%, eased), and scrolling up pulls it back. It stays pushed as the page scrolls on,
-  // and settles back if the reader returns to the top of the hero.
-  const [deskGlass, setDeskGlass] = useState(false);
-  const unlock = useRef<() => void>(() => {});
-  useEffect(() => {
-    const root = ref.current as (HTMLElement & { __glass?: (top: number) => void }) | null;
-    if (!root) return;
-    const photo = root.querySelector<HTMLElement>('.sv-photo-open');
-    const keys: Record<string, number> = { ' ': 1, PageDown: 1, ArrowDown: 0.5, PageUp: -1, ArrowUp: -0.5, Home: -1, End: 1 };
-    let push = 0;
-    let shown = 0;
-    let raf = 0;
-    let holdAt = 0;
-    const tick = () => {
-      raf = 0;
-      shown += (push - shown) * 0.12;
-      if (Math.abs(push - shown) < 0.001) shown = push;
-      if (photo) photo.style.scale = shown ? String(1 + 0.14 * shown) : '';
-      if (shown !== push) raf = requestAnimationFrame(tick);
-    };
-    const nudge = (d: number) => {
-      push = Math.max(0, Math.min(1, push + d));
-      if (!raf) raf = requestAnimationFrame(tick);
-    };
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      nudge(e.deltaY / 1600); // about the whole hold's worth of steady scrolling to reach the full push
-    };
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => {
-      touchY = e.touches[0]?.clientY ?? 0;
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-      const y = e.touches[0]?.clientY ?? touchY;
-      nudge((touchY - y) / 600);
-      touchY = y;
-    };
-    const onKey = (e: KeyboardEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (!(e.key in keys) || t?.closest('input, textarea, select, [contenteditable]')) return;
-      e.preventDefault();
-      nudge(keys[e.key] * 0.15);
-    };
-    // Back near the top of the hero, the push settles away.
-    const onScroll = () => {
-      if (holdAt && window.scrollY < holdAt * 0.7 && push) nudge(-push);
-    };
-    let safety = 0;
-    const release = () => {
-      window.clearTimeout(safety);
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('keydown', onKey);
-    };
-    unlock.current = release;
-    root.__glass = (top: number) => {
-      holdAt = top;
-      window.addEventListener('wheel', onWheel, { passive: false });
-      window.addEventListener('touchstart', onTouchStart, { passive: true });
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      window.addEventListener('keydown', onKey);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      // Never held for long if the mark can't play (no WebGL, a slow load).
-      safety = window.setTimeout(release, 6000);
-      window.scrollTo({ top, behavior: 'smooth' });
-      setDeskGlass(true);
-    };
-    return () => {
-      release();
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(raf);
-    };
   }, []);
 
   // The wires: from the inner edge of each node to the post node, a horizontal-tangent curve.
@@ -351,25 +270,10 @@ export default function SvHero() {
         // runs while they still show, so on the way back up they meet the nodes again without
         // waiting for the cursor to move (owner, 2026-10-23).
         onUpdate: () => {
-          const r = root as HTMLElement & { __draw?: () => void; __glass?: (top: number) => void };
-          if (tl.progress() < 0.4) r.__draw?.();
-          // Fetch the glass mark early, so it's ready when it plays.
-          if (!fetched && tl.time() > 0.3) {
-            fetched = true;
-            void import('./SvGlassMark');
-          }
-          // The glass mark plays once the headline has gone (owner, 2026-11-13), the page held where
-          // the window has fully closed (time 1 of the timeline) until it has.
-          const st = tl.scrollTrigger;
-          if (!played && st && tl.time() > 0.85) {
-            played = true;
-            r.__glass?.(st.start + ((st.end - st.start) * 1) / tl.duration());
-          }
+          if (tl.progress() < 0.4) (root as HTMLElement & { __draw?: () => void }).__draw?.();
         },
       });
       const from = { immediateRender: false };
-      let fetched = false;
-      let played = false;
       // The aperture closes: the full-bleed photo draws in to a framed window and dims.
       tl.fromTo(
         photo,
@@ -389,13 +293,8 @@ export default function SvHero() {
         // One that starts at 0 is never backed out of; at the top it renders its own start, 1.
         tl.fromTo(n.querySelector('a'), { opacity: 1 }, { opacity: 0, duration: 0.65, ...from }, 0);
       });
-      // The glass mark comes up once the headline has gone, and goes again on the way back up; then the
-      // closed window holds while it plays (owner, 2026-11-13: the hold grew from 90vh to 140vh, so the
-      // aperture closes over the same scroll as before and the rest is the hold).
-      tl.fromTo(root.querySelector('.sv-glass'), { opacity: 0 }, { opacity: 1, duration: 0.15, ...from }, 0.85);
-      tl.to({}, { duration: 0.55 }, 1);
       tl.fromTo(root.querySelector('.sv-hero-wires'), { opacity: 1 }, { opacity: 0, duration: 0.25, ...from }, 0)
-        .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.6, ...from }, 0.2);
+        .fromTo(root.querySelector('.sv-hero-copy'), { y: 0, scale: 1, opacity: 1 }, { y: -50, scale: 0.94, opacity: 0, duration: 0.8, ...from }, 0.2);
     });
     return () => mm.revert();
   });
@@ -414,9 +313,9 @@ export default function SvHero() {
           </div>
         </div>
         <div className="sv-glass" aria-hidden="true">
-          {(phone || deskGlass) && (
+          {phone && (
             <Suspense fallback={null}>
-              <SvGlassMark mode={phone ? 'phone' : 'desktop'} onDone={() => unlock.current()} />
+              <SvGlassMark />
             </Suspense>
           )}
         </div>

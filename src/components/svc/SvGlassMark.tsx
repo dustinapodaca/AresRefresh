@@ -27,12 +27,6 @@ import { LiquidGlassLogo, type LiquidGlassLogoHandle } from '../liquid-glass-log
 // takes the same fit, measured whenever the box changes (owner, 2026-10-25: on a short phone it landed
 // far bigger than the canvas had drawn it).
 const LOGO_SIZE = 288;
-// Desktop (owner, 2026-11-13): the same sequence in the framed window the aperture closes to, played as
-// soon as it mounts (SvHero mounts it once the window has closed in past the headline), the logo larger.
-const LOGO_SIZE_DESK = 340;
-// Desktop: not the whole window (owner, 2026-11-13: smaller, and the big canvas bogged down): a plate a
-// little wider than the logo, on a canvas just big enough for the renderer (cn: .sv-glass, svc.css).
-const PLATE_DESK = 470;
 const LOGO_SCALE = 0.93;
 // The glass plate fills the window it sits in, whatever the phone (owner, 2026-10-26; was a square
 // 24px wider a side). The plate grows to about 1.05 of its resting size while the glass shows (the
@@ -45,13 +39,8 @@ const CORNER = 18;
 // How far .sv-glass runs past the window above and below (svc.css).
 const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
-// When the page may move on (SvHero holds it on desktop until then): a tad before the renderer's logo
-// finish at 1.8s, as the glass is clearing (owner, 2026-11-13: was the crisp swap, then 1.8s, 1.4s, 1.1s).
-const GLASS_DONE = 0.9;
 
-export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone' | 'desktop'; onDone?: () => void }) {
-  const desk = mode === 'desktop';
-  const size = desk ? LOGO_SIZE_DESK : LOGO_SIZE;
+export default function SvGlassMark() {
   const glass = useRef<LiquidGlassLogoHandle>(null);
   const [paused, setPaused] = useState(true);
   const [shown, setShown] = useState(false);
@@ -67,12 +56,10 @@ export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone'
     const stage = el?.closest<HTMLElement>('.sv-hero-stage');
     if (!el || !stage) return;
     const measure = () => {
-      const f = Math.min(1, el.clientWidth / (size * 1.9), el.clientHeight / (size * 1.5));
-      const unit = size * f;
-      // Phones: the stage less its side padding (the box runs past the window for the reflections).
-      // Desktop: a plate a little wider than the logo, square in height.
-      const w = desk ? PLATE_DESK * f : stage.clientWidth - 2 * (parseFloat(getComputedStyle(stage).paddingLeft) || 0);
-      const h = desk ? 0 : el.clientHeight - 2 * ROOM_Y;
+      const f = Math.min(1, el.clientWidth / (LOGO_SIZE * 1.9), el.clientHeight / (LOGO_SIZE * 1.5));
+      const unit = LOGO_SIZE * f;
+      const w = stage.clientWidth - 2 * (parseFloat(getComputedStyle(stage).paddingLeft) || 0);
+      const h = el.clientHeight - 2 * ROOM_Y;
       const side = (size: number) => Math.max(0, (size / GLASS_SWELL - unit) / (2 * unit));
       setFit(f);
       setStretch([side(w), side(h)]);
@@ -82,39 +69,34 @@ export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone'
     ro.observe(el);
     ro.observe(stage);
     return () => ro.disconnect();
-  }, [desk, size]);
+  }, []);
 
-  const onDoneRef = useRef(onDone);
-  onDoneRef.current = onDone;
   useEffect(() => {
     let timer = 0;
-    let doneTimer = 0;
     const start = () => {
       window.removeEventListener('scroll', onScroll);
       setShown(true);
       glass.current?.replay();
       setPaused(false);
       timer = window.setTimeout(() => setDone(true), DONE * 1000);
-      doneTimer = window.setTimeout(() => onDoneRef.current?.(), GLASS_DONE * 1000);
     };
     const onScroll = () => {
       if (window.scrollY > 2) start();
     };
-    if (desk || window.scrollY > 2) start();
+    if (window.scrollY > 2) start();
     else window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.clearTimeout(timer);
-      window.clearTimeout(doneTimer);
     };
-  }, [desk]);
+  }, []);
 
   return (
     <div ref={box} className="sv-glass-in" data-shown={shown} data-done={done}>
       <LiquidGlassLogo
         ref={glass}
         logo='/images/ares-text.svg'
-        logoSize={size}
+        logoSize={LOGO_SIZE}
         ending='logo'
         logoScale={LOGO_SCALE}
         stretch={stretch[0]}
@@ -127,7 +109,7 @@ export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone'
         aria-label='Ares Security'
         style={{ height: '100%', minHeight: 0 }}
       />
-      <span className="sv-glass-crisp" aria-hidden="true" style={{ width: size * LOGO_SCALE * fit }} />
+      <span className="sv-glass-crisp" aria-hidden="true" style={{ width: LOGO_SIZE * LOGO_SCALE * fit }} />
     </div>
   );
 }

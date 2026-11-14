@@ -785,17 +785,9 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the two below the post bar) and curve into the bar's side; they redraw as the leave runs so they
     meet the nodes on the way back up. Lead in #c4c8ce, Request a Quote and "See the six industries →"
     (to `#divisions`); 1024 to 1279px the lead narrows to 36ch so it clears the side nodes. Scrolling:
-    the stage holds (sticky) while the photo closes to a framed window and dims, the nodes spread
-    out and fade, and the copy lifts away (gone by 0.8 of the close; was 1.0). Then (owner, 2026-11-13)
-    the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`) comes up in the closed window and
-    plays once: a 340px logo on a plate about 470px wide, centered, on a 720 by 560 canvas (not the whole
-    window, which bogged down). The page glides to where the window has fully closed and holds there,
-    wheel, touch, and scroll keys blocked, until the glass is clearing (0.9s, before the renderer's logo finish at 1.8s; the crisp swap follows as it scrolls on; let go after 6s at most),
-    then scrolls on. While it holds, scrolling still moves something (owner, 2026-11-13): the camera pushes
-    into the photo behind the glass, up to 14% over about a hold's worth of steady scrolling (eased; scrolling
-    up pulls it back), and it stays pushed as the page scrolls on, settling back near the top of the hero.
-    Fetched once the close is under way; the hold grew from 90vh to 140vh; it fades with
-    the scroll on the way back up.
+    the stage holds (sticky, 90vh) while the photo closes to a framed window and dims, the nodes spread
+    out and fade, and the copy lifts away. (The phones' glass Ares mark was tried here too, with a hold
+    while it played, and removed the same day, owner 2026-11-13: too busy.)
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits
     at the top (about 40px of black under the nav, was about 59; owner, 2026-10-25), centered as on desktop (owner, 2026-10-26; was left aligned like Home), at Home's phone size before Home's 6px bump
     (`clamp(48px, 14.4vw, 80px)` below 600px). Under it the copper-glass towers stand in a window of
@@ -826,7 +818,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     which blinked), at the same size (the canvas's own fit
     to its box) and spot, since the
     canvas draws it from a bitmap at 2x and read soft on a phone; owner, 2026-10-25), centered in the
-    window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Lazy-loaded (on desktop only once the window has closed, since 2026-11-13); reduced motion shows the component's
+    window (owner, 2026-10-25: back where it started), it stays over the photo while the window opens. Phones only and lazy-loaded (desktop never fetches it); reduced motion shows the component's
     still mark. (Was the towers dimmed behind a centered headline with the lead in a black glass card.)
 - **01 What we staff.** (owner, 2026-10-24; the bundle's "Pick a service."): the headline left, the
   lead right; six tall panels (pure black with the site's glass edge and top line, no dot grid or
