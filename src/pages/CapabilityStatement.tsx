@@ -22,7 +22,6 @@ import { responsive } from '../lib/responsive';
 import { motionAllowed } from '../components/home/engine';
 import '../components/home/home.css';
 import '../components/capnext/cn.css';
-import { CONTOURS, CONTOUR_LEVELS, CONTOUR_SUMMIT } from '../components/capnext/contours';
 
 // Capability Statement, "The company card" (from the home-flora (4) bundle's /capability-next, third start, 2026-10-23; owner: "start over", for people who just
 // need the information, fitting the new Home and Services).
@@ -153,47 +152,72 @@ function RidgeLayers() {
   );
 }
 
-// Topographic contours (owner, 2026-11-13): the massif seen from above, its contour lines drawing in
-// ring by ring from a rust point at the summit outward; every fifth line brighter, like a survey map.
-function RidgeContours() {
-  const top = CONTOUR_LEVELS - 1;
+// Alpenglow (owner, 2026-11-13): the one-line range drawn by the rust point as before, then a band of
+// warm light sweeps along the ridge left to right, like sunrise on the Front Range, and leaves a faint warm
+// edge on the summit. The detail lines start 0.8s sooner than in the layers, which begin later.
+const GLOW_DRAW = { ...RIDGE_ANIM, begin: '0.5s' } as const;
+const shifted = (begin: string) => `${Math.max(0, parseFloat(begin) - 0.8).toFixed(2)}s`;
+
+function RidgeGlow() {
   return (
-    <svg className="cc-ridge cc-topo" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-      {CONTOURS.map((c, i) => (
-        <path
-          key={i}
-          className="cc-ridge-line cc-topo-line"
-          data-index={c.index || undefined}
-          d={c.d}
-          pathLength={1}
-          strokeDasharray="1 1"
-          strokeDashoffset="1"
-        >
-          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={`${(0.45 + (top - c.level) * 0.13).toFixed(2)}s`} dur="1s" calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.2 1" fill="freeze" />
+    <svg className="cc-ridge cc-glow" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        {/* The sweep: a band of light about a fifth of the width, carried across once. */}
+        <linearGradient id="ccg-sweep" gradientUnits="userSpaceOnUse" x1="-460" y1="0" x2="-100" y2="0">
+          <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
+          <stop offset="0.45" stopColor="#e2925a" stopOpacity="0.9" />
+          <stop offset="0.55" stopColor="#f1c49a" stopOpacity="1" />
+          <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
+          <animate attributeName="x1" from="-460" to="1100" begin="3s" dur="2s" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.4 1" fill="freeze" />
+          <animate attributeName="x2" from="-100" to="1460" begin="3s" dur="2s" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.4 1" fill="freeze" />
+        </linearGradient>
+        {/* What stays: warmth on the summit and the peaks beside it, fading out to either side. */}
+        <linearGradient id="ccg-warm" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="700" y2="0">
+          <stop offset="0" stopColor="#bc6f40" stopOpacity="0" />
+          <stop offset="0.47" stopColor="#e2925a" stopOpacity="0.85" />
+          <stop offset="1" stopColor="#bc6f40" stopOpacity="0" />
+        </linearGradient>
+        <filter id="ccg-soft" x="-5%" y="-40%" width="110%" height="180%">
+          <feGaussianBlur stdDeviation="4 2.5" />
+        </filter>
+      </defs>
+      <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+        <animate attributeName="stroke-dashoffset" from="1" to="0" {...GLOW_DRAW} />
+      </path>
+      {RIDGE_DETAIL.map(([d, begin, dur]) => (
+        <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={shifted(begin)} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
         </path>
       ))}
-      <g className="cc-topo-summit" transform={`translate(${CONTOUR_SUMMIT.x} ${CONTOUR_SUMMIT.y})`}>
-        {/* Drawn as ellipses that cancel the box's stretch, so the point reads round. */}
-        <ellipse className="cc-topo-ping" rx="0" ry="0" opacity="0">
-          <animate attributeName="rx" from="4" to="40" begin="0.3s" dur="1.4s" fill="freeze" />
-          <animate attributeName="ry" from="5" to="50" begin="0.3s" dur="1.4s" fill="freeze" />
-          <animate attributeName="opacity" values="0;0.7;0" keyTimes="0;0.15;1" begin="0.3s" dur="1.4s" fill="freeze" />
-        </ellipse>
-        <ellipse className="cc-ridge-halo" rx="9" ry="11" />
-        <ellipse className="cc-ridge-pt" rx="4.5" ry="5.6" />
+      <g className="cc-glow-sweep">
+        <path className="cc-glow-halo" d={RIDGE} stroke="url(#ccg-sweep)" filter="url(#ccg-soft)" />
+        <path className="cc-glow-edge" d={RIDGE} stroke="url(#ccg-sweep)" />
+      </g>
+      <g className="cc-glow-warm" opacity="0">
+        <path className="cc-glow-halo" d={RIDGE} stroke="url(#ccg-warm)" filter="url(#ccg-soft)" />
+        <path className="cc-glow-edge" d={RIDGE} stroke="url(#ccg-warm)" />
+        <animate attributeName="opacity" from="0" to="1" begin="4s" dur="1.4s" fill="freeze" />
+      </g>
+      <g className="cc-ridge-dot" opacity="0">
+        <circle r="9" className="cc-ridge-halo" />
+        <circle r="4.5" className="cc-ridge-pt" />
+        <animateMotion path={RIDGE} keyPoints="0;1" {...GLOW_DRAW} />
+        <set attributeName="opacity" to="1" begin={GLOW_DRAW.begin} />
+        <animate attributeName="opacity" from="1" to="0" begin="3.1s" dur="0.5s" fill="freeze" />
       </g>
     </svg>
   );
 }
 
-// The card's drawing, for the owner to compare at /capability-statement?ridge=contours|layers (2026-11-13):
-// contours (topographic, from above) or layers (three ranges in depth, drawn back to front). Contours is
-// the default while the owner tries it (owner, 2026-11-13); layers was the one before.
-const RIDGES = { contours: RidgeContours, layers: RidgeLayers } as const;
+// The card's drawing, for the owner to compare at /capability-statement?ridge=glow|layers (2026-11-13):
+// glow (the one-line range, then a sweep of warm light along it) or layers (three ranges in depth, drawn
+// back to front). Glow is the default while the owner tries it (owner, 2026-11-13); layers was built first.
+// (Topographic contours were tried the same day and dropped; in git at cc62092.)
+const RIDGES = { glow: RidgeGlow, layers: RidgeLayers } as const;
 function Ridge() {
   const [params] = useSearchParams();
   const asked = params.get('ridge');
-  const R = RIDGES[(asked && asked in RIDGES ? asked : 'contours') as keyof typeof RIDGES];
+  const R = RIDGES[(asked && asked in RIDGES ? asked : 'glow') as keyof typeof RIDGES];
   return <R />;
 }
 

@@ -11,10 +11,10 @@
       "selector": ".cc",
       "options": [
         {
-          "value": "contours",
-          "label": "Contours",
+          "value": "glow",
+          "label": "Alpenglow",
           "tag": "default",
-          "note": "The massif from above: contour rings draw outward from a rust summit point, every fifth line brighter."
+          "note": "The one-line range drawn by the rust point, then a band of warm light sweeps along the ridge once and leaves a warm edge on the summit."
         },
         {
           "value": "layers",
