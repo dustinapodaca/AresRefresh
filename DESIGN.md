@@ -988,12 +988,16 @@ tilt and one fade-up per block (`data-rv`, once).
   corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
-  2026-11-13); from 600px, in the room under that line, a mountain range in white line, edge to edge across
-  the card (owner, 2026-11-13, after a one-line mountain range drawing, drawn fresh: a flat horizon, low
-  foothills, a cluster of sharp peaks with curved flanks, Pikes Peak the high one, short lines down the
-  peak faces and a lower ridge in front). A rust point draws the skyline left to right once on load (2.6s
-  from 0.5s), each detail line drawing in as it passes, then fades; the range stays ( SVG animation, so it runs in the prerender; it flattens to fit a short card, 10px clear
-  of the text each side; drawn and still under reduced motion); then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
+  2026-11-13); from 600px, in the room under that line, three mountain ranges layered in depth (owner,
+  2026-11-13), edge to edge across the card: a far range of broad faint peaks, a middle range, and the
+  near range (a one-line drawing after the owner's reference, drawn fresh: a flat horizon, low foothills,
+  a cluster of sharp peaks, Pikes Peak the high one, short lines down the peak faces and a lower ridge in
+  front). Each is a white line over a dark fill that hides the ranges behind it and fades toward the foot.
+  They draw back to front on load (far from 0.3s, middle from 0.75s, near from 1.3s over 2.6s): a rust
+  point draws the near skyline, its detail lines drawing in as it passes, then fades; the ranges stay.
+  When the card turns toward the cursor each range shifts by its depth, the near one most. SVG animation,
+  so it runs in the prerender; it flattens to fit a short card, 10px clear of the text each side; drawn
+  and still under reduced motion); then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
   Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with the GSA mark in white (owner, 2026-11-13, was a
   drawn contact chip; 26px on phones; an SBA WOSB mark beside it was tried and removed the same day) and the WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones (the lockup unchanged 2026-11-13): the rail card's
   lockup (the mark at 26px and "ARES SECURITY LLC" in mono caps, 16px since 2026-11-13, owner) instead of the wordmark and big

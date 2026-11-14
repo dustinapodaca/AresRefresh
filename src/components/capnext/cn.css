@@ -138,10 +138,22 @@
 }
 .cc-ridge-line { fill: none; stroke: rgb(255 255 255 / 0.72); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .cc-ridge-detail { stroke: rgb(255 255 255 / 0.5); stroke-width: 2; }
+/* Depth: the far range faintest, and with the card's turn each layer shifts by its depth, the near one
+   most (in the drawing's units). */
+.cc-ridge-far .cc-ridge-line { stroke: rgb(255 255 255 / 0.26); }
+.cc-ridge-mid .cc-ridge-line { stroke: rgb(255 255 255 / 0.44); }
+/* Each range's fill hides the ranges behind it, so they stack instead of tangling. */
+.cc-ridge-fill { stroke: none; fill: rgb(0 0 0 / 0.8); }
+.cc-ridge-far .cc-ridge-fill { fill: rgb(0 0 0 / 0.4); }
+.cc-ridge-layer { transform: translate(calc(var(--tx, 0) * var(--d) * 1px), calc(var(--ty, 0) * var(--d) * 0.25px)); }
+.cc-ridge-far { --d: 3; }
+.cc-ridge-mid { --d: 12; }
+.cc-ridge-near { --d: 28; }
 .cc-ridge-pt { fill: var(--ds-rust); }
 .cc-ridge-halo { fill: var(--ds-rust); opacity: 0.28; }
 @media (prefers-reduced-motion: reduce) {
   .cc-ridge-line { stroke-dashoffset: 0 !important; }
+  .cc-ridge-clip rect { width: 1080px !important; }
   .cc-ridge-dot { display: none; }
 }
 .cc-certs { font-size: 13px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }

@@ -61,12 +61,21 @@ const SECTIONS = [
 // No closing Download section (owner, 2026-10-23): the hero, the rail, and the phone bar carry the PDF.
 
 // ------------------------------------------------------------------ the card
-// A mountain range in white line, drawn left to right on load by a rust point that fades when it is
-// done (owner, 2026-11-13, after a one-line mountain range drawing): a flat horizon, low foothills, and
-// a cluster of sharp peaks with curved flanks, Pikes Peak the high one. The point draws the skyline;
-// the shorter lines down the peak faces and the lower ridge in front draw in as it passes them. In a
-// 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion shows it drawn and
-// still (cn.css).
+// Layered mountain ranges (owner, 2026-11-13): three ridgelines drawn back to front, the far one faintest,
+// and when the card turns toward the cursor each layer shifts by its depth (--tx, --ty; cn.css), so the
+// range reads deep, not flat. The near range is the one-line drawing (after the owner's reference, drawn
+// fresh): a flat horizon, low foothills, a cluster of sharp peaks, Pikes Peak the high one; a rust point
+// draws its skyline, and its face lines and front ridge draw in as the point passes them, then the point
+// fades. All in a 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion shows
+// it drawn and still (cn.css).
+const RIDGE_FAR =
+  'M-40 84 C40 82 90 70 140 60 C180 52 200 40 230 30 C250 24 262 22 278 26 C300 32 320 46 350 50 ' +
+  'C380 54 400 40 430 28 C450 20 462 12 476 10 C492 12 510 26 530 34 C560 44 590 30 620 22 ' +
+  'C640 16 652 14 668 18 C700 28 730 44 760 48 C790 52 820 36 850 30 C870 26 884 28 900 36 C940 54 990 72 1040 80';
+const RIDGE_MID =
+  'M-40 88 C30 86 70 76 110 66 C140 58 160 44 186 34 L204 28 C220 34 240 44 262 46 C290 48 310 38 334 30 ' +
+  'L352 24 C370 32 392 46 420 50 C450 54 470 52 500 54 C540 56 570 44 600 36 L618 30 C640 38 660 48 690 50 ' +
+  'C720 52 740 40 768 30 L790 22 C810 28 830 40 860 50 C900 64 960 78 1040 88';
 const RIDGE =
   'M0 94 L60 94 C80 94 100 90 118 87 C126 85 134 84 142 85 C156 86 168 82 182 80 C194 78 204 81 214 79 ' +
   'C224 77 232 73 244 72 C256 71 262 74 274 72 C286 70 292 66 304 64 C316 62 326 60 336 54 L362 28 ' +
@@ -76,34 +85,68 @@ const RIDGE =
   'C804 58 812 63 824 64 C836 65 848 61 862 62 C876 64 888 70 902 75 C920 82 936 88 952 92 C968 94 984 94 1000 94';
 // [path, begin (s), duration (s)]: each starts as the point passes it.
 const RIDGE_DETAIL: [string, string, string][] = [
-  ['M90 95 C160 91 220 88 280 85 C320 82 350 80 380 78', '1s', '1.1s'],
-  ['M170 98 C210 96 250 95 290 93', '1.15s', '0.6s'],
-  ['M330 83 C360 77 400 73 430 71 C455 69 470 74 490 76 C505 71 520 63 540 61 C560 62 580 70 600 74 C620 71 640 67 660 70 C690 75 720 80 760 86 C790 90 810 94 830 95 C850 94 862 92 880 92', '1.34s', '1.6s'],
-  ['M362 28 C358 38 352 46 344 56', '1.37s', '0.6s'],
-  ['M418 26 C412 34 406 40 398 49 C393 54 389 56 384 58', '1.42s', '0.6s'],
-  ['M488 6 C484 12 490 18 482 26 C476 32 470 40 458 50', '1.5s', '0.7s'],
-  ['M566 22 C556 30 548 38 534 48', '1.58s', '0.6s'],
-  ['M650 28 C644 36 646 42 636 50', '1.68s', '0.6s'],
+  ['M90 95 C160 91 220 88 280 85 C320 82 350 80 380 78', '1.8s', '1.1s'],
+  ['M170 98 C210 96 250 95 290 93', '1.95s', '0.6s'],
+  ['M330 83 C360 77 400 73 430 71 C455 69 470 74 490 76 C505 71 520 63 540 61 C560 62 580 70 600 74 C620 71 640 67 660 70 C690 75 720 80 760 86 C790 90 810 94 830 95 C850 94 862 92 880 92', '2.14s', '1.6s'],
+  ['M362 28 C358 38 352 46 344 56', '2.17s', '0.6s'],
+  ['M418 26 C412 34 406 40 398 49 C393 54 389 56 384 58', '2.22s', '0.6s'],
+  ['M488 6 C484 12 490 18 482 26 C476 32 470 40 458 50', '2.3s', '0.7s'],
+  ['M566 22 C556 30 548 38 534 48', '2.38s', '0.6s'],
+  ['M650 28 C644 36 646 42 636 50', '2.48s', '0.6s'],
 ];
-const RIDGE_ANIM = { begin: '0.5s', dur: '2.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
+const RIDGE_ANIM = { begin: '1.3s', dur: '2.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
+
+// Each range's fill, closed down to the foot of the box: it hides the lines of the ranges behind it.
+const closed = (d: string) => `${d} L1040 100 L-40 100 Z`;
 
 function Ridge() {
+  const far = { begin: '0.3s', dur: '1.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
+  const mid = { ...far, begin: '0.75s', dur: '1.9s' };
+  // A range and its fill; the fill is uncovered left to right with the line, by a growing clip.
+  const layer = (id: string, d: string, anim: Record<string, string>) => (
+    <>
+      <clipPath id={`ccr-${id}`} className="cc-ridge-clip">
+        <rect x="-40" y="-20" width="0" height="140">
+          <animate attributeName="width" from="0" to="1080" {...anim} />
+        </rect>
+      </clipPath>
+      <path className="cc-ridge-fill" d={closed(d)} clipPath={`url(#ccr-${id})`} mask="url(#ccr-fade)" />
+      <path className="cc-ridge-line" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+        <animate attributeName="stroke-dashoffset" from="1" to="0" {...anim} />
+      </path>
+    </>
+  );
   return (
     <svg className="cc-ridge" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-      <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-        <animate attributeName="stroke-dashoffset" from="1" to="0" {...RIDGE_ANIM} />
-      </path>
-      {RIDGE_DETAIL.map(([d, begin, dur]) => (
-        <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
-        </path>
-      ))}
-      <g className="cc-ridge-dot" opacity="0">
-        <circle r="9" className="cc-ridge-halo" />
-        <circle r="4.5" className="cc-ridge-pt" />
-        <animateMotion path={RIDGE} keyPoints="0;1" {...RIDGE_ANIM} />
-        <set attributeName="opacity" to="1" begin={RIDGE_ANIM.begin} />
-        <animate attributeName="opacity" from="1" to="0" begin="3.1s" dur="0.5s" fill="freeze" />
+      <defs>
+        {/* The fills fade out toward the foot, so the ranges sit on the card with no edge. */}
+        <linearGradient id="ccr-fade-g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0.45" stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <mask id="ccr-fade" maskUnits="userSpaceOnUse" x="-40" y="0" width="1080" height="100">
+          <rect x="-40" y="0" width="1080" height="100" fill="url(#ccr-fade-g)" />
+        </mask>
+      </defs>
+      <g className="cc-ridge-layer cc-ridge-far">{layer('far', RIDGE_FAR, far)}</g>
+      <g className="cc-ridge-layer cc-ridge-mid">{layer('mid', RIDGE_MID, mid)}</g>
+      <g className="cc-ridge-layer cc-ridge-near">
+        {/* The near range sits lowest in the box, so the ranges behind rise over it. */}
+        <g transform="translate(0 34) scale(1 0.66)">
+          {layer('near', RIDGE, RIDGE_ANIM)}
+          {RIDGE_DETAIL.map(([d, begin, dur]) => (
+            <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+              <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
+            </path>
+          ))}
+          <g className="cc-ridge-dot" opacity="0">
+            <circle r="9" className="cc-ridge-halo" />
+            <circle r="4.5" className="cc-ridge-pt" />
+            <animateMotion path={RIDGE} keyPoints="0;1" {...RIDGE_ANIM} />
+            <set attributeName="opacity" to="1" begin={RIDGE_ANIM.begin} />
+            <animate attributeName="opacity" from="1" to="0" begin="3.9s" dur="0.5s" fill="freeze" />
+          </g>
+        </g>
       </g>
     </svg>
   );
@@ -139,6 +182,9 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
       now.y += (target.y - now.y) * 0.1;
       el.style.setProperty('--rx', `${(-now.y * 7).toFixed(2)}deg`);
       el.style.setProperty('--ry', `${(now.x * 9).toFixed(2)}deg`);
+      // The ridge layers shift by depth with the same turn (cn.css).
+      el.style.setProperty('--tx', now.x.toFixed(3));
+      el.style.setProperty('--ty', now.y.toFixed(3));
       raf = Math.abs(target.x - now.x) + Math.abs(target.y - now.y) > 0.001 ? requestAnimationFrame(tick) : 0;
     };
     const onMove = (e: PointerEvent) => {
