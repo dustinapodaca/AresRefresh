@@ -1392,7 +1392,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   right-hand links (owner, 2026-10-16). The menu links have no underline: on hover the text slides 24px right and a rust → comes
   in on its left (260ms; rust since 2026-10-19, owner), sliding back out after; the current page holds that state. The desktop
   bar's items carry no + (owner, 2026-11-13; it was a + that turned into a -) and no rules between
-  them (tried the same day and removed). Each menu's caption slot holds
+  them (tried the same day and removed); 48px between the words (was 36). Each menu's caption slot holds
   two lines, every caption stacked in it, so a longer caption never grows the menu and all three open
   to one height (owner, 2026-11-13).
   While a desktop menu is open, a frosted glass covers the page under the nav (after Figma's
