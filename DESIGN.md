@@ -787,7 +787,7 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
     the phones' glass Ares mark (below; `SvGlassMark mode="desktop"`) comes up in the closed window and
     plays once: a 340px logo on a plate about 470px wide, centered, on a 720 by 560 canvas (not the whole
     window, which bogged down). The page glides to where the window has fully closed and holds there,
-    wheel, touch, and scroll keys blocked, until the mark has played (about 3s; let go after 6s at most),
+    wheel, touch, and scroll keys blocked, until the glass has played (1.8s, the renderer's logo finish; the crisp swap follows as it scrolls on; let go after 6s at most),
     then scrolls on. Fetched once the close is under way; the hold grew from 90vh to 140vh; it fades with
     the scroll on the way back up.
   - Phones (below 768px; owner, 2026-10-25, from a Claude Cowork patch): no nodes. The headline sits

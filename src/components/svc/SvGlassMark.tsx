@@ -43,6 +43,9 @@ const CORNER = 18;
 // How far .sv-glass runs past the window above and below (svc.css).
 const ROOM_Y = 40;
 const DONE = 2.6; // seconds into the sequence: the glass has cleared and the settle waves have died
+// The glass itself is done here (the renderer's logo finish), so the page may move on (SvHero holds it on
+// desktop until then; owner, 2026-11-13: release as soon as the glass is done, not after the crisp swap).
+const GLASS_DONE = 1.8;
 
 export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone' | 'desktop'; onDone?: () => void }) {
   const desk = mode === 'desktop';
@@ -89,11 +92,8 @@ export default function SvGlassMark({ mode = 'phone', onDone }: { mode?: 'phone'
       setShown(true);
       glass.current?.replay();
       setPaused(false);
-      timer = window.setTimeout(() => {
-        setDone(true);
-        // The crisp logo's fade (0.3s) done too, the page may move on (SvHero holds it on desktop).
-        doneTimer = window.setTimeout(() => onDoneRef.current?.(), 350);
-      }, DONE * 1000);
+      timer = window.setTimeout(() => setDone(true), DONE * 1000);
+      doneTimer = window.setTimeout(() => onDoneRef.current?.(), GLASS_DONE * 1000);
     };
     const onScroll = () => {
       if (window.scrollY > 2) start();
