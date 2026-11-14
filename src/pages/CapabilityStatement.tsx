@@ -159,9 +159,8 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
           <Field label={`SAM · to ${SAM_SHORT}`} value="Active" live />
         </dl>
         <div className="cc-foot">
-          {/* The GSA mark and the SBA WOSB mark in white where the drawn chip was, from 600px (owner,
-              2026-11-13); phones keep the chip. */}
-          <span className="cc-chip" aria-hidden="true" />
+          {/* The GSA mark and the SBA WOSB mark in white where the drawn chip was (owner, 2026-11-13);
+              phones show the GSA mark only. */}
           <span className="cc-marks">
             <img className="cc-gsa" src="/images/gsa-mark.webp" alt="GSA" width={30} height={30} decoding="async" />
             <img className="cc-sba" {...responsive('/images/cert-sba-wosb.webp')} alt="SBA WOSB certified" decoding="async" />

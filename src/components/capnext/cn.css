@@ -116,18 +116,9 @@
 .cc-field dd .ds-data[data-live]::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.8); vertical-align: 1px; }
 .cc .ds-copy { width: 22px; height: 22px; flex: 0 0 auto; }
 .cc-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.12); }
-/* A contact chip, drawn: the one warm metal on the card. */
-.cc-chip {
-  width: 36px;
-  height: 27px;
-  border-radius: 5px;
-  background:
-    linear-gradient(90deg, transparent 32%, rgb(0 0 0 / 0.25) 32% 34%, transparent 34% 66%, rgb(0 0 0 / 0.25) 66% 68%, transparent 68%),
-    linear-gradient(0deg, transparent 46%, rgb(0 0 0 / 0.25) 46% 54%, transparent 54%),
-    linear-gradient(135deg, #e9b27f, #bc6f40 55%, #8b4920);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
-}
-.cc-marks { display: none; }
+.cc-marks { display: flex; align-items: center; gap: 18px; }
+.cc-gsa { display: block; width: 30px; height: 30px; filter: grayscale(1) invert(1) contrast(3); opacity: 0.9; }
+.cc-sba { display: none; width: auto; height: 28px; filter: grayscale(1) brightness(0) invert(1); opacity: 0.9; }
 /* From 600px (owner, 2026-11-13): the lockup larger, with a rule between the mark and the wordmark
    like the nav's; no big "Ares Security LLC" under it; the GSA mark in white for the chip. */
 @media (min-width: 600px) {
@@ -137,10 +128,7 @@
   .cc-word { width: 118px; height: 32px; }
   .cc-legal { display: none; }
   .cc-sub { margin-top: 0; }
-  .cc-chip { display: none; }
-  .cc-marks { display: flex; align-items: center; gap: 18px; }
-  .cc-gsa { display: block; width: 30px; height: 30px; filter: grayscale(1) invert(1) contrast(3); opacity: 0.9; }
-  .cc-sba { display: block; width: auto; height: 28px; filter: grayscale(1) brightness(0) invert(1); opacity: 0.9; }
+  .cc-sba { display: block; }
 }
 .cc-certs { font-size: 13px; letter-spacing: 0.06em; color: rgb(255 255 255 / 0.6); }
 

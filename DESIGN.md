@@ -989,8 +989,8 @@ tilt and one fade-up per block (`data-rv`, once).
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
   2026-11-13), then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
-  Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with the GSA mark and the SBA WOSB mark in white
-  (from 600px; owner, 2026-11-13, was the drawn contact chip, which phones keep) and the WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones (unchanged 2026-11-13): the rail card's
+  Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with the GSA mark in white (owner, 2026-11-13, was
+  a drawn contact chip) and, from 600px, the SBA WOSB mark beside it and the WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones (the lockup unchanged 2026-11-13): the rail card's
   lockup (the mark at 26px and "ARES SECURITY LLC" in mono caps, 13px) instead of the wordmark and big
   name, fields two across, more air.
 - **The document:** the site container (the same edges as the nav). Desktop (1100px and up): a sticky
