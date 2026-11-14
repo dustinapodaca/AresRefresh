@@ -1,10 +1,10 @@
 # Options archive
 
-**Live switch (2026-11-13):** `/capability-statement?ridge=both|glow|layers`, the drawing in the hero
-company card (`RIDGES` in `src/pages/CapabilityStatement.tsx`, styles in `src/components/capnext/cn.css`).
-`both` (layers with the alpenglow) is the default while the owner tries it; `glow` and `layers` came first.
-Topographic contours were tried and dropped the same day (commit cc62092). In the gallery spec
-`docs/options-gallery.json`.
+**Live switch (2026-11-13):** `/capability-statement?ridge=sketch|both|glow|layers`, the drawing in the
+hero company card (`RIDGES` in `src/pages/CapabilityStatement.tsx`, styles in
+`src/components/capnext/cn.css`). `sketch` (one range closer to the owner's reference, with the alpenglow)
+is the default while the owner tries it; `layers`, `glow`, and `both` came first. Topographic contours were
+tried and dropped the same day (commit cc62092). In the gallery spec `docs/options-gallery.json`.
 
 **No option switches are live (2026-10-25).** The AI-tells pass's `?card=` (plain, flora, dossier: dossier
 chosen) and `?mono=` font trial (PP Fraktion Mono chosen) were removed the same day. On the dev server a

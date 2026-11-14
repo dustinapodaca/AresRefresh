@@ -138,6 +138,7 @@
 }
 .cc-ridge-line { fill: none; stroke: rgb(255 255 255 / 0.72); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .cc-ridge-detail { stroke: rgb(255 255 255 / 0.5); stroke-width: 2; }
+.cc-sketch-detail { stroke: rgb(255 255 255 / 0.6); stroke-width: 2.2; } /* the reference's inner lines are near the outline's weight */
 /* Depth: the far range faintest, and with the card's turn each layer shifts by its depth, the near one
    most (in the drawing's units). */
 .cc-ridge-far .cc-ridge-line { stroke: rgb(255 255 255 / 0.26); }

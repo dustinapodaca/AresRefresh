@@ -234,16 +234,69 @@ function RidgeGlow() {
   );
 }
 
-// The card's drawing, for the owner to compare at /capability-statement?ridge=both|glow|layers (2026-11-13):
-// both (the layered ranges, then the alpenglow along the near ridge and faintly the middle one), glow (the
-// one-line range and its light), or layers (three ranges in depth, drawn back to front). Both is the default
-// while the owner tries it (owner, 2026-11-13: "combine elements from 1 and 2"). Topographic contours were
-// tried the same day and dropped; in git at cc62092.
-const RIDGES = { both: () => <RidgeLayers glow />, glow: RidgeGlow, layers: () => <RidgeLayers /> } as const;
+// Sketch (owner, 2026-11-13: "closer to the image I attached"): one range at full height in the manner of the
+// owner's one-line mountain reference, drawn fresh: a long flat horizon, low foothills with a second line
+// under them on both sides, five peaks bunched at the center with curved flanks, curved lines down the
+// faces, and a front ridge that dips across the base. The rust point draws the skyline, each inner line
+// draws in as it passes, then the alpenglow sweeps along the ridge and leaves warmth on the summit.
+const SKETCH =
+  'M0 94 H64 C84 94 96 92 112 89 C126 87 132 86 142 86 C152 86 158 84 166 82 C174 80 182 81 190 82 ' +
+  'C202 84 212 80 224 76 C232 74 238 74 246 76 C254 78 262 74 274 70 C286 66 296 66 306 68 ' +
+  'C318 70 330 62 344 54 C356 46 366 38 376 30 L382 27 C388 32 392 36 396 40 C402 36 410 31 420 29 L426 28 ' +
+  'C434 30 440 34 446 36 C458 28 474 16 488 8 C494 12 500 18 506 22 C516 24 526 26 534 30 ' +
+  'C542 26 550 22 558 21 C566 22 574 28 584 34 C594 40 600 42 606 41 C614 38 624 32 634 30 ' +
+  'C646 34 660 40 674 46 C690 52 702 56 716 60 C732 64 746 66 760 64 C772 62 782 62 792 66 ' +
+  'C806 70 818 70 832 72 C852 74 870 78 890 84 C910 89 930 93 950 94 H1000';
+const SKETCH_DETAIL: [string, string, string][] = [
+  ['M72 95 C110 93 150 90 190 89 C230 88 262 86 290 83 C312 81 330 82 352 84', '0.99s', '1.1s'],
+  ['M150 97 C180 96 210 96 236 94', '1.16s', '0.6s'],
+  ['M300 90 C330 86 360 82 392 80 C420 78 446 72 470 66 C486 62 500 66 516 72 C530 78 546 80 560 76 C578 72 596 70 614 72 C636 76 656 80 676 84 C700 88 724 92 748 93 C760 94 768 92 778 90', '1.37s', '1.6s'],
+  ['M382 27 C378 36 372 44 364 54 C360 58 356 62 352 64', '1.46s', '0.6s'],
+  ['M426 28 C420 36 414 42 406 48 C402 52 398 54 394 56', '1.5s', '0.6s'],
+  ['M488 8 C482 14 486 20 478 28 C472 34 466 40 456 48 C452 52 446 54 440 56', '1.57s', '0.8s'],
+  ['M500 18 C506 26 514 34 520 44', '1.58s', '0.5s'],
+  ['M558 21 C550 30 544 38 534 46', '1.65s', '0.6s'],
+  ['M634 30 C628 38 630 44 620 52 C614 56 608 58 600 60', '1.75s', '0.6s'],
+  ['M690 74 C720 72 760 74 800 78 C840 82 880 88 930 94', '1.83s', '1.1s'],
+];
+
+function RidgeSketch() {
+  const draw = { begin: '0.5s', dur: '2.8s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
+  return (
+    <svg className="cc-ridge cc-sketch" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <GlowDefs start="3.2s" />
+      </defs>
+      <path className="cc-ridge-line" d={SKETCH} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+        <animate attributeName="stroke-dashoffset" from="1" to="0" {...draw} />
+      </path>
+      {SKETCH_DETAIL.map(([d, begin, dur]) => (
+        <path key={d} className="cc-ridge-line cc-sketch-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
+          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
+        </path>
+      ))}
+      <GlowOn d={SKETCH} warmFrom="4.2s" />
+      <g className="cc-ridge-dot" opacity="0">
+        <circle r="9" className="cc-ridge-halo" />
+        <circle r="4.5" className="cc-ridge-pt" />
+        <animateMotion path={SKETCH} keyPoints="0;1" {...draw} />
+        <set attributeName="opacity" to="1" begin={draw.begin} />
+        <animate attributeName="opacity" from="1" to="0" begin="3.3s" dur="0.5s" fill="freeze" />
+      </g>
+    </svg>
+  );
+}
+
+// The card's drawing, for the owner to compare at /capability-statement?ridge=sketch|both|glow|layers
+// (2026-11-13): sketch (one full-height range closer to the owner's reference, with the alpenglow), both
+// (the layered ranges with the alpenglow), glow (the earlier one-line range and its light), or layers (three
+// ranges in depth). Sketch is the default while the owner tries it (owner, 2026-11-13). Topographic contours
+// were tried the same day and dropped; in git at cc62092.
+const RIDGES = { sketch: RidgeSketch, both: () => <RidgeLayers glow />, glow: RidgeGlow, layers: () => <RidgeLayers /> } as const;
 function Ridge() {
   const [params] = useSearchParams();
   const asked = params.get('ridge');
-  const R = RIDGES[(asked && asked in RIDGES ? asked : 'both') as keyof typeof RIDGES];
+  const R = RIDGES[(asked && asked in RIDGES ? asked : 'sketch') as keyof typeof RIDGES];
   return <R />;
 }
 

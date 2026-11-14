@@ -11,9 +11,14 @@
       "selector": ".cc",
       "options": [
         {
+          "value": "sketch",
+          "label": "Sketch",
+          "tag": "default",
+          "note": "One full-height range closer to the owner's one-line reference (double foothill lines, curved face lines, a front ridge), drawn by the rust point, then the alpenglow."
+        },
+        {
           "value": "both",
           "label": "Both",
-          "tag": "default",
           "note": "The layered ranges drawn back to front, then the alpenglow sweep along the near ridge (and faintly the middle one), leaving a warm edge on the summit."
         },
         {

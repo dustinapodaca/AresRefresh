@@ -988,8 +988,14 @@ tilt and one fade-up per block (`data-rv`, once).
   corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
-  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of three forms to compare at
-  `?ridge=` (owner, 2026-11-13). **`both` (the default while the owner tries it):** the `layers` below, then
+  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of four forms to compare at
+  `?ridge=` (owner, 2026-11-13). **`sketch` (the default while the owner tries it):** one range at full
+  height in the manner of the owner's one-line mountain reference, drawn fresh: a long flat horizon, low
+  foothills with a second line under them on both sides, five peaks bunched at the center with curved
+  flanks, curved lines down the faces, and a front ridge dipping across the base, the inner lines near the
+  outline's weight (white 60%). The rust point draws the skyline from 0.5s over 2.8s, each inner line
+  drawing in as it passes; then the `glow` light from 3.2s and the summit warmth from 4.2s. No fills or
+  depth. **`both`:** the `layers` below, then
   the `glow` light along the near ridge from 3.8s and, at 45%, along the middle ridge, the warmth on the near
   summit fading in from 4.8s and staying. **`glow` (alpenglow):** the
   one-line range of `layers`' near range drawn by its rust point, then a band of warm light (rust to amber #f1c49a, softly
