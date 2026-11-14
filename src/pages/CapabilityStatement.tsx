@@ -160,7 +160,7 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
         </dl>
         <div className="cc-foot">
           {/* The GSA mark and the SBA WOSB mark in white where the drawn chip was (owner, 2026-11-13);
-              phones show the GSA mark only. */}
+              both on phones too, a step smaller. */}
           <span className="cc-marks">
             <img className="cc-gsa" src="/images/gsa-mark.webp" alt="GSA" width={30} height={30} decoding="async" />
             <img className="cc-sba" {...responsive('/images/cert-sba-wosb.webp')} alt="SBA WOSB certified" decoding="async" />
