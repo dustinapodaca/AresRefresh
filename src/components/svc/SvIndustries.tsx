@@ -95,6 +95,22 @@ export default function SvIndustries() {
         moved = false;
       }
     };
+    // With a mouse or trackpad the row isn't a native scroller (sv-industries.css), so scrolling the
+    // page over it never catches the row and snaps it (owner, 2026-11-13). A clearly sideways swipe
+    // still moves it, then it settles on the nearest card.
+    let settle = 0;
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) * 1.5) return;
+      e.preventDefault();
+      t.scrollLeft += e.deltaX;
+      window.clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        const card = t.querySelector<HTMLElement>('.sv-ind-card');
+        const step = card ? card.offsetWidth + parseFloat(getComputedStyle(t).columnGap || '16') : 1;
+        t.scrollTo({ left: Math.round(t.scrollLeft / step) * step, behavior: 'smooth' });
+      }, 160);
+    };
+    t.addEventListener('wheel', onWheel, { passive: false });
     t.addEventListener('pointerdown', onDown);
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
@@ -104,6 +120,8 @@ export default function SvIndustries() {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
       t.removeEventListener('click', onClick, true);
+      t.removeEventListener('wheel', onWheel);
+      window.clearTimeout(settle);
     };
   }, []);
 

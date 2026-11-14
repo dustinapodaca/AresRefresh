@@ -154,7 +154,8 @@
 .sv-rl-cursor[data-who='oncall'] { color: #e8965f; }
 .sv-rl-cursor[data-who='oncall'] b { color: #ffe2cf; background: rgb(122 56 26 / 0.92); box-shadow: inset 0 0 0 1px rgb(232 150 98 / 0.7), 0 6px 16px rgb(0 0 0 / 0.5); }
 .sv-rl-card[data-live] .sv-rl-cursor[data-who='oncall'] { opacity: 1; }
-.sv-rl-card[data-live][data-step='idle'] .sv-rl-cursor[data-who='oncall'] { opacity: 0; }
+.sv-rl-card[data-live][data-step='idle'] .sv-rl-cursor[data-who='oncall'],
+.sv-rl-card[data-live][data-step='rest'] .sv-rl-cursor[data-who='oncall'] { opacity: 0; } /* gone once the shift is covered, so it never sits on the status line (owner, 2026-11-13) */
 .sv-rl-card[data-step='grab'] .sv-rl-cursor[data-who='oncall'] svg,
 .sv-rl-card[data-step='drag'] .sv-rl-cursor[data-who='oncall'] svg { scale: 0.84; }
 

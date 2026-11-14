@@ -72,6 +72,12 @@
 .sv-ind-track::-webkit-scrollbar { display: none; }
 .sv-ind-track[data-dragging='true'] { cursor: grabbing; scroll-snap-type: none; }
 .sv-ind-track[data-dragging='true'] .sv-ind-link { pointer-events: none; }
+/* Mouse and trackpad (owner, 2026-11-13): not a native scroller, so a vertical scroll over the row
+   passes to the page instead of catching the row and snapping it; the arrows, a drag, and a sideways
+   swipe move it (SvIndustries), each settling on a card. Touch keeps the native swipe and snap. */
+@media (hover: hover) and (pointer: fine) {
+  .sv-ind-track { overflow-x: hidden; scroll-snap-type: none; }
+}
 
 /* Each industry: an open column, no box (AI-tells pass, owner 2026-10-25; after Dropbox's and
    Beside's industry rows on Mobbin). The photo with the site's photo edge and nothing over it, then

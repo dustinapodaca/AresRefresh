@@ -77,10 +77,12 @@ export default function SvRelief() {
       const cell = card.querySelector('.sv-rl-cell[data-out]')!;
       const post = center(cell);
       const cr = cell.getBoundingClientRect();
+      // Once the shift is covered it stays on it and fades out (owner, 2026-11-13; sv-relief.css): it
+      // used to move 64px under the shift, where its label covered the status line at the card's foot.
       setPts({
         slot,
         post,
-        rest: { x: post.x + cr.width * 0.9, y: post.y + 64 },
+        rest: post,
         start: { x: c.width + 40, y: c.height * 0.92 },
         w: cr.width,
         h: cr.height,

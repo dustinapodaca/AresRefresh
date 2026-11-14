@@ -825,7 +825,10 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
   centered between the header and the text (at least 20px and 24px clear), and each piece waits at its start until its card is
   swiped in (most of it on screen), then runs; it pauses when swiped away and picks up where it was.
 - **02 The sites we protect.** (`divisions`): the six industries in a row running off the right edge
-  (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes.
+  (swipe, wheel, drag, arrows, a progress bar); on desktop the row drifts left as the page passes. With a mouse or
+  trackpad the row is not a native scroller (owner, 2026-11-13: scrolling the page over it caught the row and snapped
+  it): a vertical scroll passes to the page, and the arrows, a drag, or a clearly sideways swipe move it, each
+  settling on a card; touch keeps the native swipe and snap.
   Redrawn 2026-10-25 (owner: the AI-tells pass; after the industry rows of Dropbox and Beside on
   Mobbin), the same at every width: each industry an open column with no box and nothing over the
   photo. The photo (4:3, 4px corners, the hairline photo edge, the stock grade), then on the black:
@@ -876,7 +879,8 @@ head: the page reads as one scene like Home. Section ids `sv-services`, `divisio
 - **04 The relief schedule.** An example week of day, swing, and night posts on a canvas card; in view
   it loops one moment: Thursday night's officer is out (red), an "On-call" cursor picks the shift up
   from this week's on-call slot and it locks in green ("Covered the same shift from this week's on-call
-  schedule"), a quieter "Supervisor" cursor drifting over the week. Finished and still by default.
+  schedule"), then the On-call cursor fades out where it is, so it never sits on the status line (owner,
+  2026-11-13); a quieter "Supervisor" cursor drifting over the week. Finished and still by default.
 - **The close** (`areas`): "Armed and unarmed officers in **Colorado Springs**, **Denver**, and
   **Pueblo**." with the call link and Request a Quote, then Denver in front of the Front Range dissolving
   into the black with the three cities as large links over its foot (each arrow stays beside the last
