@@ -137,6 +137,9 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
         <div className="cc-head">
           <span className="cc-logo" aria-hidden="true">
             <span className="cc-mark" />
+            {/* From 600px: the mark and the wordmark larger, a rule between them like the nav's, and
+                no big name under them (owner, 2026-11-13). Phones keep their lockup. */}
+            <span className="cc-divider" />
             <span className="cc-word" />
             {/* Phones: the rail card's lockup, the name in mono caps beside the mark (owner, 2026-10-23). */}
             <span className="cc-tag ds-data">Ares Security LLC</span>
@@ -156,7 +159,9 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
           <Field label={`SAM · to ${SAM_SHORT}`} value="Active" live />
         </dl>
         <div className="cc-foot">
+          {/* The GSA mark in white where the drawn chip was, from 600px (owner, 2026-11-13); phones keep the chip. */}
           <span className="cc-chip" aria-hidden="true" />
+          <img className="cc-gsa" src="/images/gsa-mark.webp" alt="GSA" width={30} height={30} decoding="async" />
           <span className="ds-data cc-certs">WOSB250470 · WBE2303571</span>
         </div>
       </div>

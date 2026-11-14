@@ -985,10 +985,12 @@ tilt and one fade-up per block (`data-rv`, once).
   (hidden on phones; on phones the headline sits lower, about 200px under the nav). Beside it (under it
   below 1024px) **the company card**: the CR80 badge ratio on desktop, the site's black glass (wash,
   edge, top line, 22px blur at 1.65, soft shadow; every line 4.96:1 or better over the sunset), 4px
-  corners, no glow or sheen; the logo and wordmark with "Capability statement · 2026", "Ares Security
-  LLC" and its line, then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
-  Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with a drawn contact chip and the
-  WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones: the rail card's
+  corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
+  (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
+  "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
+  2026-11-13), then fields: UEI, CAGE code, GSA MAS (each with a copy button), NAICS · PSC,
+  Set-aside (WOSB eligible), SAM (Active, with its date), and a foot with the GSA mark in white (from 600px; owner,
+  2026-11-13, was the drawn contact chip, which phones keep) and the WOSB and WBE numbers. It turns toward the cursor (up to 7 to 9 degrees). Phones (unchanged 2026-11-13): the rail card's
   lockup (the mark at 26px and "ARES SECURITY LLC" in mono caps, 13px) instead of the wordmark and big
   name, fields two across, more air.
 - **The document:** the site container (the same edges as the nav). Desktop (1100px and up): a sticky
