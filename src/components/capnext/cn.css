@@ -143,8 +143,8 @@
 .cc-ridge-far .cc-ridge-line { stroke: rgb(255 255 255 / 0.26); }
 .cc-ridge-mid .cc-ridge-line { stroke: rgb(255 255 255 / 0.44); }
 /* Each range's fill hides the ranges behind it, so they stack instead of tangling. */
-.cc-ridge-fill { stroke: none; fill: rgb(0 0 0 / 0.8); }
-.cc-ridge-far .cc-ridge-fill { fill: rgb(0 0 0 / 0.4); }
+.cc-ridge-fill { stroke: none; fill: rgb(0 0 0 / 0.62); } /* turned down a little (owner, 2026-11-13; was 0.8) */
+.cc-ridge-far .cc-ridge-fill { fill: rgb(0 0 0 / 0.3); }
 .cc-ridge-layer { transform: translate(calc(var(--tx, 0) * var(--d) * 1px), calc(var(--ty, 0) * var(--d) * 0.25px)); }
 .cc-ridge-far { --d: 3; }
 .cc-ridge-mid { --d: 12; }
