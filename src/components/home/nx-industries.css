@@ -236,8 +236,33 @@
   align-items: center;
   gap: 24px;
 }
-.nx-ind-seg { display: flex; gap: 6px; flex: 0 0 auto; }
-.nx-ind-seg span { width: 44px; height: 2px; background: rgb(255 255 255 / 0.16); overflow: hidden; }
+/* The 44px targets keep the bars where the 2px row sat. */
+.nx-ind-seg { display: flex; gap: 6px; flex: 0 0 auto; margin-block: -21px; }
+/* Each segment is a button to its step: a 44px tall target around the 2px bar, which thickens on
+   hover (owner, 2026-11-19). */
+.nx-ind-seg button {
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.nx-ind-seg span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgb(255 255 255 / 0.16);
+  overflow: hidden;
+  transition: height 180ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nx-ind-seg button:hover span { height: 6px; background: rgb(255 255 255 / 0.28); }
+}
+.nx-ind-seg button:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 2px; }
+.nx-ind-seg button:focus-visible span { height: 6px; }
 .nx-ind-seg i { display: block; width: 100%; height: 100%; background: var(--ds-fg); transform: scaleX(0); transform-origin: left; }
 
 /* words() keeps each word's trailing space inside its inline-block, where it collapses; hold the

@@ -126,9 +126,11 @@ export default function Industries() {
       tl.eventCallback('onUpdate', paint);
       paint();
 
-      // A name is a way to its step: the scroll glides to where that industry holds the scene.
+      // A name or a segment is a way to its step: the scroll glides to where that industry holds
+      // the scene.
+      const foot = scene.querySelector<HTMLElement>('.nx-ind-seg')!;
       const onClick = (ev: Event) => {
-        const a = (ev.target as HTMLElement).closest<HTMLElement>('.nx-ind-name');
+        const a = (ev.target as HTMLElement).closest<HTMLElement>('.nx-ind-name, .nx-ind-seg button');
         if (!a) return;
         ev.preventDefault();
         const i = Number(a.dataset.i);
@@ -137,7 +139,11 @@ export default function Industries() {
         scrollToY(y);
       };
       list.addEventListener('click', onClick);
-      return () => list.removeEventListener('click', onClick);
+      foot.addEventListener('click', onClick);
+      return () => {
+        list.removeEventListener('click', onClick);
+        foot.removeEventListener('click', onClick);
+      };
     });
     return () => mm.revert();
   });
@@ -190,12 +196,14 @@ export default function Industries() {
             ))}
           </div>
         </div>
-        <div className="nx-ind-foot nx-edge" aria-hidden="true">
+        <div className="nx-ind-foot nx-edge">
           <div className="nx-ind-seg">
-            {INDUSTRY_PAGES.map((ind) => (
-              <span key={ind.slug}>
-                <i />
-              </span>
+            {INDUSTRY_PAGES.map((ind, i) => (
+              <button key={ind.slug} type="button" data-i={i} aria-label={`Go to ${ind.name}`}>
+                <span>
+                  <i />
+                </span>
+              </button>
             ))}
           </div>
         </div>
