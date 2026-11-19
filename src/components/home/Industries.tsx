@@ -110,6 +110,7 @@ export default function Industries() {
             b.inert = i !== now;
           });
           names.forEach((el, i) => el.classList.toggle('is-on', i === now));
+          segs.forEach((el, i) => el.parentElement!.parentElement!.classList.toggle('is-on', i === now));
         }
       };
 

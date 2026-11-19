@@ -555,7 +555,8 @@ and `nx-*.css` (class prefix `nx-`).
   to send us", and ends on "Open the <industry> page →" (the per-industry Request a Quote was
   removed, owner 2026-10-22); a
   counter and six segments along the foot. Clicking a name glides to its step; so does clicking a
-  segment (each a 44px target whose 2px bar thickens to 6px on hover; owner, 2026-11-19). Phones and tablets
+  segment (each a 44px target whose 2px bar thickens to 6px on hover; the current one rust, those
+  passed white; owner, 2026-11-19). Phones and tablets
   (below 1024px; owner, 2026-10-22; "All services & how a post starts →" to /services under the lead,
   above the cards (under the lead on desktop too since 2026-10-23), from a bundle: the stacked list ran about 6,400px on a phone):
   a swipe deck (`IndustryDeck.tsx` on Swiper's cards effect since 2026-10-23, owner, after
