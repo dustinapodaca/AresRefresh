@@ -646,7 +646,7 @@ and `nx-*.css` (class prefix `nx-`).
   answer). Phones: the photo (4:5) with the copy beneath; where motion runs (owner, 2026-10-23) it opens as it
   comes up the screen, no pin: from a centered window 40% wide to the full width, settling from 1.25, the
   rust edges riding out and fading.
-- **06 Contact:** "Request a quote, or call us." across the width, then the phone as the largest
+- **06 Contact:** "Request a quote, or call us." across the width on one line from 768px (owner, 2026-11-20: `min(8vw, 112px)`; it ran two lines at up to 150px on wide screens), then the phone as the largest
   object on the page (the data face, `min(11.6vw, 180px)`, a tel: link under a "Call us" node bar
   with "For urgent procurement timelines or active contracts."): its digits read in and a rust
   line draws in as its underline, an arrow at its end; the email and base in mono beneath. Then,

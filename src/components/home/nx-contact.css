@@ -8,6 +8,11 @@
 }
 .nx-ct-inner { position: relative; z-index: 1; }
 .nx-ct-title { font-size: clamp(48px, 8.6vw, 156px); max-width: 12em; }
+/* One line across the page from 768px (owner, 2026-11-20: two lines at up to 156px read as too much
+   big type at once). The line is about 10.5em wide, so 8vw and 112px keep it inside the container. */
+@media (min-width: 768px) {
+  .nx-contact .nx-ct-title { font-size: min(8vw, 112px); max-width: none; white-space: nowrap; }
+}
 
 .nx-ct-call { margin-top: clamp(56px, 8vw, 120px); }
 
