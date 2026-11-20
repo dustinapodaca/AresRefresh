@@ -14,6 +14,8 @@
 
 # IndexNow ping on successful production deploys. Self-gates to a
 # no-op until aressecurity.co is the primary domain - see the plugin.
+# Production is DreamHost, where scripts/indexnow.mjs does this (run by deploy/dreamhost.sh,
+# 2026-11-20); Netlify only builds previews, so this plugin never sends anything.
 [[plugins]]
   package = "/netlify/plugins/indexnow"
 

@@ -1346,3 +1346,16 @@ previous page's. New framing copy (N):
   don't answer? Ask us about your site."; articles "Have a post to cover in Colorado? Tell us about
   the site."
 - Article JSON-LD adds `articleSection` (the topic) and `timeRequired`.
+
+## IndexNow on DreamHost deploys, and the alt check (2026-11-20)
+- IndexNow: `scripts/indexnow.mjs` with the key in `public/4b3cfb663ed43ec86a292853614c77d3.txt`, run by
+  `deploy/dreamhost.sh` (compare before the upload, send after the live checks; a dry run prints the
+  list). Pages are sent when new or when their sitemap lastmod differs from the live sitemap's; `llms.txt`
+  and the PDFs when their SHA-256 differs from the live copy. Never fails a deploy. `npm run indexnow`
+  with `--dry-run`, `--all`, `--urls`. After the first deploy: `npm run indexnow -- --all` once, then
+  Bing Webmaster Tools > IndexNow shows the submissions within about a day.
+- Alt text: Bing flagged an `<img>` without `alt` on Home. None found: the 41 built pages (918 images),
+  and the running Home, Services, About, Insights, and Capability Statement at 1440 and 390 after
+  scrolling, all carry `alt`; the flag is from an older crawl. `check:seo` now fails the build on any
+  `<img>` without an `alt` attribute (`alt=""` passes), so the deploy stops before one ships. Owner: run
+  Site Scan in Bing Webmaster Tools, or wait for the next crawl.

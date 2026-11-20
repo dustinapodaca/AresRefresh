@@ -87,11 +87,19 @@ RSYNC=(rsync -rlptvz --delete --human-readable
   --filter 'P /.well-known/***'
   --exclude '.dh-*' --exclude '.dreamhost*')
 
+# IndexNow (2026-11-20): the URLs whose content differs from the live site are worked out now,
+# against the live sitemap and files before the upload, and sent once the upload is checked
+# (scripts/indexnow.mjs). It never stops a deploy.
 if [ "$DRY" = 1 ]; then
   echo "== Dry run: what would change in $DH_SSH:$DH_DIR (nothing is changed)"
   "${RSYNC[@]}" --dry-run dist/ "$DH_SSH:$DH_DIR/"
+  echo "== IndexNow (dry run: nothing is sent)"
+  node scripts/indexnow.mjs --prepare --dry-run || true
   exit 0
 fi
+
+echo "== IndexNow: what changed"
+node scripts/indexnow.mjs --prepare || true
 
 stamp=$(date +%Y%m%d-%H%M%S)
 echo "== Backing up $DH_DIR to $DH_DIR-backup-$stamp on the server"
@@ -107,3 +115,6 @@ for u in / /services /about /capability-statement /contact /industries /nope; do
   printf '%-22s %s\n' "$u" "$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "https://aressecurity.co$u" || echo failed)"
 done
 echo "Expected: 200 for pages, 301 for /industries, 404 for /nope. Backup: $DH_DIR-backup-$stamp"
+
+echo "== IndexNow: sending"
+node scripts/indexnow.mjs --send-pending || true

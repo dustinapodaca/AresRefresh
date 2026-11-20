@@ -429,7 +429,11 @@ Each page must feel unique to its content; the owner pushes back on reusing Home
 
 ### After launch
 - Verify in Google Search Console and Bing Webmaster Tools; submit the sitemap (Bing also
-  feeds ChatGPT search). IndexNow pings run from the Netlify plugin on production deploys.
+  feeds ChatGPT search). IndexNow runs on every DreamHost deploy (2026-11-20): `deploy/dreamhost.sh` compares `dist/` with
+  the live sitemap and files before the upload and sends only what changed after it
+  (`scripts/indexnow.mjs`; key `public/4b3cfb663ed43ec86a292853614c77d3.txt`). By hand:
+  `npm run indexnow -- --dry-run`, `--all`, or `--urls /a,/b`. The Netlify plugin never ran (Netlify
+  only builds previews).
   Then link Search Console to GA4 and start the monthly review (`docs/analytics.md`).
 
 ### Housekeeping

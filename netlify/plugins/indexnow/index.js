@@ -1,4 +1,8 @@
 /**
+ * Not the live path (2026-11-20): production is DreamHost, where scripts/indexnow.mjs sends only
+ * the changed URLs after each deploy (deploy/dreamhost.sh). Netlify only builds previews, so this
+ * plugin's production gate never opens. Kept in case production ever moves to Netlify.
+ *
  * Pings IndexNow (Bing, Yandex, Seznam, Naver) with every sitemap URL after
  * a successful PRODUCTION deploy.
  *
