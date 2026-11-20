@@ -1301,7 +1301,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   in ink, then (2026-10-26) a Sources list of external links where the article has them, related
   links, its questions in the shared questions block with FAQPage JSON-LD where it has them, and more
   insights. A refreshed article shows "Updated <date>" in the meta row (its dateModified). Article
-  JSON-LD.
+  JSON-LD. A sample document (2026-11-19, the escort post order PDF) sits in the column as its preview
+  image like a photo (4px corners, the hairline edge), a mono caption (what, pages, format), and the
+  download as a quiet link with an arrow (`.ds-mk-doc`).
 - **Jobs by city (`/careers/<city>`):** open roles on hairlines with Apply (email with the
   role and city), licensing handled, why people stay (two by two) with the Indeed rating,
   other cities.

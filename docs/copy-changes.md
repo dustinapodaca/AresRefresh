@@ -1305,3 +1305,31 @@ previous page's. New framing copy (N):
   certain federal facilities), Offutt AFB's REAL ID notice (installations deny non-compliant ID;
   passports and other DODM 5200.08v3 documents accepted), NIST's FIPS 201-3 page, CISA's Risk
   Management Process page. Recheck if DHS changes REAL ID enforcement.
+
+## Insights: five-article refresh and the sample post order (draft, 2026-11-19)
+- From Search Console (Oct 21 to Nov 17): the cost article sits around position 7 with no clicks, the
+  post order article around 28 ("example" searches around 70), and the construction article's title
+  promised a checklist the page didn't have. All five refreshed show "Updated November 19, 2026".
+- **Cost** (`security-guard-cost-colorado`): retitled "How much do security guards cost in Colorado in
+  2027?" Adds the 2027 minimums (Colorado $15.71, Denver $19.84; from news reports of the CDLE and
+  Denver Labor announcements), the 24/7 floor at Denver's 2027 minimum (more than $3,300 a week), and a
+  Federal posts section (GSA eLibrary price lists, the Service Contract Act wage determination for the
+  place of performance, GSA's guidance on wage determinations on schedule orders). Six questions.
+- **Post order** (`what-is-a-post-order`): retitled "What a security post order is, with an example."
+  Adds what "post" means and general orders, a sample outline for a gate post, an example entry, paper
+  or electronic post orders, and a full sample post order as a PDF (below). Five questions.
+- **Armed or unarmed**: the armed section now gives each city's rules (Denver's armed endorsement,
+  Colorado Springs' endorsement and firearm course, Pueblo's armed license), from the licensing
+  article's sources. One answer replaced, one Denver question added.
+- **Construction** (`construction-site-security`): retitled "Construction site security: a checklist
+  for every phase of a build." Adds an 11-item checklist, a section on building on a military
+  installation or federal site (DoDM 5200.08 Vol. 3), and an Ares paragraph. Five questions.
+- **GSA** (`buying-security-through-gsa`): adds how to find schedule holders (eLibrary SIN 561612,
+  eBuy) and wage determinations on security orders. Two questions added.
+- **Sample post order** (`public/files/Ares-Security-Sample-Escort-Post-Order.pdf`, 4 pages, built in
+  the Ares Proposals design): a contractor escort post on a military installation, written from
+  general escort practice. No real installation, building, ratio, names, or contract; site values are
+  yellow blanks. Shown in the post order and escort articles as a new `doc` block (a preview image,
+  `public/images/insights/sample-post-order-preview.webp`, in the column like a photo, a mono caption,
+  and the download link). The escort article shows "Updated November 19, 2026". Listed in llms.txt.
+- Recheck the 2027 minimum wages against the CDLE and Denver Labor pages once they post them.

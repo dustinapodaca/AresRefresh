@@ -7,7 +7,33 @@ import type { Faq } from './roles';
 export type Block =
   | { p: string }
   | { list: string[] }
-  | { h: string };
+  | { h: string }
+  | { doc: DocLink };
+
+/** A downloadable document shown in the article as a preview image (2026-11-19): a sample the
+ *  reader can open, such as the escort post order in public/files. */
+export type DocLink = {
+  href: string;
+  image: string;
+  width: number;
+  height: number;
+  alt: string;
+  /** The link's words, e.g. "Download the sample post order". */
+  label: string;
+  /** Mono caption under the preview: what it is, pages, format, size. */
+  meta: string;
+};
+
+/** The sample escort post order (2026-11-19), built in the Ares Proposals design. */
+const SAMPLE_POST_ORDER: DocLink = {
+  href: '/files/Ares-Security-Sample-Escort-Post-Order.pdf',
+  image: '/images/insights/sample-post-order-preview.webp',
+  width: 1472,
+  height: 963,
+  alt: 'The cover and the On Shift page of the Ares sample post order for a contractor escort post',
+  label: 'Download the sample post order (PDF)',
+  meta: 'Contractor escort post order · 4 pages · PDF',
+};
 
 export type Insight = {
   slug: string;
@@ -32,6 +58,8 @@ export type Insight = {
 
 // The refresh that added questions, sources, and related articles to every insight.
 const U = { updated: '2026-10-26', updatedLabel: 'October 26, 2026' };
+// The refresh of the five shortest or least-clicked articles (owner, 2026-11-19).
+const U2 = { updated: '2026-11-19', updatedLabel: 'November 19, 2026' };
 
 // Primary sources, shared across articles.
 const SRC = {
@@ -43,6 +71,11 @@ const SRC = {
   wageDeterminations: { label: 'Service Contract Act wage determinations (SAM.gov)', url: 'https://sam.gov/content/wage-determinations' },
   coWage: { label: '2026 COMPS Order poster: Colorado minimum wage (CDLE)', url: 'https://cdle.colorado.gov/sites/cdle/files/2026_comps_order_poster_english_%5Baccessible%5D.pdf' },
   blsState: { label: 'May 2025 state occupational employment and wage estimates (BLS)', url: 'https://www.bls.gov/oes/2025/may/oessrcst.htm' },
+  // 2027 rates announced in August 2026 (CDLE for the state, the City and County of Denver for Denver);
+  // Denver Labor's own page did not list 2027 yet on 2026-11-19. Swap for the official pages when posted.
+  coWage2027: { label: 'Colorado minimum wage to rise to $15.71 in 2027 (ColoradoBiz)', url: 'https://coloradobiz.com/colorado-minimum-wage-rise-15-71-2027/' },
+  denverWage2027: { label: 'Denver minimum wage rising to $19.84 in 2027 (Denver Gazette)', url: 'https://www.denvergazette.com/?p=572677' },
+  gsaScls: { label: 'Service Contract Labor Standards and GSA Schedule Orders (GSA)', url: 'https://www.gsa.gov/system/files/Service_Contract_Labor_Standards_and_GSA_Schedule_Orders.pdf' },
   denverWage: { label: 'Denver citywide minimum wage (Denver Labor)', url: 'https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage' },
   denverGuards: { label: 'Denver security guard licensing FAQ (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services/Frequently-asked-questions-security-guards' },
   denverSecurity: { label: 'Denver security services licenses (City and County of Denver)', url: 'https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Business-Licensing/Business-licenses/Security-services' },
@@ -134,7 +167,7 @@ export const INSIGHTS: Insight[] = [
     related: [
       { label: 'Access Control Officers', to: '/services/access-control' },
       { label: 'Escorts for contractors on military bases: how they work', to: '/insights/contractor-escorts-military-bases' },
-      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
+      { label: 'What a security post order is, with an example', to: '/insights/what-is-a-post-order' },
       { label: 'Armed or unarmed security: how to decide', to: '/insights/armed-or-unarmed-security' },
       { label: 'Critical & High-Liability Sites', to: '/industries/critical-infrastructure' },
     ],
@@ -227,6 +260,7 @@ export const INSIGHTS: Insight[] = [
     category: 'Operations',
     date: '2026-10-26',
     dateLabel: 'October 26, 2026',
+    ...U2,
     summary: 'Contractors who cannot get unescorted access to a base, or to a restricted area inside it, can often still do the work with an escort. Who may escort, what an escort does on a shift, and what to line up before a crew mobilizes.',
     body: [
       { p: 'Contractors working on a military installation need two things before the work starts: access to the installation, and permission to be where the work is. Workers who cannot get unescorted access, or who need to enter a restricted area they are not authorized for, can often still do the work with an escort. On a construction or maintenance job, that can mean escorted crews every day, and someone has to provide the escorts.' },
@@ -260,6 +294,8 @@ export const INSIGHTS: Insight[] = [
         'Who the escorts report to on site, and who they call when something is outside the rules.',
         'Relief for call-outs, so a missing escort does not stop the crew.',
       ] },
+      { p: 'Those answers become the escort post order. Ours is a sample of one, with the installation’s values left blank: who may enter, how items are inspected and kept in custody, when the escort stops work, and what gets reported.' },
+      { doc: SAMPLE_POST_ORDER },
       { h: 'Colorado installations' },
       { p: 'Colorado’s Front Range has a dense cluster of military installations, among them Peterson, Schriever, and Buckley Space Force Bases, Cheyenne Mountain Space Force Station, Fort Carson, and the U.S. Air Force Academy. Each sets its own access and escort rules within DoD and service policy, so the escort plan starts with the installation’s security office.' },
       { h: 'Ares on military installations' },
@@ -351,20 +387,25 @@ export const INSIGHTS: Insight[] = [
     // rates (the audit's note). Every Ares fact is already on the site: the site walk before
     // anything is signed, the scoped proposal, training on the post, on-call relief, the GSA
     // schedule, and the city licenses. The rest is general, checkable practice.
+    // Refreshed 2026-11-19 (owner): 2027 minimum wages (Colorado $15.71, Denver $19.84, from August 2026 reports; Denver Labor's page did not show 2027 yet), a short answer up top for the 'how much' searches it ranks for (position ~7, no clicks), the city firearm endorsements, and federal price transparency (eLibrary price lists; GSA's SCLS guidance for orders).
     slug: 'security-guard-cost-colorado',
-    title: 'How much do security guards cost in Colorado?',
+    title: 'How much do security guards cost in Colorado in 2027?',
     category: 'Buying security',
     date: '2026-10-19',
     dateLabel: 'October 19, 2026',
-    ...U,
-    summary: 'The price of a security officer comes down to a handful of choices: the hours, armed or unarmed, a post or a patrol, and what the site asks of the officer. What drives each one, and how to compare quotes.',
+    ...U2,
+    summary: 'Officer pay starts at the minimum wage where the post is: $15.71 an hour in Colorado and $19.84 in Denver from January 1, 2027. What a 24/7 post costs in pay alone, what else is in the rate, and what drives the price up or down.',
     body: [
       { p: 'The price of security comes down to a handful of choices: how many hours the post is staffed, whether the officer is armed, whether the site needs a fixed post or a patrol, and what the site asks of the officer. Two posts with the same title can differ on most of them, which is why we quote each site rather than publish rates.' },
+      { p: 'The short answer is that officer pay starts at the minimum wage for the city where the post is. From January 1, 2027, that is $15.71 an hour across Colorado and $19.84 in Denver. The rate a security company bills is higher, because it also covers payroll taxes, insurance, training, supervision, and the relief that keeps the post covered.' },
       { h: 'Hours are the biggest factor' },
       { p: 'A post is billed by the hour it is staffed, so the schedule sets most of the cost. A post staffed around the clock is 168 hours a week, the work of more than four full-time officers. Holidays, overnight shifts, and overtime can raise the cost of the same hours.' },
       { p: 'Before asking for a quote, decide which hours actually need an officer. Many sites need a full post only at night and on weekends.' },
+      { h: 'Wage rules set a floor' },
+      { p: 'Officer pay is most of the price, and the law sets its floor. In 2026 Colorado’s minimum wage is $15.16 an hour and Denver’s is $19.29. On January 1, 2027, they rise to $15.71 and $19.84, so the same post costs more inside Denver. At Denver’s 2027 minimum, the officer pay alone for a post staffed around the clock is more than $3,300 a week, before payroll taxes, insurance, overtime, training, and supervision.' },
+      { p: 'Market pay sits above the minimum. The Bureau of Labor Statistics’ May 2025 estimates put the average Colorado security guard at $45,870 a year, about $22 an hour, against $20.42 an hour nationally. Minimum wages change every January 1, so check the current figure for the city where your site is.' },
       { h: 'Armed or unarmed' },
-      { p: 'Armed officers cost more. They need firearms training and current qualifications, and they carry more liability. Most sites are well served by unarmed officers; some contracts, insurers, and risks call for armed ones.' },
+      { p: 'Armed officers cost more. They need firearms training and current qualifications, and they carry more liability. In Denver and Colorado Springs an armed officer also needs a firearm endorsement on their city license, and Pueblo issues a separate armed license. Most sites are well served by unarmed officers; some contracts, insurers, and risks call for armed ones.' },
       { h: 'A fixed post or a patrol' },
       { p: 'A fixed post keeps one officer on site for the whole shift. A mobile patrol visits on a schedule and checks the site, so its cost is shared with other stops on the route. A site that needs eyes on it a few times a night may not need a full post.' },
       { h: 'What the post asks of the officer' },
@@ -375,13 +416,8 @@ export const INSIGHTS: Insight[] = [
         'Reports, logs, and checkpoints the client wants to review.',
       ] },
       { p: 'Each one adds skill or time, and so cost. Each one is also a reason the cheapest officer may not be the right one for the post.' },
-      { h: 'Wage rules set a floor' },
-      // Figures added 2026-10-26: the 2026 minimum wages from CDLE and Denver Labor, and the BLS
-      // May 2025 state estimate for security guards (33-9032; confirmed in the BLS API on import:
-      // Colorado $45,870 a year, $22.05 an hour; national $20.42 an hour). Recheck every January 1.
-      { p: 'Officer pay is most of the price, and the law sets its floor. In 2026 Colorado’s minimum wage is $15.16 an hour, and Denver’s is $19.29, so the same post costs more inside Denver. At Denver’s minimum, the officer pay alone for a post staffed around the clock is more than $3,200 a week, before payroll taxes, insurance, overtime, training, and supervision.' },
-      { p: 'Market pay sits above the minimum. The Bureau of Labor Statistics’ May 2025 estimates put the average Colorado security guard at $45,870 a year, about $22 an hour, against $20.42 an hour nationally. Federal service contracts usually fall under the Service Contract Act, which sets the wages and benefits for each area from the Department of Labor’s wage determination.' },
-      { p: 'Minimum wages change every January 1, so check the current figure for the city where your site is.' },
+      { h: 'Federal posts' },
+      { p: 'On federal work, prices are easier to see. Every GSA Schedule holder’s price list is public on GSA eLibrary. Federal service contracts usually fall under the Service Contract Act, so on a security order the agency puts the Department of Labor wage determination for the place of performance into the order, and the contractor pays at least those wages and benefits. Schedule prices are nationwide, and GSA tells agencies to seek a price reduction when the work is in an area with lower rates.' },
       { h: 'Relief and supervision belong in the price' },
       { p: 'A low hourly rate can leave out what keeps a post covered: relief officers for call-outs and vacations, supervision, and training on the site. Ask what happens when an officer calls out, and whether that cover is part of the rate. At Ares, every contract has on-call scheduling behind it, and a member of our leadership trains each officer on the post before the first shift.' },
       { h: 'How to compare quotes' },
@@ -394,15 +430,16 @@ export const INSIGHTS: Insight[] = [
       { p: 'We walk every site before anything is signed, then send a scoped proposal for that site. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
     ],
     faq: [
-      { q: 'What is the minimum wage for a security guard in Denver?', a: 'Denver’s citywide minimum wage, $19.29 an hour in 2026, applies to security officers working in Denver. The statewide minimum is $15.16. Both change every January 1.' },
+      { q: 'How much does a security guard cost in Colorado?', a: 'It depends on the hours, armed or unarmed coverage, and the duties, so most companies quote each site. Officer pay starts at the minimum wage where the post is, $15.71 an hour in Colorado and $19.84 in Denver from January 1, 2027, and the billed rate also covers payroll taxes, insurance, training, supervision, and relief.' },
+      { q: 'What is the minimum wage for a security guard in Denver?', a: 'Denver’s citywide minimum wage applies to security officers working in Denver: $19.29 an hour in 2026, rising to $19.84 on January 1, 2027. The statewide minimum rises from $15.16 to $15.71.' },
+      { q: 'How much more does armed security cost?', a: 'There is no set premium, but armed officers cost more than unarmed ones. They need firearms training, current qualifications, and in Denver and Colorado Springs a firearm endorsement on their city license, and they carry more liability. Ask vendors to quote the same post both ways.' },
       { q: 'How much do security guards make in Colorado?', a: 'The Bureau of Labor Statistics’ May 2025 estimates put the average Colorado security guard at $45,870 a year, about $22 an hour, against $20.42 an hour nationally.' },
-      { q: 'Why doesn’t Ares publish security guard rates?', a: 'Two posts with the same title can differ in hours, armed or unarmed coverage, and duties, so we walk each site and quote it. Agencies can also order through our GSA Schedule, which carries pre-negotiated ceiling prices.' },
       { q: 'How many officers does a 24/7 security post take?', a: 'A post staffed around the clock is 168 hours a week, the work of more than four full-time officers, before relief for call-outs and vacations.' },
-      { q: 'Do federal security contracts set officer wages?', a: 'Usually. Federal service contracts generally fall under the Service Contract Act, which sets wages and benefits for each area from the Department of Labor’s wage determination.' },
+      { q: 'Do federal security contracts set officer wages?', a: 'Usually. Federal service contracts generally fall under the Service Contract Act, which sets wages and benefits for each area from the Department of Labor’s wage determination. On a GSA Schedule order, the agency names the wage determination for the place of performance.' },
     ],
     // Each source backs a claim in the article (2026-10-26): the state and Denver minimum wages, the
     // BLS pay estimates, the Service Contract Act wage determinations, and GSA's schedule prices.
-    sources: [SRC.coWage, SRC.denverWage, SRC.blsState, SRC.wageDeterminations, SRC.far8404],
+    sources: [SRC.coWage, SRC.coWage2027, SRC.denverWage, SRC.denverWage2027, SRC.blsState, SRC.wageDeterminations, SRC.gsaScls, SRC.elibrary, SRC.denverGuards],
     related: [
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
       { label: 'Commercial & Retail', to: '/industries/commercial-property' },
@@ -456,15 +493,16 @@ export const INSIGHTS: Insight[] = [
       { label: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
       { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
       { label: 'Teaming & subcontracting', to: '/teaming' },
-      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
+      { label: 'What a security post order is, with an example', to: '/insights/what-is-a-post-order' },
     ],
   },
   {
+    // Refreshed 2026-11-19 (owner): each city's firearm rules spelled out, from the licensing article's sources (Denver's guard licensing FAQ, the Colorado Springs Contract Security Agency License page, the Pueblo PD application).
     slug: 'armed-or-unarmed-security',
     title: 'Armed or unarmed security: how to decide.',
     category: 'Buying security',
     ...D,
-    ...U,
+    ...U2,
     summary: 'Most sites need unarmed officers. Some need armed ones. The difference is what the officer may have to stop, and what the contract, the insurer, and the law require.',
     body: [
       { p: 'Most sites need unarmed officers. Some need armed ones. The difference is not how serious a site is. It is what the officer may have to stop, and what the contract, the insurer, and the law require.' },
@@ -482,65 +520,102 @@ export const INSIGHTS: Insight[] = [
       { h: 'Weigh the cost of getting it wrong' },
       { p: 'Armed officers cost more and carry more liability. An armed officer where a visible unarmed presence would do adds cost without adding much protection. An unarmed officer where the risk calls for an armed one leaves a gap.' },
       { h: 'What armed officers need' },
-      { p: 'Colorado has no statewide security license, so the city sets the rules. Ask any vendor for its license in the city where your site is, and confirm that firearms qualifications are current at the time of post.' },
+      { p: 'Colorado has no statewide security license, so the city where the post is sets the rules for armed officers:' },
+      { list: [
+        'Denver: a firearm endorsement on the officer’s security guard license. It takes at least five hours of classroom instruction and three hours of live fire from a POST- or NRA-certified instructor, with a range score of at least 80% within the last six months, and it renews every year.',
+        'Colorado Springs: a firearm endorsement on the officer’s Private Security Officer license, backed by a firearm safety and familiarization course. Concealed carry takes its own endorsement, and any discharge must be reported by the end of the next business day.',
+        'Pueblo: an armed license from the Pueblo Police Department, which adds a firearms training certificate to the basic training.',
+      ] },
+      { p: 'Ask any vendor for its license in the city where your site is, and confirm that each armed officer’s endorsement and firearms qualification are current at the time of post.' },
       { h: 'If you are not sure' },
       { p: 'Walk the site with the security company before anything is signed. A good vendor will tell you when unarmed coverage is enough.' },
     ],
     faq: [
       { q: 'Do most sites need armed security?', a: 'No. Lobbies, offices, most retail, and construction sites are usually well served by trained, visible unarmed officers. Armed coverage is usually considered for cash handling, high-value or regulated goods, isolated night posts, or a history of violence.' },
       { q: 'Who decides whether a post must be armed?', a: 'Often the contract, the lease, or the insurer. Some federal posts specify armed officers, and some properties and insurers prohibit firearms on site. Either requirement settles the question.' },
-      { q: 'What does an armed security officer need in Colorado?', a: 'It depends on the city. Denver and Colorado Springs each require a firearm endorsement on the officer’s individual license, backed by a firearms training certificate. Pueblo issues an armed guard license that requires firearms training on top of basic guard training.' },
+      { q: 'What does an armed security officer need in Colorado?', a: 'It depends on the city. Denver requires a firearm endorsement on the officer’s license, with at least five hours of classroom instruction, three hours of live fire, and a range score of at least 80%, renewed every year. Colorado Springs requires a firearm endorsement backed by a firearm safety and familiarization course. Pueblo issues an armed license that adds a firearms training certificate to the basic training.' },
+      { q: 'Do armed security guards need a separate license in Denver?', a: 'Yes. Beyond the individual security guard license, an armed officer in Denver needs a firearm endorsement, which takes classroom and live-fire training and a qualifying range score, and renews every year.' },
     ],
     sources: [SRC.denverGuards, SRC.cosAgency, SRC.puebloGuard],
     related: [
       { label: 'Armed Security Officers', to: '/services/armed-security-officers' },
       { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
       { label: 'Security guard licensing in Colorado', to: '/insights/colorado-security-licensing' },
-      { label: 'How much do security guards cost in Colorado?', to: '/insights/security-guard-cost-colorado' },
+      { label: 'How much do security guards cost in Colorado in 2027?', to: '/insights/security-guard-cost-colorado' },
     ],
   },
   {
+    // Refreshed 2026-11-19 (owner): it was the thinnest article (about 200 words) and ranks around 28 for 'post orders', 'what does post security mean', and 'security guard post orders example' (around 70). Added what 'post' means, general orders, a sample outline, an example entry, and paper versus electronic post orders.
     slug: 'what-is-a-post-order',
-    title: 'What a post order is, and why every site needs one.',
+    title: 'What a security post order is, with an example.',
     category: 'Operations',
     ...D,
-    ...U,
-    summary: 'A post order is the written instruction set for one security post. It is how a site gets the same coverage on every shift, whoever is standing the post.',
+    ...U2,
+    summary: 'A post order is the written instruction set for one security post. What “post” means, what a good post order covers, a sample outline with an example entry, and how to keep it current on paper or on a device.',
     body: [
       { p: 'A post order is the written instruction set for one security post. It is how a site gets the same coverage on every shift, whoever is standing the post.' },
+      { h: 'What “post” means in security' },
+      { p: 'A post is the place an officer is assigned to work from: a gate, a lobby desk, a loading dock, a control room, or a patrol route. Post orders are the instructions for that one post. Many sites also have general orders, the rules that apply to every officer at every post, such as conduct, uniforms, and how to report an emergency. Post orders add what is specific to the post.' },
       { h: 'What a good post order covers' },
       { list: [
         'The post itself: location, hours, and whether it is fixed or patrol.',
+        'Its purpose: what the post is there to protect or control.',
         'Duties, in the order they happen on a shift.',
         'Access rules: who may enter, what they must show, and what to do when someone does not qualify.',
         'Patrol routes and checkpoints, and how each is logged.',
         'Who to call, in order, for each kind of problem.',
         'What to write down, and where the reports go.',
+        'When the order was last revised, and who approved it.',
       ] },
+      { h: 'A sample post order outline' },
+      { p: 'Here is how those sections read for a single gate post. The details are an example; every site’s are its own.' },
+      { list: [
+        'Post and hours: North gate, fixed post, weekdays 6:00 a.m. to 6:00 p.m.',
+        'Purpose: control vehicle and pedestrian entry to the north lot and the loading dock.',
+        'Start of shift: open the gate at 6:00, test the radio, read the pass-down log, and check today’s delivery list.',
+        'Access: badge holders enter; visitors sign in and wait at the gate for their host.',
+        'Deliveries: match the driver and company to the delivery list, send trucks to dock 3, and log the time in and out.',
+        'Patrol: walk the north fence line at 10:00 and 2:00 and log each checkpoint.',
+        'Contacts, in order: 911 for any emergency, then the site supervisor, then the facilities manager, then the security company’s on-call supervisor.',
+        'Reports: log every entry and denial; write an incident report before the end of the shift.',
+        'End of shift: brief the relief officer, write the pass-down log, and lock the gate at 6:00.',
+        'Last revised: the date, and who approved it.',
+      ] },
+      { h: 'An example entry' },
+      { p: 'Each duty should say exactly what the officer does, in order. For example, a visitor without an appointment: do not admit them. Ask for their name, company, and who they are there to see. Call the host at the number on the contact list. If the host approves, sign the visitor in, issue a visitor pass, and log the time and the host’s name. If the host does not answer, the visitor waits outside the gate, and the officer notes it in the log.' },
+      { h: 'A full sample post order' },
+      { p: 'Here is a complete one, the kind of post order Ares writes for a contractor escort post on a military installation: post information, who does what, start of shift, entry and inspection, custody of items, stop-work, emergencies, reporting, and the officer’s acknowledgment. Values that differ from site to site, such as the escort ratio and the entry point, are left blank in yellow. It is a sample, not the post order for any real site.' },
+      { doc: SAMPLE_POST_ORDER },
       { h: 'Who writes it' },
       { p: 'The security company writes it with the client. The client knows the site and its rules. The security company knows how to turn them into instructions an officer can follow at three in the morning.' },
-      { p: 'At Ares we write the post orders for every post and train each officer on them, on the post, before the first shift.' },
+      { h: 'Paper or electronic post orders' },
+      { p: 'Post orders used to live in a binder at the post. Many sites now keep them in a guard management app or a shared document on the officer’s device, which makes it easier to push a change to every shift at once, add photos and maps, and record that each officer has read the latest version. Either way the rule is the same: one current version, at the post, that every officer has read. Keep a printed copy as a backup for when a device or the network fails.' },
       { h: 'Keep it current' },
       { p: 'A post order is only as good as its last update. Change it when gates, hours, tenants, or contacts change, and retrain the officers who stand the post.' },
+      { p: 'At Ares we write the post orders for every post with the client, and a member of our leadership trains each officer on them, on the post, before the first shift.' },
     ],
     faq: [
-      { q: 'What is a security post order?', a: 'The written instruction set for one security post: its location and hours, the duties in order, access rules, patrol routes and checkpoints, who to call for each kind of problem, and what to report.' },
+      { q: 'What is a security post order?', a: 'The written instruction set for one security post: its location and hours, its purpose, the duties in order, access rules, patrol routes and checkpoints, who to call for each kind of problem, and what to report.' },
+      { q: 'What does “post” mean in security?', a: 'A post is the place an officer is assigned to work from, such as a gate, a lobby desk, a loading dock, or a patrol route. Post orders are the instructions for that one post; general orders apply to every post at a site.' },
+      { q: 'What is the difference between general orders and post orders?', a: 'General orders apply to every officer at every post, such as conduct, uniforms, and emergency reporting. Post orders add what is specific to one post: its hours, duties, access rules, and contacts.' },
       { q: 'Who writes post orders?', a: 'The security company writes them with the client. The client knows the site and its rules; the security company turns them into instructions an officer can follow on any shift.' },
-      { q: 'How often should post orders be updated?', a: 'Whenever gates, hours, tenants, or contacts change, with the officers who stand the post retrained on the change.' },
+      { q: 'How often should post orders be updated?', a: 'Whenever gates, hours, tenants, or contacts change, with the officers who stand the post retrained on the change. Each version should show when it was revised and who approved it.' },
     ],
     related: [
       { label: 'Unarmed Security Officers', to: '/services/unarmed-security-officers' },
       { label: 'Access Control Officers', to: '/services/access-control' },
       { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
+      { label: 'What an access control officer does, and when a site needs one', to: '/insights/what-does-an-access-control-officer-do' },
     ],
   },
   {
+    // Refreshed 2026-11-19 (owner): its search title promised a checklist the page did not have. Added the checklist and building on a military installation or federal site (DoDM 5200.08 Vol. 3, as in the escort article), with Ares' facts as on the site.
     slug: 'construction-site-security',
-    title: 'Construction site security: what to cover during a build.',
+    title: 'Construction site security: a checklist for every phase of a build.',
     category: 'Operations',
     ...D,
-    ...U,
-    summary: 'An active build is open in ways a finished building is not. What to cover at the gate, on the perimeter, and after hours, and how coverage should change as the site does.',
+    ...U2,
+    summary: 'An active build is open in ways a finished building is not. A checklist for the gate, the perimeter, and after hours, how coverage should change as the site does, and what changes on a military installation or federal site.',
     body: [
       { p: 'An active build is open in ways a finished building is not. Fences move, gates change, and equipment and materials sit on the ground overnight. Most theft and trespass happen in the hours nobody is there.' },
       { h: 'The gate' },
@@ -549,33 +624,65 @@ export const INSIGHTS: Insight[] = [
       { p: 'Rounds on a set schedule catch cut fences, open gates, and damage before they become losses. Each checkpoint should be logged with a time.' },
       { h: 'After hours' },
       { p: 'Sites that close at night need either an officer on post or a patrol that checks the site on a schedule and responds when an alarm trips. Many builds use both at different phases.' },
+      { h: 'A construction site security checklist' },
+      { list: [
+        'One controlled entry for people and one for deliveries, each logged.',
+        'A current list of who may be on site, updated when trades come and go.',
+        'A delivery schedule the gate can check trucks against.',
+        'Lighting on the gate, the laydown yard, and tool storage.',
+        'Equipment keys locked away, and machines disabled or blocked in at night.',
+        'Copper, wire, tools, and fuel stored out of sight or under watch.',
+        'Perimeter checkpoints, logged with a time on every round.',
+        'After-hours coverage: an officer on post, a patrol on a schedule, or both.',
+        'Alarms or cameras, with a named person who responds when one trips.',
+        'Post orders that say who to call, in order, for a break-in, an injury, or a fire.',
+        'A date to review coverage at each change of phase.',
+      ] },
       { h: 'Change coverage as the site changes' },
       { p: 'A build at excavation needs different coverage than a build at fit-out. Revisit the post orders and staffing whenever gates, hours, or the value on site change.' },
+      { h: 'Building on a military installation or federal site' },
+      { p: 'Federal construction adds access rules of its own. Every worker needs the installation’s pass before the first day, and restricted areas inside a base have their own entry rules. Workers who do not meet them may enter only as the installation allows, often under escort. On a busy job that can mean escorts every shift, and many general contractors staff escorts and gate control as a security post so the trades keep working. On a federal contract, a small-business security subcontractor can also count toward the prime’s subcontracting goals.' },
+      { p: 'Ares is licensed for armed and unarmed security in Colorado Springs, Denver, and Pueblo. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
     ],
     faq: [
+      { q: 'What should a construction site security checklist include?', a: 'A controlled gate with a log, a current list of who may be on site, a delivery schedule, lighting, locked equipment keys, secured materials, logged perimeter rounds, after-hours coverage, alarms with someone to respond, post orders with a call list, and a review of coverage at each phase.' },
       { q: 'When does construction site theft usually happen?', a: 'Most theft and trespass on a build happen after hours, when nobody is on site. That is when an officer on post or a scheduled patrol matters most.' },
       { q: 'Does a construction site need a guard or a patrol?', a: 'It depends on the phase and the value on site. A staffed gate controls who enters during work hours; after hours, a site needs an officer on post or a patrol that checks it on a schedule and responds to alarms. Many builds use both at different phases.' },
       { q: 'What should a construction gate officer log?', a: 'Every person, vehicle, and delivery that enters, checked against a list, with the time.' },
+      { q: 'Do construction workers need an escort on a military base?', a: 'Workers without unescorted access to the installation, or to a restricted area inside it, may enter only as the installation allows, often under escort. Many contractors staff escorts as a security post.' },
     ],
+    sources: [{ label: 'DoDM 5200.08, Volume 3: Physical Security Program: Access to DoD Installations', url: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/520008_vol3.pdf' }],
     related: [
       { label: 'Construction, Industrial & Logistics', to: '/industries/construction-industrial' },
       { label: 'Mobile Patrol', to: '/services/mobile-patrol' },
-      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
+      { label: 'What a security post order is, with an example', to: '/insights/what-is-a-post-order' },
+      { label: 'Escorts for contractors on military bases: how they work', to: '/insights/contractor-escorts-military-bases' },
+      { label: 'What prime contractors look for in a small-business security subcontractor', to: '/insights/what-primes-look-for-security-subcontractor' },
     ],
   },
   {
+    // Refreshed 2026-11-19 (owner): ranks around 11. Added how to find schedule holders on eLibrary by SIN, and how Service Contract Labor Standards wage determinations work on schedule orders (GSA's SCLS guidance).
     slug: 'buying-security-through-gsa',
     title: 'How agencies can buy security services through a GSA Schedule.',
     category: 'Buying security',
     ...D,
-    ...U,
-    summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated ceiling prices through streamlined procedures. How it works, and how to check a vendor.',
+    ...U2,
+    summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated ceiling prices through streamlined procedures. How ordering works, how to find schedule holders in Colorado, how wage determinations apply, and how to check a vendor.',
     body: [
       { p: 'The GSA Multiple Award Schedule (MAS) is a set of long-term, government-wide contracts with pre-negotiated ceiling prices. Security guard and patrol services sit under SIN 561612.' },
       { h: 'How ordering works' },
       { p: 'Agencies place orders against a vendor’s schedule contract using the ordering procedures in FAR subpart 8.4, often by sending a request for quotes to schedule holders through GSA eBuy. There is no need to open a new full and open competition, and agencies can still ask for a price reduction on a specific order.' },
       { h: 'Set-asides' },
       { p: 'Agencies may set aside orders under the schedule for small businesses, including women-owned small businesses, at their discretion.' },
+      { h: 'How to find schedule holders' },
+      { list: [
+        'Search GSA eLibrary for SIN 561612 to list every contractor on it, with each one’s city and state.',
+        'Open a contractor’s page for its socioeconomic status, contract period, and price list.',
+        'Send a request for quotes through GSA eBuy to the schedule holders you choose, or set the order aside for small businesses.',
+      ] },
+      { h: 'Wage determinations on security orders' },
+      { p: 'Security services fall under the Service Contract Labor Standards, and the Department of Labor’s wage determinations are built into every schedule contract that offers services. When an agency places a security order, its ordering contracting officer identifies the place of performance and names the wage determination for that location in the order, and the contractor pays at least those wages and benefits. Wage determinations differ by area, so a post in Denver and a post in Pueblo can carry different minimums.' },
+      { p: 'Schedule prices are nationwide. GSA tells agencies to seek a price reduction when the work is in an area with lower wage rates, and after the annual wage determination update a contractor may ask for an order price adjustment, at the ordering contracting officer’s discretion.' },
       { h: 'How to check a vendor' },
       { list: [
         'Look up the contract number on GSA eLibrary to confirm the schedule and SIN.',
@@ -589,8 +696,10 @@ export const INSIGHTS: Insight[] = [
       { q: 'Which GSA Schedule SIN covers security guard services?', a: 'SIN 561612 under the GSA Multiple Award Schedule covers security guard and patrol services.' },
       { q: 'Does an agency need full and open competition to order from a GSA Schedule?', a: 'No. Orders follow the procedures in FAR subpart 8.4, often through a request for quotes sent to schedule holders on GSA eBuy, and agencies can still ask for a price reduction on a specific order.' },
       { q: 'Can GSA Schedule orders be set aside for small businesses?', a: 'Yes. Agencies may set aside orders under the schedule for small businesses, including women-owned small businesses, at their discretion.' },
+      { q: 'How do I find GSA Schedule security contractors in Colorado?', a: 'Search GSA eLibrary for SIN 561612. The list shows each contractor’s city and state, and each contractor’s page shows its socioeconomic status, contract period, and price list.' },
+      { q: 'Do Service Contract Act wages apply to GSA Schedule security orders?', a: 'Yes. Security services are covered by the Service Contract Labor Standards. The ordering contracting officer names the wage determination for the place of performance in the order, and the contractor must pay at least those wages and benefits.' },
     ],
-    sources: [SRC.far84, SRC.elibrary, SRC.sam],
+    sources: [SRC.far84, SRC.elibrary, SRC.gsaScls, SRC.wageDeterminations, SRC.sam],
     related: [
       { label: 'Government & Defense', to: '/industries/government-defense' },
       { label: 'Capability Statement', to: '/capability-statement' },

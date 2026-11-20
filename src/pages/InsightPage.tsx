@@ -55,6 +55,19 @@ export default function InsightPage() {
               <h2 key={i}>{b.h}</h2>
             ) : 'list' in b ? (
               <ul key={i}>{b.list.map((li) => <li key={li}>{li}</li>)}</ul>
+            ) : 'doc' in b ? (
+              // A sample document (2026-11-19): its preview inside the column like a photo (4px
+              // corners, the hairline edge), a mono caption, and the download as a quiet link.
+              <figure key={i} className="ds-mk-doc">
+                <a href={b.doc.href} className="ds-mk-doc-frame" aria-label={b.doc.label}>
+                  <img src={b.doc.image} width={b.doc.width} height={b.doc.height} alt={b.doc.alt} loading="lazy" decoding="async" />
+                </a>
+                <figcaption className="ds-caption">{b.doc.meta}</figcaption>
+                <a href={b.doc.href} className="ds-link ds-mk-doc-link">
+                  {b.doc.label}
+                  <Arrow size={14} />
+                </a>
+              </figure>
             ) : (
               <p key={i}>{b.p}</p>
             ),

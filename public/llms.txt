@@ -53,10 +53,10 @@ Key facts, each checkable on the linked pages:
 - [What prime contractors look for in a small-business security subcontractor](https://aressecurity.co/insights/what-primes-look-for-security-subcontractor)
 - [Escorts for contractors on military bases: how they work](https://aressecurity.co/insights/contractor-escorts-military-bases)
 - [How to choose a security company in Colorado](https://aressecurity.co/insights/how-to-choose-a-security-company-colorado)
-- [How much do security guards cost in Colorado?](https://aressecurity.co/insights/security-guard-cost-colorado)
+- [How much do security guards cost in Colorado in 2027?](https://aressecurity.co/insights/security-guard-cost-colorado)
 - [Who covers the post when an officer calls out?](https://aressecurity.co/insights/relief-surge-coverage)
 - [Armed or unarmed security: how to decide](https://aressecurity.co/insights/armed-or-unarmed-security)
-- [What is a security post order?](https://aressecurity.co/insights/what-is-a-post-order)
+- [What a security post order is, with an example](https://aressecurity.co/insights/what-is-a-post-order)
 - [Construction site security checklist](https://aressecurity.co/insights/construction-site-security)
 - [Buying security through a GSA Schedule](https://aressecurity.co/insights/buying-security-through-gsa)
 - [Security guard licensing in Colorado: what each city requires](https://aressecurity.co/insights/colorado-security-licensing)
@@ -71,6 +71,7 @@ Key facts, each checkable on the linked pages:
 ## Optional
 
 - [Capability statement (PDF)](https://aressecurity.co/files/Ares-Security-Capability-Statement-2026.pdf)
+- [Sample post order, contractor escort post (PDF)](https://aressecurity.co/files/Ares-Security-Sample-Escort-Post-Order.pdf): A 4-page example of an escort post order on a military installation; site values left blank.
 - [Privacy policy](https://aressecurity.co/privacy)
 - [Terms of use](https://aressecurity.co/terms)
 - [Accessibility statement](https://aressecurity.co/accessibility)
