@@ -1132,10 +1132,9 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
 - **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
   the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the
   plate wide (16:9; 16:11 on phones) on the dot grid with its caption in mono. The drawing wipes in
-  once, left to right (1100ms), where motion runs. Desktop (1200px and up): the article runs the full
-  container (owner, 2026-11-19: it stopped at about 1100px and left the right of the page black), the
-  plate 21:9 across the left column, the text at its 46rem measure; an "On this page"
-  column at the container's right edge beside the headline, plate, and text, sticky, on a hairline-strong track,
+  once, left to right (1100ms), where motion runs. Desktop (1200px and up): the article (46rem) and
+  an "On this page" column (15rem) centered together in the page (owner, 2026-11-19: they sat to the
+  left), the list beside the headline, plate, and text, sticky, on a hairline-strong track,
   the section in view in ink with a rust tick (the policies' list); below 1200px the same list
   folds under the plate (a details row with the count). A 1px rust line under the nav shows how
   far through the page the reader is (scroll-driven CSS; none where unsupported). Then Sources,

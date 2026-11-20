@@ -169,14 +169,7 @@
 .ds-in-toc-fold + .ds-mk-article-body { border-top: 0; padding-top: 0; margin-top: 28px; }
 
 @media (min-width: 1200px) {
-  /* The full container (owner, 2026-11-19: it stopped at about 1100px and left the right of the
-     page black): the headline and plate run the left column, the text keeps its 46rem measure, and
-     On this page sits at the container's right edge. */
-  .ds-in-article { max-width: calc(var(--ds-max) + 2 * var(--ds-gutter)); display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: clamp(64px, 6vw, 96px); align-content: start; }
-  .ds-in-head, .ds-in-plate { max-width: none; }
-  .ds-in-head .ds-display-lg { max-width: 18em; }
-  .ds-in-plate-frame { aspect-ratio: 21 / 9; }
-  .ds-in-main { max-width: 46rem; }
+  .ds-in-article { max-width: calc(46rem + 64px + 15rem + 2 * var(--ds-gutter)); display: grid; grid-template-columns: minmax(0, 46rem) 15rem; column-gap: 64px; align-content: start; justify-content: center; }
   /* The side column runs beside the headline, the plate, and the text. */
   .ds-in-grid { display: contents; }
   .ds-in-head { grid-column: 1; grid-row: 1; }
