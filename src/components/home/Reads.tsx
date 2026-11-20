@@ -16,13 +16,14 @@ import './nx-reads.css';
 // rows (a rule, the label, "View all" at the right) on Mobbin. Motion: the list's top rule draws left
 // to right as it comes up, scrubbed; drawn and still everywhere else. Reworked 2026-11-20 (owner):
 // the rule moved from above the heading to the top of the list (no rule between sections), the
-// heading and line stacked on the left, larger plates, cost / armed or unarmed / choosing, and the
-// "All articles" link after the list on phones. Shown at /?reading=strip, the default (Reading.tsx).
+// heading and line stacked on the left, larger plates, and the "All articles" link after the list on
+// phones. The four other forms that were compared at /?reading= were removed the same day (owner);
+// they are in git tag home-reading-options-archive.
 
-// The three a buyer asks first: cost, armed or unarmed, and how to choose a company (owner,
-// 2026-11-20; the escort guide was third, but it speaks only to federal buyers and the prime block
-// below covers them). Change the slugs here; any missing slug is skipped.
-const PICKS = ['security-guard-cost-colorado', 'armed-or-unarmed-security', 'how-to-choose-a-security-company-colorado'];
+// The three a buyer reaches for at this point of Home, ending on the escort guide, which hands off
+// to the prime contractors block below it (the handoff's picks; owner, 2026-11-20, back after a
+// day on cost / armed or unarmed / choosing). Change the slugs here; any missing slug is skipped.
+const PICKS = ['how-to-choose-a-security-company-colorado', 'security-guard-cost-colorado', 'contractor-escorts-military-bases'];
 
 export default function Reads() {
   const ref = useRef<HTMLElement>(null);

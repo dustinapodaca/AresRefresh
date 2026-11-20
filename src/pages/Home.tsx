@@ -3,10 +3,10 @@ import Seo from '../seo/Seo';
 import Hero from '../components/home/Hero';
 import Record from '../components/home/Record';
 import Industries from '../components/home/Industries';
+import Reads from '../components/home/Reads';
 import Prime from '../components/home/Prime';
 import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
-import Reading from '../components/home/Reading';
 import Careers from '../components/home/Careers';
 import Contact from '../components/home/Contact';
 import { destroyEngine, loadEngine } from '../components/home/engine';
@@ -27,7 +27,7 @@ export default function Home() {
       <Hero />
       <Record />
       <Industries />
-      <Reading />
+      <Reads />
       <Prime />
       <Quality />
       <Coverage />

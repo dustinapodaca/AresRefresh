@@ -1,12 +1,5 @@
 # Options archive
 
-**Live switch (2026-11-20):** `/?reading=cards|list|feature|questions|strip`, "Questions buyers ask.", a new Home
-section between 02 Industries and For prime contractors (moved up the same day, owner) that links to Insights (owner, 2026-11-20, from Mobbin).
-`strip` is the default (owner, 2026-11-20): the Cowork handoff (HANDOFF-home-insights-strip.md: `Reads.tsx`,
-`nx-reads.css`, id `insights`) with five changes (list rule, stacked head, 160px plates, cost / armed or
-unarmed / choosing, phone link after the list). The others: `cards`, `list`, `feature`, `questions`. Each form is a whole version, desktop and phone
-(`src/components/home/Reading.tsx`, `nx-reading.css`). In the gallery (`docs/options-gallery.json`).
-
 **Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
 Insights index (phones only, below 768px; `rowcard` in `src/pages/Insights.tsx`, `data-rowcard` rules in
 `src/components/insights/insights.css`). `band` (a 3:1 strip across the card's top) is the default (owner,
@@ -79,6 +72,10 @@ here and in git.
 | `/home-next` | Resend-style Home (black, dark frosted glass, seven beats) | tag `home-resend-option`; `src/pages/HomeNext.tsx`, `src/home-next.css` | `noindex`, not in the sitemap. The Dossier Home stays the default. |
 
 ## Tags of replaced sections
+
+- `home-reading-options-archive` (2026-11-20): Home's "Questions buyers ask." in five forms at `/?reading=`
+  (cards, list, feature, questions, strip). The owner kept `strip` (`Reads.tsx`); `Reading.tsx` and
+  `nx-reading.css` held the other four.
 
 - `services-program-option`: the Services section "A security program, not a headcount." (three
   parts, the relief roster row, the systems tags) and the four stages' earlier copy, before the

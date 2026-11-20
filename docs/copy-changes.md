@@ -1385,3 +1385,6 @@ previous page's. New framing copy (N):
   coverage, and licensing in Colorado, for when you are still comparing." The strip now uses the same
   heading and line (owner, 2026-11-20), replacing "Guides for buyers." and "Cost, licensing, and how a post
   runs in Colorado, written by the people who staff them."
+- Same day (owner): the strip is the only form (the other four removed); its three are the handoff's again:
+  How to choose a security company in Colorado; How much do security guards cost in Colorado in 2027?;
+  Escorts for contractors on military bases: how they work.

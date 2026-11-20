@@ -589,8 +589,8 @@ and `nx-*.css` (class prefix `nx-`).
   beside or above the same brief.
 - **Questions buyers ask** (owner, 2026-11-20; between 02 Industries and For prime contractors; first
   placed before 05, moved up the same day: too low): a quiet way into Insights for buyers not ready to
-  call, not a numbered section: no Statement headline, pin, or scene. **`strip` is the default (owner,
-  2026-11-20)**, from a Cowork handoff and reworked the same day (`Reads.tsx`, `nx-reads.css`, id
+  call, not a numbered section: no Statement headline, pin, or scene. From a Cowork handoff (owner,
+  2026-11-20) and reworked the same day (`Reads.tsx`, `nx-reads.css`, id
   `insights`): a `beat` under the industries, a small head (the heading "Questions buyers ask." in Inter
   Tight 600 at 24 to 32px over its line in ink muted on the left, "All 11 articles →" at the right, level
   with the line's foot; the count follows the articles), then the list's own hairline-strong top rule,
@@ -599,14 +599,11 @@ and `nx-*.css` (class prefix `nx-`).
   rule between sections), and three articles in a row, each its plate (`InsightArt` small, 160px, 16:10,
   the card surface and hairline edge) beside topic, reading time, and title, an arrow that nudges rust on
   hover (the plate's lines brighten). Tablets: the plate over the title as a 3:1 band. Phones: stacked
-  rows with a 104px plate, then "All 11 articles →" after them. Picks (`PICKS`): cost, armed or unarmed,
-  choosing a company. Nothing below it (the prime block opens on its own beat). After Linear's "More
-  news" and the header rows of Squarespace and Rox. The other four forms stay at `/?reading=`
-  (`Reading.tsx`, id `reading`, the heading at display-lg with the word read-in): `cards`, three cards
-  (drawing, topic, reading time, title; a swipe row on phones; after Rox, Chronicle, Instrument);
-  `list`, the heading on the left and four ruled rows with summaries, no drawings (after Dovetail,
-  monday.com); `feature`, one article large and two smaller (after Greptile, Figma); `questions`, four
-  buyer questions set large, the drawing following the one pointed at (after Maze, Mailchimp).
+  rows with a 104px plate, then "All 11 articles →" after them. Picks (`PICKS`): choosing a company, cost,
+  escorts (the last hands off to the prime block). Nothing below it (the prime block opens on its own beat). After Linear's "More
+  news" and the header rows of Squarespace and Rox. Four other forms
+  compared at `/?reading=` (cards, list, feature, questions) were removed the same day (owner); git tag
+  `home-reading-options-archive`.
 - **For prime contractors:** the copy (the two-tone line and "Teaming & subcontracting →") beside
   cards joined by wires, no panel around them: Prime contractor (Needs posts covered under its
   contract) to Ares Security (SBA WOSB WOSB250470, WBENC WBE2303571) to three posts
