@@ -1138,10 +1138,11 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   topic, date, and reading time, the title in Inter Tight 600, the summary, "Read the article →");
   the rest are ruled rows: the plate, the title and summary, topic and date and reading time in a
   column, the arrow. Phones (below 768px; owner, 2026-11-19: easier to tell apart) put each row in a
-  card like the featured one (the card surface with the glass edge, 4px corners, 16px padding, 12px
-  between cards), keeping the row's compact layout and sizes: the plate (104px) beside the title, the
-  summary and meta under them. Two bigger plates to compare at `?rowcard=` (owner, 2026-11-19): `band`
-  (a 3:1 strip of the plate across the card's top) and `side` (the plate beside the title at 150px). Hover
+  card like the featured one (the card surface with the glass edge, 4px corners, 12px between cards):
+  a 3:1 strip of the plate across the card's top over a hairline (`band`, the owner's pick, 2026-11-19:
+  bigger than the 104px plate, smaller than the full 16:9), then the title, summary, and meta at the
+  rows' sizes. The others stay at `?rowcard=`: `compact` (the 104px plate beside the title) and `side`
+  (150px beside the title). Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
 - **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
   the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the

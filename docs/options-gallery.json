@@ -78,13 +78,13 @@
         {
           "value": "compact",
           "label": "Compact",
-          "tag": "default",
           "note": "The row's own layout in a card: a 104px drawing beside the title, the summary and meta under them."
         },
         {
           "value": "band",
           "label": "Band",
-          "note": "A short strip of the drawing across the card's top (3:1, about 116px tall at 390), then the title, summary, and meta."
+          "note": "The default (owner, 2026-11-19): a short strip of the drawing across the card's top (3:1, about 116px tall at 390), then the title, summary, and meta.",
+          "tag": "default"
         },
         {
           "value": "side",

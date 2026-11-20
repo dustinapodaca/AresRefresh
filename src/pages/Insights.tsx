@@ -80,11 +80,12 @@ export default function Insights() {
   const askedHero = ready ? params.get('hero') : null;
   const hero: HeroKey = (HERO_OPTIONS as readonly string[]).includes(askedHero ?? '') ? (askedHero as HeroKey) : 'topics';
   const [query, setQuery] = useState('');
-  // The phone cards' plate size, two forms for the owner to compare at /insights?rowcard=band|side
-  // (owner, 2026-11-19: "the drawing a tad bigger but not as big as it was"). `compact` (the
-  // 104px plate beside the title) stays the default until the owner picks. Phones only (below 768px).
+  // The phone cards' plate size, two forms for the owner to compare at /insights?rowcard=compact|band|side
+  // (owner, 2026-11-19: "the drawing a tad bigger but not as big as it was"). `band` is the
+  // default (owner, 2026-11-19); `compact` (the 104px plate beside the title) and `side` stay at
+  // ?rowcard=. Phones only (below 768px).
   const askedCard = ready ? params.get('rowcard') : null;
-  const rowcard = askedCard === 'band' || askedCard === 'side' ? askedCard : 'compact';
+  const rowcard = askedCard === 'compact' || askedCard === 'side' ? askedCard : 'band';
   const q = hero === 'ask' ? query.trim() : '';
   const inTopic = topic ? INSIGHTS.filter((a) => a.category === topic) : INSIGHTS;
   const shown = q ? inTopic.filter((a) => matches(a, q)) : inTopic;
