@@ -1137,7 +1137,9 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   topic is the featured card (the card surface with the glass edge: the plate large on the left,
   topic, date, and reading time, the title in Inter Tight 600, the summary, "Read the article →");
   the rest are ruled rows: the plate, the title and summary, topic and date and reading time in a
-  column, the arrow (phones: the plate beside the title, the summary and meta under them). Hover
+  column, the arrow. Phones (below 768px; owner, 2026-11-19: easier to tell apart) show each as a
+  card like the featured one instead: the card surface with the glass edge, 4px corners, the plate
+  across the top (16:9) over a hairline, then the title, summary, and meta, 14px between cards. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
 - **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
   the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the
