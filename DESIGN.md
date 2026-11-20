@@ -1444,9 +1444,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   while that section's page slides in over it from the right (460ms, the drawer curve), with a bar holding
   Back (focused) on the left and the section's name on the right (owner, 2026-10-15), its content
   coming up in turn. Services and Industries keep the
-  photo list and the swipe row; Company is four photo tiles (About Ares with Pikes Peak, Careers
-  with the two officers from the Home careers band, Capability Statement with Denver at sunset,
-  Insights with the owner's LinkedIn banner, `/images/nav/insights.png`; 90px (thinner, owner 2026-10-26; was 104), 4px corners, a dark
+  photo list and the swipe row; Company is four photo tiles, in this order (owner, 2026-11-20): About Ares with Pikes Peak,
+  Insights with the owner's LinkedIn banner (`/images/nav/insights.png`), Capability Statement with
+  Denver at sunset, Careers with the two officers from the Home careers band; 90px (thinner, owner 2026-10-26; was 104), 4px corners, a dark
   wash from the foot). Teaming and Request a Quote aren't repeated there on phones: Teaming is on the
   Services page and the quote button is always pinned at the foot (owner, 2026-10-15). The pages reset to the main one when the menu closes. While a page scrolls, the logo bar stays at the top and the Back bar
   just under it, both solid, the content scrolling behind them (owner, 2026-10-15). The photo accordions stay at
@@ -1466,6 +1466,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   only. (Owner, 2026-10-13.) On desktop, hovering the lockup grows it from its left edge (220ms), so it
   reads as the link home: 1.04 with the wordmark showing, 1.07 for the mark alone once folded (owner,
   2026-10-19); none under reduced motion.
+  The desktop Company menu's Ares column reads About, Insights, Careers (owner, 2026-11-20).
   Desktop menus since 2026-10-15 (owner): the overview links (All services and how a post starts,
   Teaming; All industries and how a post starts) sit in a row above the columns, under a hairline,
   in Inter Tight 600 22px white, the menu links' size, with an 18px down-right arrow drawn like the

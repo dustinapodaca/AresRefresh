@@ -92,9 +92,10 @@ const MENUS: Record<string, Menu> = {
       {
         label: 'Ares',
         links: [
+          // About, Insights, Careers (owner, 2026-11-20).
           { label: 'About', to: '/about' },
-          { label: 'Careers', to: '/careers' },
           { label: 'Insights', to: '/insights' },
+          { label: 'Careers', to: '/careers' },
         ],
       },
       {
@@ -322,14 +323,15 @@ function PhoneIndustries() {
 // swipe row); Company is four photo tiles (owner, 2026-10-15). Teaming and Request a Quote aren't
 // repeated there on phones: Teaming is on the Services page and the quote button is always pinned
 // at the foot of the menu.
+// Order (owner, 2026-11-20): About, Insights, Capability Statement, Careers.
 const COMPANY_TILES = [
   { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 60%' },
-  // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
-  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 60%' },
-  { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
   // The owner's LinkedIn banner (2026-10-15), its frosted logo card centered in the tile on a phone
   // (owner, 2026-10-26: it sat a little low at 50%).
   { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 68%' },
+  { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
+  // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
+  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 60%' },
 ];
 
 function ArrowBack() {
