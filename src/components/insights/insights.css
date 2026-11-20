@@ -130,6 +130,17 @@
     border-radius: 4px;
     background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
   }
+  /* ?rowcard=band: a short strip of the plate across the card's top (about a third of the full
+     plate's height), then the title, summary, and meta. */
+  .ds-in-list[data-rowcard='band'] .ds-in-row { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0; overflow: hidden; }
+  .ds-in-list[data-rowcard='band'] .ds-in-row-art { grid-row: auto; aspect-ratio: 3 / 1; display: grid; place-items: center; padding: 8px; border-radius: 0; border-bottom: 1px solid var(--ds-rule); }
+  .ds-in-list[data-rowcard='band'] .ds-in-row-art::after { display: none; }
+  .ds-in-list[data-rowcard='band'] .ds-in-row-art .ds-ia { width: auto; height: 100%; max-width: 100%; }
+  .ds-in-list[data-rowcard='band'] .ds-in-row-copy { display: block; padding: 16px 16px 0; }
+  .ds-in-list[data-rowcard='band'] .ds-in-row-title { grid-column: auto; grid-row: auto; }
+  .ds-in-list[data-rowcard='band'] .ds-in-row > .ds-in-meta { grid-column: auto; padding: 12px 16px 16px; }
+  /* ?rowcard=side: the plate beside the title grows from 104px to 150px (about half again). */
+  .ds-in-list[data-rowcard='side'] .ds-in-row { grid-template-columns: 150px minmax(0, 1fr); gap: 12px 16px; }
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-in-row:hover .ds-ia, .ds-in-feature:hover .ds-ia, .ds-in-card:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }

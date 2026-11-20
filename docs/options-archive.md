@@ -1,5 +1,10 @@
 # Options archive
 
+**Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
+Insights index (phones only, below 768px; `rowcard` in `src/pages/Insights.tsx`, `data-rowcard` rules in
+`src/components/insights/insights.css`). `compact` (104px beside the title) is the default until the owner
+picks; `band` is a 3:1 strip across the card's top, `side` a 150px plate beside the title.
+
 **Live switch (2026-11-19):** `/insights?hero=current|topics|front|ask|plates`, the Insights index hero
 (`HERO_OPTIONS` in `src/pages/Insights.tsx`, styles under "Hero forms" in
 `src/components/insights/insights.css`). `topics` is the default (owner, 2026-11-19) on desktop only; below 1024px it shows `current`, which the owner kept for phones. From Mobbin:

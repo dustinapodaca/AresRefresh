@@ -1,7 +1,7 @@
 {
   "name": "all-options",
   "title": "Every live option for Deidre",
-  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19).",
+  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19), and the Insights phone cards (?rowcard=, 2026-11-19).",
   "groups": [
     {
       "heading": "Capability Statement card: the drawing between the line and the codes",
@@ -65,6 +65,31 @@
           "value": "plates",
           "label": "Plates",
           "note": "After Linear's and Slack's libraries: the line drawings of the six newest articles as a wall beside the headline."
+        }
+      ]
+    },
+    {
+      "heading": "Insights index on phones: the size of each card's drawing",
+      "intro": "Phones only (below 768px); the 1440 capture is the same for all three.",
+      "page": "/insights",
+      "param": "rowcard",
+      "selector": ".ds-in-list",
+      "options": [
+        {
+          "value": "compact",
+          "label": "Compact",
+          "tag": "default",
+          "note": "The row's own layout in a card: a 104px drawing beside the title, the summary and meta under them."
+        },
+        {
+          "value": "band",
+          "label": "Band",
+          "note": "A short strip of the drawing across the card's top (3:1, about 116px tall at 390), then the title, summary, and meta."
+        },
+        {
+          "value": "side",
+          "label": "Side",
+          "note": "The drawing beside the title grows to 150px (about 94px tall at 390), the summary and meta under them."
         }
       ]
     }
