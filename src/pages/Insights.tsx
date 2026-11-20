@@ -28,6 +28,46 @@ function Meta({ a }: { a: Insight }) {
   );
 }
 
+// The hero, four forms for the owner to compare at /insights?hero=topics|front|ask|plates
+// (owner, 2026-11-19: "better options for the insights hero", from Mobbin). `current` (the
+// headline, lead, and count on the left, the topic toggles under them) is the default until the
+// owner picks one. Each form is a whole desktop and phone version.
+//  - topics: after Claude's blog. The four topics set large beside the headline, each with its
+//    count and an arrow; they are the filter (the toggle row goes).
+//  - front: after Mural, Webflow, and Twingate. A front page: the newest article large on the left,
+//    "Latest" (the next three) ruled on the right, all on the first screen.
+//  - ask: after Airbnb's and Upwork's resource centers. A search over every article and its
+//    questions, and five questions buyers ask, each a link to the article that answers it.
+//  - plates: after Linear's and Slack's libraries. The line drawings of the six newest articles as
+//    a wall beside the headline, each a link.
+const HERO_OPTIONS = ['current', 'topics', 'front', 'ask', 'plates'] as const;
+type HeroKey = (typeof HERO_OPTIONS)[number];
+
+// The questions under the ask form's search: each article's first question, in the order buyers
+// tend to ask them.
+const ASKED = ['security-guard-cost-colorado', 'armed-or-unarmed-security', 'what-is-a-post-order', 'colorado-security-licensing', 'buying-security-through-gsa']
+  .map((slug) => INSIGHTS.find((a) => a.slug === slug))
+  .filter((a): a is Insight => !!a && !!a.faq?.length)
+  .map((a) => ({ q: a.faq![0].q, slug: a.slug }));
+
+// Everything a search can match: the title, summary, text, and questions.
+const SEARCH_TEXT = new Map(
+  INSIGHTS.map((a) => [
+    a.slug,
+    [a.title, a.summary, ...a.body.map((b) => ('p' in b ? b.p : 'h' in b ? b.h : 'list' in b ? b.list.join(' ') : '')), ...(a.faq ?? []).map((f) => `${f.q} ${f.a}`)]
+      .join(' ')
+      .toLowerCase(),
+  ]),
+);
+const matches = (a: Insight, q: string) => {
+  // Each word must start a word in the article ("id" finds "ID", not "provide").
+  const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const text = SEARCH_TEXT.get(a.slug) ?? '';
+  return words.every((w) => new RegExp(`(^|[^a-z0-9])${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`).test(text));
+};
+
+const cleanTitle = (t: string) => t.replace(/\.$/, '');
+
 export default function Insights() {
   const [params, setParams] = useSearchParams();
   // The prerendered page shows every article; a ?topic= in the address applies once the page
@@ -36,8 +76,26 @@ export default function Insights() {
   useEffect(() => setReady(true), []);
   const raw = ready ? params.get('topic') : null;
   const topic = (CATEGORIES as readonly string[]).includes(raw ?? '') ? (raw as InsightCategory) : null;
-  const shown = topic ? INSIGHTS.filter((a) => a.category === topic) : INSIGHTS;
-  const [lead, ...rest] = shown;
+  const askedHero = ready ? params.get('hero') : null;
+  const hero: HeroKey = (HERO_OPTIONS as readonly string[]).includes(askedHero ?? '') ? (askedHero as HeroKey) : 'current';
+  const [query, setQuery] = useState('');
+  const q = hero === 'ask' ? query.trim() : '';
+  const inTopic = topic ? INSIGHTS.filter((a) => a.category === topic) : INSIGHTS;
+  const shown = q ? inTopic.filter((a) => matches(a, q)) : inTopic;
+  // The front page already shows the four newest; the list under it starts after them (until a
+  // topic is chosen). A search lists its matches without a featured card.
+  const frontTop = INSIGHTS.slice(0, 4);
+  let lead: Insight | undefined;
+  let rest: Insight[];
+  if (hero === 'front') {
+    lead = undefined;
+    rest = topic ? shown : shown.slice(4);
+  } else if (q) {
+    lead = undefined;
+    rest = shown;
+  } else {
+    [lead, ...rest] = shown;
+  }
 
   const choose = (t: InsightCategory | null) => {
     const next = new URLSearchParams(params);
@@ -49,22 +107,159 @@ export default function Insights() {
   return (
     <main id="main" tabIndex={-1} className="ds ds-page ds-mk ds-in">
       <Seo path="/insights" />
-      <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
-        <div className="ds-mk-open-copy">
+      {hero === 'current' && (
+        <section className="ds-container ds-mk-open ds-mk-open-solo" aria-labelledby="mk-title">
+          <div className="ds-mk-open-copy">
           <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
           {/* Copy audit (2026-10-10): was "Insights." */}
-          <p className="ds-lead">
-            Plain answers on choosing coverage, running a post, contracting through GSA, and city
-            licensing in Colorado.
-          </p>
-          <p className="ds-data ds-in-count">
-            {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
-          </p>
-        </div>
-      </section>
+            <p className="ds-lead">
+              Plain answers on choosing coverage, running a post, contracting through GSA, and city
+              licensing in Colorado.
+            </p>
+            <p className="ds-data ds-in-count">
+              {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
+            </p>
+          </div>
+        </section>
+      )}
+
+      {hero === 'topics' && (
+        <section className="ds-container ds-in-h ds-in-h-topics" aria-labelledby="mk-title">
+          <div className="ds-in-h-copy">
+          <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
+            {/* Copy audit (2026-10-10): was "Insights." */}
+            <p className="ds-lead">
+              Plain answers on choosing coverage, running a post, contracting through GSA, and city
+              licensing in Colorado.
+            </p>
+            <p className="ds-data ds-in-count">
+              {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
+            </p>
+          </div>
+          <div className="ds-in-h-topiclist" role="group" aria-label="Topics">
+            {[null, ...CATEGORIES].map((t) => {
+              const n = t ? INSIGHTS.filter((a) => a.category === t).length : INSIGHTS.length;
+              return (
+                <button key={t ?? 'all'} type="button" className="ds-in-h-topic" aria-pressed={topic === t} onClick={() => choose(t)}>
+                  <span className="ds-in-h-topic-name">{t ?? 'All articles'}</span>
+                  <span className="ds-data">{String(n).padStart(2, '0')}</span>
+                  <Arrow size={18} />
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {hero === 'front' && (
+        <section className="ds-container ds-in-h ds-in-h-front" aria-labelledby="mk-title">
+          <div className="ds-in-h-fronthead">
+            <h1 id="mk-title" className="ds-display-lg">Buying security, explained</h1>
+            <p className="ds-lead">
+              Plain answers on choosing coverage, running a post, contracting through GSA, and city
+              licensing in Colorado.
+            </p>
+          </div>
+          <div className="ds-in-h-frontgrid">
+            <Link to={`/insights/${frontTop[0].slug}`} className="ds-in-h-frontlead">
+              <span className="ds-in-feature-art ds-in-h-frontart">
+                <InsightArt slug={frontTop[0].slug} size="lg" />
+              </span>
+              <Meta a={frontTop[0]} />
+              <h2 className="ds-in-h-fronttitle">{cleanTitle(frontTop[0].title)}</h2>
+              <span className="ds-in-row-sum">{frontTop[0].summary}</span>
+            </Link>
+            <div className="ds-in-h-latest">
+              <p className="ds-in-h-latest-title">Latest</p>
+              <ul>
+                {frontTop.slice(1).map((a) => (
+                  <li key={a.slug}>
+                    <Link to={`/insights/${a.slug}`}>
+                      <span className="ds-in-h-latest-topic">{a.category}</span>
+                      <span className="ds-in-h-latest-name">{cleanTitle(a.title)}</span>
+                      <span className="ds-data">{readingMinutes(a)} min read</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {hero === 'ask' && (
+        <section className="ds-container ds-in-h ds-in-h-ask" aria-labelledby="mk-title">
+          <div className="ds-in-h-copy">
+          <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
+            {/* Copy audit (2026-10-10): was "Insights." */}
+            <p className="ds-lead">
+              Plain answers on choosing coverage, running a post, contracting through GSA, and city
+              licensing in Colorado.
+            </p>
+            <p className="ds-data ds-in-count">
+              {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
+            </p>
+          </div>
+          <div className="ds-in-h-askbox">
+            <label className="ds-in-h-search">
+              <span className="nx-sr">Search the articles</span>
+              <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+                <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M13 13l4 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search the articles and their questions"
+                autoComplete="off"
+              />
+            </label>
+            <p className="ds-in-h-asked-title">Questions buyers ask</p>
+            <ul className="ds-in-h-asked">
+              {ASKED.map((x) => (
+                <li key={x.slug}>
+                  <Link to={`/insights/${x.slug}#questions`}>
+                    {x.q}
+                    <Arrow size={14} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {hero === 'plates' && (
+        <section className="ds-container ds-in-h ds-in-h-plates" aria-labelledby="mk-title">
+          <div className="ds-in-h-copy">
+          <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
+            {/* Copy audit (2026-10-10): was "Insights." */}
+            <p className="ds-lead">
+              Plain answers on choosing coverage, running a post, contracting through GSA, and city
+              licensing in Colorado.
+            </p>
+            <p className="ds-data ds-in-count">
+              {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
+            </p>
+          </div>
+          <ul className="ds-in-h-wall">
+            {INSIGHTS.slice(0, 6).map((a) => (
+              <li key={a.slug}>
+                <Link to={`/insights/${a.slug}`}>
+                  <span className="ds-in-row-art ds-in-h-wallart">
+                    <InsightArt slug={a.slug} size="sm" />
+                  </span>
+                  <span className="ds-in-h-wallname">{cleanTitle(a.title)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="ds-container ds-in-body">
-        <div className="ds-in-topics" role="group" aria-label="Topics">
+        {hero !== 'topics' && <div className="ds-in-topics" role="group" aria-label="Topics">
           {[null, ...CATEGORIES].map((t) => {
             const n = t ? INSIGHTS.filter((a) => a.category === t).length : INSIGHTS.length;
             return (
@@ -74,10 +269,15 @@ export default function Insights() {
               </button>
             );
           })}
-        </div>
+        </div>}
         <p className="nx-sr ds-in-sr" aria-live="polite">
-          {topic ? `${shown.length} articles in ${topic}` : ''}
+          {q ? `${shown.length} articles match` : topic ? `${shown.length} articles in ${topic}` : ''}
         </p>
+        {q && shown.length === 0 && (
+          <p className="ds-in-empty">
+            No article matches that yet. <Link to="/contact" className="ds-link">Ask us about your site</Link>.
+          </p>
+        )}
 
         {lead && (
           <Link key={lead.slug} to={`/insights/${lead.slug}`} className="ds-in-feature">

@@ -1,5 +1,11 @@
 # Options archive
 
+**Live switch (2026-11-19):** `/insights?hero=current|topics|front|ask|plates`, the Insights index hero
+(`HERO_OPTIONS` in `src/pages/Insights.tsx`, styles under "Hero forms" in
+`src/components/insights/insights.css`). `current` is the default until the owner picks. From Mobbin:
+topics (Claude's blog), front (Mural, Webflow, Twingate), ask (Airbnb, Upwork resource centers), plates
+(Linear, Slack). In the gallery spec `docs/options-gallery.json`.
+
 **Live switch (2026-11-13):** `/capability-statement?ridge=sketch|both|glow|layers`, the drawing in the
 hero company card (`RIDGES` in `src/pages/CapabilityStatement.tsx`, styles in
 `src/components/capnext/cn.css`). `sketch` (one range closer to the owner's reference, with the alpenglow)

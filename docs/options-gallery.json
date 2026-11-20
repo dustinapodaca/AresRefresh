@@ -1,7 +1,7 @@
 {
   "name": "all-options",
   "title": "Every live option for Deidre",
-  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13).",
+  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19).",
   "groups": [
     {
       "heading": "Capability Statement card: the drawing between the line and the codes",
@@ -30,6 +30,41 @@
           "value": "layers",
           "label": "Layers",
           "note": "Three ranges in depth, drawn back to front; each hides the ones behind it and shifts with the card's turn."
+        }
+      ]
+    },
+    {
+      "heading": "Insights index: the hero",
+      "intro": "The top of /insights. Each is a whole desktop and phone version; the list below stays the same.",
+      "page": "/insights",
+      "param": "hero",
+      "selector": "main",
+      "options": [
+        {
+          "value": "current",
+          "label": "Current",
+          "tag": "default",
+          "note": "The headline, lead, and article count on the left; the topic toggles under them."
+        },
+        {
+          "value": "topics",
+          "label": "Topics",
+          "note": "After Claude's blog: the four topics set large beside the headline with counts and arrows; they are the filter."
+        },
+        {
+          "value": "front",
+          "label": "Front page",
+          "note": "After Mural, Webflow, and Twingate: the newest article large on the left and Latest (the next three) on the right, on the first screen."
+        },
+        {
+          "value": "ask",
+          "label": "Ask",
+          "note": "After Airbnb's and Upwork's resource centers: a search over every article and its questions, and five questions buyers ask."
+        },
+        {
+          "value": "plates",
+          "label": "Plates",
+          "note": "After Linear's and Slack's libraries: the line drawings of the six newest articles as a wall beside the headline."
         }
       ]
     }

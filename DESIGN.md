@@ -1119,6 +1119,12 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   at about 12px on screen (dropped on the small plates), on the dot grid faded at the edges, the
   card surface, 4px corners, the hairline photo edge. A new article without a drawing gets a plain
   sheet; draw it one when it is published.
+- **Index hero, four forms to compare** (owner, 2026-11-19) at `/insights?hero=`: `topics` (the topics
+  set large beside the headline as the filter, after Claude's blog), `front` (the newest article and
+  "Latest" on the first screen, after Mural and Webflow), `ask` (a search over the articles and their
+  questions, and five questions buyers ask, after Airbnb's and Upwork's resource centers), `plates` (the
+  six newest drawings as a wall beside the headline, after Linear and Slack). `current`, below, is the
+  default until one is picked.
 - **Index:** the headline and lead, then "11 articles · last updated <date>" in the data face. The
   topics (All, Buying security, Operations, Federal & teaming, Licensing) as square-cornered
   toggles with their counts in the data face (the chosen one ink-edged, its count rust; one
