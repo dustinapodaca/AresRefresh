@@ -64,11 +64,12 @@ export default function Reads() {
                 <InsightArt slug={a.slug} size="sm" grid={false} />
               </span>
               <span className="nx-read-copy">
-                <span className="nx-read-meta">
-                  <span>{a.category}</span>
-                  <span className="ds-data">{readingMinutes(a)} min read</span>
-                </span>
                 <span className="nx-read-title">{a.title.replace(/\.$/, '')}</span>
+                {/* Under the title, one quiet line in Inter (owner, 2026-11-20: it sat above the title
+                    with the reading time in the data face). */}
+                <span className="nx-read-meta">
+                  {a.category} · {readingMinutes(a)} min read
+                </span>
               </span>
               <span className="nx-read-go" aria-hidden="true">
                 <Arrow size={16} />

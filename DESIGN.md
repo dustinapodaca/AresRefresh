@@ -597,7 +597,8 @@ and `nx-*.css` (class prefix `nx-`).
   which draws left to right as the list comes up (scrubbed, from 92% down the screen to the middle on
   desktop, to 62% below 1024px; drawn in the resolved page; a list rule, not a
   rule between sections), and three articles in a row, each its plate (`InsightArt` small, 160px, 16:10,
-  the card surface and hairline edge) beside topic, reading time, and title, an arrow that nudges rust on
+  the card surface and hairline edge) beside the title with one quiet line under it in Inter 13px, ink
+  faint ("Buying security · 4 min read"; owner, 2026-11-20: it sat above the title, the time in the data face), an arrow that nudges rust on
   hover (the plate's lines brighten). Tablets: the plate over the title as a 3:1 band. Phones: stacked
   rows with a 104px plate, then "All 11 articles →" after them. Picks (`PICKS`): choosing a company, cost,
   escorts (the last hands off to the prime block). Nothing below it (the prime block opens on its own beat). After Linear's "More
