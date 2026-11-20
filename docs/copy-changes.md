@@ -1333,3 +1333,16 @@ previous page's. New framing copy (N):
   `public/images/insights/sample-post-order-preview.webp`, in the column like a photo, a mono caption,
   and the download link). The escort article shows "Updated November 19, 2026". Listed in llms.txt.
 - Recheck the 2027 minimum wages against the CDLE and Denver Labor pages once they post them.
+
+## Insights redesign, "The Reading Room" (draft, 2026-11-19)
+- Index and article pages redesigned (DESIGN.md, Components, "Insights"). Every article has an
+  authored line-drawing plate of its subject instead of a photo; captions are new copy, one line
+  each, from facts in the article.
+- Topics: "Federal & teaming" added for the primes, escorts, and GSA articles (was Buying security
+  or Operations). The index filters by topic (`?topic=`), features the newest article, and shows
+  reading time.
+- Index lead: "Plain answers on choosing coverage, running a post, contracting through GSA, and city
+  licensing in Colorado." (added "running a post"). Ask strips added: index "Have a question these
+  don't answer? Ask us about your site."; articles "Have a post to cover in Colorado? Tell us about
+  the site."
+- Article JSON-LD adds `articleSection` (the topic) and `timeRequired`.

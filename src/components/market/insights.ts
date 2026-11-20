@@ -35,10 +35,15 @@ const SAMPLE_POST_ORDER: DocLink = {
   meta: 'Contractor escort post order · 4 pages · PDF',
 };
 
+/** The four topics, in the order the index offers them (2026-11-19: "Federal & teaming" split
+ *  out for the prime, escort, and GSA articles, so federal buyers and primes find theirs). */
+export const CATEGORIES = ['Buying security', 'Operations', 'Federal & teaming', 'Licensing'] as const;
+export type InsightCategory = (typeof CATEGORIES)[number];
+
 export type Insight = {
   slug: string;
   title: string;
-  category: 'Buying security' | 'Operations' | 'Licensing';
+  category: InsightCategory;
   /** ISO date and its display form. */
   date: string;
   dateLabel: string;
@@ -181,7 +186,7 @@ export const INSIGHTS: Insight[] = [
     // Statement; the base stays unnamed and there are no clearance claims (DESIGN.md, Clearances).
     slug: 'what-primes-look-for-security-subcontractor',
     title: 'What prime contractors look for in a small-business security subcontractor.',
-    category: 'Buying security',
+    category: 'Federal & teaming',
     date: '2026-11-09',
     dateLabel: 'November 9, 2026',
     summary: 'Primes bring in a security subcontractor to staff posts and to meet small-business goals. What they check before naming one in a proposal: whether the work counts, whether the status can be verified, and whether the posts will be covered.',
@@ -257,7 +262,7 @@ export const INSIGHTS: Insight[] = [
     // levels and no "cleared officers" (DESIGN.md, Clearances).
     slug: 'contractor-escorts-military-bases',
     title: 'Escorts for contractors on military bases: how they work.',
-    category: 'Operations',
+    category: 'Federal & teaming',
     date: '2026-10-26',
     dateLabel: 'October 26, 2026',
     ...U2,
@@ -664,7 +669,7 @@ export const INSIGHTS: Insight[] = [
     // Refreshed 2026-11-19 (owner): ranks around 11. Added how to find schedule holders on eLibrary by SIN, and how Service Contract Labor Standards wage determinations work on schedule orders (GSA's SCLS guidance).
     slug: 'buying-security-through-gsa',
     title: 'How agencies can buy security services through a GSA Schedule.',
-    category: 'Buying security',
+    category: 'Federal & teaming',
     ...D,
     ...U2,
     summary: 'The GSA Multiple Award Schedule lets agencies order security services at pre-negotiated ceiling prices through streamlined procedures. How ordering works, how to find schedule holders in Colorado, how wage determinations apply, and how to check a vendor.',

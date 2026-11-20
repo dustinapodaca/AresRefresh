@@ -1102,6 +1102,47 @@ Teaming is two companies, so the hero is two photos, not one card.
 - Quiet motion: the hero opener, one fade-up per block (`data-rv`, once), the step line. The resolved
   page (prerender, no JavaScript, reduced motion) shows everything, the wire drawn.
 
+### Insights ("The Reading Room", 2026-11-19)
+The buyer-education articles (`src/pages/Insights.tsx`, `src/pages/InsightPage.tsx`,
+`src/components/insights/`, class prefix `ds-in-`). After Linear's blog (line drawings on black
+cards, then a ruled list), Basedash (a plate beside each post), Retool's Cache (topics with counts),
+and Attio's articles ("On this page" beside the text) on Mobbin. No photographs, no eyebrows.
+- **Plates** (`InsightArt.tsx`): every article has its own authored line drawing of what it is
+  about, never a photo or a stock illustration: the entry point and its log (access control), the
+  prime, Ares, and three posts (primes), the escort's line of sight inside a restricted area
+  (escorts), a checklist with one open item (choosing a company), 168 hours as a week of cells
+  (cost), a week's shifts with Thursday night covered from on-call (relief), a presence ring beside
+  a target (armed or unarmed), a post order with one duty marked (post orders), a frame, crane,
+  and gate (construction), agency to schedule to order (GSA), Colorado with I-25 and the three
+  cities (licensing). Drawn at 320 by 200: 1.25px ink hairlines (non-scaling), fainter 1px lines,
+  one rust accent with a soft rust light behind it (the light, not paint), labels in the data face
+  at about 12px on screen (dropped on the small plates), on the dot grid faded at the edges, the
+  card surface, 4px corners, the hairline photo edge. A new article without a drawing gets a plain
+  sheet; draw it one when it is published.
+- **Index:** the headline and lead, then "11 articles · last updated <date>" in the data face. The
+  topics (All, Buying security, Operations, Federal & teaming, Licensing) as square-cornered
+  toggles with their counts in the data face (the chosen one ink-edged, its count rust; one
+  scrolling line on phones, 44px tall); they filter in place and keep the choice in `?topic=`,
+  applied after hydration so the static page (every article) matches. The newest article in the
+  topic is the featured card (the card surface with the glass edge: the plate large on the left,
+  topic, date, and reading time, the title in Inter Tight 600, the summary, "Read the article →");
+  the rest are ruled rows: the plate, the title and summary, topic and date and reading time in a
+  column, the arrow (phones: the plate beside the title, the summary and meta under them). Hover
+  brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
+- **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
+  the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the
+  plate wide (16:9; 16:11 on phones) on the dot grid with its caption in mono. The drawing wipes in
+  once, left to right (1100ms), where motion runs. Desktop (1200px and up): an "On this page"
+  column on the right beside the headline, plate, and text, sticky, on a hairline-strong track,
+  the section in view in ink with a rust tick (the policies' list); below 1200px the same list
+  folds under the plate (a details row with the count). A 1px rust line under the nav shows how
+  far through the page the reader is (scroll-driven CSS; none where unsupported). Then Sources,
+  Related, the questions, the ask strip ("Have a post to cover in Colorado?"), and "More
+  insights." as three cards (the plate on top, topic and reading time, title, arrow), same topic
+  first, with "All N articles →". A sample document (the escort post order PDF, 2026-11-19) sits in
+  the text as its preview image like a photo (4px corners, the hairline edge), a mono caption (what,
+  pages, format), and the download as a quiet link with an arrow (`.ds-mk-doc`).
+
 ### Executive Protection division (removed 2026-11-13)
 
 A preview of an Executive Protection division page (/executive-protection-next, 2026-10-30) was removed
@@ -1296,14 +1337,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   call link, on a hairline-strong rule.
 - **Routes:** ruled links, a title (Inter Tight 600, 20 to 24px) and a line, three across
   from 768px, arrows nudge on hover.
-- **Insights:** the index as ruled rows (title, summary, category and date in a right
-  column on desktop); articles in one 46rem reading column, 17px / 1.7, the first paragraph
-  in ink, then (2026-10-26) a Sources list of external links where the article has them, related
-  links, its questions in the shared questions block with FAQPage JSON-LD where it has them, and more
-  insights. A refreshed article shows "Updated <date>" in the meta row (its dateModified). Article
-  JSON-LD. A sample document (2026-11-19, the escort post order PDF) sits in the column as its preview
-  image like a photo (4px corners, the hairline edge), a mono caption (what, pages, format), and the
-  download as a quiet link with an arrow (`.ds-mk-doc`).
+- **Insights:** redesigned 2026-11-19 as "The Reading Room" (Components, "Insights", above). Until
+  then: the index as ruled rows (title, summary, category and date in a right column on desktop);
+  articles in one 46rem reading column with Sources, Related, the questions, and more insights.
 - **Jobs by city (`/careers/<city>`):** open roles on hairlines with Apply (email with the
   role and city), licensing handled, why people stay (two by two) with the Indeed rating,
   other cities.

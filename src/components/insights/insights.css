@@ -1,0 +1,221 @@
+/* Insights, "The Reading Room" (2026-11-19): the index (topics, a featured card, ruled rows with
+   plates) and the article (plate, On this page, reading line). Class prefix ds-in-, the plates
+   ia-. Design authority: DESIGN.md, Components, "Insights". */
+
+/* ---- The plates (InsightArt.tsx): hairlines on the dot grid, one rust accent ---- */
+.ds-ia { display: block; width: 100%; height: auto; --ia-ink: rgb(238 240 242 / 0.62); }
+.ds-ia .ia-l, .ds-ia .ia-f, .ds-ia .ia-r { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.ds-ia .ia-l { stroke: var(--ia-ink); stroke-width: 1.25; transition: stroke 180ms var(--ds-ease); }
+.ds-ia .ia-f { stroke: rgb(238 240 242 / 0.2); stroke-width: 1; }
+.ds-ia .ia-r { stroke: var(--ds-rust); stroke-width: 1.5; }
+.ds-ia .ia-dash { stroke-dasharray: 3 4; }
+.ds-ia .ia-d { fill: var(--ia-ink); transition: fill 180ms var(--ds-ease); }
+.ds-ia .ia-dim { opacity: 0.45; }
+.ds-ia .ia-rf { fill: var(--ds-rust); }
+.ds-ia .ia-cell { fill: rgb(238 240 242 / 0.13); }
+.ds-ia .ia-card { fill: var(--ds-card); }
+.ds-ia .ia-grid-dot { fill: rgb(255 255 255 / 0.13); }
+.ds-ia .ia-t { font-family: var(--ds-data); font-size: 9.5px; font-variant-numeric: tabular-nums slashed-zero; fill: var(--ds-fg-muted); }
+.ds-ia .ia-tf { fill: var(--ds-fg-faint); }
+.ds-ia .ia-tr { fill: #d08a5f; }
+/* Labels show at about 12px on screen (DESIGN.md); they can't be read on the small plates, so
+   they go there. */
+.ds-ia[data-size='lg'] .ia-t { font-size: 7px; }
+@media (max-width: 599px) {
+  .ds-ia[data-size='lg'] .ia-t { font-size: 10px; }
+}
+.ds-ia[data-size='sm'] text { display: none; }
+
+/* A plate in a frame: the card surface, 4px corners, the hairline photo edge. */
+.ds-in-feature-art, .ds-in-row-art, .ds-in-card-art, .ds-in-plate-frame { position: relative; display: block; overflow: hidden; border-radius: 4px; background: var(--ds-card); }
+.ds-in-row-art::after, .ds-in-card-art::after, .ds-in-plate-frame::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--ds-rule); pointer-events: none; }
+
+/* ---- Index ---- */
+.ds-in-count { margin: 22px 0 0; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-in-body { margin-top: var(--ds-beat-tight); }
+
+/* Topics: square-cornered toggles with their counts (never pills). */
+.ds-in-topics { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.ds-in-topic {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  font: 500 14px/1 var(--ds-text);
+  font-feature-settings: 'cv01', 'cv05', 'cv09', 'cv11', 'ss03';
+  color: var(--ds-fg-muted);
+  box-shadow: inset 0 0 0 1px var(--ds-rule-strong);
+  cursor: pointer;
+  transition: color 180ms var(--ds-ease), box-shadow 180ms var(--ds-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.ds-in-topic .ds-data { font-size: 14px; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+.ds-in-topic[aria-pressed='true'] { color: var(--ds-fg); box-shadow: inset 0 0 0 1px var(--ds-fg); }
+.ds-in-topic[aria-pressed='true'] .ds-data { color: var(--ds-rust); }
+.ds-in-topic:active { transform: scale(0.98); }
+@media (hover: hover) and (pointer: fine) {
+  .ds-in-topic:hover { color: var(--ds-fg); }
+}
+@media (max-width: 599px) {
+  /* One scrolling line on phones, out to the screen's edges. */
+  .ds-in-topics { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--ds-gutter)); padding-inline: var(--ds-gutter); scrollbar-width: none; }
+  .ds-in-topics::-webkit-scrollbar { display: none; }
+  .ds-in-topic { flex: none; height: 44px; }
+}
+
+/* The featured card: the newest in the topic, its plate large beside it. */
+.ds-in-feature {
+  display: grid;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
+  color: var(--ds-fg);
+  overflow: hidden;
+}
+.ds-in-feature-art { border-radius: 0; border-bottom: 1px solid var(--ds-rule); padding: clamp(12px, 3vw, 28px); }
+.ds-in-feature-copy { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 24px 22px 26px; }
+.ds-in-feature-title { margin: 0; color: var(--ds-fg); font-family: var(--ds-display); font-size: clamp(26px, 2.7vw, 38px); font-weight: 600; line-height: 1.1; letter-spacing: -0.035em; text-wrap: balance; }
+.ds-in-feature-sum { font-size: 16px; line-height: 1.6; color: var(--ds-fg-muted); text-wrap: pretty; max-width: 48ch; }
+.ds-in-feature-go { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 15px; font-weight: 500; text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 4px; }
+@media (min-width: 900px) {
+  .ds-in-feature { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .ds-in-feature-art { border-bottom: 0; border-right: 1px solid var(--ds-rule); display: flex; align-items: center; }
+  .ds-in-feature-copy { padding: 40px 40px 40px 36px; }
+}
+
+/* Ruled rows: plate, title and summary, topic and date, arrow. */
+.ds-in-list { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
+.ds-in-list li { border-bottom: 1px solid var(--ds-rule); }
+.ds-in-row { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 12px 18px; padding: 20px 0 22px; color: var(--ds-fg); }
+.ds-in-row-copy { display: block; min-width: 0; }
+.ds-in-row-title { margin: 0; color: var(--ds-fg); font-family: var(--ds-text); font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; text-wrap: pretty; }
+.ds-in-row-sum { display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: var(--ds-fg-muted); max-width: 62ch; text-wrap: pretty; }
+.ds-in-row > .ds-in-meta { grid-column: 2; }
+.ds-in-row > .ds-arrow { display: none; }
+.ds-in-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-in-meta .ds-data { font-size: 14px; }
+@media (max-width: 599px) {
+  /* Phones: the summary runs the full width under the plate and title. */
+  .ds-in-row { align-items: start; }
+  .ds-in-row-sum { grid-column: 1 / -1; }
+  .ds-in-row-copy { display: contents; }
+  .ds-in-row-title { grid-column: 2; grid-row: 1; align-self: center; font-size: 17px; }
+  .ds-in-row-art { grid-row: 1; }
+  .ds-in-row > .ds-in-meta { grid-column: 1 / -1; }
+}
+@media (min-width: 768px) {
+  .ds-in-row { grid-template-columns: 184px minmax(0, 1fr) 15rem auto; align-items: center; column-gap: 32px; padding: 26px 0; }
+  .ds-in-row-title { font-size: 20px; }
+  .ds-in-row > .ds-in-meta { grid-column: 3; flex-direction: column; gap: 6px; }
+  .ds-in-row > .ds-arrow { display: block; grid-column: 4; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ds-in-row { grid-template-columns: 160px minmax(0, 1fr) auto; }
+  .ds-in-row > .ds-in-meta { grid-column: 2; flex-direction: row; }
+  .ds-in-row > .ds-arrow { grid-column: 3; grid-row: 1 / span 2; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .ds-in-row:hover .ds-ia, .ds-in-feature:hover .ds-ia, .ds-in-card:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }
+  .ds-in-row:hover .ds-arrow, .ds-in-card:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+  .ds-in-feature:hover { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box; }
+  .ds-in-feature:hover .ds-in-feature-go { text-decoration-color: var(--ds-fg); }
+  .ds-in-feature:hover .ds-arrow { color: var(--ds-rust); transform: translateX(4px); }
+  .ds-in-feature .ds-arrow { transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+}
+
+/* ---- Article ---- */
+.ds-in-article { max-width: calc(46rem + 2 * var(--ds-gutter)); padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+.ds-in-head, .ds-in-plate { max-width: 46rem; }
+.ds-in-plate { margin: 36px 0 0; }
+/* The wide plate: the drawing centered on a dot grid that runs the frame's width. */
+.ds-in-plate-frame {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, rgb(255 255 255 / 0.13) 0.8px, transparent 1.2px) 0 0 / 16px 16px,
+    var(--ds-card);
+}
+.ds-in-plate-frame::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 75% at 50% 50%, transparent 40%, var(--ds-card) 100%); pointer-events: none; }
+.ds-in-plate-frame .ds-ia { position: relative; width: auto; height: 92%; max-width: 100%; }
+@media (max-width: 599px) {
+  .ds-in-plate-frame { aspect-ratio: 16 / 11; }
+}
+.ds-in-plate .ds-caption { max-width: 60ch; }
+/* The drawing wipes in once, left to right, as the article opens. */
+@media (prefers-reduced-motion: no-preference) {
+  .ds-in-plate .ia-draw { animation: ds-in-wipe 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both; }
+}
+@keyframes ds-in-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+.ds-in-grid { display: grid; }
+.ds-in-main .ds-mk-article-body { margin-top: 36px; }
+.ds-in-side { display: none; }
+
+/* On this page, folded (below 1200px). */
+.ds-in-toc-fold { margin-top: 32px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
+.ds-in-toc-fold summary { display: flex; align-items: center; gap: 10px; min-height: 52px; font-size: 15px; font-weight: 500; color: var(--ds-fg); cursor: pointer; list-style: none; }
+.ds-in-toc-fold summary::-webkit-details-marker { display: none; }
+.ds-in-toc-fold summary .ds-data { font-size: 14px; color: var(--ds-fg-faint); }
+.ds-in-toc-fold summary::after { content: ''; margin-left: auto; width: 9px; height: 9px; border-right: 1.5px solid var(--ds-fg-muted); border-bottom: 1.5px solid var(--ds-fg-muted); transform: translateY(-3px) rotate(45deg); transition: transform 220ms var(--ds-ease); }
+.ds-in-toc-fold[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.ds-in-toc-fold ul, .ds-in-toc ul { list-style: none; margin: 0; padding: 0; }
+.ds-in-toc-fold ul { padding: 2px 0 16px; }
+.ds-in-toc-fold a { display: block; padding: 8px 0; font-size: 15px; line-height: 1.4; color: var(--ds-fg-muted); }
+.ds-in-toc-fold + .ds-mk-article-body { border-top: 0; padding-top: 0; margin-top: 28px; }
+
+@media (min-width: 1200px) {
+  .ds-in-article { max-width: calc(46rem + 64px + 15rem + 2 * var(--ds-gutter)); display: grid; grid-template-columns: minmax(0, 46rem) 15rem; column-gap: 64px; align-content: start; }
+  /* The side column runs beside the headline, the plate, and the text. */
+  .ds-in-grid { display: contents; }
+  .ds-in-head { grid-column: 1; grid-row: 1; }
+  .ds-in-plate { grid-column: 1; grid-row: 2; }
+  .ds-in-main { grid-column: 1; grid-row: 3; }
+  .ds-in-side { display: block; grid-column: 2; grid-row: 1 / span 3; padding-top: 44px; }
+  .ds-in-toc-fold { display: none; }
+  .ds-in-toc { position: sticky; top: calc(var(--ds-header) + 32px); padding-left: 18px; border-left: 1px solid var(--ds-rule-strong); }
+  .ds-in-toc-title { margin: 0 0 10px; font-size: 13px; color: var(--ds-fg-faint); }
+  .ds-in-toc ul { display: grid; gap: 2px; }
+  .ds-in-toc a { position: relative; display: block; padding: 5px 0; font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); transition: color 180ms var(--ds-ease); }
+  .ds-in-toc a:hover { color: var(--ds-fg); }
+  /* The section in view: ink, with the rail's rust tick on the track. */
+  .ds-in-toc a[aria-current='location'] { color: var(--ds-fg); }
+  .ds-in-toc a[aria-current='location']::before { content: ''; position: absolute; left: -19px; top: 7px; bottom: 7px; width: 1px; background: var(--ds-rust); }
+}
+
+/* How far through the article: a 1px rust line under the nav, tied to the scroll. */
+.ds-in-progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  .ds-in-progress { display: block; position: fixed; z-index: 30; left: 0; right: 0; top: var(--ds-header); height: 1px; background: var(--ds-rust); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; animation: ds-in-progress linear both; animation-timeline: scroll(root); }
+}
+@keyframes ds-in-progress { to { transform: scaleX(1); } }
+
+/* What to read next: three cards, the plate on top. */
+.ds-in-cards { display: grid; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.ds-in-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 0 0 22px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
+  color: var(--ds-fg);
+  overflow: hidden;
+}
+.ds-in-card-art { border-radius: 0; padding: 10px 18px; border-bottom: 1px solid var(--ds-rule); }
+.ds-in-card-art::after { display: none; }
+.ds-in-card > .ds-in-meta { padding: 8px 20px 0; }
+.ds-in-card-title { padding: 0 52px 0 20px; font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; text-wrap: pretty; }
+.ds-in-card-go { position: absolute; right: 20px; bottom: 22px; color: var(--ds-fg-muted); }
+.ds-in-card-go .ds-arrow { transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+@media (min-width: 900px) {
+  .ds-in-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+}
+.ds-in-all { display: inline-flex; align-items: center; gap: 6px; margin-top: 28px; font-size: 15px; }
