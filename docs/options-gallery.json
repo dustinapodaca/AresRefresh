@@ -4,6 +4,40 @@
   "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19), and the Insights phone cards (?rowcard=, 2026-11-19).",
   "groups": [
     {
+      "heading": "Home: Questions buyers ask (links to Insights)",
+      "intro": "A quiet section between 04 Where we work and 05 Now hiring, at section size, not the Home's statement size. Four whole versions, desktop and phone each, from Mobbin.",
+      "page": "/",
+      "param": "reading",
+      "selector": "#reading",
+      "options": [
+        {
+          "value": "cards",
+          "label": "Cards",
+          "tag": "default",
+          "copy": "<b>Questions buyers ask.</b><br>Three articles as cards: drawing, topic, reading time, title.",
+          "note": "After Rox, Chronicle, and Instrument. Phones: a swipe row with the shared meter."
+        },
+        {
+          "value": "list",
+          "label": "List",
+          "copy": "<b>Questions buyers ask.</b><br>Heading on the left, four ruled rows on the right.",
+          "note": "After Dovetail's Resources for enterprise and monday.com's Top articles. No drawings; the quietest."
+        },
+        {
+          "value": "feature",
+          "label": "Feature",
+          "copy": "<b>Questions buyers ask.</b><br>One article large, two smaller beside it.",
+          "note": "After Greptile's Latest and Figma's blog. Phones: the large card, then two compact rows."
+        },
+        {
+          "value": "questions",
+          "label": "Questions",
+          "copy": "<b>Questions buyers ask.</b><br>Four buyer questions set large, each a link to its article.",
+          "note": "After Maze and Mailchimp. On desktop the drawing follows the question pointed at. Phones: the questions alone."
+        }
+      ]
+    },
+    {
       "heading": "Capability Statement card: the drawing between the line and the codes",
       "intro": "From 600px wide; phones have no room for it. Captured drawn and still (reduced motion).",
       "page": "/capability-statement",

@@ -1,5 +1,10 @@
 # Options archive
 
+**Live switch (2026-11-20):** `/?reading=cards|list|feature|questions`, "Questions buyers ask.", a new Home
+section between 04 Where we work and 05 Now hiring that links to Insights (owner, 2026-11-20, from Mobbin).
+`cards` is the default until the owner picks. Each form is a whole version, desktop and phone
+(`src/components/home/Reading.tsx`, `nx-reading.css`). In the gallery (`docs/options-gallery.json`).
+
 **Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
 Insights index (phones only, below 768px; `rowcard` in `src/pages/Insights.tsx`, `data-rowcard` rules in
 `src/components/insights/insights.css`). `band` (a 3:1 strip across the card's top) is the default (owner,

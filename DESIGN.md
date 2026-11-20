@@ -637,6 +637,19 @@ and `nx-*.css` (class prefix `nx-`).
   sonar ping ripples out from it, the ring opens around it, the name rises 6px into place, Pikes Peak with
   Colorado Springs; radii, not scale, so nothing flies in from the map's corner); pointing at or
   focusing a city lights its pin and dims the others. Resolved: the route drawn, every pin lit.
+- **Questions buyers ask** (owner, 2026-11-20; between 04 and 05, id `reading`): a quiet link to
+  Insights for buyers not ready to call, set at section size (display-lg), not the Statement size, so
+  it reads as an aside. The heading reads in like the others; nothing else moves. Four whole forms to
+  compare at `/?reading=` (`Reading.tsx`): **`cards` (default until the owner picks)**, three cards
+  (the article's drawing over its topic, reading time, and title; the card surface with the glass
+  edge), a swipe row with the shared swipe controls on phones (after Rox, Chronicle, Instrument);
+  `list`, the heading, lead, and "All 11 articles" on the left (sticky) and four ruled rows of title,
+  two-line summary, and topic on the right, no drawings (after Dovetail, monday.com); `feature`, one
+  article large with its drawing and two smaller beside it, compact rows on phones (after Greptile,
+  Figma); `questions`, four buyer questions (each article's own first question) set large as ruled
+  links, the drawing beside them following the one pointed at or focused, the questions alone on
+  phones (after Maze, Mailchimp). "All 11 articles →" at the head's right, at the foot on phones.
+  The six other headlines, the Order line above, and the section ids list predate it.
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a
   narrow vertical slit to the full screen, two rust edges riding out like a door; the headline

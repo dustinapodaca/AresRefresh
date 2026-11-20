@@ -6,6 +6,7 @@ import Industries from '../components/home/Industries';
 import Prime from '../components/home/Prime';
 import Quality from '../components/home/Quality';
 import Coverage from '../components/home/Coverage';
+import Reading from '../components/home/Reading';
 import Careers from '../components/home/Careers';
 import Contact from '../components/home/Contact';
 import { destroyEngine, loadEngine } from '../components/home/engine';
@@ -29,6 +30,7 @@ export default function Home() {
       <Prime />
       <Quality />
       <Coverage />
+      <Reading />
       <Careers />
       <Contact />
     </main>
