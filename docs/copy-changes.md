@@ -1382,5 +1382,6 @@ previous page's. New framing copy (N):
   How to choose a security company in Colorado; How much do security guards cost in Colorado in 2027?;
   Escorts for contractors on military bases: how they work. Change the three in `PICKS`.
 - The other four forms (`Reading.tsx`) share "Questions buyers ask." with the line "Plain answers on cost,
-  coverage, and licensing in Colorado, for when you are still comparing." Owner to confirm "written by
-  the people who staff them" in the strip's line (the articles' author is Dustin Apodaca).
+  coverage, and licensing in Colorado, for when you are still comparing." The strip now uses the same
+  heading and line (owner, 2026-11-20), replacing "Guides for buyers." and "Cost, licensing, and how a post
+  runs in Colorado, written by the people who staff them."

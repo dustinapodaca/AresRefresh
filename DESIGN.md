@@ -599,7 +599,7 @@ and `nx-*.css` (class prefix `nx-`).
   Figma); `questions`, four buyer questions (each article's own first question) set large as ruled
   links, the drawing beside them following the one pointed at or focused, the questions alone on
   phones (after Maze, Mailchimp). "All 11 articles →" at the head's right, at the foot on phones.
-  `strip`, "Guides for buyers." (a Cowork handoff, 2026-11-20; `Reads.tsx`, `nx-reads.css`, id
+  `strip`, the Cowork "Guides for buyers." strip with the same heading and line as the others (a Cowork handoff, 2026-11-20; `Reads.tsx`, `nx-reads.css`, id
   `insights`): an interlude with no Statement headline, pin, or scene. A hairline-strong rule that draws
   left to right as it comes up (scrubbed; drawn in the resolved page), a head on one row (the heading in
   Inter Tight 600 at 24 to 32px, one muted line, "All N articles →" at the right), then three articles
