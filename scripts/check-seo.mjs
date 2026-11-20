@@ -6,7 +6,7 @@
  * pointing at the wrong host, two pages sharing a title, or a page that
  * prerendered without its content.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -88,6 +88,22 @@ for (const p of Object.keys(routes)) {
   }
 }
 
+// --- every <img> carries an alt attribute (2026-11-20, after Bing flagged one on Home) ---
+// Decorative images still need alt="": search engines and screen readers flag a missing attribute,
+// not an empty one. Every built page, the 404 included. An error, so the deploy stops.
+const htmlFiles = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? htmlFiles(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : [],
+  );
+let imgCount = 0;
+for (const file of htmlFiles(distDir)) {
+  const html = readFileSync(file, 'utf8');
+  for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
+    imgCount += 1;
+    if (!/\salt(\s*=|[\s/>])/i.test(m[0])) errors.push(`${file.slice(distDir.length + 1)}: <img> without an alt attribute: ${m[0].slice(0, 160)}`);
+  }
+}
+
 // --- sitemap + robots ---
 const sitemap = join(distDir, 'sitemap.xml');
 if (!existsSync(sitemap)) errors.push('dist/sitemap.xml: MISSING');
@@ -118,4 +134,4 @@ if (errors.length) {
   for (const e of errors) console.error(`  ERROR ${e}`);
   process.exit(1);
 }
-console.log(`\n[check:seo] PASS — ${titles.size} pages, all unique titles, canonicals on ${host}${warnings.length ? `, ${warnings.length} warning(s)` : ''}`);
+console.log(`\n[check:seo] PASS — ${titles.size} pages, all unique titles, canonicals on ${host}, ${imgCount} images all with alt${warnings.length ? `, ${warnings.length} warning(s)` : ''}`);
