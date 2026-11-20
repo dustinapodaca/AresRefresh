@@ -118,28 +118,18 @@
   .ds-in-row > .ds-in-meta { grid-column: 2; flex-direction: row; }
   .ds-in-row > .ds-arrow { grid-column: 3; grid-row: 1 / span 2; }
 }
-/* Phones (below 768px; owner, 2026-11-19: easier to tell apart than ruled rows): every article is
-   a card like the featured one, the card surface with the glass edge and 4px corners, the plate
-   across its top over a hairline, then the title, summary, and meta; 14px between cards. */
+/* Phones (below 768px; owner, 2026-11-19: easier to tell apart than ruled rows): each row sits in a
+   card like the featured one (the card surface with the glass edge, 4px corners), keeping the row's
+   own compact layout and sizes; 12px between cards. */
 @media (max-width: 767px) {
-  .ds-in-list { display: grid; gap: 14px; border-top: 0; }
+  .ds-in-list { display: grid; gap: 12px; border-top: 0; }
   .ds-in-list li { border-bottom: 0; }
   .ds-in-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    padding: 0;
+    padding: 16px;
     border: 1px solid transparent;
     border-radius: 4px;
     background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
-    overflow: hidden;
   }
-  .ds-in-row-art { grid-row: auto; aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 12px; border-radius: 0; border-bottom: 1px solid var(--ds-rule); }
-  .ds-in-row-art::after { display: none; }
-  .ds-in-row-art .ds-ia { width: auto; height: 100%; max-width: 100%; }
-  .ds-in-row-copy { display: block; padding: 20px 20px 0; }
-  .ds-in-row-title { grid-column: auto; grid-row: auto; font-size: 19px; }
-  .ds-in-row-sum { grid-column: auto; }
-  .ds-in-row > .ds-in-meta { grid-column: auto; padding: 14px 20px 20px; }
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-in-row:hover .ds-ia, .ds-in-feature:hover .ds-ia, .ds-in-card:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }
