@@ -589,7 +589,7 @@ and `nx-*.css` (class prefix `nx-`).
   beside or above the same brief.
 - **Questions buyers ask** (owner, 2026-11-20; between 02 Industries and For prime contractors, id `reading`; first placed before 05, moved up the same day: too low): a quiet link to
   Insights, a `beat` under the industries for buyers not ready to call, set at section size (display-lg), not the Statement size, so
-  it reads as an aside. The heading reads in like the others; nothing else moves. Four whole forms to
+  it reads as an aside. The heading reads in like the others; nothing else moves. Five whole forms to
   compare at `/?reading=` (`Reading.tsx`): **`cards` (default until the owner picks)**, three cards
   (the article's drawing over its topic, reading time, and title; the card surface with the glass
   edge), a swipe row with the shared swipe controls on phones (after Rox, Chronicle, Instrument);
@@ -599,6 +599,14 @@ and `nx-*.css` (class prefix `nx-`).
   Figma); `questions`, four buyer questions (each article's own first question) set large as ruled
   links, the drawing beside them following the one pointed at or focused, the questions alone on
   phones (after Maze, Mailchimp). "All 11 articles →" at the head's right, at the foot on phones.
+  `strip`, "Guides for buyers." (a Cowork handoff, 2026-11-20; `Reads.tsx`, `nx-reads.css`, id
+  `insights`): an interlude with no Statement headline, pin, or scene. A hairline-strong rule that draws
+  left to right as it comes up (scrubbed; drawn in the resolved page), a head on one row (the heading in
+  Inter Tight 600 at 24 to 32px, one muted line, "All N articles →" at the right), then three articles
+  on hairlines in a row, each its small plate (128px, 16:10) beside topic, reading time, and title; the
+  plate over the title as a 3:1 band on tablets; compact rows with a 104px plate on phones. Its picks
+  (`PICKS`): choosing a company, cost, escorts (the last hands off to the prime block). `beat-tight`
+  above, none below. After Linear's "More news" and the header rows of Squarespace and Rox.
   The six other headlines, the Order line above, and the section ids list predate it.
 - **For prime contractors:** the copy (the two-tone line and "Teaming & subcontracting →") beside
   cards joined by wires, no panel around them: Prime contractor (Needs posts covered under its

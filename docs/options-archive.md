@@ -1,8 +1,9 @@
 # Options archive
 
-**Live switch (2026-11-20):** `/?reading=cards|list|feature|questions`, "Questions buyers ask.", a new Home
+**Live switch (2026-11-20):** `/?reading=cards|list|feature|questions|strip`, "Questions buyers ask.", a new Home
 section between 02 Industries and For prime contractors (moved up the same day, owner) that links to Insights (owner, 2026-11-20, from Mobbin).
-`cards` is the default until the owner picks. Each form is a whole version, desktop and phone
+`cards` is the default until the owner picks. `strip` is the Cowork handoff
+(HANDOFF-home-insights-strip.md: `Reads.tsx`, `nx-reads.css`, id `insights`). Each form is a whole version, desktop and phone
 (`src/components/home/Reading.tsx`, `nx-reading.css`). In the gallery (`docs/options-gallery.json`).
 
 **Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the

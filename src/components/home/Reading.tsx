@@ -6,13 +6,14 @@ import InsightArt from '../insights/InsightArt';
 import { readingMinutes } from '../insights/meta';
 import { INSIGHTS, type Insight } from '../market/insights';
 import { readIn, useScene, words } from './engine';
+import Reads from './Reads';
 import '../insights/insights.css';
 import './nx-reading.css';
 
 // Questions buyers ask (owner, 2026-11-20): a quiet stop between 02 The sites we protect and For prime
 // contractors (moved up from before 05 Now hiring the same day, owner: too low) that links the Home to the Insights articles, for buyers who are not ready to call. Set at
-// section size, not the Home's statement size, so it reads as an aside. Four whole versions (desktop
-// and phone each) for the owner to compare at /?reading=cards|list|feature|questions, from Mobbin:
+// section size, not the Home's statement size, so it reads as an aside. Five whole versions (desktop
+// and phone each) for the owner to compare at /?reading=cards|list|feature|questions|strip, from Mobbin:
 //  - cards: after Rox's, Chronicle's, and Instrument's "Latest articles". Three cards, each the
 //    article's line drawing over its topic, reading time, and title. Phones: a swipe row with the
 //    shared swipe controls.
@@ -23,8 +24,12 @@ import './nx-reading.css';
 //  - questions: after Maze's "Popular articles" and Mailchimp's guides. Four buyer questions set
 //    large, each a link to the article that answers it; on desktop the drawing beside them follows
 //    the question pointed at or focused. Phones: the questions alone.
+//  - strip: "Guides for buyers.", a Cowork handoff (HANDOFF-home-insights-strip.md, 2026-11-20), after
+//    Linear's "More news" and the header rows of Squarespace and Rox. A small interlude: a rule that
+//    draws in, a one-row head, three articles in a ruled row with small drawings. Its own component
+//    (Reads.tsx, id `insights`) and picks (choosing a company, cost, escorts).
 // `cards` is the default until the owner picks.
-const OPTIONS = ['cards', 'list', 'feature', 'questions'] as const;
+const OPTIONS = ['cards', 'list', 'feature', 'questions', 'strip'] as const;
 type Key = (typeof OPTIONS)[number];
 const DEFAULT: Key = 'cards';
 
@@ -216,13 +221,17 @@ function Questions() {
 }
 
 export default function Reading() {
-  const ref = useRef<HTMLElement>(null);
   const [params] = useSearchParams();
   // The prerender shows the default; a ?reading= applies once the page's script runs.
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
   const asked = ready ? params.get('reading') : null;
   const form: Key = (OPTIONS as readonly string[]).includes(asked ?? '') ? (asked as Key) : DEFAULT;
+  return form === 'strip' ? <Reads /> : <ReadingSection form={form} />;
+}
+
+function ReadingSection({ form }: { form: Exclude<Key, 'strip'> }) {
+  const ref = useRef<HTMLElement>(null);
 
   useScene(ref, (e, root) => {
     readIn(e, root.querySelector('.nx-rd-title'));

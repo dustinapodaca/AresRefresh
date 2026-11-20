@@ -5,10 +5,10 @@
   "groups": [
     {
       "heading": "Home: Questions buyers ask (links to Insights)",
-      "intro": "A quiet section between 02 The sites we protect and For prime contractors, at section size, not the Home's statement size. Four whole versions, desktop and phone each, from Mobbin.",
+      "intro": "A quiet section between 02 The sites we protect and For prime contractors, at section size, not the Home's statement size. Five whole versions, desktop and phone each, from Mobbin.",
       "page": "/",
       "param": "reading",
-      "selector": "#reading",
+      "selector": "#reading, #insights",
       "options": [
         {
           "value": "cards",
@@ -34,6 +34,12 @@
           "label": "Questions",
           "copy": "<b>Questions buyers ask.</b><br>Four buyer questions set large, each a link to its article.",
           "note": "After Maze and Mailchimp. On desktop the drawing follows the question pointed at. Phones: the questions alone."
+        },
+        {
+          "value": "strip",
+          "label": "Strip (Cowork)",
+          "copy": "<b>Guides for buyers.</b><br>Cost, licensing, and how a post runs in Colorado, written by the people who staff them.",
+          "note": "From HANDOFF-home-insights-strip.md. A small interlude: a rule that draws in, a one-row head, three articles in a ruled row with small drawings (choosing a company, cost, escorts). After Linear, Squarespace, Rox."
         }
       ]
     },

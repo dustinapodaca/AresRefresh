@@ -1372,3 +1372,15 @@ previous page's. New framing copy (N):
 - `check:seo` warns on any empty alt (lists the image and its page count; `data-decorative` skips one) and
   prints "N images, M empty alt". Build: 918 images, 0 empty alt. Owner: rerun Site Scan in Bing.
 
+
+## 2026-11-20: Home, a way into Insights
+
+- New small interlude between "The sites we protect." and "For prime contractors." (`Reads.tsx`; added as
+  the `strip` option of `/?reading=` beside Home's other four forms, not yet the default):
+  "Guides for buyers." with the line "Cost, licensing, and how a post runs in Colorado, written by the
+  people who staff them.", "All 11 articles →" (the count follows the articles), and three articles:
+  How to choose a security company in Colorado; How much do security guards cost in Colorado in 2027?;
+  Escorts for contractors on military bases: how they work. Change the three in `PICKS`.
+- The other four forms (`Reading.tsx`) share "Questions buyers ask." with the line "Plain answers on cost,
+  coverage, and licensing in Colorado, for when you are still comparing." Owner to confirm "written by
+  the people who staff them" in the strip's line (the articles' author is Dustin Apodaca).

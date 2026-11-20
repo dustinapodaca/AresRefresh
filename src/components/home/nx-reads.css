@@ -1,0 +1,138 @@
+/* From the Insights (2026-11-20): a small interlude between the industries and the prime contractors
+   block. One hairline-strong rule, a small head, and three articles in a ruled row. Resolved default:
+   the rule drawn. With the scroll engine the rule draws left to right as the strip comes up. */
+
+.nx-reads {
+  position: relative;
+  /* A short beat: the industries above already end on open space. */
+  padding-top: var(--ds-beat-tight);
+  /* The prime block opens with its own open beat, so the strip adds none below. */
+  padding-bottom: 0;
+}
+.nx-reads-rule {
+  display: block;
+  height: 1px;
+  background: var(--ds-rule-strong);
+  transform-origin: 0 50%;
+}
+.nx-reads-head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 10px;
+  align-items: baseline;
+  padding: 22px 0 26px;
+}
+.nx-reads-title {
+  grid-column: 1 / span 4;
+  margin: 0;
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ds-fg);
+}
+.nx-reads-line {
+  grid-column: 5 / span 5;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ds-fg-muted);
+  max-width: 52ch;
+}
+.nx-reads-all {
+  grid-column: 10 / span 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nx-reads-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 24px;
+}
+.nx-reads-list > li { border-top: 1px solid var(--ds-rule); min-width: 0; }
+.nx-read {
+  position: relative;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: start;
+  padding: 18px 28px 0 0;
+  color: inherit;
+  text-decoration: none;
+}
+.nx-read-art {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  background: var(--ds-card);
+}
+.nx-read-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--ds-rule);
+  pointer-events: none;
+}
+.nx-read-art .ds-ia { width: 100%; height: 100%; }
+.nx-read-copy { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.nx-read-meta { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 13px; color: var(--ds-fg-faint); }
+.nx-read-meta .ds-data { font-size: 14px; }
+.nx-read-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ds-fg);
+  text-wrap: pretty;
+}
+.nx-read-go { position: absolute; right: 0; top: 20px; color: var(--ds-fg-muted); }
+.nx-read-go .ds-arrow { transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+.nx-read:focus-visible { outline: 2px solid var(--ds-rust); outline-offset: 4px; border-radius: 2px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .nx-read:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }
+  .nx-read:hover .nx-read-go .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+}
+
+/* Tablets: the head stacks, the three keep their row with the plate over the title as a short 3:1
+   band (the Insights index's phone band), so the strip stays low. */
+@media (max-width: 1023px) {
+  .nx-reads-title { grid-column: 1 / -1; }
+  .nx-reads-line { grid-column: 1 / span 9; }
+  .nx-reads-all { grid-column: 10 / span 3; align-self: end; }
+  .nx-read { grid-template-columns: 1fr; row-gap: 12px; padding-right: 0; }
+  .nx-read-art { aspect-ratio: 3 / 1; display: flex; justify-content: center; }
+  .nx-read-art .ds-ia { width: auto; max-width: 100%; }
+  .nx-read-go { display: none; }
+}
+
+/* Phones: one column of compact rows, the plate beside the title, and the link to all of them last. */
+@media (max-width: 767px) {
+  .nx-reads { padding-top: 72px; }
+  .nx-reads-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px 0 14px; }
+  .nx-reads-all { align-self: flex-start; margin-top: 4px; }
+  .nx-reads-list { grid-template-columns: 1fr; }
+  .nx-read { grid-template-columns: 104px minmax(0, 1fr); column-gap: 14px; padding: 14px 0; }
+  .nx-read-art { aspect-ratio: 16 / 10; display: block; }
+  .nx-read-art .ds-ia { width: 100%; }
+  .nx-reads-list > li:last-child { border-bottom: 1px solid var(--ds-rule); }
+  .nx-read-title { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-read-go .ds-arrow { transition: none; }
+}
