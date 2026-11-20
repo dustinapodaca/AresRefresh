@@ -11,9 +11,15 @@
       "selector": "#reading, #insights",
       "options": [
         {
+          "value": "strip",
+          "label": "Strip",
+          "copy": "<b>Questions buyers ask.</b><br>Plain answers on cost, coverage, and licensing in Colorado, for when you are still comparing.",
+          "note": "The default (owner, 2026-11-20). From the Cowork handoff, reworked: the list's top rule draws in, heading over its line, 160px drawings, cost / armed or unarmed / choosing, phone link after the list.",
+          "tag": "default"
+        },
+        {
           "value": "cards",
           "label": "Cards",
-          "tag": "default",
           "copy": "<b>Questions buyers ask.</b><br>Three articles as cards: drawing, topic, reading time, title.",
           "note": "After Rox, Chronicle, and Instrument. Phones: a swipe row with the shared meter."
         },
@@ -34,12 +40,6 @@
           "label": "Questions",
           "copy": "<b>Questions buyers ask.</b><br>Four buyer questions set large, each a link to its article.",
           "note": "After Maze and Mailchimp. On desktop the drawing follows the question pointed at. Phones: the questions alone."
-        },
-        {
-          "value": "strip",
-          "label": "Strip (Cowork)",
-          "copy": "<b>Questions buyers ask.</b><br>Plain answers on cost, coverage, and licensing in Colorado, for when you are still comparing.",
-          "note": "From HANDOFF-home-insights-strip.md. A small interlude: a rule that draws in, a one-row head, three articles in a ruled row with small drawings (choosing a company, cost, escorts). After Linear, Squarespace, Rox."
         }
       ]
     },

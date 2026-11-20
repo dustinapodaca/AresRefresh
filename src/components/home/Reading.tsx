@@ -28,10 +28,10 @@ import './nx-reading.css';
 //    Linear's "More news" and the header rows of Squarespace and Rox. A small interlude: a rule that
 //    draws in, a one-row head, three articles in a ruled row with small drawings. Its own component
 //    (Reads.tsx, id `insights`) and picks (choosing a company, cost, escorts).
-// `cards` is the default until the owner picks.
+// `strip` is the default (owner, 2026-11-20, after five changes to it); the other four stay at ?reading=.
 const OPTIONS = ['cards', 'list', 'feature', 'questions', 'strip'] as const;
 type Key = (typeof OPTIONS)[number];
-const DEFAULT: Key = 'cards';
+const DEFAULT: Key = 'strip';
 
 const pick = (slugs: string[]) =>
   slugs.map((s) => INSIGHTS.find((a) => a.slug === s)).filter((a): a is Insight => !!a);

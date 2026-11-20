@@ -13,12 +13,16 @@ import './nx-reads.css';
 // numbered section: no Statement headline, no pin, no rail mark. A small head on a hairline-strong
 // rule (the heading, one line, and "All N articles") over three articles in a ruled row, each its
 // small plate beside its title. After Linear's "More news" list and Squarespace's and Rox's header
-// rows (a rule, the label, "View all" at the right) on Mobbin. Motion: the rule draws left to right
-// as the strip comes up, scrubbed; drawn and still everywhere else.
+// rows (a rule, the label, "View all" at the right) on Mobbin. Motion: the list's top rule draws left
+// to right as it comes up, scrubbed; drawn and still everywhere else. Reworked 2026-11-20 (owner):
+// the rule moved from above the heading to the top of the list (no rule between sections), the
+// heading and line stacked on the left, larger plates, cost / armed or unarmed / choosing, and the
+// "All articles" link after the list on phones. Shown at /?reading=strip, the default (Reading.tsx).
 
-// The three a buyer reaches for at this point of Home, ending on the escort guide, which hands off
-// to the prime contractors block below it. Change the slugs here; any missing slug is skipped.
-const PICKS = ['how-to-choose-a-security-company-colorado', 'security-guard-cost-colorado', 'contractor-escorts-military-bases'];
+// The three a buyer asks first: cost, armed or unarmed, and how to choose a company (owner,
+// 2026-11-20; the escort guide was third, but it speaks only to federal buyers and the prime block
+// below covers them). Change the slugs here; any missing slug is skipped.
+const PICKS = ['security-guard-cost-colorado', 'armed-or-unarmed-security', 'how-to-choose-a-security-company-colorado'];
 
 export default function Reads() {
   const ref = useRef<HTMLElement>(null);
@@ -30,22 +34,24 @@ export default function Reads() {
     e.gsap.fromTo(
       rule,
       { scaleX: 0 },
-      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: root, start: 'top 92%', end: 'top 58%', scrub: true } },
+      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: rule, start: 'top 92%', end: 'top 62%', scrub: true } },
     );
   });
 
   if (!picks.length) return null;
   return (
     <section ref={ref} id="insights" className="nx-reads nx-edge" aria-labelledby="nx-reads-title">
-      <span className="nx-reads-rule" aria-hidden="true" />
       <div className="nx-reads-head">
         <h2 id="nx-reads-title" className="nx-reads-title">Questions buyers ask.</h2>
         <p className="nx-reads-line">Plain answers on cost, coverage, and licensing in Colorado, for when you are still comparing.</p>
-        <Link to="/insights" className="ds-link nx-reads-all">
+        <Link to="/insights" className="ds-link nx-reads-all nx-reads-all-top">
           All {INSIGHTS.length} articles
           <Arrow size={14} />
         </Link>
       </div>
+      {/* The list's own top rule, not a rule between sections (owner, 2026-11-20): it draws left to
+          right as the list comes up. */}
+      <span className="nx-reads-rule" aria-hidden="true" />
       <ol className="nx-reads-list">
         {picks.map((a) => (
           <li key={a.slug}>
@@ -67,6 +73,11 @@ export default function Reads() {
           </li>
         ))}
       </ol>
+      {/* Phones: the link to all of them after the three. */}
+      <Link to="/insights" className="ds-link nx-reads-all nx-reads-all-foot">
+        All {INSIGHTS.length} articles
+        <Arrow size={14} />
+      </Link>
     </section>
   );
 }
