@@ -594,7 +594,8 @@ and `nx-*.css` (class prefix `nx-`).
   `insights`): a `beat` under the industries, a small head (the heading "Questions buyers ask." in Inter
   Tight 600 at 24 to 32px over its line in ink muted on the left, "All 11 articles →" at the right, level
   with the line's foot; the count follows the articles), then the list's own hairline-strong top rule,
-  which draws left to right as the list comes up (scrubbed; drawn in the resolved page; a list rule, not a
+  which draws left to right as the list comes up (scrubbed, from 92% down the screen to the middle on
+  desktop, to 62% below 1024px; drawn in the resolved page; a list rule, not a
   rule between sections), and three articles in a row, each its plate (`InsightArt` small, 160px, 16:10,
   the card surface and hairline edge) beside topic, reading time, and title, an arrow that nudges rust on
   hover (the plate's lines brighten). Tablets: the plate over the title as a 3:1 band. Phones: stacked

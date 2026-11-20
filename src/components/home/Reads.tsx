@@ -31,10 +31,13 @@ export default function Reads() {
   useScene(ref, (e, root) => {
     const rule = root.querySelector('.nx-reads-rule');
     if (!rule) return;
+    // Desktop: done when the rule reaches the middle of the screen (owner, 2026-11-20: it finished too
+    // soon, at 62% down). Smaller screens keep the shorter draw.
+    const end = window.matchMedia('(min-width: 1024px)').matches ? 'top 50%' : 'top 62%';
     e.gsap.fromTo(
       rule,
       { scaleX: 0 },
-      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: rule, start: 'top 92%', end: 'top 62%', scrub: true } },
+      { scaleX: 1, ease: 'none', scrollTrigger: { trigger: rule, start: 'top 92%', end, scrub: true } },
     );
   });
 
