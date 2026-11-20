@@ -26,7 +26,8 @@ export type Division = {
   // Each site type with one plain line. DRAFT copy (2026-10-05), built only from facts
   // already on the site; owner to review (docs/copy-changes.md).
   covers: { name: string; detail: string }[];
-  photo: { src: string; width: number; height: number; position?: string; sharp?: Photo };
+  /** `alt` describes the stock photo itself (2026-11-20: Bing reports an empty alt as missing). */
+  photo: { src: string; alt: string; width: number; height: number; position?: string; sharp?: Photo };
   /** The industry's full page (owner, 2026-10-10). */
   page?: { to: string; label: string };
 };
@@ -53,7 +54,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Restricted areas', detail: 'Experienced in access control, escort, and vehicle inspection on military installations, alongside base security forces.' },
     ],
     photo: {
-      src: '/images/matrix-government.jpg', width: 640, height: 427, position: '50% 40%',
+      src: '/images/matrix-government.jpg', alt: 'An American flag flying over a building', width: 640, height: 427, position: '50% 40%',
       sharp: { src: '/images/matrix-government.webp', width: 862, height: 862 },
     },
     page: { to: '/industries/government-defense', label: 'government and defense' },
@@ -69,7 +70,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
       { name: 'Corporate and tech offices', detail: 'Lobby officers, and patrol across several properties with a report for each.' },
     ],
-    photo: { src: '/images/matrix-commercial.jpg', width: 1000, height: 667 },
+    photo: { src: '/images/matrix-commercial.jpg', alt: 'Inside a retail clothing store', width: 1000, height: 667 },
     page: { to: '/industries/commercial-property', label: 'commercial and retail' },
   },
   {
@@ -84,7 +85,7 @@ export const DIVISIONS: Division[] = [
       // Hospitals moved here from Institutional & Community (owner, 2026-10-16).
       { name: 'Hospitals', detail: 'Main and emergency entrances, visitor screening, and grounds, with every entry logged.' },
     ],
-    photo: { src: '/images/matrix-specialized.jpg', width: 640, height: 384 },
+    photo: { src: '/images/matrix-specialized.jpg', alt: 'A data center server aisle', width: 640, height: 384 },
     page: { to: '/industries/critical-infrastructure', label: 'critical and high-liability site' },
   },
   {
@@ -100,7 +101,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Places of worship', detail: 'A calm, respectful presence during services and events.' },
       { name: 'Health centers and clinics', detail: 'A calm presence at the entrance and waiting room, and staff walked to their cars at closing.' },
     ],
-    photo: { src: '/images/matrix-community.jpg', width: 640, height: 427, position: '50% 30%' },
+    photo: { src: '/images/matrix-community.jpg', alt: 'A modern apartment building', width: 640, height: 427, position: '50% 30%' },
     page: { to: '/industries/institutional-community', label: 'institutional and community' },
   },
   {
@@ -115,7 +116,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Construction', detail: 'Perimeter security and mobile patrols while the site is being built.' },
       { name: 'Military construction', detail: 'Escort and gate control for crews and deliveries on a restricted build.' },
     ],
-    photo: { src: '/images/matrix-industrial.jpg', width: 640, height: 360 },
+    photo: { src: '/images/matrix-industrial.jpg', alt: 'Construction cranes over a city build at dusk', width: 640, height: 360 },
     page: { to: '/industries/construction-industrial', label: 'construction, industrial, and logistics' },
   },
   {
@@ -130,7 +131,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Transportation hubs', detail: 'Uniformed or plainclothes officers, depending on what the site needs.' },
       { name: 'Aviation facilities', detail: 'Perimeter protection and cargo-area coverage.' },
     ],
-    photo: { src: '/images/matrix-airport-denver.jpg', width: 1600, height: 1143, position: '50% 45%' },
+    photo: { src: '/images/matrix-airport-denver.jpg', alt: 'An airport concourse', width: 1600, height: 1143, position: '50% 45%' },
     page: { to: '/industries/airport-transportation', label: 'airport and transportation' },
   },
 ];

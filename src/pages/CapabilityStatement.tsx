@@ -417,7 +417,7 @@ function Hero() {
   return (
     <section className="cx-hero" aria-labelledby="cx-title">
       <div className="cx-hero-photo" aria-hidden="true">
-        <img {...responsive('/images/services-hero/denver-sunset.webp')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+        <img {...responsive('/images/services-hero/denver-sunset.webp')} alt="Downtown Denver at sunset" decoding="sync" {...{ fetchpriority: 'high' }} />
       </div>
       {/* The place caption as on the other photo heroes: top right under the nav (owner, 2026-10-23). */}
       <p className="ds-caption ds-cs-hero-cap">Downtown Denver, Colorado</p>
@@ -810,7 +810,7 @@ function Credentials() {
                 <dt>
                   {r.mark && (
                     <span className="cx-mark">
-                      <img {...responsive(r.mark.src)} alt="" loading="lazy" decoding="async" data-color={r.mark.color || undefined} />
+                      <img {...responsive(r.mark.src)} alt={r.mark.alt} loading="lazy" decoding="async" data-color={r.mark.color || undefined} />
                     </span>
                   )}
                   {r.label}

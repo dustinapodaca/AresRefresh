@@ -216,7 +216,7 @@ function MenuBody({ menu }: { menu: Menu }) {
             <img
               key={im.src}
               {...responsive(im.src, '288px')}
-              alt=""
+              alt={im.caption}
               decoding="async"
               data-on={im === shown || undefined}
               style={{ objectPosition: im.position, scale: im.zoom ? String(im.zoom) : undefined, transformOrigin: im.origin }}
@@ -225,7 +225,8 @@ function MenuBody({ menu }: { menu: Menu }) {
         </span>
         {/* Every caption sits in the same cell, so the slot is as tall as the longest one and the
             menu never grows when a longer caption comes up (owner, 2026-11-13). */}
-        <figcaption className="ds-caption ds-np-caps">
+        {/* Hidden from screen readers: the photo's alt carries the same words (2026-11-20). */}
+        <figcaption className="ds-caption ds-np-caps" aria-hidden="true">
           {photos.map((im) => (
             <span key={im.src} data-on={im === shown || undefined} aria-hidden={im === shown ? undefined : true}>
               {im.caption || '\u00a0'}
@@ -259,13 +260,14 @@ function MenuBody({ menu }: { menu: Menu }) {
 
 // The phone menu's photos (owner, 2026-10-15, after gigaenergy.com's phone menu): a real Ares
 // photo beside each service, and the industry pages' own photos on the swipe cards.
-const SERVICE_PHOTOS: Record<string, { src: string; position?: string }> = {
-  armed: { src: '/images/careers-team.jpg', position: '55% 40%' },
-  unarmed: { src: '/images/officer-portrait.jpg', position: '50% 30%' },
-  access: { src: '/images/backbone-officer.jpg', position: '40% 30%' },
-  escort: { src: '/images/market/government-military.webp', position: '30% 60%' },
-  relief: { src: '/images/careers-philosophy.jpg', position: '50% 55%' },
-  vehicle: { src: '/images/mission-vehicle.jpg', position: '55% 80%' },
+// Each with a short description of the photo itself (2026-11-20: Bing reports an empty alt as missing).
+const SERVICE_PHOTOS: Record<string, { src: string; alt: string; position?: string }> = {
+  armed: { src: '/images/careers-team.jpg', alt: 'Ares officer at the firing range', position: '55% 40%' },
+  unarmed: { src: '/images/officer-portrait.jpg', alt: 'Ares officer with a badge', position: '50% 30%' },
+  access: { src: '/images/backbone-officer.jpg', alt: 'Smiling Ares officer in uniform', position: '40% 30%' },
+  escort: { src: '/images/market/government-military.webp', alt: 'Radomes on a Space Force base in Colorado', position: '30% 60%' },
+  relief: { src: '/images/careers-philosophy.jpg', alt: 'Ares officers at the firing range', position: '50% 55%' },
+  vehicle: { src: '/images/mission-vehicle.jpg', alt: 'Ares patrol vehicles', position: '55% 80%' },
 };
 
 // Phones: Services as a list with a photo beside each, Industries as a row of photo cards that
@@ -279,7 +281,7 @@ function PhoneServices() {
           <li key={r.slug}>
             <Link to={`/services/${r.slug}`}>
               <span className="ds-np-thumb">
-                {ph && <img {...responsive(ph.src, '56px')} alt="" loading="lazy" decoding="async" style={{ objectPosition: ph.position }} />}
+                {ph && <img {...responsive(ph.src, '56px')} alt={ph.alt} loading="lazy" decoding="async" style={{ objectPosition: ph.position }} />}
               </span>
               <span className="ds-np-svc-text">
                 <b>{r.name}</b>
@@ -307,7 +309,7 @@ function PhoneIndustries() {
       {INDUSTRY_PAGES.map((i) => (
         <Link key={i.slug} to={`/industries/${i.slug}`} className="ds-np-ind" role="listitem">
           <span className="ds-np-ind-photo">
-            <img {...responsive(i.image.src, cardSizes(i.image.src))} alt="" loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
+            <img {...responsive(i.image.src, cardSizes(i.image.src))} alt={i.image.alt} loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
           </span>
           <b>{i.name}</b>
           <small>{i.short}</small>
@@ -325,13 +327,13 @@ function PhoneIndustries() {
 // at the foot of the menu.
 // Order (owner, 2026-11-20): About, Insights, Capability Statement, Careers.
 const COMPANY_TILES = [
-  { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', position: '50% 60%' },
+  { label: 'About Ares', to: '/about', src: '/images/about-hero.jpg', alt: 'Pikes Peak and Garden of the Gods', position: '50% 60%' },
   // The owner's LinkedIn banner (2026-10-15), its frosted logo card centered in the tile on a phone
   // (owner, 2026-10-26: it sat a little low at 50%).
-  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', position: '50% 68%' },
-  { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', position: '50% 55%' },
+  { label: 'Insights', to: '/insights', src: '/images/nav/insights.png', alt: 'The Ares logo over glass towers', position: '50% 68%' },
+  { label: 'Capability Statement', to: '/capability-statement', src: '/images/services-hero/denver-sunset.webp', alt: 'Downtown Denver at sunset', position: '50% 55%' },
   // The two officers, backs to the camera, from the Home page's careers band (owner, 2026-10-15).
-  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', position: '50% 60%' },
+  { label: 'Careers', to: '/careers', src: '/images/about-security.jpg', alt: 'Two Ares officers seen from behind', position: '50% 60%' },
 ];
 
 function ArrowBack() {
@@ -365,7 +367,7 @@ function CompanyPane() {
         {COMPANY_TILES.map((t) => (
           <li key={t.to}>
             <Link to={t.to} className="ds-np-tile">
-              <img {...responsive(t.src, 'calc(100vw - 40px)')} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
+              <img {...responsive(t.src, 'calc(100vw - 40px)')} alt={t.alt} loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
               <span>{t.label}</span>
               <Arrow size={18} />
             </Link>

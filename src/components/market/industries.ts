@@ -61,7 +61,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // Home's card shows the left radome and the low buildings behind the fence.
     image: {
       src: '/images/market/government-military.webp',
-      alt: '',
+      alt: 'Radomes on a Space Force base in Colorado',
       position: '50% 90%',
       // Desktop sits a little further right in the photo, so the radome moves left in the card (owner, 2026-10-18).
       card: { position: '0% 50%', zoom: 1.35, origin: '22% 88%', desktopPosition: '29% 50%' },
@@ -125,7 +125,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     title: 'Security for commercial property and retail.',
     lead: 'Officers for stores, grocery, shopping centers, banks, hotels, and corporate and tech offices: loss prevention and a visible, courteous presence that deters, screens, and helps.',
     // A real photo (owner, 2026-10-16): the Denver Pavilions sign, framed on the D and the tower.
-    image: { src: '/images/market/commercial-property.webp', alt: '', position: '50% 50%' },
+    image: { src: '/images/market/commercial-property.webp', alt: 'The Denver Pavilions sign on 16th Street', position: '50% 50%' },
     stake: [
       'In a lobby, on a sales floor, or at a store entrance, the officer is the first person many visitors meet. They have to deter theft and trouble without making the space feel guarded.',
       'Property managers also need the work reported the same way across one building or a portfolio, so they can read one summary instead of chasing several.',
@@ -172,7 +172,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     lead: 'Access control, posted officers, and armed posts where required, for data centers, utilities, hospitals, cash-handling, and other regulated sites where every entry has to be documented.',
     // A real photo (owner, 2026-10-12): a data center campus under snowy peaks. The wide strip
     // can't hold both, so it frames on the building; phones and Home's card show both.
-    image: { src: '/images/market/data-centers.webp', alt: '', position: '50% 80%' },
+    image: { src: '/images/market/data-centers.webp', alt: 'A data center in view of the Rockies', position: '50% 80%' },
     stake: [
       'Critical and high-liability sites are judged on who was allowed in. A missed check at a dock or a gate is the gap an audit, an insurer, or an incident will find.',
       'Some hold equipment a business depends on, some hold cash or regulated goods, some never close, like a hospital, and some are still being built. Each needs officers who follow the access list exactly, write everything down, and are armed only where the post calls for it.',
@@ -231,7 +231,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     title: 'Security for apartments, schools, clinics, and communities.',
     lead: 'Officers for apartment communities, HOAs, schools, campuses, community health centers and clinics, community centers, and places of worship: a calm, consistent presence, trained on the site and its daily rhythm before the first shift.',
     // A real photo (owner, 2026-10-16): apartments at blue hour, framed low on the lit windows.
-    image: { src: '/images/market/institutional-community.webp', alt: '', position: '50% 72%' },
+    image: { src: '/images/market/institutional-community.webp', alt: 'An apartment community in Colorado at dusk', position: '50% 72%' },
     stake: [
       'At a school, a health center, an apartment community, or a place of worship, the officer is part of daily life. Students, patients, staff, residents, and visitors need to feel safe without feeling watched, and a person in distress needs an officer who stays calm.',
       'These sites have many doors, steady visitor traffic, and quiet hours when few people are around. They need officers who know the entry points and the daily rhythm, and the same faces on post from shift to shift.',
@@ -284,7 +284,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     title: 'Security for construction and industrial sites.',
     lead: 'Gate control, perimeter rounds, and after-hours patrol for active builds, yards, warehouses, and industrial sites, while the site is being built and after.',
     // A real photo (owner, 2026-10-12): framed high so the crane and roofline show.
-    image: { src: '/images/market/construction-industrial.webp', alt: '', position: '50% 35%' },
+    image: { src: '/images/market/construction-industrial.webp', alt: 'A steel-frame build in downtown Colorado Springs', position: '50% 35%' },
     stake: [
       'An active build is open in ways a finished building is not: fences move, gates change, and equipment and materials sit on the ground overnight. Theft and trespass happen in the hours nobody is there.',
       'Warehouses and industrial sites run long hours, with trucks, contractors, and deliveries at every gate. Both need officers who check everything in and out and keep a record of it.',
@@ -330,7 +330,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
     // end and the climbing jet.
     image: {
       src: '/images/market/airport-transportation.webp',
-      alt: '',
+      alt: 'Denver International Airport at sunset',
       position: '50% 96%',
       mobile: { position: '78% 80%', zoom: 1.6, origin: '72% 110%' },
     },

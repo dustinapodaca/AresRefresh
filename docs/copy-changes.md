@@ -1359,3 +1359,16 @@ previous page's. New framing copy (N):
   scrolling, all carry `alt`; the flag is from an older crawl. `check:seo` now fails the build on any
   `<img>` without an `alt` attribute (`alt=""` passes), so the deploy stops before one ships. Owner: run
   Site Scan in Bing Webmaster Tools, or wait for the next crawl.
+
+## Alt text on every image (2026-11-20)
+- Bing Site Scan flagged "Alt attribute for images is missing" on all 57 scanned pages: its rule counts an
+  empty `alt=""` as missing. The build had 700 empty alts: the 15 nav menu photos on all 41 pages, plus
+  hero photos, the Services industry row, Teaming's photos, and the Capability Statement marks.
+- Every live image now has a short, true description (checked against each photo; no place named on the
+  stock photos or the generated Contact towers, no installation named). Industry photos carry theirs in
+  `industries.ts` (`image.alt`), the Services row in `services/data.ts` (`photo.alt`), the nav's phone
+  photos in `SERVICE_PHOTOS` and `COMPANY_TILES`; the desktop menu photo uses its caption, and the
+  figcaption is hidden from screen readers so it isn't read twice. The Capability marks use their names.
+- `check:seo` warns on any empty alt (lists the image and its page count; `data-decorative` skips one) and
+  prints "N images, M empty alt". Build: 918 images, 0 empty alt. Owner: rerun Site Scan in Bing.
+

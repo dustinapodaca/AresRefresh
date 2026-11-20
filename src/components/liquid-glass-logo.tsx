@@ -252,7 +252,8 @@ export const LiquidGlassLogo = forwardRef<LiquidGlassLogoHandle, LiquidGlassLogo
             {tuning.ending === 'logo' ? (
               <img
                 src={tuning.logo}
-                alt=""
+                // The logo's own name (2026-11-20: Bing reports an empty alt as missing).
+                alt={label ?? 'Logo'}
                 style={{
                   width: tuning.logoSize * tuning.logoScale * tuning.finalLogoScale,
                   height: tuning.logoSize * tuning.logoScale * tuning.finalLogoScale,
@@ -263,7 +264,7 @@ export const LiquidGlassLogo = forwardRef<LiquidGlassLogoHandle, LiquidGlassLogo
               />
             ) : (
               <>
-                {markSource && <img src={markSource} alt="" />}
+                {markSource && <img src={markSource} alt="" data-decorative />}
                 {tuning.text}
               </>
             )}

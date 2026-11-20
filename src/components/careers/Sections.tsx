@@ -124,8 +124,8 @@ export function Why() {
       <div className="ds-cr-lens-wrap">
         <figure className="ds-cr-lens" data-src={shot.src} aria-hidden="true">
           <div className="ds-cr-lens-frame">
-            <img {...responsive('/images/careers-philosophy.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="" loading="lazy" decoding="async" data-shot="team" />
-            <img {...responsive('/images/careers-team.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="" loading="lazy" decoding="async" data-shot="officer" />
+            <img {...responsive('/images/careers-philosophy.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="Ares officers at the firing range" loading="lazy" decoding="async" data-shot="team" />
+            <img {...responsive('/images/careers-team.jpg', '(min-width: 1024px) 50vw, 100vw')} alt="Ares officer at the firing range" loading="lazy" decoding="async" data-shot="officer" />
           </div>
           <figcaption className="ds-caption">{shot.caption}</figcaption>
         </figure>

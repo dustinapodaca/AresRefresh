@@ -150,7 +150,7 @@ export default function Contact() {
         <figure className="ds-qt-hero">
           <img
             {...responsive('/images/services-hero/nb-s1-towers.webp')}
-            alt=""
+            alt="Office towers at blue hour"
             decoding="sync"
             {...{ fetchpriority: 'high' }}
           />

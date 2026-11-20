@@ -33,7 +33,7 @@ function Card({ ind, i }: { ind: IndustryPageData; i: number }) {
       <div className="nx-sk-photo">
         <img
           {...responsive(ind.image.src, '(min-width: 600px) 400px, 86vw')}
-          alt=""
+          alt={ind.image.alt}
           draggable={false}
           loading={i < 3 ? 'eager' : 'lazy'}
           decoding="async"
@@ -224,7 +224,7 @@ export default function IndustryDeck() {
           <img
             key={ind.slug}
             {...responsive(ind.image.src, '40vw')}
-            alt=""
+            alt={ind.image.alt}
             loading="lazy"
             decoding="async"
             data-on={i === active}

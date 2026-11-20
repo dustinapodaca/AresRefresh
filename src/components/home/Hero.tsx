@@ -172,7 +172,7 @@ export default function Hero() {
           <div className="nx-hero-light" />
           <picture className="nx-hero-still">
             <source media="(min-width: 900px)" srcSet={STILL.srcSet} sizes="100vw" />
-            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="" decoding="async" />
+            <img {...responsive('/images/hero-topo/terrain-phone.webp', '100vw')} alt="Rust contour lines of rolling terrain" decoding="async" />
           </picture>
           {live && (
             <Suspense fallback={null}>
@@ -233,7 +233,7 @@ export default function Hero() {
           <ul className="nx-hero-proof nx-hero-lift" aria-label="Proof">
             <li>
               {/* The GSA mark (owner, 2026-10-23): the official logo, cropped to its square, 96px for 3x screens. */}
-              <img className="nx-hero-gsa" src="/images/gsa-mark.webp" alt="" width={16} height={16} decoding="async" />
+              <img className="nx-hero-gsa" src="/images/gsa-mark.webp" alt="GSA" width={16} height={16} decoding="async" />
               <span>GSA MAS</span>{' '}
               <a href={GSA_ELIBRARY} target="_blank" rel="noopener noreferrer" className="ds-data">
                 47QSMS25D009Q

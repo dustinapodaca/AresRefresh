@@ -206,7 +206,7 @@ export default function SvIndustries() {
                 <span className="sv-ind-photo" aria-hidden="true">
                   <img
                     {...responsive(d.photo.src, '(min-width: 1024px) 400px, 78vw')}
-                    alt=""
+                    alt={d.photo.alt}
                     draggable={false}
                     loading={i < 3 ? 'eager' : 'lazy'}
                     decoding="async"

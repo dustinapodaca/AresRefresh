@@ -43,7 +43,7 @@ export default function IndustryPage() {
         <div className="ds-mk-ind-band" aria-hidden="true">
           <img
             {...responsive(ind.image.src)}
-            alt=""
+            alt={ind.image.alt}
             decoding="sync"
             {...{ fetchpriority: 'high' }}
             // Framing per image (industries.ts); phones may set their own (CSS reads the vars).

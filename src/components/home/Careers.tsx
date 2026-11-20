@@ -66,7 +66,7 @@ export default function Careers() {
         <div className="nx-cr-photo">
           {/* The photo fills a 4:5 frame on phones and the window from 768px, so it is drawn by its
               height (measured 2026-10-22). */}
-          <img {...responsive(PHOTO, '(max-width: 767px) 240vw, max(100vw, 192vh)')} alt="" loading="lazy" decoding="async" />
+          <img {...responsive(PHOTO, '(max-width: 767px) 240vw, max(100vw, 192vh)')} alt="Two Ares officers seen from behind" loading="lazy" decoding="async" />
         </div>
         <span className="nx-cr-edge" aria-hidden="true" />
         <span className="nx-cr-edge" aria-hidden="true" />

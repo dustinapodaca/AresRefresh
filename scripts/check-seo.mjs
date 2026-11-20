@@ -88,21 +88,36 @@ for (const p of Object.keys(routes)) {
   }
 }
 
-// --- every <img> carries an alt attribute (2026-11-20, after Bing flagged one on Home) ---
-// Decorative images still need alt="": search engines and screen readers flag a missing attribute,
-// not an empty one. Every built page, the 404 included. An error, so the deploy stops.
+// --- every <img> carries a description in alt (2026-11-20, after Bing flagged Home) ---
+// A missing alt attribute is an error (the deploy stops). An empty alt="" is a warning: Bing's
+// SEO013_ImgAltExists reports an empty alt as missing, on every page it appears on. An image that
+// truly must stay decorative carries data-decorative and is skipped (Bing still flags its page, so
+// use it rarely). Every built page, the 404 included.
 const htmlFiles = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? htmlFiles(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : [],
   );
 let imgCount = 0;
+const emptyAlt = new Map(); // src -> pages
 for (const file of htmlFiles(distDir)) {
   const html = readFileSync(file, 'utf8');
+  const rel = file.slice(distDir.length + 1);
   for (const m of html.matchAll(/<img\b[^>]*>/gi)) {
     imgCount += 1;
-    if (!/\salt(\s*=|[\s/>])/i.test(m[0])) errors.push(`${file.slice(distDir.length + 1)}: <img> without an alt attribute: ${m[0].slice(0, 160)}`);
+    const tag = m[0];
+    if (!/\salt(\s*=|[\s/>])/i.test(tag)) {
+      errors.push(`${rel}: <img> without an alt attribute: ${tag.slice(0, 160)}`);
+    } else if (/\salt(\s*=\s*(""|''))?(?=[\s/>])/i.test(tag) && !/\sdata-decorative\b/i.test(tag)) {
+      const src = (tag.match(/\ssrc="([^"]+)"/i)?.[1] ?? tag.match(/\ssrcset="([^\s"]+)/i)?.[1] ?? '?').replace(/\.[0-9a-f]{8}\./, '.');
+      if (!emptyAlt.has(src)) emptyAlt.set(src, new Set());
+      emptyAlt.get(src).add(rel);
+    }
   }
 }
+for (const [src, pages] of emptyAlt) {
+  warnings.push(`empty alt="" (Bing reports it as missing): ${src} on ${pages.size} page${pages.size === 1 ? '' : 's'}${pages.size <= 3 ? ` (${[...pages].join(', ')})` : ''}`);
+}
+const emptyCount = [...emptyAlt.values()].reduce((n, p) => n + p.size, 0);
 
 // --- sitemap + robots ---
 const sitemap = join(distDir, 'sitemap.xml');
@@ -134,4 +149,4 @@ if (errors.length) {
   for (const e of errors) console.error(`  ERROR ${e}`);
   process.exit(1);
 }
-console.log(`\n[check:seo] PASS — ${titles.size} pages, all unique titles, canonicals on ${host}, ${imgCount} images all with alt${warnings.length ? `, ${warnings.length} warning(s)` : ''}`);
+console.log(`\n[check:seo] PASS — ${titles.size} pages, all unique titles, canonicals on ${host}, ${imgCount} images, ${emptyCount} empty alt${warnings.length ? `, ${warnings.length} warning(s)` : ''}`);

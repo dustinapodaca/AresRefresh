@@ -35,6 +35,7 @@ const PARTNERS = [
     line: 'On federal and commercial contracts that need a woman-owned security subcontractor, or more officers than the prime can staff.',
     // The Space Force base at golden hour (owner, 2026-10-26; was the radomes behind the fence).
     photo: '/images/market/government-schriever.jpg',
+    alt: 'A Space Force base at golden hour',
     pos: '50% 56%',
     // In a bit toward the domes at the left (owner, 2026-10-26).
     zoom: { scale: 1.45, origin: '14% 56%' },
@@ -49,6 +50,7 @@ const PARTNERS = [
     line: 'Relief, overflow, and surge shifts on posts you already hold, staffed to your post orders.',
     // Ares patrol vehicles (owner, 2026-10-26; was an Ares officer).
     photo: '/images/mission-vehicle.jpg',
+    alt: 'Ares patrol vehicles',
     pos: '50% 86%',
     roles: [
       { name: 'Relief & Surge Coverage', to: '/services/relief-surge-coverage' },
@@ -62,6 +64,7 @@ const PARTNERS = [
     // Offices under Pikes Peak, the builder's sign edited out (owner, 2026-10-26; was the data center
     // campus). Cropped in from the left so the name on the brick building there stays out of frame.
     photo: '/images/market/office-pikes-peak.jpg',
+    alt: 'Offices in Colorado Springs below Pikes Peak',
     pos: '50% 50%',
     zoom: { scale: 1.16, origin: '100% 40%' },
     roles: [
@@ -138,7 +141,7 @@ function Hero() {
                 behind (owner, 2026-10-26; was the base at golden hour zoomed on its domes). */}
             <img
               {...responsive('/images/market/base-aerial.jpg', '(min-width: 768px) 50vw, 100vw')}
-              alt=""
+              alt="Aerial view of a Space Force base, Denver behind"
               decoding="sync"
               {...{ fetchpriority: 'high' }}
             />
@@ -157,7 +160,7 @@ function Hero() {
 
         <figure className="tb-half tb-half-b">
           <div className="tb-half-photo">
-            <img {...responsive('/images/about-security.jpg')} alt="" decoding="sync" />
+            <img {...responsive('/images/about-security.jpg')} alt="Two Ares officers seen from behind" decoding="sync" />
           </div>
           <figcaption className="tb-half-copy">
             <p className="tb-half-name">Our officers</p>
@@ -214,7 +217,7 @@ function Partners() {
             <div className="tb-row-photo" aria-hidden="true">
               <img
                 {...responsive(p.photo)}
-                alt=""
+                alt={p.alt}
                 loading="lazy"
                 style={{
                   objectPosition: p.pos,

@@ -171,7 +171,7 @@ export default function Industries() {
         <div className="nx-ind-shots" aria-hidden="true">
           {INDUSTRY_PAGES.map((ind) => (
             <div key={ind.slug} className="nx-ind-shot">
-              <img {...responsive(ind.image.src, sceneSizes(ind))} alt="" loading="lazy" decoding="async" style={framing(ind)} />
+              <img {...responsive(ind.image.src, sceneSizes(ind))} alt={ind.image.alt} loading="lazy" decoding="async" style={framing(ind)} />
             </div>
           ))}
         </div>
@@ -215,7 +215,7 @@ export default function Industries() {
         {INDUSTRY_PAGES.map((ind, i) => (
           <li key={ind.slug} className="nx-ind-item">
             <div className="nx-ind-photo">
-              <img {...responsive(ind.image.src, listSizes(ind))} alt="" loading="lazy" decoding="async" style={framing(ind)} />
+              <img {...responsive(ind.image.src, listSizes(ind))} alt={ind.image.alt} loading="lazy" decoding="async" style={framing(ind)} />
             </div>
             <div className="nx-ind-copy nx-node" data-live="true">
               <h3 className="nx-ind-item-name">

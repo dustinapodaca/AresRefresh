@@ -1624,6 +1624,9 @@ Few, fast, and crisp. Four to six moments per page.
   NAICS 561612, WOSB250470, WBE2303571, founded 2021 in Colorado Springs, 719-696-3966,
   contact@aressecurity.co.
 - Pair every proof element with a way to verify it.
+- Every `<img>` gets a short, true description of the photo in `alt` (under about 8 words; no "click",
+  no keywords); empty `alt=""` only with `data-decorative`, since Bing reports an empty alt as missing
+  (2026-11-20). `check:seo` errors on a missing alt and warns on an empty one.
 - Write plain, natural copy. No em-dashes, no slogans, no stacked adjectives.
 - "&" in names, "and" in sentences (owner, 2026-10-16). Use "&" in the names of the six services,
   the six industries, and named offerings ("Teaming & subcontracting"), and in the nav, button, and

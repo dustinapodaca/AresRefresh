@@ -307,7 +307,7 @@ export default function SvHero() {
         <div className="sv-photo" aria-hidden="true">
           <div className="sv-photo-open">
             <div className="sv-photo-drift">
-              <img {...responsive('/images/hero6.jpg')} alt="" decoding="sync" {...{ fetchpriority: 'high' }} />
+              <img {...responsive('/images/hero6.jpg')} alt="Copper-glass towers seen from below" decoding="sync" {...{ fetchpriority: 'high' }} />
             </div>
             <div className="sv-photo-shade" />
           </div>
