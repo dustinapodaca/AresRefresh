@@ -1,7 +1,7 @@
-/* Questions buyers ask (owner, 2026-11-20): Home, between 04 Where we work and 05 Now hiring.
+/* Questions buyers ask (owner, 2026-11-20): Home, between 02 Industries and For prime contractors.
    Section size, not statement size. Four forms at /?reading= (Reading.tsx). */
 
-.nx-reading { position: relative; padding: 0 var(--ds-edge); }
+.nx-reading { position: relative; padding: var(--ds-beat) var(--ds-edge) 0; }
 
 .nx-rd-title { margin: 0; color: var(--ds-fg); }
 .nx-rd-lead { margin: 18px 0 0; font-size: 18px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; text-wrap: pretty; }

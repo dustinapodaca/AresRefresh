@@ -27,10 +27,10 @@ export default function Home() {
       <Hero />
       <Record />
       <Industries />
+      <Reading />
       <Prime />
       <Quality />
       <Coverage />
-      <Reading />
       <Careers />
       <Contact />
     </main>

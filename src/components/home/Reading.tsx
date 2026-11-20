@@ -9,8 +9,8 @@ import { readIn, useScene, words } from './engine';
 import '../insights/insights.css';
 import './nx-reading.css';
 
-// Questions buyers ask (owner, 2026-11-20): a quiet stop between 04 Where we work and 05 Now
-// hiring that links the Home to the Insights articles, for buyers who are not ready to call. Set at
+// Questions buyers ask (owner, 2026-11-20): a quiet stop between 02 The sites we protect and For prime
+// contractors (moved up from before 05 Now hiring the same day, owner: too low) that links the Home to the Insights articles, for buyers who are not ready to call. Set at
 // section size, not the Home's statement size, so it reads as an aside. Four whole versions (desktop
 // and phone each) for the owner to compare at /?reading=cards|list|feature|questions, from Mobbin:
 //  - cards: after Rox's, Chronicle's, and Instrument's "Latest articles". Three cards, each the
