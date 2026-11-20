@@ -54,6 +54,92 @@ const D = { date: '2026-10-08', dateLabel: 'October 8, 2026' };
 
 export const INSIGHTS: Insight[] = [
   {
+    // Access control (owner, 2026-11-19): picked from Search Console, where "onsite access control
+    // officers" and "access control security guards" showed impressions on pages 4 to 6 next to the
+    // escort cluster that already ranks. Federal rules from TSA's REAL ID final-rule release
+    // (enforcement May 7, 2025), Offutt AFB's REAL ID notice for installations, DoDM 5200.08 Vol. 3,
+    // FIPS 201-3 (PIV), and CISA's page on the ISC Risk Management Process. Ares facts as on
+    // /services/access-control and the escort article: no badges issued, trained on the site's systems,
+    // restricted areas on military installations alongside base security forces, the base unnamed, no
+    // clearance claims (DESIGN.md, Clearances).
+    slug: 'what-does-an-access-control-officer-do',
+    title: 'What an access control officer does, and when a site needs one.',
+    category: 'Operations',
+    date: '2026-11-19',
+    dateLabel: 'November 19, 2026',
+    summary: 'Badges and card readers set the rules for who gets in. An access control officer applies them at the door or gate, handles what the system cannot, and logs who came and went. What the post covers, and when a site needs one.',
+    body: [
+      { p: 'An access control officer decides who and what gets into a site. Badges, card readers, and visitor software set the rules; the officer is the person at the door or gate who applies them, handles everything the system cannot, and keeps a record of who came and went.' },
+      { h: 'What an access control officer does' },
+      { list: [
+        'Checks every person against the access list or a valid credential before entry, and does not wave anyone through on a familiar face.',
+        'Signs in visitors: confirms who they are and who they are there to see, issues a temporary pass if the site uses them, and logs the visit.',
+        'Checks vehicles and deliveries against the schedule or the site’s delivery list, and sends them to the right gate, dock, or door.',
+        'Watches for tailgating, when someone follows an authorized person through a door or gate without using their own credential.',
+        'Turns away anyone who does not meet the rules, and calls the contact the post orders name.',
+        'Logs every entry, exit, denial, and incident, so the site can audit them later.',
+      ] },
+      { h: 'Access control officer, site officer, or patrol?' },
+      { p: 'A site or lobby officer watches an area and responds to what happens in it. A patrol officer moves between places on a schedule. An access control officer holds an entry point and controls what passes through it. Many posts combine the roles, so the post orders should say which comes first. When a line forms at the gate, the gate is the job.' },
+      { h: 'Why badges alone are not enough' },
+      { p: 'Card readers and visitor software do a lot, but each leaves a gap a person has to cover:' },
+      { list: [
+        'A card reader confirms a badge, not the person holding it, and it cannot stop someone from following them through the door.',
+        'Visitors, vendors, and new contractors often arrive without a badge, and someone has to decide whether they get in.',
+        'A truck has to be matched to a delivery and a dock, not just let through a gate.',
+        'When a reader fails or the power goes out, someone has to control the door by hand.',
+        'Some contracts, leases, insurers, and regulations call for a staffed post at certain entry points.',
+      ] },
+      { h: 'When a site needs a staffed post' },
+      { list: [
+        'The site holds high-value goods, hazardous materials, or critical equipment.',
+        'Many visitors, vendors, or contractors arrive every day, especially around shift changes.',
+        'Trucks and deliveries come through a gate or dock that has to be checked.',
+        'Part of the site is restricted, and only some people may enter it.',
+        'A contract, lease, insurer, or regulation requires one.',
+        'An entry point has had trespass, theft, or tailgating problems.',
+      ] },
+      { h: 'Federal buildings and military installations' },
+      { p: 'Federal sites add rules of their own. Since May 7, 2025, a state driver’s license or ID card used to enter a federal facility that checks identification must be REAL ID compliant. A passport or another acceptable document works instead. Federal employees and contractors carry a PIV card, the credential the federal standard (FIPS 201) sets for physical access to federally controlled facilities.' },
+      { p: 'On military installations, unescorted access takes proof of identity, a determination of fitness from a review of the person’s records, and an official purpose, under the Defense Department’s installation access manual (DoDM 5200.08, Volume 3). Installations turn visitors away at the gate when their ID is not REAL ID compliant and they have no other acceptable document. Restricted areas inside a base have entry rules of their own, and people who do not meet them may enter only as the installation allows, often under escort.' },
+      { p: 'Nonmilitary federal facilities set their protection through the Interagency Security Committee’s Risk Management Process, the standard for deciding a facility’s security level and the countermeasures that go with it. The access rules an officer enforces there come from that process and the agency’s own policy.' },
+      { h: 'What to put in the post orders' },
+      { list: [
+        'Every entry point the post covers, and its hours.',
+        'Who may enter, how they prove it, and where the current access list lives.',
+        'How visitors sign in, who may sponsor them, and whether they need an escort.',
+        'How vehicles and deliveries are checked, and where they go.',
+        'What the officer does when someone is turned away, a reader fails, or someone tailgates, and who they call.',
+        'What gets logged, in what form, and who reviews the log.',
+      ] },
+      { h: 'Armed or unarmed?' },
+      { p: 'Most access control posts are unarmed. An armed post is usually for a site where the officer may have to stop a serious threat at the entry point, or where the contract or the site’s own rules call for one.' },
+      { h: 'How Ares staffs access control' },
+      { p: 'Ares staffs access control in Colorado Springs, the Denver metro area, and Pueblo, where we are licensed and bonded for armed and unarmed security: gates and docks at data centers, utilities, and construction sites, building entries, and restricted areas on military installations, where we work alongside base security forces. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
+      { p: 'We write your access rules into the post orders, and train each officer on your entry points and your site’s own systems, such as card readers, visitor software, and intercoms, before the first shift. Every check is logged, so you can audit who came and went. Badges stay yours to issue; our officers enforce them. Every contract has on-call coverage behind it.' },
+    ],
+    faq: [
+      { q: 'What does an access control officer do?', a: 'Checks every person, vehicle, and delivery against the site’s access list or credentials before entry, signs in visitors, watches for tailgating, turns away anyone who does not meet the rules, and logs who came and went.' },
+      { q: 'What is tailgating in security?', a: 'Tailgating is when someone follows an authorized person through a controlled door or gate without using their own credential. A card reader cannot stop it; an officer at the entry point can.' },
+      { q: 'Do I need a REAL ID to enter a federal building or military base?', a: 'Since May 7, 2025, a state driver’s license or ID card used to enter a federal facility that checks identification must be REAL ID compliant. A passport or another acceptable document works instead. Check the facility’s or installation’s own list before you go.' },
+      { q: 'Do access control officers issue badges?', a: 'That depends on the site. Many sites keep badging with their own security or facilities team, and the officers check badges and enforce the rules. Ares officers enforce the site’s badges; issuing them stays with the site.' },
+    ],
+    sources: [
+      { label: 'TSA publishes final rule on REAL ID enforcement beginning May 7, 2025 (TSA)', url: 'https://tsa.gov/news/press/releases/2025/01/13/tsa-publishes-final-rule-real-id-enforcement-beginning-may-7-2025' },
+      { label: 'REAL ID compliance for federal installations (Offutt Air Force Base)', url: 'https://www.offutt.af.mil/News/Article-Display/Article/4196916/real-id-compliance-for-federal-installations/' },
+      { label: 'DoDM 5200.08, Volume 3: Physical Security Program: Access to DoD Installations', url: 'https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodm/520008_vol3.pdf' },
+      { label: 'FIPS 201-3, Personal Identity Verification (PIV) of Federal Employees and Contractors (NIST)', url: 'https://pages.nist.gov/FIPS201/FIPS201.html' },
+      { label: 'ISC Standard: Risk Management Process (CISA)', url: 'https://www.cisa.gov/publication/risk-management-process' },
+    ],
+    related: [
+      { label: 'Access Control Officers', to: '/services/access-control' },
+      { label: 'Escorts for contractors on military bases: how they work', to: '/insights/contractor-escorts-military-bases' },
+      { label: 'What a post order is, and why every site needs one', to: '/insights/what-is-a-post-order' },
+      { label: 'Armed or unarmed security: how to decide', to: '/insights/armed-or-unarmed-security' },
+      { label: 'Critical & High-Liability Sites', to: '/industries/critical-infrastructure' },
+    ],
+  },
+  {
     // Topic 6 of the copy audit's Insights list (owner picked it, 2026-11-09): what primes check before
     // naming a security subcontractor. Rules from the FAR as published on Acquisition.gov (FAC 2026-01):
     // 19.702 (plan thresholds), 52.219-9 (goals, eSRS, good faith, relying on representations), 52.219-14
@@ -195,6 +281,7 @@ export const INSIGHTS: Insight[] = [
       { label: 'Restricted-Area Escort', to: '/services/restricted-area-escort' },
       { label: 'Government & Defense', to: '/industries/government-defense' },
       { label: 'Teaming & subcontracting', to: '/teaming' },
+      { label: 'What an access control officer does, and when a site needs one', to: '/insights/what-does-an-access-control-officer-do' },
       { label: 'Who covers the post when an officer calls out?', to: '/insights/relief-surge-coverage' },
     ],
   },

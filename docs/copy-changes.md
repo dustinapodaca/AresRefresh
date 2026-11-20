@@ -1286,3 +1286,22 @@ previous page's. New framing copy (N):
 - Preship (2026-11-09): the five "the owner is not a veteran" warnings on this article are the FAR's
   goal categories ("veteran-owned and service-disabled veteran-owned small businesses"), not a claim
   about Ares; left as written.
+
+## Insights: what an access control officer does (draft, 2026-11-19)
+- New: `/insights/what-does-an-access-control-officer-do`, "What an access control officer does, and
+  when a site needs one." (Operations). Picked from Search Console (Oct 21 to Nov 17): "onsite access
+  control officers" (113 impressions, position 42) and "access control security guards" (position 59)
+  sat next to the escort cluster that already ranks ("escort access", position 9).
+- Sections: what the officer does (credentials, visitors, vehicles and deliveries, tailgating,
+  denials, logs); how the post differs from a site officer or patrol; why badges alone are not enough;
+  when a site needs a staffed post; federal buildings and military installations (REAL ID enforced
+  since May 7, 2025; PIV under FIPS 201; DoDM 5200.08 Vol. 3; the ISC Risk Management Process for
+  nonmilitary federal facilities); what to put in the post orders; armed or unarmed; and how Ares
+  staffs access control, worded as on /services/access-control (no badges issued, trained on the
+  site's systems, the base unnamed, no clearance claims). Four questions, five sources.
+- Added to routes.json, llms.txt, and the index (first). The escort article's related list now links
+  to it.
+- Checked against the sources on 2026-11-19: TSA's final-rule release (enforcement May 7, 2025, for
+  certain federal facilities), Offutt AFB's REAL ID notice (installations deny non-compliant ID;
+  passports and other DODM 5200.08v3 documents accepted), NIST's FIPS 201-3 page, CISA's Risk
+  Management Process page. Recheck if DHS changes REAL ID enforcement.

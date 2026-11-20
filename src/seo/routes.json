@@ -292,6 +292,16 @@
       "title": "Insights: Buying Security in Colorado | Ares Security",
       "description": "Plain answers for people buying security in Colorado: choosing coverage, contracting through GSA, city licensing, and what to expect on post."
     },
+    "/insights/what-does-an-access-control-officer-do": {
+      "title": "What Does an Access Control Officer Do? | Ares Security",
+      "description": "What an access control officer does, why badges and card readers are not enough, when a site needs a staffed post, and the REAL ID rules at federal sites.",
+      "breadcrumbs": [
+        {
+          "name": "Insights",
+          "path": "/insights"
+        }
+      ]
+    },
     "/insights/what-primes-look-for-security-subcontractor": {
       "title": "What Primes Look For in a Security Subcontractor | Ares",
       "description": "What prime contractors check before naming a small-business security subcontractor: subcontracting goals, set-aside limits, verifiable status, and staffing.",
