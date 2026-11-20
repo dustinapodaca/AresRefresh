@@ -28,12 +28,13 @@ function Meta({ a }: { a: Insight }) {
   );
 }
 
-// The hero, four forms for the owner to compare at /insights?hero=topics|front|ask|plates
-// (owner, 2026-11-19: "better options for the insights hero", from Mobbin). `current` (the
-// headline, lead, and count on the left, the topic toggles under them) is the default until the
-// owner picks one. Each form is a whole desktop and phone version.
-//  - topics: after Claude's blog. The four topics set large beside the headline, each with its
-//    count and an arrow; they are the filter (the toggle row goes).
+// The hero, four forms for the owner to compare at /insights?hero=current|topics|front|ask|plates
+// (owner, 2026-11-19: "better options for the insights hero", from Mobbin). `topics` is the
+// default (owner, 2026-11-19), on desktop only: below 1024px it is `current` (the headline, lead,
+// and count, the topic toggles under them), which the owner kept for phones.
+//  - current: the hero before this round, at every width.
+//  - topics: after Claude's blog. From 1024px the four topics set large beside the headline, each
+//    with its count and an arrow; they are the filter (the toggle row goes). Below: as current.
 //  - front: after Mural, Webflow, and Twingate. A front page: the newest article large on the left,
 //    "Latest" (the next three) ruled on the right, all on the first screen.
 //  - ask: after Airbnb's and Upwork's resource centers. A search over every article and its
@@ -77,7 +78,7 @@ export default function Insights() {
   const raw = ready ? params.get('topic') : null;
   const topic = (CATEGORIES as readonly string[]).includes(raw ?? '') ? (raw as InsightCategory) : null;
   const askedHero = ready ? params.get('hero') : null;
-  const hero: HeroKey = (HERO_OPTIONS as readonly string[]).includes(askedHero ?? '') ? (askedHero as HeroKey) : 'current';
+  const hero: HeroKey = (HERO_OPTIONS as readonly string[]).includes(askedHero ?? '') ? (askedHero as HeroKey) : 'topics';
   const [query, setQuery] = useState('');
   const q = hero === 'ask' ? query.trim() : '';
   const inTopic = topic ? INSIGHTS.filter((a) => a.category === topic) : INSIGHTS;
@@ -124,8 +125,10 @@ export default function Insights() {
       )}
 
       {hero === 'topics' && (
-        <section className="ds-container ds-in-h ds-in-h-topics" aria-labelledby="mk-title">
-          <div className="ds-in-h-copy">
+        // Below 1024px this is the current hero exactly (the same opening classes, the toggle row
+        // under it); from 1024px the topics list stands beside the copy and the toggle row goes.
+        <section className="ds-container ds-mk-open ds-mk-open-solo ds-in-h-topics" aria-labelledby="mk-title">
+          <div className="ds-mk-open-copy">
           <h1 id="mk-title" className="ds-display-xl">Buying security, explained</h1>
             {/* Copy audit (2026-10-10): was "Insights." */}
             <p className="ds-lead">
@@ -259,7 +262,7 @@ export default function Insights() {
       )}
 
       <div className="ds-container ds-in-body">
-        {hero !== 'topics' && <div className="ds-in-topics" role="group" aria-label="Topics">
+        <div className={`ds-in-topics${hero === 'topics' ? ' ds-in-topics-narrow' : ''}`} role="group" aria-label="Topics">
           {[null, ...CATEGORIES].map((t) => {
             const n = t ? INSIGHTS.filter((a) => a.category === t).length : INSIGHTS.length;
             return (
@@ -269,7 +272,7 @@ export default function Insights() {
               </button>
             );
           })}
-        </div>}
+        </div>
         <p className="nx-sr ds-in-sr" aria-live="polite">
           {q ? `${shown.length} articles match` : topic ? `${shown.length} articles in ${topic}` : ''}
         </p>

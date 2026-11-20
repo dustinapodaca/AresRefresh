@@ -1123,8 +1123,12 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   set large beside the headline as the filter, after Claude's blog), `front` (the newest article and
   "Latest" on the first screen, after Mural and Webflow), `ask` (a search over the articles and their
   questions, and five questions buyers ask, after Airbnb's and Upwork's resource centers), `plates` (the
-  six newest drawings as a wall beside the headline, after Linear and Slack). `current`, below, is the
-  default until one is picked.
+  six newest drawings as a wall beside the headline, after Linear and Slack). **`topics` is the
+  default (owner, 2026-11-19), from 1024px only**: the headline, lead, and count on the left (columns 1
+  to 7) and the five topics (All articles and the four) on the right (8 to 12) as ruled rows, the name
+  in Inter Tight 600 at 24 to 36px, its count in the data face (rust when chosen, with a 12px rust tick
+  before the name), and an arrow that nudges rust on hover; they filter the list, so the toggle row
+  goes. Below 1024px the page keeps the earlier hero, `current` (below), with its toggle row.
 - **Index:** the headline and lead, then "11 articles · last updated <date>" in the data face. The
   topics (All, Buying security, Operations, Federal & teaming, Licensing) as square-cornered
   toggles with their counts in the data face (the chosen one ink-edged, its count rust; one

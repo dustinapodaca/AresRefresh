@@ -43,13 +43,13 @@
         {
           "value": "current",
           "label": "Current",
-          "tag": "default",
-          "note": "The headline, lead, and article count on the left; the topic toggles under them."
+          "note": "The hero before this round at every width; still what phones and tablets see under the default."
         },
         {
           "value": "topics",
           "label": "Topics",
-          "note": "After Claude's blog: the four topics set large beside the headline with counts and arrows; they are the filter."
+          "note": "The default (owner, 2026-11-19), desktop only: the four topics set large beside the headline with counts and arrows, the filter itself (after Claude's blog). Phones and tablets show the current hero.",
+          "tag": "default"
         },
         {
           "value": "front",

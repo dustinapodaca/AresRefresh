@@ -257,11 +257,13 @@
   .ds-in-h-topic:hover { color: var(--ds-fg); }
   .ds-in-h-topic:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
 }
+/* Desktop only (owner, 2026-11-19): phones and tablets keep the current hero and its toggle row. */
 @media (min-width: 1024px) {
   .ds-in-h-topiclist { grid-column: 8 / span 5; }
+  .ds-in-topics-narrow { display: none; }
 }
 @media (max-width: 1023px) {
-  .ds-in-h-topic[aria-pressed='true'] .ds-in-h-topic-name::before { display: none; }
+  .ds-in-h-topiclist { display: none; }
 }
 
 /* front: a front page, the newest article large and "Latest" beside it. */

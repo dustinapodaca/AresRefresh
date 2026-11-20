@@ -2,7 +2,7 @@
 
 **Live switch (2026-11-19):** `/insights?hero=current|topics|front|ask|plates`, the Insights index hero
 (`HERO_OPTIONS` in `src/pages/Insights.tsx`, styles under "Hero forms" in
-`src/components/insights/insights.css`). `current` is the default until the owner picks. From Mobbin:
+`src/components/insights/insights.css`). `topics` is the default (owner, 2026-11-19) on desktop only; below 1024px it shows `current`, which the owner kept for phones. From Mobbin:
 topics (Claude's blog), front (Mural, Webflow, Twingate), ask (Airbnb, Upwork resource centers), plates
 (Linear, Slack). In the gallery spec `docs/options-gallery.json`.
 
