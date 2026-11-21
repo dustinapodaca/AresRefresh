@@ -78,6 +78,15 @@
 @media (hover: hover) and (pointer: fine) {
   .sv-ind-track { overflow-x: hidden; scroll-snap-type: none; }
 }
+/* Never a vertical scroller (2026-11-20). A row that scrolls sideways computes overflow-y to auto, and
+   the cards wait 60px low for their entrance (SvIndustries), so until it played the row could be
+   scrolled up and down inside itself: a page scroll over it got caught, then snapped back. Hidden is
+   not scrollable by the wheel or a swipe; the bottom room (taken back by the margin) keeps the waiting
+   cards from being cut off as they rise. */
+.sv-ind-track { overflow-y: hidden; }
+@media (min-width: 1024px) {
+  .sv-ind-track { padding-bottom: 68px; margin-bottom: -60px; }
+}
 
 /* Each industry: an open column, no box (AI-tells pass, owner 2026-10-25; after Dropbox's and
    Beside's industry rows on Mobbin). The photo with the site's photo edge and nothing over it, then
