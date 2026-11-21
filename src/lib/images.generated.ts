@@ -153,8 +153,8 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 667
   },
   "/images/services-commercial-storefront.jpg": {
-    "src": "/images/opt/services-commercial-storefront-1006.69c5e0cb.webp",
-    "srcSet": "/images/opt/services-commercial-storefront-480.130f07e2.webp 480w, /images/opt/services-commercial-storefront-800.1956ef63.webp 800w, /images/opt/services-commercial-storefront-1006.69c5e0cb.webp 1006w",
+    "src": "/images/opt/services-commercial-storefront-1006.5d3f03a3.webp",
+    "srcSet": "/images/opt/services-commercial-storefront-480.2d7f7497.webp 480w, /images/opt/services-commercial-storefront-800.a5a89554.webp 800w, /images/opt/services-commercial-storefront-1006.5d3f03a3.webp 1006w",
     "width": 1006,
     "height": 675
   },
