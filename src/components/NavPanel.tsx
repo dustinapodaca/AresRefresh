@@ -272,7 +272,7 @@ const SERVICE_PHOTOS: Record<string, { src: string; alt: string; position?: stri
 
 // Phones: Services as a list with a photo beside each, Industries as a row of photo cards that
 // swipes sideways (owner, 2026-10-15). The earlier plain lists stay at ?mnav=list.
-function PhoneServices() {
+function PhoneServices({ warm }: { warm: boolean }) {
   return (
     <ul className="ds-np-svc">
       {ROLE_PAGES.map((r) => {
@@ -281,7 +281,7 @@ function PhoneServices() {
           <li key={r.slug}>
             <Link to={`/services/${r.slug}`}>
               <span className="ds-np-thumb">
-                {ph && <img {...responsive(ph.src, '56px')} alt={ph.alt} loading="lazy" decoding="async" style={{ objectPosition: ph.position }} />}
+                {ph && <img {...responsive(ph.src, '56px')} alt={ph.alt} loading={warm ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: ph.position }} />}
               </span>
               <span className="ds-np-svc-text">
                 <b>{r.name}</b>
@@ -303,13 +303,13 @@ function cardSizes(src: string) {
   return `calc((100vw - 40px) * ${Math.round(72 * k) / 100})`;
 }
 
-function PhoneIndustries() {
+function PhoneIndustries({ warm }: { warm: boolean }) {
   return (
     <div className="ds-np-swipe" role="list" aria-label="Industries">
       {INDUSTRY_PAGES.map((i) => (
         <Link key={i.slug} to={`/industries/${i.slug}`} className="ds-np-ind" role="listitem">
           <span className="ds-np-ind-photo">
-            <img {...responsive(i.image.src, cardSizes(i.image.src))} alt={i.image.alt} loading="lazy" decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
+            <img {...responsive(i.image.src, cardSizes(i.image.src))} alt={i.image.alt} loading={warm ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: (i.image as { position?: string }).position }} />
           </span>
           <b>{i.name}</b>
           <small>{i.short}</small>
@@ -360,14 +360,14 @@ function Overview({ links }: { links?: MenuLink[] }) {
   );
 }
 
-function CompanyPane() {
+function CompanyPane({ warm }: { warm: boolean }) {
   return (
     <>
       <ul className="ds-np-tiles">
         {COMPANY_TILES.map((t) => (
           <li key={t.to}>
             <Link to={t.to} className="ds-np-tile">
-              <img {...responsive(t.src, 'calc(100vw - 40px)')} alt={t.alt} loading="lazy" decoding="async" style={{ objectPosition: t.position }} />
+              <img {...responsive(t.src, 'calc(100vw - 40px)')} alt={t.alt} loading={warm ? 'eager' : 'lazy'} decoding="async" style={{ objectPosition: t.position }} />
               <span>{t.label}</span>
               <Arrow size={18} />
             </Link>
@@ -382,10 +382,12 @@ function SlideMenu({
   panel,
   setPanel,
   backRef,
+  warm,
 }: {
   panel: string | null;
   setPanel: (p: string | null) => void;
   backRef: React.RefObject<HTMLButtonElement>;
+  warm: boolean;
 }) {
   const stageRef = useRef<HTMLDivElement>(null);
   // A page that slides in starts at its top, with the focus on its back button.
@@ -395,9 +397,9 @@ function SlideMenu({
     if (panel) backRef.current?.focus({ preventScroll: true });
   }, [panel, backRef]);
   const pages: { m: string; body: JSX.Element }[] = [
-    { m: 'Services', body: <><Overview links={MENUS.Services.phoneTop} /><PhoneServices /></> },
-    { m: 'Industries', body: <><Overview links={MENUS.Industries.phoneTop} /><PhoneIndustries /></> },
-    { m: 'Company', body: <CompanyPane /> },
+    { m: 'Services', body: <><Overview links={MENUS.Services.phoneTop} /><PhoneServices warm={warm} /></> },
+    { m: 'Industries', body: <><Overview links={MENUS.Industries.phoneTop} /><PhoneIndustries warm={warm} /></> },
+    { m: 'Company', body: <CompanyPane warm={warm} /> },
   ];
   return (
     <div ref={stageRef} className="ds-np-stage" data-panel={panel || undefined}>
@@ -447,6 +449,11 @@ export default function NavPanel() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<string | null>(null);
+  // Phones (owner, 2026-11-20): the section pages' photos load as the menu opens, not as a section
+  // slides in, so Services, Industries, and Company open with their photos already there (they
+  // snapped in a moment late). It starts on the first touch of the menu button, a beat before the
+  // tap lands, and stays on. The pages are still never fetched for a reader who doesn't open the menu.
+  const [phoneWarm, setPhoneWarm] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   // Desktop (owner, 2026-10-13): the menus open on hover. A short delay before opening keeps a
   // pointer crossing the bar from flashing a menu; moving between items swaps at once; leaving
@@ -510,6 +517,13 @@ export default function NavPanel() {
     const t = window.setTimeout(() => setMobileMenu(null), 320);
     return () => window.clearTimeout(t);
   }, [mobileOpen]);
+  // Once loading, decode them too, so a page that slides in paints its photos in its first frame.
+  useEffect(() => {
+    if (!phoneWarm) return;
+    document.querySelectorAll<HTMLImageElement>('#np-mobile img').forEach((img) => {
+      img.decode?.().catch(() => {});
+    });
+  }, [phoneWarm]);
   // Phones: the page holds still while the list is open.
   useEffect(() => {
     if (!mobileOpen) return;
@@ -682,7 +696,11 @@ export default function NavPanel() {
                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={mobileOpen}
                 aria-controls="np-mobile"
-                onClick={() => setMobileOpen((o) => !o)}
+                onPointerDown={() => setPhoneWarm(true)}
+                onClick={() => {
+                  setPhoneWarm(true);
+                  setMobileOpen((o) => !o);
+                }}
                 data-open={mobileOpen || undefined}
               >
                 {/* Three bars that slide off to the right, then an X that draws in (owner,
@@ -710,7 +728,7 @@ export default function NavPanel() {
           {/* Phones: the menu's pages, sliding over one another. */}
           <div id="np-mobile" className="ds-np-mobile" data-open={mobileOpen || undefined} {...(mobileOpen ? {} : { inert: '' })}>
             <div className="ds-np-drop-inner">
-              <SlideMenu panel={mobileMenu} setPanel={setMobileMenu} backRef={backRef} />
+              <SlideMenu panel={mobileMenu} setPanel={setMobileMenu} backRef={backRef} warm={phoneWarm} />
               {/* Phones (owner, 2026-10-13): pinned to the bottom of the open menu, so it stays on
                   screen while the list scrolls: the phone and the profiles, the email, then the main
                   button. (The PDF button was dropped from the phone menu.) */}
