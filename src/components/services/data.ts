@@ -70,7 +70,7 @@ export const DIVISIONS: Division[] = [
       { name: 'Hotels', detail: 'A presence that protects guests without getting in the way of their stay.' },
       { name: 'Corporate and tech offices', detail: 'Lobby officers, and patrol across several properties with a report for each.' },
     ],
-    photo: { src: '/images/services-commercial-storefront.jpg', alt: 'Shoppers passing a retail storefront', width: 1012, height: 675 },
+    photo: { src: '/images/services-commercial-storefront.jpg', alt: 'Shoppers passing a retail storefront', width: 1006, height: 675 },
     page: { to: '/industries/commercial-property', label: 'commercial and retail' },
   },
   {

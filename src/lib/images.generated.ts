@@ -153,9 +153,9 @@ export const IMAGES: Record<string, ImageEntry> = {
     "height": 667
   },
   "/images/services-commercial-storefront.jpg": {
-    "src": "/images/opt/services-commercial-storefront-1012.74c034ea.webp",
-    "srcSet": "/images/opt/services-commercial-storefront-480.e5d86c3d.webp 480w, /images/opt/services-commercial-storefront-800.08d33907.webp 800w, /images/opt/services-commercial-storefront-1012.74c034ea.webp 1012w",
-    "width": 1012,
+    "src": "/images/opt/services-commercial-storefront-1006.69c5e0cb.webp",
+    "srcSet": "/images/opt/services-commercial-storefront-480.130f07e2.webp 480w, /images/opt/services-commercial-storefront-800.1956ef63.webp 800w, /images/opt/services-commercial-storefront-1006.69c5e0cb.webp 1006w",
+    "width": 1006,
     "height": 675
   },
   "/images/matrix-community.jpg": {
