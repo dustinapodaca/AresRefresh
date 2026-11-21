@@ -73,6 +73,7 @@ PHOTOS = [
     {'key': '/images/matrix-industrial.jpg', 'source': 'assets/images-src/matrix-industrial.jpg', 'q': 80},
     {'key': '/images/matrix-airport-denver.jpg', 'source': 'assets/images-src/matrix-airport-denver.jpg', 'q': 80},
     {'key': '/images/matrix-commercial.jpg', 'source': 'assets/images-src/matrix-commercial.jpg', 'q': 80},
+    {'key': '/images/services-commercial-storefront.jpg', 'source': 'assets/images-src/services-commercial-storefront.jpg', 'q': 80},
     {'key': '/images/matrix-community.jpg', 'source': 'assets/images-src/matrix-community.jpg', 'q': 80},
     {'key': '/images/capability-page1.webp', 'source': 'assets/images-src/capability-page1.webp', 'q': 84},
     # Test branch only (skipped where missing).
