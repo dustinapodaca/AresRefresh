@@ -91,8 +91,10 @@ const SIDE: [number, number][][] = [
 // Where each region's name sits on the plate (faint, mono, uppercase).
 const REGION_AT: Record<string, { at: [number, number]; end?: boolean }> = {
   'front-range': { at: [40.62, -104.15] },
-  'western-slope': { at: [40.05, -108.95] },
-  // Between Durango's name and Trinidad's (none of the region names show on a phone, areas.css) at the right keeps clear of it on a phone (2026-11-22).
+  // Inset from the map's left edge (owner, 2026-11-22: it sat 10px from the side).
+  'western-slope': { at: [40.05, -108.65] },
+  // Between Durango's name and Trinidad's (2026-11-22). None of the region names show on a phone
+  // (areas.css).
   'san-luis-valley': { at: [37.2, -106.62] },
 };
 
