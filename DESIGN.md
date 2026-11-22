@@ -508,7 +508,7 @@ and `nx-*.css` (class prefix `nx-`).
   Quote and the phone link at the right (on desktop the phone link first, then the button at the far
   right; owner, 2026-10-23) (the phone link hidden on phones, owner 2026-10-22: the nav's
   handset carries it), then the proof row (the GSA mark in white, 16px, then GSA MAS 47QSMS25D009Q to eLibrary;
-  Minority woman-owned (WOSB, WBENC, M/WBE: Denver's certification, owner 2026-10-23); Licensed in Colorado Springs, Denver, Pueblo) on white/14%
+  Minority woman-owned (WOSB, WBENC, M/WBE: Denver's certification, owner 2026-10-23); Licensed city by city across Colorado, since 2026-11-22) on white/14%
   hairlines, one column below 1024px; a vertical mono "Scroll" cue at the top right at every width (phones and tablets too
   since 2026-10-22, owner), fading out over the first 160px of scroll.
   Load-in where motion runs: the light comes up inside the letters (1.8s) and the copy rises 18px
@@ -1316,7 +1316,7 @@ ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class pr
   above its triangle (`above`). The other cities shown are the ones in the same region. The ending
   reads "Also in the <region>: …" and "Every city we staff across Colorado →" to the hub. Breadcrumbs:
   Home / Service Areas / <city>.
-- **Sitewide:** Home's proof row "Licensed in eight Colorado cities"; Home 04 keeps the three I-25
+- **Sitewide:** Home's proof row "Licensed city by city across Colorado" (owner, 2026-11-22: Grand Junction and Montrose require no license, so not "licensed in eight cities"); Home 04 keeps the three I-25
   cities large, with "All eight cities, the Western Slope to the San Luis Valley →" under them; the
   Services hero's post bar reads "Your post · Anywhere in Colorado"; the Services close names the
   three regions as its large links (to the hub's columns); the footer's Service areas and the Company

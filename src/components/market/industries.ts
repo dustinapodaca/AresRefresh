@@ -35,7 +35,7 @@ export type IndustryPageData = {
   primes?: string;
 };
 
-const LICENSED: SheetRow = { label: 'Licensed and bonded', value: 'Armed and unarmed, in eight Colorado cities', href: '/locations' };
+const LICENSED: SheetRow = { label: 'Licensed and bonded', value: 'Armed and unarmed, city by city across Colorado', href: '/locations' };
 const RELIEF: SheetRow = { label: 'Relief', value: 'On-call coverage written into every contract' };
 const LOGS: SheetRow = { label: 'Records', value: 'Checkpoint, visitor, and incident logs you can audit' };
 const GSA: SheetRow = { label: 'GSA MAS', value: '47QSMS25D009Q, SIN 561612', href: GSA_ELIBRARY, external: true };
