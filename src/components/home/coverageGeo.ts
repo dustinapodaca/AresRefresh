@@ -19,13 +19,14 @@ export const ALS: LatLon = [37.4695, -105.87];
 export const PUB: LatLon = [38.2544, -104.6091];
 export const WALSENBURG: LatLon = [37.6247, -104.7803];
 export const TRD: LatLon = [37.1695, -104.5005];
+export const FTC: LatLon = [40.5853, -105.0844];
 
 export const STEP = 16;
 export const DOTS: [number, number][] = [];
 for (let cy = STEP / 2; cy < H; cy += STEP) for (let cx = STEP / 2; cx < W; cx += STEP) DOTS.push([cx, cy]);
 
 export const REGION_ROWS = [
-  { id: 'front-range', name: 'Front Range', cities: 'Colorado Springs · Denver · Pueblo' },
+  { id: 'front-range', name: 'Front Range', cities: 'Colorado Springs · Denver · Fort Collins · Pueblo' },
   { id: 'western-slope', name: 'Western Slope', cities: 'Grand Junction · Glenwood Springs · Montrose · Durango' },
   { id: 'san-luis-valley', name: 'San Luis Valley', cities: 'Alamosa · Trinidad' },
 ];

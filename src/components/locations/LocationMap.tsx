@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { CITIES, regionOf, type City, type Landmark } from './data';
+import { CITIES, regionOf, type City, type Landmark, type Region } from './data';
 
 // A city's region, drawn to scale (Region.bounds in data.ts; each plate's bounds keep its 480 by
 // 500 shape in kilometres). The Front Range runs 37.95°N to 40.05°N, 106.2°W to 103.6°W; the
@@ -41,20 +41,25 @@ export default function LocationMap({
   focus,
   landmarks = [],
   focusSide = 'right',
+  bounds,
 }: {
   focus: City;
   landmarks?: Landmark[];
   focusSide?: 'left' | 'right';
+  /** The city's own window on its region (LocationFile.bounds), else the region's plate. */
+  bounds?: Region['bounds'];
 }) {
   const region = regionOf(focus.region);
-  const { lon0, lon1, lat0, lat1 } = region.bounds;
+  const { lon0, lon1, lat0, lat1 } = bounds ?? region.bounds;
   const x = (lon: number) => ((lon - lon0) / (lon1 - lon0)) * W;
   const y = (lat: number) => ((lat0 - lat) / (lat0 - lat1)) * H;
   const line = (pts: [number, number][]) => pts.map(([lat, lon], i) => `${i ? 'L' : 'M'}${x(lon).toFixed(1)} ${y(lat).toFixed(1)}`).join(' ');
   // 25 miles at the plate's middle latitude: 40.23 km / (111.32 km × cos lat) degrees of longitude.
   const midLat = ((lat0 + lat1) / 2) * (Math.PI / 180);
   const miles25 = (40.23 / (111.32 * Math.cos(midLat)) / (lon1 - lon0)) * W;
-  const others = CITIES.filter((c) => c.slug !== focus.slug && c.region === focus.region);
+  // The region's other cities that fall on this plate.
+  const onPlate = (c: City) => c.coord.lon >= lon0 && c.coord.lon <= lon1 && c.coord.lat <= lat0 && c.coord.lat >= lat1;
+  const others = CITIES.filter((c) => c.slug !== focus.slug && c.region === focus.region && onPlate(c));
   const fx = x(focus.coord.lon);
   const fy = y(focus.coord.lat);
 

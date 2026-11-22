@@ -15,7 +15,7 @@ import './sv-close.css';
 
 // Colorado-wide (owner, 2026-11-22): the three regions, each to its column on the Service Areas hub.
 const CITIES = [
-  { to: '/locations#front-range', name: 'Front Range', note: 'Colorado Springs · Denver · Pueblo' },
+  { to: '/locations#front-range', name: 'Front Range', note: 'Colorado Springs · Denver · Fort Collins · Pueblo' },
   { to: '/locations#western-slope', name: 'Western Slope', note: 'Grand Junction to Durango' },
   { to: '/locations#san-luis-valley', name: 'San Luis Valley', note: 'Alamosa · Trinidad' },
 ];

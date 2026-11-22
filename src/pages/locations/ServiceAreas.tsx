@@ -21,7 +21,7 @@ const COUNT_WORDS: Record<number, string> = { 8: 'eight', 9: 'nine', 10: 'ten', 
 const FAQ = [
   {
     q: 'Does Colorado have a statewide security guard license?',
-    a: 'No. Colorado has no statewide license for security companies or officers; a 2025 bill to create one was postponed indefinitely. Each city decides for itself, and the rules differ a great deal: Denver, Colorado Springs, Pueblo, and Alamosa license security companies, Durango, Glenwood Springs, and Trinidad require a general business license, and Grand Junction and Montrose require none. Ares holds what each city requires.',
+    a: 'No. Colorado has no statewide license for security companies or officers; a 2025 bill to create one was postponed indefinitely. Each city decides for itself, and the rules differ a great deal: Denver, Colorado Springs, Pueblo, and Alamosa license security companies, Durango, Glenwood Springs, and Trinidad require a general business license, Fort Collins its sales and use tax license, and Grand Junction and Montrose require none. Ares holds what each city requires.',
   },
   {
     q: `Do you staff sites outside these ${COUNT_WORDS[CITIES.length] ?? CITIES.length} cities?`,

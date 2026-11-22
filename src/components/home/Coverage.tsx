@@ -2,13 +2,14 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
-import { type LatLon, ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, REGION_ROWS, TRD, W, WALSENBURG, path, px, py } from './coverageGeo';
+import { type LatLon, ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, REGION_ROWS, TRD, W, WALSENBURG, path, px, py } from './coverageGeo';
 import { buildRegions, RegionsMap } from './CoverageRegions';
 import './nx-coverage.css';
 
 // 04 Coverage (home-flora, 2026-10-20; Colorado-wide 2026-11-22, owner). Colorado drawn to scale
 // (the Home map's projection: 37°N to 41°N, 102.05°W to 109.05°W). The line is one route that
-// leaves headquarters and comes home: Colorado Springs north on I-25 to Denver, west on I-70 through
+// leaves headquarters and comes home: Colorado Springs north on I-25 through Denver to Fort Collins,
+// over Trail Ridge Road (US-34) to Granby, Kremmling, and Silverthorne, west on I-70 through
 // Glenwood Springs to Grand Junction, south on US-50 and US-550 through Montrose to Durango, east on
 // US-160 through Alamosa to La Veta, the Highway of Legends (CO-12) down to Trinidad, and back up
 // I-25 through Walsenburg and Pueblo. It draws as the section
@@ -27,9 +28,16 @@ type Form = (typeof FORMS)[number];
 const LOOP: LatLon[] = [
   CS,
   DEN,
-  [39.74, -105.2],
-  [39.7, -105.7],
-  [39.63, -106.06],
+  // On to Fort Collins (owner, 2026-11-22), then Loveland, Estes Park, Trail Ridge Road, Granby,
+  // Kremmling, and Silverthorne onto I-70.
+  FTC,
+  [40.397, -105.075],
+  [40.377, -105.52],
+  [40.43, -105.75],
+  [40.25, -105.82],
+  [40.086, -105.94],
+  [40.059, -106.39],
+  [39.63, -106.07],
   [39.655, -106.83],
   GWS,
   [39.535, -107.783],
@@ -66,6 +74,7 @@ const GROUND = [
   path([[41, -105.0], [40.585, -105.08], DEN, CS, PUB, WALSENBURG, [37.1695, -104.5005], [37, -104.47]]),
   path([[39.17, -109.05], [39.159, -108.73], GJT]),
   path([DEN, [39.7, -104.4], [39.26, -103.69], [39.27, -102.05]]),
+  path([DEN, [39.74, -105.2], [39.7, -105.7], [39.63, -106.07]]),
   ROUTE,
 ];
 // How far along the route each vertex sits (0 to 1), so a pin comes up as the line reaches it.
@@ -83,6 +92,7 @@ type Pin = { slug: string; name: string; region: string; c: LatLon; side: Side; 
 const PINS: Pin[] = [
   { slug: 'colorado-springs', name: 'Colorado Springs', region: 'front-range', c: CS, side: 'right', hq: true },
   { slug: 'denver', name: 'Denver', region: 'front-range', c: DEN, side: 'right' },
+  { slug: 'fort-collins', name: 'Fort Collins', region: 'front-range', c: FTC, side: 'right' },
   { slug: 'glenwood-springs', name: 'Glenwood Springs', region: 'western-slope', c: GWS, side: 'above' },
   { slug: 'grand-junction', name: 'Grand Junction', region: 'western-slope', c: GJT, side: 'right' },
   { slug: 'montrose', name: 'Montrose', region: 'western-slope', c: MTJ, side: 'right' },
@@ -262,7 +272,7 @@ export default function Coverage() {
             className="nx-cv-svg"
             viewBox={`0 0 ${W} ${H}`}
             role="img"
-            aria-label="Map of Colorado showing the cities Ares staffs: Colorado Springs (headquarters), Denver, and Pueblo on the Front Range; Glenwood Springs, Grand Junction, Montrose, and Durango on the Western Slope; and Alamosa and Trinidad in the San Luis Valley and the south."
+            aria-label="Map of Colorado showing the cities Ares staffs: Colorado Springs (headquarters), Denver, Fort Collins, and Pueblo on the Front Range; Glenwood Springs, Grand Junction, Montrose, and Durango on the Western Slope; and Alamosa and Trinidad in the San Luis Valley and the south."
           >
             <defs>
               <radialGradient id="nx-cv-glow">

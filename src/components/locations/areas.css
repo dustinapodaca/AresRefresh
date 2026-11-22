@@ -54,6 +54,7 @@
 .ds-sa-map[data-active='alamosa'] .ds-sa-pin[data-city='alamosa'],
 .ds-sa-map[data-active='trinidad'] .ds-sa-pin[data-city='trinidad'],
 .ds-sa-map[data-active='denver'] .ds-sa-pin[data-city='denver'],
+.ds-sa-map[data-active='fort-collins'] .ds-sa-pin[data-city='fort-collins'],
 .ds-sa-map[data-active='pueblo'] .ds-sa-pin[data-city='pueblo'] { color: var(--ds-fg); }
 .ds-sa-map[data-active='grand-junction'] .ds-sa-dot[data-city='grand-junction'],
 .ds-sa-map[data-active='glenwood-springs'] .ds-sa-dot[data-city='glenwood-springs'],
@@ -62,6 +63,7 @@
 .ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'],
 .ds-sa-map[data-active='trinidad'] .ds-sa-dot[data-city='trinidad'],
 .ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'],
+.ds-sa-map[data-active='fort-collins'] .ds-sa-dot[data-city='fort-collins'],
 .ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] { fill: #eef0f2; }
 .ds-sa-map[data-active] .ds-sa-dot[data-city] .ds-sa-dot-ring { opacity: 0; }
 .ds-sa-map[data-active='grand-junction'] .ds-sa-dot[data-city='grand-junction'] .ds-sa-dot-ring,
@@ -71,6 +73,7 @@
 .ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='trinidad'] .ds-sa-dot[data-city='trinidad'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='fort-collins'] .ds-sa-dot[data-city='fort-collins'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] .ds-sa-dot-ring { opacity: 0.55; }
 .ds-sa-side { opacity: 0.9; }
 

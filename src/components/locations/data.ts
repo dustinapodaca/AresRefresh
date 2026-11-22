@@ -44,8 +44,9 @@ export const REGIONS: Region[] = [
     roads: [
       {
         name: 'I-25',
-        // Fort Collins, Denver, Colorado Springs, Pueblo, Walsenburg: I-25 runs off both edges.
+        // Wyoming, Fort Collins, Denver, Colorado Springs, Pueblo, Walsenburg: I-25 runs off both edges.
         points: [
+          [41.1, -104.95],
           [40.585, -105.08],
           [39.7392, -104.9903],
           [38.8339, -104.8214],
@@ -174,6 +175,9 @@ export type LocationFile = {
   landmarks: Landmark[];
   /** Which side of its dot the city's name sits on the map (default right). */
   focusSide?: 'left' | 'right';
+  /** A window of its own on the region's map, when the city sits off the region's plate (Fort Collins,
+   *  north of the Front Range plate). Same shape in kilometres as the plates. */
+  bounds?: Region['bounds'];
 };
 
 // Every city Ares is set up to staff (owner, 2026-11-22: Colorado-wide). The hub at /locations
@@ -199,7 +203,17 @@ export const CITIES: City[] = [
     counties: 'Denver, Adams, Arapahoe, Jefferson, and Douglas counties',
     rule: 'Private security employer license',
     held: '2021-BFN-0001984',
+  },  {
+    slug: 'fort-collins',
+    name: 'Fort Collins',
+    path: '/locations/fort-collins',
+    coord: { lat: 40.5853, lon: -105.0844 },
+    region: 'front-range',
+    counties: 'Larimer County',
+    rule: 'City sales and use tax license, its business license',
+    held: 'Sales and use tax license',
   },
+
   {
     slug: 'pueblo',
     name: 'Pueblo',
@@ -681,5 +695,51 @@ export const TRINIDAD: LocationFile = {
   focusSide: 'left',
 };
 
+// Fort Collins (owner, 2026-11-22). From the City's sales tax guide "Engaged in Business" (May 14,
+// 2024): a business that sends employees into the city to work, or keeps employees on duty at a
+// location there, is engaged in business and must hold an active City of Fort Collins sales/use tax
+// license (Sec. 25-91), which the City's licensing page calls its "Sales Tax/Business License". The
+// City's licensing pages list no security license; Chapters 15 and 17 of the code were not read
+// (Municode would not load), so the page claims no more than that.
+export const FORT_COLLINS: LocationFile = {
+  city: city('fort-collins'),
+  path: '/locations/fort-collins',
+  title: 'Security guards in Fort Collins.',
+  lead: 'Armed and unarmed security officers for sites across Fort Collins and Larimer County, on I-25 at the north end of the Front Range.',
+  licenseTitle: 'Licensed in Fort Collins.',
+  licenseIntro:
+    'Colorado has no statewide security license. Fort Collins requires its sales and use tax license, which serves as the city’s business license, of any business that sends employees to work in the city, and Ares holds one.',
+  license: [
+    { label: 'City of Fort Collins sales and use tax license', value: 'Active', route: { note: 'The city’s business license' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 2 hours by road' } },
+  ],
+  local:
+    'Fort Collins sits on I-25 at the north end of the Front Range, the seat of Larimer County and home to Colorado State University. The city requires its sales and use tax license, which doubles as its business license, of any business that sends employees to work inside city limits, and Ares holds one. Here we are ready to staff public-sector facilities, hospitals and clinics, campuses, construction, industrial and warehouse sites, and commercial property and retail across Larimer County. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. Our headquarters is about two hours down I-25 in Colorado Springs, and a member of our leadership walks every new site before anything is signed.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Fort Collins license?',
+      a: 'Yes. Colorado has no statewide security license, but Fort Collins requires its sales and use tax license, which serves as the city’s business license, of any business that sends employees to work inside city limits, services included. Ares holds one.',
+    },
+    {
+      q: 'Do you cover sites outside Fort Collins?',
+      a: 'Yes, across Larimer County, including Loveland, Windsor, and Wellington. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Industrial and warehouse sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
+  ],
+  landmarks: [],
+  // North of the Front Range plate: the same plate moved up to take in Fort Collins down to Denver.
+  bounds: { lon0: -106.2, lon1: -103.6, lat0: 41.1, lat1: 39.0 },
+};
+
 /** Every city page, in the hub's order. */
-export const LOCATION_FILES: LocationFile[] = [COLORADO_SPRINGS, DENVER, PUEBLO, GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA, TRINIDAD];
+export const LOCATION_FILES: LocationFile[] = [COLORADO_SPRINGS, DENVER, FORT_COLLINS, PUEBLO, GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA, TRINIDAD];

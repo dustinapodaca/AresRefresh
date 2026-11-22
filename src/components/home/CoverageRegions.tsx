@@ -1,5 +1,5 @@
 /// <reference types="gsap" />
-import { ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, TRD, W, px, py, type LatLon } from './coverageGeo';
+import { ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, TRD, W, px, py, type LatLon } from './coverageGeo';
 
 // 04 Coverage, the `regions` form (owner, 2026-11-22: "more like entire region highlight", to compare
 // with the route at /?coverage=regions). No roads and no city names: the three regions Ares staffs
@@ -61,6 +61,7 @@ export const REGIONS: Region[] = [
     cities: [
       { slug: 'colorado-springs', c: CS, hq: true },
       { slug: 'denver', c: DEN },
+      { slug: 'fort-collins', c: FTC },
       { slug: 'pueblo', c: PUB },
     ],
   },
@@ -162,7 +163,7 @@ export function RegionsMap({ active }: { active: string | null }) {
       className="nx-cv-svg nx-rg"
       viewBox={`0 0 ${W} ${H}`}
       role="img"
-      aria-label="Map of Colorado showing the three regions Ares staffs: the Front Range (Colorado Springs, headquarters, Denver, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and the San Luis Valley and the south (Alamosa and Trinidad)."
+      aria-label="Map of Colorado showing the three regions Ares staffs: the Front Range (Colorado Springs, headquarters, Denver, Fort Collins, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and the San Luis Valley and the south (Alamosa and Trinidad)."
     >
       <defs>
         <radialGradient id="nx-rg-glow">

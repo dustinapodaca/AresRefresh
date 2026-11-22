@@ -49,7 +49,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
               </a>
             </div>
           </div>
-          <LocationMap focus={file.city} landmarks={file.landmarks} focusSide={file.focusSide} />
+          <LocationMap focus={file.city} landmarks={file.landmarks} focusSide={file.focusSide} bounds={file.bounds} />
         </div>
       </section>
 
@@ -134,7 +134,8 @@ export default function LocationPage({ file }: { file: LocationFile }) {
                 Also in the {region.name}:{' '}
                 {others.map((c, i) => (
                   <span key={c.slug}>
-                    {i > 0 && (i === others.length - 1 ? ' and ' : ', ')}
+                    {/* Serial comma from three names up, as elsewhere on the site. */}
+                    {i > 0 && (i === others.length - 1 ? (others.length > 2 ? ', and ' : ' and ') : ', ')}
                     <Link to={c.path} className="ds-link">{c.name}</Link>
                   </span>
                 ))}

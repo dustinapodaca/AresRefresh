@@ -38,12 +38,13 @@
     },
     "/locations": {
       "title": "Security Guard Services Across Colorado | Ares Security",
-      "description": "Armed and unarmed security officers in nine Colorado cities, from Denver and Colorado Springs to Grand Junction, Durango, and Trinidad. Licensed city by city.",
+      "description": "Armed and unarmed security officers in ten Colorado cities, from Fort Collins and Denver to Grand Junction, Durango, and Trinidad. Licensed city by city.",
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Colorado",
         "Colorado Springs",
         "Denver",
+        "Fort Collins",
         "Pueblo",
         "Grand Junction",
         "Glenwood Springs",
@@ -163,6 +164,20 @@
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Alamosa"
+      ]
+    },
+    "/locations/fort-collins": {
+      "title": "Security Guards in Fort Collins, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Fort Collins and Larimer County, from a Colorado company that holds the city’s business license.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Fort Collins"
       ]
     },
     "/locations/trinidad": {
