@@ -7,9 +7,7 @@ import { ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, W, px, py, type LatLon 
 // Luis Valley. In each, the map's dot grid lights rust in rings rippling out from the region's city
 // (Colorado Springs, Grand Junction, Alamosa), a thin rust outline draws round it over a faint wash,
 // its name comes up in the data face, and its cities show as plain dots as the light reaches them.
-// The outlines are approximate on purpose: the Front Range along the foot of the mountains, the
-// Western Slope west of the Continental Divide, the San Luis Valley between the San Juans and the
-// Sangre de Cristos. Resolved: all three lit.
+// Resolved: all three lit.
 
 type Region = {
   id: string;
@@ -24,31 +22,41 @@ type Region = {
   cities: { slug: string; c: LatLon; hq?: boolean }[];
 };
 
+// The three regions tile the whole state (owner, 2026-11-22): the Western Slope west of the
+// Continental Divide; the Front Range east of it out to Kansas, down to a line from Poncha Pass
+// round the south of Pueblo to Kansas; the San Luis Valley everything south of that, from the Divide
+// to Kansas, so it takes in Walsenburg, Trinidad, and the southern end of the state. Approximate on
+// purpose.
+const DIVIDE: LatLon[] = [
+  [41, -106.85],
+  [40.4, -106.6],
+  [40.0, -105.75],
+  [39.7, -105.85],
+  [39.36, -106.06],
+  [38.9, -106.35],
+  [38.5, -106.33],
+  [38.16, -106.6],
+  [37.48, -106.8],
+  [37, -106.6],
+];
+const PONCHA = DIVIDE.findIndex(([lat]) => lat === 38.5);
+// Front Range / San Luis Valley, from the Divide at Poncha Pass to the Kansas line.
+const SPLIT: LatLon[] = [
+  [38.5, -106.33],
+  [38.2, -105.55],
+  [37.85, -104.95],
+  [37.72, -104.4],
+  [37.65, -103.5],
+  [37.6, -102.05],
+];
+
 export const REGIONS: Region[] = [
   {
     id: 'front-range',
-    shape: [
-      [41, -105.28],
-      [40.4, -105.25],
-      [39.9, -105.3],
-      [39.55, -105.22],
-      [39.1, -105.1],
-      [38.75, -105.05],
-      [38.4, -105.15],
-      [37.9, -105.0],
-      [37.4, -104.95],
-      [37, -104.85],
-      [37, -104.1],
-      [37.7, -104.2],
-      [38.4, -104.1],
-      [39.0, -104.1],
-      [39.7, -104.2],
-      [40.3, -104.3],
-      [41, -104.4],
-    ],
+    shape: [...DIVIDE.slice(0, PONCHA), ...SPLIT, [41, -102.05]],
     from: CS,
     name: ['FRONT', 'RANGE'],
-    at: [40.42, -104.05],
+    at: [40.3, -103.9],
     anchor: 'start',
     cities: [
       { slug: 'colorado-springs', c: CS, hq: true },
@@ -58,20 +66,7 @@ export const REGIONS: Region[] = [
   },
   {
     id: 'western-slope',
-    shape: [
-      [41, -109.05],
-      [41, -106.85],
-      [40.4, -106.6],
-      [40.0, -105.75],
-      [39.7, -105.85],
-      [39.36, -106.06],
-      [38.9, -106.35],
-      [38.5, -106.33],
-      [38.16, -106.6],
-      [37.48, -106.8],
-      [37, -106.6],
-      [37, -109.05],
-    ],
+    shape: [[41, -109.05], ...DIVIDE, [37, -109.05]],
     from: GJT,
     name: ['WESTERN', 'SLOPE'],
     at: [40.42, -108.05],
@@ -85,21 +80,11 @@ export const REGIONS: Region[] = [
   },
   {
     id: 'san-luis-valley',
-    shape: [
-      [38.42, -106.08],
-      [38.1, -105.75],
-      [37.75, -105.5],
-      [37.35, -105.45],
-      [37, -105.55],
-      [37, -106.15],
-      [37.2, -106.3],
-      [37.6, -106.45],
-      [38.1, -106.35],
-    ],
+    shape: [...SPLIT, [37, -102.05], ...DIVIDE.slice(PONCHA + 1).reverse()],
     from: ALS,
     name: ['SAN LUIS', 'VALLEY'],
-    at: [38.78, -105.95],
-    anchor: 'middle',
+    at: [37.42, -105.6],
+    anchor: 'start',
     cities: [{ slug: 'alamosa', c: ALS }],
   },
 ];
@@ -181,8 +166,8 @@ export function RegionsMap({ active }: { active: string | null }) {
         ))}
       </g>
       <circle cx={px(CS[1])} cy={py(CS[0])} r="150" fill="url(#nx-rg-glow)" />
-      {/* Bottom right, on the empty plains: top left is the Western Slope here. */}
-      <text className="nx-cv-mono" x={W - 14} y={H - 16} textAnchor="end">
+      {/* Top right: top left is the Western Slope here. */}
+      <text className="nx-cv-mono" x={W - 14} y="26" textAnchor="end">
         COLORADO
       </text>
       {BUILT.map(({ r, bands, outline }) => {
