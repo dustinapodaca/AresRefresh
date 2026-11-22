@@ -671,6 +671,9 @@ and `nx-*.css` (class prefix `nx-`).
   From 1024px a vertical "Scroll" cue sits in the map's top right corner, set like the hero's (13px
   data face, capitals, ink faint; owner, 2026-11-22), while the section holds, and fades as the map
   finishes; none on phones or in the resolved page. On the regions form "COLORADO" sits left of it.
+  Pointing at a region does nothing while the map draws (owner, 2026-11-22: a mouse resting on the rows
+  by chance lit a region mid-draw and fought the scroll); it works once the map is whole (85% of the
+  scene, so during the beat on the finished map), and scrolling back into the draw clears it.
   **Two forms to compare at `/?coverage=` (owner, 2026-11-22):** `route` (the above, the default for
   now) and `regions` (`CoverageRegions.tsx`): no roads and no city names; the Front Range, the Western
   Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
