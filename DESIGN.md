@@ -1391,8 +1391,9 @@ ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class pr
 - **Sitewide:** Home's proof row "Licensed city by city across Colorado" (owner, 2026-11-22: Grand Junction and Montrose require no license, so not "licensed in eight cities"); Home 04 keeps the three I-25
   cities large, with "All eight cities, the Western Slope to the San Luis Valley →" under them; the
   Services hero's post bar reads "Your post · Anywhere in Colorado"; the Services close names the
-  three regions as its large links (to the hub's columns); the footer's Service areas and the Company
-  menu end on "All service areas".
+  three regions as its large links (to the hub's columns); the footer's Service areas ends on "All
+  service areas", and the desktop Company menu's footer row holds that link alone (owner, 2026-11-22:
+  the three city links there were removed; the cities live on the Service Areas page).
 
 ### 404 ("The Search Light", 2026-10-06)
 Owner request: modern, clean, a glass panel over an aurora. Concept: docs/notfound-concepts.md.

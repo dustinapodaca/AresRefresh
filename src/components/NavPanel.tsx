@@ -107,12 +107,8 @@ const MENUS: Record<string, Menu> = {
         ],
       },
     ],
-    footer: [
-      { label: 'Colorado Springs', to: '/locations/colorado-springs' },
-      { label: 'Denver', to: '/locations/denver' },
-      { label: 'Pueblo', to: '/locations/pueblo' },
-      { label: 'All service areas', to: '/locations' },
-    ],
+    // The cities live on the Service Areas page (owner, 2026-11-22: was the three Front Range cities).
+    footer: [{ label: 'All service areas', to: '/locations' }],
     profiles: true,
     image: { src: '/images/about-hero.jpg', caption: 'Pikes Peak, Colorado Springs' },
   },
