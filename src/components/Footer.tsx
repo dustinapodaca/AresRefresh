@@ -73,10 +73,11 @@ export default function Footer() {
             <ul aria-labelledby="ft-company">
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/services">Services</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
+              {/* Insights and Careers swapped (owner, 2026-11-22). */}
+              <li><Link to="/insights">Insights</Link></li>
               <li><Link to="/capability-statement">Capability Statement</Link></li>
               <li><Link to="/teaming">Teaming</Link></li>
-              <li><Link to="/insights">Insights</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
             </ul>
           </div>
 

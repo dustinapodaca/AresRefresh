@@ -1652,7 +1652,8 @@ and each page's close carry it). Same canvas, no top rule, a `beat` above it.
   Google (Business), Indeed. These are the only social profiles. Phones: stacked.
 - **Columns** (Retool): each opens on a 1px vertical hairline (hairline strong), a mono
   uppercase label in ink faint (plain text tied to its list, not a heading; design review, owner 2026-10-13), links in Inter 18px ink (16px on phones). Company (About
-  Us, Services, Careers, Capability Statement); Service areas; Contracting as label and
+  Us, Services, Insights, Capability Statement, Teaming, Careers; Insights and Careers swapped, owner
+  2026-11-22); Service areas; Contracting as label and
   mono value, matching the email signature (copy audit, 2026-10-10): GSA MAS 47QSMS25D009Q
   linking to eLibrary, UEI, CAGE, SBA WOSB, WBENC, Denver M/WBE and SBE, B2G vendor
   21353671 (labels in a 6.5em column); Registration as a
