@@ -679,7 +679,9 @@ and `nx-*.css` (class prefix `nx-`).
   The regions' city lines ("Colorado Springs · Denver · Fort Collins · Pueblo") show only while their
   region is pointed at or focused, with a mouse: they fade in under the region's name (260ms), their
   room kept so nothing moves; phones and other touch screens don't show them (the rows are the region
-  names alone; owner, 2026-11-22). With a mouse the region names rest 12px
+  names alone; owner, 2026-11-22). The regions rise in as their list comes up the screen, from 90%
+  to 45% on desktop and a tad sooner below 1024px, from the screen's foot to 65% (owner, 2026-11-22).
+  With a mouse the region names rest 12px
   in and, pointed at, slide left to the lead's edge over their city line, which doesn't move (owner,
   2026-11-22: the reverse of the earlier 10px slide right); the arrow turns rust and nudges 6px. Touch
   screens keep the names flush left. Two-word names stay whole

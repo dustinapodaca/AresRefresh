@@ -205,17 +205,22 @@ export default function Coverage() {
     mm.add('(min-width: 1024px)', () => build(true));
     mm.add('(max-width: 1023px)', () => build(false));
 
-    gsap.fromTo(
-      root.querySelectorAll('.nx-cv-city'),
-      { yPercent: 60, opacity: 0.1 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        ease: 'none',
-        stagger: 0.12,
-        scrollTrigger: { trigger: root.querySelector('.nx-cv-cities'), start: 'top 90%', end: 'top 45%', scrub: SCRUB },
-      },
-    );
+    // The regions rise in as their list comes up the screen: from 90% to 45% on desktop; on phones
+    // and tablets a tad sooner, from the screen's foot to 65% (owner, 2026-11-22).
+    const rise = (start: string, end: string) =>
+      gsap.fromTo(
+        root.querySelectorAll('.nx-cv-city'),
+        { yPercent: 60, opacity: 0.1 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          ease: 'none',
+          stagger: 0.12,
+          scrollTrigger: { trigger: root.querySelector('.nx-cv-cities'), start, end, scrub: SCRUB },
+        },
+      );
+    mm.add('(min-width: 1024px)', () => rise('top 90%', 'top 45%'));
+    mm.add('(max-width: 1023px)', () => rise('top bottom', 'top 65%'));
     e.ScrollTrigger.sort();
   });
 
