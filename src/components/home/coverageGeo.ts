@@ -25,8 +25,11 @@ export const STEP = 16;
 export const DOTS: [number, number][] = [];
 for (let cy = STEP / 2; cy < H; cy += STEP) for (let cx = STEP / 2; cx < W; cx += STEP) DOTS.push([cx, cy]);
 
+// Two-word names keep their words together (no-break spaces), so a line breaks only between cities.
+const nb = (names: string[]) => names.map((n) => n.replace(/ /g, '\u00a0')).join(' · ');
+
 export const REGION_ROWS = [
-  { id: 'front-range', name: 'Front Range', cities: 'Colorado Springs · Denver · Fort Collins · Pueblo' },
-  { id: 'western-slope', name: 'Western Slope', cities: 'Grand Junction · Glenwood Springs · Montrose · Durango' },
-  { id: 'san-luis-valley', name: 'San Luis Valley', cities: 'Alamosa · Trinidad' },
+  { id: 'front-range', name: 'Front Range', cities: nb(['Colorado Springs', 'Denver', 'Fort Collins', 'Pueblo']) },
+  { id: 'western-slope', name: 'Western Slope', cities: nb(['Grand Junction', 'Glenwood Springs', 'Montrose', 'Durango']) },
+  { id: 'san-luis-valley', name: 'San Luis Valley', cities: nb(['Alamosa', 'Trinidad']) },
 ];

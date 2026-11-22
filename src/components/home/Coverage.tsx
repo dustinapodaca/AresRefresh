@@ -232,13 +232,15 @@ export default function Coverage() {
         <h2 id="nx-coverage-title" className="nx-statement nx-cv-title">
           {words('Where we work.')}
         </h2>
+      </div>
+
+      <div className="nx-cv-body">
+        {/* In the held frame on desktop, over the regions and level with the map's top (owner,
+            2026-11-22: the column above the regions was empty); under the headline on phones. */}
         <p className="nx-cv-lead">
           Armed and unarmed officers for federal, commercial, industrial, and institutional sites across
           Colorado, from our base in Colorado Springs.
         </p>
-      </div>
-
-      <div className="nx-cv-body">
         <ul className="nx-cv-cities">
           {REGION_ROWS.map((r) => (
             <li key={r.id}>
@@ -266,7 +268,7 @@ export default function Coverage() {
             Scroll
           </p>
           {form === 'regions' ? (
-            <RegionsMap active={active} />
+            <RegionsMap active={active} onPoint={(id) => setActive((cur) => (cur === id ? cur : id))} />
           ) : (
           <svg
             className="nx-cv-svg"

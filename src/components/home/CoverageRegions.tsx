@@ -19,7 +19,8 @@ type Region = {
   name: [string, string];
   at: LatLon;
   anchor: 'start' | 'middle' | 'end';
-  cities: { slug: string; c: LatLon; hq?: boolean }[];
+  /** Each city's name shows only while its region is pointed at, on the side that clears the roads. */
+  cities: { slug: string; name: string; c: LatLon; side: 'right' | 'left' | 'above' | 'below'; hq?: boolean }[];
 };
 
 // The three regions tile the whole state (owner, 2026-11-22): the Western Slope west of the
@@ -59,10 +60,10 @@ export const REGIONS: Region[] = [
     at: [40.3, -103.9],
     anchor: 'start',
     cities: [
-      { slug: 'colorado-springs', c: CS, hq: true },
-      { slug: 'denver', c: DEN },
-      { slug: 'fort-collins', c: FTC },
-      { slug: 'pueblo', c: PUB },
+      { slug: 'colorado-springs', name: 'Colorado Springs', c: CS, side: 'right', hq: true },
+      { slug: 'denver', name: 'Denver', c: DEN, side: 'right' },
+      { slug: 'fort-collins', name: 'Fort Collins', c: FTC, side: 'right' },
+      { slug: 'pueblo', name: 'Pueblo', c: PUB, side: 'right' },
     ],
   },
   {
@@ -73,10 +74,10 @@ export const REGIONS: Region[] = [
     at: [40.42, -108.05],
     anchor: 'middle',
     cities: [
-      { slug: 'grand-junction', c: GJT },
-      { slug: 'glenwood-springs', c: GWS },
-      { slug: 'montrose', c: MTJ },
-      { slug: 'durango', c: DRO },
+      { slug: 'grand-junction', name: 'Grand Junction', c: GJT, side: 'right' },
+      { slug: 'glenwood-springs', name: 'Glenwood Springs', c: GWS, side: 'above' },
+      { slug: 'montrose', name: 'Montrose', c: MTJ, side: 'right' },
+      { slug: 'durango', name: 'Durango', c: DRO, side: 'left' },
     ],
   },
   {
@@ -88,8 +89,8 @@ export const REGIONS: Region[] = [
     at: [37.86, -105.85],
     anchor: 'middle',
     cities: [
-      { slug: 'alamosa', c: ALS },
-      { slug: 'trinidad', c: TRD },
+      { slug: 'alamosa', name: 'Alamosa', c: ALS, side: 'below' },
+      { slug: 'trinidad', name: 'Trinidad', c: TRD, side: 'right' },
     ],
   },
 ];
@@ -176,10 +177,23 @@ export function buildRegions(tl: gsap.core.Timeline, map: SVGSVGElement) {
   tl.to({}, { duration: 0.1 }, 0.9);
 }
 
-export function RegionsMap({ active }: { active: string | null }) {
-  // `active` lights one region (from the rows beside the map); the figure dims the rest.
+// Where a city's name sits beside its dot. Colorado Springs' name sits above its "HQ".
+function cityLabel(c: Region['cities'][number]) {
+  const [cx, cy] = xy(c.c);
+  if (c.hq) return { x: cx + 22, y: cy - 10, anchor: 'start' as const };
+  if (c.side === 'left') return { x: cx - 12, y: cy + 5, anchor: 'end' as const };
+  if (c.side === 'above') return { x: cx, y: cy - 13, anchor: 'middle' as const };
+  if (c.side === 'below') return { x: cx, y: cy + 24, anchor: 'middle' as const };
+  return { x: cx + 12, y: cy + 5, anchor: 'start' as const };
+}
+
+/** `active` lights one region (the figure dims the rest). `onPoint` reports a region the mouse has
+ *  really moved over (pointermove, never touch, never a page scrolling under a resting pointer), and
+ *  null when it leaves the map, so pointing at the map works like pointing at the rows. */
+export function RegionsMap({ active, onPoint }: { active: string | null; onPoint: (id: string | null) => void }) {
   return (
     <svg
+      onPointerLeave={() => onPoint(null)}
       className="nx-cv-svg nx-rg"
       viewBox={`0 0 ${W} ${H}`}
       role="img"
@@ -216,7 +230,13 @@ export function RegionsMap({ active }: { active: string | null }) {
       {BUILT.map(({ r, bands, outline }) => {
         const [lx, ly] = xy(r.at);
         return (
-          <g key={r.id} className="nx-rg-region" data-region={r.id} data-on={active === r.id || undefined}>
+          <g
+            key={r.id}
+            className="nx-rg-region"
+            data-region={r.id}
+            data-on={active === r.id || undefined}
+            onPointerMove={(ev) => ev.pointerType !== 'touch' && onPoint(r.id)}
+          >
             <path className="nx-rg-wash" d={outline} />
             <path className="nx-rg-edge" d={outline} pathLength={1000} />
             {bands.map((band, k) => (
@@ -245,6 +265,14 @@ export function RegionsMap({ active }: { active: string | null }) {
                       HQ
                     </text>
                   )}
+                  {(() => {
+                    const t = cityLabel(c);
+                    return (
+                      <text className="nx-cv-name nx-rg-city" x={t.x} y={t.y} textAnchor={t.anchor} aria-hidden="true">
+                        {c.name}
+                      </text>
+                    );
+                  })()}
                 </g>
               );
             })}

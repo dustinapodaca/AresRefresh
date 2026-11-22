@@ -11,6 +11,8 @@
 .nx-cv-title { grid-column: 1 / -1; }
 .nx-cv-lead {
   grid-column: 1 / span 5;
+  grid-row: 1;
+  align-self: start;
   margin: 0;
   font-size: 18px;
   line-height: 1.5;
@@ -22,10 +24,12 @@
   margin-top: clamp(48px, 7vw, 104px);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr;
   column-gap: 24px;
-  align-items: center;
 }
-.nx-cv-cities { grid-column: 1 / span 5; align-self: end; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
+/* The lead at the top of the left column, the regions at its foot, the map beside both (owner,
+   2026-11-22: the regions sat under an empty column the height of the map). */
+.nx-cv-cities { grid-column: 1 / span 5; grid-row: 2; align-self: end; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
 /* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
    its tip (owner, 2026-10-22: it was cut off). */
 .nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
@@ -56,7 +60,7 @@
 .nx-cv-city[data-on] .ds-arrow { color: var(--ds-rust); transform: translateX(6px); }
 .nx-cv-cities:has(.nx-cv-city[data-on]) .nx-cv-city:not([data-on]) .nx-cv-city-name { color: var(--ds-fg-faint); }
 
-.nx-cv-map { grid-column: 6 / span 7; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
+.nx-cv-map { grid-column: 6 / span 7; grid-row: 1 / span 2; align-self: start; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
 /* The Scroll cue in the map's top right corner, set like the hero's (owner, 2026-11-22; inside the
    frame: beside it, it ran off the screen at 1280px). Hidden at rest: the scene shows it from 1024px
    while the map holds and draws, and fades it as the map finishes. */
@@ -141,7 +145,11 @@
 
 @media (max-width: 1023px) {
   .nx-cv-title, .nx-cv-lead { grid-column: 1 / -1; }
-  .nx-cv-body { display: flex; flex-direction: column-reverse; gap: 40px; align-items: stretch; }
+  /* Phones and tablets: the lead under the headline, then the map, then the regions. */
+  .nx-cv-body { display: flex; flex-direction: column; gap: 40px; align-items: stretch; margin-top: 24px; }
+  .nx-cv-lead, .nx-cv-map, .nx-cv-cities { align-self: stretch; }
+  .nx-cv-map { order: 1; }
+  .nx-cv-cities { order: 2; }
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-25; was 12) */
@@ -188,6 +196,11 @@
 .nx-rg-region[data-on] .nx-rg-band { opacity: 1 !important; } /* over the timeline's inline opacity */
 .nx-rg-region[data-on] .nx-rg-name { fill: #fff; }
 .nx-rg-region[data-on] .nx-rg-wash { fill-opacity: 0.12; }
+/* City names only while their region is pointed at (owner, 2026-11-22: the map stays clean at rest).
+   Never on phones, where nothing is pointed at. */
+.nx-rg-city { opacity: 0; pointer-events: none; transition: opacity 260ms var(--ds-ease); }
+.nx-rg-region[data-on] .nx-rg-city { opacity: 1; }
+.nx-rg-pin[data-hq] .nx-rg-city { font-size: 16px; }
 /* Pointed at before its turn in the draw (owner, 2026-11-22), a region comes up whole: its outline,
    wash, dots, name, and cities, over the timeline's inline styles. Let go, it returns to wherever the
    scroll has it. */
