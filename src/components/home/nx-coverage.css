@@ -185,5 +185,20 @@
 .nx-rg-region[data-on] .nx-rg-band { opacity: 1 !important; } /* over the timeline's inline opacity */
 .nx-rg-region[data-on] .nx-rg-name { fill: #fff; }
 .nx-rg-region[data-on] .nx-rg-wash { fill-opacity: 0.12; }
+/* Pointed at before its turn in the draw (owner, 2026-11-22), a region comes up whole: its outline,
+   wash, dots, name, and cities, over the timeline's inline styles. Let go, it returns to wherever the
+   scroll has it. */
+.nx-rg-region[data-on] .nx-rg-edge { stroke-dashoffset: 0 !important; }
+.nx-rg-region[data-on] .nx-rg-wash { opacity: 1 !important; }
+.nx-rg-region[data-on] :is(.nx-rg-name, .nx-rg-hq) { opacity: 1 !important; transform: none !important; }
+.nx-rg-region[data-on] .nx-rg-pin .nx-cv-dot { opacity: 1 !important; r: 3.6px; }
+.nx-rg-region[data-on] .nx-rg-pin[data-hq] .nx-cv-dot { r: 5.5px; }
+.nx-rg-region[data-on] .nx-rg-pin[data-hq] :is(.nx-cv-ring, .nx-cv-halo) { opacity: 1 !important; r: 15px; }
+/* For ~450ms after the light changes (Coverage.tsx sets data-easing), every part eases instead of
+   snapping, the way in and the way back to the scroll. Only then: eased all the time, the scrubbed
+   draw would lag the scroll. */
+.nx-cv-map[data-easing] .nx-rg-region :is(.nx-rg-band, .nx-rg-wash, .nx-rg-name, .nx-rg-hq) { transition: opacity 420ms var(--ds-ease), fill 420ms var(--ds-ease), fill-opacity 420ms var(--ds-ease), transform 420ms var(--ds-ease); }
+.nx-cv-map[data-easing] .nx-rg-region .nx-rg-edge { transition: stroke-dashoffset 450ms var(--ds-ease); }
+.nx-cv-map[data-easing] .nx-rg-region .nx-rg-pin :is(.nx-cv-dot, .nx-cv-ring, .nx-cv-halo) { transition: opacity 420ms var(--ds-ease), r 420ms var(--ds-ease), fill 260ms var(--ds-ease), stroke 260ms var(--ds-ease); }
 /* The route's dimming is for its pins; here the region dims as a whole, its cities with it. */
 .nx-cv-map[data-active] .nx-rg-region .nx-rg-pin { opacity: 1; }

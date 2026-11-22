@@ -11,15 +11,15 @@
       "selector": "#coverage",
       "options": [
         {
-          "value": "route",
-          "label": "Route",
-          "tag": "default",
-          "note": "One line leaves Colorado Springs and comes home: I-25 to Denver, I-70 to Grand Junction, south to Durango, east through Alamosa, down to Trinidad, back through Pueblo. Each city comes up as the line reaches it. No city names on phones."
-        },
-        {
           "value": "regions",
           "label": "Regions",
-          "note": "No roads or city names: the whole state split into three, the Front Range (east of the Divide to Kansas), then the Western Slope, then the San Luis Valley (the southern end, Trinidad included) light up in turn, the dots rippling rust from each region's city inside a thin outline."
+          "note": "No roads or city names: the whole state split into three, the Front Range (east of the Divide to Kansas), then the Western Slope, then the San Luis Valley (the southern end, Trinidad included) light up in turn, the dots rippling rust from each region's city inside a thin outline.",
+          "tag": "default"
+        },
+        {
+          "value": "route",
+          "label": "Route",
+          "note": "One line leaves Colorado Springs and comes home: I-25 to Denver, I-70 to Grand Junction, south to Durango, east through Alamosa, down to Trinidad, back through Pueblo. Each city comes up as the line reaches it. No city names on phones."
         }
       ]
     },

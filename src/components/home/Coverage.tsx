@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
@@ -17,9 +17,9 @@ import './nx-coverage.css';
 // it) lights its cities and dims the rest. Resolved: the whole route drawn, every pin lit. (Until
 // 2026-11-22 it was I-25 alone, north to south, with the three Front Range cities beside it.)
 
-// Two forms to compare (owner, 2026-11-22) at /?coverage=route|regions: `route` (below, the default
-// while the owner compares) and `regions` (CoverageRegions.tsx: the three regions light up one after
-// another, no roads or city names).
+// Two forms to compare (owner, 2026-11-22) at /?coverage=route|regions: `regions` (CoverageRegions.tsx:
+// the three regions light up one after another, no roads or city names), the default (owner,
+// 2026-11-22), and `route` (below).
 const FORMS = ['route', 'regions'] as const;
 type Form = (typeof FORMS)[number];
 
@@ -107,13 +107,25 @@ const label = (p: Pin) => {
 export default function Coverage() {
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState<string | null>(null);
-  // While the map draws, pointing at a region does nothing (owner, 2026-11-22: a mouse resting on the
-  // rows by chance lit a region mid-draw and fought the scroll). True from the scene's setup until the
-  // map is in; false in the resolved page, where the map is always whole.
-  const drawing = useRef(false);
   const [params] = useSearchParams();
   const asked = params.get('coverage');
-  const form: Form = (FORMS as readonly string[]).includes(asked ?? '') ? (asked as Form) : 'route';
+  const form: Form = (FORMS as readonly string[]).includes(asked ?? '') ? (asked as Form) : 'regions';
+  // A region lights from a real move of the mouse onto its row, never from the rows scrolling under a
+  // resting pointer (owner, 2026-11-22: that lit a region mid-draw and fought the scroll; it was then
+  // held off until the map was whole, but the owner wants pointing to work during the draw too). So
+  // the rows answer pointermove, not mouseenter, and a keyboard focus. While the light changes, the
+  // map eases (`data-easing`, ~450ms) so a region coming up early or going back to where the scroll
+  // has it never snaps.
+  const figure = useRef<HTMLElement>(null);
+  // Layout effect: the flag must be on in the same frame as the change, or the browser restyles the
+  // map without it and the way back snaps.
+  useLayoutEffect(() => {
+    const el = figure.current;
+    if (!el) return;
+    el.setAttribute('data-easing', '');
+    const t = window.setTimeout(() => el.removeAttribute('data-easing'), 450);
+    return () => window.clearTimeout(t);
+  }, [active]);
 
   useScene(ref, (e, root) => {
     const { gsap } = e;
@@ -128,14 +140,6 @@ export default function Coverage() {
     // draws, then a beat on the finished map. Below that, no pin: it draws while the map crosses the
     // middle of the screen, over half a screen of scrolling. (I-25 alone drew in as little as 15% of
     // a screen, from 'bottom bottom', ending as the map's top reached 25% of the screen.)
-    // The map is whole at about 84% of the scroll through the scene (then the beat on the finished map).
-    const track = (self: { progress: number }) => {
-      const d = self.progress < 0.85;
-      if (d === drawing.current) return;
-      drawing.current = d;
-      if (d) setActive(null);
-    };
-    drawing.current = true;
     const build = (wide: boolean) => {
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
@@ -150,10 +154,8 @@ export default function Coverage() {
               pin: true,
               scrub: SCRUB,
               invalidateOnRefresh: true,
-              onUpdate: track,
-              onRefresh: track,
             }
-          : { trigger: map, start: 'center 80%', end: 'center 30%', scrub: SCRUB, onUpdate: track, onRefresh: track },
+          : { trigger: map, start: 'center 80%', end: 'center 30%', scrub: SCRUB },
       });
       // The Scroll cue at the map's top right (owner, 2026-11-22, like the hero's), desktop only: there
       // while the section holds, gone as the map finishes.
@@ -207,8 +209,10 @@ export default function Coverage() {
     e.ScrollTrigger.sort();
   });
 
-  const on = (id: string | null) => () => {
-    if (id && drawing.current) return;
+  const on = (id: string | null) => () => setActive(id);
+  // Mouse and pen only: a finger's scroll fires pointermove too.
+  const moved = (id: string) => (ev: React.PointerEvent) => {
+    if (ev.pointerType === 'touch' || active === id) return;
     setActive(id);
   };
 
@@ -232,7 +236,7 @@ export default function Coverage() {
                 to={`/locations#${r.id}`}
                 className="nx-cv-city"
                 data-on={active === r.id || undefined}
-                onMouseEnter={on(r.id)}
+                onPointerMove={moved(r.id)}
                 onMouseLeave={on(null)}
                 onFocus={on(r.id)}
                 onBlur={on(null)}
@@ -247,7 +251,7 @@ export default function Coverage() {
           ))}
         </ul>
 
-        <figure className="nx-cv-map" data-form={form} data-active={active || undefined}>
+        <figure ref={figure} className="nx-cv-map" data-form={form} data-active={active || undefined}>
           <p className="nx-cv-cue ds-data" aria-hidden="true">
             Scroll
           </p>

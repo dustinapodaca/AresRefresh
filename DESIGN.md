@@ -671,11 +671,15 @@ and `nx-*.css` (class prefix `nx-`).
   From 1024px a vertical "Scroll" cue sits in the map's top right corner, set like the hero's (13px
   data face, capitals, ink faint; owner, 2026-11-22), while the section holds, and fades as the map
   finishes; none on phones or in the resolved page. On the regions form "COLORADO" sits left of it.
-  Pointing at a region does nothing while the map draws (owner, 2026-11-22: a mouse resting on the rows
-  by chance lit a region mid-draw and fought the scroll); it works once the map is whole (85% of the
-  scene, so during the beat on the finished map), and scrolling back into the draw clears it.
-  **Two forms to compare at `/?coverage=` (owner, 2026-11-22):** `route` (the above, the default for
-  now) and `regions` (`CoverageRegions.tsx`): no roads and no city names; the Front Range, the Western
+  A region lights only from a real move of the mouse onto its row (pointermove; or a keyboard focus),
+  never from the rows scrolling under a resting pointer (owner, 2026-11-22: that lit a region mid-draw
+  and fought the scroll; briefly it was held off until the map was whole, then the owner asked for
+  pointing to work during the draw too). On the regions form a region pointed at before its turn comes
+  up whole (outline, wash, dots, name, cities) and the others dim; let go, it eases back to wherever the
+  scroll has it. Both ways ease over about 420ms (a `data-easing` flag on the map for 450ms after each
+  change; eased all the time, the scrubbed draw would lag the scroll).
+  **Two forms at `/?coverage=` (owner, 2026-11-22):** `regions` (`CoverageRegions.tsx`), the default
+  since 2026-11-22 (owner), and `route` (the above). `regions`: no roads and no city names; the Front Range, the Western
   Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
   same pin, each a third of it. The three tile the whole state (owner, 2026-11-22): the Western Slope
   west of the Divide; the Front Range east of it out to Kansas, south to a line from Poncha Pass round
