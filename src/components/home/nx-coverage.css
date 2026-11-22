@@ -57,6 +57,27 @@
 .nx-cv-cities:has(.nx-cv-city[data-on]) .nx-cv-city:not([data-on]) .nx-cv-city-name { color: var(--ds-fg-faint); }
 
 .nx-cv-map { grid-column: 6 / span 7; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
+/* The Scroll cue in the map's top right corner, set like the hero's (owner, 2026-11-22; inside the
+   frame: beside it, it ran off the screen at 1280px). Hidden at rest: the scene shows it from 1024px
+   while the map holds and draws, and fades it as the map finishes. */
+.nx-cv-map { position: relative; }
+.nx-cv-cue {
+  position: absolute;
+  top: 16px;
+  right: 14px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-fg-faint);
+  writing-mode: vertical-rl;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .nx-cv-cue { display: none; }
+}
 .nx-cv-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .nx-cv-route { stroke: #d9864f; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
 .nx-cv-tip { opacity: 0; pointer-events: none; }

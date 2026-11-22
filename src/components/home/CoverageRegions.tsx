@@ -178,8 +178,8 @@ export function RegionsMap({ active }: { active: string | null }) {
         ))}
       </g>
       <circle cx={px(CS[1])} cy={py(CS[0])} r="150" fill="url(#nx-rg-glow)" />
-      {/* Top right: top left is the Western Slope here. */}
-      <text className="nx-cv-mono" x={W - 14} y="26" textAnchor="end">
+      {/* Top right (top left is the Western Slope here), left of the Scroll cue in the corner. */}
+      <text className="nx-cv-mono" x={W - 34} y="26" textAnchor="end">
         COLORADO
       </text>
       {BUILT.map(({ r, bands, outline }) => {

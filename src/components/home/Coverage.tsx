@@ -141,6 +141,9 @@ export default function Coverage() {
             }
           : { trigger: map, start: 'center 80%', end: 'center 30%', scrub: SCRUB },
       });
+      // The Scroll cue at the map's top right (owner, 2026-11-22, like the hero's), desktop only: there
+      // while the section holds, gone as the map finishes.
+      if (wide) tl.fromTo(root.querySelector('.nx-cv-cue'), { opacity: 1 }, { opacity: 0, duration: 0.08 }, 0.8);
       if (form === 'regions') return buildRegions(tl, map);
       // pathLength 1000, not 1: GSAP rounds px values to whole numbers, so 0 to 1 only jumps.
       // The tip is a dot-sized dash on the same route, so it rides the line's end by its dash offset:
@@ -228,6 +231,9 @@ export default function Coverage() {
         </ul>
 
         <figure className="nx-cv-map" data-form={form} data-active={active || undefined}>
+          <p className="nx-cv-cue ds-data" aria-hidden="true">
+            Scroll
+          </p>
           {form === 'regions' ? (
             <RegionsMap active={active} />
           ) : (
