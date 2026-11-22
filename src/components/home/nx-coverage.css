@@ -130,3 +130,30 @@
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */
+
+/* Phones: the route's map without the city names (owner, 2026-11-22: eight names at about 12px
+   crowded it); the pins, the regions beside it, and their city lines carry them. */
+@media (max-width: 767px) {
+  .nx-cv-map[data-form='route'] .nx-cv-pin .nx-cv-label { display: none; }
+}
+
+/* The `regions` form (CoverageRegions.tsx, /?coverage=regions; owner, 2026-11-22): each region's
+   dots light rust in rings from its city, over a faint wash inside a thin rust outline. */
+.nx-rg-wash { fill: #bc6f40; fill-opacity: 0.07; stroke: none; }
+.nx-rg-edge { fill: none; stroke: #bc6f40; stroke-opacity: 0.75; stroke-width: 1.2; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
+.nx-rg-band { fill: #d9864f; }
+.nx-rg-name {
+  fill: var(--ds-fg-muted);
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.nx-rg-pin:not([data-hq]) .nx-cv-dot { fill: var(--ds-fg); }
+.nx-rg-region { transition: opacity 260ms var(--ds-ease); }
+.nx-cv-map[data-active] .nx-rg-region:not([data-on]) { opacity: 0.28; }
+.nx-rg-region[data-on] .nx-rg-band { fill: #f2b98e; }
+.nx-rg-region[data-on] .nx-rg-name { fill: #fff; }
+.nx-rg-region[data-on] .nx-rg-wash { fill-opacity: 0.12; }
+/* The route's dimming is for its pins; here the region dims as a whole, its cities with it. */
+.nx-cv-map[data-active] .nx-rg-region .nx-rg-pin { opacity: 1; }

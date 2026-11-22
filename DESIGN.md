@@ -666,6 +666,15 @@ and `nx-*.css` (class prefix `nx-`).
   the screen. Pointing at or focusing a region lights its cities and dims the others. Resolved: the
   route drawn, every pin lit. (Until 2026-11-22: the three Front Range cities on the left and I-25 alone
   drawing north to south, done by the time the map's top was a quarter of the way down the screen.)
+  On phones (below 768px) the route's map shows no city names (owner, 2026-11-22: eight crowded it).
+  **Two forms to compare at `/?coverage=` (owner, 2026-11-22):** `route` (the above, the default for
+  now) and `regions` (`CoverageRegions.tsx`): no roads and no city names; the Front Range, the Western
+  Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
+  same pin, each a third of it. In each, the map's dots light rust (#d9864f) in six rings rippling out
+  from its city (Colorado Springs, Grand Junction, Alamosa), a 1.2px rust outline draws round it over a
+  7% rust wash, its name rises in the data face in two lines, and its cities come up as plain dots
+  (Colorado Springs in rust with its ring) as the light reaches them. "COLORADO" moves to the bottom
+  right there. Pointing at a region lights it and dims the other two. Resolved: all three lit.
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a
   narrow vertical slit to the full screen, two rust edges riding out like a door; the headline

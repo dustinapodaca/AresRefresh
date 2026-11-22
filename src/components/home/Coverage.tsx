@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
+import { type LatLon, ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, REGION_ROWS, W, WALSENBURG, path, px, py } from './coverageGeo';
+import { buildRegions, RegionsMap } from './CoverageRegions';
 import './nx-coverage.css';
 
 // 04 Coverage (home-flora, 2026-10-20; Colorado-wide 2026-11-22, owner). Colorado drawn to scale
@@ -14,24 +16,14 @@ import './nx-coverage.css';
 // it) lights its cities and dims the rest. Resolved: the whole route drawn, every pin lit. (Until
 // 2026-11-22 it was I-25 alone, north to south, with the three Front Range cities beside it.)
 
-const W = 544;
-const H = 400;
-const px = (lon: number) => ((lon + 109.05) / 7) * W;
-const py = (lat: number) => ((41 - lat) / 4) * H;
-const path = (pts: [number, number][]) => pts.map(([lat, lon], i) => `${i ? 'L' : 'M'}${px(lon).toFixed(1)} ${py(lat).toFixed(1)}`).join(' ');
-
-const CS: [number, number] = [38.8339, -104.8214];
-const DEN: [number, number] = [39.7392, -104.9903];
-const GWS: [number, number] = [39.5505, -107.3248];
-const GJT: [number, number] = [39.0639, -108.5506];
-const MTJ: [number, number] = [38.4783, -107.8762];
-const DRO: [number, number] = [37.2753, -107.8801];
-const ALS: [number, number] = [37.4695, -105.87];
-const PUB: [number, number] = [38.2544, -104.6091];
-const WALSENBURG: [number, number] = [37.6247, -104.7803];
+// Two forms to compare (owner, 2026-11-22) at /?coverage=route|regions: `route` (below, the default
+// while the owner compares) and `regions` (CoverageRegions.tsx: the three regions light up one after
+// another, no roads or city names).
+const FORMS = ['route', 'regions'] as const;
+type Form = (typeof FORMS)[number];
 
 // The route, from headquarters round the state and back.
-const LOOP: [number, number][] = [
+const LOOP: LatLon[] = [
   CS,
   DEN,
   [39.74, -105.2],
@@ -75,10 +67,10 @@ const CUM = LPTS.reduce<number[]>((acc, p, i) => {
   const [x0, y0] = LPTS[i - 1];
   return [...acc, acc[i - 1] + Math.hypot(p[0] - x0, p[1] - y0)];
 }, []);
-const atOf = (c: [number, number]) => CUM[LOOP.indexOf(c)] / CUM[CUM.length - 1];
+const atOf = (c: LatLon) => CUM[LOOP.indexOf(c)] / CUM[CUM.length - 1];
 
 type Side = 'right' | 'left' | 'above' | 'below';
-type Pin = { slug: string; name: string; region: string; c: [number, number]; side: Side; hq?: boolean };
+type Pin = { slug: string; name: string; region: string; c: LatLon; side: Side; hq?: boolean };
 // Each name sits where it clears the roads and its neighbours.
 const PINS: Pin[] = [
   { slug: 'colorado-springs', name: 'Colorado Springs', region: 'front-range', c: CS, side: 'right', hq: true },
@@ -91,16 +83,7 @@ const PINS: Pin[] = [
   { slug: 'pueblo', name: 'Pueblo', region: 'front-range', c: PUB, side: 'right' },
 ];
 
-const REGION_ROWS = [
-  { id: 'front-range', name: 'Front Range', cities: 'Colorado Springs · Denver · Pueblo' },
-  { id: 'western-slope', name: 'Western Slope', cities: 'Grand Junction · Glenwood Springs · Montrose · Durango' },
-  { id: 'san-luis-valley', name: 'San Luis Valley', cities: 'Alamosa' },
-];
 const PIKES = { lat: 38.8409, lon: -105.0442 };
-
-const STEP = 16;
-const DOTS: [number, number][] = [];
-for (let cy = STEP / 2; cy < H; cy += STEP) for (let cx = STEP / 2; cx < W; cx += STEP) DOTS.push([cx, cy]);
 
 const label = (p: Pin) => {
   const cx = px(p.c[1]);
@@ -115,13 +98,16 @@ const label = (p: Pin) => {
 export default function Coverage() {
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState<string | null>(null);
+  const [params] = useSearchParams();
+  const asked = params.get('coverage');
+  const form: Form = (FORMS as readonly string[]).includes(asked ?? '') ? (asked as Form) : 'route';
 
   useScene(ref, (e, root) => {
     const { gsap } = e;
     readIn(e, root.querySelector('.nx-cv-title'));
     const map = root.querySelector<SVGSVGElement>('.nx-cv-svg')!;
-    const route = map.querySelector<SVGPathElement>('.nx-cv-route')!;
-    const tip = map.querySelector<SVGGElement>('.nx-cv-tip')!;
+    const route = map.querySelector<SVGPathElement>('.nx-cv-route');
+    const tip = map.querySelector<SVGGElement>('.nx-cv-tip');
     const body = root.querySelector<HTMLElement>('.nx-cv-body')!;
 
     // The route runs round the state, so it needs room (Colorado-wide, 2026-11-22). From 1024px the
@@ -146,10 +132,12 @@ export default function Coverage() {
             }
           : { trigger: map, start: 'center 80%', end: 'center 30%', scrub: SCRUB },
       });
+      if (form === 'regions') return buildRegions(tl, map);
       // pathLength 1000, not 1: GSAP rounds px values to whole numbers, so 0 to 1 only jumps.
       // The tip is a dot-sized dash on the same route, so it rides the line's end by its dash offset:
       // moving it by a transform made the browser lay the map out again on every frame of the draw,
       // and a dash offset only repaints (2026-10-26).
+      if (!route || !tip) return;
       tl.fromTo(route, { strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.86 }, 0)
         .fromTo(tip.querySelectorAll('path'), { strokeDashoffset: 0 }, { strokeDashoffset: -1000, duration: 0.86 }, 0)
         .fromTo(tip, { opacity: 0 }, { opacity: 1, duration: 0.03 }, 0)
@@ -230,7 +218,10 @@ export default function Coverage() {
           ))}
         </ul>
 
-        <figure className="nx-cv-map" data-active={active || undefined}>
+        <figure className="nx-cv-map" data-form={form} data-active={active || undefined}>
+          {form === 'regions' ? (
+            <RegionsMap active={active} />
+          ) : (
           <svg
             className="nx-cv-svg"
             viewBox={`0 0 ${W} ${H}`}
@@ -309,6 +300,7 @@ export default function Coverage() {
               );
             })}
           </svg>
+          )}
         </figure>
       </div>
     </section>

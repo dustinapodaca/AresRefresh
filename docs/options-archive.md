@@ -1,5 +1,14 @@
 # Options archive
 
+**Live switch (2026-11-22, branch colorado-wide):** `/?coverage=route|regions`, the map in Home's 04 "Where
+we work." (`FORMS` in `src/components/home/Coverage.tsx`; the regions form in
+`src/components/home/CoverageRegions.tsx`, shared geometry in `coverageGeo.ts`, styles at the end of
+`nx-coverage.css`). `route` (one line from Colorado Springs round the state and back, the eight cities
+coming up as it reaches them; no city names on phones) is the default while the owner compares;
+`regions` lights the Front Range, the Western Slope, and the San Luis Valley in turn, the dot grid
+rippling rust from each region's city inside a thin outline, no roads or city names. In the gallery
+spec `docs/options-gallery.json`.
+
 **Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
 Insights index (phones only, below 768px; `rowcard` in `src/pages/Insights.tsx`, `data-rowcard` rules in
 `src/components/insights/insights.css`). `band` (a 3:1 strip across the card's top) is the default (owner,
