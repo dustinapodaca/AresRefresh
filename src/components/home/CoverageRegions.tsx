@@ -91,7 +91,7 @@ export const REGIONS: Region[] = [
 
 const BANDS = 6;
 /** The lit dots' opacity once the light has passed (and in the resolved page: `.nx-rg-band`). */
-const SETTLED = 0.4;
+const SETTLED = 0.28;
 const xy = ([lat, lon]: LatLon): [number, number] => [px(lon), py(lat)];
 
 function inside([x, y]: [number, number], poly: [number, number][]) {
