@@ -693,7 +693,7 @@ and `nx-*.css` (class prefix `nx-`).
   scroll has it. Both ways ease over about 420ms (a `data-easing` flag on the map for 450ms after each
   change; eased all the time, the scrubbed draw would lag the scroll).
   **Two forms at `/?coverage=` (owner, 2026-11-22):** `regions` (`CoverageRegions.tsx`), the default
-  since 2026-11-22 (owner), and `route` (the above). `regions`: no city names, and only I-25 and I-70 as thin faint lines (1px, the road grey #5a6069, labeled in the faint data face; owner, 2026-11-22) under the regions from the start; the Front Range, the Western
+  since 2026-11-22 (owner), and `route` (the above). `regions`: no city names, and only I-25 and I-70 as thin quiet lines (1px, #3d4249, unlabeled; owner, 2026-11-22) under the regions from the start; the Front Range, the Western
   Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
   same pin, each a third of it. The three tile the whole state (owner, 2026-11-22): the Western Slope
   west of the Divide; the Front Range east of it out to Kansas, south to a line from Poncha Pass round

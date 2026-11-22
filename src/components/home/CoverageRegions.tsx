@@ -94,8 +94,8 @@ export const REGIONS: Region[] = [
   },
 ];
 
-// I-25 and I-70 as thin lines under the regions (owner, 2026-11-22), there from the start: the two
-// roads a reader finds Colorado by. Wyoming to New Mexico, and Utah to Kansas.
+// I-25 and I-70 as thin, quiet lines under the regions (owner, 2026-11-22), there from the start and
+// unlabeled: the two roads a reader finds Colorado by. Wyoming to New Mexico, and Utah to Kansas.
 const I25 = path([[41, -104.98], FTC, DEN, CS, PUB, WALSENBURG, TRD, [37, -104.47]]);
 const I70 = path([
   [39.17, -109.05],
@@ -205,12 +205,6 @@ export function RegionsMap({ active, onPoint }: { active: string | null; onPoint
       <g className="nx-rg-roads">
         <path d={I25} />
         <path d={I70} />
-        <text className="nx-cv-mono nx-rg-road" x={px(-104.98) + 10} y={py(40.15)}>
-          I-25
-        </text>
-        <text className="nx-cv-mono nx-rg-road" x={px(-103.3)} y={py(39.42)}>
-          I-70
-        </text>
       </g>
       {/* Top right (top left is the Western Slope here), left of the Scroll cue in the corner. */}
       <text className="nx-cv-mono" x={W - 34} y="26" textAnchor="end">
