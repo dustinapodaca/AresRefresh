@@ -64,11 +64,11 @@
 }
 .nx-cv-city .ds-arrow { color: var(--ds-fg-faint); transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
 .nx-cv-city:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
-/* With a mouse, a region's name rests 24px in and slides left to the lead's edge, over its cities,
+/* With a mouse, a region's name rests 12px in (was 24px, owner 2026-11-22: too far right) and slides left to the lead's edge, over its cities,
    when pointed at (owner, 2026-11-22: the reverse of the earlier 10px slide right). The city line
    doesn't move. Touch screens keep the names flush left. */
 @media (hover: hover) and (pointer: fine) {
-  .nx-cv-city-name { transform: translateX(24px); }
+  .nx-cv-city-name { transform: translateX(12px); }
   .nx-cv-city[data-on] .nx-cv-city-name { transform: none; }
 }
 .nx-cv-city[data-on] .ds-arrow { color: var(--ds-rust); transform: translateX(6px); }
