@@ -68,7 +68,9 @@
 .nx-cv-city[data-on] .ds-arrow { color: var(--ds-rust); transform: translateX(6px); }
 .nx-cv-cities:has(.nx-cv-city[data-on]) .nx-cv-city:not([data-on]) .nx-cv-city-name { color: var(--ds-fg-faint); }
 
-.nx-cv-map { grid-column: 6 / span 7; grid-row: 1 / span 2; align-self: start; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
+/* Centered on the lead and regions beside it: where the map is the taller (wide screens) that changes
+   nothing; where the column is (smaller desktops), the map sits in its middle (owner, 2026-11-22). */
+.nx-cv-map { grid-column: 6 / span 7; grid-row: 1 / span 2; align-self: center; margin: 0 calc(-1 * min(2vw, 24px)) 0 0; }
 /* The Scroll cue in the map's top right corner, set like the hero's (owner, 2026-11-22; inside the
    frame: beside it, it ran off the screen at 1280px). Hidden at rest: the scene shows it from 1024px
    while the map holds and draws, and fades it as the map finishes. */

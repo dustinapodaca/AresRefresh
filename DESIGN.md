@@ -674,6 +674,8 @@ and `nx-*.css` (class prefix `nx-`).
   pin holds lead, regions, and map together; below 1024px it stays under the headline (headline,
   lead, map, regions). The lead runs out to the map's edge (no measure cap) and always keeps at least
   28px, about a line, above the Front Range row's rule (owner, 2026-11-22).
+  The map is centered on the lead and regions beside it: on smaller desktops, where that column is the
+  taller, the map sits in its middle; on wide screens the map is the taller and the lead meets its top.
   The regions' city lines ("Colorado Springs · Denver · Fort Collins · Pueblo") show only while their
   region is pointed at or focused, with a mouse: they fade in under the region's name (260ms, rising
   4px), their room kept so nothing moves; touch screens keep them shown. Two-word names stay whole
