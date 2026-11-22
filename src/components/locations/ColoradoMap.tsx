@@ -92,7 +92,8 @@ const SIDE: [number, number][][] = [
 const REGION_AT: Record<string, { at: [number, number]; end?: boolean }> = {
   'front-range': { at: [40.62, -104.15] },
   'western-slope': { at: [40.05, -108.95] },
-  'san-luis-valley': { at: [37.15, -105.98] },
+  // Between Durango's name and Trinidad's (none of the region names show on a phone, areas.css) at the right keeps clear of it on a phone (2026-11-22).
+  'san-luis-valley': { at: [37.2, -106.62] },
 };
 
 const HQ = CITIES.find((c) => c.slug === 'colorado-springs')!;
@@ -165,6 +166,7 @@ export default function ColoradoMap({ active }: { active?: string | null }) {
             <span
               key={r.id}
               className="ds-loc-pin ds-loc-faint"
+              data-region={r.id}
               aria-hidden="true"
               style={{ left: `${(x(p.at[1]) / W) * 100}%`, top: `${(y(p.at[0]) / H) * 100}%` }}
             >

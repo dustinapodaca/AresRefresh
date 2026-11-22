@@ -655,8 +655,9 @@ and `nx-*.css` (class prefix `nx-`).
   projection, its dot grid, a rust glow on Colorado Springs, Pikes Peak as an open triangle; I-25 and
   I-70 whole as faint dashed ground). The line is one route that leaves headquarters and comes home:
   Colorado Springs north on I-25 to Denver, west on I-70 through Glenwood Springs to Grand Junction,
-  south on US-50 and US-550 through Montrose to Durango, east on US-160 through Alamosa, and back up
-  I-25 through Pueblo, a bright tip riding it, and each of the eight cities comes up as the line
+  south on US-50 and US-550 through Montrose to Durango, east on US-160 through Alamosa to La Veta, the
+  Highway of Legends (CO-12) down to Trinidad, and back up I-25 through Walsenburg and Pueblo, a bright
+  tip riding it, and each of the nine cities comes up as the line
   reaches it (owner, 2026-10-22: the dot grows in place, one sonar ping ripples out from it, the ring
   opens around it, the name rises 6px into place, Pikes Peak with Colorado Springs; radii, not scale).
   The names are Inter 15px in the drawing (Colorado Springs 18; about 12px on a phone's map), each
@@ -666,7 +667,7 @@ and `nx-*.css` (class prefix `nx-`).
   the screen. Pointing at or focusing a region lights its cities and dims the others. Resolved: the
   route drawn, every pin lit. (Until 2026-11-22: the three Front Range cities on the left and I-25 alone
   drawing north to south, done by the time the map's top was a quarter of the way down the screen.)
-  On phones (below 768px) the route's map shows no city names (owner, 2026-11-22: eight crowded it).
+  On phones (below 768px) the route's map shows no city names (owner, 2026-11-22: they crowded it).
   **Two forms to compare at `/?coverage=` (owner, 2026-11-22):** `route` (the above, the default for
   now) and `regions` (`CoverageRegions.tsx`): no roads and no city names; the Front Range, the Western
   Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
@@ -674,7 +675,7 @@ and `nx-*.css` (class prefix `nx-`).
   west of the Divide; the Front Range east of it out to Kansas, south to a line from Poncha Pass round
   the south of Pueblo to Kansas; the San Luis Valley everything south of that line, Walsenburg and
   Trinidad included. In each, the map's dots light rust (#d9864f) in six rings rippling out
-  from its city (Colorado Springs, Grand Junction, Alamosa), a 1.2px rust outline draws round it over a
+  from its city (Colorado Springs, Grand Junction, Alamosa; Trinidad is a dot in the San Luis Valley), a 1.2px rust outline draws round it over a
   7% rust wash, its name rises in the data face in two lines, and its cities come up as plain dots
   (Colorado Springs in rust with its ring and "HQ" beside it in the data face) as the light reaches
   them. Each ring of dots flashes full rust as the light passes, then settles to 28% (owner, 2026-11-22, was 40%:
@@ -1319,15 +1320,18 @@ per city. No rail, no close, no photo, no section numbers.
   and still.
 
 ### Service Areas hub and Colorado-wide pages (owner, 2026-11-22)
-Ares goes Colorado-wide: eight cities in three regions (Front Range: Colorado Springs, Denver, Pueblo;
-Western Slope: Grand Junction, Glenwood Springs, Montrose, Durango; San Luis Valley: Alamosa). The three
-Front Range city pages keep their URLs; `/locations` is the hub over all eight (`pages/locations/
+Ares goes Colorado-wide: nine cities in three regions (Front Range: Colorado Springs, Denver, Pueblo;
+Western Slope: Grand Junction, Glenwood Springs, Montrose, Durango; San Luis Valley, which takes in the
+southern end of the state: Alamosa, Trinidad (added by the owner, 2026-11-22)). The three
+Front Range city pages keep their URLs; `/locations` is the hub over all nine (`pages/locations/
 ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class prefix `ds-sa-`).
 - **Hub opening:** "Security officers across Colorado" (no period) and its lead (the count spelled out)
   left, Colorado to scale right (700 by 512, the dot grid, I-25 and I-70 in the route grey, US-50/550
   and US-160 a step fainter, all drawing in once in view). Colorado Springs lit in rust as HQ ("HQ,
-  since 2021"); the other seven faint dots with their names to the right, each a link. Region names
-  faint mono capitals. After Cloudflare's "Where we work" on Mobbin.
+  since 2021"); the other eight faint dots with their names to the right, each a link. Region names
+  faint mono capitals, hidden below 480px (2026-11-22: with Trinidad there was no clear room for the
+  San Luis Valley's; the columns under the map name all three). After Cloudflare's "Where we work" on
+  Mobbin.
 - **Where we staff.** Three regions in ruled columns (stacked below 900px): the region name, one line,
   then its cities as rows (name, counties beneath, arrow); hovering or focusing a row lights its dot
   on the map. Each column carries the region's id (`#front-range`, `#western-slope`,
@@ -1335,10 +1339,12 @@ ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class pr
 - **Licensing, city by city.** One ruled table, City / What the city requires / What Ares holds
   (numbers in the data face); phones stack each row.
 - Then the questions (FAQPage JSON-LD) and the ask strip.
-- **City pages** use one component for all eight. Each region has its own map plate (`REGIONS` in
+- **City pages** use one component for all nine. Each region has its own map plate (`REGIONS` in
   `data.ts`: bounds, roads, dashed state borders), so a Western Slope page draws I-70, US-50 and
-  US-550 with the UTAH line; Alamosa draws US-160 and the NEW MEXICO line, Blanca Peak's name centered
-  above its triangle (`above`). The other cities shown are the ones in the same region. The ending
+  US-550 with the UTAH line; the San Luis Valley plate (widened east for Trinidad, 2026-11-22) draws
+  US-160, I-25 from Pueblo to Raton Pass, and the NEW MEXICO line, Blanca Peak's name centered above
+  its triangle (`above`) on Alamosa's page. Trinidad's page: the City business license (Sec. 9-4 of
+  the City's code, renewed each year through February, Sec. 9-8); the code has no security license. The other cities shown are the ones in the same region. The ending
   reads "Also in the <region>: …" and "Every city we staff across Colorado →" to the hub. Breadcrumbs:
   Home / Service Areas / <city>.
 - **Sitewide:** Home's proof row "Licensed city by city across Colorado" (owner, 2026-11-22: Grand Junction and Montrose require no license, so not "licensed in eight cities"); Home 04 keeps the three I-25

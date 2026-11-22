@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Arrow from '../Arrow';
 import { readIn, useScene, words, SCRUB } from './engine';
-import { type LatLon, ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, REGION_ROWS, W, WALSENBURG, path, px, py } from './coverageGeo';
+import { type LatLon, ALS, CS, DEN, DOTS, DRO, GJT, GWS, H, MTJ, PUB, REGION_ROWS, TRD, W, WALSENBURG, path, px, py } from './coverageGeo';
 import { buildRegions, RegionsMap } from './CoverageRegions';
 import './nx-coverage.css';
 
@@ -10,7 +10,8 @@ import './nx-coverage.css';
 // (the Home map's projection: 37°N to 41°N, 102.05°W to 109.05°W). The line is one route that
 // leaves headquarters and comes home: Colorado Springs north on I-25 to Denver, west on I-70 through
 // Glenwood Springs to Grand Junction, south on US-50 and US-550 through Montrose to Durango, east on
-// US-160 through Alamosa to Walsenburg, and back up I-25 through Pueblo. It draws as the section
+// US-160 through Alamosa to La Veta, the Highway of Legends (CO-12) down to Trinidad, and back up
+// I-25 through Walsenburg and Pueblo. It draws as the section
 // scrolls past, each city's pin coming up as the line reaches it. The three regions are set large
 // beside the map, each a link to its column on the Service Areas page; pointing at one (or focusing
 // it) lights its cities and dims the rest. Resolved: the whole route drawn, every pin lit. (Until
@@ -47,6 +48,13 @@ const LOOP: LatLon[] = [
   ALS,
   [37.43, -105.433],
   [37.59, -105.2],
+  // La Veta, then CO-12 by Cuchara and Stonewall to Trinidad (owner, 2026-11-22: Trinidad added).
+  [37.51, -105.01],
+  [37.38, -105.1],
+  [37.15, -105.03],
+  [37.16, -104.75],
+  TRD,
+  [37.4, -104.65],
   WALSENBURG,
   PUB,
   CS,
@@ -80,6 +88,7 @@ const PINS: Pin[] = [
   { slug: 'montrose', name: 'Montrose', region: 'western-slope', c: MTJ, side: 'right' },
   { slug: 'durango', name: 'Durango', region: 'western-slope', c: DRO, side: 'left' },
   { slug: 'alamosa', name: 'Alamosa', region: 'san-luis-valley', c: ALS, side: 'below' },
+  { slug: 'trinidad', name: 'Trinidad', region: 'san-luis-valley', c: TRD, side: 'right' },
   { slug: 'pueblo', name: 'Pueblo', region: 'front-range', c: PUB, side: 'right' },
 ];
 
@@ -226,7 +235,7 @@ export default function Coverage() {
             className="nx-cv-svg"
             viewBox={`0 0 ${W} ${H}`}
             role="img"
-            aria-label="Map of Colorado showing the cities Ares staffs: Colorado Springs (headquarters), Denver, and Pueblo on the Front Range; Glenwood Springs, Grand Junction, Montrose, and Durango on the Western Slope; and Alamosa in the San Luis Valley."
+            aria-label="Map of Colorado showing the cities Ares staffs: Colorado Springs (headquarters), Denver, and Pueblo on the Front Range; Glenwood Springs, Grand Junction, Montrose, and Durango on the Western Slope; and Alamosa and Trinidad in the San Luis Valley and the south."
           >
             <defs>
               <radialGradient id="nx-cv-glow">

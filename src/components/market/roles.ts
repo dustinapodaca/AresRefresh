@@ -143,7 +143,7 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Where in Colorado do you staff access control?',
-        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security. That includes gates and docks at data centers, utilities, and construction sites, and restricted areas on military installations, where we work alongside base security forces.',
+        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security. That includes gates and docks at data centers, utilities, and construction sites, and restricted areas on military installations, where we work alongside base security forces.',
       },
       {
         q: 'Will officers use our access system?',
@@ -180,7 +180,7 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Where do you provide restricted-area escorts?',
-        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security. Tell us the site and its access rules, and we will tell you plainly what we can staff and when.',
+        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security. Tell us the site and its access rules, and we will tell you plainly what we can staff and when.',
       },
       GSA_FAQ,
     ],
@@ -215,7 +215,7 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Where do your patrols run?',
-        a: 'Around each city we staff across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
+        a: 'Around each city we staff across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Tell us the addresses and the hours you want checked, and we will tell you plainly whether a route can cover them and how often each property can be visited.',
       },
     ],
   },
@@ -254,7 +254,7 @@ export const ROLE_PAGES: RolePageData[] = [
       },
       {
         q: 'Where in Colorado can you cover shifts?',
-        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security. Guard companies and primes elsewhere in Colorado can ask; we will tell you plainly which posts and dates we can staff.',
+        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security. Guard companies and primes elsewhere in Colorado can ask; we will tell you plainly which posts and dates we can staff.',
       },
 
     ],

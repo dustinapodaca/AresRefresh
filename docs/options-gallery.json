@@ -14,7 +14,7 @@
           "value": "route",
           "label": "Route",
           "tag": "default",
-          "note": "One line leaves Colorado Springs and comes home: I-25 to Denver, I-70 to Grand Junction, south to Durango, east through Alamosa, back through Pueblo. Each city comes up as the line reaches it. No city names on phones."
+          "note": "One line leaves Colorado Springs and comes home: I-25 to Denver, I-70 to Grand Junction, south to Durango, east through Alamosa, down to Trinidad, back through Pueblo. Each city comes up as the line reaches it. No city names on phones."
         },
         {
           "value": "regions",

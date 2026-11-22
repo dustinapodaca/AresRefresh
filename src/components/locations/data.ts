@@ -104,8 +104,9 @@ export const REGIONS: Region[] = [
   {
     id: 'san-luis-valley',
     name: 'San Luis Valley',
-    line: 'The high valley between the San Juans and the Sangre de Cristos.',
-    bounds: { lon0: -107.2, lon1: -104.6, lat0: 38.55, lat1: 36.45 },
+    line: 'The San Luis Valley and the southern end of the state, from Alamosa east to Trinidad.',
+    // Widened east for Trinidad (owner, 2026-11-22), keeping the plate's shape in kilometres.
+    bounds: { lon0: -107.1, lon1: -103.9, lat0: 38.75, lat1: 36.1 },
     roads: [
       {
         name: 'US-160',
@@ -120,8 +121,22 @@ export const REGIONS: Region[] = [
         ],
         label: [37.36, -105.62],
       },
+      {
+        name: 'I-25',
+        // Pueblo, Walsenburg, Aguilar, Trinidad, Raton Pass.
+        points: [
+          [38.75, -104.75],
+          [38.2544, -104.6091],
+          [37.6247, -104.7803],
+          [37.4, -104.65],
+          [37.1695, -104.5005],
+          [36.99, -104.47],
+          [36.1, -104.4],
+        ],
+        label: [37.95, -104.66],
+      },
     ],
-    borders: [{ points: [[37.0, -107.2], [37.0, -104.6]], label: 'NEW MEXICO', at: [37.0, -104.85], end: true }],
+    borders: [{ points: [[37.0, -107.1], [37.0, -103.9]], label: 'NEW MEXICO', at: [37.0, -104.85], end: true }],
   },
 ];
 
@@ -245,6 +260,16 @@ export const CITIES: City[] = [
     counties: 'Alamosa County',
     rule: 'Contract security license for the company and every officer',
     held: 'Company and officer licenses',
+  },
+  {
+    slug: 'trinidad',
+    name: 'Trinidad',
+    path: '/locations/trinidad',
+    coord: { lat: 37.1695, lon: -104.5005 },
+    region: 'san-luis-valley',
+    counties: 'Las Animas County',
+    rule: 'City business license, renewed each year',
+    held: 'Business license',
   },
 ];
 
@@ -613,5 +638,48 @@ export const ALAMOSA: LocationFile = {
   focusSide: 'left',
 };
 
+// Trinidad (owner, 2026-11-22: "we are getting licensed there"). From the City of Trinidad's
+// municipal code, Chapter 9 (read 2026-11-22): a business license from the City Clerk for any business
+// within city limits (Sec. 9-4), valid through the last day of February each year (Sec. 9-8). The code
+// has no security-specific license (Chapters 2, 3, 8, 9, 16, and 21 searched).
+export const TRINIDAD: LocationFile = {
+  city: city('trinidad'),
+  path: '/locations/trinidad',
+  title: 'Security guards in Trinidad.',
+  lead: 'Armed and unarmed security officers for sites across Trinidad and Las Animas County, on I-25 just north of Raton Pass and the New Mexico line.',
+  licenseTitle: 'Licensed in Trinidad.',
+  licenseIntro:
+    'Colorado has no statewide security license, and Trinidad has no separate security license. The city requires a business license of any business working inside city limits, and Ares holds one.',
+  license: [
+    { label: 'City of Trinidad business license', value: 'Active', route: { note: 'Renewed each year, through February' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 2 hours by road' } },
+  ],
+  local:
+    'Trinidad is the seat of Las Animas County, on I-25 just north of Raton Pass and the New Mexico line. The city requires a business license of any business working inside city limits, renewed each year through February, and Ares holds one; Trinidad has no separate security license, so the standard a buyer can rely on is the company’s own. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector facilities, hospitals and clinics, campuses, hotels and commercial property, and construction across Las Animas County. Our headquarters is about two hours up I-25, and a member of our leadership walks every new site before anything is signed.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Trinidad license?',
+      a: 'Yes, a city business license. Colorado has no statewide security license, and Trinidad has no separate security license, but the city requires a business license of any business working inside city limits, renewed each year through February. Ares holds one.',
+    },
+    {
+      q: 'Do you cover sites outside Trinidad?',
+      a: 'Yes, across Las Animas County and up I-25 toward Walsenburg. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Hotels and commercial property', division: 'Commercial & Retail', divisionId: 'commercial' },
+    { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+  ],
+  landmarks: [],
+  // Near the plate's east edge: the name sits to the left of its dot.
+  focusSide: 'left',
+};
+
 /** Every city page, in the hub's order. */
-export const LOCATION_FILES: LocationFile[] = [COLORADO_SPRINGS, DENVER, PUEBLO, GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA];
+export const LOCATION_FILES: LocationFile[] = [COLORADO_SPRINGS, DENVER, PUEBLO, GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA, TRINIDAD];

@@ -17,7 +17,7 @@ import './sv-close.css';
 const CITIES = [
   { to: '/locations#front-range', name: 'Front Range', note: 'Colorado Springs · Denver · Pueblo' },
   { to: '/locations#western-slope', name: 'Western Slope', note: 'Grand Junction to Durango' },
-  { to: '/locations#san-luis-valley', name: 'San Luis Valley', note: 'Alamosa' },
+  { to: '/locations#san-luis-valley', name: 'San Luis Valley', note: 'Alamosa · Trinidad' },
 ];
 
 export default function SvClose() {

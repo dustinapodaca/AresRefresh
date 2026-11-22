@@ -213,7 +213,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
+        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security.',
       },
       // The GSA question was cut here (design review, owner 2026-10-13): agencies aren't the
       // usual buyer for critical and high-liability sites; the Government page carries it.
@@ -272,7 +272,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
+        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security.',
       },
     ],
   },
@@ -367,7 +367,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
+        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa and Trinidad in the San Luis Valley and the south. Ares holds what each city requires for armed and unarmed security.',
       },
     ],
   },

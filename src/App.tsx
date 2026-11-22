@@ -26,7 +26,7 @@ import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
 import ServiceAreas from './pages/locations/ServiceAreas';
 import LocationPage from './components/locations/LocationPage';
-import { ALAMOSA, DURANGO, GLENWOOD_SPRINGS, GRAND_JUNCTION, MONTROSE } from './components/locations/data';
+import { ALAMOSA, DURANGO, GLENWOOD_SPRINGS, GRAND_JUNCTION, MONTROSE, TRINIDAD } from './components/locations/data';
 import Teaming from './pages/Teaming';
 
 // The card surface (owner, 2026-10-15): liquid glass, the glass cards plus the liquid rim. Sets
@@ -147,7 +147,7 @@ export default function App() {
         <Route path="/locations/colorado-springs" element={<ColoradoSprings />} />
         <Route path="/locations/denver" element={<Denver />} />
         <Route path="/locations/pueblo" element={<Pueblo />} />
-        {[GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA].map((f) => (
+        {[GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA, TRINIDAD].map((f) => (
           <Route key={f.path} path={f.path} element={<LocationPage key={f.path} file={f} />} />
         ))}
 

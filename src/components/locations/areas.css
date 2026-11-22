@@ -41,6 +41,9 @@
   .ds-sa-map .ds-loc-faint { font-size: 11px; letter-spacing: 0.04em; }
   /* Its name runs up to Denver's dot on a phone, so it sits a little below its own. */
   .ds-sa-pin[data-city='glenwood-springs'] { margin-top: 5px; }
+  /* No region names on the map here (2026-11-22): with Trinidad, the San Luis Valley's had no clear
+     room between Durango, Alamosa, and Trinidad. The region columns under the map name all three. */
+  .ds-sa-map .ds-loc-pin[data-region] { display: none; }
 }
 .ds-sa-pin:hover,
 .ds-sa-pin:focus-visible { color: var(--ds-fg); }
@@ -49,6 +52,7 @@
 .ds-sa-map[data-active='montrose'] .ds-sa-pin[data-city='montrose'],
 .ds-sa-map[data-active='durango'] .ds-sa-pin[data-city='durango'],
 .ds-sa-map[data-active='alamosa'] .ds-sa-pin[data-city='alamosa'],
+.ds-sa-map[data-active='trinidad'] .ds-sa-pin[data-city='trinidad'],
 .ds-sa-map[data-active='denver'] .ds-sa-pin[data-city='denver'],
 .ds-sa-map[data-active='pueblo'] .ds-sa-pin[data-city='pueblo'] { color: var(--ds-fg); }
 .ds-sa-map[data-active='grand-junction'] .ds-sa-dot[data-city='grand-junction'],
@@ -56,6 +60,7 @@
 .ds-sa-map[data-active='montrose'] .ds-sa-dot[data-city='montrose'],
 .ds-sa-map[data-active='durango'] .ds-sa-dot[data-city='durango'],
 .ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'],
+.ds-sa-map[data-active='trinidad'] .ds-sa-dot[data-city='trinidad'],
 .ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'],
 .ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] { fill: #eef0f2; }
 .ds-sa-map[data-active] .ds-sa-dot[data-city] .ds-sa-dot-ring { opacity: 0; }
@@ -64,6 +69,7 @@
 .ds-sa-map[data-active='montrose'] .ds-sa-dot[data-city='montrose'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='durango'] .ds-sa-dot[data-city='durango'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='trinidad'] .ds-sa-dot[data-city='trinidad'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'] .ds-sa-dot-ring,
 .ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] .ds-sa-dot-ring { opacity: 0.55; }
 .ds-sa-side { opacity: 0.9; }

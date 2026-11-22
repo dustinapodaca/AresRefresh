@@ -38,7 +38,7 @@
     },
     "/locations": {
       "title": "Security Guard Services Across Colorado | Ares Security",
-      "description": "Armed and unarmed security officers in eight Colorado cities, from Denver and Colorado Springs to Grand Junction, Durango, and Alamosa. Licensed city by city.",
+      "description": "Armed and unarmed security officers in nine Colorado cities, from Denver and Colorado Springs to Grand Junction, Durango, and Trinidad. Licensed city by city.",
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Colorado",
@@ -49,7 +49,8 @@
         "Glenwood Springs",
         "Montrose",
         "Durango",
-        "Alamosa"
+        "Alamosa",
+        "Trinidad"
       ]
     },
     "/locations/colorado-springs": {
@@ -162,6 +163,20 @@
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Alamosa"
+      ]
+    },
+    "/locations/trinidad": {
+      "title": "Security Guards in Trinidad, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Trinidad and Las Animas County, on I-25 at the New Mexico line, from a Colorado company licensed in the city.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Trinidad"
       ]
     },
     "/privacy": {
