@@ -678,9 +678,10 @@ and `nx-*.css` (class prefix `nx-`).
   taller, the map sits in its middle; on wide screens the map is the taller and the lead meets its top.
   The regions' city lines ("Colorado Springs · Denver · Fort Collins · Pueblo") show only while their
   region is pointed at or focused, with a mouse: they fade in under the region's name (260ms), their
-  room kept so nothing moves; touch screens keep them shown. At rest the names sit flush left with the
-  lead; pointed at, the name and its city line slide 24px right together (the nav menu links' slide;
-  owner, 2026-11-22, was 10px) and the arrow turns rust and nudges 6px. Two-word names stay whole
+  room kept so nothing moves; touch screens keep them shown. With a mouse the region names rest 24px
+  in and, pointed at, slide left to the lead's edge over their city line, which doesn't move (owner,
+  2026-11-22: the reverse of the earlier 10px slide right); the arrow turns rust and nudges 6px. Touch
+  screens keep the names flush left. Two-word names stay whole
   (no-break spaces). The map shows no city names. Moving the mouse over a region on the map lights it
   and its row, on the same real-move rule as the rows (pointermove, never touch, never a page
   scrolling under a resting pointer); leaving the map clears it.
@@ -1361,7 +1362,11 @@ ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class pr
   Mobbin.
 - **Where we staff.** Three regions in ruled columns (stacked below 900px): the region name, one line,
   then its cities as rows (name, counties beneath, arrow); hovering or focusing a row lights its dot
-  on the map. Each column carries the region's id (`#front-range`, `#western-slope`,
+  on the map. On phones (below 768px; owner, 2026-11-22) the regions are an accordion on the
+  questions block's look, one open at a time, closed to start: each a row with its name, a city count
+  in the data face ("4 cities"), and the + that folds into a minus; tapping eases the panel (its line
+  and cities) open over 260ms and any other shut over 200ms (grid rows, the contents rising 6px);
+  closed panels leave the tab order; a link to a region (`/locations#western-slope`) opens it. Each column carries the region's id (`#front-range`, `#western-slope`,
   `#san-luis-valley`). After Shopify's "Where we hire" and Slack's "Explore by region".
 - **Licensing, city by city.** One ruled table, City / What the city requires / What Ares holds
   (numbers in the data face); phones stack each row.

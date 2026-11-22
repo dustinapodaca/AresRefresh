@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useMediaQuery } from '../../components/home/useMediaQuery';
 import Seo from '../../seo/Seo';
 import Arrow from '../../components/Arrow';
 import ColoradoMap from '../../components/locations/ColoradoMap';
@@ -35,6 +36,16 @@ const FAQ = [
 
 export default function ServiceAreas() {
   const [active, setActive] = useState<string | null>(null);
+  // Phones (owner, 2026-11-22): the regions are an accordion, one open at a time, closed to start;
+  // a link to a region (/locations#western-slope, from Home) opens it. Wider screens keep the
+  // columns. Prerendered open, as the columns.
+  const phone = useMediaQuery('(max-width: 767px)', false);
+  const [open, setOpen] = useState<string | null>(null);
+  const { hash } = useLocation();
+  useEffect(() => {
+    const id = hash.slice(1);
+    if (REGIONS.some((r) => r.id === id)) setOpen(id);
+  }, [hash]);
   const on = (slug: string) => ({
     onMouseEnter: () => setActive(slug),
     onMouseLeave: () => setActive(null),
@@ -72,12 +83,33 @@ export default function ServiceAreas() {
       <div className="ds-container">
         <section className="ds-sa-regions" aria-labelledby="sa-regions-title">
           <h2 id="sa-regions-title" className="ds-display-lg">Where we staff.</h2>
-          <div className="ds-sa-region-grid">
+          <div className="ds-sa-region-grid" data-accordion={phone || undefined}>
             {REGIONS.map((r) => {
               const cities = CITIES.filter((c) => c.region === r.id);
+              const isOpen = !phone || open === r.id;
               return (
-                <div key={r.id} id={r.id} className="ds-sa-region">
-                  <h3 className="ds-sa-region-name">{r.name}</h3>
+                <div key={r.id} id={r.id} className="ds-sa-region" data-open={(phone && isOpen) || undefined}>
+                  <h3 className="ds-sa-region-name">
+                    {phone ? (
+                      <button
+                        type="button"
+                        className="ds-sa-region-toggle"
+                        aria-expanded={isOpen}
+                        aria-controls={`${r.id}-panel`}
+                        onClick={() => setOpen((cur) => (cur === r.id ? null : r.id))}
+                      >
+                        <span>{r.name}</span>
+                        <span className="ds-sa-region-count ds-data">
+                          {cities.length} {cities.length === 1 ? 'city' : 'cities'}
+                        </span>
+                        <span className="ds-mk-faq-mark" aria-hidden="true" />
+                      </button>
+                    ) : (
+                      r.name
+                    )}
+                  </h3>
+                  <div className="ds-sa-panel" id={`${r.id}-panel`}>
+                  <div className="ds-sa-panel-in">
                   <p className="ds-sa-region-line">{r.line}</p>
                   <ul className="ds-sa-city-list">
                     {cities.map((c) => (
@@ -93,6 +125,8 @@ export default function ServiceAreas() {
                       </li>
                     ))}
                   </ul>
+                  </div>
+                  </div>
                 </div>
               );
             })}
