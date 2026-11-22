@@ -677,8 +677,10 @@ and `nx-*.css` (class prefix `nx-`).
   The map is centered on the lead and regions beside it: on smaller desktops, where that column is the
   taller, the map sits in its middle; on wide screens the map is the taller and the lead meets its top.
   The regions' city lines ("Colorado Springs · Denver · Fort Collins · Pueblo") show only while their
-  region is pointed at or focused, with a mouse: they fade in under the region's name (260ms, rising
-  4px), their room kept so nothing moves; touch screens keep them shown. Two-word names stay whole
+  region is pointed at or focused, with a mouse: they fade in under the region's name (260ms), their
+  room kept so nothing moves; touch screens keep them shown. At rest the names sit flush left with the
+  lead; pointed at, the name and its city line slide 24px right together (the nav menu links' slide;
+  owner, 2026-11-22, was 10px) and the arrow turns rust and nudges 6px. Two-word names stay whole
   (no-break spaces). The map shows no city names. Moving the mouse over a region on the map lights it
   and its row, on the same real-move rule as the rows (pointermove, never touch, never a page
   scrolling under a resting pointer); leaving the map clears it.

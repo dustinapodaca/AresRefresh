@@ -60,11 +60,13 @@
    keep them shown. */
 @media (hover: hover) and (pointer: fine) {
   .nx-cv-city-note { opacity: 0; transform: translateY(-4px); transition: opacity 260ms var(--ds-ease), transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
-  .nx-cv-city[data-on] .nx-cv-city-note { opacity: 1; transform: none; }
+  .nx-cv-city[data-on] .nx-cv-city-note { opacity: 1; transform: translateX(24px); }
 }
 .nx-cv-city .ds-arrow { color: var(--ds-fg-faint); transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
 .nx-cv-city:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
-.nx-cv-city[data-on] .nx-cv-city-name { transform: translateX(10px); }
+/* Flush left with the lead at rest; pointed at, the name slides 24px right (the nav menu links'
+   slide; owner, 2026-11-22: 10px read as the wrong way round), its cities with it. */
+.nx-cv-city[data-on] .nx-cv-city-name { transform: translateX(24px); }
 .nx-cv-city[data-on] .ds-arrow { color: var(--ds-rust); transform: translateX(6px); }
 .nx-cv-cities:has(.nx-cv-city[data-on]) .nx-cv-city:not([data-on]) .nx-cv-city-name { color: var(--ds-fg-faint); }
 
