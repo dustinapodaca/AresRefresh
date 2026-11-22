@@ -29,11 +29,9 @@
 /* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
    its tip (owner, 2026-10-22: it was cut off). */
 .nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
-.nx-cv-cities li.nx-cv-more { border-bottom: 0; padding-top: 22px; }
-.nx-cv-more .ds-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; }
 .nx-cv-city {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 18px;
   padding: clamp(14px, 2vw, 26px) 0;
@@ -48,7 +46,10 @@
   letter-spacing: -0.05em;
   transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease);
 }
-.nx-cv-city-note { font-size: 13px; color: var(--ds-fg-faint); }
+.nx-cv-city-text { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+/* The region's cities under its name (Colorado-wide, 2026-11-22). */
+.nx-cv-city-note { font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); transition: color 260ms var(--ds-ease); }
+.nx-cv-city[data-on] .nx-cv-city-note { color: var(--ds-fg-muted); }
 .nx-cv-city .ds-arrow { color: var(--ds-fg-faint); transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
 .nx-cv-city:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
 .nx-cv-city[data-on] .nx-cv-city-name { transform: translateX(10px); }
@@ -64,7 +65,19 @@
 .nx-cv-tip-glow { stroke: #e8965f; stroke-opacity: 0.25; stroke-width: 18; }
 .nx-cv-tip-dot { stroke: #f2b98e; stroke-width: 6.4; }
 .nx-cv-mono { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
-.nx-cv-name { font-family: var(--ds-text); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; fill: var(--ds-fg); }
+.nx-cv-name {
+  font-family: var(--ds-text);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  fill: var(--ds-fg);
+  /* Eight names over the roads: a black edge keeps each one clean where a line passes under it. */
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+.nx-cv-pin[data-hq] .nx-cv-name { font-size: 18px; }
 .nx-cv-dot { fill: var(--ds-fg); transform-box: fill-box; transform-origin: center; }
 .nx-cv-pin[data-hq] .nx-cv-dot { fill: var(--ds-rust); }
 .nx-cv-ring { fill: none; stroke: rgb(238 240 242 / 0.35); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
@@ -111,7 +124,9 @@
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-25; was 12) */
-  .nx-cv-name { font-size: 19px; } /* a tad larger on phones (owner, 2026-10-23; was 17) */
+  .nx-cv-name { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-23) */
+  .nx-cv-pin[data-hq] .nx-cv-name { font-size: 21px; }
+  .nx-cv-city-note { font-size: 13px; }
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */

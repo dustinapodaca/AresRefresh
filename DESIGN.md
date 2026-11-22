@@ -647,14 +647,25 @@ and `nx-*.css` (class prefix `nx-`).
   its inline photo, the principle, the photo full width (16:10; 4:5 on phones) captioned "Ares
   patrol vehicles", and the facts as a ledger with rust ticks (four across, two on tablets, one
   on phones).
-- **04 Coverage:** "Where we work." and its lead, the three cities set large on the left
-  (`clamp(36px, 4.3vw, 72px)`, Colorado Springs first as HQ), each a link to its city page, and
-  Colorado to scale on the right (the coverage map's projection, its dot grid, a rust glow on
-  Colorado Springs, Pikes Peak as an open triangle). I-25 draws north to south with the scroll while the whole map is on screen (from when its foot comes into view; owner, 2026-10-25), done by the time its top is a quarter of the way down the screen (owner, 2026-10-26; it ran to just under the nav), over at least 15% of a screen of scrolling so it never pops in on a short laptop, a
-  bright tip riding it, and each city comes up as the line reaches it (owner, 2026-10-22: the dot grows in place, one
-  sonar ping ripples out from it, the ring opens around it, the name rises 6px into place, Pikes Peak with
-  Colorado Springs; radii, not scale, so nothing flies in from the map's corner); pointing at or
-  focusing a city lights its pin and dims the others. Resolved: the route drawn, every pin lit.
+- **04 Coverage** (Colorado-wide since 2026-11-22, owner): "Where we work." and its lead ("...sites
+  across Colorado, from our base in Colorado Springs."), the three regions set large on the left
+  (`clamp(36px, 4.3vw, 72px)`: Front Range, Western Slope, San Luis Valley), each with its cities
+  beneath in the data face (14px, ink faint) and a link to its column on the Service Areas page
+  (`/locations#front-range` and so on), and Colorado to scale on the right (the coverage map's
+  projection, its dot grid, a rust glow on Colorado Springs, Pikes Peak as an open triangle; I-25 and
+  I-70 whole as faint dashed ground). The line is one route that leaves headquarters and comes home:
+  Colorado Springs north on I-25 to Denver, west on I-70 through Glenwood Springs to Grand Junction,
+  south on US-50 and US-550 through Montrose to Durango, east on US-160 through Alamosa, and back up
+  I-25 through Pueblo, a bright tip riding it, and each of the eight cities comes up as the line
+  reaches it (owner, 2026-10-22: the dot grows in place, one sonar ping ripples out from it, the ring
+  opens around it, the name rises 6px into place, Pikes Peak with Colorado Springs; radii, not scale).
+  The names are Inter 15px in the drawing (Colorado Springs 18; about 12px on a phone's map), each
+  placed to clear the roads, with a black edge where a road passes under. From 1024px the regions and
+  the map pin, centered under the nav, for 110% of a screen while the route draws, then a beat on the
+  finished map; below 1024px no pin, and it draws while the map's center crosses from 80% to 30% of
+  the screen. Pointing at or focusing a region lights its cities and dims the others. Resolved: the
+  route drawn, every pin lit. (Until 2026-11-22: the three Front Range cities on the left and I-25 alone
+  drawing north to south, done by the time the map's top was a quarter of the way down the screen.)
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a
   narrow vertical slit to the full screen, two rust edges riding out like a door; the headline
