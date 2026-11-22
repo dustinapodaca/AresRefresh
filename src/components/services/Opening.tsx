@@ -12,7 +12,7 @@ import { responsive } from '../../lib/responsive';
 const COPY = {
   // The H1, no closing period like every hero headline (heroTitle), set as two lines.
   lines: ['A prepared officer', 'on every post'],
-  lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs, Denver, and Pueblo. Pick a service, or find your industry.',
+  lead: 'Armed and unarmed coverage for federal, commercial, and industrial sites across Colorado, from the Front Range to the Western Slope. Pick a service, or find your industry.',
 };
 
 const SRC = '/images/hero6.jpg';

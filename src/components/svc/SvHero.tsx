@@ -353,8 +353,8 @@ export default function SvHero() {
           {/* Phones: this pair sits on a card of the site's black glass. */}
           <div className="sv-hero-panel">
             <p className="sv-hero-lead">
-              Armed and unarmed coverage for federal, commercial, and industrial sites in Colorado Springs,
-              Denver, and Pueblo. Pick a service, or find your industry.
+              Armed and unarmed coverage for federal, commercial, and industrial sites across Colorado,
+              from the Front Range to the Western Slope. Pick a service, or find your industry.
             </p>
             <div className="sv-hero-actions">
               <Link to="/contact" className="ds-btn ds-btn-primary">
@@ -377,7 +377,7 @@ export default function SvHero() {
           <p className="sv-hero-post" aria-hidden="true">
             <span className="sv-hero-post-bar">
               <span>Your post</span>
-              <span>Colorado Springs · Denver · Pueblo</span>
+              <span>Anywhere in Colorado</span>
             </span>
           </p>
         </div>

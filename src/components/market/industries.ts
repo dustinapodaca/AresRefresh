@@ -35,7 +35,7 @@ export type IndustryPageData = {
   primes?: string;
 };
 
-const LICENSED: SheetRow = { label: 'Licensed and bonded', value: 'Armed and unarmed, in Denver, Colorado Springs, and Pueblo', href: '/locations/denver' };
+const LICENSED: SheetRow = { label: 'Licensed and bonded', value: 'Armed and unarmed, in eight Colorado cities', href: '/locations' };
 const RELIEF: SheetRow = { label: 'Relief', value: 'On-call coverage written into every contract' };
 const LOGS: SheetRow = { label: 'Records', value: 'Checkpoint, visitor, and incident logs you can audit' };
 const GSA: SheetRow = { label: 'GSA MAS', value: '47QSMS25D009Q, SIN 561612', href: GSA_ELIBRARY, external: true };
@@ -213,7 +213,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
+        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
       },
       // The GSA question was cut here (design review, owner 2026-10-13): agencies aren't the
       // usual buyer for critical and high-liability sites; the Government page carries it.
@@ -272,7 +272,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'The Denver metro area, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
+        a: 'Anywhere across Colorado: the Front Range (Colorado Springs, the Denver metro area, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
       },
     ],
   },
@@ -367,7 +367,7 @@ export const INDUSTRY_PAGES: IndustryPageData[] = [
       },
       {
         q: 'Where in Colorado do you work?',
-        a: 'The Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in Denver, Colorado Springs, and Pueblo.',
+        a: 'Across Colorado: the Front Range (the Denver metro area, including Aurora and the DIA corridor, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
       },
     ],
   },

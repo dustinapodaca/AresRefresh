@@ -1,0 +1,156 @@
+/* Service Areas, the hub over the city pages (2026-11-22). Class prefix ds-sa-. The map reuses
+   the location pages' pins and route draw (.ds-loc-map in dossier.css). */
+
+.ds-sa-open { padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
+.ds-sa-open-grid { display: grid; gap: 40px; }
+.ds-sa-open-copy .ds-lead { margin-top: 24px; max-width: 46ch; }
+.ds-sa-map { max-width: none; }
+@media (min-width: 1024px) {
+  .ds-sa-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
+  .ds-sa-open-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+  .ds-sa-open-copy { grid-column: 1 / span 5; }
+  .ds-sa-open .ds-sa-map { grid-column: 6 / span 7; }
+  .ds-sa-open .ds-loc-actions .ds-btn { display: none; }
+}
+
+/* The map's cities: faint dots and names; the one lit from the list (or hovered) turns ink and
+   gains a ring. Colorado Springs is lit in rust as the headquarters. */
+.ds-sa-dot { fill: #9aa0a8; }
+.ds-sa-dot-ring { opacity: 0; transition: opacity 180ms var(--ds-ease); }
+.ds-sa-dot circle:not(.ds-sa-dot-ring) { transition: fill 180ms var(--ds-ease); }
+.ds-sa-pin {
+  pointer-events: auto;
+  font-family: var(--ds-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ds-fg-muted);
+  text-decoration: none;
+  transition: color 180ms var(--ds-ease);
+}
+.ds-sa-pin-hq { font-size: 15px; font-weight: 600; color: var(--ds-fg); }
+.ds-sa-hq-note { display: block; margin-top: 6px; font-size: 12px; }
+@media (min-width: 768px) {
+  .ds-sa-pin { font-size: 15px; }
+  .ds-sa-pin-hq { font-size: 17px; }
+  .ds-sa-hq-note { font-size: 13px; }
+}
+@media (max-width: 479px) {
+  .ds-sa-pin { font-size: 12px; }
+  .ds-sa-pin-hq { font-size: 13px; }
+  .ds-sa-hq-note { display: none; }
+  .ds-sa-map .ds-loc-faint { font-size: 11px; letter-spacing: 0.04em; }
+  /* Its name runs up to Denver's dot on a phone, so it sits a little below its own. */
+  .ds-sa-pin[data-city='glenwood-springs'] { margin-top: 5px; }
+}
+.ds-sa-pin:hover,
+.ds-sa-pin:focus-visible { color: var(--ds-fg); }
+.ds-sa-map[data-active='grand-junction'] .ds-sa-pin[data-city='grand-junction'],
+.ds-sa-map[data-active='glenwood-springs'] .ds-sa-pin[data-city='glenwood-springs'],
+.ds-sa-map[data-active='montrose'] .ds-sa-pin[data-city='montrose'],
+.ds-sa-map[data-active='durango'] .ds-sa-pin[data-city='durango'],
+.ds-sa-map[data-active='alamosa'] .ds-sa-pin[data-city='alamosa'],
+.ds-sa-map[data-active='denver'] .ds-sa-pin[data-city='denver'],
+.ds-sa-map[data-active='pueblo'] .ds-sa-pin[data-city='pueblo'] { color: var(--ds-fg); }
+.ds-sa-map[data-active='grand-junction'] .ds-sa-dot[data-city='grand-junction'],
+.ds-sa-map[data-active='glenwood-springs'] .ds-sa-dot[data-city='glenwood-springs'],
+.ds-sa-map[data-active='montrose'] .ds-sa-dot[data-city='montrose'],
+.ds-sa-map[data-active='durango'] .ds-sa-dot[data-city='durango'],
+.ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'],
+.ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'],
+.ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] { fill: #eef0f2; }
+.ds-sa-map[data-active] .ds-sa-dot[data-city] .ds-sa-dot-ring { opacity: 0; }
+.ds-sa-map[data-active='grand-junction'] .ds-sa-dot[data-city='grand-junction'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='glenwood-springs'] .ds-sa-dot[data-city='glenwood-springs'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='montrose'] .ds-sa-dot[data-city='montrose'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='durango'] .ds-sa-dot[data-city='durango'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='alamosa'] .ds-sa-dot[data-city='alamosa'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='denver'] .ds-sa-dot[data-city='denver'] .ds-sa-dot-ring,
+.ds-sa-map[data-active='pueblo'] .ds-sa-dot[data-city='pueblo'] .ds-sa-dot-ring { opacity: 0.55; }
+.ds-sa-side { opacity: 0.9; }
+
+/* Where we staff: three regions in ruled columns. */
+.ds-sa-regions { padding-top: var(--ds-beat); }
+.ds-sa-region-grid { display: grid; gap: 48px; margin-top: 40px; }
+.ds-sa-region-name {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--ds-rule-strong);
+  font-family: var(--ds-display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ds-fg);
+}
+.ds-sa-region-line { margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); max-width: 40ch; }
+.ds-sa-city-list { list-style: none; margin: 22px 0 0; padding: 0; }
+.ds-sa-city-list li { border-top: 1px solid var(--ds-rule); }
+.ds-sa-city-list li:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-sa-city-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 16px;
+  padding: 15px 0 16px;
+  color: var(--ds-fg);
+  text-decoration: none;
+}
+.ds-sa-city { display: inline-flex; align-items: baseline; gap: 10px; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; }
+.ds-sa-hq { font-size: 13px; color: var(--ds-rust); }
+.ds-sa-county { grid-column: 1; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-sa-city-list .ds-arrow { grid-column: 2; grid-row: 1 / span 2; color: var(--ds-fg-muted); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
+@media (min-width: 900px) {
+  .ds-sa-region-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
+}
+
+/* Licensing, city by city: one ruled table; phones stack each row (city over its two lines). */
+.ds-sa-rules { padding-top: var(--ds-beat); }
+.ds-sa-rules-head { display: grid; gap: 20px; }
+@media (min-width: 1024px) {
+  .ds-sa-rules-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
+  .ds-sa-rules-head h2 { grid-column: 1 / span 6; }
+  .ds-sa-rules-head .ds-body { grid-column: 8 / span 5; }
+}
+.ds-sa-table { width: 100%; margin-top: 40px; border-collapse: collapse; border-top: 1px solid var(--ds-rule-strong); }
+.ds-sa-table thead th {
+  padding: 14px 16px 12px 0;
+  text-align: left;
+  font-family: var(--ds-data);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--ds-fg-faint);
+}
+.ds-sa-table tbody tr { border-top: 1px solid var(--ds-rule); }
+.ds-sa-table tbody tr:last-child { border-bottom: 1px solid var(--ds-rule); }
+.ds-sa-table th[scope='row'],
+.ds-sa-table td { padding: 16px 16px 17px 0; text-align: left; vertical-align: baseline; font-size: 16px; line-height: 1.45; }
+.ds-sa-table th[scope='row'] { font-weight: 500; width: 24%; }
+.ds-sa-table td { color: var(--ds-fg-muted); }
+.ds-sa-table td.ds-data { color: var(--ds-fg); font-size: 15px; }
+.ds-sa-table td:last-child { width: 30%; }
+@media (max-width: 767px) {
+  .ds-sa-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .ds-sa-table,
+  .ds-sa-table tbody,
+  .ds-sa-table tr,
+  .ds-sa-table th[scope='row'],
+  .ds-sa-table td { display: block; width: auto; }
+  .ds-sa-table tbody tr { padding: 14px 0 15px; }
+  .ds-sa-table th[scope='row'],
+  .ds-sa-table td { padding: 0; }
+  .ds-sa-table td,
+  .ds-sa-table td:last-child { margin-top: 4px; font-size: 15px; width: auto; }
+}
+
+.ds-sa .ds-mk-faq,
+.ds-sa .ds-mk-ask { margin-top: var(--ds-beat); }
+
+@media (hover: hover) and (pointer: fine) {
+  .ds-sa-city-list a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ds-sa-dot-ring,
+  .ds-sa-pin,
+  .ds-sa-city-list .ds-arrow { transition: none; }
+}

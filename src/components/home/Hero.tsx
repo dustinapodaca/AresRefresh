@@ -241,7 +241,7 @@ export default function Hero() {
               </a>
             </li>
             <li>Minority woman-owned (WOSB, WBENC, M/WBE)</li>
-            <li>Licensed in Colorado Springs, Denver, Pueblo</li>
+            <li>Licensed in eight Colorado cities</li>
           </ul>
         </div>
         <p className="nx-hero-cue ds-data nx-hero-lift" aria-hidden="true">

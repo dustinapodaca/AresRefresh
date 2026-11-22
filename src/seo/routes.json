@@ -5,15 +5,15 @@
   "routes": {
     "/": {
       "title": "Colorado Security Guard & Patrol Services | Ares Security",
-      "description": "Woman-owned WOSB and WBENC security firm serving Colorado. Armed and unarmed officers, patrol and access control in Colorado Springs, Denver and Pueblo."
+      "description": "Woman-owned WOSB and WBENC security firm serving Colorado. Armed and unarmed officers, patrol, and access control from Denver and Colorado Springs to Durango."
     },
     "/about": {
       "title": "About Ares Security | Woman-Owned, Colorado Springs, CO",
-      "description": "Ares Security LLC is a woman-owned, employee-focused security firm founded in Colorado Springs in 2021, serving Colorado Springs, Denver, and Pueblo.",
+      "description": "Ares Security LLC is a woman-owned, employee-focused security firm founded in Colorado Springs in 2021, with armed and unarmed officers across Colorado.",
       "preloadImage": "/images/about-hero.jpg"
     },
     "/services": {
-      "title": "Security Services: Colorado Springs, Denver, Pueblo | Ares",
+      "title": "Security Services Across Colorado | Ares Security",
       "description": "Armed and unarmed officers, restricted-area escort, access control, patrol, and relief coverage for federal, commercial, and industrial sites in Colorado.",
       "preloadImage": "/images/hero6.jpg"
     },
@@ -24,17 +24,33 @@
     },
     "/careers": {
       "title": "Security Officer Jobs in Colorado Springs & Denver | Ares",
-      "description": "Armed and unarmed security officer jobs in Colorado Springs, Denver, and Pueblo. Training for your city license, posted schedules, and veteran supervisors.",
+      "description": "Armed and unarmed security officer jobs across Colorado. Training for your city license, posted schedules, and veteran supervisors.",
       "preloadImage": "/images/careers-hero.jpg"
     },
     "/contact": {
       "title": "Request a Security Quote | Colorado Springs | Ares Security",
-      "description": "Request a security quote for Colorado Springs, Denver, or Pueblo. Send the site, the shift pattern, and a start date, and leadership will reply.",
+      "description": "Request a security quote anywhere in Colorado. Send the site, the shift pattern, and a start date, and leadership will reply.",
       "preloadImage": "/images/services-hero/nb-s1-towers.webp"
     },
     "/teaming": {
       "title": "Security Teaming & Subcontracting in Colorado | Ares",
       "description": "Minority woman-owned security subcontractor for primes, guard companies, and builders: restricted-area escorts, access control, and relief and surge coverage."
+    },
+    "/locations": {
+      "title": "Security Guard Services Across Colorado | Ares Security",
+      "description": "Armed and unarmed security officers in eight Colorado cities, from Denver and Colorado Springs to Grand Junction, Durango, and Alamosa. Licensed city by city.",
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Colorado",
+        "Colorado Springs",
+        "Denver",
+        "Pueblo",
+        "Grand Junction",
+        "Glenwood Springs",
+        "Montrose",
+        "Durango",
+        "Alamosa"
+      ]
     },
     "/locations/colorado-springs": {
       "title": "Security Guards in Colorado Springs, CO | Ares Security",
@@ -42,7 +58,7 @@
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services#areas"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
@@ -56,7 +72,7 @@
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services#areas"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
@@ -70,12 +86,82 @@
       "breadcrumbs": [
         {
           "name": "Service Areas",
-          "path": "/services#areas"
+          "path": "/locations"
         }
       ],
       "serviceType": "Security guard and patrol services",
       "areaServed": [
         "Pueblo"
+      ]
+    },
+    "/locations/grand-junction": {
+      "title": "Security Guards in Grand Junction, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Grand Junction and Mesa County, from a woman-owned Colorado firm that screens, trains, and qualifies its own officers.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Grand Junction"
+      ]
+    },
+    "/locations/glenwood-springs": {
+      "title": "Security Guards in Glenwood Springs, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Glenwood Springs, Garfield County, and the Roaring Fork Valley. City licensed, woman-owned, trained on post.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Glenwood Springs"
+      ]
+    },
+    "/locations/montrose": {
+      "title": "Security Guards in Montrose, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Montrose and the Uncompahgre Valley, from a woman-owned Colorado firm with on-call coverage in every contract.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Montrose"
+      ]
+    },
+    "/locations/durango": {
+      "title": "Security Guards in Durango, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Durango and La Plata County sites. City of Durango licensed, woman-owned, with on-call coverage in every contract.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Durango"
+      ]
+    },
+    "/locations/alamosa": {
+      "title": "Security Guards in Alamosa, CO | Ares Security",
+      "description": "Armed and unarmed security officers for Alamosa and the San Luis Valley, licensed under the city security ordinance, company and every officer.",
+      "breadcrumbs": [
+        {
+          "name": "Service Areas",
+          "path": "/locations"
+        }
+      ],
+      "serviceType": "Security guard and patrol services",
+      "areaServed": [
+        "Alamosa"
       ]
     },
     "/privacy": {
@@ -92,7 +178,7 @@
     },
     "/services/armed-security-officers": {
       "title": "Armed Security Officers in Colorado | Ares Security",
-      "description": "Licensed, firearms-qualified armed security officers in Colorado Springs, Denver, and Pueblo. Trained on post by leadership. Order through GSA MAS.",
+      "description": "Licensed, firearms-qualified armed security officers across Colorado, from Denver to Grand Junction. Trained on post by leadership. Order through GSA MAS.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -108,7 +194,7 @@
     },
     "/services/unarmed-security-officers": {
       "title": "Unarmed Security Officers in Colorado | Ares Security",
-      "description": "Uniformed and plainclothes unarmed security officers for lobbies, perimeters, and public areas in Colorado Springs, Denver, and Pueblo.",
+      "description": "Uniformed and plainclothes unarmed security officers for lobbies, perimeters, and public areas across Colorado, from the Front Range to the Western Slope.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -172,7 +258,7 @@
     },
     "/services/relief-surge-coverage": {
       "title": "Relief & Surge Security Coverage in Colorado | Ares",
-      "description": "Relief shifts, overflow posts, and surge staffing for site owners, primes, and guard companies in Colorado Springs, Denver, and Pueblo.",
+      "description": "Relief shifts, overflow posts, and surge staffing for site owners, primes, and guard companies anywhere in Colorado.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -239,7 +325,7 @@
     },
     "/industries/institutional-community": {
       "title": "School, Clinic & Apartment Security in CO | Ares Security",
-      "description": "Security officers for apartments, HOAs, schools, campuses, community health centers, and places of worship in Colorado Springs, Denver, and Pueblo.",
+      "description": "Security officers for apartments, HOAs, schools, campuses, community health centers, and places of worship across Colorado.",
       "breadcrumbs": [
         {
           "name": "Services",
@@ -394,7 +480,7 @@
     },
     "/insights/colorado-security-licensing": {
       "title": "Colorado Security Guard License Requirements by City | Ares",
-      "description": "Colorado has no statewide security license. What Denver, Colorado Springs, and Pueblo require of security companies and officers, armed included.",
+      "description": "Colorado has no statewide security license. What Denver, Colorado Springs, Pueblo, and other cities require of security companies and officers, armed included.",
       "breadcrumbs": [
         {
           "name": "Insights",

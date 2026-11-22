@@ -13,10 +13,11 @@ import './sv-close.css';
 // Desktop with motion: the photo opens from an inset to the full width as it scrolls in, and the
 // city names rise over it.
 
+// Colorado-wide (owner, 2026-11-22): the three regions, each to its column on the Service Areas hub.
 const CITIES = [
-  { to: '/locations/colorado-springs', name: 'Colorado Springs', note: 'Headquarters' },
-  { to: '/locations/denver', name: 'Denver', note: 'Service area' },
-  { to: '/locations/pueblo', name: 'Pueblo', note: 'Service area' },
+  { to: '/locations#front-range', name: 'Front Range', note: 'Colorado Springs · Denver · Pueblo' },
+  { to: '/locations#western-slope', name: 'Western Slope', note: 'Grand Junction to Durango' },
+  { to: '/locations#san-luis-valley', name: 'San Luis Valley', note: 'Alamosa' },
 ];
 
 export default function SvClose() {
@@ -63,7 +64,7 @@ export default function SvClose() {
     <section ref={ref} id="areas" className="sv-close" aria-labelledby="sv-close-title">
       <div className="sv-close-row nx-edge">
         <h2 id="sv-close-title" className="sv-close-line">
-          Armed and unarmed officers in <b>Colorado Springs</b>, <b>Denver</b>, and <b>Pueblo</b>.
+          Armed and unarmed officers across <b>Colorado</b>, from the <b>Front Range</b> to the <b>Western Slope</b>.
         </h2>
         <div className="sv-close-actions">
           <a href="tel:+17196963966" className="ds-link sv-close-call">

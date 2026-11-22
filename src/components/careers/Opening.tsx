@@ -23,7 +23,7 @@ export default function Opening() {
         </h1>
         {/* Copy audit (2026-10-10): was "Join the team." */}
         <p className="ds-lead">
-          Armed and unarmed roles in Colorado Springs, Denver, and Pueblo. Schedules posted
+          Armed and unarmed roles across Colorado. Schedules posted
           ahead, and a supervisor who answers.
         </p>
         {/* The roles table sits right under the hero, so no button to it (owner, 2026-10-09):

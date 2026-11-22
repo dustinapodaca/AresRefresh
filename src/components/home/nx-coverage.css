@@ -29,6 +29,8 @@
 /* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
    its tip (owner, 2026-10-22: it was cut off). */
 .nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
+.nx-cv-cities li.nx-cv-more { border-bottom: 0; padding-top: 22px; }
+.nx-cv-more .ds-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; }
 .nx-cv-city {
   display: grid;
   grid-template-columns: 1fr auto auto;

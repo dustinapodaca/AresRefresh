@@ -1293,6 +1293,35 @@ per city. No rail, no close, no photo, no section numbers.
   city's ring, which stays. Reduced motion: drawn
   and still.
 
+### Service Areas hub and Colorado-wide pages (owner, 2026-11-22)
+Ares goes Colorado-wide: eight cities in three regions (Front Range: Colorado Springs, Denver, Pueblo;
+Western Slope: Grand Junction, Glenwood Springs, Montrose, Durango; San Luis Valley: Alamosa). The three
+Front Range city pages keep their URLs; `/locations` is the hub over all eight (`pages/locations/
+ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class prefix `ds-sa-`).
+- **Hub opening:** "Security officers across Colorado" (no period) and its lead (the count spelled out)
+  left, Colorado to scale right (700 by 512, the dot grid, I-25 and I-70 in the route grey, US-50/550
+  and US-160 a step fainter, all drawing in once in view). Colorado Springs lit in rust as HQ ("HQ,
+  since 2021"); the other seven faint dots with their names to the right, each a link. Region names
+  faint mono capitals. After Cloudflare's "Where we work" on Mobbin.
+- **Where we staff.** Three regions in ruled columns (stacked below 900px): the region name, one line,
+  then its cities as rows (name, counties beneath, arrow); hovering or focusing a row lights its dot
+  on the map. Each column carries the region's id (`#front-range`, `#western-slope`,
+  `#san-luis-valley`). After Shopify's "Where we hire" and Slack's "Explore by region".
+- **Licensing, city by city.** One ruled table, City / What the city requires / What Ares holds
+  (numbers in the data face); phones stack each row.
+- Then the questions (FAQPage JSON-LD) and the ask strip.
+- **City pages** use one component for all eight. Each region has its own map plate (`REGIONS` in
+  `data.ts`: bounds, roads, dashed state borders), so a Western Slope page draws I-70, US-50 and
+  US-550 with the UTAH line; Alamosa draws US-160 and the NEW MEXICO line, Blanca Peak's name centered
+  above its triangle (`above`). The other cities shown are the ones in the same region. The ending
+  reads "Also in the <region>: …" and "Every city we staff across Colorado →" to the hub. Breadcrumbs:
+  Home / Service Areas / <city>.
+- **Sitewide:** Home's proof row "Licensed in eight Colorado cities"; Home 04 keeps the three I-25
+  cities large, with "All eight cities, the Western Slope to the San Luis Valley →" under them; the
+  Services hero's post bar reads "Your post · Anywhere in Colorado"; the Services close names the
+  three regions as its large links (to the hub's columns); the footer's Service areas and the Company
+  menu end on "All service areas".
+
 ### 404 ("The Search Light", 2026-10-06)
 Owner request: modern, clean, a glass panel over an aurora. Concept: docs/notfound-concepts.md.
 - The first screen only: a giant "404" (Inter Tight 600, up to 330px, -0.05em) over a slow

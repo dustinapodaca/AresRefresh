@@ -24,6 +24,9 @@ import CityJobsPage from './pages/CityJobsPage';
 import ColoradoSprings from './pages/locations/ColoradoSprings';
 import Denver from './pages/locations/Denver';
 import Pueblo from './pages/locations/Pueblo';
+import ServiceAreas from './pages/locations/ServiceAreas';
+import LocationPage from './components/locations/LocationPage';
+import { ALAMOSA, DURANGO, GLENWOOD_SPRINGS, GRAND_JUNCTION, MONTROSE } from './components/locations/data';
 import Teaming from './pages/Teaming';
 
 // The card surface (owner, 2026-10-15): liquid glass, the glass cards plus the liquid rim. Sets
@@ -139,10 +142,14 @@ export default function App() {
         <Route path="/insights/:slug" element={<InsightPage />} />
         <Route path="/careers/:city" element={<CityJobsPage />} />
 
-        {/* Service areas */}
+        {/* Service areas: the hub (owner, 2026-11-22: Colorado-wide) and one page per city */}
+        <Route path="/locations" element={<ServiceAreas />} />
         <Route path="/locations/colorado-springs" element={<ColoradoSprings />} />
         <Route path="/locations/denver" element={<Denver />} />
         <Route path="/locations/pueblo" element={<Pueblo />} />
+        {[GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA].map((f) => (
+          <Route key={f.path} path={f.path} element={<LocationPage key={f.path} file={f} />} />
+        ))}
 
         {/* Policies */}
         <Route path="/privacy" element={<Privacy />} />

@@ -26,7 +26,7 @@ const NEEDS: { slug: string; label: string }[] = [
 
 // The post, in a few taps (CenCore's quote form, without the clearance question).
 const CHIPS: { name: string; legend: string; options: string[] }[] = [
-  { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Elsewhere in Colorado'] },
+  { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] },
   { name: 'officers', legend: 'Officers on post at once', options: ['1 to 2', '3 to 5', '6 to 15', '16 or more', 'Not sure'] },
   { name: 'schedule', legend: 'Schedule', options: ['Business hours', 'Nights and weekends', '24/7', 'One-time or short-term', 'Not sure'] },
   { name: 'start', legend: 'When do you need coverage?', options: ['Within 30 days', '1 to 3 months', '3 to 6 months', 'Just planning'] },
@@ -301,7 +301,7 @@ export default function Contact() {
 
           <div className="ds-qt-where">
             <h2 className="ds-qt-sub">Where we post officers</h2>
-            <p className="ds-small">Headquartered in Colorado Springs, with officers in Denver and Pueblo.</p>
+            <p className="ds-small">Headquartered in Colorado Springs, with officers across Colorado.</p>
             <CoverageMap />
           </div>
 

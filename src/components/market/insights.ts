@@ -153,7 +153,7 @@ export const INSIGHTS: Insight[] = [
       { h: 'Armed or unarmed?' },
       { p: 'Most access control posts are unarmed. An armed post is usually for a site where the officer may have to stop a serious threat at the entry point, or where the contract or the site’s own rules call for one.' },
       { h: 'How Ares staffs access control' },
-      { p: 'Ares staffs access control in Colorado Springs, the Denver metro area, and Pueblo, where we are licensed and bonded for armed and unarmed security: gates and docks at data centers, utilities, and construction sites, building entries, and restricted areas on military installations, where we work alongside base security forces. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
+      { p: 'Ares staffs access control across Colorado, from the Front Range to the Western Slope and the San Luis Valley, licensed the way each city requires: gates and docks at data centers, utilities, and construction sites, building entries, and restricted areas on military installations, where we work alongside base security forces. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
       { p: 'We write your access rules into the post orders, and train each officer on your entry points and your site’s own systems, such as card readers, visitor software, and intercoms, before the first shift. Every check is logged, so you can audit who came and went. Badges stay yours to issue; our officers enforce them. Every contract has on-call coverage behind it.' },
     ],
     faq: [
@@ -372,7 +372,7 @@ export const INSIGHTS: Insight[] = [
         'A contact who can only be reached during business hours.',
       ] },
       { h: 'How Ares answers these' },
-      { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs, Denver, and Pueblo. Our city pages list each license number, with a link to look up the Colorado Springs and Denver licenses in the city’s own records. A member of our leadership walks every site before anything is signed, and we write the post orders for every post. Every officer we send, employee or contractor, trains on them with our leadership, on the post, before the first shift. Every contract has on-call scheduling behind it, and since 2021 we have missed fewer than 1% of shifts. We keep the same officers on a site whenever we can.' },
+      { p: 'Ares holds what each city requires for armed and unarmed security across Colorado, from Colorado Springs, Denver, and Pueblo to the Western Slope and the San Luis Valley. Our city pages list each license number, with a link to look up the Colorado Springs and Denver licenses in the city’s own records. A member of our leadership walks every site before anything is signed, and we write the post orders for every post. Every officer we send, employee or contractor, trains on them with our leadership, on the post, before the first shift. Every contract has on-call scheduling behind it, and since 2021 we have missed fewer than 1% of shifts. We keep the same officers on a site whenever we can.' },
       { p: 'For federal buyers, Ares holds GSA MAS contract 47QSMS25D009Q, is active on SAM.gov (UEI XQXDN6E33SF4, CAGE 9KL18), and is an SBA-certified woman-owned small business (WOSB250470).' },
     ],
     faq: [
@@ -647,7 +647,7 @@ export const INSIGHTS: Insight[] = [
       { p: 'A build at excavation needs different coverage than a build at fit-out. Revisit the post orders and staffing whenever gates, hours, or the value on site change.' },
       { h: 'Building on a military installation or federal site' },
       { p: 'Federal construction adds access rules of its own. Every worker needs the installation’s pass before the first day, and restricted areas inside a base have their own entry rules. Workers who do not meet them may enter only as the installation allows, often under escort. On a busy job that can mean escorts every shift, and many general contractors staff escorts and gate control as a security post so the trades keep working. On a federal contract, a small-business security subcontractor can also count toward the prime’s subcontracting goals.' },
-      { p: 'Ares is licensed for armed and unarmed security in Colorado Springs, Denver, and Pueblo. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
+      { p: 'Ares staffs armed and unarmed security across Colorado and holds what each city requires. Since 2025, Ares has provided restricted-area escort and access control on a Space Force base in Colorado, as a subcontractor on a federal construction program.' },
     ],
     faq: [
       { q: 'What should a construction site security checklist include?', a: 'A controlled gate with a log, a current list of who may be on site, a delivery schedule, lighting, locked equipment keys, secured materials, logged perimeter rounds, after-hours coverage, alarms with someone to respond, post orders with a call list, and a review of coverage at each phase.' },
@@ -761,7 +761,7 @@ export const INSIGHTS: Insight[] = [
       { h: 'For officers: do you need a license to work security in Colorado?' },
       { p: 'In Denver, Colorado Springs, and Pueblo, yes. You need the city’s individual license before you stand a post there, and a firearm endorsement or armed license to carry on duty. The training comes first, from a provider the city approves; some security companies, Ares included, are approved providers.' },
       { h: 'Ares’ licenses' },
-      { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs (Contract Security Agency license 0850744L), Denver (Private Security Employer license 2021-BFN-0001984), and Pueblo (merchant patrol and security license 26422, through the Pueblo Police Department), and is an approved training provider for armed and unarmed officers in all three cities. Each license is listed on our city pages, with a way to verify it or request a copy.' },
+      { p: 'Ares is licensed and bonded for armed and unarmed security in Colorado Springs (Contract Security Agency license 0850744L), Denver (Private Security Employer license 2021-BFN-0001984), and Pueblo (merchant patrol and security license 26422, through the Pueblo Police Department), and is an approved training provider for armed and unarmed officers in all three cities. Each license is listed on our city pages, with a way to verify it or request a copy. Beyond the Front Range we hold what Grand Junction, Glenwood Springs, Montrose, Durango, and Alamosa each require, which ranges from a contract security license in Alamosa to none at all in Grand Junction; our Service Areas page lists them city by city.' },
     ],
     faq: [
       { q: 'Does Colorado have a statewide security guard license?', a: 'No. Colorado has no statewide license for security companies or officers. A 2025 bill to create one, HB25-1262, was postponed indefinitely in committee and did not become law. Cities such as Denver, Colorado Springs, and Pueblo license security themselves.' },
@@ -781,6 +781,7 @@ export const INSIGHTS: Insight[] = [
       { label: 'Colorado Springs', to: '/locations/colorado-springs' },
       { label: 'Denver', to: '/locations/denver' },
       { label: 'Pueblo', to: '/locations/pueblo' },
+      { label: 'Every city we staff, and what each requires', to: '/locations' },
       { label: 'Armed or unarmed security: how to decide', to: '/insights/armed-or-unarmed-security' },
       { label: 'How to choose a security company in Colorado', to: '/insights/how-to-choose-a-security-company-colorado' },
       { label: 'Careers', to: '/careers' },

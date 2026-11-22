@@ -122,8 +122,8 @@ export default function Coverage() {
           {words('Where we work.')}
         </h2>
         <p className="nx-cv-lead">
-          Armed and unarmed officers for federal, commercial, industrial, and institutional sites, from
-          our base in Colorado Springs.
+          Armed and unarmed officers for federal, commercial, industrial, and institutional sites across
+          Colorado, from our base in Colorado Springs.
         </p>
       </div>
 
@@ -146,6 +146,14 @@ export default function Coverage() {
               </Link>
             </li>
           ))}
+          {/* Colorado-wide (owner, 2026-11-22): the I-25 cities stay large; the rest of the state is
+              one link to the Service Areas hub. */}
+          <li className="nx-cv-more">
+            <Link to="/locations" className="ds-link">
+              All eight cities, the Western Slope to the San Luis Valley
+              <Arrow />
+            </Link>
+          </li>
         </ul>
 
         <figure className="nx-cv-map" data-active={active || undefined}>

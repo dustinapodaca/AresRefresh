@@ -5,15 +5,130 @@
 
 export type Coord = { lat: number; lon: number };
 
+export type RegionId = 'front-range' | 'western-slope' | 'san-luis-valley';
+
 export type City = {
-  slug: 'colorado-springs' | 'denver' | 'pueblo';
+  slug: string;
   name: string;
   path: string;
   coord: Coord;
+  region: RegionId;
+  /** The counties the city's page covers, for the Service Areas hub. */
+  counties: string;
+  /** One line on what the city requires and what Ares holds, for the hub's ledger. */
+  rule: string;
+  held: string;
+  /** Which side of its dot the name sits on the statewide map (default right). */
+  side?: 'left' | 'right';
 };
 
+/** A region's own map (LocationMap): its bounds, its roads, and its name on the plate. Each plate
+ *  is 480 by 500 and its bounds keep that shape in kilometres, so every region reads to scale. */
+export type Region = {
+  id: RegionId;
+  name: string;
+  line: string;
+  bounds: { lon0: number; lon1: number; lat0: number; lat1: number };
+  /** Roads as lat/lon polylines, with a label placed beside one point of each. */
+  roads: { name: string; points: [number, number][]; label: [number, number] }[];
+  /** State lines inside the plate (dashed), with the neighbour's name. */
+  borders?: { points: [number, number][]; label: string; at: [number, number]; end?: boolean }[];
+};
+
+export const REGIONS: Region[] = [
+  {
+    id: 'front-range',
+    name: 'Front Range',
+    line: 'Along I-25, where Ares started in 2021 and keeps its headquarters.',
+    bounds: { lon0: -106.2, lon1: -103.6, lat0: 40.05, lat1: 37.95 },
+    roads: [
+      {
+        name: 'I-25',
+        // Fort Collins, Denver, Colorado Springs, Pueblo, Walsenburg: I-25 runs off both edges.
+        points: [
+          [40.585, -105.08],
+          [39.7392, -104.9903],
+          [38.8339, -104.8214],
+          [38.2544, -104.6091],
+          [37.6247, -104.7803],
+        ],
+        label: [39.3, -104.93],
+      },
+    ],
+  },
+  {
+    id: 'western-slope',
+    name: 'Western Slope',
+    line: 'West of the Divide, from Glenwood Springs and Grand Junction south to Durango.',
+    bounds: { lon0: -109.67, lon1: -106.14, lat0: 39.95, lat1: 37.05 },
+    roads: [
+      {
+        name: 'I-70',
+        // Eagle, Glenwood Springs, Rifle, Parachute, Grand Junction, Fruita, into Utah.
+        points: [
+          [39.655, -106.83],
+          [39.5505, -107.3248],
+          [39.535, -107.783],
+          [39.45, -108.05],
+          [39.0639, -108.5506],
+          [39.159, -108.73],
+          [39.17, -109.05],
+          [39.0, -109.67],
+        ],
+        label: [39.62, -108.0],
+      },
+      {
+        name: 'US-50',
+        points: [
+          [39.0639, -108.5506],
+          [38.742, -108.069],
+          [38.4783, -107.8762],
+        ],
+        label: [38.78, -108.25],
+      },
+      {
+        name: 'US-550',
+        // Montrose, Ridgway, Ouray, Silverton, Durango.
+        points: [
+          [38.4783, -107.8762],
+          [38.153, -107.756],
+          [38.023, -107.671],
+          [37.812, -107.664],
+          [37.2753, -107.8801],
+        ],
+        label: [37.9, -107.62],
+      },
+    ],
+    borders: [{ points: [[39.95, -109.05], [37.05, -109.05]], label: 'UTAH', at: [38.0, -109.05], end: true }],
+  },
+  {
+    id: 'san-luis-valley',
+    name: 'San Luis Valley',
+    line: 'The high valley between the San Juans and the Sangre de Cristos.',
+    bounds: { lon0: -107.2, lon1: -104.6, lat0: 38.55, lat1: 36.45 },
+    roads: [
+      {
+        name: 'US-160',
+        // Del Norte, Monte Vista, Alamosa, Fort Garland, La Veta Pass, Walsenburg.
+        points: [
+          [37.678, -106.353],
+          [37.5794, -106.148],
+          [37.4695, -105.87],
+          [37.43, -105.433],
+          [37.59, -105.2],
+          [37.6247, -104.7803],
+        ],
+        label: [37.36, -105.62],
+      },
+    ],
+    borders: [{ points: [[37.0, -107.2], [37.0, -104.6]], label: 'NEW MEXICO', at: [37.0, -104.85], end: true }],
+  },
+];
+
+export const regionOf = (id: RegionId) => REGIONS.find((r) => r.id === id)!;
+
 /** `inline` sets the note on the label's line (DEN AIRPORT), lifted a little off the city. */
-export type Landmark = Coord & { label: string; note?: string; side?: 'left' | 'right'; kind?: 'peak' | 'airport'; inline?: boolean };
+export type Landmark = Coord & { label: string; note?: string; side?: 'left' | 'right'; kind?: 'peak' | 'airport'; inline?: boolean; above?: boolean };
 
 export type LicenseRow = {
   label: string;
@@ -46,13 +161,94 @@ export type LocationFile = {
   focusSide?: 'left' | 'right';
 };
 
+// Every city Ares is set up to staff (owner, 2026-11-22: Colorado-wide). The hub at /locations
+// lists them by region; each has its own page. Facts in `rule` and `held` are each city's own
+// licensing, from the city's code and its written answers to Ares (HubSpot, 2026-11).
 export const CITIES: City[] = [
-  { slug: 'denver', name: 'Denver', path: '/locations/denver', coord: { lat: 39.7392, lon: -104.9903 } },
-  { slug: 'colorado-springs', name: 'Colorado Springs', path: '/locations/colorado-springs', coord: { lat: 38.8339, lon: -104.8214 } },
-  { slug: 'pueblo', name: 'Pueblo', path: '/locations/pueblo', coord: { lat: 38.2544, lon: -104.6091 } },
+  {
+    slug: 'colorado-springs',
+    name: 'Colorado Springs',
+    path: '/locations/colorado-springs',
+    coord: { lat: 38.8339, lon: -104.8214 },
+    region: 'front-range',
+    counties: 'El Paso County',
+    rule: 'Contract security agency license',
+    held: '0850744L',
+  },
+  {
+    slug: 'denver',
+    name: 'Denver',
+    path: '/locations/denver',
+    coord: { lat: 39.7392, lon: -104.9903 },
+    region: 'front-range',
+    counties: 'Denver, Adams, Arapahoe, Jefferson, and Douglas counties',
+    rule: 'Private security employer license',
+    held: '2021-BFN-0001984',
+  },
+  {
+    slug: 'pueblo',
+    name: 'Pueblo',
+    path: '/locations/pueblo',
+    coord: { lat: 38.2544, lon: -104.6091 },
+    region: 'front-range',
+    counties: 'Pueblo County',
+    rule: 'Merchant patrol and security license, through Pueblo PD',
+    held: '26422',
+  },
+  {
+    slug: 'grand-junction',
+    name: 'Grand Junction',
+    path: '/locations/grand-junction',
+    coord: { lat: 39.0639, lon: -108.5506 },
+    region: 'western-slope',
+    counties: 'Mesa County',
+    rule: 'No city license for security companies',
+    held: 'None required, confirmed by the City',
+  },
+  {
+    slug: 'glenwood-springs',
+    name: 'Glenwood Springs',
+    path: '/locations/glenwood-springs',
+    coord: { lat: 39.5505, lon: -107.3248 },
+    region: 'western-slope',
+    counties: 'Garfield County',
+    rule: 'City business license, two-year term',
+    held: 'Business license',
+  },
+  {
+    slug: 'montrose',
+    name: 'Montrose',
+    path: '/locations/montrose',
+    coord: { lat: 38.4783, lon: -107.8762 },
+    region: 'western-slope',
+    counties: 'Montrose County',
+    rule: 'No business license; sales tax license for retail only',
+    held: 'None required, confirmed by the City',
+    side: 'left',
+  },
+  {
+    slug: 'durango',
+    name: 'Durango',
+    path: '/locations/durango',
+    coord: { lat: 37.2753, lon: -107.8801 },
+    region: 'western-slope',
+    counties: 'La Plata County',
+    rule: 'City business license, renewed each year',
+    held: 'Business license',
+  },
+  {
+    slug: 'alamosa',
+    name: 'Alamosa',
+    path: '/locations/alamosa',
+    coord: { lat: 37.4695, lon: -105.87 },
+    region: 'san-luis-valley',
+    counties: 'Alamosa County',
+    rule: 'Contract security license for the company and every officer',
+    held: 'Company and officer licenses',
+  },
 ];
 
-const city = (slug: City['slug']) => CITIES.find((c) => c.slug === slug)!;
+const city = (slug: string) => CITIES.find((c) => c.slug === slug)!;
 
 const copyRequest = (cityName: string, number: string) =>
   `mailto:contact@aressecurity.co?subject=${encodeURIComponent(`License copy: ${cityName} ${number}`)}`;
@@ -218,3 +414,204 @@ export const PUEBLO: LocationFile = {
   landmarks: [{ label: 'PUB', note: 'AIRPORT', lat: 38.2891, lon: -104.4966, side: 'right', kind: 'airport' }],
   focusSide: 'left',
 };
+
+// ---------------------------------------------------------------------------------------------
+// Western Slope and San Luis Valley (owner, 2026-11-22: Colorado-wide). Each page says only what is
+// true of that city: its own licensing (from the city's code and its written answers to Ares), the
+// sites Ares is ready to staff there, and how far it is from headquarters. Sites are "ready to
+// staff", never current clients or posts. No contract, prime, or agency is named.
+
+const armedRow: LicenseRow = { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' };
+
+export const GRAND_JUNCTION: LocationFile = {
+  city: city('grand-junction'),
+  path: '/locations/grand-junction',
+  title: 'Security guards in Grand Junction.',
+  lead: 'Armed and unarmed security officers for sites across Grand Junction and Mesa County, from a Colorado security company that licenses, screens, and trains its own officers.',
+  licenseTitle: 'Licensing in Grand Junction.',
+  licenseIntro:
+    'Colorado has no statewide security license, and Grand Junction has no city license for security companies. The City confirmed in writing that Ares, with no office in the city, needs none. Our own standard is below.',
+  license: [
+    { label: 'City license', value: 'None required', route: { note: 'Confirmed in writing by the City, 2026' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 4.5 hours by road' } },
+  ],
+  local:
+    'Grand Junction is the largest city on the Western Slope, and Ares is ready to staff it. The city has no business license and no security license, so the standard a buyer can rely on here is the company’s own: every officer is screened before hire, trained on the post before the first shift, and, on an armed post, qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector and federal facilities, hospitals and clinics, energy and industrial sites, campuses, construction, and commercial property across Mesa County. A member of our leadership walks every new site before anything is signed, and federal agencies can order through our GSA Multiple Award Schedule contract.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Grand Junction license?',
+      a: 'No. Colorado has no statewide security license, and Grand Junction has no business license or security license. The City confirmed in writing that Ares, which has no office in the city, needs no city license to staff sites here.',
+    },
+    {
+      q: 'Do you cover sites outside Grand Junction?',
+      a: 'Yes, across Mesa County, including Fruita, Palisade, and Clifton. Some towns license security companies on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector and federal facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Energy and industrial sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
+  ],
+  landmarks: [],
+};
+
+export const GLENWOOD_SPRINGS: LocationFile = {
+  city: city('glenwood-springs'),
+  path: '/locations/glenwood-springs',
+  title: 'Security guards in Glenwood Springs.',
+  lead: 'Armed and unarmed security officers for sites in Glenwood Springs, along I-70 through Garfield County, and up the Roaring Fork Valley.',
+  licenseTitle: 'Licensed in Glenwood Springs.',
+  licenseIntro:
+    'Colorado has no statewide security license. Glenwood Springs requires a business license of anyone doing business in the city, services included, and Ares holds one.',
+  license: [
+    { label: 'City of Glenwood Springs business license', value: 'Active', route: { note: 'Two-year term, through 2027' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 3.5 hours by road' } },
+  ],
+  local:
+    'Glenwood Springs sits where I-70 meets the Roaring Fork Valley, at the center of Garfield County. The city requires a business license of anyone doing business inside city limits, and Ares holds one; it runs on a two-year term that ends with each odd-numbered year. Here we are ready to staff public-sector facilities, hospitals and clinics, hotels and commercial property, construction, and apartment and residential properties, from Glenwood Springs west along I-70 and up the valley. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. A member of our leadership walks every new site before anything is signed.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Glenwood Springs license?',
+      a: 'Yes, a city business license. Colorado has no statewide security license, and Glenwood Springs has no separate security license, but it requires a business license of anyone doing business in the city. Ares holds one, on the city’s two-year term through 2027.',
+    },
+    {
+      q: 'Do you cover sites outside Glenwood Springs?',
+      a: 'Yes, along I-70 through Garfield County and up the Roaring Fork Valley, including New Castle, Rifle, and Carbondale. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Hotels and commercial property', division: 'Commercial & Retail', divisionId: 'commercial' },
+    { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Apartment and residential properties', division: 'Institutional & Community', divisionId: 'community' },
+  ],
+  landmarks: [],
+};
+
+export const MONTROSE: LocationFile = {
+  city: city('montrose'),
+  path: '/locations/montrose',
+  title: 'Security guards in Montrose.',
+  lead: 'Armed and unarmed security officers for sites across Montrose and the Uncompahgre Valley, on US-50 between Grand Junction and the San Juans.',
+  licenseTitle: 'Licensing in Montrose.',
+  licenseIntro:
+    'Colorado has no statewide security license. Montrose has no business license, and its sales tax license is for retail sales only, so a security company working here needs no city license. The City confirmed that for Ares in writing.',
+  license: [
+    { label: 'City license', value: 'None required', route: { note: 'Confirmed in writing by the City, 2026' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 4 hours by road' } },
+  ],
+  local:
+    'Montrose is the center of the Uncompahgre Valley, on US-50 between Grand Junction and the San Juans. The city has no business license and no security license, and its sales tax license covers retail sales only, so the standard here is the company’s own: officers screened before hire, trained on the post before the first shift, and, on an armed post, qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector facilities, hospitals and clinics, industrial and warehouse sites, airport-area sites, and commercial property across Montrose County. A member of our leadership walks every new site before anything is signed, and federal agencies can order through our GSA Multiple Award Schedule contract.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Montrose license?',
+      a: 'No. Colorado has no statewide security license, Montrose has no business license, and the city’s sales tax license applies only to retail sales. The City confirmed in writing that Ares needs no city license to staff sites here.',
+    },
+    {
+      q: 'Do you cover sites outside Montrose?',
+      a: 'Yes, across Montrose County and along US-50 toward Delta and Olathe. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will answer plainly.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Industrial and warehouse sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Airport-area sites', division: 'Airport & Transportation', divisionId: 'airport' },
+    { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
+  ],
+  landmarks: [],
+  focusSide: 'left',
+};
+
+export const DURANGO: LocationFile = {
+  city: city('durango'),
+  path: '/locations/durango',
+  title: 'Security guards in Durango.',
+  lead: 'Armed and unarmed security officers for sites across Durango and La Plata County, from a Colorado security company licensed to work in the city.',
+  licenseTitle: 'Licensed in Durango.',
+  licenseIntro:
+    'Colorado has no statewide security license. Durango requires a business license of any company that works inside city limits, services included, and Ares holds one.',
+  license: [
+    { label: 'City of Durango business license', value: 'Active', route: { note: 'Renewed each January' } },
+    { label: 'Status', value: 'Armed and unarmed security' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 5.5 hours by road' } },
+  ],
+  local:
+    'Durango is the hub of La Plata County and Southwest Colorado. The City of Durango requires a business license of any company that enters city limits to work, services included, and Ares holds one. Durango once had a separate merchant patrol license; the city repealed it in 2016, so the business license is the one that applies to security. Here we are ready to staff public-sector and federal facilities, hospitals and clinics, campuses, construction, apartment and residential properties, and commercial property and retail across La Plata County. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need a Durango license?',
+      a: 'Yes, a city business license. Colorado has no statewide security license, and Durango repealed its separate merchant patrol license in 2016, so the business license is the one that applies. Ares holds a City of Durango business license.',
+    },
+    {
+      q: 'Do you cover sites outside Durango?',
+      a: 'Yes, across La Plata County, including Bayfield and the US-160 and US-550 corridors. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector and federal facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Construction sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+    { name: 'Apartment and residential properties', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
+  ],
+  landmarks: [],
+};
+
+export const ALAMOSA: LocationFile = {
+  city: city('alamosa'),
+  path: '/locations/alamosa',
+  title: 'Security guards in Alamosa.',
+  lead: 'Armed and unarmed security officers for sites across Alamosa and the San Luis Valley, licensed under the city’s own security ordinance.',
+  licenseTitle: 'Licensed in Alamosa.',
+  licenseIntro:
+    'Colorado has no statewide security license. Alamosa licenses contract security companies and every officer who works in the city, under an ordinance it rewrote in 2024, and these are ours here.',
+  license: [
+    { label: 'Contract security license', value: 'Company and each officer', route: { note: 'Renewed each calendar year' } },
+    { label: 'Armed officers', value: 'Each holds a Colorado concealed handgun permit' },
+    armedRow,
+    { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, about 2.5 hours by road' } },
+  ],
+  local:
+    'Alamosa is the center of the San Luis Valley, and its licensing is the strictest of any city we staff. Since 2024 the city has licensed contract security companies and each officer who works in the city, and every armed officer must also hold a Colorado concealed handgun permit. Ares holds the company license and licenses each officer it posts here, and we give the police chief the name of every armed officer. Here we are ready to staff public-sector and federal facilities, campuses, hospitals and clinics, commercial property and retail, and agricultural and industrial sites across Alamosa County. Our headquarters is about two and a half hours away in Colorado Springs, and a member of our leadership walks every new site before anything is signed.',
+  sectorsTitle: 'Sites we are ready to staff here.',
+  faq: [
+    {
+      q: 'Does a security company need an Alamosa license?',
+      a: 'Yes, and so does each officer. Colorado has no statewide security license, but Alamosa’s security ordinance (rewritten in 2024) licenses contract security companies and every officer who works in the city, and armed officers must hold a Colorado concealed handgun permit. Ares holds the company license and licenses each officer it posts here.',
+    },
+    {
+      q: 'Do you cover sites outside Alamosa?',
+      a: 'Yes, across the San Luis Valley, including Monte Vista and the US-160 corridor. Towns set their own rules, so we check what each one requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+    },
+  ],
+  sectors: [
+    { name: 'Public-sector and federal facilities', division: 'Government & Defense', divisionId: 'government' },
+    { name: 'Campuses and institutions', division: 'Institutional & Community', divisionId: 'community' },
+    { name: 'Hospitals and clinics', division: 'Critical & High-Liability Sites', divisionId: 'critical' },
+    { name: 'Commercial property and retail', division: 'Commercial & Retail', divisionId: 'commercial' },
+    { name: 'Agricultural and industrial sites', division: 'Construction, Industrial & Logistics', divisionId: 'industrial' },
+  ],
+  landmarks: [{ label: 'Blanca Peak', note: '14,345 FT', lat: 37.5775, lon: -105.4856, above: true }],
+  // The name to the left of its dot, so Blanca Peak can sit to the right.
+  focusSide: 'left',
+};
+
+/** Every city page, in the hub's order. */
+export const LOCATION_FILES: LocationFile[] = [COLORADO_SPRINGS, DENVER, PUEBLO, GRAND_JUNCTION, GLENWOOD_SPRINGS, MONTROSE, DURANGO, ALAMOSA];

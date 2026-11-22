@@ -13,7 +13,7 @@ export function Roles() {
         <h2 id="roles-title" className="ds-display-lg">
           Open roles.
         </h2>
-        <p className="ds-lead">Posts across Colorado Springs, Denver, and Pueblo.</p>
+        <p className="ds-lead">Posts across Colorado, from the Front Range to the Western Slope.</p>
       </div>
       <div className="ds-cr-table" role="table" aria-label="Open roles">
         <div className="ds-cr-row ds-cr-row-head" role="row">

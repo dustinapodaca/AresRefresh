@@ -4,7 +4,7 @@ import { FaqSection } from '../market/parts';
 import Seo from '../../seo/Seo';
 import Arrow from '../Arrow';
 import LocationMap from './LocationMap';
-import { CITIES, type LocationFile } from './data';
+import { CITIES, regionOf, type LocationFile } from './data';
 import { DIVISIONS } from '../services/data';
 import { heroTitle } from '../../lib/heroTitle';
 
@@ -23,7 +23,10 @@ const ROUTES = [
 ];
 
 export default function LocationPage({ file }: { file: LocationFile }) {
-  const others = CITIES.filter((c) => c.slug !== file.city.slug);
+  // The region's other cities, then the hub (owner, 2026-11-22: Colorado-wide; was "Also licensed
+  // in" the other two Front Range cities).
+  const region = regionOf(file.city.region);
+  const others = CITIES.filter((c) => c.slug !== file.city.slug && c.region === file.city.region);
 
   return (
     <main id="main" tabIndex={-1} className="ds ds-page ds-loc">
@@ -126,14 +129,19 @@ export default function LocationPage({ file }: { file: LocationFile }) {
             ))}
           </ul>
           <p className="ds-loc-also">
-            Also licensed in{' '}
-            {others.map((c, i) => (
-              <span key={c.slug}>
-                {i > 0 && ' and '}
-                <Link to={c.path} className="ds-link">{c.name}</Link>
-              </span>
-            ))}
-            .
+            {others.length > 0 && (
+              <>
+                Also in the {region.name}:{' '}
+                {others.map((c, i) => (
+                  <span key={c.slug}>
+                    {i > 0 && (i === others.length - 1 ? ' and ' : ', ')}
+                    <Link to={c.path} className="ds-link">{c.name}</Link>
+                  </span>
+                ))}
+                .{' '}
+              </>
+            )}
+            <Link to="/locations" className="ds-link">Every city we staff across Colorado</Link>.
           </p>
         </nav>
       </div>

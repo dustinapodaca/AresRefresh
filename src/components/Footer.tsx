@@ -86,6 +86,7 @@ export default function Footer() {
               <li><Link to="/locations/colorado-springs">Colorado Springs</Link></li>
               <li><Link to="/locations/denver">Denver</Link></li>
               <li><Link to="/locations/pueblo">Pueblo</Link></li>
+              <li><Link to="/locations">All service areas</Link></li>
             </ul>
           </div>
 

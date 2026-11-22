@@ -111,6 +111,7 @@ const MENUS: Record<string, Menu> = {
       { label: 'Colorado Springs', to: '/locations/colorado-springs' },
       { label: 'Denver', to: '/locations/denver' },
       { label: 'Pueblo', to: '/locations/pueblo' },
+      { label: 'All service areas', to: '/locations' },
     ],
     profiles: true,
     image: { src: '/images/about-hero.jpg', caption: 'Pikes Peak, Colorado Springs' },

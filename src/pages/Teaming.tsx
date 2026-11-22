@@ -126,7 +126,7 @@ const FAQ: Faq[] = [
   },
   {
     q: 'Where in Colorado do you work?',
-    a: 'Along the Front Range: the Denver metro area, Colorado Springs, and Pueblo. Ares is licensed and bonded for armed and unarmed security in all three cities.',
+    a: 'Across Colorado: the Front Range (the Denver metro area, Colorado Springs, and Pueblo), the Western Slope (Grand Junction, Glenwood Springs, Montrose, and Durango), and Alamosa in the San Luis Valley. Ares holds what each city requires for armed and unarmed security.',
   },
 ];
 

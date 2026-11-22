@@ -51,7 +51,7 @@ export type Commitment = { name: string; line: string };
 // line) and TRAITS (five adjectives: Approachable, Licensed, Experienced, Local, Steady).
 export const STANDARDS: Commitment[] = [
   { name: 'Screened', line: 'Background-checked before hire.' },
-  { name: 'Licensed', line: 'Licensed by the city they work in: Colorado Springs, Denver, or Pueblo.' },
+  { name: 'Licensed', line: 'Licensed the way the city they work in requires, from Denver to Durango.' },
   { name: 'Trained', line: 'On your site, by a member of our leadership, before the first shift.' },
   { name: 'Qualified', line: 'On armed posts, firearms-qualified by our veteran NRA firearms instructor.' },
   { name: 'Supervised', line: 'A chain of command on every shift.' },
