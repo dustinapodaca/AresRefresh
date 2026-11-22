@@ -1651,6 +1651,13 @@ Few, fast, and crisp. Four to six moments per page.
   the section's first line of content 32px under the nav (24px under the running head on
   phones), on every page; links from other pages (e.g. /services#industrial) land the same
   way. `src/lib/scrollToSection.ts`; instant under reduced motion.
+- **Where a page starts** (owner, 2026-11-22; `src/components/ScrollToTop.tsx`): a link opens the
+  next page at the top (or its anchor); Back and Forward return to where the reader left that page,
+  kept per history entry in sessionStorage and retried while Home's and Services' pins grow the page
+  (up to 1.5s, given up the moment the reader scrolls); a link that changes only the query (the
+  Insights topics) keeps the place. The first load is left alone, so a reader who scrolls before the
+  script runs is no longer sent back to the top; the browser's own restoring is off, so a reload still
+  starts at the top.
 - **Page changes** (owner, 2026-10-09; reworked the same day for phones): on phones and
   tablets a View Transition where supported: the old page fades out in 160ms while the new one rises 12px
   into place over 320ms (strong ease-out), on the compositor, so a busy phone can't eat it.
