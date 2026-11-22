@@ -56,8 +56,11 @@
 .nx-cv-city-note { font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); transition: color 260ms var(--ds-ease); }
 .nx-cv-city[data-on] .nx-cv-city-note { color: var(--ds-fg-muted); }
 /* With a mouse, a region's cities come in under its name only while it is pointed at (a real move,
-   Coverage.tsx) or focused; their room is kept, so nothing moves (owner, 2026-11-22). Touch screens
-   keep them shown. */
+   Coverage.tsx) or focused; their room is kept, so nothing moves (owner, 2026-11-22). Phones and
+   other touch screens don't show them (owner, 2026-11-22): the rows are the region names alone. */
+@media (hover: none), (pointer: coarse) {
+  .nx-cv-city-note { display: none; }
+}
 @media (hover: hover) and (pointer: fine) {
   .nx-cv-city-note { opacity: 0; transform: translateY(-4px); transition: opacity 260ms var(--ds-ease), transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
   .nx-cv-city[data-on] .nx-cv-city-note { opacity: 1; transform: none; }
