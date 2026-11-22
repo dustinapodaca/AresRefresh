@@ -672,11 +672,14 @@ and `nx-*.css` (class prefix `nx-`).
   The lead sits in the held frame on desktop (owner, 2026-11-22: the column above the regions was
   empty): at the top of the left column, level with the map's top, the regions at its foot, so the
   pin holds lead, regions, and map together; below 1024px it stays under the headline (headline,
-  lead, map, regions). The regions' city lines keep two-word names whole (no-break spaces).
-  On the regions form the map shows no city names at rest; a region's names fade in (260ms) while it
-  is pointed at, from its row or on the map itself (moving the mouse over a region lights it and its
-  row), Colorado Springs' name above its "HQ". The map answers the same real-move rule as the rows
-  (pointermove, never touch, never a page scrolling under a resting pointer); leaving the map clears it.
+  lead, map, regions). The lead runs out to the map's edge (no measure cap) and always keeps at least
+  28px, about a line, above the Front Range row's rule (owner, 2026-11-22).
+  The regions' city lines ("Colorado Springs · Denver · Fort Collins · Pueblo") show only while their
+  region is pointed at or focused, with a mouse: they fade in under the region's name (260ms, rising
+  4px), their room kept so nothing moves; touch screens keep them shown. Two-word names stay whole
+  (no-break spaces). The map shows no city names. Moving the mouse over a region on the map lights it
+  and its row, on the same real-move rule as the rows (pointermove, never touch, never a page
+  scrolling under a resting pointer); leaving the map clears it.
   From 1024px a vertical "Scroll" cue sits in the map's top right corner, set like the hero's (13px
   data face, capitals, ink faint; owner, 2026-11-22), while the section holds, and fades as the map
   finishes; none on phones or in the resolved page. On the regions form "COLORADO" sits left of it.

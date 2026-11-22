@@ -13,11 +13,12 @@
   grid-column: 1 / span 5;
   grid-row: 1;
   align-self: start;
-  margin: 0;
+  /* Out to the map's edge, and always at least a line clear of the Front Range row's rule (owner,
+     2026-11-22). */
+  margin: 0 0 28px;
   font-size: 18px;
   line-height: 1.5;
   color: var(--ds-fg-muted);
-  max-width: 36ch;
 }
 
 .nx-cv-body {
@@ -54,6 +55,13 @@
 /* The region's cities under its name (Colorado-wide, 2026-11-22). */
 .nx-cv-city-note { font-size: 14px; line-height: 1.4; color: var(--ds-fg-faint); transition: color 260ms var(--ds-ease); }
 .nx-cv-city[data-on] .nx-cv-city-note { color: var(--ds-fg-muted); }
+/* With a mouse, a region's cities come in under its name only while it is pointed at (a real move,
+   Coverage.tsx) or focused; their room is kept, so nothing moves (owner, 2026-11-22). Touch screens
+   keep them shown. */
+@media (hover: hover) and (pointer: fine) {
+  .nx-cv-city-note { opacity: 0; transform: translateY(-4px); transition: opacity 260ms var(--ds-ease), transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
+  .nx-cv-city[data-on] .nx-cv-city-note { opacity: 1; transform: none; }
+}
 .nx-cv-city .ds-arrow { color: var(--ds-fg-faint); transition: transform 260ms var(--ds-ease), color 260ms var(--ds-ease); }
 .nx-cv-city:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
 .nx-cv-city[data-on] .nx-cv-city-name { transform: translateX(10px); }
@@ -196,11 +204,7 @@
 .nx-rg-region[data-on] .nx-rg-band { opacity: 1 !important; } /* over the timeline's inline opacity */
 .nx-rg-region[data-on] .nx-rg-name { fill: #fff; }
 .nx-rg-region[data-on] .nx-rg-wash { fill-opacity: 0.12; }
-/* City names only while their region is pointed at (owner, 2026-11-22: the map stays clean at rest).
-   Never on phones, where nothing is pointed at. */
-.nx-rg-city { opacity: 0; pointer-events: none; transition: opacity 260ms var(--ds-ease); }
-.nx-rg-region[data-on] .nx-rg-city { opacity: 1; }
-.nx-rg-pin[data-hq] .nx-rg-city { font-size: 16px; }
+
 /* Pointed at before its turn in the draw (owner, 2026-11-22), a region comes up whole: its outline,
    wash, dots, name, and cities, over the timeline's inline styles. Let go, it returns to wherever the
    scroll has it. */
