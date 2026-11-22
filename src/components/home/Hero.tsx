@@ -84,6 +84,16 @@ export default function Hero() {
     };
     measure();
 
+    // Declared before the timeline: when the engine starts with the page already scrolled (a reader
+    // who scrolled before the script ran, or Back to Home), ScrollTrigger runs onUpdate while the
+    // timeline is still being built, and reaching `tl` or `attached` then threw and left the whole
+    // scroll engine half set up (2026-11-22). So a scroll that early is noted, and the copy joins
+    // once the timeline exists.
+    let attached = false;
+    let built = false;
+    let early = false;
+    const later = gsap.context(() => {}, root);
+
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -98,7 +108,10 @@ export default function Hero() {
           // The camera pitches down and speeds up as we dive in.
           const p = self.progress;
           // Once the reader scrolls, the scroll owns the copy.
-          if (p > 0.002) attachCopy();
+          if (p > 0.002) {
+            if (built) attachCopy();
+            else early = true;
+          }
           control.current.tilt = 32 + 30 * p;
           control.current.speed = 0.25 + 1.4 * p * p;
           control.current.wake?.();
@@ -137,8 +150,6 @@ export default function Hero() {
     // comes first (2026-10-22): built mid-load-in (arriving on Home from another page), GSAP
     // recorded the button and proof half faded and held them at opacity 0 until the reader
     // scrolled. So the load-in ends first, then the tweens start from the copy fully shown.
-    let attached = false;
-    const later = gsap.context(() => {}, root);
     function attachCopy() {
       if (attached) return;
       attached = true;
@@ -154,7 +165,8 @@ export default function Hero() {
         );
       });
     }
-    if (root.dataset.in === 'done') attachCopy();
+    built = true;
+    if (early || root.dataset.in === 'done') attachCopy();
     const watch = new MutationObserver(() => root.dataset.in === 'done' && attachCopy());
     watch.observe(root, { attributes: true, attributeFilter: ['data-in'] });
 
@@ -241,7 +253,7 @@ export default function Hero() {
               </a>
             </li>
             <li>Minority woman-owned (WOSB, WBENC, M/WBE)</li>
-            <li>Licensed in eight Colorado cities</li>
+            <li>Licensed city by city across Colorado</li>
           </ul>
         </div>
         <p className="nx-hero-cue ds-data nx-hero-lift" aria-hidden="true">
