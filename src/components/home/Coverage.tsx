@@ -19,7 +19,7 @@ import './nx-coverage.css';
 // 2026-11-22 it was I-25 alone, north to south, with the three Front Range cities beside it.)
 
 // Two forms to compare (owner, 2026-11-22) at /?coverage=route|regions: `regions` (CoverageRegions.tsx:
-// the three regions light up one after another, no roads or city names), the default (owner,
+// the three regions light up one after another, no city names, I-25 and I-70 as thin lines), the default (owner,
 // 2026-11-22), and `route` (below).
 const FORMS = ['route', 'regions'] as const;
 type Form = (typeof FORMS)[number];

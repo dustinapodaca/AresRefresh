@@ -165,6 +165,9 @@
 /* Lit dots settle to 28% once the light has passed (the timeline's SETTLED); the ripple's front
    flashes full rust. Pointing at a region brings its dots back to full. */
 .nx-rg-band { fill: #d9864f; opacity: 0.28; }
+/* I-25 and I-70, thin and faint under the regions (owner, 2026-11-22). */
+.nx-rg-roads path { fill: none; stroke: #5a6069; stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.nx-rg-road { fill: var(--ds-fg-faint); }
 .nx-rg-hq {
   fill: var(--ds-fg);
   paint-order: stroke;

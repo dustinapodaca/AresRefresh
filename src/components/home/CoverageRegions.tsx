@@ -1,11 +1,11 @@
 /// <reference types="gsap" />
-import { ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, TRD, W, px, py, type LatLon } from './coverageGeo';
+import { ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, TRD, W, WALSENBURG, path, px, py, type LatLon } from './coverageGeo';
 
 // 04 Coverage, the `regions` form (owner, 2026-11-22: "more like entire region highlight", to compare
-// with the route at /?coverage=regions). No roads and no city names: the three regions Ares staffs
-// come up one after another with the scroll, the Front Range, then the Western Slope, then the San
-// Luis Valley. In each, the map's dot grid lights rust in rings rippling out from the region's city
-// (Colorado Springs, Grand Junction, Alamosa), a thin rust outline draws round it over a faint wash,
+// with the route at /?coverage=regions; the default since 2026-11-22). No city names, and only I-25
+// and I-70 as thin lines: the three regions Ares staffs come up one after another with the scroll,
+// the Front Range, then the Western Slope, then the San Luis Valley. In each, the map's dot grid
+// lights rust in rings rippling out from the region's city (Colorado Springs, Grand Junction, Alamosa), a thin rust outline draws round it over a faint wash,
 // its name comes up in the data face, and its cities show as plain dots as the light reaches them.
 // Resolved: all three lit.
 
@@ -94,6 +94,26 @@ export const REGIONS: Region[] = [
   },
 ];
 
+// I-25 and I-70 as thin lines under the regions (owner, 2026-11-22), there from the start: the two
+// roads a reader finds Colorado by. Wyoming to New Mexico, and Utah to Kansas.
+const I25 = path([[41, -104.98], FTC, DEN, CS, PUB, WALSENBURG, TRD, [37, -104.47]]);
+const I70 = path([
+  [39.17, -109.05],
+  [39.159, -108.73],
+  GJT,
+  [39.45, -108.05],
+  [39.535, -107.783],
+  GWS,
+  [39.655, -106.83],
+  [39.63, -106.07],
+  [39.7, -105.7],
+  [39.74, -105.2],
+  DEN,
+  [39.7, -104.4],
+  [39.26, -103.69],
+  [39.27, -102.05],
+]);
+
 const BANDS = 6;
 /** The lit dots' opacity once the light has passed (and in the resolved page: `.nx-rg-band`). */
 const SETTLED = 0.28;
@@ -179,6 +199,16 @@ export function RegionsMap({ active }: { active: string | null }) {
         ))}
       </g>
       <circle cx={px(CS[1])} cy={py(CS[0])} r="150" fill="url(#nx-rg-glow)" />
+      <g className="nx-rg-roads">
+        <path d={I25} />
+        <path d={I70} />
+        <text className="nx-cv-mono nx-rg-road" x={px(-104.98) + 10} y={py(40.15)}>
+          I-25
+        </text>
+        <text className="nx-cv-mono nx-rg-road" x={px(-103.3)} y={py(39.42)}>
+          I-70
+        </text>
+      </g>
       {/* Top right (top left is the Western Slope here), left of the Scroll cue in the corner. */}
       <text className="nx-cv-mono" x={W - 34} y="26" textAnchor="end">
         COLORADO

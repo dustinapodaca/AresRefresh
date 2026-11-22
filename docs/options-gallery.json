@@ -13,7 +13,7 @@
         {
           "value": "regions",
           "label": "Regions",
-          "note": "No roads or city names: the whole state split into three, the Front Range (east of the Divide to Kansas), then the Western Slope, then the San Luis Valley (the southern end, Trinidad included) light up in turn, the dots rippling rust from each region's city inside a thin outline.",
+          "note": "No city names, I-25 and I-70 as thin lines: the whole state split into three, the Front Range (east of the Divide to Kansas), then the Western Slope, then the San Luis Valley (the southern end, Trinidad included) light up in turn, the dots rippling rust from each region's city inside a thin outline.",
           "tag": "default"
         },
         {

@@ -6,7 +6,7 @@ we work." (`FORMS` in `src/components/home/Coverage.tsx`; the regions form in
 `nx-coverage.css`). `route` (one line from Colorado Springs round the state and back, the ten cities
 coming up as it reaches them; no city names on phones) stays switchable; `regions` (the default, owner,
 2026-11-22) splits the whole state into the three and lights the Front Range (east of the Divide to Kansas), the Western Slope, and the San Luis Valley (the southern end, Trinidad included) in turn, the dot grid
-rippling rust from each region's city inside a thin outline, no roads or city names. In the gallery
+rippling rust from each region's city inside a thin outline, no city names, I-25 and I-70 as thin lines. In the gallery
 spec `docs/options-gallery.json`.
 
 **Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
