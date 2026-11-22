@@ -676,7 +676,9 @@ and `nx-*.css` (class prefix `nx-`).
   Trinidad included. In each, the map's dots light rust (#d9864f) in six rings rippling out
   from its city (Colorado Springs, Grand Junction, Alamosa), a 1.2px rust outline draws round it over a
   7% rust wash, its name rises in the data face in two lines, and its cities come up as plain dots
-  (Colorado Springs in rust with its ring) as the light reaches them. "COLORADO" moves to the top right
+  (Colorado Springs in rust with its ring and "HQ" beside it in the data face) as the light reaches
+  them. Each ring of dots flashes full rust as the light passes, then settles to 40% (owner, 2026-11-22:
+  the fully lit state read too orange); pointing at a region brings its dots back to full. "COLORADO" moves to the top right
   there. Pointing at a region lights it and dims the other two. Resolved: all three lit.
 - **05 Careers:** "Now hiring armed and unarmed officers." over two Ares officers seen from
   behind. From 768px with motion the stage pins for 150% of a screen and the photo opens from a

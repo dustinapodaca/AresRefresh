@@ -141,7 +141,16 @@
    dots light rust in rings from its city, over a faint wash inside a thin rust outline. */
 .nx-rg-wash { fill: #bc6f40; fill-opacity: 0.07; stroke: none; }
 .nx-rg-edge { fill: none; stroke: #bc6f40; stroke-opacity: 0.75; stroke-width: 1.2; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
-.nx-rg-band { fill: #d9864f; }
+/* Lit dots settle to 40% once the light has passed (the timeline's SETTLED); the ripple's front
+   flashes full rust. Pointing at a region brings its dots back to full. */
+.nx-rg-band { fill: #d9864f; opacity: 0.4; }
+.nx-rg-hq {
+  fill: var(--ds-fg);
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
 .nx-rg-name {
   fill: var(--ds-fg-muted);
   paint-order: stroke;
@@ -152,7 +161,7 @@
 .nx-rg-pin:not([data-hq]) .nx-cv-dot { fill: var(--ds-fg); }
 .nx-rg-region { transition: opacity 260ms var(--ds-ease); }
 .nx-cv-map[data-active] .nx-rg-region:not([data-on]) { opacity: 0.28; }
-.nx-rg-region[data-on] .nx-rg-band { fill: #f2b98e; }
+.nx-rg-region[data-on] .nx-rg-band { opacity: 1 !important; } /* over the timeline's inline opacity */
 .nx-rg-region[data-on] .nx-rg-name { fill: #fff; }
 .nx-rg-region[data-on] .nx-rg-wash { fill-opacity: 0.12; }
 /* The route's dimming is for its pins; here the region dims as a whole, its cities with it. */

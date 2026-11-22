@@ -90,6 +90,8 @@ export const REGIONS: Region[] = [
 ];
 
 const BANDS = 6;
+/** The lit dots' opacity once the light has passed (and in the resolved page: `.nx-rg-band`). */
+const SETTLED = 0.4;
 const xy = ([lat, lon]: LatLon): [number, number] => [px(lon), py(lat)];
 
 function inside([x, y]: [number, number], poly: [number, number][]) {
@@ -128,7 +130,10 @@ export function buildRegions(tl: gsap.core.Timeline, map: SVGSVGElement) {
     const s = i * 0.29;
     tl.fromTo(g.querySelector('.nx-rg-wash'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, s)
       .fromTo(g.querySelector('.nx-rg-edge'), { strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 0.22 }, s)
-      .fromTo(g.querySelectorAll('.nx-rg-band'), { opacity: 0 }, { opacity: 1, duration: 0.06, stagger: 0.03 }, s)
+      // Each ring flashes full rust as the light passes, then settles to the quieter lit tone
+      // (owner, 2026-11-22: all of it at full rust read too orange once the state was lit).
+      .fromTo(g.querySelectorAll('.nx-rg-band'), { opacity: 0 }, { opacity: 1, duration: 0.04, stagger: 0.03 }, s)
+      .to(g.querySelectorAll('.nx-rg-band'), { opacity: SETTLED, duration: 0.06, stagger: 0.03 }, s + 0.04)
       .fromTo(g.querySelectorAll('.nx-rg-name'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.08 }, s + 0.08);
     r.cities.forEach((c, k) => {
       const at = s + cityBand[k] * 0.03;
@@ -137,7 +142,10 @@ export function buildRegions(tl: gsap.core.Timeline, map: SVGSVGElement) {
       tl.fromTo(pin.querySelector('.nx-cv-dot'), { attr: { r: 0 }, opacity: 0 }, { attr: { r: dotR }, opacity: 1, ease: 'power2.out', duration: 0.04 }, at)
         .set(pin.querySelector('.nx-cv-ping'), { attr: { r: dotR }, opacity: 0.7 }, at + 0.01)
         .to(pin.querySelector('.nx-cv-ping'), { attr: { r: (c.hq ? 15 : 10) * 2.6 }, opacity: 0, ease: 'power1.out', duration: 0.12 }, at + 0.01);
-      if (c.hq) tl.fromTo(pin.querySelectorAll('.nx-cv-ring, .nx-cv-halo'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: 15 }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02);
+      if (c.hq) {
+        tl.fromTo(pin.querySelectorAll('.nx-cv-ring, .nx-cv-halo'), { attr: { r: dotR }, opacity: 0 }, { attr: { r: 15 }, opacity: 1, ease: 'power2.out', duration: 0.08 }, at + 0.02)
+          .fromTo(pin.querySelector('.nx-rg-hq'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.07 }, at + 0.03);
+      }
     });
   });
   tl.to({}, { duration: 0.1 }, 0.9);
@@ -197,6 +205,11 @@ export function RegionsMap({ active }: { active: string | null }) {
                   {c.hq && <circle className="nx-cv-halo" cx={cx} cy={cy} r={15} />}
                   {c.hq && <circle className="nx-cv-ring" cx={cx} cy={cy} r={15} />}
                   <circle className="nx-cv-dot" cx={cx} cy={cy} r={c.hq ? 5.5 : 3.6} />
+                  {c.hq && (
+                    <text className="nx-cv-mono nx-rg-hq" x={cx + 22} y={cy + 5}>
+                      HQ
+                    </text>
+                  )}
                 </g>
               );
             })}
