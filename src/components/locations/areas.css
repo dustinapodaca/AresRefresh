@@ -190,7 +190,7 @@
 .ds-sa-table td { padding: 16px 16px 17px 0; text-align: left; vertical-align: baseline; font-size: 16px; line-height: 1.45; }
 .ds-sa-table th[scope='row'] { font-weight: 500; width: 24%; }
 .ds-sa-table td { color: var(--ds-fg-muted); }
-.ds-sa-table td.ds-data { color: var(--ds-fg); font-size: 15px; }
+.ds-sa-table td.ds-data { color: var(--ds-fg); font-size: 18px; } /* 1.125x the 16px text in the row, capitals matched (owner, 2026-11-22) */
 .ds-sa-table td:last-child { width: 30%; }
 @media (max-width: 767px) {
   .ds-sa-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -204,6 +204,7 @@
   .ds-sa-table td { padding: 0; }
   .ds-sa-table td,
   .ds-sa-table td:last-child { margin-top: 4px; font-size: 15px; width: auto; }
+  .ds-sa-table td.ds-data { font-size: 16.875px; } /* 1.125x the 15px text, capitals matched */
 }
 
 .ds-sa .ds-mk-faq,

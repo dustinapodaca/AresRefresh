@@ -473,6 +473,8 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
 .cx-id { display: inline-flex; align-items: center; gap: 6px; color: var(--ds-fg) !important; font-size: 15px; }
 .cx-id [data-live]::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--cx-ok); box-shadow: 0 0 8px rgb(79 209 139 / 0.7); vertical-align: 1px; }
 .cx-id-note { font-size: 13px !important; line-height: 1.45; }
+/* Mono values at 1.125em, capitals matched to the plain-text values in the same column (owner, 2026-11-22). */
+.cx-id .ds-data { font-size: 1.125em; }
 /* The marks as white silhouettes on the black, as on the earlier page; the square GSA mark keeps its
    own colors (owner, 2026-10-23: no white tiles). */
 .cx-mark { flex: 0 0 auto; width: 56px; display: grid; place-items: center start; }
@@ -612,6 +614,7 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   .cx-group:first-of-type .cx-ledger-row { position: relative; }
   .cx-group:first-of-type .cx-ledger-row dt .cx-mark { position: absolute; top: 14px; right: 14px; width: auto; }
   .cx-group:first-of-type .cx-id { font-size: 15px; }
+  .cx-group:first-of-type .cx-id .ds-data { font-size: inherit; } /* tiles: mono labels over mono values */
   .cx-group:first-of-type .cx-id-note { font-size: 13px !important; }
 
   /* Certifications and licenses: the mark beside the name, the number under it, aligned. */
