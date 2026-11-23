@@ -2717,6 +2717,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-open-grid { display: grid; gap: 48px; }
 .ds-loc-open-copy .ds-lead { margin-top: 24px; max-width: 46ch; }
 .ds-loc-actions { margin-top: 32px; }
+/* The service pages' hero: no quote button from 1024px, where the nav carries it (owner, 2026-11-22). */
+@media (min-width: 1024px) { .ds-mk-role-actions .ds-btn { display: none; } }
 .ds-loc-map { position: relative; margin: 0; max-width: 560px; }
 .ds-loc-map svg { display: block; width: 100%; height: auto; }
 /* The map's words are HTML over the drawing, in CSS pixels, so they hold their size at

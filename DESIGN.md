@@ -1458,7 +1458,8 @@ Privacy policy, terms of use, and accessibility statement at `/privacy`, `/terms
 From the CenCore review (docs/market-concepts.md). One shared vocabulary (`ds-mk-*`), no
 rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
 - **Role pages (`/services/<slug>`):** the search phrase as the headline (display-xl, 7
-  columns), lead, quote button (`/contact?service=<slug>`) and call link; behind the opening (owner,
+  columns), lead, quote button (`/contact?service=<slug>`; below 1024px only since 2026-11-22, owner: the nav carries it
+  from there up) and call link; behind the opening (owner,
   2026-10-26, on all six after a trial on Armed Security Officers) ReactDrops' Topographic Flow
   (`components/topographic-*`, unchanged; `market/RoleTerrain.tsx`): grey contour lines with deep rust
   (#8b4920) accents drifting on the black at 0.38 opacity, faint (owner), rings where the pointer moves,
