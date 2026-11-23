@@ -25,6 +25,13 @@
   font-weight: 500;
   color: var(--ds-fg-muted);
   text-decoration: none;
+  /* A black strip behind each name, so a road or a grid dot passing under it never cuts the letters
+     (owner, 2026-11-22; like the black edge on Home's coverage names). The negative margin keeps the
+     text where it was. */
+  background: #000;
+  padding: 3px 5px;
+  margin-left: -5px;
+  border-radius: 2px;
   transition: color 180ms var(--ds-ease);
 }
 .ds-sa-pin-hq { font-size: 15px; font-weight: 600; color: var(--ds-fg); }
