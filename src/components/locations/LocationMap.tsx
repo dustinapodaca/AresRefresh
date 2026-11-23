@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { CITIES, regionOf, type City, type Landmark, type Region } from './data';
 
 // A city's region, drawn to scale (Region.bounds in data.ts; each plate's bounds keep its 480 by
@@ -29,7 +29,7 @@ function Pin({ text, cls, px, py, dx = 0, dy = 0, end, center, note }: Label) {
       className={`ds-loc-pin ${cls}`}
       data-end={end || undefined}
       data-center={center || undefined}
-      style={{ left: `calc(${(px / W) * 100}% + ${dx}px)`, top: `calc(${(py / H) * 100}% + ${dy}px)` }}
+      style={{ left: `calc(${(px / W) * 100}% + ${dx}px)`, top: `calc(${(py / H) * 100}% + ${dy}px)`, ['--dx' as string]: `${dx}px` }}
     >
       {text}
       {note && <span className="ds-loc-faint ds-loc-pin-note">{note}</span>}
@@ -62,6 +62,29 @@ export default function LocationMap({
   const others = CITIES.filter((c) => c.slug !== focus.slug && c.region === focus.region && onPlate(c));
   const fx = x(focus.coord.lon);
   const fy = y(focus.coord.lat);
+
+  // A name set to the right of its dot that would run past the map's right edge (on a phone, Glenwood
+  // Springs on the Western Slope plate, Trinidad on the San Luis Valley's) moves to the dot's left,
+  // when it fits there (owner, 2026-11-22). Measured on load and whenever the map's width changes.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const fit = () => {
+      const box = el.getBoundingClientRect();
+      el.querySelectorAll<HTMLElement>('.ds-loc-pin:not([data-end]):not([data-center])').forEach((pin) => {
+        pin.removeAttribute('data-flip');
+        const r = pin.getBoundingClientRect();
+        if (r.right <= box.right - 4) return;
+        pin.setAttribute('data-flip', '');
+        if (pin.getBoundingClientRect().left < box.left + 4) pin.removeAttribute('data-flip');
+      });
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    document.fonts?.ready.then(fit);
+    return () => ro.disconnect();
+  }, [focus.slug]);
 
   // I-25 draws and the ring pulses once the map is well in view (owner, 2026-10-08), not on
   // load: on phones it sits below the copy. CSS holds the moment until data-play is set.
@@ -145,7 +168,7 @@ export default function LocationMap({
           <Pin key={r.name} text={r.name} cls="ds-loc-faint" px={x(r.label[1])} py={y(r.label[0])} dx={10} />
         ))}
         {region.borders?.map((b) => (
-          <Pin key={b.label} text={b.label} cls="ds-loc-faint" px={x(b.at[1])} py={y(b.at[0])} dx={b.end ? -8 : 8} dy={-12} end={b.end} />
+          <Pin key={b.label} text={b.label} cls="ds-loc-faint" px={x(b.at[1])} py={y(b.at[0])} dx={b.end ? -8 : 8} dy={b.below ? 12 : -12} end={b.end} />
         ))}
         {landmarks.map((l) => (
           <span key={l.label}>

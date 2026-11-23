@@ -2729,6 +2729,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-loc-pin { position: absolute; transform: translateY(-50%); white-space: nowrap; line-height: 1; }
 .ds-loc-pin[data-end] { transform: translate(-100%, -50%); }
 .ds-loc-pin[data-center] { transform: translate(-50%, -50%); }
+/* Flipped to the dot's other side when it would leave the map (LocationMap): ends as far left of the dot
+   as it started right of it. */
+.ds-loc-pin[data-flip] { transform: translate(calc(-100% - 2 * var(--dx, 0px)), -50%); }
 .ds-loc-focus { font-family: var(--ds-text); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--ds-fg); }
 /* The city's name grows with the plate so it always ends inside the frame. */
 @media (min-width: 640px) { .ds-loc-focus { font-size: 17px; } }

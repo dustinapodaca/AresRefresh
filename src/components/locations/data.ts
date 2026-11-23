@@ -32,7 +32,7 @@ export type Region = {
   /** Roads as lat/lon polylines, with a label placed beside one point of each. */
   roads: { name: string; points: [number, number][]; label: [number, number] }[];
   /** State lines inside the plate (dashed), with the neighbour's name. */
-  borders?: { points: [number, number][]; label: string; at: [number, number]; end?: boolean }[];
+  borders?: { points: [number, number][]; label: string; at: [number, number]; end?: boolean; below?: boolean }[];
 };
 
 export const REGIONS: Region[] = [
@@ -76,7 +76,9 @@ export const REGIONS: Region[] = [
           [39.17, -109.05],
           [39.0, -109.67],
         ],
-        label: [39.62, -108.0],
+        // Between Glenwood Springs and Grand Junction, below the road: on a phone Glenwood Springs' name
+        // sits left of its dot, over where this was (owner, 2026-11-22; was [39.62, -108.0]).
+        label: [39.35, -108.0],
       },
       {
         name: 'US-50',
@@ -137,7 +139,8 @@ export const REGIONS: Region[] = [
         label: [37.95, -104.66],
       },
     ],
-    borders: [{ points: [[37.0, -107.1], [37.0, -103.9]], label: 'NEW MEXICO', at: [37.0, -104.85], end: true }],
+    // Below the line, on New Mexico's side, clear of Trinidad's name (2026-11-22).
+    borders: [{ points: [[37.0, -107.1], [37.0, -103.9]], label: 'NEW MEXICO', at: [37.0, -104.85], end: true, below: true }],
   },
 ];
 
