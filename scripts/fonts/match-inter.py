@@ -10,6 +10,20 @@ usage: match-inter.py <in.woff2> <out.woff2> <tracking units> <family name> <int
 """
 import sys
 from fontTools.ttLib import TTFont
+
+def decompose_all(f):
+    """Flatten composite glyphs (Die Grotesk builds i and j from dotlessi plus a zero-width dot) into
+    plain outlines, so moving outlines for tracking moves the dot with its stem."""
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+    from fontTools.pens.ttGlyphPen import TTGlyphPen
+    glyf = f['glyf']; gs = f.getGlyphSet()
+    flat = {}
+    for name in f.getGlyphOrder():
+        if glyf[name].isComposite():
+            rp = DecomposingRecordingPen(gs); gs[name].draw(rp)
+            tp = TTGlyphPen(None); rp.replay(tp); flat[name] = tp.glyph()
+    for name, g in flat.items():
+        glyf[name] = g; g.recalcBounds(glyf)
 from fontTools.ttLib.scaleUpem import scale_upem
 
 src, out, track, family = sys.argv[1], sys.argv[2], float(sys.argv[3]), sys.argv[4]
@@ -23,6 +37,7 @@ s = INTER_XH / (f['OS/2'].sxHeight / upem)
 # scale every coordinate, advance, and kern by s, then keep the em at the old size: glyphs grow by s
 scale_upem(f, round(upem * s))
 f['head'].unitsPerEm = upem
+decompose_all(f)
 
 glyf, hmtx = f['glyf'], f['hmtx']
 half = track / 2
