@@ -1420,3 +1420,8 @@ previous page's. New framing copy (N):
   characters; it no longer competes with Home's "Colorado Security Guard & Patrol Services"), and its
   description names the three regions: "Armed and unarmed officers in ten Colorado cities across the Front
   Range, Western Slope, and San Luis Valley. Licensed city by city, based in Colorado Springs." (159).
+- Same day (owner): every search description that named the ownership now says "minority woman-owned"
+  (was "woman-owned" on Home, About, and the Colorado Springs, Denver, Pueblo, Grand Junction, Glenwood
+  Springs, Montrose, and Durango pages), each kept under 160 characters (owner): "security" dropped before
+  "officers" where needed, "Ares Security LLC" → "Ares Security" on About, Home's place line "from
+  Denver to Durango", Denver's "across metro Denver".

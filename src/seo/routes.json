@@ -5,11 +5,11 @@
   "routes": {
     "/": {
       "title": "Colorado Security Guard & Patrol Services | Ares Security",
-      "description": "Woman-owned WOSB and WBENC security firm serving Colorado. Armed and unarmed officers, patrol, and access control from Denver and Colorado Springs to Durango."
+      "description": "Minority woman-owned WOSB and WBENC security firm. Armed and unarmed officers, patrol, and access control across Colorado, from Denver to Durango."
     },
     "/about": {
       "title": "About Ares Security | Woman-Owned, Colorado Springs, CO",
-      "description": "Ares Security LLC is a woman-owned, employee-focused security firm founded in Colorado Springs in 2021, with armed and unarmed officers across Colorado.",
+      "description": "Ares Security is a minority woman-owned, employee-focused security firm founded in Colorado Springs in 2021, with armed and unarmed officers across Colorado.",
       "preloadImage": "/images/about-hero.jpg"
     },
     "/services": {
@@ -56,7 +56,7 @@
     },
     "/locations/colorado-springs": {
       "title": "Security Guards in Colorado Springs, CO | Ares Security",
-      "description": "Armed and unarmed security officers, patrol, and access control in Colorado Springs. Woman-owned and locally based, with on-call coverage in every contract.",
+      "description": "Armed and unarmed officers, patrol, and access control in Colorado Springs. Minority woman-owned and locally based, with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -70,7 +70,7 @@
     },
     "/locations/denver": {
       "title": "Security Guard Services in Denver, CO | Ares Security",
-      "description": "Armed and unarmed officers, patrol, and access control for Denver metro sites. Woman-owned WOSB and WBENC firm with on-call coverage in every contract.",
+      "description": "Armed and unarmed officers, patrol, and access control across metro Denver. Minority woman-owned WOSB and WBENC firm with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -84,7 +84,7 @@
     },
     "/locations/pueblo": {
       "title": "Security Guard Services in Pueblo, CO | Ares Security",
-      "description": "Armed and unarmed security officers and patrol for Pueblo sites, from a woman-owned Colorado Springs firm. Leadership works the first shift on every new post.",
+      "description": "Armed and unarmed officers and patrol for Pueblo sites, from a minority woman-owned Colorado Springs firm. Leadership works the first shift on every new post.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -98,7 +98,7 @@
     },
     "/locations/grand-junction": {
       "title": "Security Guards in Grand Junction, CO | Ares Security",
-      "description": "Armed and unarmed security officers for Grand Junction and Mesa County, from a woman-owned Colorado firm that screens, trains, and qualifies its own officers.",
+      "description": "Armed and unarmed officers for Grand Junction and Mesa County, from a minority woman-owned Colorado firm that screens, trains, and qualifies its own officers.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -112,7 +112,7 @@
     },
     "/locations/glenwood-springs": {
       "title": "Security Guards in Glenwood Springs, CO | Ares Security",
-      "description": "Armed and unarmed security officers for Glenwood Springs, Garfield County, and the Roaring Fork Valley. City licensed, woman-owned, trained on post.",
+      "description": "Armed and unarmed security officers for Glenwood Springs, Garfield County, and the Roaring Fork Valley. City licensed, minority woman-owned, trained on post.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -126,7 +126,7 @@
     },
     "/locations/montrose": {
       "title": "Security Guards in Montrose, CO | Ares Security",
-      "description": "Armed and unarmed security officers for Montrose and the Uncompahgre Valley, from a woman-owned Colorado firm with on-call coverage in every contract.",
+      "description": "Armed and unarmed security officers for Montrose and the Uncompahgre Valley, from a minority woman-owned Colorado firm with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
@@ -140,7 +140,7 @@
     },
     "/locations/durango": {
       "title": "Security Guards in Durango, CO | Ares Security",
-      "description": "Armed and unarmed security officers for Durango and La Plata County sites. City of Durango licensed, woman-owned, with on-call coverage in every contract.",
+      "description": "Armed and unarmed officers for Durango and La Plata County sites. City of Durango licensed, minority woman-owned, with on-call coverage in every contract.",
       "breadcrumbs": [
         {
           "name": "Service Areas",
