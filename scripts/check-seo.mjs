@@ -32,6 +32,8 @@ const decode = (s) =>
         .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
         .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16)));
 
+const descs = new Map();
+const tails = new Map();
 for (const p of Object.keys(routes)) {
   const meta = routes[p];
   // Preview pages are built only where VITE_PREVIEW_PAGES is set (Netlify; src/lib/previewPages.ts).
@@ -73,11 +75,27 @@ for (const p of Object.keys(routes)) {
     if (titles.has(title)) errors.push(`${rel}: duplicate <title> shared with ${titles.get(title)} — "${title}"`);
     else titles.set(title, rel);
     if (title !== meta.title) errors.push(`${rel}: title "${title}" != routes.json "${meta.title}"`);
-    if (title.length > 60) warnings.push(`${rel}: title is ${title.length} chars (>60 may truncate)`);
+    // Titles and descriptions for Google and Bing (owner's brief, 2026-11-22): errors, so a build that
+    // breaks them stops before deploy.
+    if (title.length > 60) errors.push(`${rel}: title is ${title.length} chars (60 at most)`);
+    // The brand closes every title ("| Ares" when the full one won't fit), or leads it ("About Ares Security | ...").
+    if (!/\| Ares( Security)?$/.test(title) && !/^(About )?Ares Security \|/.test(title)) errors.push(`${rel}: title must end with "| Ares Security" (or "| Ares" when the full brand won't fit)`);
+    if (/patrol/i.test(title) && p !== '/services/mobile-patrol') errors.push(`${rel}: "patrol" in the title (only /services/mobile-patrol may say it)`);
   }
 
   const desc = decode(attr(html, /<meta[^>]+name="description"[^>]+content="([^"]*)"/));
-  if (desc && desc.length > 160) warnings.push(`${rel}: description is ${desc.length} chars (>160 may truncate)`);
+  if (desc) {
+    if (p !== '/404' && (desc.length < 110 || desc.length > 160)) errors.push(`${rel}: description is ${desc.length} chars (110 to 160)`);
+    else if (desc.length > 155) warnings.push(`${rel}: description is ${desc.length} chars (155 or fewer reads in full)`);
+    if (desc.includes('"')) errors.push(`${rel}: straight double quote in the description`);
+    if (/patrol/i.test(desc) && p !== '/services/mobile-patrol') errors.push(`${rel}: "patrol" in the description (only /services/mobile-patrol may say it)`);
+    if (descs.has(desc)) errors.push(`${rel}: same description as ${descs.get(desc)}`);
+    else descs.set(desc, rel);
+    // No two descriptions may end on the same six words (Google's warning about boilerplate).
+    const tail = desc.toLowerCase().replace(/[^a-z0-9’' ]+/g, ' ').trim().split(/\s+/).slice(-6).join(' ');
+    if (tails.has(tail)) errors.push(`${rel}: description ends like ${tails.get(tail)}'s ("…${tail}")`);
+    else tails.set(tail, rel);
+  }
 
   // --- prerender actually captured content ---
   if (!/<div id="root"[^>]*>\s*<\S/.test(html)) errors.push(`${rel}: #root looks empty — prerender did not capture content`);

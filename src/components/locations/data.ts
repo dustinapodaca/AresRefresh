@@ -705,7 +705,7 @@ export const FORT_COLLINS: LocationFile = {
   city: city('fort-collins'),
   path: '/locations/fort-collins',
   title: 'Security guards in Fort Collins.',
-  lead: 'Armed and unarmed security officers for sites across Fort Collins and Larimer County, on I-25 at the north end of the Front Range.',
+  lead: 'Armed and unarmed security officers for sites across Fort Collins, Loveland, and Larimer County, on I-25 at the north end of the Front Range.',
   licenseTitle: 'Licensed in Fort Collins',
   licenseIntro:
     'Colorado has no statewide security license. Fort Collins requires its sales and use tax license, which serves as the city’s business license, of any business that sends employees to work in the city, and Ares holds one.',

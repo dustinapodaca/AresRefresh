@@ -42,7 +42,8 @@ AddDefaultCharset utf-8
   RewriteRule ^services/event-security/?$ /services/relief-surge-coverage [R=301,L]
   RewriteRule ^industries/government-military/?$ /industries/government-defense [R=301,L]
   RewriteRule ^industries/?$ /services#divisions [R=301,L,NE]
-  RewriteRule ^locations/?$ /services#areas [R=301,L,NE]
+  # /locations is the Service Areas page since 2026-11-22 (it 301'd to /services#areas before).
+  RewriteRule ^company/?$ /about [R=301,L]
 
   # 3. Clean URLs. /index.html and /page.html redirect to their clean address; /page/ drops its slash.
   RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]

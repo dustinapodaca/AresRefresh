@@ -1430,3 +1430,21 @@ previous page's. New framing copy (N):
   Three lines on desktop as before, four on phones; "sites" hands off to "The sites we protect". The
   scroll's camera flies into the C's left stroke, as it did the F's stem (owner; the l and the C's open
   middle were tried first).
+
+## 2026-11-22: titles and descriptions on every page (owner's brief, Google and Bing)
+
+- Every route's title and description per `BRIEF-seo-titles-descriptions.md` / `seo-metadata-2026-11-22.json`
+  (in `src/seo/routes.json`): titles 60 characters or fewer ending in "| Ares Security" (or "| Ares"; About
+  leads with the brand); descriptions 110 to 160, unique, no shared six-word endings; "minority
+  woman-owned"; "patrol" only on /services/mobile-patrol. Home "Colorado Security Guard Services | Ares
+  Security"; /services "Armed & Unarmed Security Services in Colorado | Ares" so the two don't compete.
+- Fort Collins and Trinidad (not in the brief) written to its city pattern; Fort Collins names Loveland and
+  Larimer County in its description and its lead (Search Console: Loveland queries reach Home).
+- `scripts/check-seo.mjs` now errors on all of the above (warns over 155).
+- `public/llms.txt`: each page's line is its meta description; services in the lead order, mobile patrol last
+  (its line no longer says "alarm response", removed from the site 2026-10-25). `index.html`: the fallback
+  meta description is Home's, and the LocalBusiness description leads with minority woman-owned and drops
+  patrol (the Mobile patrol offer stays in the catalog).
+- Redirects: /company → /about (301, Search Console still lists it). The /locations → /services#areas 301
+  from before the hub existed was removed from `_redirects` and `.htaccess`: on Apache it would have hidden
+  the Service Areas page.

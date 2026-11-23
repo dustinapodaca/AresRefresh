@@ -24,7 +24,9 @@
 /industries/government-military    /industries/government-defense    301
 # No hub pages (owner, 2026-10-18): a trimmed address lands on the matching Services section.
 /industries    /services#divisions    301
-/locations    /services#areas    301
+# /locations is the Service Areas page since 2026-11-22 (it 301'd to /services#areas before).
+# /company was an old About address Google still lists (owner's brief, 2026-11-22).
+/company    /about    301
 
 # Anything genuinely unmatched: real 404 status, prerendered 404 page.
 /*    /404.html    404
