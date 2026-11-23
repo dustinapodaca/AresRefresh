@@ -125,11 +125,10 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   font-size: clamp(54px, 12.2vw, 188px);
   line-height: 0.88;
   letter-spacing: -0.058em;
-  /* Three lines on desktop: "Security officers / for Colorado's / Front Range". */
+  /* Three lines on desktop: "Security officers / for sites across / Colorado" (owner, 2026-11-22). */
   max-width: 7em;
 }
-/* The words "Front Range" never part; the F is the stroke the camera flies into. */
-.nx-nowrap { white-space: nowrap; }
+/* The camera flies into the left stroke of the C of "Colorado" (was the F of "Front Range"; owner, 2026-11-22). */
 .nx-hero-title .nx-fly { display: inline; }
 
 .nx-hero-copy {

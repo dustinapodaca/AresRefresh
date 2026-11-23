@@ -512,13 +512,14 @@ and `nx-*.css` (class prefix `nx-`).
   tab. The industry post brief carries "Post brief / Ares Security"; the phone deck's cards have no
   tab and the deck no blurred-photo glow. Elsewhere a label is plain data-face text in sentence case.
   Tags are square (2px corners), never pills.
-- **Hero:** the headline "Security officers across Colorado" (no period; owner, 2026-11-22, was "Security
-  officers for Colorado's Front Range": Home owns the statewide phrase, the Service Areas page says what it
-  is) is cut out of
+- **Hero:** the headline "Security officers for sites across Colorado" (no period; owner, 2026-11-22: was
+  "Security officers for Colorado's Front Range"; Ares went Colorado-wide. "Security officers across
+  Colorado" was tried the same day and dropped: two lines on desktop left too much black. "Sites" hands
+  off to 02 The sites we protect; the Service Areas page says "Service areas across Colorado") is cut out of
   the black, a window onto the rust terrain moving behind it: a black layer holds the headline
   in white over the ground with `mix-blend-mode: multiply`, so the letters show the land and the
   h1 stays real text. Inter Tight 600 at `clamp(54px, 12.2vw, 188px)` (phones
-  `clamp(48px, 14.4vw, 80px)`), leading 0.88, two lines on desktop (it was three); "Colorado" never wraps.
+  `clamp(48px, 14.4vw, 80px)`), leading 0.88, three lines on desktop ("Security officers / for sites across / Colorado"), four on phones.
   The ground is a warm rust field (brightest low and to the right) with the Topography terrain
   screened over it (`#9c4f22`, 26 lines at 1.4px, glow 0.9, brightness 1.5, tilt 32; from 900px
   elevation 0.3, scale 0.7, detail 0.14; phones 0.5, 1, 0.35), or the captured still where the
@@ -535,8 +536,9 @@ and `nx-*.css` (class prefix `nx-`).
   prerendered lit hero showed, went black when the script armed the load-in, then came back): index.html's
   inline script sets <html data-hero-arm> where the load-in will run and takes it off after 5s if the
   page's script never starts it; its hash is in public/_headers and public/.htaccess. On scroll the screen holds for 165% of a screen: the copy lifts
-  away, the camera flies into the l of "Colorado" (the F of "Front" until 2026-11-22; the headline layer scaling up to 40x about the l's
-  stem while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
+  away, the camera flies into the left stroke of the C of "Colorado" (the F of "Front" until 2026-11-22; its open
+  middle was tried and dropped; the headline layer scaling up to 40x about the middle of that stroke, halfway
+  up, read from the glyph drawn on a canvas, while the black fades out, so the land is all there is; the terrain pitching from tilt 32 to
   62 and speeding up). Then the Ares mark in white comes up dead center of the screen (owner,
   2026-10-22: like a title card in a film; `clamp(132px, 24vmin, 260px)`, rising from 0.94; a second vertical mono "Scroll" cue in white 90% sits
   at its lower right, its foot level with the mark's, 10 to 18px away, and travels with it) once most of

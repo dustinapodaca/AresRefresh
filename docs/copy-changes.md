@@ -1425,3 +1425,8 @@ previous page's. New framing copy (N):
   Springs, Montrose, and Durango pages), each kept under 160 characters (owner): "security" dropped before
   "officers" where needed, "Ares Security LLC" → "Ares Security" on About, Home's place line "from
   Denver to Durango", Denver's "across metro Denver".
+- Later the same day (owner, from a brief): Home's headline is "Security officers for sites across Colorado"
+  instead ("Security officers across Colorado" wrapped to two lines on desktop and left too much black).
+  Three lines on desktop as before, four on phones; "sites" hands off to "The sites we protect". The
+  scroll's camera flies into the C's left stroke, as it did the F's stem (owner; the l and the C's open
+  middle were tried first).

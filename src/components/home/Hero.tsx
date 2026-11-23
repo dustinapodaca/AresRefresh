@@ -9,7 +9,7 @@ import { motionAllowed, useScene, SCRUB } from './engine';
 
 // Hero, "The ground" (home-flora, 2026-10-20). One visual, no floating images (owner): the
 // headline is cut out of the black, a window onto the rust terrain moving behind it. Scrolling
-// holds the screen, lifts the copy away, and flies the camera into the l of "Colorado" (was the F of "Front") until the
+// holds the screen, lifts the copy away, and flies the camera into the C of "Colorado" (was the F of "Front") until the
 // stroke fills the window and the land is all there is; then the land dims under 01 Record.
 //
 // How the window works: the ground (a rust light with the terrain screened over it) sits under a
@@ -23,6 +23,41 @@ const TEL = 'tel:+17196963966';
 const MAX_ZOOM = 40;
 
 type Control = { current: Record<string, unknown> & { wake?: () => void } };
+
+// Where a one-letter span's first stroke is, in px from its box's left and top: the middle of the
+// glyph's height, and the middle of the first run of ink across that row (the C's left stroke, as the
+// F's stem was before). The glyph is drawn on a canvas and its middle row read, so the aim follows the
+// font and the letter-spacing (which narrows the box but not the ink). Null if the canvas can't.
+function strokeOf(el: HTMLElement): { x: number; y: number } | null {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!ctx) return null;
+  const cs = getComputedStyle(el);
+  const font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  ctx.font = font;
+  const t = ctx.measureText(el.textContent || '');
+  if (!t.actualBoundingBoxAscent) return null;
+  const pad = 4;
+  const w = Math.ceil(t.actualBoundingBoxLeft + t.actualBoundingBoxRight) + pad * 2;
+  const h = Math.ceil(t.fontBoundingBoxAscent + t.fontBoundingBoxDescent);
+  canvas.width = w;
+  canvas.height = h;
+  ctx.font = font;
+  ctx.fillStyle = '#000';
+  const ox = pad + t.actualBoundingBoxLeft;
+  ctx.fillText(el.textContent || '', ox, t.fontBoundingBoxAscent);
+  const y = Math.round(t.fontBoundingBoxAscent - t.actualBoundingBoxAscent / 2);
+  const row = ctx.getImageData(0, y, w, 1).data;
+  let a = -1;
+  let b = -1;
+  for (let x = 0; x < w; x++) {
+    const on = row[x * 4 + 3] > 128;
+    if (on && a < 0) a = x;
+    if (!on && a >= 0) { b = x; break; }
+  }
+  if (a < 0 || b < 0) return null;
+  return { x: (a + b) / 2 - ox, y };
+}
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -64,7 +99,7 @@ export default function Hero() {
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
     const card = root.querySelector<HTMLElement>('.nx-hero-card')!;
 
-    // Where to fly: the middle of the fly letter's stem (the l of Colorado), and how far to scale. Capped (2026-10-20): the
+    // Where to fly: the middle of the fly letter's left stroke (the C of Colorado), and how far to scale. Capped (2026-10-20): the
     // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
     // (the headline came back as a fragment and the nav blanked). The black fades out while it
     // grows, so the land is all there is without the stroke having to cover the window.
@@ -76,8 +111,12 @@ export default function Hero() {
       const m = mask.getBoundingClientRect();
       const f = fly.getBoundingClientRect();
       const size = parseFloat(getComputedStyle(title).fontSize);
-      px = f.left - m.left + size * 0.15;
-      py = f.top - m.top + f.height * 0.56;
+      // Aim at the middle of the C's left stroke, halfway up (owner, 2026-11-22: the C of "Colorado", into
+      // the stroke the way it flew into the F's stem; its open middle was tried and dropped). Falls back
+      // to the F's old offsets if the canvas can't measure.
+      const stroke = strokeOf(fly);
+      px = f.left - m.left + (stroke ? stroke.x : size * 0.15);
+      py = f.top - m.top + (stroke ? stroke.y : f.height * 0.56);
       const stem = size * 0.13;
       scale = Math.min(MAX_ZOOM, (window.innerWidth * 1.1) / stem);
       mask.style.transformOrigin = `${px}px ${py}px`;
@@ -122,7 +161,7 @@ export default function Hero() {
         mask,
         {
           scale: () => scale,
-          // Bring the stem's middle to the middle of the window while it grows (the stage is
+          // Bring the aim point (the C's left stroke) to the middle of the window while it grows (the stage is
           // pinned at the top-left of the window).
           x: () => window.innerWidth / 2 - px,
           y: () => stage.clientHeight / 2 - py,
@@ -213,13 +252,11 @@ export default function Hero() {
 
         <div className="nx-hero-mask">
           <h1 id="nx-hero-title" className="nx-hero-title">
-            {/* "Security officers across Colorado" (owner, 2026-11-22; was "...for Colorado's Front Range"):
-                Home owns the statewide phrase, the Service Areas page says what it is. The camera flies into
-                the stem of the "l" in Colorado (it was the F of Front). */}
-            Security officers across{' '}
-            <span className="nx-nowrap">
-              Co<span className="nx-fly">l</span>orado
-            </span>
+            {/* "Security officers for sites across Colorado" (owner, 2026-11-22; was "...for Colorado's Front
+                Range": Ares went Colorado-wide). Three lines on desktop like before, "Colorado" alone on the last;
+                "sites" hands off to 02 The sites we protect. The camera flies into the C's left stroke
+                (owner, 2026-11-22). */}
+            Security officers for sites across <span className="nx-fly">C</span>olorado
           </h1>
         </div>
 
