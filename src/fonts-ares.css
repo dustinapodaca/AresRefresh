@@ -1,0 +1,55 @@
+/* Font trial (owner, 2026-11-22): every Inter and Inter Tight on the site swapped for Die Grotesk D
+   ("Die Grotesk D Ares": Klim's Die Grotesk, style D, with the characters its test file lacked rebuilt
+   from the specimen; scripts/fonts/build-die-grotesk-d-ares.py). Compare at ?font=inter|ares; the
+   choice sticks for the session and a small switch shows at the bottom left (FontSwitch.tsx). Inter
+   is the default. The files only load when the switch is on.
+   Two family names on the same files, so the switch can tell headline text (display) from body text
+   (text) by its computed font. */
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-300.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-400.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-500.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-600.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-700.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-weight: 300 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-500.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-600.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-700.woff2') format('woff2'); }
+
+html[data-font='ares'] {
+  --ds-display: 'Die Grotesk D Ares Display', 'Inter Tight', system-ui, sans-serif;
+  --ds-text: 'Die Grotesk D Ares', 'Inter', system-ui, sans-serif;
+  --font-display: 'Die Grotesk D Ares Display', 'Inter Tight', system-ui, sans-serif;
+  --font-sans: 'Die Grotesk D Ares', 'Inter', system-ui, sans-serif;
+  --font-text: 'Die Grotesk D Ares', 'Inter', system-ui, sans-serif;
+  /* Inter's character variants (cv01, ss03 ...) would pick Die Grotesk's alternates instead. */
+  --ds-features: normal;
+}
+html[data-font='ares'] :is(.ds-ind-index-name, .ds-in-topic) { font-feature-settings: normal; }
+/* Headlines at the tracking the owner picked for D (-0.005em; Inter Tight's ran to -0.055em), and
+   body text never tighter than D's own spacing. FontSwitch marks the elements. */
+html[data-font='ares'] [data-ares-t='d'] { letter-spacing: -0.005em !important; }
+html[data-font='ares'] [data-ares-t='t'] { letter-spacing: 0 !important; }
+
+.ares-fontswitch {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2147483000;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: #000;
+  border: 1px solid #2c3037;
+  border-radius: 2px;
+  font: 400 12px/1 var(--ds-data);
+}
+.ares-fontswitch button {
+  appearance: none;
+  border: 0;
+  border-radius: 2px;
+  padding: 8px 10px;
+  background: transparent;
+  color: #9aa0a8;
+  font: inherit;
+  cursor: pointer;
+}
+.ares-fontswitch button[aria-pressed='true'] { background: #eef0f2; color: #000; }

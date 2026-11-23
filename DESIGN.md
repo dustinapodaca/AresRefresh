@@ -238,6 +238,10 @@ sizes are unchanged.
 - Font loading: self-hosted Latin subsets (`src/fonts.css`), `display=swap`: Inter (300 to 800),
   Inter Tight (500, 600), PP Fraktion Mono (400 and 700 only, so text set at 500 shows as 400; Pangram
   Pangram, licensed by the owner).
+- **Font trial (owner, 2026-11-22): `?font=ares`** sets every Inter and Inter Tight in Die Grotesk D Ares
+  (Klim's Die Grotesk, style D, rebuilt with the specimen's full character set in 300 to 700), headlines
+  at -0.005em; Inter stays the default until the owner chooses (`FontSwitch.tsx`, `fonts-ares.css`,
+  `docs/options-archive.md`).
 
 ## Layout
 
