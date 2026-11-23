@@ -1415,3 +1415,8 @@ previous page's. New framing copy (N):
 - Service Areas hub: "Security officers across Colorado" → "Service areas across Colorado", so the two pages
   don't compete for the same phrase; it matches the menu label and breadcrumb. Page titles and meta
   descriptions (`src/seo/routes.json`) unchanged.
+- Same day (owner: "best practice for our search goals"): the Service Areas page's title "Security Guard
+  Services Across Colorado | Ares Security" → "Service Areas Across Colorado | Ares Security" (45
+  characters; it no longer competes with Home's "Colorado Security Guard & Patrol Services"), and its
+  description names the three regions: "Armed and unarmed officers in ten Colorado cities across the Front
+  Range, Western Slope, and San Luis Valley. Licensed city by city, based in Colorado Springs." (159).
