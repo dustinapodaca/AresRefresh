@@ -6,7 +6,8 @@ as C + (C - A)/2 (or C + (C - B)) where another style has it. Weight comes from 
 glyph at both a reference weight and the target. Accented letters use D's own base letter from the
 variable font at the exact weight, with the accent placed as in C.
 
-usage: build_ares.py <scratch> <outdir>
+usage: build-die-grotesk-d-ares.py <scratch> <outdir> [style A|B|C|D, default D]
+<scratch> holds spec/spec.pdf (the Klim specimen) and die/roman.woff2 (the test VF).
 """
 import io, sys, re
 from collections import defaultdict
@@ -21,6 +22,8 @@ from fontTools import agl
 from pypdf import PdfReader
 
 S, OUT = sys.argv[1], sys.argv[2]
+T = sys.argv[3] if len(sys.argv) > 3 else 'D'
+OPSZ = {'A': 6, 'B': 18, 'C': 30, 'D': 42}[T]
 WEIGHTS = {'Hairline': 100, 'Thin': 200, 'Light': 300, 'Regular': 400, 'Medium': 500, 'Bold': 700, 'Black': 800, 'Heavy': 900}
 STYLE_I = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
 
@@ -92,7 +95,7 @@ def d_general(g, W):
     """D at weight W from the PDF subsets alone. Returns (outline, how) or (None, why)."""
     EMB[0] = 0
     # reference: the style closest to D that has the glyph, at the weight nearest W
-    for ref_style in ('D', 'C', 'B', 'A'):
+    for ref_style in sorted('ABCD', key=lambda s: (abs(STYLE_I[s] - STYLE_I[T]), -STYLE_I[s])):
         ws = sorted((abs(w - W), w) for (s, w) in subs if s == ref_style and rec(s, w, g))
         if ws: break
     else:
@@ -111,7 +114,7 @@ def d_general(g, W):
                     terms += [(1, sw), (-1, sr)]; how.append(f'w:{s}'); got = True; break
         if not got: how.append('w:none'); stats[f'noweight{W}'] += 1; NOW.append(agl.toUnicode(g)); EMB[0] = (stem_at(W) - stem_at(wref)) / 2
     # spacing: step toward D, (C - A)/2 per step, from any pair of styles at a shared weight
-    steps = 3 - STYLE_I[ref_style]
+    steps = STYLE_I[T] - STYLE_I[ref_style]
     if steps:
         got = False
         for (s1, s2) in (('C', 'A'), ('C', 'B'), ('B', 'A'), ('D', 'C'), ('D', 'A'), ('D', 'B')):
@@ -138,7 +141,7 @@ import math
 STEM = {}
 def stem_at(W):
     if W not in STEM:
-        t = instancer.instantiateVariableFont(TTFont(f"{S}/die/roman.woff2"), {'opsz': 42, 'wght': W})
+        t = instancer.instantiateVariableFont(TTFont(f"{S}/die/roman.woff2"), {'opsz': OPSZ, 'wght': W})
         gs = t.getGlyphSet(); bp = BoundsPen(gs); gs[t.getBestCmap()[ord('l')]].draw(bp)
         STEM[W] = bp.bounds[2] - bp.bounds[0]
     return STEM[W]
@@ -250,7 +253,7 @@ want = sorted(n for n in all_names if '.' not in n and n not in ('.notdef',) and
 SUBNAMES = {300: 'Light', 400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold'}
 for W, sub in SUBNAMES.items():
     stats.clear(); NOW.clear()
-    f = instancer.instantiateVariableFont(TTFont(f"{S}/die/roman.woff2"), {'opsz': 42, 'wght': W})
+    f = instancer.instantiateVariableFont(TTFont(f"{S}/die/roman.woff2"), {'opsz': OPSZ, 'wght': W})
     f.flavor = None
     gs = f.getGlyphSet(); cmap = dict(f.getBestCmap()); hmtx = f['hmtx']
     have = set(f.getGlyphOrder())
@@ -275,7 +278,7 @@ for W, sub in SUBNAMES.items():
     if 0xA0 not in cmap and 0x20 in cmap:
         for t in f['cmap'].tables:
             if t.isUnicode(): t.cmap[0xA0] = cmap[0x20]
-    fam = 'Die Grotesk D Ares'; ps = f'DieGroteskDAres-{sub}'
+    fam = f'Die Grotesk {T} Ares'; ps = f'DieGrotesk{T}Ares-{sub}'
     n = f['name']
     for nid in (1, 2, 3, 4, 6, 16, 17, 25): n.removeNames(nameID=nid)
     for nid, val in ((1, fam if sub == 'Regular' else f'{fam} {sub}'), (2, 'Regular'), (3, f'{ps};2026-11-22'), (4, f'{fam} {sub}'), (6, ps), (16, fam), (17, sub)):
@@ -283,5 +286,5 @@ for W, sub in SUBNAMES.items():
     f['OS/2'].usWeightClass = W
     if 'STAT' in f: del f['STAT']
     f.flavor = 'woff2'
-    out = f"{OUT}/die-grotesk-d-ares-{W}.woff2"; f.save(out)
+    out = f"{OUT}/die-grotesk-{T.lower()}-ares-{W}.woff2"; f.save(out)
     print(W, sub, 'chars', len(f.getBestCmap()), dict(stats)); print('  weight by outline offset (stem', round(stem_at(W)), 'vs 500', round(stem_at(500)), '):', len(NOW))

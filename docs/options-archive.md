@@ -1,12 +1,16 @@
 # Options archive
 
-**Live switch (2026-11-22, branch colorado-wide):** `?font=inter|ares` on any page, a font trial
-(`src/components/FontSwitch.tsx`, `src/fonts-ares.css`). `inter` (Inter and Inter Tight, what ships) is the
-default; `ares` sets every Inter and Inter Tight in Die Grotesk D Ares (Klim's Die Grotesk, style D: the
-test file's letters plus every character the specimen PDF holds, rebuilt at D's spacing in five weights,
-300 to 700, by `scripts/fonts/build-die-grotesk-d-ares.py`; files in `public/fonts/die-grotesk-d-ares-*`).
-Headlines take -0.005em (owner's pick); body text never tighter than 0. The choice sticks for the session
-and a small Inter / Die Grotesk D switch shows at the bottom left once a `?font=` link has been opened.
+**Live switch (2026-11-22, branch colorado-wide):** `?font=inter|ares|ares-dtext|ares-btext` on any page,
+a font trial (`src/components/FontSwitch.tsx`, `src/fonts-ares.css`). `inter` (Inter and Inter Tight, what
+ships) is the default. Headlines in every other form are Die Grotesk D Ares (Klim's Die Grotesk, style D: the
+test file's letters plus every character the specimen PDF holds, rebuilt at D's spacing in five weights, 300
+to 700, by `scripts/fonts/build-die-grotesk-d-ares.py`) at -0.005em (owner's pick). Body text: `ares` plain D
+(cramped at reading sizes); `ares-dtext` D and `ares-btext` Die Grotesk B (the style spaced for reading sizes),
+each cut to set like Inter (owner: "match spacing and sizing as closely as possible"): scaled 5% to Inter's
+x-height, Inter's line metrics, per-weight tracking so running text is as wide as Inter's (within 0.4% on the
+site's copy), and Inter's digit widths so `ch` measures wrap where they did (`scripts/fonts/match-inter.py`;
+files `public/fonts/die-grotesk-{d,b}-ares-text-*`). The choice sticks for the session and a small switch
+(Inter / D / D, Inter spacing / D + B text) shows at the bottom left once a `?font=` link has been opened.
 Stand-in files until the owner's licensed Die Grotesk files turn up. In the gallery spec.
 
 **Live switch (2026-11-22, branch colorado-wide):** `/?coverage=route|regions`, the map in Home's 04 "Where

@@ -14,7 +14,22 @@
 @font-face { font-family: 'Die Grotesk D Ares Display'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-600.woff2') format('woff2'); }
 @font-face { font-family: 'Die Grotesk D Ares Display'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-700.woff2') format('woff2'); }
 
-html[data-font='ares'] {
+/* Text cuts that set like Inter (owner, 2026-11-22: "match spacing and sizing as closely as possible"):
+   scaled 5% so the x-height is Inter's, Inter's line metrics, and per-weight tracking built in so
+   running text is as wide as Inter's (within 0.1% on the site's copy; scripts/fonts/match-inter.py).
+   The site's own letter-spacing applies on top, as it did to Inter. */
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-300.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-400.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-500.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-600.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-700.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-300.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-400.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-500.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-600.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-700.woff2') format('woff2'); }
+
+html[data-font^='ares'] {
   --ds-display: 'Die Grotesk D Ares Display', 'Inter Tight', system-ui, sans-serif;
   --ds-text: 'Die Grotesk D Ares', 'Inter', system-ui, sans-serif;
   --font-display: 'Die Grotesk D Ares Display', 'Inter Tight', system-ui, sans-serif;
@@ -23,10 +38,22 @@ html[data-font='ares'] {
   /* Inter's character variants (cv01, ss03 ...) would pick Die Grotesk's alternates instead. */
   --ds-features: normal;
 }
-html[data-font='ares'] :is(.ds-ind-index-name, .ds-in-topic) { font-feature-settings: normal; }
+/* Body text in the Inter-matched cuts: D's own (ares-dtext) or Die Grotesk B, the style spaced for
+   reading sizes (ares-btext). Headlines stay D. */
+html[data-font='ares-dtext'] {
+  --ds-text: 'Die Grotesk D Ares Text', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Die Grotesk D Ares Text', 'Inter', system-ui, sans-serif;
+  --font-text: 'Die Grotesk D Ares Text', 'Inter', system-ui, sans-serif;
+}
+html[data-font='ares-btext'] {
+  --ds-text: 'Die Grotesk B Ares Text', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Die Grotesk B Ares Text', 'Inter', system-ui, sans-serif;
+  --font-text: 'Die Grotesk B Ares Text', 'Inter', system-ui, sans-serif;
+}
+html[data-font^='ares'] :is(.ds-ind-index-name, .ds-in-topic) { font-feature-settings: normal; }
 /* Headlines at the tracking the owner picked for D (-0.005em; Inter Tight's ran to -0.055em), and
-   body text never tighter than D's own spacing. FontSwitch marks the elements. */
-html[data-font='ares'] [data-ares-t='d'] { letter-spacing: -0.005em !important; }
+   with plain D (ares) body text never tighter than D's own spacing. FontSwitch marks the elements. */
+html[data-font^='ares'] [data-ares-t='d'] { letter-spacing: -0.005em !important; }
 html[data-font='ares'] [data-ares-t='t'] { letter-spacing: 0 !important; }
 
 .ares-fontswitch {
