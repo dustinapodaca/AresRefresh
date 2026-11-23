@@ -19,10 +19,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon-v4.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fonts are self-hosted (src/fonts.css, public/fonts/). The two the first screen needs
-         start downloading with the page instead of after the stylesheet. -->
-    <link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/inter-tight-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Fonts are self-hosted (src/fonts.css, public/fonts/). The ones the first screen needs (the
+         headline face at 600, the text face at 400 and 500) start downloading with the page instead
+         of after the stylesheet, so the first paint is already in them. -->
+    <link rel="preload" href="/fonts/die-grotesk-d-ares-display-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/die-grotesk-b-ares-text-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/die-grotesk-b-ares-text-500.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" content="#000000" />
     <!-- AI discovery: an Agentic Resource Discovery catalog (rel=ard is the current spec;
          rel=ai-catalog is its predecessor, still read by Lighthouse) and the llms.txt summary. -->

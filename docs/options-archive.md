@@ -1,17 +1,17 @@
 # Options archive
 
-**Live switch (2026-11-22, branch colorado-wide):** `?font=inter|ares|ares-dtext|ares-btext` on any page,
-a font trial (`src/components/FontSwitch.tsx`, `src/fonts-ares.css`). `inter` (Inter and Inter Tight, what
-ships) is the default. Headlines in every other form are Die Grotesk D Ares (Klim's Die Grotesk, style D: the
-test file's letters plus every character the specimen PDF holds, rebuilt at D's spacing in five weights, 300
-to 700, by `scripts/fonts/build-die-grotesk-d-ares.py`) at -0.005em (owner's pick). Body text: `ares` plain D
-(cramped at reading sizes); `ares-dtext` D and `ares-btext` Die Grotesk B (the style spaced for reading sizes),
-each cut to set like Inter (owner: "match spacing and sizing as closely as possible"): scaled 5% to Inter's
-x-height, Inter's line metrics, per-weight tracking so running text is as wide as Inter's (within 0.4% on the
-site's copy), and Inter's digit widths so `ch` measures wrap where they did (`scripts/fonts/match-inter.py`;
-files `public/fonts/die-grotesk-{d,b}-ares-text-*`). The choice sticks for the session and a small switch
-(Inter / D / D, Inter spacing / D + B text) shows at the bottom left once a `?font=` link has been opened.
-Stand-in files until the owner's licensed Die Grotesk files turn up. In the gallery spec.
+**Live switch (2026-11-22, branch colorado-wide):** `?font=ares-btext|inter|ares|ares-dtext` on any page
+(`src/components/FontSwitch.tsx`, `src/fonts-ares.css`). **`ares-btext` is the default (owner, 2026-11-22):**
+Die Grotesk D headlines and Die Grotesk B text, set in `src/fonts.css` and the font tokens, so the first
+paint is already in them (the switch applied after load made text jump: tight, open, then right). The
+headline cut (`die-grotesk-d-ares-display-*`, `scripts/fonts/track.py`) carries +0.045em, so headlines
+tracked -0.05em for Inter Tight land on the owner's -0.005em; the text cut (`die-grotesk-b-ares-text-*`,
+`scripts/fonts/match-inter.py`) is scaled 5% to Inter's x-height with Inter's line metrics, spacing
+(line length within 0.4%), and digit widths. Both rebuilt from Klim's test font and the specimen PDF
+(`scripts/fonts/build-die-grotesk-d-ares.py`) until the licensed files turn up. Alternatives: `inter`
+(Inter Tight and Inter, the site's type until 2026-11-22), `ares` (plain D text, cramped at reading
+sizes), `ares-dtext` (D text cut like Inter). The choice sticks for the session; a small switch shows at
+the bottom left once a `?font=` link has been opened. In the gallery spec.
 
 **Live switch (2026-11-22, branch colorado-wide):** `/?coverage=route|regions`, the map in Home's 04 "Where
 we work." (`FORMS` in `src/components/home/Coverage.tsx`; the regions form in

@@ -46,7 +46,7 @@
   border-radius: 2px;
   background: none;
   font: 500 14px/1 var(--ds-text);
-  font-feature-settings: 'cv01', 'cv05', 'cv09', 'cv11', 'ss03';
+  font-feature-settings: var(--ds-features);
   color: var(--ds-fg-muted);
   box-shadow: inset 0 0 0 1px var(--ds-rule-strong);
   cursor: pointer;

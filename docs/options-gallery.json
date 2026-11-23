@@ -5,15 +5,20 @@
   "groups": [
     {
       "heading": "Site font",
-      "intro": "Every page. Inter and Inter Tight today; Die Grotesk D Ares headlines at -0.005em in the others, with three body texts. Once a ?font= link is open, a switch at the bottom left flips between them for the session.",
+      "intro": "Every page. Die Grotesk D headlines and Die Grotesk B text by default; Inter and the other Die Grotesk forms to compare. Once a ?font= link is open, a switch at the bottom left flips between them for the session.",
       "page": "/",
       "param": "font",
       "options": [
         {
+          "value": "ares-btext",
+          "label": "D + B text",
+          "note": "Die Grotesk D headlines; body text in Die Grotesk B cut to set like Inter. The site's type since 2026-11-22 (owner).",
+          "tag": "default"
+        },
+        {
           "value": "inter",
           "label": "Inter",
-          "note": "Inter Tight headlines, Inter text: what the site ships.",
-          "tag": "default"
+          "note": "Inter Tight headlines, Inter text: the site's type until 2026-11-22."
         },
         {
           "value": "ares",
@@ -24,11 +29,6 @@
           "value": "ares-dtext",
           "label": "D, Inter spacing",
           "note": "Die Grotesk D headlines; body text in D cut to set like Inter: Inter's x-height, line metrics, line length, and digit widths."
-        },
-        {
-          "value": "ares-btext",
-          "label": "D + B text",
-          "note": "Die Grotesk D headlines; body text in Die Grotesk B, the style spaced for reading sizes, cut to set like Inter the same way."
         }
       ]
     },

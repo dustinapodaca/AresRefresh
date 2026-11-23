@@ -13,49 +13,49 @@ colors:
 typography:
   # Typography adopted from v10 (tag home-v10-mobbin-redesign), owner request 2026-10-04.
   display-xl:
-    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk D Ares Display', system-ui, sans-serif"
     fontSize: "clamp(44px, 6vw, 88px)"
     fontWeight: 600
     lineHeight: 0.94
     letterSpacing: "-0.05em"
   display-lg:
-    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk D Ares Display', system-ui, sans-serif"
     fontSize: "clamp(34px, 4.2vw, 60px)"
     fontWeight: 600
     lineHeight: 1.02
     letterSpacing: "-0.04em"
   display-md:
-    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk D Ares Display', system-ui, sans-serif"
     fontSize: "clamp(26px, 2.6vw, 38px)"
     fontWeight: 500
     lineHeight: 1.15
     letterSpacing: "-0.03em"
   city:
-    fontFamily: "'Inter Tight', Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk D Ares Display', system-ui, sans-serif"
     fontSize: "clamp(36px, 6vw, 88px)"
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.05em"
   title:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk B Ares Text', system-ui, sans-serif"
     fontSize: "22px (steps 24px, 28px desktop)"
     fontWeight: 600
     lineHeight: 1.25
     letterSpacing: "-0.02em"
   lead:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk B Ares Text', system-ui, sans-serif"
     fontSize: "18px"
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "-0.01em"
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk B Ares Text', system-ui, sans-serif"
     fontSize: "16px (steps 17px)"
     fontWeight: 400
     lineHeight: 1.55
     fontFeature: "'cv01', 'cv05', 'cv09', 'cv11', 'ss03'"
   small:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "'Die Grotesk B Ares Text', system-ui, sans-serif"
     fontSize: "14px (labels 13px)"
     fontWeight: 400
     lineHeight: 1.45
@@ -123,6 +123,11 @@ components:
 
 # Design System: Ares Security
 
+> **Type replaced (owner, 2026-11-22).** Inter Tight is now Die Grotesk D and Inter is now Die Grotesk
+> B (Typography, "Font loading"). Where this file names Inter Tight for a headline, read Die Grotesk D;
+> where it names Inter for text, read Die Grotesk B. Sizes, weights, and the CSS tracking values are
+> unchanged: the font files carry the difference. `?font=inter` shows the site in Inter.
+
 > **Home replaced (owner, 2026-10-20).** The Home is now "The Ground" (Components, "Home"). Other
 > entries that mention the Home Record cards, the Home hero strip or photo, the credential strip,
 > the Home rail, or the Home close describe the Dossier Home it replaced, kept in
@@ -161,7 +166,7 @@ PRODUCT.md, and the Mobbin board in `docs/inspiration.md`. It replaces nothing i
 
 **Key Characteristics:**
 - One true-black canvas from header to footer. No bands, no fills, no dividers.
-- Three faces with fixed jobs: Inter Tight states, Inter explains, Fraktion Mono proves.
+- Three faces with fixed jobs: Die Grotesk D states, Die Grotesk B explains, Fraktion Mono proves.
 - Proof as a ledger: label column, mono values, a verification route on every row.
 - A running document rail on desktop and a running head on mobile (About, Careers; Home since
   2026-10-20 and Services since 2026-10-24 read as one scene without them; the Capability Statement
@@ -197,7 +202,8 @@ only the type came over, not that version's layout or colors. The hero and Conta
 headlines, the figure, and the city list were then scaled down on desktop (owner); mobile
 sizes are unchanged.
 
-- **Display: Inter Tight 600**, very tight (-0.05em at display-xl and the city list,
+- **Display: Die Grotesk D 600** (was Inter Tight until 2026-11-22; the tracking values below were set for
+  Inter Tight and the font file carries +0.045em, so -0.05em sets at -0.005em), very tight (-0.05em at display-xl and the city list,
   -0.04em at display-lg, -0.03em at display-md, which drops to weight 500). Leading 0.94
   to 1.15. Reduce size before loosening tracking.
   - display-xl: the hero headline (two lines on desktop, set over the full-bleed photo;
@@ -207,7 +213,9 @@ sizes are unchanged.
   - display-lg: section headlines (Record, Staffing, Careers).
   - display-md: the Coverage headline.
   - city: the three city rows (smaller on desktop, owner 2026-10-05).
-- **Text: Inter** with `cv01 cv05 cv09 cv11 ss03`.
+- **Text: Die Grotesk B** (was Inter with `cv01 cv05 cv09 cv11 ss03` until 2026-11-22; no feature tags
+  now, since in Die Grotesk they pick alternates). Cut to set like Inter: same x-height, line metrics,
+  line length, and digit widths, so every size and measure below holds.
   - Sub-heads (ledger groups, staffing steps, divisions heading) are
     Inter 600 at 22 to 28px, -0.02em.
   - The pull quote is Inter 500 at display-md size.
@@ -235,13 +243,14 @@ sizes are unchanged.
   owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
   strong, from the same trail as the BreadcrumbList JSON-LD. On phones one line, a long
   current page ending in an ellipsis; owner, 2026-10-16.)
-- Font loading: self-hosted Latin subsets (`src/fonts.css`), `display=swap`: Inter (300 to 800),
-  Inter Tight (500, 600), PP Fraktion Mono (400 and 700 only, so text set at 500 shows as 400; Pangram
-  Pangram, licensed by the owner).
-- **Font trial (owner, 2026-11-22): `?font=ares|ares-dtext|ares-btext`** sets every Inter Tight in Die
-  Grotesk D Ares (Klim's Die Grotesk, style D, rebuilt with the specimen's full character set in 300 to
-  700), headlines at -0.005em, and body text in plain D, or in D or B cut to set like Inter (its x-height,
-  line metrics, line length, and digit widths); Inter stays the default until the owner chooses (`FontSwitch.tsx`, `fonts-ares.css`,
+- Font loading (owner, 2026-11-22): self-hosted (`src/fonts.css`), `display=swap`, the first screen's
+  three files preloaded in index.html so the first paint is already in them: Die Grotesk D Ares Display
+  (500, 600, 700) and Die Grotesk B Ares Text (300 to 700), Klim's Die Grotesk, licensed by the owner;
+  PP Fraktion Mono (400 and 700 only, so text set at 500 shows as 400; Pangram Pangram, licensed by the
+  owner). The Die Grotesk files are stand-ins built from Klim's test font and the specimen PDF
+  (`scripts/fonts/`) until the licensed files turn up; replace them then, keeping the display cut's
+  +0.045em and the text cut's Inter matching. `?font=inter|ares|ares-dtext` compares Inter Tight and
+  Inter, plain D text, and D text cut like Inter (`FontSwitch.tsx`, `fonts-ares.css`,
   `docs/options-archive.md`).
 
 ## Layout

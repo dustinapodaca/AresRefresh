@@ -14,7 +14,7 @@
   --color-paper-2: #f2f2f1;
   --color-line: #d8d8d6;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Die Grotesk B Ares Text', system-ui, -apple-system, sans-serif;
 
   /* Dossier system (DESIGN.md, clean-slate redesign 2026-10-04). Separate names so
      pages not yet restyled keep the legacy Moonstone tokens above. */
@@ -27,8 +27,8 @@
   --color-rust: #bc6f40;
   --color-rust-deep: #8b4920;
 
-  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
-  --font-text: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Die Grotesk D Ares Display', system-ui, sans-serif;
+  --font-text: 'Die Grotesk B Ares Text', system-ui, -apple-system, sans-serif;
   --font-data: 'PP Fraktion Mono', ui-monospace, Menlo, monospace;
 
   --radius-xl: 1.25rem; /* 20px */

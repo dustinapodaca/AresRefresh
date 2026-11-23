@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../fonts-ares.css';
 
-// Font trial (owner, 2026-11-22), for the owner to compare at ?font=inter|ares|ares-dtext|ares-btext
-// on any page. Inter is the default (what the site ships). `ares` swaps every Inter and Inter Tight for
-// Die Grotesk D Ares; `ares-dtext` and `ares-btext` keep D for headlines and set body text in cuts of D
-// or B matched to Inter's size and spacing (fonts-ares.css). The choice sticks for the session, and
-// once a ?font= link has been opened a small switch at the bottom left flips between them. Nothing
-// shows without it, and the prerender always has Inter.
-const FONTS = { inter: 'Inter', ares: 'D', 'ares-dtext': 'D, Inter spacing', 'ares-btext': 'D + B text' } as const;
+// The site's type (owner, 2026-11-22), for the owner to compare at
+// ?font=ares-btext|inter|ares|ares-dtext on any page. `ares-btext` is the default (owner, 2026-11-22:
+// Die Grotesk D headlines, Die Grotesk B text matched to Inter's size and spacing; set in fonts.css and
+// the tokens, so the first paint is already in it). `inter` is the site's type before (Inter Tight and
+// Inter), `ares` plain D text, `ares-dtext` D text cut to set like Inter (fonts-ares.css). The choice
+// sticks for the session, and once a ?font= link has been opened a small switch at the bottom left
+// flips between them. Nothing shows without it.
+const FONTS = { 'ares-btext': 'D + B text', inter: 'Inter', ares: 'D', 'ares-dtext': 'D, Inter spacing' } as const;
 type Font = keyof typeof FONTS;
+const DEFAULT: Font = 'ares-btext';
 const KEY = 'ares-font-trial';
 
 const read = (): string | null => {
@@ -19,24 +21,9 @@ const write = (v: Font) => {
   try { sessionStorage.setItem(KEY, v); } catch { /* private mode: the URL still works */ }
 };
 
-// Mark text by the face it is set in: headlines (the display family) take the owner's tracking, body
-// text never runs tighter than Die Grotesk's own spacing (Inter's negative tracking would cramp it).
-function mark() {
-  const els = document.body.querySelectorAll<HTMLElement | SVGElement>('*:not([data-ares-t])');
-  for (const el of els) {
-    if (!(el instanceof HTMLElement || el instanceof SVGElement)) continue;
-    let text = false;
-    for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent && n.textContent.trim()) { text = true; break; }
-    if (!text) continue;
-    const cs = getComputedStyle(el);
-    if (cs.fontFamily.includes('Ares Display')) el.setAttribute('data-ares-t', 'd');
-    else if (cs.fontFamily.includes('Die Grotesk') && parseFloat(cs.letterSpacing) < 0) el.setAttribute('data-ares-t', 't');
-  }
-}
-
 export default function FontSwitch() {
   const { search } = useLocation();
-  const [font, setFont] = useState<Font>('inter');
+  const [font, setFont] = useState<Font>(DEFAULT);
   const [shown, setShown] = useState(false);
 
   // ?font= sets the choice for the session; without it the stored one holds.
@@ -49,21 +36,13 @@ export default function FontSwitch() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (font === 'inter') { root.removeAttribute('data-font'); return; }
-    root.setAttribute('data-font', font);
-    let t = 0;
-    const run = () => { window.clearTimeout(t); t = window.setTimeout(mark, 120); };
-    run();
-    // New pages and anything a page adds later (split headlines, decks) get marked as they arrive.
-    const mo = new MutationObserver(run);
-    mo.observe(document.body, { childList: true, subtree: true });
-    document.fonts?.ready.then(run);
-    return () => { mo.disconnect(); window.clearTimeout(t); root.removeAttribute('data-font'); };
+    if (font === DEFAULT) root.removeAttribute('data-font');
+    else root.setAttribute('data-font', font);
   }, [font]);
 
   if (!shown) return null;
   return (
-    <div className="ares-fontswitch" role="group" aria-label="Font trial">
+    <div className="ares-fontswitch" role="group" aria-label="Font">
       {(Object.keys(FONTS) as Font[]).map((k) => (
         <button key={k} type="button" aria-pressed={font === k} onClick={() => { write(k); setFont(k); }}>
           {FONTS[k]}
