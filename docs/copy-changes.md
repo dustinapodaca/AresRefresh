@@ -1396,3 +1396,13 @@ previous page's. New framing copy (N):
   loss prevention", "Gate, dock & lobby control", "Crew, visitor & delivery escort", "Person & vehicle
   verification". Done where the page sets them (`amp()` in `CapabilityStatement.tsx`); the same names in
   `capability/data.ts` keep "and" where the service pages use them as duty headings.
+
+## 2026-11-22: section headlines drop their closing period
+
+- Every section headline (H2) loses its period, like the hero headlines did on 2026-10-10 (owner, after
+  comparing: most sites, Stripe, Mailchimp, Resend, and the agency and services sites on Mobbin, set
+  headlines without one). 67 headlines across Home, Services, About, Careers, the Capability Statement,
+  Teaming, the Service Areas hub, and every role, industry, city, jobs, and Insights page, e.g. "The record
+  so far", "Quality over quantity", "Request a quote, or call us", "Security in Denver", "Questions,
+  answered". The sentence inside the Services industries headline ("Six industries, ... campuses.") keeps
+  its period. Hand-off lines and leads are unchanged.

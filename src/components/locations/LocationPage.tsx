@@ -56,7 +56,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
       <div className="ds-container">
         {/* Only this city's page says this (copy audit, 2026-10-10). */}
         <section className="ds-loc-local ds-mk-split" aria-labelledby="loc-local-title">
-          <h2 id="loc-local-title" className="ds-display-lg">Security in {file.city.name}.</h2>
+          <h2 id="loc-local-title" className="ds-display-lg">Security in {file.city.name}</h2>
           <div className="ds-mk-prose"><p>{file.local}</p></div>
         </section>
 

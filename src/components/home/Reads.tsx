@@ -46,7 +46,7 @@ export default function Reads() {
   return (
     <section ref={ref} id="insights" className="nx-reads nx-edge" aria-labelledby="nx-reads-title">
       <div className="nx-reads-head">
-        <h2 id="nx-reads-title" className="nx-reads-title">Questions buyers ask.</h2>
+        <h2 id="nx-reads-title" className="nx-reads-title">Questions buyers ask</h2>
         <p className="nx-reads-line">Plain answers on cost, coverage, and licensing in Colorado, for when you are still comparing.</p>
         <Link to="/insights" className="ds-link nx-reads-all nx-reads-all-top">
           All {INSIGHTS.length} articles

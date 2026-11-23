@@ -237,8 +237,10 @@ sizes are unchanged.
   (owner, 2026-10-05), top-aligned with its note.
 - **Phone in the close:** the data face at 30px, 44px from 640px. The Contact headline carries
   the size.
-- **Hero headlines (every H1) carry no closing period** (owner, 2026-10-10, `heroTitle()` in
-  src/lib); section headlines (H2) keep theirs.
+- **No headline carries a closing period:** hero headlines (every H1) since 2026-10-10 (owner,
+  `heroTitle()` in src/lib), section headlines (H2) since 2026-11-22 (owner: most sites set them without
+  one). Headlines quoted elsewhere in this file with a period predate that. A sentence of copy set inside
+  a headline keeps its period ("Six industries, from ... to offices and campuses.").
 - No eyebrows or kickers above headings. No bracketed labels. (Breadcrumbs above the
   headline on service, industry, city, and article pages are navigation, not a label: the
   owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline

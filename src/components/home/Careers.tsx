@@ -74,7 +74,7 @@ export default function Careers() {
 
         <div className="nx-cr-copy">
           <h2 id="nx-careers-title" className="nx-statement nx-cr-title">
-            {words('Now hiring armed and unarmed officers.')}
+            {words('Now hiring armed and unarmed officers')}
           </h2>
           <div className="nx-cr-side nx-cr-rise">
             <p>

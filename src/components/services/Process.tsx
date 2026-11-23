@@ -88,7 +88,7 @@ export default function Process() {
     <section id="process" className="ds-svc-process" aria-labelledby="process-title">
       <div className="ds-svc-process-head" data-head={head}>
         <h2 id="process-title" className="ds-display-lg">
-          Four stages, from site walk to first shift.
+          Four stages, from site walk to first shift
         </h2>
         <p className="ds-lead ds-svc-intro">
           Every site has its own shift pattern, threat profile, and compliance requirements.

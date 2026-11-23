@@ -62,7 +62,7 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
       <div className="ds-mk-faq-head">
         {/* "Something else? Call ..." was cut (design review, 2026-10-13): the phone is already
             in each page's opening and its closing ask. */}
-        <h2 id={`${id}-title`} className="ds-display-md">Questions, answered.</h2>
+        <h2 id={`${id}-title`} className="ds-display-md">Questions, answered</h2>
       </div>
       <div className="ds-mk-faq-list" ref={listRef}>
         {items.map((f) => (

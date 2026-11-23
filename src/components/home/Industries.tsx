@@ -153,7 +153,7 @@ export default function Industries() {
     <section ref={ref} id="industries" className="nx-ind" aria-labelledby="nx-ind-title">
       <header className="nx-ind-head nx-edge">
         <h2 id="nx-ind-title" className="nx-statement nx-ind-title">
-          {words('The sites we protect.')}
+          {words('The sites we protect')}
         </h2>
         <p className="nx-ind-lead">
           Six industries, from government facilities and critical sites to offices and campuses. Each has

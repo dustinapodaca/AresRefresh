@@ -299,7 +299,7 @@ export const COLORADO_SPRINGS: LocationFile = {
   path: '/locations/colorado-springs',
   title: 'Security guards in Colorado Springs.',
   lead: 'Armed and unarmed security officers for sites across Colorado Springs and El Paso County, from the company headquartered here since 2021. Our leadership is based here and trains every officer on the post before their first shift.',
-  licenseTitle: 'Licensed in Colorado Springs.',
+  licenseTitle: 'Licensed in Colorado Springs',
   licenseIntro:
     'Colorado has no statewide security license. Colorado Springs licenses security companies itself, and these are ours here.',
   license: [
@@ -324,7 +324,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters since 2021' } },
   ],
   local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, so leadership is a short drive from any post in El Paso County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, campuses, and community health centers. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Colorado Springs license?',
@@ -355,7 +355,7 @@ export const DENVER: LocationFile = {
   title: 'Security guards in Denver.',
   // The training line moved into "Security in Denver." (copy audit round 3).
   lead: 'Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor.',
-  licenseTitle: 'Licensed in Denver.',
+  licenseTitle: 'Licensed in Denver',
   licenseIntro: 'Colorado has no statewide security license. Denver licenses security companies itself, and these are ours here.',
   license: [
     {
@@ -379,7 +379,7 @@ export const DENVER: LocationFile = {
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters, an hour south on I-25' } },
   ],
   local: 'Greater Denver runs from Aurora and Commerce City to Lakewood, Douglas County, and the DIA corridor, and Ares is licensed to staff all of it. Denver licenses private security employers itself, and we hold Denver license 2021-BFN-0001984 for armed and unarmed security, as an eligible training provider in the city. Here we are ready to staff data centers and their builds, warehouses and logistics, airport-area sites, hospitals, parking and transportation, public-sector facilities, and commercial property. Our headquarters is an hour south on I-25 in Colorado Springs, and a member of our leadership still trains each officer on the post before the first shift and works the first shift on every new post. Ares is also Denver M/WBE and SBE certified, for city work that sets participation goals.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Denver license?',
@@ -414,7 +414,7 @@ export const PUEBLO: LocationFile = {
   path: '/locations/pueblo',
   title: 'Security guards in Pueblo.',
   lead: 'Armed and unarmed security officers for sites across Pueblo and Pueblo County, from a company licensed here that trains its own officers. Our headquarters is up I-25 in Colorado Springs.',
-  licenseTitle: 'Licensed in Pueblo.',
+  licenseTitle: 'Licensed in Pueblo',
   licenseIntro: 'Colorado has no statewide security license. Pueblo licenses security companies itself, through the Pueblo Police Department, and these are ours here.',
   license: [
     {
@@ -430,7 +430,7 @@ export const PUEBLO: LocationFile = {
   ],
   // The audit's "Pueblo is where our CEO started in security" waits for Deidre's OK.
   local: 'Pueblo licenses security companies through the Pueblo Police Department, and Ares holds Pueblo license 26422 for armed and unarmed security. The department also approves us as an armed and unarmed training provider, so the officers we post here are trained and qualified to Pueblo\u2019s own rules. Our headquarters is 45 minutes north on I-25 in Colorado Springs, close enough that a member of our leadership walks each site, trains each officer on the post before the first shift, and works the first shift on every new post. Here we are ready to staff industrial and energy sites, construction, city and county facilities, campuses, apartment and residential properties, and commercial property, across Pueblo and Pueblo County. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Pueblo license?',
@@ -467,7 +467,7 @@ export const GRAND_JUNCTION: LocationFile = {
   path: '/locations/grand-junction',
   title: 'Security guards in Grand Junction.',
   lead: 'Armed and unarmed security officers for sites across Grand Junction and Mesa County, from a Colorado security company that licenses, screens, and trains its own officers.',
-  licenseTitle: 'Licensing in Grand Junction.',
+  licenseTitle: 'Licensing in Grand Junction',
   licenseIntro:
     'Colorado has no statewide security license, and Grand Junction has no city license for security companies. The City confirmed in writing that Ares, with no office in the city, needs none. Our own standard is below.',
   license: [
@@ -478,7 +478,7 @@ export const GRAND_JUNCTION: LocationFile = {
   ],
   local:
     'Grand Junction is the largest city on the Western Slope, and Ares is ready to staff it. The city has no business license and no security license, so the standard a buyer can rely on here is the company’s own: every officer is screened before hire, trained on the post before the first shift, and, on an armed post, qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector and federal facilities, hospitals and clinics, energy and industrial sites, campuses, construction, and commercial property across Mesa County. A member of our leadership walks every new site before anything is signed, and federal agencies can order through our GSA Multiple Award Schedule contract.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Grand Junction license?',
@@ -505,7 +505,7 @@ export const GLENWOOD_SPRINGS: LocationFile = {
   path: '/locations/glenwood-springs',
   title: 'Security guards in Glenwood Springs.',
   lead: 'Armed and unarmed security officers for sites in Glenwood Springs, along I-70 through Garfield County, and up the Roaring Fork Valley.',
-  licenseTitle: 'Licensed in Glenwood Springs.',
+  licenseTitle: 'Licensed in Glenwood Springs',
   licenseIntro:
     'Colorado has no statewide security license. Glenwood Springs requires a business license of anyone doing business in the city, services included, and Ares holds one.',
   license: [
@@ -516,7 +516,7 @@ export const GLENWOOD_SPRINGS: LocationFile = {
   ],
   local:
     'Glenwood Springs sits where I-70 meets the Roaring Fork Valley, at the center of Garfield County. The city requires a business license of anyone doing business inside city limits, and Ares holds one; it runs on a two-year term that ends with each odd-numbered year. Here we are ready to staff public-sector facilities, hospitals and clinics, hotels and commercial property, construction, and apartment and residential properties, from Glenwood Springs west along I-70 and up the valley. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. A member of our leadership walks every new site before anything is signed.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Glenwood Springs license?',
@@ -542,7 +542,7 @@ export const MONTROSE: LocationFile = {
   path: '/locations/montrose',
   title: 'Security guards in Montrose.',
   lead: 'Armed and unarmed security officers for sites across Montrose and the Uncompahgre Valley, on US-50 between Grand Junction and the San Juans.',
-  licenseTitle: 'Licensing in Montrose.',
+  licenseTitle: 'Licensing in Montrose',
   licenseIntro:
     'Colorado has no statewide security license. Montrose has no business license, and its sales tax license is for retail sales only, so a security company working here needs no city license. The City confirmed that for Ares in writing.',
   license: [
@@ -553,7 +553,7 @@ export const MONTROSE: LocationFile = {
   ],
   local:
     'Montrose is the center of the Uncompahgre Valley, on US-50 between Grand Junction and the San Juans. The city has no business license and no security license, and its sales tax license covers retail sales only, so the standard here is the company’s own: officers screened before hire, trained on the post before the first shift, and, on an armed post, qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector facilities, hospitals and clinics, industrial and warehouse sites, airport-area sites, and commercial property across Montrose County. A member of our leadership walks every new site before anything is signed, and federal agencies can order through our GSA Multiple Award Schedule contract.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Montrose license?',
@@ -580,7 +580,7 @@ export const DURANGO: LocationFile = {
   path: '/locations/durango',
   title: 'Security guards in Durango.',
   lead: 'Armed and unarmed security officers for sites across Durango and La Plata County, from a Colorado security company licensed to work in the city.',
-  licenseTitle: 'Licensed in Durango.',
+  licenseTitle: 'Licensed in Durango',
   licenseIntro:
     'Colorado has no statewide security license. Durango requires a business license of any company that works inside city limits, services included, and Ares holds one.',
   license: [
@@ -591,7 +591,7 @@ export const DURANGO: LocationFile = {
   ],
   local:
     'Durango is the hub of La Plata County and Southwest Colorado. The City of Durango requires a business license of any company that enters city limits to work, services included, and Ares holds one. Durango once had a separate merchant patrol license; the city repealed it in 2016, so the business license is the one that applies to security. Here we are ready to staff public-sector and federal facilities, hospitals and clinics, campuses, construction, apartment and residential properties, and commercial property and retail across La Plata County. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Durango license?',
@@ -618,7 +618,7 @@ export const ALAMOSA: LocationFile = {
   path: '/locations/alamosa',
   title: 'Security guards in Alamosa.',
   lead: 'Armed and unarmed security officers for sites across Alamosa and the San Luis Valley, licensed under the city’s own security ordinance.',
-  licenseTitle: 'Licensed in Alamosa.',
+  licenseTitle: 'Licensed in Alamosa',
   licenseIntro:
     'Colorado has no statewide security license. Alamosa licenses contract security companies and every officer who works in the city, under an ordinance it rewrote in 2024, and these are ours here.',
   license: [
@@ -629,7 +629,7 @@ export const ALAMOSA: LocationFile = {
   ],
   local:
     'Alamosa is the center of the San Luis Valley, and its licensing is the strictest of any city we staff. Since 2024 the city has licensed contract security companies and each officer who works in the city, and every armed officer must also hold a Colorado concealed handgun permit. Ares holds the company license and licenses each officer it posts here, and we give the police chief the name of every armed officer. Here we are ready to staff public-sector and federal facilities, campuses, hospitals and clinics, commercial property and retail, and agricultural and industrial sites across Alamosa County. Our headquarters is about two and a half hours away in Colorado Springs, and a member of our leadership walks every new site before anything is signed.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need an Alamosa license?',
@@ -661,7 +661,7 @@ export const TRINIDAD: LocationFile = {
   path: '/locations/trinidad',
   title: 'Security guards in Trinidad.',
   lead: 'Armed and unarmed security officers for sites across Trinidad and Las Animas County, on I-25 just north of Raton Pass and the New Mexico line.',
-  licenseTitle: 'Licensed in Trinidad.',
+  licenseTitle: 'Licensed in Trinidad',
   licenseIntro:
     'Colorado has no statewide security license, and Trinidad has no separate security license. The city requires a business license of any business working inside city limits, and Ares holds one.',
   license: [
@@ -672,7 +672,7 @@ export const TRINIDAD: LocationFile = {
   ],
   local:
     'Trinidad is the seat of Las Animas County, on I-25 just north of Raton Pass and the New Mexico line. The city requires a business license of any business working inside city limits, renewed each year through February, and Ares holds one; Trinidad has no separate security license, so the standard a buyer can rely on is the company’s own. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. Here we are ready to staff public-sector facilities, hospitals and clinics, campuses, hotels and commercial property, and construction across Las Animas County. Our headquarters is about two hours up I-25, and a member of our leadership walks every new site before anything is signed.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Trinidad license?',
@@ -706,7 +706,7 @@ export const FORT_COLLINS: LocationFile = {
   path: '/locations/fort-collins',
   title: 'Security guards in Fort Collins.',
   lead: 'Armed and unarmed security officers for sites across Fort Collins and Larimer County, on I-25 at the north end of the Front Range.',
-  licenseTitle: 'Licensed in Fort Collins.',
+  licenseTitle: 'Licensed in Fort Collins',
   licenseIntro:
     'Colorado has no statewide security license. Fort Collins requires its sales and use tax license, which serves as the city’s business license, of any business that sends employees to work in the city, and Ares holds one.',
   license: [
@@ -717,7 +717,7 @@ export const FORT_COLLINS: LocationFile = {
   ],
   local:
     'Fort Collins sits on I-25 at the north end of the Front Range, the seat of Larimer County and home to Colorado State University. The city requires its sales and use tax license, which doubles as its business license, of any business that sends employees to work inside city limits, and Ares holds one. Here we are ready to staff public-sector facilities, hospitals and clinics, campuses, construction, industrial and warehouse sites, and commercial property and retail across Larimer County. Every officer is screened before hire and trained on the post before the first shift, and armed officers are qualified by our NRA-certified firearms instructor. Our headquarters is about two hours down I-25 in Colorado Springs, and a member of our leadership walks every new site before anything is signed.',
-  sectorsTitle: 'Sites we are ready to staff here.',
+  sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
       q: 'Does a security company need a Fort Collins license?',

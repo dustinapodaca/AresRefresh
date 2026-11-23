@@ -71,7 +71,7 @@ function Since() {
 export default function Founder() {
   return (
     <section id="founder" className="ds-founder" data-form="letter" aria-labelledby="founder-title">
-      <h2 id="founder-title" className="ds-display-lg">Why Ares exists.</h2>
+      <h2 id="founder-title" className="ds-display-lg">Why Ares exists</h2>
       <div className="ds-founder-letter">
         <p className="ds-founder-story">
           {STORY.story} <span>{STORY.close}</span>

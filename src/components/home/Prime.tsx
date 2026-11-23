@@ -387,7 +387,7 @@ export default function Prime() {
         <div className="nx-prime-frame">
         <div className="nx-prime-copy">
           <h2 id="nx-prime-title" className="nx-statement nx-statement-sm">
-            {words('For prime contractors.')}
+            {words('For prime contractors')}
           </h2>
           <p className="nx-prime-line">
             <span>A woman-owned subcontractor for Front Range work.</span> Restricted-area escorts,

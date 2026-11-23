@@ -117,7 +117,7 @@ export function Capabilities({ onServices = false }: { onServices?: boolean }) {
       <div className="ds-cs-head">
         <h2 id="caps-title" className="ds-display-lg">
           {/* On Services it pairs with the next headline, "Who we protect." (owner, 2026-10-18). */}
-          {onServices ? 'What we staff.' : 'Core competencies.'}
+          {onServices ? 'What we staff' : 'Core competencies'}
         </h2>
         <p className="ds-lead">{say('Six services, each staffed by officers trained on your post before their first shift. Open one to see what it includes.')}</p>
       </div>
@@ -170,7 +170,7 @@ export function Competencies() {
     <section id="capabilities" className="ds-cs-caps" aria-labelledby="caps-title">
       <div className="ds-cs-head">
         <h2 id="caps-title" className="ds-display-lg">
-          Core competencies.
+          Core competencies
         </h2>
         <p className="ds-lead">Six services, each staffed by officers Ares trains on the post before their first shift.</p>
       </div>
@@ -187,7 +187,7 @@ export function Why() {
     <section id="why" className="ds-cs-why" aria-labelledby="why-title">
       <div className="ds-cs-head">
         <h2 id="why-title" className="ds-display-lg">
-          Why Ares.
+          Why Ares
         </h2>
         <p className="ds-lead">Four reasons, each with its source.</p>
       </div>
@@ -238,7 +238,7 @@ export function Past() {
     <section id="past" className="ds-cs-past" aria-labelledby="past-title">
       <div className="ds-cs-head">
         <h2 id="past-title" className="ds-display-lg">
-          Past performance.
+          Past performance
         </h2>
         <p className="ds-lead">{record.lead}</p>
       </div>
@@ -279,7 +279,7 @@ export function Buy() {
     <section ref={ref} id="buy" className="ds-cs-buy" aria-labelledby="buy-title">
       <div className="ds-cs-head">
         <h2 id="buy-title" className="ds-display-lg">
-          {say('How to buy from us.')}
+          {say('How to buy from us')}
         </h2>
         <p className="ds-lead">Pre-negotiated pricing, and award without a re-compete.</p>
       </div>

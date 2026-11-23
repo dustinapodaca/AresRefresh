@@ -65,7 +65,7 @@ export default function SvClose() {
     <section ref={ref} id="areas" className="sv-close" aria-labelledby="sv-close-title">
       <div className="sv-close-row nx-edge">
         <h2 id="sv-close-title" className="sv-close-line">
-          Armed and unarmed officers across <b>Colorado</b>, from the <b>Front Range</b> to the <b>Western Slope</b>.
+          Armed and unarmed officers across <b>Colorado</b>, from the <b>Front Range</b> to the <b>Western Slope</b>
         </h2>
         <div className="sv-close-actions">
           <a href="tel:+17196963966" className="ds-link sv-close-call">

@@ -47,7 +47,7 @@ export default function Contact() {
     <section ref={ref} id="contact" className="nx-contact" aria-labelledby="nx-contact-title">
       <div className="nx-ct-inner">
         <h2 id="nx-contact-title" className="nx-statement nx-ct-title">
-          {words('Request a quote, or call us.')}
+          {words('Request a quote, or call us')}
         </h2>
 
         <div className="nx-ct-call nx-node" data-live="true">

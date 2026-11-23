@@ -171,7 +171,7 @@ export default function SvIndustries() {
     <section ref={ref} id="divisions" className="sv-ind" aria-labelledby="sv-ind-title">
       <header className="sv-ind-head nx-edge">
         <h2 id="sv-ind-title" className="sv-ind-title">
-          {words('The sites we protect.')}
+          {words('The sites we protect')}
           <span className="sv-ind-sub">
             Six industries, from government facilities and critical sites to offices and campuses.
           </span>

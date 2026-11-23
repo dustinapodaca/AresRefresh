@@ -210,7 +210,7 @@ function Head({ id, title, lead }: { id: string; title: string; lead?: string })
 function Partners() {
   return (
     <section className="tb-sec" aria-labelledby="tb-who">
-      <Head id="tb-who" title="Who we team with." />
+      <Head id="tb-who" title="Who we team with" />
       <ul className="tb-rows">
         {PARTNERS.map((p) => (
           <li key={p.name} className="tb-row" data-rv>
@@ -252,7 +252,7 @@ function Credit() {
     <section className="tb-sec" aria-labelledby="tb-gets">
       <Head
         id="tb-gets"
-        title="What the prime gets."
+        title="What the prime gets"
         lead="The work Ares does under your contract counts toward your small-business subcontracting goals."
       />
       <dl className="tb-credit">
@@ -336,7 +336,7 @@ function Steps() {
 
   return (
     <section className="tb-sec" aria-labelledby="tb-steps">
-      <Head id="tb-steps" title="From the contract to the first shift." />
+      <Head id="tb-steps" title="From the contract to the first shift" />
       <ol ref={ref} className="tb-steps">
         {STEPS.map((s, i) => (
           <li key={s.title} className="tb-step">
@@ -356,7 +356,7 @@ function Close() {
   return (
     <section className="tb-close" aria-labelledby="tb-close-title">
       <h2 id="tb-close-title" className="tb-close-title" data-rv>
-        Send us the contract.
+        Send us the contract
       </h2>
       <p className="tb-close-line" data-rv>
         The contract, the posts, and the coverage you need. We will come back with who we can staff and when.

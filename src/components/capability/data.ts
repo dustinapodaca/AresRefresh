@@ -280,7 +280,7 @@ export const THIRD_PERSON: Record<string, string> = {
   'Rated 4.8 by our own employees': 'Rated 4.8 by its own employees',
   'Our employees rate Ares 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.':
     'Ares employees rate the company 4.8 out of 5 on Indeed, with management and work-life balance the highest-scoring categories.',
-  'How to buy from us.': 'How to buy from Ares.',
+  'How to buy from us': 'How to buy from Ares',
   'Contact us to confirm scope and pricing for any vehicle above.': 'Contact Ares to confirm scope and pricing for any vehicle above.',
   'All data matches our SAM.gov registration.': 'All data matches the Ares SAM.gov registration.',
 };

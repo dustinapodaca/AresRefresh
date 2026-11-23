@@ -549,7 +549,7 @@ function Head({ id, i, title, lead }: { id: string; i: number; title: string; le
 function Competencies() {
   return (
     <section id="capabilities" className="cx-sec" aria-labelledby="cx-caps">
-      <Head id="cx-caps" i={0} title="Core competencies." lead="Six services, each staffed by officers Ares trains on the post before their first shift." />
+      <Head id="cx-caps" i={0} title="Core competencies" lead="Six services, each staffed by officers Ares trains on the post before their first shift." />
       <ol className="cx-caps">
         {CAPABILITIES.map((c, i) => {
           const slug = slugFor(c.id);
@@ -643,7 +643,7 @@ function Why() {
 
   return (
     <section id="why" className="cx-sec" aria-labelledby="cx-why">
-      <Head id="cx-why" i={1} title="Why Ares." lead="Four reasons, each with its source." />
+      <Head id="cx-why" i={1} title="Why Ares" lead="Four reasons, each with its source." />
       <ol ref={rowRef} className="cx-why">
         {DIFFERENTIATORS.map((d, i) => (
           <li key={d.title} data-rv style={{ ['--i' as string]: i % 2 } as CSSProperties}>
@@ -712,7 +712,7 @@ function Why() {
 function Past() {
   return (
     <section id="past" className="cx-sec" aria-labelledby="cx-past">
-      <Head id="cx-past" i={2} title="Past performance." lead={PAST_PERFORMANCE.leadNext} />
+      <Head id="cx-past" i={2} title="Past performance" lead={PAST_PERFORMANCE.leadNext} />
       <ol className="cx-pp" data-rv>
         {PAST_PERFORMANCE.rows.map((p) => (
           <li key={p.scope} className="cx-pp-row">
@@ -740,7 +740,7 @@ function Buy() {
   const rest = GSA_SPECS.filter((x) => !x.copy);
   return (
     <section id="buy" className="cx-sec" aria-labelledby="cx-buy">
-      <Head id="cx-buy" i={3} title={say('How to buy from us.')} lead="Pre-negotiated pricing, and award without a re-compete." />
+      <Head id="cx-buy" i={3} title={say('How to buy from us')} lead="Pre-negotiated pricing, and award without a re-compete." />
       <div className="cx-gsa" data-rv>
         <p className="cx-gsa-label ds-data">
           <span>GSA Multiple Award Schedule</span>
@@ -799,7 +799,7 @@ function Credentials() {
   const codes = [...vehicle.rows, ...registration.rows];
   return (
     <section id="credentials" className="cx-sec" aria-labelledby="cx-creds">
-      <Head id="cx-creds" i={4} title="Codes and certifications." lead={say('All data matches our SAM.gov registration.')} />
+      <Head id="cx-creds" i={4} title="Codes and certifications" lead={say('All data matches our SAM.gov registration.')} />
       {[
         { name: 'Codes and registration', rows: codes },
         certifications,

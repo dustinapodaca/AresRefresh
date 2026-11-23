@@ -243,7 +243,7 @@ export default function Record() {
     <section ref={ref} id="record" className="nx-record" aria-labelledby="nx-record-title">
       <header className="nx-rec-head nx-edge">
         <h2 id="nx-record-title" className="nx-statement">
-          {words('The record so far.')}
+          {words('The record so far')}
         </h2>
         <p className="nx-rec-lead">Federal agencies and commercial clients hold us to the same record.</p>
       </header>

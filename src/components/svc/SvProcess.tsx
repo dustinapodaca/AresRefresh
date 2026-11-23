@@ -389,7 +389,7 @@ export default function SvProcess() {
       <div className="sv-pr-stick">
       <header className="sv-pr-head nx-edge">
         <h2 id="sv-pr-title" className="nx-statement nx-statement-sm sv-pr-title">
-          {words('Four stages, from site walk to first shift.')}
+          {words('Four stages, from site walk to first shift')}
         </h2>
         <p className="sv-pr-intro">
           Every site has its own shift pattern, threat profile, and compliance requirements. The four

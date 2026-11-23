@@ -179,7 +179,7 @@ export default function InsightPage() {
       <div className="ds-container">
         <AskStrip line="Have a post to cover in Colorado? Tell us about the site." quote="/contact" />
         <nav className="ds-mk-sec ds-in-next" aria-labelledby="mk-more">
-          <h2 id="mk-more" className="ds-display-md">More insights.</h2>
+          <h2 id="mk-more" className="ds-display-md">More insights</h2>
           <ul className="ds-in-cards">
             {next.map((o) => (
               <li key={o.slug}>

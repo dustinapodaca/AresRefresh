@@ -61,14 +61,14 @@ export default function IndustryPage() {
 
       <div className="ds-container">
         <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-stake">
-          <h2 id="mk-stake" className="ds-display-lg">What is at stake.</h2>
+          <h2 id="mk-stake" className="ds-display-lg">What is at stake</h2>
           <div className="ds-mk-prose">
             {ind.stake.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
           </div>
         </section>
 
         <section className="ds-mk-sec ds-mk-sec-tight" aria-labelledby="mk-deliver">
-          <h2 id="mk-deliver" className="ds-display-md">What we deliver.</h2>
+          <h2 id="mk-deliver" className="ds-display-md">What we deliver</h2>
           <RouteRow
             label="Services"
             items={ind.deliver.map((d) => {
@@ -79,7 +79,7 @@ export default function IndustryPage() {
         </section>
 
         <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-why">
-          <h2 id="mk-why" className="ds-display-md">Why Ares here.</h2>
+          <h2 id="mk-why" className="ds-display-md">Why Ares here</h2>
           <Sheet rows={ind.why} label={`Why Ares for ${ind.name.toLowerCase()}`} />
         </section>
 
@@ -89,7 +89,7 @@ export default function IndustryPage() {
           // the right, the same three steps as /teaming.
           <section className="ds-mk-sec ds-mk-split ds-primes-plain" aria-labelledby="mk-primes">
             <div className="ds-primes-copy">
-              <h2 id="mk-primes" className="ds-display-md">For prime contractors.</h2>
+              <h2 id="mk-primes" className="ds-display-md">For prime contractors</h2>
               <p className="ds-primes-line">
                 <span>A woman-owned subcontractor for federal work.</span> {ind.primes}
               </p>
@@ -107,7 +107,7 @@ export default function IndustryPage() {
         <FaqSection items={ind.faq} />
 
         <nav className="ds-mk-sec" aria-labelledby="mk-more">
-          <h2 id="mk-more" className="ds-display-md">Other industries.</h2>
+          <h2 id="mk-more" className="ds-display-md">Other industries</h2>
           <RouteRow label="Other industries" items={others.map((i) => ({ to: `/industries/${i.slug}`, title: i.name, line: i.short }))} />
         </nav>
       </div>

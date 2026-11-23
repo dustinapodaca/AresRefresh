@@ -149,7 +149,7 @@ export default function People() {
     <section ref={ref} id="people" className="ds-ab-cred" data-anim={mode ?? undefined} style={{ '--p': 0 } as CSSProperties} aria-labelledby="people-title">
       <div className="ds-ab-cred-head">
         <h2 id="people-title" className="ds-display-lg">
-          Who stands your post.
+          Who stands your post
         </h2>
         <p className="ds-lead">Every officer meets the same standard before they reach your door.</p>
       </div>

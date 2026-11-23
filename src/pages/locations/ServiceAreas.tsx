@@ -82,7 +82,7 @@ export default function ServiceAreas() {
 
       <div className="ds-container">
         <section className="ds-sa-regions" aria-labelledby="sa-regions-title">
-          <h2 id="sa-regions-title" className="ds-display-lg">Where we staff.</h2>
+          <h2 id="sa-regions-title" className="ds-display-lg">Where we staff</h2>
           <div className="ds-sa-region-grid" data-accordion={phone || undefined}>
             {REGIONS.map((r) => {
               const cities = CITIES.filter((c) => c.region === r.id);
@@ -135,7 +135,7 @@ export default function ServiceAreas() {
 
         <section className="ds-sa-rules" aria-labelledby="sa-rules-title">
           <div className="ds-sa-rules-head">
-            <h2 id="sa-rules-title" className="ds-display-lg">Licensing, city by city.</h2>
+            <h2 id="sa-rules-title" className="ds-display-lg">Licensing, city by city</h2>
             <p className="ds-body">
               Colorado has no statewide security license, so each city decides what a security company needs. Here is what each one
               requires, and what Ares holds there.

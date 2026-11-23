@@ -149,7 +149,7 @@ export default function SvRelief() {
       <div className="sv-rl-wrap nx-edge">
         <div className="sv-rl-copy">
           <h2 id="sv-rl-title" className="nx-statement nx-statement-sm sv-rl-title">
-            {words('The relief schedule.')}
+            {words('The relief schedule')}
           </h2>
           <p className="sv-rl-body">
             On-call coverage is written into every contract. When an officer cannot make a shift, the

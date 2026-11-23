@@ -11,7 +11,7 @@ export function Roles() {
     <section id="roles" className="ds-cr-roles" aria-labelledby="roles-title">
       <div className="ds-cr-head">
         <h2 id="roles-title" className="ds-display-lg">
-          Open roles.
+          Open roles
         </h2>
         <p className="ds-lead">Posts across Colorado, from the Front Range to the Western Slope.</p>
       </div>
@@ -103,7 +103,7 @@ export function Why() {
     <section id="why" className="ds-cr-why" aria-labelledby="why-title">
       <div className="ds-cr-why-intro">
         <h2 id="why-title" className="ds-display-lg">
-          Why people stay.
+          Why people stay
         </h2>
         <div className="ds-cr-why-text">
           {/* The 4.8 rating is in the hero; here only the route to the reviews (copy audit). */}
@@ -159,7 +159,7 @@ export function Apply() {
     <section id="apply" className="ds-cr-apply-close" aria-labelledby="apply-title">
       <div className="ds-cr-apply-copy">
         <h2 id="apply-title" className="ds-display-lg">
-          Send us your résumé.
+          Send us your résumé
         </h2>
         <p className="ds-lead">Tell us the role and the city you want to work in.</p>
       </div>

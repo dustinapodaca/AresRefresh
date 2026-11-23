@@ -34,7 +34,7 @@ export default function CityJobsPage() {
 
       <div className="ds-container">
         <section id="roles" className="ds-mk-sec" aria-labelledby="mk-roles">
-          <h2 id="mk-roles" className="ds-display-lg">Open roles in {c.city}.</h2>
+          <h2 id="mk-roles" className="ds-display-lg">Open roles in {c.city}</h2>
           <ul className="ds-mk-jobs">
             {roles.map((r) => (
               <li key={r.title}>
@@ -52,14 +52,14 @@ export default function CityJobsPage() {
         </section>
 
         <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-license">
-          <h2 id="mk-license" className="ds-display-md">Training for your license.</h2>
+          <h2 id="mk-license" className="ds-display-md">Training for your license</h2>
           <div className="ds-mk-prose">
             <p>{c.licensing}</p>
           </div>
         </section>
 
         <section className="ds-mk-sec ds-mk-split" aria-labelledby="mk-why">
-          <h2 id="mk-why" className="ds-display-md">Why people stay.</h2>
+          <h2 id="mk-why" className="ds-display-md">Why people stay</h2>
           <div>
             <ul className="ds-mk-reasons">
               {REASONS.map((r) => (
@@ -77,7 +77,7 @@ export default function CityJobsPage() {
         </section>
 
         <nav className="ds-mk-sec" aria-labelledby="mk-more">
-          <h2 id="mk-more" className="ds-display-md">Jobs in other cities.</h2>
+          <h2 id="mk-more" className="ds-display-md">Jobs in other cities</h2>
           <ul className="ds-mk-routes" aria-label="Other cities">
             {others.map((o) => (
               <li key={o.slug}>

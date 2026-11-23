@@ -164,7 +164,7 @@ export default function Quality() {
     <section ref={ref} id="quality" className="nx-quality" aria-labelledby="nx-quality-title">
       <div className="nx-q-stage">
         <h2 id="nx-quality-title" className="nx-statement nx-q-title">
-          <span className="nx-sr">Quality over quantity.</span>
+          <span className="nx-sr">Quality over quantity</span>
           <span className="nx-w" aria-hidden="true">
             Quality
           </span>{' '}
@@ -177,7 +177,7 @@ export default function Quality() {
             over
           </span>{' '}
           <span className="nx-w" aria-hidden="true">
-            quantity.
+            quantity
           </span>
         </h2>
 

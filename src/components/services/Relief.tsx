@@ -63,7 +63,7 @@ export default function Relief() {
     <section id="relief" ref={ref} className="ds-svc-relief-sec" aria-labelledby="relief-title">
       <div className="ds-relief-panel">
         <div className="ds-relief-copy">
-          <h2 id="relief-title" className="ds-display-md">The relief schedule.</h2>
+          <h2 id="relief-title" className="ds-display-md">The relief schedule</h2>
           <p>
             On-call coverage is written into every contract. When an officer cannot make a shift, the
             post is covered from our on-call schedule instead of standing empty. It is also how we staff surge

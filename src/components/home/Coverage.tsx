@@ -235,7 +235,7 @@ export default function Coverage() {
     <section ref={ref} id="coverage" className="nx-coverage" aria-labelledby="nx-coverage-title">
       <div className="nx-cv-head">
         <h2 id="nx-coverage-title" className="nx-statement nx-cv-title">
-          {words('Where we work.')}
+          {words('Where we work')}
         </h2>
       </div>
 
