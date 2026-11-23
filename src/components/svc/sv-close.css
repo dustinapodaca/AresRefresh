@@ -86,8 +86,6 @@
   color: var(--ds-fg);
   text-decoration: none;
 }
-.sv-close-note { font-size: 13px; color: rgb(238 240 242 / 0.62); }
-.sv-close-city:first-child .sv-close-note { display: inline-flex; align-items: center; gap: 8px; }
 .sv-close-name {
   display: block;
   font-family: var(--ds-display);

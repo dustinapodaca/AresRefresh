@@ -14,10 +14,11 @@ import './sv-close.css';
 // city names rise over it.
 
 // Colorado-wide (owner, 2026-11-22): the three regions, each to its column on the Service Areas hub.
+// The region names alone; the city lines above them were removed (owner, 2026-11-22).
 const CITIES = [
-  { to: '/locations#front-range', name: 'Front Range', note: 'Colorado Springs · Denver · Fort Collins · Pueblo' },
-  { to: '/locations#western-slope', name: 'Western Slope', note: 'Grand Junction to Durango' },
-  { to: '/locations#san-luis-valley', name: 'San Luis Valley', note: 'Alamosa · Trinidad' },
+  { to: '/locations#front-range', name: 'Front Range' },
+  { to: '/locations#western-slope', name: 'Western Slope' },
+  { to: '/locations#san-luis-valley', name: 'San Luis Valley' },
 ];
 
 export default function SvClose() {
@@ -92,7 +93,6 @@ export default function SvClose() {
           {CITIES.map((c) => (
             <li key={c.to} className="sv-close-city">
               <Link to={c.to}>
-                <span className="sv-close-note ds-data">{c.note}</span>
                 {/* The arrow rides with the last word, so it stays beside the name when a long one
                     (Colorado Springs) wraps (owner, 2026-10-23). */}
                 <span className="sv-close-name">
