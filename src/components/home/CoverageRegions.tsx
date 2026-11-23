@@ -2,8 +2,8 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import { ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, TRD, W, WALSENBURG, path, px, py, type LatLon } from './coverageGeo';
 
-// 04 Coverage, the `regions` form (owner, 2026-11-22: "more like entire region highlight", to compare
-// with the route at /?coverage=regions; the default since 2026-11-22). No city names, and only I-25
+// 04 Coverage's map (owner, 2026-11-22: "more like entire region highlight"; the one kept, the route form
+// removed the same day, tag options-archive-2026-11-22). No city names, and only I-25
 // and I-70 as thin lines: the three regions Ares staffs come up one after another with the scroll,
 // the Front Range, then the Western Slope, then the San Luis Valley. In each, the map's dot grid
 // lights rust in rings rippling out from the region's city (Colorado Springs, Grand Junction, Alamosa), a thin rust outline draws round it over a faint wash,

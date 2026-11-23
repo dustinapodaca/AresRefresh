@@ -137,29 +137,15 @@
   .cc-ridge { display: block; justify-self: center; align-self: center; width: calc(100% + 2 * clamp(18px, 2.2vw, 28px)); max-width: none; height: calc(100% + 2 * clamp(10px, 1.4vw, 16px) - 20px); max-height: 60px; min-height: 0; margin-block: calc(-1 * clamp(10px, 1.4vw, 16px) + 10px); overflow: visible; }
 }
 .cc-ridge-line { fill: none; stroke: rgb(255 255 255 / 0.72); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
-.cc-ridge-detail { stroke: rgb(255 255 255 / 0.5); stroke-width: 2; }
 .cc-sketch-detail { stroke: rgb(255 255 255 / 0.6); stroke-width: 2.2; } /* the reference's inner lines are near the outline's weight */
-/* Depth: the far range faintest, and with the card's turn each layer shifts by its depth, the near one
-   most (in the drawing's units). */
-.cc-ridge-far .cc-ridge-line { stroke: rgb(255 255 255 / 0.26); }
-.cc-ridge-mid .cc-ridge-line { stroke: rgb(255 255 255 / 0.44); }
-/* Each range's fill hides the ranges behind it, so they stack instead of tangling. */
-.cc-ridge-fill { stroke: none; fill: rgb(0 0 0 / 0.62); } /* turned down a little (owner, 2026-11-13; was 0.8) */
-.cc-ridge-far .cc-ridge-fill { fill: rgb(0 0 0 / 0.3); }
-.cc-ridge-layer { transform: translate(calc(var(--tx, 0) * var(--d) * 1px), calc(var(--ty, 0) * var(--d) * 0.25px)); }
-.cc-ridge-far { --d: 3; }
-.cc-ridge-mid { --d: 12; }
-.cc-ridge-near { --d: 28; }
 .cc-ridge-pt { fill: var(--ds-rust); }
-/* Alpenglow (?ridge=glow): a band of warm light carried along the ridge once, then a faint warm edge on
+/* Alpenglow: a band of warm light carried along the ridge once, then a faint warm edge on
    the summit that stays. */
 .cc-glow-edge { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
 .cc-glow-halo { fill: none; stroke-width: 9; stroke-linejoin: round; opacity: 0.55; }
-.cc-glow-far { opacity: 0.45; } /* the middle ridge catches the light more faintly (?ridge=both) */
 .cc-ridge-halo { fill: var(--ds-rust); opacity: 0.28; }
 @media (prefers-reduced-motion: reduce) {
   .cc-ridge-line { stroke-dashoffset: 0 !important; }
-  .cc-ridge-clip rect { width: 1080px !important; }
   .cc-glow-sweep { display: none; }
   .cc-glow-warm { opacity: 1 !important; }
   .cc-ridge-dot { display: none; }

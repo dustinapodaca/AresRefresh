@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Seo from '../seo/Seo';
 import Arrow from '../components/Arrow';
 import CopyButton from '../components/capability/CopyButton';
@@ -64,45 +64,7 @@ const SECTIONS = [
 // No closing Download section (owner, 2026-10-23): the hero, the rail, and the phone bar carry the PDF.
 
 // ------------------------------------------------------------------ the card
-// Layered mountain ranges (owner, 2026-11-13): three ridgelines drawn back to front, the far one faintest,
-// and when the card turns toward the cursor each layer shifts by its depth (--tx, --ty; cn.css), so the
-// range reads deep, not flat. The near range is the one-line drawing (after the owner's reference, drawn
-// fresh): a flat horizon, low foothills, a cluster of sharp peaks, Pikes Peak the high one; a rust point
-// draws its skyline, and its face lines and front ridge draw in as the point passes them, then the point
-// fades. All in a 1000 by 100 box. SVG animation, so it runs in the prerender too; reduced motion shows
-// it drawn and still (cn.css).
-const RIDGE_FAR =
-  'M-40 84 C40 82 90 70 140 60 C180 52 200 40 230 30 C250 24 262 22 278 26 C300 32 320 46 350 50 ' +
-  'C380 54 400 40 430 28 C450 20 462 12 476 10 C492 12 510 26 530 34 C560 44 590 30 620 22 ' +
-  'C640 16 652 14 668 18 C700 28 730 44 760 48 C790 52 820 36 850 30 C870 26 884 28 900 36 C940 54 990 72 1040 80';
-const RIDGE_MID =
-  'M-40 88 C30 86 70 76 110 66 C140 58 160 44 186 34 L204 28 C220 34 240 44 262 46 C290 48 310 38 334 30 ' +
-  'L352 24 C370 32 392 46 420 50 C450 54 470 52 500 54 C540 56 570 44 600 36 L618 30 C640 38 660 48 690 50 ' +
-  'C720 52 740 40 768 30 L790 22 C810 28 830 40 860 50 C900 64 960 78 1040 88';
-const RIDGE =
-  'M0 94 L60 94 C80 94 100 90 118 87 C126 85 134 84 142 85 C156 86 168 82 182 80 C194 78 204 81 214 79 ' +
-  'C224 77 232 73 244 72 C256 71 262 74 274 72 C286 70 292 66 304 64 C316 62 326 60 336 54 L362 28 ' +
-  'C372 32 382 37 392 40 C400 36 408 31 418 26 C426 29 434 32 440 34 C456 24 472 14 488 6 C492 9 496 12 500 14 ' +
-  'C516 20 532 26 548 30 C554 27 560 24 566 22 C578 28 590 35 600 40 C616 35 632 31 650 28 ' +
-  'C664 34 676 40 690 44 C702 48 712 51 724 53 C738 56 750 60 762 59 C774 58 782 55 792 56 ' +
-  'C804 58 812 63 824 64 C836 65 848 61 862 62 C876 64 888 70 902 75 C920 82 936 88 952 92 C968 94 984 94 1000 94';
-// [path, begin (s), duration (s)]: each starts as the point passes it.
-const RIDGE_DETAIL: [string, string, string][] = [
-  ['M90 95 C160 91 220 88 280 85 C320 82 350 80 380 78', '1.8s', '1.1s'],
-  ['M170 98 C210 96 250 95 290 93', '1.95s', '0.6s'],
-  ['M330 83 C360 77 400 73 430 71 C455 69 470 74 490 76 C505 71 520 63 540 61 C560 62 580 70 600 74 C620 71 640 67 660 70 C690 75 720 80 760 86 C790 90 810 94 830 95 C850 94 862 92 880 92', '2.14s', '1.6s'],
-  ['M362 28 C358 38 352 46 344 56', '2.17s', '0.6s'],
-  ['M418 26 C412 34 406 40 398 49 C393 54 389 56 384 58', '2.22s', '0.6s'],
-  ['M488 6 C484 12 490 18 482 26 C476 32 470 40 458 50', '2.3s', '0.7s'],
-  ['M566 22 C556 30 548 38 534 48', '2.38s', '0.6s'],
-  ['M650 28 C644 36 646 42 636 50', '2.48s', '0.6s'],
-];
-const RIDGE_ANIM = { begin: '1.3s', dur: '2.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
-
-// Each range's fill, closed down to the foot of the box: it hides the lines of the ranges behind it.
-const closed = (d: string) => `${d} L1040 100 L-40 100 Z`;
-
-// Alpenglow's pieces, shared by ?ridge=glow and ?ridge=both: the sweep gradient (a band of warm light
+// The alpenglow's pieces (owner, 2026-11-13): the sweep gradient (a band of warm light
 // carried across once from `start`), the warmth that stays on the summit, and a soft blur under both.
 function GlowDefs({ start }: { start: string }) {
   const sweep = { begin: start, dur: '2s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.4 0 0.4 1', fill: 'freeze' } as const;
@@ -143,97 +105,6 @@ function GlowOn({ d, warmFrom }: { d: string; warmFrom?: string }) {
         </g>
       )}
     </>
-  );
-}
-
-function RidgeLayers({ glow = false }: { glow?: boolean }) {
-  const far = { begin: '0.3s', dur: '1.6s', calcMode: 'spline', keyTimes: '0;1', keySplines: '0.45 0 0.25 1', fill: 'freeze' } as const;
-  const mid = { ...far, begin: '0.75s', dur: '1.9s' };
-  // A range and its fill; the fill is uncovered left to right with the line, by a growing clip.
-  const layer = (id: string, d: string, anim: Record<string, string>) => (
-    <>
-      <clipPath id={`ccr-${id}`} className="cc-ridge-clip">
-        <rect x="-40" y="-20" width="0" height="140">
-          <animate attributeName="width" from="0" to="1080" {...anim} />
-        </rect>
-      </clipPath>
-      <path className="cc-ridge-fill" d={closed(d)} clipPath={`url(#ccr-${id})`} mask="url(#ccr-fade)" />
-      <path className="cc-ridge-line" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-        <animate attributeName="stroke-dashoffset" from="1" to="0" {...anim} />
-      </path>
-    </>
-  );
-  return (
-    <svg className="cc-ridge" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        {/* The fills fade out toward the foot, so the ranges sit on the card with no edge. */}
-        <linearGradient id="ccr-fade-g" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0.45" stopColor="#fff" />
-          <stop offset="1" stopColor="#fff" stopOpacity="0" />
-        </linearGradient>
-        <mask id="ccr-fade" maskUnits="userSpaceOnUse" x="-40" y="0" width="1080" height="100">
-          <rect x="-40" y="0" width="1080" height="100" fill="url(#ccr-fade-g)" />
-        </mask>
-        {glow && <GlowDefs start="3.8s" />}
-      </defs>
-      <g className="cc-ridge-layer cc-ridge-far">{layer('far', RIDGE_FAR, far)}</g>
-      <g className="cc-ridge-layer cc-ridge-mid">
-        {layer('mid', RIDGE_MID, mid)}
-        {/* With the light (?ridge=both) the middle ridge catches it too, more faintly. */}
-        {glow && <g className="cc-glow-far"><GlowOn d={RIDGE_MID} /></g>}
-      </g>
-      <g className="cc-ridge-layer cc-ridge-near">
-        {/* The near range sits lowest in the box, so the ranges behind rise over it. */}
-        <g transform="translate(0 34) scale(1 0.66)">
-          {layer('near', RIDGE, RIDGE_ANIM)}
-          {glow && <GlowOn d={RIDGE} warmFrom="4.8s" />}
-          {RIDGE_DETAIL.map(([d, begin, dur]) => (
-            <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-              <animate attributeName="stroke-dashoffset" from="1" to="0" begin={begin} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
-            </path>
-          ))}
-          <g className="cc-ridge-dot" opacity="0">
-            <circle r="9" className="cc-ridge-halo" />
-            <circle r="4.5" className="cc-ridge-pt" />
-            <animateMotion path={RIDGE} keyPoints="0;1" {...RIDGE_ANIM} />
-            <set attributeName="opacity" to="1" begin={RIDGE_ANIM.begin} />
-            <animate attributeName="opacity" from="1" to="0" begin="3.9s" dur="0.5s" fill="freeze" />
-          </g>
-        </g>
-      </g>
-    </svg>
-  );
-}
-
-// Alpenglow (owner, 2026-11-13): the one-line range drawn by the rust point as before, then a band of
-// warm light sweeps along the ridge left to right, like sunrise on the Front Range, and leaves a faint warm
-// edge on the summit. The detail lines start 0.8s sooner than in the layers, which begin later.
-const GLOW_DRAW = { ...RIDGE_ANIM, begin: '0.5s' } as const;
-const shifted = (begin: string) => `${Math.max(0, parseFloat(begin) - 0.8).toFixed(2)}s`;
-
-function RidgeGlow() {
-  return (
-    <svg className="cc-ridge cc-glow" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <GlowDefs start="3s" />
-      </defs>
-      <path className="cc-ridge-line" d={RIDGE} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-        <animate attributeName="stroke-dashoffset" from="1" to="0" {...GLOW_DRAW} />
-      </path>
-      {RIDGE_DETAIL.map(([d, begin, dur]) => (
-        <path key={d} className="cc-ridge-line cc-ridge-detail" d={d} pathLength={1} strokeDasharray="1 1" strokeDashoffset="1">
-          <animate attributeName="stroke-dashoffset" from="1" to="0" begin={shifted(begin)} dur={dur} calcMode="spline" keyTimes="0;1" keySplines="0.3 0 0.3 1" fill="freeze" />
-        </path>
-      ))}
-      <GlowOn d={RIDGE} warmFrom="4s" />
-      <g className="cc-ridge-dot" opacity="0">
-        <circle r="9" className="cc-ridge-halo" />
-        <circle r="4.5" className="cc-ridge-pt" />
-        <animateMotion path={RIDGE} keyPoints="0;1" {...GLOW_DRAW} />
-        <set attributeName="opacity" to="1" begin={GLOW_DRAW.begin} />
-        <animate attributeName="opacity" from="1" to="0" begin="3.1s" dur="0.5s" fill="freeze" />
-      </g>
-    </svg>
   );
 }
 
@@ -290,18 +161,10 @@ function RidgeSketch() {
   );
 }
 
-// The card's drawing, for the owner to compare at /capability-statement?ridge=sketch|both|glow|layers
-// (2026-11-13): sketch (one full-height range closer to the owner's reference, with the alpenglow), both
-// (the layered ranges with the alpenglow), glow (the earlier one-line range and its light), or layers (three
-// ranges in depth). Sketch is the default while the owner tries it (owner, 2026-11-13). Topographic contours
-// were tried the same day and dropped; in git at cc62092.
-const RIDGES = { sketch: RidgeSketch, both: () => <RidgeLayers glow />, glow: RidgeGlow, layers: () => <RidgeLayers /> } as const;
-function Ridge() {
-  const [params] = useSearchParams();
-  const asked = params.get('ridge');
-  const R = RIDGES[(asked && asked in RIDGES ? asked : 'sketch') as keyof typeof RIDGES];
-  return <R />;
-}
+// The card's drawing is the sketch (owner, 2026-11-22: "as is now is fine"). The other forms (the layered
+// ranges, the one-line range with its light, both) and the ?ridge= switch are in tag
+// options-archive-2026-11-22; topographic contours, tried 2026-11-13, at cc62092.
+const Ridge = RidgeSketch;
 
 function Field({ label, value, copy, live, wide }: { label: string; value: string; copy?: string; live?: boolean; wide?: boolean }) {
   return (
@@ -333,9 +196,6 @@ function CompanyCard({ compact = false }: { compact?: boolean }) {
       now.y += (target.y - now.y) * 0.1;
       el.style.setProperty('--rx', `${(-now.y * 7).toFixed(2)}deg`);
       el.style.setProperty('--ry', `${(now.x * 9).toFixed(2)}deg`);
-      // The ridge layers shift by depth with the same turn (cn.css).
-      el.style.setProperty('--tx', now.x.toFixed(3));
-      el.style.setProperty('--ty', now.y.toFixed(3));
       raf = Math.abs(target.x - now.x) + Math.abs(target.y - now.y) > 0.001 ? requestAnimationFrame(tick) : 0;
     };
     const onMove = (e: PointerEvent) => {

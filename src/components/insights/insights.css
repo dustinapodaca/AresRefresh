@@ -130,7 +130,7 @@
     border-radius: 4px;
     background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
   }
-  /* ?rowcard=band: a short strip of the plate across the card's top (about a third of the full
+  /* band (owner, 2026-11-19; the other sizes removed 2026-11-22): a short strip of the plate across the card's top (about a third of the full
      plate's height), then the title, summary, and meta. */
   .ds-in-list[data-rowcard='band'] .ds-in-row { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0; overflow: hidden; }
   .ds-in-list[data-rowcard='band'] .ds-in-row-art { grid-row: auto; aspect-ratio: 3 / 1; display: grid; place-items: center; padding: 8px; border-radius: 0; border-bottom: 1px solid var(--ds-rule); }
@@ -139,8 +139,6 @@
   .ds-in-list[data-rowcard='band'] .ds-in-row-copy { display: block; padding: 16px 16px 0; }
   .ds-in-list[data-rowcard='band'] .ds-in-row-title { grid-column: auto; grid-row: auto; }
   .ds-in-list[data-rowcard='band'] .ds-in-row > .ds-in-meta { grid-column: auto; padding: 12px 16px 16px; }
-  /* ?rowcard=side: the plate beside the title grows from 104px to 150px (about half again). */
-  .ds-in-list[data-rowcard='side'] .ds-in-row { grid-template-columns: 150px minmax(0, 1fr); gap: 12px 16px; }
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-in-row:hover .ds-ia, .ds-in-feature:hover .ds-ia, .ds-in-card:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }
@@ -244,14 +242,7 @@
 }
 .ds-in-all { display: inline-flex; align-items: center; gap: 6px; margin-top: 28px; font-size: 15px; }
 
-/* ---- Hero forms (owner, 2026-11-19), compared at /insights?hero= (Insights.tsx, HERO_OPTIONS) ---- */
-.ds-in-h { display: grid; gap: 48px; padding-top: calc(var(--ds-header) + var(--ds-beat-tight)); }
-.ds-in-h-copy .ds-lead { margin-top: 24px; max-width: 46ch; }
-@media (min-width: 1024px) {
-  .ds-in-h { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding-top: calc(var(--ds-header) + var(--ds-beat)); }
-  .ds-in-h-copy { grid-column: 1 / span 6; }
-}
-
+/* ---- The hero (owner, 2026-11-19): `topics` from 1024px; the other forms removed 2026-11-22. ---- */
 /* topics: the four topics set large beside the headline, the filter itself. */
 .ds-in-h-topiclist { display: grid; border-top: 1px solid var(--ds-rule-strong); align-self: end; }
 .ds-in-h-topic {
@@ -288,71 +279,4 @@
 }
 @media (max-width: 1023px) {
   .ds-in-h-topiclist { display: none; }
-}
-
-/* front: a front page, the newest article large and "Latest" beside it. */
-.ds-in-h-front { gap: 40px; }
-.ds-in-h-fronthead .ds-lead { margin-top: 18px; max-width: 46ch; }
-.ds-in-h-frontgrid { display: grid; gap: 40px; }
-.ds-in-h-frontlead { display: grid; gap: 14px; align-content: start; color: var(--ds-fg); }
-.ds-in-h-frontart { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: clamp(12px, 2.4vw, 28px); border: 0; }
-.ds-in-h-frontart::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--ds-rule); pointer-events: none; }
-.ds-in-h-frontart .ds-ia { height: 100%; width: auto; max-width: 100%; }
-.ds-in-h-fronttitle { margin: 0; color: var(--ds-fg); font-family: var(--ds-display); font-size: clamp(26px, 2.8vw, 40px); font-weight: 600; line-height: 1.08; letter-spacing: -0.035em; text-wrap: balance; }
-.ds-in-h-frontlead .ds-in-row-sum { margin-top: 0; }
-.ds-in-h-latest-title { margin: 0 0 4px; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-in-h-latest ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
-.ds-in-h-latest li { border-bottom: 1px solid var(--ds-rule); }
-.ds-in-h-latest a { display: grid; gap: 8px; padding: 20px 0 22px; color: var(--ds-fg); }
-.ds-in-h-latest-topic { font-size: 13px; color: var(--ds-fg-faint); }
-.ds-in-h-latest-name { font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; text-wrap: pretty; }
-.ds-in-h-latest .ds-data { font-size: 14px; color: var(--ds-fg-faint); }
-@media (hover: hover) and (pointer: fine) {
-  .ds-in-h-frontlead:hover .ds-ia, .ds-in-h-wall a:hover .ds-ia { --ia-ink: rgb(238 240 242 / 0.88); }
-  .ds-in-h-latest a:hover .ds-in-h-latest-name, .ds-in-h-frontlead:hover .ds-in-h-fronttitle { text-decoration: underline; text-decoration-color: var(--ds-rule-strong); text-underline-offset: 5px; text-decoration-thickness: 1px; }
-}
-@media (min-width: 1024px) {
-  .ds-in-h-fronthead { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: end; }
-  .ds-in-h-fronthead h1 { grid-column: 1 / span 7; }
-  .ds-in-h-fronthead .ds-lead { grid-column: 8 / span 5; margin: 0 0 6px; }
-  .ds-in-h-frontgrid { grid-column: 1 / -1; grid-template-columns: subgrid; }
-  .ds-in-h-frontlead { grid-column: 1 / span 8; }
-  .ds-in-h-latest { grid-column: 9 / span 4; }
-}
-
-/* ask: a search over every article and its questions, and the questions buyers ask. */
-.ds-in-h-askbox { align-self: end; }
-.ds-in-h-search { position: relative; display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 16px; border-radius: 2px; background: #0e1013; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16); color: var(--ds-fg-faint); transition: box-shadow 180ms var(--ds-ease); }
-.ds-in-h-search:focus-within { box-shadow: inset 0 0 0 1px var(--ds-fg-muted), 0 0 0 2px var(--ds-rust); }
-.ds-in-h-search input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; color: var(--ds-fg); font: 400 16px/1 var(--ds-text); outline: none; }
-.ds-in-h-search input::placeholder { color: var(--ds-fg-faint); }
-.ds-in-h-asked-title { margin: 28px 0 4px; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-in-h-asked { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule-strong); }
-.ds-in-h-asked li { border-bottom: 1px solid var(--ds-rule); }
-.ds-in-h-asked a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; padding: 10px 0; font-size: 16px; font-weight: 500; color: var(--ds-fg); }
-.ds-in-h-asked .ds-arrow { flex: none; color: var(--ds-fg-faint); transition: transform 180ms var(--ds-ease), color 180ms var(--ds-ease); }
-@media (hover: hover) and (pointer: fine) {
-  .ds-in-h-asked a:hover .ds-arrow { transform: translateX(4px); color: var(--ds-rust); }
-}
-.ds-in-empty { margin: 8px 0 24px; font-size: 16px; color: var(--ds-fg-muted); }
-@media (min-width: 1024px) {
-  .ds-in-h-askbox { grid-column: 8 / span 5; }
-}
-
-/* plates: the line drawings of the six newest as a wall beside the headline. */
-.ds-in-h-wall { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-self: end; }
-.ds-in-h-wall a { display: grid; gap: 10px; color: var(--ds-fg); }
-.ds-in-h-wallart { aspect-ratio: 8 / 5; }
-.ds-in-h-wallname { font-size: 14px; font-weight: 500; line-height: 1.35; color: var(--ds-fg-muted); text-wrap: pretty; transition: color 180ms var(--ds-ease); }
-@media (hover: hover) and (pointer: fine) {
-  .ds-in-h-wall a:hover .ds-in-h-wallname { color: var(--ds-fg); }
-}
-@media (max-width: 599px) {
-  /* Phones: the four newest, two by two. */
-  .ds-in-h-wall li:nth-child(n + 5) { display: none; }
-  .ds-in-h-wallname { font-size: 13px; }
-}
-@media (min-width: 1024px) {
-  .ds-in-h-copy:has(+ .ds-in-h-wall) { grid-column: 1 / span 6; align-self: end; }
-  .ds-in-h-wall { grid-column: 7 / span 6; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 12px; }
 }

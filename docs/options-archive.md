@@ -6,31 +6,13 @@ the type before; `ares`: plain D text; `ares-dtext`: D text cut to set like Inte
 `type-font-switch-option` (`src/components/FontSwitch.tsx`, `src/fonts-ares.css`, and the D text and Inter
 font files). How the fonts are built: `scripts/fonts/README.md`.
 
-**Live switch (2026-11-22, branch colorado-wide):** `/?coverage=route|regions`, the map in Home's 04 "Where
-we work." (`FORMS` in `src/components/home/Coverage.tsx`; the regions form in
-`src/components/home/CoverageRegions.tsx`, shared geometry in `coverageGeo.ts`, styles at the end of
-`nx-coverage.css`). `route` (one line from Colorado Springs round the state and back, the ten cities
-coming up as it reaches them; no city names on phones) stays switchable; `regions` (the default, owner,
-2026-11-22) splits the whole state into the three and lights the Front Range (east of the Divide to Kansas), the Western Slope, and the San Luis Valley (the southern end, Trinidad included) in turn, the dot grid
-rippling rust from each region's city inside a thin outline, no city names, I-25 and I-70 as thin lines. In the gallery
-spec `docs/options-gallery.json`.
-
-**Live switch (2026-11-19):** `/insights?rowcard=compact|band|side`, the phone cards' drawing size on the
-Insights index (phones only, below 768px; `rowcard` in `src/pages/Insights.tsx`, `data-rowcard` rules in
-`src/components/insights/insights.css`). `band` (a 3:1 strip across the card's top) is the default (owner,
-2026-11-19); `compact` is the 104px plate beside the title, `side` a 150px plate beside the title.
-
-**Live switch (2026-11-19):** `/insights?hero=current|topics|front|ask|plates`, the Insights index hero
-(`HERO_OPTIONS` in `src/pages/Insights.tsx`, styles under "Hero forms" in
-`src/components/insights/insights.css`). `topics` is the default (owner, 2026-11-19) on desktop only; below 1024px it shows `current`, which the owner kept for phones. From Mobbin:
-topics (Claude's blog), front (Mural, Webflow, Twingate), ask (Airbnb, Upwork resource centers), plates
-(Linear, Slack). In the gallery spec `docs/options-gallery.json`.
-
-**Live switch (2026-11-13):** `/capability-statement?ridge=sketch|both|glow|layers`, the drawing in the
-hero company card (`RIDGES` in `src/pages/CapabilityStatement.tsx`, styles in
-`src/components/capnext/cn.css`). `sketch` (one range closer to the owner's reference, with the alpenglow)
-is the default while the owner tries it; `layers`, `glow`, and `both` came first. Topographic contours were
-tried and dropped the same day (commit cc62092). In the gallery spec `docs/options-gallery.json`.
+**Removed (owner, 2026-11-22): `?coverage=`, `?ridge=`, `?hero=` (Insights), `?rowcard=`.** No option
+switches are live. The chosen version of each ships: Home's map is `regions` (the `route` form, one line
+from Colorado Springs round the state with every city named, is gone); the Capability Statement card's
+drawing is `sketch` (`layers`, `glow`, and `both` gone); the Insights hero is `topics` from 1024px with the
+earlier hero below it (`front`, `ask`, `plates` gone); the Insights phone cards are `band` (`compact`,
+`side` gone). Everything removed is in tag `options-archive-2026-11-22`: `git worktree add
+../ares-options-1122 options-archive-2026-11-22` to look, then copy the form back from there.
 
 **No option switches are live (2026-10-25).** The AI-tells pass's `?card=` (plain, flora, dossier: dossier
 chosen) and `?mono=` font trial (PP Fraktion Mono chosen) were removed the same day. On the dev server a

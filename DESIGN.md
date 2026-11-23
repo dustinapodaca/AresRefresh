@@ -717,8 +717,8 @@ and `nx-*.css` (class prefix `nx-`).
   up whole (outline, wash, dots, name, cities) and the others dim; let go, it eases back to wherever the
   scroll has it. Both ways ease over about 420ms (a `data-easing` flag on the map for 450ms after each
   change; eased all the time, the scrubbed draw would lag the scroll).
-  **Two forms at `/?coverage=` (owner, 2026-11-22):** `regions` (`CoverageRegions.tsx`), the default
-  since 2026-11-22 (owner), and `route` (the above). `regions`: no city names, and only I-25 and I-70 as thin quiet lines (1px, #3d4249, unlabeled; owner, 2026-11-22) under the regions from the start; the Front Range, the Western
+  **The map is `regions` (owner, 2026-11-22; `CoverageRegions.tsx`):** the `route` form above and its
+  `?coverage=` switch were removed the same day (tag `options-archive-2026-11-22`). `regions`: no city names, and only I-25 and I-70 as thin quiet lines (1px, #3d4249, unlabeled; owner, 2026-11-22) under the regions from the start; the Front Range, the Western
   Slope (west of the Continental Divide), and the San Luis Valley come up one after another over the
   same pin, each a third of it. The three tile the whole state (owner, 2026-11-22): the Western Slope
   west of the Divide; the Front Range east of it out to Kansas, south to a line from Poncha Pass round
@@ -1093,8 +1093,9 @@ tilt and one fade-up per block (`data-rv`, once).
   corners, no glow or sheen; the mark and the wordmark with a 1px rule between them like the nav's
   (from 600px larger: the mark 38px, the rule 44px, the wordmark 118px; owner, 2026-11-13) and
   "Capability statement · 2026", then its line (the big "Ares Security LLC" removed from 600px, owner
-  2026-11-13); from 600px, in the room under that line, a mountain drawing in one of four forms to compare at
-  `?ridge=` (owner, 2026-11-13). **`sketch` (the default while the owner tries it):** one range at full
+  2026-11-13); from 600px, in the room under that line, a mountain drawing (owner, 2026-11-13), the
+  **`sketch`** (owner, 2026-11-22: kept; the other three forms below and `?ridge=` removed, tag
+  `options-archive-2026-11-22`): one range at full
   height in the manner of the owner's one-line mountain reference, drawn fresh: a long flat horizon, low
   foothills with a second line under them on both sides, five peaks bunched at the center with curved
   flanks, curved lines down the faces, and a front ridge dipping across the base, the inner lines near the
@@ -1213,7 +1214,8 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   at about 12px on screen (dropped on the small plates), on the dot grid faded at the edges, the
   card surface, 4px corners, the hairline photo edge. A new article without a drawing gets a plain
   sheet; draw it one when it is published.
-- **Index hero, four forms to compare** (owner, 2026-11-19) at `/insights?hero=`: `topics` (the topics
+- **Index hero** (owner, 2026-11-19; four forms were compared at `/insights?hero=`, and the three not chosen
+  were removed 2026-11-22, tag `options-archive-2026-11-22`): `topics` (the topics
   set large beside the headline as the filter, after Claude's blog), `front` (the newest article and
   "Latest" on the first screen, after Mural and Webflow), `ask` (a search over the articles and their
   questions, and five questions buyers ask, after Airbnb's and Upwork's resource centers), `plates` (the
@@ -1235,8 +1237,8 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   card like the featured one (the card surface with the glass edge, 4px corners, 12px between cards):
   a 3:1 strip of the plate across the card's top over a hairline (`band`, the owner's pick, 2026-11-19:
   bigger than the 104px plate, smaller than the full 16:9), then the title, summary, and meta at the
-  rows' sizes. The others stay at `?rowcard=`: `compact` (the 104px plate beside the title) and `side`
-  (150px beside the title). Hover
+  rows' sizes. The other sizes (`compact`, the 104px plate beside the title, and `side`,
+  150px) and `?rowcard=` were removed 2026-11-22. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
 - **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
   the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the

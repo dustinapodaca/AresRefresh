@@ -106,26 +106,7 @@
   .nx-cv-cue { display: none; }
 }
 .nx-cv-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.nx-cv-route { stroke: #d9864f; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
-.nx-cv-tip { opacity: 0; pointer-events: none; }
-/* Two dot-sized dashes on the route (round caps make them dots), moved by their dash offset. */
-.nx-cv-tip path { fill: none; stroke-linecap: round; stroke-dasharray: 0.5 2000; }
-.nx-cv-tip-glow { stroke: #e8965f; stroke-opacity: 0.25; stroke-width: 18; }
-.nx-cv-tip-dot { stroke: #f2b98e; stroke-width: 6.4; }
 .nx-cv-mono { font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 14px; letter-spacing: 0.08em; fill: var(--ds-fg-faint); }
-.nx-cv-name {
-  font-family: var(--ds-text);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  fill: var(--ds-fg);
-  /* Eight names over the roads: a black edge keeps each one clean where a line passes under it. */
-  paint-order: stroke;
-  stroke: #000;
-  stroke-width: 5px;
-  stroke-linejoin: round;
-}
-.nx-cv-pin[data-hq] .nx-cv-name { font-size: 18px; }
 .nx-cv-dot { fill: var(--ds-fg); transform-box: fill-box; transform-origin: center; }
 .nx-cv-pin[data-hq] .nx-cv-dot { fill: var(--ds-rust); }
 .nx-cv-ring { fill: none; stroke: rgb(238 240 242 / 0.35); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
@@ -143,11 +124,6 @@
 .nx-cv-body:is(:hover, :focus-within) .nx-cv-pin :is(.nx-cv-ring, .nx-cv-halo, .nx-cv-dot) {
   transition: r 260ms var(--ds-ease), stroke 260ms var(--ds-ease), fill 260ms var(--ds-ease);
 }
-.nx-cv-map[data-active] .nx-cv-pin:not([data-on]) { opacity: 0.28; }
-.nx-cv-pin[data-on] .nx-cv-ring,
-.nx-cv-pin[data-on] .nx-cv-halo { stroke: #e8965f; r: 22; }
-.nx-cv-pin[data-on] .nx-cv-dot { fill: #f2b98e; }
-.nx-cv-pin[data-on] .nx-cv-name { fill: #fff; }
 
 /* The HQ pulse: the ring fades as a wider, fainter halo over it swells in and out, so it reads as
    the ring thickening away. Fades only: it animated the ring's stroke width, which made the browser
@@ -176,20 +152,12 @@
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-25; was 12) */
-  .nx-cv-name { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-23) */
-  .nx-cv-pin[data-hq] .nx-cv-name { font-size: 21px; }
   .nx-cv-city-note { font-size: 13px; }
 }
 
 /* The read-in words are inline blocks, which drop their trailing space; keep it. */
 
-/* Phones: the route's map without the city names (owner, 2026-11-22: eight names at about 12px
-   crowded it); the pins, the regions beside it, and their city lines carry them. */
-@media (max-width: 767px) {
-  .nx-cv-map[data-form='route'] .nx-cv-pin .nx-cv-label { display: none; }
-}
-
-/* The `regions` form (CoverageRegions.tsx, /?coverage=regions; owner, 2026-11-22): each region's
+/* The regions map (CoverageRegions.tsx; owner, 2026-11-22): each region's
    dots light rust in rings from its city, over a faint wash inside a thin rust outline. */
 .nx-rg-wash { fill: #bc6f40; fill-opacity: 0.07; stroke: none; }
 .nx-rg-edge { fill: none; stroke: #bc6f40; stroke-opacity: 0.75; stroke-width: 1.2; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; }
@@ -225,5 +193,3 @@
 .nx-cv-map[data-easing] .nx-rg-region :is(.nx-rg-band, .nx-rg-wash, .nx-rg-name, .nx-rg-hq) { transition: opacity 420ms var(--ds-ease), fill 420ms var(--ds-ease), fill-opacity 420ms var(--ds-ease), transform 420ms var(--ds-ease); }
 .nx-cv-map[data-easing] .nx-rg-region .nx-rg-edge { transition: stroke-dashoffset 450ms var(--ds-ease); }
 .nx-cv-map[data-easing] .nx-rg-region .nx-rg-pin :is(.nx-cv-dot, .nx-cv-ring, .nx-cv-halo) { transition: opacity 420ms var(--ds-ease), r 420ms var(--ds-ease), fill 260ms var(--ds-ease), stroke 260ms var(--ds-ease); }
-/* The route's dimming is for its pins; here the region dims as a whole, its cities with it. */
-.nx-cv-map[data-active] .nx-rg-region .nx-rg-pin { opacity: 1; }
