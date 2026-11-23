@@ -126,6 +126,9 @@ const ITEMS: { label: string; menu?: string; to?: string }[] = [
   { label: 'Company', menu: 'Company' },
   { label: 'Capability Statement', to: '/capability-statement' },
 ];
+// The phone menu's first screen adds Service Areas, straight to the page (owner, 2026-11-22: a buyer's
+// first question is whether we cover their city; on desktop it sits in Company's footer row).
+const PHONE_ITEMS: typeof ITEMS = [...ITEMS.slice(0, 2), { label: 'Service Areas', to: '/locations' }, ...ITEMS.slice(2)];
 
 // The three profiles as small monochrome marks for the phone menu (owner, 2026-10-13).
 const PROFILE_ICONS: Record<string, JSX.Element> = {
@@ -402,7 +405,7 @@ function SlideMenu({
     <div ref={stageRef} className="ds-np-stage" data-panel={panel || undefined}>
       <div className="ds-np-pane ds-np-pane-main" {...(panel ? { inert: '' } : {})}>
         <ul className="ds-np-mlist ds-np-mlist-slide">
-          {ITEMS.map((item) => (
+          {PHONE_ITEMS.map((item) => (
             <li key={item.label}>
               {item.menu ? (
                 <button type="button" className="ds-np-mitem" onClick={() => setPanel(item.menu!)}>

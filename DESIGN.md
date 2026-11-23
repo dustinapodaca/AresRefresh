@@ -1592,7 +1592,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   Industries is a row of photo cards (the industry pages' photos, 16:10, 72% wide so the next one
   peeks) that swipes sideways, with the name and short line. The plain lists stay at ?mnav=list.
   Since later on 2026-10-15 (owner, a hybrid with yucca.co.za) the phone menu is pages that slide
-  over: the main page lists Services, Industries, Company, and Capability Statement as large links
+  over: the main page lists Services, Industries, Service Areas (straight to /locations; owner, 2026-11-22), Company, and Capability Statement as large links
   (Inter Tight 600 20px, was 25; each page's title the same 20px) with arrows; tapping one slides the list a quarter to the left and dims it
   while that section's page slides in over it from the right (460ms, the drawer curve), with a bar holding
   Back (focused) on the left and the section's name on the right (owner, 2026-10-15), its content
