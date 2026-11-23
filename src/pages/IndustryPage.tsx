@@ -30,7 +30,8 @@ export default function IndustryPage() {
           <h1 id="mk-title" className="ds-display-xl ds-mk-ind-title">{heroTitle(ind.title)}</h1>
           <div className="ds-mk-ind-lead">
             <p className="ds-lead">{ind.lead}</p>
-            <div className="ds-actions">
+            {/* Below 1024px only (owner, 2026-11-22): from there up the nav carries the quote button. */}
+            <div className="ds-actions ds-mk-role-actions">
               <Link to={quote} className="ds-btn ds-btn-primary">
                 Request a quote
                 <Arrow />

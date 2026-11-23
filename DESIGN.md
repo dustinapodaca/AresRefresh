@@ -1469,7 +1469,7 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   "What the post covers." (four duties two by two, the mono number on the title's line),
   "Where it is asked for." (industry routes), questions, an ask strip, "More services.".
 - **Industry pages (`/industries/<slug>`):** a long headline (up to 15em), lead and actions
-  in one row, then a full-bleed scene masked into the canvas, no caption. The scenes are
+  in one row (the quote button below 1024px only since 2026-11-22, owner: the nav carries it; the call link stays), then a full-bleed scene masked into the canvas, no caption. The scenes are
   moving to real photos the owner finds, one industry at a time (owner, 2026-10-12: the
   generated ones read as generic and fake; a second generated round was rejected too).
   Construction, Industrial & Logistics is the first: a steel-frame build in downtown
