@@ -5,14 +5,14 @@
    the text cut). Display: D with +0.045em built in, so headlines tracked -0.05em for Inter Tight land
    on -0.005em. Text: B scaled to Inter's x-height with Inter's line metrics, spacing, and digit widths,
    so body copy sets where Inter's did. */
-@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 300 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-500.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-600.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-700.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-300.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-400.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-500.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-600.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-700.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 300 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-500.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-600.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Display'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-display-700.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-300.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-400.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-500.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-600.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk B Ares Text'; font-style: normal; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-b-ares-text-700.woff2?v=2') format('woff2'); }
 /* Inter and Inter Tight (the Latin subsets Google Fonts served, variable), the site's type until
    2026-11-22; they load only under ?font=inter. */
 /* PP Fraktion Mono (Pangram Pangram, licensed by the owner), the data face since 2026-10-25 (was IBM

@@ -4,16 +4,16 @@
    at D's own spacing), ares-dtext (D text cut to set like Inter). Headlines are the same D cut in every
    Die Grotesk form; its spacing is built into the file, so nothing shifts after load. These faces load
    only when their form is on. */
-@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-300.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-400.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-500.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-600.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-700.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-300.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-400.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-500.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-600.woff2') format('woff2'); }
-@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-700.woff2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-300.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-400.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-500.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-600.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-700.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 300; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-300.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 400; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-400.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 500; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-500.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 600; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-600.woff2?v=2') format('woff2'); }
+@font-face { font-family: 'Die Grotesk D Ares Text'; font-weight: 700 800; font-display: swap; src: url('/fonts/die-grotesk-d-ares-text-700.woff2?v=2') format('woff2'); }
 
 html[data-font='inter'] {
   --ds-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
