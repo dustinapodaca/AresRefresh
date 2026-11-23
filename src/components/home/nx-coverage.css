@@ -195,20 +195,10 @@
 /* I-25 and I-70, thin and quiet under the regions, unlabeled (owner, 2026-11-22: was #5a6069 with
    labels, a touch strong). */
 .nx-rg-roads path { fill: none; stroke: #3d4249; stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.nx-rg-hq {
-  fill: var(--ds-fg);
-  paint-order: stroke;
-  stroke: #000;
-  stroke-width: 3px;
-  stroke-linejoin: round;
-}
-.nx-rg-name {
-  fill: var(--ds-fg-muted);
-  paint-order: stroke;
-  stroke: #000;
-  stroke-width: 5px;
-  stroke-linejoin: round;
-}
+/* The region names and HQ sit on solid black plates (CoverageRegions' Plated; owner, 2026-11-22: a
+   strip, not the black edge round the letters). The class is on the group, so the text inherits it. */
+.nx-rg-hq { fill: var(--ds-fg); }
+.nx-rg-name { fill: var(--ds-fg-muted); }
 .nx-rg-pin:not([data-hq]) .nx-cv-dot { fill: var(--ds-fg); }
 .nx-rg-region { transition: opacity 260ms var(--ds-ease); }
 .nx-cv-map[data-active] .nx-rg-region:not([data-on]) { opacity: 0.28; }

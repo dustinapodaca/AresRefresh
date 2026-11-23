@@ -721,7 +721,8 @@ and `nx-*.css` (class prefix `nx-`).
   the south of Pueblo to Kansas; the San Luis Valley everything south of that line, Walsenburg and
   Trinidad included. In each, the map's dots light rust (#d9864f) in six rings rippling out
   from its city (Colorado Springs, Grand Junction, Alamosa; Trinidad is a dot in the San Luis Valley), a 1.2px rust outline draws round it over a
-  7% rust wash, its name rises in the data face in two lines, and its cities come up as plain dots
+  7% rust wash, its name rises in the data face in two lines on a solid black plate (2px corners; "HQ" too; owner,
+  2026-11-22: a strip, not an outline round the letters), and its cities come up as plain dots
   (Colorado Springs in rust with its ring and "HQ" beside it in the data face) as the light reaches
   them. Each ring of dots flashes full rust as the light passes, then settles to 28% (owner, 2026-11-22, was 40%:
   the fully lit state read too orange); pointing at a region brings its dots back to full. "COLORADO" moves to the top right

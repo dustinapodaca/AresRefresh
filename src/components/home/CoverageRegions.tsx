@@ -1,4 +1,5 @@
 /// <reference types="gsap" />
+import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import { ALS, CS, DEN, DOTS, DRO, FTC, GJT, GWS, H, MTJ, PUB, TRD, W, WALSENBURG, path, px, py, type LatLon } from './coverageGeo';
 
 // 04 Coverage, the `regions` form (owner, 2026-11-22: "more like entire region highlight", to compare
@@ -179,6 +180,40 @@ export function buildRegions(tl: gsap.core.Timeline, map: SVGSVGElement) {
 /** `active` lights one region (the figure dims the rest). `onPoint` reports a region the mouse has
  *  really moved over (pointermove, never touch, never a page scrolling under a resting pointer), and
  *  null when it leaves the map, so pointing at the map works like pointing at the rows. */
+// A solid black plate behind a label, sized to its text (owner, 2026-11-22: a strip, like the Service
+// Areas map, not an outline round the letters), so the roads and lit dots never cut it. The group carries
+// the label's class, so the timeline and the pointed-at state move and fade plate and text together.
+const PLATE_X = 6;
+const PLATE_Y = 3;
+function Plated({ className, children }: { className: string; children: ReactNode }) {
+  const ref = useRef<SVGRectElement>(null);
+  useLayoutEffect(() => {
+    const rect = ref.current;
+    const text = rect?.nextElementSibling as SVGGraphicsElement | null;
+    if (!rect || !text) return;
+    const fit = () => {
+      const b = text.getBBox();
+      if (!b.width) return;
+      rect.setAttribute('x', String(b.x - PLATE_X));
+      rect.setAttribute('y', String(b.y - PLATE_Y));
+      rect.setAttribute('width', String(b.width + PLATE_X * 2));
+      rect.setAttribute('height', String(b.height + PLATE_Y * 2));
+    };
+    fit();
+    let live = true;
+    document.fonts?.ready.then(() => live && fit());
+    return () => {
+      live = false;
+    };
+  }, []);
+  return (
+    <g className={className}>
+      <rect ref={ref} className="nx-rg-plate" rx="2" fill="#000" width="0" height="0" />
+      {children}
+    </g>
+  );
+}
+
 export function RegionsMap({ active, onPoint }: { active: string | null; onPoint: (id: string | null) => void }) {
   return (
     <svg
@@ -229,12 +264,14 @@ export function RegionsMap({ active, onPoint }: { active: string | null; onPoint
                 ))}
               </g>
             ))}
-            <text className="nx-cv-mono nx-rg-name" x={lx} y={ly} textAnchor={r.anchor}>
-              <tspan x={lx}>{r.name[0]}</tspan>
-              <tspan x={lx} dy="1.25em">
-                {r.name[1]}
-              </tspan>
-            </text>
+            <Plated className="nx-cv-mono nx-rg-name">
+              <text x={lx} y={ly} textAnchor={r.anchor}>
+                <tspan x={lx}>{r.name[0]}</tspan>
+                <tspan x={lx} dy="1.25em">
+                  {r.name[1]}
+                </tspan>
+              </text>
+            </Plated>
             {r.cities.map((c) => {
               const [cx, cy] = xy(c.c);
               return (
@@ -244,9 +281,11 @@ export function RegionsMap({ active, onPoint }: { active: string | null; onPoint
                   {c.hq && <circle className="nx-cv-ring" cx={cx} cy={cy} r={15} />}
                   <circle className="nx-cv-dot" cx={cx} cy={cy} r={c.hq ? 5.5 : 3.6} />
                   {c.hq && (
-                    <text className="nx-cv-mono nx-rg-hq" x={cx + 22} y={cy + 5}>
-                      HQ
-                    </text>
+                    <Plated className="nx-cv-mono nx-rg-hq">
+                      <text x={cx + 22} y={cy + 5}>
+                        HQ
+                      </text>
+                    </Plated>
                   )}
                 </g>
               );
