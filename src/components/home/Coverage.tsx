@@ -224,6 +224,7 @@ export default function Coverage() {
     e.ScrollTrigger.sort();
   });
 
+  // 'all' (the All service areas link, owner 2026-11-22) lights every region at once.
   const on = (id: string | null) => () => setActive(id);
   // Mouse and pen only: a finger's scroll fires pointermove too.
   const moved = (id: string) => (ev: React.PointerEvent) => {
@@ -268,7 +269,14 @@ export default function Coverage() {
               </li>
             ))}
           </ul>
-          <Link to="/locations" className="ds-link nx-cv-all">
+          <Link
+            to="/locations"
+            className="ds-link nx-cv-all"
+            onPointerMove={moved('all')}
+            onMouseLeave={on(null)}
+            onFocus={on('all')}
+            onBlur={on(null)}
+          >
             All service areas
             <Arrow />
           </Link>
@@ -342,7 +350,7 @@ export default function Coverage() {
               const cy = py(c.c[0]);
               const t = label(c);
               return (
-                <g key={c.slug} className="nx-cv-pin" data-city={c.slug} data-hq={c.hq || undefined} data-on={active === c.region || undefined}>
+                <g key={c.slug} className="nx-cv-pin" data-city={c.slug} data-hq={c.hq || undefined} data-on={active === c.region || active === 'all' || undefined}>
                   <circle className="nx-cv-ping" cx={cx} cy={cy} r={c.hq ? 5.5 : 4.2} />
                   {c.hq && <circle className="nx-cv-halo" cx={cx} cy={cy} r={15} />}
                   <circle className="nx-cv-ring" cx={cx} cy={cy} r={c.hq ? 15 : 11} />

@@ -252,7 +252,7 @@ export function RegionsMap({ active, onPoint }: { active: string | null; onPoint
             key={r.id}
             className="nx-rg-region"
             data-region={r.id}
-            data-on={active === r.id || undefined}
+            data-on={active === r.id || active === 'all' || undefined}
             onPointerMove={(ev) => ev.pointerType !== 'touch' && onPoint(r.id)}
           >
             <path className="nx-rg-wash" d={outline} />
