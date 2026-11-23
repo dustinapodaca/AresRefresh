@@ -28,47 +28,47 @@
     "date": "2026-11-23"
   },
   "/locations": {
-    "hash": "80d9f90bedb0da5cf50bb58455c1abcc62a756df",
+    "hash": "d597b1d498cd52883db6c89785bf296d49ec3579",
     "date": "2026-11-23"
   },
   "/locations/colorado-springs": {
-    "hash": "610b85cc0efe6f3eb8664999a9eda80bc4e75131",
+    "hash": "1692702b6e3af209b8f8800d5b6f261a6632fc1c",
     "date": "2026-11-23"
   },
   "/locations/denver": {
-    "hash": "b29f08db70b2e9fcc05255a4aaa59f2a813363dd",
+    "hash": "9f3d166714d0148c6f29e8c12788ea2959907ce6",
     "date": "2026-11-23"
   },
   "/locations/pueblo": {
-    "hash": "73727a3cdeaf64e5d26af8b0e2505f8f4c70c753",
+    "hash": "042f387a2de6ae2db45f38106c5cb52331d5b10f",
     "date": "2026-11-23"
   },
   "/locations/grand-junction": {
-    "hash": "389c24efbfc8e54dc1b1e84dbb380388fba0e8cc",
+    "hash": "39d50237d56dcbfeb7a60d0690a2d834bd316ac2",
     "date": "2026-11-23"
   },
   "/locations/glenwood-springs": {
-    "hash": "c6a34750b4722f8e4155be76cb765bbb63848071",
+    "hash": "9b35f89d14e15991ccfca5b052d332a933791992",
     "date": "2026-11-23"
   },
   "/locations/montrose": {
-    "hash": "41748c6866aacc8e4b376a6ceff59e9209ba6b10",
+    "hash": "fb914fbc29cc6ca0bba8619eb47250e8c70c2e06",
     "date": "2026-11-23"
   },
   "/locations/durango": {
-    "hash": "aacfcb449444aa9253022dc4e9a6fe51d7813ecf",
+    "hash": "7d6b118b9311db73fa1698c8b042ade2c6da892d",
     "date": "2026-11-23"
   },
   "/locations/alamosa": {
-    "hash": "d9514e832a6fbe00d495376f1425c76f41418971",
+    "hash": "a097a5746a80407aaf162b745ccbe29d960e7b77",
     "date": "2026-11-23"
   },
   "/locations/fort-collins": {
-    "hash": "f45bc05f329ddd2c33355b60b1720eb0e08a3a06",
+    "hash": "ac2133f0d2077dd49abbc87cc56acb679e558b63",
     "date": "2026-11-23"
   },
   "/locations/trinidad": {
-    "hash": "1c8ad4c77d6924db4922c36d8fc6858f7895c2d3",
+    "hash": "6bb66b63504f278fca2fe5a8b6e7b8162aa84357",
     "date": "2026-11-23"
   },
   "/privacy": {
@@ -84,99 +84,99 @@
     "date": "2026-11-23"
   },
   "/services/armed-security-officers": {
-    "hash": "33ad0f13a292e22bb70cea574614e23d61f1bfba",
+    "hash": "251027a9120a92dc2c5ff3f3fb7bbbbeb773d7d1",
     "date": "2026-11-23"
   },
   "/services/unarmed-security-officers": {
-    "hash": "d19a3d7d582ade60f9a88e080cefa77ad3f754ce",
+    "hash": "0e594c728880c6f707d07d8991f3ab5721173c41",
     "date": "2026-11-23"
   },
   "/services/access-control": {
-    "hash": "9bf5f079a587ed19e13db2e2c0b7cfa8ee9772e5",
+    "hash": "9f090cc0646fd161ebcaece80e8de0c289031540",
     "date": "2026-11-23"
   },
   "/services/restricted-area-escort": {
-    "hash": "68af4c39cbf05060587af3ff7514e5630bd84c66",
+    "hash": "b8e732ef82ce6abd39e15bf6c8fd6ea3036859da",
     "date": "2026-11-23"
   },
   "/services/mobile-patrol": {
-    "hash": "50dbc2d2e4c0c85846af391ca0d1f5b003c87a36",
+    "hash": "291dfba9534458a1f1ec8ae0e1161fc5a1eda704",
     "date": "2026-11-23"
   },
   "/services/relief-surge-coverage": {
-    "hash": "8d2ca095ea4e87bd4492e1ac8143dc50bf6ed436",
+    "hash": "c1015ef40cf313c872fb5e4683ead3d273d3d49b",
     "date": "2026-11-23"
   },
   "/industries/government-defense": {
-    "hash": "f74369bc83f980165bcc65b9ff195a4d0684eb9d",
+    "hash": "cf0499141fb24a9a50cd4c63723ba8584a168066",
     "date": "2026-11-23"
   },
   "/industries/commercial-property": {
-    "hash": "0274714a463ed2807032e54820ae657d35fc2fef",
+    "hash": "baee08c3c34435c663f38413709089067e594c1b",
     "date": "2026-11-23"
   },
   "/industries/critical-infrastructure": {
-    "hash": "52c7a75a089a84e5493c336a033d571f499133d3",
+    "hash": "bedab7491563a17fbf84d5fa0fbf49d9807c6849",
     "date": "2026-11-23"
   },
   "/industries/institutional-community": {
-    "hash": "5ed74de8dfe0b7e3a14797f16a2866c3a9aef3ad",
+    "hash": "4b59b988296c9de999825122c10101a223a9674b",
     "date": "2026-11-23"
   },
   "/industries/construction-industrial": {
-    "hash": "4449a809dad318d50e984245081d1b7c88a61616",
+    "hash": "39adbf948c2504363603bc8e16f123cba12f54d8",
     "date": "2026-11-23"
   },
   "/industries/airport-transportation": {
-    "hash": "222ea90cd724714f3401d0b6a99508e07d488225",
+    "hash": "39fea09a6153d70c39e6b40ef5ef3d1feeddf218",
     "date": "2026-11-23"
   },
   "/insights": {
-    "hash": "1e4cb5a5b4cd84057ffae82da2129ea9d1a51e86",
+    "hash": "bb4f7d435090d4f9da19b4365963e1ab9c405b3c",
     "date": "2026-11-23"
   },
   "/insights/what-does-an-access-control-officer-do": {
-    "hash": "204315092e012a2c65993228ea071bca81a103f5",
+    "hash": "3be722239ece552e67865d473cb12e5ac8bf386b",
     "date": "2026-11-23"
   },
   "/insights/what-primes-look-for-security-subcontractor": {
-    "hash": "459f7a5ff6ac296737300100cf226900fbe0e7c3",
+    "hash": "608ef29b4a23d0766bdfd3fd558ae5e032fbbfd3",
     "date": "2026-11-23"
   },
   "/insights/contractor-escorts-military-bases": {
-    "hash": "65be2e654a22c151394d0a9c7c2e2fed5be17801",
+    "hash": "1bf21a65a2171f48c38f085db7b9dcec6ca75013",
     "date": "2026-11-23"
   },
   "/insights/how-to-choose-a-security-company-colorado": {
-    "hash": "21bdea93bedc103e2d00c05497262f2c2d8d1d70",
+    "hash": "7698387fae2f0d7e02afb1b414a869ded8582183",
     "date": "2026-11-23"
   },
   "/insights/security-guard-cost-colorado": {
-    "hash": "2f621caec4982f55780dd7f0dba7fe467a2905a2",
+    "hash": "2991281013c1de253b9b01401ab21b4a484bfc06",
     "date": "2026-11-23"
   },
   "/insights/relief-surge-coverage": {
-    "hash": "3212cd1354b2e2030c970850c894f3af9a0c8497",
+    "hash": "a703b0ad956e5847b182e42eed2a87687671fb7c",
     "date": "2026-11-23"
   },
   "/insights/armed-or-unarmed-security": {
-    "hash": "e0d5c50f4e156a4fdba1b2644f1f7208c1d9d3b7",
+    "hash": "749c6ed85f05f3082723d935452bea39302784f3",
     "date": "2026-11-23"
   },
   "/insights/what-is-a-post-order": {
-    "hash": "044e3cb93955f89cd37755794a27f499575f9ace",
+    "hash": "9b9cd8c3ffd5413cffa4bb7d6bd1153996189e53",
     "date": "2026-11-23"
   },
   "/insights/construction-site-security": {
-    "hash": "5dfd507497f734bedf74799f79af53465e347fdd",
+    "hash": "0e3042ea6b121ebf6144c557d01224700e280cf0",
     "date": "2026-11-23"
   },
   "/insights/buying-security-through-gsa": {
-    "hash": "d136a1f0292d4e6d4cc029dd5f9c6c9c1ecd9e41",
+    "hash": "2f4128a8dc0b21d63f7b498c3720988d5b1b4a70",
     "date": "2026-11-23"
   },
   "/insights/colorado-security-licensing": {
-    "hash": "0da2472332b8201c9c4ed3b595d9c4ba69f6327c",
+    "hash": "5170deac3d5c92cea24a288ec143fefb5194431d",
     "date": "2026-11-23"
   },
   "/careers/colorado-springs": {

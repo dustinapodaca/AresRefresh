@@ -463,6 +463,9 @@ every page.
 - **Quiet:** text in ink with the standard underline and an arrow; no box. Used for every
   secondary action (call, download, view on eLibrary).
 - Press: `scale(0.98)` over 140ms. Mobile stacks run full width.
+- **Call link** (owner, 2026-11-22; `CallLink.tsx`): beside a page's Request a Quote, the handset icon and
+  the number in the data face at 15.75px, one underline under the number (read out as "Call 719-696-3966").
+  Was "Call" in the text face plus the number in the data face, which drew two underlines at two heights.
 - The nav and menu "Request a Quote" is the same primary button (2px corners; the v08
   pill was retired by the owner, 2026-10-05). Nothing on the site is a pill.
 

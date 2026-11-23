@@ -8,6 +8,7 @@ import { CITIES, REGIONS } from '../../components/locations/data';
 import { AskStrip, FaqSection } from '../../components/market/parts';
 import { heroTitle } from '../../lib/heroTitle';
 import '../../components/locations/areas.css';
+import CallLink from '../../components/CallLink';
 
 // Service Areas, the hub over the city pages (owner, 2026-11-22: Ares goes Colorado-wide, from the
 // Front Range to the Western Slope and the San Luis Valley). It answers "security company in
@@ -71,9 +72,7 @@ export default function ServiceAreas() {
                 Request a Quote
                 <Arrow />
               </Link>
-              <a href="tel:+17196963966" className="ds-link">
-                Call <span className="ds-data">719-696-3966</span>
-              </a>
+              <CallLink />
             </div>
           </div>
           <ColoradoMap active={active} />

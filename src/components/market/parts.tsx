@@ -2,6 +2,7 @@ import { useRef, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import type { Faq, SheetRow } from './roles';
+import CallLink from '../CallLink';
 
 // Shared parts of the role, industry, insight, and city job pages.
 
@@ -119,9 +120,7 @@ export function AskStrip({ line, quote, label = 'Request a Quote' }: { line: str
           {label}
           <Arrow />
         </Link>
-        <a href="tel:+17196963966" className="ds-link">
-          Call <span className="ds-data">719-696-3966</span>
-        </a>
+        <CallLink />
       </div>
     </div>
   );

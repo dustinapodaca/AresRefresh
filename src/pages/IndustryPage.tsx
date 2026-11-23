@@ -9,6 +9,7 @@ import { roleBySlug } from '../components/market/roles';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { responsive } from '../lib/responsive';
 import { heroTitle } from '../lib/heroTitle';
+import CallLink from '../components/CallLink';
 
 // An industry page ("The Sector File", docs/market-concepts.md): what is at stake in this
 // environment, what we deliver there, why Ares, a specific ask, and questions.
@@ -34,9 +35,7 @@ export default function IndustryPage() {
                 Request a quote
                 <Arrow />
               </Link>
-              <a href="tel:+17196963966" className="ds-link">
-                Call <span className="ds-data">719-696-3966</span>
-              </a>
+              <CallLink />
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import LocationMap from './LocationMap';
 import { CITIES, regionOf, type LocationFile } from './data';
 import { DIVISIONS } from '../services/data';
 import { heroTitle } from '../../lib/heroTitle';
+import CallLink from '../CallLink';
 
 // Each site type links to its industry's own page (copy audit, 2026-10-10; was the Services
 // card), falling back to the card if an industry has no page.
@@ -44,9 +45,7 @@ export default function LocationPage({ file }: { file: LocationFile }) {
                 Request a Quote
                 <Arrow />
               </Link>
-              <a href="tel:+17196963966" className="ds-link">
-                Call <span className="ds-data">719-696-3966</span>
-              </a>
+              <CallLink />
             </div>
           </div>
           <LocationMap focus={file.city} landmarks={file.landmarks} focusSide={file.focusSide} bounds={file.bounds} />

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Arrow from './Arrow';
 import { PDF_URL } from './capability/data';
+import CallLink from './CallLink';
 
 // The quote form's result, front and center (owner, 2026-10-09; Mobbin: GetYourGuide and
 // Perplexity's centered confirmations). A dark glass card over the page, like the 404's:
@@ -85,9 +86,7 @@ export default function QuoteToast({ data, onClose }: { data: ToastData | null; 
               ))}
             </ol>
             <p className="ds-toast-actions">
-              <a href="tel:+17196963966" className="ds-link">
-                Call <span className="ds-data">719-696-3966</span>
-              </a>
+              <CallLink />
               <a href={PDF_URL} className="ds-link" target="_blank" rel="noopener noreferrer">
                 Capability statement
                 <Arrow external size={12} />

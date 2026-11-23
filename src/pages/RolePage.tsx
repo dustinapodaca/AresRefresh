@@ -8,6 +8,7 @@ import { industryBySlug } from '../components/market/industries';
 import { AskStrip, FaqSection, RouteRow, Sheet } from '../components/market/parts';
 import { heroTitle } from '../lib/heroTitle';
 import RoleTerrain from '../components/market/RoleTerrain';
+import CallLink from '../components/CallLink';
 
 // A role page ("The Post Sheet", docs/market-concepts.md): the service named as buyers
 // search for it, its spec sheet, what the post covers, where we post it, questions, and the
@@ -37,9 +38,7 @@ export default function RolePage() {
               Request a Quote
               <Arrow />
             </Link>
-            <a href="tel:+17196963966" className="ds-link">
-              Call <span className="ds-data">719-696-3966</span>
-            </a>
+            <CallLink />
           </div>
         </div>
         <div className="ds-mk-sheet-wrap">

@@ -105,8 +105,21 @@ body:has(.ds-page) {
 /* Mono set in a line of the text face matches its capitals (owner, 2026-11-22): Die Grotesk B's caps are
    0.767em and Fraktion's 0.682em, so mono runs 1.125 times the text beside it (it was one step up, 14px
    by 13px, for Inter). Inline: the phone in "Call 719-696-3966" and a number inside a sentence. */
-.ds-link > .ds-data,
 p > a.ds-link.ds-data { font-size: 1.125em; }
+/* The call link (CallLink.tsx; owner, 2026-11-22): the handset and the number in the data face, at 1.125
+   times the 14px button beside it, with one underline under the number (the icon sits outside it). */
+.ds-call { gap: 8px; text-decoration: none; font-weight: 400; }
+.ds-call .ds-phone-icon { flex: none; color: var(--ds-fg-muted); transition: color 180ms var(--ds-ease); }
+.ds-call .ds-data {
+  font-size: 15.75px;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--ds-rule-strong);
+  text-underline-offset: 5px;
+  transition: text-decoration-color 180ms var(--ds-ease);
+}
+.ds-call:hover .ds-data { text-decoration-color: var(--ds-fg); }
+.ds-call:hover .ds-phone-icon { color: var(--ds-fg); }
 
 /* ---------- Links and buttons ---------- */
 .ds-link {
