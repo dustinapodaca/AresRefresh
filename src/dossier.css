@@ -3132,7 +3132,9 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-mk-ind-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
   .ds-mk-ind-lead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
   .ds-mk-ind-lead .ds-lead { grid-column: 1 / span 6; margin: 0; }
-  .ds-mk-ind-lead .ds-actions { grid-column: 9 / span 4; margin: 0; justify-content: flex-end; }
+  /* The call link under the lead, as on the service and city pages (owner, 2026-11-22: alone at the
+     right once the quote button left the desktop hero, it sat in no man's land). */
+  .ds-mk-ind-lead .ds-actions { grid-column: 1 / span 6; margin: 28px 0 0; justify-content: flex-start; }
 }
 
 /* Insights index: ruled rows, title and summary left, category and date right. */
