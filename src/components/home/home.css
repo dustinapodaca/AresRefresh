@@ -153,10 +153,12 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   max-width: 44ch;
 }
 .nx-hero-actions { grid-column: 8 / span 5; display: flex; gap: 22px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
-.nx-hero-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 15px; }
+.nx-hero-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 15.75px; }
 .nx-hero-call .ds-phone-icon { width: 18px; height: 18px; }
 /* Desktop (owner, 2026-10-23): the phone number first, then the quote button at the far right. */
 @media (min-width: 1024px) { .nx-hero-call { order: -1; } }
+/* Beside the 14px button, capitals matched (1.125x; owner, 2026-11-22); over .ds-link's 15px. */
+a.nx-hero-call { font-size: 15.75px; }
 .nx-hero-proof {
   grid-column: 1 / -1;
   list-style: none;

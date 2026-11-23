@@ -77,7 +77,7 @@
 .nx-pn-k { font-size: 13px; color: var(--ds-fg-faint); }
 .nx-pn-v { font-size: 17px; font-weight: 500; color: var(--ds-fg); line-height: 1.35; }
 .nx-pn-row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
-.nx-pn-id { font-family: var(--ds-data); font-size: 14px; color: var(--ds-fg); font-variant-numeric: tabular-nums slashed-zero; }
+.nx-pn-id { font-family: var(--ds-data); font-size: 15.75px; color: var(--ds-fg); font-variant-numeric: tabular-nums slashed-zero; }
 
 .nx-pn[data-node='prime'] { grid-column: 1 / span 6; grid-row: 1; }
 .nx-pn[data-node='ares'] { grid-column: 4 / span 6; grid-row: 2; }

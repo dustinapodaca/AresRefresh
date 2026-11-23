@@ -102,6 +102,11 @@ body:has(.ds-page) {
   color: var(--ds-fg);
   letter-spacing: 0.01em;
 }
+/* Mono set in a line of the text face matches its capitals (owner, 2026-11-22): Die Grotesk B's caps are
+   0.767em and Fraktion's 0.682em, so mono runs 1.125 times the text beside it (it was one step up, 14px
+   by 13px, for Inter). Inline: the phone in "Call 719-696-3966" and a number inside a sentence. */
+.ds-link > .ds-data,
+p > a.ds-link.ds-data { font-size: 1.125em; }
 
 /* ---------- Links and buttons ---------- */
 .ds-link {
@@ -319,7 +324,9 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
 /* Contracting: label and mono value on each line. */
 .ds-ft-ids li { display: flex; align-items: baseline; gap: 10px; }
 .ds-ft-ids li > span:first-child { flex: none; min-width: 6.5em; font-size: 14px; color: var(--ds-fg-faint); }
-.ds-ft-ids .ds-data { font-size: 15px; color: var(--ds-fg-muted); }
+.ds-ft-ids .ds-data { color: var(--ds-fg-muted); }
+/* The numbers beside their 14px labels, capitals matched (1.125x; owner, 2026-11-22). */
+.ds-ft-ids li > .ds-data { font-size: 15.75px; }
 /* A value in words (Denver's certifications) sits at the identifiers' size. */
 .ds-ft-ids li > span:last-child:not(.ds-data) { font-size: 15px; color: var(--ds-fg-muted); }
 /* Registration: SAM.gov as a live status, with the green light from the Capability
@@ -344,7 +351,8 @@ main[tabindex="-1"]:focus { outline: none; } /* the skip link's target; no ring 
   .ds-ft-status { font-size: 16px; }
   .ds-ft-ids li { flex-direction: column; gap: 2px; }
   .ds-ft-ids li > span:first-child { min-width: 0; font-size: 13px; }
-  .ds-footer-cols a.ds-data, .ds-ft-ids .ds-data, .ds-ft-ids li > span:last-child:not(.ds-data) { font-size: 14px; }
+  .ds-footer-cols a.ds-data, .ds-ft-ids li > span:last-child:not(.ds-data) { font-size: 14px; }
+  .ds-ft-ids li > .ds-data { font-size: 14.625px; } /* beside the 13px labels */
 }
 @media (min-width: 1024px) { .ds-footer-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
@@ -1576,8 +1584,8 @@ html[data-cards] .ds-relief-panel {
 .ds-ab-creds img[src*='cert-gsa-footer'] { filter: none; opacity: 0.95; }
 .ds-ab-creds img[data-tall] { height: 36px; margin-bottom: 2px; }
 .ds-ab-creds .ds-small { font-size: 13px; color: var(--ds-fg-muted); }
-.ds-ab-creds .ds-data { font-size: 14px; color: var(--ds-fg); }
-.ds-ab-creds .ds-link { font-size: 14px; gap: 4px; justify-self: start; }
+.ds-ab-creds .ds-data { font-size: 14.625px; color: var(--ds-fg); }
+.ds-ab-creds .ds-link { font-size: 14.625px; gap: 4px; justify-self: start; }
 @media (min-width: 768px) {
   .ds-ab-creds { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
   .ds-ab-creds img { height: 34px; }
@@ -2544,7 +2552,8 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   color: var(--ds-fg-muted);
   transition: color 180ms var(--ds-ease);
 }
-.ds-cr-rating .ds-data { font-size: 15px; color: var(--ds-fg); }
+.ds-cr-rating .ds-data { font-size: 15.75px; color: var(--ds-fg); }
+.ds-actions > a.ds-link.ds-data { font-size: 15.75px; } /* beside the 14px button */
 .ds-cr-rating:hover { color: var(--ds-fg); }
 @media (min-width: 900px) {
   .ds-cr-open { display: flex; flex-direction: column; justify-content: flex-end; min-height: 72svh; }
@@ -4372,7 +4381,7 @@ html[data-cards] .ds-primes-panel {
 .ds-tc-step { position: relative; max-width: 44ch; }
 .ds-tc-who { margin: 0; font-family: var(--ds-display); font-weight: 600; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ds-fg); }
 .ds-tc-what { margin: 8px 0 0; font-size: 16px; line-height: 1.55; color: var(--ds-fg-muted); }
-.ds-tc-what .ds-data { color: var(--ds-fg); font-size: 15px; }
+.ds-tc-what .ds-data { color: var(--ds-fg); font-size: 1.125em; }
 /* Armed after mount: a step not yet reached rests at 0.62 and comes up as the fill reaches it. */
 .ds-tc[data-live] .ds-tc-step { transition: opacity 0.3s var(--ds-ease); }
 .ds-tc[data-live] .ds-tc-step:not([data-on='true']) { opacity: 0.62; }

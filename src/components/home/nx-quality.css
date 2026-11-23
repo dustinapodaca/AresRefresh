@@ -82,7 +82,7 @@
   color: var(--ds-fg-faint);
 }
 .nx-q-fact dd { margin: 8px 0 0; font-size: 16px; line-height: 1.45; color: var(--ds-fg); }
-.nx-q-fact dd.ds-data { font-size: 16px; }
+.nx-q-fact dd.ds-data { font-size: 18px; }
 
 @media (max-width: 1023px) {
   .nx-q-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
