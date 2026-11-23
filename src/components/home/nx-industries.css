@@ -19,6 +19,8 @@
   color: var(--ds-fg-muted);
   max-width: 40ch;
 }
+/* 20px on desktop, like the hero lead (owner, 2026-11-22; was 17px there too). */
+@media (min-width: 1024px) { .nx-ind-lead { font-size: 20px; } }
 /* The all-services link under the lead (owner: phones and tablets 2026-10-22, desktop 2026-10-23). */
 .nx-ind-head .nx-ind-all { grid-column: 9 / span 4; justify-self: start; font-size: 15px; }
 
