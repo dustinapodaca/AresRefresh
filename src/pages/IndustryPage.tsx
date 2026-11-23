@@ -25,7 +25,7 @@ export default function IndustryPage() {
       <Seo path={`/industries/${ind.slug}`} />
 
       <section className="ds-mk-ind-open" aria-labelledby="mk-title">
-        <div className="ds-container">
+        <div className="ds-container ds-mk-ind-head">
           <Crumbs path={`/industries/${ind.slug}`} current={ind.name} />
           <h1 id="mk-title" className="ds-display-xl ds-mk-ind-title">{heroTitle(ind.title)}</h1>
           <div className="ds-mk-ind-lead">

@@ -3130,11 +3130,15 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 }
 @media (min-width: 1024px) {
   .ds-mk-ind-open { padding-top: calc(var(--ds-header) + var(--ds-beat)); }
-  .ds-mk-ind-lead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; }
-  .ds-mk-ind-lead .ds-lead { grid-column: 1 / span 6; margin: 0; }
-  /* The call link under the lead, as on the service and city pages (owner, 2026-11-22: alone at the
-     right once the quote button left the desktop hero, it sat in no man's land). */
-  .ds-mk-ind-lead .ds-actions { grid-column: 1 / span 6; margin: 28px 0 0; justify-content: flex-start; }
+  /* The headline on the left, the lead to its right with the call link under it, the pair centered on
+     the headline (owner, 2026-11-22: the call link sat alone at the right once the quote button left
+     the desktop hero). */
+  .ds-mk-ind-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
+  .ds-mk-ind-head > .ds-crumbs { grid-column: 1 / -1; }
+  .ds-mk-ind-head .ds-mk-ind-title { grid-column: 1 / span 7; }
+  .ds-mk-ind-lead { grid-column: 9 / span 4; margin: 0; }
+  .ds-mk-ind-lead .ds-lead { margin: 0; }
+  .ds-mk-ind-lead .ds-actions { margin: 28px 0 0; justify-content: flex-start; }
 }
 
 /* Insights index: ruled rows, title and summary left, category and date right. */
