@@ -152,6 +152,8 @@ html[data-terrain='live'] .nx-hero-still { display: none; }
   color: #c4c8ce;
   max-width: 44ch;
 }
+/* A tad bigger on desktop (owner, 2026-11-22; was 18px there too). */
+@media (min-width: 1024px) { .nx-hero-lead { font-size: 20px; } }
 .nx-hero-actions { grid-column: 8 / span 5; display: flex; gap: 22px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
 .nx-hero-call { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ds-data); font-variant-numeric: tabular-nums slashed-zero; font-size: 15.75px; }
 .nx-hero-call .ds-phone-icon { width: 18px; height: 18px; }

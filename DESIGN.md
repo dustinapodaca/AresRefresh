@@ -521,7 +521,7 @@ and `nx-*.css` (class prefix `nx-`).
   screened over it (`#9c4f22`, 26 lines at 1.4px, glow 0.9, brightness 1.5, tilt 32; from 900px
   elevation 0.3, scale 0.7, detail 0.14; phones 0.5, 1, 0.35), or the captured still where the
   terrain can't run (the same `data-terrain` check as before, in index.html). Below the
-  headline, across the foot of the screen: the lead in #c4c8ce (5 columns, 44ch), Request a
+  headline, across the foot of the screen: the lead in #c4c8ce (5 columns, 44ch; 20px on desktop, owner 2026-11-22, 18px below 1024px, 16px on phones), Request a
   Quote and the phone link at the right (on desktop the phone link first, then the button at the far
   right; owner, 2026-10-23) (the phone link hidden on phones, owner 2026-10-22: the nav's
   handset carries it), then the proof row (the GSA mark in white, 16px, then GSA MAS 47QSMS25D009Q to eLibrary;
