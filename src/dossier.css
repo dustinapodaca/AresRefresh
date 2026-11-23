@@ -3135,8 +3135,10 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
      the desktop hero). */
   .ds-mk-ind-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
   .ds-mk-ind-head > .ds-crumbs { grid-column: 1 / -1; }
-  .ds-mk-ind-head .ds-mk-ind-title { grid-column: 1 / span 7; }
-  .ds-mk-ind-lead { grid-column: 9 / span 4; margin: 0; }
+  /* More room for the headline (owner, 2026-11-22: was columns 1 to 7): 1 to 8, the lead in 9 to 12, set
+     in from the column's edge so the two don't touch. */
+  .ds-mk-ind-head .ds-mk-ind-title { grid-column: 1 / span 8; }
+  .ds-mk-ind-lead { grid-column: 9 / span 4; margin: 0; padding-left: clamp(16px, 2vw, 32px); }
   .ds-mk-ind-lead .ds-lead { margin: 0; }
   .ds-mk-ind-lead .ds-actions { margin: 28px 0 0; justify-content: flex-start; }
 }
