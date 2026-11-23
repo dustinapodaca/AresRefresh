@@ -1,17 +1,10 @@
 # Options archive
 
-**Live switch (2026-11-22, branch colorado-wide):** `?font=ares-btext|inter|ares|ares-dtext` on any page
-(`src/components/FontSwitch.tsx`, `src/fonts-ares.css`). **`ares-btext` is the default (owner, 2026-11-22):**
-Die Grotesk D headlines and Die Grotesk B text, set in `src/fonts.css` and the font tokens, so the first
-paint is already in them (the switch applied after load made text jump: tight, open, then right). The
-headline cut (`die-grotesk-d-ares-display-*`, `scripts/fonts/track.py`) carries +0.045em, so headlines
-tracked -0.05em for Inter Tight land on the owner's -0.005em; the text cut (`die-grotesk-b-ares-text-*`,
-`scripts/fonts/match-inter.py`) is scaled 5% to Inter's x-height with Inter's line metrics, spacing
-(line length within 0.4%), and digit widths. Both rebuilt from Klim's test font and the specimen PDF
-(`scripts/fonts/build-die-grotesk-d-ares.py`) until the licensed files turn up. Alternatives: `inter`
-(Inter Tight and Inter, the site's type until 2026-11-22), `ares` (plain D text, cramped at reading
-sizes), `ares-dtext` (D text cut like Inter). The choice sticks for the session; a small switch shows at
-the bottom left once a `?font=` link has been opened. In the gallery spec.
+**Removed (owner, 2026-11-22): `?font=`**, the type switch. Die Grotesk D headlines and Die Grotesk B text
+(`ares-btext`) are the site's type, final. The switch and its other forms (`inter`: Inter Tight and Inter,
+the type before; `ares`: plain D text; `ares-dtext`: D text cut to set like Inter) are in tag
+`type-font-switch-option` (`src/components/FontSwitch.tsx`, `src/fonts-ares.css`, and the D text and Inter
+font files). How the fonts are built: `scripts/fonts/README.md`.
 
 **Live switch (2026-11-22, branch colorado-wide):** `/?coverage=route|regions`, the map in Home's 04 "Where
 we work." (`FORMS` in `src/components/home/Coverage.tsx`; the regions form in

@@ -126,7 +126,8 @@ components:
 > **Type replaced (owner, 2026-11-22).** Inter Tight is now Die Grotesk D and Inter is now Die Grotesk
 > B (Typography, "Font loading"). Where this file names Inter Tight for a headline, read Die Grotesk D;
 > where it names Inter for text, read Die Grotesk B. Sizes, weights, and the CSS tracking values are
-> unchanged: the font files carry the difference. `?font=inter` shows the site in Inter.
+> unchanged: the font files carry the difference. Final (owner, 2026-11-22); Inter is in tag
+> `type-font-switch-option`.
 
 > **Home replaced (owner, 2026-10-20).** The Home is now "The Ground" (Components, "Home"). Other
 > entries that mention the Home Record cards, the Home hero strip or photo, the credential strip,
@@ -247,11 +248,9 @@ sizes are unchanged.
   three files preloaded in index.html so the first paint is already in them: Die Grotesk D Ares Display
   (500, 600, 700) and Die Grotesk B Ares Text (300 to 700), Klim's Die Grotesk, licensed by the owner;
   PP Fraktion Mono (400 and 700 only, so text set at 500 shows as 400; Pangram Pangram, licensed by the
-  owner). The Die Grotesk files are stand-ins built from Klim's test font and the specimen PDF
-  (`scripts/fonts/`) until the licensed files turn up; replace them then, keeping the display cut's
-  +0.045em and the text cut's Inter matching. `?font=inter|ares|ares-dtext` compares Inter Tight and
-  Inter, plain D text, and D text cut like Inter (`FontSwitch.tsx`, `fonts-ares.css`,
-  `docs/options-archive.md`).
+  owner). The Die Grotesk files are built from Klim's test font and the specimen PDF and named after Ares
+  (`scripts/fonts/README.md`: how, the coverage check, known limits, and what to do when the licensed
+  files turn up). Every character on the site is in both (86 of 86, 2026-11-22).
 
 ## Layout
 

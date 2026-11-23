@@ -1,37 +1,8 @@
 {
   "name": "all-options",
   "title": "Every live option for Deidre",
-  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19), and the Insights phone cards (?rowcard=, 2026-11-19), and Home's Where we work map (?coverage=, 2026-11-22), and the site font (?font=, 2026-11-22).",
+  "intro": "Live switches: the Capability Statement card's drawing (?ridge=, 2026-11-13) and the Insights hero (?hero=, 2026-11-19), and the Insights phone cards (?rowcard=, 2026-11-19), and Home's Where we work map (?coverage=, 2026-11-22).",
   "groups": [
-    {
-      "heading": "Site font",
-      "intro": "Every page. Die Grotesk D headlines and Die Grotesk B text by default; Inter and the other Die Grotesk forms to compare. Once a ?font= link is open, a switch at the bottom left flips between them for the session.",
-      "page": "/",
-      "param": "font",
-      "options": [
-        {
-          "value": "ares-btext",
-          "label": "D + B text",
-          "note": "Die Grotesk D headlines; body text in Die Grotesk B cut to set like Inter. The site's type since 2026-11-22 (owner).",
-          "tag": "default"
-        },
-        {
-          "value": "inter",
-          "label": "Inter",
-          "note": "Inter Tight headlines, Inter text: the site's type until 2026-11-22."
-        },
-        {
-          "value": "ares",
-          "label": "D",
-          "note": "Die Grotesk D for headlines and text; body text at D's own spacing (tight at reading sizes)."
-        },
-        {
-          "value": "ares-dtext",
-          "label": "D, Inter spacing",
-          "note": "Die Grotesk D headlines; body text in D cut to set like Inter: Inter's x-height, line metrics, line length, and digit widths."
-        }
-      ]
-    },
     {
       "heading": "Home, Where we work: the map",
       "intro": "Home's 04 section. Each is a whole desktop and phone version; the regions beside the map stay the same. Captured finished and still (reduced motion); open live to see the scroll.",

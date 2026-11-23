@@ -6,7 +6,6 @@ import NavPanel from './components/NavPanel';
 import Footer from './components/Footer';
 import SmoothAnchors from './components/SmoothAnchors';
 import Analytics from './components/Analytics';
-import FontSwitch from './components/FontSwitch';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -126,7 +125,6 @@ export default function App() {
       <ScrollToTop />
       <SmoothAnchors />
       <Analytics />
-      <FontSwitch />
       <NavPanel />
       <Routes>
         <Route path="/" element={<Home />} />

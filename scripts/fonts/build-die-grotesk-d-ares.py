@@ -7,7 +7,8 @@ glyph at both a reference weight and the target. Accented letters use D's own ba
 variable font at the exact weight, with the accent placed as in C.
 
 usage: build-die-grotesk-d-ares.py <scratch> <outdir> [style A|B|C|D, default D]
-<scratch> holds spec/spec.pdf (the Klim specimen) and die/roman.woff2 (the test VF).
+<scratch> holds spec/spec.pdf (the Klim specimen) and die/roman.woff2 (the test VF). The site's builds
+are in scripts/fonts/built/; see scripts/fonts/README.md.
 """
 import io, sys, re
 from collections import defaultdict
