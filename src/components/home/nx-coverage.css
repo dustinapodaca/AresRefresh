@@ -30,7 +30,11 @@
 }
 /* The lead at the top of the left column, the regions at its foot, the map beside both (owner,
    2026-11-22: the regions sat under an empty column the height of the map). */
-.nx-cv-cities { grid-column: 1 / span 5; grid-row: 2; align-self: end; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
+/* The regions and the all-areas link under them share the cell (owner, 2026-11-22: the link added). */
+.nx-cv-list { grid-column: 1 / span 5; grid-row: 2; align-self: end; }
+.nx-cv-cities { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ds-rule); }
+/* "All service areas" under the San Luis Valley, set like the industries' all-services link. */
+.nx-cv-all { margin-top: 24px; font-size: 15px; }
 /* Clipped top and bottom only, for the rows' rise; not sideways, so the arrow's hover nudge keeps
    its tip (owner, 2026-10-22: it was cut off). */
 .nx-cv-cities li { border-bottom: 1px solid var(--ds-rule); overflow: hidden; overflow: visible clip; }
@@ -166,9 +170,9 @@
   .nx-cv-title, .nx-cv-lead { grid-column: 1 / -1; }
   /* Phones and tablets: the lead under the headline, then the map, then the regions. */
   .nx-cv-body { display: flex; flex-direction: column; gap: 40px; align-items: stretch; margin-top: 24px; }
-  .nx-cv-lead, .nx-cv-map, .nx-cv-cities { align-self: stretch; }
+  .nx-cv-lead, .nx-cv-map, .nx-cv-list { align-self: stretch; }
   .nx-cv-map { order: 1; }
-  .nx-cv-cities { order: 2; }
+  .nx-cv-list { order: 2; }
   /* Full column here, so no bleed into the gutter (it ran 7 to 20px past the margin; 2026-10-22). */
   .nx-cv-map { margin: 0; }
   .nx-cv-mono { font-size: 19px; } /* about 12px on a phone's map (owner, 2026-10-25; was 12) */

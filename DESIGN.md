@@ -668,7 +668,8 @@ and `nx-*.css` (class prefix `nx-`).
   across Colorado, from our base in Colorado Springs."), the three regions set large on the left
   (`clamp(36px, 4.3vw, 72px)`: Front Range, Western Slope, San Luis Valley), each with its cities
   beneath in the data face (14px, ink faint) and a link to its column on the Service Areas page
-  (`/locations#front-range` and so on), and Colorado to scale on the right (the coverage map's
+  (`/locations#front-range` and so on), then "All service areas →" to the hub under the San Luis Valley
+  (15px, like the industries' all-services link; it rises in with the regions; owner, 2026-11-22), and Colorado to scale on the right (the coverage map's
   projection, its dot grid, a rust glow on Colorado Springs, Pikes Peak as an open triangle; I-25 and
   I-70 whole as faint dashed ground). The line is one route that leaves headquarters and comes home:
   Colorado Springs north on I-25 through Denver to Fort Collins, over Trail Ridge Road (US-34) to

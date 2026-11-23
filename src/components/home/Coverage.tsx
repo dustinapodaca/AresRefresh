@@ -209,7 +209,7 @@ export default function Coverage() {
     // and tablets a tad sooner, from the screen's foot to 65% (owner, 2026-11-22).
     const rise = (start: string, end: string) =>
       gsap.fromTo(
-        root.querySelectorAll('.nx-cv-city'),
+        root.querySelectorAll('.nx-cv-city, .nx-cv-all'),
         { yPercent: 60, opacity: 0.1 },
         {
           yPercent: 0,
@@ -246,27 +246,33 @@ export default function Coverage() {
           Armed and unarmed officers for federal, commercial, industrial, and institutional sites across
           Colorado, from our base in Colorado Springs.
         </p>
-        <ul className="nx-cv-cities">
-          {REGION_ROWS.map((r) => (
-            <li key={r.id}>
-              <Link
-                to={`/locations#${r.id}`}
-                className="nx-cv-city"
-                data-on={active === r.id || undefined}
-                onPointerMove={moved(r.id)}
-                onMouseLeave={on(null)}
-                onFocus={on(r.id)}
-                onBlur={on(null)}
-              >
-                <span className="nx-cv-city-text">
-                  <span className="nx-cv-city-name">{r.name}</span>
-                  <span className="nx-cv-city-note ds-data">{r.cities}</span>
-                </span>
-                <Arrow size={28} />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="nx-cv-list">
+          <ul className="nx-cv-cities">
+            {REGION_ROWS.map((r) => (
+              <li key={r.id}>
+                <Link
+                  to={`/locations#${r.id}`}
+                  className="nx-cv-city"
+                  data-on={active === r.id || undefined}
+                  onPointerMove={moved(r.id)}
+                  onMouseLeave={on(null)}
+                  onFocus={on(r.id)}
+                  onBlur={on(null)}
+                >
+                  <span className="nx-cv-city-text">
+                    <span className="nx-cv-city-name">{r.name}</span>
+                    <span className="nx-cv-city-note ds-data">{r.cities}</span>
+                  </span>
+                  <Arrow size={28} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link to="/locations" className="ds-link nx-cv-all">
+            All service areas
+            <Arrow />
+          </Link>
+        </div>
 
         <figure ref={figure} className="nx-cv-map" data-form={form} data-active={active || undefined}>
           <p className="nx-cv-cue ds-data" aria-hidden="true">
