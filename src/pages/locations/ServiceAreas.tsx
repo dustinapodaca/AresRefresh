@@ -60,7 +60,7 @@ export default function ServiceAreas() {
       <section className="ds-sa-open" aria-labelledby="sa-title">
         <div className="ds-container ds-sa-open-grid">
           <div className="ds-sa-open-copy">
-            <h1 id="sa-title" className="ds-display-xl">{heroTitle('Security officers across Colorado')}</h1>
+            <h1 id="sa-title" className="ds-display-xl">{heroTitle('Service areas across Colorado')}</h1>
             <p className="ds-lead">
               Armed and unarmed officers in {COUNT_WORDS[CITIES.length] ?? CITIES.length} Colorado cities, from the Front Range to the Western Slope and the San
               Luis Valley. Headquartered in Colorado Springs since 2021, and licensed the way each city requires.

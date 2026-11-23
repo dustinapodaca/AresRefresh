@@ -1406,3 +1406,12 @@ previous page's. New framing copy (N):
   so far", "Quality over quantity", "Request a quote, or call us", "Security in Denver", "Questions,
   answered". The sentence inside the Services industries headline ("Six industries, ... campuses.") keeps
   its period. Hand-off lines and leads are unchanged.
+
+## 2026-11-22: Home and Service Areas headlines (Option A)
+
+- Home hero: "Security officers for Colorado's Front Range" → "Security officers across Colorado" (owner):
+  Home is the strongest page and owns the statewide phrase. Two lines on desktop (was three); the scroll's
+  camera flies into the l of "Colorado" (was the F of "Front").
+- Service Areas hub: "Security officers across Colorado" → "Service areas across Colorado", so the two pages
+  don't compete for the same phrase; it matches the menu label and breadcrumb. Page titles and meta
+  descriptions (`src/seo/routes.json`) unchanged.

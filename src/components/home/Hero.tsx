@@ -9,7 +9,7 @@ import { motionAllowed, useScene, SCRUB } from './engine';
 
 // Hero, "The ground" (home-flora, 2026-10-20). One visual, no floating images (owner): the
 // headline is cut out of the black, a window onto the rust terrain moving behind it. Scrolling
-// holds the screen, lifts the copy away, and flies the camera into the F of "Front" until the
+// holds the screen, lifts the copy away, and flies the camera into the l of "Colorado" (was the F of "Front") until the
 // stroke fills the window and the land is all there is; then the land dims under 01 Record.
 //
 // How the window works: the ground (a rust light with the terrain screened over it) sits under a
@@ -64,7 +64,7 @@ export default function Hero() {
     const ground = root.querySelector<HTMLElement>('.nx-hero-ground')!;
     const card = root.querySelector<HTMLElement>('.nx-hero-card')!;
 
-    // Where to fly: the middle of the F's stem, and how far to scale. Capped (2026-10-20): the
+    // Where to fly: the middle of the fly letter's stem (the l of Colorado), and how far to scale. Capped (2026-10-20): the
     // full-window stroke took about 210x, and Chrome on a Mac dropped tiles of a layer that big
     // (the headline came back as a fragment and the nav blanked). The black fades out while it
     // grows, so the land is all there is without the stroke having to cover the window.
@@ -213,9 +213,12 @@ export default function Hero() {
 
         <div className="nx-hero-mask">
           <h1 id="nx-hero-title" className="nx-hero-title">
-            Security officers for Colorado’s{' '}
+            {/* "Security officers across Colorado" (owner, 2026-11-22; was "...for Colorado's Front Range"):
+                Home owns the statewide phrase, the Service Areas page says what it is. The camera flies into
+                the stem of the "l" in Colorado (it was the F of Front). */}
+            Security officers across{' '}
             <span className="nx-nowrap">
-              <span className="nx-fly">F</span>ront Range
+              Co<span className="nx-fly">l</span>orado
             </span>
           </h1>
         </div>
