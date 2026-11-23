@@ -200,7 +200,7 @@ export const CITIES: City[] = [
     path: '/locations/denver',
     coord: { lat: 39.7392, lon: -104.9903 },
     region: 'front-range',
-    counties: 'Denver, Adams, Arapahoe, Jefferson, Douglas, and Broomfield counties',
+    counties: 'Denver, Arapahoe, Adams, Jefferson, Douglas, and Broomfield counties',
     rule: 'Private security employer license',
     held: '2021-BFN-0001984',
   },  {
