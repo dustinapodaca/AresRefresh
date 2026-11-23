@@ -38,6 +38,9 @@ import '../components/capnext/cn.css';
 // Quieter motion than Home and Services: the card's tilt, and one fade-up per block.
 
 const say = (line: string) => THIRD_PERSON[line] ?? line;
+// The core competencies' tags are short names, so they take "&" (owner, 2026-11-22): "Lobby & front desk",
+// "Gate, dock & lobby control". The same names stay "and" where the service pages use them as headings.
+const amp = (name: string) => name.replace(/,? and /g, ' & ');
 const slugFor = (capabilityId: string) => ROLE_PAGES.find((r) => r.capabilityId === capabilityId)?.slug;
 
 const IDS = {
@@ -567,7 +570,7 @@ function Competencies() {
               </div>
               <ul className="cx-caps-inc" aria-label={`${c.title} includes`}>
                 {c.includes.map((x) => (
-                  <li key={x.name}>{x.name}</li>
+                  <li key={x.name}>{amp(x.name)}</li>
                 ))}
               </ul>
             </li>

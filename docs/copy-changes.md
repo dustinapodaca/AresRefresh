@@ -1388,3 +1388,11 @@ previous page's. New framing copy (N):
 - Same day (owner): the strip is the only form (the other four removed); its three are the handoff's again:
   How to choose a security company in Colorado; How much do security guards cost in Colorado in 2027?;
   Escorts for contractors on military bases: how they work.
+
+## 2026-11-22: Capability Statement, "&" in the core competencies' tags
+
+- The tags under each service in 01 Core competencies take "&" (owner): "Regulated & high-liability
+  sites", "Lobby & front desk", "Perimeter & foot patrol", "Passenger & public areas", "Plainclothes &
+  loss prevention", "Gate, dock & lobby control", "Crew, visitor & delivery escort", "Person & vehicle
+  verification". Done where the page sets them (`amp()` in `CapabilityStatement.tsx`); the same names in
+  `capability/data.ts` keep "and" where the service pages use them as duty headings.
