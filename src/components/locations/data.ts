@@ -190,7 +190,7 @@ export const CITIES: City[] = [
     path: '/locations/colorado-springs',
     coord: { lat: 38.8339, lon: -104.8214 },
     region: 'front-range',
-    counties: 'El Paso County',
+    counties: 'El Paso and Teller counties',
     rule: 'Contract security agency license',
     held: '0850744L',
   },
@@ -200,7 +200,7 @@ export const CITIES: City[] = [
     path: '/locations/denver',
     coord: { lat: 39.7392, lon: -104.9903 },
     region: 'front-range',
-    counties: 'Denver, Adams, Arapahoe, Jefferson, and Douglas counties',
+    counties: 'Denver, Adams, Arapahoe, Jefferson, Douglas, and Broomfield counties',
     rule: 'Private security employer license',
     held: '2021-BFN-0001984',
   },  {
@@ -209,7 +209,7 @@ export const CITIES: City[] = [
     path: '/locations/fort-collins',
     coord: { lat: 40.5853, lon: -105.0844 },
     region: 'front-range',
-    counties: 'Larimer County',
+    counties: 'Larimer and Weld counties',
     rule: 'City sales and use tax license, its business license',
     held: 'Sales and use tax license',
   },
@@ -240,7 +240,7 @@ export const CITIES: City[] = [
     path: '/locations/glenwood-springs',
     coord: { lat: 39.5505, lon: -107.3248 },
     region: 'western-slope',
-    counties: 'Garfield County',
+    counties: 'Garfield, Eagle, and Pitkin counties',
     rule: 'City business license, two-year term',
     held: 'Business license',
   },
@@ -250,7 +250,7 @@ export const CITIES: City[] = [
     path: '/locations/montrose',
     coord: { lat: 38.4783, lon: -107.8762 },
     region: 'western-slope',
-    counties: 'Montrose County',
+    counties: 'Montrose, Delta, and Ouray counties',
     rule: 'No business license; sales tax license for retail only',
     held: 'None required, confirmed by the City',
     side: 'left',
@@ -261,7 +261,7 @@ export const CITIES: City[] = [
     path: '/locations/durango',
     coord: { lat: 37.2753, lon: -107.8801 },
     region: 'western-slope',
-    counties: 'La Plata County',
+    counties: 'La Plata and Montezuma counties',
     rule: 'City business license, renewed each year',
     held: 'Business license',
   },
@@ -271,7 +271,7 @@ export const CITIES: City[] = [
     path: '/locations/alamosa',
     coord: { lat: 37.4695, lon: -105.87 },
     region: 'san-luis-valley',
-    counties: 'Alamosa County',
+    counties: 'Alamosa, Rio Grande, Conejos, Costilla, and Saguache counties',
     rule: 'Contract security license for the company and every officer',
     held: 'Company and officer licenses',
   },
@@ -281,7 +281,7 @@ export const CITIES: City[] = [
     path: '/locations/trinidad',
     coord: { lat: 37.1695, lon: -104.5005 },
     region: 'san-luis-valley',
-    counties: 'Las Animas County',
+    counties: 'Las Animas and Huerfano counties',
     rule: 'City business license, renewed each year',
     held: 'Business license',
   },
@@ -323,7 +323,7 @@ export const COLORADO_SPRINGS: LocationFile = {
     { label: 'Armed endorsements', value: 'From our NRA-certified firearms instructor, a veteran' },
     { label: 'Office', value: 'Colorado Springs, CO 80906', mono: true, route: { note: 'Headquarters since 2021' } },
   ],
-  local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, so leadership is a short drive from any post in El Paso County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, campuses, and community health centers. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
+  local: 'Colorado Springs is home. Ares was founded here in 2021, and our headquarters is still here, so leadership is a short drive from any post in El Paso or Teller County. A member of that leadership walks your site before anything is signed, trains each officer on the post before the first shift, and works the first shift on every new post. The City of Colorado Springs licenses us for armed and unarmed security and approves us as an armed and unarmed training provider, so we qualify our own officers here. We are ready to staff defense contractors and military-adjacent sites, data centers, builds and industrial yards, utilities, commercial property, campuses, and community health centers. Federal agencies here can also order through our GSA Multiple Award Schedule contract.',
   sectorsTitle: 'Sites we are ready to staff here',
   faq: [
     {
@@ -354,7 +354,7 @@ export const DENVER: LocationFile = {
   path: '/locations/denver',
   title: 'Security guards in Denver.',
   // The training line moved into "Security in Denver." (copy audit round 3).
-  lead: 'Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor.',
+  lead: 'Armed and unarmed security officers for sites across Greater Denver: Aurora, Lakewood, Commerce City, Broomfield, Douglas County, and the DIA corridor.',
   licenseTitle: 'Licensed in Denver',
   licenseIntro: 'Colorado has no statewide security license. Denver licenses security companies itself, and these are ours here.',
   license: [
@@ -387,7 +387,7 @@ export const DENVER: LocationFile = {
     },
     {
       q: 'Do you cover sites outside the city of Denver?',
-      a: 'Yes. We staff across Greater Denver, including Aurora, Lakewood, Commerce City, Douglas County, and the DIA corridor. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+      a: 'Yes. We staff across Greater Denver, including Aurora, Lakewood, Commerce City, Broomfield, Douglas County, and the DIA corridor. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
     },
     {
       // Owner, 2026-10-10: the same factors as the other cities.
@@ -524,7 +524,7 @@ export const GLENWOOD_SPRINGS: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Glenwood Springs?',
-      a: 'Yes, along I-70 through Garfield County and up the Roaring Fork Valley, including New Castle, Rifle, and Carbondale. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
+      a: 'Yes, along I-70 through Garfield and Eagle counties and up the Roaring Fork Valley into Pitkin County, including New Castle, Rifle, Carbondale, Aspen, and Vail. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
     },
   ],
   sectors: [
@@ -561,7 +561,7 @@ export const MONTROSE: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Montrose?',
-      a: 'Yes, across Montrose County and along US-50 toward Delta and Olathe. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will answer plainly.',
+      a: 'Yes, across Montrose County and into Delta and Ouray counties, along US-50 toward Olathe and Delta and US-550 toward Ouray. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will answer plainly.',
     },
   ],
   sectors: [
@@ -599,7 +599,7 @@ export const DURANGO: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Durango?',
-      a: 'Yes, across La Plata County, including Bayfield and the US-160 and US-550 corridors. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
+      a: 'Yes, across La Plata County and into Montezuma County, including Bayfield, Cortez, and the US-160 and US-550 corridors. Some towns license businesses on their own, so we check what the town requires before we quote. Send us the address and the hours.',
     },
   ],
   sectors: [
@@ -637,7 +637,7 @@ export const ALAMOSA: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Alamosa?',
-      a: 'Yes, across the San Luis Valley, including Monte Vista and the US-160 corridor. Towns set their own rules, so we check what each one requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+      a: 'Yes, across the San Luis Valley, in Alamosa, Rio Grande, Conejos, Costilla, and Saguache counties, including Monte Vista and the US-160 corridor. Towns set their own rules, so we check what each one requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
     },
   ],
   sectors: [
@@ -680,7 +680,7 @@ export const TRINIDAD: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Trinidad?',
-      a: 'Yes, across Las Animas County and up I-25 toward Walsenburg. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+      a: 'Yes, across Las Animas County and up I-25 into Huerfano County, toward Walsenburg. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
     },
   ],
   sectors: [
@@ -725,7 +725,7 @@ export const FORT_COLLINS: LocationFile = {
     },
     {
       q: 'Do you cover sites outside Fort Collins?',
-      a: 'Yes, across Larimer County, including Loveland, Windsor, and Wellington. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
+      a: 'Yes, across Larimer County and into Weld County, including Loveland, Windsor, and Wellington. Some towns license businesses on their own, so we check what the town requires before we quote. Tell us the address and the hours, and we will tell you plainly whether we can staff it and when.',
     },
   ],
   sectors: [

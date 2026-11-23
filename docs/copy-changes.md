@@ -1448,3 +1448,12 @@ previous page's. New framing copy (N):
 - Redirects: /company → /about (301, Search Console still lists it). The /locations → /services#areas 301
   from before the hub existed was removed from `_redirects` and `.htaccess`: on Apache it would have hidden
   the Service Areas page.
+
+## 2026-11-22: more counties on the Service Areas page (owner)
+
+- Hub rows and each city page's "Do you cover sites outside …?" answer (Denver's lead and Colorado Springs'
+  local paragraph too) now name: Colorado Springs, El Paso and Teller; Denver adds Broomfield; Fort Collins,
+  Larimer and Weld (Windsor); Glenwood Springs, Garfield, Eagle, and Pitkin (Aspen, Vail); Montrose,
+  Montrose, Delta, and Ouray; Durango, La Plata and Montezuma (Cortez); Alamosa, Alamosa, Rio Grande,
+  Conejos, Costilla, and Saguache (Monte Vista); Trinidad, Las Animas and Huerfano (Walsenburg). Pueblo and
+  Grand Junction unchanged.
