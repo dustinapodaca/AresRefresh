@@ -1,6 +1,7 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { FormEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Arrow from '../components/Arrow';
-import CoverageMap from '../components/home/CoverageMap';
+import { RegionsMap } from '../components/home/CoverageRegions';
+import '../components/home/nx-coverage.css';
 import QuoteToast, { type ToastData } from '../components/QuoteToast';
 import Seo from '../seo/Seo';
 import { responsive } from '../lib/responsive';
@@ -24,9 +25,14 @@ const NEEDS: { slug: string; label: string }[] = [
   { slug: 'other', label: 'Not sure, or something else' },
 ];
 
-// The post, in a few taps (CenCore's quote form, without the clearance question).
-const CHIPS: { name: string; legend: string; options: string[] }[] = [
-  { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] },
+type ChipSet = { name: string; legend: string; options: string[] };
+
+// Where the site is: the one question about the post the form keeps in view (owner, 2026-11-23).
+const WHERE: ChipSet = { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] };
+
+// The rest of the post, in a few taps (CenCore's quote form, without the clearance question),
+// folded behind "Add details" (owner, 2026-11-23: the form read as too long to bother with).
+const CHIPS: ChipSet[] = [
   { name: 'officers', legend: 'Officers on post at once', options: ['1 to 2', '3 to 5', '6 to 15', '16 or more', 'Not sure'] },
   { name: 'schedule', legend: 'Schedule', options: ['Business hours', 'Nights and weekends', '24/7', 'One-time or short-term', 'Not sure'] },
   { name: 'start', legend: 'When do you need coverage?', options: ['Within 30 days', '1 to 3 months', '3 to 6 months', 'Just planning'] },
@@ -79,7 +85,12 @@ export default function Contact() {
     const industry = q.get('industry');
     if (industry) {
       const select = form.querySelector<HTMLSelectElement>('select[name="site_type"]');
-      if (select && SITE_TYPES.some((t) => t.slug === industry)) select.value = industry;
+      if (select && SITE_TYPES.some((t) => t.slug === industry)) {
+        select.value = industry;
+        // Show the answer picked for the reader.
+        const more = select.closest('details');
+        if (more) more.open = true;
+      }
     }
   }, []);
 
@@ -185,50 +196,8 @@ export default function Contact() {
           </fieldset>
 
           <fieldset className="ds-qt-part">
-            <legend>About the post</legend>
-            <div className="ds-qt-chipsets">
-              {CHIPS.map((g) => (
-                <fieldset key={g.name} className="ds-qt-chipset">
-                  <legend>{g.legend} <span>Optional</span></legend>
-                  <div className="ds-qt-chips">
-                    {g.options.map((o) => (
-                      <label key={o} className="ds-qt-chip">
-                        <input type="radio" name={g.name} value={o} />
-                        <span>{o}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              ))}
-            </div>
-            <div className="ds-qt-fields ds-qt-fields-after">
-              <Field id="qf-site" label="Type of site" optional>
-                <select id="qf-site" name="site_type" className="ds-qt-input ds-qt-select" defaultValue="">
-                  <option value="">Choose one</option>
-                  {SITE_TYPES.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
-                </select>
-              </Field>
-              <Field id="qf-heard" label="How did you hear about us?" optional>
-                <select id="qf-heard" name="heard_about" className="ds-qt-input ds-qt-select" defaultValue="">
-                  <option value="">Choose one</option>
-                  {HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
-                </select>
-              </Field>
-            </div>
-          </fieldset>
-
-          <fieldset className="ds-qt-part ds-qt-part-grow">
-            <legend>About the site</legend>
-            <Field id="qf-message" label="Message">
-              <textarea
-                id="qf-message"
-                name="message"
-                required
-                rows={6}
-                placeholder="The address or area, the hours, what officers should watch for, and any requirements the post must meet."
-                className="ds-qt-input"
-              />
-            </Field>
+            <legend>{WHERE.legend}</legend>
+            <Chips set={WHERE} />
           </fieldset>
 
           <fieldset className="ds-qt-part">
@@ -240,14 +209,62 @@ export default function Contact() {
               <Field id="qf-email" label="Email">
                 <input id="qf-email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" className="ds-qt-input" />
               </Field>
-              <Field id="qf-org" label="Organization" optional>
-                <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
-              </Field>
               <Field id="qf-phone" label="Phone" optional>
                 <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
               </Field>
+              <Field id="qf-org" label="Organization" optional>
+                <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
+              </Field>
             </div>
           </fieldset>
+
+          <fieldset className="ds-qt-part ds-qt-part-grow">
+            <legend>Anything we should know?</legend>
+            <Field id="qf-message" label="Message" optional>
+              <textarea
+                id="qf-message"
+                name="message"
+                rows={4}
+                placeholder="The hours, your dates, or anything the post must meet."
+                className="ds-qt-input"
+              />
+            </Field>
+          </fieldset>
+
+          {/* The rest is optional and folded away (owner, 2026-11-23); native <details>, so it
+              opens without JS, and whatever is chosen inside is sent either way. */}
+          <details className="ds-qt-more">
+            <summary>
+              <span>
+                Add details <span className="ds-qt-more-note">Optional</span>
+              </span>
+              <span className="ds-qt-more-mark" aria-hidden="true" />
+            </summary>
+            <div className="ds-qt-more-body">
+              <div className="ds-qt-chipsets">
+                {CHIPS.map((g) => (
+                  <fieldset key={g.name} className="ds-qt-chipset">
+                    <legend>{g.legend}</legend>
+                    <Chips set={g} />
+                  </fieldset>
+                ))}
+              </div>
+              <div className="ds-qt-fields ds-qt-fields-after">
+                <Field id="qf-site" label="Type of site">
+                  <select id="qf-site" name="site_type" className="ds-qt-input ds-qt-select" defaultValue="">
+                    <option value="">Choose one</option>
+                    {SITE_TYPES.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
+                  </select>
+                </Field>
+                <Field id="qf-heard" label="How did you hear about us?">
+                  <select id="qf-heard" name="heard_about" className="ds-qt-input ds-qt-select" defaultValue="">
+                    <option value="">Choose one</option>
+                    {HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
+                  </select>
+                </Field>
+              </div>
+            </div>
+          </details>
 
           {/* Honeypot: hidden from sighted users and the tab order; bots that fill every
               input tick it and the submit handler bails. Web3Forms recommends the name. */}
@@ -302,7 +319,7 @@ export default function Contact() {
           <div className="ds-qt-where">
             <h2 className="ds-qt-sub">Where we post officers</h2>
             <p className="ds-small">Headquartered in Colorado Springs, with officers across Colorado.</p>
-            <CoverageMap />
+            <QuoteMap />
           </div>
 
         </aside>
@@ -310,6 +327,38 @@ export default function Contact() {
 
       <QuoteToast data={toast} onClose={() => setToast(null)} />
     </main>
+  );
+}
+
+function Chips({ set }: { set: ChipSet }) {
+  return (
+    <div className="ds-qt-chips">
+      {set.options.map((o) => (
+        <label key={o} className="ds-qt-chip">
+          <input type="radio" name={set.name} value={o} />
+          <span>{o}</span>
+        </label>
+      ))}
+    </div>
+  );
+}
+
+/** Home's regions map (owner, 2026-11-23: it shows all of Colorado; the I-25 map named only three
+ *  cities), drawn whole. Pointing at a region lights it and dims the others, easing as on Home. */
+function QuoteMap() {
+  const [active, setActive] = useState<string | null>(null);
+  const ref = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.setAttribute('data-easing', '');
+    const t = window.setTimeout(() => el.removeAttribute('data-easing'), 450);
+    return () => window.clearTimeout(t);
+  }, [active]);
+  return (
+    <figure ref={ref} className="nx-cv-map ds-qt-map" data-active={active || undefined}>
+      <RegionsMap active={active} onPoint={(id) => setActive((cur) => (cur === id ? cur : id))} />
+    </figure>
   );
 }
 

@@ -856,8 +856,10 @@ and `nx-*.css` (class prefix `nx-`).
   sheet; the ticks tighten in on hover (180ms) and turn ink when the card is open. Nowhere else.
 
 ### Coverage map
+- Removed 2026-11-23 (owner): the Request a Quote page now shows Home's regions map
+  (`CoverageRegions.tsx`), and `CoverageMap.tsx` was deleted; what follows describes it.
 - Since 2026-10-20 (owner) Home draws its own map (Components, "Home", 04 Coverage); this map
-  (`CoverageMap.tsx`) is the Request a Quote page's. Where this entry says "Home" it describes the
+  (`CoverageMap.tsx`) was the Request a Quote page's. Where this entry says "Home" it describes the
   Dossier Home.
 - An authored SVG of Colorado to scale (37°N to 41°N, 102.05°W to 109.05°W) on a faint dot
   grid, with Denver, Colorado Springs, and Pueblo plotted from real coordinates and
@@ -1276,6 +1278,13 @@ docs/contact-concepts.md.
 - **Opening:** the generated Denver towers at blue hour (`services-hero/nb-s1-towers.webp`, swapped from Services, owner 2026-10-08; generated, so no place caption; the route's SEO preload still names `contact-hero.jpg` until the SEO pass)
   as a band under the nav, shaded from the top and left and masked into the canvas, with
   "Request a quote." and the lead low on it.
+- **Shortened (owner, 2026-11-23: too long to bother with).** In view: What needs covering
+  (required), Where is the site? (location chips), How to reach you (name and email required, phone
+  and organization optional), and an optional message ("Anything we should know?"). The officers,
+  schedule, and start chips, the site type, and "How did you hear about us?" fold behind an "Add
+  details · Optional" row (native details, the questions block's +; opened when `?industry=` picks
+  the site type). The contact column's map is Home's regions map, drawn whole, pointing at a region
+  lights it. Where the entry below differs, this wins.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a
   hairline-strong rule. "What needs covering?" is a required radio group of the six
   divisions and something else, as rows on hairlines in two
