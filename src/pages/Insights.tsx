@@ -5,7 +5,7 @@ import Arrow from '../components/Arrow';
 import { CATEGORIES, INSIGHTS, type Insight, type InsightCategory } from '../components/market/insights';
 import { AskStrip } from '../components/market/parts';
 import InsightArt from '../components/insights/InsightArt';
-import { readingMinutes, shownDate } from '../components/insights/meta';
+import { readingMinutes } from '../components/insights/meta';
 import '../components/insights/insights.css';
 
 // Insights index, "The Reading Room" (2026-11-19; was ruled rows of title, summary, and date).
@@ -15,14 +15,15 @@ import '../components/insights/insights.css';
 // topic is the featured card; every article carries its plate. The prerender and no-JavaScript
 // page show every article.
 
-const LATEST = [...INSIGHTS].map((a) => shownDate(a)).sort((x, y) => (x.iso < y.iso ? 1 : -1))[0];
+// The index shows each article's original post date only; updates and their dates live on the
+// article itself (owner, 2026-11-27). The count line's date is the newest article's.
+const LATEST = [...INSIGHTS].sort((x, y) => (x.date < y.date ? 1 : -1))[0];
 
 function Meta({ a }: { a: Insight }) {
-  const d = shownDate(a);
   return (
     <span className="ds-in-meta">
       <span>{a.category}</span>
-      <time className="ds-data" dateTime={d.iso}>{d.label}</time>
+      <time className="ds-data" dateTime={a.date}>{a.dateLabel}</time>
       <span className="ds-data">{readingMinutes(a)} min read</span>
     </span>
   );
@@ -66,7 +67,7 @@ export default function Insights() {
             licensing in Colorado.
           </p>
           <p className="ds-data ds-in-count">
-            {INSIGHTS.length} articles · last updated <time dateTime={LATEST.iso}>{LATEST.label.replace(/^Updated /, '')}</time>
+            {INSIGHTS.length} articles · last updated <time dateTime={LATEST.date}>{LATEST.dateLabel}</time>
           </p>
         </div>
         <div className="ds-in-h-topiclist" role="group" aria-label="Topics">

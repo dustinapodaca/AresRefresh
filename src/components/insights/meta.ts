@@ -34,8 +34,3 @@ export function readNext(a: Insight, all: Insight[], n = 3): Insight[] {
   const rest = all.filter((i) => i.slug !== a.slug);
   return [...rest.filter((i) => i.category === a.category), ...rest.filter((i) => i.category !== a.category)].slice(0, n);
 }
-
-/** The date a reader should see: the last update when there is one. */
-export function shownDate(a: Insight) {
-  return a.updated ? { iso: a.updated, label: `Updated ${a.updatedLabel}` } : { iso: a.date, label: a.dateLabel };
-}

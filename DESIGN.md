@@ -1234,7 +1234,7 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   in Inter Tight 600 at 24 to 36px, its count in the data face (rust when chosen, with a 12px rust tick
   before the name), and an arrow that nudges rust on hover; they filter the list, so the toggle row
   goes. Below 1024px the page keeps the earlier hero, `current` (below), with its toggle row.
-- **Index:** the headline and lead, then "11 articles · last updated <date>" in the data face. The
+- **Index:** the headline and lead, then "11 articles · last updated <date>" in the data face. Each article on the index shows its original post date only; "Updated <date>" shows on the article page alone (owner, 2026-11-27), and the count line's date is the newest article's. The
   topics (All, Buying security, Operations, Federal & teaming, Licensing) as square-cornered
   toggles with their counts in the data face (the chosen one ink-edged, its count rust; one
   scrolling line on phones, 44px tall); they filter in place and keep the choice in `?topic=`,
