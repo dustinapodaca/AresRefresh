@@ -23,8 +23,8 @@ function Meta({ a }: { a: Insight }) {
   return (
     <span className="ds-in-meta">
       <span>{a.category}</span>
-      <time className="ds-data" dateTime={a.date}>{a.dateLabel}</time>
-      <span className="ds-data">{readingMinutes(a)} min read</span>
+      <time dateTime={a.date}>{a.dateLabel}</time>
+      <span>{readingMinutes(a)} min read</span>
     </span>
   );
 }
@@ -105,8 +105,8 @@ export default function Insights() {
               <InsightArt slug={lead.slug} size="lg" />
             </span>
             <span className="ds-in-feature-copy">
-              <Meta a={lead} />
               <h2 className="ds-in-feature-title">{lead.title.replace(/\.$/, '')}</h2>
+              <Meta a={lead} />
               <span className="ds-in-feature-sum">{lead.summary}</span>
               <span className="ds-in-feature-go">
                 Read the article

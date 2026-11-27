@@ -203,7 +203,7 @@ export default function InsightPage() {
                   </span>
                   <span className="ds-in-meta">
                     <span>{o.category}</span>
-                    <span className="ds-data">{readingMinutes(o)} min read</span>
+                    <span>{readingMinutes(o)} min read</span>
                   </span>
                   <span className="ds-in-card-title">{o.title.replace(/\.$/, '')}</span>
                   <span className="ds-in-card-go" aria-hidden="true">
