@@ -20,12 +20,19 @@ import '../components/insights/insights.css';
 const LATEST = [...INSIGHTS].sort((x, y) => (x.date < y.date ? 1 : -1))[0];
 
 // Topic · date · reading time: above the title on the featured card, in the side column of each row
-// (owner, 2026-11-27).
+// (owner, 2026-11-27). Phones (owner, 2026-11-27: the line ran into the summary and wrapped at random):
+// the featured card sets the topic on a line of its own over the date and time; a row card sets them
+// as a footer under a hairline, the topic left and the date (short month) and time right.
+const SHORT = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+
 function Meta({ a }: { a: Insight }) {
   return (
     <span className="ds-in-meta">
-      <span>{a.category}</span>
-      <time dateTime={a.date}>{a.dateLabel}</time>
+      <span className="ds-in-meta-topic">{a.category}</span>
+      <time dateTime={a.date}>
+        <span className="ds-in-date-long">{a.dateLabel}</span>
+        <span className="ds-in-date-short">{SHORT.format(new Date(`${a.date}T12:00:00Z`))}</span>
+      </time>
       <span>{readingMinutes(a)} min read</span>
     </span>
   );

@@ -1252,7 +1252,11 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   line (owner, 2026-11-27): "topic · date · N min read" in the text face, 13px (14 on the featured
   card), ink faint with the topic in ink muted, middle dots, never a dot at the start of a line.
   Above the title on the featured card (the topic alone there looked bare); in the rows' side column
-  on desktop (stacked, no dots) and under the summary on tablets and phones; above the title on the
+  on desktop (stacked, no dots), under the summary on tablets, and on phones (below 768px) a footer
+  under a hairline: the topic at the left, "Nov 9, 2026 · 4 min read" (short month) at the right; below
+  360px the topic over the date and time. On phones the featured card's topic takes its own line over
+  the date and time (owner, 2026-11-27: the one line wrapped at random and the footer ran into the
+  summary); above the title on the
   "More insights" cards. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
 - **Article:** crumbs ending on the topic (Home / Insights / Buying security, the topic a link to the
