@@ -153,19 +153,28 @@
 .ds-in-article { max-width: calc(46rem + 2 * var(--ds-gutter)); padding-top: calc(var(--ds-header) + var(--ds-beat)); }
 .ds-in-head, .ds-in-plate { max-width: 46rem; }
 
-/* The byline under the headline (owner, 2026-11-27): label over value on one hairline, the spec
-   sheet's vocabulary. One row on desktop; two across on phones. */
-.ds-in-byline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 24px; margin: 28px 0 0; padding: 16px 0 0; border-top: 1px solid var(--ds-rule); }
-.ds-in-byline div { min-width: 0; }
-.ds-in-byline dt { margin: 0 0 4px; font-size: 13px; color: var(--ds-fg-faint); }
-.ds-in-byline dd { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ds-fg); white-space: nowrap; }
-.ds-in-byline dd.ds-data { font-size: 15px; }
-.ds-in-byline .ds-link { gap: 5px; text-underline-offset: 4px; }
+/* The byline under the headline (owner, 2026-11-27, after Quartz, Uxcel, Matter, and Substack on
+   Mobbin): the topic is the breadcrumb's last step; here, on a hairline, "By <author>" over the dates
+   on the left and the reading time at the right, level with the dates. Below 640px the reading time
+   follows the post date and "Updated <date>" takes a line of its own. Text face, middle dots, no
+   labels; a dot only ever sits between two items on one line. */
+.ds-in-byline { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 28px 0 0; padding: 18px 0 0; border-top: 1px solid var(--ds-rule); }
+.ds-in-byline p { margin: 0; }
+.ds-in-byline-who { font-size: 15px; line-height: 1.5; color: var(--ds-fg-muted); min-width: 0; }
+.ds-in-byline .ds-link { gap: 4px; color: var(--ds-fg); text-underline-offset: 4px; }
+.ds-in-byline-when { display: flex; flex-wrap: wrap; margin-top: 2px !important; font-size: 14px; color: var(--ds-fg-faint); }
+.ds-in-byline-when > * { white-space: nowrap; }
+.ds-in-byline-when > * + *::before { content: '·'; margin: 0 8px; }
+.ds-in-byline-when > .ds-in-byline-time-sm { display: none; }
+.ds-in-byline-time { flex: none; font-size: 14px; line-height: 1.5; color: var(--ds-fg-faint); }
 @media (max-width: 639px) {
-  .ds-in-byline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; margin-top: 22px; }
-  .ds-in-byline dd { white-space: normal; }
-  .ds-in-byline dd .ds-link { white-space: nowrap; }
+  .ds-in-byline { margin-top: 22px; padding-top: 16px; }
+  .ds-in-byline-time { display: none; }
+  .ds-in-byline-when > .ds-in-byline-time-sm { display: inline; order: 1; }
+  .ds-in-byline-when > .ds-in-byline-upd { order: 2; flex-basis: 100%; }
+  .ds-in-byline-when > .ds-in-byline-upd::before { content: none; }
 }
+
 .ds-in-plate { margin: 36px 0 0; }
 /* The wide plate: the drawing centered on a dot grid that runs the frame's width. */
 .ds-in-plate-frame {

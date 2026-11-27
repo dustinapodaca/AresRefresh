@@ -69,40 +69,32 @@ export default function InsightPage() {
       <div className="ds-in-progress" aria-hidden="true" />
       <article className="ds-container ds-in-article" aria-labelledby="mk-title">
         <header className="ds-in-head">
-          <Crumbs path={`/insights/${a.slug}`} current={a.title} />
+          <Crumbs
+            path={`/insights/${a.slug}`}
+            current={a.title}
+            section={{ name: a.category, to: `/insights?topic=${encodeURIComponent(a.category)}` }}
+          />
           <h1 id="mk-title" className="ds-display-lg">{heroTitle(a.title)}</h1>
-          {/* A small labeled row, the spec sheet's vocabulary (owner, 2026-11-27: the one mono run of
-              topic, dates, time, and author read as clutter): the label over its value, words in the
-              text face, dates and time in the data face. */}
-          <dl className="ds-in-byline">
-            <div>
-              <dt>Topic</dt>
-              <dd><Link to={`/insights?topic=${encodeURIComponent(a.category)}`} className="ds-link">{a.category}</Link></dd>
-            </div>
-            <div>
-              <dt>Written by</dt>
-              <dd>
+          {/* The byline (owner, 2026-11-27, after Quartz, Uxcel, Matter, and Substack on Mobbin): the
+              topic moved up into the breadcrumb; here who and when on the left, how long on the right
+              (at the end of the dates on phones). Text face, middle dots, no labels. */}
+          <div className="ds-in-byline">
+            <div className="ds-in-byline-who">
+              <p>
+                By{' '}
                 <a href={AUTHOR_LINKEDIN} target="_blank" rel="noopener noreferrer" className="ds-link" aria-label="Dustin Apodaca on LinkedIn (new tab)">
                   Dustin Apodaca
                   <Arrow external size={12} />
                 </a>
-              </dd>
+              </p>
+              <p className="ds-in-byline-when">
+                <time dateTime={a.date}>{a.dateLabel}</time>
+                {a.updated && <span className="ds-in-byline-upd">Updated <time dateTime={a.updated}>{a.updatedLabel}</time></span>}
+                <span className="ds-in-byline-time-sm">{minutes} min read</span>
+              </p>
             </div>
-            <div>
-              <dt>Published</dt>
-              <dd className="ds-data"><time dateTime={a.date}>{a.dateLabel}</time></dd>
-            </div>
-            {a.updated && (
-              <div>
-                <dt>Updated</dt>
-                <dd className="ds-data"><time dateTime={a.updated}>{a.updatedLabel}</time></dd>
-              </div>
-            )}
-            <div>
-              <dt>Reading time</dt>
-              <dd className="ds-data">{minutes} min</dd>
-            </div>
-          </dl>
+            <p className="ds-in-byline-time">{minutes} min read</p>
+          </div>
         </header>
 
         <figure className="ds-in-plate">

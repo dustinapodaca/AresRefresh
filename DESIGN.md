@@ -245,7 +245,8 @@ sizes are unchanged.
   a headline keeps its period ("Six industries, from ... to offices and campuses.").
 - No eyebrows or kickers above headings. No bracketed labels. (Breadcrumbs above the
   headline on service, industry, city, and article pages are navigation, not a label: the
-  owner's one exception, 2026-10-10. 13px, ink faint, links in ink muted, "/" in hairline
+  owner's one exception, 2026-10-10. On an Insights article the trail ends on the topic, not the title;
+  owner, 2026-11-27. 13px, ink faint, links in ink muted, "/" in hairline
   strong, from the same trail as the BreadcrumbList JSON-LD. On phones one line, a long
   current page ending in an ellipsis; owner, 2026-10-16.)
 - Font loading (owner, 2026-11-22): self-hosted (`src/fonts.css`), `display=swap`, the first screen's
@@ -1249,11 +1250,13 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   rows' sizes. The other sizes (`compact`, the 104px plate beside the title, and `side`,
   150px) and `?rowcard=` were removed 2026-11-22. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
-- **Article:** crumbs, the headline, and the byline (owner, 2026-11-27; was one mono run): on a
-  hairline, a label in Inter 13px ink faint over each value at 15px in ink: Topic (a link to the
-  filtered index), Written by (the author, to LinkedIn), Published and Updated (if any) and Reading
-  time (about 230 words a minute) in the data face; one row spread across the column on desktop, two
-  across on phones. Then the
+- **Article:** crumbs ending on the topic (Home / Insights / Buying security, the topic a link to the
+  filtered index; the JSON-LD trail unchanged), the headline, and the byline (owner, 2026-11-27, after
+  Quartz, Uxcel, Matter, and Substack on Mobbin; was one mono run of topic, dates, time, and author):
+  on a hairline, "By Dustin Apodaca ↗" (15px, the name in ink, to LinkedIn) over the post date and
+  "Updated <date>" (14px, ink faint, a middle dot between), and "N min read" (about 230 words a
+  minute) at the right, level with the dates. No labels, text face only. Phones: "<date> · N min
+  read", then "Updated <date>" on its own line. Then the
   plate wide (16:9; 16:11 on phones) on the dot grid with its caption in mono. The drawing wipes in
   once, left to right (1100ms), where motion runs. Desktop (1200px and up): the article (46rem) and
   an "On this page" column (15rem) centered together in the page (owner, 2026-11-19: they sat to the
