@@ -104,13 +104,8 @@
 .ds-in-meta { --sep: 17px; display: flex; flex-wrap: wrap; row-gap: 4px; margin-left: calc(-1 * var(--sep)); clip-path: inset(0 0 0 var(--sep)); font-size: 13px; line-height: 1.45; color: var(--ds-fg-faint); }
 .ds-in-meta > * { position: relative; margin-left: var(--sep); white-space: nowrap; }
 .ds-in-meta > *::before { content: '·'; position: absolute; left: calc(-1 * var(--sep)); width: var(--sep); text-align: center; }
-.ds-in-card .ds-in-meta > :first-child { color: var(--ds-fg-muted); }
-.ds-in-feature .ds-in-meta { font-size: 14px; margin-top: -4px; }
-/* The topic above a title (owner, 2026-11-27): plain text face in ink muted, sentence case; no caps,
-   tracking, box, or rule, so it reads as the card's section, not a kicker. */
-.ds-in-topic-label { display: block; font-size: 13px; line-height: 1.4; color: var(--ds-fg-muted); }
-.ds-in-feature .ds-in-topic-label { font-size: 14px; margin-bottom: -4px; }
-.ds-in-row-copy > .ds-in-topic-label { margin-bottom: 6px; }
+.ds-in-meta > :first-child { color: var(--ds-fg-muted); }
+.ds-in-feature .ds-in-meta { font-size: 14px; margin-bottom: -4px; }
 @media (max-width: 599px) {
   /* Phones: the summary runs the full width under the plate and title. */
   .ds-in-row { align-items: start; }

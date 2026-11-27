@@ -1241,19 +1241,19 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   scrolling line on phones, 44px tall); they filter in place and keep the choice in `?topic=`,
   applied after hydration so the static page (every article) matches. The newest article in the
   topic is the featured card (the card surface with the glass edge: the plate large on the left,
-  the topic, the title in Inter Tight 600, "date · N min read", the summary, "Read the article →");
+  "topic · date · N min read" above the title in Inter Tight 600, the summary, "Read the article →");
   the rest are ruled rows: the plate, the title and summary, topic and date and reading time in a
   column, the arrow. Phones (below 768px; owner, 2026-11-19: easier to tell apart) put each row in a
   card like the featured one (the card surface with the glass edge, 4px corners, 12px between cards):
   a 3:1 strip of the plate across the card's top over a hairline (`band`, the owner's pick, 2026-11-19:
   bigger than the 104px plate, smaller than the full 16:9), then the title, summary, and meta at the
   rows' sizes. The other sizes (`compact`, the 104px plate beside the title, and `side`,
-  150px) and `?rowcard=` were removed 2026-11-22. Topic above
-  the title, date and reading time below (owner, 2026-11-27, after Linktree, Linear, Mural, and
-  AngelList on Mobbin; the article page's split): the topic in the text face, 13px (14 on the featured
-  card), ink muted, sentence case, no caps or box; "date · N min read" in the text face, ink faint,
-  middle dots, never a dot at the start of a line (stacked in the desktop rows' column, no dots).
-  The "More insights" cards keep "topic · N min read" above the title. Hover
+  150px) and `?rowcard=` were removed 2026-11-22. The meta
+  line (owner, 2026-11-27): "topic · date · N min read" in the text face, 13px (14 on the featured
+  card), ink faint with the topic in ink muted, middle dots, never a dot at the start of a line.
+  Above the title on the featured card (the topic alone there looked bare); in the rows' side column
+  on desktop (stacked, no dots) and under the summary on tablets and phones; above the title on the
+  "More insights" cards. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
 - **Article:** crumbs ending on the topic (Home / Insights / Buying security, the topic a link to the
   filtered index; the JSON-LD trail unchanged), the headline, and the byline (owner, 2026-11-27, after
