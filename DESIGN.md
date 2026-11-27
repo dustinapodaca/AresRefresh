@@ -1249,8 +1249,11 @@ and Attio's articles ("On this page" beside the text) on Mobbin. No photographs,
   rows' sizes. The other sizes (`compact`, the 104px plate beside the title, and `side`,
   150px) and `?rowcard=` were removed 2026-11-22. Hover
   brightens a plate's lines and nudges the arrow rust. An ask strip closes the page.
-- **Article:** crumbs, the headline, and the meta row (the topic as a link to the filtered index,
-  the date, "Updated <date>", "N min read" at about 230 words a minute, the author), then the
+- **Article:** crumbs, the headline, and the byline (owner, 2026-11-27; was one mono run): on a
+  hairline, a label in Inter 13px ink faint over each value at 15px in ink: Topic (a link to the
+  filtered index), Written by (the author, to LinkedIn), Published and Updated (if any) and Reading
+  time (about 230 words a minute) in the data face; one row spread across the column on desktop, two
+  across on phones. Then the
   plate wide (16:9; 16:11 on phones) on the dot grid with its caption in mono. The drawing wipes in
   once, left to right (1100ms), where motion runs. Desktop (1200px and up): the article (46rem) and
   an "On this page" column (15rem) centered together in the page (owner, 2026-11-19: they sat to the

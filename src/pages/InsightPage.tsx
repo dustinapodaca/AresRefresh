@@ -71,16 +71,38 @@ export default function InsightPage() {
         <header className="ds-in-head">
           <Crumbs path={`/insights/${a.slug}`} current={a.title} />
           <h1 id="mk-title" className="ds-display-lg">{heroTitle(a.title)}</h1>
-          <p className="ds-data ds-mk-article-meta">
-            <Link to={`/insights?topic=${encodeURIComponent(a.category)}`} className="ds-link">{a.category}</Link>
-            <time dateTime={a.date}>{a.dateLabel}</time>
-            {a.updated && <time dateTime={a.updated}>Updated {a.updatedLabel}</time>}
-            <span>{minutes} min read</span>
-            <a href={AUTHOR_LINKEDIN} target="_blank" rel="noopener noreferrer" className="ds-link" aria-label="Dustin Apodaca on LinkedIn (new tab)">
-              Dustin Apodaca
-              <Arrow external size={12} />
-            </a>
-          </p>
+          {/* A small labeled row, the spec sheet's vocabulary (owner, 2026-11-27: the one mono run of
+              topic, dates, time, and author read as clutter): the label over its value, words in the
+              text face, dates and time in the data face. */}
+          <dl className="ds-in-byline">
+            <div>
+              <dt>Topic</dt>
+              <dd><Link to={`/insights?topic=${encodeURIComponent(a.category)}`} className="ds-link">{a.category}</Link></dd>
+            </div>
+            <div>
+              <dt>Written by</dt>
+              <dd>
+                <a href={AUTHOR_LINKEDIN} target="_blank" rel="noopener noreferrer" className="ds-link" aria-label="Dustin Apodaca on LinkedIn (new tab)">
+                  Dustin Apodaca
+                  <Arrow external size={12} />
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Published</dt>
+              <dd className="ds-data"><time dateTime={a.date}>{a.dateLabel}</time></dd>
+            </div>
+            {a.updated && (
+              <div>
+                <dt>Updated</dt>
+                <dd className="ds-data"><time dateTime={a.updated}>{a.updatedLabel}</time></dd>
+              </div>
+            )}
+            <div>
+              <dt>Reading time</dt>
+              <dd className="ds-data">{minutes} min</dd>
+            </div>
+          </dl>
         </header>
 
         <figure className="ds-in-plate">

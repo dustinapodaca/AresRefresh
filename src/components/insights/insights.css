@@ -152,6 +152,20 @@
 /* ---- Article ---- */
 .ds-in-article { max-width: calc(46rem + 2 * var(--ds-gutter)); padding-top: calc(var(--ds-header) + var(--ds-beat)); }
 .ds-in-head, .ds-in-plate { max-width: 46rem; }
+
+/* The byline under the headline (owner, 2026-11-27): label over value on one hairline, the spec
+   sheet's vocabulary. One row on desktop; two across on phones. */
+.ds-in-byline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 24px; margin: 28px 0 0; padding: 16px 0 0; border-top: 1px solid var(--ds-rule); }
+.ds-in-byline div { min-width: 0; }
+.ds-in-byline dt { margin: 0 0 4px; font-size: 13px; color: var(--ds-fg-faint); }
+.ds-in-byline dd { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ds-fg); white-space: nowrap; }
+.ds-in-byline dd.ds-data { font-size: 15px; }
+.ds-in-byline .ds-link { gap: 5px; text-underline-offset: 4px; }
+@media (max-width: 639px) {
+  .ds-in-byline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; margin-top: 22px; }
+  .ds-in-byline dd { white-space: normal; }
+  .ds-in-byline dd .ds-link { white-space: nowrap; }
+}
 .ds-in-plate { margin: 36px 0 0; }
 /* The wide plate: the drawing centered on a dot grid that runs the frame's width. */
 .ds-in-plate-frame {
