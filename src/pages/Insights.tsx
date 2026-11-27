@@ -19,10 +19,16 @@ import '../components/insights/insights.css';
 // article itself (owner, 2026-11-27). The count line's date is the newest article's.
 const LATEST = [...INSIGHTS].sort((x, y) => (x.date < y.date ? 1 : -1))[0];
 
-function Meta({ a }: { a: Insight }) {
+// Topic above the title; date and reading time under it (owner, 2026-11-27, after Linktree, Linear,
+// Mural, and AngelList on Mobbin; the same split as the article page: the topic in the breadcrumb,
+// the dates under the headline).
+function Topic({ a }: { a: Insight }) {
+  return <span className="ds-in-topic-label">{a.category}</span>;
+}
+
+function When({ a }: { a: Insight }) {
   return (
     <span className="ds-in-meta">
-      <span>{a.category}</span>
       <time dateTime={a.date}>{a.dateLabel}</time>
       <span>{readingMinutes(a)} min read</span>
     </span>
@@ -105,8 +111,9 @@ export default function Insights() {
               <InsightArt slug={lead.slug} size="lg" />
             </span>
             <span className="ds-in-feature-copy">
+              <Topic a={lead} />
               <h2 className="ds-in-feature-title">{lead.title.replace(/\.$/, '')}</h2>
-              <Meta a={lead} />
+              <When a={lead} />
               <span className="ds-in-feature-sum">{lead.summary}</span>
               <span className="ds-in-feature-go">
                 Read the article
@@ -125,10 +132,11 @@ export default function Insights() {
                     <InsightArt slug={a.slug} size="sm" />
                   </span>
                   <span className="ds-in-row-copy">
+                    <Topic a={a} />
                     <h2 className="ds-in-row-title">{a.title.replace(/\.$/, '')}</h2>
                     <span className="ds-in-row-sum">{a.summary}</span>
                   </span>
-                  <Meta a={a} />
+                  <When a={a} />
                   <Arrow size={18} />
                 </Link>
               </li>
