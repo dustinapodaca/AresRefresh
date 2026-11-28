@@ -2299,16 +2299,21 @@ html[data-cards='glass'] .ds-ab-cred-card {
 /* The body is the box that eases open and shut (src/lib/disclosure.ts), so its padding sits on
    the inner box: at 0px tall, padding on the body would still show. */
 .ds-qt-more-inner { padding: 6px 0 28px; }
-/* A line of rust light runs along the fold's rule as it opens (left to right) and shuts
-   (right to left), like the lit edge of a page turning (owner, 2026-11-27). Rust as light, never
-   paint: a 1px band, no glow. Set by data-sweep from src/lib/disclosure.ts. */
-.ds-qt-more { position: relative; }
-.ds-qt-more::before {
+
+/* ---------- Every fold on the site (owner, 2026-11-27; src/lib/disclosure.ts, Fold.tsx) ----------
+   A panel whose state lives in React (Fold) carries data-fold; shut, it is 0px, hidden, and out
+   of the tab order. */
+[data-fold='closed'] { height: 0; overflow: hidden; visibility: hidden; }
+/* The line of light: a 1px band of rust runs along the fold's rule as it opens (left to right)
+   and shuts (right to left), like the lit edge of a page turning. Rust as light, never paint:
+   no glow. The rule sits 1px above the element (a border above it) unless --fold-line-top says. */
+.ds-fold-line { position: relative; }
+.ds-fold-line::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  top: -1px;
+  top: var(--fold-line-top, -1px);
   height: 1px;
   pointer-events: none;
   opacity: 0;
@@ -2316,8 +2321,8 @@ html[data-cards='glass'] .ds-ab-cred-card {
   background-size: 36% 100%;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .ds-qt-more[data-sweep='in']::before { animation: ds-fold-sweep-in 640ms cubic-bezier(0.32, 0.72, 0, 1) both; }
-  .ds-qt-more[data-sweep='out']::before { animation: ds-fold-sweep-out 440ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+  .ds-fold-line[data-sweep='in']::before { animation: ds-fold-sweep-in 640ms cubic-bezier(0.32, 0.72, 0, 1) both; }
+  .ds-fold-line[data-sweep='out']::before { animation: ds-fold-sweep-out 440ms cubic-bezier(0.4, 0, 0.2, 1) both; }
 }
 @keyframes ds-fold-sweep-in {
   0% { background-position: -60% 0; opacity: 1; }
@@ -3095,6 +3100,7 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   cursor: pointer;
 }
 .ds-mk-faq-list summary::-webkit-details-marker { display: none; }
+.ds-mk-faq-list summary { -webkit-user-select: none; user-select: none; }
 /* A + that turns to a minus: two 1.5px strokes, the vertical one folds away. */
 .ds-mk-faq-mark { position: relative; flex: none; width: 12px; height: 12px; }
 .ds-mk-faq-mark::before,

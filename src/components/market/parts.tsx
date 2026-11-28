@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Arrow from '../Arrow';
 import type { Faq, SheetRow } from './roles';
 import CallLink from '../CallLink';
+import { isOpening, preventSelect, setDetailsOpen } from '../../lib/disclosure';
 
 // Shared parts of the role, industry, insight, and city job pages.
 
@@ -11,34 +12,10 @@ export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-// Opening and closing the questions (owner, 2026-10-16): the answer's height eases open (260ms)
-// and shut (200ms), and one question is open at a time, the other closing as the new one opens.
+// Opening and closing the questions: one open at a time, the other closing as the new one opens
+// (owner, 2026-10-16), on the site's fold motion (src/lib/disclosure.ts; owner, 2026-11-27).
 // Without JS the native <details> still open and close; under reduced motion they snap.
-const FAQ_EASE = 'cubic-bezier(0.2, 0.8, 0.2, 1)';
-const running = new WeakMap<HTMLElement, Animation>();
-
-function slide(details: HTMLDetailsElement, open: boolean) {
-  const body = details.querySelector<HTMLElement>('.ds-mk-faq-a');
-  if (!body) return;
-  running.get(body)?.cancel();
-  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (open) {
-    details.removeAttribute('data-closing');
-    details.open = true;
-    if (still) return;
-    // The exact (fractional) open height, so the last frame lands where the layout rests.
-    const h = body.getBoundingClientRect().height;
-    const a = body.animate([{ height: '0px', transform: 'translateY(-6px)' }, { height: `${h}px`, transform: 'none' }], { duration: 260, easing: FAQ_EASE });
-    running.set(body, a);
-    a.onfinish = () => running.delete(body);
-  } else {
-    if (still) { details.open = false; return; }
-    details.setAttribute('data-closing', '');
-    const a = body.animate([{ height: `${body.getBoundingClientRect().height}px` }, { height: '0px' }], { duration: 200, easing: FAQ_EASE });
-    running.set(body, a);
-    a.onfinish = () => { running.delete(body); details.open = false; details.removeAttribute('data-closing'); };
-  }
-}
+const FAQ_PARTS = { body: '.ds-mk-faq-a', items: '.ds-mk-faq-a > *', nudge: true };
 
 /** Questions as an accordion (Linear and Dovetail on Mobbin): the heading left, the questions
  *  right, each a native <details> so it works without JS. Emits FAQPage structured data. */
@@ -52,11 +29,11 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
   const toggle = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const details = e.currentTarget.parentElement as HTMLDetailsElement;
-    const opening = !details.open || details.hasAttribute('data-closing');
+    const opening = isOpening(details);
     if (opening) {
-      listRef.current?.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((d) => d !== details && !d.hasAttribute('data-closing') && slide(d, false));
+      listRef.current?.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((d) => d !== details && !d.hasAttribute('data-closing') && setDetailsOpen(d, false, FAQ_PARTS));
     }
-    slide(details, opening);
+    setDetailsOpen(details, opening, FAQ_PARTS);
   };
   return (
     <section id={id} className="ds-mk-faq" aria-labelledby={`${id}-title`}>
@@ -67,8 +44,8 @@ export function FaqSection({ items, id = 'questions' }: { items: Faq[]; id?: str
       </div>
       <div className="ds-mk-faq-list" ref={listRef}>
         {items.map((f) => (
-          <details key={f.q}>
-            <summary onClick={toggle}>
+          <details key={f.q} className="ds-fold-line">
+            <summary onClick={toggle} onMouseDown={preventSelect}>
               <span>{f.q}</span>
               <span className="ds-mk-faq-mark" aria-hidden="true" />
             </summary>

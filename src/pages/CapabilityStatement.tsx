@@ -20,6 +20,7 @@ import { ROLE_PAGES } from '../components/market/roles';
 import { GSA_ELIBRARY } from '../components/home/links';
 import { responsive } from '../lib/responsive';
 import { motionAllowed } from '../components/home/engine';
+import Fold from '../components/Fold';
 import '../components/home/home.css';
 import '../components/capnext/cn.css';
 
@@ -383,13 +384,16 @@ function MobileBar({ active, show }: { active: string; show: boolean }) {
           </li>
         ))}
       </ul>
-      <nav className="cx-mbar-menu" aria-label="On this page">
-        {SECTIONS.map((sct, k) => (
-          <a key={sct.id} href={`#${sct.id}`} data-on={active === sct.id} onClick={(e) => jump(e, sct.id)} tabIndex={open ? 0 : -1}>
-            {sct.label}
-          </a>
-        ))}
-      </nav>
+      {/* The index opens and shuts like every fold on the site (Fold.tsx; owner, 2026-11-27). */}
+      <Fold open={open} items=".cx-mbar-menu a" line={() => document.querySelector('.cx-mbar-menu')}>
+        <nav className="cx-mbar-menu ds-fold-line" aria-label="On this page">
+          {SECTIONS.map((sct, k) => (
+            <a key={sct.id} href={`#${sct.id}`} data-on={active === sct.id} onClick={(e) => jump(e, sct.id)} tabIndex={open ? 0 : -1}>
+              {sct.label}
+            </a>
+          ))}
+        </nav>
+      </Fold>
     </div>
   );
 }

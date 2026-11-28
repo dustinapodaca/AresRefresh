@@ -102,7 +102,7 @@ export default function Contact() {
   function toggleMore(e: MouseEvent<HTMLElement>) {
     e.preventDefault();
     const details = e.currentTarget.parentElement as HTMLDetailsElement;
-    setDetailsOpen(details, isOpening(details), { body: '.ds-qt-more-body', items: '.ds-qt-more-inner > .ds-qt-fields, .ds-qt-chipset', nudge: true, sweep: true });
+    setDetailsOpen(details, isOpening(details), { body: '.ds-qt-more-body', items: '.ds-qt-more-inner > .ds-qt-fields, .ds-qt-chipset', nudge: true });
   }
 
   async function submit(e: FormEvent<HTMLFormElement>) {
@@ -241,7 +241,7 @@ export default function Contact() {
               opens without JS, and whatever is chosen inside is sent either way. Phone and
               organization fold in here too, after the email and before the message (owner,
               2026-11-27, at every width). */}
-          <details className="ds-qt-more">
+          <details className="ds-qt-more ds-fold-line">
             <summary onClick={toggleMore} onMouseDown={preventSelect}>
               <span>
                 Add details <span className="ds-qt-more-note">Optional</span>

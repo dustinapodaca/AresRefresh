@@ -120,8 +120,11 @@
 }
 
 /* Phones: the regions as an accordion (owner, 2026-11-22; ServiceAreas.tsx sets data-accordion), one
-   open at a time, on the questions block's look: hairline rows, the + folding into a minus, the
-   panel easing open (260ms) and shut (200ms). Closed panels drop out of the tab order (visibility). */
+   open at a time, on the questions block's look: hairline rows, the + folding into a minus. The
+   panel opens and shuts like every fold on the site (Fold.tsx, src/lib/disclosure.ts; owner,
+   2026-11-27); shut, it drops out of the tab order. The line of light runs along the region's
+   rule, which is the top edge of its name. */
+.ds-sa-region-grid[data-accordion] .ds-sa-region { --fold-line-top: 0; }
 .ds-sa-region-grid[data-accordion] { gap: 0; }
 .ds-sa-region-grid[data-accordion] .ds-sa-region:last-child { border-bottom: 1px solid var(--ds-rule-strong); }
 .ds-sa-region-grid[data-accordion] .ds-sa-region-name { padding-top: 0; }
@@ -144,27 +147,9 @@
 .ds-sa-region-count { font-size: 13px; letter-spacing: 0; color: var(--ds-fg-faint); }
 .ds-sa-region-toggle:focus-visible { outline: 1px solid var(--ds-rust); outline-offset: 4px; }
 .ds-sa-region[data-open] .ds-mk-faq-mark::after { transform: rotate(0deg); }
-.ds-sa-region-grid[data-accordion] .ds-sa-panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows 200ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 200ms;
-}
-.ds-sa-region-grid[data-accordion] .ds-sa-panel-in { min-height: 0; overflow: hidden; }
-.ds-sa-region-grid[data-accordion] .ds-sa-panel-in > * { opacity: 0; transform: translateY(-6px); transition: opacity 160ms var(--ds-ease), transform 200ms var(--ds-ease); }
 .ds-sa-region-grid[data-accordion] .ds-sa-region-line { margin-top: 0; }
 .ds-sa-region-grid[data-accordion] .ds-sa-city-list { margin: 16px 0 24px; }
 .ds-sa-region-grid[data-accordion] .ds-sa-city-list li:last-child { border-bottom: 0; }
-.ds-sa-region-grid[data-accordion] .ds-sa-region[data-open] .ds-sa-panel {
-  grid-template-rows: 1fr;
-  visibility: visible;
-  transition: grid-template-rows 260ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
-}
-.ds-sa-region-grid[data-accordion] .ds-sa-region[data-open] .ds-sa-panel-in > * { opacity: 1; transform: none; transition: opacity 260ms var(--ds-ease) 40ms, transform 260ms var(--ds-ease); }
-@media (prefers-reduced-motion: reduce) {
-  .ds-sa-region-grid[data-accordion] .ds-sa-panel,
-  .ds-sa-region-grid[data-accordion] .ds-sa-panel-in > * { transition: none !important; }
-}
 
 /* Licensing, city by city: one ruled table; phones stack each row (city over its two lines). */
 .ds-sa-rules { padding-top: var(--ds-beat); }

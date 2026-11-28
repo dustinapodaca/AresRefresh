@@ -540,14 +540,9 @@ a.cx-path { text-decoration: underline; text-decoration-color: rgb(255 255 255 /
   .cx-mbar-ids .ds-data { font-size: 14px; color: var(--ds-fg); }
   .cx-mbar-ids li:last-child { padding-right: 24px; }
   .cx-mbar .ds-copy { width: 30px; height: 30px; }
-  .cx-mbar-menu {
-    display: grid;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 var(--ds-edge);
-    transition: max-height 0.3s var(--ds-ease), padding 0.3s var(--ds-ease);
-  }
-  .cx-mbar[data-open='true'] .cx-mbar-menu { max-height: 340px; padding: 4px var(--ds-edge) 12px; border-top: 1px solid var(--cx-edge); }
+  /* Opens and shuts in its Fold (owner, 2026-11-27: the site's fold motion; was a max-height
+     transition), so its padding and rule stay put. */
+  .cx-mbar-menu { display: grid; padding: 4px var(--ds-edge) 12px; border-top: 1px solid var(--cx-edge); }
   .cx-mbar-menu a { display: flex; gap: 12px; align-items: baseline; min-height: 44px; align-items: center; font-size: 15px; color: var(--ds-fg-muted); text-decoration: none; border-bottom: 1px solid rgb(255 255 255 / 0.06); }
   .cx-mbar-menu a:last-child { border-bottom: 0; }
   .cx-mbar-menu a[data-on='true'] { color: var(--ds-fg); }

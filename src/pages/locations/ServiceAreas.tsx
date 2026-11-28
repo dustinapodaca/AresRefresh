@@ -9,6 +9,7 @@ import { AskStrip, FaqSection } from '../../components/market/parts';
 import { heroTitle } from '../../lib/heroTitle';
 import '../../components/locations/areas.css';
 import CallLink from '../../components/CallLink';
+import Fold from '../../components/Fold';
 
 // Service Areas, the hub over the city pages (owner, 2026-11-22: Ares goes Colorado-wide, from the
 // Front Range to the Western Slope and the San Luis Valley). It answers "security company in
@@ -87,7 +88,7 @@ export default function ServiceAreas() {
               const cities = CITIES.filter((c) => c.region === r.id);
               const isOpen = !phone || open === r.id;
               return (
-                <div key={r.id} id={r.id} className="ds-sa-region" data-open={(phone && isOpen) || undefined}>
+                <div key={r.id} id={r.id} className={phone ? 'ds-sa-region ds-fold-line' : 'ds-sa-region'} data-open={(phone && isOpen) || undefined}>
                   <h3 className="ds-sa-region-name">
                     {phone ? (
                       <button
@@ -107,7 +108,16 @@ export default function ServiceAreas() {
                       r.name
                     )}
                   </h3>
-                  <div className="ds-sa-panel" id={`${r.id}-panel`}>
+                  {/* The site's fold motion on phones (Fold.tsx; owner, 2026-11-27). */}
+                  <Fold
+                    className="ds-sa-panel"
+                    id={`${r.id}-panel`}
+                    open={isOpen}
+                    enabled={phone}
+                    items=".ds-sa-panel-in > *"
+                    line={() => document.getElementById(r.id)}
+                    nudge={() => document.querySelector(`[aria-controls="${r.id}-panel"]`)}
+                  >
                   <div className="ds-sa-panel-in">
                   <p className="ds-sa-region-line">{r.line}</p>
                   <ul className="ds-sa-city-list">
@@ -125,7 +135,7 @@ export default function ServiceAreas() {
                     ))}
                   </ul>
                   </div>
-                  </div>
+                  </Fold>
                 </div>
               );
             })}

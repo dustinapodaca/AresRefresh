@@ -1437,8 +1437,9 @@ ServiceAreas.tsx`, `components/locations/ColoradoMap.tsx`, `areas.css`, class pr
   then its cities as rows (name, counties beneath, arrow); hovering or focusing a row lights its dot
   on the map. On phones (below 768px; owner, 2026-11-22) the regions are an accordion on the
   questions block's look, one open at a time, closed to start: each a row with its name, a city count
-  in the data face ("4 cities"), and the + that folds into a minus; tapping eases the panel (its line
-  and cities) open over 260ms and any other shut over 200ms (grid rows, the contents rising 6px);
+  in the data face ("4 cities"), and the + that folds into a minus; tapping opens the panel (its line
+  and cities) and shuts any other on the site's fold motion (Motion, "Folds"; owner, 2026-11-27;
+  was a 260ms and 200ms grid-rows ease);
   closed panels leave the tab order; a link to a region (`/locations#western-slope`) opens it. Each column carries the region's id (`#front-range`, `#western-slope`,
   `#san-luis-valley`). After Shopify's "Where we hire" and Slack's "Explore by region".
 - **Licensing, city by city.** One ruled table, City / What the city requires / What Ares holds
@@ -1539,9 +1540,9 @@ rail, no cards, no eyebrows (breadcrumbs live in JSON-LD only).
   right), "What we deliver." (role routes), "Why Ares here." (spec sheet), the ask,
   questions, "Other industries.".
 - **Questions:** the heading left (sticky on desktop) and native details on hairlines
-  right, a + that folds into a minus (220ms). One open at a time (owner, 2026-10-16): the answer
-  eases open (260ms, rising 6px) and shut (200ms), the open one closing as another opens; native
-  details without JS, a snap under reduced motion. FAQPage JSON-LD in the body.
+  right, a + that folds into a minus (220ms). One open at a time (owner, 2026-10-16), the open one closing as another opens;
+  the answer opens and shuts on the site's fold motion (Motion, "Folds"; owner, 2026-11-27; was a
+  260ms ease open and 200ms shut); native details without JS, a snap under reduced motion. FAQPage JSON-LD in the body.
 - **Ask strip:** one plain line (Inter Tight 500, 22 to 30px), the quote button and the
   call link, on a hairline-strong rule.
 - **Routes:** ruled links, a title (Inter Tight 600, 20 to 24px) and a line, three across
@@ -1793,6 +1794,19 @@ Few, fast, and crisp. Four to six moments per page.
 - Photographs dissolve into the canvas with CSS masks, never with overlay gradients that
   leave a visible edge.
 - Hover motion is gated behind `(hover: hover) and (pointer: fine)`.
+- **Folds** (owner, 2026-11-27; `src/lib/disclosure.ts`, `components/Fold.tsx`): every fold on
+  the site opens and shuts the same way: the quote form's "Add details", the questions blocks, the
+  Insights "On this page" fold, the Service Areas regions on phones, and the Capability Statement
+  phone bar's index (the nav menus keep their own motion; native selects can't be animated). The
+  height moves on a spring tuned never to overshoot, landing in about 360ms opening and 290ms
+  shutting (an owner exception to the 300ms limit), and a click mid-way turns it around with the
+  speed it has; while it moves the panel's lower edge is a 48px fade; its contents follow the
+  opening 35ms apart, each settling 6px down out of a 5px blur and 0.62 opacity, and dim and
+  soften back as it shuts; a 1px line of rust light runs along the fold's rule (class
+  `ds-fold-line`), left to right opening and right to left shutting, no glow; opened from low on
+  the screen (the row's foot below 70% of the window) the page glides up with it so the row sits
+  a third of the way down. Double clicks never select a fold's text. Native details without JS; a
+  snap under reduced motion.
 - **In-page links glide** (owner, 2026-10-09): every same-page "#" link (the section rails,
   the policies' table of contents, "See open roles", the skip link) smooth-scrolls and lands
   the section's first line of content 32px under the nav (24px under the running head on

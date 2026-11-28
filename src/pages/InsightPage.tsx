@@ -11,7 +11,15 @@ import InsightArt, { artCaption } from '../components/insights/InsightArt';
 import { headingId, headings, readingMinutes, readNext } from '../components/insights/meta';
 import { useActiveSection } from '../lib/useActiveSection';
 import { heroTitle } from '../lib/heroTitle';
+import { isOpening, preventSelect, setDetailsOpen } from '../lib/disclosure';
 import '../components/insights/insights.css';
+
+// "On this page" below 1200px opens and shuts like every fold on the site (src/lib/disclosure.ts).
+function toggleToc(e: React.MouseEvent<HTMLElement>) {
+  e.preventDefault();
+  const details = e.currentTarget.parentElement as HTMLDetailsElement;
+  setDetailsOpen(details, isOpening(details), { body: 'nav', items: 'nav > ul', nudge: true });
+}
 
 // One insight (2026-11-19 redesign; was one reading column with related links and "More
 // insights" routes). The article's plate under the headline (after Linear's articles), the
@@ -116,8 +124,8 @@ export default function InsightPage() {
 
           <div className="ds-in-main">
             {toc.length > 2 && (
-              <details className="ds-in-toc-fold">
-                <summary>
+              <details className="ds-in-toc-fold ds-fold-line">
+                <summary onClick={toggleToc} onMouseDown={preventSelect}>
                   On this page <span className="ds-data">{toc.length}</span>
                 </summary>
                 <nav aria-label="On this page">{tocList}</nav>

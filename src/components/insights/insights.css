@@ -235,9 +235,10 @@
 .ds-in-toc-fold { margin-top: 32px; border-top: 1px solid var(--ds-rule-strong); border-bottom: 1px solid var(--ds-rule); }
 .ds-in-toc-fold summary { display: flex; align-items: center; gap: 10px; min-height: 52px; font-size: 15px; font-weight: 500; color: var(--ds-fg); cursor: pointer; list-style: none; }
 .ds-in-toc-fold summary::-webkit-details-marker { display: none; }
+.ds-in-toc-fold summary { -webkit-user-select: none; user-select: none; }
 .ds-in-toc-fold summary .ds-data { font-size: 16.875px; color: var(--ds-fg-faint); }
 .ds-in-toc-fold summary::after { content: ''; margin-left: auto; width: 9px; height: 9px; border-right: 1.5px solid var(--ds-fg-muted); border-bottom: 1.5px solid var(--ds-fg-muted); transform: translateY(-3px) rotate(45deg); transition: transform 220ms var(--ds-ease); }
-.ds-in-toc-fold[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.ds-in-toc-fold[open]:not([data-closing]) summary::after { transform: translateY(2px) rotate(-135deg); }
 .ds-in-toc-fold ul, .ds-in-toc ul { list-style: none; margin: 0; padding: 0; }
 .ds-in-toc-fold ul { padding: 2px 0 16px; }
 .ds-in-toc-fold a { display: block; padding: 8px 0; font-size: 15px; line-height: 1.4; color: var(--ds-fg-muted); }
