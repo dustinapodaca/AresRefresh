@@ -30,7 +30,7 @@ type ChipSet = { name: string; legend: string; options: string[] };
 
 // Where the site is: the one question about the post the form keeps in view (owner, 2026-11-23);
 // chips from 640px, a dropdown below (owner, 2026-11-27).
-const WHERE: ChipSet = { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] };
+const WHERE: ChipSet = { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver Metro Area', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] };
 
 // The rest of the post, in a few taps (CenCore's quote form, without the clearance question),
 // folded behind "Add details" (owner, 2026-11-23: the form read as too long to bother with).
