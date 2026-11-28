@@ -2279,31 +2279,12 @@ html[data-cards='glass'] .ds-ab-cred-card {
 .ds-qt-err { display: none; margin: 12px 0 0; font-size: 14px; color: #f2b84b; }
 .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-err { display: block; }
 .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-dot { border-color: #f2b84b; }
-/* Phones: the answers as chips with short names, like "Where is the site?" (owner, 2026-11-27). */
-.ds-qt-need-short { display: none; }
+.ds-qt-part:has(.ds-qt-need-select:user-invalid) .ds-qt-err { display: block; }
+/* Phones: the answers as a dropdown (owner, 2026-11-27); the rows from 640px. */
+.ds-qt-need-select { display: none; }
 @media (max-width: 639px) {
-  .ds-qt-needs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .ds-qt-need { display: block; padding: 0; border: 0; gap: 0; }
-  .ds-qt-need .ds-qt-dot, .ds-qt-need-long { display: none; }
-  .ds-qt-need-short { display: inline; }
-  .ds-qt-need-text {
-    display: inline-flex;
-    align-items: center;
-    height: 40px;
-    padding: 0 14px;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
-    font-size: 14px;
-    color: var(--ds-fg-muted);
-    transition: background-color 180ms var(--ds-ease), color 180ms var(--ds-ease), border-color 180ms var(--ds-ease);
-  }
-  .ds-qt-need input:checked ~ .ds-qt-need-text { background: var(--ds-fg); border-color: var(--ds-fg); color: var(--ds-canvas); }
-  .ds-qt-need input:focus-visible ~ .ds-qt-need-text { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
-  .ds-qt-need:active .ds-qt-need-text { transform: scale(0.98); }
-  .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-need-text {
-    background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, linear-gradient(rgb(242 184 75 / 0.55), rgb(242 184 75 / 0.55)) border-box;
-  }
+  .ds-qt-need-part .ds-qt-needs { display: none; }
+  .ds-qt-need-select { display: block; width: 100%; }
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-qt-need:hover { color: var(--ds-fg); }
@@ -3429,6 +3410,13 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
 .ds-qt-input:focus, .ds-qt-select:focus { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box; border-color: transparent; }
 .ds-qt-chip input:checked + span { background: var(--ds-fg); border-color: var(--ds-fg); }
 .ds-qt-input:user-invalid { background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, linear-gradient(rgb(242 184 75 / 0.55), rgb(242 184 75 / 0.55)) border-box; }
+/* The card surface above resets the background, so the selects get their chevron back on top. */
+.ds-qt-select {
+  --qt-chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='none' stroke='%239aa0a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E") right 14px center / 14px 14px no-repeat padding-box;
+  background: var(--qt-chev), linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
+}
+.ds-qt-select:focus { background: var(--qt-chev), linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge-hover) border-box; }
+.ds-qt-select:user-invalid { background: var(--qt-chev), linear-gradient(var(--ds-card), var(--ds-card)) padding-box, linear-gradient(rgb(242 184 75 / 0.55), rgb(242 184 75 / 0.55)) border-box; }
 .ds-tm-flow { max-width: 560px; margin: 8px 0 0; }
 @media (min-width: 1024px) {
   /* Under "What the prime gets." in the left column; the sheet spans both rows. */

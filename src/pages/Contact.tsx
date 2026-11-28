@@ -14,16 +14,16 @@ import { track } from '../lib/analytics';
 // What can we help with (was "What needs covering?", owner 2026-11-27): the six services (one page each under /services/<slug>) and
 // "not sure". The email carries the label, not the slug (src/lib/quote.ts). Role and industry pages link here with
 // ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
-// On phones the answers are chips with the short names (owner, 2026-11-27: eight rows ran 457px).
-const NEEDS: { slug: string; label: string; short: string }[] = [
-  { slug: 'armed-security-officers', label: 'Armed Security Officers', short: 'Armed officers' },
-  { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers', short: 'Unarmed officers' },
-  { slug: 'access-control', label: 'Access Control Officers', short: 'Access control' },
-  { slug: 'restricted-area-escort', label: 'Restricted-Area Escort', short: 'Restricted-area escort' },
-  { slug: 'mobile-patrol', label: 'Mobile Patrol', short: 'Mobile patrol' },
-  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage', short: 'Relief & surge' },
-  { slug: 'teaming', label: 'Teaming or subcontract coverage', short: 'Teaming' }, // for primes and guard companies (/teaming)
-  { slug: 'other', label: 'Not sure, or something else', short: 'Not sure, or something else' },
+// On phones a dropdown, not eight rows (owner, 2026-11-27: the rows ran 457px).
+const NEEDS: { slug: string; label: string }[] = [
+  { slug: 'armed-security-officers', label: 'Armed Security Officers' },
+  { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers' },
+  { slug: 'access-control', label: 'Access Control Officers' },
+  { slug: 'restricted-area-escort', label: 'Restricted-Area Escort' },
+  { slug: 'mobile-patrol', label: 'Mobile Patrol' },
+  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage' },
+  { slug: 'teaming', label: 'Teaming or subcontract coverage' }, // for primes and guard companies (/teaming)
+  { slug: 'other', label: 'Not sure, or something else' },
 ];
 
 type ChipSet = { name: string; legend: string; options: string[] };
@@ -71,6 +71,18 @@ export default function Contact() {
   // The result shows as a centered toast (QuoteToast); the inline line only says "Sending…".
   const [toast, setToast] = useState<ToastData | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  // What can we help with: one answer, shown as rows from 640px and as a dropdown below
+  // (owner, 2026-11-27). The hidden one is disabled so it is neither required nor sent; until
+  // the script runs both stay enabled, so the prerender matches the first client render.
+  const [need, setNeed] = useState('');
+  const [narrow, setNarrow] = useState<boolean | null>(null);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)');
+    const sync = () => setNarrow(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
   // Pick the service or site type the reader came from (after hydration, so the prerendered
   // HTML and the first client render match).
@@ -79,10 +91,7 @@ export default function Contact() {
     const form = formRef.current;
     if (!form) return;
     const service = q.get('service');
-    if (service) {
-      const radio = form.querySelector<HTMLInputElement>(`input[name="subject"][value="${CSS.escape(service)}"]`);
-      if (radio) radio.checked = true;
-    }
+    if (service && NEEDS.some((n) => n.slug === service)) setNeed(service);
     const industry = q.get('industry');
     if (industry) {
       const select = form.querySelector<HTMLSelectElement>('select[name="site_type"]');
@@ -140,6 +149,7 @@ export default function Contact() {
         setStatus(null);
         setToast({ kind: 'sent', email: quote.email, subject: subjectFor(quote) });
         form.reset();
+        setNeed('');
       } else {
         setStatus(null);
         setToast({ kind: 'failed' });
@@ -180,20 +190,39 @@ export default function Contact() {
 
       <div className="ds-container ds-qt-body">
         <form ref={formRef} className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
-          <fieldset className="ds-qt-part">
-            <legend>What can we help with?</legend>
+          <fieldset className="ds-qt-part ds-qt-need-part">
+            <legend id="qf-need-legend">What can we help with?</legend>
             <div className="ds-qt-needs">
               {NEEDS.map((n) => (
                 <label key={n.slug} className="ds-qt-need">
-                  <input type="radio" name="subject" value={n.slug} required aria-describedby="qf-need-err" />
+                  <input
+                    type="radio"
+                    name="subject"
+                    value={n.slug}
+                    required
+                    disabled={narrow === true}
+                    checked={need === n.slug}
+                    onChange={() => setNeed(n.slug)}
+                    aria-describedby="qf-need-err"
+                  />
                   <span className="ds-qt-dot" aria-hidden="true" />
-                  <span className="ds-qt-need-text">
-                    <span className="ds-qt-need-long">{n.label}</span>
-                    <span className="ds-qt-need-short">{n.short}</span>
-                  </span>
+                  <span>{n.label}</span>
                 </label>
               ))}
             </div>
+            <select
+              name="subject"
+              required
+              disabled={narrow === false}
+              value={need}
+              onChange={(e) => setNeed(e.target.value)}
+              aria-labelledby="qf-need-legend"
+              aria-describedby="qf-need-err"
+              className="ds-qt-input ds-qt-select ds-qt-need-select"
+            >
+              <option value="">Choose one</option>
+              {NEEDS.map((n) => <option key={n.slug} value={n.slug}>{n.label}</option>)}
+            </select>
             <p id="qf-need-err" className="ds-qt-err">
               Choose what we can help with.
             </p>
@@ -213,30 +242,13 @@ export default function Contact() {
               <Field id="qf-email" label="Email">
                 <input id="qf-email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" className="ds-qt-input" />
               </Field>
-              <Field id="qf-phone" label="Phone" optional>
-                <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
-              </Field>
-              <Field id="qf-org" label="Organization" optional>
-                <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
-              </Field>
             </div>
           </fieldset>
 
-          <fieldset className="ds-qt-part ds-qt-part-grow">
-            <legend>Anything we should know?</legend>
-            <Field id="qf-message" label="Message" optional>
-              <textarea
-                id="qf-message"
-                name="message"
-                rows={4}
-                placeholder="The hours, your dates, or anything the post must meet."
-                className="ds-qt-input"
-              />
-            </Field>
-          </fieldset>
-
           {/* The rest is optional and folded away (owner, 2026-11-23); native <details>, so it
-              opens without JS, and whatever is chosen inside is sent either way. */}
+              opens without JS, and whatever is chosen inside is sent either way. Phone and
+              organization fold in here too, after the email and before the message (owner,
+              2026-11-27, at every width). */}
           <details className="ds-qt-more">
             <summary>
               <span>
@@ -245,7 +257,15 @@ export default function Contact() {
               <span className="ds-qt-more-mark" aria-hidden="true" />
             </summary>
             <div className="ds-qt-more-body">
-              <div className="ds-qt-chipsets">
+              <div className="ds-qt-fields">
+                <Field id="qf-phone" label="Phone">
+                  <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
+                </Field>
+                <Field id="qf-org" label="Organization">
+                  <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
+                </Field>
+              </div>
+              <div className="ds-qt-chipsets ds-qt-fields-after">
                 {CHIPS.map((g) => (
                   <fieldset key={g.name} className="ds-qt-chipset">
                     <legend>{g.legend}</legend>
@@ -269,6 +289,19 @@ export default function Contact() {
               </div>
             </div>
           </details>
+
+          <fieldset className="ds-qt-part ds-qt-part-grow">
+            <legend>Anything we should know?</legend>
+            <Field id="qf-message" label="Message" optional>
+              <textarea
+                id="qf-message"
+                name="message"
+                rows={4}
+                placeholder="The hours, your dates, or anything the post must meet."
+                className="ds-qt-input"
+              />
+            </Field>
+          </fieldset>
 
           {/* Honeypot: hidden from sighted users and the tab order; bots that fill every
               input tick it and the submit handler bails. Web3Forms recommends the name. */}

@@ -1293,15 +1293,16 @@ docs/contact-concepts.md.
 - **Opening:** the generated Denver towers at blue hour (`services-hero/nb-s1-towers.webp`, swapped from Services, owner 2026-10-08; generated, so no place caption; the route's SEO preload still names `contact-hero.jpg` until the SEO pass)
   as a band under the nav, shaded from the top and left and masked into the canvas, with
   "Request a quote." and the lead low on it.
-- **Shortened (owner, 2026-11-23: too long to bother with).** In view: What can we help with?
-  (required; was "What needs covering?", owner 2026-11-27: it asked about a place, the answers are
-  services; on phones, below 640px, its answers are square chips with short names, "Armed officers",
-  "Relief & surge", "Teaming", like Where is the site?, not eight radio rows), Where is the site? (location chips), How to reach you (name and email required, phone
-  and organization optional), and an optional message ("Anything we should know?"). The officers,
-  schedule, and start chips, the site type, and "How did you hear about us?" fold behind an "Add
-  details · Optional" row (native details, the questions block's +; opened when `?industry=` picks
-  the site type). The contact column's map is Home's regions map, drawn whole, pointing at a region
-  lights it. Where the entry below differs, this wins.
+- **Shortened (owner, 2026-11-23: too long to bother with; shorter again 2026-11-27).** In view, in
+  this order: What can we help with? (required; was "What needs covering?", owner 2026-11-27: it
+  asked about a place, the answers are services; the radio rows from 640px, a dropdown below it,
+  "Choose one", so a phone shows one field, not eight rows), Where is the site? (location chips),
+  How to reach you (name and email, both required), the "Add details · Optional" row (native
+  details, the questions block's +; opened when `?industry=` picks the site type) holding phone and
+  organization, the officers, schedule, and start chips, the site type, and "How did you hear about
+  us?", then the optional message ("Anything we should know?") last, at every width. The selects
+  carry their chevron over the card surface. The contact column's map is Home's regions map, drawn
+  whole, pointing at a region lights it. Where the entry below differs, this wins.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a
   hairline-strong rule. "What needs covering?" is a required radio group of the six
   divisions and something else, as rows on hairlines in two
