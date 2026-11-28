@@ -28,7 +28,8 @@ const NEEDS: { slug: string; label: string }[] = [
 
 type ChipSet = { name: string; legend: string; options: string[] };
 
-// Where the site is: the one question about the post the form keeps in view (owner, 2026-11-23).
+// Where the site is: the one question about the post the form keeps in view (owner, 2026-11-23);
+// chips from 640px, a dropdown below (owner, 2026-11-27).
 const WHERE: ChipSet = { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver metro', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] };
 
 // The rest of the post, in a few taps (CenCore's quote form, without the clearance question),
@@ -75,6 +76,8 @@ export default function Contact() {
   // (owner, 2026-11-27). The hidden one is disabled so it is neither required nor sent; until
   // the script runs both stay enabled, so the prerender matches the first client render.
   const [need, setNeed] = useState('');
+  // Where is the site: chips from 640px, the same dropdown below (owner, 2026-11-27).
+  const [where, setWhere] = useState('');
   const [narrow, setNarrow] = useState<boolean | null>(null);
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 639px)');
@@ -150,6 +153,7 @@ export default function Contact() {
         setToast({ kind: 'sent', email: quote.email, subject: subjectFor(quote) });
         form.reset();
         setNeed('');
+        setWhere('');
       } else {
         setStatus(null);
         setToast({ kind: 'failed' });
@@ -228,9 +232,34 @@ export default function Contact() {
             </p>
           </fieldset>
 
-          <fieldset className="ds-qt-part">
-            <legend>{WHERE.legend}</legend>
-            <Chips set={WHERE} />
+          <fieldset className="ds-qt-part ds-qt-where-part">
+            <legend id="qf-where-legend">{WHERE.legend}</legend>
+            <div className="ds-qt-chips">
+              {WHERE.options.map((o) => (
+                <label key={o} className="ds-qt-chip">
+                  <input
+                    type="radio"
+                    name={WHERE.name}
+                    value={o}
+                    disabled={narrow === true}
+                    checked={where === o}
+                    onChange={() => setWhere(o)}
+                  />
+                  <span>{o}</span>
+                </label>
+              ))}
+            </div>
+            <select
+              name={WHERE.name}
+              disabled={narrow === false}
+              value={where}
+              onChange={(e) => setWhere(e.target.value)}
+              aria-labelledby="qf-where-legend"
+              className="ds-qt-input ds-qt-select ds-qt-where-select"
+            >
+              <option value="">Choose one</option>
+              {WHERE.options.map((o) => <option key={o} value={o}>{o}</option>)}
+            </select>
           </fieldset>
 
           <fieldset className="ds-qt-part">

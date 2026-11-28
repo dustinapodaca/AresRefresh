@@ -2281,10 +2281,11 @@ html[data-cards='glass'] .ds-ab-cred-card {
 .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-dot { border-color: #f2b84b; }
 .ds-qt-part:has(.ds-qt-need-select:user-invalid) .ds-qt-err { display: block; }
 /* Phones: the answers as a dropdown (owner, 2026-11-27); the rows from 640px. */
-.ds-qt-need-select { display: none; }
+/* Where is the site: the same, chips from 640px (owner, 2026-11-27). */
+.ds-qt-need-select, .ds-qt-where-select { display: none; }
 @media (max-width: 639px) {
-  .ds-qt-need-part .ds-qt-needs { display: none; }
-  .ds-qt-need-select { display: block; width: 100%; }
+  .ds-qt-need-part .ds-qt-needs, .ds-qt-where-part .ds-qt-chips { display: none; }
+  .ds-qt-need-select, .ds-qt-where-select { display: block; width: 100%; }
 }
 @media (hover: hover) and (pointer: fine) {
   .ds-qt-need:hover { color: var(--ds-fg); }

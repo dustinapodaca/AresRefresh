@@ -1296,7 +1296,7 @@ docs/contact-concepts.md.
 - **Shortened (owner, 2026-11-23: too long to bother with; shorter again 2026-11-27).** In view, in
   this order: What can we help with? (required; was "What needs covering?", owner 2026-11-27: it
   asked about a place, the answers are services; the radio rows from 640px, a dropdown below it,
-  "Choose one", so a phone shows one field, not eight rows), Where is the site? (location chips),
+  "Choose one", so a phone shows one field, not eight rows), Where is the site? (the location chips from 640px, the same dropdown below; optional),
   How to reach you (name and email, both required), the "Add details · Optional" row (native
   details, the questions block's +; opened when `?industry=` picks the site type) holding phone and
   organization, the officers, schedule, and start chips, the site type, and "How did you hear about
