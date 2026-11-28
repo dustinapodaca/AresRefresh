@@ -322,7 +322,8 @@ Cards and glass are part of the system, not exceptions.
 - **Used by:** the Home Record cards and the prime-contractor panel (with its diagram), the
   Capability Statement cards and GSA MAS block, the Services industry cards (the edge drawn
   over the photo as a masked ring), the Teaming diagram, the About founder portrait, and the
-  quote form's fields and chips (the same surface at control scale; errors amber).
+  quote form's fields and chips (the same surface at control scale, with a quieter edge, no warm
+  glint, owner 2026-11-27; focus a 1px rust edge, not the 2px ring; errors amber).
 - **Glass cards, the default since 2026-10-15** (owner; the earlier solid lit-edge cards stay at
   `?cards=solid`, which sticks for the session; after
   gladia.io's speech-to-text page): every card becomes see-through glass: a dark wash from 52%
