@@ -1803,9 +1803,11 @@ Few, fast, and crisp. Four to six moments per page.
   speed it has; while it moves the panel's lower edge is a 48px fade; its contents follow the
   opening 35ms apart, each settling 6px down out of a 5px blur and 0.62 opacity, and dim and
   soften back as it shuts; a 1px line of rust light runs along the fold's rule (class
-  `ds-fold-line`), left to right opening and right to left shutting, no glow; opened from low on
-  the screen (the row's foot below 70% of the window) the page glides up with it so the row sits
-  a third of the way down. Double clicks never select a fold's text. Native details without JS; a
+  `ds-fold-line`), left to right opening and right to left shutting, no glow; the tapped row holds
+  its place on screen while the fold opens, even as another fold above it shuts (one open at a
+  time), and opened from low on the screen (the row's foot below 70% of the window) the page
+  glides up with it so the row sits a third of the way down (owner, 2026-11-27: a question opened
+  low under an open one shot to the top of the screen). Double clicks never select a fold's text. Native details without JS; a
   snap under reduced motion.
 - **In-page links glide** (owner, 2026-10-09): every same-page "#" link (the section rails,
   the policies' table of contents, "See open roles", the skip link) smooth-scrolls and lands

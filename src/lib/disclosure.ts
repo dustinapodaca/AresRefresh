@@ -12,9 +12,9 @@
 //   soften as the height folds over them. Turned around mid-way, they go back from where they are.
 // - With a line element (class `ds-fold-line`), a 1px line of rust light runs along the fold's
 //   rule: left to right as it opens, right to left as it shuts (data-sweep, CSS in dossier.css).
-// - With `nudge`, a fold opened from low on the screen (its row's foot below 70% of the window)
-//   glides up so the row sits a third of the way down, in step with the opening. Anywhere higher
-//   it stays put; a wheel, touch, or key stops it.
+// - With `nudge`, the tapped row holds its place while the fold opens, even as another fold above
+//   it shuts, and if it was low on the screen (its foot below 70% of the window) it glides up to
+//   a third of the way down, in step with the opening. A wheel, touch, or key stops it.
 // - Without JS a native <details> opens and closes on its own; under reduced motion all snap.
 //
 // Two ways in: setDetailsOpen() for a native <details> (its summary's click calls it), and
@@ -33,6 +33,8 @@ const ITEM_MS = 300;
 const ITEM_STEP = 35;
 const ITEM_EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'; // the drawer curve
 const NUDGE_MS = 380;
+// How long the row is held: past the nudge, until a fold shutting above it has landed.
+const GUIDE_MS = 460;
 const FEATHER = 'linear-gradient(to bottom, #000 calc(100% - 48px), transparent)';
 
 type Spring = { x: number; v: number; target: number; omega: number; raf: number; last: number; done: () => void };
@@ -157,15 +159,21 @@ function drawer(t: number) {
   return by(u);
 }
 
-function nudgeInto(row: Element | null, still: boolean) {
+// The tapped row holds its place on screen while the fold opens: if something above it shuts
+// at the same time (the questions, the Service Areas regions: one open at a time), the page
+// scrolls with it so the row doesn't ride up. Opened low on the screen (its foot below 70% of
+// the window), it also glides up to a third of the way down. Each frame it reads where the row
+// really is and corrects to where it should be, so the two never add up (owner, 2026-11-27: a
+// question opened low under an open one shot to the top of the screen). A wheel, touch, or key
+// hands the page back at once.
+function guideRow(row: Element | null, still: boolean) {
   if (!row) return;
-  const r = row.getBoundingClientRect();
   const vh = window.innerHeight;
-  if (r.bottom <= vh * 0.7) return;
-  const start = window.scrollY;
-  const by = r.top - vh / 3;
+  const startTop = row.getBoundingClientRect().top;
+  const low = row.getBoundingClientRect().bottom > vh * 0.7;
+  const endTop = low ? vh / 3 : startTop;
   if (still) {
-    window.scrollTo({ top: start + by, behavior: 'instant' });
+    if (low) window.scrollBy({ top: startTop - endTop, behavior: 'instant' });
     return;
   }
   const t0 = performance.now();
@@ -174,9 +182,13 @@ function nudgeInto(row: Element | null, still: boolean) {
   const events = ['wheel', 'touchstart', 'keydown', 'pointerdown'] as const;
   events.forEach((e) => window.addEventListener(e, halt, { once: true, passive: true }));
   const step = (now: number) => {
-    const t = Math.min(1, (now - t0) / NUDGE_MS);
-    // Instant steps: the page's smooth scrolling would restart a glide of its own each frame.
-    if (!stop) window.scrollTo({ top: start + by * drawer(t), behavior: 'instant' });
+    const t = Math.min(1, (now - t0) / GUIDE_MS);
+    if (!stop) {
+      const want = startTop + (endTop - startTop) * drawer(Math.min(1, (now - t0) / NUDGE_MS));
+      const off = row.getBoundingClientRect().top - want;
+      // Instant steps: the page's smooth scrolling would restart a glide of its own each frame.
+      if (Math.abs(off) >= 0.5) window.scrollBy({ top: off, behavior: 'instant' });
+    }
     if (t < 1 && !stop) requestAnimationFrame(step);
     else events.forEach((e) => window.removeEventListener(e, halt));
   };
@@ -201,7 +213,7 @@ export function moveFold(box: HTMLElement, open: boolean, { items, line, nudge }
     drive(box, box.scrollHeight, OPEN_OMEGA, 0, () => {});
     groupsIn(box, groups, fromShut);
     sweep(line ?? null, 'in');
-    if (fromShut && nudge) nudgeInto(nudge, false);
+    if (fromShut && nudge) guideRow(nudge, false);
   } else {
     drive(box, 0, CLOSE_OMEGA, box.getBoundingClientRect().height, () => {
       clearGroups(box);
@@ -229,7 +241,7 @@ export function setDetailsOpen(
     if (box) stopFold(box);
     details.removeAttribute('data-closing');
     details.open = open;
-    if (open && row) nudgeInto(row, true);
+    if (open && row) guideRow(row, true);
     return;
   }
   const groups = items ? Array.from(box.querySelectorAll<HTMLElement>(items)) : [];
@@ -240,7 +252,7 @@ export function setDetailsOpen(
     drive(box, box.scrollHeight, OPEN_OMEGA, 0, () => {});
     groupsIn(box, groups, fromShut);
     sweep(line, 'in');
-    if (fromShut && row) nudgeInto(row, false);
+    if (fromShut && row) guideRow(row, false);
   } else {
     if (!details.open) return;
     details.setAttribute('data-closing', '');
