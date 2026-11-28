@@ -2213,11 +2213,8 @@ html[data-cards='glass'] .ds-ab-cred-card {
   .ds-qt-part-grow .ds-qt-field { display: flex; flex-direction: column; flex: 1; }
   .ds-qt-part-grow textarea.ds-qt-input { flex: 1; }
 }
-/* Desktop: once the map reaches the nav, it holds there while the form keeps scrolling,
-   and lets go when the form ends (like the pinned photos on About and Careers). */
-@media (min-width: 1024px) {
-  .ds-qt-where { position: sticky; top: calc(var(--ds-header) + 24px); }
-}
+/* The map no longer holds while the form scrolls (owner, 2026-11-27): with the dropdowns the
+   form and this column are one height, so both scroll as one. */
 
 .ds-qt-part { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ds-qt-part > legend {
