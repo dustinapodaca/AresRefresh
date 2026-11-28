@@ -1302,16 +1302,18 @@ docs/contact-concepts.md.
   details, the questions block's +; opened when `?industry=` picks the site type) holding phone and
   organization, the officers, schedule, and start chips, the site type, and "How did you hear about
   us?", then the optional message ("Anything we should know?") last, at every width. "Add details"
-  eases open and shut (owner, 2026-11-27; `src/lib/disclosure.ts`, to go on every fold on the
-  site once it reads right): the height opens on the drawer curve over 320ms (an owner exception
-  to the 300ms limit, like the Services cards) and shuts in 240ms easing in and out; its groups
-  follow the opening 35ms apart, each settling 6px down from 0.62, and dim back to 0.62 as it
-  shuts; opened from low on the screen (the row's foot below 70% of the window) the page glides
-  up with it so the row sits a third of the way down, on the same curve and time, and stops the
-  moment the reader scrolls or touches; higher up it stays put; a click mid-way reverses from
-  where it is; the + turns the moment it starts either way;
-  a double click never selects the panel's text. Native details without JS; a snap under
-  reduced motion. The selects
+  opens and shuts on a spring (owner, 2026-11-27; `src/lib/disclosure.ts`, to go on every fold on
+  the site once it reads right; an owner exception to the 300ms limit, like the Services cards):
+  tuned never to overshoot, it lands in about 360ms opening and 290ms shutting, and a click
+  mid-way turns it around with the speed it has. While it moves, the panel's lower edge is a
+  48px fade, so the contents come out of a soft edge, not a hard cut. The groups follow the
+  opening 35ms apart, each settling 6px down out of a 5px blur and 0.62 opacity, and dim and
+  soften back as it shuts. A 1px line of rust light runs along the fold's rule, left to right as
+  it opens and right to left as it shuts (no glow). Opened from low on the screen (the row's foot
+  below 70% of the window) the page glides up with it so the row sits a third of the way down,
+  and stops the moment the reader scrolls or touches; higher up it stays put. The + turns the
+  moment it starts either way; a double click never selects the panel's text. Native details
+  without JS; a snap under reduced motion. The selects
   carry their chevron over the card surface. The contact column's map is Home's regions map, drawn
   whole, pointing at a region lights it. Where the entry below differs, this wins.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a
