@@ -1293,8 +1293,10 @@ docs/contact-concepts.md.
 - **Opening:** the generated Denver towers at blue hour (`services-hero/nb-s1-towers.webp`, swapped from Services, owner 2026-10-08; generated, so no place caption; the route's SEO preload still names `contact-hero.jpg` until the SEO pass)
   as a band under the nav, shaded from the top and left and masked into the canvas, with
   "Request a quote." and the lead low on it.
-- **Shortened (owner, 2026-11-23: too long to bother with).** In view: What needs covering
-  (required), Where is the site? (location chips), How to reach you (name and email required, phone
+- **Shortened (owner, 2026-11-23: too long to bother with).** In view: What can we help with?
+  (required; was "What needs covering?", owner 2026-11-27: it asked about a place, the answers are
+  services; on phones, below 640px, its answers are square chips with short names, "Armed officers",
+  "Relief & surge", "Teaming", like Where is the site?, not eight radio rows), Where is the site? (location chips), How to reach you (name and email required, phone
   and organization optional), and an optional message ("Anything we should know?"). The officers,
   schedule, and start chips, the site type, and "How did you hear about us?" fold behind an "Add
   details · Optional" row (native details, the questions block's +; opened when `?industry=` picks

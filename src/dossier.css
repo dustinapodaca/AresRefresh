@@ -2279,6 +2279,32 @@ html[data-cards='glass'] .ds-ab-cred-card {
 .ds-qt-err { display: none; margin: 12px 0 0; font-size: 14px; color: #f2b84b; }
 .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-err { display: block; }
 .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-dot { border-color: #f2b84b; }
+/* Phones: the answers as chips with short names, like "Where is the site?" (owner, 2026-11-27). */
+.ds-qt-need-short { display: none; }
+@media (max-width: 639px) {
+  .ds-qt-needs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ds-qt-need { display: block; padding: 0; border: 0; gap: 0; }
+  .ds-qt-need .ds-qt-dot, .ds-qt-need-long { display: none; }
+  .ds-qt-need-short { display: inline; }
+  .ds-qt-need-text {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, var(--ds-card-edge) border-box;
+    font-size: 14px;
+    color: var(--ds-fg-muted);
+    transition: background-color 180ms var(--ds-ease), color 180ms var(--ds-ease), border-color 180ms var(--ds-ease);
+  }
+  .ds-qt-need input:checked ~ .ds-qt-need-text { background: var(--ds-fg); border-color: var(--ds-fg); color: var(--ds-canvas); }
+  .ds-qt-need input:focus-visible ~ .ds-qt-need-text { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
+  .ds-qt-need:active .ds-qt-need-text { transform: scale(0.98); }
+  .ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-need-text {
+    background: linear-gradient(var(--ds-card), var(--ds-card)) padding-box, linear-gradient(rgb(242 184 75 / 0.55), rgb(242 184 75 / 0.55)) border-box;
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .ds-qt-need:hover { color: var(--ds-fg); }
   .ds-qt-need:hover .ds-qt-dot { border-color: var(--ds-fg-muted); }

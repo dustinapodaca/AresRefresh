@@ -11,18 +11,19 @@ import { track } from '../lib/analytics';
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
 
-// What needs covering: the six services (one page each under /services/<slug>) and
+// What can we help with (was "What needs covering?", owner 2026-11-27): the six services (one page each under /services/<slug>) and
 // "not sure". The email carries the label, not the slug (src/lib/quote.ts). Role and industry pages link here with
 // ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
-const NEEDS: { slug: string; label: string }[] = [
-  { slug: 'armed-security-officers', label: 'Armed Security Officers' },
-  { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers' },
-  { slug: 'access-control', label: 'Access Control Officers' },
-  { slug: 'restricted-area-escort', label: 'Restricted-Area Escort' },
-  { slug: 'mobile-patrol', label: 'Mobile Patrol' },
-  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage' },
-  { slug: 'teaming', label: 'Teaming or subcontract coverage' }, // for primes and guard companies (/teaming)
-  { slug: 'other', label: 'Not sure, or something else' },
+// On phones the answers are chips with the short names (owner, 2026-11-27: eight rows ran 457px).
+const NEEDS: { slug: string; label: string; short: string }[] = [
+  { slug: 'armed-security-officers', label: 'Armed Security Officers', short: 'Armed officers' },
+  { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers', short: 'Unarmed officers' },
+  { slug: 'access-control', label: 'Access Control Officers', short: 'Access control' },
+  { slug: 'restricted-area-escort', label: 'Restricted-Area Escort', short: 'Restricted-area escort' },
+  { slug: 'mobile-patrol', label: 'Mobile Patrol', short: 'Mobile patrol' },
+  { slug: 'relief-surge-coverage', label: 'Relief & Surge Coverage', short: 'Relief & surge' },
+  { slug: 'teaming', label: 'Teaming or subcontract coverage', short: 'Teaming' }, // for primes and guard companies (/teaming)
+  { slug: 'other', label: 'Not sure, or something else', short: 'Not sure, or something else' },
 ];
 
 type ChipSet = { name: string; legend: string; options: string[] };
@@ -180,18 +181,21 @@ export default function Contact() {
       <div className="ds-container ds-qt-body">
         <form ref={formRef} className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
           <fieldset className="ds-qt-part">
-            <legend>What needs covering?</legend>
+            <legend>What can we help with?</legend>
             <div className="ds-qt-needs">
               {NEEDS.map((n) => (
                 <label key={n.slug} className="ds-qt-need">
                   <input type="radio" name="subject" value={n.slug} required aria-describedby="qf-need-err" />
                   <span className="ds-qt-dot" aria-hidden="true" />
-                  <span>{n.label}</span>
+                  <span className="ds-qt-need-text">
+                    <span className="ds-qt-need-long">{n.label}</span>
+                    <span className="ds-qt-need-short">{n.short}</span>
+                  </span>
                 </label>
               ))}
             </div>
             <p id="qf-need-err" className="ds-qt-err">
-              Choose what needs covering.
+              Choose what we can help with.
             </p>
           </fieldset>
 
