@@ -2233,63 +2233,13 @@ html[data-cards='glass'] .ds-ab-cred-card {
   color: var(--ds-fg);
 }
 
-/* 01: what needs covering, as radio rows. */
-.ds-qt-needs { display: grid; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 640px) {
-  .ds-qt-needs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
-}
-.ds-qt-need {
-  position: relative;
-  display: grid;
-  grid-template-columns: 16px minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--ds-rule);
-  font-size: 15px;
-  line-height: 1.35;
-  color: var(--ds-fg-muted);
-  cursor: pointer;
-  transition: color 180ms var(--ds-ease);
-}
-.ds-qt-need input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-.ds-qt-dot {
-  display: grid;
-  place-items: center;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--ds-fg-faint);
-  border-radius: 50%;
-  transition: background-color 180ms var(--ds-ease), border-color 180ms var(--ds-ease);
-}
-.ds-qt-dot::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ds-canvas);
-  transform: scale(0);
-  transition: transform 180ms var(--ds-ease);
-}
-.ds-qt-need:has(input:checked) { color: var(--ds-fg); }
-.ds-qt-need input:checked + .ds-qt-dot { background: var(--ds-fg); border-color: var(--ds-fg); }
-.ds-qt-need input:checked + .ds-qt-dot::after { transform: scale(1); }
-.ds-qt-need input:focus-visible + .ds-qt-dot { outline: 2px solid var(--ds-rust); outline-offset: 3px; }
-/* The group's error: amber rings and a line that stays once the reader has tried to send. */
+/* What can we help with and Where is the site: one dropdown each at every width (owner,
+   2026-11-27: less to read, less to scroll). The line under the first once the reader has tried
+   to send without choosing. */
+.ds-qt-part > .ds-qt-select { width: 100%; }
 .ds-qt-err { display: none; margin: 12px 0 0; font-size: 14px; color: #f2b84b; }
-.ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-err { display: block; }
-.ds-qt-part:has(input[type='radio']:user-invalid) .ds-qt-dot { border-color: #f2b84b; }
-.ds-qt-part:has(.ds-qt-need-select:user-invalid) .ds-qt-err { display: block; }
-/* Phones: the answers as a dropdown (owner, 2026-11-27); the rows from 640px. */
-/* Where is the site: the same, chips from 640px (owner, 2026-11-27). */
-.ds-qt-need-select, .ds-qt-where-select { display: none; }
-@media (max-width: 639px) {
-  .ds-qt-need-part .ds-qt-needs, .ds-qt-where-part .ds-qt-chips { display: none; }
-  .ds-qt-need-select, .ds-qt-where-select { display: block; width: 100%; }
-}
+.ds-qt-part:has(.ds-qt-select:user-invalid) .ds-qt-err { display: block; }
 @media (hover: hover) and (pointer: fine) {
-  .ds-qt-need:hover { color: var(--ds-fg); }
-  .ds-qt-need:hover .ds-qt-dot { border-color: var(--ds-fg-muted); }
   .ds-qt-input:hover { border-color: rgb(255 255 255 / 0.26); }
 }
 
@@ -3340,9 +3290,6 @@ textarea.ds-qt-input { height: auto; min-height: 9.5rem; padding: 12px 14px; lin
   .ds-rl-dot { transition-duration: 0s; }
   .ds-cr-lens img,
   .ds-cr-reasons li { transition-duration: 0s; }
-  .ds-qt-dot,
-  .ds-qt-dot::after,
-  .ds-qt-need,
   .ds-qt-input { transition-duration: 0s; }
   .ds-btn:active,
   .ds-svc-card-head button:active .ds-svc-plus,

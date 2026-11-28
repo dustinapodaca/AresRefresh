@@ -14,7 +14,7 @@ import { track } from '../lib/analytics';
 // What can we help with (was "What needs covering?", owner 2026-11-27): the six services (one page each under /services/<slug>) and
 // "not sure". The email carries the label, not the slug (src/lib/quote.ts). Role and industry pages link here with
 // ?service=<slug> or ?industry=<slug>, and the matching answer is picked for the reader.
-// On phones a dropdown, not eight rows (owner, 2026-11-27: the rows ran 457px).
+// A dropdown at every width (owner, 2026-11-27: eight rows ran 457px on a phone).
 const NEEDS: { slug: string; label: string }[] = [
   { slug: 'armed-security-officers', label: 'Armed Security Officers' },
   { slug: 'unarmed-security-officers', label: 'Unarmed Security Officers' },
@@ -29,7 +29,7 @@ const NEEDS: { slug: string; label: string }[] = [
 type ChipSet = { name: string; legend: string; options: string[] };
 
 // Where the site is: the one question about the post the form keeps in view (owner, 2026-11-23);
-// chips from 640px, a dropdown below (owner, 2026-11-27).
+// a dropdown (owner, 2026-11-27).
 const WHERE: ChipSet = { name: 'location', legend: 'Where is the site?', options: ['Colorado Springs', 'Denver Metro Area', 'Pueblo', 'Western Slope', 'San Luis Valley', 'Elsewhere in Colorado'] };
 
 // The rest of the post, in a few taps (CenCore's quote form, without the clearance question),
@@ -72,20 +72,10 @@ export default function Contact() {
   // The result shows as a centered toast (QuoteToast); the inline line only says "Sending…".
   const [toast, setToast] = useState<ToastData | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  // What can we help with: one answer, shown as rows from 640px and as a dropdown below
-  // (owner, 2026-11-27). The hidden one is disabled so it is neither required nor sent; until
-  // the script runs both stay enabled, so the prerender matches the first client render.
+  // What can we help with and Where is the site: a dropdown each at every width (owner,
+  // 2026-11-27). Controlled, so ?service= can pick the answer after hydration.
   const [need, setNeed] = useState('');
-  // Where is the site: chips from 640px, the same dropdown below (owner, 2026-11-27).
   const [where, setWhere] = useState('');
-  const [narrow, setNarrow] = useState<boolean | null>(null);
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 639px)');
-    const sync = () => setNarrow(mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  }, []);
 
   // Pick the service or site type the reader came from (after hydration, so the prerendered
   // HTML and the first client render match).
@@ -194,35 +184,16 @@ export default function Contact() {
 
       <div className="ds-container ds-qt-body">
         <form ref={formRef} className="ds-qt-form" onSubmit={submit} aria-labelledby="qt-title" aria-busy={sending}>
-          <fieldset className="ds-qt-part ds-qt-need-part">
+          <fieldset className="ds-qt-part">
             <legend id="qf-need-legend">What can we help with?</legend>
-            <div className="ds-qt-needs">
-              {NEEDS.map((n) => (
-                <label key={n.slug} className="ds-qt-need">
-                  <input
-                    type="radio"
-                    name="subject"
-                    value={n.slug}
-                    required
-                    disabled={narrow === true}
-                    checked={need === n.slug}
-                    onChange={() => setNeed(n.slug)}
-                    aria-describedby="qf-need-err"
-                  />
-                  <span className="ds-qt-dot" aria-hidden="true" />
-                  <span>{n.label}</span>
-                </label>
-              ))}
-            </div>
             <select
               name="subject"
               required
-              disabled={narrow === false}
               value={need}
               onChange={(e) => setNeed(e.target.value)}
               aria-labelledby="qf-need-legend"
               aria-describedby="qf-need-err"
-              className="ds-qt-input ds-qt-select ds-qt-need-select"
+              className="ds-qt-input ds-qt-select"
             >
               <option value="">Choose one</option>
               {NEEDS.map((n) => <option key={n.slug} value={n.slug}>{n.label}</option>)}
@@ -232,30 +203,14 @@ export default function Contact() {
             </p>
           </fieldset>
 
-          <fieldset className="ds-qt-part ds-qt-where-part">
+          <fieldset className="ds-qt-part">
             <legend id="qf-where-legend">{WHERE.legend}</legend>
-            <div className="ds-qt-chips">
-              {WHERE.options.map((o) => (
-                <label key={o} className="ds-qt-chip">
-                  <input
-                    type="radio"
-                    name={WHERE.name}
-                    value={o}
-                    disabled={narrow === true}
-                    checked={where === o}
-                    onChange={() => setWhere(o)}
-                  />
-                  <span>{o}</span>
-                </label>
-              ))}
-            </div>
             <select
               name={WHERE.name}
-              disabled={narrow === false}
               value={where}
               onChange={(e) => setWhere(e.target.value)}
               aria-labelledby="qf-where-legend"
-              className="ds-qt-input ds-qt-select ds-qt-where-select"
+              className="ds-qt-input ds-qt-select"
             >
               <option value="">Choose one</option>
               {WHERE.options.map((o) => <option key={o} value={o}>{o}</option>)}

@@ -1295,8 +1295,8 @@ docs/contact-concepts.md.
   "Request a quote." and the lead low on it.
 - **Shortened (owner, 2026-11-23: too long to bother with; shorter again 2026-11-27).** In view, in
   this order: What can we help with? (required; was "What needs covering?", owner 2026-11-27: it
-  asked about a place, the answers are services; the radio rows from 640px, a dropdown below it,
-  "Choose one", so a phone shows one field, not eight rows), Where is the site? (the location chips from 640px, the same dropdown below; optional),
+  asked about a place, the answers are services; a dropdown, "Choose one", at every width, owner 2026-11-27: less to read and scroll;
+  it was two columns of radio rows), Where is the site? (the same dropdown; optional; was chips),
   How to reach you (name and email, both required), the "Add details · Optional" row (native
   details, the questions block's +; opened when `?industry=` picks the site type) holding phone and
   organization, the officers, schedule, and start chips, the site type, and "How did you hear about
