@@ -7,6 +7,10 @@
 // - Its contents follow the opening a step behind, one group after another (35ms apart), each
 //   settling 6px down from 0.62 opacity, so the panel reads as unfolding rather than snapping.
 //   Closing, they dim back to 0.62 as the height folds over them.
+// - With `nudge`, a fold opened from low on the screen (its row's foot below 70% of the window)
+//   glides up so the row sits a third of the way down, on the same curve and time as the
+//   opening, so the two read as one motion (owner, 2026-11-27). Anywhere higher it stays put;
+//   scrolling, a wheel, a touch, or a key stops the glide at once.
 // - It can be reversed mid-way: a click while it moves starts from the height it has reached,
 //   never from 0 or full.
 // - Without JS the native <details> opens and closes on its own; under reduced motion it snaps.
@@ -33,13 +37,56 @@ type Parts = {
   body: string;
   /** Selector for the groups inside it that follow the opening one after another. */
   items?: string;
+  /** Bring a fold opened low on the screen up to a third of the way down. */
+  nudge?: boolean;
 };
+
+// The drawer curve, cubic-bezier(0.32, 0.72, 0, 1), for the scroll glide (scripted, since the
+// browser's own smooth scroll can't be timed to the opening).
+function drawer(t: number) {
+  const x1 = 0.32, y1 = 0.72, x2 = 0, y2 = 1;
+  const bx = (u: number) => 3 * x1 * u * (1 - u) ** 2 + 3 * x2 * u ** 2 * (1 - u) + u ** 3;
+  const by = (u: number) => 3 * y1 * u * (1 - u) ** 2 + 3 * y2 * u ** 2 * (1 - u) + u ** 3;
+  let lo = 0, hi = 1, u = t;
+  for (let i = 0; i < 24; i++) {
+    u = (lo + hi) / 2;
+    if (bx(u) < t) lo = u; else hi = u;
+  }
+  return by(u);
+}
+
+function nudgeInto(details: HTMLDetailsElement, still: boolean) {
+  const row = details.querySelector('summary');
+  if (!row) return;
+  const r = row.getBoundingClientRect();
+  const vh = window.innerHeight;
+  if (r.bottom <= vh * 0.7) return;
+  const start = window.scrollY;
+  const by = r.top - vh / 3;
+  if (still) {
+    window.scrollTo({ top: start + by, behavior: 'instant' });
+    return;
+  }
+  const t0 = performance.now();
+  let stop = false;
+  const halt = () => { stop = true; };
+  const events = ['wheel', 'touchstart', 'keydown', 'pointerdown'] as const;
+  events.forEach((e) => window.addEventListener(e, halt, { once: true, passive: true }));
+  const step = (now: number) => {
+    const t = Math.min(1, (now - t0) / OPEN_MS);
+    // Instant steps: the page's smooth scrolling would restart a glide of its own each frame.
+    if (!stop) window.scrollTo({ top: start + by * drawer(t), behavior: 'instant' });
+    if (t < 1 && !stop) requestAnimationFrame(step);
+    else events.forEach((e) => window.removeEventListener(e, halt));
+  };
+  requestAnimationFrame(step);
+}
 
 export function isOpening(details: HTMLDetailsElement) {
   return !details.open || details.hasAttribute('data-closing');
 }
 
-export function setDetailsOpen(details: HTMLDetailsElement, open: boolean, { body, items }: Parts) {
+export function setDetailsOpen(details: HTMLDetailsElement, open: boolean, { body, items, nudge }: Parts) {
   const box = details.querySelector<HTMLElement>(body);
   if (!box) {
     details.open = open;
@@ -62,6 +109,7 @@ export function setDetailsOpen(details: HTMLDetailsElement, open: boolean, { bod
   if (open) {
     details.removeAttribute('data-closing');
     details.open = true;
+    if (nudge && from < 1) nudgeInto(details, still);
     if (still) return;
     box.style.height = '';
     const to = box.getBoundingClientRect().height;

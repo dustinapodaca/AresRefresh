@@ -102,7 +102,7 @@ export default function Contact() {
   function toggleMore(e: MouseEvent<HTMLElement>) {
     e.preventDefault();
     const details = e.currentTarget.parentElement as HTMLDetailsElement;
-    setDetailsOpen(details, isOpening(details), { body: '.ds-qt-more-body', items: '.ds-qt-more-inner > .ds-qt-fields, .ds-qt-chipset' });
+    setDetailsOpen(details, isOpening(details), { body: '.ds-qt-more-body', items: '.ds-qt-more-inner > .ds-qt-fields, .ds-qt-chipset', nudge: true });
   }
 
   async function submit(e: FormEvent<HTMLFormElement>) {

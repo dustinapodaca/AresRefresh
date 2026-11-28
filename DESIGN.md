@@ -1306,7 +1306,10 @@ docs/contact-concepts.md.
   site once it reads right): the height opens on the drawer curve over 320ms (an owner exception
   to the 300ms limit, like the Services cards) and shuts in 240ms easing in and out; its groups
   follow the opening 35ms apart, each settling 6px down from 0.62, and dim back to 0.62 as it
-  shuts; a click mid-way reverses from where it is; the + turns the moment it starts either way;
+  shuts; opened from low on the screen (the row's foot below 70% of the window) the page glides
+  up with it so the row sits a third of the way down, on the same curve and time, and stops the
+  moment the reader scrolls or touches; higher up it stays put; a click mid-way reverses from
+  where it is; the + turns the moment it starts either way;
   a double click never selects the panel's text. Native details without JS; a snap under
   reduced motion. The selects
   carry their chevron over the card surface. The contact column's map is Home's regions map, drawn
