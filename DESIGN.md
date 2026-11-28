@@ -1300,7 +1300,14 @@ docs/contact-concepts.md.
   How to reach you (name and email, both required), the "Add details · Optional" row (native
   details, the questions block's +; opened when `?industry=` picks the site type) holding phone and
   organization, the officers, schedule, and start chips, the site type, and "How did you hear about
-  us?", then the optional message ("Anything we should know?") last, at every width. The selects
+  us?", then the optional message ("Anything we should know?") last, at every width. "Add details"
+  eases open and shut (owner, 2026-11-27; `src/lib/disclosure.ts`, to go on every fold on the
+  site once it reads right): the height opens on the drawer curve over 320ms (an owner exception
+  to the 300ms limit, like the Services cards) and shuts in 240ms easing in and out; its groups
+  follow the opening 35ms apart, each settling 6px down from 0.62, and dim back to 0.62 as it
+  shuts; a click mid-way reverses from where it is; the + turns the moment it starts either way;
+  a double click never selects the panel's text. Native details without JS; a snap under
+  reduced motion. The selects
   carry their chevron over the card surface. The contact column's map is Home's regions map, drawn
   whole, pointing at a region lights it. Where the entry below differs, this wins.
 - **The intake (6 columns):** three parts, each a legend (Inter 600, 22 to 26px) on a

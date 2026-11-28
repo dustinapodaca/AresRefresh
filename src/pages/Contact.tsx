@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FormEvent, MouseEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Arrow from '../components/Arrow';
 import { RegionsMap } from '../components/home/CoverageRegions';
 import '../components/home/nx-coverage.css';
@@ -7,6 +7,7 @@ import Seo from '../seo/Seo';
 import { responsive } from '../lib/responsive';
 import { formatPhone, subjectFor, toWeb3Forms, type Quote } from '../lib/quote';
 import { track } from '../lib/analytics';
+import { isOpening, preventSelect, setDetailsOpen } from '../lib/disclosure';
 
 // Request a quote: "The Intake" (docs/contact-concepts.md). Design authority: DESIGN.md.
 // Content: docs/contact-content.md. A short form page, so no section rail.
@@ -96,6 +97,13 @@ export default function Contact() {
       }
     }
   }, []);
+
+  // Add details eases open and shut (src/lib/disclosure.ts; owner, 2026-11-27).
+  function toggleMore(e: MouseEvent<HTMLElement>) {
+    e.preventDefault();
+    const details = e.currentTarget.parentElement as HTMLDetailsElement;
+    setDetailsOpen(details, isOpening(details), { body: '.ds-qt-more-body', items: '.ds-qt-more-inner > .ds-qt-fields, .ds-qt-chipset' });
+  }
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -234,42 +242,44 @@ export default function Contact() {
               organization fold in here too, after the email and before the message (owner,
               2026-11-27, at every width). */}
           <details className="ds-qt-more">
-            <summary>
+            <summary onClick={toggleMore} onMouseDown={preventSelect}>
               <span>
                 Add details <span className="ds-qt-more-note">Optional</span>
               </span>
               <span className="ds-qt-more-mark" aria-hidden="true" />
             </summary>
             <div className="ds-qt-more-body">
-              <div className="ds-qt-fields">
-                <Field id="qf-phone" label="Phone">
-                  <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
-                </Field>
-                <Field id="qf-org" label="Organization">
-                  <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
-                </Field>
-              </div>
-              <div className="ds-qt-chipsets ds-qt-fields-after">
-                {CHIPS.map((g) => (
-                  <fieldset key={g.name} className="ds-qt-chipset">
-                    <legend>{g.legend}</legend>
-                    <Chips set={g} />
-                  </fieldset>
-                ))}
-              </div>
-              <div className="ds-qt-fields ds-qt-fields-after">
-                <Field id="qf-site" label="Type of site">
-                  <select id="qf-site" name="site_type" className="ds-qt-input ds-qt-select" defaultValue="">
-                    <option value="">Choose one</option>
-                    {SITE_TYPES.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
-                  </select>
-                </Field>
-                <Field id="qf-heard" label="How did you hear about us?">
-                  <select id="qf-heard" name="heard_about" className="ds-qt-input ds-qt-select" defaultValue="">
-                    <option value="">Choose one</option>
-                    {HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
-                  </select>
-                </Field>
+              <div className="ds-qt-more-inner">
+                <div className="ds-qt-fields">
+                  <Field id="qf-phone" label="Phone">
+                    <input id="qf-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className="ds-qt-input" />
+                  </Field>
+                  <Field id="qf-org" label="Organization">
+                    <input id="qf-org" name="organization" type="text" autoComplete="organization" placeholder="Agency, company, or LLC" className="ds-qt-input" />
+                  </Field>
+                </div>
+                <div className="ds-qt-chipsets ds-qt-fields-after">
+                  {CHIPS.map((g) => (
+                    <fieldset key={g.name} className="ds-qt-chipset">
+                      <legend>{g.legend}</legend>
+                      <Chips set={g} />
+                    </fieldset>
+                  ))}
+                </div>
+                <div className="ds-qt-fields ds-qt-fields-after">
+                  <Field id="qf-site" label="Type of site">
+                    <select id="qf-site" name="site_type" className="ds-qt-input ds-qt-select" defaultValue="">
+                      <option value="">Choose one</option>
+                      {SITE_TYPES.map((t) => <option key={t.slug} value={t.slug}>{t.label}</option>)}
+                    </select>
+                  </Field>
+                  <Field id="qf-heard" label="How did you hear about us?">
+                    <select id="qf-heard" name="heard_about" className="ds-qt-input ds-qt-select" defaultValue="">
+                      <option value="">Choose one</option>
+                      {HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
+                    </select>
+                  </Field>
+                </div>
               </div>
             </div>
           </details>
